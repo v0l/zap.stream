@@ -1,5 +1,5 @@
 import "./live-chat.css";
-import { EventKind, NostrLink, TaggedRawEvent, EventPublisher } from "@snort/system";
+import { EventKind, NostrLink, TaggedRawEvent, EventPublisher, parseZap } from "@snort/system";
 import { useState } from "react";
 
 import { System } from "index";
@@ -27,7 +27,7 @@ export function LiveChat({ link, options }: { link: NostrLink, options?: LiveCha
         return eb
           .kind(1311 as EventKind)
           .content(chat)
-          .tag(["a", `${link.kind}:${link.author}:${link.id}`])
+          .tag(["a", `${link.kind}:${link.author}:${link.id}`, "", "root"])
           .processContent();
       });
       if (reply) {
@@ -70,25 +70,51 @@ export function LiveChat({ link, options }: { link: NostrLink, options?: LiveCha
       <div className="messages">
         {[...(messages.data ?? [])]
           .sort((a, b) => b.created_at - a.created_at)
-          .map(a => (
-            <ChatMessage ev={a} key={a.id} />
-          ))}
+          .map(a => {
+            switch (a.kind) {
+              case 1311: {
+                return <ChatMessage ev={a} link={link} key={a.id} />;
+              }
+              case EventKind.ZapReceipt: {
+                return <ChatZap ev={a} key={a.id} />
+              }
+            }
+          })}
         {messages.data === undefined && <Spinner />}
       </div>
       {(options?.canWrite ?? true) && <div className="write-message">
-        {login ? writeMessage() : <p>Please login to write messages!</p>}        
+        {login ? writeMessage() : <p>Please login to write messages!</p>}
       </div>}
     </div>
   );
 }
 
-function ChatMessage({ ev }: { ev: TaggedRawEvent }) {
+function ChatMessage({ ev, link }: { ev: TaggedRawEvent, link: NostrLink }) {
   return (
-    <div className="message">
+    <div className={`message${link.author === ev.pubkey ? " streamer" : ""}`}>
       <Profile pubkey={ev.pubkey} />
       <span>
         {ev.content}
       </span>
+    </div>
+  );
+}
+
+function ChatZap({ ev }: { ev: TaggedRawEvent }) {
+  const parsed = parseZap(ev, System.ProfileLoader.Cache);
+  if(!parsed.valid) {
+    console.debug(parsed);
+    return null;
+  }
+  return (
+    <div className="zap pill">
+      <Icon name="zap" />
+      <Profile pubkey={parsed.sender ?? ""} />
+      zapped
+      &nbsp;
+      {parsed.amount}
+      &nbsp;
+      sats
     </div>
   );
 }

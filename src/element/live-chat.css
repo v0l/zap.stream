@@ -8,14 +8,14 @@
   gap: 16px;
 }
 
-.live-chat > .header {
+.live-chat>.header {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
   padding: 0px 0px 16px;
 }
 
-.live-chat > .messages {
+.live-chat>.messages {
   flex-grow: 1;
   display: flex;
   gap: 12px;
@@ -24,12 +24,12 @@
   overflow-x: hidden;
 }
 
-.live-chat > .write-message {
+.live-chat>.write-message {
   display: flex;
   gap: 8px;
 }
 
-.live-chat > .write-message > div:nth-child(1) {
+.live-chat>.write-message>div:nth-child(1) {
   background: #171717;
   border-radius: 16px;
   padding: 8px 16px;
@@ -49,11 +49,15 @@
   flex-grow: 1;
 }
 
-.live-chat .profile {
+.live-chat .message .profile {
   gap: 8px;
   font-weight: 600;
   font-size: 15px;
   float: left;
+}
+
+.live-chat .message.streamer .profile {
+  color: #F838D9;
 }
 
 .live-chat .profile img {
@@ -66,4 +70,11 @@
   font-size: 15px;
   line-height: 24px;
   margin-left: 8px;
+}
+
+.live-chat .zap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
 }

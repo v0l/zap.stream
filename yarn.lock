@@ -1741,7 +1741,7 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.3.2.tgz#31b9c510d8cada9683549e1dbb4284cca5001faf"
   integrity sha512-V+MvGwaHH03hYhY+k6Ef/xKd6RYlc4q8WBx+2ANmipHJcKuktNcI/NgEsJgdSUF6Lw32njT6OnrRsKYCdgHjYw==
 
-"@scure/base@^1.1.1":
+"@scure/base@1.1.1", "@scure/base@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@scure/base/-/base-1.1.1.tgz#ebb651ee52ff84f420097055f4bf46cfba403938"
   integrity sha512-ZxOhsSyxYwLJj3pLZCefNitxsj093tb2vq90mp2txoYeBqbcjDjqFhyM8eUjq/uFm6zJ+mUuqxlS2FkuSY1MTA==
@@ -1770,34 +1770,47 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@snort/shared@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@snort/shared/-/shared-1.0.1.tgz#ab0947f0559a251d8e40286cea8469fcf5dc208d"
-  integrity sha512-XFfU+GzF0AewG335asBonSU9BIk3WFwJ+O1miHLbGQsYeBfl/vEutRel5nw5KJBEhUuH3K1u6syA9TbqT0Y4iA==
+"@snort/shared@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@snort/shared/-/shared-1.0.2.tgz#539a8d68ce737320d329a4b205d0d5d3a7e32982"
+  integrity sha512-98bArZMyoET3/HinT+CRQEZqYAp59oMjz7LzH1+nKc8XVyUmqKEncZ7MQe0RrTcKHQc+51vQgglpjKfFy3XR/g==
   dependencies:
     "@noble/curves" "^1.1.0"
     "@noble/hashes" "^1.3.1"
     "@scure/base" "^1.1.1"
     debug "^4.3.4"
     dexie "^3.2.4"
+    light-bolt11-decoder "^3.0.0"
 
-"@snort/system-react@^1.0.3":
+"@snort/shared@^1.0.3":
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.3.tgz#a64ac4b96f084faab6b19264c4699d523d543927"
-  integrity sha512-7ZoYtmzThjOwJpM1I2UWBKfWRSdXfdZK+r59LSZFuqp5gTzAYKeqF97toQKG+PKbcNlNnqpifTIeNaZHnXkOhw==
+  resolved "https://registry.yarnpkg.com/@snort/shared/-/shared-1.0.3.tgz#85aa9c4f0db47b095692ad7ab135b2580b8a855c"
+  integrity sha512-B4dge6qlcO+pZtGk5gjvpGq622kbTpgcEOE9iGigfzZzf5FjrBTFQD+tbcAaIKuW580BwE61YYfJdONP1Pz+pQ==
   dependencies:
-    "@snort/shared" "^1.0.1"
-    "@snort/system" "^1.0.8"
+    "@noble/curves" "^1.1.0"
+    "@noble/hashes" "^1.3.1"
+    "@scure/base" "^1.1.1"
+    debug "^4.3.4"
+    dexie "^3.2.4"
+    light-bolt11-decoder "^3.0.0"
+
+"@snort/system-react@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.7.tgz#f4ad626b98ef9377ffb201fee797809dd2e2fbf3"
+  integrity sha512-JpIe7fv+VoJYRNhsUdgj+LBsJRKdiqG5BKnERfhl+2d6WORK9yO1y4VvgibhcntY39g3lH8xIOV7xUGf40lS+w==
+  dependencies:
+    "@snort/shared" "^1.0.2"
+    "@snort/system" "^1.0.12"
     react "^18.2.0"
 
-"@snort/system@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.8.tgz#c4a7000320ebf65374298cc1ed5a0d42103a6557"
-  integrity sha512-IxiD4q3cnW8YEA43a42yxq/OmIeCbXR8Wd1kO59JqZA0xwhhASJQHXxWSuKPXNt6LgkEENPkmlTKY2BIkLvTfg==
+"@snort/system@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.12.tgz#0746d06cf29f5fd8787608a440c21979bd1045e9"
+  integrity sha512-6UwwsXYUMjohvbIPNpNDEsapAVgXhECzUyIiqNjRyl3fxUJkHyMnnsvxclTWXi+1W8QU8EiFeVeyRoeHrnBWow==
   dependencies:
     "@noble/curves" "^1.0.0"
     "@scure/base" "^1.1.1"
-    "@snort/shared" "^1.0.1"
+    "@snort/shared" "^1.0.3"
     "@stablelib/xchacha20" "^1.0.1"
     debug "^4.3.4"
     dexie "^3.2.4"
@@ -6273,6 +6286,13 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+light-bolt11-decoder@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/light-bolt11-decoder/-/light-bolt11-decoder-3.0.0.tgz#f644576120426c9ef65621bde254f11016055044"
+  integrity sha512-AKvOigD2pmC8ktnn2TIqdJu0K0qk6ukUmTvHwF3JNkm8uWCqt18Ijn33A/a7gaRZ4PghJ59X+8+MXrzLKdBTmQ==
+  dependencies:
+    "@scure/base" "1.1.1"
 
 lilconfig@^2.0.3, lilconfig@^2.0.5, lilconfig@^2.1.0:
   version "2.1.0"
