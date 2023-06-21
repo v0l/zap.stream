@@ -1,0 +1,69 @@
+.live-chat {
+  height: calc(100vh - 72px - 96px);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 8px 24px;
+  border: 1px solid #171717;
+  border-radius: 24px;
+  gap: 16px;
+}
+
+.live-chat>div:nth-child(1) {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  padding: 0px 0px 16px;
+}
+
+.live-chat>div:nth-child(2) {
+  flex-grow: 1;
+  display: flex;
+  gap: 12px;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.live-chat>div:nth-child(3) {
+  display: flex;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.live-chat .write-message {
+  background: #171717;
+  border-radius: 16px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  flex-grow: 1;
+}
+
+.live-chat .write-message input {
+  background: unset;
+  border: unset;
+  outline: unset;
+  color: inherit;
+  font: inherit;
+  flex-grow: 1;
+}
+
+.live-chat .profile {
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  float: left;
+}
+
+.live-chat .profile img {
+  width: 24px;
+  height: 24px;
+}
+
+.live-chat .message>span {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  margin-left: 8px;
+}

@@ -1,0 +1,21 @@
+.video-tile {}
+
+.video-tile>div:nth-child(1) {
+    border-radius: 16px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.video-tile h3 {
+    font-size: 20px;
+    line-height: 25px;
+    margin: 16px 0;
+}
+
+.video-tile .pill {
+    float: right;
+    margin: 16px 20px 0 0;
+}

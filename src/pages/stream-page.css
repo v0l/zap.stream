@@ -1,0 +1,72 @@
+.live-page {
+  display: grid;
+  height: calc(100vh - 72px - 32px - 32px);
+  padding: 32px 40px;
+  grid-template-columns: auto 376px;
+  gap: 32px;
+}
+
+@media (min-width: 2000px) {
+  .live-page {
+    grid-template-columns: auto 450px;
+  }
+}
+
+.live-page>div:nth-child(1) {
+  overflow-y: auto;
+}
+
+.live-page video {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.live-page .pill {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #A7A7A7;
+}
+
+.live-page .pill.live {
+  color: inherit;
+}
+
+.live-page .info {
+  margin-top: 32px;
+}
+
+.live-page .info h1 {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 35px;
+}
+
+.live-page .info p {
+  margin: 0 0 12px 0;
+}
+
+.live-page .tags {
+  display: flex;
+  gap: 8px;
+}
+
+button.zap {
+  background: linear-gradient(94.73deg, #2BD9FF 0%, #F838D9 100%);
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button.zap>span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

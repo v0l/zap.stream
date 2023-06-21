@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0A0A0A;
+  color: white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+.flex {
+  display: flex;
+}
+
+.f-grow {
+  flex-grow: 1;
+}
+
+.pill {
+  background: #171717;
+  padding: 4px 8px;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: capitalize;
+}
+
+.pill.live {
+  background: #F838D9;
+  color: white;
+}
+
+.g24 {
+  gap: 24px;
+}
+
+.btn-border {
+  border: 1px solid transparent;
+  color: inherit;
+  background: linear-gradient(black, black) padding-box,
+    linear-gradient(94.73deg, #2BD9FF 0%, #F838D9 100%) border-box;
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 16px;
+  border-radius: 16px;
+}

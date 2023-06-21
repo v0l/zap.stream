@@ -1,0 +1,55 @@
+header {
+    display: grid;
+    grid-template-columns: min-content min-content auto;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 40px 0 40px;
+}
+
+header>div:nth-child(1) {
+    background: #171717;
+    border-radius: 16px;
+    width: 48px;
+    height: 48px;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+header>div:nth-child(2) {
+    background: #171717;
+    border-radius: 16px;
+    padding: 8px 16px;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+header>div:nth-child(3) {
+    justify-self: end;
+}
+
+header input[type="text"] {
+    border: unset;
+    background-color: unset;
+    color: inherit;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+}
+
+header input[type="text"]:active {
+    border: unset;
+}
+
+header button {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

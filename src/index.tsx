@@ -1,0 +1,39 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { NostrSystem } from "@snort/system";
+import './index.css';
+import { RootPage } from './pages/root';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { LayoutPage } from 'pages/layout';
+import { StreamPage } from 'pages/stream-page';
+
+export const System = new NostrSystem({
+
+});
+
+[
+  "wss://relay.snort.social",
+  "wss://nos.lol"
+].forEach(r => System.ConnectToRelay(r, { read: true, write: true }));
+
+const router = createBrowserRouter([
+  {
+    element: <LayoutPage />,
+    children: [
+      {
+        path: "/",
+        element: <RootPage />
+      },
+      {
+        path: "/live/:id",
+        element: <StreamPage />
+      }
+    ]
+  }
+])
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement);
+root.render(
+  <React.StrictMode>
+      <RouterProvider router={router} />
+  </React.StrictMode>
+);
