@@ -18,7 +18,7 @@ export function Profile({ pubkey, options }: { pubkey: string, options?: Profile
     const profile = useUserProfile(System, pubkey);
 
     return <div className="profile">
-        <img src={profile?.picture} />
+        <img src={profile?.picture} alt="Profile"/>
         {(options?.showName ?? true) && getName(pubkey, profile)}
     </div>
 }

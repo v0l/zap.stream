@@ -79,6 +79,7 @@ export function LiveChat({ link, options }: { link: NostrLink, options?: LiveCha
                 return <ChatZap ev={a} key={a.id} />
               }
             }
+            return null;
           })}
         {messages.data === undefined && <Spinner />}
       </div>
