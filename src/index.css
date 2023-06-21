@@ -44,6 +44,17 @@ a {
   gap: 24px;
 }
 
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 16px;
+  border-radius: 16px;
+}
+
 .btn-border {
   border: 1px solid transparent;
   color: inherit;
@@ -51,11 +62,7 @@ a {
     linear-gradient(94.73deg, #2BD9FF 0%, #F838D9 100%) border-box;
 }
 
-.btn {
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  padding: 8px 16px;
-  border-radius: 16px;
+.btn-primary {
+  background: linear-gradient(94.73deg, #2BD9FF 0%, #8C8DED 47.4%, #F838D9 100%);
+  color: white;
 }

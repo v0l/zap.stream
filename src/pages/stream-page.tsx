@@ -45,7 +45,7 @@ export function StreamPage() {
               <Profile
                 pubkey={thisEvent.data?.pubkey ?? ""}
               />
-              <AsyncButton onClick={() => { }} className="zap">
+              <AsyncButton onClick={() => { }} className="btn btn-primary">
                 Zap
                 <Icon name="zap" size={16} />
               </AsyncButton>

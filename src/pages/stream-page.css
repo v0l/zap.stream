@@ -52,20 +52,7 @@
   gap: 8px;
 }
 
-button.zap {
-  background: linear-gradient(94.73deg, #2BD9FF 0%, #F838D9 100%);
-  border-radius: 16px;
-  padding: 12px 16px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: white;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-button.zap>span {
+.live-page .btn-primary>span {
   display: flex;
   align-items: center;
   gap: 8px;

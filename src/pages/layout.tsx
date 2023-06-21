@@ -14,6 +14,10 @@ export function LayoutPage() {
                 <Icon name="search" size={15} />
             </div>
             <div>
+                <button type="button" className="btn btn-primary">
+                    New Stream
+                    <Icon name="signal" />
+                </button>
                 <button type="button" className="btn btn-border">
                     Login
                     <Icon name="login" />

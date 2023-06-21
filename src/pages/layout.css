@@ -31,6 +31,8 @@ header>div:nth-child(2) {
 
 header>div:nth-child(3) {
     justify-self: end;
+    display: flex;
+    gap: 24px;
 }
 
 header input[type="text"] {
