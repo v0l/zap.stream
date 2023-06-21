@@ -6,6 +6,7 @@ import { RootPage } from './pages/root';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { LayoutPage } from 'pages/layout';
 import { StreamPage } from 'pages/stream-page';
+import { ChatPopout } from 'pages/chat-popout';
 
 export const System = new NostrSystem({
 
@@ -29,11 +30,15 @@ const router = createBrowserRouter([
         element: <StreamPage />
       }
     ]
+  },
+  {
+    path: "/chat/:id",
+    element: <ChatPopout />
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement);
 root.render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

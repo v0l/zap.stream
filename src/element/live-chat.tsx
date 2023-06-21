@@ -9,7 +9,12 @@ import { Profile } from "./profile";
 import { Icon } from "./icon";
 import Spinner from "./spinner";
 
-export function LiveChat({ link }: { link: NostrLink }) {
+export interface LiveChatOptions {
+  canWrite?: boolean,
+  showHeader?: boolean
+}
+
+export function LiveChat({ link, options }: { link: NostrLink, options?: LiveChatOptions }) {
   const [chat, setChat] = useState("");
   const messages = useLiveChatFeed(link);
 
@@ -32,10 +37,10 @@ export function LiveChat({ link }: { link: NostrLink }) {
   }
   return (
     <div className="live-chat">
-      <div>
+      {(options?.showHeader ?? true) && <div className="header">
         Stream Chat
-      </div>
-      <div>
+      </div>}
+      <div className="messages">
         {[...(messages.data ?? [])]
           .sort((a, b) => b.created_at - a.created_at)
           .map(a => (
@@ -43,8 +48,8 @@ export function LiveChat({ link }: { link: NostrLink }) {
           ))}
         {messages.data === undefined && <Spinner />}
       </div>
-      <div>
-        <div className="write-message">
+      {(options?.canWrite ?? true) && <div className="write-message">
+        <div>
           <input
             type="text"
             autoFocus={false}
@@ -63,7 +68,7 @@ export function LiveChat({ link }: { link: NostrLink }) {
         <AsyncButton onClick={sendChatMessage} className="btn btn-border">
           Send
         </AsyncButton>
-      </div>
+      </div>}
     </div>
   );
 }

@@ -8,14 +8,14 @@
   gap: 16px;
 }
 
-.live-chat>div:nth-child(1) {
+.live-chat > .header {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
   padding: 0px 0px 16px;
 }
 
-.live-chat>div:nth-child(2) {
+.live-chat > .messages {
   flex-grow: 1;
   display: flex;
   gap: 12px;
@@ -24,17 +24,17 @@
   overflow-x: hidden;
 }
 
-.live-chat>div:nth-child(3) {
+.live-chat > .write-message {
   display: flex;
-  gap: 10px;
-  padding: 6px 0;
+  gap: 8px;
 }
 
-.live-chat .write-message {
+.live-chat > .write-message > div:nth-child(1) {
   background: #171717;
   border-radius: 16px;
   padding: 8px 16px;
   display: flex;
+  gap: 10px;
   align-items: center;
   height: 32px;
   flex-grow: 1;
