@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "npx wrangler pages publish build"
+    "deploy": "npx wrangler pages publish build"
   },
   "eslintConfig": {
     "extends": [
