@@ -51,9 +51,3 @@
   display: flex;
   gap: 8px;
 }
-
-.live-page .btn-primary>span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}

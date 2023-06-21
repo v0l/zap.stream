@@ -8,6 +8,7 @@ import AsyncButton from "./async-button";
 import { Profile } from "./profile";
 import { Icon } from "./icon";
 import Spinner from "./spinner";
+import { useLogin } from "hooks/login";
 
 export interface LiveChatOptions {
   canWrite?: boolean,
@@ -17,6 +18,7 @@ export interface LiveChatOptions {
 export function LiveChat({ link, options }: { link: NostrLink, options?: LiveChatOptions }) {
   const [chat, setChat] = useState("");
   const messages = useLiveChatFeed(link);
+  const login = useLogin();
 
   async function sendChatMessage() {
     const pub = await EventPublisher.nip7();
@@ -35,6 +37,31 @@ export function LiveChat({ link, options }: { link: NostrLink, options?: LiveCha
       setChat("");
     }
   }
+
+  function writeMessage() {
+    return <>
+      <div>
+        <input
+          type="text"
+          autoFocus={false}
+          onChange={v => setChat(v.target.value)}
+          value={chat}
+          placeholder="Message"
+          onKeyDown={async e => {
+            if (e.code === "Enter") {
+              e.preventDefault();
+              await sendChatMessage();
+            }
+          }}
+        />
+        <Icon name="message" size={15} />
+      </div>
+      <AsyncButton onClick={sendChatMessage} className="btn btn-border">
+        Send
+      </AsyncButton>
+    </>
+  }
+
   return (
     <div className="live-chat">
       {(options?.showHeader ?? true) && <div className="header">
@@ -49,25 +76,7 @@ export function LiveChat({ link, options }: { link: NostrLink, options?: LiveCha
         {messages.data === undefined && <Spinner />}
       </div>
       {(options?.canWrite ?? true) && <div className="write-message">
-        <div>
-          <input
-            type="text"
-            autoFocus={false}
-            onChange={v => setChat(v.target.value)}
-            value={chat}
-            placeholder="Message"
-            onKeyDown={async e => {
-              if (e.code === "Enter") {
-                e.preventDefault();
-                await sendChatMessage();
-              }
-            }}
-          />
-          <Icon name="message" size={15} />
-        </div>
-        <AsyncButton onClick={sendChatMessage} className="btn btn-border">
-          Send
-        </AsyncButton>
+        {login ? writeMessage() : <p>Please login to write messages!</p>}        
       </div>}
     </div>
   );

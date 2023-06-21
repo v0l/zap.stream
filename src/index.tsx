@@ -7,10 +7,12 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { LayoutPage } from 'pages/layout';
 import { StreamPage } from 'pages/stream-page';
 import { ChatPopout } from 'pages/chat-popout';
+import { LoginStore } from 'login';
 
 export const System = new NostrSystem({
 
 });
+export const Login = new LoginStore();
 
 [
   "wss://relay.snort.social",

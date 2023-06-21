@@ -55,3 +55,8 @@ header button {
     align-items: center;
     gap: 8px;
 }
+
+header .profile img {
+    width: 48px;
+    height: 48px;
+}

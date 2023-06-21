@@ -66,3 +66,9 @@ a {
   background: linear-gradient(94.73deg, #2BD9FF 0%, #8C8DED 47.4%, #F838D9 100%);
   color: white;
 }
+
+.btn>span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
