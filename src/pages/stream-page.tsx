@@ -1,16 +1,20 @@
 import "./stream-page.css";
+import { useState } from "react";
 import { parseNostrLink, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
 
 import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
 import { findTag } from "utils";
-import { Profile } from "element/profile";
+import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { Icon } from "element/icon";
 import { useLogin } from "hooks/login";
 import { System } from "index";
+import Modal from "element/modal";
+import { SendZaps } from "element/send-zap";
+import { useUserProfile } from "@snort/system-react";
 
 export function StreamPage() {
   const params = useParams();
@@ -18,11 +22,14 @@ export function StreamPage() {
   const thisEvent = useEventFeed(link);
   const login = useLogin();
   const navigate = useNavigate();
+  const [zap, setZap] = useState(false);
+  const profile = useUserProfile(System, thisEvent.data?.pubkey);
 
   const stream = findTag(thisEvent.data, "streaming");
   const status = findTag(thisEvent.data, "status");
   const isLive = status === "live";
   const isMine = link.author === login?.pubkey;
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
 
   async function deleteStream() {
     const pub = await EventPublisher.nip7();
@@ -66,15 +73,22 @@ export function StreamPage() {
               <Profile
                 pubkey={thisEvent.data?.pubkey ?? ""}
               />
-              <AsyncButton onClick={() => { }} className="btn btn-primary">
+              <button onClick={() => setZap(true)} className="btn btn-primary zap">
                 Zap
                 <Icon name="zap" size={16} />
-              </AsyncButton>
+              </button>
             </div>
           </div>
         </div>
       </div>
       <LiveChat link={link} />
+      {zap && zapTarget && thisEvent.data && <Modal onClose={() => setZap(false)}>
+        <SendZaps
+          lnurl={zapTarget}
+          ev={thisEvent.data}
+          targetName={getName(thisEvent.data.pubkey, profile)}
+          onFinish={() => setZap(false)} />
+      </Modal>}
     </div>
   );
 }

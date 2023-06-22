@@ -4,3 +4,15 @@
     gap: 32px;
     padding: 40px;
 }
+
+@media(min-width: 1600px) {
+    .video-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media(min-width: 2000px) {
+    .video-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}

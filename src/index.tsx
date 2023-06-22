@@ -16,12 +16,14 @@ export const System = new NostrSystem({
 });
 export const Login = new LoginStore();
 
-[
+export const Relays = [
   "wss://relay.snort.social",
   "wss://nos.lol",
   "wss://relay.damus.io",
   "wss://nostr.wine"
-].forEach(r => System.ConnectToRelay(r, { read: true, write: true }));
+];
+
+Relays.forEach(r => System.ConnectToRelay(r, { read: true, write: true }));
 
 const router = createBrowserRouter([
   {

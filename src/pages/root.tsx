@@ -7,7 +7,7 @@ import { System } from "..";
 import { VideoTile } from "../element/video-tile";
 import { findTag } from "utils";
 
-export function RootPage() {
+export function RootPage() {    
     const rb = new RequestBuilder("root");
     rb.withFilter()
         .kinds([30_311 as EventKind]);

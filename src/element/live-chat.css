@@ -66,9 +66,12 @@
   margin-left: 8px;
 }
 
+.live-chat .messages .pill {
+  color: white;
+}
+
 .live-chat .zap {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: inherit;
 }

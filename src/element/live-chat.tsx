@@ -10,6 +10,7 @@ import { Icon } from "./icon";
 import Spinner from "./spinner";
 import { useLogin } from "hooks/login";
 import { useUserProfile } from "@snort/system-react";
+import { formatSats, formatShort } from "number";
 
 export interface LiveChatOptions {
   canWrite?: boolean,
@@ -107,21 +108,25 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   useUserProfile(System, parsed.anonZap ? undefined : parsed.sender);
 
   if (!parsed.valid) {
-    console.debug(parsed);
     return null;
   }
   return (
-    <div className="zap pill">
-      <Icon name="zap" />
-      <Profile pubkey={parsed.anonZap ? "" : (parsed.sender ?? "")} options={{
-        showAvatar: !parsed.anonZap,
-        overrideName: parsed.anonZap ? "Anonymous" : undefined
-      }} />
-      zapped
-      &nbsp;
-      {parsed.amount}
-      &nbsp;
-      sats
+    <div className="pill">
+      <div className="zap">
+        <Icon name="zap" />
+        <Profile pubkey={parsed.anonZap ? "" : (parsed.sender ?? "")} options={{
+          showAvatar: !parsed.anonZap,
+          overrideName: parsed.anonZap ? "Anonymous" : undefined
+        }} />
+        zapped
+        &nbsp;
+        {formatSats(parsed.amount)}
+        &nbsp;
+        sats
+      </div>
+      {parsed.content && <p>
+        {parsed.content}
+      </p>}
     </div>
   );
 }

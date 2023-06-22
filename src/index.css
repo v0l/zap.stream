@@ -32,6 +32,8 @@ a {
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .pill.live {
@@ -41,6 +43,10 @@ a {
 
 .g24 {
   gap: 24px;
+}
+
+.g12 {
+  gap: 12px;
 }
 
 .btn {
@@ -72,7 +78,7 @@ a {
   gap: 8px;
 }
 
-input[type="text"] {
+input[type="text"], textarea {
   font-family: inherit;
   border: unset;
   background-color: unset;

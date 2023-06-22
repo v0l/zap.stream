@@ -55,3 +55,10 @@
 .live-page .actions {
   margin: 8px 0 0 0;
 }
+
+.live-page .btn.zap {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
