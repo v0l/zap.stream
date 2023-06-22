@@ -13,7 +13,13 @@ export interface ProfileOptions {
 
 export function getName(pk: string, user?: UserMetadata) {
     const shortPubkey = hexToBech32("npub", pk).slice(0, 12);
-    return user?.display_name ?? user?.name ?? shortPubkey
+    if ((user?.display_name?.length ?? 0) > 0) {
+        return user?.display_name;
+    }
+    if ((user?.name?.length ?? 0) > 0) {
+        return user?.name;
+    }
+    return shortPubkey;
 }
 
 export function Profile({ pubkey, options }: { pubkey: string, options?: ProfileOptions }) {
