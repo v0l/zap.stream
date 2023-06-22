@@ -54,6 +54,8 @@
 
 .live-page .actions {
   margin: 8px 0 0 0;
+  display: flex;
+  gap: 12px;
 }
 
 .live-page .btn.zap {

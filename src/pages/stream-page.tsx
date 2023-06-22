@@ -15,6 +15,7 @@ import { System } from "index";
 import Modal from "element/modal";
 import { SendZaps } from "element/send-zap";
 import { useUserProfile } from "@snort/system-react";
+import { NewStream } from "element/new-stream";
 
 export function StreamPage() {
   const params = useParams();
@@ -23,6 +24,7 @@ export function StreamPage() {
   const login = useLogin();
   const navigate = useNavigate();
   const [zap, setZap] = useState(false);
+  const [edit, setEdit] = useState(false);
   const profile = useUserProfile(System, thisEvent.data?.pubkey);
 
   const stream = findTag(thisEvent.data, "streaming");
@@ -62,11 +64,14 @@ export function StreamPage() {
                   </span>
                 ))}
             </div>
-            <div className="actions">
-              {isMine && <AsyncButton type="button" className="btn" onClick={deleteStream}>
+            {isMine && <div className="actions">
+              <button type="button" className="btn" onClick={() => setEdit(true)}>
+                Edit
+              </button>
+              <AsyncButton type="button" className="btn btn-red" onClick={deleteStream}>
                 Delete
-              </AsyncButton>}
-            </div>
+              </AsyncButton>
+            </div>}
           </div>
           <div>
             <div className="flex g24">
@@ -88,6 +93,9 @@ export function StreamPage() {
           ev={thisEvent.data}
           targetName={getName(thisEvent.data.pubkey, profile)}
           onFinish={() => setZap(false)} />
+      </Modal>}
+      {edit && thisEvent.data && <Modal onClose={() => setEdit(false)}>
+        <NewStream ev={thisEvent.data} onFinish={() => window.location.reload()} />
       </Modal>}
     </div>
   );

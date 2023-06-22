@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { EventPublisher } from "@snort/system";
+import { EventPublisher, NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import "./new-stream.css";
 import AsyncButton from "./async-button";
 import { System } from "index";
+import { findTag } from "utils";
 
-export function NewStream() {
-    const [title, setTitle] = useState("");
-    const [summary, setSummary] = useState("");
-    const [image, setImage] = useState("");
-    const [stream, setStream] = useState("");
+export function NewStream({ ev, onFinish }: { ev?: NostrEvent, onFinish: () => void }) {
+    const [title, setTitle] = useState(findTag(ev, "title") ?? "");
+    const [summary, setSummary] = useState(findTag(ev, "summary") ?? "");
+    const [image, setImage] = useState(findTag(ev, "image") ?? "");
+    const [stream, setStream] = useState(findTag(ev, "streaming") ?? "");
     const [isValid, setIsValid] = useState(false);
 
     function validate() {
@@ -32,26 +33,27 @@ export function NewStream() {
     async function publishStream() {
         const pub = await EventPublisher.nip7();
         if (pub) {
-            const ev = await pub.generic(eb => {
+            const evNew = await pub.generic(eb => {
                 const now = unixNow();
+                const dTag = findTag(ev, "d") ?? now.toString();
                 return eb.kind(30_311)
-                    .tag(["d", now.toString()])
+                    .tag(["d", dTag])
                     .tag(["title", title])
                     .tag(["summary", summary])
                     .tag(["image", image])
                     .tag(["streaming", stream])
                     .tag(["status", "live"])
             });
-            console.debug(ev);
-            System.BroadcastEvent(ev);
+            console.debug(evNew);
+            System.BroadcastEvent(evNew);
+            onFinish();
         }
     }
 
     return <div className="new-stream">
         <h3>
-            New Stream
+            {ev ? "Edit Stream" : "New Stream"}
         </h3>
-
         <div>
             <p>
                 Title
@@ -89,7 +91,7 @@ export function NewStream() {
         </div>
         <div>
             <AsyncButton type="button" className="btn btn-primary" disabled={!isValid} onClick={publishStream}>
-                Start Stream
+                {ev ? "Save" : "Start Stream"}
             </AsyncButton>
         </div>
     </div>

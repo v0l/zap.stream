@@ -72,6 +72,11 @@ a {
   color: white;
 }
 
+.btn-red {
+  background: rgb(143, 0, 0);
+  color: white;
+}
+
 .btn>span {
   display: flex;
   align-items: center;

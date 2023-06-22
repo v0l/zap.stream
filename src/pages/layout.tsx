@@ -63,7 +63,7 @@ export function LayoutPage() {
         </header>
         <Outlet />
         {newStream && <Modal onClose={() => setNewStream(false)} >
-            <NewStream />
+            <NewStream onFinish={() => navigate("/")} />
         </Modal>}
     </>
 }
