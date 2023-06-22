@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Profile } from "./profile";
 import "./video-tile.css";
 import { NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
+import { useInView } from "react-intersection-observer";
 
 export function VideoTile({ ev }: { ev: NostrEvent }) {
+    const { inView, ref } = useInView({ triggerOnce: true });
     const id = ev.tags.find(a => a[0] === "d")?.[1]!;
     const title = ev.tags.find(a => a[0] === "title")?.[1];
     const image = ev.tags.find(a => a[0] === "image")?.[1];
@@ -11,9 +13,9 @@ export function VideoTile({ ev }: { ev: NostrEvent }) {
     const isLive = status === "live";
 
     const link = encodeTLV(NostrPrefix.Address, id, undefined, ev.kind, ev.pubkey);
-    return <Link to={`/live/${link}`} className="video-tile">
+    return <Link to={`/live/${link}`} className="video-tile" ref={ref}>
         <div style={{
-            backgroundImage: `url(${image})`
+            backgroundImage: `url(${inView ? image : ""})`
         }}>
             <span className={`pill${isLive ? " live" : ""}`}>
                 {status}
@@ -21,7 +23,7 @@ export function VideoTile({ ev }: { ev: NostrEvent }) {
         </div>
         <h3>{title}</h3>
         <div>
-            <Profile pubkey={ev.pubkey} />
+            {inView && <Profile pubkey={ev.pubkey} />}
         </div>
     </Link>
 }
