@@ -72,6 +72,10 @@
   align-items: center;
 }
 
+.live-page .online>div {
+  display: none;
+}
+
 .live-page .offline>div {
   position: fixed;
   text-transform: uppercase;
