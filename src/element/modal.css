@@ -1,0 +1,22 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  z-index: 42;
+  overflow-y: auto;
+}
+
+.modal-body {
+  display: flex;
+  width: 430px;
+  padding: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 32px;
+  background: #171717;
+}

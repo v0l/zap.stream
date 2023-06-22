@@ -1,0 +1,39 @@
+.new-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: inherit;
+}
+
+.new-stream h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.new-stream div.input {
+    background: #262626;
+    height: 32px;
+}
+
+.new-stream p {
+    margin: 0 0 8px 0;
+}
+
+.new-stream small {
+    display: block;
+    margin: 8px 0 0 0;
+}
+
+.new-stream .btn {
+    padding: 12px 16px;
+    border-radius: 16px;
+    width: 100%;
+}
+
+.new-stream .btn>span {
+    justify-content: center;
+}
+
+.new-stream .btn:disabled {
+    opacity: 0.3;
+}

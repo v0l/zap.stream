@@ -20,12 +20,7 @@ header>div:nth-child(1) {
 }
 
 header>div:nth-child(2) {
-    background: #171717;
-    border-radius: 16px;
-    padding: 8px 16px;
     min-width: 300px;
-    display: flex;
-    align-items: center;
     height: 32px;
 }
 
@@ -33,16 +28,6 @@ header>div:nth-child(3) {
     justify-self: end;
     display: flex;
     gap: 24px;
-}
-
-header input[type="text"] {
-    border: unset;
-    background-color: unset;
-    color: inherit;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    outline: none;
 }
 
 header input[type="text"]:active {

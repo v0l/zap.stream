@@ -1,6 +1,6 @@
 import "./stream-page.css";
-import { parseNostrLink } from "@snort/system";
-import { useParams } from "react-router-dom";
+import { parseNostrLink, EventPublisher } from "@snort/system";
+import { useNavigate, useParams } from "react-router-dom";
 
 import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
@@ -9,15 +9,31 @@ import { Profile } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { Icon } from "element/icon";
+import { useLogin } from "hooks/login";
+import { System } from "index";
 
 export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
   const thisEvent = useEventFeed(link);
+  const login = useLogin();
+  const navigate = useNavigate();
 
   const stream = findTag(thisEvent.data, "streaming");
   const status = findTag(thisEvent.data, "status");
   const isLive = status === "live";
+  const isMine = link.author === login?.pubkey;
+
+  async function deleteStream() {
+    const pub = await EventPublisher.nip7();
+    if (pub && thisEvent.data) {
+      const ev = await pub.delete(thisEvent.data.id);
+      console.debug(ev);
+      System.BroadcastEvent(ev);
+      navigate("/");
+    }
+  }
+
   return (
     <div className="live-page">
       <div>
@@ -38,6 +54,11 @@ export function StreamPage() {
                     {a}
                   </span>
                 ))}
+            </div>
+            <div className="actions">
+              {isMine && <AsyncButton type="button" className="btn" onClick={deleteStream}>
+                Delete
+              </AsyncButton>}
             </div>
           </div>
           <div>

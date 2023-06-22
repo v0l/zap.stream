@@ -40,7 +40,7 @@ export function LiveChat({ link, options }: { link: NostrLink, options?: LiveCha
 
   function writeMessage() {
     return <>
-      <div>
+      <div className="input">
         <input
           type="text"
           autoFocus={false}
@@ -110,7 +110,10 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   return (
     <div className="zap pill">
       <Icon name="zap" />
-      <Profile pubkey={parsed.sender ?? ""} />
+      <Profile pubkey={parsed.sender ?? ""} options={{
+        showAvatar: !parsed.anonZap,
+        overrideName: parsed.anonZap ? "Anonymous" : undefined
+      }}/>
       zapped
       &nbsp;
       {parsed.amount}

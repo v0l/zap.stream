@@ -6,10 +6,14 @@ import AsyncButton from "element/async-button";
 import { Login } from "index";
 import { useLogin } from "hooks/login";
 import { Profile } from "element/profile";
+import Modal from "element/modal";
+import { NewStream } from "element/new-stream";
+import { useState } from "react";
 
 export function LayoutPage() {
     const navigate = useNavigate();
     const login = useLogin();
+    const [newStream, setNewStream] = useState(false);
 
     async function doLogin() {
         const pub = await EventPublisher.nip7();
@@ -22,7 +26,7 @@ export function LayoutPage() {
         if (!login) return;
 
         return <>
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" onClick={() => setNewStream(true)}>
                 New Stream
                 <Icon name="signal" />
             </button>
@@ -48,7 +52,7 @@ export function LayoutPage() {
             <div onClick={() => navigate("/")}>
                 S
             </div>
-            <div>
+            <div className="input">
                 <input type="text" placeholder="Search" />
                 <Icon name="search" size={15} />
             </div>
@@ -58,5 +62,8 @@ export function LayoutPage() {
             </div>
         </header>
         <Outlet />
+        {newStream && <Modal onClose={() => setNewStream(false)} >
+            <NewStream />
+        </Modal>}
     </>
 }

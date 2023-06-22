@@ -5,8 +5,10 @@ import { hexToBech32 } from "@snort/shared";
 import { System } from "index";
 
 export interface ProfileOptions {
-    showName?: boolean,
+    showName?: boolean
+    showAvatar?: boolean
     suffix?: string
+    overrideName?: string
 }
 
 export function getName(pk: string, user?: UserMetadata) {
@@ -18,7 +20,7 @@ export function Profile({ pubkey, options }: { pubkey: string, options?: Profile
     const profile = useUserProfile(System, pubkey);
 
     return <div className="profile">
-        <img src={profile?.picture} alt="Profile"/>
-        {(options?.showName ?? true) && getName(pubkey, profile)}
+        {(options?.showAvatar ?? true) && <img src={profile?.picture ?? ""} />}
+        {(options?.showName ?? true) && (options?.overrideName ?? getName(pubkey, profile))}
     </div>
 }

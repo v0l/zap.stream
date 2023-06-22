@@ -51,3 +51,7 @@
   display: flex;
   gap: 8px;
 }
+
+.live-page .actions {
+  margin: 8px 0 0 0;
+}

@@ -71,3 +71,28 @@ a {
   align-items: center;
   gap: 8px;
 }
+
+input[type="text"] {
+  font-family: inherit;
+  border: unset;
+  background-color: unset;
+  color: inherit;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+}
+
+div.input {
+  background: #171717;
+  border-radius: 16px;
+  padding: 8px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.scroll-lock {
+  overflow: hidden;
+  height: 100vh;
+}
