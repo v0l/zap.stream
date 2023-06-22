@@ -3,8 +3,9 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { NostrSystem } from "@snort/system";
-import { RootPage } from './pages/root';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import { RootPage } from './pages/root';
 import { LayoutPage } from 'pages/layout';
 import { StreamPage } from 'pages/stream-page';
 import { ChatPopout } from 'pages/chat-popout';
