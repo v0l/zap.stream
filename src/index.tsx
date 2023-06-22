@@ -26,6 +26,10 @@ export const Login = new LoginStore();
 const router = createBrowserRouter([
   {
     element: <LayoutPage />,
+    loader: async() => {
+      await System.Init();
+      return null;
+    },
     children: [
       {
         path: "/",

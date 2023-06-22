@@ -1794,19 +1794,19 @@
     dexie "^3.2.4"
     light-bolt11-decoder "^3.0.0"
 
-"@snort/system-react@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.7.tgz#f4ad626b98ef9377ffb201fee797809dd2e2fbf3"
-  integrity sha512-JpIe7fv+VoJYRNhsUdgj+LBsJRKdiqG5BKnERfhl+2d6WORK9yO1y4VvgibhcntY39g3lH8xIOV7xUGf40lS+w==
+"@snort/system-react@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.8.tgz#c496c950e4621edac1a1d72b90934b2d99d0a641"
+  integrity sha512-3JQAeF144txyPyTqgmj5rgqY2URrkO8WTRKo3+y8TqnziOI+90WDmDXFEIf2b0cja4+nAUNgI/GTCy4CvYDpGQ==
   dependencies:
     "@snort/shared" "^1.0.2"
-    "@snort/system" "^1.0.12"
+    "@snort/system" "^1.0.13"
     react "^18.2.0"
 
-"@snort/system@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.12.tgz#0746d06cf29f5fd8787608a440c21979bd1045e9"
-  integrity sha512-6UwwsXYUMjohvbIPNpNDEsapAVgXhECzUyIiqNjRyl3fxUJkHyMnnsvxclTWXi+1W8QU8EiFeVeyRoeHrnBWow==
+"@snort/system@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.13.tgz#54c05e71709af597eff75c9892aebf882552247c"
+  integrity sha512-U0MLe239BgGxauXrtQc6Gm3mx/EgEq8T7mWnZehsibgj6M0RFv8l4mzEAQtM8M9sg2VnGmtpIE4J5wA7/ITDMg==
   dependencies:
     "@noble/curves" "^1.0.0"
     "@scure/base" "^1.1.1"

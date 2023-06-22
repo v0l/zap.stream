@@ -104,19 +104,19 @@ function ChatMessage({ ev, link }: { ev: TaggedRawEvent, link: NostrLink }) {
 
 function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   const parsed = parseZap(ev, System.ProfileLoader.Cache);
-  useUserProfile(System, parsed.sender);
+  useUserProfile(System, parsed.anonZap ? undefined : parsed.sender);
 
-  if(!parsed.valid) {
+  if (!parsed.valid) {
     console.debug(parsed);
     return null;
   }
   return (
     <div className="zap pill">
       <Icon name="zap" />
-      <Profile pubkey={parsed.sender ?? ""} options={{
+      <Profile pubkey={parsed.anonZap ? "" : (parsed.sender ?? "")} options={{
         showAvatar: !parsed.anonZap,
         overrideName: parsed.anonZap ? "Anonymous" : undefined
-      }}/>
+      }} />
       zapped
       &nbsp;
       {parsed.amount}
