@@ -1,7 +1,8 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { NostrSystem } from "@snort/system";
-import './index.css';
 import { RootPage } from './pages/root';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { LayoutPage } from 'pages/layout';
@@ -16,7 +17,9 @@ export const Login = new LoginStore();
 
 [
   "wss://relay.snort.social",
-  "wss://nos.lol"
+  "wss://nos.lol",
+  "wss://relay.damus.io",
+  "wss://nostr.wine"
 ].forEach(r => System.ConnectToRelay(r, { read: true, write: true }));
 
 const router = createBrowserRouter([

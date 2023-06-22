@@ -9,6 +9,7 @@ import { Profile } from "./profile";
 import { Icon } from "./icon";
 import Spinner from "./spinner";
 import { useLogin } from "hooks/login";
+import { useUserProfile } from "@snort/system-react";
 
 export interface LiveChatOptions {
   canWrite?: boolean,
@@ -103,6 +104,8 @@ function ChatMessage({ ev, link }: { ev: TaggedRawEvent, link: NostrLink }) {
 
 function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   const parsed = parseZap(ev, System.ProfileLoader.Cache);
+  useUserProfile(System, parsed.sender);
+
   if(!parsed.valid) {
     console.debug(parsed);
     return null;
