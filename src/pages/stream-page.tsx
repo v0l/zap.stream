@@ -29,6 +29,7 @@ export function StreamPage() {
 
   const stream = findTag(thisEvent.data, "streaming");
   const status = findTag(thisEvent.data, "status");
+  const image = findTag(thisEvent.data, "image");
   const isLive = status === "live";
   const isMine = link.author === login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
@@ -46,7 +47,7 @@ export function StreamPage() {
   return (
     <div className="live-page">
       <div>
-        <LiveVideoPlayer stream={stream} autoPlay={true} />
+        <LiveVideoPlayer stream={stream} autoPlay={true} poster={image} />
         <div className="flex info">
           <div className="f-grow">
             <h1>{findTag(thisEvent.data, "title")}</h1>

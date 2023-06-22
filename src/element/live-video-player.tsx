@@ -10,6 +10,14 @@ export function LiveVideoPlayer(props: HTMLProps<HTMLVideoElement> & { stream?: 
       const hls = new Hls();
       hls.loadSource(streamCached);
       hls.attachMedia(video.current);
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        console.debug(event, data);
+        const errorType = data.type;
+        if(errorType === Hls.ErrorTypes.NETWORK_ERROR) {
+          hls.stopLoad();
+          hls.detachMedia();
+        }
+      })
       return () => hls.destroy();
     }
   }, [video, streamCached]);
