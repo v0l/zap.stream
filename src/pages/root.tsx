@@ -1,16 +1,18 @@
 import "./root.css";
 
 import { useMemo } from "react";
+import { unixNow } from "@snort/shared";
 import { EventKind, ParameterizedReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { System } from "..";
 import { VideoTile } from "../element/video-tile";
 import { findTag } from "utils";
 
-export function RootPage() {    
+export function RootPage() {
     const rb = new RequestBuilder("root");
     rb.withFilter()
-        .kinds([30_311 as EventKind]);
+        .kinds([30_311 as EventKind])
+        .since(unixNow() - 86400);
 
     const feed = useRequestBuilder<ParameterizedReplaceableNoteStore>(System, ParameterizedReplaceableNoteStore, rb);
     const feedSorted = useMemo(() => {
