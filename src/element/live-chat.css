@@ -12,7 +12,7 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
-  padding: 0px 0px 16px;
+  padding: 0px 0px 4px;
 }
 
 .live-chat>.messages {
@@ -74,4 +74,43 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.top-zappers h3 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 300;
+  color: #EEE;
+}
+
+.top-zappers-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-zapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-zapper .top-zapper-amount {
+  margin: 0 8px 0 4px;
+}
+
+.top-zapper .top-zapper-name {
+  font-size: 14px;
+}
+
+.zapper-gold-icon {
+  color: #FFD700;
+}
+
+.zapper-silver-icon {
+  color: #C0C0C0;
+}
+
+.zapper-bronze-icon {
+  color: #CD7F32;
 }
