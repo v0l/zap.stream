@@ -52,7 +52,7 @@ export function NewStream({
           .tag(["status", "live"]);
       });
       console.debug(evNew);
-      //System.BroadcastEvent(evNew);
+      System.BroadcastEvent(evNew);
       onFinish(evNew);
     }
   }

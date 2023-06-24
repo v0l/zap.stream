@@ -1,7 +1,6 @@
 import { Icon } from "element/icon";
 import "./layout.css";
-import { EventPublisher, NostrEvent } from "@snort/system";
-import { nip19 } from "nostr-tools";
+import { EventPublisher, NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
 import { Outlet, useNavigate } from "react-router-dom";
 import AsyncButton from "element/async-button";
 import { Login } from "index";
@@ -60,12 +59,8 @@ export function LayoutPage() {
   }
 
   function goToStream(ev: NostrEvent) {
-    const addr = {
-      pubkey: ev.pubkey,
-      kind: ev.kind,
-      identifier: ev.tags.find(t => t.at(0) === "d")?.at(1) || "",
-    }
-    const naddr = nip19.naddrEncode(addr)
+    const d = ev.tags.find(t => t.at(0) === "d")?.at(1) || ""
+    const naddr = encodeTLV(NostrPrefix.Address, d, undefined, ev.kind, ev.pubkey)
     navigate(`/live/${naddr}`);
     setNewStream(false)
   }
