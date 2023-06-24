@@ -16,7 +16,9 @@ export default function useEmoji(pubkey: string) {
   }, [pubkey]);
 
   const { data } = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
-  const userEmoji = data ?? [];
+  const userEmoji = useMemo(() => {
+    return data ?? [];
+  }, [data]);
 
   const related = useMemo(() => {
     if (userEmoji) {
@@ -39,7 +41,7 @@ export default function useEmoji(pubkey: string) {
       .filter((s) => s)
       .map((s) => s as string);
 
-    const rb = new RequestBuilder(`emoji:${pubkey}`);
+    const rb = new RequestBuilder(`emoji-related:${pubkey}`);
 
     rb.withFilter()
       .kinds([30030 as EventKind])
@@ -48,14 +50,16 @@ export default function useEmoji(pubkey: string) {
       .tag(["d", identifiers]);
 
     return rb;
-  }, [related]);
+  }, [pubkey, related]);
 
   const { data: relatedData } = useRequestBuilder<FlatNoteStore>(
     System,
     FlatNoteStore,
     subRelated
   );
-  const emojiPacks = relatedData ?? [];
+  const emojiPacks = useMemo(() => {
+    return relatedData ?? [];
+  }, [relatedData]);
 
   const emojis = useMemo(() => {
     return userEmoji
