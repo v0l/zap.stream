@@ -1,6 +1,6 @@
 import { Icon } from "element/icon";
 import "./layout.css";
-import { EventPublisher } from "@snort/system";
+import { EventPublisher, NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
 import { Outlet, useNavigate } from "react-router-dom";
 import AsyncButton from "element/async-button";
 import { Login } from "index";
@@ -11,59 +11,79 @@ import { NewStream } from "element/new-stream";
 import { useState } from "react";
 
 export function LayoutPage() {
-    const navigate = useNavigate();
-    const login = useLogin();
-    const [newStream, setNewStream] = useState(false);
+  const navigate = useNavigate();
+  const login = useLogin();
+  const [newStream, setNewStream] = useState(false);
 
-    async function doLogin() {
-        const pub = await EventPublisher.nip7();
-        if (pub) {
-            Login.loginWithPubkey(pub.pubKey);
-        }
+  async function doLogin() {
+    const pub = await EventPublisher.nip7();
+    if (pub) {
+      Login.loginWithPubkey(pub.pubKey);
     }
+  }
 
-    function loggedIn() {
-        if (!login) return;
+  function loggedIn() {
+    if (!login) return;
 
-        return <>
-            <button type="button" className="btn btn-primary" onClick={() => setNewStream(true)}>
-                New Stream
-                <Icon name="signal" />
-            </button>
-            <Profile pubkey={login.pubkey} options={{
-                showName: false
-            }} />
-        </>
-    }
+    return (
+      <>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => setNewStream(true)}
+        >
+          New Stream
+          <Icon name="signal" />
+        </button>
+        <Profile
+          pubkey={login.pubkey}
+          options={{
+            showName: false,
+          }}
+        />
+      </>
+    );
+  }
 
-    function loggedOut() {
-        if (login) return;
+  function loggedOut() {
+    if (login) return;
 
-        return <>
-            <AsyncButton type="button" className="btn btn-border" onClick={doLogin}>
-                Login
-                <Icon name="login" />
-            </AsyncButton>
-        </>
-    }
+    return (
+      <>
+        <AsyncButton type="button" className="btn btn-border" onClick={doLogin}>
+          Login
+          <Icon name="login" />
+        </AsyncButton>
+      </>
+    );
+  }
 
-    return <>
-        <header>
-            <div onClick={() => navigate("/")}>
-                S
-            </div>
-            <div className="input">
-                <input type="text" placeholder="Search" />
-                <Icon name="search" size={15} />
-            </div>
-            <div>
-                {loggedIn()}
-                {loggedOut()}
-            </div>
-        </header>
-        <Outlet />
-        {newStream && <Modal onClose={() => setNewStream(false)} >
-            <NewStream onFinish={() => navigate("/")} />
-        </Modal>}
+  function goToStream(ev: NostrEvent) {
+    const d = ev.tags.find(t => t.at(0) === "d")?.at(1) || ""
+    const naddr = encodeTLV(NostrPrefix.Address, d, undefined, ev.kind, ev.pubkey)
+    navigate(`/live/${naddr}`);
+    setNewStream(false)
+  }
+
+  return (
+    <>
+      <header>
+        <div onClick={() => navigate("/")}>S</div>
+        <div className="input">
+          <input type="text" placeholder="Search" />
+          <Icon name="search" size={15} />
+        </div>
+        <div>
+          {loggedIn()}
+          {loggedOut()}
+        </div>
+      </header>
+      <Outlet />
+      {newStream && (
+        <Modal onClose={() => setNewStream(false)}>
+          <NewStream onFinish={goToStream} />
+        </Modal>
+      )}
     </>
+  );
 }
