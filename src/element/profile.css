@@ -14,4 +14,5 @@
     background: #A7A7A7;
     border: unset;
     outline: unset;
+    object-fit: cover;
 }

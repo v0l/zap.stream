@@ -44,7 +44,12 @@ export default function QrCode(props: QrCodeProps) {
     } else if (qrRef.current) {
       qrRef.current.innerHTML = "";
     }
-  }, [props.data, props.link]);
+  }, [props.data, props.link, props.width, props.height, props.avatar]);
 
-  return <div className={`qr${props.className ? ` ${props.className}` : ""}`} ref={qrRef}></div>;
+  return (
+    <div
+      className={`qr${props.className ? ` ${props.className}` : ""}`}
+      ref={qrRef}
+    ></div>
+  );
 }
