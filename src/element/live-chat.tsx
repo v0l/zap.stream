@@ -7,6 +7,7 @@ import { useLiveChatFeed } from "hooks/live-chat";
 import AsyncButton from "./async-button";
 import { Profile } from "./profile";
 import { Icon } from "./icon";
+import { Text } from "./text";
 import Spinner from "./spinner";
 import { useLogin } from "hooks/login";
 import { useUserProfile } from "@snort/system-react";
@@ -96,9 +97,7 @@ function ChatMessage({ ev, link }: { ev: TaggedRawEvent, link: NostrLink }) {
   return (
     <div className={`message${link.author === ev.pubkey ? " streamer" : ""}`}>
       <Profile pubkey={ev.pubkey} />
-      <span>
-        {ev.content}
-      </span>
+      <Text ev={ev} />
     </div>
   );
 }
