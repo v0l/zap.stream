@@ -41,7 +41,7 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
   const sortedZappers = useMemo(() => {
     const sorted = [...new Set([...zappers])];
     sorted.sort((a, b) => totalZapped(b, zaps) - totalZapped(a, zaps));
-    return sorted.slice(0, 3);
+    return sorted;
   }, [zappers]);
 
   return (
@@ -58,15 +58,13 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
               : "zapper-bronze-icon";
           return (
             <div className="top-zapper" key={pk}>
+              {pk === "anon" ? (
+                <p className="top-zapper-name">Anon</p>
+              ) : (
+                <Profile pubkey={pk} options={{ showName: false }} />
+              )}
               <Icon name="zap" className={iconClass} />
               <p className="top-zapper-amount">{formatSats(total)}</p>
-              <div className="top-zapper-name">
-                {pk === "anon" ? (
-                  <p>Anon</p>
-                ) : (
-                  <Profile pubkey={pk} options={{ showName: false }} />
-                )}
-              </div>
             </div>
           );
         })}
