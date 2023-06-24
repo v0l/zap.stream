@@ -108,7 +108,9 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
 function WriteMessage({ link }: { link: NostrLink }) {
   const [chat, setChat] = useState("");
   const login = useLogin();
-  const emojis = useEmoji(login!.pubkey);
+  const userEmojis = useEmoji(login!.pubkey);
+  const channelEmojis = useEmoji(link.author!);
+  const emojis = userEmojis.concat(channelEmojis);
   const names = emojis.map((t) => t.at(1));
 
   async function sendChatMessage() {
