@@ -80,7 +80,7 @@ export function LiveChat({
   const zaps = events
     .filter((ev) => ev.kind === EventKind.ZapReceipt)
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z);
+    .filter((z) => z && z.valid);
   return (
     <div className="live-chat">
       {(options?.showHeader ?? true) && (
