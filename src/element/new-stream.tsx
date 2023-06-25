@@ -52,7 +52,8 @@ export function NewStream({
         const now = unixNow();
         const dTag = findTag(ev, "d") ?? now.toString();
         const starts = findTag(ev, "starts") ?? now.toString();
-        return eb
+        const ends = findTag(ev, "ends") ?? now.toString();
+        eb
           .kind(30_311)
           .tag(["d", dTag])
           .tag(["title", title])
@@ -61,6 +62,10 @@ export function NewStream({
           .tag(["streaming", stream])
           .tag(["status", status])
           .tag(["starts", starts]);
+        if (status === StreamState.Ended) {
+          eb.tag(["ends", ends]);
+        }
+        return eb;
       });
       console.debug(evNew);
       System.BroadcastEvent(evNew);
