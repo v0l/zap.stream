@@ -51,6 +51,7 @@ export function NewStream({
       const evNew = await pub.generic((eb) => {
         const now = unixNow();
         const dTag = findTag(ev, "d") ?? now.toString();
+        const starts = findTag(ev, "starts") ?? now.toString();
         return eb
           .kind(30_311)
           .tag(["d", dTag])
@@ -58,7 +59,8 @@ export function NewStream({
           .tag(["summary", summary])
           .tag(["image", image])
           .tag(["streaming", stream])
-          .tag(["status", status]);
+          .tag(["status", status])
+          .tag(["starts", starts]);
       });
       console.debug(evNew);
       System.BroadcastEvent(evNew);
