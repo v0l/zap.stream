@@ -50,12 +50,6 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
       <div className="top-zappers-container">
         {sortedZappers.map((pk, idx) => {
           const total = totalZapped(pk, zaps);
-          const iconClass =
-            idx === 0
-              ? "zapper-gold-icon"
-              : idx === 1
-              ? "zapper-silver-icon"
-              : "zapper-bronze-icon";
           return (
             <div className="top-zapper" key={pk}>
               {pk === "anon" ? (
@@ -63,7 +57,7 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
               ) : (
                 <Profile pubkey={pk} options={{ showName: false }} />
               )}
-              <Icon name="zap" className={iconClass} />
+              <Icon name="zap" className="top-zapper-icon" />
               <p className="top-zapper-amount">{formatSats(total)}</p>
             </div>
           );
