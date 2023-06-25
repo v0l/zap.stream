@@ -146,6 +146,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
       parsed.sender
     ) {
       System.ProfileLoader.TrackMetadata(parsed.sender);
+      return () => System.ProfileLoader.UntrackMetadata(parsed.sender);
     }
   }, [parsed]);
 
