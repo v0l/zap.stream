@@ -1,4 +1,74 @@
+.page {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "video-content"
+    "profile"
+    "chat";
+  grid-template-rows: 64px 230px 56px min-content;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  gap: 0;
+}
+
+
+.live-chat {
+  max-height: calc(100vh - 385px);
+}
+
+@media (min-width: 768px) {
+  .info {
+    display: none;
+  }
+
+  .video-content video {
+    height: calc(100vh - 64px);
+  }
+
+  .live-chat {
+    width: fit-content;
+    max-height: calc(100vh - 82px);
+  }
+
+  .page {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "video-content chat";
+    grid-template-rows: 64px min-content;
+    grid-template-columns: calc(min(600px, 1fr)) 1fr;
+    gap: 0;
+  }
+}
+
+@media (min-width: 1020px) {
+  .video-content video {
+    height: unset;
+  }
+
+  .page {
+    width: unset;
+    display: grid;
+    height: calc(100vh - 72px - 32px - 32px);
+    padding: 0 40px;
+    grid-template-columns: auto 376px;
+    grid-template-rows: unset;
+    grid-template-areas:
+      "header header"
+      "video-content chat"
+      "profile chat";
+    gap: 32px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .page {
+    grid-template-columns: auto 450px;
+  }
+}
+
 header {
+    grid-area: header;
     display: grid;
     grid-template-columns: min-content min-content auto;
     gap: 24px;
@@ -6,7 +76,7 @@ header {
     padding: 24px 40px 0 40px;
 }
 
-header>div:nth-child(1) {
+header .logo {
     background: #171717;
     border-radius: 16px;
     width: 48px;
@@ -19,12 +89,12 @@ header>div:nth-child(1) {
     cursor: pointer;
 }
 
-header>div:nth-child(2) {
+header .input {
     min-width: 300px;
     height: 32px;
 }
 
-header>div:nth-child(3) {
+header .header-right {
     justify-self: end;
     display: flex;
     gap: 24px;
@@ -44,4 +114,31 @@ header button {
 header .profile img {
     width: 48px;
     height: 48px;
+}
+
+@media (max-width: 1020px) {
+  header {
+    padding: 8px 16px 8px 16px;
+    gap: 8px;
+  }
+
+  header .header-right {
+    gap: 8px;
+  }
+
+  header .input {
+    min-width: unset;
+  }
+
+  header .input .search-input {
+    display: none;
+  }
+
+  header .new-stream-button-text {
+    display: none;
+  }
+
+  header .profile img {
+    border-radius: 12px;
+  }
 }

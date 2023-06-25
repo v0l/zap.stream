@@ -1,7 +1,8 @@
 import "./stream-page.css";
-import { useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { parseNostrLink, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
+import useResizeObserver from "@react-hook/resize-observer";
 import moment from "moment";
 
 import useEventFeed from "hooks/event-feed";
@@ -15,26 +16,23 @@ import { useLogin } from "hooks/login";
 import { StreamState, System } from "index";
 import Modal from "element/modal";
 import { SendZaps } from "element/send-zap";
+import type { NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { NewStream } from "element/new-stream";
 
-export function StreamPage() {
-  const params = useParams();
-  const link = parseNostrLink(params.id!);
+function ProfileInfo({ link }: { link: NostrLink }) {
   const thisEvent = useEventFeed(link, true);
   const login = useLogin();
   const navigate = useNavigate();
   const [zap, setZap] = useState(false);
   const [edit, setEdit] = useState(false);
   const profile = useUserProfile(System, thisEvent.data?.pubkey);
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
 
-  const stream = findTag(thisEvent.data, "streaming");
   const status = findTag(thisEvent.data, "status");
-  const image = findTag(thisEvent.data, "image");
   const start = findTag(thisEvent.data, "starts");
   const isLive = status === "live";
   const isMine = link.author === login?.pubkey;
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
 
   async function deleteStream() {
     const pub = await EventPublisher.nip7();
@@ -47,59 +45,54 @@ export function StreamPage() {
   }
 
   return (
-    <div className="live-page">
-      <div>
-        <LiveVideoPlayer stream={stream} autoPlay={true} poster={image} />
-        <div className="flex info">
-          <div className="f-grow">
-            <h1>{findTag(thisEvent.data, "title")}</h1>
-            <p>{findTag(thisEvent.data, "summary")}</p>
-            <div className="tags">
-              <span className={`pill${isLive ? " live" : ""}`}>{status}</span>
-              {status === StreamState.Planned && <span className="pill">Starts {moment(Number(start) * 1000).fromNow()}</span>}
-              {thisEvent.data?.tags
-                .filter((a) => a[0] === "t")
-                .map((a) => a[1])
-                .map((a) => (
-                  <span className="pill" key={a}>
-                    {a}
-                  </span>
-                ))}
-            </div>
-            {isMine && (
-              <div className="actions">
-                <button
-                  type="button"
-                  className="btn"
-                  onClick={() => setEdit(true)}
-                >
-                  Edit
-                </button>
-                <AsyncButton
-                  type="button"
-                  className="btn btn-red"
-                  onClick={deleteStream}
-                >
-                  Delete
-                </AsyncButton>
-              </div>
+    <>
+      <div className="flex info">
+        <div className="f-grow stream-info">
+          <h1>{findTag(thisEvent.data, "title")}</h1>
+          <p>{findTag(thisEvent.data, "summary")}</p>
+          <div className="tags">
+            <span className={`pill${isLive ? " live" : ""}`}>{status}</span>
+            {status === StreamState.Planned && (
+              <span className="pill">
+                Starts {moment(Number(start) * 1000).fromNow()}
+              </span>
             )}
+            {thisEvent.data?.tags
+              .filter((a) => a[0] === "t")
+              .map((a) => a[1])
+              .map((a) => (
+                <span className="pill" key={a}>
+                  {a}
+                </span>
+              ))}
           </div>
-          <div>
-            <div className="flex g24">
-              <Profile pubkey={thisEvent.data?.pubkey ?? ""} />
+          {isMine && (
+            <div className="actions">
               <button
-                onClick={() => setZap(true)}
-                className="btn btn-primary zap"
+                type="button"
+                className="btn"
+                onClick={() => setEdit(true)}
               >
-                Zap
-                <Icon name="zap" size={16} />
+                Edit
               </button>
+              <AsyncButton
+                type="button"
+                className="btn btn-red"
+                onClick={deleteStream}
+              >
+                Delete
+              </AsyncButton>
             </div>
-          </div>
+          )}
+        </div>
+        <div className="profile-info flex g24">
+          <Profile pubkey={thisEvent.data?.pubkey ?? ""} />
+          <button onClick={() => setZap(true)} className="btn btn-primary zap">
+            Zap
+            <Icon name="zap" size={16} />
+          </button>
         </div>
       </div>
-      <LiveChat link={link} />
       {zap && zapTarget && thisEvent.data && (
         <Modal onClose={() => setZap(false)}>
           <SendZaps
@@ -112,12 +105,74 @@ export function StreamPage() {
       )}
       {edit && thisEvent.data && (
         <Modal onClose={() => setEdit(false)}>
-          <NewStream
+          <NewStream ev={thisEvent.data} onFinish={() => setEdit(false)} />
+        </Modal>
+      )}
+    </>
+  );
+}
+
+function VideoPlayer({ link }: { link: NostrLink }) {
+  const thisEvent = useEventFeed(link);
+  const [zap, setZap] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const profile = useUserProfile(System, thisEvent.data?.pubkey);
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
+
+  const stream = findTag(thisEvent.data, "streaming");
+  const image = findTag(thisEvent.data, "image");
+
+  return (
+    <>
+      {zap && zapTarget && thisEvent.data && (
+        <Modal onClose={() => setZap(false)}>
+          <SendZaps
+            lnurl={zapTarget}
             ev={thisEvent.data}
-            onFinish={() => setEdit(false)}
+            targetName={getName(thisEvent.data.pubkey, profile)}
+            onFinish={() => setZap(false)}
           />
         </Modal>
       )}
-    </div>
+      {edit && thisEvent.data && (
+        <Modal onClose={() => setEdit(false)}>
+          <NewStream ev={thisEvent.data} onFinish={() => setEdit(false)} />
+        </Modal>
+      )}
+      <div className="video-content">
+        <LiveVideoPlayer stream={stream} autoPlay={true} poster={image} />
+      </div>
+    </>
+  );
+}
+
+export function StreamPage() {
+  const ref = useRef(null);
+  const params = useParams();
+  const link = parseNostrLink(params.id!);
+  const [height, setHeight] = useState<number | undefined>();
+
+  function setChatHeight() {
+    const contentHeight =
+      document.querySelector(".live-page")?.clientHeight || 0;
+    const videoContentHeight =
+      document.querySelector(".video-content")?.clientHeight || 0;
+    if (window.innerWidth <= 480) {
+      setHeight(contentHeight - videoContentHeight);
+    } else {
+      setHeight(undefined);
+    }
+  }
+
+  useLayoutEffect(setChatHeight, []);
+  useResizeObserver(ref, () => setChatHeight());
+
+  return (
+    <>
+      <div ref={ref}></div>
+      <VideoPlayer link={link} />
+      <ProfileInfo link={link} />
+      <LiveChat link={link} height={height} />
+    </>
   );
 }

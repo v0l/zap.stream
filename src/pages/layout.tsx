@@ -37,10 +37,11 @@ export function LayoutPage() {
           className="btn btn-primary"
           onClick={() => setNewStream(true)}
         >
-          New Stream
+          <span className="new-stream-button-text">New Stream</span>
           <Icon name="signal" />
         </button>
         <Profile
+          avatarClassname="mb-squared"
           pubkey={login.pubkey}
           options={{
             showName: false,
@@ -77,14 +78,16 @@ export function LayoutPage() {
   }
 
   return (
-    <>
+    <div className="page">
       <header>
-        <div onClick={() => navigate("/")}>S</div>
+        <div className="logo" onClick={() => navigate("/")}>
+          S
+        </div>
         <div className="input">
-          <input type="text" placeholder="Search" />
+          <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />
         </div>
-        <div>
+        <div className="header-right">
           {loggedIn()}
           {loggedOut()}
         </div>
@@ -95,6 +98,6 @@ export function LayoutPage() {
           <NewStream onFinish={goToStream} />
         </Modal>
       )}
-    </>
+    </div>
   );
 }

@@ -24,16 +24,24 @@ export function getName(pk: string, user?: UserMetadata) {
 
 export function Profile({
   pubkey,
+  avatarClassname,
   options,
 }: {
   pubkey: string;
+  avatarClassname?: string;
   options?: ProfileOptions;
 }) {
   const profile = useUserProfile(System, pubkey);
 
   return (
     <div className="profile">
-      {(options?.showAvatar ?? true) && <img src={profile?.picture ?? ""} />}
+      {(options?.showAvatar ?? true) && (
+        <img
+          alt={profile?.name || pubkey}
+          className={avatarClassname ? avatarClassname : ""}
+          src={profile?.picture ?? ""}
+        />
+      )}
       {(options?.showName ?? true) &&
         (options?.overrideName ?? getName(pubkey, profile))}
     </div>

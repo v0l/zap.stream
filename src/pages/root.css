@@ -5,6 +5,24 @@
     padding: 40px;
 }
 
+@media (max-width: 1020px) {
+  .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 16px;
+  }
+}
+
+@media (max-width: 720px) {
+  .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 16px;
+  }
+}
+
 @media(min-width: 1600px) {
     .video-grid {
         grid-template-columns: repeat(6, 1fr);
@@ -18,7 +36,6 @@
 }
 
 .homepage h2 {
-
     background: #171717;
     padding: 40px;
 }
