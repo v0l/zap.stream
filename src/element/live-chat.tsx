@@ -7,7 +7,13 @@ import {
   ParsedZap,
   parseZap,
 } from "@snort/system";
-import { useState, useMemo, type KeyboardEvent, type ChangeEvent } from "react";
+import {
+  useState,
+  useMemo,
+  useEffect,
+  type KeyboardEvent,
+  type ChangeEvent,
+} from "react";
 
 import useEmoji from "hooks/emoji";
 import { System } from "index";
@@ -132,6 +138,16 @@ function ChatMessage({ ev, link }: { ev: TaggedRawEvent; link: NostrLink }) {
 function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   const parsed = parseZap(ev, System.ProfileLoader.Cache);
   useUserProfile(System, parsed.anonZap ? undefined : parsed.sender);
+
+  useEffect(() => {
+    if (
+      !parsed.valid &&
+      parsed.errors.includes("zap service pubkey doesn't match") &&
+      parsed.sender
+    ) {
+      System.ProfileLoader.TrackMetadata(parsed.sender);
+    }
+  }, [parsed]);
 
   if (!parsed.valid) {
     return null;
