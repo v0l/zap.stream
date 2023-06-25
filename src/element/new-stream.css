@@ -37,3 +37,16 @@
 .new-stream .btn:disabled {
     opacity: 0.3;
 }
+
+.new-stream .pill {
+    border-radius: 16px;
+    background: #262626;
+    padding: 8px 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.new-stream .pill.active {
+    color: inherit;
+    background: #353535;
+}

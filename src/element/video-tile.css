@@ -18,4 +18,5 @@
 .video-tile .pill {
     float: right;
     margin: 16px 20px 0 0;
+    text-transform: uppercase;
 }

@@ -1,10 +1,18 @@
+import "./new-stream.css";
+
 import { useEffect, useState } from "react";
 import { EventPublisher, NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
-import "./new-stream.css";
+
 import AsyncButton from "./async-button";
 import { System } from "index";
 import { findTag } from "utils";
+
+enum StreamState {
+  Live = "live",
+  Ended = "ended",
+  Planned = "planned"
+}
 
 export function NewStream({
   ev,
@@ -17,6 +25,7 @@ export function NewStream({
   const [summary, setSummary] = useState(findTag(ev, "summary") ?? "");
   const [image, setImage] = useState(findTag(ev, "image") ?? "");
   const [stream, setStream] = useState(findTag(ev, "streaming") ?? "");
+  const [status, setStatus] = useState(findTag(ev, "status") ?? StreamState.Live);
   const [isValid, setIsValid] = useState(false);
 
   function validate() {
@@ -49,7 +58,7 @@ export function NewStream({
           .tag(["summary", summary])
           .tag(["image", image])
           .tag(["streaming", stream])
-          .tag(["status", "live"]);
+          .tag(["status", status]);
       });
       console.debug(evNew);
       System.BroadcastEvent(evNew);
@@ -104,6 +113,14 @@ export function NewStream({
           />
         </div>
         <small>Stream type should be HLS</small>
+      </div>
+      <div>
+        <p>Status</p>
+        <div className="flex g12">
+          {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => <span className={`pill${status === v ? " active" : ""}`} onClick={() => setStatus(v)}>
+            {v}
+          </span>)}
+        </div>
       </div>
       <div>
         <AsyncButton

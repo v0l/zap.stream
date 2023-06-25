@@ -30,6 +30,7 @@
 
 .live-page .pill.live {
   color: inherit;
+  text-transform: uppercase;
 }
 
 .live-page .info {
