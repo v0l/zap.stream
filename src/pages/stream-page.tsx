@@ -53,33 +53,42 @@ export function StreamPage() {
             <h1>{findTag(thisEvent.data, "title")}</h1>
             <p>{findTag(thisEvent.data, "summary")}</p>
             <div className="tags">
-              <span className={`pill${isLive ? " live" : ""}`}>
-                {status}
-              </span>
+              <span className={`pill${isLive ? " live" : ""}`}>{status}</span>
               {thisEvent.data?.tags
-                .filter(a => a[0] === "t")
-                .map(a => a[1])
-                .map(a => (
+                .filter((a) => a[0] === "t")
+                .map((a) => a[1])
+                .map((a) => (
                   <span className="pill" key={a}>
                     {a}
                   </span>
                 ))}
             </div>
-            {isMine && <div className="actions">
-              <button type="button" className="btn" onClick={() => setEdit(true)}>
-                Edit
-              </button>
-              <AsyncButton type="button" className="btn btn-red" onClick={deleteStream}>
-                Delete
-              </AsyncButton>
-            </div>}
+            {isMine && (
+              <div className="actions">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => setEdit(true)}
+                >
+                  Edit
+                </button>
+                <AsyncButton
+                  type="button"
+                  className="btn btn-red"
+                  onClick={deleteStream}
+                >
+                  Delete
+                </AsyncButton>
+              </div>
+            )}
           </div>
           <div>
             <div className="flex g24">
-              <Profile
-                pubkey={thisEvent.data?.pubkey ?? ""}
-              />
-              <button onClick={() => setZap(true)} className="btn btn-primary zap">
+              <Profile pubkey={thisEvent.data?.pubkey ?? ""} />
+              <button
+                onClick={() => setZap(true)}
+                className="btn btn-primary zap"
+              >
                 Zap
                 <Icon name="zap" size={16} />
               </button>
@@ -88,16 +97,24 @@ export function StreamPage() {
         </div>
       </div>
       <LiveChat link={link} />
-      {zap && zapTarget && thisEvent.data && <Modal onClose={() => setZap(false)}>
-        <SendZaps
-          lnurl={zapTarget}
-          ev={thisEvent.data}
-          targetName={getName(thisEvent.data.pubkey, profile)}
-          onFinish={() => setZap(false)} />
-      </Modal>}
-      {edit && thisEvent.data && <Modal onClose={() => setEdit(false)}>
-        <NewStream ev={thisEvent.data} onFinish={() => window.location.reload()} />
-      </Modal>}
+      {zap && zapTarget && thisEvent.data && (
+        <Modal onClose={() => setZap(false)}>
+          <SendZaps
+            lnurl={zapTarget}
+            ev={thisEvent.data}
+            targetName={getName(thisEvent.data.pubkey, profile)}
+            onFinish={() => setZap(false)}
+          />
+        </Modal>
+      )}
+      {edit && thisEvent.data && (
+        <Modal onClose={() => setEdit(false)}>
+          <NewStream
+            ev={thisEvent.data}
+            onFinish={() => window.location.reload()}
+          />
+        </Modal>
+      )}
     </div>
   );
 }

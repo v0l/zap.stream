@@ -7,7 +7,10 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@types/webscopeio__react-textarea-autocomplete": "^4.7.2",
+    "@webscopeio/react-textarea-autocomplete": "^4.9.2",
     "hls.js": "^1.4.6",
+    "lodash": "^4.17.21",
     "qr-code-styling": "^1.6.0-rc.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -43,7 +46,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/lodash": "^4.14.195",
     "@webbtc/webln-types": "^1.0.12",
+    "prettier": "^2.8.8",
     "typescript": "^5.1.3"
   }
 }

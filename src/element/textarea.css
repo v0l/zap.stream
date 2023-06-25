@@ -1,0 +1,29 @@
+.rta__list {
+  border: none;
+}
+.rta__item:not(:last-child) {
+  border: none;
+}
+.rta__entity--selected .emoji-item {
+  text-decoration: none;
+  background: #F838D9;
+}
+
+.emoji-item {
+  color: white;
+  background: #171717;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.emoji-item:hover {
+  color: #171717;
+  background: white;
+}
+
+.emoji-item .emoji-image {
+  margin: 0 8px;
+}
