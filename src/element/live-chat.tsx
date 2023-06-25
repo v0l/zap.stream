@@ -48,7 +48,7 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
     const sorted = [...new Set([...zappers])];
     sorted.sort((a, b) => totalZapped(b, zaps) - totalZapped(a, zaps));
     return sorted;
-  }, [zappers]);
+  }, [zaps, zappers]);
 
   return (
     <>
