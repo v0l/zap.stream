@@ -16,3 +16,9 @@
         grid-template-columns: repeat(8, 1fr);
     }
 }
+
+.homepage h2 {
+
+    background: #171717;
+    padding: 40px;
+}

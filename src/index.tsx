@@ -11,6 +11,12 @@ import { StreamPage } from "pages/stream-page";
 import { ChatPopout } from "pages/chat-popout";
 import { LoginStore } from "login";
 
+export enum StreamState {
+  Live = "live",
+  Ended = "ended",
+  Planned = "planned"
+}
+
 export const System = new NostrSystem({});
 export const Login = new LoginStore();
 

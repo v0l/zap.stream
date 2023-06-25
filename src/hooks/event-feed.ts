@@ -4,9 +4,12 @@ import { useRequestBuilder } from "@snort/system-react";
 
 import { System } from "index";
 
-export default function useEventFeed(link: NostrLink) {
+export default function useEventFeed(link: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`event:${link.id.slice(0, 12)}`);
+    b.withOptions({
+      leaveOpen
+    })
     if (link.type === NostrPrefix.Address) {
       const f = b.withFilter().tag("d", [link.id]);
       if (link.author) {

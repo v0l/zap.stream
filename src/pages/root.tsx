@@ -4,14 +4,16 @@ import { useMemo } from "react";
 import { unixNow } from "@snort/shared";
 import { EventKind, ParameterizedReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { System } from "..";
+import { StreamState, System } from "..";
 import { VideoTile } from "../element/video-tile";
 import { findTag } from "utils";
 
 export function RootPage() {
     const rb = useMemo(() => {
         const rb = new RequestBuilder("root");
-        rb.withFilter()
+        rb.withOptions({
+            leaveOpen: true
+        }).withFilter()
             .kinds([30_311 as EventKind])
             .since(unixNow() - 86400);
         return rb;
@@ -32,7 +34,21 @@ export function RootPage() {
         }
         return [];
     }, [feed.data])
-    return <div className="video-grid">
-        {feedSorted.map(e => <VideoTile ev={e} key={e.id} />)}
+
+    const live = feedSorted.filter(a => findTag(a, "status") === StreamState.Live);
+    const planned = feedSorted.filter(a => findTag(a, "status") === StreamState.Planned);
+    const ended = feedSorted.filter(a => findTag(a, "status") === StreamState.Ended);
+    return <div className="homepage">
+        <div className="video-grid">
+            {live.map(e => <VideoTile ev={e} key={e.id} />)}
+        </div>
+        {planned.length > 0 && <><h2>Planned</h2>
+        <div className="video-grid">
+            {planned.map(e => <VideoTile ev={e} key={e.id} />)}
+        </div></>}
+        {ended.length > 0 && <><h2>Ended</h2>
+        <div className="video-grid">
+            {ended.map(e => <VideoTile ev={e} key={e.id} />)}
+        </div></>}
     </div>
 }

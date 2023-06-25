@@ -2,6 +2,7 @@ import "./stream-page.css";
 import { useState } from "react";
 import { parseNostrLink, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
+import moment from "moment";
 
 import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
@@ -11,7 +12,7 @@ import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { Icon } from "element/icon";
 import { useLogin } from "hooks/login";
-import { System } from "index";
+import { StreamState, System } from "index";
 import Modal from "element/modal";
 import { SendZaps } from "element/send-zap";
 import { useUserProfile } from "@snort/system-react";
@@ -20,7 +21,7 @@ import { NewStream } from "element/new-stream";
 export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
-  const thisEvent = useEventFeed(link);
+  const thisEvent = useEventFeed(link, true);
   const login = useLogin();
   const navigate = useNavigate();
   const [zap, setZap] = useState(false);
@@ -30,6 +31,7 @@ export function StreamPage() {
   const stream = findTag(thisEvent.data, "streaming");
   const status = findTag(thisEvent.data, "status");
   const image = findTag(thisEvent.data, "image");
+  const start = findTag(thisEvent.data, "starts");
   const isLive = status === "live";
   const isMine = link.author === login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
@@ -54,6 +56,7 @@ export function StreamPage() {
             <p>{findTag(thisEvent.data, "summary")}</p>
             <div className="tags">
               <span className={`pill${isLive ? " live" : ""}`}>{status}</span>
+              {status === StreamState.Planned && <span className="pill">Starts {moment(Number(start) * 1000).fromNow()}</span>}
               {thisEvent.data?.tags
                 .filter((a) => a[0] === "t")
                 .map((a) => a[1])
@@ -111,7 +114,7 @@ export function StreamPage() {
         <Modal onClose={() => setEdit(false)}>
           <NewStream
             ev={thisEvent.data}
-            onFinish={() => window.location.reload()}
+            onFinish={() => { }}
           />
         </Modal>
       )}

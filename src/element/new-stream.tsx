@@ -5,14 +5,8 @@ import { EventPublisher, NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 
 import AsyncButton from "./async-button";
-import { System } from "index";
+import { StreamState, System } from "index";
 import { findTag } from "utils";
-
-enum StreamState {
-  Live = "live",
-  Ended = "ended",
-  Planned = "planned"
-}
 
 export function NewStream({
   ev,
@@ -26,6 +20,7 @@ export function NewStream({
   const [image, setImage] = useState(findTag(ev, "image") ?? "");
   const [stream, setStream] = useState(findTag(ev, "streaming") ?? "");
   const [status, setStatus] = useState(findTag(ev, "status") ?? StreamState.Live);
+  const [start, setStart] = useState(findTag(ev, "starts"));
   const [isValid, setIsValid] = useState(false);
 
   function validate() {
@@ -51,7 +46,7 @@ export function NewStream({
       const evNew = await pub.generic((eb) => {
         const now = unixNow();
         const dTag = findTag(ev, "d") ?? now.toString();
-        const starts = findTag(ev, "starts") ?? now.toString();
+        const starts = start ?? now.toString();
         const ends = findTag(ev, "ends") ?? now.toString();
         eb
           .kind(30_311)
@@ -71,6 +66,16 @@ export function NewStream({
       System.BroadcastEvent(evNew);
       onFinish(evNew);
     }
+  }
+
+  function toDateTimeString(n: number) {
+    console.debug(n);
+    return new Date(n * 1000).toISOString().substring(0, -1)
+  }
+
+  function fromDateTimeString(s: string) {
+    console.debug(s);
+    return Math.floor(new Date(s).getTime() / 1000)
   }
 
   return (
@@ -129,6 +134,12 @@ export function NewStream({
           </span>)}
         </div>
       </div>
+      {status === StreamState.Planned && <div>
+        <p>Start Time</p>
+        <div className="input">
+          <input type="datetime-local" value={toDateTimeString(Number(start ?? "0"))} onChange={e => setStart(fromDateTimeString(e.target.value).toString())} />
+        </div>
+      </div>}
       <div>
         <AsyncButton
           type="button"
