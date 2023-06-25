@@ -69,12 +69,10 @@ export function NewStream({
   }
 
   function toDateTimeString(n: number) {
-    console.debug(n);
     return new Date(n * 1000).toISOString().substring(0, -1)
   }
 
   function fromDateTimeString(s: string) {
-    console.debug(s);
     return Math.floor(new Date(s).getTime() / 1000)
   }
 
