@@ -33,9 +33,7 @@ export function Profile({
 
   return (
     <div className="profile">
-      {(options?.showAvatar ?? true) && (
-        <img alt={profile?.name || pubkey} src={profile?.picture ?? ""} />
-      )}
+      {(options?.showAvatar ?? true) && <img src={profile?.picture ?? ""} />}
       {(options?.showName ?? true) &&
         (options?.overrideName ?? getName(pubkey, profile))}
     </div>

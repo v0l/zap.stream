@@ -4,9 +4,16 @@ import {
   NostrLink,
   TaggedRawEvent,
   EventPublisher,
+  ParsedZap,
   parseZap,
 } from "@snort/system";
-import { useState, type KeyboardEvent, type ChangeEvent } from "react";
+import {
+  useState,
+  useMemo,
+  useEffect,
+  type KeyboardEvent,
+  type ChangeEvent,
+} from "react";
 
 import useEmoji from "hooks/emoji";
 import { System } from "index";
@@ -26,6 +33,46 @@ export interface LiveChatOptions {
   showHeader?: boolean;
 }
 
+function totalZapped(pubkey: string, zaps: ParsedZap[]) {
+  return zaps
+    .filter((z) => (z.anonZap ? pubkey === "anon" : z.sender === pubkey))
+    .reduce((acc, z) => acc + z.amount, 0);
+}
+
+function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
+  const zappers = zaps
+    .map((z) => (z.anonZap ? "anon" : z.sender))
+    .map((p) => p as string);
+
+  const sortedZappers = useMemo(() => {
+    const sorted = [...new Set([...zappers])];
+    sorted.sort((a, b) => totalZapped(b, zaps) - totalZapped(a, zaps));
+    return sorted;
+  }, [zaps, zappers]);
+
+  return (
+    <>
+      <h3>Top zappers</h3>
+      <div className="top-zappers-container">
+        {sortedZappers.map((pk, idx) => {
+          const total = totalZapped(pk, zaps);
+          return (
+            <div className="top-zapper" key={pk}>
+              {pk === "anon" ? (
+                <p className="top-zapper-name">Anon</p>
+              ) : (
+                <Profile pubkey={pk} options={{ showName: false }} />
+              )}
+              <Icon name="zap" className="top-zapper-icon" />
+              <p className="top-zapper-amount">{formatSats(total)}</p>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
 export function LiveChat({
   link,
   options,
@@ -35,10 +82,20 @@ export function LiveChat({
 }) {
   const messages = useLiveChatFeed(link);
   const login = useLogin();
+  const events = messages.data ?? [];
+  const zaps = events
+    .filter((ev) => ev.kind === EventKind.ZapReceipt)
+    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
+    .filter((z) => z && z.valid);
   return (
     <div className="live-chat">
       {(options?.showHeader ?? true) && (
         <div className="header">Stream Chat</div>
+      )}
+      {zaps.length > 0 && (
+        <div className="top-zappers">
+          <TopZappers zaps={zaps} />
+        </div>
       )}
       <div className="messages">
         {[...(messages.data ?? [])]
@@ -82,6 +139,18 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   const parsed = parseZap(ev, System.ProfileLoader.Cache);
   useUserProfile(System, parsed.anonZap ? undefined : parsed.sender);
 
+  useEffect(() => {
+    if (
+      !parsed.valid &&
+      parsed.errors.includes("zap service pubkey doesn't match") &&
+      parsed.sender
+    ) {
+      System.ProfileLoader.TrackMetadata(parsed.sender);
+      return () =>
+        System.ProfileLoader.UntrackMetadata(parsed.sender as string);
+    }
+  }, [parsed]);
+
   if (!parsed.valid) {
     return null;
   }
@@ -93,7 +162,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
           pubkey={parsed.anonZap ? "" : parsed.sender ?? ""}
           options={{
             showAvatar: !parsed.anonZap,
-            overrideName: parsed.anonZap ? "Anonymous" : undefined,
+            overrideName: parsed.anonZap ? "Anon" : undefined,
           }}
         />
         zapped &nbsp;
