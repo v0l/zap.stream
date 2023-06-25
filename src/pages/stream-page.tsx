@@ -114,7 +114,7 @@ export function StreamPage() {
         <Modal onClose={() => setEdit(false)}>
           <NewStream
             ev={thisEvent.data}
-            onFinish={() => { }}
+            onFinish={() => setEdit(false)}
           />
         </Modal>
       )}
