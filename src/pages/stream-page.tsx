@@ -159,6 +159,8 @@ export function StreamPage() {
       document.querySelector(".video-content")?.clientHeight || 0;
     if (window.innerWidth <= 480) {
       setHeight(contentHeight - videoContentHeight);
+    } else if (window.innerWidth <= 768) {
+      setHeight(videoContentHeight);
     } else {
       setHeight(undefined);
     }
