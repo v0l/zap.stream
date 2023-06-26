@@ -112,6 +112,12 @@
   padding-top: 8px;
   padding-bottom: 8px;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.top-zappers-container::-webkit-scrollbar {
+  display: none;
 }
 
 @media (min-width: 1020px) {
