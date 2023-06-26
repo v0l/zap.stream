@@ -10,6 +10,10 @@
 }
 
 @media (min-width: 768px){
+  .profile-info {
+    max-height: 42px;
+  }
+
   .video-content video {
     max-height: unset;
   }
@@ -119,9 +123,16 @@
 
 .offline>div {
   position: fixed;
+  top: 5em;
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .offline>div {
+    top: 10em;
+  }
 }
 
 .offline>video {
