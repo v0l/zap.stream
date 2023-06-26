@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
     "header"
-    "video-content"
+    "main-content"
     "profile"
     "chat";
   grid-template-rows: 64px 230px 56px min-content;
@@ -15,7 +15,7 @@
   display: grid;
   grid-template-areas:
     "header"
-    "video-content";
+    "main-content";
   grid-template-rows: 64px 1fr;
   grid-template-columns: 1fr;
 }
@@ -38,8 +38,8 @@
     display: grid;
     grid-template-areas:
       "header header"
-      "video-content profile"
-      "video-content chat";
+      "main-content profile"
+      "main-content chat";
     grid-template-rows: 64px min-content;
     grid-template-columns: minmax(600px, 1fr) min-content;
     gap: 0;
@@ -56,7 +56,7 @@
     grid-template-rows: unset;
     grid-template-areas:
       "header header"
-      "video-content chat"
+      "main-content chat"
       "profile chat";
     gap: 0;
   }
