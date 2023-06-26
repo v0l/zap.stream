@@ -80,7 +80,13 @@ export function LayoutPage() {
 
   return (
     <div
-      className={location.pathname.startsWith("/live/") ? "page" : "page home"}
+      className={
+        location.pathname === "/"
+          ? "page home"
+          : location.pathname.startsWith("/chat/")
+          ? "page chat"
+          : "page"
+      }
     >
       <header>
         <div className="logo" onClick={() => navigate("/")}>

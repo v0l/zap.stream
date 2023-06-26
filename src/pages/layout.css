@@ -20,8 +20,22 @@
   grid-template-columns: 1fr;
 }
 
+.popout-chat {
+  display: grid;
+  grid-template-areas:
+    "main-content";
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  gap: 0;
+}
+
 .live-chat {
   max-height: calc(100vh - 385px);
+}
+
+.popout-chat .live-chat {
+  max-height: unset;
 }
 
 @media (min-width: 768px) {
