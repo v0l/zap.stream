@@ -84,11 +84,18 @@
 
 header {
     grid-area: header;
+    align-items: center;
     display: grid;
     grid-template-columns: min-content min-content auto;
+    padding: 8px 16px;
+    gap: 8px;
+}
+
+@media (min-width: 1020px) {
+  header {
     gap: 24px;
-    align-items: center;
-    padding: 24px 40px 0 40px;
+    padding: 24px 0 32px 0;
+  }
 }
 
 header .logo {
@@ -132,11 +139,6 @@ header .profile img {
 }
 
 @media (max-width: 1020px) {
-  header {
-    padding: 8px 16px 8px 16px;
-    gap: 8px;
-  }
-
   header .header-right {
     gap: 8px;
   }
@@ -151,9 +153,5 @@ header .profile img {
 
   header .new-stream-button-text {
     display: none;
-  }
-
-  header .profile img {
-    border-radius: 12px;
   }
 }
