@@ -1,8 +1,7 @@
 import "./stream-page.css";
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState } from "react";
 import { parseNostrLink, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
-import useResizeObserver from "@react-hook/resize-observer";
 import moment from "moment";
 
 import useEventFeed from "hooks/event-feed";
@@ -150,31 +149,13 @@ export function StreamPage() {
   const ref = useRef(null);
   const params = useParams();
   const link = parseNostrLink(params.id!);
-  const [height, setHeight] = useState<number | undefined>();
-
-  function setChatHeight() {
-    const contentHeight =
-      document.querySelector(".live-page")?.clientHeight || 0;
-    const videoContentHeight =
-      document.querySelector(".video-content")?.clientHeight || 0;
-    if (window.innerWidth <= 480) {
-      setHeight(contentHeight - videoContentHeight);
-    } else if (window.innerWidth <= 768) {
-      setHeight(videoContentHeight);
-    } else {
-      setHeight(undefined);
-    }
-  }
-
-  useLayoutEffect(setChatHeight, []);
-  useResizeObserver(ref, () => setChatHeight());
 
   return (
     <>
       <div ref={ref}></div>
       <VideoPlayer link={link} />
       <ProfileInfo link={link} />
-      <LiveChat link={link} height={height} />
+      <LiveChat link={link} />
     </>
   );
 }

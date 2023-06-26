@@ -6,7 +6,7 @@ import {
   encodeTLV,
   NostrPrefix,
 } from "@snort/system";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import AsyncButton from "element/async-button";
 import { Login } from "index";
 import { useLogin } from "hooks/login";
@@ -19,6 +19,7 @@ export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
   const [newStream, setNewStream] = useState(false);
+  const location = useLocation();
 
   async function doLogin() {
     const pub = await EventPublisher.nip7();
@@ -78,7 +79,9 @@ export function LayoutPage() {
   }
 
   return (
-    <div className="page">
+    <div
+      className={location.pathname.startsWith("/live/") ? "page" : "page home"}
+    >
       <header>
         <div className="logo" onClick={() => navigate("/")}>
           S

@@ -62,17 +62,19 @@
   .stream-info {
     display: block;
   }
+
+  .video-content video {
+    height: 100%;
+  }
+
+  .live-chat {
+    margin-left: 32px;
+  }
 }
 
 .info {
   grid-area: profile;
   margin-top: 8px
-}
-
-@media (min-width: 1020px) {
-  .info {
-    margin-top: 32px;
-  }
 }
 
 .info h1 {

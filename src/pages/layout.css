@@ -11,16 +11,20 @@
   gap: 0;
 }
 
+.page.home {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "video-content";
+  grid-template-rows: 64px 1fr;
+  grid-template-columns: 1fr;
+}
 
 .live-chat {
   max-height: calc(100vh - 385px);
 }
 
 @media (min-width: 768px) {
-  .info {
-    display: none;
-  }
-
   .video-content video {
     height: calc(100vh - 64px);
   }
@@ -34,18 +38,15 @@
     display: grid;
     grid-template-areas:
       "header header"
+      "video-content profile"
       "video-content chat";
     grid-template-rows: 64px min-content;
-    grid-template-columns: calc(min(600px, 1fr)) 1fr;
+    grid-template-columns: minmax(600px, 1fr) min-content;
     gap: 0;
   }
 }
 
 @media (min-width: 1020px) {
-  .video-content video {
-    height: unset;
-  }
-
   .page {
     width: unset;
     display: grid;
@@ -57,7 +58,7 @@
       "header header"
       "video-content chat"
       "profile chat";
-    gap: 32px;
+    gap: 0;
   }
 }
 
