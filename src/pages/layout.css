@@ -1,18 +1,21 @@
 .page {
   display: grid;
+  gap: 0;
   grid-template-areas:
     "header"
     "main-content"
     "profile"
     "chat";
-  grid-template-rows: 64px 230px 56px min-content;
+  grid-template-rows: 64px 230px 56px 1fr;
   grid-template-columns: 1fr;
   height: 100vh;
-  gap: 0;
+  width: 100vw;
 }
 
 .page.home {
   display: grid;
+  height: 100vh;
+  width: 100vw;
   grid-template-areas:
     "header"
     "main-content";
@@ -20,51 +23,34 @@
   grid-template-columns: 1fr;
 }
 
-.popout-chat {
-  display: grid;
-  grid-template-areas:
-    "main-content";
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  height: 100vh;
-  gap: 0;
-}
-
-.live-chat {
-  max-height: calc(100vh - 385px);
-}
-
-.popout-chat .live-chat {
-  max-height: unset;
-}
-
 @media (min-width: 768px) {
-  .video-content video {
-    height: calc(100vh - 64px);
-  }
-
-  .live-chat {
-    width: fit-content;
-    max-height: calc(100vh - 82px);
-  }
-
   .page {
     display: grid;
+    width: 100vw;
+    height: 100vh;
     grid-template-areas:
       "header header"
       "main-content profile"
       "main-content chat";
     grid-template-rows: 64px min-content;
-    grid-template-columns: minmax(600px, 1fr) min-content;
+    grid-template-columns: minmax(600px, 1fr) 1fr;
     gap: 0;
+  } 
+
+  .video-content video {
+    height: calc(100vh - 64px);
+  }
+
+  .live-chat {
+    height: calc(100vh - 56px);
   }
 }
 
 @media (min-width: 1020px) {
   .page {
-    width: unset;
     display: grid;
-    height: calc(100vh - 72px - 32px - 32px);
+    width: unset;
+    height: calc(100vh - 72px);
     padding: 0 40px;
     grid-template-columns: auto 376px;
     grid-template-rows: unset;
@@ -73,6 +59,10 @@
       "main-content chat"
       "profile chat";
     gap: 0;
+  }
+
+  .live-chat {
+    width: unset;
   }
 }
 
@@ -155,3 +145,18 @@ header .profile img {
     display: none;
   }
 }
+
+.popout-chat {
+  display: grid;
+  grid-template-areas:
+    "main-content";
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  gap: 0;
+}
+
+.popout-chat .live-chat {
+  max-height: unset;
+}
+
