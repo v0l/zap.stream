@@ -4,8 +4,6 @@
   flex-direction: column;
   padding: 8px 16px;
   border: none;
-  max-width: calc(100vw - 32px);
-  height: calc(100vh - 72px - 230px - 64px);
 }
 
 @media (min-width: 1020px)  {

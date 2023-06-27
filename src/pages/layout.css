@@ -12,6 +12,10 @@
   width: 100vw;
 }
 
+.live-chat {
+  height: calc(100vh - 16px - 64px - 56px - 230px);
+}
+
 .page.home {
   display: grid;
   height: 100vh;
@@ -33,7 +37,7 @@
       "main-content profile"
       "main-content chat";
     grid-template-rows: 64px min-content;
-    grid-template-columns: minmax(600px, 1fr) 1fr;
+    grid-template-columns: minmax(600px, 3fr) 1fr;
     gap: 0;
   } 
 
@@ -42,7 +46,7 @@
   }
 
   .live-chat {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 56px - 64px - 16px);
   }
 }
 
@@ -59,10 +63,6 @@
       "main-content chat"
       "profile chat";
     gap: 0;
-  }
-
-  .live-chat {
-    width: unset;
   }
 }
 
