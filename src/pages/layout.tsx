@@ -11,14 +11,11 @@ import AsyncButton from "element/async-button";
 import { Login } from "index";
 import { useLogin } from "hooks/login";
 import { Profile } from "element/profile";
-import Modal from "element/modal";
-import { NewStream } from "element/new-stream";
-import { useState } from "react";
+import { NewStreamDialog } from "element/new-stream";
 
 export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
-  const [newStream, setNewStream] = useState(false);
   const location = useLocation();
 
   async function doLogin() {
@@ -33,14 +30,7 @@ export function LayoutPage() {
 
     return (
       <>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => setNewStream(true)}
-        >
-          <span className="hide-on-mobile">New Stream</span>
-          <Icon name="signal" />
-        </button>
+        <NewStreamDialog btnClassName="btn btn-primary" onFinish={goToStream} />
         <Profile
           avatarClassname="mb-squared"
           pubkey={login.pubkey}
@@ -75,7 +65,6 @@ export function LayoutPage() {
       ev.pubkey
     );
     navigate(`/live/${naddr}`);
-    setNewStream(false);
   }
 
   return (
@@ -102,11 +91,6 @@ export function LayoutPage() {
         </div>
       </header>
       <Outlet />
-      {newStream && (
-        <Modal onClose={() => setNewStream(false)}>
-          <NewStream onFinish={goToStream} />
-        </Modal>
-      )}
     </div>
   );
 }

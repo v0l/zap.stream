@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.4",
     "@react-hook/resize-observer": "^1.2.6",
     "@snort/system-react": "^1.0.8",
     "@testing-library/jest-dom": "^5.14.1",

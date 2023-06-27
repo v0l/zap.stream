@@ -17,14 +17,13 @@ import Modal from "element/modal";
 import { SendZaps } from "element/send-zap";
 import type { NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
-import { NewStream } from "element/new-stream";
+import { NewStreamDialog } from "element/new-stream";
 
 function ProfileInfo({ link }: { link: NostrLink }) {
   const thisEvent = useEventFeed(link, true);
   const login = useLogin();
   const navigate = useNavigate();
   const [zap, setZap] = useState(false);
-  const [edit, setEdit] = useState(false);
   const profile = useUserProfile(System, thisEvent.data?.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
@@ -42,6 +41,8 @@ function ProfileInfo({ link }: { link: NostrLink }) {
       navigate("/");
     }
   }
+
+  function onFinish() {}
 
   return (
     <>
@@ -67,13 +68,13 @@ function ProfileInfo({ link }: { link: NostrLink }) {
           </div>
           {isMine && (
             <div className="actions">
-              <button
-                type="button"
-                className="btn"
-                onClick={() => setEdit(true)}
-              >
-                Edit
-              </button>
+              {thisEvent.data && (
+                <NewStreamDialog
+                  text="Edit"
+                  ev={thisEvent.data}
+                  onFinish={onFinish}
+                />
+              )}
               <AsyncButton
                 type="button"
                 className="btn btn-red"
@@ -102,46 +103,19 @@ function ProfileInfo({ link }: { link: NostrLink }) {
           />
         </Modal>
       )}
-      {edit && thisEvent.data && (
-        <Modal onClose={() => setEdit(false)}>
-          <NewStream ev={thisEvent.data} onFinish={() => setEdit(false)} />
-        </Modal>
-      )}
     </>
   );
 }
 
 function VideoPlayer({ link }: { link: NostrLink }) {
   const thisEvent = useEventFeed(link);
-  const [zap, setZap] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const profile = useUserProfile(System, thisEvent.data?.pubkey);
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
-
   const stream = findTag(thisEvent.data, "streaming");
   const image = findTag(thisEvent.data, "image");
 
   return (
-    <>
-      {zap && zapTarget && thisEvent.data && (
-        <Modal onClose={() => setZap(false)}>
-          <SendZaps
-            lnurl={zapTarget}
-            ev={thisEvent.data}
-            targetName={getName(thisEvent.data.pubkey, profile)}
-            onFinish={() => setZap(false)}
-          />
-        </Modal>
-      )}
-      {edit && thisEvent.data && (
-        <Modal onClose={() => setEdit(false)}>
-          <NewStream ev={thisEvent.data} onFinish={() => setEdit(false)} />
-        </Modal>
-      )}
-      <div className="video-content">
-        <LiveVideoPlayer stream={stream} autoPlay={true} poster={image} />
-      </div>
-    </>
+    <div className="video-content">
+      <LiveVideoPlayer stream={stream} autoPlay={true} poster={image} />
+    </div>
   );
 }
 

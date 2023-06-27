@@ -13,7 +13,7 @@
 
 .modal-body {
   display: flex;
-  width: 430px;
+  max-width: 430px;
   padding: 32px;
   margin-top: auto;
   margin-bottom: auto;
