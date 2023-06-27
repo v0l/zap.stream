@@ -9,11 +9,11 @@
 
 @media (min-width: 768px) {
   .profile-info {
-    width: calc(100vw - 600px);
+    width: calc(100vw - 600px - 16px);
   }
 
   .live-chat {
-    width:  calc(100vw - 600px);
+    width:  calc(100vw - 600px - 16px);
     height: calc(100vh - 56px - 64px - 16px);
   }
 
@@ -23,6 +23,11 @@
 }
 
 @media (min-width: 1020px)  {
+  .profile-info {
+    width: unset;
+    padding: 0;
+  }
+
   .live-chat {
     height: calc(100vh - 72px - 96px);
     padding: 24px 16px 8px 24px;
@@ -48,8 +53,6 @@
   flex-direction: column-reverse;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border, #171717);
 }
 
 @media (min-width: 1020px){
@@ -61,6 +64,10 @@
 .live-chat>.write-message {
   display: flex;
   gap: 8px;
+  margin-top: auto;
+
+  padding-top: 8px;
+  border-top: 1px solid var(--border, #171717);
 }
 
 .live-chat>.write-message>div:nth-child(1) {
