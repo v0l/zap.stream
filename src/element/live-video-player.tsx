@@ -27,7 +27,7 @@ export function LiveVideoPlayer(
         hls.on(Hls.Events.ERROR, (event, data) => {
           console.debug(event, data);
           const errorType = data.type;
-          if (errorType === Hls.ErrorTypes.NETWORK_ERROR) {
+          if (errorType === Hls.ErrorTypes.NETWORK_ERROR && data.fatal) {
             hls.stopLoad();
             hls.detachMedia();
             setStatus(VideoStatus.Offline);
