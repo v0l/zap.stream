@@ -9,17 +9,12 @@
   grid-template-rows: 64px 230px 56px 1fr;
   grid-template-columns: 1fr;
   height: 100vh;
-  width: 100vw;
 }
 
-.live-chat {
-  height: calc(100vh - 16px - 64px - 56px - 230px);
-}
 
 .page.home {
   display: grid;
   height: 100vh;
-  width: 100vw;
   grid-template-areas:
     "header"
     "main-content";
@@ -30,30 +25,25 @@
 @media (min-width: 768px) {
   .page {
     display: grid;
-    width: 100vw;
     height: 100vh;
     grid-template-areas:
       "header header"
       "main-content profile"
       "main-content chat";
     grid-template-rows: 64px min-content;
-    grid-template-columns: minmax(600px, 3fr) 1fr;
+    grid-template-columns: 600px 1fr;
     gap: 0;
   } 
 
   .video-content video {
-    height: calc(100vh - 64px);
+    height: 100%;
   }
 
-  .live-chat {
-    height: calc(100vh - 56px - 64px - 16px);
-  }
 }
 
 @media (min-width: 1020px) {
   .page {
     display: grid;
-    width: unset;
     height: calc(100vh - 72px);
     padding: 0 40px;
     grid-template-columns: auto 376px;
@@ -64,6 +54,7 @@
       "profile chat";
     gap: 0;
   }
+
 }
 
 @media (min-width: 2000px) {
@@ -146,6 +137,16 @@ header .profile img {
   }
 }
 
+button span.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 1020px) {
+  button span.hide-on-mobile {
+    display: block;
+  }
+}
+
 .popout-chat {
   display: grid;
   grid-template-areas:
@@ -159,4 +160,3 @@ header .profile img {
 .popout-chat .live-chat {
   max-height: unset;
 }
-

@@ -38,7 +38,7 @@ export function LayoutPage() {
           className="btn btn-primary"
           onClick={() => setNewStream(true)}
         >
-          <span className="new-stream-button-text">New Stream</span>
+          <span className="hide-on-mobile">New Stream</span>
           <Icon name="signal" />
         </button>
         <Profile

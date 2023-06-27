@@ -4,6 +4,22 @@
   flex-direction: column;
   padding: 8px 16px;
   border: none;
+  height: calc(100vh - 56px - 64px - 56px - 230px);
+}
+
+@media (min-width: 768px) {
+  .profile-info {
+    width: calc(100vw - 600px);
+  }
+
+  .live-chat {
+    width:  calc(100vw - 600px);
+    height: calc(100vh - 56px - 64px - 16px);
+  }
+
+  .video-content video {
+    width: 100%;
+  }
 }
 
 @media (min-width: 1020px)  {
@@ -14,8 +30,11 @@
     border-radius: 24px;
     gap: 16px;
   }
-}
 
+  .live-chat {
+    width:  320px;
+  }
+}
 
 .live-chat>.header {
   font-weight: 600;

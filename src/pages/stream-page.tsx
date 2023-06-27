@@ -87,7 +87,7 @@ function ProfileInfo({ link }: { link: NostrLink }) {
         <div className="profile-info flex g24">
           <Profile pubkey={thisEvent.data?.pubkey ?? ""} />
           <button onClick={() => setZap(true)} className="btn btn-primary zap">
-            Zap
+            <span className="hide-on-mobile">Zap</span>
             <Icon name="zap" size={16} />
           </button>
         </div>
