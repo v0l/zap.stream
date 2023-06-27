@@ -16,6 +16,7 @@ import { SendZapsDialog } from "element/send-zap";
 import type { NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
+import { StatePill } from "element/state-pill";
 
 function ProfileInfo({ link }: { link: NostrLink }) {
   const thisEvent = useEventFeed(link, true);
@@ -26,7 +27,6 @@ function ProfileInfo({ link }: { link: NostrLink }) {
 
   const status = findTag(thisEvent.data, "status");
   const start = findTag(thisEvent.data, "starts");
-  const isLive = status === "live";
   const isMine = link.author === login?.pubkey;
 
   async function deleteStream() {
@@ -46,7 +46,7 @@ function ProfileInfo({ link }: { link: NostrLink }) {
           <h1>{findTag(thisEvent.data, "title")}</h1>
           <p>{findTag(thisEvent.data, "summary")}</p>
           <div className="tags">
-            <span className={`pill${isLive ? " live" : ""}`}>{status}</span>
+            <StatePill state={status as StreamState} />
             {status === StreamState.Planned && (
               <span className="pill">
                 Starts {moment(Number(start) * 1000).fromNow()}

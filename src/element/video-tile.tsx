@@ -3,6 +3,8 @@ import { Profile } from "./profile";
 import "./video-tile.css";
 import { NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
 import { useInView } from "react-intersection-observer";
+import { StatePill } from "./state-pill";
+import { StreamState } from "index";
 
 export function VideoTile({ ev }: { ev: NostrEvent }) {
     const { inView, ref } = useInView({ triggerOnce: true });
@@ -17,9 +19,7 @@ export function VideoTile({ ev }: { ev: NostrEvent }) {
         <div style={{
             backgroundImage: `url(${inView ? image : ""})`
         }}>
-            <span className={`pill${isLive ? " live" : ""}`}>
-                {status}
-            </span>
+            <StatePill state={status as StreamState} />
         </div>
         <h3>{title}</h3>
         <div>
