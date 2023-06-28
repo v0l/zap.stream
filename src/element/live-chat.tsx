@@ -186,20 +186,26 @@ function WriteMessage({ link }: { link: NostrLink }) {
   async function sendChatMessage() {
     const pub = await EventPublisher.nip7();
     if (chat.length > 1) {
-      let messageEmojis: string[][] = [];
+      let emojiNames = new Set();
+
       for (const name of names) {
         if (chat.includes(`:${name}:`)) {
-          const e = emojis.find((t) => t.at(1) === name);
-          messageEmojis.push(e as string[]);
+          emojiNames.add(name);
         }
       }
+
       const reply = await pub?.generic((eb) => {
+        const emoji = [...emojiNames].map((name) =>
+          emojis.find((e) => e.at(1) === name)
+        );
         eb.kind(1311 as EventKind)
           .content(chat)
           .tag(["a", `${link.kind}:${link.author}:${link.id}`, "", "root"])
           .processContent();
-        for (const e of messageEmojis) {
-          eb.tag(e);
+        for (const e of emoji) {
+          if (e) {
+            eb.tag(e);
+          }
         }
         return eb;
       });

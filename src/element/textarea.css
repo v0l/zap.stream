@@ -13,21 +13,27 @@
   background: #F838D9;
 }
 
-.emoji-item {
+.emoji-item, .user-item {
   color: white;
   background: #171717;
   display: flex;
   flex-direction: row;
+  gap: 8px;
   align-items: center;
   font-size: 16px;
   padding: 10px;
 }
 
-.emoji-item:hover {
+.emoji-item:hover, .user-item:hover {
   color: #171717;
   background: white;
 }
 
-.emoji-item .emoji-image {
-  margin: 0 8px;
+.user-image {
+  width: 21px;
+  height: 21px;
+  border-radius: 100%;
+}
+
+.user-details {
 }
