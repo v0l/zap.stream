@@ -47,7 +47,7 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
   const sortedZappers = useMemo(() => {
     const sorted = [...new Set([...zappers])];
     sorted.sort((a, b) => totalZapped(b, zaps) - totalZapped(a, zaps));
-    return sorted;
+    return sorted.slice(0, 3);
   }, [zaps, zappers]);
 
   return (
@@ -63,7 +63,7 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
               ) : (
                 <Profile pubkey={pk} options={{ showName: false }} />
               )}
-              <Icon name="zap" className="top-zapper-icon" />
+              <Icon name="zap" className="zap-icon" />
               <p className="top-zapper-amount">{formatSats(total)}</p>
             </div>
           );
@@ -76,9 +76,11 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
 export function LiveChat({
   link,
   options,
+  height,
 }: {
   link: NostrLink;
   options?: LiveChatOptions;
+  height?: number;
 }) {
   const messages = useLiveChatFeed(link);
   const login = useLogin();
@@ -88,7 +90,7 @@ export function LiveChat({
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
   return (
-    <div className="live-chat">
+    <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
       {(options?.showHeader ?? true) && (
         <div className="header">Stream Chat</div>
       )}
@@ -157,7 +159,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   return (
     <div className="pill">
       <div className="zap">
-        <Icon name="zap" />
+        <Icon name="zap" className="zap-icon" />
         <Profile
           pubkey={parsed.anonZap ? "" : parsed.sender ?? ""}
           options={{
@@ -165,7 +167,6 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
             overrideName: parsed.anonZap ? "Anon" : undefined,
           }}
         />
-        zapped &nbsp;
         {formatSats(parsed.amount)}
         &nbsp; sats
       </div>

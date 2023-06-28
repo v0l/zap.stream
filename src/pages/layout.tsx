@@ -6,19 +6,17 @@ import {
   encodeTLV,
   NostrPrefix,
 } from "@snort/system";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import AsyncButton from "element/async-button";
 import { Login } from "index";
 import { useLogin } from "hooks/login";
 import { Profile } from "element/profile";
-import Modal from "element/modal";
-import { NewStream } from "element/new-stream";
-import { useState } from "react";
+import { NewStreamDialog } from "element/new-stream";
 
 export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
-  const [newStream, setNewStream] = useState(false);
+  const location = useLocation();
 
   async function doLogin() {
     const pub = await EventPublisher.nip7();
@@ -32,15 +30,9 @@ export function LayoutPage() {
 
     return (
       <>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => setNewStream(true)}
-        >
-          New Stream
-          <Icon name="signal" />
-        </button>
+        <NewStreamDialog btnClassName="btn btn-primary" onFinish={goToStream} />
         <Profile
+          avatarClassname="mb-squared"
           pubkey={login.pubkey}
           options={{
             showName: false,
@@ -73,28 +65,32 @@ export function LayoutPage() {
       ev.pubkey
     );
     navigate(`/live/${naddr}`);
-    setNewStream(false);
   }
 
   return (
-    <>
+    <div
+      className={
+        location.pathname === "/"
+          ? "page home"
+          : location.pathname.startsWith("/chat/")
+          ? "page chat"
+          : "page"
+      }
+    >
       <header>
-        <div onClick={() => navigate("/")}>S</div>
+        <div className="logo" onClick={() => navigate("/")}>
+          S
+        </div>
         <div className="input">
-          <input type="text" placeholder="Search" />
+          <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />
         </div>
-        <div>
+        <div className="header-right">
           {loggedIn()}
           {loggedOut()}
         </div>
       </header>
       <Outlet />
-      {newStream && (
-        <Modal onClose={() => setNewStream(false)}>
-          <NewStream onFinish={goToStream} />
-        </Modal>
-      )}
-    </>
+    </div>
   );
 }

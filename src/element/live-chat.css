@@ -1,11 +1,50 @@
 .live-chat {
-  height: calc(100vh - 72px - 96px);
+  grid-area: chat;
   display: flex;
   flex-direction: column;
-  padding: 24px 16px 8px 24px;
-  border: 1px solid #171717;
-  border-radius: 24px;
-  gap: 16px;
+  padding: 8px 16px;
+  border: none;
+  height: calc(100vh - 56px - 64px - 56px - 230px);
+}
+
+@media (min-width: 768px) {
+  .profile-info {
+    width: calc(100vw - 600px - 16px);
+  }
+
+  .live-chat {
+    width:  calc(100vw - 600px - 16px);
+    height: calc(100vh - 56px - 64px - 16px);
+  }
+
+  .video-content video {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1020px)  {
+  .profile-info {
+    width: unset;
+    padding: 0;
+  }
+
+  .live-chat {
+    height: calc(100vh - 72px - 96px);
+    padding: 24px 16px 8px 24px;
+    border: 1px solid #171717;
+    border-radius: 24px;
+    gap: 16px;
+  }
+
+  .live-chat {
+    width:  320px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .live-chat {
+    height: calc(100vh - 72px - 96px - 120px - 56px);
+  }
 }
 
 .live-chat>.header {
@@ -15,7 +54,6 @@
 }
 
 .live-chat>.messages {
-  flex-grow: 1;
   display: flex;
   gap: 12px;
   flex-direction: column-reverse;
@@ -23,9 +61,19 @@
   overflow-x: hidden;
 }
 
+@media (min-width: 1020px){
+  .live-chat > .messages {
+    flex-grow: 1;
+  }
+}
+
 .live-chat>.write-message {
   display: flex;
   gap: 8px;
+  margin-top: auto;
+
+  padding-top: 8px;
+  border-top: 1px solid var(--border, #171717);
 }
 
 .live-chat>.write-message>div:nth-child(1) {
@@ -40,6 +88,10 @@
   color: inherit;
   font: inherit;
   flex-grow: 1;
+}
+
+.live-chat .message {
+  word-wrap: break-word;
 }
 
 .live-chat .message .profile {
@@ -69,6 +121,10 @@
   color: white;
 }
 
+.live-chat .messages .pill:hover {
+  cursor: default;
+}
+
 .live-chat .zap {
   display: flex;
   align-items: center;
@@ -84,12 +140,25 @@
 
 .top-zappers-container {
   display: flex;
-  gap: 8px;
-  justify-content: space-between;
-  padding-top: 12px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border, #171717);
+  padding-top: 8px;
+  padding-bottom: 8px;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.top-zappers-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1020px) {
+  .top-zappers-container {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border, #171717);
+  }
 }
 
 .top-zapper {
@@ -114,6 +183,6 @@
   margin: 0;
 }
 
-.top-zapper-icon {
+.zap-icon {
   color: #FFCB44;
 }

@@ -1,5 +1,13 @@
+.popout-chat {
+  grid-area: main-content;
+}
+
 .popout-chat .live-chat {
-    height: calc(100vh - 20px);
+  margin-left: 0;
+}
+
+.popout-chat .live-chat {
+    height: calc(100vh);
     padding: 10px;
     border: unset;
     border-radius: unset;

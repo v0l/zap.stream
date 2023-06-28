@@ -1,4 +1,5 @@
 import "./send-zap.css";
+import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
 import { NostrEvent, EventPublisher } from "@snort/system";
@@ -9,107 +10,171 @@ import { findTag } from "utils";
 import { Relays } from "index";
 import QrCode from "./qr-code";
 
-export function SendZaps({ lnurl, ev, targetName, onFinish }: { lnurl: string, ev?: NostrEvent, targetName?: string, onFinish: () => void }) {
-    const UsdRate = 30_000;
+interface SendZapsProps {
+  lnurl: string;
+  ev?: NostrEvent;
+  targetName?: string;
+  onFinish: () => void;
+}
 
-    const satsAmounts = [
-        100, 1_000, 5_000, 10_000, 50_000, 100_000, 500_000, 1_000_000
-    ];
-    const usdAmounts = [
-        0.05, 0.50, 2, 5, 10, 50, 100, 200
-    ]
-    const [isFiat, setIsFiat] = useState(false);
-    const [svc, setSvc] = useState<LNURL>();
-    const [amount, setAmount] = useState(satsAmounts[0]);
-    const [comment, setComment] = useState("");
-    const [invoice, setInvoice] = useState("");
+function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
+  const UsdRate = 30_000;
 
-    const name = targetName ?? svc?.name;
-    async function loadService() {
-        const s = new LNURL(lnurl);
-        await s.load();
-        setSvc(s);
+  const satsAmounts = [
+    100, 1_000, 5_000, 10_000, 50_000, 100_000, 500_000, 1_000_000,
+  ];
+  const usdAmounts = [0.05, 0.5, 2, 5, 10, 50, 100, 200];
+  const [isFiat, setIsFiat] = useState(false);
+  const [svc, setSvc] = useState<LNURL>();
+  const [amount, setAmount] = useState(satsAmounts[0]);
+  const [comment, setComment] = useState("");
+  const [invoice, setInvoice] = useState("");
+
+  const name = targetName ?? svc?.name;
+  async function loadService() {
+    const s = new LNURL(lnurl);
+    await s.load();
+    setSvc(s);
+  }
+
+  useEffect(() => {
+    if (!svc) {
+      loadService().catch(console.warn);
     }
+  }, [lnurl]);
 
-    useEffect(() => {
-        if (!svc) {
-            loadService().catch(console.warn);
+  async function send() {
+    if (!svc) return;
+    const pub = await EventPublisher.nip7();
+    if (!pub) return;
+
+    const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
+    let zap: NostrEvent | undefined;
+    if (ev) {
+      zap = await pub.zap(
+        amountInSats * 1000,
+        ev.pubkey,
+        Relays,
+        undefined,
+        comment,
+        (eb) => {
+          return eb.tag(["a", `${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`]);
         }
-    }, [lnurl]);
-
-    async function send() {
-        if (!svc) return;
-        const pub = await EventPublisher.nip7();
-        if (!pub) return;
-
-        const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
-        let zap: NostrEvent | undefined;
-        if (ev) {
-            zap = await pub.zap(amountInSats * 1000, ev.pubkey, Relays, undefined, comment, eb => {
-                return eb.tag(["a", `${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`]);
-            });
-        }
-        const invoice = await svc.getInvoice(amountInSats, comment, zap);
-        if (!invoice.pr) return;
-
-        if (window.webln) {
-            await window.webln.enable();
-            await window.webln.sendPayment(invoice.pr);
-            onFinish();
-        } else {
-            setInvoice(invoice.pr);
-        }
+      );
     }
+    const invoice = await svc.getInvoice(amountInSats, comment, zap);
+    if (!invoice.pr) return;
 
-    function input() {
-        if (invoice) return;
-        return <>
-            <div className="flex g12">
-                <span className={`pill${isFiat ? "" : " active"}`} onClick={() => { setIsFiat(false); setAmount(satsAmounts[0]) }}>
-                    SATS
-                </span>
-                <span className={`pill${isFiat ? " active" : ""}`} onClick={() => { setIsFiat(true); setAmount(usdAmounts[0]) }}>
-                    USD
-                </span>
-            </div>
-            <div>
-                <small>Zap amount in {isFiat ? "USD" : "sats"}</small>
-                <div className="amounts">
-                    {(isFiat ? usdAmounts : satsAmounts).map(a =>
-                        <span key={a} className={`pill${a === amount ? " active" : ""}`} onClick={() => setAmount(a)}>
-                            {isFiat ? `$${a.toLocaleString()}` : formatSats(a)}
-                        </span>)}
-                </div>
-            </div>
-            <div>
-                <small>
-                    Your comment for {name}
-                </small>
-                <div className="input">
-                    <textarea placeholder="Nice!" value={comment} onChange={e => setComment(e.target.value)} />
-                </div>
-            </div>
-            <div>
-                <AsyncButton onClick={send} className="btn btn-primary">
-                    Zap!
-                </AsyncButton>
-            </div>
-        </>
+    if (window.webln) {
+      await window.webln.enable();
+      await window.webln.sendPayment(invoice.pr);
+      onFinish();
+    } else {
+      setInvoice(invoice.pr);
     }
+  }
 
-    function payInvoice() {
-        if (!invoice) return;
+  function input() {
+    if (invoice) return;
+    return (
+      <>
+        <div className="flex g12">
+          <span
+            className={`pill${isFiat ? "" : " active"}`}
+            onClick={() => {
+              setIsFiat(false);
+              setAmount(satsAmounts[0]);
+            }}
+          >
+            SATS
+          </span>
+          <span
+            className={`pill${isFiat ? " active" : ""}`}
+            onClick={() => {
+              setIsFiat(true);
+              setAmount(usdAmounts[0]);
+            }}
+          >
+            USD
+          </span>
+        </div>
+        <div>
+          <small>Zap amount in {isFiat ? "USD" : "sats"}</small>
+          <div className="amounts">
+            {(isFiat ? usdAmounts : satsAmounts).map((a) => (
+              <span
+                key={a}
+                className={`pill${a === amount ? " active" : ""}`}
+                onClick={() => setAmount(a)}
+              >
+                {isFiat ? `$${a.toLocaleString()}` : formatSats(a)}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <small>Your comment for {name}</small>
+          <div className="input">
+            <textarea
+              placeholder="Nice!"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </div>
+        </div>
+        <div>
+          <AsyncButton onClick={send} className="btn btn-primary">
+            Zap!
+          </AsyncButton>
+        </div>
+      </>
+    );
+  }
 
-        const link = `lightning:${invoice}`;
-        return <QrCode data={link} link={link} />
-    }
+  function payInvoice() {
+    if (!invoice) return;
 
-    return <div className="send-zap">
-        <h3>
-            Zap {name}
-            <Icon name="zap" />
-        </h3>
-        {input()}
-        {payInvoice()}
+    const link = `lightning:${invoice}`;
+    return <QrCode data={link} link={link} />;
+  }
+
+  return (
+    <div className="send-zap">
+      <h3>
+        Zap {name}
+        <Icon name="zap" />
+      </h3>
+      {input()}
+      {payInvoice()}
     </div>
+  );
+}
+
+export function SendZapsDialog({
+  lnurl,
+  ev,
+  targetName,
+}: Omit<SendZapsProps, "onFinish">) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog.Trigger asChild>
+        <button className="btn btn-primary zap">
+          <span className="hide-on-mobile">Zap</span>
+          <Icon name="zap" size={16} />
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="dialog-overlay" />
+        <Dialog.Content className="dialog-content">
+          <SendZaps
+            lnurl={lnurl}
+            ev={ev}
+            targetName={targetName}
+            onFinish={() => setIsOpen(false)}
+          />
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
 }
