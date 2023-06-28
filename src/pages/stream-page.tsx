@@ -1,5 +1,5 @@
 import "./stream-page.css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { parseNostrLink, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
@@ -10,11 +10,9 @@ import { findTag } from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
-import { Icon } from "element/icon";
 import { useLogin } from "hooks/login";
 import { StreamState, System } from "index";
-import Modal from "element/modal";
-import { SendZaps } from "element/send-zap";
+import { SendZapsDialog } from "element/send-zap";
 import type { NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
@@ -23,7 +21,6 @@ function ProfileInfo({ link }: { link: NostrLink }) {
   const thisEvent = useEventFeed(link, true);
   const login = useLogin();
   const navigate = useNavigate();
-  const [zap, setZap] = useState(false);
   const profile = useUserProfile(System, thisEvent.data?.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
@@ -41,8 +38,6 @@ function ProfileInfo({ link }: { link: NostrLink }) {
       navigate("/");
     }
   }
-
-  function onFinish() {}
 
   return (
     <>
@@ -69,11 +64,7 @@ function ProfileInfo({ link }: { link: NostrLink }) {
           {isMine && (
             <div className="actions">
               {thisEvent.data && (
-                <NewStreamDialog
-                  text="Edit"
-                  ev={thisEvent.data}
-                  onFinish={onFinish}
-                />
+                <NewStreamDialog text="Edit" ev={thisEvent.data} />
               )}
               <AsyncButton
                 type="button"
@@ -87,22 +78,15 @@ function ProfileInfo({ link }: { link: NostrLink }) {
         </div>
         <div className="profile-info flex g24">
           <Profile pubkey={thisEvent.data?.pubkey ?? ""} />
-          <button onClick={() => setZap(true)} className="btn btn-primary zap">
-            <span className="hide-on-mobile">Zap</span>
-            <Icon name="zap" size={16} />
-          </button>
+          {zapTarget && thisEvent.data && (
+            <SendZapsDialog
+              lnurl={zapTarget}
+              ev={thisEvent.data}
+              targetName={getName(thisEvent.data.pubkey, profile)}
+            />
+          )}
         </div>
       </div>
-      {zap && zapTarget && thisEvent.data && (
-        <Modal onClose={() => setZap(false)}>
-          <SendZaps
-            lnurl={zapTarget}
-            ev={thisEvent.data}
-            targetName={getName(thisEvent.data.pubkey, profile)}
-            onFinish={() => setZap(false)}
-          />
-        </Modal>
-      )}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import "./new-stream.css";
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { EventPublisher, NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 
@@ -15,7 +15,7 @@ export function NewStream({
   onFinish,
 }: {
   ev?: NostrEvent;
-  onFinish: (ev: NostrEvent) => void;
+  onFinish?: (ev: NostrEvent) => void;
 }) {
   const [title, setTitle] = useState(findTag(ev, "title") ?? "");
   const [summary, setSummary] = useState(findTag(ev, "summary") ?? "");
@@ -27,7 +27,7 @@ export function NewStream({
   const [start, setStart] = useState(findTag(ev, "starts"));
   const [isValid, setIsValid] = useState(false);
 
-  function validate() {
+  const validate = useCallback(() => {
     if (title.length < 2) {
       return false;
     }
@@ -38,11 +38,11 @@ export function NewStream({
       return false;
     }
     return true;
-  }
+  }, [title, image, stream]);
 
   useEffect(() => {
     setIsValid(validate());
-  }, [title, summary, image, stream]);
+  }, [validate, title, summary, image, stream]);
 
   async function publishStream() {
     const pub = await EventPublisher.nip7();
@@ -67,7 +67,7 @@ export function NewStream({
       });
       console.debug(evNew);
       System.BroadcastEvent(evNew);
-      onFinish(evNew);
+      onFinish && onFinish(evNew);
     }
   }
 
@@ -174,7 +174,7 @@ interface NewStreamDialogProps {
   text?: string;
   btnClassName?: string;
   ev?: NostrEvent;
-  onFinish: (e: NostrEvent) => void;
+  onFinish?: (e: NostrEvent) => void;
 }
 
 export function NewStreamDialog({

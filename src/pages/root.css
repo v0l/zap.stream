@@ -35,6 +35,11 @@
     }
 }
 
+.homepage {
+  width: 100%;
+  grid-area: main-content;
+}
+
 .homepage h2 {
     background: #171717;
     padding: 40px;

@@ -1,4 +1,5 @@
 import "./send-zap.css";
+import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
 import { NostrEvent, EventPublisher } from "@snort/system";
@@ -9,17 +10,14 @@ import { findTag } from "utils";
 import { Relays } from "index";
 import QrCode from "./qr-code";
 
-export function SendZaps({
-  lnurl,
-  ev,
-  targetName,
-  onFinish,
-}: {
+interface SendZapsProps {
   lnurl: string;
   ev?: NostrEvent;
   targetName?: string;
   onFinish: () => void;
-}) {
+}
+
+function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
   const UsdRate = 30_000;
 
   const satsAmounts = [
@@ -152,6 +150,31 @@ export function SendZaps({
   );
 }
 
-function SendZapDialog() {
-  return "TODO";
+export function SendZapsDialog({
+  lnurl,
+  ev,
+  targetName,
+}: Omit<SendZapsProps, "onFinish">) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog.Trigger asChild>
+        <button className="btn btn-primary zap">
+          <span className="hide-on-mobile">Zap</span>
+          <Icon name="zap" size={16} />
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="dialog-overlay" />
+        <Dialog.Content className="dialog-content">
+          <SendZaps
+            lnurl={lnurl}
+            ev={ev}
+            targetName={targetName}
+            onFinish={() => setIsOpen(false)}
+          />
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
 }
