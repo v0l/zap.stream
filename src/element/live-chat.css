@@ -41,6 +41,12 @@
   }
 }
 
+@media (min-width: 2000px) {
+  .live-chat {
+    height: calc(100vh - 72px - 96px - 120px - 56px);
+  }
+}
+
 .live-chat>.header {
   font-weight: 600;
   font-size: 24px;
