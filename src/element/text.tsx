@@ -14,7 +14,7 @@ function extractEmoji(fragments: Fragment[], tags: string[][]) {
   return fragments
     .map((f) => {
       if (typeof f === "string") {
-        return f.split(/:([a-zA-Z_-]):/g).map((i) => {
+        return f.split(/:([\w-]+):/g).map((i) => {
           const t = tags.find((a) => a[0] === "emoji" && a[1] === i);
           if (t) {
             return <Emoji name={t[1]} url={t[2]} />;
