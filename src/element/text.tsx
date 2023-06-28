@@ -1,14 +1,84 @@
-import { useMemo } from "react";
-import { TaggedRawEvent } from "@snort/system";
-import { type EmojiTag, Emojify } from "./emoji";
+import { useMemo, type ReactNode } from "react";
+import { TaggedRawEvent, validateNostrLink } from "@snort/system";
+import { splitByUrl } from "utils";
+import { Emoji } from "./emoji";
+import { HyperText } from "./hypertext";
+
+type Fragment = string | ReactNode;
+
+function transformText(fragments: Fragment[], tags: string[][]) {
+  return extractLinks(extractEmoji(fragments, tags));
+}
+
+function extractEmoji(fragments: Fragment[], tags: string[][]) {
+  return fragments
+    .map((f) => {
+      if (typeof f === "string") {
+        return f.split(/:([a-zA-Z_-]):/g).map((i) => {
+          const t = tags.find((a) => a[0] === "emoji" && a[1] === i);
+          if (t) {
+            return <Emoji name={t[1]} url={t[2]} />;
+          } else {
+            return i;
+          }
+        });
+      }
+      return f;
+    })
+    .flat();
+}
+
+function extractLinks(fragments: Fragment[]) {
+  return fragments
+    .map((f) => {
+      if (typeof f === "string") {
+        return splitByUrl(f).map((a) => {
+          const validateLink = () => {
+            const normalizedStr = a.toLowerCase();
+
+            if (
+              normalizedStr.startsWith("web+nostr:") ||
+              normalizedStr.startsWith("nostr:")
+            ) {
+              return validateNostrLink(normalizedStr);
+            }
+
+            return (
+              normalizedStr.startsWith("http:") ||
+              normalizedStr.startsWith("https:") ||
+              normalizedStr.startsWith("magnet:")
+            );
+          };
+
+          if (validateLink()) {
+            if (!a.startsWith("nostr:")) {
+              return (
+                <a
+                  href={a}
+                  onClick={(e) => e.stopPropagation()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ext"
+                >
+                  {a}
+                </a>
+              );
+            }
+            return <HyperText link={a} />;
+          }
+          return a;
+        });
+      }
+      return f;
+    })
+    .flat();
+}
 
 export function Text({ ev }: { ev: TaggedRawEvent }) {
-  const emojis = useMemo(() => {
-    return ev.tags.filter((t) => t.at(0) === "emoji").map((t) => t as EmojiTag);
+  // todo: RTL langugage support
+  const element = useMemo(() => {
+    return <span>{transformText([ev.content], ev.tags)}</span>;
   }, [ev]);
-  return (
-    <span>
-      <Emojify content={ev.content} emoji={emojis} />
-    </span>
-  );
+
+  return <>{element}</>;
 }
