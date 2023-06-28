@@ -59,7 +59,14 @@
 
 @media (min-width: 2000px) {
   .page {
+    padding: 0 40px;
     grid-template-columns: auto 450px;
+  }
+  .video-content {
+    max-height: calc(100vh - 320px);
+  }
+  .video-content video {
+    height: 100%;
   }
 }
 

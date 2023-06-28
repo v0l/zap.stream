@@ -178,7 +178,7 @@ interface NewStreamDialogProps {
 }
 
 export function NewStreamDialog({
-  text = "New Stream",
+  text,
   ev,
   onFinish,
   btnClassName = "btn",
@@ -187,8 +187,13 @@ export function NewStreamDialog({
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button type="button" className={btnClassName}>
-          <span className="hide-on-mobile">{text}</span>
-          <Icon name="signal" />
+          {text && text}
+          {!text && (
+            <>
+              <span className="hide-on-mobile">New Stream</span>
+              <Icon name="signal" />
+            </>
+          )}
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
