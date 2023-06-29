@@ -157,7 +157,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
     return null;
   }
   return (
-    <div className="pill">
+    <div className="zap-container">
       <div className="zap">
         <Icon name="zap" className="zap-icon" />
         <Profile
@@ -167,10 +167,11 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
             overrideName: parsed.anonZap ? "Anon" : undefined,
           }}
         />
-        {formatSats(parsed.amount)}
-        &nbsp; sats
+        zapped you
+        <span className="zap-amount">{formatSats(parsed.amount)}</span>
+        sats
       </div>
-      {parsed.content && <p>{parsed.content}</p>}
+      {parsed.content && <div className="zap-content">{parsed.content}</div>}
     </div>
   );
 }

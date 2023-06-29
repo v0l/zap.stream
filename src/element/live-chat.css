@@ -101,6 +101,10 @@
   float: left;
 }
 
+.live-chat .message .profile {
+  color: #34D2FE;
+}
+
 .live-chat .message.streamer .profile {
   color: #F838D9;
 }
@@ -121,12 +125,8 @@
   margin-left: 8px;
 }
 
-.live-chat .messages .pill {
+.live-chat .messages {
   color: white;
-}
-
-.live-chat .messages .pill:hover {
-  cursor: default;
 }
 
 .live-chat .zap {
@@ -189,4 +189,35 @@
 
 .zap-icon {
   color: #FFCB44;
+}
+
+.zap-container {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: black;
+  background-clip: padding-box;
+  padding: 8px 12px;
+}
+
+.zap-container:before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -1px;
+  background: linear-gradient(to bottom right, #FF902B, #F83838);
+  border-radius: inherit;
+}
+
+.zap-container .profile {
+  color: #FFCB44;
+}
+
+.zap-container .zap-amount {
+  color: #FFCB44;
+}
+
+.zap-content {
+  margin-top: 8px;
 }
