@@ -114,7 +114,7 @@ function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
         </div>
         <div>
           <small>Your comment for {name}</small>
-          <div className="input">
+          <div className="paper">
             <textarea
               placeholder="Nice!"
               value={comment}

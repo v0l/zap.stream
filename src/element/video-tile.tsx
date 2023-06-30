@@ -12,7 +12,7 @@ export function VideoTile({ ev }: { ev: NostrEvent }) {
     const title = ev.tags.find(a => a[0] === "title")?.[1];
     const image = ev.tags.find(a => a[0] === "image")?.[1];
     const status = ev.tags.find(a => a[0] === "status")?.[1];
-    const isLive = status === "live";
+    const host = ev.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev.pubkey;
 
     const link = encodeTLV(NostrPrefix.Address, id, undefined, ev.kind, ev.pubkey);
     return <Link to={`/${link}`} className="video-tile" ref={ref}>
@@ -23,7 +23,7 @@ export function VideoTile({ ev }: { ev: NostrEvent }) {
         </div>
         <h3>{title}</h3>
         <div>
-            {inView && <Profile pubkey={ev.pubkey} />}
+            {inView && <Profile pubkey={host} />}
         </div>
     </Link>
 }
