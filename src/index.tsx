@@ -51,10 +51,6 @@ const router = createBrowserRouter([
         element: <StreamPage />,
       },
       {
-        path: "/:id",
-        element: <StreamPage />,
-      },
-      {
         path: "/providers/:id?",
         element: <StreamProvidersPage />,
       }
