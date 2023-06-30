@@ -1,18 +1,22 @@
 .popout-chat {
-  grid-area: main-content;
+  display: grid;
+  grid-template-areas:
+    "main-content";
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  gap: 0;
 }
 
 .popout-chat .live-chat {
+  padding: 8px 16px;
+  width: 100vw;
+  height: calc(100vh - 32px);
   margin-left: 0;
-}
-
-.popout-chat .live-chat {
-    height: calc(100vh);
-    padding: 10px;
-    border: unset;
-    border-radius: unset;
+  border: unset;
+  border-radius: unset;
 }
 
 .popout-chat .live-chat .messages {
-    overflow: hidden;
+  overflow: hidden;
 }
