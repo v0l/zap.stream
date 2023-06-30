@@ -82,7 +82,8 @@ function ProfileInfo({ link }: { link: NostrLink }) {
           {zapTarget && thisEvent.data && (
             <SendZapsDialog
               lnurl={zapTarget}
-              ev={thisEvent.data}
+              pubkey={host}
+              aTag={`${thisEvent.data.kind}:${thisEvent.data.pubkey}:${findTag(thisEvent.data, "d")}`}
               targetName={getName(thisEvent.data.pubkey, profile)}
             />
           )}

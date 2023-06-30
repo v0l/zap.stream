@@ -12,12 +12,13 @@ import QrCode from "./qr-code";
 
 interface SendZapsProps {
   lnurl: string;
-  ev?: NostrEvent;
+  pubkey?: string;
+  aTag?: string;
   targetName?: string;
   onFinish: () => void;
 }
 
-function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
+function SendZaps({ lnurl, pubkey, aTag, targetName, onFinish }: SendZapsProps) {
   const UsdRate = 30_000;
 
   const satsAmounts = [
@@ -50,15 +51,15 @@ function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
 
     const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
     let zap: NostrEvent | undefined;
-    if (ev) {
+    if (pubkey && aTag) {
       zap = await pub.zap(
         amountInSats * 1000,
-        ev.pubkey,
+        pubkey,
         Relays,
         undefined,
         comment,
         (eb) => {
-          return eb.tag(["a", `${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`]);
+          return eb.tag(["a", aTag]);
         }
       );
     }
@@ -150,11 +151,7 @@ function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
   );
 }
 
-export function SendZapsDialog({
-  lnurl,
-  ev,
-  targetName,
-}: Omit<SendZapsProps, "onFinish">) {
+export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
@@ -168,9 +165,7 @@ export function SendZapsDialog({
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
           <SendZaps
-            lnurl={lnurl}
-            ev={ev}
-            targetName={targetName}
+            {...props}
             onFinish={() => setIsOpen(false)}
           />
         </Dialog.Content>
