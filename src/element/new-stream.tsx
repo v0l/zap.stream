@@ -84,7 +84,7 @@ export function NewStream({
       <h3>{ev ? "Edit Stream" : "New Stream"}</h3>
       <div>
         <p>Title</p>
-        <div className="input">
+        <div className="paper">
           <input
             type="text"
             placeholder="What are we steaming today?"
@@ -95,7 +95,7 @@ export function NewStream({
       </div>
       <div>
         <p>Summary</p>
-        <div className="input">
+        <div className="paper">
           <input
             type="text"
             placeholder="A short description of the content"
@@ -106,7 +106,7 @@ export function NewStream({
       </div>
       <div>
         <p>Cover image</p>
-        <div className="input">
+        <div className="paper">
           <input
             type="text"
             placeholder="https://"
@@ -117,7 +117,7 @@ export function NewStream({
       </div>
       <div>
         <p>Stream Url</p>
-        <div className="input">
+        <div className="paper">
           <input
             type="text"
             placeholder="https://"
