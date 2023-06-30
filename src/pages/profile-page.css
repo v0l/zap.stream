@@ -19,7 +19,7 @@
 
 @media (min-width: 768px){
   .profile-page .banner {
-    max-height: 348.75px;
+    height: 348.75px;
     object-fit: cover;
   }
 }
