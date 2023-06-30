@@ -112,6 +112,7 @@ export function ProfilePage() {
           <div className="profile-actions">
             {zapTarget && (
               <SendZapsDialog
+                ev={liveEvent}
                 lnurl={zapTarget}
                 button={
                   <button className="btn">
