@@ -13,7 +13,7 @@ export function VideoTile({ ev }: { ev: NostrEvent }) {
     const isLive = status === "live";
 
     const link = encodeTLV(NostrPrefix.Address, id, undefined, ev.kind, ev.pubkey);
-    return <Link to={`/live/${link}`} className="video-tile" ref={ref}>
+    return <Link to={`/${link}`} className="video-tile" ref={ref}>
         <div style={{
             backgroundImage: `url(${inView ? image : ""})`
         }}>

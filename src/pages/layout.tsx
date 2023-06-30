@@ -64,7 +64,7 @@ export function LayoutPage() {
       ev.kind,
       ev.pubkey
     );
-    navigate(`/live/${naddr}`);
+    navigate(`/${naddr}`);
   }
 
   return (
