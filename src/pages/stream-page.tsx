@@ -2,7 +2,6 @@ import "./stream-page.css";
 import { useRef } from "react";
 import { parseNostrLink, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
-import moment from "moment";
 
 import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
@@ -11,11 +10,12 @@ import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { useLogin } from "hooks/login";
-import { StreamState, System } from "index";
+import { System } from "index";
 import { SendZapsDialog } from "element/send-zap";
 import type { NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
+import { Tags } from "element/tags";
 
 function ProfileInfo({ link }: { link: NostrLink }) {
   const thisEvent = useEventFeed(link, true);
@@ -24,9 +24,6 @@ function ProfileInfo({ link }: { link: NostrLink }) {
   const profile = useUserProfile(System, thisEvent.data?.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
-  const status = findTag(thisEvent.data, "status");
-  const start = findTag(thisEvent.data, "starts");
-  const isLive = status === "live";
   const isMine = link.author === login?.pubkey;
 
   async function deleteStream() {
@@ -45,22 +42,7 @@ function ProfileInfo({ link }: { link: NostrLink }) {
         <div className="f-grow stream-info">
           <h1>{findTag(thisEvent.data, "title")}</h1>
           <p>{findTag(thisEvent.data, "summary")}</p>
-          <div className="tags">
-            <span className={`pill${isLive ? " live" : ""}`}>{status}</span>
-            {status === StreamState.Planned && (
-              <span className="pill">
-                Starts {moment(Number(start) * 1000).fromNow()}
-              </span>
-            )}
-            {thisEvent.data?.tags
-              .filter((a) => a[0] === "t")
-              .map((a) => a[1])
-              .map((a) => (
-                <span className="pill" key={a}>
-                  {a}
-                </span>
-              ))}
-          </div>
+          {thisEvent?.data && <Tags ev={thisEvent.data} />}
           {isMine && (
             <div className="actions">
               {thisEvent.data && (

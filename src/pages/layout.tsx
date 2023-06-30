@@ -70,8 +70,8 @@ export function LayoutPage() {
   return (
     <div
       className={
-        location.pathname === "/"
-          ? "page home"
+        location.pathname === "/" || location.pathname.startsWith("/p/")
+          ? "page only-content"
           : location.pathname.startsWith("/chat/")
           ? "page chat"
           : "page"

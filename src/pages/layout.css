@@ -11,8 +11,7 @@
   height: 100vh;
 }
 
-
-.page.home {
+.page.only-content {
   display: grid;
   height: 100vh;
   grid-template-areas:
@@ -83,6 +82,10 @@ header {
   header {
     gap: 24px;
     padding: 24px 0 32px 0;
+  }
+
+  .page.only-content {
+    grid-template-rows: 88px 1fr;
   }
 }
 
@@ -171,4 +174,13 @@ button span.hide-on-mobile {
   max-width: 450px;
   max-height: 85vh;
   padding: 25px;
+}
+
+.zap-icon {
+  color: #FF8D2B;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
 }

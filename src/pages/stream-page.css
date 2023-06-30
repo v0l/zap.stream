@@ -43,6 +43,7 @@
 
 .pill.live {
   color: inherit;
+  text-transform: uppercase;
 }
 
 @media (min-width: 1020px) {
@@ -101,11 +102,6 @@
 
 .info p {
   margin: 0 0 12px 0;
-}
-
-.tags {
-  display: flex;
-  gap: 8px;
 }
 
 .actions {

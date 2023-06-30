@@ -1,7 +1,9 @@
 import "./profile.css";
+import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
 import { UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
+import { Icon } from "element/icon";
 import { System } from "index";
 
 export interface ProfileOptions {
@@ -12,12 +14,13 @@ export interface ProfileOptions {
 }
 
 export function getName(pk: string, user?: UserMetadata) {
-  const shortPubkey = hexToBech32("npub", pk).slice(0, 12);
-  if ((user?.display_name?.length ?? 0) > 0) {
-    return user?.display_name;
-  }
+  const npub = hexToBech32("npub", pk);
+  const shortPubkey = npub.slice(0, 12);
   if ((user?.name?.length ?? 0) > 0) {
     return user?.name;
+  }
+  if ((user?.display_name?.length ?? 0) > 0) {
+    return user?.display_name;
   }
   return shortPubkey;
 }
@@ -33,17 +36,32 @@ export function Profile({
 }) {
   const profile = useUserProfile(System, pubkey);
 
-  return (
-    <div className="profile">
-      {(options?.showAvatar ?? true) && (
+  const content = (
+    <>
+      {(options?.showAvatar ?? true) && pubkey === "anon" ? (
+        <Icon size={40} name="zap-filled" />
+      ) : (
         <img
           alt={profile?.name || pubkey}
           className={avatarClassname ? avatarClassname : ""}
           src={profile?.picture ?? ""}
         />
       )}
-      {(options?.showName ?? true) &&
-        (options?.overrideName ?? getName(pubkey, profile))}
-    </div>
+      {(options?.showName ?? true) && (
+        <span>
+          {options?.overrideName ?? pubkey === "anon"
+            ? "Anon"
+            : getName(pubkey, profile)}
+        </span>
+      )}
+    </>
+  );
+
+  return pubkey === "anon" ? (
+    <div className="profile">{content}</div>
+  ) : (
+    <Link to={`/p/${hexToBech32("npub", pubkey)}`} className="profile">
+      {content}
+    </Link>
   );
 }

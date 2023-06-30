@@ -1,6 +1,6 @@
 import "./send-zap.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { LNURL } from "@snort/shared";
 import { NostrEvent, EventPublisher } from "@snort/system";
 import { formatSats } from "../number";
@@ -15,6 +15,7 @@ interface SendZapsProps {
   ev?: NostrEvent;
   targetName?: string;
   onFinish: () => void;
+  button?: ReactNode;
 }
 
 function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
@@ -154,15 +155,20 @@ export function SendZapsDialog({
   lnurl,
   ev,
   targetName,
+  button,
 }: Omit<SendZapsProps, "onFinish">) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className="btn btn-primary zap">
-          <span className="hide-on-mobile">Zap</span>
-          <Icon name="zap" size={16} />
-        </button>
+        {button ? (
+          button
+        ) : (
+          <button className="btn btn-primary zap">
+            <span className="hide-on-mobile">Zap</span>
+            <Icon name="zap" size={16} />
+          </button>
+        )}
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />

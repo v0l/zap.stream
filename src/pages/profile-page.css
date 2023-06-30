@@ -1,0 +1,199 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-page .profile-container {
+  max-width: 620px;
+}
+
+.profile-page .profile-content {
+  position: relative;
+}
+
+.profile-page .banner {
+  width: 100%;
+  border-radius: 16px;
+}
+
+
+@media (min-width: 768px){
+  .profile-page .banner {
+    max-height: 348.75px;
+    object-fit: cover;
+  }
+}
+
+.profile-page .avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 88px;
+  border: 3px solid #FFF;
+  object-fit: cover;
+  margin-left: 16px;
+  margin-top: -40px;
+}
+
+.profile-page .status-indicator {
+  position: absolute;
+  top: 16px;
+  left: 120px;
+}
+
+.profile-page .profile-actions {
+  position: absolute;
+  display: flex;
+  gap: 12px;
+  top: 12px;
+  right: 12px;
+}
+
+.profile-page .profile-information{
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.profile-page .name {
+  margin: 0;
+  color: #FFF;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.profile-page .bio {
+  margin: 0;
+  color: #ADADAD;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.profile-page .icon-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-page .icon-button span {
+  display: none;
+}
+
+@media (min-width: 420px) {
+  .profile-page .icon-button span {
+    display: block;
+  }
+}
+
+.profile-page .zap-button-icon {
+  color: #171717;
+}
+
+.profile-page .pill.live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-page .pill.offline {
+  cursor: default;
+}
+
+.tabs-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 0 16px;
+}
+
+.tabs-list {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.tabs-tab {
+  background: black;
+  background-clip: padding-box;
+  color: white;
+  border: 1px solid black;
+  border-bottom: 1px solid transparent;
+  position: relative;
+  cursor: pointer;
+  height: 52px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-size: 16px;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+@media (max-width: 400px){
+  .tabs-tab {
+    font-size: 14px;
+  }
+}
+.tabs-tab[data-state='active']:before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -1px;
+  background: linear-gradient(94.73deg, #2BD9FF 0%, #8C8DED 47.4%, #F838D9 100%);
+}
+
+.tabs-content {
+  flex-grow: 1;
+  padding-top: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  outline: none;
+}
+.tabs-content:focus {
+  box-shadow: 0 0 0 2px black;
+}
+
+.profile-page .profile-top-zappers {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-page .zapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile-page .zapper .zapper-amount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.profile-page .stream-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-page .stream-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
