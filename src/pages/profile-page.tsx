@@ -13,6 +13,7 @@ import { Profile } from "element/profile";
 import { Icon } from "element/icon";
 import { SendZapsDialog } from "element/send-zap";
 import { VideoTile } from "element/video-tile";
+import { FollowButton } from "element/follow-button";
 import { useProfile } from "hooks/profile";
 import useTopZappers from "hooks/top-zappers";
 import { Text } from "element/text";
@@ -81,8 +82,6 @@ export function ProfilePage() {
     }
   }
 
-  // todo: follow
-
   return (
     <div className="profile-page">
       <div className="profile-container">
@@ -125,6 +124,7 @@ export function ProfilePage() {
                 targetName={profile?.name || link.id}
               />
             )}
+            <FollowButton pubkey={link.id} />
           </div>
           <div className="profile-information">
             {profile?.name && <h1 className="name">{profile.name}</h1>}
