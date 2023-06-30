@@ -154,22 +154,6 @@ button span.hide-on-mobile {
   }
 }
 
-.popout-chat {
-  display: grid;
-  grid-template-areas:
-    "main-content";
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  height: 100vh;
-  gap: 0;
-}
-
-.popout-chat .live-chat {
-  padding: 8px 16px;
-  height: 100vh;
-  width: 100vw; 
-}
-
 .dialog-overlay {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
