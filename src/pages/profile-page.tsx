@@ -1,5 +1,6 @@
 import "./profile-page.css";
 import { useMemo } from "react";
+import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Tabs from "@radix-ui/react-tabs";
 import {
@@ -17,7 +18,6 @@ import { FollowButton } from "element/follow-button";
 import { useProfile } from "hooks/profile";
 import useTopZappers from "hooks/top-zappers";
 import { Text } from "element/text";
-import { Tags } from "element/tags";
 import { StreamState, System } from "index";
 import { findTag } from "utils";
 import { formatSats } from "number";
@@ -165,8 +165,13 @@ export function ProfilePage() {
               <div className="stream-list">
                 {pastStreams.map((ev) => (
                   <div key={ev.id} className="stream-item">
-                    <VideoTile ev={ev} showAuthor={false} />
-                    <Tags ev={ev} />
+                    <VideoTile ev={ev} showAuthor={false} showStatus={false} />
+                    <span className="timestamp">
+                      Streamed on{" "}
+                      {moment(Number(ev.created_at) * 1000).format(
+                        "MMM DD, YYYY"
+                      )}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -175,8 +180,13 @@ export function ProfilePage() {
               <div className="stream-list">
                 {futureStreams.map((ev) => (
                   <div key={ev.id} className="stream-item">
-                    <VideoTile ev={ev} showAuthor={false} />
-                    <Tags ev={ev} />
+                    <VideoTile ev={ev} showAuthor={false} showStatus={false} />
+                    <span className="timestamp">
+                      Scheduled for{" "}
+                      {moment(Number(ev.created_at) * 1000).format(
+                        "MMM DD, YYYY h:mm:ss a"
+                      )}
+                    </span>
                   </div>
                 ))}
               </div>

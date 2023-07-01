@@ -9,9 +9,11 @@ import { StreamState } from "index";
 export function VideoTile({
   ev,
   showAuthor = true,
+  showStatus = true,
 }: {
   ev: NostrEvent;
   showAuthor?: boolean;
+  showStatus?: boolean;
 }) {
   const { inView, ref } = useInView({ triggerOnce: true });
   const id = ev.tags.find((a) => a[0] === "d")?.[1]!;
@@ -29,13 +31,13 @@ export function VideoTile({
     ev.pubkey
   );
   return (
-    <Link to={`/${link}`} className="video-tile" ref={ref}>
+    <Link to={`/live/${link}`} className="video-tile" ref={ref}>
       <div
         style={{
           backgroundImage: `url(${inView ? image : ""})`,
         }}
       >
-        <StatePill state={status as StreamState} />
+        {showStatus && <StatePill state={status as StreamState} />}
       </div>
       <h3>{title}</h3>
       {showAuthor && <div>{inView && <Profile pubkey={host} />}</div>}
