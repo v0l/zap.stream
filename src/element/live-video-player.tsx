@@ -1,5 +1,6 @@
 import Hls from "hls.js";
 import { HTMLProps, useEffect, useMemo, useRef, useState } from "react";
+import { WISH } from "wish";
 
 export enum VideoStatus {
   Online = "online",
@@ -43,6 +44,37 @@ export function LiveVideoPlayer(
       }
     }
   }, [video, streamCached]);
+  return (
+    <>
+      <div className={status}>
+        <div>{status}</div>
+      </div>
+      <video ref={video} {...props} controls={status === VideoStatus.Online} />
+    </>
+  );
+}
+
+export function WebRTCPlayer(props: HTMLProps<HTMLVideoElement> & { stream?: string }) {
+  const video = useRef<HTMLVideoElement>(null);
+  const streamCached = useMemo(() => "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play", [props.stream]);
+  const [status, setStatus] = useState<VideoStatus>();
+  //https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play
+
+  useEffect(() => {
+    if (video.current && streamCached) {
+      const client = new WISH();
+      client.addEventListener("log", console.debug);
+      client.WithEndpoint(streamCached, true)
+
+      client.Play().then(s => {
+        if (video.current) {
+          video.current.srcObject = s;
+        }
+      }).catch(console.error);
+      return () => { client.Disconnect().catch(console.error); }
+    }
+  }, [video, streamCached]);
+
   return (
     <>
       <div className={status}>
