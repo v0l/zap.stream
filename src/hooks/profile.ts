@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import {
   RequestBuilder,
   FlatNoteStore,
+  ParameterizedReplaceableNoteStore,
   NostrLink,
   EventKind,
   parseZap,
@@ -23,11 +24,12 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } = useRequestBuilder<FlatNoteStore>(
-    System,
-    FlatNoteStore,
-    sub
-  );
+  const { data: streamsData } =
+    useRequestBuilder<ParameterizedReplaceableNoteStore>(
+      System,
+      ParameterizedReplaceableNoteStore,
+      sub
+    );
   const streams = streamsData ?? [];
 
   const addresses = useMemo(() => {
