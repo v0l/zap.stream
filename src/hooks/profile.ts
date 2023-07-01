@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import {
   RequestBuilder,
-  ReplaceableNoteStore,
   FlatNoteStore,
   NostrLink,
   EventKind,
@@ -24,20 +23,18 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } = useRequestBuilder<ReplaceableNoteStore>(
+  const { data: streamsData } = useRequestBuilder<FlatNoteStore>(
     System,
-    ReplaceableNoteStore,
+    FlatNoteStore,
     sub
   );
-
-  const streams = Array.isArray(streamsData)
-    ? streamsData
-    : streamsData
-    ? [streamsData]
-    : [];
+  const streams = streamsData ?? [];
 
   const addresses = useMemo(() => {
-    return streams.map((e) => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
+    if (streamsData) {
+      return streamsData.map((e) => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
+    }
+    return [];
   }, [streamsData]);
 
   const zapsSub = useMemo(() => {
