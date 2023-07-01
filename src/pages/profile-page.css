@@ -3,8 +3,11 @@
   justify-content: center;
 }
 
-.profile-page .profile-container {
-  max-width: 620px;
+
+@media (min-width: 768px) {
+  .profile-page .profile-container {
+    width: 620px;
+  }
 }
 
 .profile-page .profile-content {
