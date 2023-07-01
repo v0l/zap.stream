@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import {
   RequestBuilder,
-  ReplaceableNoteStore,
   FlatNoteStore,
+  ParameterizedReplaceableNoteStore,
   NostrLink,
   EventKind,
   parseZap,
@@ -24,20 +24,19 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
-
-  const streams = Array.isArray(streamsData)
-    ? streamsData
-    : streamsData
-    ? [streamsData]
-    : [];
+  const { data: streamsData } =
+    useRequestBuilder<ParameterizedReplaceableNoteStore>(
+      System,
+      ParameterizedReplaceableNoteStore,
+      sub
+    );
+  const streams = streamsData ?? [];
 
   const addresses = useMemo(() => {
-    return streams.map((e) => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
+    if (streamsData) {
+      return streamsData.map((e) => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
+    }
+    return [];
   }, [streamsData]);
 
   const zapsSub = useMemo(() => {

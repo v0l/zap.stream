@@ -69,8 +69,7 @@ export function ProfilePage() {
 
   function goToLive() {
     if (liveEvent) {
-      const d =
-        liveEvent.tags?.find((t: string[]) => t?.at(0) === "d")?.at(1) || "";
+      const d = findTag(liveEvent, "d") || "";
       const naddr = encodeTLV(
         NostrPrefix.Address,
         d,
