@@ -78,7 +78,7 @@ export function ProfilePage() {
         liveEvent.kind,
         liveEvent.pubkey
       );
-      navigate(`/${naddr}`);
+      navigate(`/live/${naddr}`);
     }
   }
 
@@ -111,7 +111,14 @@ export function ProfilePage() {
           <div className="profile-actions">
             {zapTarget && (
               <SendZapsDialog
-                ev={liveEvent}
+                aTag={
+                  liveEvent
+                    ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(
+                        liveEvent,
+                        "d"
+                      )}`
+                    : undefined
+                }
                 lnurl={zapTarget}
                 button={
                   <button className="btn">
@@ -158,7 +165,7 @@ export function ProfilePage() {
               <div className="stream-list">
                 {pastStreams.map((ev) => (
                   <div key={ev.id} className="stream-item">
-                    <VideoTile ev={ev} />
+                    <VideoTile ev={ev} showAuthor={false} />
                     <Tags ev={ev} />
                   </div>
                 ))}
@@ -168,7 +175,7 @@ export function ProfilePage() {
               <div className="stream-list">
                 {futureStreams.map((ev) => (
                   <div key={ev.id} className="stream-item">
-                    <VideoTile ev={ev} />
+                    <VideoTile ev={ev} showAuthor={false} />
                     <Tags ev={ev} />
                   </div>
                 ))}

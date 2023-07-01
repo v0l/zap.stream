@@ -151,7 +151,7 @@
 
 .tabs-content {
   flex-grow: 1;
-  padding-top: 6px;
+  padding: 6px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   outline: none;

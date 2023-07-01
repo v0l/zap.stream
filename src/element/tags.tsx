@@ -10,7 +10,8 @@ export function Tags({ ev }: { ev: TaggedRawEvent }) {
     <div className="tags">
       {status === StreamState.Planned && (
         <span className="pill">
-          Starts {moment(Number(start) * 1000).fromNow()}
+          {status === StreamState.Planned ? "Starts " : ""}
+          {moment(Number(start) * 1000).fromNow()}
         </span>
       )}
       {ev.tags

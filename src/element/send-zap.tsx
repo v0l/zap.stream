@@ -1,24 +1,30 @@
 import "./send-zap.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useEffect, useState, ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { LNURL } from "@snort/shared";
 import { NostrEvent, EventPublisher } from "@snort/system";
 import { formatSats } from "../number";
 import { Icon } from "./icon";
 import AsyncButton from "./async-button";
-import { findTag } from "utils";
 import { Relays } from "index";
 import QrCode from "./qr-code";
 
 interface SendZapsProps {
   lnurl: string;
-  ev?: NostrEvent;
+  pubkey?: string;
+  aTag?: string;
   targetName?: string;
   onFinish: () => void;
   button?: ReactNode;
 }
 
-function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
+function SendZaps({
+  lnurl,
+  pubkey,
+  aTag,
+  targetName,
+  onFinish,
+}: SendZapsProps) {
   const UsdRate = 30_000;
 
   const satsAmounts = [
@@ -51,15 +57,15 @@ function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
 
     const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
     let zap: NostrEvent | undefined;
-    if (ev) {
+    if (pubkey && aTag) {
       zap = await pub.zap(
         amountInSats * 1000,
-        ev.pubkey,
+        pubkey,
         Relays,
         undefined,
         comment,
         (eb) => {
-          return eb.tag(["a", `${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`]);
+          return eb.tag(["a", aTag]);
         }
       );
     }
@@ -115,7 +121,7 @@ function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
         </div>
         <div>
           <small>Your comment for {name}</small>
-          <div className="input">
+          <div className="paper">
             <textarea
               placeholder="Nice!"
               value={comment}
@@ -151,18 +157,13 @@ function SendZaps({ lnurl, ev, targetName, onFinish }: SendZapsProps) {
   );
 }
 
-export function SendZapsDialog({
-  lnurl,
-  ev,
-  targetName,
-  button,
-}: Omit<SendZapsProps, "onFinish">) {
+export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        {button ? (
-          button
+        {props.button ? (
+          props.button
         ) : (
           <button className="btn btn-primary zap">
             <span className="hide-on-mobile">Zap</span>
@@ -173,12 +174,7 @@ export function SendZapsDialog({
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
-          <SendZaps
-            lnurl={lnurl}
-            ev={ev}
-            targetName={targetName}
-            onFinish={() => setIsOpen(false)}
-          />
+          <SendZaps {...props} onFinish={() => setIsOpen(false)} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

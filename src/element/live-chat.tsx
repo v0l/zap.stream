@@ -217,7 +217,7 @@ function WriteMessage({ link }: { link: NostrLink }) {
 
   return (
     <>
-      <div className="input">
+      <div className="paper">
         <Textarea
           emojis={emojis}
           value={chat}

@@ -102,7 +102,7 @@ header .logo {
     cursor: pointer;
 }
 
-header .input {
+header .paper {
     min-width: 300px;
     height: 32px;
 }
@@ -134,11 +134,11 @@ header .profile img {
     gap: 8px;
   }
 
-  header .input {
+  header .paper {
     min-width: unset;
   }
 
-  header .input .search-input {
+  header .paper .search-input {
     display: none;
   }
 

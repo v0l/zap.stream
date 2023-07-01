@@ -11,6 +11,7 @@ import { ProfilePage } from "pages/profile-page";
 import { StreamPage } from "pages/stream-page";
 import { ChatPopout } from "pages/chat-popout";
 import { LoginStore } from "login";
+import { StreamProvidersPage } from "pages/providers";
 
 export enum StreamState {
   Live = "live",
@@ -47,12 +48,12 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/:id",
+        path: "/live/:id",
         element: <StreamPage />,
       },
       {
-        path: "/:id",
-        element: <StreamPage />,
+        path: "/providers/:id?",
+        element: <StreamProvidersPage />,
       },
     ],
   },
