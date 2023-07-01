@@ -9,7 +9,6 @@ import {
 } from "@snort/system";
 import {
   useState,
-  useMemo,
   useEffect,
   type KeyboardEvent,
   type ChangeEvent,
@@ -27,43 +26,29 @@ import Spinner from "./spinner";
 import { useLogin } from "hooks/login";
 import { useUserProfile } from "@snort/system-react";
 import { formatSats } from "number";
+import useTopZappers from "hooks/top-zappers";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
   showHeader?: boolean;
 }
 
-function totalZapped(pubkey: string, zaps: ParsedZap[]) {
-  return zaps
-    .filter((z) => (z.anonZap ? pubkey === "anon" : z.sender === pubkey))
-    .reduce((acc, z) => acc + z.amount, 0);
-}
-
 function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
-  const zappers = zaps
-    .map((z) => (z.anonZap ? "anon" : z.sender))
-    .map((p) => p as string);
-
-  const sortedZappers = useMemo(() => {
-    const sorted = [...new Set([...zappers])];
-    sorted.sort((a, b) => totalZapped(b, zaps) - totalZapped(a, zaps));
-    return sorted.slice(0, 3);
-  }, [zaps, zappers]);
+  const zappers = useTopZappers(zaps).slice(0, 3);
 
   return (
     <>
       <h3>Top zappers</h3>
       <div className="top-zappers-container">
-        {sortedZappers.map((pk, idx) => {
-          const total = totalZapped(pk, zaps);
+        {zappers.map(({ pubkey, total }, idx) => {
           return (
-            <div className="top-zapper" key={pk}>
-              {pk === "anon" ? (
+            <div className="top-zapper" key={pubkey}>
+              {pubkey === "anon" ? (
                 <p className="top-zapper-name">Anon</p>
               ) : (
-                <Profile pubkey={pk} options={{ showName: false }} />
+                <Profile pubkey={pubkey} options={{ showName: false }} />
               )}
-              <Icon name="zap" className="zap-icon" />
+              <Icon name="zap-filled" className="zap-icon" />
               <p className="top-zapper-amount">{formatSats(total)}</p>
             </div>
           );
@@ -132,7 +117,7 @@ function ChatMessage({ ev, link }: { ev: TaggedRawEvent; link: NostrLink }) {
   return (
     <div className={`message${link.author === ev.pubkey ? " streamer" : ""}`}>
       <Profile pubkey={ev.pubkey} />
-      <Text ev={ev} />
+      <Text content={ev.content} tags={ev.tags} />
     </div>
   );
 }
@@ -159,7 +144,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   return (
     <div className="zap-container">
       <div className="zap">
-        <Icon name="zap" className="zap-icon" />
+        <Icon name="zap-filled" className="zap-icon" />
         <Profile
           pubkey={parsed.anonZap ? "" : parsed.sender ?? ""}
           options={{
@@ -167,7 +152,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
             overrideName: parsed.anonZap ? "Anon" : undefined,
           }}
         />
-        zapped you
+        zapped
         <span className="zap-amount">{formatSats(parsed.amount)}</span>
         sats
       </div>
@@ -239,7 +224,6 @@ function WriteMessage({ link }: { link: NostrLink }) {
           onKeyDown={onKeyDown}
           onChange={onChange}
         />
-        <Icon name="message" size={15} />
       </div>
       <AsyncButton onClick={sendChatMessage} className="btn btn-border">
         Send

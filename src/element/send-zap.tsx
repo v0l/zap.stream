@@ -1,12 +1,11 @@
 import "./send-zap.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { LNURL } from "@snort/shared";
 import { NostrEvent, EventPublisher } from "@snort/system";
 import { formatSats } from "../number";
 import { Icon } from "./icon";
 import AsyncButton from "./async-button";
-import { findTag } from "utils";
 import { Relays } from "index";
 import QrCode from "./qr-code";
 
@@ -16,9 +15,16 @@ interface SendZapsProps {
   aTag?: string;
   targetName?: string;
   onFinish: () => void;
+  button?: ReactNode;
 }
 
-function SendZaps({ lnurl, pubkey, aTag, targetName, onFinish }: SendZapsProps) {
+function SendZaps({
+  lnurl,
+  pubkey,
+  aTag,
+  targetName,
+  onFinish,
+}: SendZapsProps) {
   const UsdRate = 30_000;
 
   const satsAmounts = [
@@ -156,18 +162,19 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className="btn btn-primary zap">
-          <span className="hide-on-mobile">Zap</span>
-          <Icon name="zap" size={16} />
-        </button>
+        {props.button ? (
+          props.button
+        ) : (
+          <button className="btn btn-primary zap">
+            <span className="hide-on-mobile">Zap</span>
+            <Icon name="zap" size={16} />
+          </button>
+        )}
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
-          <SendZaps
-            {...props}
-            onFinish={() => setIsOpen(false)}
-          />
+          <SendZaps {...props} onFinish={() => setIsOpen(false)} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

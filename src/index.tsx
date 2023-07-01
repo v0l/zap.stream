@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { RootPage } from "./pages/root";
 import { LayoutPage } from "pages/layout";
+import { ProfilePage } from "pages/profile-page";
 import { StreamPage } from "pages/stream-page";
 import { ChatPopout } from "pages/chat-popout";
 import { LoginStore } from "login";
@@ -15,7 +16,7 @@ import { StreamProvidersPage } from "pages/providers";
 export enum StreamState {
   Live = "live",
   Ended = "ended",
-  Planned = "planned"
+  Planned = "planned",
 }
 
 export const System = new NostrSystem({});
@@ -43,8 +44,8 @@ const router = createBrowserRouter([
         element: <RootPage />,
       },
       {
-        path: "/:id",
-        element: <StreamPage />,
+        path: "/p/:npub",
+        element: <ProfilePage />,
       },
       {
         path: "/live/:id",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "/providers/:id?",
         element: <StreamProvidersPage />,
-      }
+      },
     ],
   },
   {

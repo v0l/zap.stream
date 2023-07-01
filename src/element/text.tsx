@@ -1,5 +1,5 @@
 import { useMemo, type ReactNode } from "react";
-import { TaggedRawEvent, validateNostrLink } from "@snort/system";
+import { validateNostrLink } from "@snort/system";
 import { splitByUrl } from "utils";
 import { Emoji } from "./emoji";
 import { HyperText } from "./hypertext";
@@ -74,11 +74,11 @@ function extractLinks(fragments: Fragment[]) {
     .flat();
 }
 
-export function Text({ ev }: { ev: TaggedRawEvent }) {
+export function Text({ content, tags }: { content: string; tags: string[][] }) {
   // todo: RTL langugage support
   const element = useMemo(() => {
-    return <span>{transformText([ev.content], ev.tags)}</span>;
-  }, [ev]);
+    return <span>{transformText([content], tags)}</span>;
+  }, [content, tags]);
 
   return <>{element}</>;
 }
