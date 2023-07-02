@@ -22,5 +22,38 @@ export function useLiveChatFeed(link: NostrLink) {
     return rb;
   }, [link]);
 
-  return useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
+  const feed = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
+
+  const messages = useMemo(() => {
+    return (feed.data ?? []).filter((ev) => ev.kind === LIVE_STREAM_CHAT);
+  }, [feed.data]);
+  const zaps = useMemo(() => {
+    return (feed.data ?? []).filter((ev) => ev.kind === EventKind.ZapReceipt);
+  }, [feed.data]);
+
+  const etags = useMemo(() => {
+    return messages.map((e) => e.id);
+  }, [messages]);
+
+  const esub = useMemo(() => {
+    if (etags.length === 0) return null;
+    const rb = new RequestBuilder(`msg-zaps:${link.id}:${link.author}`);
+    rb.withOptions({
+      leaveOpen: true,
+    });
+    rb.withFilter()
+      .kinds([EventKind.Reaction, EventKind.ZapReceipt])
+      .tag("e", etags);
+    return rb;
+  }, [etags]);
+
+  const relatedZaps = useRequestBuilder<FlatNoteStore>(
+    System,
+    FlatNoteStore,
+    esub
+  );
+
+  const reactions = relatedZaps.data ?? [];
+
+  return { messages, zaps, reactions };
 }

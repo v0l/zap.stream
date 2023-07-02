@@ -92,6 +92,7 @@
 
 .live-chat .message {
   word-wrap: break-word;
+  position: relative;
 }
 
 .live-chat .message .profile {
@@ -216,4 +217,54 @@
 
 .zap-content {
   margin-top: 8px;
+}
+
+.zap-pill {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  padding: 0 4px;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 8px;
+  background: #434343;
+  width: fit-content;
+}
+
+.zap-pill-icon {
+  width: 12px;
+  height: 12px;
+  color: #FF8D2B;
+}
+
+.zap-pill-amount {
+  color: #FFF;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: lowercase;
+}
+
+.message-zap-button {
+  cursor: pointer;
+  position: absolute;
+  left: 12px;
+  top: -6px;
+  background: transparent;
+  border: none;
+  display: flex;
+  background: #434343;
+  border-radius: 8px;
+  width: 16px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-zap-button-icon {
+  color: #FF8D2B;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }

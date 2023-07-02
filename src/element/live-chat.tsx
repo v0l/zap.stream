@@ -10,9 +10,13 @@ import {
 import {
   useState,
   useEffect,
+  useMemo,
+  useRef,
   type KeyboardEvent,
   type ChangeEvent,
+  type LegacyRef,
 } from "react";
+import { useHover } from "usehooks-ts";
 
 import useEmoji from "hooks/emoji";
 import { System } from "index";
@@ -23,10 +27,12 @@ import { Icon } from "./icon";
 import { Text } from "./text";
 import { Textarea } from "./textarea";
 import Spinner from "./spinner";
+import { SendZapsDialog } from "./send-zap";
 import { useLogin } from "hooks/login";
 import { useUserProfile } from "@snort/system-react";
 import { formatSats } from "number";
 import useTopZappers from "hooks/top-zappers";
+import { LIVE_STREAM_CHAT } from "const";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -67,13 +73,22 @@ export function LiveChat({
   options?: LiveChatOptions;
   height?: number;
 }) {
-  const messages = useLiveChatFeed(link);
+  const feed = useLiveChatFeed(link);
   const login = useLogin();
-  const events = messages.data ?? [];
-  const zaps = events
+  const zaps = feed.zaps
     .filter((ev) => ev.kind === EventKind.ZapReceipt)
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
+  const reactions = feed.reactions
+    .filter((ev) => ev.kind === EventKind.ZapReceipt)
+    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
+    .filter((z) => z && z.valid);
+  const events = useMemo(() => {
+    return [...feed.messages, ...feed.zaps].sort(
+      (a, b) => b.created_at - a.created_at
+    );
+  }, [feed.messages, feed.zaps]);
+
   return (
     <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
       {(options?.showHeader ?? true) && (
@@ -85,20 +100,26 @@ export function LiveChat({
         </div>
       )}
       <div className="messages">
-        {[...(messages.data ?? [])]
-          .sort((a, b) => b.created_at - a.created_at)
-          .map((a) => {
-            switch (a.kind) {
-              case 1311: {
-                return <ChatMessage ev={a} link={link} key={a.id} />;
-              }
-              case EventKind.ZapReceipt: {
-                return <ChatZap ev={a} key={a.id} />;
-              }
+        {events.map((a) => {
+          switch (a.kind) {
+            case LIVE_STREAM_CHAT: {
+              return (
+                <ChatMessage
+                  streamer={link.author ?? ""}
+                  ev={a}
+                  link={link}
+                  key={a.id}
+                  reactions={reactions}
+                />
+              );
             }
-            return null;
-          })}
-        {messages.data === undefined && <Spinner />}
+            case EventKind.ZapReceipt: {
+              return <ChatZap streamer={link.author ?? ""} ev={a} key={a.id} />;
+            }
+          }
+          return null;
+        })}
+        {feed.messages.length === 0 && <Spinner />}
       </div>
       {(options?.canWrite ?? true) && (
         <div className="write-message">
@@ -113,16 +134,72 @@ export function LiveChat({
   );
 }
 
-function ChatMessage({ ev, link }: { ev: TaggedRawEvent; link: NostrLink }) {
+function ChatMessage({
+  streamer,
+  ev,
+  link,
+  reactions,
+}: {
+  streamer: string;
+  ev: TaggedRawEvent;
+  link: NostrLink;
+  reactions: ParsedZap[];
+}) {
+  const ref = useRef(null);
+  const isHovering = useHover(ref);
+  const profile = useUserProfile(System, ev.pubkey);
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const totalZaps = useMemo(() => {
+    const messageZaps = reactions.filter((z) => z.event === ev.id);
+    return messageZaps.reduce((acc, z) => acc + z.amount, 0);
+  }, [reactions, ev]);
   return (
-    <div className={`message${link.author === ev.pubkey ? " streamer" : ""}`}>
-      <Profile pubkey={ev.pubkey} />
-      <Text content={ev.content} tags={ev.tags} />
-    </div>
+    <>
+      <div
+        className={`message${link.author === ev.pubkey ? " streamer" : ""}`}
+        ref={ref}
+      >
+        {zapTarget && (
+          <SendZapsDialog
+            lnurl={zapTarget}
+            aTag={
+              streamer === ev.pubkey
+                ? `${link.kind}:${link.author}:${link.id}`
+                : undefined
+            }
+            eTag={ev.id}
+            pubkey={ev.pubkey}
+            button={
+              isHovering ? (
+                <div className="message-zap-container">
+                  <button className="message-zap-button">
+                    <Icon
+                      name="zap-filled"
+                      className="message-zap-button-icon"
+                    />
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )
+            }
+            targetName={profile?.name || ev.pubkey}
+          />
+        )}
+        <Profile pubkey={ev.pubkey} />
+        <Text content={ev.content} tags={ev.tags} />
+        {totalZaps !== 0 && (
+          <div className="zap-pill">
+            <Icon name="zap-filled" className="zap-pill-icon" />
+            <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
-function ChatZap({ ev }: { ev: TaggedRawEvent }) {
+function ChatZap({ streamer, ev }: { streamer: string; ev: TaggedRawEvent }) {
   const parsed = parseZap(ev, System.ProfileLoader.Cache);
   useUserProfile(System, parsed.anonZap ? undefined : parsed.sender);
 
@@ -141,7 +218,8 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
   if (!parsed.valid) {
     return null;
   }
-  return (
+
+  return parsed.receiver === streamer ? (
     <div className="zap-container">
       <div className="zap">
         <Icon name="zap-filled" className="zap-icon" />
@@ -158,7 +236,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
       </div>
       {parsed.content && <div className="zap-content">{parsed.content}</div>}
     </div>
-  );
+  ) : null;
 }
 
 function WriteMessage({ link }: { link: NostrLink }) {
@@ -184,7 +262,7 @@ function WriteMessage({ link }: { link: NostrLink }) {
         const emoji = [...emojiNames].map((name) =>
           emojis.find((e) => e.at(1) === name)
         );
-        eb.kind(1311 as EventKind)
+        eb.kind(LIVE_STREAM_CHAT as EventKind)
           .content(chat)
           .tag(["a", `${link.kind}:${link.author}:${link.id}`, "", "root"])
           .processContent();
