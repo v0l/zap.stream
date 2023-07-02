@@ -33,6 +33,7 @@ import { useUserProfile } from "@snort/system-react";
 import { formatSats } from "number";
 import useTopZappers from "hooks/top-zappers";
 import { LIVE_STREAM_CHAT } from "const";
+import { findTag } from "utils";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -79,10 +80,6 @@ export function LiveChat({
     .filter((ev) => ev.kind === EventKind.ZapReceipt)
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
-  const reactions = feed.reactions
-    .filter((ev) => ev.kind === EventKind.ZapReceipt)
-    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z && z.valid);
   const events = useMemo(() => {
     return [...feed.messages, ...feed.zaps].sort(
       (a, b) => b.created_at - a.created_at
@@ -109,7 +106,7 @@ export function LiveChat({
                   ev={a}
                   link={link}
                   key={a.id}
-                  reactions={reactions}
+                  reactions={feed.reactions}
                 />
               );
             }
@@ -134,6 +131,16 @@ export function LiveChat({
   );
 }
 
+function emojifyReaction(reaction: string) {
+  if (reaction === "+") {
+    return "💜";
+  }
+  if (reaction === "-") {
+    return "👎";
+  }
+  return reaction;
+}
+
 function ChatMessage({
   streamer,
   ev,
@@ -143,16 +150,28 @@ function ChatMessage({
   streamer: string;
   ev: TaggedRawEvent;
   link: NostrLink;
-  reactions: ParsedZap[];
+  reactions: readonly TaggedRawEvent[];
 }) {
   const ref = useRef(null);
   const isHovering = useHover(ref);
   const profile = useUserProfile(System, ev.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const zaps = reactions
+    .filter((ev) => ev.kind === EventKind.ZapReceipt)
+    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
+    .filter((z) => z && z.valid);
+  const emojis = useMemo(() => {
+    const emojified = reactions
+      .filter((e) => e.kind === EventKind.Reaction && findTag(e, "e") === ev.id)
+      .map((ev) => emojifyReaction(ev.content));
+    return [...new Set(emojified)];
+  }, [ev, reactions]);
+  const hasReactions = emojis.length > 0;
   const totalZaps = useMemo(() => {
-    const messageZaps = reactions.filter((z) => z.event === ev.id);
+    const messageZaps = zaps.filter((z) => z.event === ev.id);
     return messageZaps.reduce((acc, z) => acc + z.amount, 0);
   }, [reactions, ev]);
+  const hasZaps = totalZaps > 0;
   return (
     <>
       <div
@@ -188,10 +207,17 @@ function ChatMessage({
         )}
         <Profile pubkey={ev.pubkey} />
         <Text content={ev.content} tags={ev.tags} />
-        {totalZaps !== 0 && (
-          <div className="zap-pill">
-            <Icon name="zap-filled" className="zap-pill-icon" />
-            <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
+        {(hasReactions || hasZaps) && (
+          <div className="message-reactions">
+            {hasZaps && (
+              <div className="zap-pill">
+                <Icon name="zap-filled" className="zap-pill-icon" />
+                <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
+              </div>
+            )}
+            {emojis.map((e) => (
+              <span className="message-reaction">{e}</span>
+            ))}
           </div>
         )}
       </div>

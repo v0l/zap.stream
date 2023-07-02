@@ -222,7 +222,6 @@
 .zap-pill {
   display: flex;
   align-items: center;
-  margin-top: 4px;
   padding: 0 4px;
   justify-content: center;
   gap: 2px;
@@ -235,6 +234,18 @@
   width: 12px;
   height: 12px;
   color: #FF8D2B;
+}
+
+.message-reactions {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.message-reaction {
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .zap-pill-amount {
