@@ -146,7 +146,7 @@ function ChatZap({ ev }: { ev: TaggedRawEvent }) {
       <div className="zap">
         <Icon name="zap-filled" className="zap-icon" />
         <Profile
-          pubkey={parsed.anonZap ? "" : parsed.sender ?? ""}
+          pubkey={parsed.anonZap ? "anon" : parsed.sender ?? "anon"}
           options={{
             showAvatar: !parsed.anonZap,
             overrideName: parsed.anonZap ? "Anon" : undefined,

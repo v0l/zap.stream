@@ -35,19 +35,22 @@ export function Profile({
   options?: ProfileOptions;
 }) {
   const profile = useUserProfile(System, pubkey);
+  const showAvatar = options?.showAvatar ?? true;
+  const showName = options?.showName ?? true;
 
   const content = (
     <>
-      {(options?.showAvatar ?? true) && pubkey === "anon" ? (
-        <Icon size={40} name="zap-filled" />
-      ) : (
-        <img
-          alt={profile?.name || pubkey}
-          className={avatarClassname ? avatarClassname : ""}
-          src={profile?.picture ?? ""}
-        />
-      )}
-      {(options?.showName ?? true) && (
+      {showAvatar &&
+        (pubkey === "anon" ? (
+          <Icon size={40} name="zap-filled" />
+        ) : (
+          <img
+            alt={profile?.name || pubkey}
+            className={avatarClassname ? avatarClassname : ""}
+            src={profile?.picture ?? ""}
+          />
+        ))}
+      {showName && (
         <span>
           {options?.overrideName ?? pubkey === "anon"
             ? "Anon"
