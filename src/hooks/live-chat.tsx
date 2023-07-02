@@ -37,7 +37,7 @@ export function useLiveChatFeed(link: NostrLink) {
 
   const esub = useMemo(() => {
     if (etags.length === 0) return null;
-    const rb = new RequestBuilder(`msg-zaps:${link.id}:${link.author}`);
+    const rb = new RequestBuilder(`reactions:${link.id}:${link.author}`);
     rb.withOptions({
       leaveOpen: true,
     });
@@ -47,13 +47,13 @@ export function useLiveChatFeed(link: NostrLink) {
     return rb;
   }, [etags]);
 
-  const relatedZaps = useRequestBuilder<FlatNoteStore>(
+  const reactionsSub = useRequestBuilder<FlatNoteStore>(
     System,
     FlatNoteStore,
     esub
   );
 
-  const reactions = relatedZaps.data ?? [];
+  const reactions = reactionsSub.data ?? [];
 
   return { messages, zaps, reactions };
 }
