@@ -262,7 +262,7 @@
   border: none;
   cursor: pointer;
   height: 24px;
-  padding: 0px 4px;
+  padding: 4px;
   justify-content: center;
   align-items: center;
   gap: 2px;
@@ -314,4 +314,27 @@
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+}
+
+.message-composer {
+  display: flex;
+  flex-direction: column;
+}
+
+.write-message-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.write-message-container .paper {
+  flex: 1;
+}
+
+.write-emoji-button {
+  color: #FFFFFF80;
+  cursor: pointer;
+}
+.write-emoji-button:hover {
+  color: white;
 }

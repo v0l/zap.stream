@@ -14,13 +14,13 @@ import {
   useRef,
   type KeyboardEvent,
   type ChangeEvent,
-  type LegacyRef,
+  type RefObject,
 } from "react";
 import { useHover, useOnClickOutside, useMediaQuery } from "usehooks-ts";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import useEmoji from "hooks/emoji";
+import useEmoji, { type EmojiPack } from "hooks/emoji";
 import { System } from "index";
 import { useLiveChatFeed } from "hooks/live-chat";
 import AsyncButton from "./async-button";
@@ -36,6 +36,71 @@ import { formatSats } from "number";
 import useTopZappers from "hooks/top-zappers";
 import { LIVE_STREAM_CHAT } from "const";
 import { findTag } from "utils";
+
+interface EmojiPickerProps {
+  topOffset: number;
+  leftOffset: number;
+  emojiPacks?: EmojiPack[];
+  onEmojiSelect: (e: Emoji) => void;
+  onClickOutside: () => void;
+  height?: number;
+  ref: RefObject<HTMLDivElement>;
+}
+
+function EmojiPicker({
+  topOffset,
+  leftOffset,
+  onEmojiSelect,
+  onClickOutside,
+  emojiPacks = [],
+  height = 300,
+  ref,
+}: EmojiPickerProps) {
+  const customEmojiList = emojiPacks.map((pack) => {
+    return {
+      id: pack.address,
+      name: pack.name,
+      emojis: pack.emojis.map((e) => {
+        const [, name, url] = e;
+        return {
+          id: name,
+          name,
+          skins: [{ src: url }],
+        };
+      }),
+    };
+  });
+  return (
+    <>
+      <div
+        style={{
+          position: "fixed",
+          top: topOffset - height - 10,
+          left: leftOffset,
+          zIndex: 1,
+        }}
+        ref={ref}
+      >
+        <style>
+          {`
+            em-emoji-picker { max-height: ${height}px; }
+            `}
+        </style>
+        <Picker
+          data={data}
+          custom={customEmojiList}
+          perLine={7}
+          previewPosition="none"
+          skinTonePosition="search"
+          theme="dark"
+          onEmojiSelect={onEmojiSelect}
+          onClickOutside={onClickOutside}
+          maxFrequentRows={0}
+        />
+      </div>
+    </>
+  );
+}
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -144,7 +209,8 @@ function emojifyReaction(reaction: string) {
 }
 
 interface Emoji {
-  native: string;
+  id: string;
+  native?: string;
 }
 
 function ChatMessage({
@@ -198,7 +264,7 @@ function ChatMessage({
       const pub = await EventPublisher.nip7();
       const reply = await pub?.generic((eb) => {
         eb.kind(EventKind.Reaction)
-          .content(emoji.native)
+          .content(emoji.native || "+1")
           .tag(["e", ev.id])
           .tag(["p", ev.pubkey]);
         return eb;
@@ -214,6 +280,11 @@ function ChatMessage({
   const topOffset = ref.current?.getBoundingClientRect().top;
   // @ts-expect-error
   const leftOffset = ref.current?.getBoundingClientRect().left;
+
+  function pickEmoji(ev: any) {
+    ev.stopPropagation();
+    setShowEmojiPicker(!showEmojiPicker);
+  }
 
   return (
     <>
@@ -274,39 +345,20 @@ function ChatMessage({
                 targetName={profile?.name || ev.pubkey}
               />
             )}
-            <button
-              className="message-zap-button"
-              onClick={() => setShowEmojiPicker(true)}
-            >
+            <button className="message-zap-button" onClick={pickEmoji}>
               <Icon name="face" className="message-zap-button-icon" />
             </button>
           </div>
         )}
       </div>
       {showEmojiPicker && (
-        <div
-          style={{
-            position: "fixed",
-            top: topOffset - 310,
-            left: leftOffset,
-            zIndex: 1,
-          }}
+        <EmojiPicker
+          topOffset={topOffset}
+          leftOffset={leftOffset}
+          onEmojiSelect={onEmojiSelect}
+          onClickOutside={() => setShowEmojiPicker(false)}
           ref={emojiRef}
-        >
-          <style>
-            {`
-            em-emoji-picker { max-height: 300px; }
-            `}
-          </style>
-          <Picker
-            data={data}
-            perLine={7}
-            previewPosition="none"
-            skinTonePosition="search"
-            theme="dark"
-            onEmojiSelect={onEmojiSelect}
-          />
-        </div>
+        />
       )}
     </>
   );
@@ -353,12 +405,22 @@ function ChatZap({ streamer, ev }: { streamer: string; ev: TaggedRawEvent }) {
 }
 
 function WriteMessage({ link }: { link: NostrLink }) {
+  const ref = useRef(null);
+  const emojiRef = useRef(null);
   const [chat, setChat] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
-  const userEmojis = useEmoji(login!.pubkey);
-  const channelEmojis = useEmoji(link.author!);
+  const userEmojiPacks = useEmoji(login!.pubkey);
+  const userEmojis = userEmojiPacks.map((pack) => pack.emojis).flat();
+  const channelEmojiPacks = useEmoji(link.author!);
+  const channelEmojis = channelEmojiPacks.map((pack) => pack.emojis).flat();
   const emojis = userEmojis.concat(channelEmojis);
   const names = emojis.map((t) => t.at(1));
+  const allEmojiPacks = userEmojiPacks.concat(channelEmojiPacks);
+  // @ts-expect-error
+  const topOffset = ref.current?.getBoundingClientRect().top;
+  // @ts-expect-error
+  const leftOffset = ref.current?.getBoundingClientRect().left;
 
   async function sendChatMessage() {
     const pub = await EventPublisher.nip7();
@@ -394,6 +456,15 @@ function WriteMessage({ link }: { link: NostrLink }) {
     }
   }
 
+  function onEmojiSelect(emoji: Emoji) {
+    if (emoji.native) {
+      setChat(`${chat}${emoji.native}`);
+    } else {
+      setChat(`${chat}:${emoji.id}:`);
+    }
+    setShowEmojiPicker(false);
+  }
+
   async function onKeyDown(e: KeyboardEvent) {
     if (e.code === "Enter") {
       e.preventDefault();
@@ -406,15 +477,33 @@ function WriteMessage({ link }: { link: NostrLink }) {
     setChat(e.target.value);
   }
 
+  function pickEmoji(ev: any) {
+    ev.stopPropagation();
+    setShowEmojiPicker(!showEmojiPicker);
+  }
+
   return (
     <>
-      <div className="paper">
+      <div className="paper" ref={ref}>
         <Textarea
           emojis={emojis}
           value={chat}
           onKeyDown={onKeyDown}
           onChange={onChange}
         />
+        <div onClick={pickEmoji}>
+          <Icon name="face" className="write-emoji-button" />
+        </div>
+        {showEmojiPicker && (
+          <EmojiPicker
+            topOffset={topOffset}
+            leftOffset={leftOffset}
+            emojiPacks={allEmojiPacks}
+            onEmojiSelect={onEmojiSelect}
+            onClickOutside={() => setShowEmojiPicker(false)}
+            ref={emojiRef}
+          />
+        )}
       </div>
       <AsyncButton onClick={sendChatMessage} className="btn btn-border">
         Send
