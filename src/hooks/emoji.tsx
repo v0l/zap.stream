@@ -23,7 +23,7 @@ export default function useEmoji(pubkey: string) {
 
     rb.withFilter()
       .authors([pubkey])
-      .kinds([10030 as EventKind, 30030 as EventKind]);
+      .kinds([10030 as EventKind]);
 
     return rb;
   }, [pubkey]);
@@ -59,8 +59,7 @@ export default function useEmoji(pubkey: string) {
     rb.withFilter()
       .kinds([30030 as EventKind])
       .authors(authors)
-      // @ts-expect-error
-      .tag(["d", identifiers]);
+      .tag("d", identifiers);
 
     return rb;
   }, [pubkey, related]);
@@ -71,6 +70,7 @@ export default function useEmoji(pubkey: string) {
       ParameterizedReplaceableNoteStore,
       subRelated
     );
+
   const emojiPacks = useMemo(() => {
     return relatedData ?? [];
   }, [relatedData]);
