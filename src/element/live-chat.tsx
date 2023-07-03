@@ -16,7 +16,7 @@ import {
   type ChangeEvent,
   type RefObject,
 } from "react";
-import { useOnClickOutside, useMediaQuery } from "usehooks-ts";
+import { useHover, useOnClickOutside, useMediaQuery } from "usehooks-ts";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -227,6 +227,7 @@ function ChatMessage({
   const ref = useRef(null);
   const emojiRef = useRef(null);
   const isTablet = useMediaQuery("(max-width: 1020px)");
+  const isHovering = useHover(ref);
   const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const profile = useUserProfile(System, ev.pubkey);
@@ -316,14 +317,15 @@ function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog ? "flex" : "none",
+                    display: showZapDialog || isHovering ? "flex" : "none",
                   }
                 : {
                     position: "fixed",
                     top: topOffset - 12,
                     left: leftOffset - 32,
-                    opacity: showZapDialog ? 1 : 0,
-                    pointerEvents: showZapDialog ? "auto" : "none",
+                    opacity: showZapDialog || isHovering ? 1 : 0,
+                    pointerEvents:
+                      showZapDialog || isHovering ? "auto" : "none",
                   }
             }
           >
