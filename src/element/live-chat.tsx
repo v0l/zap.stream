@@ -216,7 +216,9 @@ function ChatMessage({
               </div>
             )}
             {emojis.map((e) => (
-              <span className="message-reaction">{e}</span>
+              <div className="message-reaction-container">
+                <span className="message-reaction">{e}</span>
+              </div>
             ))}
           </div>
         )}
