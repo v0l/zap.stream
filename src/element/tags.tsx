@@ -1,13 +1,21 @@
+import type { ReactNode } from "react";
 import moment from "moment";
 import { TaggedRawEvent } from "@snort/system";
 import { StreamState } from "index";
 import { findTag } from "utils";
 
-export function Tags({ ev }: { ev: TaggedRawEvent }) {
+export function Tags({
+  children,
+  ev,
+}: {
+  children?: ReactNode;
+  ev: TaggedRawEvent;
+}) {
   const status = findTag(ev, "status");
   const start = findTag(ev, "starts");
   return (
     <div className="tags">
+      {children}
       {status === StreamState.Planned && (
         <span className="pill">
           {status === StreamState.Planned ? "Starts " : ""}
