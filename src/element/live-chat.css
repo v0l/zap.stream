@@ -220,14 +220,14 @@
 }
 
 .zap-pill {
-  display: flex;
-  align-items: center;
-  padding: 0 4px;
-  justify-content: center;
-  gap: 2px;
-  border-radius: 8px;
+  border-radius: 100px;
   background: rgba(255, 255, 255, 0.10);
   width: fit-content;
+  display: flex;
+  height: 24px;
+  padding: 0px 4px;
+  align-items: center;
+  gap: 2px;
 }
 
 .zap-pill-icon {
@@ -300,15 +300,18 @@
 }
 
 .message-reaction {
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 .zap-pill-amount {
+  text-transform: lowercase;
   color: #FFF;
-  font-size: 12px;
+  font-size: 15px;
+  font-family: Outfit;
   font-style: normal;
   font-weight: 500;
-  line-height: 18px;
-  text-transform: lowercase;
+  line-height: 22px;
 }
