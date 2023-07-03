@@ -16,7 +16,7 @@ import {
   type ChangeEvent,
   type RefObject,
 } from "react";
-import { useHover, useOnClickOutside, useMediaQuery } from "usehooks-ts";
+import { useOnClickOutside, useMediaQuery } from "usehooks-ts";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
