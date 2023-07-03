@@ -87,6 +87,7 @@ function EmojiPicker({
             `}
         </style>
         <Picker
+          autoFocus
           data={data}
           custom={customEmojiList}
           perLine={7}
