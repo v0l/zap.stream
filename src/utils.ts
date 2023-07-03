@@ -40,3 +40,15 @@ export function splitByUrl(str: string) {
 
   return str.split(urlRegex);
 }
+
+export function eventLink(ev: NostrEvent) {
+  const d = findTag(ev, "d") ?? "";
+  const naddr = encodeTLV(
+    NostrPrefix.Address,
+    d,
+    undefined,
+    ev.kind,
+    ev.pubkey
+  );
+  return `/${naddr}`;
+}

@@ -5,6 +5,7 @@ import Owncast from "owncast.png";
 import Cloudflare from "cloudflare.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { ConfigureOwncast } from "./owncast";
+import { ConfigureNostrType } from "./nostr";
 
 export function StreamProvidersPage() {
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ export function StreamProvidersPage() {
         switch (p) {
             case StreamProviders.Owncast: return "Owncast"
             case StreamProviders.Cloudflare: return "Cloudflare"
+            case StreamProviders.NostrType: return "Nostr Native"
         }
         return "Unknown"
     }
@@ -40,7 +42,7 @@ export function StreamProvidersPage() {
             <h1>Providers</h1>
             <p>Stream providers streamline the process of streaming on Nostr, some event accept lightning payments!</p>
             <div className="stream-providers-grid">
-                {[StreamProviders.Owncast, StreamProviders.Cloudflare].map(v => providerLink(v))}
+                {[StreamProviders.NostrType, StreamProviders.Owncast, StreamProviders.Cloudflare].map(v => providerLink(v))}
             </div>
         </div >
     }
@@ -51,6 +53,9 @@ export function StreamProvidersPage() {
         switch (id) {
             case StreamProviders.Owncast: {
                 return <ConfigureOwncast />
+            }
+            case StreamProviders.NostrType: {
+                return <ConfigureNostrType />
             }
         }
     }

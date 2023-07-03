@@ -1,3 +1,4 @@
+import { NostrEvent } from "@snort/system";
 import { StreamState } from "index";
 import { StreamProvider, StreamProviderInfo, StreamProviders } from "providers";
 
@@ -10,6 +11,10 @@ export class OwncastProvider implements StreamProvider {
         this.#token = token;
     }
 
+    get name() {
+        return new URL(this.#url).host
+    }
+
     createConfig(): any & { type: StreamProviders; } {
         return {
             type: StreamProviders.Owncast,
@@ -18,10 +23,15 @@ export class OwncastProvider implements StreamProvider {
         }
     }
 
+    updateStreamInfo(ev: NostrEvent): Promise<void> {
+        return Promise.resolve();
+    }
+
     async info() {
         const info = await this.#getJson<ConfigResponse>("GET", "/api/config");
         const status = await this.#getJson<StatusResponse>("GET", "/api/status");
         return {
+            type: StreamProviders.Owncast,
             name: info.name,
             summary: info.summary,
             version: info.version,
