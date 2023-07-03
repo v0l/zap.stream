@@ -252,6 +252,7 @@ function ChatMessage({
                     top: topOffset - 12,
                     left: leftOffset - 32,
                     opacity: showZapDialog ? 1 : 0,
+                    pointerEvents: showZapDialog ? "auto" : "none",
                   }
             }
           >
