@@ -48,10 +48,6 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/live/:id",
-        element: <StreamPage />,
-      },
-      {
         path: "/:id",
         element: <StreamPage />,
       },
