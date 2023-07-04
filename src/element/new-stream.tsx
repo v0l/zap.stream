@@ -8,61 +8,28 @@ import { useEffect, useState } from "react";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { useNavigate } from "react-router-dom";
 import { eventLink } from "utils";
+import { NostrProviderDialog } from "./nostr-provider-dialog";
 
 function NewStream({ ev, onFinish }: StreamEditorProps) {
   const providers = useStreamProvider();
   const [currentProvider, setCurrentProvider] = useState<StreamProvider>();
-  const [info, setInfo] = useState<StreamProviderInfo>();
   const navigate = useNavigate();
-
-  async function loadInfo(p: StreamProvider) {
-    const inf = await p.info();
-    setInfo(inf);
-  }
 
   useEffect(() => {
     if (!currentProvider) {
       setCurrentProvider(providers.at(0));
     }
-    if (currentProvider) {
-      loadInfo(currentProvider).catch(console.error);
-    }
   }, [providers, currentProvider]);
 
-  function nostrTypeDialog(p: StreamProviderInfo) {
-    return <>
-      <div>
-        <p>Stream Url</p>
-        <div className="paper">
-          <input type="text" value={p.ingressUrl} disabled />
-        </div>
-      </div>
-      <div>
-        <p>Stream Key</p>
-        <div className="paper">
-          <input type="password" value={p.ingressKey} disabled />
-        </div>
-      </div>
-      <div>
-        <p>Balance</p>
-        <div className="flex g12">
-          <div className="paper f-grow">
-            {p.balance?.toLocaleString()} sats
-          </div>
-          <button className="btn btn-primary">
-            Topup
-          </button>
-        </div>
 
-      </div>
-    </>
-  }
 
-  function providerDialog(p: StreamProviderInfo) {
-    switch (p.type) {
+  function providerDialog() {
+    if (!currentProvider) return;
+
+    switch (currentProvider.type) {
       case StreamProviders.Manual: {
         return <StreamEditor onFinish={ex => {
-          currentProvider?.updateStreamInfo(ex);
+          currentProvider.updateStreamInfo(ex);
           if (!ev) {
             navigate(eventLink(ex));
           } else {
@@ -71,17 +38,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
         }} ev={ev} />
       }
       case StreamProviders.NostrType: {
-        return <>
-          {nostrTypeDialog(p)}
-          <StreamEditor onFinish={(ex) => {
-            // patch to api
-            currentProvider?.updateStreamInfo(ex);
-            onFinish?.(ex);
-          }} ev={ev ?? p.publishedEvent} options={{
-            canSetStream: false,
-            canSetStatus: false
-          }} />
-        </>
+        return <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} />
       }
       case StreamProviders.Owncast: {
         return
@@ -94,7 +51,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
     <div className="flex g12">
       {providers.map(v => <span className={`pill${v === currentProvider ? " active" : ""}`} onClick={() => setCurrentProvider(v)}>{v.name}</span>)}
     </div>
-    {info && providerDialog(info)}
+    {providerDialog()}
   </>
 }
 

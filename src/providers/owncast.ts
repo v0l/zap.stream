@@ -15,6 +15,10 @@ export class OwncastProvider implements StreamProvider {
         return new URL(this.#url).host
     }
 
+    get type() {
+        return StreamProviders.Owncast
+    }
+
     createConfig(): any & { type: StreamProviders; } {
         return {
             type: StreamProviders.Owncast,
@@ -38,6 +42,10 @@ export class OwncastProvider implements StreamProvider {
             state: status.online ? StreamState.Live : StreamState.Ended,
             viewers: status.viewerCount
         } as StreamProviderInfo
+    }
+
+    topup(amount: number): Promise<string> {
+        throw new Error("Method not implemented.");
     }
 
     async #getJson<T>(method: "GET" | "POST", path: string, body?: unknown): Promise<T> {

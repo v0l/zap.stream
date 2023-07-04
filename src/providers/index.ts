@@ -8,6 +8,7 @@ import { OwncastProvider } from "./owncast";
 
 export interface StreamProvider {
     get name(): string
+    get type(): StreamProviders
 
     /**
      * Get general info about connected provider to test everything is working
@@ -22,7 +23,12 @@ export interface StreamProvider {
     /**
      * Update stream info event
      */
-    updateStreamInfo(ev: NostrEvent): Promise<void>;
+    updateStreamInfo(ev: NostrEvent): Promise<void>
+
+    /**
+     * Top-up balance with provider
+     */
+    topup(amount: number): Promise<string>
 }
 
 export enum StreamProviders {
@@ -33,7 +39,6 @@ export enum StreamProviders {
 }
 
 export interface StreamProviderInfo {
-    type: StreamProviders
     name: string
     summary?: string
     version?: string

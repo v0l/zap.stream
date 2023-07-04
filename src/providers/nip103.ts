@@ -13,6 +13,10 @@ export class Nip103StreamProvider implements StreamProvider {
         return new URL(this.#url).host;
     }
 
+    get type() {
+        return StreamProviders.NostrType
+    }
+
     async info() {
         const rsp = await this.#getJson<AccountResponse>("GET", "account");
         const title = findTag(rsp.event, "title");
@@ -43,6 +47,11 @@ export class Nip103StreamProvider implements StreamProvider {
         await this.#getJson("PATCH", "event", {
             title, summary, image
         });
+    }
+
+    async topup(amount: number): Promise<string> {
+        const rsp = await this.#getJson<TopUpResponse>("GET", `topup?amount=${amount}`);
+        return rsp.pr;
     }
 
     async #getJson<T>(method: "GET" | "POST" | "PATCH", path: string, body?: unknown): Promise<T> {
@@ -81,4 +90,8 @@ interface AccountResponse {
         rate: number
         remaining: number
     }
+}
+
+interface TopUpResponse {
+    pr: string
 }

@@ -31,7 +31,7 @@ export function VideoTile({
     ev.pubkey
   );
   return (
-    <Link to={`/live/${link}`} className="video-tile" ref={ref}>
+    <Link to={`/${link}`} className="video-tile" ref={ref}>
       <div
         style={{
           backgroundImage: `url(${inView ? image : ""})`,

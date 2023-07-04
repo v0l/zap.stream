@@ -6,9 +6,13 @@ export class ManualProvider implements StreamProvider {
     get name(): string {
         return "Manual"
     }
+
+    get type() {
+        return StreamProviders.Manual
+    }
+
     info(): Promise<StreamProviderInfo> {
         return Promise.resolve({
-            type: StreamProviders.Manual,
             name: this.name
         } as StreamProviderInfo)
     }
@@ -22,5 +26,9 @@ export class ManualProvider implements StreamProvider {
     updateStreamInfo(ev: NostrEvent): Promise<void> {
         System.BroadcastEvent(ev);
         return Promise.resolve();
+    }
+
+    topup(amount: number): Promise<string> {
+        throw new Error("Method not implemented.");
     }
 }
