@@ -84,7 +84,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
     }
 
     takeSnapshot() {
-        return [new ManualProvider(), ...this.#providers];
+        return [new Nip103StreamProvider("https://api.zap.stream/api/nostr/"), new ManualProvider(), ...this.#providers];
     }
 
     #save() {
