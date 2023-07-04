@@ -60,7 +60,7 @@ export function LiveVideoPlayer(
       <video ref={video} {...{
         ...props,
         stream: undefined
-      }} src={src} controls={status === VideoStatus.Online} />
+      }} src={src} playsInline={true} controls={status === VideoStatus.Online} />
     </>
   );
 }
