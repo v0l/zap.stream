@@ -13,43 +13,54 @@ export function LiveVideoPlayer(
   const video = useRef<HTMLVideoElement>(null);
   const streamCached = useMemo(() => props.stream, [props.stream]);
   const [status, setStatus] = useState<VideoStatus>();
+  const [src, setSrc] = useState(props.src);
 
   useEffect(() => {
     if (
       streamCached &&
       video.current &&
-      !video.current.src &&
-      Hls.isSupported()
+      !video.current.src
     ) {
-      try {
-        const hls = new Hls();
-        hls.loadSource(streamCached);
-        hls.attachMedia(video.current);
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          console.debug(event, data);
-          const errorType = data.type;
-          if (errorType === Hls.ErrorTypes.NETWORK_ERROR && data.fatal) {
-            hls.stopLoad();
-            hls.detachMedia();
-            setStatus(VideoStatus.Offline);
-          }
-        });
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          setStatus(VideoStatus.Online);
-        });
-        return () => hls.destroy();
-      } catch (e) {
-        console.error(e);
-        setStatus(VideoStatus.Offline);
+      if (Hls.isSupported()) {
+        try {
+          const hls = new Hls();
+          hls.loadSource(streamCached);
+          hls.attachMedia(video.current);
+          hls.on(Hls.Events.ERROR, (event, data) => {
+            console.debug(event, data);
+            const errorType = data.type;
+            if (errorType === Hls.ErrorTypes.NETWORK_ERROR && data.fatal) {
+              hls.stopLoad();
+              hls.detachMedia();
+              setStatus(VideoStatus.Offline);
+            }
+          });
+          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            setStatus(VideoStatus.Online);
+          });
+          return () => hls.destroy();
+        } catch (e) {
+          console.error(e);
+          setStatus(VideoStatus.Offline);
+        }
+      } else {
+        setSrc(streamCached);
+        setStatus(VideoStatus.Online);
+        video.current.muted = true;
+        video.current.load();
       }
     }
   }, [video, streamCached]);
+
   return (
     <>
       <div className={status}>
         <div>{status}</div>
       </div>
-      <video ref={video} {...props} controls={status === VideoStatus.Online} />
+      <video ref={video} {...{
+        ...props,
+        stream: undefined
+      }} src={src} controls={status === VideoStatus.Online} />
     </>
   );
 }
