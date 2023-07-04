@@ -2,9 +2,6 @@ import { Icon } from "element/icon";
 import "./layout.css";
 import {
   EventPublisher,
-  NostrEvent,
-  encodeTLV,
-  NostrPrefix,
 } from "@snort/system";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import AsyncButton from "element/async-button";
@@ -30,7 +27,7 @@ export function LayoutPage() {
 
     return (
       <>
-        <NewStreamDialog btnClassName="btn btn-primary" onFinish={goToStream} />
+        <NewStreamDialog btnClassName="btn btn-primary" />
         <Profile
           avatarClassname="mb-squared"
           pubkey={login.pubkey}
@@ -55,22 +52,10 @@ export function LayoutPage() {
     );
   }
 
-  function goToStream(ev: NostrEvent) {
-    const d = ev.tags.find((t) => t.at(0) === "d")?.at(1) || "";
-    const naddr = encodeTLV(
-      NostrPrefix.Address,
-      d,
-      undefined,
-      ev.kind,
-      ev.pubkey
-    );
-    navigate(`/${naddr}`);
-  }
-
   return (
     <div
       className={
-        location.pathname === "/" || location.pathname.startsWith("/p/")
+        location.pathname === "/" || location.pathname.startsWith("/p/") || location.pathname.startsWith("/providers")
           ? "page only-content"
           : location.pathname.startsWith("/chat/")
           ? "page chat"

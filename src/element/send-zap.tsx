@@ -9,8 +9,15 @@ import AsyncButton from "./async-button";
 import { Relays } from "index";
 import QrCode from "./qr-code";
 
-interface SendZapsProps {
-  lnurl: string;
+export interface LNURLLike {
+  get name(): string;
+  get maxCommentLength(): number;
+  get canZap(): boolean;
+  getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
+}
+
+export interface SendZapsProps {
+  lnurl: string | LNURLLike;
   pubkey?: string;
   aTag?: string;
   eTag?: string;
@@ -19,7 +26,7 @@ interface SendZapsProps {
   button?: ReactNode;
 }
 
-function SendZaps({
+export function SendZaps({
   lnurl,
   pubkey,
   aTag,
@@ -34,13 +41,13 @@ function SendZaps({
   ];
   const usdAmounts = [0.05, 0.5, 2, 5, 10, 50, 100, 200];
   const [isFiat, setIsFiat] = useState(false);
-  const [svc, setSvc] = useState<LNURL>();
+  const [svc, setSvc] = useState<LNURLLike>();
   const [amount, setAmount] = useState(satsAmounts[0]);
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
 
   const name = targetName ?? svc?.name;
-  async function loadService() {
+  async function loadService(lnurl: string) {
     const s = new LNURL(lnurl);
     await s.load();
     setSvc(s);
@@ -48,7 +55,11 @@ function SendZaps({
 
   useEffect(() => {
     if (!svc) {
-      loadService().catch(console.warn);
+      if (typeof lnurl === "string") {
+        loadService(lnurl).catch(console.warn);
+      } else {
+        setSvc(lnurl);
+      }
     }
   }, [lnurl]);
 
@@ -127,7 +138,7 @@ function SendZaps({
             ))}
           </div>
         </div>
-        <div>
+        {svc && (svc.maxCommentLength > 0 || svc.canZap) && <div>
           <small>Your comment for {name}</small>
           <div className="paper">
             <textarea
@@ -136,7 +147,7 @@ function SendZaps({
               onChange={(e) => setComment(e.target.value)}
             />
           </div>
-        </div>
+        </div>}
         <div>
           <AsyncButton onClick={send} className="btn btn-primary">
             Zap!
@@ -150,7 +161,12 @@ function SendZaps({
     if (!invoice) return;
 
     const link = `lightning:${invoice}`;
-    return <QrCode data={link} link={link} />;
+    return <>
+      <QrCode data={link} link={link} />
+      <button className="btn btn-primary wide" onClick={() => onFinish()}>
+        Back
+      </button>
+    </>;
   }
 
   return (

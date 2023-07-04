@@ -2,24 +2,22 @@ import AsyncButton from "element/async-button";
 import { StatePill } from "element/state-pill";
 import { StreamState } from "index";
 import { StreamProviderInfo, StreamProviderStore } from "providers";
-import { OwncastProvider } from "providers/owncast";
+import { Nip103StreamProvider } from "providers/nip103";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function ConfigureOwncast() {
+export function ConfigureNostrType() {
     const [url, setUrl] = useState("");
-    const [token, setToken] = useState("");
     const [info, setInfo] = useState<StreamProviderInfo>();
     const navigate = useNavigate();
 
     async function tryConnect() {
         try {
-            const api = new OwncastProvider(url, token);
-            const i = await api.info();
-            setInfo(i);
-        }
-        catch (e) {
-            console.debug(e);
+            const api = new Nip103StreamProvider(url);
+            const inf = await api.info();
+            setInfo(inf);
+        } catch (e) {
+            console.error(e);
         }
     }
 
@@ -57,7 +55,7 @@ export function ConfigureOwncast() {
             </div>}
             <div>
                 <button className="btn btn-border" onClick={() => {
-                    StreamProviderStore.add(new OwncastProvider(url, token));
+                    StreamProviderStore.add(new Nip103StreamProvider(url));
                     navigate("/");
                 }}>
                     Save
@@ -69,15 +67,9 @@ export function ConfigureOwncast() {
     return <div className="owncast-config">
         <div className="flex f-col g24">
             <div>
-                <p>Owncast instance url</p>
+                <p>Nostr streaming provider URL</p>
                 <div className="paper">
                     <input type="text" placeholder="https://" value={url} onChange={e => setUrl(e.target.value)} />
-                </div>
-            </div>
-            <div>
-                <p>API token</p>
-                <div className="paper">
-                    <input type="password" value={token} onChange={e => setToken(e.target.value)} />
                 </div>
             </div>
             <AsyncButton className="btn btn-primary" onClick={tryConnect}>

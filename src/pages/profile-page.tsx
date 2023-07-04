@@ -77,7 +77,7 @@ export function ProfilePage() {
         liveEvent.kind,
         liveEvent.pubkey
       );
-      navigate(`/live/${naddr}`);
+      navigate(`/${naddr}`);
     }
   }
 
