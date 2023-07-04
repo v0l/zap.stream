@@ -92,6 +92,7 @@
 
 .live-chat .message {
   word-wrap: break-word;
+  position: relative;
 }
 
 .live-chat .message .profile {
@@ -191,7 +192,7 @@
   position: relative;
   border-radius: 12px;
   border: 1px solid transparent;
-  background: black;
+  background: #0A0A0A;
   background-clip: padding-box;
   padding: 8px 12px;
 }
@@ -216,4 +217,124 @@
 
 .zap-content {
   margin-top: 8px;
+}
+
+.zap-pill {
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.10);
+  width: fit-content;
+  display: flex;
+  height: 24px;
+  padding: 0px 4px;
+  align-items: center;
+  gap: 2px;
+}
+
+.zap-pill-icon {
+  width: 12px;
+  height: 12px;
+  color: #FF8D2B;
+}
+
+.message-zap-container {
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 12px;
+  border: 1px solid #303030;
+  background: #111;
+  box-shadow: 0px 7px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 4px;
+  width: fit-content;
+  z-index: 1;
+  transition: opacity .3s ease-out;
+}
+
+@media (min-width: 1020px) {
+  .message-zap-container {
+    flex-direction: column;
+  }
+}
+
+.message-zap-button {
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF66;
+}
+
+.message-zap-button:hover {
+  color: white;
+}
+
+.message-zap-button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.message-reactions {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.message-reaction-container {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 0px 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.message-reaction {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.zap-pill-amount {
+  text-transform: lowercase;
+  color: #FFF;
+  font-size: 12px;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.message-composer {
+  display: flex;
+  flex-direction: column;
+}
+
+.write-message-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.write-message-container .paper {
+  flex: 1;
+}
+
+.write-emoji-button {
+  color: #FFFFFF80;
+  cursor: pointer;
+}
+.write-emoji-button:hover {
+  color: white;
 }

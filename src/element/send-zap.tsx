@@ -20,6 +20,7 @@ export interface SendZapsProps {
   lnurl: string | LNURLLike;
   pubkey?: string;
   aTag?: string;
+  eTag?: string;
   targetName?: string;
   onFinish: () => void;
   button?: ReactNode;
@@ -29,6 +30,7 @@ export function SendZaps({
   lnurl,
   pubkey,
   aTag,
+  eTag,
   targetName,
   onFinish,
 }: SendZapsProps) {
@@ -68,7 +70,7 @@ export function SendZaps({
 
     const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
     let zap: NostrEvent | undefined;
-    if (pubkey && aTag) {
+    if (pubkey) {
       zap = await pub.zap(
         amountInSats * 1000,
         pubkey,
@@ -76,7 +78,13 @@ export function SendZaps({
         undefined,
         comment,
         (eb) => {
-          return eb.tag(["a", aTag]);
+          if (aTag) {
+            eb.tag(["a", aTag]);
+          }
+          if (eTag) {
+            eb.tag(["e", eTag]);
+          }
+          return eb;
         }
       );
     }

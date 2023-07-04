@@ -46,8 +46,11 @@ function ProfileInfo({ link }: { link: NostrLink }) {
         <div className="f-grow stream-info">
           <h1>{findTag(thisEvent.data, "title")}</h1>
           <p>{findTag(thisEvent.data, "summary")}</p>
-          <StatePill state={status as StreamState} />
-          {thisEvent?.data && <Tags ev={thisEvent.data} />}
+          {thisEvent?.data && (
+            <Tags ev={thisEvent.data}>
+              <StatePill state={status as StreamState} />
+            </Tags>
+          )}
           {isMine && (
             <div className="actions">
               {thisEvent.data && (

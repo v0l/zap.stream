@@ -21,6 +21,9 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
       .withFilter()
       .kinds([LIVE_STREAM])
       .authors([link.id]);
+
+    b.withFilter().kinds([LIVE_STREAM]).tag("p", [link.id]);
+
     return b;
   }, [link, leaveOpen]);
 
@@ -57,10 +60,16 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
   );
   const zaps = (zapsData ?? [])
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z && z.valid);
+    .filter((z) => z && z.valid && z.receiver === link.id);
+
+  const sortedStreams = useMemo(() => {
+    const sorted = [...streams];
+    sorted.sort((a, b) => b.created_at - a.created_at);
+    return sorted;
+  }, [streams]);
 
   return {
-    streams,
+    streams: sortedStreams,
     zaps,
   };
 }

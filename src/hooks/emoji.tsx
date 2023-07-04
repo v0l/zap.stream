@@ -1,8 +1,21 @@
-import { RequestBuilder, EventKind, FlatNoteStore } from "@snort/system";
+import {
+  RequestBuilder,
+  EventKind,
+  ReplaceableNoteStore,
+  ParameterizedReplaceableNoteStore,
+} from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { System } from "index";
 import { useMemo } from "react";
+import { findTag } from "utils";
 import type { EmojiTag } from "../element/emoji";
+
+export interface EmojiPack {
+  address: string;
+  name: string;
+  author: string;
+  emojis: EmojiTag[];
+}
 
 export default function useEmoji(pubkey: string) {
   const sub = useMemo(() => {
@@ -10,20 +23,20 @@ export default function useEmoji(pubkey: string) {
 
     rb.withFilter()
       .authors([pubkey])
-      .kinds([10030 as EventKind, 30030 as EventKind]);
+      .kinds([10030 as EventKind]);
 
     return rb;
   }, [pubkey]);
 
-  const { data } = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
-  const userEmoji = useMemo(() => {
-    return data ?? [];
-  }, [data]);
+  const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
+    System,
+    ReplaceableNoteStore,
+    sub
+  );
 
   const related = useMemo(() => {
     if (userEmoji) {
-      const tags = userEmoji.at(0)?.tags ?? [];
-      return tags.filter(
+      return userEmoji.tags.filter(
         (t) => t.at(0) === "a" && t.at(1)?.startsWith(`30030:`)
       );
     }
@@ -46,28 +59,32 @@ export default function useEmoji(pubkey: string) {
     rb.withFilter()
       .kinds([30030 as EventKind])
       .authors(authors)
-      // @ts-expect-error
-      .tag(["d", identifiers]);
+      .tag("d", identifiers);
 
     return rb;
   }, [pubkey, related]);
 
-  const { data: relatedData } = useRequestBuilder<FlatNoteStore>(
-    System,
-    FlatNoteStore,
-    subRelated
-  );
+  const { data: relatedData } =
+    useRequestBuilder<ParameterizedReplaceableNoteStore>(
+      System,
+      ParameterizedReplaceableNoteStore,
+      subRelated
+    );
+
   const emojiPacks = useMemo(() => {
     return relatedData ?? [];
   }, [relatedData]);
 
   const emojis = useMemo(() => {
-    return userEmoji
-      .concat(emojiPacks)
-      .map((ev) => {
-        return ev.tags.filter((t) => t.at(0) === "emoji");
-      })
-      .flat() as EmojiTag[];
+    return emojiPacks.map((ev) => {
+      const d = findTag(ev, "d");
+      return {
+        address: `${ev.kind}:${ev.pubkey}:${d}`,
+        name: d,
+        author: ev.pubkey,
+        emojis: ev.tags.filter((t) => t.at(0) === "emoji") as EmojiTag[],
+      } as EmojiPack;
+    });
   }, [userEmoji, emojiPacks]);
 
   return emojis;
