@@ -38,6 +38,7 @@ const config = {
       patterns: [
         { from: "public/manifest.json" },
         { from: "public/robots.txt" },
+        { from: "public/icons.svg" },
         { from: "_headers" },
       ],
     }),
