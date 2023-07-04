@@ -264,13 +264,7 @@ function ChatMessage({
     setShowZapDialog(false);
     try {
       const pub = await EventPublisher.nip7();
-      const reply = await pub?.generic((eb) => {
-        eb.kind(EventKind.Reaction)
-          .content(emoji.native || "+1")
-          .tag(["e", ev.id])
-          .tag(["p", ev.pubkey]);
-        return eb;
-      });
+      const reply = await pub?.react(ev, emoji.native || "+1");
       if (reply) {
         console.debug(reply);
         System.BroadcastEvent(reply);
@@ -333,11 +327,6 @@ function ChatMessage({
             {zapTarget && (
               <SendZapsDialog
                 lnurl={zapTarget}
-                aTag={
-                  streamer === ev.pubkey
-                    ? `${link.kind}:${link.author}:${link.id}`
-                    : undefined
-                }
                 eTag={ev.id}
                 pubkey={ev.pubkey}
                 button={
