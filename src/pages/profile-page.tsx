@@ -149,12 +149,15 @@ export function ProfilePage() {
             >
               <Tabs.Trigger className="tabs-tab" value="top-zappers">
                 Top Zappers
+                <div className="tab-border"></div>
               </Tabs.Trigger>
               <Tabs.Trigger className="tabs-tab" value="past-streams">
                 Past Streams
+                <div className="tab-border"></div>
               </Tabs.Trigger>
               <Tabs.Trigger className="tabs-tab" value="schedule">
                 Schedule
+                <div className="tab-border"></div>
               </Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content className="tabs-content" value="top-zappers">
