@@ -38,6 +38,7 @@ const config = {
       patterns: [
         { from: "public/manifest.json" },
         { from: "public/robots.txt" },
+        { from: "_headers" },
       ],
     }),
     new HtmlWebpackPlugin({
