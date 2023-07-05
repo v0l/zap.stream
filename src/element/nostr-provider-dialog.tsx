@@ -1,8 +1,12 @@
+import { NostrEvent } from "@snort/system";
 import { StreamProvider, StreamProviderInfo } from "providers";
 import { useEffect, useState } from "react";
 import { SendZaps } from "./send-zap";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
+import { LIVE_STREAM } from "const";
+
+const DummyEvent = { content: "", id: "", pubkey: "", sig: "", kind: LIVE_STREAM, created_at: 0, tags: [] } as NostrEvent;
 
 export function NostrProviderDialog({ provider, ...others }: { provider: StreamProvider } & StreamEditorProps) {
     const [topup, setTopup] = useState(false);
@@ -35,7 +39,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
         }} />
     }
 
-    const streamEvent = others.ev ?? info.publishedEvent;
+    const streamEvent = others.ev ?? info.publishedEvent ?? DummyEvent;
     return <>
         <div>
             <p>Stream Url</p>
