@@ -40,6 +40,7 @@ const config = {
         { from: "public/robots.txt" },
         { from: "public/icons.svg" },
         { from: "_headers" },
+        { from: "public/nostr.json", to: ".well-known/nostr.json" }
       ],
     }),
     new HtmlWebpackPlugin({
