@@ -6,6 +6,7 @@ import {
   parseZap,
 } from "@snort/system";
 import {
+  useEffect,
   useMemo,
 } from "react";
 
@@ -21,7 +22,7 @@ import { LIVE_STREAM_CHAT } from "../const";
 import useEventFeed from "../hooks/event-feed";
 import { ChatMessage } from "./chat-message";
 import { WriteMessage } from "./write-message";
-import { getHost } from "utils";
+import { findTag, getHost } from "utils";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -56,6 +57,12 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
 export function LiveChat({ link, options, height, }: { link: NostrLink, options?: LiveChatOptions, height?: number }) {
   const feed = useLiveChatFeed(link);
   const login = useLogin();
+  useEffect(() => {
+    const pubkeys = [...new Set(feed.zaps.flatMap(a => [a.pubkey, findTag(a, "p")!]))];
+    System.ProfileLoader.TrackMetadata(pubkeys);
+    return () => System.ProfileLoader.UntrackMetadata(pubkeys);
+  }, [feed.zaps]);
+
   const zaps = feed.zaps
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
