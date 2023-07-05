@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import {
   RequestBuilder,
   FlatNoteStore,
-  ParameterizedReplaceableNoteStore,
+  NoteCollection,
   NostrLink,
   EventKind,
   parseZap,
@@ -28,9 +28,9 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
   }, [link, leaveOpen]);
 
   const { data: streamsData } =
-    useRequestBuilder<ParameterizedReplaceableNoteStore>(
+    useRequestBuilder<NoteCollection>(
       System,
-      ParameterizedReplaceableNoteStore,
+      NoteCollection,
       sub
     );
   const streams = streamsData ?? [];

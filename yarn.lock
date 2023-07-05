@@ -1520,10 +1520,10 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.25.24.tgz#8c7688559979f7079aacaf31aa881c3aa410b718"
   integrity sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==
 
-"@snort/shared@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@snort/shared/-/shared-1.0.2.tgz#539a8d68ce737320d329a4b205d0d5d3a7e32982"
-  integrity sha512-98bArZMyoET3/HinT+CRQEZqYAp59oMjz7LzH1+nKc8XVyUmqKEncZ7MQe0RrTcKHQc+51vQgglpjKfFy3XR/g==
+"@snort/shared@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@snort/shared/-/shared-1.0.4.tgz#b1dd4c05e6682ac30ee100f7b7baee8e6c57233a"
+  integrity sha512-1wPnfm9BfKVtgpWLhHzaZ2AWb7XdNF+4ybE32E7UlZzIBp9uvJbpTHLJkX1P4i12vvuK86HhOxVyTRu971Rv1w==
   dependencies:
     "@noble/curves" "^1.1.0"
     "@noble/hashes" "^1.3.1"
@@ -1532,35 +1532,23 @@
     dexie "^3.2.4"
     light-bolt11-decoder "^3.0.0"
 
-"@snort/shared@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@snort/shared/-/shared-1.0.3.tgz#85aa9c4f0db47b095692ad7ab135b2580b8a855c"
-  integrity sha512-B4dge6qlcO+pZtGk5gjvpGq622kbTpgcEOE9iGigfzZzf5FjrBTFQD+tbcAaIKuW580BwE61YYfJdONP1Pz+pQ==
+"@snort/system-react@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.10.tgz#72947af286602022dc468f7d04b01c7b18c14389"
+  integrity sha512-mBgHVmcrt9Sblm3/IN1vHLgoyQGH1xOpYg+v2+ARlFVOUdvkcQTxzQzt4sxWsdF4C63WFiju9hAahW/Dg4UhEw==
   dependencies:
-    "@noble/curves" "^1.1.0"
-    "@noble/hashes" "^1.3.1"
-    "@scure/base" "^1.1.1"
-    debug "^4.3.4"
-    dexie "^3.2.4"
-    light-bolt11-decoder "^3.0.0"
-
-"@snort/system-react@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.8.tgz#c496c950e4621edac1a1d72b90934b2d99d0a641"
-  integrity sha512-3JQAeF144txyPyTqgmj5rgqY2URrkO8WTRKo3+y8TqnziOI+90WDmDXFEIf2b0cja4+nAUNgI/GTCy4CvYDpGQ==
-  dependencies:
-    "@snort/shared" "^1.0.2"
-    "@snort/system" "^1.0.13"
+    "@snort/shared" "^1.0.4"
+    "@snort/system" "^1.0.15"
     react "^18.2.0"
 
-"@snort/system@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.13.tgz#54c05e71709af597eff75c9892aebf882552247c"
-  integrity sha512-U0MLe239BgGxauXrtQc6Gm3mx/EgEq8T7mWnZehsibgj6M0RFv8l4mzEAQtM8M9sg2VnGmtpIE4J5wA7/ITDMg==
+"@snort/system@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.15.tgz#845a2aaafcb75e469e7836c143f217404172cee0"
+  integrity sha512-mVXj2ZCS0T/m3EPqn0ICWrp96XUlhBCT4ci1CLzmtT8zXojAE/2eONv4ZR/OzGrvftUIBqarfpFbtJ7q1vohSg==
   dependencies:
     "@noble/curves" "^1.0.0"
     "@scure/base" "^1.1.1"
-    "@snort/shared" "^1.0.3"
+    "@snort/shared" "^1.0.4"
     "@stablelib/xchacha20" "^1.0.1"
     debug "^4.3.4"
     dexie "^3.2.4"

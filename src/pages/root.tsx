@@ -3,14 +3,14 @@ import "./root.css";
 import { useMemo } from "react";
 import { unixNow } from "@snort/shared";
 import {
-  ParameterizedReplaceableNoteStore,
+  NoteCollection,
   RequestBuilder,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { StreamState, System } from "..";
 import { VideoTile } from "../element/video-tile";
-import { findTag } from "utils";
-import { LIVE_STREAM } from "const";
+import { findTag } from "../utils";
+import { LIVE_STREAM } from "../const";
 
 export function RootPage() {
   const rb = useMemo(() => {
@@ -24,9 +24,9 @@ export function RootPage() {
     return rb;
   }, []);
 
-  const feed = useRequestBuilder<ParameterizedReplaceableNoteStore>(
+  const feed = useRequestBuilder<NoteCollection>(
     System,
-    ParameterizedReplaceableNoteStore,
+    NoteCollection,
     rb
   );
   const feedSorted = useMemo(() => {

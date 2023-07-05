@@ -2,7 +2,7 @@ import {
   RequestBuilder,
   EventKind,
   ReplaceableNoteStore,
-  ParameterizedReplaceableNoteStore,
+  NoteCollection,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { System } from "index";
@@ -65,9 +65,9 @@ export default function useEmoji(pubkey: string) {
   }, [pubkey, related]);
 
   const { data: relatedData } =
-    useRequestBuilder<ParameterizedReplaceableNoteStore>(
+    useRequestBuilder<NoteCollection>(
       System,
-      ParameterizedReplaceableNoteStore,
+      NoteCollection,
       subRelated
     );
 

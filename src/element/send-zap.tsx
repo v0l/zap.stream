@@ -3,6 +3,9 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState, type ReactNode } from "react";
 import { LNURL } from "@snort/shared";
 import { NostrEvent, EventPublisher } from "@snort/system";
+import { secp256k1 } from "@noble/curves/secp256k1";
+import { bytesToHex } from "@noble/curves/abstract/utils";
+
 import { formatSats } from "../number";
 import { Icon } from "./icon";
 import AsyncButton from "./async-button";
@@ -69,8 +72,12 @@ export function SendZaps({
 
   async function send() {
     if (!svc) return;
-    const pub = await EventPublisher.nip7();
-    if (!pub) return;
+    let pub = await EventPublisher.nip7();
+    let isAnon = false;
+    if (!pub) {
+      pub = EventPublisher.privateKey(bytesToHex(secp256k1.utils.randomPrivateKey()));
+      isAnon = true;
+    }
 
     const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
     let zap: NostrEvent | undefined;
@@ -87,6 +94,9 @@ export function SendZaps({
           }
           if (eTag) {
             eb.tag(["e", eTag]);
+          }
+          if (isAnon) {
+            eb.tag(["anon", ""]);
           }
           return eb;
         }
