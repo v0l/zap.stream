@@ -1,4 +1,3 @@
-import EmojiPicker from "@emoji-mart/react";
 import {NostrLink, EventPublisher, EventKind} from "@snort/system";
 import { useRef, useState, ChangeEvent } from "react";
 
@@ -9,6 +8,7 @@ import { System } from "../index";
 import AsyncButton from "./async-button";
 import { Icon } from "./icon";
 import { Textarea } from "./textarea";
+import { EmojiPicker } from "./emoji-picker";
 
 interface Emoji {
     id: string;
