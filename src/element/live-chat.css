@@ -47,10 +47,20 @@
   }
 }
 
-.live-chat>.header {
-  font-weight: 600;
+.live-chat > .header {
+  display: flex;
+  justify-content: space-between
+}
+
+.live-chat .header .title {
   font-size: 24px;
-  line-height: 30px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+}
+
+.live-chat .header .popout-link {
+  color: #FFFFFF80;
 }
 
 .live-chat>.messages {
