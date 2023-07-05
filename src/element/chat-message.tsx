@@ -101,7 +101,15 @@ export function ChatMessage({
                 ref={ref}
                 onClick={() => setShowZapDialog(true)}
             >
-                <Profile pubkey={ev.pubkey} profile={profile} />
+                <Profile
+                    icon={
+                        ev.pubkey === streamer && (
+                            <Icon name="signal" size={16} />
+                        )
+                    }
+                    pubkey={ev.pubkey}
+                    profile={profile}
+                />
                 <Text content={ev.content} tags={ev.tags} />
                 {(hasReactions || hasZaps) && (
                     <div className="message-reactions">
