@@ -1,14 +1,13 @@
 import "./live-chat.css";
 import {
   EventKind,
+  NostrPrefix,
   NostrLink,
   ParsedZap,
   parseZap,
+  encodeTLV,
 } from "@snort/system";
-import {
-  useEffect,
-  useMemo,
-} from "react";
+import { useEffect, useMemo } from "react";
 
 import { System } from "../index";
 import { useLiveChatFeed } from "../hooks/live-chat";
@@ -54,11 +53,21 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
   );
 }
 
-export function LiveChat({ link, options, height, }: { link: NostrLink, options?: LiveChatOptions, height?: number }) {
+export function LiveChat({
+  link,
+  options,
+  height,
+}: {
+  link: NostrLink;
+  options?: LiveChatOptions;
+  height?: number;
+}) {
   const feed = useLiveChatFeed(link);
   const login = useLogin();
   useEffect(() => {
-    const pubkeys = [...new Set(feed.zaps.flatMap(a => [a.pubkey, findTag(a, "p")!]))];
+    const pubkeys = [
+      ...new Set(feed.zaps.flatMap((a) => [a.pubkey, findTag(a, "p")!])),
+    ];
     System.ProfileLoader.TrackMetadata(pubkeys);
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
@@ -73,11 +82,30 @@ export function LiveChat({ link, options, height, }: { link: NostrLink, options?
   }, [feed.messages, feed.zaps]);
   const { data: ev } = useEventFeed(link);
   const streamer = getHost(ev);
+  const naddr = useMemo(() => {
+    return encodeTLV(
+      NostrPrefix.Address,
+      link.id,
+      undefined,
+      link.kind,
+      link.author
+    );
+  }, [link]);
 
   return (
     <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
       {(options?.showHeader ?? true) && (
-        <div className="header">Stream Chat</div>
+        <div className="header">
+          <h2 className="title">Stream Chat</h2>
+          <a
+            href={`/chat/${naddr}`}
+            className="popout-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="link" size={32} />
+          </a>
+        </div>
       )}
       {zaps.length > 0 && (
         <div className="top-zappers">
@@ -98,7 +126,9 @@ export function LiveChat({ link, options, height, }: { link: NostrLink, options?
               );
             }
             case EventKind.ZapReceipt: {
-              const zap = zaps.find(b => b.id === a.id && b.receiver === streamer);
+              const zap = zaps.find(
+                (b) => b.id === a.id && b.receiver === streamer
+              );
               if (zap) {
                 return <ChatZap zap={zap} key={a.id} />;
               }
@@ -126,20 +156,22 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
     return null;
   }
 
-  return <div className="zap-container">
-    <div className="zap">
-      <Icon name="zap-filled" className="zap-icon" />
-      <Profile
-        pubkey={zap.anonZap ? "anon" : zap.sender ?? "anon"}
-        options={{
-          showAvatar: !zap.anonZap,
-          overrideName: zap.anonZap ? "Anon" : undefined,
-        }}
-      />
-      zapped
-      <span className="zap-amount">{formatSats(zap.amount)}</span>
-      sats
+  return (
+    <div className="zap-container">
+      <div className="zap">
+        <Icon name="zap-filled" className="zap-icon" />
+        <Profile
+          pubkey={zap.anonZap ? "anon" : zap.sender ?? "anon"}
+          options={{
+            showAvatar: !zap.anonZap,
+            overrideName: zap.anonZap ? "Anon" : undefined,
+          }}
+        />
+        zapped
+        <span className="zap-amount">{formatSats(zap.amount)}</span>
+        sats
+      </div>
+      {zap.content && <div className="zap-content">{zap.content}</div>}
     </div>
-    {zap.content && <div className="zap-content">{zap.content}</div>}
-  </div>
+  );
 }
