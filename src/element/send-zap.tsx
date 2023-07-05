@@ -13,7 +13,11 @@ export interface LNURLLike {
   get name(): string;
   get maxCommentLength(): number;
   get canZap(): boolean;
-  getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
+  getInvoice(
+    amountInSats: number,
+    comment?: string,
+    zap?: NostrEvent
+  ): Promise<{ pr?: string }>;
 }
 
 export interface SendZapsProps {
@@ -93,8 +97,12 @@ export function SendZaps({
 
     if (window.webln) {
       await window.webln.enable();
-      await window.webln.sendPayment(invoice.pr);
-      onFinish();
+      try {
+        await window.webln.sendPayment(invoice.pr);
+        onFinish();
+      } catch (error) {
+        setInvoice(invoice.pr);
+      }
     } else {
       setInvoice(invoice.pr);
     }
@@ -138,16 +146,18 @@ export function SendZaps({
             ))}
           </div>
         </div>
-        {svc && (svc.maxCommentLength > 0 || svc.canZap) && <div>
-          <small>Your comment for {name}</small>
-          <div className="paper">
-            <textarea
-              placeholder="Nice!"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
+        {svc && (svc.maxCommentLength > 0 || svc.canZap) && (
+          <div>
+            <small>Your comment for {name}</small>
+            <div className="paper">
+              <textarea
+                placeholder="Nice!"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </div>
           </div>
-        </div>}
+        )}
         <div>
           <AsyncButton onClick={send} className="btn btn-primary">
             Zap!
@@ -161,12 +171,14 @@ export function SendZaps({
     if (!invoice) return;
 
     const link = `lightning:${invoice}`;
-    return <>
-      <QrCode data={link} link={link} />
-      <button className="btn btn-primary wide" onClick={() => onFinish()}>
-        Back
-      </button>
-    </>;
+    return (
+      <>
+        <QrCode data={link} link={link} />
+        <button className="btn btn-primary wide" onClick={() => onFinish()}>
+          Back
+        </button>
+      </>
+    );
   }
 
   return (
