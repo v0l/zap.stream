@@ -15,4 +15,5 @@
     border: unset;
     outline: unset;
     object-fit: cover;
+    overflow: hidden;
 }
