@@ -1,4 +1,5 @@
 import "./profile.css";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
 import { UserMetadata } from "@snort/system";
@@ -28,17 +29,20 @@ export function getName(pk: string, user?: UserMetadata) {
 
 export function Profile({
   pubkey,
+  icon,
   avatarClassname,
   options,
   profile,
 }: {
   pubkey: string;
+  icon?: ReactNode;
   avatarClassname?: string;
   options?: ProfileOptions;
-  profile?: UserMetadata
+  profile?: UserMetadata;
 }) {
   const { inView, ref } = useInView();
-  const pLoaded = useUserProfile(System, inView && !profile ? pubkey : undefined) || profile;
+  const pLoaded =
+    useUserProfile(System, inView && !profile ? pubkey : undefined) || profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
 
@@ -54,6 +58,7 @@ export function Profile({
             src={pLoaded?.picture ?? ""}
           />
         ))}
+      {icon}
       {showName && (
         <span>
           {options?.overrideName ?? pubkey === "anon"
@@ -65,9 +70,15 @@ export function Profile({
   );
 
   return pubkey === "anon" ? (
-    <div className="profile" ref={ref}>{content}</div>
+    <div className="profile" ref={ref}>
+      {content}
+    </div>
   ) : (
-    <Link to={`/p/${hexToBech32("npub", pubkey)}`} className="profile" ref={ref}>
+    <Link
+      to={`/p/${hexToBech32("npub", pubkey)}`}
+      className="profile"
+      ref={ref}
+    >
       {content}
     </Link>
   );
