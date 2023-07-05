@@ -38,7 +38,7 @@ export function Profile({
   profile?: UserMetadata
 }) {
   const { inView, ref } = useInView();
-  profile ??= useUserProfile(System, inView ? pubkey : undefined);
+  const pLoaded = useUserProfile(System, inView && !profile ? pubkey : undefined) || profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
 
@@ -49,16 +49,16 @@ export function Profile({
           <Icon size={40} name="zap-filled" />
         ) : (
           <img
-            alt={profile?.name || pubkey}
+            alt={pLoaded?.name || pubkey}
             className={avatarClassname ? avatarClassname : ""}
-            src={profile?.picture ?? ""}
+            src={pLoaded?.picture ?? ""}
           />
         ))}
       {showName && (
         <span>
           {options?.overrideName ?? pubkey === "anon"
             ? "Anon"
-            : getName(pubkey, profile)}
+            : getName(pubkey, pLoaded)}
         </span>
       )}
     </>
