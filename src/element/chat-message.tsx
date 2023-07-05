@@ -11,7 +11,7 @@ import { Profile } from "./profile";
 import { Text } from "./text";
 import { SendZapsDialog } from "./send-zap";
 import { findTag } from "../utils";
-
+import { useInView } from "react-intersection-observer";
 
 interface Emoji {
     id: string;
@@ -38,12 +38,16 @@ export function ChatMessage({
     reactions: readonly NostrEvent[];
 }) {
     const ref = useRef(null);
+    const { inView } = useInView({
+        root: ref.current,
+        triggerOnce: true
+    });
     const emojiRef = useRef(null);
     const isTablet = useMediaQuery("(max-width: 1020px)");
     const isHovering = useHover(ref);
     const [showZapDialog, setShowZapDialog] = useState(false);
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-    const profile = useUserProfile(System, ev.pubkey);
+    const profile = useUserProfile(System, inView ? ev.pubkey : undefined);
     const zapTarget = profile?.lud16 ?? profile?.lud06;
     const zaps = useMemo(() => {
         return reactions.filter(a => a.kind === EventKind.ZapReceipt)
@@ -102,7 +106,7 @@ export function ChatMessage({
                 ref={ref}
                 onClick={() => setShowZapDialog(true)}
             >
-                <Profile pubkey={ev.pubkey} />
+                <Profile pubkey={ev.pubkey} profile={profile} />
                 <Text content={ev.content} tags={ev.tags} />
                 {(hasReactions || hasZaps) && (
                     <div className="message-reactions">

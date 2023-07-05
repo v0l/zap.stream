@@ -5,6 +5,7 @@ import { UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
 import { Icon } from "element/icon";
 import { System } from "index";
+import { useInView } from "react-intersection-observer";
 
 export interface ProfileOptions {
   showName?: boolean;
@@ -29,12 +30,15 @@ export function Profile({
   pubkey,
   avatarClassname,
   options,
+  profile,
 }: {
   pubkey: string;
   avatarClassname?: string;
   options?: ProfileOptions;
+  profile?: UserMetadata
 }) {
-  const profile = useUserProfile(System, pubkey);
+  const { inView, ref } = useInView();
+  profile ??= useUserProfile(System, inView ? pubkey : undefined);
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
 
@@ -61,9 +65,9 @@ export function Profile({
   );
 
   return pubkey === "anon" ? (
-    <div className="profile">{content}</div>
+    <div className="profile" ref={ref}>{content}</div>
   ) : (
-    <Link to={`/p/${hexToBech32("npub", pubkey)}`} className="profile">
+    <Link to={`/p/${hexToBech32("npub", pubkey)}`} className="profile" ref={ref}>
       {content}
     </Link>
   );
