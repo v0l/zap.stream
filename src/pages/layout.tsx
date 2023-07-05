@@ -63,9 +63,7 @@ export function LayoutPage() {
       }
     >
       <header>
-        <div className="logo" onClick={() => navigate("/")}>
-          S
-        </div>
+        <div className="logo" onClick={() => navigate("/")}></div>
         <div className="paper">
           <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />

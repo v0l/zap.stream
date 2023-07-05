@@ -90,15 +90,11 @@ header {
 }
 
 header .logo {
-    background: #171717;
+    background: url("public/logo.png") no-repeat #171717;
+    background-size: cover;
     border-radius: 16px;
     width: 48px;
     height: 48px;
-    font-weight: bold;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
 }
 
