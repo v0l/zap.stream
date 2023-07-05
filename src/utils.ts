@@ -52,3 +52,7 @@ export function eventLink(ev: NostrEvent) {
   );
   return `/${naddr}`;
 }
+
+export function getHost(ev?: NostrEvent) {
+  return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
+}

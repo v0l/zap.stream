@@ -5,6 +5,7 @@ import { NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
 import { useInView } from "react-intersection-observer";
 import { StatePill } from "./state-pill";
 import { StreamState } from "index";
+import { getHost } from "utils";
 
 export function VideoTile({
   ev,
@@ -20,8 +21,7 @@ export function VideoTile({
   const title = ev.tags.find((a) => a[0] === "title")?.[1];
   const image = ev.tags.find((a) => a[0] === "image")?.[1];
   const status = ev.tags.find((a) => a[0] === "status")?.[1];
-  const host =
-    ev.tags.find((a) => a[0] === "p" && a[3] === "host")?.[1] ?? ev.pubkey;
+  const host = getHost(ev);
 
   const link = encodeTLV(
     NostrPrefix.Address,

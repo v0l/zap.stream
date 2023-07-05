@@ -15,10 +15,14 @@ export function useLiveChatFeed(link: NostrLink) {
     rb.withOptions({
       leaveOpen: true,
     });
+    const aTag = `${link.kind}:${link.author}:${link.id}`;
     rb.withFilter()
-      .kinds([EventKind.ZapReceipt, LIVE_STREAM_CHAT])
-      .tag("a", [`${link.kind}:${link.author}:${link.id}`])
+      .kinds([LIVE_STREAM_CHAT])
+      .tag("a", [aTag])
       .limit(100);
+    rb.withFilter()
+      .kinds([EventKind.ZapReceipt])
+      .tag("a", [aTag]);
     return rb;
   }, [link]);
 

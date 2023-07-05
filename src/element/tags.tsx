@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import moment from "moment";
-import { TaggedRawEvent } from "@snort/system";
+import { NostrEvent } from "@snort/system";
 import { StreamState } from "index";
 import { findTag } from "utils";
 
@@ -9,7 +9,7 @@ export function Tags({
   ev,
 }: {
   children?: ReactNode;
-  ev: TaggedRawEvent;
+  ev: NostrEvent;
 }) {
   const status = findTag(ev, "status");
   const start = findTag(ev, "starts");

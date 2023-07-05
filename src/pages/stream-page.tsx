@@ -4,38 +4,35 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
-import { findTag } from "utils";
+import { findTag, getHost } from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { useLogin } from "hooks/login";
 import { StreamState, System } from "index";
 import { SendZapsDialog } from "element/send-zap";
-import type { NostrLink } from "@snort/system";
+import { NostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
 import { Tags } from "element/tags";
 import { StatePill } from "element/state-pill";
 
-function ProfileInfo({ link }: { link: NostrLink }) {
-  const thisEvent = useEventFeed(link, true);
+function ProfileInfo({ ev }: { ev?: NostrEvent }) {
   const login = useLogin();
   const navigate = useNavigate();
-  const host =
-    thisEvent.data?.tags.find((a) => a[0] === "p" && a[3] === "host")?.[1] ??
-    thisEvent.data?.pubkey;
+  const host = getHost(ev);
   const profile = useUserProfile(System, host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
-  const status = thisEvent?.data ? findTag(thisEvent.data, "status") : "";
-  const isMine = link.author === login?.pubkey;
+  const status = findTag(ev, "status") ?? "";
+  const isMine = ev?.pubkey === login?.pubkey;
 
   async function deleteStream() {
     const pub = await EventPublisher.nip7();
-    if (pub && thisEvent.data) {
-      const ev = await pub.delete(thisEvent.data.id);
-      console.debug(ev);
-      System.BroadcastEvent(ev);
+    if (pub && ev) {
+      const evDelete = await pub.delete(ev.id);
+      console.debug(evDelete);
+      System.BroadcastEvent(evDelete);
       navigate("/");
     }
   }
@@ -44,17 +41,17 @@ function ProfileInfo({ link }: { link: NostrLink }) {
     <>
       <div className="flex info">
         <div className="f-grow stream-info">
-          <h1>{findTag(thisEvent.data, "title")}</h1>
-          <p>{findTag(thisEvent.data, "summary")}</p>
-          {thisEvent?.data && (
-            <Tags ev={thisEvent.data}>
+          <h1>{findTag(ev, "title")}</h1>
+          <p>{findTag(ev, "summary")}</p>
+          {ev && (
+            <Tags ev={ev}>
               <StatePill state={status as StreamState} />
             </Tags>
           )}
           {isMine && (
             <div className="actions">
-              {thisEvent.data && (
-                <NewStreamDialog text="Edit" ev={thisEvent.data} />
+              {ev && (
+                <NewStreamDialog text="Edit" ev={ev} />
               )}
               <AsyncButton
                 type="button"
@@ -68,15 +65,15 @@ function ProfileInfo({ link }: { link: NostrLink }) {
         </div>
         <div className="profile-info flex g24">
           <Profile pubkey={host ?? ""} />
-          {zapTarget && thisEvent.data && (
+          {zapTarget && ev && (
             <SendZapsDialog
               lnurl={zapTarget}
               pubkey={host}
-              aTag={`${thisEvent.data.kind}:${thisEvent.data.pubkey}:${findTag(
-                thisEvent.data,
+              aTag={`${ev.kind}:${ev.pubkey}:${findTag(
+                ev,
                 "d"
               )}`}
-              targetName={getName(thisEvent.data.pubkey, profile)}
+              targetName={getName(ev.pubkey, profile)}
             />
           )}
         </div>
@@ -85,10 +82,9 @@ function ProfileInfo({ link }: { link: NostrLink }) {
   );
 }
 
-function VideoPlayer({ link }: { link: NostrLink }) {
-  const thisEvent = useEventFeed(link);
-  const stream = findTag(thisEvent.data, "streaming");
-  const image = findTag(thisEvent.data, "image");
+function VideoPlayer({ ev }: { ev?: NostrEvent }) {
+  const stream = findTag(ev, "streaming");
+  const image = findTag(ev, "image");
 
   return (
     <div className="video-content">
@@ -100,11 +96,12 @@ function VideoPlayer({ link }: { link: NostrLink }) {
 export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
+  const { data: ev } = useEventFeed(link);
 
   return (
     <>
-      <VideoPlayer link={link} />
-      <ProfileInfo link={link} />
+      <VideoPlayer ev={ev} />
+      <ProfileInfo ev={ev} />
       <LiveChat link={link} />
     </>
   );
