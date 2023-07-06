@@ -27,7 +27,7 @@ export function Goal({
 
   const soFar = useMemo(() => {
     return zaps
-      .filter((z) => z.receiver === ev.pubkey)
+      .filter((z) => z.receiver === ev.pubkey && z.event === ev.id)
       .reduce((acc, z) => acc + z.amount, 0);
   }, [zaps]);
 
