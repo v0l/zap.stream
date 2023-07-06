@@ -23,6 +23,7 @@
     "moment": "^2.29.4",
     "qr-code-styling": "^1.6.0-rc.1",
     "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.1",
     "react-router-dom": "^6.13.0",

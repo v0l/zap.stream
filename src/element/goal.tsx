@@ -1,6 +1,7 @@
 import "./goal.css";
 import { useMemo } from "react";
 import * as Progress from "@radix-ui/react-progress";
+import Confetti from "react-confetti";
 import { NostrLink, ParsedZap, NostrEvent } from "@snort/system";
 import { Icon } from "./icon";
 import { findTag } from "utils";
@@ -55,6 +56,7 @@ export function Goal({
           />
         </div>
       </div>
+      {isFinished && <Confetti numberOfPieces={2100} recycle={false} />}
     </div>
   );
 }
