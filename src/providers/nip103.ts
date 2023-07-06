@@ -29,7 +29,9 @@ export class Nip103StreamProvider implements StreamProvider {
             ingressUrl: rsp.url,
             ingressKey: rsp.key,
             balance: rsp.quota.remaining,
-            publishedEvent: rsp.event
+            publishedEvent: rsp.event,
+            rate: rsp.quota.rate,
+            unit: rsp.quota.unit
         } as StreamProviderInfo
     }
 
@@ -45,8 +47,9 @@ export class Nip103StreamProvider implements StreamProvider {
         const summary = findTag(ev, "summary");
         const image = findTag(ev, "image");
         const tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]);
+        const contentWarning = findTag(ev, "content-warning");
         await this.#getJson("PATCH", "event", {
-            title, summary, image, tags
+            title, summary, image, tags, content_warning: contentWarning
         });
     }
 

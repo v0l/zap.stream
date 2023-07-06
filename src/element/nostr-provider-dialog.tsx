@@ -37,6 +37,16 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
         }} />
     }
 
+    function calcEstimate() {
+        if (!info?.rate || !info?.unit || !info?.balance || !info.balance) return;
+
+        const raw = Math.max(0, info.balance / info.rate);
+        if (info.unit === "min" && raw > 60) {
+            return `${(raw / 60).toFixed(0)} hour`
+        }
+        return `${raw.toFixed(0)} ${info.unit}`
+    }
+
     const streamEvent = others.ev ?? info.publishedEvent ?? DummyEvent;
     return <>
         <div>
@@ -66,6 +76,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
                     Topup
                 </button>
             </div>
+            <small>About {calcEstimate()} @ {info.rate} sats/{info.unit}</small>
         </div>
         {streamEvent && <StreamEditor onFinish={(ex) => {
             provider.updateStreamInfo(ex);

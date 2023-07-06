@@ -48,6 +48,8 @@ export interface StreamProviderInfo {
     ingressKey?: string
     balance?: number
     publishedEvent?: NostrEvent
+    rate?: number
+    unit?: string
 }
 
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
