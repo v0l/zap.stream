@@ -80,8 +80,8 @@ a {
   color: white;
 }
 
-.btn-red {
-  background: rgb(143, 0, 0);
+.btn-warning {
+  background: #FF563F;
   color: white;
 }
 

@@ -32,7 +32,7 @@
     grid-template-rows: 64px min-content;
     grid-template-columns: 600px 1fr;
     gap: 0;
-  } 
+  }
 
   .video-content video {
     height: 100%;
@@ -61,21 +61,24 @@
     padding: 0 40px;
     grid-template-columns: auto 450px;
   }
+
   .video-content {
     max-height: calc(100vh - 320px);
   }
+
   .video-content video {
     height: 100%;
   }
 }
 
 header {
-    grid-area: header;
-    align-items: center;
-    display: grid;
-    grid-template-columns: min-content min-content auto;
-    padding: 8px 16px;
-    gap: 8px;
+  grid-area: header;
+  align-items: center;
+  display: grid;
+  grid-template-columns: min-content min-content min-content auto;
+  padding: 8px 16px;
+  gap: 8px;
+  white-space: nowrap;
 }
 
 @media (min-width: 1020px) {
@@ -90,39 +93,60 @@ header {
 }
 
 header .logo {
-    background: url("public/logo.png") no-repeat #171717;
-    background-size: cover;
-    border-radius: 16px;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
+  background: url("public/logo.png") no-repeat #171717;
+  background-size: cover;
+  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+
+header .btn-header {
+  height: 32px;
+  border-bottom: 2px solid transparent;
+  user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+}
+
+header .btn-header.active {
+  border-bottom: 2px solid;
+}
+
+header .btn-header:hover {
+  border-bottom: 2px solid;
 }
 
 header .paper {
-    min-width: 300px;
-    height: 32px;
+  min-width: 300px;
+  height: 32px;
 }
 
 header .header-right {
-    justify-self: end;
-    display: flex;
-    gap: 24px;
+  justify-self: end;
+  display: flex;
+  gap: 24px;
 }
 
 header input[type="text"]:active {
-    border: unset;
+  border: unset;
 }
 
 header button {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 header .profile img {
-    width: 48px;
-    height: 48px;
+  width: 48px;
+  height: 48px;
 }
 
 @media (max-width: 1020px) {
@@ -182,4 +206,40 @@ button span.hide-on-mobile {
 .tags {
   display: flex;
   gap: 8px;
+}
+
+.fullscreen-exclusive {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #0A0A0A;
+}
+
+.age-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.age-check::after {
+  content: " ";
+  background: url("public/zap-stream.svg") no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+  z-index: -1;
+  opacity: 0.02;
+}
+
+.age-check .btn {
+  padding: 12px 16px;
 }

@@ -12,7 +12,7 @@ import { VideoTile } from "../element/video-tile";
 import { findTag } from "../utils";
 import { LIVE_STREAM } from "../const";
 
-export function RootPage() {
+export function RootPage({ nsfw }: { nsfw?: boolean }) {
   const rb = useMemo(() => {
     const rb = new RequestBuilder("root");
     rb.withOptions({
@@ -31,7 +31,7 @@ export function RootPage() {
   );
   const feedSorted = useMemo(() => {
     if (feed.data) {
-      return [...feed.data].sort((a, b) => {
+      return [...feed.data].filter(a => nsfw ? findTag(a, "content-warning") !== undefined : findTag(a, "content-warning") === undefined).sort((a, b) => {
         const aStatus = findTag(a, "status")!;
         const bStatus = findTag(b, "status")!;
         if (aStatus === bStatus) {
@@ -44,7 +44,7 @@ export function RootPage() {
       });
     }
     return [];
-  }, [feed.data]);
+  }, [feed.data, nsfw]);
 
   const live = feedSorted.filter(
     (a) => findTag(a, "status") === StreamState.Live
