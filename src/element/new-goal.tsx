@@ -29,6 +29,9 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
           .tag(["a", `${link.kind}:${link.author}:${link.id}`])
           .tag(["amount", String(Number(goalAmount) * 1000)])
           .content(goalName);
+        if (link.relays?.length) {
+          eb.tag(["relays", ...link.relays]);
+        }
         return eb;
       });
       console.debug(evNew);

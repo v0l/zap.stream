@@ -108,7 +108,8 @@ export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
   const { data: ev } = useEventFeed(link, true);
-  const goal = useZapGoal(link, true);
+  const host = getHost(ev);
+  const goal = useZapGoal(host, link, true);
 
   return (
     <>
