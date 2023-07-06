@@ -172,6 +172,7 @@ button span.hide-on-mobile {
   max-width: 450px;
   max-height: 85vh;
   padding: 25px;
+  overflow-y: auto;
 }
 
 .zap-icon {
