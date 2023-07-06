@@ -155,7 +155,7 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
   if (!zap.valid) {
     return null;
   }
-  const isBig = zap.amount >= 1_000_000;
+  const isBig = zap.amount >= 10_000;
 
   return (
     <div className={`zap-container ${isBig ? "big-zap" : ""}`}>
