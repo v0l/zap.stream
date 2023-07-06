@@ -166,10 +166,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             value={tags}
             onChange={setTags}
             placeHolder="Music,DJ,English"
-            separators={["\n",","]}
+            separators={["Enter",","]}
           />
         </div>
-        <small>Stream type should be HLS</small>
       </div>
       <div>
         <AsyncButton
