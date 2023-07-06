@@ -29,3 +29,7 @@
 .video-tile .pill-box .pill {
     width: fit-content;
 }
+
+.video-tile .pill-box .pill.viewers {
+    text-transform: lowercase;
+}

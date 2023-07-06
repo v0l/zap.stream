@@ -94,7 +94,6 @@
 .live-chat .write-message input {
   background: unset;
   border: unset;
-  outline: unset;
   color: inherit;
   font: inherit;
   flex-grow: 1;

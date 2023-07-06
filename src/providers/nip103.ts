@@ -44,8 +44,9 @@ export class Nip103StreamProvider implements StreamProvider {
         const title = findTag(ev, "title");
         const summary = findTag(ev, "summary");
         const image = findTag(ev, "image");
+        const tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]);
         await this.#getJson("PATCH", "event", {
-            title, summary, image
+            title, summary, image, tags
         });
     }
 

@@ -163,7 +163,6 @@
   padding: 6px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  outline: none;
 }
 .tabs-content:focus {
   box-shadow: 0 0 0 2px black;

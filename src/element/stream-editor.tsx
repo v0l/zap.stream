@@ -1,10 +1,12 @@
+import "./stream-editor.css";
 import { useEffect, useState, useCallback } from "react";
 import { EventPublisher, NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
+import { TagsInput } from "react-tag-input-component";
 
 import AsyncButton from "./async-button";
-import { StreamState, System } from "index";
-import { findTag } from "utils";
+import { StreamState } from "../index";
+import { findTag } from "../utils";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -27,6 +29,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     findTag(ev, "status") ?? StreamState.Live
   );
   const [start, setStart] = useState(findTag(ev, "starts"));
+  const [tags, setTags] = useState(
+    ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []
+  );
   const [isValid, setIsValid] = useState(false);
 
   const validate = useCallback(() => {
@@ -64,6 +69,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           .tag(["starts", starts]);
         if (status === StreamState.Ended) {
           eb.tag(["ends", ends]);
+        }
+        for (const tx of tags) {
+          eb.tag(["t", tx.trim()]);
         }
         return eb;
       });
@@ -151,6 +159,18 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             </div>
           </div>
         )}</>}
+      <div>
+        <p>Tags</p>
+        <div className="paper">
+          <TagsInput
+            value={tags}
+            onChange={setTags}
+            placeHolder="Music,DJ,English"
+            separators={["\n",","]}
+          />
+        </div>
+        <small>Stream type should be HLS</small>
+      </div>
       <div>
         <AsyncButton
           type="button"

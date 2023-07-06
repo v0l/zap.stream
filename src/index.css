@@ -17,6 +17,10 @@ a {
   text-decoration: unset;
 }
 
+:focus-visible {
+  outline: none;
+}
+
 .flex {
   display: flex;
 }
@@ -96,7 +100,6 @@ input[type="text"], textarea, input[type="datetime-local"], input[type="password
   width: 100%;
   font-size: 16px;
   font-weight: 500;
-  outline: none;
 }
 
 div.paper {

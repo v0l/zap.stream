@@ -1532,19 +1532,19 @@
     dexie "^3.2.4"
     light-bolt11-decoder "^3.0.0"
 
-"@snort/system-react@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.10.tgz#72947af286602022dc468f7d04b01c7b18c14389"
-  integrity sha512-mBgHVmcrt9Sblm3/IN1vHLgoyQGH1xOpYg+v2+ARlFVOUdvkcQTxzQzt4sxWsdF4C63WFiju9hAahW/Dg4UhEw==
+"@snort/system-react@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@snort/system-react/-/system-react-1.0.11.tgz#ab17de07e061eee6f6ff76083650c412b35703fe"
+  integrity sha512-eNjVMYWAA0kLpnpaNL/xH3sL+CrTVuGfzBsF/F2JHLqcmR3LASilZMBw6jEwyH/B+LKN7NCaei8PrqzWEU084Q==
   dependencies:
     "@snort/shared" "^1.0.4"
-    "@snort/system" "^1.0.15"
+    "@snort/system" "^1.0.16"
     react "^18.2.0"
 
-"@snort/system@^1.0.15":
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.15.tgz#845a2aaafcb75e469e7836c143f217404172cee0"
-  integrity sha512-mVXj2ZCS0T/m3EPqn0ICWrp96XUlhBCT4ci1CLzmtT8zXojAE/2eONv4ZR/OzGrvftUIBqarfpFbtJ7q1vohSg==
+"@snort/system@^1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@snort/system/-/system-1.0.16.tgz#3acdb873fd9e36de05315a331b98c25cd861a36e"
+  integrity sha512-eMATT2yNwkNFOJiB11bW2r4O+0DjYpUyAn+eeGDGk0LY3s2hDCw7VhZGShNk7Pbeb9VrvlXJtAT7f5YS2OBjnQ==
   dependencies:
     "@noble/curves" "^1.0.0"
     "@scure/base" "^1.1.1"
@@ -5418,6 +5418,11 @@ react-style-singleton@^2.2.1:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^2.0.0"
+
+react-tag-input-component@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-tag-input-component/-/react-tag-input-component-2.0.2.tgz#f62f013c6a535141dd1c6c3a88858223170150f1"
+  integrity sha512-dydI9luVwwv9vrjE5u1TTnkcOVkOVL6mhFti8r6hLi78V2F2EKWQOLptURz79UYbDHLSk6tnbvGl8FE+sMpADg==
 
 react@^18.2.0:
   version "18.2.0"
