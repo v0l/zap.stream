@@ -33,7 +33,6 @@
     padding: 24px 16px 8px 24px;
     border: 1px solid #171717;
     border-radius: 24px;
-    gap: 16px;
   }
 
   .live-chat {
@@ -145,6 +144,14 @@
   gap: 8px;
 }
 
+.top-zappers {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: 1px solid var(--border, #171717);
+  padding-bottom: 18px;
+}
+
 .top-zappers h3 {
   margin: 0;
   font-size: 16px;
@@ -154,8 +161,6 @@
 
 .top-zappers-container {
   display: flex;
-  padding-top: 8px;
-  padding-bottom: 8px;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -169,9 +174,6 @@
   .top-zappers-container {
     display: flex;
     gap: 8px;
-    padding-top: 12px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border, #171717);
   }
 }
 
