@@ -28,12 +28,5 @@ export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
     sub
   );
 
-  const sorted = useMemo(() => {
-    const s = (data ? [...data] : []).sort(
-      (a: NostrEvent, b: NostrEvent) => b.created_at - a.created_at
-    );
-    return s;
-  }, [data]);
-
-  return sorted.at(0);
+  return data?.at(0);
 }
