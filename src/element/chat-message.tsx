@@ -1,7 +1,7 @@
 import { useUserProfile } from "@snort/system-react";
 import { NostrEvent, parseZap, EventPublisher, EventKind } from "@snort/system";
 import { useRef, useState, useMemo } from "react";
-import { useMediaQuery, useHover, useOnClickOutside } from "usehooks-ts";
+import { useMediaQuery, useHover, useOnClickOutside, useIntersectionObserver } from "usehooks-ts";
 
 import { System } from "../index";
 import { formatSats } from "../number";
@@ -37,12 +37,15 @@ export function ChatMessage({
     reactions: readonly NostrEvent[];
 }) {
     const ref = useRef(null);
+    const inView = useIntersectionObserver(ref, {
+        freezeOnceVisible: true
+    })
     const emojiRef = useRef(null);
     const isTablet = useMediaQuery("(max-width: 1020px)");
     const isHovering = useHover(ref);
     const [showZapDialog, setShowZapDialog] = useState(false);
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-    const profile = useUserProfile(System, ev.pubkey);
+    const profile = useUserProfile(System, inView?.isIntersecting ? ev.pubkey : undefined);
     const zapTarget = profile?.lud16 ?? profile?.lud06;
     const zaps = useMemo(() => {
         return reactions.filter(a => a.kind === EventKind.ZapReceipt)
@@ -107,7 +110,7 @@ export function ChatMessage({
                             <Icon name="signal" size={16} />
                         )
                     }
-                    pubkey={ev.pubkey}
+                    pubkey={""}
                     profile={profile}
                 />
                 <Text content={ev.content} tags={ev.tags} />
