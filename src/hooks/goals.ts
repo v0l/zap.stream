@@ -25,19 +25,3 @@ export function useGoal(link: NostrLink, leaveOpen = true) {
 
   return data?.at(0);
 }
-
-export function useGoalZaps(goal: NostrEvent) {
-  const a = findTag(goal, "a") ?? "";
-  const sub = useMemo(() => {
-    const b = new RequestBuilder(`goal-zaps:${goal.id.slice(0, 12)}`);
-    b.withFilter()
-      .kinds([EventKind.ZapReceipt])
-      .tag("e", [goal.id])
-      .tag("p", [goal.pubkey]); // todo: ability to tag one or more p in goals?
-    return b;
-  }, [goal]);
-
-  const { data } = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
-
-  return data ?? [];
-}

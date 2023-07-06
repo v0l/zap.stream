@@ -42,7 +42,9 @@ export function Goal({
             className="progress-indicator"
             style={{ transform: `translateX(-${100 - progress}%)` }}
           >
-            <span className="amount so-far">{formatSats(soFar)}</span>
+            {!isFinished && (
+              <span className="amount so-far">{formatSats(soFar)}</span>
+            )}
           </Progress.Indicator>
           <span className="amount target">Goal: {formatSats(goalAmount)}</span>
         </Progress.Root>

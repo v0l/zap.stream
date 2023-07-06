@@ -1,16 +1,9 @@
-.add-stream {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
 .new-goal .h3 {
   font-size: 24px;
   margin: 0;
 }
 
-.zap-goals {
+.new-goal .zap-goals {
   display: flex;
   align-items: center;
   gap: 8px;
