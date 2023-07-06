@@ -224,6 +224,24 @@
   color: #FF8D2B;
 }
 
+.zap-container.big-zap:before {
+  background: linear-gradient(60deg, #2BD9FF, #8C8DED, #F838D9, #F83838, #FF902B, #DDF838);
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .zap-content {
   margin-top: 8px;
 }
