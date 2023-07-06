@@ -7,19 +7,22 @@ export enum VideoStatus {
   Offline = "offline",
 }
 
+export interface VideoPlayerProps {
+  stream?: string, status?: string, poster?: string 
+}
+
 export function LiveVideoPlayer(
-  props: HTMLProps<HTMLVideoElement> & { stream?: string }
+  props: VideoPlayerProps
 ) {
   const video = useRef<HTMLVideoElement>(null);
   const streamCached = useMemo(() => props.stream, [props.stream]);
   const [status, setStatus] = useState<VideoStatus>();
-  const [src, setSrc] = useState(props.src);
+  const [src, setSrc] = useState<string>();
 
   useEffect(() => {
     if (
       streamCached &&
-      video.current &&
-      !video.current.src
+      video.current
     ) {
       if (Hls.isSupported()) {
         try {
@@ -50,22 +53,19 @@ export function LiveVideoPlayer(
         video.current.load();
       }
     }
-  }, [video, streamCached]);
+  }, [video, streamCached, props.status]);
 
   return (
     <>
       <div className={status}>
         <div>{status}</div>
       </div>
-      <video ref={video} {...{
-        ...props,
-        stream: undefined
-      }} src={src} playsInline={true} controls={status === VideoStatus.Online} />
+      <video ref={video} autoPlay={true} poster={props.poster} src={src} playsInline={true} controls={status === VideoStatus.Online} />
     </>
   );
 }
 
-export function WebRTCPlayer(props: HTMLProps<HTMLVideoElement> & { stream?: string }) {
+export function WebRTCPlayer(props: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const streamCached = useMemo(() => "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play", [props.stream]);
   const [status, setStatus] = useState<VideoStatus>();
@@ -91,7 +91,7 @@ export function WebRTCPlayer(props: HTMLProps<HTMLVideoElement> & { stream?: str
       <div className={status}>
         <div>{status}</div>
       </div>
-      <video ref={video} {...props} controls={status === VideoStatus.Online} />
+      <video ref={video} autoPlay={true} poster={props.poster} controls={status === VideoStatus.Online} />
     </>
   );
 }

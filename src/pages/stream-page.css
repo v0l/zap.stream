@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .video-content {
     height: calc(100vh - 64px);
   }
@@ -44,6 +44,11 @@
 .pill.live {
   color: inherit;
   text-transform: uppercase;
+}
+
+.pill.viewers {
+  color: white;
+  background: rgba(23, 23, 23, 0.70);
 }
 
 @media (min-width: 1020px) {

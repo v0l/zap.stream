@@ -35,7 +35,9 @@ export function RootPage() {
         const aStatus = findTag(a, "status")!;
         const bStatus = findTag(b, "status")!;
         if (aStatus === bStatus) {
-          return b.created_at > a.created_at ? 1 : -1;
+          const aStart = Number(findTag(a, "starts") ?? "0");
+          const bStart = Number(findTag(b, "starts") ?? "0");
+          return bStart > aStart ? 1 : -1;
         } else {
           return aStatus === "live" ? -1 : 1;
         }

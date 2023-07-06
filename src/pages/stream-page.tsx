@@ -16,6 +16,8 @@ import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
 import { Tags } from "element/tags";
 import { StatePill } from "element/state-pill";
+import { formatSats } from "number";
+import { StreamTimer } from "element/stream-time";
 
 function ProfileInfo({ ev }: { ev?: NostrEvent }) {
   const login = useLogin();
@@ -37,6 +39,7 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
     }
   }
 
+  const viewers = Number(findTag(ev, "current_participants") ?? "0");
   return (
     <>
       <div className="flex info">
@@ -46,6 +49,8 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
           {ev && (
             <Tags ev={ev}>
               <StatePill state={status as StreamState} />
+              {viewers > 0 && <span className="pill viewers">{formatSats(viewers)} viewers</span>}
+              {status === StreamState.Live && <span className="pill"><StreamTimer ev={ev} /></span>}
             </Tags>
           )}
           {isMine && (
@@ -85,10 +90,11 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
 function VideoPlayer({ ev }: { ev?: NostrEvent }) {
   const stream = findTag(ev, "streaming");
   const image = findTag(ev, "image");
+  const status = findTag(ev, "status");
 
   return (
     <div className="video-content">
-      <LiveVideoPlayer stream={stream} autoPlay={true} poster={image} />
+      <LiveVideoPlayer stream={stream} poster={image} status={status} />
     </div>
   );
 }
@@ -96,7 +102,7 @@ function VideoPlayer({ ev }: { ev?: NostrEvent }) {
 export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
-  const { data: ev } = useEventFeed(link);
+  const { data: ev } = useEventFeed(link, true);
 
   return (
     <>

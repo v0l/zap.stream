@@ -80,7 +80,7 @@ export function LiveChat({
       (a, b) => b.created_at - a.created_at
     );
   }, [feed.messages, feed.zaps]);
-  const { data: ev } = useEventFeed(link);
+  const { data: ev } = useEventFeed(link, true);
   const streamer = getHost(ev);
   const naddr = useMemo(() => {
     return encodeTLV(
