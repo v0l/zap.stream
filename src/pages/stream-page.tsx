@@ -60,7 +60,7 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
               )}
               <AsyncButton
                 type="button"
-                className="btn btn-red"
+                className="btn btn-warning"
                 onClick={deleteStream}
               >
                 Delete
