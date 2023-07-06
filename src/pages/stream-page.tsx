@@ -64,7 +64,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
           )}
           {isMine && (
             <div className="actions">
-              {ev && <NewStreamDialog text="Edit" ev={ev} />}
+              {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
               <AsyncButton
                 type="button"
                 className="btn btn-red"

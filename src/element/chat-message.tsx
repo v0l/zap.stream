@@ -110,7 +110,7 @@ export function ChatMessage({
                             <Icon name="signal" size={16} />
                         )
                     }
-                    pubkey={""}
+                    pubkey={ev.pubkey}
                     profile={profile}
                 />
                 <Text content={ev.content} tags={ev.tags} />
