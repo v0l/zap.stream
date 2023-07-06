@@ -72,8 +72,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
             others.onFinish?.(ex);
         }} ev={streamEvent} options={{
             canSetStream: false,
-            canSetStatus: false,
-            canSetContentWarning: false
+            canSetStatus: false
         }} />}
     </>
 }
