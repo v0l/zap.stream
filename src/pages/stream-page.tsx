@@ -9,7 +9,7 @@ import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { useLogin } from "hooks/login";
-import { useGoal } from "hooks/goals";
+import { useZapGoal } from "hooks/goals";
 import { StreamState, System } from "index";
 import { SendZapsDialog } from "element/send-zap";
 import { NostrEvent } from "@snort/system";
@@ -108,7 +108,7 @@ export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
   const { data: ev } = useEventFeed(link, true);
-  const goal = useGoal(link, true);
+  const goal = useZapGoal(link, true);
 
   return (
     <>

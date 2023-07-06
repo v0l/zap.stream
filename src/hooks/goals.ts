@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import {
   RequestBuilder,
-  FlatNoteStore,
+  NoteCollection,
   NostrEvent,
   EventKind,
   NostrLink,
@@ -11,7 +11,7 @@ import { GOAL } from "const";
 import { System } from "index";
 import { findTag } from "utils";
 
-export function useGoal(link: NostrLink, leaveOpen = false) {
+export function useZapGoal(link: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`goals:${link.author!.slice(0, 12)}`);
     b.withOptions({ leaveOpen });
@@ -21,7 +21,11 @@ export function useGoal(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link]);
 
-  const { data } = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
+  const { data } = useRequestBuilder<NoteCollection>(
+    System,
+    NoteCollection,
+    sub
+  );
 
   return data?.at(0);
 }

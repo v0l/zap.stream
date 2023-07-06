@@ -4,7 +4,7 @@ import {
   NostrPrefix,
   NostrLink,
   ParsedZap,
-  TaggedRawEvent,
+  NostrEvent,
   parseZap,
   encodeTLV,
 } from "@snort/system";
@@ -60,8 +60,8 @@ export function LiveChat({
   height,
 }: {
   link: NostrLink;
-  ev?: TaggedRawEvent;
-  goal?: TaggedRawEvent;
+  ev?: NostrEvent;
+  goal?: NostrEvent;
   options?: LiveChatOptions;
   height?: number;
 }) {
