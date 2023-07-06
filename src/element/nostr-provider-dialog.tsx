@@ -13,10 +13,8 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
     const [info, setInfo] = useState<StreamProviderInfo>();
 
     useEffect(() => {
-        if (provider && !info) {
-            provider.info().then(v => setInfo(v));
-        }
-    }, [info, provider])
+        provider.info().then(v => setInfo(v));
+    }, [provider]);
 
     if (!info) {
         return <Spinner />
@@ -74,7 +72,8 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
             others.onFinish?.(ex);
         }} ev={streamEvent} options={{
             canSetStream: false,
-            canSetStatus: false
+            canSetStatus: false,
+            canSetContentWarning: false
         }} />}
     </>
 }

@@ -12,3 +12,9 @@
     border-radius: 12px !important;
     display: unset !important;
 }
+
+.content-warning {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid #FF563F;
+}

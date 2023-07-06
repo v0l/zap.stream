@@ -17,22 +17,32 @@ export interface StreamEditorProps {
     canSetImage?: boolean
     canSetStatus?: boolean
     canSetStream?: boolean
+    canSetTags?: boolean
+    canSetContentWarning?: boolean
   }
 }
 
 export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
-  const [title, setTitle] = useState(findTag(ev, "title") ?? "");
-  const [summary, setSummary] = useState(findTag(ev, "summary") ?? "");
-  const [image, setImage] = useState(findTag(ev, "image") ?? "");
-  const [stream, setStream] = useState(findTag(ev, "streaming") ?? "");
-  const [status, setStatus] = useState(
-    findTag(ev, "status") ?? StreamState.Live
-  );
-  const [start, setStart] = useState(findTag(ev, "starts"));
-  const [tags, setTags] = useState(
-    ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []
-  );
+  const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
+  const [image, setImage] = useState("");
+  const [stream, setStream] = useState("");
+  const [status, setStatus] = useState("");
+  const [start, setStart] = useState<string>();
+  const [tags, setTags] = useState<string[]>([]);
+  const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    setTitle(findTag(ev, "title") ?? "");
+    setSummary(findTag(ev, "summary") ?? "");
+    setImage(findTag(ev, "image") ?? "");
+    setStream(findTag(ev, "streaming") ?? "");
+    setStatus(findTag(ev, "status") ?? StreamState.Live);
+    setStart(findTag(ev, "starts"));
+    setTags(ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []);
+    setContentWarning(findTag(ev, "content-warning") !== undefined);
+  }, [ev?.id]);
 
   const validate = useCallback(() => {
     if (title.length < 2) {
@@ -73,6 +83,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         for (const tx of tags) {
           eb.tag(["t", tx.trim()]);
         }
+        if(contentWarning) {
+          eb.tag(["content-warning", "nsfw"])
+        }
         return eb;
       });
       console.debug(evNew);
@@ -91,7 +104,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   return (
     <>
       <h3>{ev ? "Edit Stream" : "New Stream"}</h3>
-      {(options?.canSetTitle === undefined || options.canSetTitle) && <div>
+      {(options?.canSetTitle ?? true) && <div>
         <p>Title</p>
         <div className="paper">
           <input
@@ -101,7 +114,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             onChange={(e) => setTitle(e.target.value)} />
         </div>
       </div>}
-      {(options?.canSetSummary === undefined || options.canSetSummary) && <div>
+      {(options?.canSetSummary ?? true) && <div>
         <p>Summary</p>
         <div className="paper">
           <input
@@ -111,7 +124,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             onChange={(e) => setSummary(e.target.value)} />
         </div>
       </div>}
-      {(options?.canSetImage === undefined || options.canSetImage) && <div>
+      {(options?.canSetImage ?? true) && <div>
         <p>Cover image</p>
         <div className="paper">
           <input
@@ -121,7 +134,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             onChange={(e) => setImage(e.target.value)} />
         </div>
       </div>}
-      {(options?.canSetStream === undefined || options.canSetStream) && <div>
+      {(options?.canSetStream ?? true) && <div>
         <p>Stream Url</p>
         <div className="paper">
           <input
@@ -132,7 +145,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </div>
         <small>Stream type should be HLS</small>
       </div>}
-      {(options?.canSetStatus === undefined || options.canSetStatus) && <><div>
+      {(options?.canSetStatus ?? true) && <><div>
         <p>Status</p>
         <div className="flex g12">
           {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(
@@ -151,7 +164,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         {status === StreamState.Planned && (
           <div>
             <p>Start Time</p>
-            <div className="input">
+            <div className="paper">
               <input
                 type="datetime-local"
                 value={toDateTimeString(Number(start ?? "0"))}
@@ -159,17 +172,26 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             </div>
           </div>
         )}</>}
-      <div>
+      {(options?.canSetTags ?? true) && <div>
         <p>Tags</p>
         <div className="paper">
           <TagsInput
             value={tags}
             onChange={setTags}
             placeHolder="Music,DJ,English"
-            separators={["Enter",","]}
+            separators={["Enter", ","]}
           />
         </div>
-      </div>
+      </div>}
+      {(options?.canSetContentWarning ?? true) && <div className="flex g12 content-warning">
+        <div>
+          <input type="checkbox" checked={contentWarning} onChange={e => setContentWarning(e.target.checked)} />
+        </div>
+        <div>
+          <div className="warning">NSFW Content</div>
+          Check here if this stream contains nudity or pornographic content.
+        </div>
+      </div>}
       <div>
         <AsyncButton
           type="button"

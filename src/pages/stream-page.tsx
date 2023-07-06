@@ -56,7 +56,7 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
           {isMine && (
             <div className="actions">
               {ev && (
-                <NewStreamDialog text="Edit" ev={ev} />
+                <NewStreamDialog text="Edit" ev={ev} btnClassName="btn"/>
               )}
               <AsyncButton
                 type="button"
