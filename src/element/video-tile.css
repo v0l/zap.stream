@@ -15,8 +15,17 @@
     margin: 16px 0;
 }
 
-.video-tile .pill {
+.video-tile .pill-box {
     float: right;
-    margin: 16px 20px 0 0;
+    margin: 16px 20px;
     text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: calc(100% - 32px);
+}
+
+.video-tile .pill-box .pill {
+    width: fit-content;
 }

@@ -5,7 +5,8 @@ import { NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
 import { useInView } from "react-intersection-observer";
 import { StatePill } from "./state-pill";
 import { StreamState } from "index";
-import { getHost } from "utils";
+import { findTag, getHost } from "utils";
+import { formatSats } from "number";
 
 export function VideoTile({
   ev,
@@ -17,10 +18,11 @@ export function VideoTile({
   showStatus?: boolean;
 }) {
   const { inView, ref } = useInView({ triggerOnce: true });
-  const id = ev.tags.find((a) => a[0] === "d")?.[1]!;
-  const title = ev.tags.find((a) => a[0] === "title")?.[1];
-  const image = ev.tags.find((a) => a[0] === "image")?.[1];
-  const status = ev.tags.find((a) => a[0] === "status")?.[1];
+  const id = findTag(ev, "d") ?? "";
+  const title = findTag(ev, "title");
+  const image = findTag(ev, "image");
+  const status = findTag(ev, "status");
+  const viewers = findTag(ev, "current_participants");
   const host = getHost(ev);
 
   const link = encodeTLV(
@@ -37,7 +39,10 @@ export function VideoTile({
           backgroundImage: `url(${inView ? image : ""})`,
         }}
       >
-        {showStatus && <StatePill state={status as StreamState} />}
+        <span className="pill-box">
+          {showStatus && <StatePill state={status as StreamState} />}
+          {viewers && <span className="pill viewers">{formatSats(Number(viewers))} viewers</span>}
+        </span>
       </div>
       <h3>{title}</h3>
       {showAuthor && <div>{inView && <Profile pubkey={host} />}</div>}
