@@ -11,7 +11,7 @@ import { GOAL } from "const";
 import { System } from "index";
 import { findTag } from "utils";
 
-export function useGoal(link: NostrLink, leaveOpen = true) {
+export function useGoal(link: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`goals:${link.author!.slice(0, 12)}`);
     b.withOptions({ leaveOpen });

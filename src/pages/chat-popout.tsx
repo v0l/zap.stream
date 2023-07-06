@@ -7,7 +7,7 @@ import useEventFeed from "../hooks/event-feed";
 export function ChatPopout() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
-  const { data: ev } = useEventFeed(link);
+  const { data: ev } = useEventFeed(link, true);
 
   return (
     <div className="popout-chat">

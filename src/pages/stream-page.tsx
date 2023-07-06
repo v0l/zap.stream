@@ -108,7 +108,7 @@ export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
   const { data: ev } = useEventFeed(link, true);
-  const goal = useGoal(link);
+  const goal = useGoal(link, true);
 
   return (
     <>
