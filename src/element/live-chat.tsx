@@ -78,6 +78,12 @@ export function LiveChat({
   const zaps = feed.zaps
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
+
+  const goalZaps = feed.zaps
+    .filter((ev) => (goal ? ev.created_at > goal.created_at : false))
+    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
+    .filter((z) => z && z.valid);
+
   const events = useMemo(() => {
     return [...feed.messages, ...feed.zaps].sort(
       (a, b) => b.created_at - a.created_at
@@ -118,7 +124,7 @@ export function LiveChat({
             <TopZappers zaps={zaps} />
           </div>
           {goal ? (
-            <Goal link={link} ev={goal} zaps={zaps} />
+            <Goal link={link} ev={goal} zaps={goalZaps} />
           ) : (
             login?.pubkey === streamer && <NewGoalDialog link={link} />
           )}
