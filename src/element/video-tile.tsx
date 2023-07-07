@@ -7,6 +7,7 @@ import { StatePill } from "./state-pill";
 import { StreamState } from "index";
 import { findTag, getHost } from "utils";
 import { formatSats } from "number";
+import ZapStream from "../../public/zap-stream.svg";
 
 export function VideoTile({
   ev,
@@ -36,7 +37,7 @@ export function VideoTile({
     <Link to={`/${link}`} className="video-tile" ref={ref}>
       <div
         style={{
-          backgroundImage: `url(${inView ? image : ""})`,
+          backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""})`,
         }}
       >
         <span className="pill-box">
