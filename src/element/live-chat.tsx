@@ -169,13 +169,16 @@ export function LiveChat({
   );
 }
 
+const BIG_ZAP_THRESHOLD = 100_000;
+
 function ChatZap({ zap }: { zap: ParsedZap }) {
   if (!zap.valid) {
     return null;
   }
+  const isBig = zap.amount >= BIG_ZAP_THRESHOLD;
 
   return (
-    <div className="zap-container">
+    <div className={`zap-container ${isBig ? "big-zap" : ""}`}>
       <div className="zap">
         <Icon name="zap-filled" className="zap-icon" />
         <Profile
