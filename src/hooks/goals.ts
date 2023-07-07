@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import {
   RequestBuilder,
-  NoteCollection,
+  ReplaceableNoteStore,
   NostrEvent,
   EventKind,
   NostrLink,
@@ -22,11 +22,11 @@ export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data } = useRequestBuilder<NoteCollection>(
+  const { data } = useRequestBuilder<ReplaceableNoteStore>(
     System,
-    NoteCollection,
+    ReplaceableNoteStore,
     sub
   );
 
-  return data?.at(0);
+  return data;
 }
