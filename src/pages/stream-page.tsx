@@ -1,5 +1,5 @@
 import "./stream-page.css";
-import { parseNostrLink, EventPublisher } from "@snort/system";
+import { parseNostrLink, TaggedRawEvent, EventPublisher } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
 
 import useEventFeed from "hooks/event-feed";
@@ -9,6 +9,7 @@ import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { useLogin } from "hooks/login";
+import { useZapGoal } from "hooks/goals";
 import { StreamState, System } from "index";
 import { SendZapsDialog } from "element/send-zap";
 import { NostrEvent } from "@snort/system";
@@ -19,7 +20,7 @@ import { StatePill } from "element/state-pill";
 import { formatSats } from "number";
 import { StreamTimer } from "element/stream-time";
 
-function ProfileInfo({ ev }: { ev?: NostrEvent }) {
+function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const login = useLogin();
   const navigate = useNavigate();
   const host = getHost(ev);
@@ -49,15 +50,21 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
           {ev && (
             <Tags ev={ev}>
               <StatePill state={status as StreamState} />
-              {viewers > 0 && <span className="pill viewers">{formatSats(viewers)} viewers</span>}
-              {status === StreamState.Live && <span className="pill"><StreamTimer ev={ev} /></span>}
+              {viewers > 0 && (
+                <span className="pill viewers">
+                  {formatSats(viewers)} viewers
+                </span>
+              )}
+              {status === StreamState.Live && (
+                <span className="pill">
+                  <StreamTimer ev={ev} />
+                </span>
+              )}
             </Tags>
           )}
           {isMine && (
             <div className="actions">
-              {ev && (
-                <NewStreamDialog text="Edit" ev={ev} btnClassName="btn"/>
-              )}
+              {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
               <AsyncButton
                 type="button"
                 className="btn btn-warning"
@@ -74,10 +81,8 @@ function ProfileInfo({ ev }: { ev?: NostrEvent }) {
             <SendZapsDialog
               lnurl={zapTarget}
               pubkey={host}
-              aTag={`${ev.kind}:${ev.pubkey}:${findTag(
-                ev,
-                "d"
-              )}`}
+              aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
+              eTag={goal?.id}
               targetName={getName(ev.pubkey, profile)}
             />
           )}
@@ -103,12 +108,14 @@ export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
   const { data: ev } = useEventFeed(link, true);
+  const host = getHost(ev);
+  const goal = useZapGoal(host, link, true);
 
   return (
     <>
       <VideoPlayer ev={ev} />
-      <ProfileInfo ev={ev} />
-      <LiveChat link={link} />
+      <ProfileInfo ev={ev} goal={goal} />
+      <LiveChat link={link} ev={ev} goal={goal} />
     </>
   );
 }

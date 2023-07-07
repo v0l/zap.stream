@@ -1,0 +1,74 @@
+.goal {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.goal p {
+  margin: 0 0 12px 0;
+}
+
+.goal .amount {
+  font-size: 10px;
+}
+
+.goal .progress-container {
+  position: relative;
+}
+
+.progress-root {
+  position: relative;
+  overflow: hidden;
+  background: #222;
+  border-radius: 1000px;
+  height: 12px;
+
+  /* Fix overflow clipping in Safari */
+  /* https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0 */
+  transform: translateZ(0);
+}
+
+.goal .progress-indicator {
+  background-color: #FF8D2B;
+  width: 100%;
+  height: 100%;
+  transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.goal .progress-indicator .so-far {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.goal .progress-root .target {
+  position: absolute;
+  right: 40px;
+  top: 0;
+  z-index: 10;
+}
+
+.goal .progress-container .zap-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: -15px;
+}
+
+.goal .progress-container.finished .zap-circle {
+  background: #FF8D2B;
+}
+
+.goal .goal-finished {
+  color: #FFFFFF;
+}
+
+.goal .goal-unfinished {
+  color: #FFFFFF33;
+}

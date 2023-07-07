@@ -1,0 +1,23 @@
+.new-goal .h3 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.new-goal .zap-goals {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-goal .paper {
+    background: #262626;
+    height: 32px;
+}
+
+.new-goal .btn:disabled {
+    opacity: 0.3;
+}
+
+.new-goal .create-goal {
+  margin-top: 24px;
+}

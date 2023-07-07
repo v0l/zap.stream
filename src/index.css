@@ -92,7 +92,7 @@ a {
   gap: 8px;
 }
 
-input[type="text"], textarea, input[type="datetime-local"], input[type="password"] {
+input[type="text"], textarea, input[type="datetime-local"], input[type="password"], input[type="number"] {
   font-family: inherit;
   border: unset;
   background-color: unset;
