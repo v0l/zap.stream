@@ -47,21 +47,20 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
         <div className="f-grow stream-info">
           <h1>{findTag(ev, "title")}</h1>
           <p>{findTag(ev, "summary")}</p>
-          {ev && (
-            <Tags ev={ev}>
-              <StatePill state={status as StreamState} />
-              {viewers > 0 && (
-                <span className="pill viewers">
-                  {formatSats(viewers)} viewers
-                </span>
-              )}
-              {status === StreamState.Live && (
-                <span className="pill">
-                  <StreamTimer ev={ev} />
-                </span>
-              )}
-            </Tags>
-          )}
+          <div className="tags">
+            <StatePill state={status as StreamState} />
+            {viewers > 0 && (
+              <span className="pill viewers">
+                {formatSats(viewers)} viewers
+              </span>
+            )}
+            {status === StreamState.Live && (
+              <span className="pill">
+                <StreamTimer ev={ev} />
+              </span>
+            )}
+            {ev && <Tags ev={ev} />}
+          </div>
           {isMine && (
             <div className="actions">
               {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
