@@ -3,18 +3,34 @@ import {
   EventKind,
   ReplaceableNoteStore,
   NoteCollection,
+  NostrEvent,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { System } from "index";
 import { useMemo } from "react";
 import { findTag } from "utils";
 import type { EmojiTag } from "../element/emoji";
+import uniqBy from "lodash.uniqby";
 
 export interface EmojiPack {
   address: string;
   name: string;
   author: string;
   emojis: EmojiTag[];
+}
+
+function toEmojiPack(ev: NostrEvent): EmojiPack {
+  const d = findTag(ev, "d") || "";
+  return {
+    address: `${ev.kind}:${ev.pubkey}:${d}`,
+    name: d,
+    author: ev.pubkey,
+    emojis: ev.tags.filter((t) => t.at(0) === "emoji") as EmojiTag[],
+  };
+}
+
+export function packId(pack: EmojiPack): string {
+  return `${pack.author}:${pack.name}`;
 }
 
 export default function useEmoji(pubkey: string) {
@@ -61,31 +77,26 @@ export default function useEmoji(pubkey: string) {
       .authors(authors)
       .tag("d", identifiers);
 
+    rb.withFilter()
+      .kinds([30030 as EventKind])
+      .authors([pubkey]);
+
     return rb;
   }, [pubkey, related]);
 
-  const { data: relatedData } =
-    useRequestBuilder<NoteCollection>(
-      System,
-      NoteCollection,
-      subRelated
-    );
+  const { data: relatedData } = useRequestBuilder<NoteCollection>(
+    System,
+    NoteCollection,
+    subRelated
+  );
 
   const emojiPacks = useMemo(() => {
     return relatedData ?? [];
   }, [relatedData]);
 
   const emojis = useMemo(() => {
-    return emojiPacks.map((ev) => {
-      const d = findTag(ev, "d");
-      return {
-        address: `${ev.kind}:${ev.pubkey}:${d}`,
-        name: d,
-        author: ev.pubkey,
-        emojis: ev.tags.filter((t) => t.at(0) === "emoji") as EmojiTag[],
-      } as EmojiPack;
-    });
-  }, [userEmoji, emojiPacks]);
+    return uniqBy(emojiPacks.map(toEmojiPack), packId);
+  }, [emojiPacks]);
 
   return emojis;
 }
