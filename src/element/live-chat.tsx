@@ -31,7 +31,7 @@ export interface LiveChatOptions {
 }
 
 function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
-  const zappers = useTopZappers(zaps).slice(0, 3);
+  const zappers = useTopZappers(zaps);
 
   return (
     <>
