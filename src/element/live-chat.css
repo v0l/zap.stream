@@ -4,7 +4,7 @@
   flex-direction: column;
   padding: 8px 16px;
   border: none;
-  height: calc(100vh - 56px - 64px - 56px - 230px);
+  height: calc(100vh - 56px - 64px - 16px - 230px);
 }
 
 @media (min-width: 768px) {
@@ -47,8 +47,14 @@
 }
 
 .live-chat > .header {
-  display: flex;
-  justify-content: space-between
+  display: none;
+}
+
+@media (min-width: 768px){
+  .live-chat > .header {
+    display: flex;
+    justify-content: space-between
+  }
 }
 
 .live-chat .header .title {
