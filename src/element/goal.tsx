@@ -6,6 +6,7 @@ import { NostrLink, ParsedZap, NostrEvent } from "@snort/system";
 import { Icon } from "./icon";
 import { findTag } from "utils";
 import { formatSats } from "number";
+import usePreviousValue from "hooks/usePreviousValue";
 
 export function Goal({
   link,
@@ -33,6 +34,7 @@ export function Goal({
 
   const progress = (soFar / goalAmount) * 100;
   const isFinished = progress >= 100;
+  const previousValue = usePreviousValue(isFinished);
 
   return (
     <div className="goal">
@@ -56,7 +58,9 @@ export function Goal({
           />
         </div>
       </div>
-      {isFinished && <Confetti numberOfPieces={2100} recycle={false} />}
+      {isFinished && previousValue === false && (
+        <Confetti numberOfPieces={2100} recycle={false} />
+      )}
     </div>
   );
 }
