@@ -165,6 +165,12 @@
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .top-zappers h3 {
+    display: none;
+  }
+}
+
 .top-zappers-container {
   display: flex;
   overflow-y: scroll;
