@@ -65,7 +65,8 @@ export function LiveChat({
   options?: LiveChatOptions;
   height?: number;
 }) {
-  const feed = useLiveChatFeed(link);
+  const host = getHost(ev);
+  const feed = useLiveChatFeed(link, host);
   const login = useLogin();
   useEffect(() => {
     const pubkeys = [
