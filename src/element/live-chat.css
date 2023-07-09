@@ -7,13 +7,23 @@
   height: calc(100vh - 56px - 64px - 36px - 230px);
 }
 
+.live-chat ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.live-chat ::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 100px;
+  min-height: 24px;
+}
+
 @media (min-width: 768px) {
   .profile-info {
     width: calc(100vw - 600px - 16px);
   }
 
   .live-chat {
-    width:  calc(100vw - 600px - 16px);
+    width: calc(100vw - 600px - 16px);
     height: calc(100vh - 56px - 64px - 16px);
   }
 
@@ -22,7 +32,7 @@
   }
 }
 
-@media (min-width: 1020px)  {
+@media (min-width: 1020px) {
   .profile-info {
     width: unset;
     padding: 0;
@@ -36,7 +46,7 @@
   }
 
   .live-chat {
-    width:  320px;
+    width: auto;
   }
 }
 
@@ -74,10 +84,11 @@
   flex-direction: column-reverse;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-right: 8px;
 }
 
-@media (min-width: 1020px){
-  .live-chat > .messages {
+@media (min-width: 1020px) {
+  .live-chat>.messages {
     flex-grow: 1;
   }
 }
@@ -223,7 +234,10 @@
 .zap-container:before {
   content: '';
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: -1;
   margin: -1px;
   background: linear-gradient(to bottom right, #FF902B, #F83838);
@@ -248,9 +262,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -376,6 +392,7 @@
   color: #FFFFFF80;
   cursor: pointer;
 }
+
 .write-emoji-button:hover {
   color: white;
 }

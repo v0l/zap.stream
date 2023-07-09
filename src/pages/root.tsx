@@ -64,7 +64,7 @@ export function RootPage({ nsfw }: { nsfw?: boolean }) {
       </div>
       {planned.length > 0 && (
         <>
-          <h2>Planned</h2>
+          <h2 className="divider line one-line">Planned</h2>
           <div className="video-grid">
             {planned.map((e) => (
               <VideoTile ev={e} key={e.id} />
@@ -74,7 +74,7 @@ export function RootPage({ nsfw }: { nsfw?: boolean }) {
       )}
       {ended.length > 0 && (
         <>
-          <h2>Ended</h2>
+          <h2 className="divider line one-line">Ended</h2>
           <div className="video-grid">
             {ended.map((e) => (
               <VideoTile ev={e} key={e.id} />
