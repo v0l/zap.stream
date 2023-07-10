@@ -9,22 +9,20 @@ import { System } from "index";
 import { useMemo } from "react";
 import { LIVE_STREAM_CHAT } from "const";
 
-export function useLiveChatFeed(link: NostrLink) {
+export function useLiveChatFeed(link: NostrLink, host?: string) {
   const sub = useMemo(() => {
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
     rb.withOptions({
       leaveOpen: true,
     });
     const aTag = `${link.kind}:${link.author}:${link.id}`;
-    rb.withFilter()
-      .kinds([LIVE_STREAM_CHAT])
-      .tag("a", [aTag])
-      .limit(100);
-    rb.withFilter()
-      .kinds([EventKind.ZapReceipt])
-      .tag("a", [aTag]);
+    rb.withFilter().kinds([LIVE_STREAM_CHAT]).tag("a", [aTag]).limit(100);
+    rb.withFilter().kinds([EventKind.ZapReceipt]).tag("a", [aTag]);
+    if (host) {
+      rb.withFilter().kinds([EventKind.ZapReceipt]).tag("p", [host]);
+    }
     return rb;
-  }, [link]);
+  }, [link, host]);
 
   const feed = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
 

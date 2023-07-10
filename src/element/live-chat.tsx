@@ -31,7 +31,7 @@ export interface LiveChatOptions {
 }
 
 function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
-  const zappers = useTopZappers(zaps).slice(0, 3);
+  const zappers = useTopZappers(zaps);
 
   return (
     <>
@@ -65,7 +65,8 @@ export function LiveChat({
   options?: LiveChatOptions;
   height?: number;
 }) {
-  const feed = useLiveChatFeed(link);
+  const host = getHost(ev);
+  const feed = useLiveChatFeed(link, host);
   const login = useLogin();
   useEffect(() => {
     const pubkeys = [
