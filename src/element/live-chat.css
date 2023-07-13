@@ -11,12 +11,6 @@
   width: 8px;
 }
 
-.live-chat ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 100px;
-  min-height: 24px;
-}
-
 @media (min-width: 768px) {
   .profile-info {
     width: calc(100vw - 600px - 16px);
@@ -184,13 +178,15 @@
 
 .top-zappers-container {
   display: flex;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  user-select: none;
 }
 
 .top-zappers-container::-webkit-scrollbar {
-  display: none;
+  height: 8px;
 }
 
 @media (min-width: 1020px) {
