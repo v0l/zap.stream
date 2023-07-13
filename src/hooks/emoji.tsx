@@ -12,11 +12,20 @@ import { findTag } from "utils";
 import type { EmojiTag } from "../element/emoji";
 import uniqBy from "lodash.uniqby";
 
+export interface Emoji {
+  native?: string;
+  id?: string;
+}
+
 export interface EmojiPack {
   address: string;
   name: string;
   author: string;
   emojis: EmojiTag[];
+}
+
+function cleanShortcode(shortcode?: string) {
+  return shortcode?.replace(/\s+/, "_");
 }
 
 function toEmojiPack(ev: NostrEvent): EmojiPack {
@@ -25,7 +34,9 @@ function toEmojiPack(ev: NostrEvent): EmojiPack {
     address: `${ev.kind}:${ev.pubkey}:${d}`,
     name: d,
     author: ev.pubkey,
-    emojis: ev.tags.filter((t) => t.at(0) === "emoji") as EmojiTag[],
+    emojis: ev.tags
+      .filter((t) => t.at(0) === "emoji")
+      .map((t) => ["emoji", cleanShortcode(t.at(1)), t.at(2)]) as EmojiTag[],
   };
 }
 

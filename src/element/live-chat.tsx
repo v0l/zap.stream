@@ -9,8 +9,10 @@ import {
   encodeTLV,
 } from "@snort/system";
 import { useEffect, useMemo } from "react";
+import uniqBy from "lodash.uniqby";
 
 import { System } from "../index";
+import useEmoji, { packId } from "../hooks/emoji";
 import { useLiveChatFeed } from "../hooks/live-chat";
 import { Profile } from "./profile";
 import { Icon } from "./icon";
@@ -76,6 +78,13 @@ export function LiveChat({
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
 
+  const userEmojiPacks = useEmoji(login!.pubkey);
+  const userEmojis = userEmojiPacks.map((pack) => pack.emojis).flat();
+  const channelEmojiPacks = useEmoji(host);
+  const allEmojiPacks = useMemo(() => {
+    return uniqBy(channelEmojiPacks.concat(userEmojiPacks), packId);
+  }, [userEmojiPacks, channelEmojiPacks]);
+
   const zaps = feed.zaps
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
@@ -137,6 +146,7 @@ export function LiveChat({
             case LIVE_STREAM_CHAT: {
               return (
                 <ChatMessage
+                  emojiPacks={allEmojiPacks}
                   streamer={streamer}
                   ev={a}
                   key={a.id}
@@ -160,7 +170,7 @@ export function LiveChat({
       {(options?.canWrite ?? true) && (
         <div className="write-message">
           {login ? (
-            <WriteMessage link={link} />
+            <WriteMessage emojiPacks={allEmojiPacks} link={link} />
           ) : (
             <p>Please login to write messages!</p>
           )}

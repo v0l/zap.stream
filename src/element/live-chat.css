@@ -347,6 +347,12 @@
   line-height: 22px;
 }
 
+.message-reaction .emoji {
+  width: 15px;
+  height: 15px;
+  margin-bottom: -2px;
+}
+
 .zap-pill-amount {
   text-transform: lowercase;
   color: #FFF;
