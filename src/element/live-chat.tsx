@@ -124,11 +124,8 @@ export function LiveChat({
           <div className="top-zappers-container">
             <TopZappers zaps={zaps} />
           </div>
-          {goal ? (
-            <Goal link={link} ev={goal} zaps={goalZaps} />
-          ) : (
-            login?.pubkey === streamer && <NewGoalDialog link={link} />
-          )}
+          {goal && <Goal link={link} ev={goal} zaps={goalZaps} /> }
+          {login?.pubkey === streamer && <NewGoalDialog link={link} />}
         </div>
       )}
       <div className="messages">
