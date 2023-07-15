@@ -32,7 +32,7 @@ export function Goal({
       .reduce((acc, z) => acc + z.amount, 0);
   }, [zaps]);
 
-  const progress = (soFar / goalAmount) * 100;
+  const progress = Math.max(0, Math.min(100, (soFar / goalAmount) * 100));
   const isFinished = progress >= 100;
   const previousValue = usePreviousValue(isFinished);
 
