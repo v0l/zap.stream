@@ -44,8 +44,9 @@ export function packId(pack: EmojiPack): string {
   return `${pack.author}:${pack.name}`;
 }
 
-export default function useEmoji(pubkey: string) {
+export default function useEmoji(pubkey?: string) {
   const sub = useMemo(() => {
+    if(!pubkey) return null;
     const rb = new RequestBuilder(`emoji:${pubkey}`);
 
     rb.withFilter()
@@ -71,6 +72,7 @@ export default function useEmoji(pubkey: string) {
   }, [userEmoji]);
 
   const subRelated = useMemo(() => {
+    if(!pubkey) return null;
     const splitted = related.map((t) => t.at(1)!.split(":"));
     const authors = splitted
       .map((s) => s.at(1))

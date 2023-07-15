@@ -78,7 +78,7 @@ export function LiveChat({
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
 
-  const userEmojiPacks = useEmoji(login!.pubkey);
+  const userEmojiPacks = useEmoji(login?.pubkey);
   const userEmojis = userEmojiPacks.map((pack) => pack.emojis).flat();
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
