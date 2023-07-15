@@ -68,7 +68,7 @@ export function LiveChat({
   height?: number;
 }) {
   const host = getHost(ev);
-  const feed = useLiveChatFeed(link, host);
+  const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
   useEffect(() => {
     const pubkeys = [
@@ -90,7 +90,7 @@ export function LiveChat({
     .filter((z) => z && z.valid);
 
   const goalZaps = feed.zaps
-    .filter((ev) => (goal ? ev.created_at > goal.created_at : false))
+    .filter((ev) => (goal ? ev.created_at > goal.created_at && ev.tags.some(t => t[0] === "e" && t[1] === goal.id) : false))
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
 
@@ -133,11 +133,8 @@ export function LiveChat({
           <div className="top-zappers-container">
             <TopZappers zaps={zaps} />
           </div>
-          {goal ? (
-            <Goal link={link} ev={goal} zaps={goalZaps} />
-          ) : (
-            login?.pubkey === streamer && <NewGoalDialog link={link} />
-          )}
+          {goal && <Goal link={link} ev={goal} zaps={goalZaps} />}
+          {login?.pubkey === streamer && <NewGoalDialog link={link} />}
         </div>
       )}
       <div className="messages">

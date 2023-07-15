@@ -5,24 +5,26 @@ import {
   FlatNoteStore,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
+import { unixNow } from "@snort/shared";
 import { System } from "index";
 import { useMemo } from "react";
 import { LIVE_STREAM_CHAT } from "const";
 
-export function useLiveChatFeed(link: NostrLink, host?: string) {
+export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
   const sub = useMemo(() => {
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
     rb.withOptions({
       leaveOpen: true,
     });
+    const zapsSince = unixNow() - (60 * 60 * 24 * 7); // 7-days of zaps
     const aTag = `${link.kind}:${link.author}:${link.id}`;
     rb.withFilter().kinds([LIVE_STREAM_CHAT]).tag("a", [aTag]).limit(100);
-    rb.withFilter().kinds([EventKind.ZapReceipt]).tag("a", [aTag]);
-    if (host) {
-      rb.withFilter().kinds([EventKind.ZapReceipt]).tag("p", [host]);
+    rb.withFilter().kinds([EventKind.ZapReceipt]).tag("a", [aTag]).since(zapsSince);
+    if (eZaps) {
+      rb.withFilter().kinds([EventKind.ZapReceipt]).tag("e", eZaps);
     }
     return rb;
-  }, [link, host]);
+  }, [link, eZaps]);
 
   const feed = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
 

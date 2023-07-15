@@ -8,7 +8,7 @@ export enum VideoStatus {
 }
 
 export interface VideoPlayerProps {
-  stream?: string, status?: string, poster?: string 
+  stream?: string, status?: string, poster?: string
 }
 
 export function LiveVideoPlayer(
@@ -40,6 +40,9 @@ export function LiveVideoPlayer(
           });
           hls.on(Hls.Events.MANIFEST_PARSED, () => {
             setStatus(VideoStatus.Online);
+          });
+          hls.on(Hls.Events.LEVEL_SWITCHING, (e, l) => {
+            console.debug("HLS Level Switch", l);
           });
           return () => hls.destroy();
         } catch (e) {
