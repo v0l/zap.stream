@@ -1,6 +1,5 @@
 import { NostrLink, EventPublisher, EventKind } from "@snort/system";
 import { useRef, useState, useMemo, ChangeEvent } from "react";
-import uniqBy from "lodash.uniqby";
 
 import { LIVE_STREAM_CHAT } from "../const";
 import useEmoji, { packId } from "../hooks/emoji";
@@ -10,27 +9,23 @@ import AsyncButton from "./async-button";
 import { Icon } from "./icon";
 import { Textarea } from "./textarea";
 import { EmojiPicker } from "./emoji-picker";
+import type { EmojiPack, Emoji } from "../hooks/emoji";
 
-interface Emoji {
-  id: string;
-  native?: string;
-}
-
-export function WriteMessage({ link }: { link: NostrLink }) {
+export function WriteMessage({
+  link,
+  emojiPacks,
+}: {
+  link: NostrLink;
+  emojiPacks: EmojiPack[];
+}) {
   const ref = useRef(null);
   const emojiRef = useRef(null);
   const [chat, setChat] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
-  const userEmojiPacks = useEmoji(login!.pubkey);
-  const userEmojis = userEmojiPacks.map((pack) => pack.emojis).flat();
-  const channelEmojiPacks = useEmoji(link.author!);
-  const channelEmojis = channelEmojiPacks.map((pack) => pack.emojis).flat();
-  const emojis = userEmojis.concat(channelEmojis);
+  const emojis = emojiPacks.map((pack) => pack.emojis).flat();
   const names = emojis.map((t) => t.at(1));
-  const allEmojiPacks = useMemo(() => {
-    return uniqBy(channelEmojiPacks.concat(userEmojiPacks), packId);
-  }, [userEmojiPacks, channelEmojiPacks]);
+
   // @ts-expect-error
   const topOffset = ref.current?.getBoundingClientRect().top;
   // @ts-expect-error
@@ -112,7 +107,7 @@ export function WriteMessage({ link }: { link: NostrLink }) {
           <EmojiPicker
             topOffset={topOffset}
             leftOffset={leftOffset}
-            emojiPacks={allEmojiPacks}
+            emojiPacks={emojiPacks}
             onEmojiSelect={onEmojiSelect}
             onClickOutside={() => setShowEmojiPicker(false)}
             ref={emojiRef}
