@@ -1,0 +1,11 @@
+.copy {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy .body {
+    font-size: small;
+    color: white;
+}

@@ -33,6 +33,11 @@ a {
   flex-direction: column;
 }
 
+.f-center {
+  align-items: center;
+  justify-content: center;
+}
+
 .pill {
   background: #171717;
   padding: 4px 8px;
@@ -164,4 +169,26 @@ div.paper {
 
 .border-warning {
   border: 1px solid #FF563F;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dialog-content div.paper {
+  background: #262626;
+}
+
+.dialog-content h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.dialog-content small {
+  display: block;
+  color: #868686;
+  margin: 6px;
 }

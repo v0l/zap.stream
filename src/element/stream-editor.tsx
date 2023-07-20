@@ -1,12 +1,13 @@
 import "./stream-editor.css";
 import { useEffect, useState, useCallback } from "react";
-import { EventPublisher, NostrEvent } from "@snort/system";
+import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { TagsInput } from "react-tag-input-component";
 
 import AsyncButton from "./async-button";
 import { StreamState } from "../index";
 import { findTag } from "../utils";
+import { useLogin } from "hooks/login";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -32,6 +33,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [tags, setTags] = useState<string[]>([]);
   const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const login = useLogin();
 
   useEffect(() => {
     setTitle(findTag(ev, "title") ?? "");
@@ -62,7 +64,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   }, [validate, title, summary, image, stream]);
 
   async function publishStream() {
-    const pub = await EventPublisher.nip7();
+    const pub = login?.publisher();
     if (pub) {
       const evNew = await pub.generic((eb) => {
         const now = unixNow();
@@ -83,7 +85,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         for (const tx of tags) {
           eb.tag(["t", tx.trim()]);
         }
-        if(contentWarning) {
+        if (contentWarning) {
           eb.tag(["content-warning", "nsfw"])
         }
         return eb;

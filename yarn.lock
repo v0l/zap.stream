@@ -2011,6 +2011,13 @@
     "@typescript-eslint/types" "5.59.0"
     eslint-visitor-keys "^3.3.0"
 
+"@void-cat/api@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@void-cat/api/-/api-1.0.7.tgz#39564d478dee07398826e7109d6368c68c405426"
+  integrity sha512-0K20PaLnRL0lYLOOn8Sk3J6THdU7ebIHWPR7S8Ytzdi5VGI8468ocackCs0b/gFZvvkwVp0X/Rygxe1/nhch+Q==
+  dependencies:
+    sjcl "^1.0.8"
+
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.6.tgz#db046555d3c413f8966ca50a95176a0e2c642e24"
@@ -5860,6 +5867,11 @@ sirv@^1.0.7:
     "@polka/url" "^1.0.0-next.20"
     mrmime "^1.0.0"
     totalist "^1.0.0"
+
+sjcl@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/sjcl/-/sjcl-1.0.8.tgz#f2ec8d7dc1f0f21b069b8914a41a8f236b0e252a"
+  integrity sha512-LzIjEQ0S0DpIgnxMEayM1rq9aGwGRG4OnZhCdjx7glTaJtf4zRfpg87ImfjSJjoW9vKpagd82McDOwbRT5kQKQ==
 
 slash@^3.0.0:
   version "3.0.0"

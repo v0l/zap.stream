@@ -1,5 +1,7 @@
 import { StreamProvider, StreamProviderInfo, StreamProviders } from ".";
-import { EventPublisher, EventKind, NostrEvent } from "@snort/system";
+import { EventKind, NostrEvent } from "@snort/system";
+import { Login } from "index";
+import { getPublisher } from "login";
 import { findTag } from "utils";
 
 export class Nip103StreamProvider implements StreamProvider {
@@ -59,8 +61,9 @@ export class Nip103StreamProvider implements StreamProvider {
     }
 
     async #getJson<T>(method: "GET" | "POST" | "PATCH", path: string, body?: unknown): Promise<T> {
-        const pub = await EventPublisher.nip7();
-        if (!pub) throw new Error("No event publisher");
+        const login = Login.snapshot();
+        const pub = login && getPublisher(login);
+        if (!pub) throw new Error("No signer");
 
         const u = `${this.#url}${path}`;
         const token = await pub.generic(eb => {

@@ -1,8 +1,7 @@
-import { NostrLink, EventPublisher, EventKind } from "@snort/system";
-import { useRef, useState, useMemo, ChangeEvent } from "react";
+import { NostrLink, EventKind } from "@snort/system";
+import { useRef, useState, ChangeEvent } from "react";
 
 import { LIVE_STREAM_CHAT } from "../const";
-import useEmoji, { packId } from "../hooks/emoji";
 import { useLogin } from "../hooks/login";
 import { System } from "../index";
 import AsyncButton from "./async-button";
@@ -32,7 +31,7 @@ export function WriteMessage({
   const leftOffset = ref.current?.getBoundingClientRect().left;
 
   async function sendChatMessage() {
-    const pub = await EventPublisher.nip7();
+    const pub = login?.publisher();
     if (chat.length > 1) {
       let emojiNames = new Set();
 

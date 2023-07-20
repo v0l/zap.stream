@@ -1,27 +1,19 @@
-import { Icon } from "element/icon";
 import "./layout.css";
-import {
-  EventPublisher,
-} from "@snort/system";
+import { useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Outlet, useNavigate, useLocation, Link } from "react-router-dom";
-import AsyncButton from "element/async-button";
-import { Login } from "index";
+
+import { Icon } from "element/icon";
 import { useLogin } from "hooks/login";
 import { Profile } from "element/profile";
 import { NewStreamDialog } from "element/new-stream";
-import { useState } from "react";
+import { LoginSignup } from "element/login-signup";
 
 export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
   const location = useLocation();
-
-  async function doLogin() {
-    const pub = await EventPublisher.nip7();
-    if (pub) {
-      Login.loginWithPubkey(pub.pubKey);
-    }
-  }
+  const [showLogin, setShowLogin] = useState(true);
 
   function loggedIn() {
     if (!login) return;
@@ -43,14 +35,20 @@ export function LayoutPage() {
   function loggedOut() {
     if (login) return;
 
-    return (
-      <>
-        <AsyncButton type="button" className="btn btn-border" onClick={doLogin}>
+    return <Dialog.Root open={showLogin} onOpenChange={setShowLogin}>
+      <Dialog.Trigger asChild>
+        <button type="button" className="btn btn-border" onClick={() => setShowLogin(true)}>
           Login
           <Icon name="login" />
-        </AsyncButton>
-      </>
-    );
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="dialog-overlay" />
+        <Dialog.Content className="dialog-content">
+          <LoginSignup close={() => setShowLogin(false)} />
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   }
   const isNsfw = window.location.pathname === "/nsfw";
 
@@ -83,6 +81,7 @@ export function LayoutPage() {
       </header>
       <Outlet />
       {isNsfw && <ContentWarningOverlay />}
+
     </div>
   );
 }

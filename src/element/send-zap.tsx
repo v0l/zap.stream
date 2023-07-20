@@ -11,6 +11,7 @@ import { Icon } from "./icon";
 import AsyncButton from "./async-button";
 import { Relays } from "index";
 import QrCode from "./qr-code";
+import { useLogin } from "hooks/login";
 
 export interface LNURLLike {
   get name(): string;
@@ -52,6 +53,7 @@ export function SendZaps({
   const [amount, setAmount] = useState(satsAmounts[0]);
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
+  const login = useLogin();
 
   const name = targetName ?? svc?.name;
   async function loadService(lnurl: string) {
@@ -72,7 +74,7 @@ export function SendZaps({
 
   async function send() {
     if (!svc) return;
-    let pub = await EventPublisher.nip7();
+    let pub = login?.publisher();
     let isAnon = false;
     if (!pub) {
       pub = EventPublisher.privateKey(bytesToHex(secp256k1.utils.randomPrivateKey()));

@@ -1,5 +1,5 @@
 import "./stream-page.css";
-import { parseNostrLink, TaggedRawEvent, EventPublisher } from "@snort/system";
+import { parseNostrLink, TaggedRawEvent } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
 
 import useEventFeed from "hooks/event-feed";
@@ -31,7 +31,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const isMine = ev?.pubkey === login?.pubkey;
 
   async function deleteStream() {
-    const pub = await EventPublisher.nip7();
+    const pub = login?.publisher();
     if (pub && ev) {
       const evDelete = await pub.delete(ev.id);
       console.debug(evDelete);

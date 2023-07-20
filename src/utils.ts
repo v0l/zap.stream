@@ -56,3 +56,19 @@ export function eventLink(ev: NostrEvent) {
 export function getHost(ev?: NostrEvent) {
   return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
 }
+
+export async function openFile(): Promise<File | undefined> {
+  return new Promise(resolve => {
+    const elm = document.createElement("input");
+    elm.type = "file";
+    elm.onchange = (e: Event) => {
+      const elm = e.target as HTMLInputElement;
+      if (elm.files) {
+        resolve(elm.files[0]);
+      } else {
+        resolve(undefined);
+      }
+    };
+    elm.click();
+  });
+}

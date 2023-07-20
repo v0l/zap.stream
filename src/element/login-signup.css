@@ -1,0 +1,13 @@
+.avatar-input {
+    width: 90px;
+    height: 90px;
+    background-color: #aaa;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-image: var(--img);
+    background-position: center;
+    background-size: cover;
+}

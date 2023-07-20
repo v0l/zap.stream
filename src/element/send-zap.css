@@ -4,19 +4,6 @@
     flex-direction: column;
 }
 
-.send-zap h3 {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0;
-}
-
-.send-zap small {
-    display: block;
-    text-transform: uppercase;
-    color: #868686;
-    margin-bottom: 12px;
-}
-
 .send-zap .amounts {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -35,10 +22,6 @@
 .send-zap .pill.active {
     color: inherit;
     background: #353535;
-}
-
-.send-zap div.paper {
-    background: #262626;
 }
 
 .send-zap p {

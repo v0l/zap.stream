@@ -1,10 +1,11 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import AsyncButton from "element/async-button";
 import { StatePill } from "element/state-pill";
 import { StreamState } from "index";
 import { StreamProviderInfo, StreamProviderStore } from "providers";
 import { Nip103StreamProvider } from "providers/nip103";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function ConfigureNostrType() {
     const [url, setUrl] = useState("");

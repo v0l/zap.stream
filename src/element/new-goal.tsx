@@ -2,14 +2,12 @@ import "./new-goal.css";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import AsyncButton from "./async-button";
-import { NostrLink, EventPublisher } from "@snort/system";
-import { unixNow } from "@snort/shared";
+import { NostrLink } from "@snort/system";
 import { Icon } from "element/icon";
-import { useEffect, useState } from "react";
-import { eventLink } from "utils";
-import { NostrProviderDialog } from "./nostr-provider-dialog";
+import { useState } from "react";
 import { System } from "index";
 import { GOAL } from "const";
+import { useLogin } from "hooks/login";
 
 interface NewGoalDialogProps {
   link: NostrLink;
@@ -17,12 +15,13 @@ interface NewGoalDialogProps {
 
 export function NewGoalDialog({ link }: NewGoalDialogProps) {
   const [open, setOpen] = useState(false);
+  const login = useLogin();
 
   const [goalAmount, setGoalAmount] = useState("");
   const [goalName, setGoalName] = useState("");
 
   async function publishGoal() {
-    const pub = await EventPublisher.nip7();
+    const pub = login?.publisher();
     if (pub) {
       const evNew = await pub.generic((eb) => {
         eb.kind(GOAL)

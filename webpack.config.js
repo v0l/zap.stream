@@ -123,6 +123,7 @@ const config = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
     modules: ["node_modules", __dirname, path.resolve(__dirname, "src")],
+    fallback: { "crypto": false }
   },
 };
 

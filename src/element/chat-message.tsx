@@ -1,5 +1,5 @@
 import { useUserProfile } from "@snort/system-react";
-import { NostrEvent, parseZap, EventPublisher, EventKind } from "@snort/system";
+import { NostrEvent, parseZap, EventKind } from "@snort/system";
 import { useRef, useState, useMemo } from "react";
 import {
   useMediaQuery,
@@ -18,6 +18,7 @@ import { Text } from "./text";
 import { SendZapsDialog } from "./send-zap";
 import { findTag } from "../utils";
 import type { EmojiPack } from "../hooks/emoji";
+import { useLogin } from "../hooks/login";
 
 interface Emoji {
   id: string;
@@ -54,6 +55,7 @@ export function ChatMessage({
   const isHovering = useHover(ref);
   const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const login = useLogin();
   const profile = useUserProfile(
     System,
     inView?.isIntersecting ? ev.pubkey : undefined
@@ -97,7 +99,7 @@ export function ChatMessage({
     setShowZapDialog(false);
     let reply = null;
     try {
-      const pub = await EventPublisher.nip7();
+      const pub = login?.publisher();
       if (emoji.native) {
         reply = await pub?.react(ev, emoji.native || "+1");
       } else {
@@ -117,7 +119,7 @@ export function ChatMessage({
         console.debug(reply);
         System.BroadcastEvent(reply);
       }
-    } catch (error) {}
+    } catch (error) { }
   }
 
   // @ts-expect-error
@@ -176,16 +178,16 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset - 12,
-                    left: leftOffset - 32,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents:
-                      showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset - 12,
+                  left: leftOffset - 32,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents:
+                    showZapDialog || isHovering ? "auto" : "none",
+                }
             }
           >
             {zapTarget && (

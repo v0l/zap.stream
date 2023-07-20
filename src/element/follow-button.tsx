@@ -1,4 +1,4 @@
-import { EventKind, EventPublisher } from "@snort/system";
+import { EventKind } from "@snort/system";
 import { useLogin } from "hooks/login";
 import useFollows from "hooks/follows";
 import AsyncButton from "element/async-button";
@@ -12,10 +12,11 @@ export function LoggedInFollowButton({
   pubkey: string;
 }) {
   const { contacts, relays } = useFollows(loggedIn, true);
+  const login = useLogin();
   const isFollowing = contacts.find((t) => t.at(1) === pubkey);
 
   async function unfollow() {
-    const pub = await EventPublisher.nip7();
+    const pub = login?.publisher();
     if (pub) {
       const ev = await pub.generic((eb) => {
         eb.kind(EventKind.ContactList).content(JSON.stringify(relays));
@@ -32,7 +33,7 @@ export function LoggedInFollowButton({
   }
 
   async function follow() {
-    const pub = await EventPublisher.nip7();
+    const pub = login?.publisher();
     if (pub) {
       const ev = await pub.generic((eb) => {
         eb.kind(EventKind.ContactList).content(JSON.stringify(relays));

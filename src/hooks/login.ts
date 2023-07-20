@@ -1,9 +1,17 @@
 import { Login } from "index";
+import { getPublisher } from "login";
 import { useSyncExternalStore } from "react";
 
 export function useLogin() {
-  return useSyncExternalStore(
+  const session = useSyncExternalStore(
     (c) => Login.hook(c),
     () => Login.snapshot()
   );
+  if (!session) return;
+  return {
+    ...session,
+    publisher: () => {
+      return getPublisher(session);
+    }
+  }
 }
