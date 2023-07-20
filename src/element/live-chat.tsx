@@ -89,7 +89,12 @@ export function LiveChat({
     .filter((z) => z && z.valid);
 
   const goalZaps = feed.zaps
-    .filter((ev) => (goal ? ev.created_at > goal.created_at && ev.tags.some(t => t[0] === "e" && t[1] === goal.id) : false))
+    .filter((ev) =>
+      goal
+        ? ev.created_at > goal.created_at &&
+          ev.tags.some((t) => t[0] === "e" && t[1] === goal.id)
+        : false
+    )
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
 
@@ -116,14 +121,11 @@ export function LiveChat({
       {(options?.showHeader ?? true) && (
         <div className="header">
           <h2 className="title">Stream Chat</h2>
-          <a
-            href={`/chat/${naddr}`}
-            className="popout-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="link" size={32} />
-          </a>
+          <Icon
+            name="link"
+            size={32}
+            onClick={() => window.open(`/chat/${naddr}?chat=true`, "_blank", "popup,width=400,height=800")}
+          />
         </div>
       )}
       {zaps.length > 0 && (
@@ -132,7 +134,7 @@ export function LiveChat({
           <div className="top-zappers-container">
             <TopZappers zaps={zaps} />
           </div>
-          {goal && <Goal link={link} ev={goal} zaps={goalZaps} />}
+          {goal && <Goal ev={goal} zaps={goalZaps} />}
           {login?.pubkey === streamer && <NewGoalDialog link={link} />}
         </div>
       )}

@@ -2,6 +2,7 @@ import "./layout.css";
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Outlet, useNavigate, useLocation, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { Icon } from "element/icon";
 import { useLogin } from "hooks/login";
@@ -95,6 +96,9 @@ export function LayoutPage() {
           : "page"
       }
     >
+      <Helmet>
+        <title>Home - zap.stream</title>
+      </Helmet>
       <header>
         <div className="logo" onClick={() => navigate("/")}></div>
         <div className="paper">

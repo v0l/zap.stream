@@ -1,6 +1,7 @@
 import "./stream-page.css";
 import { parseNostrLink, TaggedRawEvent } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
@@ -118,8 +119,30 @@ export function StreamPage() {
   const host = getHost(ev);
   const goal = useZapGoal(host, link, true);
 
+  const title = findTag(ev, "title");
+  const summary = findTag(ev, "summary");
+  const image = findTag(ev, "image");
+  const tags = ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? [];
+
+  const descriptionContent = [
+    title,
+    (summary?.length ?? 0) > 0 ? summary : "Nostr live streaming",
+    ...tags,
+  ].join(", ");
   return (
     <>
+      <Helmet>
+        <title>{`${title} - zap.stream`}</title>
+        <meta name="description" content={descriptionContent} />
+        <meta
+          property="og:url"
+          content={`https://${window.location.host}/${link.encode()}`}
+        />
+        <meta property="og:type" content="video" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={descriptionContent} />
+        <meta property="og:image" content={image ?? ""} />
+      </Helmet>
       <VideoPlayer ev={ev} />
       <ProfileInfo ev={ev} goal={goal} />
       <LiveChat link={link} ev={ev} goal={goal} />
