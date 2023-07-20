@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { Icon } from "element/icon";
 import { useStreamProvider } from "hooks/stream-provider";
-import { StreamProvider, StreamProviderInfo, StreamProviders } from "providers";
+import { StreamProvider, StreamProviders } from "providers";
 import { useEffect, useState } from "react";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { useNavigate } from "react-router-dom";

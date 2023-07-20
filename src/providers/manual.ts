@@ -28,7 +28,7 @@ export class ManualProvider implements StreamProvider {
         return Promise.resolve();
     }
 
-    topup(amount: number): Promise<string> {
+    topup(): Promise<string> {
         throw new Error("Method not implemented.");
     }
 }

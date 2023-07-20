@@ -2,18 +2,16 @@ import "./goal.css";
 import { useMemo } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import Confetti from "react-confetti";
-import { NostrLink, ParsedZap, NostrEvent } from "@snort/system";
+import { ParsedZap, NostrEvent } from "@snort/system";
 import { Icon } from "./icon";
 import { findTag } from "utils";
 import { formatSats } from "number";
 import usePreviousValue from "hooks/usePreviousValue";
 
 export function Goal({
-  link,
   ev,
   zaps,
 }: {
-  link: NostrLink;
   ev: NostrEvent;
   zaps: ParsedZap[];
 }) {

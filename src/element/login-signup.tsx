@@ -10,7 +10,6 @@ import { Icon } from "./icon";
 import Copy from "./copy";
 import { hexToBech32, openFile } from "utils";
 import { VoidApi } from "@void-cat/api";
-import { upload } from "@testing-library/user-event/dist/upload";
 import { LoginType } from "login";
 
 enum Stage {

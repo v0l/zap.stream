@@ -1,4 +1,3 @@
-import { NostrEvent } from "@snort/system";
 import { StreamState } from "index";
 import { StreamProvider, StreamProviderInfo, StreamProviders } from "providers";
 
@@ -19,7 +18,7 @@ export class OwncastProvider implements StreamProvider {
         return StreamProviders.Owncast
     }
 
-    createConfig(): any & { type: StreamProviders; } {
+    createConfig() {
         return {
             type: StreamProviders.Owncast,
             url: this.#url,
@@ -27,7 +26,7 @@ export class OwncastProvider implements StreamProvider {
         }
     }
 
-    updateStreamInfo(ev: NostrEvent): Promise<void> {
+    updateStreamInfo(): Promise<void> {
         return Promise.resolve();
     }
 
@@ -44,7 +43,7 @@ export class OwncastProvider implements StreamProvider {
         } as StreamProviderInfo
     }
 
-    topup(amount: number): Promise<string> {
+    topup(): Promise<string> {
         throw new Error("Method not implemented.");
     }
 

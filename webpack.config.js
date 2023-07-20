@@ -1,22 +1,27 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const TsTransformer = require("@formatjs/ts-transformer");
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
   entry: {
     main: "./src/index.tsx",
+    sw: {
+      import: "./src/service-worker.ts",
+      filename: "service-worker.js",
+    },
   },
   target: "browserslist",
-  devtool: isProduction ? "source-map" : "eval",
+  mode: isProduction ? "production" : "development",
+  devtool: isProduction ? "source-map" : "cheap-module-source-map",
   output: {
     publicPath: "/",
     path: path.resolve(__dirname, "build"),
@@ -49,37 +54,60 @@ const config = {
       favicon: "public/favicon.ico",
       excludeChunks: ["sw"],
     }),
-    new ESLintPlugin(),
+    new ESLintPlugin({
+      extensions: ["js", "mjs", "jsx", "ts", "tsx"],
+      eslintPath: require.resolve("eslint"),
+      failOnError: !isProduction,
+      cache: true,
+    }),
     new MiniCssExtractPlugin({
       filename: isProduction ? "[name].[chunkhash].css" : "[name].css",
     }),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/,
+    })
   ],
   module: {
     rules: [
       {
+        enforce: "pre",
+        exclude: /@babel(?:\/|\\{1,2})runtime/,
+        test: /\.(js|mjs|jsx|ts|tsx|css)$/,
+        loader: require.resolve("source-map-loader"),
+      },
+      {
         test: /\.tsx?$/i,
+        exclude: /node_modules/,
         use: [
-          "babel-loader",
           {
-            loader: "ts-loader",
+            loader: require.resolve("babel-loader"),
             options: {
-              getCustomTransformers() {
-                return {
-                  before: [
-                    TsTransformer.transform({
-                      overrideIdFn: "[sha512:contenthash:base64:6]",
-                    }),
-                  ],
-                };
-              },
+              babelrc: false,
+              configFile: false,
+              presets: [
+                ["@babel/preset-env", {
+                  targets: "defaults"
+                }],
+                ["@babel/preset-react", { runtime: "automatic" }],
+                "@babel/preset-typescript",
+              ],
+              plugins: [
+                [
+                  "formatjs",
+                  {
+                    idInterpolationPattern: "[sha512:contenthash:base64:6]",
+                    ast: true,
+                  },
+                ],
+              ],
             },
           },
         ],
-        exclude: ["/node_modules/"],
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, require.resolve("css-loader")],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp)$/i,
@@ -88,12 +116,9 @@ const config = {
     ],
   },
   optimization: {
-    usedExports: true,
     chunkIds: "deterministic",
     minimize: isProduction,
     minimizer: [
-      "...",
-      // same as https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/config/webpack.config.js
       new TerserPlugin({
         terserOptions: {
           parse: {
@@ -110,32 +135,17 @@ const config = {
           },
           keep_classnames: isProduction,
           keep_fnames: isProduction,
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii_only: true,
-          },
         },
       }),
       new CssMinimizerPlugin(),
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
-    modules: ["node_modules", __dirname, path.resolve(__dirname, "src")],
+    aliasFields: ["browser"],
+    extensions: ["...", ".tsx", ".ts", ".jsx", ".js"],
+    modules: ["...", __dirname, path.resolve(__dirname, "src")],
     fallback: { "crypto": false }
   },
 };
 
-module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-    config.entry.sw = {
-      import: "./src/service-worker.ts",
-      filename: "service-worker.js",
-    };
-  } else {
-    config.mode = "development";
-  }
-  return config;
-};
+module.exports = () => config;

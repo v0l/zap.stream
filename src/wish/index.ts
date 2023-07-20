@@ -27,7 +27,7 @@ export class WISH extends TypedEventTarget {
   private connecting: boolean = false;
   private connectedPromise!: Promise<void>;
   private connectedResolver!: (any: void) => void;
-  private connectedRejector!: (reason?: any) => void;
+  private connectedRejector!: (reason?: unknown) => void;
   private gatherPromise!: Promise<void>;
   private gatherResolver!: (any: void) => void;
 
@@ -282,7 +282,7 @@ export class WISH extends TypedEventTarget {
         relAddr: candidate.relatedAddress || undefined,
         relPort:
           typeof candidate.relatedPort !== "undefined" &&
-          candidate.relatedPort !== null
+            candidate.relatedPort !== null
             ? candidate.relatedPort.toString()
             : undefined,
       });
@@ -323,7 +323,7 @@ export class WISH extends TypedEventTarget {
       case "checking":
         this.iceStartTime = performance.now();
         break;
-      case "connected":
+      case "connected": {
         const connected = performance.now();
         if (this.connectStartTime) {
           const delta = connected - this.connectStartTime;
@@ -352,6 +352,7 @@ export class WISH extends TypedEventTarget {
         this.connectedResolver();
         this.stopTrickleBatching();
         break;
+      }
       case "failed":
         if (this.connecting) {
           this.connectedRejector("ICE failed while trying to connect");

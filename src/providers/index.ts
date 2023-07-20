@@ -18,7 +18,7 @@ export interface StreamProvider {
     /**
      * Create a config object to save in localStorage
      */
-    createConfig(): any & { type: StreamProviders }
+    createConfig(): unknown & { type: StreamProviders }
 
     /**
      * Update stream info event
@@ -59,7 +59,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
         super();
         const cache = window.localStorage.getItem("providers");
         if (cache) {
-            const cached: Array<{ type: StreamProviders } & any> = JSON.parse(cache);
+            const cached: Array<{ type: StreamProviders } & Record<string, unknown>> = JSON.parse(cache);
             for (const c of cached) {
                 switch (c.type) {
                     case StreamProviders.Manual: {
@@ -67,11 +67,11 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
                         break;
                     }
                     case StreamProviders.NostrType: {
-                        this.#providers.push(new Nip103StreamProvider(c.url));
+                        this.#providers.push(new Nip103StreamProvider(c.url as string));
                         break;
                     }
                     case StreamProviders.Owncast: {
-                        this.#providers.push(new OwncastProvider(c.url, c.token));
+                        this.#providers.push(new OwncastProvider(c.url as string, c.token as string));
                         break;
                     }
                 }

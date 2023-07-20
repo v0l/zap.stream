@@ -37,7 +37,7 @@ function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
 
   return (
     <>
-      {zappers.map(({ pubkey, total }, idx) => {
+      {zappers.map(({ pubkey, total }) => {
         return (
           <div className="top-zapper" key={pubkey}>
             {pubkey === "anon" ? (
@@ -79,7 +79,6 @@ export function LiveChat({
   }, [feed.zaps]);
 
   const userEmojiPacks = useEmoji(login?.pubkey);
-  const userEmojis = userEmojiPacks.map((pack) => pack.emojis).flat();
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
     return uniqBy(channelEmojiPacks.concat(userEmojiPacks), packId);

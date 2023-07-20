@@ -1,10 +1,10 @@
 import "./textarea.css";
 import type { KeyboardEvent, ChangeEvent } from "react";
-import ReactTextareaAutocomplete from "@webscopeio/react-textarea-autocomplete";
+import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
 import isEqual from "lodash/isEqual";
-import { MetadataCache, NostrPrefix } from "@snort/system";
+import { MetadataCache, NostrPrefix, UserProfileCache } from "@snort/system";
 import { System } from "index";
 import { Emoji, type EmojiTag } from "./emoji";
 import { Avatar } from "element/avatar";
@@ -27,7 +27,7 @@ const EmojiItem = ({ entity: { name, url } }: { entity: EmojiItemProps }) => {
 };
 
 const UserItem = (metadata: MetadataCache) => {
-  const { pubkey, display_name, nip05, ...rest } = metadata;
+  const { pubkey, display_name, ...rest } = metadata;
   return (
     <div key={pubkey} className="user-item">
       <Avatar avatarClassname="user-image" user={metadata} />
@@ -39,14 +39,16 @@ const UserItem = (metadata: MetadataCache) => {
 interface TextareaProps {
   emojis: EmojiTag[];
   value: string;
-  onChange: (e: ChangeEvent<Element>) => void;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onKeyDown: (e: KeyboardEvent<Element>) => void;
 }
 
 export function Textarea({ emojis, ...props }: TextareaProps) {
   const userDataProvider = async (token: string) => {
-    // @ts-expect-error: Property 'search'
-    return System.ProfileLoader.Cache.search(token);
+    const cache = System.ProfileLoader.Cache;
+    if (cache instanceof UserProfileCache) {
+      return cache.search(token);
+    }
   };
 
   const emojiDataProvider = async (token: string) => {
@@ -76,7 +78,7 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
       output: (item: { pubkey: string }) =>
         `@${hexToBech32(NostrPrefix.PublicKey, item.pubkey)}`,
     },
-  };
+  } as TriggerType<string | object>;
 
   return (
     <ReactTextareaAutocomplete
@@ -84,7 +86,6 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
       loadingComponent={() => <span>Loading...</span>}
       placeholder="Message"
       autoFocus={false}
-      // @ts-expect-error
       trigger={trigger}
       {...props}
     />

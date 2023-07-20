@@ -1,6 +1,6 @@
 import { useUserProfile } from "@snort/system-react";
 import { NostrEvent, parseZap, EventKind } from "@snort/system";
-import { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import {
   useMediaQuery,
   useHover,
@@ -46,7 +46,7 @@ export function ChatMessage({
   reactions: readonly NostrEvent[];
   emojiPacks: EmojiPack[];
 }) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const inView = useIntersectionObserver(ref, {
     freezeOnceVisible: true,
   });
@@ -119,15 +119,15 @@ export function ChatMessage({
         console.debug(reply);
         System.BroadcastEvent(reply);
       }
-    } catch (error) { }
+    } catch {
+      //ignore
+    }
   }
 
-  // @ts-expect-error
   const topOffset = ref.current?.getBoundingClientRect().top;
-  // @ts-expect-error
   const leftOffset = ref.current?.getBoundingClientRect().left;
 
-  function pickEmoji(ev: any) {
+  function pickEmoji(ev: React.MouseEvent) {
     ev.stopPropagation();
     setShowEmojiPicker(!showEmojiPicker);
   }
@@ -182,8 +182,8 @@ export function ChatMessage({
                 }
                 : {
                   position: "fixed",
-                  top: topOffset - 12,
-                  left: leftOffset - 32,
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
                   opacity: showZapDialog || isHovering ? 1 : 0,
                   pointerEvents:
                     showZapDialog || isHovering ? "auto" : "none",
@@ -211,8 +211,8 @@ export function ChatMessage({
       </div>
       {showEmojiPicker && (
         <EmojiPicker
-          topOffset={topOffset}
-          leftOffset={leftOffset}
+          topOffset={topOffset ?? 0}
+          leftOffset={leftOffset ?? 0}
           emojiPacks={emojiPacks}
           onEmojiSelect={onEmojiSelect}
           onClickOutside={() => setShowEmojiPicker(false)}

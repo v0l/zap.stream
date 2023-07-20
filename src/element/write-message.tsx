@@ -1,5 +1,5 @@
 import { NostrLink, EventKind } from "@snort/system";
-import { useRef, useState, ChangeEvent } from "react";
+import React, { useRef, useState } from "react";
 
 import { LIVE_STREAM_CHAT } from "../const";
 import { useLogin } from "../hooks/login";
@@ -17,7 +17,7 @@ export function WriteMessage({
   link: NostrLink;
   emojiPacks: EmojiPack[];
 }) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const emojiRef = useRef(null);
   const [chat, setChat] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -25,15 +25,13 @@ export function WriteMessage({
   const emojis = emojiPacks.map((pack) => pack.emojis).flat();
   const names = emojis.map((t) => t.at(1));
 
-  // @ts-expect-error
   const topOffset = ref.current?.getBoundingClientRect().top;
-  // @ts-expect-error
   const leftOffset = ref.current?.getBoundingClientRect().left;
 
   async function sendChatMessage() {
     const pub = login?.publisher();
     if (chat.length > 1) {
-      let emojiNames = new Set();
+      const emojiNames = new Set();
 
       for (const name of names) {
         if (chat.includes(`:${name}:`)) {
@@ -80,12 +78,7 @@ export function WriteMessage({
     }
   }
 
-  async function onChange(e: ChangeEvent) {
-    // @ts-expect-error
-    setChat(e.target.value);
-  }
-
-  function pickEmoji(ev: any) {
+  function pickEmoji(ev: React.MouseEvent) {
     ev.stopPropagation();
     setShowEmojiPicker(!showEmojiPicker);
   }
@@ -97,15 +90,15 @@ export function WriteMessage({
           emojis={emojis}
           value={chat}
           onKeyDown={onKeyDown}
-          onChange={onChange}
+          onChange={e => setChat(e.target.value)}
         />
         <div onClick={pickEmoji}>
           <Icon name="face" className="write-emoji-button" />
         </div>
         {showEmojiPicker && (
           <EmojiPicker
-            topOffset={topOffset}
-            leftOffset={leftOffset}
+            topOffset={topOffset ?? 0}
+            leftOffset={leftOffset ?? 0}
             emojiPacks={emojiPacks}
             onEmojiSelect={onEmojiSelect}
             onClickOutside={() => setShowEmojiPicker(false)}

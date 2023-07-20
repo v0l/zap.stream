@@ -1,5 +1,5 @@
 import Hls from "hls.js";
-import { HTMLProps, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { WISH } from "wish";
 
 export enum VideoStatus {
@@ -71,7 +71,7 @@ export function LiveVideoPlayer(
 export function WebRTCPlayer(props: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const streamCached = useMemo(() => "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play", [props.stream]);
-  const [status, setStatus] = useState<VideoStatus>();
+  const [status] = useState<VideoStatus>();
   //https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play
 
   useEffect(() => {
