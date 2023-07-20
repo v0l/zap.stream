@@ -62,6 +62,12 @@ a {
   gap: 12px;
 }
 
+.w-max {
+  width: stretch;
+  width: -webkit-fill-available;
+  width: -moz-available;
+}
+
 .btn {
   border: none;
   outline: none;
@@ -71,6 +77,10 @@ a {
   line-height: 20px;
   padding: 8px 16px;
   border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn-border {
@@ -93,6 +103,11 @@ a {
 
 .btn-primary:hover {
   opacity: 0.9;
+}
+
+.btn-secondary {
+  color: white;
+  background: #222;
 }
 
 .btn-warning {
@@ -171,10 +186,29 @@ div.paper {
   border: 1px solid #ff563f;
 }
 
+.dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
 .dialog-content {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  z-index: 2;
+  background-color: #171717;
+  border-radius: 24px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: 25px;
+  overflow-y: auto;
 }
 
 .dialog-content div.paper {

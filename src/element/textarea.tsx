@@ -1,6 +1,8 @@
 import "./textarea.css";
 import type { KeyboardEvent, ChangeEvent } from "react";
-import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
+import ReactTextareaAutocomplete, {
+  TriggerType,
+} from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
 import isEqual from "lodash/isEqual";
@@ -41,6 +43,7 @@ interface TextareaProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onKeyDown: (e: KeyboardEvent<Element>) => void;
+  rows?: number;
 }
 
 export function Textarea({ emojis, ...props }: TextareaProps) {

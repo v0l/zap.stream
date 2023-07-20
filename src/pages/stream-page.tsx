@@ -19,6 +19,7 @@ import { Tags } from "element/tags";
 import { StatePill } from "element/state-pill";
 import { formatSats } from "number";
 import { StreamTimer } from "element/stream-time";
+import { ShareMenu } from "element/share-menu";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const login = useLogin();
@@ -74,17 +75,24 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
             </div>
           )}
         </div>
-        <div className="profile-info flex g24">
+        <div className="profile-info w-max">
           <Profile pubkey={host ?? ""} />
-          {zapTarget && ev && (
-            <SendZapsDialog
-              lnurl={zapTarget}
-              pubkey={host}
-              aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
-              eTag={goal?.id}
-              targetName={getName(ev.pubkey, profile)}
-            />
-          )}
+          <div className="flex g12">
+            {ev && (
+              <>
+                <ShareMenu ev={ev} />
+                {zapTarget && (
+                  <SendZapsDialog
+                    lnurl={zapTarget}
+                    pubkey={host}
+                    aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
+                    eTag={goal?.id}
+                    targetName={getName(ev.pubkey, profile)}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

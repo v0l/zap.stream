@@ -177,28 +177,6 @@ button span.hide-on-mobile {
   }
 }
 
-.dialog-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-}
-
-.dialog-content {
-  z-index: 2;
-  background-color: #171717;
-  border-radius: 6px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 450px;
-  max-height: 85vh;
-  padding: 25px;
-  overflow-y: auto;
-}
-
 .zap-icon {
   color: #FF8D2B;
 }

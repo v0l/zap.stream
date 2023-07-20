@@ -215,7 +215,7 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
         ) : (
           <button className="btn btn-primary zap">
             <span className="hide-on-mobile">Zap</span>
-            <Icon name="zap" size={16} />
+            <Icon name="zap-filled" size={16} />
           </button>
         )}
       </Dialog.Trigger>

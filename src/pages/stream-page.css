@@ -2,7 +2,6 @@
   grid-area: main-content;
 }
 
-
 .video-content video {
   max-height: 230px;
   width: 100vw;
@@ -18,7 +17,11 @@
   display: flex;
   justify-content: space-between;
   padding: 0 16px;
-  width: 100%;
+  gap: 24px;
+}
+
+.profile-info .btn {
+  padding: 12px 16px;
 }
 
 @media (min-width: 768px) {
@@ -39,7 +42,7 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  color: #A7A7A7;
+  color: #a7a7a7;
 }
 
 .pill.live {
@@ -49,7 +52,7 @@
 
 .pill.viewers {
   color: white;
-  background: rgba(23, 23, 23, 0.70);
+  background: rgba(23, 23, 23, 0.7);
 }
 
 @media (min-width: 1020px) {
@@ -96,7 +99,7 @@
 
 .info {
   grid-area: profile;
-  margin-top: 8px
+  margin-top: 8px;
 }
 
 .info h1 {
@@ -116,13 +119,6 @@
   gap: 12px;
 }
 
-.info .btn.zap {
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .offline {
   background: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -130,11 +126,11 @@
   align-items: center;
 }
 
-.online>div {
+.online > div {
   display: none;
 }
 
-.offline>div {
+.offline > div {
   position: fixed;
   top: 5em;
   text-transform: uppercase;
@@ -143,12 +139,12 @@
 }
 
 @media (min-width: 768px) {
-  .offline>div {
+  .offline > div {
     top: 10em;
   }
 }
 
-.offline>video {
+.offline > video {
   z-index: -1;
   position: relative;
 }
