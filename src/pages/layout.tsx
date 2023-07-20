@@ -13,7 +13,7 @@ export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
   const location = useLocation();
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   function loggedIn() {
     if (!login) return;
