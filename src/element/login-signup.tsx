@@ -30,6 +30,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             const pub = await EventPublisher.nip7();
             if (pub) {
                 Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
+                close();
             }
         } catch (e) {
             console.error(e);

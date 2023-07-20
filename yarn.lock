@@ -2579,6 +2579,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@szhsin/react-menu@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@szhsin/react-menu@npm:4.0.2"
+  dependencies:
+    prop-types: ^15.7.2
+    react-transition-state: ^2.1.0
+  peerDependencies:
+    react: ">=16.14.0"
+    react-dom: ">=16.14.0"
+  checksum: ac84a6f84b2671044d96667011ae747e8962a1b90507080155e5aec7807a705cbd7020f6a6396df34d68cd6b9de87b979af785916eeb29eb683d0da3fd0aa8dd
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.5.0":
   version: 8.20.1
   resolution: "@testing-library/dom@npm:8.20.1"
@@ -2966,6 +2979,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:^18.2.7":
+  version: 18.2.7
+  resolution: "@types/react-dom@npm:18.2.7"
+  dependencies:
+    "@types/react": "*"
+  checksum: e02ea908289a7ad26053308248d2b87f6aeafd73d0e2de2a3d435947bcea0422599016ffd1c3e38ff36c42f5e1c87c7417f05b0a157e48649e4a02f21727d54f
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*":
   version: 18.2.13
   resolution: "@types/react@npm:18.2.13"
@@ -2974,6 +2996,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: f7c15f19c164a29262993ea2aae2085fa38cddd9b8359fd8fefabfced91010b515a3abe2042b2b7f2f86e6b38a25b191415aa9313a9027175e3a000883c858cc
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.15":
+  version: 18.2.15
+  resolution: "@types/react@npm:18.2.15"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 36989f638201bfe2f4110b06c119180f6df9c0e13d7060481e82e7a745f81745a01ae543c478a25b61e0767cb52e82da2ad5b0dedacabf99339e523d06176705
   languageName: node
   linkType: hard
 
@@ -8279,7 +8312,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -8503,6 +8536,16 @@ __metadata:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
   checksum: b8d5c588a3bfe4c4a82b8a8e34e3d11c37cd467bbd92b31aeb7e3fbd4e3a4e62228811d3ce61b01115c7efa8b6ccb06c7a2688710d03bb8ed91f9e2e690a1775
+  languageName: node
+  linkType: hard
+
+"react-transition-state@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "react-transition-state@npm:2.1.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 6091d0c59a255b9ec47b6bfc8f766737bdb1a21bb15f0c738e0feef9efd20df5a3209699029cab2fcb18c99fa8ad97cdbce95ceabee9fe6c6dd8b98a11af00b5
   languageName: node
   linkType: hard
 
@@ -9313,12 +9356,15 @@ __metadata:
     "@snort/shared": ^1.0.4
     "@snort/system": ^1.0.16
     "@snort/system-react": ^1.0.11
+    "@szhsin/react-menu": ^4.0.2
     "@testing-library/dom": ^9.3.1
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
     "@types/lodash": ^4.14.195
     "@types/lodash.uniqby": ^4.7.7
+    "@types/react": ^18.2.15
+    "@types/react-dom": ^18.2.7
     "@types/webscopeio__react-textarea-autocomplete": ^4.7.2
     "@typescript-eslint/eslint-plugin": ^6.1.0
     "@typescript-eslint/parser": ^6.1.0

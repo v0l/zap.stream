@@ -5,7 +5,7 @@ import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
 
 export enum LoginType {
   Nip7 = "nip7",
-  PrivateKey = "private-key"
+  PrivateKey = "private-key",
 }
 
 export interface LoginSession {
@@ -25,7 +25,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       this.#session = JSON.parse(json);
       if (this.#session) {
         this.#session.type ??= LoginType.Nip7;
-
       }
     }
   }
@@ -49,12 +48,21 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#save();
   }
 
+  logout() {
+    this.#session = undefined;
+    this.#save();
+  }
+
   takeSnapshot() {
     return this.#session ? { ...this.#session } : undefined;
   }
 
   #save() {
-    window.localStorage.setItem("session", JSON.stringify(this.#session));
+    if (this.#session) {
+      window.localStorage.setItem("session", JSON.stringify(this.#session));
+    } else {
+      window.localStorage.removeItem("session");
+    }
     this.notifyChange();
   }
 }
@@ -65,7 +73,10 @@ export function getPublisher(session: LoginSession) {
       return new EventPublisher(new Nip7Signer(), session.pubkey);
     }
     case LoginType.PrivateKey: {
-      return new EventPublisher(new PrivateKeySigner(session.privateKey!), session.pubkey);
+      return new EventPublisher(
+        new PrivateKeySigner(session.privateKey!),
+        session.pubkey
+      );
     }
   }
 }

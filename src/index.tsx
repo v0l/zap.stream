@@ -1,3 +1,4 @@
+import "@szhsin/react-menu/dist/index.css";
 import "./index.css";
 
 import React from "react";
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/nsfw",
-        element: <RootPage nsfw={true} />
+        element: <RootPage nsfw={true} />,
       },
       {
         path: "/:id",

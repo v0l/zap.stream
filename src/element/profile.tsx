@@ -33,12 +33,14 @@ export function Profile({
   avatarClassname,
   options,
   profile,
+  linkToProfile,
 }: {
   pubkey: string;
   icon?: ReactNode;
   avatarClassname?: string;
   options?: ProfileOptions;
   profile?: UserMetadata;
+  linkToProfile?: boolean;
 }) {
   const { inView, ref } = useInView();
   const pLoaded =
@@ -69,7 +71,7 @@ export function Profile({
     </>
   );
 
-  return pubkey === "anon" ? (
+  return pubkey === "anon" || linkToProfile === false ? (
     <div className="profile" ref={ref}>
       {content}
     </div>
