@@ -7,14 +7,15 @@
 
 .stream-page .video-content {
   overflow-y: auto;
-  height: fit-content;
   gap: var(--gap-s);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .stream-page .video-content video {
   width: 100%;
+  max-height: calc(100vh - var(--header-page-padding) - var(--header-height) - var(--gap-s));
 }
 
 .stream-page .live-chat {
@@ -111,6 +112,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .online > div {
@@ -118,8 +122,6 @@
 }
 
 .offline > div {
-  position: fixed;
-  top: 5em;
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 700;
