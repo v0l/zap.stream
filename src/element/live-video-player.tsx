@@ -59,12 +59,12 @@ export function LiveVideoPlayer(
   }, [video, streamCached, props.status]);
 
   return (
-    <>
+    <div className="video-overlay">
       <div className={status}>
         <div>{status}</div>
       </div>
       <video ref={video} autoPlay={true} poster={props.poster} src={src} playsInline={true} controls={status === VideoStatus.Online} />
-    </>
+    </div>
   );
 }
 
@@ -90,11 +90,11 @@ export function WebRTCPlayer(props: VideoPlayerProps) {
   }, [video, streamCached]);
 
   return (
-    <>
+    <div className="video-overlay">
       <div className={status}>
         <div>{status}</div>
       </div>
       <video ref={video} autoPlay={true} poster={props.poster} controls={status === VideoStatus.Online} />
-    </>
+    </div>
   );
 }
