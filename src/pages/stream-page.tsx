@@ -45,7 +45,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const viewers = Number(findTag(ev, "current_participants") ?? "0");
   return (
     <>
-      <div className="flex info">
+      <div className="flex f-center info">
         <div className="f-grow stream-info">
           <h1>{findTag(ev, "title")}</h1>
           <p>{findTag(ev, "summary")}</p>
@@ -76,7 +76,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
             </div>
           )}
         </div>
-        <div className="profile-info w-max">
+        <div className="profile-info">
           <Profile pubkey={host ?? ""} />
           <div className="flex g12">
             {ev && (
@@ -100,18 +100,6 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   );
 }
 
-function VideoPlayer({ ev }: { ev?: NostrEvent }) {
-  const stream = findTag(ev, "streaming");
-  const image = findTag(ev, "image");
-  const status = findTag(ev, "status");
-
-  return (
-    <div className="video-content">
-      <LiveVideoPlayer stream={stream} poster={image} status={status} />
-    </div>
-  );
-}
-
 export function StreamPage() {
   const params = useParams();
   const link = parseNostrLink(params.id!);
@@ -122,6 +110,7 @@ export function StreamPage() {
   const title = findTag(ev, "title");
   const summary = findTag(ev, "summary");
   const image = findTag(ev, "image");
+  const stream = findTag(ev, "streaming");
   const tags = ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? [];
 
   const descriptionContent = [
@@ -130,7 +119,7 @@ export function StreamPage() {
     ...tags,
   ].join(", ");
   return (
-    <>
+    <div className="stream-page">
       <Helmet>
         <title>{`${title} - zap.stream`}</title>
         <meta name="description" content={descriptionContent} />
@@ -143,9 +132,11 @@ export function StreamPage() {
         <meta property="og:description" content={descriptionContent} />
         <meta property="og:image" content={image ?? ""} />
       </Helmet>
-      <VideoPlayer ev={ev} />
-      <ProfileInfo ev={ev} goal={goal} />
+      <div className="video-content">
+        <LiveVideoPlayer stream={stream} poster={image} status={status} />
+        <ProfileInfo ev={ev} goal={goal} />
+      </div>
       <LiveChat link={link} ev={ev} goal={goal} />
-    </>
+    </div>
   );
 }

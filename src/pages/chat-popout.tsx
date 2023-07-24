@@ -9,14 +9,14 @@ export function ChatPopout() {
   const link = parseNostrLink(params.id!);
   const { data: ev } = useEventFeed(link, true);
 
-  const chat = new URL(window.location.href).searchParams.get("chat");
+  const chat = Boolean(new URL(window.location.href).searchParams.get("chat"));
   return (
-    <div className="popout-chat">
+    <div className={`popout-chat${chat ? "" : " embed"}`}>
       <LiveChat
         ev={ev}
         link={link}
         options={{
-          canWrite: Boolean(chat),
+          canWrite: chat,
           showHeader: false,
         }}
       />

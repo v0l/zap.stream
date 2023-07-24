@@ -1,22 +1,16 @@
-.popout-chat {
-  display: grid;
-  grid-template-areas:
-    "main-content";
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  height: 100vh;
-  gap: 0;
-}
-
 .popout-chat .live-chat {
   padding: 8px 16px;
-  width: 100vw;
-  height: calc(100vh - 32px);
+  width: calc(100vw - 32px);
+  height: calc(100vh - 16px);
   margin-left: 0;
   border: unset;
   border-radius: unset;
 }
 
 .popout-chat .live-chat .messages {
-  overflow: hidden;
+  padding-right: unset;
+}
+
+.popout-chat.embed .live-chat .messages::-webkit-scrollbar {
+  display: none;
 }

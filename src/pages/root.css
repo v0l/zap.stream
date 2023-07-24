@@ -1,7 +1,7 @@
 .video-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    gap: var(--gap-l);
     padding: 40px 0;
 }
 
@@ -18,7 +18,6 @@
     .video-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 32px;
         padding: 16px;
     }
 }
@@ -33,11 +32,6 @@
     .video-grid {
         grid-template-columns: repeat(8, 1fr);
     }
-}
-
-.homepage {
-    width: 100%;
-    grid-area: main-content;
 }
 
 .divider {

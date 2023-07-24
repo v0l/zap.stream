@@ -1,7 +1,7 @@
 import "./layout.css";
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Outlet, useNavigate, useLocation, Link } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { Icon } from "element/icon";
@@ -16,7 +16,6 @@ import { Login } from "index";
 export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
-  const location = useLocation();
   const [showLogin, setShowLogin] = useState(false);
 
   function loggedIn() {
@@ -81,21 +80,9 @@ export function LayoutPage() {
       </Dialog.Root>
     );
   }
-  const isNsfw = window.location.pathname === "/nsfw";
 
   return (
-    <div
-      className={
-        location.pathname === "/" ||
-        location.pathname.startsWith("/p/") ||
-        location.pathname.startsWith("/providers") ||
-        location.pathname === "/nsfw"
-          ? "page only-content"
-          : location.pathname.startsWith("/chat/")
-          ? "page chat"
-          : "page"
-      }
-    >
+    <div className={`page${location.pathname.startsWith("/naddr1") ? " stream" : ""}`}>
       <Helmet>
         <title>Home - zap.stream</title>
       </Helmet>
@@ -105,47 +92,15 @@ export function LayoutPage() {
           <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />
         </div>
-        <Link to={"/nsfw"}>
-          <div className={`btn-header${isNsfw ? " active" : ""}`}>
-            Adult (18+)
-          </div>
-        </Link>
-
+        <div className="f-grow">
+          {/* Future menu items go here */}
+        </div>
         <div className="header-right">
           {loggedIn()}
           {loggedOut()}
         </div>
       </header>
       <Outlet />
-      {isNsfw && <ContentWarningOverlay />}
-    </div>
-  );
-}
-
-function ContentWarningOverlay() {
-  const navigate = useNavigate();
-  const [is18Plus, setIs18Plus] = useState(
-    Boolean(window.localStorage.getItem("accepted-content-warning"))
-  );
-  if (is18Plus) return null;
-
-  function grownUp() {
-    window.localStorage.setItem("accepted-content-warning", "true");
-    setIs18Plus(true);
-  }
-
-  return (
-    <div className="fullscreen-exclusive age-check">
-      <h1>Sexually explicit material ahead!</h1>
-      <h2>Confirm your age</h2>
-      <div className="flex g24">
-        <button className="btn btn-warning" onClick={grownUp}>
-          Yes, I am over 18
-        </button>
-        <button className="btn" onClick={() => navigate("/")}>
-          No, I am under 18
-        </button>
-      </div>
     </div>
   );
 }

@@ -49,10 +49,6 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/nsfw",
-        element: <RootPage nsfw={true} />,
-      },
-      {
         path: "/:id",
         element: <StreamPage />,
       },

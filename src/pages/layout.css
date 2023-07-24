@@ -1,95 +1,36 @@
 .page {
-  display: grid;
-  gap: 0;
-  grid-template-areas:
-    "header"
-    "main-content"
-    "profile"
-    "chat";
-  grid-template-rows: 64px 230px 56px 1fr;
-  grid-template-columns: 1fr;
-  height: 100vh;
+  --page-pad-tb: 16px;
+  --page-pad-lr: 40px;
+  --header-page-padding: calc(var(--page-pad-tb) + var(--page-pad-tb));
+
+  padding: var(--page-pad-tb) var(--page-pad-lr);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
 }
 
-.page.only-content {
-  display: grid;
-  height: 100vh;
-  grid-template-areas:
-    "header"
-    "main-content";
-  grid-template-rows: 64px 1fr;
-  grid-template-columns: 1fr;
+.page.stream {
+  height: calc(100vh - var(--header-page-padding));
+  overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1020px) {
   .page {
-    display: grid;
-    height: 100vh;
-    grid-template-areas:
-      "header header"
-      "main-content profile"
-      "main-content chat";
-    grid-template-rows: 64px min-content;
-    grid-template-columns: 600px 1fr;
-    gap: 0;
+    --page-pad-tb: 8px;
+    --page-pad-lr: 0;
   }
-
-  .video-content video {
-    height: 100%;
+  .page.stream {
+    display: flex;
+    flex-direction: column;
   }
-
-}
-
-@media (min-width: 1020px) {
-  .page {
-    display: grid;
-    height: calc(100vh - 72px);
-    padding: 0 40px;
-    grid-template-columns: auto 376px;
-    grid-template-rows: unset;
-    grid-template-areas:
-      "header header"
-      "main-content chat"
-      "profile chat";
-    gap: 0;
-  }
-
-}
-
-@media (min-width: 2000px) {
-  .page {
-    padding: 0 40px;
-    grid-template-columns: auto 450px;
-  }
-
-  .video-content {
-    max-height: calc(100vh - 320px);
-  }
-
-  .video-content video {
-    height: 100%;
+  header {
+    padding: 0 16px;
   }
 }
 
 header {
-  grid-area: header;
-  align-items: center;
-  display: grid;
-  grid-template-columns: min-content min-content min-content auto;
-  padding: 8px 16px;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-@media (min-width: 1020px) {
-  header {
-    gap: 24px;
-    padding: 24px 0 32px 0;
-  }
-
-  .page.only-content {
-    grid-template-rows: 88px 1fr;
-  }
+  display: flex;
+  gap: 24px;
 }
 
 header .logo {
@@ -178,7 +119,7 @@ button span.hide-on-mobile {
 }
 
 .zap-icon {
-  color: #FF8D2B;
+  color: #ff8d2b;
 }
 
 .tags {
@@ -194,7 +135,7 @@ button span.hide-on-mobile {
   top: 0;
   left: 0;
   z-index: 999;
-  background: #0A0A0A;
+  background: #0a0a0a;
 }
 
 .age-check {

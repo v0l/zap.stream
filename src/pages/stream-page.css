@@ -1,41 +1,75 @@
-.video-content {
-  grid-area: main-content;
+.stream-page {
+  display: grid;
+  grid-template-columns: auto 450px;
+  gap: var(--gap-m);
+  height: calc(100vh - var(--header-page-padding) - var(--header-height) - var(--gap-s));
 }
 
-.video-content video {
-  max-height: 230px;
-  width: 100vw;
-  max-width: 100vw;
-  background: #000;
+.stream-page .video-content {
+  overflow-y: auto;
+  height: fit-content;
+  gap: var(--gap-s);
+  display: flex;
+  flex-direction: column;
 }
 
-.live-chat {
-  max-width: calc(100vw - 32px);
+.stream-page .video-content video {
+  width: 100%;
+}
+
+.stream-page .live-chat {
+  padding: 24px 16px 8px 24px;
+  border: 1px solid #171717;
+  border-radius: 24px;
+  height: calc(100vh - var(--header-page-padding) - var(--header-height) - var(--gap-s) - 24px - 8px);
+}
+
+@media (max-width: 1020px) {
+  .stream-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--header-page-padding) - var(--header-height) - var(--gap-s));
+  }
+
+  .stream-page .video-content {
+    overflow-y: visible;
+  }
+
+  .stream-page .live-chat {
+    border-radius: 0;
+    border: 0;
+    padding: 8px 16px;
+    height: unset;
+    min-height: 0;
+  }
+
+  .stream-page .live-chat .top-zappers h3,
+  .stream-page .live-chat .header {
+    display: none;
+  }
+
+  .stream-page .info {
+    flex-direction: column;
+  }
+
+  .stream-page .stream-info {
+    display: none;
+  }
+
+  .stream-page .profile-info {
+    width: calc(100% - 32px);
+  }
 }
 
 .profile-info {
   display: flex;
   justify-content: space-between;
   padding: 0 16px;
-  gap: 24px;
+  gap: var(--gap-m);
 }
 
 .profile-info .btn {
   padding: 12px 16px;
-}
-
-@media (min-width: 768px) {
-  .video-content {
-    height: calc(100vh - 64px);
-  }
-
-  .video-content video {
-    max-height: unset;
-  }
-
-  .profile-info {
-    max-height: 42px;
-  }
 }
 
 .pill {
@@ -53,53 +87,6 @@
 .pill.viewers {
   color: white;
   background: rgba(23, 23, 23, 0.7);
-}
-
-@media (min-width: 1020px) {
-  .info {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .video-content video {
-    width: unset;
-  }
-
-  .profile-info {
-    width: unset;
-  }
-}
-
-.live-chat .header {
-  display: none;
-}
-
-.stream-info {
-  display: none;
-}
-
-@media (min-width: 1020px) {
-  .live-chat .header {
-    display: block;
-  }
-
-  .stream-info {
-    display: block;
-  }
-
-  .video-content {
-    height: 100%;
-  }
-
-  .live-chat {
-    margin-left: 32px;
-  }
-}
-
-.info {
-  grid-area: profile;
-  margin-top: 8px;
 }
 
 .info h1 {

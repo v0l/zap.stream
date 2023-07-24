@@ -14,7 +14,7 @@ export function Tags({
   const status = findTag(ev, "status");
   const start = findTag(ev, "starts");
   return (
-    <div className="tags">
+    <>
       {children}
       {status === StreamState.Planned && (
         <span className="pill">
@@ -30,6 +30,6 @@ export function Tags({
             {a}
           </span>
         ))}
-    </div>
+    </>
   );
 }
