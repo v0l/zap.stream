@@ -25,7 +25,7 @@ export interface EmojiPack {
 }
 
 function cleanShortcode(shortcode?: string) {
-  return shortcode?.replace(/\s+/, "_");
+  return shortcode?.replace(/\s+/g, "_").replace(/_$/, "");
 }
 
 function toEmojiPack(ev: NostrEvent): EmojiPack {
@@ -46,7 +46,7 @@ export function packId(pack: EmojiPack): string {
 
 export default function useEmoji(pubkey?: string) {
   const sub = useMemo(() => {
-    if(!pubkey) return null;
+    if (!pubkey) return null;
     const rb = new RequestBuilder(`emoji:${pubkey}`);
 
     rb.withFilter()
@@ -72,7 +72,7 @@ export default function useEmoji(pubkey?: string) {
   }, [userEmoji]);
 
   const subRelated = useMemo(() => {
-    if(!pubkey) return null;
+    if (!pubkey) return null;
     const splitted = related.map((t) => t.at(1)!.split(":"));
     const authors = splitted
       .map((s) => s.at(1))
