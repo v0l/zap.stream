@@ -22,6 +22,5 @@ export default function useFollows(pubkey: string, leaveOpen = false) {
   );
 
   const relays = JSON.parse(data?.content ?? "{}");
-
-  return { tags: data?.tags ?? [], relays };
+  return data ? { tags: data.tags, relays } : null
 }

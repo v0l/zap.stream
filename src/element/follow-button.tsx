@@ -12,7 +12,8 @@ export function LoggedInFollowButton({
   pubkey: string;
 }) {
   const login = useLogin();
-  const { tags, relays } = useFollows(loggedIn, true);
+  const following = useFollows(loggedIn, true);
+  const { tags, relays } = following ? following : { tags: [], relays: {} }
   const follows = tags.filter((t) => t.at(0) === "p")
   const isFollowing = follows.find((t) => t.at(1) === pubkey);
 
@@ -52,6 +53,7 @@ export function LoggedInFollowButton({
 
   return (
     <AsyncButton
+      disabled={!following}
       type="button"
       className="btn btn-primary"
       onClick={isFollowing ? unfollow : follow}
