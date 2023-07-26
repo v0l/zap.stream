@@ -1,0 +1,128 @@
+.stream-cards {
+  display: none;
+}
+
+@media (min-width: 1020px) {
+  .stream-cards {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stream-card {
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 16px;
+  border-radius: 24px;
+  background: #111;
+  width: 210px;
+}
+
+.stream-card .card-title {
+  margin: 0;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (min-width: 1900px) {
+  .stream-card {
+    width: 342px;
+  }
+}
+
+.add-card {
+  align-items: center;
+  justify-content: center;
+}
+
+.add-card .add-icon {
+  color: #797979;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.new-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.new-card h3 {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.new-card input[type="text"] {
+  background: #262626;
+  padding: 8px 16px;
+  border-radius: 16px;
+  width: unset;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+
+.new-card textarea {
+  width: unset;
+  background: #262626;
+  padding: 8px 16px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control label {
+  margin-bottom: 8px;
+}
+
+.new-card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.help-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+.help-text a {
+  color: var(--text-link);
+}
+
+.add-button {
+  height: 50px;
+}
+
+.delete-button {
+  background: transparent;
+  color: var(--text-danger);
+}
