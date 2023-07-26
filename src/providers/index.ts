@@ -90,8 +90,8 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
     }
 
     takeSnapshot() {
-        //const defaultProvider = new Nip103StreamProvider("https://api.zap.stream/api/nostr/");
-        return [new ManualProvider(), ...this.#providers];
+        const defaultProvider = new Nip103StreamProvider("https://api.zap.stream/api/nostr/");
+        return [defaultProvider, new ManualProvider(), ...this.#providers];
     }
 
     #save() {
