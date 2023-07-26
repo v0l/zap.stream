@@ -16,7 +16,12 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
       <div className="emoji-pack-emojis">
         {emoji.map((e) => {
           const [, name, image] = e;
-          return <img alt={name} className="emoji" src={image} />;
+          return (
+            <div className="emoji-definition">
+              <img alt={name} className="emoji" src={image} />
+              <span className="emoji-name">{name}</span>
+            </div>
+          );
         })}
       </div>
     </div>

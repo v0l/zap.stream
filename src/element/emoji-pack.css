@@ -9,10 +9,22 @@
 }
 
 .emoji-pack-emojis {
+  margin-top: 12px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 4px;
+}
+
+.emoji-definition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.emoji-name {
+  font-size: 10px;
 }
 
 .emoji-pack h4 {
