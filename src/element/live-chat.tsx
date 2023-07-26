@@ -88,20 +88,9 @@ export function LiveChat({
   const zaps = feed.zaps
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
-
-  const goalZaps = feed.zaps
-    .filter((ev) =>
-      goal
-        ? ev.created_at > goal.created_at &&
-          ev.tags.some((t) => t[0] === "e" && t[1] === goal.id)
-        : false
-    )
-    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z && z.valid);
-
   const events = useMemo(() => {
     return [...feed.messages, ...feed.zaps].sort(
-      (a, b) => b.created_at - a.created_at
+      (a, b) => b.created_at - a.created_at,
     );
   }, [feed.messages, feed.zaps]);
   const streamer = getHost(ev);
@@ -112,7 +101,7 @@ export function LiveChat({
         findTag(ev, "d") ?? "",
         undefined,
         ev.kind,
-        ev.pubkey
+        ev.pubkey,
       );
     }
   }, [ev]);
@@ -125,7 +114,13 @@ export function LiveChat({
           <Icon
             name="link"
             size={32}
-            onClick={() => window.open(`/chat/${naddr}?chat=true`, "_blank", "popup,width=400,height=800")}
+            onClick={() =>
+              window.open(
+                `/chat/${naddr}?chat=true`,
+                "_blank",
+                "popup,width=400,height=800",
+              )
+            }
           />
         </div>
       )}
@@ -135,7 +130,7 @@ export function LiveChat({
           <div className="top-zappers-container">
             <TopZappers zaps={zaps} />
           </div>
-          {goal && <Goal ev={goal} zaps={goalZaps} />}
+          {goal && <Goal ev={goal} />}
           {login?.pubkey === streamer && <NewGoalDialog link={link} />}
         </div>
       )}
@@ -155,7 +150,7 @@ export function LiveChat({
             }
             case EventKind.ZapReceipt: {
               const zap = zaps.find(
-                (b) => b.id === a.id && b.receiver === streamer
+                (b) => b.id === a.id && b.receiver === streamer,
               );
               if (zap) {
                 return <ChatZap zap={zap} key={a.id} />;
@@ -202,7 +197,7 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
         <span className="zap-amount">{formatSats(zap.amount)}</span>
         sats
       </div>
-      {zap.content &&  (
+      {zap.content && (
         <div className="zap-content">
           <Text content={zap.content} tags={[]} />
         </div>

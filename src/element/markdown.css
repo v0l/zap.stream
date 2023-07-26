@@ -1,8 +1,8 @@
-.markdown a {
+.markdown  a {
   color: var(--text-link);
 }
 
-.markdown ul, .markdown ol {
+.markdown > ul, .markdown > ol {
   margin: 0;
   padding: 0 12px;
   font-size: 18px;
@@ -10,7 +10,7 @@
   line-height: 29px;
 }
 
-.markdown p {
+.markdown > p {
   font-size: 18px;
   font-style: normal;
   overflow-wrap: break-word;
@@ -18,7 +18,7 @@
   line-height: 29px; /* 161.111% */
 }
 
-.markdown img {
+.markdown > img {
   max-height: 230px;
   width: 100%;
 }

@@ -1,12 +1,36 @@
 import { useMemo } from "react";
 import {
+  EventKind,
+  NostrEvent,
   RequestBuilder,
+  NoteCollection,
   ReplaceableNoteStore,
   NostrLink,
+  parseZap,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { GOAL } from "const";
 import { System } from "index";
+
+export function useZaps(goal: NostrEvent, leaveOpen = false) {
+  const sub = useMemo(() => {
+    const b = new RequestBuilder(`goal-zaps:${goal.id.slice(0, 12)}`);
+    b.withOptions({ leaveOpen });
+    b.withFilter()
+      .kinds([EventKind.ZapReceipt])
+      .tag("e", [goal.id])
+      .since(goal.created_at);
+    return b;
+  }, [goal, leaveOpen]);
+
+  const { data } = useRequestBuilder<NoteCollection>(
+    System,
+    NoteCollection,
+    sub,
+  );
+
+  return data?.map((ev) => parseZap(ev, System.ProfileLoader.Cache)).filter((z) => z && z.valid) ?? [];
+}
 
 export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
@@ -22,7 +46,7 @@ export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
   const { data } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub
+    sub,
   );
 
   return data;

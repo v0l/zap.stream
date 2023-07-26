@@ -15,6 +15,7 @@ body {
   --text-muted: #797979;
   --text-link: #F838D9;
   --text-danger: #FF563F;
+  --border: #333;
 }
 
 @media(max-width: 1020px) {
@@ -269,4 +270,10 @@ div.paper {
 
 .szh-menu__item--hover {
   background-color: unset;
+}
+
+.emoji {
+  width: 15px;
+  height: 15px;
+  margin-bottom: -2px;
 }
