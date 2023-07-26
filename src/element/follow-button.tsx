@@ -11,18 +11,21 @@ export function LoggedInFollowButton({
   loggedIn: string;
   pubkey: string;
 }) {
-  const { contacts, relays } = useFollows(loggedIn, true);
   const login = useLogin();
-  const isFollowing = contacts.find((t) => t.at(1) === pubkey);
+  const following = useFollows(loggedIn, true);
+  const { tags, relays } = following ? following : { tags: [], relays: {} }
+  const follows = tags.filter((t) => t.at(0) === "p")
+  const isFollowing = follows.find((t) => t.at(1) === pubkey);
 
   async function unfollow() {
     const pub = login?.publisher();
     if (pub) {
       const ev = await pub.generic((eb) => {
         eb.kind(EventKind.ContactList).content(JSON.stringify(relays));
-        for (const c of contacts) {
-          if (c.at(1) !== pubkey) {
-            eb.tag(c);
+        for (const t of tags) {
+          const isFollow = t.at(0) === "p" && t.at(1) === pubkey
+          if (!isFollow) {
+            eb.tag(t);
           }
         }
         return eb;
@@ -37,7 +40,7 @@ export function LoggedInFollowButton({
     if (pub) {
       const ev = await pub.generic((eb) => {
         eb.kind(EventKind.ContactList).content(JSON.stringify(relays));
-        for (const tag of contacts) {
+        for (const tag of tags) {
           eb.tag(tag);
         }
         eb.tag(["p", pubkey]);
@@ -50,6 +53,7 @@ export function LoggedInFollowButton({
 
   return (
     <AsyncButton
+      disabled={!following}
       type="button"
       className="btn btn-primary"
       onClick={isFollowing ? unfollow : follow}

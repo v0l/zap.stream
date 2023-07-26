@@ -17,6 +17,7 @@ import { useLiveChatFeed } from "../hooks/live-chat";
 import { Profile } from "./profile";
 import { Icon } from "./icon";
 import Spinner from "./spinner";
+import { Text } from "./text";
 import { useLogin } from "../hooks/login";
 import { formatSats } from "../number";
 import useTopZappers from "../hooks/top-zappers";
@@ -201,7 +202,11 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
         <span className="zap-amount">{formatSats(zap.amount)}</span>
         sats
       </div>
-      {zap.content && <div className="zap-content">{zap.content}</div>}
+      {zap.content &&  (
+        <div className="zap-content">
+          <Text content={zap.content} tags={[]} />
+        </div>
+      )}
     </div>
   );
 }

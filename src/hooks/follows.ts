@@ -21,8 +21,6 @@ export default function useFollows(pubkey: string, leaveOpen = false) {
     sub
   );
 
-  const contacts = (data?.tags ?? []).filter((t) => t.at(0) === "p");
   const relays = JSON.parse(data?.content ?? "{}");
-
-  return { contacts, relays };
+  return data ? { tags: data.tags, relays } : null
 }
