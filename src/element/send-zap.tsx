@@ -12,6 +12,7 @@ import AsyncButton from "./async-button";
 import { Relays } from "index";
 import QrCode from "./qr-code";
 import { useLogin } from "hooks/login";
+import Copy from "./copy";
 
 export interface LNURLLike {
   get name(): string;
@@ -186,6 +187,9 @@ export function SendZaps({
     return (
       <>
         <QrCode data={link} link={link} />
+        <div className="flex f-center">
+          <Copy text={invoice} />
+        </div>
         <button className="btn btn-primary wide" onClick={() => onFinish()}>
           Back
         </button>
