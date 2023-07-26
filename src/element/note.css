@@ -1,0 +1,22 @@
+.note {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.note .note-header .profile {
+  font-size: 14px;
+}
+
+.note .note-avatar {
+  width: 18px;
+  height: 18px;
+}
+
+.note .note-content {
+  margin-left: 30px;
+}
+
+.note .note-content .markdown > p {
+  font-size: 14px;
+}

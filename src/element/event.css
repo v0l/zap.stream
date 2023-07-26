@@ -1,0 +1,8 @@
+.event-container .goal {
+  font-size: 14px;
+}
+
+.event-container .goal .amount {
+  top: -8px;
+  font-size: 10px;
+}

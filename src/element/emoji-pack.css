@@ -1,0 +1,32 @@
+.emoji-pack-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.emoji-pack-title a {
+  font-size: 14px;
+}
+
+.emoji-pack-emojis {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.emoji-definition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.emoji-name {
+  font-size: 10px;
+}
+
+.emoji-pack h4 {
+  margin: 0;
+}

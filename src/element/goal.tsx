@@ -2,19 +2,23 @@ import "./goal.css";
 import { useMemo } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import Confetti from "react-confetti";
-import { ParsedZap, NostrEvent } from "@snort/system";
-import { Icon } from "./icon";
+
+import { type NostrEvent } from "@snort/system";
+import { useUserProfile } from "@snort/system-react";
+
 import { findTag } from "utils";
 import { formatSats } from "number";
 import usePreviousValue from "hooks/usePreviousValue";
+import { SendZapsDialog } from "element/send-zap";
+import { useZaps } from "hooks/goals";
+import { getName } from "element/profile";
+import { System } from "index";
+import { Icon } from "./icon";
 
-export function Goal({
-  ev,
-  zaps,
-}: {
-  ev: NostrEvent;
-  zaps: ParsedZap[];
-}) {
+export function Goal({ ev }: { ev: NostrEvent }) {
+  const profile = useUserProfile(System, ev.pubkey);
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const zaps = useZaps(ev, true);
   const goalAmount = useMemo(() => {
     const amount = findTag(ev, "amount");
     return amount ? Number(amount) / 1000 : null;
@@ -34,8 +38,8 @@ export function Goal({
   const isFinished = progress >= 100;
   const previousValue = usePreviousValue(isFinished);
 
-  return (
-    <div className="goal">
+  const goalContent = (
+    <div className="goal" style={{ cursor: zapTarget ? "pointer" : "auto" }}>
       {ev.content.length > 0 && <p>{ev.content}</p>}
       <div className={`progress-container ${isFinished ? "finished" : ""}`}>
         <Progress.Root className="progress-root" value={progress}>
@@ -60,5 +64,17 @@ export function Goal({
         <Confetti numberOfPieces={2100} recycle={false} />
       )}
     </div>
+  );
+
+  return zapTarget ? (
+    <SendZapsDialog
+      lnurl={zapTarget}
+      pubkey={ev.pubkey}
+      eTag={ev?.id}
+      targetName={getName(ev.pubkey, profile)}
+      button={goalContent}
+    />
+  ) : (
+    goalContent
   );
 }
