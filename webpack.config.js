@@ -45,7 +45,6 @@ const config = {
         { from: "public/robots.txt" },
         { from: "public/icons.svg" },
         { from: "public/logo.png" },
-        { from: "public/nostr.json", to: ".well-known/nostr.json" },
         { from: "_headers" },
       ],
     }),
