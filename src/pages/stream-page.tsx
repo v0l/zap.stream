@@ -18,6 +18,7 @@ import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
 import { Tags } from "element/tags";
 import { StatePill } from "element/state-pill";
+import { StreamCards } from "element/stream-cards";
 import { formatSats } from "number";
 import { StreamTimer } from "element/stream-time";
 import { ShareMenu } from "element/share-menu";
@@ -135,6 +136,7 @@ export function StreamPage() {
       <div className="video-content">
         <LiveVideoPlayer stream={stream} poster={image} status={status} />
         <ProfileInfo ev={ev} goal={goal} />
+        <StreamCards host={host} />
       </div>
       <LiveChat link={link} ev={ev} goal={goal} />
     </div>

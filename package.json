@@ -34,6 +34,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^9.5.1",
+    "react-markdown": "^8.0.7",
     "react-router-dom": "^6.13.0",
     "react-tag-input-component": "^2.0.2",
     "semantic-sdp": "^3.26.2",

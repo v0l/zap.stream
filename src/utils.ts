@@ -2,6 +2,20 @@ import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
 import * as utils from "@noble/curves/abstract/utils";
 import { bech32 } from "@scure/base";
 
+export function toTag(e: NostrEvent): string[] {
+  if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
+    const dTag = findTag(e, "d");
+
+    return ["a", `${e.kind}:${e.pubkey}:${dTag}`];
+  }
+
+  if (e.kind === 0 || e.kind === 3) {
+    return ["p", e.pubkey];
+  }
+
+  return ["e", e.id];
+}
+
 export function findTag(e: NostrEvent | undefined, tag: string) {
   const maybeTag = e?.tags.find((evTag) => {
     return evTag[0] === tag;
@@ -48,17 +62,21 @@ export function eventLink(ev: NostrEvent) {
     d,
     undefined,
     ev.kind,
-    ev.pubkey
+    ev.pubkey,
   );
   return `/${naddr}`;
 }
 
 export function getHost(ev?: NostrEvent) {
-  return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
+  return (
+    ev?.tags.find((a) => a[0] === "p" && a[3] === "host")?.[1] ??
+    ev?.pubkey ??
+    ""
+  );
 }
 
 export async function openFile(): Promise<File | undefined> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const elm = document.createElement("input");
     elm.type = "file";
     elm.onchange = (e: Event) => {

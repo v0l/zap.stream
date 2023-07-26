@@ -1,6 +1,5 @@
 import {
   RequestBuilder,
-  EventKind,
   ReplaceableNoteStore,
   NoteCollection,
   NostrEvent,
@@ -9,6 +8,7 @@ import { useRequestBuilder } from "@snort/system-react";
 import { System } from "index";
 import { useMemo } from "react";
 import { findTag } from "utils";
+import { EMOJI_PACK, USER_EMOJIS } from "const";
 import type { EmojiTag } from "../element/emoji";
 import uniqBy from "lodash.uniqby";
 
@@ -49,9 +49,7 @@ export default function useEmoji(pubkey?: string) {
     if (!pubkey) return null;
     const rb = new RequestBuilder(`emoji:${pubkey}`);
 
-    rb.withFilter()
-      .authors([pubkey])
-      .kinds([10030 as EventKind]);
+    rb.withFilter().authors([pubkey]).kinds([USER_EMOJIS]);
 
     return rb;
   }, [pubkey]);
@@ -59,13 +57,13 @@ export default function useEmoji(pubkey?: string) {
   const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub
+    sub,
   );
 
   const related = useMemo(() => {
     if (userEmoji) {
       return userEmoji.tags.filter(
-        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`30030:`)
+        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`),
       );
     }
     return [];
@@ -85,14 +83,9 @@ export default function useEmoji(pubkey?: string) {
 
     const rb = new RequestBuilder(`emoji-related:${pubkey}`);
 
-    rb.withFilter()
-      .kinds([30030 as EventKind])
-      .authors(authors)
-      .tag("d", identifiers);
+    rb.withFilter().kinds([EMOJI_PACK]).authors(authors).tag("d", identifiers);
 
-    rb.withFilter()
-      .kinds([30030 as EventKind])
-      .authors([pubkey]);
+    rb.withFilter().kinds([EMOJI_PACK]).authors([pubkey]);
 
     return rb;
   }, [pubkey, related]);
@@ -100,7 +93,7 @@ export default function useEmoji(pubkey?: string) {
   const { data: relatedData } = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    subRelated
+    subRelated,
   );
 
   const emojiPacks = useMemo(() => {
