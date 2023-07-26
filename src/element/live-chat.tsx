@@ -174,7 +174,7 @@ export function LiveChat({
   );
 }
 
-const BIG_ZAP_THRESHOLD = 100_000;
+const BIG_ZAP_THRESHOLD = 50_000;
 
 function ChatZap({ zap }: { zap: ParsedZap }) {
   if (!zap.valid) {
