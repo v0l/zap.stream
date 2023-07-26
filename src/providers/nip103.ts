@@ -1,4 +1,4 @@
-import { StreamProvider, StreamProviderInfo, StreamProviders } from ".";
+import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo, StreamProviders } from ".";
 import { EventKind, NostrEvent } from "@snort/system";
 import { Login } from "index";
 import { getPublisher } from "login";
@@ -28,12 +28,17 @@ export class Nip103StreamProvider implements StreamProvider {
             name: title ?? "",
             state: state,
             viewers: 0,
-            ingressUrl: rsp.url,
-            ingressKey: rsp.key,
-            balance: rsp.quota.remaining,
             publishedEvent: rsp.event,
-            rate: rsp.quota.rate,
-            unit: rsp.quota.unit
+            balance: rsp.balance,
+            endpoints: rsp.endpoints.map(a => {
+                return {
+                    name: a.name,
+                    url: a.url,
+                    key: a.key,
+                    rate: a.cost.rate,
+                    unit: a.cost.unit,
+                } as StreamProviderEndpoint
+            })
         } as StreamProviderInfo
     }
 
@@ -89,14 +94,20 @@ export class Nip103StreamProvider implements StreamProvider {
 }
 
 interface AccountResponse {
+    balance: number
+    event?: NostrEvent
+    endpoints: Array<IngestEndpoint>
+}
+
+interface IngestEndpoint {
+    name: string
     url: string
     key: string
-    event?: NostrEvent
-    quota: {
+    cost: {
         unit: string
         rate: number
-        remaining: number
     }
+    capabilities: Array<string>
 }
 
 interface TopUpResponse {

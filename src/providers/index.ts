@@ -44,14 +44,18 @@ export interface StreamProviderInfo {
     version?: string
     state: StreamState
     viewers?: number
-    ingressUrl?: string
-    ingressKey?: string
-    balance?: number
     publishedEvent?: NostrEvent
+    balance?: number
+    endpoints: Array<StreamProviderEndpoint>
+}
+
+export interface StreamProviderEndpoint {
+    name: string
+    url: string
+    key: string
     rate?: number
     unit?: string
 }
-
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
     #providers: Array<StreamProvider> = []
 
@@ -86,7 +90,8 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
     }
 
     takeSnapshot() {
-        return [new Nip103StreamProvider("https://api.zap.stream/api/nostr/"), new ManualProvider(), ...this.#providers];
+        //const defaultProvider = new Nip103StreamProvider("https://api.zap.stream/api/nostr/");
+        return [new ManualProvider(), ...this.#providers];
     }
 
     #save() {
