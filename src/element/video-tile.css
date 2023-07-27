@@ -13,6 +13,8 @@
     font-size: 20px;
     line-height: 25px;
     margin: 16px 0;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 
 .video-tile .pill-box {
