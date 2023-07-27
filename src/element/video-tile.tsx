@@ -8,6 +8,7 @@ import { StreamState } from "index";
 import { findTag, getHost } from "utils";
 import { formatSats } from "number";
 import ZapStream from "../../public/zap-stream.svg";
+import { isContentWarningAccepted } from "./content-warning";
 
 export function VideoTile({
   ev,
@@ -24,6 +25,7 @@ export function VideoTile({
   const image = findTag(ev, "image");
   const status = findTag(ev, "status");
   const viewers = findTag(ev, "current_participants");
+  const contentWarning = findTag(ev, "content-warning") && !isContentWarningAccepted();
   const host = getHost(ev);
 
   const link = encodeTLV(
@@ -34,7 +36,7 @@ export function VideoTile({
     ev.pubkey
   );
   return (
-    <Link to={`/${link}`} className="video-tile" ref={ref}>
+    <Link to={`/${link}`} className={`video-tile${contentWarning ? " nsfw" : ""}`} ref={ref}>
       <div
         style={{
           backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""})`,

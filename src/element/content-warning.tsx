@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+export function isContentWarningAccepted() {
+  return Boolean(window.localStorage.getItem("accepted-content-warning"));
+}
+
 export function ContentWarningOverlay() {
   const navigate = useNavigate();
-  const [is18Plus, setIs18Plus] = useState(
-    Boolean(window.localStorage.getItem("accepted-content-warning"))
-  );
+  const [is18Plus, setIs18Plus] = useState(isContentWarningAccepted());
   if (is18Plus) return null;
 
   function grownUp() {

@@ -1,5 +1,9 @@
 .video-tile {}
 
+.video-tile.nsfw>div:nth-child(1) {
+    filter: blur(3px);
+}
+
 .video-tile>div:nth-child(1) {
     border-radius: 16px;
     width: 100%;

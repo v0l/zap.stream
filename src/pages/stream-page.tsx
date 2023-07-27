@@ -22,6 +22,7 @@ import { StreamCards } from "element/stream-cards";
 import { formatSats } from "number";
 import { StreamTimer } from "element/stream-time";
 import { ShareMenu } from "element/share-menu";
+import { ContentWarningOverlay, isContentWarningAccepted } from "element/content-warning";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const login = useLogin();
@@ -112,7 +113,12 @@ export function StreamPage() {
   const summary = findTag(ev, "summary");
   const image = findTag(ev, "image");
   const stream = findTag(ev, "streaming");
+  const contentWarning = findTag(ev, "content-warning");
   const tags = ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? [];
+
+  if (contentWarning && !isContentWarningAccepted()) {
+    return <ContentWarningOverlay />
+  }
 
   const descriptionContent = [
     title,
