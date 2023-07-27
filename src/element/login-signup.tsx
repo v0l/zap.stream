@@ -72,12 +72,13 @@ export function LoginSignup({ close }: { close: () => void }) {
     }
 
     async function saveProfile() {
+        const pub = EventPublisher.privateKey(key);
         const profile = {
             name: username,
-            picture: avatar
+            picture: avatar,
+            lud16: `${pub.pubKey}@zap.stream`
         } as UserMetadata;
 
-        const pub = EventPublisher.privateKey(key);
         const ev = await pub.metadata(profile);
         console.debug(ev);
         System.BroadcastEvent(ev);
