@@ -37,6 +37,7 @@ export class Nip103StreamProvider implements StreamProvider {
                     key: a.key,
                     rate: a.cost.rate,
                     unit: a.cost.unit,
+                    capabilities: a.capabilities
                 } as StreamProviderEndpoint
             })
         } as StreamProviderInfo

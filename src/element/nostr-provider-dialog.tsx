@@ -13,10 +13,14 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
     const [info, setInfo] = useState<StreamProviderInfo>();
     const [ep, setEndpoint] = useState<StreamProviderEndpoint>();
 
+    function sortEndpoints(arr: Array<StreamProviderEndpoint>) {
+        return arr.sort((a, b) => (a.rate ?? 0) > (b.rate ?? 0) ? -1 : 1);
+    }
+    
     useEffect(() => {
         provider.info().then(v => {
             setInfo(v);
-            setEndpoint(v.endpoints[0]);
+            setEndpoint(sortEndpoints(v.endpoints)[0]);
         });
     }, [provider]);
 
@@ -51,12 +55,24 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
         return `${raw.toFixed(0)} ${ep.unit} @ ${ep.rate} sats/${ep.unit}`
     }
 
+    function parseCapability(cap: string) {
+        const [tag, ...others] = cap.split(":");
+        if (tag === "variant") {
+            const [height] = others;
+            return height === "source" ? height : `${height.slice(0, -1)}p`;
+        }
+        if (tag === "output") {
+            return others[0];
+        }
+        return cap;
+    }
+
     const streamEvent = others.ev ?? info.publishedEvent ?? DummyEvent;
     return <>
         {info.endpoints.length > 1 && <div>
             <p>Endpoint</p>
             <div className="flex g12">
-                {info.endpoints.map(a => <span className={`pill${ep?.name === a.name ? " active" : ""}`}
+                {sortEndpoints(info.endpoints).map(a => <span className={`pill${ep?.name === a.name ? " active" : ""}`}
                     onClick={() => setEndpoint(a)}>
                     {a.name}
                 </span>)}
@@ -90,6 +106,12 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
                 </button>
             </div>
             <small>About {calcEstimate()}</small>
+        </div>
+        <div>
+            <p>Resolutions</p>
+            <div className="flex g12">
+                {ep?.capabilities?.map(a => <span className="pill">{parseCapability(a)}</span>)}
+            </div>
         </div>
         {streamEvent && <StreamEditor onFinish={(ex) => {
             provider.updateStreamInfo(ex);

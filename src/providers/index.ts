@@ -55,7 +55,9 @@ export interface StreamProviderEndpoint {
     key: string
     rate?: number
     unit?: string
+    capabilities?: Array<string>
 }
+
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
     #providers: Array<StreamProvider> = []
 
