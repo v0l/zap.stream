@@ -42,11 +42,11 @@ export function VideoTile({
           backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""})`,
         }}
       >
-        <span className="pill-box">
-          {showStatus && <StatePill state={status as StreamState} />}
-          {viewers && <span className="pill viewers">{formatSats(Number(viewers))} viewers</span>}
-        </span>
       </div>
+      <span className="pill-box">
+        {showStatus && <StatePill state={status as StreamState} />}
+        {viewers && <span className="pill viewers">{formatSats(Number(viewers))} viewers</span>}
+      </span>
       <h3>{title}</h3>
       {showAuthor && <div>{inView && <Profile pubkey={host} />}</div>}
     </Link>

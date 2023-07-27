@@ -1,4 +1,6 @@
-.video-tile {}
+.video-tile {
+    position: relative;
+}
 
 .video-tile.nsfw>div:nth-child(1) {
     filter: blur(3px);
@@ -22,14 +24,16 @@
 }
 
 .video-tile .pill-box {
-    float: right;
     margin: 16px 20px;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    height: calc(100% - 32px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    gap: 8px;
 }
 
 .video-tile .pill-box .pill {
