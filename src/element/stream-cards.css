@@ -4,11 +4,24 @@
 
 @media (min-width: 1020px) {
   .stream-cards {
-    display: flex;
+    display: grid;
     align-items: flex-start;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
     margin-top: 12px;
     flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1600px){
+  .stream-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 2100px){
+  .stream-cards {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -28,12 +41,8 @@
   display: flex;
   align-self: flex-start;
   flex-direction: column;
-  padding: 20px 24px;
   gap: 16px;
-  border-radius: 24px;
-  background: #111;
-  min-width: 210px;
-  max-width: 310px;
+  flex: 1;
 }
 
 .stream-card.image-card {
