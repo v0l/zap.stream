@@ -25,3 +25,13 @@
   height: 60px;
   border-radius: 10px;
 }
+
+.file-uploader-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.file-uploader-preview .clear-button {
+  color: var(--text-danger);
+}

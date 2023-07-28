@@ -29,5 +29,5 @@ export function Event({ link }: EventProps) {
     );
   }
 
-  return <code>{link.id}</code>;
+  return null;
 }

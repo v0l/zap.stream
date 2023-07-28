@@ -1,0 +1,27 @@
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+.toggle svg {
+  color: var(--text-muted);
+  height: 32px;
+  width: 32px;
+}
+.toggle:hover {
+  cursor: pointer;
+}
+.toggle:hover svg {
+  color: white;
+}
+.toggle[data-state='on'] svg {
+  color: var(--text-link);
+}

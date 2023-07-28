@@ -32,7 +32,13 @@
   gap: 16px;
   border-radius: 24px;
   background: #111;
-  width: 210px;
+  min-width: 210px;
+  max-width: 310px;
+}
+
+.stream-card.image-card {
+  padding: 0;
+  background: transparent;
 }
 
 .stream-card .card-title {
@@ -90,6 +96,8 @@
   padding: 8px 16px;
   border-radius: 16px;
   margin-bottom: 8px;
+  resize: vertical;
+  min-height: 210px;
 }
 
 .form-control {
@@ -125,4 +133,16 @@
 .delete-button {
   background: transparent;
   color: var(--text-danger);
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.stream-card .card-image {
+  width: 100%;
 }

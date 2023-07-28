@@ -1,10 +1,13 @@
 import "./stream-cards.css";
 
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import type { NostrEvent } from "@snort/system";
 
+import { Toggle } from "element/toggle";
 import { useLogin } from "hooks/login";
 import { useCards } from "hooks/cards";
 import { CARD, USER_CARDS } from "const";
@@ -30,50 +33,150 @@ interface CardProps {
   cards: NostrEvent[];
 }
 
+function isEmpty(s?: string) {
+  return !s || s.trim().length === 0;
+}
+
+const CardPreview = forwardRef(
+  ({ style, title, link, image, content }, ref) => {
+    const isImageOnly = !isEmpty(image) && isEmpty(content) && isEmpty(title);
+    return (
+      <div
+        className={`stream-card ${isImageOnly ? "image-card" : ""}`}
+        ref={ref}
+        style={style}
+      >
+        {title && <h1 className="card-title">{title}</h1>}
+        {image &&
+          (link?.length > 0 ? (
+            <ExternalLink href={link}>
+              <img className="card-image" src={image} alt={title} />
+            </ExternalLink>
+          ) : (
+            <img className="card-image" src={image} alt={title} />
+          ))}
+        <Markdown children={content} />
+      </div>
+    );
+  },
+);
+
 function Card({ canEdit, ev, cards }: CardProps) {
+  const login = useLogin();
   const identifier = findTag(ev, "d");
   const title = findTag(ev, "title") || findTag(ev, "subject");
   const image = findTag(ev, "image");
   const link = findTag(ev, "r");
-  const evCard = { title, image, link, content: ev.content, identifier };
+  const content = ev.content;
+  const evCard = { title, image, link, content, identifier };
+  const tags = cards.map(toTag);
+  const [style, dragRef] = useDrag(
+    () => ({
+      type: "card",
+      item: { identifier },
+      canDrag: () => {
+        return canEdit;
+      },
+      collect: (monitor) => {
+        const isDragging = monitor.isDragging();
+        return {
+          opacity: isDragging ? 0.1 : 1,
+          cursor: !canEdit ? "auto" : isDragging ? "grabbing" : "grab",
+        };
+      },
+    }),
+    [canEdit, identifier],
+  );
+
+  function findTagByIdentifier(d) {
+    return tags.find((t) => t.at(1).endsWith(`:${d}`));
+  }
+
+  const [dropStyle, dropRef] = useDrop(
+    () => ({
+      accept: ["card"],
+      canDrop: () => {
+        return canEdit;
+      },
+      collect: (monitor) => {
+        const isOvering = monitor.isOver({ shallow: true });
+        return {
+          opacity: isOvering ? 0.3 : 1,
+          animation: isOvering ? "shake 0.1s 3" : "",
+        };
+      },
+      async drop(item) {
+        if (identifier === item.identifier) {
+          return;
+        }
+        const newItem = findTagByIdentifier(item.identifier);
+        const oldItem = findTagByIdentifier(identifier);
+        const newTags = tags.map((t) => {
+          if (t === oldItem) {
+            return newItem;
+          }
+          if (t === newItem) {
+            return oldItem;
+          }
+          return t;
+        });
+        const pub = login?.publisher();
+        const userCardsEv = await pub.generic((eb) => {
+          eb.kind(USER_CARDS).content("");
+          for (const tag of newTags) {
+            eb.tag(tag);
+          }
+          return eb;
+        });
+        console.debug(userCardsEv);
+        System.BroadcastEvent(userCardsEv);
+      },
+    }),
+    [canEdit, tags, identifier],
+  );
 
   const card = (
-    <>
-      <div className="stream-card">
-        {title && <h1 className="card-title">{title}</h1>}
-        {image && <img src={image} alt={title} />}
-        <Markdown children={ev.content} />
-      </div>
-    </>
+    <CardPreview
+      ref={dropRef}
+      title={title}
+      link={link}
+      image={image}
+      content={content}
+      style={dropStyle}
+    />
   );
   const editor = canEdit && (
     <div className="editor-buttons">
-      <EditCard card={evCard} />
-      <DeleteCard card={ev} cards={cards} />
+      <EditCard card={evCard} cards={cards} />
     </div>
   );
-  return link && !canEdit ? (
-    <div className="card-container">
-      <ExternalLink href={link}>{card}</ExternalLink>
-      {editor}
-    </div>
-  ) : (
-    <div className="card-container">
+  return canEdit ? (
+    <div className="card-container" ref={dragRef} style={style}>
       {card}
       {editor}
     </div>
+  ) : (
+    <div className="card-container">{card}</div>
   );
 }
 
 interface CardDialogProps {
   header?: string;
   cta?: string;
+  cancelCta?: string;
   card?: CardType;
   onSave(ev: CardType): void;
   onCancel(): void;
 }
 
-function CardDialog({ header, cta, card, onSave, onCancel }: CardDialogProps) {
+function CardDialog({
+  header,
+  cta,
+  cancelCta,
+  card,
+  onSave,
+  onCancel,
+}: CardDialogProps) {
   const [title, setTitle] = useState(card?.title ?? "");
   const [image, setImage] = useState(card?.image ?? "");
   const [content, setContent] = useState(card?.content ?? "");
@@ -94,10 +197,14 @@ function CardDialog({ header, cta, card, onSave, onCancel }: CardDialogProps) {
       </div>
       <div className="form-control">
         <label for="card-image">Image</label>
-        <FileUploader onFileUpload={setImage} />
+        <FileUploader
+          defaultImage={image}
+          onFileUpload={setImage}
+          onClear={() => setImage("")}
+        />
       </div>
       <div className="form-control">
-        <label for="card-image-link">Link</label>
+        <label for="card-image-link">Image Link</label>
         <input
           id="card-image-link"
           type="text"
@@ -128,7 +235,7 @@ function CardDialog({ header, cta, card, onSave, onCancel }: CardDialogProps) {
           {cta || "Add Card"}
         </button>
         <button className="btn delete-button" onClick={onCancel}>
-          Cancel
+          {cancelCta || "Cancel"}
         </button>
       </div>
     </div>
@@ -137,11 +244,14 @@ function CardDialog({ header, cta, card, onSave, onCancel }: CardDialogProps) {
 
 interface EditCardProps {
   card: CardType;
+  cards: NostrEvent[];
 }
 
-function EditCard({ card }: EditCardProps) {
+function EditCard({ card, cards }: EditCardProps) {
   const login = useLogin();
   const [isOpen, setIsOpen] = useState(false);
+  const identifier = card.identifier;
+  const tags = cards.map(toTag);
 
   async function editCard({ title, image, link, content }) {
     const pub = login?.publisher();
@@ -165,8 +275,23 @@ function EditCard({ card }: EditCardProps) {
     }
   }
 
-  function onCancel() {
-    setIsOpen(false);
+  async function onCancel() {
+    const pub = login?.publisher();
+    if (pub) {
+      const userCardsEv = await pub.generic((eb) => {
+        eb.kind(USER_CARDS).content("");
+        for (const tag of tags) {
+          if (!tag.at(1).endsWith(`:${identifier}`)) {
+            eb.tag(tag);
+          }
+        }
+        return eb;
+      });
+
+      console.debug(userCardsEv);
+      System.BroadcastEvent(userCardsEv);
+      setIsOpen(false);
+    }
   }
 
   return (
@@ -180,6 +305,7 @@ function EditCard({ card }: EditCardProps) {
           <CardDialog
             header="Edit card"
             cta="Save Card"
+            cancelCta="Delete"
             card={card}
             onSave={editCard}
             onCancel={onCancel}
@@ -187,41 +313,6 @@ function EditCard({ card }: EditCardProps) {
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
-  );
-}
-
-interface DeleteCardProps {
-  card: NostrEvent;
-  cards: NostrEvent[];
-}
-
-function DeleteCard({ card, cards }: DeleteCardProps) {
-  const login = useLogin();
-  const tags = cards.map(toTag);
-
-  async function deleteCard() {
-    const pub = login?.publisher();
-    if (pub) {
-      const userCardsEv = await pub.generic((eb) => {
-        eb.kind(USER_CARDS).content("");
-        for (const tag of tags) {
-          if (tag.at(1) !== toTag(card).at(1)) {
-            eb.tag(tag);
-          }
-        }
-        return eb;
-      });
-
-      console.log(userCardsEv);
-
-      System.BroadcastEvent(userCardsEv);
-    }
-  }
-
-  return (
-    <button className="btn delete-button" onClick={deleteCard}>
-      Delete
-    </button>
   );
 }
 
@@ -294,12 +385,26 @@ export function StreamCards({ host }) {
   const login = useLogin();
   const canEdit = login?.pubkey === host;
   const cards = useCards(host, canEdit);
-  return (
-    <div className="stream-cards">
-      {cards.map((ev) => (
-        <Card canEdit={canEdit} cards={cards} key={ev.id} ev={ev} />
-      ))}
-      {canEdit && <AddCard cards={cards} />}
-    </div>
+  const [isEditing, setIsEditing] = useState(false);
+  const components = (
+    <>
+      <div className="stream-cards">
+        {cards.map((ev) => (
+          <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev} />
+        ))}
+        {isEditing && <AddCard cards={cards} />}
+      </div>
+      {canEdit && (
+        <div className="edit-container">
+          <Toggle
+            pressed={isEditing}
+            onPressedChange={setIsEditing}
+            label="Toggle edit mode"
+            text="Edit cards"
+          />
+        </div>
+      )}
+    </>
   );
+  return <DndProvider backend={HTML5Backend}>{components}</DndProvider>;
 }
