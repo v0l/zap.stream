@@ -1,5 +1,6 @@
 import "./emoji.css";
 import { useMemo } from "react";
+import { EmojiTag } from "types";
 
 export type EmojiProps = {
   name: string;
@@ -9,8 +10,6 @@ export type EmojiProps = {
 export function Emoji({ name, url }: EmojiProps) {
   return <img alt={name} src={url} className="emoji" />;
 }
-
-export type EmojiTag = ["emoji", string, string];
 
 export function Emojify({
   content,

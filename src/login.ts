@@ -2,17 +2,27 @@ import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore } from "@snort/shared";
 import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
+import type { EmojiPack, Relays } from "types";
+import { defaultRelays } from "const";
 
 export enum LoginType {
   Nip7 = "nip7",
   PrivateKey = "private-key",
 }
 
+interface ReplaceableTags {
+  tags: Array<string[]>;
+  timestamp: number;
+}
+
 export interface LoginSession {
   type: LoginType;
   pubkey: string;
   privateKey?: string;
-  follows: string[];
+  follows: ReplaceableTags;
+  muted: ReplaceableTags;
+  relays: Relays;
+  emojis: Array<EmojiPack>;
 }
 
 export class LoginStore extends ExternalStore<LoginSession | undefined> {
@@ -33,7 +43,10 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#session = {
       type,
       pubkey: pk,
-      follows: [],
+      muted: { tags: [], timestamp: 0 },
+      follows: { tags: [], timestamp: 0 },
+      relays: defaultRelays,
+      emojis: [],
     };
     this.#save();
   }
@@ -43,13 +56,20 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       type: LoginType.PrivateKey,
       pubkey: bytesToHex(schnorr.getPublicKey(key)),
       privateKey: key,
-      follows: [],
+      follows: { tags: [], timestamp: 0 },
+      muted: { tags: [], timestamp: 0 },
+      emojis: [],
     };
     this.#save();
   }
 
   logout() {
     this.#session = undefined;
+    this.#save();
+  }
+
+  updateSession(s: LoginSession) {
+    this.#session = s;
     this.#save();
   }
 
@@ -75,8 +95,52 @@ export function getPublisher(session: LoginSession) {
     case LoginType.PrivateKey: {
       return new EventPublisher(
         new PrivateKeySigner(session.privateKey!),
-        session.pubkey
+        session.pubkey,
       );
     }
   }
+}
+
+export function setFollows(
+  state: LoginSession,
+  follows: Array<string>,
+  ts: number,
+) {
+  if (state.follows.timestamp >= ts) {
+    return;
+  }
+  state.follows.tags = follows;
+  state.follows.timestamp = ts;
+}
+
+export function setEmojis(state: LoginSession, emojis: Array<EmojiPack>) {
+  state.emojis = emojis;
+}
+
+export function setMuted(
+  state: LoginSession,
+  muted: Array<string[]>,
+  ts: number,
+) {
+  if (state.muted.timestamp >= ts) {
+    return;
+  }
+  state.muted.tags = muted;
+  state.muted.timestamp = ts;
+}
+
+export function setRelays(
+  state: LoginSession,
+  relays: Array<string>,
+  ts: number,
+) {
+  if (state.relays.timestamp >= ts) {
+    return;
+  }
+  state.relays = relays.reduce((acc, r) => {
+    const [, relay] = r;
+    const write = r.length === 2 || r.includes("write");
+    const read = r.length === 2 || r.includes("read");
+    return { ...acc, [relay]: { read, write } };
+  }, {});
 }

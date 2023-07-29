@@ -1,19 +1,16 @@
 import { EventKind } from "@snort/system";
 import { useLogin } from "hooks/login";
-import useFollows from "hooks/follows";
 import AsyncButton from "element/async-button";
 import { System } from "index";
 
 export function LoggedInFollowButton({
-  loggedIn,
   pubkey,
 }: {
-  loggedIn: string;
   pubkey: string;
 }) {
   const login = useLogin();
-  const following = useFollows(loggedIn, true);
-  const { tags, relays } = following ? following : { tags: [], relays: {} };
+  const tags = login?.follows.tags ?? []
+  const relays = login?.relays
   const follows = tags.filter((t) => t.at(0) === "p");
   const isFollowing = follows.find((t) => t.at(1) === pubkey);
 
@@ -53,7 +50,7 @@ export function LoggedInFollowButton({
 
   return (
     <AsyncButton
-      disabled={!following}
+      disabled={login.follows.timestamp === 0}
       type="button"
       className="btn btn-primary"
       onClick={isFollowing ? unfollow : follow}

@@ -5,7 +5,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { Icon } from "element/icon";
-import { useLogin } from "hooks/login";
+import { useLogin, useLoginEvents } from "hooks/login";
 import { Profile } from "element/profile";
 import { NewStreamDialog } from "element/new-stream";
 import { LoginSignup } from "element/login-signup";
@@ -17,6 +17,7 @@ export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
   const [showLogin, setShowLogin] = useState(false);
+  useLoginEvents(login?.pubkey, true);
 
   function loggedIn() {
     if (!login) return;
