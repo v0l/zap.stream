@@ -13,13 +13,13 @@
   }
 }
 
-@media (min-width: 1600px){
+@media (min-width: 1600px) {
   .stream-cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 2100px){
+@media (min-width: 2100px) {
   .stream-cards {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -98,7 +98,6 @@
   line-height: 20px;
 }
 
-
 .new-card textarea {
   width: unset;
   background: #262626;
@@ -145,13 +144,23 @@
 }
 
 @keyframes shake {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  50% { transform: rotate(0eg); }
-  75% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .stream-card .card-image {
-  width: 100%;
+  max-width: 343px;
 }
