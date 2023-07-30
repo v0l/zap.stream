@@ -33,13 +33,10 @@ export function packId(pack: EmojiPack): string {
   return `${pack.author}:${pack.name}`;
 }
 
-export function useUserEmojiPacks(
-  pubkey?: string,
-  userEmoji: { tags: string[][] },
-) {
+export function useUserEmojiPacks(pubkey?: string, userEmoji: Array<string[]>) {
   const related = useMemo(() => {
-    if (userEmoji) {
-      return userEmoji.tags.filter(
+    if (userEmoji?.length > 0) {
+      return userEmoji.filter(
         (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`),
       );
     }
@@ -101,6 +98,6 @@ export default function useEmoji(pubkey?: string) {
     sub,
   );
 
-  const emojis = useUserEmojiPacks(pubkey, userEmoji ?? { tags: [] });
+  const emojis = useUserEmojiPacks(pubkey, userEmoji?.tags ?? []);
   return emojis;
 }

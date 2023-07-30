@@ -1,5 +1,3 @@
-import { unixNow } from "@snort/shared";
-
 import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
 import { Login, System } from "index";
@@ -24,7 +22,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setMuted(newMuted, login.muted.content, unixNow());
+      Login.setMuted(newMuted, login.muted.content, ev.created_at);
     }
   }
 
@@ -41,7 +39,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setMuted(newMuted, login.muted.content, unixNow());
+      Login.setMuted(newMuted, login.muted.content, ev.created_at);
     }
   }
 

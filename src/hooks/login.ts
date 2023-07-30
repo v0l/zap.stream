@@ -4,7 +4,7 @@ import { EventKind, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { useUserEmojiPacks } from "hooks/emoji";
-import { MUTED, USER_EMOJIS } from "const";
+import { MUTED, USER_CARDS, USER_EMOJIS } from "const";
 import { System, Login } from "index";
 import { getPublisher } from "login";
 
@@ -46,7 +46,13 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     })
       .withFilter()
       .authors([pubkey])
-      .kinds([EventKind.ContactList, EventKind.Relays, MUTED, USER_EMOJIS]);
+      .kinds([
+        EventKind.ContactList,
+        EventKind.Relays,
+        MUTED,
+        USER_EMOJIS,
+        USER_CARDS,
+      ]);
     return b;
   }, [pubkey, leaveOpen]);
 
@@ -64,6 +70,9 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
       if (ev?.kind === USER_EMOJIS) {
         setUserEmojis(ev.tags);
       }
+      if (ev?.kind === USER_CARDS) {
+        Login.setCards(ev.tags, ev.created_at);
+      }
       if (ev?.kind === MUTED) {
         Login.setMuted(ev.tags, ev.content, ev.created_at);
       }
@@ -76,7 +85,7 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     }
   }, [data]);
 
-  const emojis = useUserEmojiPacks(pubkey, { tags: userEmojis });
+  const emojis = useUserEmojiPacks(pubkey, userEmojis);
   useEffect(() => {
     Login.setEmojis(emojis);
   }, [emojis]);

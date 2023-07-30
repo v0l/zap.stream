@@ -12,7 +12,7 @@ export enum LoginType {
 
 interface ReplaceableTags {
   tags: Array<string[]>;
-  content: "";
+  content?: string;
   timestamp: number;
 }
 
@@ -22,9 +22,18 @@ export interface LoginSession {
   privateKey?: string;
   follows: ReplaceableTags;
   muted: ReplaceableTags;
+  cards: ReplaceableTags;
   relays: Relays;
   emojis: Array<EmojiPack>;
 }
+
+const initialState = {
+  follows: { tags: [], timestamp: 0 },
+  muted: { tags: [], timestamp: 0 },
+  cards: { tags: [], timestamp: 0 },
+  relays: defaultRelays,
+  emojis: [],
+};
 
 export class LoginStore extends ExternalStore<LoginSession | undefined> {
   #session?: LoginSession;
@@ -33,7 +42,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     super();
     const json = window.localStorage.getItem("session");
     if (json) {
-      this.#session = JSON.parse(json);
+      this.#session = { ...initialState, ...JSON.parse(json) };
       if (this.#session) {
         this.#session.type ??= LoginType.Nip7;
       }
@@ -44,10 +53,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#session = {
       type,
       pubkey: pk,
-      muted: { tags: [], timestamp: 0 },
-      follows: { tags: [], timestamp: 0 },
-      relays: defaultRelays,
-      emojis: [],
+      ...initialState,
     };
     this.#save();
   }
@@ -57,9 +63,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       type: LoginType.PrivateKey,
       pubkey: bytesToHex(schnorr.getPublicKey(key)),
       privateKey: key,
-      follows: { tags: [], timestamp: 0 },
-      muted: { tags: [], timestamp: 0 },
-      emojis: [],
+      ...initialState,
     };
     this.#save();
   }
@@ -95,6 +99,15 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#session.muted.tags = muted;
     this.#session.muted.content = content;
     this.#session.muted.timestamp = ts;
+    this.#save();
+  }
+
+  setCards(cards: Array<string[]>, ts: number) {
+    if (this.#session.cards.timestamp >= ts) {
+      return;
+    }
+    this.#session.cards.tags = cards;
+    this.#session.cards.timestamp = ts;
     this.#save();
   }
 

@@ -1,5 +1,4 @@
 import { EventKind } from "@snort/system";
-import { unixNow } from "@snort/shared";
 
 import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
@@ -24,7 +23,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setFollows(newFollows, login.follows.content, unixNow());
+      Login.setFollows(newFollows, login.follows.content, ev.created_at);
     }
   }
 
@@ -41,7 +40,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setFollows(newFollows, login.follows.content, unixNow());
+      Login.setFollows(newFollows, login.follows.content, ev.created_at);
     }
   }
 

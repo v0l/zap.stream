@@ -1,10 +1,9 @@
 import "./emoji-pack.css";
 import { type NostrEvent } from "@snort/system";
-import { unixNow } from "@snort/shared";
 
-import AsyncButton from "element/async-button";
 import { useLogin } from "hooks/login";
 import { toEmojiPack } from "hooks/emoji";
+import AsyncButton from "element/async-button";
 import { Mention } from "element/mention";
 import { findTag } from "utils";
 import { USER_EMOJIS } from "const";
@@ -38,7 +37,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setEmojis(newPacks, unixNow());
+      Login.setEmojis(newPacks, ev.created_at);
     }
   }
 
