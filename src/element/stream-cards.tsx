@@ -9,7 +9,7 @@ import type { NostrEvent } from "@snort/system";
 
 import { Toggle } from "element/toggle";
 import { useLogin } from "hooks/login";
-import { useUserCards } from "hooks/cards";
+import { useCards, useUserCards } from "hooks/cards";
 import { CARD, USER_CARDS } from "const";
 import { toTag } from "utils";
 import { Login, System } from "index";
@@ -55,7 +55,7 @@ const CardPreview = forwardRef(
           ) : (
             <img className="card-image" src={image} alt={title} />
           ))}
-        <Markdown children={content} />
+        <Markdown content={content} />
       </div>
     );
   },
@@ -382,12 +382,11 @@ function AddCard({ cards }: AddCardProps) {
   );
 }
 
-export function StreamCards({ host }) {
+export function StreamCardEditor() {
   const login = useLogin();
-  const canEdit = login?.pubkey === host;
-  const cards = useUserCards(login.pubkey, login.cards.tags, canEdit);
+  const cards = useUserCards(login.pubkey, login.cards.tags, true);
   const [isEditing, setIsEditing] = useState(false);
-  const components = (
+  return (
     <>
       <div className="stream-cards">
         {cards.map((ev) => (
@@ -395,17 +394,35 @@ export function StreamCards({ host }) {
         ))}
         {isEditing && <AddCard cards={cards} />}
       </div>
-      {canEdit && (
-        <div className="edit-container">
-          <Toggle
-            pressed={isEditing}
-            onPressedChange={setIsEditing}
-            label="Toggle edit mode"
-            text="Edit cards"
-          />
-        </div>
-      )}
+      <div className="edit-container">
+        <Toggle
+          pressed={isEditing}
+          onPressedChange={setIsEditing}
+          label="Toggle edit mode"
+          text="Edit cards"
+        />
+      </div>
     </>
   );
-  return <DndProvider backend={HTML5Backend}>{components}</DndProvider>;
+}
+
+export function ReadOnlyStreamCards({ host }) {
+  const cards = useCards(host);
+  return (
+    <div className="stream-cards">
+      {cards.map((ev) => (
+        <Card cards={cards} key={ev.id} ev={ev} />
+      ))}
+    </div>
+  );
+}
+
+export function StreamCards({ host }) {
+  const login = useLogin();
+  const canEdit = login?.pubkey === host;
+  return (
+    <DndProvider backend={HTML5Backend}>
+      {canEdit ? <StreamCardEditor /> : <ReadOnlyStreamCards host={host} />}
+    </DndProvider>
+  );
 }

@@ -14,7 +14,7 @@ import { EmojiPicker } from "./emoji-picker";
 import { Icon } from "./icon";
 import { Emoji } from "./emoji";
 import { Profile } from "./profile";
-import { Text } from "./text";
+import { Markdown } from "./markdown";
 import { SendZapsDialog } from "./send-zap";
 import { findTag } from "../utils";
 import type { EmojiPack } from "../hooks/emoji";
@@ -151,7 +151,12 @@ export function ChatMessage({
           pubkey={ev.pubkey}
           profile={profile}
         />
-        <Text tags={ev.tags} content={ev.content} />
+        <Markdown
+          element="span"
+          enableParagraphs={false}
+          tags={ev.tags}
+          content={ev.content}
+        />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (

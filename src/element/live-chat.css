@@ -358,16 +358,11 @@
   border-radius: unset;
 }
 
-.message .message-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.message .message-container .markdown p {
+.message .markdown {
   font-size: 14px;
+  line-height: normal;
 }
 
-.message .message-container .markdown > p {
-  margin: 0;
+.message .markdown .emoji {
+  width: unset;
 }

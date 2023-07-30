@@ -1,7 +1,7 @@
 import "./markdown.css";
 
+import { createElement } from "react";
 import { parseNostrLink } from "@snort/system";
-import type { ReactNode } from "react";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 
@@ -190,11 +190,17 @@ function transformText(ps, tags) {
 }
 
 interface MarkdownProps {
-  children: ReactNode;
+  content: string;
   tags?: string[];
+  enableParagraphs?: booleam;
 }
 
-export function Markdown({ children, tags = [] }: MarkdownProps) {
+export function Markdown({
+  content,
+  tags = [],
+  enableParagraphs = true,
+  element = "div",
+}: MarkdownProps) {
   const components = useMemo(() => {
     return {
       li: ({ children, ...props }) => {
@@ -202,15 +208,20 @@ export function Markdown({ children, tags = [] }: MarkdownProps) {
       },
       td: ({ children }) =>
         children && <td>{transformText(children, tags)}</td>,
-      p: ({ children }) => children && <p>{transformText(children, tags)}</p>,
+      p: ({ children }) =>
+        enableParagraphs ? (
+          <p>{transformText(children, tags)}</p>
+        ) : (
+          transformText(children, tags)
+        ),
       a: (props) => {
         return <HyperText link={props.href}>{props.children}</HyperText>;
       },
     };
-  }, [tags]);
-  return (
-    <div className="markdown">
-      <ReactMarkdown children={children} components={components} />
-    </div>
+  }, [tags, enableParagraphs]);
+  return createElement(
+    element,
+    { className: "markdown" },
+    <ReactMarkdown components={components}>{content}</ReactMarkdown>,
   );
 }
