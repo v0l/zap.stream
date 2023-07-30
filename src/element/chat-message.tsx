@@ -140,7 +140,14 @@ export function ChatMessage({
         onClick={() => setShowZapDialog(true)}
       >
         <Profile
-          icon={ev.pubkey === streamer && <Icon name="signal" size={16} />}
+          icon={
+            ev.pubkey === streamer && <Icon name="signal" size={16} />
+            //    <img
+            //      className="badge-icon"
+            //      src="https://nostr.build/i/nostr.build_4b0d4f7293eb0f2bacb5b232a8d2ef3fe7648192d636e152a3c18b9fc06142d7.png"
+            //      alt="TODO"
+            //    />
+          }
           pubkey={ev.pubkey}
           profile={profile}
         />

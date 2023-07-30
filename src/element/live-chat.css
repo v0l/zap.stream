@@ -24,10 +24,10 @@
 }
 
 .live-chat .header .popout-link {
-  color: #FFFFFF80;
+  color: #ffffff80;
 }
 
-.live-chat>.messages {
+.live-chat > .messages {
   display: flex;
   gap: 12px;
   flex-direction: column-reverse;
@@ -37,12 +37,12 @@
 }
 
 @media (min-width: 1020px) {
-  .live-chat>.messages {
+  .live-chat > .messages {
     flex-grow: 1;
   }
 }
 
-.live-chat>.write-message {
+.live-chat > .write-message {
   display: flex;
   gap: 8px;
   margin-top: auto;
@@ -51,7 +51,7 @@
   border-top: 1px solid var(--border, #171717);
 }
 
-.live-chat>.write-message>div:nth-child(1) {
+.live-chat > .write-message > div:nth-child(1) {
   height: 32px;
   flex-grow: 1;
 }
@@ -77,15 +77,15 @@
 }
 
 .live-chat .message .profile {
-  color: #34D2FE;
+  color: #34d2fe;
 }
 
 .live-chat .message.streamer .profile {
-  color: #F838D9;
+  color: #f838d9;
 }
 
 .live-chat .message a {
-  color: #F838D9;
+  color: #f838d9;
 }
 
 .live-chat .profile img {
@@ -93,7 +93,7 @@
   height: 24px;
 }
 
-.live-chat .message>span {
+.live-chat .message > span {
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
@@ -172,13 +172,13 @@
   position: relative;
   border-radius: 12px;
   border: 1px solid transparent;
-  background: #0A0A0A;
+  background: #0a0a0a;
   background-clip: padding-box;
   padding: 8px 12px;
 }
 
 .zap-container:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -186,20 +186,28 @@
   left: 0;
   z-index: -1;
   margin: -1px;
-  background: linear-gradient(to bottom right, #FF902B, #F83838);
+  background: linear-gradient(to bottom right, #ff902b, #f83838);
   border-radius: inherit;
 }
 
 .zap-container .profile {
-  color: #FF8D2B;
+  color: #ff8d2b;
 }
 
 .zap-container .zap-amount {
-  color: #FF8D2B;
+  color: #ff8d2b;
 }
 
 .zap-container.big-zap:before {
-  background: linear-gradient(60deg, #2BD9FF, #8C8DED, #F838D9, #F83838, #FF902B, #DDF838);
+  background: linear-gradient(
+    60deg,
+    #2bd9ff,
+    #8c8ded,
+    #f838d9,
+    #f83838,
+    #ff902b,
+    #ddf838
+  );
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
 }
@@ -224,7 +232,7 @@
 
 .zap-pill {
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   width: fit-content;
   display: flex;
   height: 24px;
@@ -236,7 +244,7 @@
 .zap-pill-icon {
   width: 12px;
   height: 12px;
-  color: #FF8D2B;
+  color: #ff8d2b;
 }
 
 .message-zap-container {
@@ -252,7 +260,7 @@
   margin-top: 4px;
   width: fit-content;
   z-index: 1;
-  transition: opacity .3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 
 @media (min-width: 1020px) {
@@ -271,7 +279,7 @@
   gap: 2px;
   border-radius: 100px;
   background: rgba(255, 255, 255, 0.05);
-  color: #FFFFFF66;
+  color: #ffffff66;
 }
 
 .message-zap-button:hover {
@@ -299,7 +307,7 @@
   align-items: center;
   gap: 2px;
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .message-reaction {
@@ -311,7 +319,7 @@
 
 .zap-pill-amount {
   text-transform: lowercase;
-  color: #FFF;
+  color: #fff;
   font-size: 12px;
   font-family: Outfit;
   font-style: normal;
@@ -335,10 +343,17 @@
 }
 
 .write-emoji-button {
-  color: #FFFFFF80;
+  color: #ffffff80;
   cursor: pointer;
 }
 
 .write-emoji-button:hover {
   color: white;
+}
+
+.message .profile .badge-icon {
+  background: transparent;
+  width: 18px;
+  height: 18px;
+  border-radius: unset;
 }

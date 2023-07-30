@@ -68,13 +68,44 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#save();
   }
 
-  updateSession(s: LoginSession) {
-    this.#session = s;
+  takeSnapshot() {
+    return this.#session ? { ...this.#session } : undefined;
+  }
+
+  setFollows(follows: Array<string>, ts: number) {
+    if (this.#session.follows.timestamp >= ts) {
+      return;
+    }
+    this.#session.follows.tags = follows;
+    this.#session.follows.timestamp = ts;
     this.#save();
   }
 
-  takeSnapshot() {
-    return this.#session ? { ...this.#session } : undefined;
+  setEmojis(emojis: Array<EmojiPack>) {
+    this.#session.emojis = emojis;
+    this.#save();
+  }
+
+  setMuted(muted: Array<string[]>, ts: number) {
+    if (this.#session.muted.timestamp >= ts) {
+      return;
+    }
+    this.#session.muted.tags = muted;
+    this.#session.muted.timestamp = ts;
+    this.#save();
+  }
+
+  setRelays(relays: Array<string>, ts: number) {
+    if (this.#session.relays.timestamp >= ts) {
+      return;
+    }
+    this.#session.relays = relays.reduce((acc, r) => {
+      const [, relay] = r;
+      const write = r.length === 2 || r.includes("write");
+      const read = r.length === 2 || r.includes("read");
+      return { ...acc, [relay]: { read, write } };
+    }, {});
+    this.#save();
   }
 
   #save() {
@@ -99,48 +130,4 @@ export function getPublisher(session: LoginSession) {
       );
     }
   }
-}
-
-export function setFollows(
-  state: LoginSession,
-  follows: Array<string>,
-  ts: number,
-) {
-  if (state.follows.timestamp >= ts) {
-    return;
-  }
-  state.follows.tags = follows;
-  state.follows.timestamp = ts;
-}
-
-export function setEmojis(state: LoginSession, emojis: Array<EmojiPack>) {
-  state.emojis = emojis;
-}
-
-export function setMuted(
-  state: LoginSession,
-  muted: Array<string[]>,
-  ts: number,
-) {
-  if (state.muted.timestamp >= ts) {
-    return;
-  }
-  state.muted.tags = muted;
-  state.muted.timestamp = ts;
-}
-
-export function setRelays(
-  state: LoginSession,
-  relays: Array<string>,
-  ts: number,
-) {
-  if (state.relays.timestamp >= ts) {
-    return;
-  }
-  state.relays = relays.reduce((acc, r) => {
-    const [, relay] = r;
-    const write = r.length === 2 || r.includes("write");
-    const read = r.length === 2 || r.includes("read");
-    return { ...acc, [relay]: { read, write } };
-  }, {});
 }

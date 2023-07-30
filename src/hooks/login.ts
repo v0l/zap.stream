@@ -4,15 +4,9 @@ import { EventKind, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { useUserEmojiPacks } from "hooks/emoji";
-import { USER_EMOJIS } from "const";
+import { MUTED, USER_EMOJIS } from "const";
 import { System, Login } from "index";
-import {
-  getPublisher,
-  setMuted,
-  setEmojis,
-  setFollows,
-  setRelays,
-} from "login";
+import { getPublisher } from "login";
 
 export function useLogin() {
   const session = useSyncExternalStore(
@@ -52,12 +46,7 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     })
       .withFilter()
       .authors([pubkey])
-      .kinds([
-        EventKind.ContactList,
-        EventKind.Relays,
-        10_000 as EventKind,
-        USER_EMOJIS,
-      ]);
+      .kinds([EventKind.ContactList, EventKind.Relays, MUTED, USER_EMOJIS]);
     return b;
   }, [pubkey, leaveOpen]);
 
@@ -71,30 +60,25 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     if (!data) {
       return;
     }
-    if (!session) {
-      return;
-    }
     for (const ev of data) {
       if (ev?.kind === USER_EMOJIS) {
         setUserEmojis(ev.tags);
       }
-      if (ev?.kind === 10_000) {
+      if (ev?.kind === MUTED) {
         // todo: decrypt ev.content tags
-        setMuted(session, ev.tags, ev.created_at);
+        Login.setMuted(ev.tags, ev.created_at);
       }
       if (ev?.kind === EventKind.ContactList) {
-        setFollows(session, ev.tags, ev.created_at);
+        Login.setFollows(ev.tags, ev.created_at);
       }
       if (ev?.kind === EventKind.Relays) {
-        setRelays(session, ev.tags, ev.created_at);
+        Login.setRelays(ev.tags, ev.created_at);
       }
     }
-  }, [session, data]);
+  }, [data]);
 
   const emojis = useUserEmojiPacks(pubkey, { tags: userEmojis });
   useEffect(() => {
-    if (session) {
-      setEmojis(session, emojis);
-    }
-  }, [session, emojis]);
+    Login.setEmojis(emojis);
+  }, [emojis]);
 }

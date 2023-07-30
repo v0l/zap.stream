@@ -26,7 +26,7 @@ import { ChatMessage } from "./chat-message";
 import { Goal } from "./goal";
 import { NewGoalDialog } from "./new-goal";
 import { WriteMessage } from "./write-message";
-import { findTag, getHost } from "utils";
+import { findTag, getTagValues, getHost } from "utils";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -80,9 +80,7 @@ export function LiveChat({
   }, [feed.zaps]);
 
   const mutedPubkeys = useMemo(() => {
-    return new Set(
-      login.muted.tags.filter((t) => t.at(0) === "p").map((t) => t.at(1)),
-    );
+    return new Set(getTagValues(login.muted.tags, "p"));
   }, [login.muted.tags]);
   const userEmojiPacks = login?.emojis ?? [];
   const channelEmojiPacks = useEmoji(host);

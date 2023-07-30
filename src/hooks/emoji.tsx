@@ -17,7 +17,7 @@ function cleanShortcode(shortcode?: string) {
   return shortcode?.replace(/\s+/g, "_").replace(/_$/, "");
 }
 
-function toEmojiPack(ev: NostrEvent): EmojiPack {
+export function toEmojiPack(ev: NostrEvent): EmojiPack {
   const d = findTag(ev, "d") || "";
   return {
     address: `${ev.kind}:${ev.pubkey}:${d}`,
@@ -78,7 +78,8 @@ export function useUserEmojiPacks(
   }, [relatedData]);
 
   const emojis = useMemo(() => {
-    return uniqBy(emojiPacks.map(toEmojiPack), packId);
+    const packs = emojiPacks.map(toEmojiPack);
+    return uniqBy(packs, packId);
   }, [emojiPacks]);
 
   return emojis;
