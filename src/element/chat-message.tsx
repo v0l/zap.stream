@@ -142,6 +142,7 @@ export function ChatMessage({
         <Profile
           icon={
             ev.pubkey === streamer && <Icon name="signal" size={16} />
+            //    todo: styling is ready if we want to add stream badges
             //    <img
             //      className="badge-icon"
             //      src="https://nostr.build/i/nostr.build_4b0d4f7293eb0f2bacb5b232a8d2ef3fe7648192d636e152a3c18b9fc06142d7.png"
