@@ -357,3 +357,17 @@
   height: 18px;
   border-radius: unset;
 }
+
+.message .message-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.message .message-container .markdown p {
+  font-size: 14px;
+}
+
+.message .message-container .markdown > p {
+  margin: 0;
+}

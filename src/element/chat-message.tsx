@@ -151,7 +151,7 @@ export function ChatMessage({
           pubkey={ev.pubkey}
           profile={profile}
         />
-        <Text content={ev.content} tags={ev.tags} />
+        <Text tags={ev.tags} content={ev.content} />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (

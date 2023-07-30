@@ -65,11 +65,10 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
         setUserEmojis(ev.tags);
       }
       if (ev?.kind === MUTED) {
-        // todo: decrypt ev.content tags
-        Login.setMuted(ev.tags, ev.created_at);
+        Login.setMuted(ev.tags, ev.content, ev.created_at);
       }
       if (ev?.kind === EventKind.ContactList) {
-        Login.setFollows(ev.tags, ev.created_at);
+        Login.setFollows(ev.tags, ev.content, ev.created_at);
       }
       if (ev?.kind === EventKind.Relays) {
         Login.setRelays(ev.tags, ev.created_at);

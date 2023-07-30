@@ -12,6 +12,7 @@ export enum LoginType {
 
 interface ReplaceableTags {
   tags: Array<string[]>;
+  content: "";
   timestamp: number;
 }
 
@@ -72,11 +73,12 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     return this.#session ? { ...this.#session } : undefined;
   }
 
-  setFollows(follows: Array<string>, ts: number) {
+  setFollows(follows: Array<string>, content: string, ts: number) {
     if (this.#session.follows.timestamp >= ts) {
       return;
     }
     this.#session.follows.tags = follows;
+    this.#session.follows.content = content;
     this.#session.follows.timestamp = ts;
     this.#save();
   }
@@ -86,11 +88,12 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#save();
   }
 
-  setMuted(muted: Array<string[]>, ts: number) {
+  setMuted(muted: Array<string[]>, content: string, ts: number) {
     if (this.#session.muted.timestamp >= ts) {
       return;
     }
     this.#session.muted.tags = muted;
+    this.#session.muted.content = content;
     this.#session.muted.timestamp = ts;
     this.#save();
   }

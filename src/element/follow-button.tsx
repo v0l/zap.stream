@@ -16,7 +16,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
     if (pub) {
       const newFollows = tags.filter((t) => t.at(1) !== pubkey);
       const ev = await pub.generic((eb) => {
-        eb.kind(EventKind.ContactList).content(JSON.stringify(login.relays));
+        eb.kind(EventKind.ContactList).content(login.follows.content);
         for (const t of newFollows) {
           eb.tag(t);
         }
@@ -24,7 +24,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setFollows(newFollows, unixNow());
+      Login.setFollows(newFollows, login.follows.content, unixNow());
     }
   }
 
@@ -33,7 +33,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
     if (pub) {
       const newFollows = [...tags, ["p", pubkey]];
       const ev = await pub.generic((eb) => {
-        eb.kind(EventKind.ContactList).content(JSON.stringify(login.relays));
+        eb.kind(EventKind.ContactList).content(login.follows.content);
         for (const tag of newFollows) {
           eb.tag(tag);
         }
@@ -41,7 +41,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setFollows(newFollows, unixNow());
+      Login.setFollows(newFollows, login.follows.content, unixNow());
     }
   }
 
