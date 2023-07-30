@@ -161,6 +161,10 @@
   }
 }
 
+.stream-card .card-image {
+  max-width: 343px;
+}
+
 .stream-card {
   max-width: 343px;
 }
