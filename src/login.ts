@@ -35,12 +35,14 @@ const initialState = {
   emojis: [],
 };
 
+const SESSION_KEY = "session";
+
 export class LoginStore extends ExternalStore<LoginSession | undefined> {
   #session?: LoginSession;
 
   constructor() {
     super();
-    const json = window.localStorage.getItem("session");
+    const json = window.localStorage.getItem(SESSION_KEY);
     if (json) {
       this.#session = { ...initialState, ...JSON.parse(json) };
       if (this.#session) {
@@ -126,9 +128,9 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
 
   #save() {
     if (this.#session) {
-      window.localStorage.setItem("session", JSON.stringify(this.#session));
+      window.localStorage.setItem(SESSION_KEY, JSON.stringify(this.#session));
     } else {
-      window.localStorage.removeItem("session");
+      window.localStorage.removeItem(SESSION_KEY);
     }
     this.notifyChange();
   }

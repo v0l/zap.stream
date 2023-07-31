@@ -87,6 +87,8 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
 
   const emojis = useUserEmojiPacks(pubkey, userEmojis);
   useEffect(() => {
-    Login.setEmojis(emojis);
-  }, [emojis]);
+    if (session) {
+      Login.setEmojis(emojis);
+    }
+  }, [session, emojis]);
 }
