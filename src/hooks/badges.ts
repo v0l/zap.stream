@@ -14,11 +14,13 @@ export function useBadges(pubkey: string, leaveOpen = true): Array<Badge> {
   const rb = useMemo(() => {
     const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
     rb.withOptions({ leaveOpen });
+    rb.withFilter().authors([pubkey]).kinds([EventKind.Badge]);
     rb.withFilter()
       .authors([pubkey])
-      .kinds([EventKind.Badge, EventKind.BadgeAward]);
+      .kinds([EventKind.BadgeAward])
+      .since(since);
     return rb;
-  }, [pubkey]);
+  }, [pubkey, since]);
 
   const { data: badgeEvents } = useRequestBuilder<NoteCollection>(
     System,
@@ -85,9 +87,5 @@ export function useBadges(pubkey: string, leaveOpen = true): Array<Badge> {
     return [];
   }, [rawBadges]);
 
-  const awards = useMemo(() => {
-    return badgeAwards.filter((e) => e.created_at > since);
-  }, [badgeAwards]);
-
-  return { badges, awards };
+  return { badges, awards: badgeAwards };
 }
