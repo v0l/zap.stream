@@ -80,8 +80,8 @@ export function LiveChat({
   }, [feed.zaps]);
 
   const mutedPubkeys = useMemo(() => {
-    return new Set(getTagValues(login.muted.tags, "p"));
-  }, [login.muted.tags]);
+    return new Set(getTagValues(login?.muted.tags ?? [], "p"));
+  }, [login]);
   const userEmojiPacks = login?.emojis ?? [];
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
