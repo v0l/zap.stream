@@ -12,18 +12,14 @@ import { System } from "../index";
 import { formatSats } from "../number";
 import { EmojiPicker } from "./emoji-picker";
 import { Icon } from "./icon";
-import { Emoji } from "./emoji";
+import { Emoji as EmojiComponent } from "./emoji";
 import { Profile } from "./profile";
 import { Text } from "element/text";
 import { SendZapsDialog } from "./send-zap";
 import { findTag } from "../utils";
 import type { EmojiPack } from "../hooks/emoji";
 import { useLogin } from "../hooks/login";
-
-interface Emoji {
-  id: string;
-  native?: string;
-}
+import type { Badge, Emoji } from "types";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -40,11 +36,13 @@ export function ChatMessage({
   ev,
   reactions,
   emojiPacks,
+  badges,
 }: {
   ev: NostrEvent;
   streamer: string;
   reactions: readonly NostrEvent[];
   emojiPacks: EmojiPack[];
+  badges: Badge[];
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useIntersectionObserver(ref, {
@@ -81,6 +79,9 @@ export function ChatMessage({
     return messageZaps.reduce((acc, z) => acc + z.amount, 0);
   }, [zaps, ev]);
   const hasZaps = totalZaps > 0;
+  const awardedBadges = badges.filter(
+    (b) => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey),
+  );
 
   useOnClickOutside(ref, () => {
     setShowZapDialog(false);
@@ -141,13 +142,20 @@ export function ChatMessage({
       >
         <Profile
           icon={
-            ev.pubkey === streamer && <Icon name="signal" size={16} />
-            //    todo: styling is ready if we want to add stream badges
-            //    <img
-            //      className="badge-icon"
-            //      src="https://nostr.build/i/nostr.build_4b0d4f7293eb0f2bacb5b232a8d2ef3fe7648192d636e152a3c18b9fc06142d7.png"
-            //      alt="TODO"
-            //    />
+            ev.pubkey === streamer ? (
+              <Icon name="signal" size={16} />
+            ) : (
+              awardedBadges.map((badge) => {
+                return (
+                  <img
+                    key={badge.name}
+                    className="badge-icon"
+                    src={badge.thumb || badge.image}
+                    alt={badge.name}
+                  />
+                );
+              })
+            )
           }
           pubkey={ev.pubkey}
           profile={profile}
@@ -170,7 +178,7 @@ export function ChatMessage({
                 <div className="message-reaction-container">
                   {isCustomEmojiReaction && emoji ? (
                     <span className="message-reaction">
-                      <Emoji name={emoji.at(1)!} url={emoji.at(2)!} />
+                      <EmojiComponent name={emoji.at(1)!} url={emoji.at(2)!} />
                     </span>
                   ) : (
                     <span className="message-reaction">{e}</span>

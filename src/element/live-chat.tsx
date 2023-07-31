@@ -11,26 +11,47 @@ import {
 import { useEffect, useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
-import { System } from "../index";
-import useEmoji, { packId } from "../hooks/emoji";
-import { useLiveChatFeed } from "../hooks/live-chat";
-import { Profile } from "./profile";
-import { Icon } from "./icon";
-import Spinner from "./spinner";
-import { Text } from "./text";
-import { useLogin } from "../hooks/login";
-import { formatSats } from "../number";
-import useTopZappers from "../hooks/top-zappers";
-import { LIVE_STREAM_CHAT } from "../const";
-import { ChatMessage } from "./chat-message";
-import { Goal } from "./goal";
-import { NewGoalDialog } from "./new-goal";
-import { WriteMessage } from "./write-message";
+import { Icon } from "element/icon";
+import Spinner from "element/spinner";
+import { Text } from "element/text";
+import { Profile } from "element/profile";
+import { ChatMessage } from "element/chat-message";
+import { Goal } from "element/goal";
+import { Badge } from "element/badge";
+import { NewGoalDialog } from "element/new-goal";
+import { WriteMessage } from "element/write-message";
+import useEmoji, { packId } from "hooks/emoji";
+import { useLiveChatFeed } from "hooks/live-chat";
+import { useBadges } from "hooks/badges";
+import { useLogin } from "hooks/login";
+import useTopZappers from "hooks/top-zappers";
+import { useAddress } from "hooks/event";
+import { formatSats } from "number";
+import { LIVE_STREAM_CHAT } from "const";
 import { findTag, getTagValues, getHost } from "utils";
+import { System } from "index";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
   showHeader?: boolean;
+}
+
+function BadgeAward({ ev }: { ev: NostrEvent }) {
+  const badge = findTag(ev, "a");
+  const [k, pubkey, d] = badge.split(":");
+  const awardees = getTagValues(ev.tags, "p");
+  const event = useAddress(Number(k), pubkey, d);
+  return (
+    <div className="badge-award">
+      {event && <Badge ev={event} />}
+      <p>awarded to</p>
+      <div className="badge-awardees">
+        {awardees.map((pk) => (
+          <Profile key={pk} pubkey={pk} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
@@ -69,6 +90,7 @@ export function LiveChat({
   height?: number;
 }) {
   const host = getHost(ev);
+  const { badges, awards } = useBadges(host);
   const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
   useEffect(() => {
@@ -92,7 +114,7 @@ export function LiveChat({
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid);
   const events = useMemo(() => {
-    return [...feed.messages, ...feed.zaps].sort(
+    return [...feed.messages, ...feed.zaps, ...awards].sort(
       (a, b) => b.created_at - a.created_at,
     );
   }, [feed.messages, feed.zaps]);
@@ -143,9 +165,13 @@ export function LiveChat({
       <div className="messages">
         {filteredEvents.map((a) => {
           switch (a.kind) {
+            case EventKind.BadgeAward: {
+              return <BadgeAward ev={a} />;
+            }
             case LIVE_STREAM_CHAT: {
               return (
                 <ChatMessage
+                  badges={badges}
                   emojiPacks={allEmojiPacks}
                   streamer={streamer}
                   ev={a}

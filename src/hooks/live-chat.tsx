@@ -8,13 +8,10 @@ import { useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { System } from "index";
 import { useMemo } from "react";
-import { LIVE_STREAM_CHAT } from "const";
+import { LIVE_STREAM_CHAT, WEEK } from "const";
 
 export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
-  const since = useMemo(
-    () => unixNow() - 60 * 60 * 24 * 7, // 7-days of zaps
-    [link.id],
-  );
+  const since = useMemo(() => unixNow() - WEEK, [link.id]);
   const sub = useMemo(() => {
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
     rb.withOptions({
@@ -45,7 +42,9 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
 
   const esub = useMemo(() => {
     if (etags.length === 0) return null;
-    const rb = new RequestBuilder(`reactions:${link.id}:${link.author}`);
+    const rb = new RequestBuilder(
+      `reactions:${link.id}:${link.author}:${etags.length}`,
+    );
     rb.withOptions({
       leaveOpen: true,
     });

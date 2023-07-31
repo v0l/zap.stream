@@ -9,6 +9,9 @@ export const USER_CARDS = 17_777 as EventKind;
 export const CARD = 37_777 as EventKind;
 export const MUTED = 10_000 as EventKind;
 
+export const DAY = 60 * 60 * 24;
+export const WEEK = 7 * DAY;
+
 export const defaultRelays = {
   "wss://relay.snort.social": { read: true, write: true },
   "wss://nos.lol": { read: true, write: true },

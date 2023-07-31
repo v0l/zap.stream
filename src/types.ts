@@ -20,3 +20,11 @@ export interface EmojiPack {
   author: string;
   emojis: EmojiTag[];
 }
+
+export interface Badge {
+  name: string;
+  thumb: string;
+  image: string;
+  awardees: Set<string>;
+  accepted: Set<string>;
+}
