@@ -94,3 +94,22 @@ export async function openFile(): Promise<File | undefined> {
 export function getTagValues(tags: Array<string[]>, tag: string) {
   return tags.filter((t) => t.at(0) === tag).map((t) => t.at(1));
 }
+
+export function dedupeByHost(events: Array<NostrEvent>) {
+  const { result } = events.reduce(
+    ({ result, seen }, ev) => {
+      const host = getHost(ev);
+      if (seen.has(host)) {
+        return { result, seen };
+      }
+      result.push(ev);
+      seen.add(host);
+      return { result, seen };
+    },
+    {
+      result: [],
+      seen: new Set(),
+    },
+  );
+  return result;
+}

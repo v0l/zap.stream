@@ -1,72 +1,79 @@
 import "./root.css";
+import type { NostrEvent } from "@snort/system";
 
-import { useMemo } from "react";
-import { unixNow } from "@snort/shared";
-import {
-  NoteCollection,
-  RequestBuilder,
-} from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
-import { StreamState, System } from "..";
-import { VideoTile } from "../element/video-tile";
-import { findTag } from "../utils";
-import { LIVE_STREAM } from "../const";
+import { VideoTile } from "element/video-tile";
+import { useLogin } from "hooks/login";
+import { getHost, getTagValues, dedupeByHost } from "utils";
+import { useStreamsFeed } from "hooks/live-streams";
 
 export function RootPage() {
-  const rb = useMemo(() => {
-    const rb = new RequestBuilder("root");
-    rb.withOptions({
-      leaveOpen: true,
-    })
-      .withFilter()
-      .kinds([LIVE_STREAM])
-      .since(unixNow() - 86400);
-    return rb;
-  }, []);
+  const login = useLogin();
 
-  const feed = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    rb
-  );
-  const feedSorted = useMemo(() => {
-    if (feed.data) {
-      return [...feed.data].sort((a, b) => {
-        const aStatus = findTag(a, "status")!;
-        const bStatus = findTag(b, "status")!;
-        if (aStatus === bStatus) {
-          const aStart = Number(findTag(a, "starts") ?? "0");
-          const bStart = Number(findTag(b, "starts") ?? "0");
-          return bStart > aStart ? 1 : -1;
-        } else {
-          return aStatus === "live" ? -1 : 1;
-        }
-      });
-    }
-    return [];
-  }, [feed.data]);
+  const { live, planned, ended } = useStreamsFeed();
+  const mutedHosts = getTagValues(login?.muted.tags ?? [], "p");
+  const followsHost = (ev: NostrEvent) => {
+    return login?.follows.tags?.find((t) => t.at(1) === getHost(ev));
+  };
+  const hashtags = getTagValues(login?.follows.tags ?? [], "t");
+  const following = dedupeByHost(live.filter(followsHost));
+  const liveNow = dedupeByHost(live.filter((e) => !following.includes(e)));
+  const hasFollowingLive = following.length > 0;
 
-  const live = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Live
-  );
-  const planned = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Planned
-  );
-  const ended = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Ended
-  );
+  const plannedEvents = planned
+    .filter((e) => !mutedHosts.includes(getHost(e)))
+    .filter(followsHost);
+
   return (
     <div className="homepage">
-      <div className="video-grid">
-        {live.map((e) => (
-          <VideoTile ev={e} key={e.id} />
-        ))}
-      </div>
-      {planned.length > 0 && (
+      {hasFollowingLive && (
+        <div className="video-grid">
+          {following.map((e) => (
+            <VideoTile ev={e} key={e.id} />
+          ))}
+        </div>
+      )}
+      {!hasFollowingLive && (
+        <div className="video-grid">
+          {live
+            .filter((e) => !mutedHosts.includes(getHost(e)))
+            .map((e) => (
+              <VideoTile ev={e} key={e.id} />
+            ))}
+        </div>
+      )}
+      {hashtags.map((t) => (
+        <>
+          <h2 className="divider line one-line">#{t}</h2>
+          <div className="video-grid">
+            {live
+              .filter((e) => !mutedHosts.includes(getHost(e)))
+              .filter((e) => {
+                const evTags = getTagValues(e.tags, "t");
+                return evTags.includes(t);
+              })
+              .map((e) => (
+                <VideoTile ev={e} key={e.id} />
+              ))}
+          </div>
+        </>
+      ))}
+      {hasFollowingLive && liveNow.length > 0 && (
+        <>
+          <h2 className="divider line one-line">Live</h2>
+          <div className="video-grid">
+            {liveNow
+              .filter((e) => !mutedHosts.includes(getHost(e)))
+              .map((e) => (
+                <VideoTile ev={e} key={e.id} />
+              ))}
+          </div>
+        </>
+      )}
+      {plannedEvents.length > 0 && (
         <>
           <h2 className="divider line one-line">Planned</h2>
           <div className="video-grid">
-            {planned.map((e) => (
+            {plannedEvents.map((e) => (
               <VideoTile ev={e} key={e.id} />
             ))}
           </div>
@@ -76,9 +83,11 @@ export function RootPage() {
         <>
           <h2 className="divider line one-line">Ended</h2>
           <div className="video-grid">
-            {ended.map((e) => (
-              <VideoTile ev={e} key={e.id} />
-            ))}
+            {ended
+              .filter((e) => !mutedHosts.includes(getHost(e)))
+              .map((e) => (
+                <VideoTile ev={e} key={e.id} />
+              ))}
           </div>
         </>
       )}

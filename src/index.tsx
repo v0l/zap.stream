@@ -7,6 +7,7 @@ import { NostrSystem } from "@snort/system";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { RootPage } from "pages/root";
+import { TagPage } from "pages/tag";
 import { LayoutPage } from "pages/layout";
 import { ProfilePage } from "pages/profile-page";
 import { StreamPage } from "pages/stream-page";
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <RootPage />,
+      },
+      {
+        path: "/t/:tag",
+        element: <TagPage />,
       },
       {
         path: "/p/:npub",
