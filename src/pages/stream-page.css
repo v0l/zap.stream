@@ -12,6 +12,12 @@
   gap: var(--gap-s);
   display: flex;
   flex-direction: column;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.stream-page .video-content::-webkit-scrollbar {
+  display: none;
 }
 
 .stream-page .video-overlay {

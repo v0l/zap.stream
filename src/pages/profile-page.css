@@ -43,6 +43,11 @@
   left: 120px;
 }
 
+.profile-page .status-indicator .offline {
+  margin-top: 8px;
+  margin-left: 16px;
+}
+
 .profile-page .profile-actions {
   position: absolute;
   display: flex;

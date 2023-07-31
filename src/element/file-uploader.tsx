@@ -38,8 +38,8 @@ async function voidCatUpload(file: File | Blob): Promise<UploadResult> {
   }
 }
 
-export function FileUploader({ onFileUpload }) {
-  const [img, setImg] = useState();
+export function FileUploader({ defaultImage, onClear, onFileUpload }) {
+  const [img, setImg] = useState(defaultImage);
   const [isUploading, setIsUploading] = useState(false);
 
   async function onFileChange(ev) {
@@ -63,13 +63,25 @@ export function FileUploader({ onFileUpload }) {
     }
   }
 
+  function clearImage() {
+    setImg("");
+    onClear();
+  }
+
   return (
     <div className="file-uploader-container">
       <label className="file-uploader">
         <input type="file" onChange={onFileChange} />
         {isUploading ? "Uploading..." : "Add File"}
       </label>
-      {img && <img className="image-preview" src={img} />}
+      <div className="file-uploader-preview">
+        {img?.length > 0 && (
+          <button className="btn btn-primary clear-button" onClick={clearImage}>
+            Clear
+          </button>
+        )}
+        {img && <img className="image-preview" src={img} />}
+      </div>
     </div>
   );
 }

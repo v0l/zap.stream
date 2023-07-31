@@ -4,11 +4,24 @@
 
 @media (min-width: 1020px) {
   .stream-cards {
-    display: flex;
+    display: grid;
     align-items: flex-start;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
     margin-top: 12px;
     flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1600px) {
+  .stream-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 2100px) {
+  .stream-cards {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -28,11 +41,14 @@
   display: flex;
   align-self: flex-start;
   flex-direction: column;
-  padding: 20px 24px;
   gap: 16px;
-  border-radius: 24px;
-  background: #111;
-  width: 210px;
+  flex: 1;
+  width: 100%;
+}
+
+.stream-card.image-card {
+  padding: 0;
+  background: transparent;
 }
 
 .stream-card .card-title {
@@ -83,13 +99,14 @@
   line-height: 20px;
 }
 
-
 .new-card textarea {
   width: unset;
   background: #262626;
   padding: 8px 16px;
   border-radius: 16px;
   margin-bottom: 8px;
+  resize: vertical;
+  min-height: 210px;
 }
 
 .form-control {
@@ -125,4 +142,30 @@
 .delete-button {
   background: transparent;
   color: var(--text-danger);
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.stream-card .card-image {
+  max-width: 343px;
+}
+
+.stream-card {
+  max-width: 343px;
 }

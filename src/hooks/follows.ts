@@ -18,9 +18,9 @@ export default function useFollows(pubkey: string, leaveOpen = false) {
   const { data } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub
+    sub,
   );
 
-  const relays = JSON.parse(data?.content ?? "{}");
-  return data ? { tags: data.tags, relays } : null
+  const relays = JSON.parse(data?.content.length > 0 ? data?.content : "{}");
+  return data ? { tags: data.tags, relays } : null;
 }

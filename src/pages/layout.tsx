@@ -27,7 +27,7 @@ export function LayoutPage() {
         <Menu
           menuClassName="ctx-menu"
           menuButton={
-            <div>
+            <div className="profile-menu">
               <Profile
                 avatarClassname="mb-squared"
                 pubkey={login.pubkey}
@@ -82,7 +82,11 @@ export function LayoutPage() {
   }
 
   return (
-    <div className={`page${location.pathname.startsWith("/naddr1") ? " stream" : ""}`}>
+    <div
+      className={`page${
+        location.pathname.startsWith("/naddr1") ? " stream" : ""
+      }`}
+    >
       <Helmet>
         <title>Home - zap.stream</title>
       </Helmet>
@@ -92,9 +96,7 @@ export function LayoutPage() {
           <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />
         </div>
-        <div className="f-grow">
-          {/* Future menu items go here */}
-        </div>
+        <div className="f-grow">{/* Future menu items go here */}</div>
         <div className="header-right">
           {loggedIn()}
           {loggedOut()}
