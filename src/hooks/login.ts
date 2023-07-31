@@ -90,5 +90,5 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     if (session) {
       Login.setEmojis(emojis);
     }
-  }, [session, emojis]);
+  }, [emojis]);
 }
