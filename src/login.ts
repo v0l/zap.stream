@@ -2,8 +2,7 @@ import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore } from "@snort/shared";
 import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
-import type { EmojiPack, Relays } from "types";
-import { defaultRelays } from "const";
+import type { EmojiPack } from "types";
 
 export enum LoginType {
   Nip7 = "nip7",
@@ -23,7 +22,6 @@ export interface LoginSession {
   follows: ReplaceableTags;
   muted: ReplaceableTags;
   cards: ReplaceableTags;
-  relays: Relays;
   emojis: Array<EmojiPack>;
 }
 
@@ -31,7 +29,6 @@ const initialState = {
   follows: { tags: [], timestamp: 0 },
   muted: { tags: [], timestamp: 0 },
   cards: { tags: [], timestamp: 0 },
-  relays: defaultRelays,
   emojis: [],
 };
 
@@ -110,19 +107,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     }
     this.#session.cards.tags = cards;
     this.#session.cards.timestamp = ts;
-    this.#save();
-  }
-
-  setRelays(relays: Array<string>, ts: number) {
-    if (this.#session.relays.timestamp >= ts) {
-      return;
-    }
-    this.#session.relays = relays.reduce((acc, r) => {
-      const [, relay] = r;
-      const write = r.length === 2 || r.includes("write");
-      const read = r.length === 2 || r.includes("read");
-      return { ...acc, [relay]: { read, write } };
-    }, {});
     this.#save();
   }
 

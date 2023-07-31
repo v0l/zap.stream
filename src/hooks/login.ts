@@ -37,13 +37,7 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     })
       .withFilter()
       .authors([pubkey])
-      .kinds([
-        EventKind.ContactList,
-        EventKind.Relays,
-        MUTED,
-        USER_EMOJIS,
-        USER_CARDS,
-      ]);
+      .kinds([EventKind.ContactList, MUTED, USER_EMOJIS, USER_CARDS]);
     return b;
   }, [pubkey, leaveOpen]);
 
@@ -69,9 +63,6 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
       }
       if (ev?.kind === EventKind.ContactList) {
         Login.setFollows(ev.tags, ev.content, ev.created_at);
-      }
-      if (ev?.kind === EventKind.Relays) {
-        Login.setRelays(ev.tags, ev.created_at);
       }
     }
   }, [data]);
