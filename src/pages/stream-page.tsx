@@ -112,7 +112,8 @@ export function StreamPage() {
   const title = findTag(ev, "title");
   const summary = findTag(ev, "summary");
   const image = findTag(ev, "image");
-  const stream = findTag(ev, "streaming");
+  const status = findTag(ev, "status");
+  const stream = status === StreamState.Live ? findTag(ev, "streaming") : findTag(ev, "recording");
   const contentWarning = findTag(ev, "content-warning");
   const tags = ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? [];
 
