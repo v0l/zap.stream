@@ -357,12 +357,3 @@
   height: 18px;
   border-radius: unset;
 }
-
-.message .markdown {
-  font-size: 14px;
-  line-height: normal;
-}
-
-.message .markdown .emoji {
-  width: unset;
-}
