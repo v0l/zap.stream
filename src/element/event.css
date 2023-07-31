@@ -1,12 +1,22 @@
 .event-container .note {
   max-width: 320px;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-container .goal {
   font-size: 14px;
 }
 
-.event-container .goal .amount {
+.event-container .goal .progress-root .amount {
   top: -8px;
   font-size: 10px;
+}
+
+.message .event-container .goal .progress-root .amount {
+  top: -6px;
+}
+
+.message .event-container .note {
+  max-width: unset;
 }

@@ -6,13 +6,14 @@ import ReactDOM from "react-dom/client";
 import { NostrSystem } from "@snort/system";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { RootPage } from "./pages/root";
+import { RootPage } from "pages/root";
 import { LayoutPage } from "pages/layout";
 import { ProfilePage } from "pages/profile-page";
 import { StreamPage } from "pages/stream-page";
 import { ChatPopout } from "pages/chat-popout";
 import { LoginStore } from "login";
 import { StreamProvidersPage } from "pages/providers";
+import { defaultRelays } from "const";
 
 export enum StreamState {
   Live = "live",
@@ -23,14 +24,10 @@ export enum StreamState {
 export const System = new NostrSystem({});
 export const Login = new LoginStore();
 
-export const Relays = [
-  "wss://relay.snort.social",
-  "wss://nos.lol",
-  "wss://relay.damus.io",
-  "wss://nostr.wine",
-];
-
-Relays.forEach((r) => System.ConnectToRelay(r, { read: true, write: true }));
+Object.entries(defaultRelays).forEach((params) => {
+  const [relay, settings] = params;
+  System.ConnectToRelay(relay, settings);
+});
 
 const router = createBrowserRouter([
   {
@@ -64,10 +61,10 @@ const router = createBrowserRouter([
   },
 ]);
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLDivElement
+  document.getElementById("root") as HTMLDivElement,
 );
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

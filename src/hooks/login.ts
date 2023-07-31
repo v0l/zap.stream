@@ -1,17 +1,76 @@
-import { Login } from "index";
+import { useSyncExternalStore, useMemo, useState, useEffect } from "react";
+
+import { EventKind, NoteCollection, RequestBuilder } from "@snort/system";
+import { useRequestBuilder } from "@snort/system-react";
+
+import { useUserEmojiPacks } from "hooks/emoji";
+import { MUTED, USER_CARDS, USER_EMOJIS } from "const";
+import { System, Login } from "index";
 import { getPublisher } from "login";
-import { useSyncExternalStore } from "react";
 
 export function useLogin() {
   const session = useSyncExternalStore(
     (c) => Login.hook(c),
-    () => Login.snapshot()
+    () => Login.snapshot(),
   );
   if (!session) return;
   return {
     ...session,
     publisher: () => {
       return getPublisher(session);
+    },
+  };
+}
+
+export function useLoginEvents(pubkey?: string, leaveOpen = false) {
+  const [userEmojis, setUserEmojis] = useState([]);
+  const session = useSyncExternalStore(
+    (c) => Login.hook(c),
+    () => Login.snapshot(),
+  );
+
+  const sub = useMemo(() => {
+    if (!pubkey) return null;
+    const b = new RequestBuilder(`login:${pubkey.slice(0, 12)}`);
+    b.withOptions({
+      leaveOpen,
+    })
+      .withFilter()
+      .authors([pubkey])
+      .kinds([EventKind.ContactList, MUTED, USER_EMOJIS, USER_CARDS]);
+    return b;
+  }, [pubkey, leaveOpen]);
+
+  const { data } = useRequestBuilder<NoteCollection>(
+    System,
+    NoteCollection,
+    sub,
+  );
+
+  useEffect(() => {
+    if (!data) {
+      return;
     }
-  }
+    for (const ev of data) {
+      if (ev?.kind === USER_EMOJIS) {
+        setUserEmojis(ev.tags);
+      }
+      if (ev?.kind === USER_CARDS) {
+        Login.setCards(ev.tags, ev.created_at);
+      }
+      if (ev?.kind === MUTED) {
+        Login.setMuted(ev.tags, ev.content, ev.created_at);
+      }
+      if (ev?.kind === EventKind.ContactList) {
+        Login.setFollows(ev.tags, ev.content, ev.created_at);
+      }
+    }
+  }, [data]);
+
+  const emojis = useUserEmojiPacks(pubkey, userEmojis);
+  useEffect(() => {
+    if (session) {
+      Login.setEmojis(emojis);
+    }
+  }, [emojis]);
 }

@@ -2,27 +2,46 @@ import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore } from "@snort/shared";
 import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
+import type { EmojiPack } from "types";
 
 export enum LoginType {
   Nip7 = "nip7",
   PrivateKey = "private-key",
 }
 
+interface ReplaceableTags {
+  tags: Array<string[]>;
+  content?: string;
+  timestamp: number;
+}
+
 export interface LoginSession {
   type: LoginType;
   pubkey: string;
   privateKey?: string;
-  follows: string[];
+  follows: ReplaceableTags;
+  muted: ReplaceableTags;
+  cards: ReplaceableTags;
+  emojis: Array<EmojiPack>;
 }
+
+const initialState = {
+  follows: { tags: [], timestamp: 0 },
+  muted: { tags: [], timestamp: 0 },
+  cards: { tags: [], timestamp: 0 },
+  emojis: [],
+};
+
+const SESSION_KEY = "session";
 
 export class LoginStore extends ExternalStore<LoginSession | undefined> {
   #session?: LoginSession;
 
   constructor() {
     super();
-    const json = window.localStorage.getItem("session");
+    const json = window.localStorage.getItem(SESSION_KEY);
     if (json) {
-      this.#session = JSON.parse(json);
+      this.#session = { ...initialState, ...JSON.parse(json) };
       if (this.#session) {
         this.#session.type ??= LoginType.Nip7;
       }
@@ -33,7 +52,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#session = {
       type,
       pubkey: pk,
-      follows: [],
+      ...initialState,
     };
     this.#save();
   }
@@ -43,7 +62,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       type: LoginType.PrivateKey,
       pubkey: bytesToHex(schnorr.getPublicKey(key)),
       privateKey: key,
-      follows: [],
+      ...initialState,
     };
     this.#save();
   }
@@ -57,11 +76,45 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     return this.#session ? { ...this.#session } : undefined;
   }
 
+  setFollows(follows: Array<string>, content: string, ts: number) {
+    if (this.#session.follows.timestamp >= ts) {
+      return;
+    }
+    this.#session.follows.tags = follows;
+    this.#session.follows.content = content;
+    this.#session.follows.timestamp = ts;
+    this.#save();
+  }
+
+  setEmojis(emojis: Array<EmojiPack>) {
+    this.#session.emojis = emojis;
+    this.#save();
+  }
+
+  setMuted(muted: Array<string[]>, content: string, ts: number) {
+    if (this.#session.muted.timestamp >= ts) {
+      return;
+    }
+    this.#session.muted.tags = muted;
+    this.#session.muted.content = content;
+    this.#session.muted.timestamp = ts;
+    this.#save();
+  }
+
+  setCards(cards: Array<string[]>, ts: number) {
+    if (this.#session.cards.timestamp >= ts) {
+      return;
+    }
+    this.#session.cards.tags = cards;
+    this.#session.cards.timestamp = ts;
+    this.#save();
+  }
+
   #save() {
     if (this.#session) {
-      window.localStorage.setItem("session", JSON.stringify(this.#session));
+      window.localStorage.setItem(SESSION_KEY, JSON.stringify(this.#session));
     } else {
-      window.localStorage.removeItem("session");
+      window.localStorage.removeItem(SESSION_KEY);
     }
     this.notifyChange();
   }
@@ -75,7 +128,7 @@ export function getPublisher(session: LoginSession) {
     case LoginType.PrivateKey: {
       return new EventPublisher(
         new PrivateKeySigner(session.privateKey!),
-        session.pubkey
+        session.pubkey,
       );
     }
   }

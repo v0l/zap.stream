@@ -15,6 +15,7 @@ import { Icon } from "element/icon";
 import { SendZapsDialog } from "element/send-zap";
 import { VideoTile } from "element/video-tile";
 import { FollowButton } from "element/follow-button";
+import { MuteButton } from "element/mute-button";
 import { useProfile } from "hooks/profile";
 import useTopZappers from "hooks/top-zappers";
 import { Text } from "element/text";
@@ -131,6 +132,7 @@ export function ProfilePage() {
               />
             )}
             <FollowButton pubkey={link.id} />
+            <MuteButton pubkey={link.id} />
           </div>
           <div className="profile-information">
             {profile?.name && <h1 className="name">{profile.name}</h1>}

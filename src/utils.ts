@@ -90,3 +90,7 @@ export async function openFile(): Promise<File | undefined> {
     elm.click();
   });
 }
+
+export function getTagValues(tags: Array<string[]>, tag: string) {
+  return tags.filter((t) => t.at(0) === tag).map((t) => t.at(1));
+}

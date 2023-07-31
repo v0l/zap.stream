@@ -4,6 +4,11 @@
   border-radius: 10px;
 }
 
+.note .note-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .note .note-header .profile {
   font-size: 14px;
 }
@@ -17,6 +22,11 @@
   margin-left: 30px;
 }
 
-.note .note-content .markdown > p {
+.note .note-content .markdown > * {
   font-size: 14px;
+}
+
+.note .note-content .markdown > ul,
+.note .note-content .markdown ol {
+  margin-left: 30px;
 }

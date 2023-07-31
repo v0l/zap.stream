@@ -26,7 +26,7 @@ import { ChatMessage } from "./chat-message";
 import { Goal } from "./goal";
 import { NewGoalDialog } from "./new-goal";
 import { WriteMessage } from "./write-message";
-import { findTag, getHost } from "utils";
+import { findTag, getTagValues, getHost } from "utils";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -79,10 +79,13 @@ export function LiveChat({
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
 
-  const userEmojiPacks = useEmoji(login?.pubkey);
+  const mutedPubkeys = useMemo(() => {
+    return new Set(getTagValues(login?.muted.tags ?? [], "p"));
+  }, [login]);
+  const userEmojiPacks = login?.emojis ?? [];
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
-    return uniqBy(channelEmojiPacks.concat(userEmojiPacks), packId);
+    return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
 
   const zaps = feed.zaps
@@ -105,6 +108,9 @@ export function LiveChat({
       );
     }
   }, [ev]);
+  const filteredEvents = useMemo(() => {
+    return events.filter((e) => !mutedPubkeys.has(e.pubkey));
+  }, [events, mutedPubkeys]);
 
   return (
     <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
@@ -135,7 +141,7 @@ export function LiveChat({
         </div>
       )}
       <div className="messages">
-        {events.map((a) => {
+        {filteredEvents.map((a) => {
           switch (a.kind) {
             case LIVE_STREAM_CHAT: {
               return (

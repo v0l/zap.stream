@@ -9,10 +9,10 @@ import { bytesToHex } from "@noble/curves/abstract/utils";
 import { formatSats } from "../number";
 import { Icon } from "./icon";
 import AsyncButton from "./async-button";
-import { Relays } from "index";
 import QrCode from "./qr-code";
 import { useLogin } from "hooks/login";
 import Copy from "./copy";
+import { defaultRelays } from "const";
 
 export interface LNURLLike {
   get name(): string;
@@ -21,7 +21,7 @@ export interface LNURLLike {
   getInvoice(
     amountInSats: number,
     comment?: string,
-    zap?: NostrEvent
+    zap?: NostrEvent,
   ): Promise<{ pr?: string }>;
 }
 
@@ -55,7 +55,7 @@ export function SendZaps({
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
   const login = useLogin();
-
+  const relays = Object.keys(defaultRelays);
   const name = targetName ?? svc?.name;
   async function loadService(lnurl: string) {
     const s = new LNURL(lnurl);
@@ -78,7 +78,9 @@ export function SendZaps({
     let pub = login?.publisher();
     let isAnon = false;
     if (!pub) {
-      pub = EventPublisher.privateKey(bytesToHex(secp256k1.utils.randomPrivateKey()));
+      pub = EventPublisher.privateKey(
+        bytesToHex(secp256k1.utils.randomPrivateKey()),
+      );
       isAnon = true;
     }
 
@@ -88,7 +90,7 @@ export function SendZaps({
       zap = await pub.zap(
         amountInSats * 1000,
         pubkey,
-        Relays,
+        relays,
         undefined,
         comment,
         (eb) => {
@@ -102,7 +104,7 @@ export function SendZaps({
             eb.tag(["anon", ""]);
           }
           return eb;
-        }
+        },
       );
     }
     const invoice = await svc.getInvoice(amountInSats, comment, zap);

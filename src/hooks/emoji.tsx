@@ -1,3 +1,6 @@
+import { useMemo } from "react";
+import uniqBy from "lodash.uniqby";
+
 import {
   RequestBuilder,
   ReplaceableNoteStore,
@@ -6,29 +9,15 @@ import {
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { System } from "index";
-import { useMemo } from "react";
 import { findTag } from "utils";
 import { EMOJI_PACK, USER_EMOJIS } from "const";
-import type { EmojiTag } from "../element/emoji";
-import uniqBy from "lodash.uniqby";
-
-export interface Emoji {
-  native?: string;
-  id?: string;
-}
-
-export interface EmojiPack {
-  address: string;
-  name: string;
-  author: string;
-  emojis: EmojiTag[];
-}
+import { EmojiPack } from "types";
 
 function cleanShortcode(shortcode?: string) {
   return shortcode?.replace(/\s+/g, "_").replace(/_$/, "");
 }
 
-function toEmojiPack(ev: NostrEvent): EmojiPack {
+export function toEmojiPack(ev: NostrEvent): EmojiPack {
   const d = findTag(ev, "d") || "";
   return {
     address: `${ev.kind}:${ev.pubkey}:${d}`,
@@ -44,25 +33,10 @@ export function packId(pack: EmojiPack): string {
   return `${pack.author}:${pack.name}`;
 }
 
-export default function useEmoji(pubkey?: string) {
-  const sub = useMemo(() => {
-    if (!pubkey) return null;
-    const rb = new RequestBuilder(`emoji:${pubkey}`);
-
-    rb.withFilter().authors([pubkey]).kinds([USER_EMOJIS]);
-
-    return rb;
-  }, [pubkey]);
-
-  const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub,
-  );
-
+export function useUserEmojiPacks(pubkey?: string, userEmoji: Array<string[]>) {
   const related = useMemo(() => {
-    if (userEmoji) {
-      return userEmoji.tags.filter(
+    if (userEmoji?.length > 0) {
+      return userEmoji.filter(
         (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`),
       );
     }
@@ -101,8 +75,29 @@ export default function useEmoji(pubkey?: string) {
   }, [relatedData]);
 
   const emojis = useMemo(() => {
-    return uniqBy(emojiPacks.map(toEmojiPack), packId);
+    const packs = emojiPacks.map(toEmojiPack);
+    return uniqBy(packs, packId);
   }, [emojiPacks]);
 
+  return emojis;
+}
+
+export default function useEmoji(pubkey?: string) {
+  const sub = useMemo(() => {
+    if (!pubkey) return null;
+    const rb = new RequestBuilder(`emoji:${pubkey}`);
+
+    rb.withFilter().authors([pubkey]).kinds([USER_EMOJIS]);
+
+    return rb;
+  }, [pubkey]);
+
+  const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
+    System,
+    ReplaceableNoteStore,
+    sub,
+  );
+
+  const emojis = useUserEmojiPacks(pubkey, userEmoji?.tags ?? []);
   return emojis;
 }

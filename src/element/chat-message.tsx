@@ -14,7 +14,7 @@ import { EmojiPicker } from "./emoji-picker";
 import { Icon } from "./icon";
 import { Emoji } from "./emoji";
 import { Profile } from "./profile";
-import { Text } from "./text";
+import { Text } from "element/text";
 import { SendZapsDialog } from "./send-zap";
 import { findTag } from "../utils";
 import type { EmojiPack } from "../hooks/emoji";
@@ -140,11 +140,19 @@ export function ChatMessage({
         onClick={() => setShowZapDialog(true)}
       >
         <Profile
-          icon={ev.pubkey === streamer && <Icon name="signal" size={16} />}
+          icon={
+            ev.pubkey === streamer && <Icon name="signal" size={16} />
+            //    todo: styling is ready if we want to add stream badges
+            //    <img
+            //      className="badge-icon"
+            //      src="https://nostr.build/i/nostr.build_4b0d4f7293eb0f2bacb5b232a8d2ef3fe7648192d636e152a3c18b9fc06142d7.png"
+            //      alt="TODO"
+            //    />
+          }
           pubkey={ev.pubkey}
           profile={profile}
         />
-        <Text content={ev.content} tags={ev.tags} />
+        <Text tags={ev.tags} content={ev.content} />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (
