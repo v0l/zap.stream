@@ -12,6 +12,7 @@ import AsyncButton from "./async-button";
 import QrCode from "./qr-code";
 import { useLogin } from "hooks/login";
 import Copy from "./copy";
+import { defaultRelays } from "const";
 
 export interface LNURLLike {
   get name(): string;
@@ -54,7 +55,7 @@ export function SendZaps({
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
   const login = useLogin();
-  const relays = Object.keys(login.relays);
+  const relays = Object.keys(defaultRelays);
   const name = targetName ?? svc?.name;
   async function loadService(lnurl: string) {
     const s = new LNURL(lnurl);
