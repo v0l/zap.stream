@@ -43,6 +43,7 @@
   flex-direction: column;
   gap: 16px;
   flex: 1;
+  width: 100%;
 }
 
 .stream-card.image-card {
