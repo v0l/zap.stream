@@ -29,15 +29,6 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     () => Login.snapshot(),
   );
 
-  useEffect(() => {
-    if (session) {
-      Object.entries(session.relays).forEach((params) => {
-        const [relay, settings] = params;
-        System.ConnectToRelay(relay, settings);
-      });
-    }
-  }, [session]);
-
   const sub = useMemo(() => {
     if (!pubkey) return null;
     const b = new RequestBuilder(`login:${pubkey.slice(0, 12)}`);
