@@ -357,3 +357,20 @@
   height: 18px;
   border-radius: unset;
 }
+
+.badge-award {
+  border-radius: 12px;
+  border: 1px solid #303030;
+  background: #111;
+  padding: 8px 12px;
+}
+
+.badge-award .title {
+  margin: 0;
+}
+
+.badge-awardees {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

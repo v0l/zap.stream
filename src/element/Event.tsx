@@ -13,7 +13,7 @@ interface EventProps {
 export function Event({ link }: EventProps) {
   const event = useEvent(link);
 
-  if (event && event.kind === GOAL) {
+  if (event?.kind === GOAL) {
     return (
       <div className="event-container">
         <Goal ev={event} />
@@ -21,7 +21,7 @@ export function Event({ link }: EventProps) {
     );
   }
 
-  if (event && event.kind === EventKind.TextNote) {
+  if (event?.kind === EventKind.TextNote) {
     return (
       <div className="event-container">
         <Note ev={event} />

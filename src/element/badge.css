@@ -1,0 +1,36 @@
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+}
+
+.badge .badge-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.badge .badge-name {
+  margin: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.badge .badge-description {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.badge .badge-thumbnail {
+  max-width: 120px;
+  aspect-ration: 4/3;
+}
+
+.badge .badge-description {
+  font-size: 14px;
+  line-height: 20px;
+}

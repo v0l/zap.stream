@@ -2,6 +2,20 @@ import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
 import * as utils from "@noble/curves/abstract/utils";
 import { bech32 } from "@scure/base";
 
+export function toAddress(e: NostrEvent): string {
+  if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
+    const dTag = findTag(e, "d");
+
+    return `${e.kind}:${e.pubkey}:${dTag}`;
+  }
+
+  if (e.kind === 0 || e.kind === 3) {
+    return e.pubkey;
+  }
+
+  return e.id;
+}
+
 export function toTag(e: NostrEvent): string[] {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
     const dTag = findTag(e, "d");

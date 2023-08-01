@@ -3,12 +3,12 @@ import { parseNostrLink, TaggedRawEvent } from "@snort/system";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import useEventFeed from "hooks/event-feed";
 import { LiveVideoPlayer } from "element/live-video-player";
 import { findTag, getHost } from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
+import useEventFeed from "hooks/event-feed";
 import { useLogin } from "hooks/login";
 import { useZapGoal } from "hooks/goals";
 import { StreamState, System } from "index";
@@ -22,7 +22,10 @@ import { StreamCards } from "element/stream-cards";
 import { formatSats } from "number";
 import { StreamTimer } from "element/stream-time";
 import { ShareMenu } from "element/share-menu";
-import { ContentWarningOverlay, isContentWarningAccepted } from "element/content-warning";
+import {
+  ContentWarningOverlay,
+  isContentWarningAccepted,
+} from "element/content-warning";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const login = useLogin();
@@ -118,7 +121,7 @@ export function StreamPage() {
   const tags = ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? [];
 
   if (contentWarning && !isContentWarningAccepted()) {
-    return <ContentWarningOverlay />
+    return <ContentWarningOverlay />;
   }
 
   const descriptionContent = [
