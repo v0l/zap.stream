@@ -9,7 +9,7 @@ import { WEEK } from "const";
 import { System } from "index";
 import type { Badge } from "types";
 
-export function useBadges(pubkey: string, leaveOpen = true): Array<Badge> {
+export function useBadges(pubkey: string, leaveOpen = true) {
   const since = useMemo(() => unixNow() - WEEK, [pubkey]);
   const rb = useMemo(() => {
     const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
