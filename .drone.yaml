@@ -18,6 +18,7 @@ steps:
       - yarn install
       - yarn eslint src/
       - yarn prettier --check src/
+      - yarn tsc --noEmit
 volumes:
   - name: cache
     claim:
