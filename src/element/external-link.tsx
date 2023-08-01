@@ -1,6 +1,28 @@
+import type { ReactNode } from "react";
 import { Icon } from "element/icon";
 
-export function ExternalIconLink({ size = 32, href, ...rest }) {
+interface ExternalLinkProps {
+  href: string;
+  children: ReactNode;
+}
+
+export function ExternalLink({ children, href }: ExternalLinkProps) {
+  return (
+    <a href={href} rel="noopener noreferrer" target="_blank">
+      {children}
+    </a>
+  );
+}
+
+interface ExternalIconLinkProps extends Omit<ExternalLinkProps, "children"> {
+  size?: number;
+}
+
+export function ExternalIconLink({
+  size = 32,
+  href,
+  ...rest
+}: ExternalIconLinkProps) {
   return (
     <span style={{ cursor: "pointer" }}>
       <Icon
@@ -10,13 +32,5 @@ export function ExternalIconLink({ size = 32, href, ...rest }) {
         {...rest}
       />
     </span>
-  );
-}
-
-export function ExternalLink({ children, href }) {
-  return (
-    <a href={href} rel="noopener noreferrer" target="_blank">
-      {children}
-    </a>
   );
 }

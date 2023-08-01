@@ -5,7 +5,7 @@ import { MUTED } from "const";
 
 export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
   const login = useLogin();
-  const tags = login.muted.tags;
+  const { tags, content, timestamp } = login!.muted;
   const muted = tags.filter((t) => t.at(0) === "p");
   const isMuted = muted.find((t) => t.at(1) === pubkey);
 
@@ -14,7 +14,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
     if (pub) {
       const newMuted = tags.filter((t) => t.at(1) !== pubkey);
       const ev = await pub.generic((eb) => {
-        eb.kind(MUTED).content(login.muted.content);
+        eb.kind(MUTED).content(content ?? "");
         for (const t of newMuted) {
           eb.tag(t);
         }
@@ -22,7 +22,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setMuted(newMuted, login.muted.content, ev.created_at);
+      Login.setMuted(newMuted, content ?? "", ev.created_at);
     }
   }
 
@@ -31,7 +31,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
     if (pub) {
       const newMuted = [...tags, ["p", pubkey]];
       const ev = await pub.generic((eb) => {
-        eb.kind(MUTED).content(login.muted.content);
+        eb.kind(MUTED).content(content ?? "");
         for (const tag of newMuted) {
           eb.tag(tag);
         }
@@ -39,13 +39,13 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
       });
       console.debug(ev);
       System.BroadcastEvent(ev);
-      Login.setMuted(newMuted, login.muted.content, ev.created_at);
+      Login.setMuted(newMuted, content ?? "", ev.created_at);
     }
   }
 
   return (
     <AsyncButton
-      disabled={login.muted.timestamp === 0}
+      disabled={timestamp ? timestamp === 0 : true}
       type="button"
       className="btn delete-button"
       onClick={isMuted ? unmute : mute}
@@ -57,7 +57,5 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
 
 export function MuteButton({ pubkey }: { pubkey: string }) {
   const login = useLogin();
-  return login?.pubkey ? (
-    <LoggedInMuteButton loggedIn={login.pubkey} pubkey={pubkey} />
-  ) : null;
+  return login?.pubkey ? <LoggedInMuteButton pubkey={pubkey} /> : null;
 }

@@ -8,18 +8,17 @@ import {
   useIntersectionObserver,
 } from "usehooks-ts";
 
-import { System } from "../index";
-import { formatSats } from "../number";
-import { EmojiPicker } from "./emoji-picker";
-import { Icon } from "./icon";
-import { Emoji as EmojiComponent } from "./emoji";
+import { EmojiPicker } from "element/emoji-picker";
+import { Icon } from "element/icon";
+import { Emoji as EmojiComponent } from "element/emoji";
 import { Profile } from "./profile";
 import { Text } from "element/text";
-import { SendZapsDialog } from "./send-zap";
-import { findTag } from "../utils";
-import type { EmojiPack } from "../hooks/emoji";
-import { useLogin } from "../hooks/login";
-import type { Badge, Emoji } from "types";
+import { SendZapsDialog } from "element/send-zap";
+import { useLogin } from "hooks/login";
+import { formatSats } from "number";
+import { findTag } from "utils";
+import type { Badge, Emoji, EmojiPack } from "types";
+import { System } from "index";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -104,7 +103,7 @@ export function ChatMessage({
       if (emoji.native) {
         reply = await pub?.react(ev, emoji.native || "+1");
       } else {
-        const e = getEmojiById(emoji.id);
+        const e = getEmojiById(emoji.id!);
         if (e) {
           reply = await pub?.generic((eb) => {
             return eb

@@ -2,7 +2,7 @@ import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore } from "@snort/shared";
 import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
-import type { EmojiPack } from "types";
+import type { EmojiPack, Tags } from "types";
 
 export enum LoginType {
   Nip7 = "nip7",
@@ -76,7 +76,8 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     return this.#session ? { ...this.#session } : undefined;
   }
 
-  setFollows(follows: Array<string>, content: string, ts: number) {
+  setFollows(follows: Tags, content: string, ts: number) {
+    if (!this.#session) return;
     if (this.#session.follows.timestamp >= ts) {
       return;
     }
@@ -87,11 +88,13 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
   }
 
   setEmojis(emojis: Array<EmojiPack>) {
+    if (!this.#session) return;
     this.#session.emojis = emojis;
     this.#save();
   }
 
-  setMuted(muted: Array<string[]>, content: string, ts: number) {
+  setMuted(muted: Tags, content: string, ts: number) {
+    if (!this.#session) return;
     if (this.#session.muted.timestamp >= ts) {
       return;
     }
@@ -101,7 +104,8 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#save();
   }
 
-  setCards(cards: Array<string[]>, ts: number) {
+  setCards(cards: Tags, ts: number) {
+    if (!this.#session) return;
     if (this.#session.cards.timestamp >= ts) {
       return;
     }

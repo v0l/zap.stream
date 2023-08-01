@@ -50,7 +50,7 @@ export function useStreamsFeed(tag?: string) {
   );
   const ended = feedSorted.filter((a) => {
     const hasEnded = findTag(a, "status") === StreamState.Ended;
-    const recording = findTag(a, "recording");
+    const recording = findTag(a, "recording") ?? "";
     return hasEnded && recording?.length > 0;
   });
 

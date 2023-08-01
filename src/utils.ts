@@ -1,6 +1,7 @@
 import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
 import * as utils from "@noble/curves/abstract/utils";
 import { bech32 } from "@scure/base";
+import type { Tag, Tags } from "types";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -16,7 +17,7 @@ export function toAddress(e: NostrEvent): string {
   return e.id;
 }
 
-export function toTag(e: NostrEvent): string[] {
+export function toTag(e: NostrEvent): Tag {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
     const dTag = findTag(e, "d");
 
@@ -105,6 +106,10 @@ export async function openFile(): Promise<File | undefined> {
   });
 }
 
-export function getTagValues(tags: Array<string[]>, tag: string) {
-  return tags.filter((t) => t.at(0) === tag).map((t) => t.at(1));
+export function getTagValues(tags: Tags, tag: string): Array<string> {
+  return tags
+    .filter((t) => t.at(0) === tag)
+    .map((t) => t.at(1))
+    .filter((t) => t)
+    .map((t) => t as string);
 }

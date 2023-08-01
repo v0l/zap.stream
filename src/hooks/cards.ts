@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import {
+  TaggedRawEvent,
   ReplaceableNoteStore,
   NoteCollection,
   RequestBuilder,
@@ -15,7 +16,7 @@ export function useUserCards(
   pubkey: string,
   userCards: Array<string[]>,
   leaveOpen = false,
-) {
+): TaggedRawEvent[] {
   const related = useMemo(() => {
     // filtering to only show CARD kinds for now, but in the future we could link and render anything
     if (userCards?.length > 0) {
@@ -57,7 +58,7 @@ export function useUserCards(
   const cards = useMemo(() => {
     return related
       .map((t) => {
-        const [k, pubkey, identifier] = t.at(1).split(":");
+        const [k, pubkey, identifier] = t.at(1)!.split(":");
         const kind = Number(k);
         return (data ?? []).find(
           (e) =>
@@ -66,13 +67,14 @@ export function useUserCards(
             findTag(e, "d") === identifier,
         );
       })
-      .filter((e) => e);
+      .filter((e) => e)
+      .map((e) => e as TaggedRawEvent);
   }, [related, data]);
 
   return cards;
 }
 
-export function useCards(pubkey: string, leaveOpen = false) {
+export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`user-cards:${pubkey.slice(0, 12)}`);
     b.withOptions({
@@ -127,21 +129,23 @@ export function useCards(pubkey: string, leaveOpen = false) {
     NoteCollection,
     subRelated,
   );
+  const cardEvents = data ?? [];
 
   const cards = useMemo(() => {
     return related
       .map((t) => {
-        const [k, pubkey, identifier] = t.at(1).split(":");
+        const [k, pubkey, identifier] = t.at(1)!.split(":");
         const kind = Number(k);
-        return data.find(
+        return cardEvents.find(
           (e) =>
             e.kind === kind &&
             e.pubkey === pubkey &&
             findTag(e, "d") === identifier,
         );
       })
-      .filter((e) => e);
-  }, [related, data]);
+      .filter((e) => e)
+      .map((e) => e as TaggedRawEvent);
+  }, [related, cardEvents]);
 
   return cards;
 }

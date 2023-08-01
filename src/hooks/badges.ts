@@ -1,14 +1,23 @@
 import { useMemo } from "react";
 
-import { EventKind, NoteCollection, RequestBuilder } from "@snort/system";
+import {
+  TaggedRawEvent,
+  EventKind,
+  NoteCollection,
+  RequestBuilder,
+} from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 
 import { findTag, toAddress, getTagValues } from "utils";
 import { WEEK } from "const";
 import { System } from "index";
+import type { Badge } from "types";
 
-export function useBadges(pubkey: string, leaveOpen = true) {
+export function useBadges(
+  pubkey: string,
+  leaveOpen = true,
+): { badges: Badge[]; awards: TaggedRawEvent[] } {
   const since = useMemo(() => unixNow() - WEEK, [pubkey]);
   const rb = useMemo(() => {
     const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
@@ -61,7 +70,7 @@ export function useBadges(pubkey: string, leaveOpen = true) {
 
   const badges = useMemo(() => {
     return rawBadges.map((e) => {
-      const name = findTag(e, "d");
+      const name = findTag(e, "d") ?? "";
       const address = toAddress(e);
       const awardEvents = badgeAwards.filter(
         (b) => findTag(b, "a") === address,
@@ -79,7 +88,7 @@ export function useBadges(pubkey: string, leaveOpen = true) {
       );
       const thumb = findTag(e, "thumb");
       const image = findTag(e, "image");
-      return { name, thumb, image, awardees, accepted };
+      return { name, thumb, image, awardees, accepted } as Badge;
     });
     return [];
   }, [rawBadges]);

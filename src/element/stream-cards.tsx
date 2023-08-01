@@ -5,50 +5,51 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import type { NostrEvent } from "@snort/system";
+import type { TaggedRawEvent } from "@snort/system";
 
 import { Toggle } from "element/toggle";
+import { Icon } from "element/icon";
+import { ExternalLink } from "element/external-link";
+import { FileUploader } from "element/file-uploader";
+import { Markdown } from "element/markdown";
 import { useLogin } from "hooks/login";
 import { useCards, useUserCards } from "hooks/cards";
 import { CARD, USER_CARDS } from "const";
-import { toTag } from "utils";
+import { toTag, findTag } from "utils";
 import { Login, System } from "index";
-import { findTag } from "utils";
-import { Icon } from "./icon";
-import { ExternalLink } from "./external-link";
-import { FileUploader } from "./file-uploader";
-import { Markdown } from "./markdown";
+import type { Tags } from "types";
 
 interface CardType {
-  identifier?: string;
+  identifier: string;
+  content: string;
   title?: string;
   image?: string;
   link?: string;
-  content: string;
 }
 
-interface CardProps {
-  canEdit?: boolean;
-  ev: NostrEvent;
-  cards: NostrEvent[];
-}
+type NewCard = Omit<CardType, "identifier">;
 
 function isEmpty(s?: string) {
   return !s || s.trim().length === 0;
 }
 
+interface CardPreviewProps extends NewCard {
+  style: object;
+}
+
 const CardPreview = forwardRef(
-  ({ style, title, link, image, content }, ref) => {
+  ({ style, title, link, image, content }: CardPreviewProps, ref) => {
     const isImageOnly = !isEmpty(image) && isEmpty(content) && isEmpty(title);
     return (
       <div
         className={`stream-card ${isImageOnly ? "image-card" : ""}`}
+        // @ts-expect-error: Type 'ForwardRef<unknown>'
         ref={ref}
         style={style}
       >
         {title && <h1 className="card-title">{title}</h1>}
         {image &&
-          (link?.length > 0 ? (
+          (link && link?.length > 0 ? (
             <ExternalLink href={link}>
               <img className="card-image" src={image} alt={title} />
             </ExternalLink>
@@ -61,9 +62,19 @@ const CardPreview = forwardRef(
   },
 );
 
+interface CardProps {
+  canEdit?: boolean;
+  ev: TaggedRawEvent;
+  cards: TaggedRawEvent[];
+}
+
+interface CardItem {
+  identifier: string;
+}
+
 function Card({ canEdit, ev, cards }: CardProps) {
   const login = useLogin();
-  const identifier = findTag(ev, "d");
+  const identifier = findTag(ev, "d") ?? "";
   const title = findTag(ev, "title") || findTag(ev, "subject");
   const image = findTag(ev, "image");
   const link = findTag(ev, "r");
@@ -73,9 +84,9 @@ function Card({ canEdit, ev, cards }: CardProps) {
   const [style, dragRef] = useDrag(
     () => ({
       type: "card",
-      item: { identifier },
+      item: { identifier } as CardItem,
       canDrag: () => {
-        return canEdit;
+        return Boolean(canEdit);
       },
       collect: (monitor) => {
         const isDragging = monitor.isDragging();
@@ -88,15 +99,15 @@ function Card({ canEdit, ev, cards }: CardProps) {
     [canEdit, identifier],
   );
 
-  function findTagByIdentifier(d) {
-    return tags.find((t) => t.at(1).endsWith(`:${d}`));
+  function findTagByIdentifier(d: string) {
+    return tags.find((t) => t.at(1)!.endsWith(`:${d}`));
   }
 
   const [dropStyle, dropRef] = useDrop(
     () => ({
       accept: ["card"],
       canDrop: () => {
-        return canEdit;
+        return Boolean(canEdit);
       },
       collect: (monitor) => {
         const isOvering = monitor.isOver({ shallow: true });
@@ -106,10 +117,11 @@ function Card({ canEdit, ev, cards }: CardProps) {
         };
       },
       async drop(item) {
-        if (identifier === item.identifier) {
+        const typed = item as CardItem;
+        if (identifier === typed.identifier) {
           return;
         }
-        const newItem = findTagByIdentifier(item.identifier);
+        const newItem = findTagByIdentifier(typed.identifier);
         const oldItem = findTagByIdentifier(identifier);
         const newTags = tags.map((t) => {
           if (t === oldItem) {
@@ -119,18 +131,20 @@ function Card({ canEdit, ev, cards }: CardProps) {
             return oldItem;
           }
           return t;
-        });
+        }) as Tags;
         const pub = login?.publisher();
-        const userCardsEv = await pub.generic((eb) => {
-          eb.kind(USER_CARDS).content("");
-          for (const tag of newTags) {
-            eb.tag(tag);
-          }
-          return eb;
-        });
-        console.debug(userCardsEv);
-        System.BroadcastEvent(userCardsEv);
-        Login.setCards(newTags, userCardsEv.created_at);
+        if (pub) {
+          const userCardsEv = await pub.generic((eb) => {
+            eb.kind(USER_CARDS).content("");
+            for (const tag of newTags) {
+              eb.tag(tag);
+            }
+            return eb;
+          });
+          console.debug(userCardsEv);
+          System.BroadcastEvent(userCardsEv);
+          Login.setCards(newTags, userCardsEv.created_at);
+        }
       },
     }),
     [canEdit, tags, identifier],
@@ -166,7 +180,7 @@ interface CardDialogProps {
   cta?: string;
   cancelCta?: string;
   card?: CardType;
-  onSave(ev: CardType): void;
+  onSave(ev: NewCard): void;
   onCancel(): void;
 }
 
@@ -187,7 +201,7 @@ function CardDialog({
     <div className="new-card">
       <h3>{header || "Add card"}</h3>
       <div className="form-control">
-        <label for="card-title">Title</label>
+        <label htmlFor="card-title">Title</label>
         <input
           id="card-title"
           type="text"
@@ -197,7 +211,7 @@ function CardDialog({
         />
       </div>
       <div className="form-control">
-        <label for="card-image">Image</label>
+        <label htmlFor="card-image">Image</label>
         <FileUploader
           defaultImage={image}
           onFileUpload={setImage}
@@ -205,7 +219,7 @@ function CardDialog({
         />
       </div>
       <div className="form-control">
-        <label for="card-image-link">Image Link</label>
+        <label htmlFor="card-image-link">Image Link</label>
         <input
           id="card-image-link"
           type="text"
@@ -215,7 +229,7 @@ function CardDialog({
         />
       </div>
       <div className="form-control">
-        <label for="card-content">Content</label>
+        <label htmlFor="card-content">Content</label>
         <textarea
           placeholder="Start typing..."
           value={content}
@@ -245,7 +259,7 @@ function CardDialog({
 
 interface EditCardProps {
   card: CardType;
-  cards: NostrEvent[];
+  cards: TaggedRawEvent[];
 }
 
 function EditCard({ card, cards }: EditCardProps) {
@@ -254,18 +268,18 @@ function EditCard({ card, cards }: EditCardProps) {
   const identifier = card.identifier;
   const tags = cards.map(toTag);
 
-  async function editCard({ title, image, link, content }) {
+  async function editCard({ title, image, link, content }: CardType) {
     const pub = login?.publisher();
     if (pub) {
       const ev = await pub.generic((eb) => {
         eb.kind(CARD).content(content).tag(["d", card.identifier]);
-        if (title?.length > 0) {
+        if (title && title?.length > 0) {
           eb.tag(["title", title]);
         }
-        if (image?.length > 0) {
+        if (image && image?.length > 0) {
           eb.tag(["image", image]);
         }
-        if (link?.lenght > 0) {
+        if (link && link?.length > 0) {
           eb.tag(["r", link]);
         }
         return eb;
@@ -279,7 +293,7 @@ function EditCard({ card, cards }: EditCardProps) {
   async function onCancel() {
     const pub = login?.publisher();
     if (pub) {
-      const newTags = tags.filter((t) => !t.at(1).endsWith(`:${identifier}`));
+      const newTags = tags.filter((t) => !t.at(1)!.endsWith(`:${identifier}`));
       const userCardsEv = await pub.generic((eb) => {
         eb.kind(USER_CARDS).content("");
         for (const tag of newTags) {
@@ -318,7 +332,7 @@ function EditCard({ card, cards }: EditCardProps) {
 }
 
 interface AddCardProps {
-  cards: NostrEvent[];
+  cards: TaggedRawEvent[];
 }
 
 function AddCard({ cards }: AddCardProps) {
@@ -326,19 +340,19 @@ function AddCard({ cards }: AddCardProps) {
   const tags = cards.map(toTag);
   const [isOpen, setIsOpen] = useState(false);
 
-  async function createCard({ title, image, link, content }) {
+  async function createCard({ title, image, link, content }: NewCard) {
     const pub = login?.publisher();
     if (pub) {
       const ev = await pub.generic((eb) => {
         const d = String(Date.now());
         eb.kind(CARD).content(content).tag(["d", d]);
-        if (title?.length > 0) {
+        if (title && title?.length > 0) {
           eb.tag(["title", title]);
         }
-        if (image?.length > 0) {
+        if (image && image?.length > 0) {
           eb.tag(["image", image]);
         }
-        if (link?.length > 0) {
+        if (link && link?.length > 0) {
           eb.tag(["r", link]);
         }
         return eb;
@@ -382,15 +396,19 @@ function AddCard({ cards }: AddCardProps) {
   );
 }
 
-export function StreamCardEditor() {
-  const login = useLogin();
-  const cards = useUserCards(login.pubkey, login.cards.tags, true);
+interface StreamCardEditorProps {
+  pubkey: string;
+  tags: Tags;
+}
+
+export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
+  const cards = useUserCards(pubkey, tags, true);
   const [isEditing, setIsEditing] = useState(false);
   return (
     <>
       <div className="stream-cards">
         {cards.map((ev) => (
-          <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev} />
+          <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev!} />
         ))}
         {isEditing && <AddCard cards={cards} />}
       </div>
@@ -406,23 +424,31 @@ export function StreamCardEditor() {
   );
 }
 
-export function ReadOnlyStreamCards({ host }) {
+interface StreamCardsProps {
+  host: string;
+}
+
+export function ReadOnlyStreamCards({ host }: StreamCardsProps) {
   const cards = useCards(host);
   return (
     <div className="stream-cards">
       {cards.map((ev) => (
-        <Card cards={cards} key={ev.id} ev={ev} />
+        <Card cards={cards} key={ev!.id} ev={ev!} />
       ))}
     </div>
   );
 }
 
-export function StreamCards({ host }) {
+export function StreamCards({ host }: StreamCardsProps) {
   const login = useLogin();
   const canEdit = login?.pubkey === host;
   return (
     <DndProvider backend={HTML5Backend}>
-      {canEdit ? <StreamCardEditor /> : <ReadOnlyStreamCards host={host} />}
+      {canEdit ? (
+        <StreamCardEditor tags={login.cards.tags} pubkey={login.pubkey} />
+      ) : (
+        <ReadOnlyStreamCards host={host} />
+      )}
     </DndProvider>
   );
 }

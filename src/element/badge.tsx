@@ -4,7 +4,7 @@ import { findTag } from "utils";
 
 export function Badge({ ev }: { ev: NostrEvent }) {
   const name = findTag(ev, "name") || findTag(ev, "d");
-  const description = findTag(ev, "description");
+  const description = findTag(ev, "description") ?? "";
   const thumb = findTag(ev, "thumb");
   const image = findTag(ev, "image");
   return (

@@ -1,9 +1,11 @@
-import { NostrLink } from "./nostr-link";
+import type { ReactNode } from "react";
+import { NostrLink } from "element/nostr-link";
 
 const FileExtensionRegex = /\.([\w]+)$/i;
 
 interface HyperTextProps {
   link: string;
+  children: ReactNode;
 }
 
 export function HyperText({ link, children }: HyperTextProps) {
@@ -24,7 +26,7 @@ export function HyperText({ link, children }: HyperTextProps) {
             <img
               src={url.toString()}
               alt={url.toString()}
-              objectFit="contain"
+              style={{ objectFit: "contain" }}
             />
           );
         }

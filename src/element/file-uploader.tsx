@@ -1,4 +1,5 @@
 import "./file-uploader.css";
+import type { ChangeEvent } from "react";
 import { VoidApi } from "@void-cat/api";
 import { useState } from "react";
 
@@ -38,12 +39,22 @@ async function voidCatUpload(file: File | Blob): Promise<UploadResult> {
   }
 }
 
-export function FileUploader({ defaultImage, onClear, onFileUpload }) {
-  const [img, setImg] = useState(defaultImage);
+interface FileUploaderProps {
+  defaultImage?: string;
+  onClear(): void;
+  onFileUpload(url: string): void;
+}
+
+export function FileUploader({
+  defaultImage,
+  onClear,
+  onFileUpload,
+}: FileUploaderProps) {
+  const [img, setImg] = useState<string>(defaultImage ?? "");
   const [isUploading, setIsUploading] = useState(false);
 
-  async function onFileChange(ev) {
-    const file = ev.target.files[0];
+  async function onFileChange(ev: ChangeEvent<HTMLInputElement>) {
+    const file = ev.target.files && ev.target.files[0];
     if (file) {
       try {
         setIsUploading(true);

@@ -11,7 +11,7 @@ import { useRequestBuilder } from "@snort/system-react";
 import { System } from "index";
 import { findTag } from "utils";
 import { EMOJI_PACK, USER_EMOJIS } from "const";
-import { EmojiPack } from "types";
+import type { EmojiPack, Tags, EmojiTag } from "types";
 
 function cleanShortcode(shortcode?: string) {
   return shortcode?.replace(/\s+/g, "_").replace(/_$/, "");
@@ -33,10 +33,10 @@ export function packId(pack: EmojiPack): string {
   return `${pack.author}:${pack.name}`;
 }
 
-export function useUserEmojiPacks(pubkey?: string, userEmoji: Array<string[]>) {
+export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   const related = useMemo(() => {
-    if (userEmoji?.length > 0) {
-      return userEmoji.filter(
+    if (userEmoji) {
+      return userEmoji?.filter(
         (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`),
       );
     }

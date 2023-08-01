@@ -4,6 +4,9 @@ import { Icon } from "element/icon";
 
 interface ToggleProps {
   label: string;
+  text: string;
+  pressed?: boolean;
+  onPressedChange?: (b: boolean) => void;
 }
 
 export function Toggle({ label, text, ...rest }: ToggleProps) {

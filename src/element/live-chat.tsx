@@ -37,7 +37,7 @@ export interface LiveChatOptions {
 }
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
-  const badge = findTag(ev, "a");
+  const badge = findTag(ev, "a") ?? "";
   const [k, pubkey, d] = badge.split(":");
   const awardees = getTagValues(ev.tags, "p");
   const event = useAddress(Number(k), pubkey, d);

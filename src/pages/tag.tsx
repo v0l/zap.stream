@@ -12,7 +12,7 @@ export function TagPage() {
     <div className="tag-page">
       <div className="tag-page-header">
         <h1>#{tag}</h1>
-        <FollowTagButton tag={tag} />
+        <FollowTagButton tag={tag!} />
       </div>
       <div className="video-grid">
         {live.map((e) => (

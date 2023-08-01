@@ -5,6 +5,7 @@ import { useRequestBuilder } from "@snort/system-react";
 
 import { useUserEmojiPacks } from "hooks/emoji";
 import { MUTED, USER_CARDS, USER_EMOJIS } from "const";
+import type { Tags } from "types";
 import { System, Login } from "index";
 import { getPublisher } from "login";
 
@@ -23,7 +24,7 @@ export function useLogin() {
 }
 
 export function useLoginEvents(pubkey?: string, leaveOpen = false) {
-  const [userEmojis, setUserEmojis] = useState([]);
+  const [userEmojis, setUserEmojis] = useState<Tags>([]);
   const session = useSyncExternalStore(
     (c) => Login.hook(c),
     () => Login.snapshot(),
