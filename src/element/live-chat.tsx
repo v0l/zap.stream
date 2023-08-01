@@ -117,7 +117,7 @@ export function LiveChat({
     return [...feed.messages, ...feed.zaps, ...awards].sort(
       (a, b) => b.created_at - a.created_at,
     );
-  }, [feed.messages, feed.zaps]);
+  }, [feed.messages, feed.zaps, awards]);
   const streamer = getHost(ev);
   const naddr = useMemo(() => {
     if (ev) {
