@@ -38,33 +38,35 @@ export function VideoTile({
     ev.pubkey,
   );
   return (
-    <Link
-      to={`/${link}`}
-      className={`video-tile${contentWarning ? " nsfw" : ""}`}
-      ref={ref}
-    >
-      <div
-        style={{
-          position: "relative",
-          backgroundImage: `url(${
-            inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""
-          })`,
-        }}
+    <div className="video-tile-container">
+      <Link
+        to={`/${link}`}
+        className={`video-tile${contentWarning ? " nsfw" : ""}`}
+        ref={ref}
       >
+        <div
+          style={{
+            backgroundImage: `url(${
+              inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""
+            })`,
+          }}
+        ></div>
+        <span className="pill-box">
+          {showStatus && <StatePill state={status as StreamState} />}
+          {viewers && (
+            <span className="pill viewers">
+              {formatSats(Number(viewers))} viewers
+            </span>
+          )}
+        </span>
+        <h3>{title}</h3>
+      </Link>
+      <div className="video-tile-info">
         <div className="video-tags">
           <Tags ev={ev} max={3} />
         </div>
+        {showAuthor && <div>{inView && <Profile pubkey={host} />}</div>}
       </div>
-      <span className="pill-box">
-        {showStatus && <StatePill state={status as StreamState} />}
-        {viewers && (
-          <span className="pill viewers">
-            {formatSats(Number(viewers))} viewers
-          </span>
-        )}
-      </span>
-      <h3>{title}</h3>
-      {showAuthor && <div>{inView && <Profile pubkey={host} />}</div>}
-    </Link>
+    </div>
   );
 }

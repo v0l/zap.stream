@@ -2,6 +2,17 @@
   position: relative;
 }
 
+.video-tile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-tile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .video-tile.nsfw > div:nth-child(1) {
   filter: blur(3px);
 }
@@ -18,7 +29,7 @@
 .video-tile h3 {
   font-size: 20px;
   line-height: 25px;
-  margin: 16px 0;
+  margin: 16px 0 6px 0;
   word-break: break-all;
   word-wrap: break-word;
 }
@@ -44,16 +55,13 @@
   text-transform: lowercase;
 }
 
-.video-tile .video-tags {
+.video-tags {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 4px;
-  position: absolute;
-  bottom: 4px;
-  left: 4px;
 }
 
-.video-tile .video-tags .pill {
+.video-tags .pill {
   font-size: 12px;
 }
