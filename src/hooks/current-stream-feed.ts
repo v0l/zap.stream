@@ -1,16 +1,22 @@
 import { unwrap } from "@snort/shared";
 import {
+  NostrEvent,
   NostrLink,
   NostrPrefix,
   NoteCollection,
   RequestBuilder,
+  TaggedRawEvent,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "const";
 import { System } from "index";
 import { useMemo } from "react";
 
-export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false) {
+export function useCurrentStreamFeed(
+  link: NostrLink,
+  leaveOpen = false,
+  evPreload?: NostrEvent
+) {
   const author =
     link.type === NostrPrefix.Address ? unwrap(link.author) : link.id;
   const sub = useMemo(() => {
@@ -37,6 +43,10 @@ export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false) {
   }, [link.id, leaveOpen]);
 
   const q = useRequestBuilder(System, NoteCollection, sub);
+
+  if (evPreload) {
+    q.add(evPreload as TaggedRawEvent);
+  }
 
   return useMemo(() => {
     const hosting = q.data?.filter(

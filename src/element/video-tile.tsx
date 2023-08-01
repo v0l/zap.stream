@@ -43,6 +43,7 @@ export function VideoTile({
         to={`/${link}`}
         className={`video-tile${contentWarning ? " nsfw" : ""}`}
         ref={ref}
+        state={ev}
       >
         <div
           style={{

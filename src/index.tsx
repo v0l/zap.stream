@@ -15,6 +15,7 @@ import { ChatPopout } from "pages/chat-popout";
 import { LoginStore } from "login";
 import { StreamProvidersPage } from "pages/providers";
 import { defaultRelays } from "const";
+import { CatchAllRoutePage } from "pages/catch-all";
 
 export enum StreamState {
   Live = "live",
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path: "/providers/:id?",
         element: <StreamProvidersPage />,
       },
+      {
+        path: "*",
+        element: <CatchAllRoutePage />
+      }
     ],
   },
   {

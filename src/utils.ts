@@ -1,7 +1,14 @@
-import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
+import {
+  NostrEvent,
+  NostrPrefix,
+  TaggedRawEvent,
+  encodeTLV,
+  parseNostrLink,
+} from "@snort/system";
 import * as utils from "@noble/curves/abstract/utils";
 import { bech32 } from "@scure/base";
 import type { Tag, Tags } from "types";
+import { LIVE_STREAM } from "const";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -70,16 +77,28 @@ export function splitByUrl(str: string) {
   return str.split(urlRegex);
 }
 
-export function eventLink(ev: NostrEvent) {
-  const d = findTag(ev, "d") ?? "";
-  const naddr = encodeTLV(
-    NostrPrefix.Address,
-    d,
-    undefined,
-    ev.kind,
-    ev.pubkey
-  );
-  return `/${naddr}`;
+export function eventLink(ev: NostrEvent | TaggedRawEvent) {
+  if (ev.kind && ev.kind >= 30000 && ev.kind <= 40000) {
+    const d = findTag(ev, "d") ?? "";
+    return encodeTLV(
+      NostrPrefix.Address,
+      d,
+      "relays" in ev ? ev.relays : undefined,
+      ev.kind,
+      ev.pubkey
+    );
+  } else {
+    return encodeTLV(
+      NostrPrefix.Event,
+      ev.id,
+      "relays" in ev ? ev.relays : undefined
+    );
+  }
+}
+
+export function createNostrLink(ev?: NostrEvent) {
+  if (!ev) return;
+  return parseNostrLink(eventLink(ev));
 }
 
 export function getHost(ev?: NostrEvent) {
@@ -112,4 +131,13 @@ export function getTagValues(tags: Tags, tag: string): Array<string> {
     .map((t) => t.at(1))
     .filter((t) => t)
     .map((t) => t as string);
+}
+
+export function getEventFromLocationState(state: unknown | undefined | null) {
+  return state &&
+    typeof state === "object" &&
+    "kind" in state &&
+    state.kind === LIVE_STREAM
+    ? (state as NostrEvent)
+    : undefined;
 }

@@ -31,7 +31,9 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
             onFinish={(ex) => {
               currentProvider.updateStreamInfo(ex);
               if (!ev) {
-                navigate(eventLink(ex));
+                navigate(`/${eventLink(ex)}`, {
+                  state: ev
+                });
               } else {
                 onFinish?.(ev);
               }

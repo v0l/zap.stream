@@ -1,14 +1,13 @@
 import "./stream-page.css";
 import { parseNostrLink, TaggedRawEvent } from "@snort/system";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { LiveVideoPlayer } from "element/live-video-player";
-import { findTag, getHost } from "utils";
+import { createNostrLink, findTag, getEventFromLocationState, getHost } from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
-import useEventFeed from "hooks/event-feed";
 import { useLogin } from "hooks/login";
 import { useZapGoal } from "hooks/goals";
 import { StreamState, System } from "index";
@@ -26,6 +25,7 @@ import {
   ContentWarningOverlay,
   isContentWarningAccepted,
 } from "element/content-warning";
+import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const login = useLogin();
@@ -107,8 +107,10 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
 
 export function StreamPage() {
   const params = useParams();
+  const location = useLocation();
+  const evPreload = getEventFromLocationState(location.state);
   const link = parseNostrLink(params.id!);
-  const { data: ev } = useEventFeed(link, true);
+  const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const goal = useZapGoal(host, link, true);
 
@@ -151,7 +153,7 @@ export function StreamPage() {
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />
       </div>
-      <LiveChat link={link} ev={ev} goal={goal} />
+      <LiveChat link={createNostrLink(ev) ?? link} ev={ev} goal={goal} />
     </div>
   );
 }
