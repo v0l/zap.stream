@@ -17,7 +17,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
 
   useEffect(() => {
     if (!currentProvider) {
-      setCurrentProvider(providers.at(0));
+      setCurrentProvider(ev !== undefined ? providers.find(a => a.name.toLowerCase() === "manual")! : providers.at(0));
     }
   }, [providers, currentProvider]);
 
