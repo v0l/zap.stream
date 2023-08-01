@@ -56,7 +56,7 @@ const config = {
     new ESLintPlugin({
       extensions: ["js", "mjs", "jsx", "ts", "tsx"],
       eslintPath: require.resolve("eslint"),
-      failOnError: !isProduction,
+      failOnError: true,
       cache: true,
     }),
     new MiniCssExtractPlugin({
@@ -102,6 +102,7 @@ const config = {
               ],
             },
           },
+          require.resolve("ts-loader")
         ],
       },
       {
