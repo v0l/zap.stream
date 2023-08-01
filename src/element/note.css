@@ -1,7 +1,9 @@
 .note {
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  margin: 8px 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 .note .note-header {
@@ -10,23 +12,23 @@
 }
 
 .note .note-header .profile {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.note .note-avatar {
-  width: 18px;
-  height: 18px;
+.note .note-header .note-avatar {
+  width: 24px;
+  height: 24px;
 }
 
-.note .note-content {
-  margin-left: 30px;
+.note .note-header .note-link-icon {
+  color: #909090;
 }
 
 .note .note-content .markdown > * {
   font-size: 14px;
 }
 
-.note .note-content .markdown > ul,
-.note .note-content .markdown ol {
-  margin-left: 30px;
+.note .note-content .markdown > *:last-child {
+  margin-bottom: 0;
 }

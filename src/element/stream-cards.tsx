@@ -12,12 +12,16 @@ import { Icon } from "element/icon";
 import { ExternalLink } from "element/external-link";
 import { FileUploader } from "element/file-uploader";
 import { Markdown } from "element/markdown";
+import { Profile } from "element/profile";
 import { useLogin } from "hooks/login";
 import { useCards, useUserCards } from "hooks/cards";
+import { useZaps } from "hooks/zaps";
+import useTopZappers from "hooks/top-zappers";
 import { CARD, USER_CARDS } from "const";
 import { toTag, findTag } from "utils";
 import { Login, System } from "index";
 import type { Tags } from "types";
+import { formatSats } from "number";
 
 interface CardType {
   identifier: string;
@@ -426,12 +430,14 @@ export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
 
 interface StreamCardsProps {
   host: string;
+  isLive: boolean;
 }
 
-export function ReadOnlyStreamCards({ host }: StreamCardsProps) {
+export function ReadOnlyStreamCards({ host, isLive }: StreamCardsProps) {
   const cards = useCards(host);
   return (
     <div className="stream-cards">
+      {cards.length === 99 && <TopZappers host={host} isLive={isLive} />}
       {cards.map((ev) => (
         <Card cards={cards} key={ev!.id} ev={ev!} />
       ))}
@@ -439,7 +445,42 @@ export function ReadOnlyStreamCards({ host }: StreamCardsProps) {
   );
 }
 
-export function StreamCards({ host }: StreamCardsProps) {
+interface TopZappersProps {
+  host: string;
+  isLive: boolean;
+  n?: number;
+}
+
+function TopZappers({ host, isLive, n = 5 }: TopZappersProps) {
+  const zaps = useZaps(host);
+  const topZappers = useTopZappers(zaps);
+  return topZappers.length > 0 ? (
+    <div className="stream-card top-zappers-card">
+      <h1 className="card-title">Top Zappers</h1>
+      <div className="top-zappers-leaderboard">
+        {topZappers
+          .filter((z) => z.pubkey !== "anon")
+          .slice(0, n)
+          .map((z, idx) => (
+            <div
+              className={`top-zapper-container ${idx === 0 ? "first" : ""} ${
+                idx === 1 ? "second" : ""
+              } ${idx === 2 ? "third" : ""}
+	      ${isLive && idx < 3 ? "live" : ""}`}
+            >
+              <Profile pubkey={z.pubkey} />
+              <div className="zap-amount">
+                <Icon name="zap-filled" className="zap-icon" />
+                <p className="top-zapper-amount">{formatSats(z.total)}</p>
+              </div>
+            </div>
+          ))}
+      </div>
+    </div>
+  ) : null;
+}
+
+export function StreamCards({ host, isLive }: StreamCardsProps) {
   const login = useLogin();
   const canEdit = login?.pubkey === host;
   return (
@@ -447,7 +488,7 @@ export function StreamCards({ host }: StreamCardsProps) {
       {canEdit ? (
         <StreamCardEditor tags={login.cards.tags} pubkey={login.pubkey} />
       ) : (
-        <ReadOnlyStreamCards host={host} />
+        <ReadOnlyStreamCards isLive={isLive} host={host} />
       )}
     </DndProvider>
   );

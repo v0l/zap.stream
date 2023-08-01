@@ -1,3 +1,4 @@
+import "./text.css";
 import { useMemo, type ReactNode } from "react";
 
 import { parseNostrLink, validateNostrLink } from "@snort/system";
@@ -31,25 +32,11 @@ function extractLinks(fragments: Fragment[]) {
 
             return (
               normalizedStr.startsWith("http:") ||
-              normalizedStr.startsWith("https:") ||
-              normalizedStr.startsWith("magnet:")
+              normalizedStr.startsWith("https:")
             );
           };
 
           if (validateLink()) {
-            if (!a.startsWith("nostr:")) {
-              return (
-                <a
-                  href={a}
-                  onClick={(e) => e.stopPropagation()}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ext"
-                >
-                  {a}
-                </a>
-              );
-            }
             return <HyperText link={a}>{a}</HyperText>;
           }
           return a;
@@ -204,7 +191,7 @@ export function transformText(ps: Fragment[], tags: Array<string[]>) {
 export function Text({ content, tags }: { content: string; tags: string[][] }) {
   // todo: RTL langugage support
   const element = useMemo(() => {
-    return <span>{transformText([content], tags)}</span>;
+    return <span className="text">{transformText([content], tags)}</span>;
   }, [content, tags]);
 
   return <>{element}</>;

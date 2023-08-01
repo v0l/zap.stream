@@ -4,7 +4,6 @@ import { type NostrEvent } from "@snort/system";
 import { useLogin } from "hooks/login";
 import { toEmojiPack } from "hooks/emoji";
 import AsyncButton from "element/async-button";
-import { Mention } from "element/mention";
 import { findTag } from "utils";
 import { USER_EMOJIS } from "const";
 import { Login, System } from "index";
@@ -44,12 +43,9 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
   }
 
   return (
-    <div className="emoji-pack">
+    <div className="outline emoji-pack">
       <div className="emoji-pack-title">
-        <div>
-          <h4>{name}</h4>
-          <Mention pubkey={ev.pubkey} />
-        </div>
+        <h4>{name}</h4>
         {login?.pubkey && (
           <AsyncButton
             className={`btn btn-primary ${isUsed ? "delete-button" : ""}`}

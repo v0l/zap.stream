@@ -1,5 +1,6 @@
-.custom-emoji {
-  width: 21px;
-  height: 21px;
-  display: inline-block;
+.text img:not(.emoji):not(.note-avatar) {
+  max-height: 720px;
+  margin-top: 8px;
+  width: 100%;
+  border-radius: 6px;
 }

@@ -187,9 +187,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
 }
 
 .profile-page .zapper .zapper-amount {
@@ -197,7 +195,6 @@
   align-items: center;
   gap: 4px;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 22px;
 }

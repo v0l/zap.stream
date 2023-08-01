@@ -15,6 +15,7 @@ export function ExternalLink({ children, href }: ExternalLinkProps) {
 }
 
 interface ExternalIconLinkProps extends Omit<ExternalLinkProps, "children"> {
+  className?: string;
   size?: number;
 }
 

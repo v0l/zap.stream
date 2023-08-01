@@ -141,6 +141,7 @@ export function LiveChat({
           <h2 className="title">Stream Chat</h2>
           <Icon
             name="link"
+            className="secondary"
             size={32}
             onClick={() =>
               window.open(

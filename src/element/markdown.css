@@ -19,7 +19,9 @@
   line-height: 29px; /* 161.111% */
 }
 
-.markdown > img {
-  max-height: 230px;
+.markdown img:not(.emoji):not(.note-avatar) {
+  max-height: 720px;
+  margin-top: 8px;
   width: 100%;
+  border-radius: 6px;
 }
