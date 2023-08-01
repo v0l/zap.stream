@@ -1,4 +1,5 @@
 import "./root.css";
+import { useCallback } from "react";
 import type { NostrEvent } from "@snort/system";
 
 import { VideoTile } from "element/video-tile";
@@ -11,9 +12,12 @@ export function RootPage() {
 
   const { live, planned, ended } = useStreamsFeed();
   const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
-  const followsHost = (ev: NostrEvent) => {
-    return login?.follows.tags?.find((t) => t.at(1) === getHost(ev));
-  };
+  const followsHost = useCallback(
+    (ev: NostrEvent) => {
+      return login?.follows.tags.find((t) => t.at(1) === getHost(ev));
+    },
+    [login?.follows],
+  );
   const hashtags = getTagValues(login?.follows.tags ?? [], "t");
   const following = live.filter(followsHost);
   const liveNow = live.filter((e) => !following.includes(e));
