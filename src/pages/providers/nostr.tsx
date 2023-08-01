@@ -8,77 +8,85 @@ import { StreamProviderInfo, StreamProviderStore } from "providers";
 import { Nip103StreamProvider } from "providers/nip103";
 
 export function ConfigureNostrType() {
-    const [url, setUrl] = useState("");
-    const [info, setInfo] = useState<StreamProviderInfo>();
-    const navigate = useNavigate();
+  const [url, setUrl] = useState("");
+  const [info, setInfo] = useState<StreamProviderInfo>();
+  const navigate = useNavigate();
 
-    async function tryConnect() {
-        try {
-            const api = new Nip103StreamProvider(url);
-            const inf = await api.info();
-            setInfo(inf);
-        } catch (e) {
-            console.error(e);
-        }
+  async function tryConnect() {
+    try {
+      const api = new Nip103StreamProvider(url);
+      const inf = await api.info();
+      setInfo(inf);
+    } catch (e) {
+      console.error(e);
     }
+  }
 
-    function status() {
-        if (!info) return;
+  function status() {
+    if (!info) return;
 
-        return <>
-            <h3>Status</h3>
-            <div>
-                <StatePill state={info?.state ?? StreamState.Ended} />
-            </div>
-            <div>
-                <p>Name</p>
-                <div className="paper">
-                    {info?.name}
-                </div>
-            </div>
-            {info?.summary && <div>
-                <p>Summary</p>
-                <div className="paper">
-                    {info?.summary}
-                </div>
-            </div>}
-            {info?.viewers && <div>
-                <p>Viewers</p>
-                <div className="paper">
-                    {info?.viewers}
-                </div>
-            </div>}
-            {info?.version && <div>
-                <p>Version</p>
-                <div className="paper">
-                    {info?.version}
-                </div>
-            </div>}
-            <div>
-                <button className="btn btn-border" onClick={() => {
-                    StreamProviderStore.add(new Nip103StreamProvider(url));
-                    navigate("/");
-                }}>
-                    Save
-                </button>
-            </div>
-        </>
-    }
-
-    return <div className="owncast-config">
-        <div className="flex f-col g24">
-            <div>
-                <p>Nostr streaming provider URL</p>
-                <div className="paper">
-                    <input type="text" placeholder="https://" value={url} onChange={e => setUrl(e.target.value)} />
-                </div>
-            </div>
-            <AsyncButton className="btn btn-primary" onClick={tryConnect}>
-                Connect
-            </AsyncButton>
+    return (
+      <>
+        <h3>Status</h3>
+        <div>
+          <StatePill state={info?.state ?? StreamState.Ended} />
         </div>
         <div>
-            {status()}
+          <p>Name</p>
+          <div className="paper">{info?.name}</div>
         </div>
+        {info?.summary && (
+          <div>
+            <p>Summary</p>
+            <div className="paper">{info?.summary}</div>
+          </div>
+        )}
+        {info?.viewers && (
+          <div>
+            <p>Viewers</p>
+            <div className="paper">{info?.viewers}</div>
+          </div>
+        )}
+        {info?.version && (
+          <div>
+            <p>Version</p>
+            <div className="paper">{info?.version}</div>
+          </div>
+        )}
+        <div>
+          <button
+            className="btn btn-border"
+            onClick={() => {
+              StreamProviderStore.add(new Nip103StreamProvider(url));
+              navigate("/");
+            }}
+          >
+            Save
+          </button>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <div className="owncast-config">
+      <div className="flex f-col g24">
+        <div>
+          <p>Nostr streaming provider URL</p>
+          <div className="paper">
+            <input
+              type="text"
+              placeholder="https://"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+          </div>
+        </div>
+        <AsyncButton className="btn btn-primary" onClick={tryConnect}>
+          Connect
+        </AsyncButton>
+      </div>
+      <div>{status()}</div>
     </div>
+  );
 }

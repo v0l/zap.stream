@@ -77,7 +77,7 @@ export function eventLink(ev: NostrEvent) {
     d,
     undefined,
     ev.kind,
-    ev.pubkey,
+    ev.pubkey
   );
   return `/${naddr}`;
 }

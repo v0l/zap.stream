@@ -14,7 +14,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
   const login = useLogin();
   const name = findTag(ev, "d");
   const isUsed = login?.emojis.find(
-    (e) => e.author === ev.pubkey && e.name === name,
+    (e) => e.author === ev.pubkey && e.name === name
   );
   const emoji = ev.tags.filter((e) => e.at(0) === "emoji");
 
@@ -23,7 +23,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
     if (isUsed) {
       newPacks =
         login?.emojis.filter(
-          (e) => e.author !== ev.pubkey && e.name !== name,
+          (e) => e.author !== ev.pubkey && e.name !== name
         ) ?? [];
     } else {
       newPacks = [...(login?.emojis ?? []), toEmojiPack(ev)];

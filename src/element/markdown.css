@@ -1,8 +1,9 @@
-.markdown  a {
+.markdown a {
   color: var(--text-link);
 }
 
-.markdown > ul, .markdown > ol {
+.markdown > ul,
+.markdown > ol {
   margin: 0;
   padding: 0 12px;
   font-size: 18px;

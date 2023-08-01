@@ -1,31 +1,31 @@
 .stream-providers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
-.stream-providers-grid>div {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.stream-providers-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.stream-providers-grid>div img {
-    height: 64px;
+.stream-providers-grid > div img {
+  height: 64px;
 }
 
 .owncast-config {
-    display: flex;
-    gap: 16px;
-    padding: 40px;
+  display: flex;
+  gap: 16px;
+  padding: 40px;
 }
 
-.owncast-config>div {
-    flex: 1;
+.owncast-config > div {
+  flex: 1;
 }
 
-.owncast-config>div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.owncast-config > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

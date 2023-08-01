@@ -55,7 +55,7 @@ export function ChatMessage({
   const login = useLogin();
   const profile = useUserProfile(
     System,
-    inView?.isIntersecting ? ev.pubkey : undefined,
+    inView?.isIntersecting ? ev.pubkey : undefined
   );
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const zaps = useMemo(() => {
@@ -79,7 +79,7 @@ export function ChatMessage({
   }, [zaps, ev]);
   const hasZaps = totalZaps > 0;
   const awardedBadges = badges.filter(
-    (b) => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey),
+    (b) => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey)
   );
 
   useOnClickOutside(ref, () => {

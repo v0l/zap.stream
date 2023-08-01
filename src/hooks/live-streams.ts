@@ -43,10 +43,10 @@ export function useStreamsFeed(tag?: string) {
   }, [feed.data]);
 
   const live = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Live,
+    (a) => findTag(a, "status") === StreamState.Live
   );
   const planned = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Planned,
+    (a) => findTag(a, "status") === StreamState.Planned
   );
   const ended = feedSorted.filter((a) => {
     const hasEnded = findTag(a, "status") === StreamState.Ended;

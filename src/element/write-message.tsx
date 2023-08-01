@@ -41,7 +41,7 @@ export function WriteMessage({
 
       const reply = await pub?.generic((eb) => {
         const emoji = [...emojiNames].map((name) =>
-          emojis.find((e) => e.at(1) === name),
+          emojis.find((e) => e.at(1) === name)
         );
         eb.kind(LIVE_STREAM_CHAT as EventKind)
           .content(chat)

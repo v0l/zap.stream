@@ -15,13 +15,13 @@ import { System } from "index";
 export function useUserCards(
   pubkey: string,
   userCards: Array<string[]>,
-  leaveOpen = false,
+  leaveOpen = false
 ): TaggedRawEvent[] {
   const related = useMemo(() => {
     // filtering to only show CARD kinds for now, but in the future we could link and render anything
     if (userCards?.length > 0) {
       return userCards.filter(
-        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${CARD}:`),
+        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${CARD}:`)
       );
     }
     return [];
@@ -52,7 +52,7 @@ export function useUserCards(
   const { data } = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    subRelated,
+    subRelated
   );
 
   const cards = useMemo(() => {
@@ -64,7 +64,7 @@ export function useUserCards(
           (e) =>
             e.kind === kind &&
             e.pubkey === pubkey &&
-            findTag(e, "d") === identifier,
+            findTag(e, "d") === identifier
         );
       })
       .filter((e) => e)
@@ -89,14 +89,14 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
   const { data: userCards } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub,
+    sub
   );
 
   const related = useMemo(() => {
     // filtering to only show CARD kinds for now, but in the future we could link and render anything
     if (userCards) {
       return userCards.tags.filter(
-        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${CARD}:`),
+        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${CARD}:`)
       );
     }
     return [];
@@ -127,7 +127,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
   const { data } = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    subRelated,
+    subRelated
   );
   const cardEvents = data ?? [];
 
@@ -140,7 +140,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
           (e) =>
             e.kind === kind &&
             e.pubkey === pubkey &&
-            findTag(e, "d") === identifier,
+            findTag(e, "d") === identifier
         );
       })
       .filter((e) => e)

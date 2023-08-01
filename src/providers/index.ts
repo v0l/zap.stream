@@ -78,7 +78,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
           }
           case StreamProviders.Owncast: {
             this.#providers.push(
-              new OwncastProvider(c.url as string, c.token as string),
+              new OwncastProvider(c.url as string, c.token as string)
             );
             break;
           }
@@ -95,7 +95,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
 
   takeSnapshot() {
     const defaultProvider = new Nip103StreamProvider(
-      "https://api.zap.stream/api/nostr/",
+      "https://api.zap.stream/api/nostr/"
     );
     return [defaultProvider, new ManualProvider(), ...this.#providers];
   }

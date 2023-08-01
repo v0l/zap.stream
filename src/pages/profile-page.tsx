@@ -63,7 +63,7 @@ export function ProfilePage() {
   }, [streams]);
   const futureStreams = useMemo(() => {
     return streams.filter(
-      (ev) => findTag(ev, "status") === StreamState.Planned,
+      (ev) => findTag(ev, "status") === StreamState.Planned
     );
   }, [streams]);
   const isLive = Boolean(liveEvent);
@@ -76,7 +76,7 @@ export function ProfilePage() {
         d,
         undefined,
         liveEvent.kind,
-        liveEvent.pubkey,
+        liveEvent.pubkey
       );
       navigate(`/${naddr}`);
     }
@@ -115,7 +115,7 @@ export function ProfilePage() {
                   liveEvent
                     ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(
                         liveEvent,
-                        "d",
+                        "d"
                       )}`
                     : undefined
                 }
@@ -173,7 +173,7 @@ export function ProfilePage() {
                     <span className="timestamp">
                       Streamed on{" "}
                       {moment(Number(ev.created_at) * 1000).format(
-                        "MMM DD, YYYY",
+                        "MMM DD, YYYY"
                       )}
                     </span>
                   </div>
@@ -188,7 +188,7 @@ export function ProfilePage() {
                     <span className="timestamp">
                       Scheduled for{" "}
                       {moment(Number(ev.created_at) * 1000).format(
-                        "MMM DD, YYYY h:mm:ss a",
+                        "MMM DD, YYYY h:mm:ss a"
                       )}
                     </span>
                   </div>

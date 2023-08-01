@@ -35,7 +35,7 @@ export function VideoTile({
     id,
     undefined,
     ev.kind,
-    ev.pubkey,
+    ev.pubkey
   );
   return (
     <div className="video-tile-container">

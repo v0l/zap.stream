@@ -132,7 +132,7 @@ export function getPublisher(session: LoginSession) {
     case LoginType.PrivateKey: {
       return new EventPublisher(
         new PrivateKeySigner(session.privateKey!),
-        session.pubkey,
+        session.pubkey
       );
     }
   }

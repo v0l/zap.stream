@@ -10,12 +10,12 @@
 }
 
 .new-goal .paper {
-    background: #262626;
-    height: 32px;
+  background: #262626;
+  height: 32px;
 }
 
 .new-goal .btn:disabled {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .new-goal .create-goal {

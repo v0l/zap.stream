@@ -21,7 +21,7 @@ export interface LNURLLike {
   getInvoice(
     amountInSats: number,
     comment?: string,
-    zap?: NostrEvent,
+    zap?: NostrEvent
   ): Promise<{ pr?: string }>;
 }
 
@@ -79,7 +79,7 @@ export function SendZaps({
     let isAnon = false;
     if (!pub) {
       pub = EventPublisher.privateKey(
-        bytesToHex(secp256k1.utils.randomPrivateKey()),
+        bytesToHex(secp256k1.utils.randomPrivateKey())
       );
       isAnon = true;
     }
@@ -104,7 +104,7 @@ export function SendZaps({
             eb.tag(["anon", ""]);
           }
           return eb;
-        },
+        }
       );
     }
     const invoice = await svc.getInvoice(amountInSats, comment, zap);

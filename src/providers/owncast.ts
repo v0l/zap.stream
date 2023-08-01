@@ -51,7 +51,7 @@ export class OwncastProvider implements StreamProvider {
   async #getJson<T>(
     method: "GET" | "POST",
     path: string,
-    body?: unknown,
+    body?: unknown
   ): Promise<T> {
     const rsp = await fetch(`${this.#url}${path}`, {
       method: method,

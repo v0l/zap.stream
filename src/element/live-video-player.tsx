@@ -8,22 +8,19 @@ export enum VideoStatus {
 }
 
 export interface VideoPlayerProps {
-  stream?: string, status?: string, poster?: string
+  stream?: string;
+  status?: string;
+  poster?: string;
 }
 
-export function LiveVideoPlayer(
-  props: VideoPlayerProps
-) {
+export function LiveVideoPlayer(props: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const streamCached = useMemo(() => props.stream, [props.stream]);
   const [status, setStatus] = useState<VideoStatus>();
   const [src, setSrc] = useState<string>();
 
   useEffect(() => {
-    if (
-      streamCached &&
-      video.current
-    ) {
+    if (streamCached && video.current) {
       if (Hls.isSupported()) {
         try {
           const hls = new Hls();
@@ -63,14 +60,25 @@ export function LiveVideoPlayer(
       <div className={status}>
         <div>{status}</div>
       </div>
-      <video ref={video} autoPlay={true} poster={props.poster} src={src} playsInline={true} controls={status === VideoStatus.Online} />
+      <video
+        ref={video}
+        autoPlay={true}
+        poster={props.poster}
+        src={src}
+        playsInline={true}
+        controls={status === VideoStatus.Online}
+      />
     </div>
   );
 }
 
 export function WebRTCPlayer(props: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
-  const streamCached = useMemo(() => "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play", [props.stream]);
+  const streamCached = useMemo(
+    () =>
+      "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play",
+    [props.stream]
+  );
   const [status] = useState<VideoStatus>();
   //https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play
 
@@ -78,14 +86,19 @@ export function WebRTCPlayer(props: VideoPlayerProps) {
     if (video.current && streamCached) {
       const client = new WISH();
       client.addEventListener("log", console.debug);
-      client.WithEndpoint(streamCached, true)
+      client.WithEndpoint(streamCached, true);
 
-      client.Play().then(s => {
-        if (video.current) {
-          video.current.srcObject = s;
-        }
-      }).catch(console.error);
-      return () => { client.Disconnect().catch(console.error); }
+      client
+        .Play()
+        .then((s) => {
+          if (video.current) {
+            video.current.srcObject = s;
+          }
+        })
+        .catch(console.error);
+      return () => {
+        client.Disconnect().catch(console.error);
+      };
     }
   }, [video, streamCached]);
 
@@ -94,7 +107,12 @@ export function WebRTCPlayer(props: VideoPlayerProps) {
       <div className={status}>
         <div>{status}</div>
       </div>
-      <video ref={video} autoPlay={true} poster={props.poster} controls={status === VideoStatus.Online} />
+      <video
+        ref={video}
+        autoPlay={true}
+        poster={props.poster}
+        controls={status === VideoStatus.Online}
+      />
     </div>
   );
 }

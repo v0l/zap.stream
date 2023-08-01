@@ -1,19 +1,19 @@
 .profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    background: #A7A7A7;
-    border: unset;
-    outline: unset;
-    object-fit: cover;
-    overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: #a7a7a7;
+  border: unset;
+  outline: unset;
+  object-fit: cover;
+  overflow: hidden;
 }

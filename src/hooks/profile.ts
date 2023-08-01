@@ -27,12 +27,11 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } =
-    useRequestBuilder<NoteCollection>(
-      System,
-      NoteCollection,
-      sub
-    );
+  const { data: streamsData } = useRequestBuilder<NoteCollection>(
+    System,
+    NoteCollection,
+    sub
+  );
   const streams = streamsData ?? [];
 
   const addresses = useMemo(() => {

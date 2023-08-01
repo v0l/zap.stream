@@ -37,7 +37,7 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   const related = useMemo(() => {
     if (userEmoji) {
       return userEmoji?.filter(
-        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`),
+        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`)
       );
     }
     return [];
@@ -67,7 +67,7 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   const { data: relatedData } = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    subRelated,
+    subRelated
   );
 
   const emojiPacks = useMemo(() => {
@@ -95,7 +95,7 @@ export default function useEmoji(pubkey?: string) {
   const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub,
+    sub
   );
 
   const emojis = useUserEmojiPacks(pubkey, userEmoji?.tags ?? []);

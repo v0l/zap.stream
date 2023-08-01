@@ -16,7 +16,7 @@ import type { Badge } from "types";
 
 export function useBadges(
   pubkey: string,
-  leaveOpen = true,
+  leaveOpen = true
 ): { badges: Badge[]; awards: TaggedRawEvent[] } {
   const since = useMemo(() => unixNow() - WEEK, [pubkey]);
   const rb = useMemo(() => {
@@ -33,7 +33,7 @@ export function useBadges(
   const { data: badgeEvents } = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    rb,
+    rb
   );
 
   const rawBadges = useMemo(() => {
@@ -64,7 +64,7 @@ export function useBadges(
   const acceptedStream = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    acceptedSub,
+    acceptedSub
   );
   const acceptedEvents = acceptedStream.data ?? [];
 
@@ -73,18 +73,18 @@ export function useBadges(
       const name = findTag(e, "d") ?? "";
       const address = toAddress(e);
       const awardEvents = badgeAwards.filter(
-        (b) => findTag(b, "a") === address,
+        (b) => findTag(b, "a") === address
       );
       const awardees = new Set(
-        awardEvents.map((e) => getTagValues(e.tags, "p")).flat(),
+        awardEvents.map((e) => getTagValues(e.tags, "p")).flat()
       );
       const accepted = new Set(
         acceptedEvents
           .filter((pb) => awardees.has(pb.pubkey))
           .filter((pb) =>
-            pb.tags.find((t) => t.at(0) === "a" && t.at(1) === address),
+            pb.tags.find((t) => t.at(0) === "a" && t.at(1) === address)
           )
-          .map((pb) => pb.pubkey),
+          .map((pb) => pb.pubkey)
       );
       const thumb = findTag(e, "thumb");
       const image = findTag(e, "image");
