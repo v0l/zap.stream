@@ -20,7 +20,7 @@ export function useAddress(kind: number, pubkey: string, identifier: string) {
   const { data } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub,
+    sub
   );
 
   return data;
@@ -52,7 +52,7 @@ export function useEvent(link: NostrLink) {
   const { data } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub,
+    sub
   );
 
   return data;

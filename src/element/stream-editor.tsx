@@ -13,14 +13,14 @@ export interface StreamEditorProps {
   ev?: NostrEvent;
   onFinish?: (ev: NostrEvent) => void;
   options?: {
-    canSetTitle?: boolean
-    canSetSummary?: boolean
-    canSetImage?: boolean
-    canSetStatus?: boolean
-    canSetStream?: boolean
-    canSetTags?: boolean
-    canSetContentWarning?: boolean
-  }
+    canSetTitle?: boolean;
+    canSetSummary?: boolean;
+    canSetImage?: boolean;
+    canSetStatus?: boolean;
+    canSetStream?: boolean;
+    canSetTags?: boolean;
+    canSetContentWarning?: boolean;
+  };
 }
 
 export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
@@ -42,7 +42,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     setStream(findTag(ev, "streaming") ?? "");
     setStatus(findTag(ev, "status") ?? StreamState.Live);
     setStart(findTag(ev, "starts"));
-    setTags(ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []);
+    setTags(ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? []);
     setContentWarning(findTag(ev, "content-warning") !== undefined);
   }, [ev?.id]);
 
@@ -86,7 +86,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           eb.tag(["t", tx.trim()]);
         }
         if (contentWarning) {
-          eb.tag(["content-warning", "nsfw"])
+          eb.tag(["content-warning", "nsfw"]);
         }
         return eb;
       });
@@ -106,94 +106,121 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   return (
     <>
       <h3>{ev ? "Edit Stream" : "New Stream"}</h3>
-      {(options?.canSetTitle ?? true) && <div>
-        <p>Title</p>
-        <div className="paper">
-          <input
-            type="text"
-            placeholder="What are we steaming today?"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)} />
+      {(options?.canSetTitle ?? true) && (
+        <div>
+          <p>Title</p>
+          <div className="paper">
+            <input
+              type="text"
+              placeholder="What are we steaming today?"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
         </div>
-      </div>}
-      {(options?.canSetSummary ?? true) && <div>
-        <p>Summary</p>
-        <div className="paper">
-          <input
-            type="text"
-            placeholder="A short description of the content"
-            value={summary}
-            onChange={(e) => setSummary(e.target.value)} />
+      )}
+      {(options?.canSetSummary ?? true) && (
+        <div>
+          <p>Summary</p>
+          <div className="paper">
+            <input
+              type="text"
+              placeholder="A short description of the content"
+              value={summary}
+              onChange={(e) => setSummary(e.target.value)}
+            />
+          </div>
         </div>
-      </div>}
-      {(options?.canSetImage ?? true) && <div>
-        <p>Cover image</p>
-        <div className="paper">
-          <input
-            type="text"
-            placeholder="https://"
-            value={image}
-            onChange={(e) => setImage(e.target.value)} />
+      )}
+      {(options?.canSetImage ?? true) && (
+        <div>
+          <p>Cover image</p>
+          <div className="paper">
+            <input
+              type="text"
+              placeholder="https://"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </div>
         </div>
-      </div>}
-      {(options?.canSetStream ?? true) && <div>
-        <p>Stream Url</p>
-        <div className="paper">
-          <input
-            type="text"
-            placeholder="https://"
-            value={stream}
-            onChange={(e) => setStream(e.target.value)} />
+      )}
+      {(options?.canSetStream ?? true) && (
+        <div>
+          <p>Stream Url</p>
+          <div className="paper">
+            <input
+              type="text"
+              placeholder="https://"
+              value={stream}
+              onChange={(e) => setStream(e.target.value)}
+            />
+          </div>
+          <small>Stream type should be HLS</small>
         </div>
-        <small>Stream type should be HLS</small>
-      </div>}
-      {(options?.canSetStatus ?? true) && <><div>
-        <p>Status</p>
-        <div className="flex g12">
-          {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(
-            (v) => (
-              <span
-                className={`pill${status === v ? " active" : ""}`}
-                onClick={() => setStatus(v)}
-                key={v}
-              >
-                {v}
-              </span>
-            )
-          )}
-        </div>
-      </div>
-        {status === StreamState.Planned && (
+      )}
+      {(options?.canSetStatus ?? true) && (
+        <>
           <div>
-            <p>Start Time</p>
-            <div className="paper">
-              <input
-                type="datetime-local"
-                value={toDateTimeString(Number(start ?? "0"))}
-                onChange={(e) => setStart(fromDateTimeString(e.target.value).toString())} />
+            <p>Status</p>
+            <div className="flex g12">
+              {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(
+                (v) => (
+                  <span
+                    className={`pill${status === v ? " active" : ""}`}
+                    onClick={() => setStatus(v)}
+                    key={v}
+                  >
+                    {v}
+                  </span>
+                )
+              )}
             </div>
           </div>
-        )}</>}
-      {(options?.canSetTags ?? true) && <div>
-        <p>Tags</p>
-        <div className="paper">
-          <TagsInput
-            value={tags}
-            onChange={setTags}
-            placeHolder="Music,DJ,English"
-            separators={["Enter", ","]}
-          />
-        </div>
-      </div>}
-      {(options?.canSetContentWarning ?? true) && <div className="flex g12 content-warning">
+          {status === StreamState.Planned && (
+            <div>
+              <p>Start Time</p>
+              <div className="paper">
+                <input
+                  type="datetime-local"
+                  value={toDateTimeString(Number(start ?? "0"))}
+                  onChange={(e) =>
+                    setStart(fromDateTimeString(e.target.value).toString())
+                  }
+                />
+              </div>
+            </div>
+          )}
+        </>
+      )}
+      {(options?.canSetTags ?? true) && (
         <div>
-          <input type="checkbox" checked={contentWarning} onChange={e => setContentWarning(e.target.checked)} />
+          <p>Tags</p>
+          <div className="paper">
+            <TagsInput
+              value={tags}
+              onChange={setTags}
+              placeHolder="Music,DJ,English"
+              separators={["Enter", ","]}
+            />
+          </div>
         </div>
-        <div>
-          <div className="warning">NSFW Content</div>
-          Check here if this stream contains nudity or pornographic content.
+      )}
+      {(options?.canSetContentWarning ?? true) && (
+        <div className="flex g12 content-warning">
+          <div>
+            <input
+              type="checkbox"
+              checked={contentWarning}
+              onChange={(e) => setContentWarning(e.target.checked)}
+            />
+          </div>
+          <div>
+            <div className="warning">NSFW Content</div>
+            Check here if this stream contains nudity or pornographic content.
+          </div>
         </div>
-      </div>}
+      )}
       <div>
         <AsyncButton
           type="button"

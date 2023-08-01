@@ -9,7 +9,7 @@ import { Emoji } from "element/emoji";
 import { HyperText } from "element/hypertext";
 import { splitByUrl } from "utils";
 
-type Fragment = string | ReactNode;
+export type Fragment = string | ReactNode;
 
 const NostrPrefixRegex = /^nostr:/;
 const EmojiRegex = /:([\w-]+):/g;
@@ -50,7 +50,7 @@ function extractLinks(fragments: Fragment[]) {
                 </a>
               );
             }
-            return <HyperText link={a} />;
+            return <HyperText link={a}>{a}</HyperText>;
           }
           return a;
         });

@@ -26,10 +26,14 @@ export function useZaps(goal: NostrEvent, leaveOpen = false) {
   const { data } = useRequestBuilder<NoteCollection>(
     System,
     NoteCollection,
-    sub,
+    sub
   );
 
-  return data?.map((ev) => parseZap(ev, System.ProfileLoader.Cache)).filter((z) => z && z.valid) ?? [];
+  return (
+    data
+      ?.map((ev) => parseZap(ev, System.ProfileLoader.Cache))
+      .filter((z) => z && z.valid) ?? []
+  );
 }
 
 export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
@@ -46,7 +50,7 @@ export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
   const { data } = useRequestBuilder<ReplaceableNoteStore>(
     System,
     ReplaceableNoteStore,
-    sub,
+    sub
   );
 
   return data;

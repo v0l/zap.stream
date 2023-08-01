@@ -6,11 +6,14 @@ import ReactTextareaAutocomplete, {
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
 import isEqual from "lodash/isEqual";
+
 import { MetadataCache, NostrPrefix, UserProfileCache } from "@snort/system";
-import { System } from "index";
-import { Emoji, type EmojiTag } from "./emoji";
+
+import { Emoji } from "element/emoji";
 import { Avatar } from "element/avatar";
 import { hexToBech32 } from "utils";
+import type { EmojiTag } from "types";
+import { System } from "index";
 
 interface EmojiItemProps {
   name: string;

@@ -1,14 +1,14 @@
 import { NostrLink, EventKind } from "@snort/system";
 import React, { useRef, useState } from "react";
 
-import { LIVE_STREAM_CHAT } from "../const";
-import { useLogin } from "../hooks/login";
-import { System } from "../index";
-import AsyncButton from "./async-button";
-import { Icon } from "./icon";
-import { Textarea } from "./textarea";
-import { EmojiPicker } from "./emoji-picker";
-import type { EmojiPack, Emoji } from "../hooks/emoji";
+import { useLogin } from "hooks/login";
+import AsyncButton from "element/async-button";
+import { Icon } from "element/icon";
+import { Textarea } from "element/textarea";
+import { EmojiPicker } from "element/emoji-picker";
+import type { EmojiPack, Emoji } from "types";
+import { System } from "index";
+import { LIVE_STREAM_CHAT } from "const";
 
 export function WriteMessage({
   link,
@@ -90,7 +90,7 @@ export function WriteMessage({
           emojis={emojis}
           value={chat}
           onKeyDown={onKeyDown}
-          onChange={e => setChat(e.target.value)}
+          onChange={(e) => setChat(e.target.value)}
         />
         <div onClick={pickEmoji}>
           <Icon name="face" className="write-emoji-button" />

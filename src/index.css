@@ -13,12 +13,12 @@ body {
   --gap-s: 16px;
   --header-height: 48px;
   --text-muted: #797979;
-  --text-link: #F838D9;
-  --text-danger: #FF563F;
+  --text-link: #f838d9;
+  --text-danger: #ff563f;
   --border: #333;
 }
 
-@media(max-width: 1020px) {
+@media (max-width: 1020px) {
   :root {
     --gap-l: 24px;
     --gap-m: 16px;

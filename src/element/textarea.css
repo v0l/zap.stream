@@ -10,10 +10,11 @@
 }
 .rta__entity--selected .emoji-item {
   text-decoration: none;
-  background: #F838D9;
+  background: #f838d9;
 }
 
-.emoji-item, .user-item {
+.emoji-item,
+.user-item {
   color: white;
   background: #171717;
   display: flex;
@@ -24,7 +25,8 @@
   padding: 10px;
 }
 
-.emoji-item:hover, .user-item:hover {
+.emoji-item:hover,
+.user-item:hover {
   color: #171717;
   background: white;
 }

@@ -16,7 +16,7 @@ export function RootPage() {
     (ev: NostrEvent) => {
       return login?.follows.tags.find((t) => t.at(1) === getHost(ev));
     },
-    [login?.follows],
+    [login?.follows]
   );
   const hashtags = getTagValues(login?.follows.tags ?? [], "t");
   const following = live.filter(followsHost);

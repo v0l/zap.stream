@@ -21,38 +21,56 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
     }
   }, [providers, currentProvider]);
 
-
-
   function providerDialog() {
     if (!currentProvider) return;
 
     switch (currentProvider.type) {
       case StreamProviders.Manual: {
-        return <StreamEditor onFinish={ex => {
-          currentProvider.updateStreamInfo(ex);
-          if (!ev) {
-            navigate(eventLink(ex));
-          } else {
-            onFinish?.(ev);
-          }
-        }} ev={ev} />
+        return (
+          <StreamEditor
+            onFinish={(ex) => {
+              currentProvider.updateStreamInfo(ex);
+              if (!ev) {
+                navigate(eventLink(ex));
+              } else {
+                onFinish?.(ev);
+              }
+            }}
+            ev={ev}
+          />
+        );
       }
       case StreamProviders.NostrType: {
-        return <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} />
+        return (
+          <NostrProviderDialog
+            provider={currentProvider}
+            onFinish={onFinish}
+            ev={ev}
+          />
+        );
       }
       case StreamProviders.Owncast: {
-        return
+        return;
       }
     }
   }
 
-  return <>
-    <p>Stream Providers</p>
-    <div className="flex g12">
-      {providers.map(v => <span className={`pill${v === currentProvider ? " active" : ""}`} onClick={() => setCurrentProvider(v)}>{v.name}</span>)}
-    </div>
-    {providerDialog()}
-  </>
+  return (
+    <>
+      <p>Stream Providers</p>
+      <div className="flex g12">
+        {providers.map((v) => (
+          <span
+            className={`pill${v === currentProvider ? " active" : ""}`}
+            onClick={() => setCurrentProvider(v)}
+          >
+            {v.name}
+          </span>
+        ))}
+      </div>
+      {providerDialog()}
+    </>
+  );
 }
 
 interface NewStreamDialogProps {
@@ -60,7 +78,9 @@ interface NewStreamDialogProps {
   btnClassName?: string;
 }
 
-export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps) {
+export function NewStreamDialog(
+  props: NewStreamDialogProps & StreamEditorProps
+) {
   const [open, setOpen] = useState(false);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

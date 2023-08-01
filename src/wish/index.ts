@@ -282,7 +282,7 @@ export class WISH extends TypedEventTarget {
         relAddr: candidate.relatedAddress || undefined,
         relPort:
           typeof candidate.relatedPort !== "undefined" &&
-            candidate.relatedPort !== null
+          candidate.relatedPort !== null
             ? candidate.relatedPort.toString()
             : undefined,
       });

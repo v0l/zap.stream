@@ -22,6 +22,6 @@
 .toggle:hover svg {
   color: white;
 }
-.toggle[data-state='on'] svg {
+.toggle[data-state="on"] svg {
   color: var(--text-link);
 }

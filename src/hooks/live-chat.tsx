@@ -55,7 +55,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
   const reactionsSub = useRequestBuilder<FlatNoteStore>(
     System,
     FlatNoteStore,
-    esub,
+    esub
   );
 
   const reactions = reactionsSub.data ?? [];

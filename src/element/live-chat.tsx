@@ -37,7 +37,7 @@ export interface LiveChatOptions {
 }
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
-  const badge = findTag(ev, "a");
+  const badge = findTag(ev, "a") ?? "";
   const [k, pubkey, d] = badge.split(":");
   const awardees = getTagValues(ev.tags, "p");
   const event = useAddress(Number(k), pubkey, d);
@@ -115,7 +115,7 @@ export function LiveChat({
     .filter((z) => z && z.valid);
   const events = useMemo(() => {
     return [...feed.messages, ...feed.zaps, ...awards].sort(
-      (a, b) => b.created_at - a.created_at,
+      (a, b) => b.created_at - a.created_at
     );
   }, [feed.messages, feed.zaps, awards]);
   const streamer = getHost(ev);
@@ -126,7 +126,7 @@ export function LiveChat({
         findTag(ev, "d") ?? "",
         undefined,
         ev.kind,
-        ev.pubkey,
+        ev.pubkey
       );
     }
   }, [ev]);
@@ -146,7 +146,7 @@ export function LiveChat({
               window.open(
                 `/chat/${naddr}?chat=true`,
                 "_blank",
-                "popup,width=400,height=800",
+                "popup,width=400,height=800"
               )
             }
           />
@@ -182,7 +182,7 @@ export function LiveChat({
             }
             case EventKind.ZapReceipt: {
               const zap = zaps.find(
-                (b) => b.id === a.id && b.receiver === streamer,
+                (b) => b.id === a.id && b.receiver === streamer
               );
               if (zap) {
                 return <ChatZap zap={zap} key={a.id} />;

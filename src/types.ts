@@ -7,6 +7,10 @@ export interface Relays {
   [key: string]: RelaySettings;
 }
 
+export type Tag = string[];
+
+export type Tags = Tag[];
+
 export type EmojiTag = ["emoji", string, string];
 
 export interface Emoji {
@@ -23,8 +27,8 @@ export interface EmojiPack {
 
 export interface Badge {
   name: string;
-  thumb: string;
-  image: string;
+  thumb?: string;
+  image?: string;
   awardees: Set<string>;
   accepted: Set<string>;
 }

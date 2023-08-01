@@ -1,20 +1,20 @@
 .rti--container {
-    background-color: unset !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    box-shadow: unset !important;
+  background-color: unset !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: unset !important;
 }
 
 .rti--tag {
-    color: black !important;
-    padding: 4px 10px !important;
-    border-radius: 12px !important;
-    display: unset !important;
+  color: black !important;
+  padding: 4px 10px !important;
+  border-radius: 12px !important;
+  display: unset !important;
 }
 
 .content-warning {
-    padding: 16px;
-    border-radius: 16px;
-    border: 1px solid #FF563F;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #ff563f;
 }
