@@ -88,7 +88,7 @@ export function useBadges(
       );
       const thumb = findTag(e, "thumb");
       const image = findTag(e, "image");
-      return { name, thumb, image, awardees, accepted } as Badge;
+      return { name, thumb, image, awardees, accepted };
     });
     return [];
   }, [rawBadges]);
