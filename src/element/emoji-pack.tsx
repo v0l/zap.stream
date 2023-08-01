@@ -12,7 +12,7 @@ import { Login, System } from "index";
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
   const login = useLogin();
   const name = findTag(ev, "d");
-  const isUsed = login.emojis.find(
+  const isUsed = login?.emojis.find(
     (e) => e.author === ev.pubkey && e.name === name,
   );
   const emoji = ev.tags.filter((e) => e.at(0) === "emoji");
