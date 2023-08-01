@@ -1,0 +1,24 @@
+---
+kind: pipeline
+type: kubernetes
+name: test-lint
+concurrency:
+  limit: 1
+metadata:
+  namespace: git
+steps:
+  - name: Test/Lint
+    image: node:current-bullseye
+    volumes:
+      - name: cache
+        path: /cache
+    environment:
+      YARN_CACHE_FOLDER: /cache/.yarn-test
+    commands:
+      - yarn install
+      - yarn eslint src/
+      - yarn prettier --check src/
+volumes:
+  - name: cache
+    claim:
+      name: docker-cache
