@@ -4,7 +4,12 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { LiveVideoPlayer } from "element/live-video-player";
-import { createNostrLink, findTag, getEventFromLocationState, getHost } from "utils";
+import {
+  createNostrLink,
+  findTag,
+  getEventFromLocationState,
+  getHost,
+} from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";

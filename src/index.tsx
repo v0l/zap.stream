@@ -61,8 +61,8 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <CatchAllRoutePage />
-      }
+        element: <CatchAllRoutePage />,
+      },
     ],
   },
   {

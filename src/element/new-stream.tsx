@@ -17,7 +17,11 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
 
   useEffect(() => {
     if (!currentProvider) {
-      setCurrentProvider(ev !== undefined ? providers.find(a => a.name.toLowerCase() === "manual")! : providers.at(0));
+      setCurrentProvider(
+        ev !== undefined
+          ? providers.find((a) => a.name.toLowerCase() === "manual")!
+          : providers.at(0)
+      );
     }
   }, [providers, currentProvider]);
 
@@ -32,7 +36,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
               currentProvider.updateStreamInfo(ex);
               if (!ev) {
                 navigate(`/${eventLink(ex)}`, {
-                  state: ev
+                  state: ev,
                 });
               } else {
                 onFinish?.(ev);
