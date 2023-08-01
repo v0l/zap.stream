@@ -1,18 +1,25 @@
 import type { ReactNode } from "react";
 import moment from "moment";
+
 import { NostrEvent } from "@snort/system";
+
 import { StreamState } from "index";
-import { findTag } from "utils";
+import { findTag, getTagValues } from "utils";
 
 export function Tags({
   children,
+  max,
   ev,
 }: {
   children?: ReactNode;
+  max?: number;
   ev: NostrEvent;
 }) {
   const status = findTag(ev, "status");
   const start = findTag(ev, "starts");
+  const hashtags = getTagValues(ev.tags, "t");
+  const tags = max ? hashtags.slice(0, max) : hashtags;
+
   return (
     <>
       {children}
@@ -22,14 +29,11 @@ export function Tags({
           {moment(Number(start) * 1000).fromNow()}
         </span>
       )}
-      {ev.tags
-        .filter((a) => a[0] === "t")
-        .map((a) => a[1])
-        .map((a) => (
-          <span className="pill" key={a}>
-            {a}
-          </span>
-        ))}
+      {tags.map((a) => (
+        <a href={`/t/${encodeURIComponent(a)}`} className="pill" key={a}>
+          {a}
+        </a>
+      ))}
     </>
   );
 }

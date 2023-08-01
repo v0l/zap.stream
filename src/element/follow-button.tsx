@@ -4,16 +4,22 @@ import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
 import { Login, System } from "index";
 
-export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
+export function LoggedInFollowButton({
+  tag,
+  value,
+}: {
+  tag: "p" | "t";
+  value: string;
+}) {
   const login = useLogin();
   const tags = login.follows.tags;
-  const follows = tags.filter((t) => t.at(0) === "p");
-  const isFollowing = follows.find((t) => t.at(1) === pubkey);
+  const follows = tags.filter((t) => t.at(0) === tag);
+  const isFollowing = follows.find((t) => t.at(1) === value);
 
   async function unfollow() {
     const pub = login?.publisher();
     if (pub) {
-      const newFollows = tags.filter((t) => t.at(1) !== pubkey);
+      const newFollows = tags.filter((t) => t.at(1) !== value);
       const ev = await pub.generic((eb) => {
         eb.kind(EventKind.ContactList).content(login.follows.content);
         for (const t of newFollows) {
@@ -30,7 +36,7 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
   async function follow() {
     const pub = login?.publisher();
     if (pub) {
-      const newFollows = [...tags, ["p", pubkey]];
+      const newFollows = [...tags, [tag, value]];
       const ev = await pub.generic((eb) => {
         eb.kind(EventKind.ContactList).content(login.follows.content);
         for (const tag of newFollows) {
@@ -56,9 +62,16 @@ export function LoggedInFollowButton({ pubkey }: { pubkey: string }) {
   );
 }
 
+export function FollowTagButton({ tag }: { tag: string }) {
+  const login = useLogin();
+  return login?.pubkey ? (
+    <LoggedInFollowButton tag={"t"} loggedIn={login.pubkey} value={tag} />
+  ) : null;
+}
+
 export function FollowButton({ pubkey }: { pubkey: string }) {
   const login = useLogin();
   return login?.pubkey ? (
-    <LoggedInFollowButton loggedIn={login.pubkey} pubkey={pubkey} />
+    <LoggedInFollowButton tag={"p"} loggedIn={login.pubkey} value={pubkey} />
   ) : null;
 }

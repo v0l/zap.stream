@@ -2,7 +2,7 @@ import { useMemo, type ReactNode } from "react";
 
 import { parseNostrLink, validateNostrLink } from "@snort/system";
 
-import { Address } from "element/Address";
+import { Address } from "element/address";
 import { Event } from "element/Event";
 import { Mention } from "element/mention";
 import { Emoji } from "element/emoji";
