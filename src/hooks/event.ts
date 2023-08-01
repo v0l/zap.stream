@@ -10,6 +10,22 @@ import { useRequestBuilder } from "@snort/system-react";
 
 import { System } from "index";
 
+export function useAddress(kind: number, pubkey: string, identifier: string) {
+  const sub = useMemo(() => {
+    const b = new RequestBuilder(`event:${kind}:${identifier}`);
+    b.withFilter().kinds([kind]).authors([pubkey]).tag("d", [identifier]);
+    return b;
+  }, [kind, pubkey, identifier]);
+
+  const { data } = useRequestBuilder<ReplaceableNoteStore>(
+    System,
+    ReplaceableNoteStore,
+    sub,
+  );
+
+  return data;
+}
+
 export function useEvent(link: NostrLink) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`event:${link.id.slice(0, 12)}`);

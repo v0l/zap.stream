@@ -7,9 +7,10 @@ import { unixNow } from "@snort/shared";
 import { LIVE_STREAM } from "const";
 import { System, StreamState } from "index";
 import { findTag } from "utils";
+import { WEEK } from "const";
 
 export function useStreamsFeed(tag?: string) {
-  const since = useMemo(() => unixNow() - 86400, [tag]);
+  const since = useMemo(() => unixNow() - WEEK, [tag]);
   const rb = useMemo(() => {
     const rb = new RequestBuilder(tag ? `streams:${tag}` : "streams");
     rb.withOptions({
