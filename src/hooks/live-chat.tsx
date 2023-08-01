@@ -42,9 +42,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
 
   const esub = useMemo(() => {
     if (etags.length === 0) return null;
-    const rb = new RequestBuilder(
-      `reactions:${link.id}:${link.author}:${etags.length}`,
-    );
+    const rb = new RequestBuilder(`reactions:${link.id}:${link.author}`);
     rb.withOptions({
       leaveOpen: true,
     });

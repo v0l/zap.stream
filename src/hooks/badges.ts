@@ -44,9 +44,7 @@ export function useBadges(pubkey: string, leaveOpen = true) {
 
   const acceptedSub = useMemo(() => {
     if (rawBadges.length === 0) return null;
-    const rb = new RequestBuilder(
-      `accepted-badges:${pubkey.slice(0, 12)}:${rawBadges.length}`,
-    );
+    const rb = new RequestBuilder(`accepted-badges:${pubkey.slice(0, 12)}`);
     rb.withFilter()
       .kinds([EventKind.ProfileBadges])
       .tag("d", ["profile_badges"])
