@@ -7,7 +7,6 @@ import { unixNow } from "@snort/shared";
 import { findTag, toAddress, getTagValues } from "utils";
 import { WEEK } from "const";
 import { System } from "index";
-import type { Badge } from "types";
 
 export function useBadges(pubkey: string, leaveOpen = true) {
   const since = useMemo(() => unixNow() - WEEK, [pubkey]);
