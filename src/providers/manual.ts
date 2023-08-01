@@ -31,4 +31,8 @@ export class ManualProvider implements StreamProvider {
   topup(): Promise<string> {
     throw new Error("Method not implemented.");
   }
+
+  acceptTos(): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
 }

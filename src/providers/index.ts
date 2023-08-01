@@ -1,7 +1,7 @@
 import { StreamState } from "index";
 import { NostrEvent } from "@snort/system";
 import { ExternalStore } from "@snort/shared";
-import { Nip103StreamProvider } from "./nip103";
+import { Nip103StreamProvider } from "./zsz";
 import { ManualProvider } from "./manual";
 import { OwncastProvider } from "./owncast";
 
@@ -28,6 +28,11 @@ export interface StreamProvider {
    * Top-up balance with provider
    */
   topup(amount: number): Promise<string>;
+
+  /**
+   * Accept TOS of the streaming provider
+   */
+  acceptTos(): Promise<void>;
 }
 
 export enum StreamProviders {
@@ -44,8 +49,11 @@ export interface StreamProviderInfo {
   state: StreamState;
   viewers?: number;
   publishedEvent?: NostrEvent;
+  streamInfo?: StreamProviderStreamInfo;
   balance?: number;
   endpoints: Array<StreamProviderEndpoint>;
+  tosAccepted?: boolean;
+  tosLink?: string
 }
 
 export interface StreamProviderEndpoint {
@@ -55,6 +63,14 @@ export interface StreamProviderEndpoint {
   rate?: number;
   unit?: string;
   capabilities?: Array<string>;
+}
+
+export interface StreamProviderStreamInfo {
+  title: string
+  summary: string
+  image: string
+  tags: Array<string>
+  content_warning: string
 }
 
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {

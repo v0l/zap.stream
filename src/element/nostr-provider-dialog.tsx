@@ -8,17 +8,7 @@ import { useEffect, useState } from "react";
 import { SendZaps } from "./send-zap";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
-import { LIVE_STREAM } from "const";
-
-const DummyEvent = {
-  content: "",
-  id: "",
-  pubkey: "",
-  sig: "",
-  kind: LIVE_STREAM,
-  created_at: 0,
-  tags: [],
-} as NostrEvent;
+import AsyncButton from "./async-button";
 
 export function NostrProviderDialog({
   provider,
@@ -27,6 +17,7 @@ export function NostrProviderDialog({
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
   const [ep, setEndpoint] = useState<StreamProviderEndpoint>();
+  const [tos, setTos] = useState(false);
 
   function sortEndpoints(arr: Array<StreamProviderEndpoint>) {
     return arr.sort((a, b) => ((a.rate ?? 0) > (b.rate ?? 0) ? -1 : 1));
@@ -35,6 +26,7 @@ export function NostrProviderDialog({
   useEffect(() => {
     provider.info().then((v) => {
       setInfo(v);
+      setTos(v.tosAccepted ?? true);
       setEndpoint(sortEndpoints(v.endpoints)[0]);
     });
   }, [provider]);
@@ -87,7 +79,37 @@ export function NostrProviderDialog({
     return cap;
   }
 
-  const streamEvent = others.ev ?? info.publishedEvent ?? DummyEvent;
+  async function acceptTos() {
+    await provider.acceptTos();
+    const i = await provider.info();
+    setInfo(i);
+  }
+
+  function tosInput() {
+    if (!info) return;
+
+    return <>
+      <div>
+        <div className="flex g12">
+          <input type="checkbox" checked={tos} onChange={e => setTos(e.target.checked)} />
+          <p>
+            I have read and agree with {info.name}'s <span className="tos-link" onClick={() => window.open(info.tosLink, "popup", "width=400,height=800")}>terms and conditions</span>.
+          </p>
+        </div>
+      </div>
+      <div>
+        <AsyncButton
+          type="button"
+          className="btn btn-primary wide"
+          disabled={!tos}
+          onClick={acceptTos}
+        >
+          Continue
+        </AsyncButton>
+      </div>
+    </>
+  }
+
   return (
     <>
       {info.endpoints.length > 1 && (
@@ -145,19 +167,26 @@ export function NostrProviderDialog({
           ))}
         </div>
       </div>
-      {streamEvent && (
+      {info.tosAccepted === false ? tosInput() :
         <StreamEditor
           onFinish={(ex) => {
             provider.updateStreamInfo(ex);
             others.onFinish?.(ex);
           }}
-          ev={streamEvent}
+          ev={{
+            tags: [
+              ["title", info.streamInfo?.title ?? ""],
+              ["summary", info.streamInfo?.summary ?? ""],
+              ["image", info.streamInfo?.image ?? ""],
+              ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
+              ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? [])
+            ]
+          } as NostrEvent}
           options={{
             canSetStream: false,
             canSetStatus: false,
           }}
-        />
-      )}
+        />}
     </>
   );
 }

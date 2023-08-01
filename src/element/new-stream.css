@@ -45,3 +45,12 @@
   color: inherit;
   background: #353535;
 }
+
+.new-stream .tos-link {
+  cursor: pointer;
+  color: var(--text-link);
+}
+
+.new-stream .tos-link:hover {
+  text-decoration: underline;
+}

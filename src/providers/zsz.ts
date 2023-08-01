@@ -2,10 +2,11 @@ import {
   StreamProvider,
   StreamProviderEndpoint,
   StreamProviderInfo,
+  StreamProviderStreamInfo,
   StreamProviders,
 } from ".";
 import { EventKind, NostrEvent } from "@snort/system";
-import { Login } from "index";
+import { Login, StreamState } from "index";
 import { getPublisher } from "login";
 import { findTag } from "utils";
 
@@ -26,15 +27,15 @@ export class Nip103StreamProvider implements StreamProvider {
 
   async info() {
     const rsp = await this.#getJson<AccountResponse>("GET", "account");
-    const title = findTag(rsp.event, "title");
-    const state = findTag(rsp.event, "status");
     return {
       type: StreamProviders.NostrType,
-      name: title ?? "",
-      state: state,
+      name: this.name,
+      state: StreamState.Planned,
       viewers: 0,
-      publishedEvent: rsp.event,
+      streamInfo: rsp.event,
       balance: rsp.balance,
+      tosAccepted: rsp.tos?.accepted,
+      tosLink: rsp.tos?.link,
       endpoints: rsp.endpoints.map((a) => {
         return {
           name: a.name,
@@ -78,6 +79,12 @@ export class Nip103StreamProvider implements StreamProvider {
     return rsp.pr;
   }
 
+  async acceptTos(): Promise<void> {
+    await this.#getJson("PATCH", "account", {
+      accept_tos: true,
+    });
+  }
+
   async #getJson<T>(
     method: "GET" | "POST" | "PATCH",
     path: string,
@@ -113,8 +120,12 @@ export class Nip103StreamProvider implements StreamProvider {
 
 interface AccountResponse {
   balance: number;
-  event?: NostrEvent;
+  event?: StreamProviderStreamInfo;
   endpoints: Array<IngestEndpoint>;
+  tos?: {
+    accepted: boolean;
+    link: string;
+  };
 }
 
 interface IngestEndpoint {
