@@ -11,9 +11,10 @@ import { useMemo } from "react";
 import { LIVE_STREAM_CHAT } from "const";
 
 export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
-  const since = useMemo(() =>
-    unixNow() - (60 * 60 * 24 * 7), // 7-days of zaps
-  [link.id]);
+  const since = useMemo(
+    () => unixNow() - 60 * 60 * 24 * 7, // 7-days of zaps
+    [link.id],
+  );
   const sub = useMemo(() => {
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
     rb.withOptions({
@@ -57,7 +58,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
   const reactionsSub = useRequestBuilder<FlatNoteStore>(
     System,
     FlatNoteStore,
-    esub
+    esub,
   );
 
   const reactions = reactionsSub.data ?? [];

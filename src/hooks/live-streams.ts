@@ -6,26 +6,22 @@ import { useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { LIVE_STREAM } from "const";
 import { System, StreamState } from "index";
-import { findTag, dedupeByHost } from "utils";
+import { findTag } from "utils";
 
 export function useStreamsFeed(tag?: string) {
+  const since = useMemo(() => unixNow() - 86400, [tag]);
   const rb = useMemo(() => {
     const rb = new RequestBuilder(tag ? `streams:${tag}` : "streams");
     rb.withOptions({
       leaveOpen: true,
     });
     if (tag) {
-      rb.withFilter()
-        .kinds([LIVE_STREAM])
-        .tag("t", [tag])
-        .since(unixNow() - 86400);
+      rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).since(since);
     } else {
-      rb.withFilter()
-        .kinds([LIVE_STREAM])
-        .since(unixNow() - 86400);
+      rb.withFilter().kinds([LIVE_STREAM]).since(since);
     }
     return rb;
-  }, [tag]);
+  }, [tag, since]);
 
   const feed = useRequestBuilder<NoteCollection>(System, NoteCollection, rb);
   const feedSorted = useMemo(() => {
@@ -45,19 +41,17 @@ export function useStreamsFeed(tag?: string) {
     return [];
   }, [feed.data]);
 
-  const live = dedupeByHost(
-    feedSorted.filter((a) => findTag(a, "status") === StreamState.Live),
+  const live = feedSorted.filter(
+    (a) => findTag(a, "status") === StreamState.Live,
   );
-  const planned = dedupeByHost(
-    feedSorted.filter((a) => findTag(a, "status") === StreamState.Planned),
+  const planned = feedSorted.filter(
+    (a) => findTag(a, "status") === StreamState.Planned,
   );
-  const ended = dedupeByHost(
-    feedSorted.filter((a) => {
-      const hasEnded = findTag(a, "status") === StreamState.Ended;
-      const recording = findTag(a, "recording");
-      return hasEnded && recording?.length > 0;
-    }),
-  );
+  const ended = feedSorted.filter((a) => {
+    const hasEnded = findTag(a, "status") === StreamState.Ended;
+    const recording = findTag(a, "recording");
+    return hasEnded && recording?.length > 0;
+  });
 
   return { live, planned, ended };
 }

@@ -3,25 +3,26 @@ import type { NostrEvent } from "@snort/system";
 
 import { VideoTile } from "element/video-tile";
 import { useLogin } from "hooks/login";
-import { getHost, getTagValues, dedupeByHost } from "utils";
+import { getHost, getTagValues } from "utils";
 import { useStreamsFeed } from "hooks/live-streams";
 
 export function RootPage() {
   const login = useLogin();
 
   const { live, planned, ended } = useStreamsFeed();
-  const mutedHosts = getTagValues(login?.muted.tags ?? [], "p");
+  const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
   const followsHost = (ev: NostrEvent) => {
     return login?.follows.tags?.find((t) => t.at(1) === getHost(ev));
   };
   const hashtags = getTagValues(login?.follows.tags ?? [], "t");
-  const following = dedupeByHost(live.filter(followsHost));
-  const liveNow = dedupeByHost(live.filter((e) => !following.includes(e)));
+  const following = live.filter(followsHost);
+  const liveNow = live.filter((e) => !following.includes(e));
   const hasFollowingLive = following.length > 0;
 
   const plannedEvents = planned
-    .filter((e) => !mutedHosts.includes(getHost(e)))
+    .filter((e) => !mutedHosts.has(getHost(e)))
     .filter(followsHost);
+  const endedEvents = ended.filter((e) => !mutedHosts.has(getHost(e)));
 
   return (
     <div className="homepage">
@@ -35,7 +36,7 @@ export function RootPage() {
       {!hasFollowingLive && (
         <div className="video-grid">
           {live
-            .filter((e) => !mutedHosts.includes(getHost(e)))
+            .filter((e) => !mutedHosts.has(getHost(e)))
             .map((e) => (
               <VideoTile ev={e} key={e.id} />
             ))}
@@ -46,7 +47,7 @@ export function RootPage() {
           <h2 className="divider line one-line">#{t}</h2>
           <div className="video-grid">
             {live
-              .filter((e) => !mutedHosts.includes(getHost(e)))
+              .filter((e) => !mutedHosts.has(getHost(e)))
               .filter((e) => {
                 const evTags = getTagValues(e.tags, "t");
                 return evTags.includes(t);
@@ -62,7 +63,7 @@ export function RootPage() {
           <h2 className="divider line one-line">Live</h2>
           <div className="video-grid">
             {liveNow
-              .filter((e) => !mutedHosts.includes(getHost(e)))
+              .filter((e) => !mutedHosts.has(getHost(e)))
               .map((e) => (
                 <VideoTile ev={e} key={e.id} />
               ))}
@@ -79,15 +80,13 @@ export function RootPage() {
           </div>
         </>
       )}
-      {ended.length > 0 && (
+      {endedEvents.length > 0 && (
         <>
           <h2 className="divider line one-line">Ended</h2>
           <div className="video-grid">
-            {ended
-              .filter((e) => !mutedHosts.includes(getHost(e)))
-              .map((e) => (
-                <VideoTile ev={e} key={e.id} />
-              ))}
+            {endedEvents.map((e) => (
+              <VideoTile ev={e} key={e.id} />
+            ))}
           </div>
         </>
       )}
