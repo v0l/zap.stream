@@ -88,26 +88,41 @@ export function NostrProviderDialog({
   function tosInput() {
     if (!info) return;
 
-    return <>
-      <div>
-        <div className="flex g12">
-          <input type="checkbox" checked={tos} onChange={e => setTos(e.target.checked)} />
-          <p>
-            I have read and agree with {info.name}'s <span className="tos-link" onClick={() => window.open(info.tosLink, "popup", "width=400,height=800")}>terms and conditions</span>.
-          </p>
+    return (
+      <>
+        <div>
+          <div className="flex g12">
+            <input
+              type="checkbox"
+              checked={tos}
+              onChange={(e) => setTos(e.target.checked)}
+            />
+            <p>
+              I have read and agree with {info.name}'s{" "}
+              <span
+                className="tos-link"
+                onClick={() =>
+                  window.open(info.tosLink, "popup", "width=400,height=800")
+                }
+              >
+                terms and conditions
+              </span>
+              .
+            </p>
+          </div>
         </div>
-      </div>
-      <div>
-        <AsyncButton
-          type="button"
-          className="btn btn-primary wide"
-          disabled={!tos}
-          onClick={acceptTos}
-        >
-          Continue
-        </AsyncButton>
-      </div>
-    </>
+        <div>
+          <AsyncButton
+            type="button"
+            className="btn btn-primary wide"
+            disabled={!tos}
+            onClick={acceptTos}
+          >
+            Continue
+          </AsyncButton>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -167,26 +182,33 @@ export function NostrProviderDialog({
           ))}
         </div>
       </div>
-      {info.tosAccepted === false ? tosInput() :
+      {info.tosAccepted === false ? (
+        tosInput()
+      ) : (
         <StreamEditor
           onFinish={(ex) => {
             provider.updateStreamInfo(ex);
             others.onFinish?.(ex);
           }}
-          ev={{
-            tags: [
-              ["title", info.streamInfo?.title ?? ""],
-              ["summary", info.streamInfo?.summary ?? ""],
-              ["image", info.streamInfo?.image ?? ""],
-              ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
-              ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? [])
-            ]
-          } as NostrEvent}
+          ev={
+            {
+              tags: [
+                ["title", info.streamInfo?.title ?? ""],
+                ["summary", info.streamInfo?.summary ?? ""],
+                ["image", info.streamInfo?.image ?? ""],
+                ...(info.streamInfo?.content_warning
+                  ? [["content-warning", info.streamInfo?.content_warning]]
+                  : []),
+                ...(info.streamInfo?.tags?.map((a) => ["t", a]) ?? []),
+              ],
+            } as NostrEvent
+          }
           options={{
             canSetStream: false,
             canSetStatus: false,
           }}
-        />}
+        />
+      )}
     </>
   );
 }

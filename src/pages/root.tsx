@@ -12,13 +12,14 @@ export function RootPage() {
 
   const { live, planned, ended } = useStreamsFeed();
   const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
+  const tags = login?.follows.tags ?? [];
   const followsHost = useCallback(
     (ev: NostrEvent) => {
-      return login?.follows.tags.find((t) => t.at(1) === getHost(ev));
+      return tags.find((t) => t.at(1) === getHost(ev));
     },
-    [login?.follows]
+    [tags]
   );
-  const hashtags = getTagValues(login?.follows.tags ?? [], "t");
+  const hashtags = getTagValues(tags, "t");
   const following = live.filter(followsHost);
   const liveNow = live.filter((e) => !following.includes(e));
   const hasFollowingLive = following.length > 0;

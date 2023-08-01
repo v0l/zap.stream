@@ -51,7 +51,7 @@ export class OwncastProvider implements StreamProvider {
   acceptTos(): Promise<void> {
     throw new Error("Method not implemented.");
   }
-  
+
   async #getJson<T>(
     method: "GET" | "POST",
     path: string,

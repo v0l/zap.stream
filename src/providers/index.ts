@@ -53,7 +53,7 @@ export interface StreamProviderInfo {
   balance?: number;
   endpoints: Array<StreamProviderEndpoint>;
   tosAccepted?: boolean;
-  tosLink?: string
+  tosLink?: string;
 }
 
 export interface StreamProviderEndpoint {
@@ -66,11 +66,11 @@ export interface StreamProviderEndpoint {
 }
 
 export interface StreamProviderStreamInfo {
-  title: string
-  summary: string
-  image: string
-  tags: Array<string>
-  content_warning: string
+  title: string;
+  summary: string;
+  image: string;
+  tags: Array<string>;
+  content_warning: string;
 }
 
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
