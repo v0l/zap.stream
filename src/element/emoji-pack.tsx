@@ -48,7 +48,9 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
         <h4>{name}</h4>
         {login?.pubkey && (
           <AsyncButton
-            className={`btn btn-primary ${isUsed ? "delete-button" : ""}`}
+            className={`btn btn-small btn-primary ${
+              isUsed ? "delete-button" : ""
+            }`}
             onClick={toggleEmojiPack}
           >
             {isUsed ? "Remove" : "Add"}
