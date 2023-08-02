@@ -142,7 +142,6 @@ export function ChatMessage({
       <div
         className={`message${streamer === ev.pubkey ? " streamer" : ""}`}
         ref={ref}
-        onClick={() => setShowZapDialog(true)}
       >
         <Profile
           icon={
