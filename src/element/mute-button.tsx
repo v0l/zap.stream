@@ -5,7 +5,7 @@ import { MUTED } from "const";
 
 export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
   const login = useLogin();
-  const { tags, content, timestamp } = login!.muted;
+  const { tags, content } = login!.muted;
   const muted = tags.filter((t) => t.at(0) === "p");
   const isMuted = muted.find((t) => t.at(1) === pubkey);
 
@@ -45,10 +45,9 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
 
   return (
     <AsyncButton
-      disabled={timestamp ? timestamp === 0 : true}
       type="button"
       className="btn delete-button"
-      onClick={isMuted ? unmute : mute}
+      onClick={() => isMuted ? unmute() : mute()}
     >
       {isMuted ? "Unmute" : "Mute"}
     </AsyncButton>
