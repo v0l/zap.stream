@@ -104,7 +104,7 @@ export function LiveChat({
   const mutedPubkeys = useMemo(() => {
     return new Set(getTagValues(login?.muted.tags ?? [], "p"));
   }, [login]);
-  const hostMutedPubkeys = useMutedPubkeys(host);
+  const hostMutedPubkeys = useMutedPubkeys(host, true);
   const userEmojiPacks = login?.emojis ?? [];
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
