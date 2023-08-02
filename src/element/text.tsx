@@ -1,4 +1,3 @@
-import "./text.css";
 import { useMemo, type ReactNode, type FunctionComponent } from "react";
 
 import {

@@ -3,9 +3,6 @@ import { parseNostrLink, TaggedRawEvent } from "@snort/system";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import { NostrEvent } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
-
 import { LiveVideoPlayer } from "element/live-video-player";
 import {
   createNostrLink,
@@ -20,10 +17,13 @@ import { useLogin } from "hooks/login";
 import { useZapGoal } from "hooks/goals";
 import { StreamState, System } from "index";
 import { SendZapsDialog } from "element/send-zap";
+import { NostrEvent } from "@snort/system";
+import { useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
 import { Tags } from "element/tags";
 import { StatePill } from "element/state-pill";
 import { StreamCards } from "element/stream-cards";
+import { formatSats } from "number";
 import { StreamTimer } from "element/stream-time";
 import { ShareMenu } from "element/share-menu";
 import {
@@ -31,7 +31,6 @@ import {
   isContentWarningAccepted,
 } from "element/content-warning";
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { formatSats } from "number";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
   const login = useLogin();
@@ -157,7 +156,7 @@ export function StreamPage() {
       <div className="video-content">
         <LiveVideoPlayer stream={stream} poster={image} status={status} />
         <ProfileInfo ev={ev} goal={goal} />
-        <StreamCards host={host} isLive={status === StreamState.Live} />
+        <StreamCards host={host} />
       </div>
       <LiveChat link={createNostrLink(ev) ?? link} ev={ev} goal={goal} />
     </div>

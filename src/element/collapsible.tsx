@@ -67,12 +67,7 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
         </Collapsible.Trigger>
       </div>
       <Collapsible.Content>
-        {open && event && (
-          <div className="expanded-event">
-            {" "}
-            <NostrEvent ev={event} />
-          </div>
-        )}
+        {open && event && <NostrEvent ev={event} />}
       </Collapsible.Content>
     </Collapsible.Root>
   );
