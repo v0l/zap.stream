@@ -4,3 +4,10 @@
   width: 100%;
   border-radius: 6px;
 }
+
+.text video {
+  width: 100%;
+  margin-top: 8px;
+  aspect-ratio: 4/3;
+  border-radius: 6px;
+}

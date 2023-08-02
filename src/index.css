@@ -254,6 +254,13 @@ div.paper {
   margin: 6px;
 }
 
+.dialog-trigger {
+  font-size: 15px;
+  background: transparent;
+  border: none;
+  display: inline;
+}
+
 .ctx-menu {
   font-size: 16px;
   font-weight: 700;

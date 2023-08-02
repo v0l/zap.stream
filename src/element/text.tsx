@@ -9,6 +9,7 @@ import { Mention } from "element/mention";
 import { Emoji } from "element/emoji";
 import { HyperText } from "element/hypertext";
 import { splitByUrl } from "utils";
+import type { Tags } from "types";
 
 export type Fragment = string | ReactNode;
 
@@ -188,7 +189,12 @@ export function transformText(ps: Fragment[], tags: Array<string[]>) {
   return fragments;
 }
 
-export function Text({ content, tags }: { content: string; tags: string[][] }) {
+interface TextProps {
+  content: string;
+  tags: Tags;
+}
+
+export function Text({ content, tags }: TextProps) {
   // todo: RTL langugage support
   const element = useMemo(() => {
     return <span className="text">{transformText([content], tags)}</span>;

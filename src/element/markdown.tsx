@@ -30,6 +30,9 @@ export function Markdown({ content, tags = [] }: MarkdownProps) {
       td: ({ children }: ComponentProps) => {
         return children && <td>{transformText(children, tags)}</td>;
       },
+      th: ({ children }: ComponentProps) => {
+        return children && <th>{transformText(children, tags)}</th>;
+      },
       p: ({ children }: ComponentProps) => {
         return children && <p>{transformText(children, tags)}</p>;
       },
