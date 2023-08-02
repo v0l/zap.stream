@@ -110,6 +110,12 @@ a {
   gap: 8px;
 }
 
+.btn-small {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 4px 8px;
+}
+
 .btn-border {
   border: 1px solid transparent;
   color: inherit;

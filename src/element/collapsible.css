@@ -18,3 +18,27 @@
   color: var(--text-link);
   cursor: zoom-in;
 }
+
+.collapsible {
+  width: 100%;
+}
+
+.collapsed-event {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px;
+}
+
+.collapsed-event-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collapsed-event-header svg {
+  color: var(--text-muted);
+}
+
+.expanded-event {
+}
