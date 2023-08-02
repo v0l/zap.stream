@@ -22,6 +22,7 @@ import { NewGoalDialog } from "element/new-goal";
 import { WriteMessage } from "element/write-message";
 import useEmoji, { packId } from "hooks/emoji";
 import { useLiveChatFeed } from "hooks/live-chat";
+import { useMutedPubkeys } from "hooks/lists";
 import { useBadges } from "hooks/badges";
 import { useLogin } from "hooks/login";
 import useTopZappers from "hooks/top-zappers";
@@ -100,10 +101,10 @@ export function LiveChat({
     System.ProfileLoader.TrackMetadata(pubkeys);
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
-
   const mutedPubkeys = useMemo(() => {
     return new Set(getTagValues(login?.muted.tags ?? [], "p"));
   }, [login]);
+  const hostMutedPubkeys = useMutedPubkeys(host);
   const userEmojiPacks = login?.emojis ?? [];
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
@@ -131,8 +132,10 @@ export function LiveChat({
     }
   }, [ev]);
   const filteredEvents = useMemo(() => {
-    return events.filter((e) => !mutedPubkeys.has(e.pubkey));
-  }, [events, mutedPubkeys]);
+    return events.filter(
+      (e) => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey)
+    );
+  }, [events, mutedPubkeys, hostMutedPubkeys]);
 
   return (
     <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
