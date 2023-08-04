@@ -32,11 +32,14 @@ export function RootPage() {
   return (
     <div className="homepage">
       {hasFollowingLive && (
-        <div className="video-grid">
-          {following.map((e) => (
-            <VideoTile ev={e} key={e.id} />
-          ))}
-        </div>
+        <>
+          <h2 className="divider line one-line">Following</h2>
+          <div className="video-grid">
+            {following.map((e) => (
+              <VideoTile ev={e} key={e.id} />
+            ))}
+          </div>
+        </>
       )}
       {!hasFollowingLive && (
         <div className="video-grid">
