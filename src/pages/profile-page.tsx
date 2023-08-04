@@ -18,6 +18,7 @@ import { FollowButton } from "element/follow-button";
 import { MuteButton } from "element/mute-button";
 import { useProfile } from "hooks/profile";
 import useTopZappers from "hooks/top-zappers";
+import usePlaceholder from "hooks/placeholders";
 import { Text } from "element/text";
 import { StreamState, System } from "index";
 import { findTag } from "utils";
@@ -52,6 +53,7 @@ export function ProfilePage() {
   const navigate = useNavigate();
   const params = useParams();
   const link = parseNostrLink(params.npub!);
+  const placeholder = usePlaceholder(link.id);
   const profile = useUserProfile(System, link.id);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const { streams, zaps } = useProfile(link, true);
@@ -91,16 +93,22 @@ export function ProfilePage() {
           src={profile?.banner || defaultBanner}
         />
         <div className="profile-content">
-          {profile?.picture && (
+          {profile?.picture ? (
             <img
               className="avatar"
               alt={profile.name || link.id}
               src={profile.picture}
             />
+          ) : (
+            <img
+              className="avatar"
+              alt={profile?.name || link.id}
+              src={placeholder}
+            />
           )}
           <div className="status-indicator">
             {isLive ? (
-              <div className="icon-button pill live" onClick={goToLive}>
+              <div className="live-button pill live" onClick={goToLive}>
                 <Icon name="signal" />
                 <span>live</span>
               </div>
@@ -122,9 +130,9 @@ export function ProfilePage() {
                 lnurl={zapTarget}
                 button={
                   <button className="btn">
-                    <div className="icon-button">
-                      <span>Zap</span>
+                    <div className="zap-button">
                       <Icon name="zap-filled" className="zap-button-icon" />
+                      <span>Zap</span>
                     </div>
                   </button>
                 }

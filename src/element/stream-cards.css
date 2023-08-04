@@ -1,8 +1,12 @@
-.stream-cards {
+.stream-cards,
+.edit-container {
   display: none;
 }
 
 @media (min-width: 1020px) {
+  .edit-container {
+    display: block;
+  }
   .stream-cards {
     display: grid;
     align-items: flex-start;
@@ -86,6 +90,7 @@
 .new-card h3 {
   margin: 0;
   margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .new-card input[type="text"] {

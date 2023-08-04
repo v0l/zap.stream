@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
 import { UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
+
 import { Icon } from "element/icon";
+import usePlaceholder from "hooks/placeholders";
 import { System } from "index";
 import { useInView } from "react-intersection-observer";
 
@@ -47,6 +49,7 @@ export function Profile({
     useUserProfile(System, inView && !profile ? pubkey : undefined) || profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
+  const placeholder = usePlaceholder(pubkey);
 
   const content = (
     <>
@@ -57,7 +60,7 @@ export function Profile({
           <img
             alt={pLoaded?.name || pubkey}
             className={avatarClassname ? avatarClassname : ""}
-            src={pLoaded?.picture ?? ""}
+            src={pLoaded?.picture ?? placeholder}
           />
         ))}
       {icon}

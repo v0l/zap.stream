@@ -1,18 +1,22 @@
-.emoji-pack-title {
+.emoji-pack {
+  margin: 8px 0;
+}
+
+.emoji-pack .emoji-pack-title {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
-.emoji-pack-title .name {
+.emoji-pack .emoji-pack-title .name {
   margin: 0;
 }
 
-.emoji-pack-title a {
+.emoji-pack .emoji-pack-title a {
   font-size: 14px;
 }
 
-.emoji-pack-emojis {
+.emoji-pack .emoji-pack-emojis {
   margin-top: 12px;
   display: flex;
   flex-direction: row;
@@ -20,14 +24,14 @@
   gap: 4px;
 }
 
-.emoji-definition {
+.emoji-pack .emoji-definition {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
 }
 
-.emoji-name {
+.emoji-pack .emoji-name {
   font-size: 10px;
 }
 

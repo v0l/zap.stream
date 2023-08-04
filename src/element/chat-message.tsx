@@ -14,6 +14,7 @@ import { Emoji as EmojiComponent } from "element/emoji";
 import { Profile } from "./profile";
 import { Text } from "element/text";
 import { SendZapsDialog } from "element/send-zap";
+import { CollapsibleEvent } from "element/collapsible";
 import { useLogin } from "hooks/login";
 import { formatSats } from "number";
 import { findTag } from "utils";
@@ -29,6 +30,10 @@ function emojifyReaction(reaction: string) {
   }
   return reaction;
 }
+
+const customComponents = {
+  Event: CollapsibleEvent,
+};
 
 export function ChatMessage({
   streamer,
@@ -137,7 +142,6 @@ export function ChatMessage({
       <div
         className={`message${streamer === ev.pubkey ? " streamer" : ""}`}
         ref={ref}
-        onClick={() => setShowZapDialog(true)}
       >
         <Profile
           icon={
@@ -159,7 +163,11 @@ export function ChatMessage({
           pubkey={ev.pubkey}
           profile={profile}
         />
-        <Text tags={ev.tags} content={ev.content} />
+        <Text
+          tags={ev.tags}
+          content={ev.content}
+          customComponents={customComponents}
+        />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (

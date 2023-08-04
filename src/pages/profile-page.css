@@ -46,12 +46,27 @@
   margin-left: 16px;
 }
 
+@media (min-width: 480px) {
+  .profile-page .status-indicator {
+    position: absolute;
+    top: 16px;
+    left: 120px;
+  }
+}
+
 .profile-page .profile-actions {
   position: absolute;
   display: flex;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 4px;
   top: 12px;
   right: 12px;
+}
+
+@media (min-width: 480px) {
+  .profile-page .profile-actions {
+    gap: 12px;
+  }
 }
 
 .profile-page .profile-information {
@@ -79,20 +94,9 @@
   line-height: 24px;
 }
 
-.profile-page .icon-button {
+.profile-page .zap-button {
   display: flex;
-  align-items: center;
   gap: 8px;
-}
-
-.profile-page .icon-button span {
-  display: none;
-}
-
-@media (min-width: 420px) {
-  .profile-page .icon-button span {
-    display: block;
-  }
 }
 
 .profile-page .zap-button-icon {
@@ -187,9 +191,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
 }
 
 .profile-page .zapper .zapper-amount {
@@ -197,7 +199,6 @@
   align-items: center;
   gap: 4px;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 22px;
 }
@@ -228,4 +229,20 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
+}
+
+.profile-page .live-button span {
+  display: none;
+}
+.profile-page .zap-button span {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .profile-page .zap-button span {
+    display: block;
+  }
+  .profile-page .live-button span {
+    display: block;
+  }
 }

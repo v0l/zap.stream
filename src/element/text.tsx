@@ -1,13 +1,17 @@
-import { useMemo, type ReactNode } from "react";
+import { useMemo, type ReactNode, type FunctionComponent } from "react";
 
-import { parseNostrLink, validateNostrLink } from "@snort/system";
+import {
+  type NostrLink,
+  parseNostrLink,
+  validateNostrLink,
+} from "@snort/system";
 
-import { Address } from "element/address";
 import { Event } from "element/Event";
 import { Mention } from "element/mention";
 import { Emoji } from "element/emoji";
 import { HyperText } from "element/hypertext";
 import { splitByUrl } from "utils";
+import type { Tags } from "types";
 
 export type Fragment = string | ReactNode;
 
@@ -31,25 +35,11 @@ function extractLinks(fragments: Fragment[]) {
 
             return (
               normalizedStr.startsWith("http:") ||
-              normalizedStr.startsWith("https:") ||
-              normalizedStr.startsWith("magnet:")
+              normalizedStr.startsWith("https:")
             );
           };
 
           if (validateLink()) {
-            if (!a.startsWith("nostr:")) {
-              return (
-                <a
-                  href={a}
-                  onClick={(e) => e.stopPropagation()}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ext"
-                >
-                  {a}
-                </a>
-              );
-            }
             return <HyperText link={a}>{a}</HyperText>;
           }
           return a;
@@ -122,7 +112,7 @@ function extractNpubs(fragments: Fragment[]) {
     .flat();
 }
 
-function extractNevents(fragments: Fragment[]) {
+function extractNevents(fragments: Fragment[], Event: NostrComponent) {
   return fragments
     .map((f) => {
       if (typeof f === "string") {
@@ -144,7 +134,7 @@ function extractNevents(fragments: Fragment[]) {
     .flat();
 }
 
-function extractNaddrs(fragments: Fragment[]) {
+function extractNaddrs(fragments: Fragment[], Address: NostrComponent) {
   return fragments
     .map((f) => {
       if (typeof f === "string") {
@@ -167,7 +157,7 @@ function extractNaddrs(fragments: Fragment[]) {
     .flat();
 }
 
-function extractNoteIds(fragments: Fragment[]) {
+function extractNoteIds(fragments: Fragment[], Event: NostrComponent) {
   return fragments
     .map((f) => {
       if (typeof f === "string") {
@@ -189,22 +179,46 @@ function extractNoteIds(fragments: Fragment[]) {
     .flat();
 }
 
-export function transformText(ps: Fragment[], tags: Array<string[]>) {
+export type NostrComponent = FunctionComponent<{ link: NostrLink }>;
+
+export interface NostrComponents {
+  Event: NostrComponent;
+}
+
+const components: NostrComponents = {
+  Event,
+};
+
+export function transformText(
+  ps: Fragment[],
+  tags: Array<string[]>,
+  customComponents = components
+) {
   let fragments = extractEmoji(ps, tags);
   fragments = extractNprofiles(fragments);
-  fragments = extractNevents(fragments);
-  fragments = extractNaddrs(fragments);
-  fragments = extractNoteIds(fragments);
+  fragments = extractNevents(fragments, customComponents.Event);
+  fragments = extractNaddrs(fragments, customComponents.Event);
+  fragments = extractNoteIds(fragments, customComponents.Event);
   fragments = extractNpubs(fragments);
   fragments = extractLinks(fragments);
 
   return fragments;
 }
 
-export function Text({ content, tags }: { content: string; tags: string[][] }) {
+interface TextProps {
+  content: string;
+  tags: Tags;
+  customComponents?: NostrComponents;
+}
+
+export function Text({ content, tags, customComponents }: TextProps) {
   // todo: RTL langugage support
   const element = useMemo(() => {
-    return <span>{transformText([content], tags)}</span>;
+    return (
+      <span className="text">
+        {transformText([content], tags, customComponents)}
+      </span>
+    );
   }, [content, tags]);
 
   return <>{element}</>;
