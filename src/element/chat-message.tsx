@@ -13,6 +13,7 @@ import { Icon } from "element/icon";
 import { Emoji as EmojiComponent } from "element/emoji";
 import { Profile } from "./profile";
 import { Text } from "element/text";
+import { useMute } from "element/mute-button";
 import { SendZapsDialog } from "element/send-zap";
 import { CollapsibleEvent } from "element/collapsible";
 import { useLogin } from "hooks/login";
@@ -55,6 +56,7 @@ export function ChatMessage({
   const emojiRef = useRef(null);
   const isTablet = useMediaQuery("(max-width: 1020px)");
   const isHovering = useHover(ref);
+  const { mute } = useMute(ev.pubkey);
   const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
@@ -62,6 +64,8 @@ export function ChatMessage({
     System,
     inView?.isIntersecting ? ev.pubkey : undefined
   );
+  const shouldShowMuteButton =
+    ev.pubkey !== streamer && ev.pubkey != login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const zaps = useMemo(() => {
     return reactions
@@ -132,9 +136,14 @@ export function ChatMessage({
   const topOffset = ref.current?.getBoundingClientRect().top;
   const leftOffset = ref.current?.getBoundingClientRect().left;
 
-  function pickEmoji(ev: React.MouseEvent) {
-    ev.stopPropagation();
+  function pickEmoji(e: React.MouseEvent) {
+    e.stopPropagation();
     setShowEmojiPicker(!showEmojiPicker);
+  }
+
+  async function muteUser(e: React.MouseEvent) {
+    e.stopPropagation();
+    mute();
   }
 
   return (
@@ -229,6 +238,11 @@ export function ChatMessage({
             <button className="message-zap-button" onClick={pickEmoji}>
               <Icon name="face" className="message-zap-button-icon" />
             </button>
+            {shouldShowMuteButton && (
+              <button className="message-zap-button" onClick={muteUser}>
+                <Icon name="user-x" className="message-zap-button-icon" />
+              </button>
+            )}
           </div>
         )}
       </div>

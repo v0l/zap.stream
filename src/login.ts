@@ -10,7 +10,7 @@ export enum LoginType {
 }
 
 interface ReplaceableTags {
-  tags: Array<string[]>;
+  tags: Tags;
   content?: string;
   timestamp: number;
 }
