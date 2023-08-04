@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { NoteCollection, RequestBuilder } from "@snort/system";
+import { NostrEvent, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { unixNow } from "@snort/shared";
@@ -24,33 +24,35 @@ export function useStreamsFeed(tag?: string) {
     return rb;
   }, [tag, since]);
 
+  function sortCreatedAt(a: NostrEvent, b: NostrEvent) {
+    return b.created_at > a.created_at ? 1 : -1;
+  }
+
+  function sortStarts(a: NostrEvent, b: NostrEvent) {
+    const aStart = Number(findTag(a, "starts") ?? "0");
+    const bStart = Number(findTag(b, "starts") ?? "0");
+    return bStart > aStart ? 1 : -1;
+  }
+
   const feed = useRequestBuilder<NoteCollection>(System, NoteCollection, rb);
   const feedSorted = useMemo(() => {
     if (feed.data) {
-      return [...feed.data].sort((a, b) => {
-        const status = findTag(a, "status");
-        if (status === StreamState.Ended) {
-          return b.created_at > a.created_at ? 1 : -1;
-        }
-        const aStart = Number(findTag(a, "starts") ?? "0");
-        const bStart = Number(findTag(b, "starts") ?? "0");
-        return bStart > aStart ? 1 : -1;
-      });
+      return [...feed.data];
     }
     return [];
   }, [feed.data]);
 
   const live = feedSorted.filter(
     (a) => findTag(a, "status") === StreamState.Live
-  );
+  ).sort(sortStarts);
   const planned = feedSorted.filter(
     (a) => findTag(a, "status") === StreamState.Planned
-  );
+  ).sort(sortStarts);
   const ended = feedSorted.filter((a) => {
     const hasEnded = findTag(a, "status") === StreamState.Ended;
     const recording = findTag(a, "recording") ?? "";
     return hasEnded && recording?.length > 0;
-  });
+  }).sort(sortCreatedAt);
 
   return { live, planned, ended };
 }
