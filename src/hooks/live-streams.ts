@@ -37,7 +37,15 @@ export function useStreamsFeed(tag?: string) {
   const feed = useRequestBuilder<NoteCollection>(System, NoteCollection, rb);
   const feedSorted = useMemo(() => {
     if (feed.data) {
-      return [...feed.data];
+      if (__XXX) {
+        return [...feed.data].filter(
+          (a) => findTag(a, "content-warning") !== undefined
+        );
+      } else {
+        return [...feed.data].filter(
+          (a) => findTag(a, "content-warning") === undefined
+        );
+      }
     }
     return [];
   }, [feed.data]);

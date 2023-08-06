@@ -65,6 +65,9 @@ const config = {
     new webpack.IgnorePlugin({
       resourceRegExp: /^\.\/locale$/,
       contextRegExp: /moment$/,
+    }),
+    new webpack.DefinePlugin({
+      __XXX: process.env["__XXX"] || JSON.stringify(false)
     })
   ],
   module: {

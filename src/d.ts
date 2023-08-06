@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /// <reference types="@webbtc/webln-types" />
+
+declare const __XXX: boolean;
 
 declare module "*.jpg" {
   const value: unknown;
