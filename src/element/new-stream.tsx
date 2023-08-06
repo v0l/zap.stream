@@ -35,7 +35,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
             onFinish={(ex) => {
               currentProvider.updateStreamInfo(ex);
               if (!ev) {
-                if (findTag(ex, "content-warning") && __XXX_HOST) {
+                if (findTag(ex, "content-warning") && __XXX_HOST && __XXX === false) {
                   location.href = `${__XXX_HOST}/${eventLink(ex)}`;
                 } else {
                   navigate(`/${eventLink(ex)}`, {
