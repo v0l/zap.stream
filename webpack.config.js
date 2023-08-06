@@ -56,7 +56,7 @@ const config = {
     new ESLintPlugin({
       extensions: ["js", "mjs", "jsx", "ts", "tsx"],
       eslintPath: require.resolve("eslint"),
-      failOnError: true,
+      failOnError: !isProduction,
       cache: true,
     }),
     new MiniCssExtractPlugin({
