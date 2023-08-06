@@ -7,18 +7,16 @@ import {
   RequestBuilder,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { unixNow } from "@snort/shared";
 
 import { findTag, toAddress, getTagValues } from "utils";
-import { WEEK } from "const";
 import { System } from "index";
 import type { Badge } from "types";
 
 export function useBadges(
   pubkey: string,
+  since: number,
   leaveOpen = true
 ): { badges: Badge[]; awards: TaggedRawEvent[] } {
-  const since = useMemo(() => unixNow() - WEEK, [pubkey]);
   const rb = useMemo(() => {
     const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
     rb.withOptions({ leaveOpen });

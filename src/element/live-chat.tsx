@@ -8,6 +8,7 @@ import {
   parseZap,
   encodeTLV,
 } from "@snort/system";
+import { unixNow } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
@@ -28,7 +29,7 @@ import { useLogin } from "hooks/login";
 import useTopZappers from "hooks/top-zappers";
 import { useAddress } from "hooks/event";
 import { formatSats } from "number";
-import { LIVE_STREAM_CHAT } from "const";
+import { WEEK, LIVE_STREAM_CHAT } from "const";
 import { findTag, getTagValues, getHost } from "utils";
 import { System } from "index";
 
@@ -91,7 +92,6 @@ export function LiveChat({
   height?: number;
 }) {
   const host = getHost(ev);
-  const { badges, awards } = useBadges(host);
   const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
   useEffect(() => {
@@ -101,6 +101,11 @@ export function LiveChat({
     System.ProfileLoader.TrackMetadata(pubkeys);
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
+  const started = useMemo(() => {
+    const starts = findTag(ev, "starts");
+    return starts ? Number(starts) : unixNow() - WEEK;
+  }, [ev]);
+  const { badges, awards } = useBadges(host, started);
   const mutedPubkeys = useMemo(() => {
     return new Set(getTagValues(login?.muted.tags ?? [], "p"));
   }, [login]);
