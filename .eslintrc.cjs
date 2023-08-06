@@ -10,5 +10,11 @@ module.exports = {
       commonjs: true,
       node: false,
     },
+    "rules": {
+      "@typescript-eslint/no-non-null-assertion": "error",
+      "require-await": "error",
+      "eqeqeq": "error",
+      "object-shorthand": "warn",
+    }
   };
   

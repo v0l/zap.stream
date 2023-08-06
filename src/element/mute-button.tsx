@@ -6,7 +6,7 @@ import { MUTED } from "const";
 
 export function useMute(pubkey: string) {
   const login = useLogin();
-  const { tags, content } = login!.muted;
+  const { tags, content } = login?.muted ?? { tags: [] };
   const muted = useMemo(() => tags.filter((t) => t.at(0) === "p"), [tags]);
   const isMuted = useMemo(
     () => muted.find((t) => t.at(1) === pubkey),
