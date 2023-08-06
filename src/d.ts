@@ -2,6 +2,7 @@
 /// <reference types="@webbtc/webln-types" />
 
 declare const __XXX: boolean;
+declare const __XXX_HOST: string;
 
 declare module "*.jpg" {
   const value: unknown;

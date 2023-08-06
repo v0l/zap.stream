@@ -67,7 +67,8 @@ const config = {
       contextRegExp: /moment$/,
     }),
     new webpack.DefinePlugin({
-      __XXX: process.env["__XXX"] || JSON.stringify(false)
+      __XXX: process.env["__XXX"] || JSON.stringify(false),
+      __XXX_HOST: JSON.stringify("https://xxzap.com")
     })
   ],
   module: {

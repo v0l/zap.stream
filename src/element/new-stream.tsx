@@ -7,7 +7,7 @@ import { StreamProvider, StreamProviders } from "providers";
 import { useEffect, useState } from "react";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { useNavigate } from "react-router-dom";
-import { eventLink } from "utils";
+import { eventLink, findTag } from "utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
 
 function NewStream({ ev, onFinish }: StreamEditorProps) {
@@ -35,9 +35,13 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
             onFinish={(ex) => {
               currentProvider.updateStreamInfo(ex);
               if (!ev) {
-                navigate(`/${eventLink(ex)}`, {
-                  state: ev,
-                });
+                if (findTag(ex, "content-warning") && __XXX_HOST) {
+                  location.href = `${__XXX_HOST}/${eventLink(ex)}`;
+                } else {
+                  navigate(`/${eventLink(ex)}`, {
+                    state: ev,
+                  });
+                }
               } else {
                 onFinish?.(ev);
               }

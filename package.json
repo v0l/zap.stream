@@ -52,7 +52,8 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --node-env=production",
-    "deploy": "npx wrangler pages publish build"
+    "deploy": "yarn build && npx wrangler pages publish build",
+    "deploy:xxzap": "__XXX='true' && yarn build && npx wrangler pages publish --project-name xxzap build"
   },
   "eslintConfig": {
     "extends": [
