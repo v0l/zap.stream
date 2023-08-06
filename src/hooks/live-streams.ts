@@ -42,17 +42,19 @@ export function useStreamsFeed(tag?: string) {
     return [];
   }, [feed.data]);
 
-  const live = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Live
-  ).sort(sortStarts);
-  const planned = feedSorted.filter(
-    (a) => findTag(a, "status") === StreamState.Planned
-  ).sort(sortStarts);
-  const ended = feedSorted.filter((a) => {
-    const hasEnded = findTag(a, "status") === StreamState.Ended;
-    const recording = findTag(a, "recording") ?? "";
-    return hasEnded && recording?.length > 0;
-  }).sort(sortCreatedAt);
+  const live = feedSorted
+    .filter((a) => findTag(a, "status") === StreamState.Live)
+    .sort(sortStarts);
+  const planned = feedSorted
+    .filter((a) => findTag(a, "status") === StreamState.Planned)
+    .sort(sortStarts);
+  const ended = feedSorted
+    .filter((a) => {
+      const hasEnded = findTag(a, "status") === StreamState.Ended;
+      const recording = findTag(a, "recording") ?? "";
+      return hasEnded && recording?.length > 0;
+    })
+    .sort(sortCreatedAt);
 
   return { live, planned, ended };
 }

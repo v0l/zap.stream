@@ -1,13 +1,17 @@
+import { useMemo } from "react";
 import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
 import { Login, System } from "index";
 import { MUTED } from "const";
 
-export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
+export function useMute(pubkey: string) {
   const login = useLogin();
   const { tags, content } = login!.muted;
-  const muted = tags.filter((t) => t.at(0) === "p");
-  const isMuted = muted.find((t) => t.at(1) === pubkey);
+  const muted = useMemo(() => tags.filter((t) => t.at(0) === "p"), [tags]);
+  const isMuted = useMemo(
+    () => muted.find((t) => t.at(1) === pubkey),
+    [pubkey, muted]
+  );
 
   async function unmute() {
     const pub = login?.publisher();
@@ -42,6 +46,12 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
       Login.setMuted(newMuted, content ?? "", ev.created_at);
     }
   }
+
+  return { isMuted, mute, unmute };
+}
+
+export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
+  const { isMuted, mute, unmute } = useMute(pubkey);
 
   return (
     <AsyncButton
