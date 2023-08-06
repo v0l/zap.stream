@@ -38,6 +38,12 @@
   display: flex;
 }
 
+@media (max-width: 1020px) {
+  .divider {
+    padding: 0 8px;
+  }
+}
+
 .divider:after {
   content: "";
   flex: 1;
