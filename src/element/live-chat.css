@@ -52,7 +52,7 @@
 }
 
 .live-chat > .write-message > div:nth-child(1) {
-  height: 32px;
+  height: 40px;
   flex-grow: 1;
 }
 
