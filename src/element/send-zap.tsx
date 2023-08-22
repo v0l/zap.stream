@@ -43,10 +43,10 @@ export function SendZaps({
   targetName,
   onFinish,
 }: SendZapsProps) {
-  const UsdRate = 30_000;
+  const UsdRate = 28_000;
 
   const satsAmounts = [
-    100, 1_000, 5_000, 10_000, 50_000, 100_000, 500_000, 1_000_000,
+    21, 69, 121, 221, 420, 1_000, 2_100, 5_000, 6_666, 10_000, 21_000, 42_000, 69_000, 100_000, 210_000, 500_000, 1_000_000,
   ];
   const usdAmounts = [0.05, 0.5, 2, 5, 10, 50, 100, 200];
   const [isFiat, setIsFiat] = useState(false);
