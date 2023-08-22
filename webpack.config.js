@@ -45,7 +45,7 @@ const config = {
         { from: "public/robots.txt" },
         { from: "public/icons.svg" },
         { from: "public/logo.png" },
-        { from: "_headers" }
+        { from: "_headers" },
       ],
     }),
     new HtmlWebpackPlugin({
@@ -68,8 +68,8 @@ const config = {
     }),
     new webpack.DefinePlugin({
       __XXX: process.env["__XXX"] || JSON.stringify(false),
-      __XXX_HOST: JSON.stringify("https://xxzap.com")
-    })
+      __XXX_HOST: JSON.stringify("https://xxzap.com"),
+    }),
   ],
   module: {
     rules: [
@@ -89,9 +89,12 @@ const config = {
               babelrc: false,
               configFile: false,
               presets: [
-                ["@babel/preset-env", {
-                  targets: "defaults"
-                }],
+                [
+                  "@babel/preset-env",
+                  {
+                    targets: "defaults",
+                  },
+                ],
                 ["@babel/preset-react", { runtime: "automatic" }],
                 "@babel/preset-typescript",
               ],
@@ -106,7 +109,7 @@ const config = {
               ],
             },
           },
-          require.resolve("ts-loader")
+          require.resolve("ts-loader"),
         ],
       },
       {
@@ -148,7 +151,7 @@ const config = {
     aliasFields: ["browser"],
     extensions: ["...", ".tsx", ".ts", ".jsx", ".js"],
     modules: ["...", __dirname, path.resolve(__dirname, "src")],
-    fallback: { "crypto": false }
+    fallback: { crypto: false },
   },
 };
 
