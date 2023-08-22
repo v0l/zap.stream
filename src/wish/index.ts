@@ -503,7 +503,7 @@ export class WISH extends TypedEventTarget {
       },
     });
     const body = await resp.text();
-    if (resp.status != 201) {
+    if (resp.status !== 201) {
       throw new Error(`Unexpected status code ${resp.status}: ${body}`);
     }
 
@@ -611,7 +611,7 @@ export class WISH extends TypedEventTarget {
     throw new Error(`Unexpected status code ${resp.status}: ${body}`);
   }
 
-  async WithEndpoint(endpoint: string, trickle: boolean) {
+  WithEndpoint(endpoint: string, trickle: boolean) {
     if (endpoint === "") {
       throw new Error("Endpoint cannot be empty");
     }
@@ -637,7 +637,7 @@ export class WISH extends TypedEventTarget {
       method: "DELETE",
       mode: "cors",
     });
-    if (resp.status != 200) {
+    if (resp.status !== 200) {
       const body = await resp.text();
       throw new Error(`Unexpected status code ${resp.status}: ${body}`);
     }

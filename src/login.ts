@@ -1,6 +1,6 @@
 import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
-import { ExternalStore } from "@snort/shared";
+import { ExternalStore, unwrap } from "@snort/shared";
 import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
 import type { EmojiPack, Tags } from "types";
 
@@ -131,7 +131,7 @@ export function getPublisher(session: LoginSession) {
     }
     case LoginType.PrivateKey: {
       return new EventPublisher(
-        new PrivateKeySigner(session.privateKey!),
+        new PrivateKeySigner(unwrap(session.privateKey)),
         session.pubkey
       );
     }

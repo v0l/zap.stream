@@ -2,12 +2,13 @@ import "./chat-popout.css";
 import { LiveChat } from "element/live-chat";
 import { useParams } from "react-router-dom";
 import { NostrPrefix, encodeTLV, parseNostrLink } from "@snort/system";
+import { unwrap } from "@snort/shared";
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { findTag } from "utils";
 
 export function ChatPopout() {
   const params = useParams();
-  const link = parseNostrLink(params.id!);
+  const link = parseNostrLink(unwrap(params.id));
   const ev = useCurrentStreamFeed(link, true);
 
   const lnk = parseNostrLink(

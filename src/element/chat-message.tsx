@@ -65,7 +65,7 @@ export function ChatMessage({
     inView?.isIntersecting ? ev.pubkey : undefined
   );
   const shouldShowMuteButton =
-    ev.pubkey !== streamer && ev.pubkey != login?.pubkey;
+    ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const zaps = useMemo(() => {
     return reactions
@@ -111,8 +111,8 @@ export function ChatMessage({
       const pub = login?.publisher();
       if (emoji.native) {
         reply = await pub?.react(ev, emoji.native || "+1");
-      } else {
-        const e = getEmojiById(emoji.id!);
+      } else if (emoji.id) {
+        const e = getEmojiById(emoji.id);
         if (e) {
           reply = await pub?.generic((eb) => {
             return eb
@@ -120,7 +120,7 @@ export function ChatMessage({
               .content(`:${emoji.id}:`)
               .tag(["e", ev.id])
               .tag(["p", ev.pubkey])
-              .tag(["emoji", e.at(1)!, e.at(2)!]);
+              .tag(["emoji", e[1], e[2]]);
           });
         }
       }
@@ -141,7 +141,7 @@ export function ChatMessage({
     setShowEmojiPicker(!showEmojiPicker);
   }
 
-  async function muteUser(e: React.MouseEvent) {
+  function muteUser(e: React.MouseEvent) {
     e.stopPropagation();
     mute();
   }
@@ -194,7 +194,7 @@ export function ChatMessage({
                 <div className="message-reaction-container">
                   {isCustomEmojiReaction && emoji ? (
                     <span className="message-reaction">
-                      <EmojiComponent name={emoji.at(1)!} url={emoji.at(2)!} />
+                      <EmojiComponent name={emoji[1]} url={emoji[2]} />
                     </span>
                   ) : (
                     <span className="message-reaction">{e}</span>
@@ -210,16 +210,16 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents:
-                      showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents:
+                    showZapDialog || isHovering ? "auto" : "none",
+                }
             }
           >
             {zapTarget && (

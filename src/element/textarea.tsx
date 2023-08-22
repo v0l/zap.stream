@@ -53,11 +53,11 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
   const userDataProvider = async (token: string) => {
     const cache = System.ProfileLoader.Cache;
     if (cache instanceof UserProfileCache) {
-      return cache.search(token);
+      return await cache.search(token);
     }
   };
 
-  const emojiDataProvider = async (token: string) => {
+  const emojiDataProvider = (token: string) => {
     const results = emojis
       .map((t) => {
         return {

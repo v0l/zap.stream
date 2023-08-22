@@ -1,5 +1,6 @@
 import "./stream-page.css";
 import { parseNostrLink, TaggedRawEvent } from "@snort/system";
+import { unwrap } from "@snort/shared";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -114,7 +115,7 @@ export function StreamPage() {
   const params = useParams();
   const location = useLocation();
   const evPreload = getEventFromLocationState(location.state);
-  const link = parseNostrLink(params.id!);
+  const link = parseNostrLink(unwrap(params.id));
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const goal = useZapGoal(host, link, true);

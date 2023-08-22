@@ -29,7 +29,7 @@ export function useUserCards(
 
   const subRelated = useMemo(() => {
     if (!pubkey) return null;
-    const splitted = related.map((t) => t.at(1)!.split(":"));
+    const splitted = related.map((t) => t[1].split(":"));
     const authors = splitted
       .map((s) => s.at(1))
       .filter((s) => s)
@@ -58,7 +58,7 @@ export function useUserCards(
   const cards = useMemo(() => {
     return related
       .map((t) => {
-        const [k, pubkey, identifier] = t.at(1)!.split(":");
+        const [k, pubkey, identifier] = t[1].split(":");
         const kind = Number(k);
         return (data ?? []).find(
           (e) =>
@@ -104,7 +104,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
 
   const subRelated = useMemo(() => {
     if (!pubkey) return null;
-    const splitted = related.map((t) => t.at(1)!.split(":"));
+    const splitted = related.map((t) => t[1].split(":"));
     const authors = splitted
       .map((s) => s.at(1))
       .filter((s) => s)
@@ -134,7 +134,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
   const cards = useMemo(() => {
     return related
       .map((t) => {
-        const [k, pubkey, identifier] = t.at(1)!.split(":");
+        const [k, pubkey, identifier] = t[1].split(":");
         const kind = Number(k);
         return cardEvents.find(
           (e) =>

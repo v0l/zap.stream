@@ -109,7 +109,7 @@ export function getHost(ev?: NostrEvent) {
   );
 }
 
-export async function openFile(): Promise<File | undefined> {
+export function openFile(): Promise<File | undefined> {
   return new Promise((resolve) => {
     const elm = document.createElement("input");
     elm.type = "file";

@@ -10,6 +10,7 @@ import {
   encodeTLV,
 } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
+import { unwrap } from "@snort/shared";
 import { Profile } from "element/profile";
 import { Icon } from "element/icon";
 import { SendZapsDialog } from "element/send-zap";
@@ -52,7 +53,7 @@ const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 export function ProfilePage() {
   const navigate = useNavigate();
   const params = useParams();
-  const link = parseNostrLink(params.npub!);
+  const link = parseNostrLink(unwrap(params.npub));
   const placeholder = usePlaceholder(link.id);
   const profile = useUserProfile(System, link.id);
   const zapTarget = profile?.lud16 ?? profile?.lud06;

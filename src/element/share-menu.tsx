@@ -1,9 +1,11 @@
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import * as Dialog from "@radix-ui/react-dialog";
+import { unwrap } from "@snort/shared";
+import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
+
 import { Icon } from "./icon";
 import { useState } from "react";
 import { Textarea } from "./textarea";
-import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
 import { findTag } from "utils";
 import AsyncButton from "./async-button";
 import { useLogin } from "hooks/login";
@@ -18,7 +20,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
 
   const naddr = encodeTLV(
     NostrPrefix.Address,
-    findTag(ev, "d")!,
+    unwrap(findTag(ev, "d")),
     undefined,
     ev.kind,
     ev.pubkey

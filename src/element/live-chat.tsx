@@ -8,7 +8,7 @@ import {
   parseZap,
   encodeTLV,
 } from "@snort/system";
-import { unixNow } from "@snort/shared";
+import { unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
@@ -96,7 +96,7 @@ export function LiveChat({
   const login = useLogin();
   useEffect(() => {
     const pubkeys = [
-      ...new Set(feed.zaps.flatMap((a) => [a.pubkey, findTag(a, "p")!])),
+      ...new Set(feed.zaps.flatMap((a) => [a.pubkey, unwrap(findTag(a, "p"))])),
     ];
     System.ProfileLoader.TrackMetadata(pubkeys);
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);

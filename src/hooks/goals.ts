@@ -9,6 +9,7 @@ import {
   parseZap,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
+import { unwrap } from "@snort/shared";
 import { GOAL } from "const";
 import { System } from "index";
 
@@ -43,7 +44,7 @@ export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
     b.withFilter()
       .kinds([GOAL])
       .authors([host])
-      .tag("a", [`${link.kind}:${link.author!}:${link.id}`]);
+      .tag("a", [`${link.kind}:${unwrap(link.author)}:${link.id}`]);
     return b;
   }, [link, leaveOpen]);
 

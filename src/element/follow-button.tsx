@@ -12,7 +12,9 @@ export function LoggedInFollowButton({
   value: string;
 }) {
   const login = useLogin();
-  const { tags, content, timestamp } = login!.follows;
+  if (!login) return;
+
+  const { tags, content, timestamp } = login.follows;
   const follows = tags.filter((t) => t.at(0) === tag);
   const isFollowing = follows.find((t) => t.at(1) === value);
 

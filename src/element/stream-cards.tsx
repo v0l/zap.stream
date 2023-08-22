@@ -100,7 +100,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
   );
 
   function findTagByIdentifier(d: string) {
-    return tags.find((t) => t.at(1)!.endsWith(`:${d}`));
+    return tags.find((t) => t[1].endsWith(`:${d}`));
   }
 
   const [dropStyle, dropRef] = useDrop(
@@ -293,7 +293,7 @@ function EditCard({ card, cards }: EditCardProps) {
   async function onCancel() {
     const pub = login?.publisher();
     if (pub) {
-      const newTags = tags.filter((t) => !t.at(1)!.endsWith(`:${identifier}`));
+      const newTags = tags.filter((t) => !t[1].endsWith(`:${identifier}`));
       const userCardsEv = await pub.generic((eb) => {
         eb.kind(USER_CARDS).content("");
         for (const tag of newTags) {
@@ -408,7 +408,7 @@ export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
     <>
       <div className="stream-cards">
         {cards.map((ev) => (
-          <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev!} />
+          <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev} />
         ))}
         {isEditing && <AddCard cards={cards} />}
       </div>
@@ -433,7 +433,7 @@ export function ReadOnlyStreamCards({ host }: StreamCardsProps) {
   return (
     <div className="stream-cards">
       {cards.map((ev) => (
-        <Card cards={cards} key={ev!.id} ev={ev!} />
+        <Card cards={cards} key={ev.id} ev={ev} />
       ))}
     </div>
   );

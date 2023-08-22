@@ -1,5 +1,6 @@
 import "@szhsin/react-menu/dist/index.css";
 import "./index.css";
+import "./fonts/outfit/outfit.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

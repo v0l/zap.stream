@@ -9,6 +9,7 @@ import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { useNavigate } from "react-router-dom";
 import { eventLink, findTag } from "utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
+import { unwrap } from "@snort/shared";
 
 function NewStream({ ev, onFinish }: StreamEditorProps) {
   const providers = useStreamProvider();
@@ -19,7 +20,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
     if (!currentProvider) {
       setCurrentProvider(
         ev !== undefined
-          ? providers.find((a) => a.name.toLowerCase() === "manual")!
+          ? unwrap(providers.find((a) => a.name.toLowerCase() === "manual"))
           : providers.at(0)
       );
     }

@@ -45,7 +45,7 @@ const config = {
         { from: "public/robots.txt" },
         { from: "public/icons.svg" },
         { from: "public/logo.png" },
-        { from: "_headers" },
+        { from: "_headers" }
       ],
     }),
     new HtmlWebpackPlugin({

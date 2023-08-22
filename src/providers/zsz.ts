@@ -103,7 +103,7 @@ export class Nip103StreamProvider implements StreamProvider {
         .tag(["method", method]);
     });
     const rsp = await fetch(u, {
-      method: method,
+      method,
       body: body ? JSON.stringify(body) : undefined,
       headers: {
         "content-type": "application/json",

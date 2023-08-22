@@ -45,7 +45,7 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
 
   const subRelated = useMemo(() => {
     if (!pubkey) return null;
-    const splitted = related.map((t) => t.at(1)!.split(":"));
+    const splitted = related.map((t) => t[1].split(":"));
     const authors = splitted
       .map((s) => s.at(1))
       .filter((s) => s)
