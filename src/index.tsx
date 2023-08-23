@@ -11,7 +11,7 @@ import { RootPage } from "pages/root";
 import { TagPage } from "pages/tag";
 import { LayoutPage } from "pages/layout";
 import { ProfilePage } from "pages/profile-page";
-import { StreamPage } from "pages/stream-page";
+import { StreamPageHandler } from "pages/stream-page";
 import { ChatPopout } from "pages/chat-popout";
 import { LoginStore } from "login";
 import { StreamProvidersPage } from "pages/providers";
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:id",
-        element: <StreamPage />,
+        element: <StreamPageHandler />,
       },
       {
         path: "/providers/:id?",

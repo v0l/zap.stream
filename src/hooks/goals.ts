@@ -37,8 +37,9 @@ export function useZaps(goal: NostrEvent, leaveOpen = false) {
   );
 }
 
-export function useZapGoal(host: string, link: NostrLink, leaveOpen = false) {
+export function useZapGoal(host: string, link?: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
+    if (!link) return null;
     const b = new RequestBuilder(`goals:${host.slice(0, 12)}`);
     b.withOptions({ leaveOpen });
     b.withFilter()
