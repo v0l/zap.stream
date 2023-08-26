@@ -48,6 +48,10 @@ export function LayoutPage() {
             <Icon name="user" size={24} />
             Profile
           </MenuItem>
+          <MenuItem onClick={() => navigate("/settings")}>
+            <Icon name="settings" size={24} />
+            Settings
+          </MenuItem>
           <MenuItem onClick={() => Login.logout()}>
             <Icon name="logout" size={24} />
             Logout

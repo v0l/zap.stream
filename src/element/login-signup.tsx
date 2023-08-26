@@ -11,6 +11,7 @@ import Copy from "./copy";
 import { hexToBech32, openFile } from "utils";
 import { VoidApi } from "@void-cat/api";
 import { LoginType } from "login";
+import { bech32 } from "@scure/base";
 
 enum Stage {
   Login = 0,
@@ -32,6 +33,26 @@ export function LoginSignup({ close }: { close: () => void }) {
         Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
         close();
       }
+    } catch (e) {
+      console.error(e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError(e as string);
+      }
+    }
+  }
+  
+  function doLoginNsec() {
+    try {
+      const nsec = prompt("nsec");
+      if (!nsec) {
+        throw new Error("no nsec provided");
+      }
+      const {words} = bech32.decode(nsec, 5000);
+      const data = new Uint8Array(bech32.fromWords(words));
+      Login.loginWithPrivateKey(bytesToHex(data));
+      close();
     } catch (e) {
       console.error(e);
       if (e instanceof Error) {
@@ -107,6 +128,13 @@ export function LoginSignup({ close }: { close: () => void }) {
             onClick={createAccount}
           >
             Create Account
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={doLoginNsec}
+          >
+            Enter Nsec (INSECURE)
           </button>
           {error && <b className="error">{error}</b>}
         </>

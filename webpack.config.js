@@ -78,6 +78,15 @@ const config = {
         exclude: /@babel(?:\/|\\{1,2})runtime/,
         test: /\.(js|mjs|jsx|ts|tsx|css)$/,
         loader: require.resolve("source-map-loader"),
+        options: {
+          filterSourceMappingUrl: (url, resourcePath) => {
+              // disable warning for missing @scure-bip39 sourcemaps
+              if (/.*\/.yarn\/cache\/@scure-bip39.*/.test(resourcePath)) {
+                  return false
+              }
+              return true
+          }
+        }
       },
       {
         test: /\.tsx?$/i,

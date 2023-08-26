@@ -5,9 +5,10 @@ import { Icon } from "./icon";
 export interface CopyProps {
   text: string;
   maxSize?: number;
+  hideText?: boolean;
   className?: string;
 }
-export default function Copy({ text, maxSize = 32, className }: CopyProps) {
+export default function Copy({ text, maxSize = 32, className, hideText }: CopyProps) {
   const { copy, copied } = useCopy();
   const sliceLength = maxSize / 2;
   const trimmed =
@@ -20,7 +21,7 @@ export default function Copy({ text, maxSize = 32, className }: CopyProps) {
       className={`copy${className ? ` ${className}` : ""}`}
       onClick={() => copy(text)}
     >
-      <span className="body">{trimmed}</span>
+      {!hideText && <span className="body">{trimmed}</span>}
       <span
         className="icon"
         style={{ color: copied ? "var(--success)" : "var(--highlight)" }}
