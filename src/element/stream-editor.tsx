@@ -216,7 +216,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       )}
       <div>
         <AsyncButton type="button" className="btn btn-primary wide" disabled={!isValid} onClick={publishStream}>
-          <FormattedMessage defaultMessage={ev ? "Save" : "Start Stream"} />
+          {ev ? <FormattedMessage defaultMessage="Save" /> : <FormattedMessage defaultMessage="Start Stream" />}
         </AsyncButton>
       </div>
     </>

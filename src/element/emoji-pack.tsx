@@ -46,7 +46,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
           <AsyncButton
             className={`btn btn-small btn-primary ${isUsed ? "delete-button" : ""}`}
             onClick={toggleEmojiPack}>
-            <FormattedMessage defaultMessage={isUsed ? "Remove" : "Add"} />
+            {isUsed ? <FormattedMessage defaultMessage="Remove" /> : <FormattedMessage defaultMessage="Add" />}
           </AsyncButton>
         )}
       </div>

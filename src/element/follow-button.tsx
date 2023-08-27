@@ -53,7 +53,7 @@ export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: st
       type="button"
       className="btn btn-primary"
       onClick={isFollowing ? unfollow : follow}>
-      <FormattedMessage defaultMessage={isFollowing ? "Unfollow" : "Follow"} />
+      {isFollowing ? <FormattedMessage defaultMessage="Unfollow" /> : <FormattedMessage defaultMessage="Follow" />}
     </AsyncButton>
   );
 }

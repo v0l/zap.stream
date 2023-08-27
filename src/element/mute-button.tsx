@@ -53,7 +53,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
 
   return (
     <AsyncButton type="button" className="btn delete-button" onClick={() => (isMuted ? unmute() : mute())}>
-      <FormattedMessage defaultMessage={isMuted ? "Unmute" : "Mute"} />
+      {isMuted ? <FormattedMessage defaultMessage="Unmute" /> : <FormattedMessage defaultMessage="Mute" />}
     </AsyncButton>
   );
 }

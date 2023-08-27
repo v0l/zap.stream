@@ -2,6 +2,9 @@
   "+0zv6g": {
     "defaultMessage": "Image"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "/0TOL5": {
     "defaultMessage": "Amount"
   },
@@ -17,6 +20,9 @@
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
+  "2/2yg+": {
+    "defaultMessage": "Add"
+  },
   "2CGh/0": {
     "defaultMessage": "live"
   },
@@ -25,6 +31,9 @@
   },
   "3adEeb": {
     "defaultMessage": "{n} viewers"
+  },
+  "47FYwb": {
+    "defaultMessage": "Cancel"
   },
   "4l6vz1": {
     "defaultMessage": "Copy"
@@ -70,6 +79,9 @@
   },
   "ESyhzp": {
     "defaultMessage": "Your comment for {name}"
+  },
+  "G/yZLu": {
+    "defaultMessage": "Remove"
   },
   "Gq6x9o": {
     "defaultMessage": "Cover Image"
@@ -140,11 +152,20 @@
   "RrCui3": {
     "defaultMessage": "Summary"
   },
+  "TaTRKo": {
+    "defaultMessage": "Start Stream"
+  },
+  "UJBFYK": {
+    "defaultMessage": "Add Card"
+  },
   "UfSot5": {
     "defaultMessage": "Past Streams"
   },
   "VA/Z1S": {
     "defaultMessage": "Hide"
+  },
+  "W9355R": {
+    "defaultMessage": "Unmute"
   },
   "X2PZ7D": {
     "defaultMessage": "Create Goal"
@@ -173,8 +194,14 @@
   "hGQqkW": {
     "defaultMessage": "Schedule"
   },
+  "ieGrWo": {
+    "defaultMessage": "Follow"
+  },
   "itPgxd": {
     "defaultMessage": "Profile"
+  },
+  "izWS4J": {
+    "defaultMessage": "Unfollow"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -196,6 +223,9 @@
   },
   "nOaArs": {
     "defaultMessage": "Setup Profile"
+  },
+  "nwA8Os": {
+    "defaultMessage": "Add card"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
@@ -244,5 +274,8 @@
   },
   "wzWWzV": {
     "defaultMessage": "Top zappers"
+  },
+  "x82IOl": {
+    "defaultMessage": "Mute"
   }
 }

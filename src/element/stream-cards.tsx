@@ -184,7 +184,7 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
   return (
     <div className="new-card">
       <h3>
-        <FormattedMessage defaultMessage={header || "Add card"} />
+        {header || <FormattedMessage defaultMessage="Add card" />}
       </h3>
       <div className="form-control">
         <label htmlFor="card-title">
@@ -236,10 +236,10 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
       </div>
       <div className="new-card-buttons">
         <button className="btn btn-primary add-button" onClick={() => onSave({ title, image, content, link })}>
-          <FormattedMessage defaultMessage={cta || "Add Card"} />
+          {cta || <FormattedMessage defaultMessage="Add Card" />}
         </button>
         <button className="btn delete-button" onClick={onCancel}>
-          <FormattedMessage defaultMessage={cancelCta || "Cancel"} />
+          {cancelCta || <FormattedMessage defaultMessage="Cancel" />}
         </button>
       </div>
     </div>
