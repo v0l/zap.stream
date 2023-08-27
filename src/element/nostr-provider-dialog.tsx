@@ -1,19 +1,13 @@
 import { NostrEvent } from "@snort/system";
-import {
-  StreamProvider,
-  StreamProviderEndpoint,
-  StreamProviderInfo,
-} from "providers";
+import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo } from "providers";
 import { useEffect, useState } from "react";
 import { SendZaps } from "./send-zap";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
 import AsyncButton from "./async-button";
+import { FormattedMessage } from "react-intl";
 
-export function NostrProviderDialog({
-  provider,
-  ...others
-}: { provider: StreamProvider } & StreamEditorProps) {
+export function NostrProviderDialog({ provider, ...others }: { provider: StreamProvider } & StreamEditorProps) {
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
   const [ep, setEndpoint] = useState<StreamProviderEndpoint>();
@@ -24,7 +18,7 @@ export function NostrProviderDialog({
   }
 
   useEffect(() => {
-    provider.info().then((v) => {
+    provider.info().then(v => {
       setInfo(v);
       setTos(v.tosAccepted ?? true);
       setEndpoint(sortEndpoints(v.endpoints)[0]);
@@ -42,13 +36,13 @@ export function NostrProviderDialog({
           name: provider.name,
           canZap: false,
           maxCommentLength: 0,
-          getInvoice: async (amount) => {
+          getInvoice: async amount => {
             const pr = await provider.topup(amount);
             return { pr };
           },
         }}
         onFinish={() => {
-          provider.info().then((v) => {
+          provider.info().then(v => {
             setInfo(v);
             setTopup(false);
           });
@@ -92,33 +86,27 @@ export function NostrProviderDialog({
       <>
         <div>
           <div className="flex g12">
-            <input
-              type="checkbox"
-              checked={tos}
-              onChange={(e) => setTos(e.target.checked)}
-            />
+            <input type="checkbox" checked={tos} onChange={e => setTos(e.target.checked)} />
             <p>
-              I have read and agree with {info.name}'s{" "}
-              <span
-                className="tos-link"
-                onClick={() =>
-                  window.open(info.tosLink, "popup", "width=400,height=800")
-                }
-              >
-                terms and conditions
-              </span>
-              .
+              <FormattedMessage
+                defaultMessage="I have read and agree with {provider}'s {terms}."
+                values={{
+                  provider: info.name,
+                  terms: (
+                    <span
+                      className="tos-link"
+                      onClick={() => window.open(info.tosLink, "popup", "width=400,height=800")}>
+                      <FormattedMessage defaultMessage="terms and conditions" />
+                    </span>
+                  ),
+                }}
+              />
             </p>
           </div>
         </div>
         <div>
-          <AsyncButton
-            type="button"
-            className="btn btn-primary wide"
-            disabled={!tos}
-            onClick={acceptTos}
-          >
-            Continue
+          <AsyncButton type="button" className="btn btn-primary wide" disabled={!tos} onClick={acceptTos}>
+            <FormattedMessage defaultMessage="Continue" />
           </AsyncButton>
         </div>
       </>
@@ -129,13 +117,12 @@ export function NostrProviderDialog({
     <>
       {info.endpoints.length > 1 && (
         <div>
-          <p>Endpoint</p>
+          <p>
+            <FormattedMessage defaultMessage="Endpoint" />
+          </p>
           <div className="flex g12">
-            {sortEndpoints(info.endpoints).map((a) => (
-              <span
-                className={`pill${ep?.name === a.name ? " active" : ""}`}
-                onClick={() => setEndpoint(a)}
-              >
+            {sortEndpoints(info.endpoints).map(a => (
+              <span className={`pill${ep?.name === a.name ? " active" : ""}`} onClick={() => setEndpoint(a)}>
                 {a.name}
               </span>
             ))}
@@ -143,41 +130,48 @@ export function NostrProviderDialog({
         </div>
       )}
       <div>
-        <p>Stream Url</p>
+        <p>
+          <FormattedMessage defaultMessage="Server Url" />
+        </p>
         <div className="paper">
           <input type="text" value={ep?.url} disabled />
         </div>
       </div>
       <div>
-        <p>Stream Key</p>
+        <p>
+          <FormattedMessage defaultMessage="Stream Key" />
+        </p>
         <div className="flex g12">
           <div className="paper f-grow">
             <input type="password" value={ep?.key} disabled />
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}
-          >
-            Copy
+          <button className="btn btn-primary" onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
+            <FormattedMessage defaultMessage="Copy" />
           </button>
         </div>
       </div>
       <div>
-        <p>Balance</p>
+        <p>
+          <FormattedMessage defaultMessage="Balance" />
+        </p>
         <div className="flex g12">
           <div className="paper f-grow">
-            {info.balance?.toLocaleString()} sats
+            <FormattedMessage defaultMessage="{amount} sats" values={{ amount: info.balance?.toLocaleString() }} />
           </div>
           <button className="btn btn-primary" onClick={() => setTopup(true)}>
-            Topup
+            <FormattedMessage defaultMessage="Topup" />
           </button>
         </div>
-        <small>About {calcEstimate()}</small>
+        <small>
+          <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
+        </small>
       </div>
       <div>
-        <p>Resolutions</p>
+        <p>
+          <FormattedMessage defaultMessage="Resolutions" />
+        </p>
         <div className="flex g12">
-          {ep?.capabilities?.map((a) => (
+          {ep?.capabilities?.map(a => (
             <span className="pill">{parseCapability(a)}</span>
           ))}
         </div>
@@ -186,7 +180,7 @@ export function NostrProviderDialog({
         tosInput()
       ) : (
         <StreamEditor
-          onFinish={(ex) => {
+          onFinish={ex => {
             provider.updateStreamInfo(ex);
             others.onFinish?.(ex);
           }}
@@ -196,10 +190,8 @@ export function NostrProviderDialog({
                 ["title", info.streamInfo?.title ?? ""],
                 ["summary", info.streamInfo?.summary ?? ""],
                 ["image", info.streamInfo?.image ?? ""],
-                ...(info.streamInfo?.content_warning
-                  ? [["content-warning", info.streamInfo?.content_warning]]
-                  : []),
-                ...(info.streamInfo?.tags?.map((a) => ["t", a]) ?? []),
+                ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
+                ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? []),
               ],
             } as NostrEvent
           }

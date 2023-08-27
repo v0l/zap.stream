@@ -8,6 +8,7 @@ import { useState } from "react";
 import { System } from "index";
 import { GOAL } from "const";
 import { useLogin } from "hooks/login";
+import { FormattedMessage } from "react-intl";
 
 interface NewGoalDialogProps {
   link: NostrLink;
@@ -23,7 +24,7 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
   async function publishGoal() {
     const pub = login?.publisher();
     if (pub) {
-      const evNew = await pub.generic((eb) => {
+      const evNew = await pub.generic(eb => {
         eb.kind(GOAL)
           .tag(["a", `${link.kind}:${link.author}:${link.id}`])
           .tag(["amount", String(Number(goalAmount) * 1000)])
@@ -48,7 +49,9 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
         <button type="button" className="btn btn-primary">
           <span>
             <Icon name="zap-filled" size={12} />
-            <span>Add stream goal</span>
+            <span>
+              <FormattedMessage defaultMessage="Add stream goal" />
+            </span>
           </span>
         </button>
       </Dialog.Trigger>
@@ -57,26 +60,28 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
         <Dialog.Content className="dialog-content">
           <div className="new-goal">
             <div className="zap-goals">
-              <Icon
-                name="zap-filled"
-                className="stream-zap-goals-icon"
-                size={16}
-              />
-              <h3>Stream Zap Goals</h3>
+              <Icon name="zap-filled" className="stream-zap-goals-icon" size={16} />
+              <h3>
+                <FormattedMessage defaultMessage="Stream Zap Goals" />
+              </h3>
             </div>
             <div>
-              <p>Name</p>
+              <p>
+                <FormattedMessage defaultMessage="Name" />
+              </p>
               <div className="paper">
                 <input
                   type="text"
                   value={goalName}
                   placeholder="e.g. New Laptop"
-                  onChange={(e) => setGoalName(e.target.value)}
+                  onChange={e => setGoalName(e.target.value)}
                 />
               </div>
             </div>
             <div>
-              <p>Amount</p>
+              <p>
+                <FormattedMessage defaultMessage="Amount" />
+              </p>
               <div className="paper">
                 <input
                   type="number"
@@ -84,18 +89,13 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
                   min="1"
                   max="2100000000000000"
                   value={goalAmount}
-                  onChange={(e) => setGoalAmount(e.target.value)}
+                  onChange={e => setGoalAmount(e.target.value)}
                 />
               </div>
             </div>
             <div className="create-goal">
-              <AsyncButton
-                type="button"
-                className="btn btn-primary wide"
-                disabled={!isValid}
-                onClick={publishGoal}
-              >
-                Create goal
+              <AsyncButton type="button" className="btn btn-primary wide" disabled={!isValid} onClick={publishGoal}>
+                <FormattedMessage defaultMessage="Create Goal" />
               </AsyncButton>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 import moment from "moment";
 
 import { NostrEvent } from "@snort/system";
@@ -6,15 +7,7 @@ import { NostrEvent } from "@snort/system";
 import { StreamState } from "index";
 import { findTag, getTagValues } from "utils";
 
-export function Tags({
-  children,
-  max,
-  ev,
-}: {
-  children?: ReactNode;
-  max?: number;
-  ev: NostrEvent;
-}) {
+export function Tags({ children, max, ev }: { children?: ReactNode; max?: number; ev: NostrEvent }) {
   const status = findTag(ev, "status");
   const start = findTag(ev, "starts");
   const hashtags = getTagValues(ev.tags, "t");
@@ -25,11 +18,11 @@ export function Tags({
       {children}
       {status === StreamState.Planned && (
         <span className="pill">
-          {status === StreamState.Planned ? "Starts " : ""}
+          {status === StreamState.Planned ? <FormattedMessage defaultMessage="Starts " /> : ""}
           {moment(Number(start) * 1000).fromNow()}
         </span>
       )}
-      {tags.map((a) => (
+      {tags.map(a => (
         <a href={`/t/${encodeURIComponent(a)}`} className="pill" key={a}>
           {a}
         </a>

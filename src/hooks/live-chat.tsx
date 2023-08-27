@@ -1,9 +1,4 @@
-import {
-  NostrLink,
-  RequestBuilder,
-  EventKind,
-  NoteCollection,
-} from "@snort/system";
+import { NostrLink, RequestBuilder, EventKind, NoteCollection } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
@@ -29,14 +24,14 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
   const feed = useRequestBuilder(NoteCollection, sub);
 
   const messages = useMemo(() => {
-    return (feed.data ?? []).filter((ev) => ev.kind === LIVE_STREAM_CHAT);
+    return (feed.data ?? []).filter(ev => ev.kind === LIVE_STREAM_CHAT);
   }, [feed.data]);
   const zaps = useMemo(() => {
-    return (feed.data ?? []).filter((ev) => ev.kind === EventKind.ZapReceipt);
+    return (feed.data ?? []).filter(ev => ev.kind === EventKind.ZapReceipt);
   }, [feed.data]);
 
   const etags = useMemo(() => {
-    return messages.map((e) => e.id);
+    return messages.map(e => e.id);
   }, [messages]);
 
   const esub = useMemo(() => {
@@ -45,9 +40,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
     rb.withOptions({
       leaveOpen: true,
     });
-    rb.withFilter()
-      .kinds([EventKind.Reaction, EventKind.ZapReceipt])
-      .tag("e", etags);
+    rb.withFilter().kinds([EventKind.Reaction, EventKind.ZapReceipt]).tag("e", etags);
     return rb;
   }, [etags]);
 

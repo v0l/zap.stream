@@ -12,6 +12,7 @@ import { LoginSignup } from "element/login-signup";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { hexToBech32 } from "@snort/shared";
 import { Login } from "index";
+import { FormattedMessage } from "react-intl";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -40,17 +41,14 @@ export function LayoutPage() {
             </div>
           }
           align="end"
-          gap={5}
-        >
-          <MenuItem
-            onClick={() => navigate(`/p/${hexToBech32("npub", login.pubkey)}`)}
-          >
+          gap={5}>
+          <MenuItem onClick={() => navigate(`/p/${hexToBech32("npub", login.pubkey)}`)}>
             <Icon name="user" size={24} />
-            Profile
+            <FormattedMessage defaultMessage="Profile" />
           </MenuItem>
           <MenuItem onClick={() => Login.logout()}>
             <Icon name="logout" size={24} />
-            Logout
+            <FormattedMessage defaultMessage="Logout" />
           </MenuItem>
         </Menu>
       </>
@@ -63,12 +61,8 @@ export function LayoutPage() {
     return (
       <Dialog.Root open={showLogin} onOpenChange={setShowLogin}>
         <Dialog.Trigger asChild>
-          <button
-            type="button"
-            className="btn btn-border"
-            onClick={() => setShowLogin(true)}
-          >
-            Login
+          <button type="button" className="btn btn-border" onClick={() => setShowLogin(true)}>
+            <FormattedMessage defaultMessage="Login" />
             <Icon name="login" />
           </button>
         </Dialog.Trigger>
@@ -83,11 +77,7 @@ export function LayoutPage() {
   }
 
   return (
-    <div
-      className={`page${
-        location.pathname.startsWith("/naddr1") ? " stream" : ""
-      }`}
-    >
+    <div className={`page${location.pathname.startsWith("/naddr1") ? " stream" : ""}`}>
       <Helmet>
         <title>Home - zap.stream</title>
       </Helmet>

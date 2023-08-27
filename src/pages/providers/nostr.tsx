@@ -59,8 +59,7 @@ export function ConfigureNostrType() {
             onClick={() => {
               StreamProviderStore.add(new Nip103StreamProvider(url));
               navigate("/");
-            }}
-          >
+            }}>
             Save
           </button>
         </div>
@@ -74,12 +73,7 @@ export function ConfigureNostrType() {
         <div>
           <p>Nostr streaming provider URL</p>
           <div className="paper">
-            <input
-              type="text"
-              placeholder="https://"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-            />
+            <input type="text" placeholder="https://" value={url} onChange={e => setUrl(e.target.value)} />
           </div>
         </div>
         <AsyncButton className="btn btn-primary" onClick={tryConnect}>

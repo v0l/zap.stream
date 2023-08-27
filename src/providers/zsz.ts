@@ -36,7 +36,7 @@ export class Nip103StreamProvider implements StreamProvider {
       balance: rsp.balance,
       tosAccepted: rsp.tos?.accepted,
       tosLink: rsp.tos?.link,
-      endpoints: rsp.endpoints.map((a) => {
+      endpoints: rsp.endpoints.map(a => {
         return {
           name: a.name,
           url: a.url,
@@ -60,7 +60,7 @@ export class Nip103StreamProvider implements StreamProvider {
     const title = findTag(ev, "title");
     const summary = findTag(ev, "summary");
     const image = findTag(ev, "image");
-    const tags = ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]);
+    const tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]);
     const contentWarning = findTag(ev, "content-warning");
     await this.#getJson("PATCH", "event", {
       title,
@@ -72,10 +72,7 @@ export class Nip103StreamProvider implements StreamProvider {
   }
 
   async topup(amount: number): Promise<string> {
-    const rsp = await this.#getJson<TopUpResponse>(
-      "GET",
-      `topup?amount=${amount}`
-    );
+    const rsp = await this.#getJson<TopUpResponse>("GET", `topup?amount=${amount}`);
     return rsp.pr;
   }
 
@@ -85,22 +82,14 @@ export class Nip103StreamProvider implements StreamProvider {
     });
   }
 
-  async #getJson<T>(
-    method: "GET" | "POST" | "PATCH",
-    path: string,
-    body?: unknown
-  ): Promise<T> {
+  async #getJson<T>(method: "GET" | "POST" | "PATCH", path: string, body?: unknown): Promise<T> {
     const login = Login.snapshot();
     const pub = login && getPublisher(login);
     if (!pub) throw new Error("No signer");
 
     const u = `${this.#url}${path}`;
-    const token = await pub.generic((eb) => {
-      return eb
-        .kind(EventKind.HttpAuthentication)
-        .content("")
-        .tag(["u", u])
-        .tag(["method", method]);
+    const token = await pub.generic(eb => {
+      return eb.kind(EventKind.HttpAuthentication).content("").tag(["u", u]).tag(["method", method]);
     });
     const rsp = await fetch(u, {
       method,

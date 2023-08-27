@@ -203,15 +203,7 @@
 }
 
 .zap-container.big-zap:before {
-  background: linear-gradient(
-    60deg,
-    #2bd9ff,
-    #8c8ded,
-    #f838d9,
-    #f83838,
-    #ff902b,
-    #ddf838
-  );
+  background: linear-gradient(60deg, #2bd9ff, #8c8ded, #f838d9, #f83838, #ff902b, #ddf838);
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
 }

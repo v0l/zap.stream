@@ -1,11 +1,5 @@
 import { useMemo } from "react";
-import {
-  RequestBuilder,
-  NoteCollection,
-  NostrLink,
-  EventKind,
-  parseZap,
-} from "@snort/system";
+import { RequestBuilder, NoteCollection, NostrLink, EventKind, parseZap } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "const";
 import { findTag } from "utils";
@@ -31,7 +25,7 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
 
   const addresses = useMemo(() => {
     if (streamsData) {
-      return streamsData.map((e) => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
+      return streamsData.map(e => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
     }
     return [];
   }, [streamsData]);
@@ -49,8 +43,8 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
 
   const { data: zapsData } = useRequestBuilder(NoteCollection, zapsSub);
   const zaps = (zapsData ?? [])
-    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z && z.valid && z.receiver === link.id);
+    .map(ev => parseZap(ev, System.ProfileLoader.Cache))
+    .filter(z => z && z.valid && z.receiver === link.id);
 
   const sortedStreams = useMemo(() => {
     const sorted = [...streams];

@@ -12,9 +12,7 @@ export function Badge({ ev }: { ev: NostrEvent }) {
       <img className="badge-thumbnail" src={thumb || image} alt={name} />
       <div className="badge-details">
         <h4 className="badge-name">{name}</h4>
-        {description?.length > 0 && (
-          <p className="badge-description">{description}</p>
-        )}
+        {description?.length > 0 && <p className="badge-description">{description}</p>}
       </div>
     </div>
   );

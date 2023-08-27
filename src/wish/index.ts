@@ -3,10 +3,7 @@ import { CandidateInfo, SDPInfo } from "semantic-sdp";
 import { TypedEventTarget, type StatusEvent, type LogEvent } from "./events";
 import { parserLinkHeader } from "./parser";
 
-export const DEFAULT_ICE_SERVERS = [
-  "stun:stun.cloudflare.com:3478",
-  "stun:stun.l.google.com:19302",
-];
+export const DEFAULT_ICE_SERVERS = ["stun:stun.cloudflare.com:3478", "stun:stun.l.google.com:19302"];
 
 export const TRICKLE_BATCH_INTERVAL = 50;
 
@@ -49,9 +46,7 @@ export class WISH extends TypedEventTarget {
     if (iceServers) {
       this.iceServers = iceServers ? iceServers : DEFAULT_ICE_SERVERS;
     }
-    this.logMessage(
-      `Enabling webrtc-adapter for ${adapter.browserDetails.browser}@${adapter.browserDetails.version}`
-    );
+    this.logMessage(`Enabling webrtc-adapter for ${adapter.browserDetails.browser}@${adapter.browserDetails.version}`);
     this.newResolvers();
   }
 
@@ -99,7 +94,7 @@ export class WISH extends TypedEventTarget {
       this.connectedResolver = resolve;
       this.connectedRejector = reject;
     });
-    this.gatherPromise = new Promise((resolve) => {
+    this.gatherPromise = new Promise(resolve => {
       this.gatherResolver = resolve;
     });
   }
@@ -108,36 +103,19 @@ export class WISH extends TypedEventTarget {
     if (!this.peerConnection) {
       return;
     }
-    this.peerConnection.addEventListener(
-      "connectionstatechange",
-      this.onConnectionStateChange.bind(this)
-    );
-    this.peerConnection.addEventListener(
-      "iceconnectionstatechange",
-      this.onICEConnectionStateChange.bind(this)
-    );
-    this.peerConnection.addEventListener(
-      "icegatheringstatechange",
-      this.onGatheringStateChange.bind(this)
-    );
-    this.peerConnection.addEventListener(
-      "icecandidate",
-      this.onICECandidate.bind(this)
-    );
+    this.peerConnection.addEventListener("connectionstatechange", this.onConnectionStateChange.bind(this));
+    this.peerConnection.addEventListener("iceconnectionstatechange", this.onICEConnectionStateChange.bind(this));
+    this.peerConnection.addEventListener("icegatheringstatechange", this.onGatheringStateChange.bind(this));
+    this.peerConnection.addEventListener("icecandidate", this.onICECandidate.bind(this));
     this.peerConnection.addEventListener("track", this.onTrack.bind(this));
-    this.peerConnection.addEventListener(
-      "signalingstatechange",
-      this.onSignalingStateChange.bind(this)
-    );
+    this.peerConnection.addEventListener("signalingstatechange", this.onSignalingStateChange.bind(this));
   }
 
   private onGatheringStateChange() {
     if (!this.peerConnection) {
       return;
     }
-    this.logMessage(
-      `ICE Gathering State changed: ${this.peerConnection.iceGatheringState}`
-    );
+    this.logMessage(`ICE Gathering State changed: ${this.peerConnection.iceGatheringState}`);
     switch (this.peerConnection.iceGatheringState) {
       case "complete":
         this.gatherResolver();
@@ -149,13 +127,8 @@ export class WISH extends TypedEventTarget {
     if (!this.peerConnection) {
       return;
     }
-    this.logMessage(
-      `Peer Connection State changed: ${this.peerConnection.connectionState}`
-    );
-    const transportHandler = (
-      track: MediaStreamTrack,
-      transport: RTCDtlsTransport
-    ) => {
+    this.logMessage(`Peer Connection State changed: ${this.peerConnection.connectionState}`);
+    const transportHandler = (track: MediaStreamTrack, transport: RTCDtlsTransport) => {
       const ice = transport.iceTransport;
       if (!ice) {
         return;
@@ -217,9 +190,7 @@ export class WISH extends TypedEventTarget {
       if (!candidate.candidate) {
         return;
       }
-      this.logMessage(
-        `Got ICE candidate: ${candidate.candidate.replace("candidate:", "")}`
-      );
+      this.logMessage(`Got ICE candidate: ${candidate.candidate.replace("candidate:", "")}`);
       if (!this.parsedOffer) {
         return;
       }
@@ -240,13 +211,8 @@ export class WISH extends TypedEventTarget {
     if (this.trickleBatchingJob) {
       clearInterval(this.trickleBatchingJob);
     }
-    this.logMessage(
-      `Starting batching job to trickle candidates every ${TRICKLE_BATCH_INTERVAL}ms`
-    );
-    this.trickleBatchingJob = setInterval(
-      this.trickleBatch.bind(this),
-      TRICKLE_BATCH_INTERVAL
-    );
+    this.logMessage(`Starting batching job to trickle candidates every ${TRICKLE_BATCH_INTERVAL}ms`);
+    this.trickleBatchingJob = setInterval(this.trickleBatch.bind(this), TRICKLE_BATCH_INTERVAL);
   }
 
   private stopTrickleBatching() {
@@ -281,8 +247,7 @@ export class WISH extends TypedEventTarget {
         type: candidate.type || "host",
         relAddr: candidate.relatedAddress || undefined,
         relPort:
-          typeof candidate.relatedPort !== "undefined" &&
-          candidate.relatedPort !== null
+          typeof candidate.relatedPort !== "undefined" && candidate.relatedPort !== null
             ? candidate.relatedPort.toString()
             : undefined,
       });
@@ -307,18 +272,14 @@ export class WISH extends TypedEventTarget {
     if (!this.peerConnection) {
       return;
     }
-    this.logMessage(
-      `Signaling State changed: ${this.peerConnection.signalingState}`
-    );
+    this.logMessage(`Signaling State changed: ${this.peerConnection.signalingState}`);
   }
 
   private onICEConnectionStateChange() {
     if (!this.peerConnection) {
       return;
     }
-    this.logMessage(
-      `ICE Connection State changed: ${this.peerConnection.iceConnectionState}`
-    );
+    this.logMessage(`ICE Connection State changed: ${this.peerConnection.iceConnectionState}`);
     switch (this.peerConnection.iceConnectionState) {
       case "checking":
         this.iceStartTime = performance.now();
@@ -327,19 +288,11 @@ export class WISH extends TypedEventTarget {
         const connected = performance.now();
         if (this.connectStartTime) {
           const delta = connected - this.connectStartTime;
-          this.logMessage(
-            `Took ${(delta / 1000).toFixed(
-              2
-            )} seconds to establish PeerConnection (end-to-end)`
-          );
+          this.logMessage(`Took ${(delta / 1000).toFixed(2)} seconds to establish PeerConnection (end-to-end)`);
         }
         if (this.iceStartTime) {
           const delta = connected - this.iceStartTime;
-          this.logMessage(
-            `Took ${(delta / 1000).toFixed(
-              2
-            )} seconds to establish PeerConnection (ICE)`
-          );
+          this.logMessage(`Took ${(delta / 1000).toFixed(2)} seconds to establish PeerConnection (ICE)`);
         }
         this.dispatchEvent(
           new CustomEvent<StatusEvent>("status", {
@@ -421,19 +374,12 @@ export class WISH extends TypedEventTarget {
   }
 
   private setVideoCodecPreference(transceiver: RTCRtpTransceiver) {
-    if (
-      typeof RTCRtpSender.getCapabilities === "undefined" ||
-      typeof transceiver.setCodecPreferences === "undefined"
-    ) {
+    if (typeof RTCRtpSender.getCapabilities === "undefined" || typeof transceiver.setCodecPreferences === "undefined") {
       return;
     }
     const capability = RTCRtpSender.getCapabilities("video");
     const codecs = capability ? capability.codecs : [];
-    this.logMessage(
-      `Available codecs for outbound video: ${codecs
-        .map((c) => c.mimeType)
-        .join(", ")}`
-    );
+    this.logMessage(`Available codecs for outbound video: ${codecs.map(c => c.mimeType).join(", ")}`);
     for (let i = 0; i < codecs.length; i++) {
       const codec = codecs[i];
       if (codec.mimeType === "video/VP9") {
@@ -486,10 +432,7 @@ export class WISH extends TypedEventTarget {
     }
   }
 
-  private async doSignalingPOST(
-    sdp: string,
-    useLink?: boolean
-  ): Promise<string> {
+  private async doSignalingPOST(sdp: string, useLink?: boolean): Promise<string> {
     if (!this.endpoint) {
       throw new Error("No WHIP/WHEP endpoint has been set");
     }
@@ -528,14 +471,10 @@ export class WISH extends TypedEventTarget {
     if (resp.headers.get("accept-post") || resp.headers.get("accept-patch")) {
       switch (this.mode) {
         case Mode.Publisher:
-          this.logMessage(
-            `WHIP version draft-ietf-wish-whip-05 (Accept-Post/Accept-Patch)`
-          );
+          this.logMessage(`WHIP version draft-ietf-wish-whip-05 (Accept-Post/Accept-Patch)`);
           break;
         case Mode.Player:
-          this.logMessage(
-            `WHEP version draft-murillo-whep-01 (Accept-Post/Accept-Patch)`
-          );
+          this.logMessage(`WHEP version draft-murillo-whep-01 (Accept-Post/Accept-Patch)`);
           break;
       }
     }
@@ -560,9 +499,7 @@ export class WISH extends TypedEventTarget {
 
     const signaled = performance.now();
     const delta = signaled - signalStartTime;
-    this.logMessage(
-      `Took ${(delta / 1000).toFixed(2)} seconds to exchange SDP`
-    );
+    this.logMessage(`Took ${(delta / 1000).toFixed(2)} seconds to exchange SDP`);
 
     return body;
   }

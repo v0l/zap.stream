@@ -1,10 +1,6 @@
 import { useMemo, type ReactNode, type FunctionComponent } from "react";
 
-import {
-  type NostrLink,
-  parseNostrLink,
-  validateNostrLink,
-} from "@snort/system";
+import { type NostrLink, parseNostrLink, validateNostrLink } from "@snort/system";
 
 import { Event } from "element/Event";
 import { Mention } from "element/mention";
@@ -20,23 +16,17 @@ const EmojiRegex = /:([\w-]+):/g;
 
 function extractLinks(fragments: Fragment[]) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return splitByUrl(f).map((a) => {
+        return splitByUrl(f).map(a => {
           const validateLink = () => {
             const normalizedStr = a.toLowerCase();
 
-            if (
-              normalizedStr.startsWith("web+nostr:") ||
-              normalizedStr.startsWith("nostr:")
-            ) {
+            if (normalizedStr.startsWith("web+nostr:") || normalizedStr.startsWith("nostr:")) {
               return validateNostrLink(normalizedStr);
             }
 
-            return (
-              normalizedStr.startsWith("http:") ||
-              normalizedStr.startsWith("https:")
-            );
+            return normalizedStr.startsWith("http:") || normalizedStr.startsWith("https:");
           };
 
           if (validateLink()) {
@@ -52,10 +42,10 @@ function extractLinks(fragments: Fragment[]) {
 
 function extractEmoji(fragments: Fragment[], tags: string[][]) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return f.split(EmojiRegex).map((i) => {
-          const t = tags.find((a) => a[0] === "emoji" && a[1] === i);
+        return f.split(EmojiRegex).map(i => {
+          const t = tags.find(a => a[0] === "emoji" && a[1] === i);
           if (t) {
             return <Emoji name={t[1]} url={t[2]} />;
           } else {
@@ -70,9 +60,9 @@ function extractEmoji(fragments: Fragment[], tags: string[][]) {
 
 function extractNprofiles(fragments: Fragment[]) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return f.split(/(nostr:nprofile1[a-z0-9]+)/g).map((i) => {
+        return f.split(/(nostr:nprofile1[a-z0-9]+)/g).map(i => {
           if (i.startsWith("nostr:nprofile1")) {
             try {
               const link = parseNostrLink(i.replace(NostrPrefixRegex, ""));
@@ -92,9 +82,9 @@ function extractNprofiles(fragments: Fragment[]) {
 
 function extractNpubs(fragments: Fragment[]) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return f.split(/(nostr:npub1[a-z0-9]+)/g).map((i) => {
+        return f.split(/(nostr:npub1[a-z0-9]+)/g).map(i => {
           if (i.startsWith("nostr:npub1")) {
             try {
               const link = parseNostrLink(i.replace(NostrPrefixRegex, ""));
@@ -114,9 +104,9 @@ function extractNpubs(fragments: Fragment[]) {
 
 function extractNevents(fragments: Fragment[], Event: NostrComponent) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return f.split(/(nostr:nevent1[a-z0-9]+)/g).map((i) => {
+        return f.split(/(nostr:nevent1[a-z0-9]+)/g).map(i => {
           if (i.startsWith("nostr:nevent1")) {
             try {
               const link = parseNostrLink(i.replace(NostrPrefixRegex, ""));
@@ -136,9 +126,9 @@ function extractNevents(fragments: Fragment[], Event: NostrComponent) {
 
 function extractNaddrs(fragments: Fragment[], Address: NostrComponent) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return f.split(/(nostr:naddr1[a-z0-9]+)/g).map((i) => {
+        return f.split(/(nostr:naddr1[a-z0-9]+)/g).map(i => {
           if (i.startsWith("nostr:naddr1")) {
             try {
               const link = parseNostrLink(i.replace(NostrPrefixRegex, ""));
@@ -159,9 +149,9 @@ function extractNaddrs(fragments: Fragment[], Address: NostrComponent) {
 
 function extractNoteIds(fragments: Fragment[], Event: NostrComponent) {
   return fragments
-    .map((f) => {
+    .map(f => {
       if (typeof f === "string") {
-        return f.split(/(nostr:note1[a-z0-9]+)/g).map((i) => {
+        return f.split(/(nostr:note1[a-z0-9]+)/g).map(i => {
           if (i.startsWith("nostr:note1")) {
             try {
               const link = parseNostrLink(i.replace(NostrPrefixRegex, ""));
@@ -189,11 +179,7 @@ const components: NostrComponents = {
   Event,
 };
 
-export function transformText(
-  ps: Fragment[],
-  tags: Array<string[]>,
-  customComponents = components
-) {
+export function transformText(ps: Fragment[], tags: Array<string[]>, customComponents = components) {
   let fragments = extractEmoji(ps, tags);
   fragments = extractNprofiles(fragments);
   fragments = extractNevents(fragments, customComponents.Event);
@@ -214,11 +200,7 @@ interface TextProps {
 export function Text({ content, tags, customComponents }: TextProps) {
   // todo: RTL langugage support
   const element = useMemo(() => {
-    return (
-      <span className="text">
-        {transformText([content], tags, customComponents)}
-      </span>
-    );
+    return <span className="text">{transformText([content], tags, customComponents)}</span>;
   }, [content, tags]);
 
   return <>{element}</>;

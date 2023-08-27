@@ -1,10 +1,6 @@
 import "./event.css";
 
-import {
-  type NostrLink,
-  type NostrEvent as NostrEventType,
-  EventKind,
-} from "@snort/system";
+import { type NostrLink, type NostrEvent as NostrEventType, EventKind } from "@snort/system";
 
 import { Icon } from "element/icon";
 import { Goal } from "element/goal";

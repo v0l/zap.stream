@@ -1,10 +1,5 @@
 import { useMemo } from "react";
-import {
-  NostrPrefix,
-  RequestBuilder,
-  ReplaceableNoteStore,
-  NostrLink,
-} from "@snort/system";
+import { NostrPrefix, RequestBuilder, ReplaceableNoteStore, NostrLink } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 export default function useEventFeed(link: NostrLink, leaveOpen = false) {
@@ -24,7 +19,7 @@ export default function useEventFeed(link: NostrLink, leaveOpen = false) {
     } else {
       const f = b.withFilter().ids([link.id]);
       if (link.relays) {
-        link.relays.slice(0, 2).forEach((r) => f.relay(r));
+        link.relays.slice(0, 2).forEach(r => f.relay(r));
       }
       if (link.author) {
         f.authors([link.author]);

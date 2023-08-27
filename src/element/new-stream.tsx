@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { eventLink, findTag } from "utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
 import { unwrap } from "@snort/shared";
+import { FormattedMessage } from "react-intl";
 
 function NewStream({ ev, onFinish }: StreamEditorProps) {
   const providers = useStreamProvider();
@@ -19,9 +20,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
   useEffect(() => {
     if (!currentProvider) {
       setCurrentProvider(
-        ev !== undefined
-          ? unwrap(providers.find((a) => a.name.toLowerCase() === "manual"))
-          : providers.at(0)
+        ev !== undefined ? unwrap(providers.find(a => a.name.toLowerCase() === "manual")) : providers.at(0)
       );
     }
   }, [providers, currentProvider]);
@@ -33,14 +32,10 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
       case StreamProviders.Manual: {
         return (
           <StreamEditor
-            onFinish={(ex) => {
+            onFinish={ex => {
               currentProvider.updateStreamInfo(ex);
               if (!ev) {
-                if (
-                  findTag(ex, "content-warning") &&
-                  __XXX_HOST &&
-                  __XXX === false
-                ) {
+                if (findTag(ex, "content-warning") && __XXX_HOST && __XXX === false) {
                   location.href = `${__XXX_HOST}/${eventLink(ex)}`;
                 } else {
                   navigate(`/${eventLink(ex)}`, {
@@ -56,13 +51,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
         );
       }
       case StreamProviders.NostrType: {
-        return (
-          <NostrProviderDialog
-            provider={currentProvider}
-            onFinish={onFinish}
-            ev={ev}
-          />
-        );
+        return <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} />;
       }
       case StreamProviders.Owncast: {
         return;
@@ -72,13 +61,12 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
 
   return (
     <>
-      <p>Stream Providers</p>
+      <p>
+        <FormattedMessage defaultMessage="Stream Providers" />
+      </p>
       <div className="flex g12">
-        {providers.map((v) => (
-          <span
-            className={`pill${v === currentProvider ? " active" : ""}`}
-            onClick={() => setCurrentProvider(v)}
-          >
+        {providers.map(v => (
+          <span className={`pill${v === currentProvider ? " active" : ""}`} onClick={() => setCurrentProvider(v)}>
             {v.name}
           </span>
         ))}
@@ -93,9 +81,7 @@ interface NewStreamDialogProps {
   btnClassName?: string;
 }
 
-export function NewStreamDialog(
-  props: NewStreamDialogProps & StreamEditorProps
-) {
+export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps) {
   const [open, setOpen] = useState(false);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -104,7 +90,9 @@ export function NewStreamDialog(
           {props.text && props.text}
           {!props.text && (
             <>
-              <span className="hide-on-mobile">Stream</span>
+              <span className="hide-on-mobile">
+                <FormattedMessage defaultMessage="Stream" />
+              </span>
               <Icon name="signal" />
             </>
           )}

@@ -38,26 +38,18 @@ export function useStreamsFeed(tag?: string) {
   const feedSorted = useMemo(() => {
     if (feed.data) {
       if (__XXX) {
-        return [...feed.data].filter(
-          (a) => findTag(a, "content-warning") !== undefined
-        );
+        return [...feed.data].filter(a => findTag(a, "content-warning") !== undefined);
       } else {
-        return [...feed.data].filter(
-          (a) => findTag(a, "content-warning") === undefined
-        );
+        return [...feed.data].filter(a => findTag(a, "content-warning") === undefined);
       }
     }
     return [];
   }, [feed.data]);
 
-  const live = feedSorted
-    .filter((a) => findTag(a, "status") === StreamState.Live)
-    .sort(sortStarts);
-  const planned = feedSorted
-    .filter((a) => findTag(a, "status") === StreamState.Planned)
-    .sort(sortStarts);
+  const live = feedSorted.filter(a => findTag(a, "status") === StreamState.Live).sort(sortStarts);
+  const planned = feedSorted.filter(a => findTag(a, "status") === StreamState.Planned).sort(sortStarts);
   const ended = feedSorted
-    .filter((a) => {
+    .filter(a => {
       const hasEnded = findTag(a, "status") === StreamState.Ended;
       const recording = findTag(a, "recording") ?? "";
       return hasEnded && recording?.length > 0;

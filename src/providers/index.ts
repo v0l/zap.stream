@@ -80,8 +80,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
     super();
     const cache = window.localStorage.getItem("providers");
     if (cache) {
-      const cached: Array<{ type: StreamProviders } & Record<string, unknown>> =
-        JSON.parse(cache);
+      const cached: Array<{ type: StreamProviders } & Record<string, unknown>> = JSON.parse(cache);
       for (const c of cached) {
         switch (c.type) {
           case StreamProviders.Manual: {
@@ -93,9 +92,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
             break;
           }
           case StreamProviders.Owncast: {
-            this.#providers.push(
-              new OwncastProvider(c.url as string, c.token as string)
-            );
+            this.#providers.push(new OwncastProvider(c.url as string, c.token as string));
             break;
           }
         }
@@ -110,14 +107,12 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
   }
 
   takeSnapshot() {
-    const defaultProvider = new Nip103StreamProvider(
-      "https://api.zap.stream/api/nostr/"
-    );
+    const defaultProvider = new Nip103StreamProvider("https://api.zap.stream/api/nostr/");
     return [defaultProvider, new ManualProvider(), ...this.#providers];
   }
 
   #save() {
-    const cfg = this.#providers.map((a) => a.createConfig());
+    const cfg = this.#providers.map(a => a.createConfig());
     window.localStorage.setItem("providers", JSON.stringify(cfg));
   }
 }

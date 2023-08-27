@@ -11,16 +11,10 @@ export function Emoji({ name, url }: EmojiProps) {
   return <img alt={name} src={url} className="emoji" />;
 }
 
-export function Emojify({
-  content,
-  emoji,
-}: {
-  content: string;
-  emoji: EmojiTag[];
-}) {
+export function Emojify({ content, emoji }: { content: string; emoji: EmojiTag[] }) {
   const emojified = useMemo(() => {
-    return content.split(/:(\w+):/g).map((i) => {
-      const t = emoji.find((t) => t[1] === i);
+    return content.split(/:(\w+):/g).map(i => {
+      const t = emoji.find(t => t[1] === i);
       if (t) {
         return <Emoji name={t[1]} url={t[2]} />;
       } else {

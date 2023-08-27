@@ -8,6 +8,7 @@ import AsyncButton from "./async-button";
 import { StreamState } from "../index";
 import { findTag } from "../utils";
 import { useLogin } from "hooks/login";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -34,6 +35,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const login = useLogin();
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     setTitle(findTag(ev, "title") ?? "");
@@ -42,7 +44,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     setStream(findTag(ev, "streaming") ?? "");
     setStatus(findTag(ev, "status") ?? StreamState.Live);
     setStart(findTag(ev, "starts"));
-    setTags(ev?.tags.filter((a) => a[0] === "t").map((a) => a[1]) ?? []);
+    setTags(ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []);
     setContentWarning(findTag(ev, "content-warning") !== undefined);
   }, [ev?.id]);
 
@@ -66,7 +68,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   async function publishStream() {
     const pub = login?.publisher();
     if (pub) {
-      const evNew = await pub.generic((eb) => {
+      const evNew = await pub.generic(eb => {
         const now = unixNow();
         const dTag = findTag(ev, "d") ?? now.toString();
         const starts = start ?? now.toString();
@@ -108,85 +110,81 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       <h3>{ev ? "Edit Stream" : "New Stream"}</h3>
       {(options?.canSetTitle ?? true) && (
         <div>
-          <p>Title</p>
+          <p>
+            <FormattedMessage defaultMessage="Title" />
+          </p>
           <div className="paper">
             <input
               type="text"
-              placeholder="What are we steaming today?"
+              placeholder={formatMessage({ defaultMessage: "What are we steaming today?" })}
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
             />
           </div>
         </div>
       )}
       {(options?.canSetSummary ?? true) && (
         <div>
-          <p>Summary</p>
+          <p>
+            <FormattedMessage defaultMessage="Summary" />
+          </p>
           <div className="paper">
             <input
               type="text"
-              placeholder="A short description of the content"
+              placeholder={formatMessage({ defaultMessage: "A short description of the content" })}
               value={summary}
-              onChange={(e) => setSummary(e.target.value)}
+              onChange={e => setSummary(e.target.value)}
             />
           </div>
         </div>
       )}
       {(options?.canSetImage ?? true) && (
         <div>
-          <p>Cover image</p>
+          <p>
+            <FormattedMessage defaultMessage="Cover Image" />
+          </p>
           <div className="paper">
-            <input
-              type="text"
-              placeholder="https://"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-            />
+            <input type="text" placeholder="https://" value={image} onChange={e => setImage(e.target.value)} />
           </div>
         </div>
       )}
       {(options?.canSetStream ?? true) && (
         <div>
-          <p>Stream Url</p>
+          <p>
+            <FormattedMessage defaultMessage="Stream URL" />
+          </p>
           <div className="paper">
-            <input
-              type="text"
-              placeholder="https://"
-              value={stream}
-              onChange={(e) => setStream(e.target.value)}
-            />
+            <input type="text" placeholder="https://" value={stream} onChange={e => setStream(e.target.value)} />
           </div>
-          <small>Stream type should be HLS</small>
+          <small>
+            <FormattedMessage defaultMessage="Stream type should be HLS" />
+          </small>
         </div>
       )}
       {(options?.canSetStatus ?? true) && (
         <>
           <div>
-            <p>Status</p>
+            <p>
+              <FormattedMessage defaultMessage="Status" />
+            </p>
             <div className="flex g12">
-              {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(
-                (v) => (
-                  <span
-                    className={`pill${status === v ? " active" : ""}`}
-                    onClick={() => setStatus(v)}
-                    key={v}
-                  >
-                    {v}
-                  </span>
-                )
-              )}
+              {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => (
+                <span className={`pill${status === v ? " active" : ""}`} onClick={() => setStatus(v)} key={v}>
+                  {v}
+                </span>
+              ))}
             </div>
           </div>
           {status === StreamState.Planned && (
             <div>
-              <p>Start Time</p>
+              <p>
+                <FormattedMessage defaultMessage="Start Time" />
+              </p>
               <div className="paper">
                 <input
                   type="datetime-local"
                   value={toDateTimeString(Number(start ?? "0"))}
-                  onChange={(e) =>
-                    setStart(fromDateTimeString(e.target.value).toString())
-                  }
+                  onChange={e => setStart(fromDateTimeString(e.target.value).toString())}
                 />
               </div>
             </div>
@@ -195,40 +193,30 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       )}
       {(options?.canSetTags ?? true) && (
         <div>
-          <p>Tags</p>
+          <p>
+            <FormattedMessage defaultMessage="Tags" />
+          </p>
           <div className="paper">
-            <TagsInput
-              value={tags}
-              onChange={setTags}
-              placeHolder="Music,DJ,English"
-              separators={["Enter", ","]}
-            />
+            <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />
           </div>
         </div>
       )}
       {(options?.canSetContentWarning ?? true) && (
         <div className="flex g12 content-warning">
           <div>
-            <input
-              type="checkbox"
-              checked={contentWarning}
-              onChange={(e) => setContentWarning(e.target.checked)}
-            />
+            <input type="checkbox" checked={contentWarning} onChange={e => setContentWarning(e.target.checked)} />
           </div>
           <div>
-            <div className="warning">NSFW Content</div>
-            Check here if this stream contains nudity or pornographic content.
+            <div className="warning">
+              <FormattedMessage defaultMessage="NSFW Content" />
+            </div>
+            <FormattedMessage defaultMessage="Check here if this stream contains nudity or pornographic content." />
           </div>
         </div>
       )}
       <div>
-        <AsyncButton
-          type="button"
-          className="btn btn-primary wide"
-          disabled={!isValid}
-          onClick={publishStream}
-        >
-          {ev ? "Save" : "Start Stream"}
+        <AsyncButton type="button" className="btn btn-primary wide" disabled={!isValid} onClick={publishStream}>
+          <FormattedMessage defaultMessage={ev ? "Save" : "Start Stream"} />
         </AsyncButton>
       </div>
     </>

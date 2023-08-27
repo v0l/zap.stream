@@ -1,13 +1,5 @@
 import "./live-chat.css";
-import {
-  EventKind,
-  NostrPrefix,
-  NostrLink,
-  ParsedZap,
-  NostrEvent,
-  parseZap,
-  encodeTLV,
-} from "@snort/system";
+import { EventKind, NostrPrefix, NostrLink, ParsedZap, NostrEvent, parseZap, encodeTLV } from "@snort/system";
 import { unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 import uniqBy from "lodash.uniqby";
@@ -32,6 +24,7 @@ import { formatSats } from "number";
 import { WEEK, LIVE_STREAM_CHAT } from "const";
 import { findTag, getTagValues, getHost } from "utils";
 import { System } from "index";
+import { FormattedMessage } from "react-intl";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -48,7 +41,7 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
       {event && <Badge ev={event} />}
       <p>awarded to</p>
       <div className="badge-awardees">
-        {awardees.map((pk) => (
+        {awardees.map(pk => (
           <Profile key={pk} pubkey={pk} />
         ))}
       </div>
@@ -95,9 +88,7 @@ export function LiveChat({
   const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
   useEffect(() => {
-    const pubkeys = [
-      ...new Set(feed.zaps.flatMap((a) => [a.pubkey, unwrap(findTag(a, "p"))])),
-    ];
+    const pubkeys = [...new Set(feed.zaps.flatMap(a => [a.pubkey, unwrap(findTag(a, "p"))]))];
     System.ProfileLoader.TrackMetadata(pubkeys);
     return () => System.ProfileLoader.UntrackMetadata(pubkeys);
   }, [feed.zaps]);
@@ -116,54 +107,40 @@ export function LiveChat({
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
 
-  const zaps = feed.zaps
-    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z && z.valid);
+  const zaps = feed.zaps.map(ev => parseZap(ev, System.ProfileLoader.Cache)).filter(z => z && z.valid);
   const events = useMemo(() => {
-    return [...feed.messages, ...feed.zaps, ...awards].sort(
-      (a, b) => b.created_at - a.created_at
-    );
+    return [...feed.messages, ...feed.zaps, ...awards].sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.zaps, awards]);
   const streamer = getHost(ev);
   const naddr = useMemo(() => {
     if (ev) {
-      return encodeTLV(
-        NostrPrefix.Address,
-        findTag(ev, "d") ?? "",
-        undefined,
-        ev.kind,
-        ev.pubkey
-      );
+      return encodeTLV(NostrPrefix.Address, findTag(ev, "d") ?? "", undefined, ev.kind, ev.pubkey);
     }
   }, [ev]);
   const filteredEvents = useMemo(() => {
-    return events.filter(
-      (e) => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey)
-    );
+    return events.filter(e => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey));
   }, [events, mutedPubkeys, hostMutedPubkeys]);
 
   return (
     <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
       {(options?.showHeader ?? true) && (
         <div className="header">
-          <h2 className="title">Stream Chat</h2>
+          <h2 className="title">
+            <FormattedMessage defaultMessage="Stream Chat" />
+          </h2>
           <Icon
             name="link"
             className="secondary"
             size={32}
-            onClick={() =>
-              window.open(
-                `/chat/${naddr}?chat=true`,
-                "_blank",
-                "popup,width=400,height=800"
-              )
-            }
+            onClick={() => window.open(`/chat/${naddr}?chat=true`, "_blank", "popup,width=400,height=800")}
           />
         </div>
       )}
       {zaps.length > 0 && (
         <div className="top-zappers">
-          <h3>Top zappers</h3>
+          <h3>
+            <FormattedMessage defaultMessage="Top zappers" />
+          </h3>
           <div className="top-zappers-container">
             <TopZappers zaps={zaps} />
           </div>
@@ -172,7 +149,7 @@ export function LiveChat({
         </div>
       )}
       <div className="messages">
-        {filteredEvents.map((a) => {
+        {filteredEvents.map(a => {
           switch (a.kind) {
             case EventKind.BadgeAward: {
               return <BadgeAward ev={a} />;
@@ -190,9 +167,7 @@ export function LiveChat({
               );
             }
             case EventKind.ZapReceipt: {
-              const zap = zaps.find(
-                (b) => b.id === a.id && b.receiver === streamer
-              );
+              const zap = zaps.find(b => b.id === a.id && b.receiver === streamer);
               if (zap) {
                 return <ChatZap zap={zap} key={a.id} />;
               }
@@ -207,7 +182,9 @@ export function LiveChat({
           {login ? (
             <WriteMessage emojiPacks={allEmojiPacks} link={link} />
           ) : (
-            <p>Please login to write messages!</p>
+            <p>
+              <FormattedMessage defaultMessage="Please login to write messages!" />
+            </p>
           )}
         </div>
       )}
@@ -227,16 +204,21 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
     <div className={`zap-container ${isBig ? "big-zap" : ""}`}>
       <div className="zap">
         <Icon name="zap-filled" className="zap-icon" />
-        <Profile
-          pubkey={zap.anonZap ? "anon" : zap.sender ?? "anon"}
-          options={{
-            showAvatar: !zap.anonZap,
-            overrideName: zap.anonZap ? "Anon" : undefined,
+        <FormattedMessage
+          defaultMessage="{person} zapped {amount} sats"
+          values={{
+            person: (
+              <Profile
+                pubkey={zap.anonZap ? "anon" : zap.sender ?? "anon"}
+                options={{
+                  showAvatar: !zap.anonZap,
+                  overrideName: zap.anonZap ? "Anon" : undefined,
+                }}
+              />
+            ),
+            amount: <span className="zap-amount">{formatSats(zap.amount)}</span>,
           }}
         />
-        zapped
-        <span className="zap-amount">{formatSats(zap.amount)}</span>
-        sats
       </div>
       {zap.content && (
         <div className="zap-content">

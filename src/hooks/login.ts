@@ -11,7 +11,7 @@ import { Login } from "index";
 
 export function useLogin() {
   const session = useSyncExternalStore(
-    (c) => Login.hook(c),
+    c => Login.hook(c),
     () => Login.snapshot()
   );
   if (!session) return;
@@ -26,7 +26,7 @@ export function useLogin() {
 export function useLoginEvents(pubkey?: string, leaveOpen = false) {
   const [userEmojis, setUserEmojis] = useState<Tags>([]);
   const session = useSyncExternalStore(
-    (c) => Login.hook(c),
+    c => Login.hook(c),
     () => Login.snapshot()
   );
 

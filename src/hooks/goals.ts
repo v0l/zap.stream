@@ -17,20 +17,13 @@ export function useZaps(goal: NostrEvent, leaveOpen = false) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`goal-zaps:${goal.id.slice(0, 12)}`);
     b.withOptions({ leaveOpen });
-    b.withFilter()
-      .kinds([EventKind.ZapReceipt])
-      .tag("e", [goal.id])
-      .since(goal.created_at);
+    b.withFilter().kinds([EventKind.ZapReceipt]).tag("e", [goal.id]).since(goal.created_at);
     return b;
   }, [goal, leaveOpen]);
 
   const { data } = useRequestBuilder(NoteCollection, sub);
 
-  return (
-    data
-      ?.map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-      .filter((z) => z && z.valid) ?? []
-  );
+  return data?.map(ev => parseZap(ev, System.ProfileLoader.Cache)).filter(z => z && z.valid) ?? [];
 }
 
 export function useZapGoal(host: string, link?: NostrLink, leaveOpen = false) {

@@ -19,19 +19,10 @@ interface ExternalIconLinkProps extends Omit<ExternalLinkProps, "children"> {
   size?: number;
 }
 
-export function ExternalIconLink({
-  size = 32,
-  href,
-  ...rest
-}: ExternalIconLinkProps) {
+export function ExternalIconLink({ size = 32, href, ...rest }: ExternalIconLinkProps) {
   return (
     <span style={{ cursor: "pointer" }}>
-      <Icon
-        name="link"
-        size={size}
-        onClick={() => window.open(href, "_blank")}
-        {...rest}
-      />
+      <Icon name="link" size={size} onClick={() => window.open(href, "_blank")} {...rest} />
     </span>
   );
 }

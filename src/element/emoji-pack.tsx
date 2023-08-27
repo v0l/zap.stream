@@ -8,28 +8,24 @@ import { findTag } from "utils";
 import { USER_EMOJIS } from "const";
 import { Login, System } from "index";
 import type { EmojiPack as EmojiPackType } from "types";
+import { FormattedMessage } from "react-intl";
 
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
   const login = useLogin();
   const name = findTag(ev, "d");
-  const isUsed = login?.emojis.find(
-    (e) => e.author === ev.pubkey && e.name === name
-  );
-  const emoji = ev.tags.filter((e) => e.at(0) === "emoji");
+  const isUsed = login?.emojis.find(e => e.author === ev.pubkey && e.name === name);
+  const emoji = ev.tags.filter(e => e.at(0) === "emoji");
 
   async function toggleEmojiPack() {
     let newPacks = [] as EmojiPackType[];
     if (isUsed) {
-      newPacks =
-        login?.emojis.filter(
-          (e) => e.author !== ev.pubkey && e.name !== name
-        ) ?? [];
+      newPacks = login?.emojis.filter(e => e.author !== ev.pubkey && e.name !== name) ?? [];
     } else {
       newPacks = [...(login?.emojis ?? []), toEmojiPack(ev)];
     }
     const pub = login?.publisher();
     if (pub) {
-      const ev = await pub.generic((eb) => {
+      const ev = await pub.generic(eb => {
         eb.kind(USER_EMOJIS).content("");
         for (const e of newPacks) {
           eb.tag(["a", e.address]);
@@ -48,17 +44,14 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
         <h4>{name}</h4>
         {login?.pubkey && (
           <AsyncButton
-            className={`btn btn-small btn-primary ${
-              isUsed ? "delete-button" : ""
-            }`}
-            onClick={toggleEmojiPack}
-          >
-            {isUsed ? "Remove" : "Add"}
+            className={`btn btn-small btn-primary ${isUsed ? "delete-button" : ""}`}
+            onClick={toggleEmojiPack}>
+            <FormattedMessage defaultMessage={isUsed ? "Remove" : "Add"} />
           </AsyncButton>
         )}
       </div>
       <div className="emoji-pack-emojis">
-        {emoji.map((e) => {
+        {emoji.map(e => {
           const [, name, image] = e;
           return (
             <div className="emoji-definition">

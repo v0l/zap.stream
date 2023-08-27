@@ -10,6 +10,7 @@ import { formatSats } from "number";
 import ZapStream from "../../public/zap-stream.svg";
 import { isContentWarningAccepted } from "./content-warning";
 import { Tags } from "element/tags";
+import { FormattedMessage } from "react-intl";
 
 export function VideoTile({
   ev,
@@ -26,37 +27,22 @@ export function VideoTile({
   const image = findTag(ev, "image");
   const status = findTag(ev, "status");
   const viewers = findTag(ev, "current_participants");
-  const contentWarning =
-    findTag(ev, "content-warning") && !isContentWarningAccepted();
+  const contentWarning = findTag(ev, "content-warning") && !isContentWarningAccepted();
   const host = getHost(ev);
 
-  const link = encodeTLV(
-    NostrPrefix.Address,
-    id,
-    undefined,
-    ev.kind,
-    ev.pubkey
-  );
+  const link = encodeTLV(NostrPrefix.Address, id, undefined, ev.kind, ev.pubkey);
   return (
     <div className="video-tile-container">
-      <Link
-        to={`/${link}`}
-        className={`video-tile${contentWarning ? " nsfw" : ""}`}
-        ref={ref}
-        state={ev}
-      >
+      <Link to={`/${link}`} className={`video-tile${contentWarning ? " nsfw" : ""}`} ref={ref} state={ev}>
         <div
           style={{
-            backgroundImage: `url(${
-              inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""
-            })`,
-          }}
-        ></div>
+            backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""})`,
+          }}></div>
         <span className="pill-box">
           {showStatus && <StatePill state={status as StreamState} />}
           {viewers && (
             <span className="pill viewers">
-              {formatSats(Number(viewers))} viewers
+              <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(viewers)) }} />
             </span>
           )}
         </span>

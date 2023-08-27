@@ -52,11 +52,7 @@ export class OwncastProvider implements StreamProvider {
     throw new Error("Method not implemented.");
   }
 
-  async #getJson<T>(
-    method: "GET" | "POST",
-    path: string,
-    body?: unknown
-  ): Promise<T> {
+  async #getJson<T>(method: "GET" | "POST", path: string, body?: unknown): Promise<T> {
     const rsp = await fetch(`${this.#url}${path}`, {
       method,
       body: body ? JSON.stringify(body) : undefined,

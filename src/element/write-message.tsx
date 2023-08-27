@@ -1,5 +1,6 @@
 import { NostrLink, EventKind } from "@snort/system";
 import React, { useRef, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
@@ -10,20 +11,14 @@ import type { EmojiPack, Emoji } from "types";
 import { System } from "index";
 import { LIVE_STREAM_CHAT } from "const";
 
-export function WriteMessage({
-  link,
-  emojiPacks,
-}: {
-  link: NostrLink;
-  emojiPacks: EmojiPack[];
-}) {
+export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const emojiRef = useRef(null);
   const [chat, setChat] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
-  const emojis = emojiPacks.map((pack) => pack.emojis).flat();
-  const names = emojis.map((t) => t.at(1));
+  const emojis = emojiPacks.map(pack => pack.emojis).flat();
+  const names = emojis.map(t => t.at(1));
 
   const topOffset = ref.current?.getBoundingClientRect().top;
   const leftOffset = ref.current?.getBoundingClientRect().left;
@@ -39,10 +34,8 @@ export function WriteMessage({
         }
       }
 
-      const reply = await pub?.generic((eb) => {
-        const emoji = [...emojiNames].map((name) =>
-          emojis.find((e) => e.at(1) === name)
-        );
+      const reply = await pub?.generic(eb => {
+        const emoji = [...emojiNames].map(name => emojis.find(e => e.at(1) === name));
         eb.kind(LIVE_STREAM_CHAT as EventKind)
           .content(chat)
           .tag(["a", `${link.kind}:${link.author}:${link.id}`, "", "root"])
@@ -86,12 +79,7 @@ export function WriteMessage({
   return (
     <>
       <div className="paper" ref={ref}>
-        <Textarea
-          emojis={emojis}
-          value={chat}
-          onKeyDown={onKeyDown}
-          onChange={(e) => setChat(e.target.value)}
-        />
+        <Textarea emojis={emojis} value={chat} onKeyDown={onKeyDown} onChange={e => setChat(e.target.value)} />
         <div onClick={pickEmoji}>
           <Icon name="face" className="write-emoji-button" />
         </div>
@@ -107,7 +95,7 @@ export function WriteMessage({
         )}
       </div>
       <AsyncButton onClick={sendChatMessage} className="btn btn-border">
-        Send
+        <FormattedMessage defaultMessage="Send" />
       </AsyncButton>
     </>
   );

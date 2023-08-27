@@ -13,6 +13,7 @@ import { SendZapsDialog } from "element/send-zap";
 import { useZaps } from "hooks/goals";
 import { getName } from "element/profile";
 import { Icon } from "./icon";
+import { FormattedMessage } from "react-intl";
 
 export function Goal({ ev }: { ev: NostrEvent }) {
   const profile = useUserProfile(ev.pubkey);
@@ -28,9 +29,7 @@ export function Goal({ ev }: { ev: NostrEvent }) {
   }
 
   const soFar = useMemo(() => {
-    return zaps
-      .filter((z) => z.receiver === ev.pubkey && z.event === ev.id)
-      .reduce((acc, z) => acc + z.amount, 0);
+    return zaps.filter(z => z.receiver === ev.pubkey && z.event === ev.id).reduce((acc, z) => acc + z.amount, 0);
   }, [zaps]);
 
   const progress = Math.max(0, Math.min(100, (soFar / goalAmount) * 100));
@@ -42,26 +41,18 @@ export function Goal({ ev }: { ev: NostrEvent }) {
       {ev.content.length > 0 && <p>{ev.content}</p>}
       <div className={`progress-container ${isFinished ? "finished" : ""}`}>
         <Progress.Root className="progress-root" value={progress}>
-          <Progress.Indicator
-            className="progress-indicator"
-            style={{ transform: `translateX(-${100 - progress}%)` }}
-          >
-            {!isFinished && (
-              <span className="amount so-far">{formatSats(soFar)}</span>
-            )}
+          <Progress.Indicator className="progress-indicator" style={{ transform: `translateX(-${100 - progress}%)` }}>
+            {!isFinished && <span className="amount so-far">{formatSats(soFar)}</span>}
           </Progress.Indicator>
-          <span className="amount target">Goal: {formatSats(goalAmount)}</span>
+          <span className="amount target">
+            <FormattedMessage defaultMessage="Goal: {amount}" values={{ amount: formatSats(goalAmount) }} />
+          </span>
         </Progress.Root>
         <div className="zap-circle">
-          <Icon
-            name="zap-filled"
-            className={isFinished ? "goal-finished" : "goal-unfinished"}
-          />
+          <Icon name="zap-filled" className={isFinished ? "goal-finished" : "goal-unfinished"} />
         </div>
       </div>
-      {isFinished && previousValue === false && (
-        <Confetti numberOfPieces={2100} recycle={false} />
-      )}
+      {isFinished && previousValue === false && <Confetti numberOfPieces={2100} recycle={false} />}
     </div>
   );
 
