@@ -18,6 +18,7 @@ import { StreamProvidersPage } from "pages/providers";
 import { defaultRelays } from "const";
 import { CatchAllRoutePage } from "pages/catch-all";
 import { SnortContext } from "@snort/system-react";
+import { register } from "serviceWorker";
 
 export enum StreamState {
   Live = "live",
@@ -27,6 +28,8 @@ export enum StreamState {
 
 export const System = new NostrSystem({});
 export const Login = new LoginStore();
+
+register();
 
 Object.entries(defaultRelays).forEach((params) => {
   const [relay, settings] = params;
