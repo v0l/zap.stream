@@ -12,11 +12,10 @@ import usePreviousValue from "hooks/usePreviousValue";
 import { SendZapsDialog } from "element/send-zap";
 import { useZaps } from "hooks/goals";
 import { getName } from "element/profile";
-import { System } from "index";
 import { Icon } from "./icon";
 
 export function Goal({ ev }: { ev: NostrEvent }) {
-  const profile = useUserProfile(System, ev.pubkey);
+  const profile = useUserProfile(ev.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const zaps = useZaps(ev, true);
   const goalAmount = useMemo(() => {

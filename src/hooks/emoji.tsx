@@ -8,7 +8,6 @@ import {
   NostrEvent,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { System } from "index";
 import { findTag } from "utils";
 import { EMOJI_PACK, USER_EMOJIS } from "const";
 import type { EmojiPack, Tags, EmojiTag } from "types";
@@ -64,11 +63,7 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
     return rb;
   }, [pubkey, related]);
 
-  const { data: relatedData } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    subRelated
-  );
+  const { data: relatedData } = useRequestBuilder(NoteCollection, subRelated);
 
   const emojiPacks = useMemo(() => {
     return relatedData ?? [];
@@ -92,11 +87,7 @@ export default function useEmoji(pubkey?: string) {
     return rb;
   }, [pubkey]);
 
-  const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data: userEmoji } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   const emojis = useUserEmojiPacks(pubkey, userEmoji?.tags ?? []);
   return emojis;

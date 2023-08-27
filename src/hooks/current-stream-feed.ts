@@ -5,11 +5,10 @@ import {
   NostrPrefix,
   NoteCollection,
   RequestBuilder,
-  TaggedRawEvent,
+  TaggedNostrEvent,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "const";
-import { System } from "index";
 import { useMemo } from "react";
 
 export function useCurrentStreamFeed(
@@ -42,10 +41,10 @@ export function useCurrentStreamFeed(
     return b;
   }, [link.id, leaveOpen]);
 
-  const q = useRequestBuilder(System, NoteCollection, sub);
+  const q = useRequestBuilder(NoteCollection, sub);
 
   if (evPreload) {
-    q.add(evPreload as TaggedRawEvent);
+    q.add(evPreload as TaggedNostrEvent);
   }
 
   return useMemo(() => {

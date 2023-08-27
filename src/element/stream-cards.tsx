@@ -5,7 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import type { TaggedRawEvent } from "@snort/system";
+import { TaggedNostrEvent } from "@snort/system";
 
 import { Toggle } from "element/toggle";
 import { Icon } from "element/icon";
@@ -64,8 +64,8 @@ const CardPreview = forwardRef(
 
 interface CardProps {
   canEdit?: boolean;
-  ev: TaggedRawEvent;
-  cards: TaggedRawEvent[];
+  ev: TaggedNostrEvent;
+  cards: TaggedNostrEvent[];
 }
 
 interface CardItem {
@@ -259,7 +259,7 @@ function CardDialog({
 
 interface EditCardProps {
   card: CardType;
-  cards: TaggedRawEvent[];
+  cards: TaggedNostrEvent[];
 }
 
 function EditCard({ card, cards }: EditCardProps) {
@@ -332,7 +332,7 @@ function EditCard({ card, cards }: EditCardProps) {
 }
 
 interface AddCardProps {
-  cards: TaggedRawEvent[];
+  cards: TaggedNostrEvent[];
 }
 
 function AddCard({ cards }: AddCardProps) {

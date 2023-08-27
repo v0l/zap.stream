@@ -24,11 +24,7 @@ export function useZaps(goal: NostrEvent, leaveOpen = false) {
     return b;
   }, [goal, leaveOpen]);
 
-  const { data } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    sub
-  );
+  const { data } = useRequestBuilder(NoteCollection, sub);
 
   return (
     data
@@ -49,11 +45,7 @@ export function useZapGoal(host: string, link?: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   return data;
 }

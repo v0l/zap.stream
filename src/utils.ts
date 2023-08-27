@@ -1,7 +1,7 @@
 import {
   NostrEvent,
   NostrPrefix,
-  TaggedRawEvent,
+  TaggedNostrEvent,
   encodeTLV,
   parseNostrLink,
 } from "@snort/system";
@@ -77,7 +77,7 @@ export function splitByUrl(str: string) {
   return str.split(urlRegex);
 }
 
-export function eventLink(ev: NostrEvent | TaggedRawEvent) {
+export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
   if (ev.kind && ev.kind >= 30000 && ev.kind <= 40000) {
     const d = findTag(ev, "d") ?? "";
     return encodeTLV(

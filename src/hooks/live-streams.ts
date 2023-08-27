@@ -5,7 +5,7 @@ import { useRequestBuilder } from "@snort/system-react";
 
 import { unixNow } from "@snort/shared";
 import { LIVE_STREAM } from "const";
-import { System, StreamState } from "index";
+import { StreamState } from "index";
 import { findTag } from "utils";
 import { WEEK } from "const";
 
@@ -34,7 +34,7 @@ export function useStreamsFeed(tag?: string) {
     return bStart > aStart ? 1 : -1;
   }
 
-  const feed = useRequestBuilder<NoteCollection>(System, NoteCollection, rb);
+  const feed = useRequestBuilder(NoteCollection, rb);
   const feedSorted = useMemo(() => {
     if (feed.data) {
       if (__XXX) {

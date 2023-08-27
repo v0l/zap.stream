@@ -17,6 +17,7 @@ import { LoginStore } from "login";
 import { StreamProvidersPage } from "pages/providers";
 import { defaultRelays } from "const";
 import { CatchAllRoutePage } from "pages/catch-all";
+import { SnortContext } from "@snort/system-react";
 
 export enum StreamState {
   Live = "live",
@@ -76,6 +77,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SnortContext.Provider value={System}>
+      <RouterProvider router={router} />
+    </SnortContext.Provider>
   </React.StrictMode>
 );

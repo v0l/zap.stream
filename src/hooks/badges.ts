@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import {
-  TaggedRawEvent,
+  TaggedNostrEvent,
   EventKind,
   NoteCollection,
   RequestBuilder,
@@ -9,14 +9,13 @@ import {
 import { useRequestBuilder } from "@snort/system-react";
 
 import { findTag, toAddress, getTagValues } from "utils";
-import { System } from "index";
 import type { Badge } from "types";
 
 export function useBadges(
   pubkey: string,
   since: number,
   leaveOpen = true
-): { badges: Badge[]; awards: TaggedRawEvent[] } {
+): { badges: Badge[]; awards: TaggedNostrEvent[] } {
   const rb = useMemo(() => {
     const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
     rb.withOptions({ leaveOpen });
@@ -28,11 +27,7 @@ export function useBadges(
     return rb;
   }, [pubkey, since]);
 
-  const { data: badgeEvents } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    rb
-  );
+  const { data: badgeEvents } = useRequestBuilder(NoteCollection, rb);
 
   const rawBadges = useMemo(() => {
     if (badgeEvents) {
@@ -59,11 +54,7 @@ export function useBadges(
     return rb;
   }, [rawBadges]);
 
-  const acceptedStream = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    acceptedSub
-  );
+  const acceptedStream = useRequestBuilder(NoteCollection, acceptedSub);
   const acceptedEvents = acceptedStream.data ?? [];
 
   const badges = useMemo(() => {

@@ -2,11 +2,10 @@ import {
   NostrLink,
   RequestBuilder,
   EventKind,
-  FlatNoteStore,
+  NoteCollection,
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
-import { System } from "index";
 import { useMemo } from "react";
 import { LIVE_STREAM_CHAT, WEEK } from "const";
 
@@ -27,7 +26,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
     return rb;
   }, [link.id, since, eZaps]);
 
-  const feed = useRequestBuilder<FlatNoteStore>(System, FlatNoteStore, sub);
+  const feed = useRequestBuilder(NoteCollection, sub);
 
   const messages = useMemo(() => {
     return (feed.data ?? []).filter((ev) => ev.kind === LIVE_STREAM_CHAT);
@@ -52,11 +51,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
     return rb;
   }, [etags]);
 
-  const reactionsSub = useRequestBuilder<FlatNoteStore>(
-    System,
-    FlatNoteStore,
-    esub
-  );
+  const reactionsSub = useRequestBuilder(NoteCollection, esub);
 
   const reactions = reactionsSub.data ?? [];
 

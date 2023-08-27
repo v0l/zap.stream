@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import {
-  TaggedRawEvent,
+  TaggedNostrEvent,
   ReplaceableNoteStore,
   NoteCollection,
   RequestBuilder,
@@ -10,13 +10,12 @@ import { useRequestBuilder } from "@snort/system-react";
 
 import { USER_CARDS, CARD } from "const";
 import { findTag } from "utils";
-import { System } from "index";
 
 export function useUserCards(
   pubkey: string,
   userCards: Array<string[]>,
   leaveOpen = false
-): TaggedRawEvent[] {
+): TaggedNostrEvent[] {
   const related = useMemo(() => {
     // filtering to only show CARD kinds for now, but in the future we could link and render anything
     if (userCards?.length > 0) {
@@ -49,11 +48,7 @@ export function useUserCards(
     return rb;
   }, [pubkey, related]);
 
-  const { data } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    subRelated
-  );
+  const { data } = useRequestBuilder(NoteCollection, subRelated);
 
   const cards = useMemo(() => {
     return related
@@ -68,13 +63,16 @@ export function useUserCards(
         );
       })
       .filter((e) => e)
-      .map((e) => e as TaggedRawEvent);
+      .map((e) => e as TaggedNostrEvent);
   }, [related, data]);
 
   return cards;
 }
 
-export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
+export function useCards(
+  pubkey: string,
+  leaveOpen = false
+): TaggedNostrEvent[] {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`user-cards:${pubkey.slice(0, 12)}`);
     b.withOptions({
@@ -86,11 +84,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
     return b;
   }, [pubkey, leaveOpen]);
 
-  const { data: userCards } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data: userCards } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   const related = useMemo(() => {
     // filtering to only show CARD kinds for now, but in the future we could link and render anything
@@ -124,11 +118,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
     return rb;
   }, [pubkey, related]);
 
-  const { data } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    subRelated
-  );
+  const { data } = useRequestBuilder(NoteCollection, subRelated);
   const cardEvents = data ?? [];
 
   const cards = useMemo(() => {
@@ -144,7 +134,7 @@ export function useCards(pubkey: string, leaveOpen = false): TaggedRawEvent[] {
         );
       })
       .filter((e) => e)
-      .map((e) => e as TaggedRawEvent);
+      .map((e) => e as TaggedNostrEvent);
   }, [related, cardEvents]);
 
   return cards;

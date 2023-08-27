@@ -1,5 +1,10 @@
 import "./stream-page.css";
-import { NostrLink, NostrPrefix, TaggedRawEvent, tryParseNostrLink } from "@snort/system";
+import {
+  NostrLink,
+  NostrPrefix,
+  TaggedNostrEvent,
+  tryParseNostrLink,
+} from "@snort/system";
 import { fetchNip05Pubkey } from "@snort/shared";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -35,11 +40,17 @@ import {
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { useEffect, useState } from "react";
 
-function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedRawEvent }) {
+function ProfileInfo({
+  ev,
+  goal,
+}: {
+  ev?: NostrEvent;
+  goal?: TaggedNostrEvent;
+}) {
   const login = useLogin();
   const navigate = useNavigate();
   const host = getHost(ev);
-  const profile = useUserProfile(System, host);
+  const profile = useUserProfile(host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
   const status = findTag(ev, "status") ?? "";
@@ -125,26 +136,34 @@ export function StreamPageHandler() {
       if (parsedLink) {
         setLink(parsedLink);
       } else {
-        const [handle, domain] = (params.id.includes("@") ? params.id : `${params.id}@zap.stream`).split("@");
-        fetchNip05Pubkey(handle, domain).then(d => {
+        const [handle, domain] = (
+          params.id.includes("@") ? params.id : `${params.id}@zap.stream`
+        ).split("@");
+        fetchNip05Pubkey(handle, domain).then((d) => {
           if (d) {
             setLink({
               id: d,
               type: NostrPrefix.PublicKey,
-              encode: () => hexToBech32(NostrPrefix.PublicKey, d)
+              encode: () => hexToBech32(NostrPrefix.PublicKey, d),
             } as NostrLink);
           }
-        })
+        });
       }
     }
   }, [params.id]);
 
   if (link) {
-    return <StreamPage link={link} evPreload={evPreload} />
+    return <StreamPage link={link} evPreload={evPreload} />;
   }
 }
 
-export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent, link: NostrLink }) {
+export function StreamPage({
+  link,
+  evPreload,
+}: {
+  evPreload?: NostrEvent;
+  link: NostrLink;
+}) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const goal = useZapGoal(host, createNostrLink(ev), true);

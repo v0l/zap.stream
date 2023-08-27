@@ -7,7 +7,6 @@ import { hexToBech32 } from "@snort/shared";
 
 import { Icon } from "element/icon";
 import usePlaceholder from "hooks/placeholders";
-import { System } from "index";
 import { useInView } from "react-intersection-observer";
 
 export interface ProfileOptions {
@@ -46,7 +45,7 @@ export function Profile({
 }) {
   const { inView, ref } = useInView();
   const pLoaded =
-    useUserProfile(System, inView && !profile ? pubkey : undefined) || profile;
+    useUserProfile(inView && !profile ? pubkey : undefined) || profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
   const placeholder = usePlaceholder(pubkey);

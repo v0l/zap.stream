@@ -8,8 +8,6 @@ import {
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { System } from "index";
-
 export function useAddress(kind: number, pubkey: string, identifier: string) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`event:${kind}:${identifier}`);
@@ -17,11 +15,7 @@ export function useAddress(kind: number, pubkey: string, identifier: string) {
     return b;
   }, [kind, pubkey, identifier]);
 
-  const { data } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   return data;
 }
@@ -49,11 +43,7 @@ export function useEvent(link: NostrLink) {
     return b;
   }, [link]);
 
-  const { data } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   return data;
 }

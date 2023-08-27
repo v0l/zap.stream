@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import {
   RequestBuilder,
-  FlatNoteStore,
   NoteCollection,
   NostrLink,
   EventKind,
@@ -27,11 +26,7 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    sub
-  );
+  const { data: streamsData } = useRequestBuilder(NoteCollection, sub);
   const streams = streamsData ?? [];
 
   const addresses = useMemo(() => {
@@ -52,11 +47,7 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, addresses, leaveOpen]);
 
-  const { data: zapsData } = useRequestBuilder<FlatNoteStore>(
-    System,
-    FlatNoteStore,
-    zapsSub
-  );
+  const { data: zapsData } = useRequestBuilder(NoteCollection, zapsSub);
   const zaps = (zapsData ?? [])
     .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
     .filter((z) => z && z.valid && z.receiver === link.id);

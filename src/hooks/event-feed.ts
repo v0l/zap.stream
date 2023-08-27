@@ -7,8 +7,6 @@ import {
 } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { System } from "index";
-
 export default function useEventFeed(link: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
     const b = new RequestBuilder(`event:${link.id.slice(0, 12)}`);
@@ -35,9 +33,5 @@ export default function useEventFeed(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  return useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  return useRequestBuilder(ReplaceableNoteStore, sub);
 }

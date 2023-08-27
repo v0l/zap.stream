@@ -21,7 +21,7 @@ import { useProfile } from "hooks/profile";
 import useTopZappers from "hooks/top-zappers";
 import usePlaceholder from "hooks/placeholders";
 import { Text } from "element/text";
-import { StreamState, System } from "index";
+import { StreamState } from "index";
 import { findTag } from "utils";
 import { formatSats } from "number";
 
@@ -55,7 +55,7 @@ export function ProfilePage() {
   const params = useParams();
   const link = parseNostrLink(unwrap(params.npub));
   const placeholder = usePlaceholder(link.id);
-  const profile = useUserProfile(System, link.id);
+  const profile = useUserProfile(link.id);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const { streams, zaps } = useProfile(link, true);
   const liveEvent = useMemo(() => {

@@ -1,6 +1,6 @@
-import { useUserProfile } from "@snort/system-react";
+import { useUserProfile, SnortContext } from "@snort/system-react";
 import { NostrEvent, parseZap, EventKind } from "@snort/system";
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useContext } from "react";
 import {
   useMediaQuery,
   useHover,
@@ -20,7 +20,6 @@ import { useLogin } from "hooks/login";
 import { formatSats } from "number";
 import { findTag } from "utils";
 import type { Badge, Emoji, EmojiPack } from "types";
-import { System } from "index";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -61,16 +60,16 @@ export function ChatMessage({
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
   const profile = useUserProfile(
-    System,
     inView?.isIntersecting ? ev.pubkey : undefined
   );
   const shouldShowMuteButton =
     ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const system = useContext(SnortContext);
   const zaps = useMemo(() => {
     return reactions
       .filter((a) => a.kind === EventKind.ZapReceipt)
-      .map((a) => parseZap(a, System.ProfileLoader.Cache))
+      .map((a) => parseZap(a, system.ProfileLoader.Cache))
       .filter((a) => a && a.valid);
   }, [reactions]);
   const emojiReactions = useMemo(() => {
@@ -126,7 +125,7 @@ export function ChatMessage({
       }
       if (reply) {
         console.debug(reply);
-        System.BroadcastEvent(reply);
+        system.BroadcastEvent(reply);
       }
     } catch {
       //ignore

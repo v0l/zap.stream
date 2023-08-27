@@ -8,16 +8,14 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
+const IntlTsTransformer = require("@formatjs/ts-transformer");
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
   entry: {
     main: "./src/index.tsx",
-    sw: {
-      import: "./src/service-worker.ts",
-      filename: "service-worker.js",
-    },
   },
   target: "browserslist",
   mode: isProduction ? "production" : "development",
@@ -25,12 +23,7 @@ const config = {
   output: {
     publicPath: "/",
     path: path.resolve(__dirname, "build"),
-    filename: ({ runtime }) => {
-      if (runtime === "sw") {
-        return "[name].js";
-      }
-      return isProduction ? "[name].[chunkhash].js" : "[name].js";
-    },
+    filename: isProduction ? "[name].[chunkhash].js" : "[name].js",
     clean: isProduction,
   },
   devServer: {
@@ -51,12 +44,11 @@ const config = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
       favicon: "public/favicon.ico",
-      excludeChunks: ["sw"],
     }),
     new ESLintPlugin({
       extensions: ["js", "mjs", "jsx", "ts", "tsx"],
       eslintPath: require.resolve("eslint"),
-      failOnError: !isProduction,
+      failOnError: true,
       cache: true,
     }),
     new MiniCssExtractPlugin({
@@ -69,6 +61,9 @@ const config = {
     new webpack.DefinePlugin({
       __XXX: process.env["__XXX"] || JSON.stringify(false),
       __XXX_HOST: JSON.stringify("https://xxzap.com"),
+    }),
+    new WorkboxPlugin.InjectManifest({
+      swSrc: "./src/service-worker.ts",
     }),
   ],
   module: {
@@ -89,27 +84,26 @@ const config = {
               babelrc: false,
               configFile: false,
               presets: [
-                [
-                  "@babel/preset-env",
-                  {
-                    targets: "defaults",
-                  },
-                ],
+                ["@babel/preset-env"],
                 ["@babel/preset-react", { runtime: "automatic" }],
-                "@babel/preset-typescript",
-              ],
-              plugins: [
-                [
-                  "formatjs",
-                  {
-                    idInterpolationPattern: "[sha512:contenthash:base64:6]",
-                    ast: true,
-                  },
-                ],
               ],
             },
           },
-          require.resolve("ts-loader"),
+          {
+            loader: require.resolve("ts-loader"),
+            options: {
+              getCustomTransformers() {
+                return {
+                  before: [
+                    IntlTsTransformer.transform({
+                      overrideIdFn: "[sha512:contenthash:base64:6]",
+                      ast: true,
+                    }),
+                  ],
+                };
+              },
+            },
+          },
         ],
       },
       {
