@@ -1,4 +1,5 @@
 import "./root.css";
+import { FormattedMessage } from "react-intl";
 import { useCallback } from "react";
 import type { NostrEvent } from "@snort/system";
 
@@ -31,7 +32,9 @@ export function RootPage() {
     <div className="homepage">
       {hasFollowingLive && (
         <>
-          <h2 className="divider line one-line">Following</h2>
+          <h2 className="divider line one-line">
+            <FormattedMessage defaultMessage="Following" />
+          </h2>
           <div className="video-grid">
             {following.map(e => (
               <VideoTile ev={e} key={e.id} />
@@ -66,7 +69,9 @@ export function RootPage() {
       ))}
       {hasFollowingLive && liveNow.length > 0 && (
         <>
-          <h2 className="divider line one-line">Live</h2>
+          <h2 className="divider line one-line">
+            <FormattedMessage defaultMessage="Live" />
+          </h2>
           <div className="video-grid">
             {liveNow
               .filter(e => !mutedHosts.has(getHost(e)))
@@ -78,7 +83,9 @@ export function RootPage() {
       )}
       {plannedEvents.length > 0 && (
         <>
-          <h2 className="divider line one-line">Planned</h2>
+          <h2 className="divider line one-line">
+            <FormattedMessage defaultMessage="Planned" />
+          </h2>
           <div className="video-grid">
             {plannedEvents.map(e => (
               <VideoTile ev={e} key={e.id} />
@@ -88,7 +95,9 @@ export function RootPage() {
       )}
       {endedEvents.length > 0 && (
         <>
-          <h2 className="divider line one-line">Ended</h2>
+          <h2 className="divider line one-line">
+            <FormattedMessage defaultMessage="Ended" />
+          </h2>
           <div className="video-grid">
             {endedEvents.map(e => (
               <VideoTile ev={e} key={e.id} />

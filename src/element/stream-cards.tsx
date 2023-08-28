@@ -180,6 +180,7 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
   const [image, setImage] = useState(card?.image ?? "");
   const [content, setContent] = useState(card?.content ?? "");
   const [link, setLink] = useState(card?.link ?? "");
+  const { formatMessage } = useIntl();
 
   return (
     <div className="new-card">
@@ -195,7 +196,7 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
           type="text"
           value={title}
           onChange={e => setTitle(e.target.value)}
-          placeholder="e.g. about me"
+          placeholder={formatMessage({ defaultMessage: "e.g. about me" })}
         />
       </div>
       <div className="form-control">
@@ -220,7 +221,10 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
         <label htmlFor="card-content">
           <FormattedMessage defaultMessage="Content" />
         </label>
-        <textarea placeholder="Start typing..." value={content} onChange={e => setContent(e.target.value)} />
+        <textarea
+          placeholder={formatMessage({ defaultMessage: "Start typing" })}
+          value={content}
+          onChange={e => setContent(e.target.value)} />
         <span className="help-text">
           <FormattedMessage
             defaultMessage="Supports {markdown}"

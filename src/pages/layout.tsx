@@ -83,10 +83,10 @@ export function LayoutPage() {
       </Helmet>
       <header>
         <div className="logo" onClick={() => navigate("/")}></div>
-        <div className="paper">
+        {/*<div className="paper">
           <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />
-        </div>
+  </div>*/}
         <div className="f-grow">{/* Future menu items go here */}</div>
         <div className="header-right">
           {loggedIn()}

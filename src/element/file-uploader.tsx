@@ -78,7 +78,7 @@ export function FileUploader({ defaultImage, onClear, onFileUpload }: FileUpload
     <div className="file-uploader-container">
       <label className="file-uploader">
         <input type="file" onChange={onFileChange} />
-        {isUploading ? "Uploading..." : "Add File"}
+        {isUploading ? <FormattedMessage defaultMessage="Uploading..." /> : <FormattedMessage defaultMessage="Add File" />}
       </label>
       <div className="file-uploader-preview">
         {img?.length > 0 && (
