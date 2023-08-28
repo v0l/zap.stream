@@ -184,9 +184,7 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
 
   return (
     <div className="new-card">
-      <h3>
-        {header || <FormattedMessage defaultMessage="Add card" />}
-      </h3>
+      <h3>{header || <FormattedMessage defaultMessage="Add card" />}</h3>
       <div className="form-control">
         <label htmlFor="card-title">
           <FormattedMessage defaultMessage="Title" />
@@ -224,7 +222,8 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
         <textarea
           placeholder={formatMessage({ defaultMessage: "Start typing" })}
           value={content}
-          onChange={e => setContent(e.target.value)} />
+          onChange={e => setContent(e.target.value)}
+        />
         <span className="help-text">
           <FormattedMessage
             defaultMessage="Supports {markdown}"

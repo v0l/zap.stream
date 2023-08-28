@@ -1,5 +1,5 @@
 .zap-alert-widgets .zap-alert {
-  animation: cssAnimation 0s ease-in 5s forwards;
+  animation: cssAnimation 0s ease-in 10s forwards;
   animation-fill-mode: forwards;
 }
 

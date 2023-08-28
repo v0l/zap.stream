@@ -4,10 +4,12 @@ import { FormattedMessage } from "react-intl";
 import { findTag } from "utils";
 
 export function Views({ link }: { link: NostrLink }) {
-    const current = useCurrentStreamFeed(link, true);
+  const current = useCurrentStreamFeed(link, true);
 
-    const viewers = findTag(current, "current_participants");
-    return <div className="views">
-        <FormattedMessage defaultMessage="{n} viewers" values={{ n: Number(viewers) }} />
+  const viewers = findTag(current, "current_participants");
+  return (
+    <div className="views">
+      <FormattedMessage defaultMessage="{n} viewers" values={{ n: Number(viewers) }} />
     </div>
+  );
 }

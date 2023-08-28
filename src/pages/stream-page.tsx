@@ -24,6 +24,7 @@ import { ShareMenu } from "element/share-menu";
 import { ContentWarningOverlay, isContentWarningAccepted } from "element/content-warning";
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { useStreamLink } from "hooks/stream-link";
+import { FormattedMessage } from "react-intl";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent }) {
   const login = useLogin();
@@ -54,7 +55,11 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
           <p>{findTag(ev, "summary")}</p>
           <div className="tags">
             <StatePill state={status as StreamState} />
-            {viewers > 0 && <span className="pill viewers">{formatSats(viewers)} viewers</span>}
+            {viewers > 0 && (
+              <span className="pill viewers">
+                <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(viewers) }} />
+              </span>
+            )}
             {status === StreamState.Live && (
               <span className="pill">
                 <StreamTimer ev={ev} />
@@ -66,7 +71,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
             <div className="actions">
               {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
               <AsyncButton type="button" className="btn btn-warning" onClick={deleteStream}>
-                Delete
+                <FormattedMessage defaultMessage="Delete" />
               </AsyncButton>
             </div>
           )}

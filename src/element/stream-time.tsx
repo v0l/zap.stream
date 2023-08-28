@@ -13,9 +13,11 @@ export function StreamTimer({ ev }: { ev?: NostrEvent }) {
     const hour = min * 60;
 
     const hours = Math.floor(diff / hour);
-    const mins =  Math.floor((diff % hour) / min);
+    const mins = Math.floor((diff % hour) / min);
     const secs = Math.floor(diff % min);
-    setTime(`${hours.toFixed(0).padStart(2, "0")}:${mins.toFixed(0).padStart(2, "0")}:${secs.toFixed(0).padStart(2, "0")}`);
+    setTime(
+      `${hours.toFixed(0).padStart(2, "0")}:${mins.toFixed(0).padStart(2, "0")}:${secs.toFixed(0).padStart(2, "0")}`
+    );
   }
 
   useEffect(() => {

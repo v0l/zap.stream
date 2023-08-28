@@ -7,23 +7,23 @@ import { Views } from "./widgets/views";
 import { TopZappersWidget } from "./widgets/top-zappers";
 
 export function AlertsPage() {
-    const params = useParams();
-    const link = useStreamLink();
+  const params = useParams();
+  const link = useStreamLink();
 
-    if (!link) {
-        return <Spinner />
-    }
+  if (!link) {
+    return <Spinner />;
+  }
 
-    switch (params.type) {
-        case "zaps": {
-            return <ZapAlerts link={link} />
-        }
-        case "views": {
-            return <Views link={link} />
-        }
-        case "top-zappers": {
-            return <TopZappersWidget link={link} />
-        }
+  switch (params.type) {
+    case "zaps": {
+      return <ZapAlerts link={link} />;
     }
-    return null;
+    case "views": {
+      return <Views link={link} />;
+    }
+    case "top-zappers": {
+      return <TopZappersWidget link={link} />;
+    }
+  }
+  return null;
 }
