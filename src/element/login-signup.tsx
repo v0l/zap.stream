@@ -11,6 +11,7 @@ import Copy from "./copy";
 import { hexToBech32, openFile } from "utils";
 import { VoidApi } from "@void-cat/api";
 import { LoginType } from "login";
+import { FormattedMessage } from "react-intl";
 import { bech32 } from "@scure/base";
 
 enum Stage {
@@ -87,8 +88,7 @@ export function LoginSignup({ close }: { close: () => void }) {
         "V-Strip-Metadata": "true",
       });
       if (result.ok) {
-        const resultUrl =
-          result.file?.metadata?.url ?? `${VoidCatHost}/d/${result.file?.id}`;
+        const resultUrl = result.file?.metadata?.url ?? `${VoidCatHost}/d/${result.file?.id}`;
         setAvatar(resultUrl);
       } else {
         setError(result.errorMessage ?? "Upload failed");
@@ -115,22 +115,16 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Login: {
       return (
         <>
-          <h2>Login</h2>
+          <h2>
+            <FormattedMessage defaultMessage="Login" />
+          </h2>
           {"nostr" in window && (
-            <AsyncButton
-              type="button"
-              className="btn btn-primary"
-              onClick={doLogin}
-            >
-              Nostr Extension
+            <AsyncButton type="button" className="btn btn-primary" onClick={doLogin}>
+              <FormattedMessage defaultMessage="Nostr Extension" />
             </AsyncButton>
           )}
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={createAccount}
-          >
-            Create Account
+          <button type="button" className="btn btn-primary" onClick={createAccount}>
+            <FormattedMessage defaultMessage="Create Account" />
           </button>
           <button
             type="button"
@@ -146,7 +140,9 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Details: {
       return (
         <>
-          <h2>Setup Profile</h2>
+          <h2>
+            <FormattedMessage defaultMessage="Setup Profile" />
+          </h2>
           <div className="flex f-center">
             <div
               className="avatar-input"
@@ -155,28 +151,20 @@ export function LoginSignup({ close }: { close: () => void }) {
                 {
                   "--img": `url(${avatar})`,
                 } as CSSProperties
-              }
-            >
+              }>
               <Icon name="camera-plus" />
             </div>
           </div>
           <div>
             <div className="paper">
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+              <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
             </div>
-            <small>You can change this later</small>
+            <small>
+              <FormattedMessage defaultMessage="You can change this later" />
+            </small>
           </div>
-          <AsyncButton
-            type="button"
-            className="btn btn-primary"
-            onClick={saveProfile}
-          >
-            Save
+          <AsyncButton type="button" className="btn btn-primary" onClick={saveProfile}>
+            <FormattedMessage defaultMessage="Save" />
           </AsyncButton>
         </>
       );
@@ -184,20 +172,17 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.SaveKey: {
       return (
         <>
-          <h2>Save Key</h2>
+          <h2>
+            <FormattedMessage defaultMessage="Save Key" />
+          </h2>
           <p>
-            Nostr uses private keys, please save yours, if you lose this key you
-            wont be able to login to your account anymore!
+            <FormattedMessage defaultMessage="Nostr uses private keys, please save yours, if you lose this key you wont be able to login to your account anymore!" />
           </p>
           <div className="paper">
             <Copy text={hexToBech32("nsec", key)} />
           </div>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={loginWithKey}
-          >
-            Ok, it's safe
+          <button type="button" className="btn btn-primary" onClick={loginWithKey}>
+            <FormattedMessage defaultMessage="Ok, it's safe" />
           </button>
         </>
       );

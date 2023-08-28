@@ -59,8 +59,7 @@ export function ConfigureOwncast() {
             onClick={() => {
               StreamProviderStore.add(new OwncastProvider(url, token));
               navigate("/");
-            }}
-          >
+            }}>
             Save
           </button>
         </div>
@@ -74,22 +73,13 @@ export function ConfigureOwncast() {
         <div>
           <p>Owncast instance url</p>
           <div className="paper">
-            <input
-              type="text"
-              placeholder="https://"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-            />
+            <input type="text" placeholder="https://" value={url} onChange={e => setUrl(e.target.value)} />
           </div>
         </div>
         <div>
           <p>API token</p>
           <div className="paper">
-            <input
-              type="password"
-              value={token}
-              onChange={(e) => setToken(e.target.value)}
-            />
+            <input type="password" value={token} onChange={e => setToken(e.target.value)} />
           </div>
         </div>
         <AsyncButton className="btn btn-primary" onClick={tryConnect}>

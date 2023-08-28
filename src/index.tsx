@@ -5,6 +5,7 @@ import "./fonts/outfit/outfit.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { NostrSystem } from "@snort/system";
+import { SnortContext } from "@snort/system-react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { RootPage } from "pages/root";
@@ -18,6 +19,8 @@ import { StreamProvidersPage } from "pages/providers";
 import { defaultRelays } from "const";
 import { CatchAllRoutePage } from "pages/catch-all";
 import { SettingsPage } from "pages/settings-page";
+import { register } from "serviceWorker";
+import { IntlProvider } from "intl";
 
 export enum StreamState {
   Live = "live",
@@ -28,7 +31,9 @@ export enum StreamState {
 export const System = new NostrSystem({});
 export const Login = new LoginStore();
 
-Object.entries(defaultRelays).forEach((params) => {
+register();
+
+Object.entries(defaultRelays).forEach(params => {
   const [relay, settings] = params;
   System.ConnectToRelay(relay, settings);
 });
@@ -76,11 +81,13 @@ const router = createBrowserRouter([
     element: <ChatPopout />,
   },
 ]);
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLDivElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SnortContext.Provider value={System}>
+      <IntlProvider>
+        <RouterProvider router={router} />
+      </IntlProvider>
+    </SnortContext.Provider>
   </React.StrictMode>
 );

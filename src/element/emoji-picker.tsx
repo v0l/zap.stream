@@ -22,11 +22,11 @@ export function EmojiPicker({
   height = 300,
   ref,
 }: EmojiPickerProps) {
-  const customEmojiList = emojiPacks.map((pack) => {
+  const customEmojiList = emojiPacks.map(pack => {
     return {
       id: pack.address,
       name: pack.name,
-      emojis: pack.emojis.map((e) => {
+      emojis: pack.emojis.map(e => {
         const [, name, url] = e;
         return {
           id: name,
@@ -45,8 +45,7 @@ export function EmojiPicker({
           left: leftOffset,
           zIndex: 1,
         }}
-        ref={ref}
-      >
+        ref={ref}>
         <style>
           {`
               em-emoji-picker { max-height: ${height}px; }

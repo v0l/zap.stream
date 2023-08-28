@@ -1,10 +1,4 @@
-import {
-  NostrEvent,
-  NostrPrefix,
-  TaggedRawEvent,
-  encodeTLV,
-  parseNostrLink,
-} from "@snort/system";
+import { NostrEvent, NostrPrefix, TaggedNostrEvent, encodeTLV, parseNostrLink } from "@snort/system";
 import * as utils from "@noble/curves/abstract/utils";
 import { bech32 } from "@scure/base";
 import type { Tag, Tags } from "types";
@@ -39,7 +33,7 @@ export function toTag(e: NostrEvent): Tag {
 }
 
 export function findTag(e: NostrEvent | undefined, tag: string) {
-  const maybeTag = e?.tags.find((evTag) => {
+  const maybeTag = e?.tags.find(evTag => {
     return evTag[0] === tag;
   });
   return maybeTag && maybeTag[1];
@@ -54,11 +48,7 @@ export function hexToBech32(hrp: string, hex?: string) {
   }
 
   try {
-    if (
-      hrp === NostrPrefix.Note ||
-      hrp === NostrPrefix.PrivateKey ||
-      hrp === NostrPrefix.PublicKey
-    ) {
+    if (hrp === NostrPrefix.Note || hrp === NostrPrefix.PrivateKey || hrp === NostrPrefix.PublicKey) {
       const buf = utils.hexToBytes(hex);
       return bech32.encode(hrp, bech32.toWords(buf));
     } else {
@@ -77,22 +67,12 @@ export function splitByUrl(str: string) {
   return str.split(urlRegex);
 }
 
-export function eventLink(ev: NostrEvent | TaggedRawEvent) {
+export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
   if (ev.kind && ev.kind >= 30000 && ev.kind <= 40000) {
     const d = findTag(ev, "d") ?? "";
-    return encodeTLV(
-      NostrPrefix.Address,
-      d,
-      "relays" in ev ? ev.relays : undefined,
-      ev.kind,
-      ev.pubkey
-    );
+    return encodeTLV(NostrPrefix.Address, d, "relays" in ev ? ev.relays : undefined, ev.kind, ev.pubkey);
   } else {
-    return encodeTLV(
-      NostrPrefix.Event,
-      ev.id,
-      "relays" in ev ? ev.relays : undefined
-    );
+    return encodeTLV(NostrPrefix.Event, ev.id, "relays" in ev ? ev.relays : undefined);
   }
 }
 
@@ -102,15 +82,11 @@ export function createNostrLink(ev?: NostrEvent) {
 }
 
 export function getHost(ev?: NostrEvent) {
-  return (
-    ev?.tags.find((a) => a[0] === "p" && a[3] === "host")?.[1] ??
-    ev?.pubkey ??
-    ""
-  );
+  return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
 }
 
 export function openFile(): Promise<File | undefined> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const elm = document.createElement("input");
     elm.type = "file";
     elm.onchange = (e: Event) => {
@@ -127,17 +103,14 @@ export function openFile(): Promise<File | undefined> {
 
 export function getTagValues(tags: Tags, tag: string): Array<string> {
   return tags
-    .filter((t) => t.at(0) === tag)
-    .map((t) => t.at(1))
-    .filter((t) => t)
-    .map((t) => t as string);
+    .filter(t => t.at(0) === tag)
+    .map(t => t.at(1))
+    .filter(t => t)
+    .map(t => t as string);
 }
 
 export function getEventFromLocationState(state: unknown | undefined | null) {
-  return state &&
-    typeof state === "object" &&
-    "kind" in state &&
-    state.kind === LIVE_STREAM
+  return state && typeof state === "object" && "kind" in state && state.kind === LIVE_STREAM
     ? (state as NostrEvent)
     : undefined;
 }

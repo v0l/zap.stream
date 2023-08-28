@@ -1,8 +1,6 @@
 import "./textarea.css";
 import type { KeyboardEvent, ChangeEvent } from "react";
-import ReactTextareaAutocomplete, {
-  TriggerType,
-} from "@webscopeio/react-textarea-autocomplete";
+import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
 import isEqual from "lodash/isEqual";
@@ -59,7 +57,7 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
 
   const emojiDataProvider = (token: string) => {
     const results = emojis
-      .map((t) => {
+      .map(t => {
         return {
           name: t.at(1) || "",
           url: t.at(2) || "",
@@ -78,11 +76,8 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
     "@": {
       afterWhitespace: true,
       dataProvider: userDataProvider,
-      component: (props: { entity: MetadataCache }) => (
-        <UserItem {...props.entity} />
-      ),
-      output: (item: { pubkey: string }) =>
-        `@${hexToBech32(NostrPrefix.PublicKey, item.pubkey)}`,
+      component: (props: { entity: MetadataCache }) => <UserItem {...props.entity} />,
+      output: (item: { pubkey: string }) => `@${hexToBech32(NostrPrefix.PublicKey, item.pubkey)}`,
     },
   } as TriggerType<string | object>;
 

@@ -6,12 +6,12 @@ import { useRequestBuilder } from "@snort/system-react";
 import { useUserEmojiPacks } from "hooks/emoji";
 import { MUTED, USER_CARDS, USER_EMOJIS } from "const";
 import type { Tags } from "types";
-import { System, Login } from "index";
 import { getPublisher } from "login";
+import { Login } from "index";
 
 export function useLogin() {
   const session = useSyncExternalStore(
-    (c) => Login.hook(c),
+    c => Login.hook(c),
     () => Login.snapshot()
   );
   if (!session) return;
@@ -26,7 +26,7 @@ export function useLogin() {
 export function useLoginEvents(pubkey?: string, leaveOpen = false) {
   const [userEmojis, setUserEmojis] = useState<Tags>([]);
   const session = useSyncExternalStore(
-    (c) => Login.hook(c),
+    c => Login.hook(c),
     () => Login.snapshot()
   );
 
@@ -42,11 +42,7 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     return b;
   }, [pubkey, leaveOpen]);
 
-  const { data } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    sub
-  );
+  const { data } = useRequestBuilder(NoteCollection, sub);
 
   useEffect(() => {
     if (!data) {

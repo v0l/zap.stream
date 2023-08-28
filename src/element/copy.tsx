@@ -11,26 +11,13 @@ export interface CopyProps {
 export default function Copy({ text, maxSize = 32, className, hideText }: CopyProps) {
   const { copy, copied } = useCopy();
   const sliceLength = maxSize / 2;
-  const trimmed =
-    text.length > maxSize
-      ? `${text.slice(0, sliceLength)}...${text.slice(-sliceLength)}`
-      : text;
+  const trimmed = text.length > maxSize ? `${text.slice(0, sliceLength)}...${text.slice(-sliceLength)}` : text;
 
   return (
-    <div
-      className={`copy${className ? ` ${className}` : ""}`}
-      onClick={() => copy(text)}
-    >
+    <div className={`copy${className ? ` ${className}` : ""}`} onClick={() => copy(text)}>
       {!hideText && <span className="body">{trimmed}</span>}
-      <span
-        className="icon"
-        style={{ color: copied ? "var(--success)" : "var(--highlight)" }}
-      >
-        {copied ? (
-          <Icon name="check" size={14} />
-        ) : (
-          <Icon name="copy" size={14} />
-        )}
+      <span className="icon" style={{ color: copied ? "var(--success)" : "var(--highlight)" }}>
+        {copied ? <Icon name="check" size={14} /> : <Icon name="copy" size={14} />}
       </span>
     </div>
   );

@@ -11,15 +11,7 @@ export function ChatPopout() {
   const link = parseNostrLink(unwrap(params.id));
   const ev = useCurrentStreamFeed(link, true);
 
-  const lnk = parseNostrLink(
-    encodeTLV(
-      NostrPrefix.Address,
-      findTag(ev, "d") ?? "",
-      undefined,
-      ev?.kind,
-      ev?.pubkey
-    )
-  );
+  const lnk = parseNostrLink(encodeTLV(NostrPrefix.Address, findTag(ev, "d") ?? "", undefined, ev?.kind, ev?.pubkey));
   const chat = Boolean(new URL(window.location.href).searchParams.get("chat"));
   return (
     <div className={`popout-chat${chat ? "" : " embed"}`}>

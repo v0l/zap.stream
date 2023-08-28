@@ -130,10 +130,7 @@ export function getPublisher(session: LoginSession) {
       return new EventPublisher(new Nip7Signer(), session.pubkey);
     }
     case LoginType.PrivateKey: {
-      return new EventPublisher(
-        new PrivateKeySigner(unwrap(session.privateKey)),
-        session.pubkey
-      );
+      return new EventPublisher(new PrivateKeySigner(unwrap(session.privateKey)), session.pubkey);
     }
   }
 }

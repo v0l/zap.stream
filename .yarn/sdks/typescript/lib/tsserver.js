@@ -9,7 +9,7 @@ const relPnpApiPath = "../../../../.pnp.cjs";
 const absPnpApiPath = resolve(__dirname, relPnpApiPath);
 const absRequire = createRequire(absPnpApiPath);
 
-const moduleWrapper = (tsserver) => {
+const moduleWrapper = tsserver => {
   if (!process.versions.pnp) {
     return tsserver;
   }
@@ -17,12 +17,12 @@ const moduleWrapper = (tsserver) => {
   const { isAbsolute } = require(`path`);
   const pnpApi = require(`pnpapi`);
 
-  const isVirtual = (str) => str.match(/\/(\$\$virtual|__virtual__)\//);
-  const isPortal = (str) => str.startsWith("portal:/");
-  const normalize = (str) => str.replace(/\\/g, `/`).replace(/^\/?/, `/`);
+  const isVirtual = str => str.match(/\/(\$\$virtual|__virtual__)\//);
+  const isPortal = str => str.startsWith("portal:/");
+  const normalize = str => str.replace(/\\/g, `/`).replace(/^\/?/, `/`);
 
   const dependencyTreeRoots = new Set(
-    pnpApi.getDependencyTreeRoots().map((locator) => {
+    pnpApi.getDependencyTreeRoots().map(locator => {
       return `${locator.name}@${locator.reference}`;
     })
   );
@@ -33,11 +33,7 @@ const moduleWrapper = (tsserver) => {
 
   function toEditorPath(str) {
     // We add the `zip:` prefix to both `.zip/` paths and virtual paths
-    if (
-      isAbsolute(str) &&
-      !str.match(/^\^?(zip:|\/zip\/)/) &&
-      (str.match(/\.zip\//) || isVirtual(str))
-    ) {
+    if (isAbsolute(str) && !str.match(/^\^?(zip:|\/zip\/)/) && (str.match(/\.zip\//) || isVirtual(str))) {
       // We also take the opportunity to turn virtual paths into physical ones;
       // this makes it much easier to work with workspaces that list peer
       // dependencies, since otherwise Ctrl+Click would bring us to the virtual
@@ -53,8 +49,7 @@ const moduleWrapper = (tsserver) => {
         const locator = pnpApi.findPackageLocator(resolved);
         if (
           locator &&
-          (dependencyTreeRoots.has(`${locator.name}@${locator.reference}`) ||
-            isPortal(locator.reference))
+          (dependencyTreeRoots.has(`${locator.name}@${locator.reference}`) || isPortal(locator.reference))
         ) {
           str = resolved;
         }
@@ -149,9 +144,7 @@ const moduleWrapper = (tsserver) => {
           // The path for coc-nvim is in format of /<pwd>/zipfile:/<pwd>/.yarn/...
           // So in order to convert it back, we use .* to match all the thing
           // before `zipfile:`
-          return process.platform === `win32`
-            ? str.replace(/^.*zipfile:\//, ``)
-            : str.replace(/^.*zipfile:/, ``);
+          return process.platform === `win32` ? str.replace(/^.*zipfile:\//, ``) : str.replace(/^.*zipfile:/, ``);
         }
         break;
 
@@ -166,10 +159,7 @@ const moduleWrapper = (tsserver) => {
       case `vscode`:
       default:
         {
-          return str.replace(
-            /^\^?(zip:|\/zip(\/ts-nul-authority)?)\/+/,
-            process.platform === `win32` ? `` : `/`
-          );
+          return str.replace(/^\^?(zip:|\/zip(\/ts-nul-authority)?)\/+/, process.platform === `win32` ? `` : `/`);
         }
         break;
     }
@@ -183,8 +173,7 @@ const moduleWrapper = (tsserver) => {
   // TypeScript already does local loads and if this code is running the user trusts the workspace
   // https://github.com/microsoft/vscode/issues/45856
   const ConfiguredProject = tsserver.server.ConfiguredProject;
-  const { enablePluginsWithOptions: originalEnablePluginsWithOptions } =
-    ConfiguredProject.prototype;
+  const { enablePluginsWithOptions: originalEnablePluginsWithOptions } = ConfiguredProject.prototype;
   ConfiguredProject.prototype.enablePluginsWithOptions = function () {
     this.projectService.allowLocalPluginLoads = true;
     return originalEnablePluginsWithOptions.apply(this, arguments);
@@ -195,8 +184,7 @@ const moduleWrapper = (tsserver) => {
   // like an absolute path of ours and normalize it.
 
   const Session = tsserver.server.Session;
-  const { onMessage: originalOnMessage, send: originalSend } =
-    Session.prototype;
+  const { onMessage: originalOnMessage, send: originalSend } = Session.prototype;
   let hostInfo = `unknown`;
 
   Object.assign(Session.prototype, {
@@ -231,19 +219,11 @@ const moduleWrapper = (tsserver) => {
         }
       }
 
-      const processedMessageJSON = JSON.stringify(
-        parsedMessage,
-        (key, value) => {
-          return typeof value === "string" ? fromEditorPath(value) : value;
-        }
-      );
+      const processedMessageJSON = JSON.stringify(parsedMessage, (key, value) => {
+        return typeof value === "string" ? fromEditorPath(value) : value;
+      });
 
-      return originalOnMessage.call(
-        this,
-        isStringMessage
-          ? processedMessageJSON
-          : JSON.parse(processedMessageJSON)
-      );
+      return originalOnMessage.call(this, isStringMessage ? processedMessageJSON : JSON.parse(processedMessageJSON));
     },
 
     send(/** @type {any} */ msg) {

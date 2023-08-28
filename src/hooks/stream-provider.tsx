@@ -3,7 +3,7 @@ import { useSyncExternalStore } from "react";
 
 export function useStreamProvider() {
   return useSyncExternalStore(
-    (c) => StreamProviderStore.hook(c),
+    c => StreamProviderStore.hook(c),
     () => StreamProviderStore.snapshot()
   );
 }

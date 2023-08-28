@@ -12,8 +12,7 @@ interface HyperTextProps {
 export function HyperText({ link, children }: HyperTextProps) {
   try {
     const url = new URL(link);
-    const extension =
-      FileExtensionRegex.test(url.pathname.toLowerCase()) && RegExp.$1;
+    const extension = FileExtensionRegex.test(url.pathname.toLowerCase()) && RegExp.$1;
 
     if (extension) {
       switch (extension) {
@@ -25,11 +24,7 @@ export function HyperText({ link, children }: HyperTextProps) {
         case "webp": {
           return (
             <MediaURL url={url}>
-              <img
-                src={url.toString()}
-                alt={url.toString()}
-                style={{ objectFit: "contain" }}
-              />
+              <img src={url.toString()} alt={url.toString()} style={{ objectFit: "contain" }} />
             </MediaURL>
           );
         }

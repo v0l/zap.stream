@@ -1,14 +1,7 @@
 import { useMemo } from "react";
 
-import {
-  NostrPrefix,
-  ReplaceableNoteStore,
-  RequestBuilder,
-  type NostrLink,
-} from "@snort/system";
+import { NostrPrefix, ReplaceableNoteStore, RequestBuilder, type NostrLink } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-
-import { System } from "index";
 
 export function useAddress(kind: number, pubkey: string, identifier: string) {
   const sub = useMemo(() => {
@@ -17,11 +10,7 @@ export function useAddress(kind: number, pubkey: string, identifier: string) {
     return b;
   }, [kind, pubkey, identifier]);
 
-  const { data } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   return data;
 }
@@ -40,7 +29,7 @@ export function useEvent(link: NostrLink) {
     } else {
       const f = b.withFilter().ids([link.id]);
       if (link.relays) {
-        link.relays.slice(0, 2).forEach((r) => f.relay(r));
+        link.relays.slice(0, 2).forEach(r => f.relay(r));
       }
       if (link.author) {
         f.authors([link.author]);
@@ -49,11 +38,7 @@ export function useEvent(link: NostrLink) {
     return b;
   }, [link]);
 
-  const { data } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   return data;
 }

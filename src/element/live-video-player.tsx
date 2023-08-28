@@ -75,8 +75,7 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
 export function WebRTCPlayer(props: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const streamCached = useMemo(
-    () =>
-      "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play",
+    () => "https://customer-uu10flpvos4pfhgu.cloudflarestream.com/7634aee1af35a2de4ac13ca3d1718a8b/webRTC/play",
     [props.stream]
   );
   const [status] = useState<VideoStatus>();
@@ -90,7 +89,7 @@ export function WebRTCPlayer(props: VideoPlayerProps) {
 
       client
         .Play()
-        .then((s) => {
+        .then(s => {
           if (video.current) {
             video.current.srcObject = s;
           }
@@ -107,12 +106,7 @@ export function WebRTCPlayer(props: VideoPlayerProps) {
       <div className={status}>
         <div>{status}</div>
       </div>
-      <video
-        ref={video}
-        autoPlay={true}
-        poster={props.poster}
-        controls={status === VideoStatus.Online}
-      />
+      <video ref={video} autoPlay={true} poster={props.poster} controls={status === VideoStatus.Online} />
     </div>
   );
 }

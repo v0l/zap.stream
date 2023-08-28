@@ -12,12 +12,7 @@ export function Icon(props: Props) {
   const href = `/icons.svg#` + props.name;
 
   return (
-    <svg
-      width={size}
-      height={size}
-      className={props.className}
-      onClick={props.onClick}
-    >
+    <svg width={size} height={size} className={props.className} onClick={props.onClick}>
       <use href={href} />
     </svg>
   );

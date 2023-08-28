@@ -14,10 +14,7 @@ export function Note({ ev }: { ev: NostrEvent }) {
         <ExternalIconLink
           size={24}
           className="note-link-icon"
-          href={`https://snort.social/e/${hexToBech32(
-            NostrPrefix.Event,
-            ev.id
-          )}`}
+          href={`https://snort.social/e/${hexToBech32(NostrPrefix.Event, ev.id)}`}
         />
       </div>
       <div className="note-content">

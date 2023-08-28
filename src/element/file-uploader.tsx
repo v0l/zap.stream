@@ -2,6 +2,7 @@ import "./file-uploader.css";
 import type { ChangeEvent } from "react";
 import { VoidApi } from "@void-cat/api";
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 const voidCatHost = "https://void.cat";
 const fileExtensionRegex = /\.([\w]{1,7})$/i;
@@ -23,9 +24,7 @@ async function voidCatUpload(file: File | Blob): Promise<UploadResult> {
     if (rsp.file?.metadata?.mimeType === "image/webp") {
       ext = ["", "webp"];
     }
-    const resultUrl =
-      rsp.file?.metadata?.url ??
-      `${voidCatHost}/d/${rsp.file?.id}${ext ? `.${ext[1]}` : ""}`;
+    const resultUrl = rsp.file?.metadata?.url ?? `${voidCatHost}/d/${rsp.file?.id}${ext ? `.${ext[1]}` : ""}`;
 
     const ret = {
       url: resultUrl,
@@ -45,11 +44,7 @@ interface FileUploaderProps {
   onFileUpload(url: string): void;
 }
 
-export function FileUploader({
-  defaultImage,
-  onClear,
-  onFileUpload,
-}: FileUploaderProps) {
+export function FileUploader({ defaultImage, onClear, onFileUpload }: FileUploaderProps) {
   const [img, setImg] = useState<string>(defaultImage ?? "");
   const [isUploading, setIsUploading] = useState(false);
 
@@ -88,7 +83,7 @@ export function FileUploader({
       <div className="file-uploader-preview">
         {img?.length > 0 && (
           <button className="btn btn-primary clear-button" onClick={clearImage}>
-            Clear
+            <FormattedMessage defaultMessage="Clear" />
           </button>
         )}
         {img && <img className="image-preview" src={img} />}

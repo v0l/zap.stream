@@ -1,12 +1,5 @@
 import { useMemo } from "react";
-import {
-  RequestBuilder,
-  FlatNoteStore,
-  NoteCollection,
-  NostrLink,
-  EventKind,
-  parseZap,
-} from "@snort/system";
+import { RequestBuilder, NoteCollection, NostrLink, EventKind, parseZap } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "const";
 import { findTag } from "utils";
@@ -27,16 +20,12 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    sub
-  );
+  const { data: streamsData } = useRequestBuilder(NoteCollection, sub);
   const streams = streamsData ?? [];
 
   const addresses = useMemo(() => {
     if (streamsData) {
-      return streamsData.map((e) => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
+      return streamsData.map(e => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
     }
     return [];
   }, [streamsData]);
@@ -52,14 +41,10 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, addresses, leaveOpen]);
 
-  const { data: zapsData } = useRequestBuilder<FlatNoteStore>(
-    System,
-    FlatNoteStore,
-    zapsSub
-  );
+  const { data: zapsData } = useRequestBuilder(NoteCollection, zapsSub);
   const zaps = (zapsData ?? [])
-    .map((ev) => parseZap(ev, System.ProfileLoader.Cache))
-    .filter((z) => z && z.valid && z.receiver === link.id);
+    .map(ev => parseZap(ev, System.ProfileLoader.Cache))
+    .filter(z => z && z.valid && z.receiver === link.id);
 
   const sortedStreams = useMemo(() => {
     const sorted = [...streams];

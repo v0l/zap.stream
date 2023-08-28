@@ -1,12 +1,7 @@
-import { useUserProfile } from "@snort/system-react";
+import { useUserProfile, SnortContext } from "@snort/system-react";
 import { NostrEvent, parseZap, EventKind } from "@snort/system";
-import React, { useRef, useState, useMemo } from "react";
-import {
-  useMediaQuery,
-  useHover,
-  useOnClickOutside,
-  useIntersectionObserver,
-} from "usehooks-ts";
+import React, { useRef, useState, useMemo, useContext } from "react";
+import { useMediaQuery, useHover, useOnClickOutside, useIntersectionObserver } from "usehooks-ts";
 
 import { EmojiPicker } from "element/emoji-picker";
 import { Icon } from "element/icon";
@@ -20,7 +15,6 @@ import { useLogin } from "hooks/login";
 import { formatSats } from "number";
 import { findTag } from "utils";
 import type { Badge, Emoji, EmojiPack } from "types";
-import { System } from "index";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -60,36 +54,31 @@ export function ChatMessage({
   const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
-  const profile = useUserProfile(
-    System,
-    inView?.isIntersecting ? ev.pubkey : undefined
-  );
-  const shouldShowMuteButton =
-    ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
+  const profile = useUserProfile(inView?.isIntersecting ? ev.pubkey : undefined);
+  const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const system = useContext(SnortContext);
   const zaps = useMemo(() => {
     return reactions
-      .filter((a) => a.kind === EventKind.ZapReceipt)
-      .map((a) => parseZap(a, System.ProfileLoader.Cache))
-      .filter((a) => a && a.valid);
+      .filter(a => a.kind === EventKind.ZapReceipt)
+      .map(a => parseZap(a, system.ProfileLoader.Cache))
+      .filter(a => a && a.valid);
   }, [reactions]);
   const emojiReactions = useMemo(() => {
     const emojified = reactions
-      .filter((e) => e.kind === EventKind.Reaction && findTag(e, "e") === ev.id)
-      .map((ev) => emojifyReaction(ev.content));
+      .filter(e => e.kind === EventKind.Reaction && findTag(e, "e") === ev.id)
+      .map(ev => emojifyReaction(ev.content));
     return [...new Set(emojified)];
   }, [ev, reactions]);
-  const emojiNames = emojiPacks.map((p) => p.emojis).flat();
+  const emojiNames = emojiPacks.map(p => p.emojis).flat();
 
   const hasReactions = emojiReactions.length > 0;
   const totalZaps = useMemo(() => {
-    const messageZaps = zaps.filter((z) => z.event === ev.id);
+    const messageZaps = zaps.filter(z => z.event === ev.id);
     return messageZaps.reduce((acc, z) => acc + z.amount, 0);
   }, [zaps, ev]);
   const hasZaps = totalZaps > 0;
-  const awardedBadges = badges.filter(
-    (b) => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey)
-  );
+  const awardedBadges = badges.filter(b => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey));
 
   useOnClickOutside(ref, () => {
     setShowZapDialog(false);
@@ -100,7 +89,7 @@ export function ChatMessage({
   });
 
   function getEmojiById(id: string) {
-    return emojiNames.find((e) => e.at(1) === id);
+    return emojiNames.find(e => e.at(1) === id);
   }
 
   async function onEmojiSelect(emoji: Emoji) {
@@ -114,7 +103,7 @@ export function ChatMessage({
       } else if (emoji.id) {
         const e = getEmojiById(emoji.id);
         if (e) {
-          reply = await pub?.generic((eb) => {
+          reply = await pub?.generic(eb => {
             return eb
               .kind(EventKind.Reaction)
               .content(`:${emoji.id}:`)
@@ -126,7 +115,7 @@ export function ChatMessage({
       }
       if (reply) {
         console.debug(reply);
-        System.BroadcastEvent(reply);
+        system.BroadcastEvent(reply);
       }
     } catch {
       //ignore
@@ -148,23 +137,15 @@ export function ChatMessage({
 
   return (
     <>
-      <div
-        className={`message${streamer === ev.pubkey ? " streamer" : ""}`}
-        ref={ref}
-      >
+      <div className={`message${streamer === ev.pubkey ? " streamer" : ""}`} ref={ref}>
         <Profile
           icon={
             ev.pubkey === streamer ? (
               <Icon name="signal" size={16} />
             ) : (
-              awardedBadges.map((badge) => {
+              awardedBadges.map(badge => {
                 return (
-                  <img
-                    key={badge.name}
-                    className="badge-icon"
-                    src={badge.thumb || badge.image}
-                    alt={badge.name}
-                  />
+                  <img key={badge.name} className="badge-icon" src={badge.thumb || badge.image} alt={badge.name} />
                 );
               })
             )
@@ -172,11 +153,7 @@ export function ChatMessage({
           pubkey={ev.pubkey}
           profile={profile}
         />
-        <Text
-          tags={ev.tags}
-          content={ev.content}
-          customComponents={customComponents}
-        />
+        <Text tags={ev.tags} content={ev.content} customComponents={customComponents} />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (
@@ -185,9 +162,8 @@ export function ChatMessage({
                 <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
               </div>
             )}
-            {emojiReactions.map((e) => {
-              const isCustomEmojiReaction =
-                e.length > 1 && e.startsWith(":") && e.endsWith(":");
+            {emojiReactions.map(e => {
+              const isCustomEmojiReaction = e.length > 1 && e.startsWith(":") && e.endsWith(":");
               const emojiName = e.replace(/:/g, "");
               const emoji = isCustomEmojiReaction && getEmojiById(emojiName);
               return (
@@ -217,11 +193,9 @@ export function ChatMessage({
                     top: topOffset ? topOffset - 12 : 0,
                     left: leftOffset ? leftOffset - 32 : 0,
                     opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents:
-                      showZapDialog || isHovering ? "auto" : "none",
+                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
                   }
-            }
-          >
+            }>
             {zapTarget && (
               <SendZapsDialog
                 lnurl={zapTarget}

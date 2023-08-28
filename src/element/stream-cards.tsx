@@ -1,11 +1,12 @@
 import "./stream-cards.css";
 
 import { useState, forwardRef } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import type { TaggedRawEvent } from "@snort/system";
+import { TaggedNostrEvent } from "@snort/system";
 
 import { Toggle } from "element/toggle";
 import { Icon } from "element/icon";
@@ -37,35 +38,32 @@ interface CardPreviewProps extends NewCard {
   style: object;
 }
 
-const CardPreview = forwardRef(
-  ({ style, title, link, image, content }: CardPreviewProps, ref) => {
-    const isImageOnly = !isEmpty(image) && isEmpty(content) && isEmpty(title);
-    return (
-      <div
-        className={`stream-card ${isImageOnly ? "image-card" : ""}`}
-        // @ts-expect-error: Type 'ForwardRef<unknown>'
-        ref={ref}
-        style={style}
-      >
-        {title && <h1 className="card-title">{title}</h1>}
-        {image &&
-          (link && link?.length > 0 ? (
-            <ExternalLink href={link}>
-              <img className="card-image" src={image} alt={title} />
-            </ExternalLink>
-          ) : (
+const CardPreview = forwardRef(({ style, title, link, image, content }: CardPreviewProps, ref) => {
+  const isImageOnly = !isEmpty(image) && isEmpty(content) && isEmpty(title);
+  return (
+    <div
+      className={`stream-card ${isImageOnly ? "image-card" : ""}`}
+      // @ts-expect-error: Type 'ForwardRef<unknown>'
+      ref={ref}
+      style={style}>
+      {title && <h1 className="card-title">{title}</h1>}
+      {image &&
+        (link && link?.length > 0 ? (
+          <ExternalLink href={link}>
             <img className="card-image" src={image} alt={title} />
-          ))}
-        <Markdown content={content} />
-      </div>
-    );
-  }
-);
+          </ExternalLink>
+        ) : (
+          <img className="card-image" src={image} alt={title} />
+        ))}
+      <Markdown content={content} />
+    </div>
+  );
+});
 
 interface CardProps {
   canEdit?: boolean;
-  ev: TaggedRawEvent;
-  cards: TaggedRawEvent[];
+  ev: TaggedNostrEvent;
+  cards: TaggedNostrEvent[];
 }
 
 interface CardItem {
@@ -88,7 +86,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
       canDrag: () => {
         return Boolean(canEdit);
       },
-      collect: (monitor) => {
+      collect: monitor => {
         const isDragging = monitor.isDragging();
         return {
           opacity: isDragging ? 0.1 : 1,
@@ -100,7 +98,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
   );
 
   function findTagByIdentifier(d: string) {
-    return tags.find((t) => t[1].endsWith(`:${d}`));
+    return tags.find(t => t[1].endsWith(`:${d}`));
   }
 
   const [dropStyle, dropRef] = useDrop(
@@ -109,7 +107,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
       canDrop: () => {
         return Boolean(canEdit);
       },
-      collect: (monitor) => {
+      collect: monitor => {
         const isOvering = monitor.isOver({ shallow: true });
         return {
           opacity: isOvering ? 0.3 : 1,
@@ -123,7 +121,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
         }
         const newItem = findTagByIdentifier(typed.identifier);
         const oldItem = findTagByIdentifier(identifier);
-        const newTags = tags.map((t) => {
+        const newTags = tags.map(t => {
           if (t === oldItem) {
             return newItem;
           }
@@ -134,7 +132,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
         }) as Tags;
         const pub = login?.publisher();
         if (pub) {
-          const userCardsEv = await pub.generic((eb) => {
+          const userCardsEv = await pub.generic(eb => {
             eb.kind(USER_CARDS).content("");
             for (const tag of newTags) {
               eb.tag(tag);
@@ -151,14 +149,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
   );
 
   const card = (
-    <CardPreview
-      ref={dropRef}
-      title={title}
-      link={link}
-      image={image}
-      content={content}
-      style={dropStyle}
-    />
+    <CardPreview ref={dropRef} title={title} link={link} image={image} content={content} style={dropStyle} />
   );
   const editor = canEdit && (
     <div className="editor-buttons">
@@ -184,14 +175,7 @@ interface CardDialogProps {
   onCancel(): void;
 }
 
-function CardDialog({
-  header,
-  cta,
-  cancelCta,
-  card,
-  onSave,
-  onCancel,
-}: CardDialogProps) {
+function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDialogProps) {
   const [title, setTitle] = useState(card?.title ?? "");
   const [image, setImage] = useState(card?.image ?? "");
   const [content, setContent] = useState(card?.content ?? "");
@@ -199,58 +183,63 @@ function CardDialog({
 
   return (
     <div className="new-card">
-      <h3>{header || "Add card"}</h3>
+      <h3>
+        {header || <FormattedMessage defaultMessage="Add card" />}
+      </h3>
       <div className="form-control">
-        <label htmlFor="card-title">Title</label>
+        <label htmlFor="card-title">
+          <FormattedMessage defaultMessage="Title" />
+        </label>
         <input
           id="card-title"
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={e => setTitle(e.target.value)}
           placeholder="e.g. about me"
         />
       </div>
       <div className="form-control">
-        <label htmlFor="card-image">Image</label>
-        <FileUploader
-          defaultImage={image}
-          onFileUpload={setImage}
-          onClear={() => setImage("")}
-        />
+        <label htmlFor="card-image">
+          <FormattedMessage defaultMessage="Image" />
+        </label>
+        <FileUploader defaultImage={image} onFileUpload={setImage} onClear={() => setImage("")} />
       </div>
       <div className="form-control">
-        <label htmlFor="card-image-link">Image Link</label>
+        <label htmlFor="card-image-link">
+          <FormattedMessage defaultMessage="Image Link" />
+        </label>
         <input
           id="card-image-link"
           type="text"
           placeholder="https://"
           value={link}
-          onChange={(e) => setLink(e.target.value)}
+          onChange={e => setLink(e.target.value)}
         />
       </div>
       <div className="form-control">
-        <label htmlFor="card-content">Content</label>
-        <textarea
-          placeholder="Start typing..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <label htmlFor="card-content">
+          <FormattedMessage defaultMessage="Content" />
+        </label>
+        <textarea placeholder="Start typing..." value={content} onChange={e => setContent(e.target.value)} />
         <span className="help-text">
-          Supports{" "}
-          <ExternalLink href="https://www.markdownguide.org/cheat-sheet">
-            Markdown
-          </ExternalLink>
+          <FormattedMessage
+            defaultMessage="Supports {markdown}"
+            values={{
+              markdown: (
+                <ExternalLink href="https://www.markdownguide.org/cheat-sheet">
+                  <FormattedMessage defaultMessage="Markdown" />
+                </ExternalLink>
+              ),
+            }}
+          />
         </span>
       </div>
       <div className="new-card-buttons">
-        <button
-          className="btn btn-primary add-button"
-          onClick={() => onSave({ title, image, content, link })}
-        >
-          {cta || "Add Card"}
+        <button className="btn btn-primary add-button" onClick={() => onSave({ title, image, content, link })}>
+          {cta || <FormattedMessage defaultMessage="Add Card" />}
         </button>
         <button className="btn delete-button" onClick={onCancel}>
-          {cancelCta || "Cancel"}
+          {cancelCta || <FormattedMessage defaultMessage="Cancel" />}
         </button>
       </div>
     </div>
@@ -259,7 +248,7 @@ function CardDialog({
 
 interface EditCardProps {
   card: CardType;
-  cards: TaggedRawEvent[];
+  cards: TaggedNostrEvent[];
 }
 
 function EditCard({ card, cards }: EditCardProps) {
@@ -267,11 +256,12 @@ function EditCard({ card, cards }: EditCardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const identifier = card.identifier;
   const tags = cards.map(toTag);
+  const { formatMessage } = useIntl();
 
   async function editCard({ title, image, link, content }: CardType) {
     const pub = login?.publisher();
     if (pub) {
-      const ev = await pub.generic((eb) => {
+      const ev = await pub.generic(eb => {
         eb.kind(CARD).content(content).tag(["d", card.identifier]);
         if (title && title?.length > 0) {
           eb.tag(["title", title]);
@@ -293,8 +283,8 @@ function EditCard({ card, cards }: EditCardProps) {
   async function onCancel() {
     const pub = login?.publisher();
     if (pub) {
-      const newTags = tags.filter((t) => !t[1].endsWith(`:${identifier}`));
-      const userCardsEv = await pub.generic((eb) => {
+      const newTags = tags.filter(t => !t[1].endsWith(`:${identifier}`));
+      const userCardsEv = await pub.generic(eb => {
         eb.kind(USER_CARDS).content("");
         for (const tag of newTags) {
           eb.tag(tag);
@@ -312,15 +302,17 @@ function EditCard({ card, cards }: EditCardProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className="btn btn-primary">Edit</button>
+        <button className="btn btn-primary">
+          <FormattedMessage defaultMessage="Edit" />
+        </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
           <CardDialog
-            header="Edit card"
-            cta="Save Card"
-            cancelCta="Delete"
+            header={formatMessage({ defaultMessage: "Edit card" })}
+            cta={formatMessage({ defaultMessage: "Save card" })}
+            cancelCta={formatMessage({ defaultMessage: "Delete" })}
             card={card}
             onSave={editCard}
             onCancel={onCancel}
@@ -332,7 +324,7 @@ function EditCard({ card, cards }: EditCardProps) {
 }
 
 interface AddCardProps {
-  cards: TaggedRawEvent[];
+  cards: TaggedNostrEvent[];
 }
 
 function AddCard({ cards }: AddCardProps) {
@@ -343,7 +335,7 @@ function AddCard({ cards }: AddCardProps) {
   async function createCard({ title, image, link, content }: NewCard) {
     const pub = login?.publisher();
     if (pub) {
-      const ev = await pub.generic((eb) => {
+      const ev = await pub.generic(eb => {
         const d = String(Date.now());
         eb.kind(CARD).content(content).tag(["d", d]);
         if (title && title?.length > 0) {
@@ -357,7 +349,7 @@ function AddCard({ cards }: AddCardProps) {
         }
         return eb;
       });
-      const userCardsEv = await pub.generic((eb) => {
+      const userCardsEv = await pub.generic(eb => {
         eb.kind(USER_CARDS).content("");
         for (const tag of tags) {
           eb.tag(tag);
@@ -407,18 +399,13 @@ export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
   return (
     <>
       <div className="stream-cards">
-        {cards.map((ev) => (
+        {cards.map(ev => (
           <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev} />
         ))}
         {isEditing && <AddCard cards={cards} />}
       </div>
       <div className="edit-container">
-        <Toggle
-          pressed={isEditing}
-          onPressedChange={setIsEditing}
-          label="Toggle edit mode"
-          text="Edit cards"
-        />
+        <Toggle pressed={isEditing} onPressedChange={setIsEditing} label="Toggle edit mode" text="Edit cards" />
       </div>
     </>
   );
@@ -432,7 +419,7 @@ export function ReadOnlyStreamCards({ host }: StreamCardsProps) {
   const cards = useCards(host);
   return (
     <div className="stream-cards">
-      {cards.map((ev) => (
+      {cards.map(ev => (
         <Card cards={cards} key={ev.id} ev={ev} />
       ))}
     </div>

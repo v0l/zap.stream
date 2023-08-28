@@ -7,7 +7,6 @@ import { hexToBech32 } from "@snort/shared";
 
 import { Icon } from "element/icon";
 import usePlaceholder from "hooks/placeholders";
-import { System } from "index";
 import { useInView } from "react-intersection-observer";
 
 export interface ProfileOptions {
@@ -45,8 +44,7 @@ export function Profile({
   linkToProfile?: boolean;
 }) {
   const { inView, ref } = useInView();
-  const pLoaded =
-    useUserProfile(System, inView && !profile ? pubkey : undefined) || profile;
+  const pLoaded = useUserProfile(inView && !profile ? pubkey : undefined) || profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
   const placeholder = usePlaceholder(pubkey);
@@ -64,13 +62,7 @@ export function Profile({
           />
         ))}
       {icon}
-      {showName && (
-        <span>
-          {options?.overrideName ?? pubkey === "anon"
-            ? "Anon"
-            : getName(pubkey, pLoaded)}
-        </span>
-      )}
+      {showName && <span>{options?.overrideName ?? pubkey === "anon" ? "Anon" : getName(pubkey, pLoaded)}</span>}
     </>
   );
 
@@ -79,11 +71,7 @@ export function Profile({
       {content}
     </div>
   ) : (
-    <Link
-      to={`/p/${hexToBech32("npub", pubkey)}`}
-      className="profile"
-      ref={ref}
-    >
+    <Link to={`/p/${hexToBech32("npub", pubkey)}`} className="profile" ref={ref}>
       {content}
     </Link>
   );

@@ -1,14 +1,8 @@
 import { useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
-import {
-  RequestBuilder,
-  ReplaceableNoteStore,
-  NoteCollection,
-  NostrEvent,
-} from "@snort/system";
+import { RequestBuilder, ReplaceableNoteStore, NoteCollection, NostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { System } from "index";
 import { findTag } from "utils";
 import { EMOJI_PACK, USER_EMOJIS } from "const";
 import type { EmojiPack, Tags, EmojiTag } from "types";
@@ -24,8 +18,8 @@ export function toEmojiPack(ev: NostrEvent): EmojiPack {
     name: d,
     author: ev.pubkey,
     emojis: ev.tags
-      .filter((t) => t.at(0) === "emoji")
-      .map((t) => ["emoji", cleanShortcode(t.at(1)), t.at(2)]) as EmojiTag[],
+      .filter(t => t.at(0) === "emoji")
+      .map(t => ["emoji", cleanShortcode(t.at(1)), t.at(2)]) as EmojiTag[],
   };
 }
 
@@ -36,24 +30,22 @@ export function packId(pack: EmojiPack): string {
 export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   const related = useMemo(() => {
     if (userEmoji) {
-      return userEmoji?.filter(
-        (t) => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`)
-      );
+      return userEmoji?.filter(t => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`));
     }
     return [];
   }, [userEmoji]);
 
   const subRelated = useMemo(() => {
     if (!pubkey) return null;
-    const splitted = related.map((t) => t[1].split(":"));
+    const splitted = related.map(t => t[1].split(":"));
     const authors = splitted
-      .map((s) => s.at(1))
-      .filter((s) => s)
-      .map((s) => s as string);
+      .map(s => s.at(1))
+      .filter(s => s)
+      .map(s => s as string);
     const identifiers = splitted
-      .map((s) => s.at(2))
-      .filter((s) => s)
-      .map((s) => s as string);
+      .map(s => s.at(2))
+      .filter(s => s)
+      .map(s => s as string);
 
     const rb = new RequestBuilder(`emoji-related:${pubkey}`);
 
@@ -64,11 +56,7 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
     return rb;
   }, [pubkey, related]);
 
-  const { data: relatedData } = useRequestBuilder<NoteCollection>(
-    System,
-    NoteCollection,
-    subRelated
-  );
+  const { data: relatedData } = useRequestBuilder(NoteCollection, subRelated);
 
   const emojiPacks = useMemo(() => {
     return relatedData ?? [];
@@ -92,11 +80,7 @@ export default function useEmoji(pubkey?: string) {
     return rb;
   }, [pubkey]);
 
-  const { data: userEmoji } = useRequestBuilder<ReplaceableNoteStore>(
-    System,
-    ReplaceableNoteStore,
-    sub
-  );
+  const { data: userEmoji } = useRequestBuilder(ReplaceableNoteStore, sub);
 
   const emojis = useUserEmojiPacks(pubkey, userEmoji?.tags ?? []);
   return emojis;

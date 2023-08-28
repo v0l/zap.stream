@@ -2,6 +2,7 @@ import "./collapsible.css";
 import type { ReactNode } from "react";
 import { useState } from "react";
 
+import { FormattedMessage } from "react-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
 
@@ -31,7 +32,7 @@ export function MediaURL({ url, children }: MediaURLProps) {
           </div>
           <Dialog.Close asChild>
             <button className="btn delete-button" aria-label="Close">
-              Close
+              <FormattedMessage defaultMessage="Close" />
             </button>
           </Dialog.Close>
         </Dialog.Content>
@@ -46,29 +47,19 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
   const author = event?.pubkey || link.author;
 
   return (
-    <Collapsible.Root
-      className="collapsible"
-      open={open}
-      onOpenChange={setOpen}
-    >
+    <Collapsible.Root className="collapsible" open={open} onOpenChange={setOpen}>
       <div className="collapsed-event">
         <div className="collapsed-event-header">
           {event && <EventIcon kind={event.kind} />}
           {author && <Mention pubkey={author} />}
         </div>
         <Collapsible.Trigger asChild>
-          <button
-            className={`${
-              open ? "btn btn-small delete-button" : "btn btn-small"
-            }`}
-          >
-            {open ? "Hide" : "Show"}
+          <button className={`${open ? "btn btn-small delete-button" : "btn btn-small"}`}>
+            {open ? <FormattedMessage defaultMessage="Hide" /> : <FormattedMessage defaultMessage="Show" />}
           </button>
         </Collapsible.Trigger>
       </div>
-      <Collapsible.Content>
-        {open && event && <NostrEvent ev={event} />}
-      </Collapsible.Content>
+      <Collapsible.Content>{open && event && <NostrEvent ev={event} />}</Collapsible.Content>
     </Collapsible.Root>
   );
 }

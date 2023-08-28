@@ -6,6 +6,7 @@ import { StatePill } from "element/state-pill";
 import { StreamState } from "index";
 import { StreamProviderInfo, StreamProviderStore } from "providers";
 import { Nip103StreamProvider } from "providers/zsz";
+import { FormattedMessage } from "react-intl";
 
 export function ConfigureNostrType() {
   const [url, setUrl] = useState("");
@@ -59,9 +60,8 @@ export function ConfigureNostrType() {
             onClick={() => {
               StreamProviderStore.add(new Nip103StreamProvider(url));
               navigate("/");
-            }}
-          >
-            Save
+            }}>
+            <FormattedMessage defaultMessage="Save" />
           </button>
         </div>
       </>
@@ -74,16 +74,11 @@ export function ConfigureNostrType() {
         <div>
           <p>Nostr streaming provider URL</p>
           <div className="paper">
-            <input
-              type="text"
-              placeholder="https://"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-            />
+            <input type="text" placeholder="https://" value={url} onChange={e => setUrl(e.target.value)} />
           </div>
         </div>
         <AsyncButton className="btn btn-primary" onClick={tryConnect}>
-          Connect
+          <FormattedMessage defaultMessage="Connect" />
         </AsyncButton>
       </div>
       <div>{status()}</div>

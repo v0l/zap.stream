@@ -16,7 +16,7 @@ export function TagPage() {
         <FollowTagButton tag={unwrap(tag)} />
       </div>
       <div className="video-grid">
-        {live.map((e) => (
+        {live.map(e => (
           <VideoTile ev={e} key={e.id} />
         ))}
       </div>

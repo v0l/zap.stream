@@ -162,12 +162,7 @@
 
 .tabs-tab[data-state="active"] .tab-border {
   height: 1px;
-  background: linear-gradient(
-    94.73deg,
-    #2bd9ff 0%,
-    #8c8ded 47.4%,
-    #f838d9 100%
-  );
+  background: linear-gradient(94.73deg, #2bd9ff 0%, #8c8ded 47.4%, #f838d9 100%);
 }
 
 .tabs-content {

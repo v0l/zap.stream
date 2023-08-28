@@ -48,16 +48,9 @@ export function StreamProvidersPage() {
     return (
       <div className="stream-providers-page">
         <h1>Providers</h1>
-        <p>
-          Stream providers streamline the process of streaming on Nostr, some
-          event accept lightning payments!
-        </p>
+        <p>Stream providers streamline the process of streaming on Nostr, some event accept lightning payments!</p>
         <div className="stream-providers-grid">
-          {[
-            StreamProviders.NostrType,
-            StreamProviders.Owncast,
-            StreamProviders.Cloudflare,
-          ].map((v) => providerLink(v))}
+          {[StreamProviders.NostrType, StreamProviders.Owncast, StreamProviders.Cloudflare].map(v => providerLink(v))}
         </div>
       </div>
     );

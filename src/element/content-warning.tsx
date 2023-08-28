@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
 export function isContentWarningAccepted() {
@@ -17,14 +18,18 @@ export function ContentWarningOverlay() {
 
   return (
     <div className="fullscreen-exclusive age-check">
-      <h1>Sexually explicit material ahead!</h1>
-      <h2>Confirm your age</h2>
+      <h1>
+        <FormattedMessage defaultMessage="Sexually explicit material ahead!" />
+      </h1>
+      <h2>
+        <FormattedMessage defaultMessage="Confirm your age" />
+      </h2>
       <div className="flex g24">
         <button className="btn btn-warning" onClick={grownUp}>
-          Yes, I am over 18
+          <FormattedMessage defaultMessage="Yes, I am over 18" />
         </button>
         <button className="btn" onClick={() => navigate("/")}>
-          No, I am under 18
+          <FormattedMessage defaultMessage="No, I am under 18" />
         </button>
       </div>
     </div>
