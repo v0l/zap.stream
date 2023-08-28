@@ -77,6 +77,9 @@
   "C81/uG": {
     "defaultMessage": "Cerrar sesión"
   },
+  "Dn82AL": {
+    "defaultMessage": "Live"
+  },
   "ESyhzp": {
     "defaultMessage": "Tu comentario para {name}"
   },
@@ -97,6 +100,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Monto del zap en {currency}"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Uploading..."
   },
   "Jq3FDz": {
     "defaultMessage": "Contenido"
@@ -155,6 +161,9 @@
   "RrCui3": {
     "defaultMessage": "Resumen"
   },
+  "TP/cMX": {
+    "defaultMessage": "Ended"
+  },
   "TaTRKo": {
     "defaultMessage": "Iniciar transmisión"
   },
@@ -179,6 +188,9 @@
   "acrOoz": {
     "defaultMessage": "Continuar"
   },
+  "cPIKU2": {
+    "defaultMessage": "Following"
+  },
   "cvAsEh": {
     "defaultMessage": "Transmitido el {date}"
   },
@@ -193,6 +205,9 @@
   },
   "fBI91o": {
     "defaultMessage": "Zap"
+  },
+  "fc2iho": {
+    "defaultMessage": "Add File"
   },
   "hGQqkW": {
     "defaultMessage": "Programar"
@@ -214,6 +229,12 @@
   },
   "jvo0vs": {
     "defaultMessage": "Guardar"
+  },
+  "k21gTS": {
+    "defaultMessage": "e.g. about me"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Planned"
   },
   "lZpRMR": {
     "defaultMessage": "Marque aquí si esta transmisión contiene escenas de desnudez o pornografía."
@@ -275,6 +296,9 @@
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
+  "w0Xm2F": {
+    "defaultMessage": "Start typing"
+  },
   "wCIL7o": {
     "defaultMessage": "Broadcast on Nostr"
   },
@@ -294,3 +318,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

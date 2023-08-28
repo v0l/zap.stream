@@ -77,6 +77,9 @@
   "C81/uG": {
     "defaultMessage": "ออกจากระบบ"
   },
+  "Dn82AL": {
+    "defaultMessage": "Live"
+  },
   "ESyhzp": {
     "defaultMessage": "ฝากข้อความถึง {name}"
   },
@@ -97,6 +100,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Zap ด้วย {currency} จำนวน"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Uploading..."
   },
   "Jq3FDz": {
     "defaultMessage": "เนื้อหา"
@@ -155,6 +161,9 @@
   "RrCui3": {
     "defaultMessage": "ภาพรวม"
   },
+  "TP/cMX": {
+    "defaultMessage": "Ended"
+  },
   "TaTRKo": {
     "defaultMessage": "เริ่มการถ่ายทอดสด"
   },
@@ -179,6 +188,9 @@
   "acrOoz": {
     "defaultMessage": "ดำเนินการต่อ"
   },
+  "cPIKU2": {
+    "defaultMessage": "Following"
+  },
   "cvAsEh": {
     "defaultMessage": "ถ่ายทอดสดเมื่อ {date}"
   },
@@ -193,6 +205,9 @@
   },
   "fBI91o": {
     "defaultMessage": "Zaps"
+  },
+  "fc2iho": {
+    "defaultMessage": "Add File"
   },
   "hGQqkW": {
     "defaultMessage": "กำหนดการ"
@@ -214,6 +229,12 @@
   },
   "jvo0vs": {
     "defaultMessage": "บันทึก"
+  },
+  "k21gTS": {
+    "defaultMessage": "e.g. about me"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Planned"
   },
   "lZpRMR": {
     "defaultMessage": "โปรดทำเครื่องหมาย หากเนื้อหามีภาพโป๊เปลือย หรือสื่อลามก"
@@ -275,6 +296,9 @@
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
+  "w0Xm2F": {
+    "defaultMessage": "Start typing"
+  },
   "wCIL7o": {
     "defaultMessage": "แชร์ด้วย Nostr"
   },
@@ -294,3 +318,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

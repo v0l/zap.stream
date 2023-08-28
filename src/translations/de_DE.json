@@ -77,6 +77,9 @@
   "C81/uG": {
     "defaultMessage": "Abmelden"
   },
+  "Dn82AL": {
+    "defaultMessage": "Live"
+  },
   "ESyhzp": {
     "defaultMessage": "Dein Kommentar für {name}"
   },
@@ -97,6 +100,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Zap Betrag in {currency}"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Uploading..."
   },
   "Jq3FDz": {
     "defaultMessage": "Inhalt"
@@ -155,6 +161,9 @@
   "RrCui3": {
     "defaultMessage": "Zusammenfassung"
   },
+  "TP/cMX": {
+    "defaultMessage": "Ended"
+  },
   "TaTRKo": {
     "defaultMessage": "Stream starten"
   },
@@ -179,6 +188,9 @@
   "acrOoz": {
     "defaultMessage": "Weiter"
   },
+  "cPIKU2": {
+    "defaultMessage": "Following"
+  },
   "cvAsEh": {
     "defaultMessage": "Am {date} gestreamt"
   },
@@ -193,6 +205,9 @@
   },
   "fBI91o": {
     "defaultMessage": "Zap"
+  },
+  "fc2iho": {
+    "defaultMessage": "Add File"
   },
   "hGQqkW": {
     "defaultMessage": "Zeitplan"
@@ -214,6 +229,12 @@
   },
   "jvo0vs": {
     "defaultMessage": "Speichern"
+  },
+  "k21gTS": {
+    "defaultMessage": "e.g. about me"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Planned"
   },
   "lZpRMR": {
     "defaultMessage": "Aktivieren Sie hier, wenn dieser Stream Nacktheit oder pornographische Inhalte enthält."
@@ -275,6 +296,9 @@
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
+  "w0Xm2F": {
+    "defaultMessage": "Start typing"
+  },
   "wCIL7o": {
     "defaultMessage": "Auf Nostr senden"
   },
@@ -294,3 +318,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+
