@@ -45,13 +45,16 @@ export function LoginSignup({ close }: { close: () => void }) {
   
   function doLoginNsec() {
     try {
-      const nsec = prompt("nsec");
+      let nsec = prompt("Enter your nsec\nWARNING: THIS IS NOT RECOMMENDED. DO NOT IMPORT ANY KEYS YOU CARE ABOUT");
       if (!nsec) {
         throw new Error("no nsec provided");
       }
-      const {words} = bech32.decode(nsec, 5000);
-      const data = new Uint8Array(bech32.fromWords(words));
-      Login.loginWithPrivateKey(bytesToHex(data));
+      if (nsec.startsWith("nsec")) {
+        const {words} = bech32.decode(nsec, 5000);
+        const data = new Uint8Array(bech32.fromWords(words));
+        nsec = bytesToHex(data);
+      }
+      Login.loginWithPrivateKey(nsec);
       close();
     } catch (e) {
       console.error(e);
@@ -134,7 +137,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             className="btn btn-primary"
             onClick={doLoginNsec}
           >
-            Enter Nsec (INSECURE)
+            Enter Nsec
           </button>
           {error && <b className="error">{error}</b>}
         </>

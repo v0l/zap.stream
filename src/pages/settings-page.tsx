@@ -4,6 +4,7 @@ import "./settings-page.css";
 import React from "react";
 import { Button } from "@getalby/bitcoin-connect-react";
 import Copy from "element/copy";
+import { hexToBech32 } from "@snort/shared";
 
 export function SettingsPage() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export function SettingsPage() {
       </div>}
       {login?.privateKey && <div className="private-key">
         <p>Private key</p>
-        <Copy text={login.privateKey} hideText />
+        <Copy text={hexToBech32('nsec', login.privateKey)} hideText />
       </div>}
 
       <h1>Zaps</h1>
