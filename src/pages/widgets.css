@@ -1,0 +1,10 @@
+.widgets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.widgets > div {
+    background-color: #3f3f3f;
+    border-radius: 16px;
+    padding: 8px 12px;
+}

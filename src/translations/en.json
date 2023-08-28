@@ -47,6 +47,7 @@
   "QRHNuF": "What are we steaming today?",
   "QRRCp0": "Stream URL",
   "QceMQZ": "Goal: {amount}",
+  "Qe1MJu": "{name} with {amount}",
   "RJOmzk": "I have read and agree with {provider}''s {terms}.",
   "RXQdxR": "Please login to write messages!",
   "RrCui3": "Summary",
@@ -64,6 +65,7 @@
   "ebmhes": "Nostr Extension",
   "fBI91o": "Zap",
   "hGQqkW": "Schedule",
+  "hpl4BP": "Chat Widget",
   "ieGrWo": "Follow",
   "itPgxd": "Profile",
   "izWS4J": "Unfollow",
@@ -81,8 +83,10 @@
   "rWBFZA": "Sexually explicit material ahead!",
   "rbrahO": "Close",
   "rfC1Zq": "Save card",
+  "rgsbu9": "Current Viewers",
   "s5ksS7": "Image Link",
   "s7V+5p": "Confirm your age",
+  "tG1ST3": "Incoming Zap",
   "thsiMl": "terms and conditions",
   "tzMNF3": "Status",
   "uYw2LD": "Stream",
@@ -91,5 +95,6 @@
   "wEQDC6": "Edit",
   "wOy57k": "Add stream goal",
   "wzWWzV": "Top zappers",
-  "x82IOl": "Mute"
+  "x82IOl": "Mute",
+  "zVDHAu": "Zap Alert"
 }

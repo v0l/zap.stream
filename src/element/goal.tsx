@@ -6,19 +6,20 @@ import Confetti from "react-confetti";
 import { type NostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 
-import { findTag } from "utils";
+import { eventToLink, findTag } from "utils";
 import { formatSats } from "number";
 import usePreviousValue from "hooks/usePreviousValue";
 import { SendZapsDialog } from "element/send-zap";
-import { useZaps } from "hooks/goals";
 import { getName } from "element/profile";
 import { Icon } from "./icon";
 import { FormattedMessage } from "react-intl";
+import { useZaps } from "hooks/zaps";
 
 export function Goal({ ev }: { ev: NostrEvent }) {
   const profile = useUserProfile(ev.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const zaps = useZaps(ev, true);
+  const link = eventToLink(ev);
+  const zaps = useZaps(link, true);
   const goalAmount = useMemo(() => {
     const amount = findTag(ev, "amount");
     return amount ? Number(amount) / 1000 : null;

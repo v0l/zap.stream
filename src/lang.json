@@ -143,6 +143,9 @@
   "QceMQZ": {
     "defaultMessage": "Goal: {amount}"
   },
+  "Qe1MJu": {
+    "defaultMessage": "{name} with {amount}"
+  },
   "RJOmzk": {
     "defaultMessage": "I have read and agree with {provider}''s {terms}."
   },
@@ -193,6 +196,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
+  },
+  "hpl4BP": {
+    "defaultMessage": "Chat Widget"
   },
   "ieGrWo": {
     "defaultMessage": "Follow"
@@ -245,11 +251,17 @@
   "rfC1Zq": {
     "defaultMessage": "Save card"
   },
+  "rgsbu9": {
+    "defaultMessage": "Current Viewers"
+  },
   "s5ksS7": {
     "defaultMessage": "Image Link"
   },
   "s7V+5p": {
     "defaultMessage": "Confirm your age"
+  },
+  "tG1ST3": {
+    "defaultMessage": "Incoming Zap"
   },
   "thsiMl": {
     "defaultMessage": "terms and conditions"
@@ -277,5 +289,8 @@
   },
   "x82IOl": {
     "defaultMessage": "Mute"
+  },
+  "zVDHAu": {
+    "defaultMessage": "Zap Alert"
   }
 }

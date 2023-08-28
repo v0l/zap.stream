@@ -76,6 +76,10 @@ a {
   color: white;
 }
 
+.g8 {
+  gap: 8px;
+}
+
 .g24 {
   gap: 24px;
 }

@@ -1,7 +1,8 @@
 import "./live-chat.css";
+import { FormattedMessage } from "react-intl";
 import { EventKind, NostrPrefix, NostrLink, ParsedZap, NostrEvent, parseZap, encodeTLV } from "@snort/system";
-import { unixNow, unwrap } from "@snort/shared";
-import { useEffect, useMemo } from "react";
+import { unixNow } from "@snort/shared";
+import { useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
 import { Icon } from "element/icon";
@@ -18,13 +19,12 @@ import { useLiveChatFeed } from "hooks/live-chat";
 import { useMutedPubkeys } from "hooks/lists";
 import { useBadges } from "hooks/badges";
 import { useLogin } from "hooks/login";
-import useTopZappers from "hooks/top-zappers";
 import { useAddress } from "hooks/event";
 import { formatSats } from "number";
 import { WEEK, LIVE_STREAM_CHAT } from "const";
 import { findTag, getTagValues, getHost } from "utils";
 import { System } from "index";
-import { FormattedMessage } from "react-intl";
+import { TopZappers } from "element/top-zappers";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -49,28 +49,6 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
   );
 }
 
-function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
-  const zappers = useTopZappers(zaps);
-
-  return (
-    <>
-      {zappers.map(({ pubkey, total }) => {
-        return (
-          <div className="top-zapper" key={pubkey}>
-            {pubkey === "anon" ? (
-              <p className="top-zapper-name">Anon</p>
-            ) : (
-              <Profile pubkey={pubkey} options={{ showName: false }} />
-            )}
-            <Icon name="zap-filled" className="zap-icon" />
-            <p className="top-zapper-amount">{formatSats(total)}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-}
-
 export function LiveChat({
   link,
   ev,
@@ -87,11 +65,6 @@ export function LiveChat({
   const host = getHost(ev);
   const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
-  useEffect(() => {
-    const pubkeys = [...new Set(feed.zaps.flatMap(a => [a.pubkey, unwrap(findTag(a, "p"))]))];
-    System.ProfileLoader.TrackMetadata(pubkeys);
-    return () => System.ProfileLoader.UntrackMetadata(pubkeys);
-  }, [feed.zaps]);
   const started = useMemo(() => {
     const starts = findTag(ev, "starts");
     return starts ? Number(starts) : unixNow() - WEEK;
@@ -111,7 +84,6 @@ export function LiveChat({
   const events = useMemo(() => {
     return [...feed.messages, ...feed.zaps, ...awards].sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.zaps, awards]);
-  const streamer = getHost(ev);
   const naddr = useMemo(() => {
     if (ev) {
       return encodeTLV(NostrPrefix.Address, findTag(ev, "d") ?? "", undefined, ev.kind, ev.pubkey);
@@ -145,7 +117,7 @@ export function LiveChat({
             <TopZappers zaps={zaps} />
           </div>
           {goal && <Goal ev={goal} />}
-          {login?.pubkey === streamer && <NewGoalDialog link={link} />}
+          {login?.pubkey === host && <NewGoalDialog link={link} />}
         </div>
       )}
       <div className="messages">
@@ -159,7 +131,7 @@ export function LiveChat({
                 <ChatMessage
                   badges={badges}
                   emojiPacks={allEmojiPacks}
-                  streamer={streamer}
+                  streamer={host}
                   ev={a}
                   key={a.id}
                   reactions={feed.reactions}
@@ -167,7 +139,7 @@ export function LiveChat({
               );
             }
             case EventKind.ZapReceipt: {
-              const zap = zaps.find(b => b.id === a.id && b.receiver === streamer);
+              const zap = zaps.find(b => b.id === a.id && b.receiver === host);
               if (zap) {
                 return <ChatZap zap={zap} key={a.id} />;
               }

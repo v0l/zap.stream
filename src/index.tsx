@@ -20,6 +20,8 @@ import { defaultRelays } from "const";
 import { CatchAllRoutePage } from "pages/catch-all";
 import { register } from "serviceWorker";
 import { IntlProvider } from "intl";
+import { WidgetsPage } from "pages/widgets";
+import { AlertsPage } from "pages/alerts";
 
 export enum StreamState {
   Live = "live",
@@ -66,6 +68,10 @@ const router = createBrowserRouter([
         element: <StreamProvidersPage />,
       },
       {
+        path: "/widgets",
+        element: <WidgetsPage />
+      },
+      {
         path: "*",
         element: <CatchAllRoutePage />,
       },
@@ -74,7 +80,19 @@ const router = createBrowserRouter([
   {
     path: "/chat/:id",
     element: <ChatPopout />,
+    loader: async () => {
+      await System.Init();
+      return null;
+    },
   },
+  {
+    path: "/alert/:id/:type",
+    element: <AlertsPage />,
+    loader: async () => {
+      await System.Init();
+      return null;
+    },
+  }
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement);
 root.render(
