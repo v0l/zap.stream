@@ -1,10 +1,12 @@
 import { NostrLink, RequestBuilder, EventKind, NoteCollection } from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
-import { unixNow } from "@snort/shared";
-import { useMemo } from "react";
+import { SnortContext, useRequestBuilder } from "@snort/system-react";
+import { unixNow, unwrap } from "@snort/shared";
+import { useContext, useEffect, useMemo } from "react";
 import { LIVE_STREAM_CHAT, WEEK } from "const";
+import { findTag } from "utils";
 
 export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
+  const system = useContext(SnortContext);
   const since = useMemo(() => unixNow() - WEEK, [link.id]);
   const sub = useMemo(() => {
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
@@ -43,6 +45,12 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
     rb.withFilter().kinds([EventKind.Reaction, EventKind.ZapReceipt]).tag("e", etags);
     return rb;
   }, [etags]);
+
+  useEffect(() => {
+    const pubkeys = [...new Set(zaps.flatMap(a => [a.pubkey, unwrap(findTag(a, "p"))]))];
+    system.ProfileLoader.TrackMetadata(pubkeys);
+    return () => system.ProfileLoader.UntrackMetadata(pubkeys);
+  }, [zaps]);
 
   const reactionsSub = useRequestBuilder(NoteCollection, esub);
 

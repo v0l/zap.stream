@@ -1,0 +1,321 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "Bild"
+  },
+  "+vVZ/G": {
+    "defaultMessage": "Verbinden"
+  },
+  "/0TOL5": {
+    "defaultMessage": "Betrag"
+  },
+  "/GCoTA": {
+    "defaultMessage": "Löschen"
+  },
+  "04lmFi": {
+    "defaultMessage": "Schlüssel speichern"
+  },
+  "0GfNiL": {
+    "defaultMessage": "Stream-Zap-Ziele"
+  },
+  "1EYCdR": {
+    "defaultMessage": "Tags"
+  },
+  "2/2yg+": {
+    "defaultMessage": "Hinzufügen"
+  },
+  "2CGh/0": {
+    "defaultMessage": "live"
+  },
+  "3HwrQo": {
+    "defaultMessage": "Zap!"
+  },
+  "3adEeb": {
+    "defaultMessage": "{n} Zuschauer"
+  },
+  "47FYwb": {
+    "defaultMessage": "Abbrechen"
+  },
+  "4l6vz1": {
+    "defaultMessage": "Kopieren"
+  },
+  "4uI538": {
+    "defaultMessage": "Auflösung"
+  },
+  "5JcXdV": {
+    "defaultMessage": "Account erstellen"
+  },
+  "5QYdPU": {
+    "defaultMessage": "Startzeit"
+  },
+  "5kx+2v": {
+    "defaultMessage": "Server URL"
+  },
+  "6Z2pvJ": {
+    "defaultMessage": "Stream Anbieter"
+  },
+  "9WRlF4": {
+    "defaultMessage": "Senden"
+  },
+  "9a9+ww": {
+    "defaultMessage": "Titel"
+  },
+  "9anxhq": {
+    "defaultMessage": "Beginnt"
+  },
+  "AIHaPH": {
+    "defaultMessage": "{person} zapped {amount} sats"
+  },
+  "Atr2p4": {
+    "defaultMessage": "NSFW-Inhalt"
+  },
+  "AyGauy": {
+    "defaultMessage": "Anmelden"
+  },
+  "BGxpTN": {
+    "defaultMessage": "Stream Chat"
+  },
+  "C81/uG": {
+    "defaultMessage": "Abmelden"
+  },
+  "Dn82AL": {
+    "defaultMessage": "Live"
+  },
+  "ESyhzp": {
+    "defaultMessage": "Dein Kommentar für {name}"
+  },
+  "G/yZLu": {
+    "defaultMessage": "Entfernen"
+  },
+  "Gq6x9o": {
+    "defaultMessage": "Titelbild"
+  },
+  "H5+NAX": {
+    "defaultMessage": "Guthaben"
+  },
+  "HAlOn1": {
+    "defaultMessage": "Name"
+  },
+  "I1kjHI": {
+    "defaultMessage": "Unterstützt {markdown}"
+  },
+  "IJDKz3": {
+    "defaultMessage": "Zap Betrag in {currency}"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Uploading..."
+  },
+  "Jq3FDz": {
+    "defaultMessage": "Inhalt"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Löschen"
+  },
+  "K3uH1C": {
+    "defaultMessage": "Offline"
+  },
+  "K7AkdL": {
+    "defaultMessage": "Anzeigen"
+  },
+  "KkIL3s": {
+    "defaultMessage": "Nein, ich bin jünger als 18"
+  },
+  "Ld5LAE": {
+    "defaultMessage": "Nostr verwendet private Schlüssel. Bitte speichere deinen Schlüssel, wenn du diesen verlierst, kannst du dich nicht mehr in deinen Account einloggen!"
+  },
+  "LknBsU": {
+    "defaultMessage": "Stream-Schlüssel"
+  },
+  "My6HwN": {
+    "defaultMessage": "Ok, er ist gesichert"
+  },
+  "O2Cy6m": {
+    "defaultMessage": "Ja, ich bin älter als 18"
+  },
+  "OKhRC6": {
+    "defaultMessage": "Teilen"
+  },
+  "OWgHbg": {
+    "defaultMessage": "Karte bearbeiten"
+  },
+  "Q3au2v": {
+    "defaultMessage": "Ungefähr {estimate}"
+  },
+  "QRHNuF": {
+    "defaultMessage": "Was streamen wir heute?"
+  },
+  "QRRCp0": {
+    "defaultMessage": "Stream URL"
+  },
+  "QceMQZ": {
+    "defaultMessage": "Ziel: {amount}"
+  },
+  "Qe1MJu": {
+    "defaultMessage": "{name} with {amount}"
+  },
+  "RJOmzk": {
+    "defaultMessage": "Ich habe die {provider} {terms} gelesen und stimme ihnen zu."
+  },
+  "RXQdxR": {
+    "defaultMessage": "Bitte melden Sie sich an, um Nachrichten zu schreiben!"
+  },
+  "RrCui3": {
+    "defaultMessage": "Zusammenfassung"
+  },
+  "TP/cMX": {
+    "defaultMessage": "Ended"
+  },
+  "TaTRKo": {
+    "defaultMessage": "Stream starten"
+  },
+  "UJBFYK": {
+    "defaultMessage": "Karte hinzufügen"
+  },
+  "UfSot5": {
+    "defaultMessage": "Vergangene Streams"
+  },
+  "VA/Z1S": {
+    "defaultMessage": "Verbergen"
+  },
+  "W9355R": {
+    "defaultMessage": "Stummschaltung aufheben"
+  },
+  "X2PZ7D": {
+    "defaultMessage": "Ziel erstellen"
+  },
+  "ZmqxZs": {
+    "defaultMessage": "Sie können das später ändern"
+  },
+  "acrOoz": {
+    "defaultMessage": "Weiter"
+  },
+  "cPIKU2": {
+    "defaultMessage": "Following"
+  },
+  "cvAsEh": {
+    "defaultMessage": "Am {date} gestreamt"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Zurück"
+  },
+  "dVD/AR": {
+    "defaultMessage": "Top Zapper"
+  },
+  "ebmhes": {
+    "defaultMessage": "Nostr Erweiterung"
+  },
+  "fBI91o": {
+    "defaultMessage": "Zap"
+  },
+  "fc2iho": {
+    "defaultMessage": "Add File"
+  },
+  "hGQqkW": {
+    "defaultMessage": "Zeitplan"
+  },
+  "hpl4BP": {
+    "defaultMessage": "Chat Widget"
+  },
+  "ieGrWo": {
+    "defaultMessage": "Folgen"
+  },
+  "itPgxd": {
+    "defaultMessage": "Profil"
+  },
+  "izWS4J": {
+    "defaultMessage": "Entfolgen"
+  },
+  "jr4+vD": {
+    "defaultMessage": "Markdown"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Speichern"
+  },
+  "k21gTS": {
+    "defaultMessage": "e.g. about me"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Planned"
+  },
+  "lZpRMR": {
+    "defaultMessage": "Aktivieren Sie hier, wenn dieser Stream Nacktheit oder pornographische Inhalte enthält."
+  },
+  "ljmS5P": {
+    "defaultMessage": "Endpunkt"
+  },
+  "mtNGwh": {
+    "defaultMessage": "Eine kurze Beschreibung des Inhalts"
+  },
+  "nBCvvJ": {
+    "defaultMessage": "Aufladen"
+  },
+  "nOaArs": {
+    "defaultMessage": "Profil einrichten"
+  },
+  "nwA8Os": {
+    "defaultMessage": "Karte hinzufügen"
+  },
+  "oHPB8Q": {
+    "defaultMessage": "Zap {name}"
+  },
+  "oZrFyI": {
+    "defaultMessage": "Stream Typ sollte HLS sein"
+  },
+  "pO/lPX": {
+    "defaultMessage": "Geplant am {date}"
+  },
+  "rWBFZA": {
+    "defaultMessage": "Sexuell explizites Material voraus!"
+  },
+  "rbrahO": {
+    "defaultMessage": "Schließen"
+  },
+  "rfC1Zq": {
+    "defaultMessage": "Karte speichern"
+  },
+  "rgsbu9": {
+    "defaultMessage": "Current Viewers"
+  },
+  "s5ksS7": {
+    "defaultMessage": "Bild-Link"
+  },
+  "s7V+5p": {
+    "defaultMessage": "Bestätigen Sie ihr Alter"
+  },
+  "tG1ST3": {
+    "defaultMessage": "Incoming Zap"
+  },
+  "thsiMl": {
+    "defaultMessage": "Allgemeinen Geschäftsbedingungen"
+  },
+  "tzMNF3": {
+    "defaultMessage": "Status"
+  },
+  "uYw2LD": {
+    "defaultMessage": "Stream"
+  },
+  "vrTOHJ": {
+    "defaultMessage": "{amount} sats"
+  },
+  "w0Xm2F": {
+    "defaultMessage": "Start typing"
+  },
+  "wCIL7o": {
+    "defaultMessage": "Auf Nostr senden"
+  },
+  "wEQDC6": {
+    "defaultMessage": "Bearbeiten"
+  },
+  "wOy57k": {
+    "defaultMessage": "Stream-Ziel hinzufügen"
+  },
+  "wzWWzV": {
+    "defaultMessage": "Top Zapper"
+  },
+  "x82IOl": {
+    "defaultMessage": "Stummschalten"
+  },
+  "zVDHAu": {
+    "defaultMessage": "Zap Alert"
+  }
+}
+

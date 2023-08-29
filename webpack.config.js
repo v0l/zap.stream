@@ -62,9 +62,11 @@ const config = {
       __XXX: process.env["__XXX"] || JSON.stringify(false),
       __XXX_HOST: JSON.stringify("https://xxzap.com"),
     }),
-    new WorkboxPlugin.InjectManifest({
-      swSrc: "./src/service-worker.ts",
-    }),
+    isProduction
+      ? new WorkboxPlugin.InjectManifest({
+          swSrc: "./src/service-worker.ts",
+        })
+      : false,
   ],
   module: {
     rules: [

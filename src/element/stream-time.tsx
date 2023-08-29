@@ -9,9 +9,15 @@ export function StreamTimer({ ev }: { ev?: NostrEvent }) {
   function updateTime() {
     const starts = Number(findTag(ev, "starts") ?? unixNow());
     const diff = unixNow() - starts;
-    const hours = Number(diff / 60.0 / 60.0);
-    const mins = Number((diff / 60) % 60);
-    setTime(`${hours.toFixed(0).padStart(2, "0")}:${mins.toFixed(0).padStart(2, "0")}`);
+    const min = 60;
+    const hour = min * 60;
+
+    const hours = Math.floor(diff / hour);
+    const mins = Math.floor((diff % hour) / min);
+    const secs = Math.floor(diff % min);
+    setTime(
+      `${hours.toFixed(0).padStart(2, "0")}:${mins.toFixed(0).padStart(2, "0")}:${secs.toFixed(0).padStart(2, "0")}`
+    );
   }
 
   useEffect(() => {

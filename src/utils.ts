@@ -1,8 +1,9 @@
-import { NostrEvent, NostrPrefix, TaggedNostrEvent, encodeTLV, parseNostrLink } from "@snort/system";
+import { NostrEvent, NostrPrefix, TaggedNostrEvent, createNostrLink, encodeTLV } from "@snort/system";
 import * as utils from "@noble/curves/abstract/utils";
 import { bech32 } from "@scure/base";
 import type { Tag, Tags } from "types";
 import { LIVE_STREAM } from "const";
+import { unwrap } from "@snort/shared";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -76,11 +77,6 @@ export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
   }
 }
 
-export function createNostrLink(ev?: NostrEvent) {
-  if (!ev) return;
-  return parseNostrLink(eventLink(ev));
-}
-
 export function getHost(ev?: NostrEvent) {
   return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
 }
@@ -113,4 +109,12 @@ export function getEventFromLocationState(state: unknown | undefined | null) {
   return state && typeof state === "object" && "kind" in state && state.kind === LIVE_STREAM
     ? (state as NostrEvent)
     : undefined;
+}
+
+export function eventToLink(ev: NostrEvent) {
+  if (ev.kind >= 30_000 && ev.kind < 40_000) {
+    const dTag = unwrap(findTag(ev, "d"));
+    return createNostrLink(NostrPrefix.Address, dTag, undefined, ev.kind, ev.pubkey);
+  }
+  return createNostrLink(NostrPrefix.Event, ev.id, undefined, ev.kind, ev.pubkey);
 }

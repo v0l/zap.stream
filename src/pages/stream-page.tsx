@@ -1,11 +1,10 @@
 import "./stream-page.css";
-import { NostrLink, NostrPrefix, TaggedNostrEvent, tryParseNostrLink } from "@snort/system";
-import { fetchNip05Pubkey } from "@snort/shared";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { LiveVideoPlayer } from "element/live-video-player";
-import { createNostrLink, findTag, getEventFromLocationState, getHost, hexToBech32 } from "utils";
+import { eventToLink, findTag, getEventFromLocationState, getHost } from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
@@ -24,7 +23,8 @@ import { StreamTimer } from "element/stream-time";
 import { ShareMenu } from "element/share-menu";
 import { ContentWarningOverlay, isContentWarningAccepted } from "element/content-warning";
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { useEffect, useState } from "react";
+import { useStreamLink } from "hooks/stream-link";
+import { FormattedMessage } from "react-intl";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent }) {
   const login = useLogin();
@@ -55,7 +55,11 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
           <p>{findTag(ev, "summary")}</p>
           <div className="tags">
             <StatePill state={status as StreamState} />
-            {viewers > 0 && <span className="pill viewers">{formatSats(viewers)} viewers</span>}
+            {viewers > 0 && (
+              <span className="pill viewers">
+                <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(viewers) }} />
+              </span>
+            )}
             {status === StreamState.Live && (
               <span className="pill">
                 <StreamTimer ev={ev} />
@@ -67,7 +71,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
             <div className="actions">
               {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
               <AsyncButton type="button" className="btn btn-warning" onClick={deleteStream}>
-                Delete
+                <FormattedMessage defaultMessage="Delete" />
               </AsyncButton>
             </div>
           )}
@@ -97,30 +101,9 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
 }
 
 export function StreamPageHandler() {
-  const params = useParams();
   const location = useLocation();
   const evPreload = getEventFromLocationState(location.state);
-  const [link, setLink] = useState<NostrLink>();
-
-  useEffect(() => {
-    if (params.id) {
-      const parsedLink = tryParseNostrLink(params.id);
-      if (parsedLink) {
-        setLink(parsedLink);
-      } else {
-        const [handle, domain] = (params.id.includes("@") ? params.id : `${params.id}@zap.stream`).split("@");
-        fetchNip05Pubkey(handle, domain).then(d => {
-          if (d) {
-            setLink({
-              id: d,
-              type: NostrPrefix.PublicKey,
-              encode: () => hexToBech32(NostrPrefix.PublicKey, d),
-            } as NostrLink);
-          }
-        });
-      }
-    }
-  }, [params.id]);
+  const link = useStreamLink();
 
   if (link) {
     return <StreamPage link={link} evPreload={evPreload} />;
@@ -130,7 +113,8 @@ export function StreamPageHandler() {
 export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: NostrLink }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
-  const goal = useZapGoal(host, createNostrLink(ev), true);
+  const evLink = ev ? eventToLink(ev) : undefined;
+  const goal = useZapGoal(host, evLink, true);
 
   const title = findTag(ev, "title");
   const summary = findTag(ev, "summary");
@@ -161,7 +145,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />
       </div>
-      <LiveChat link={createNostrLink(ev) ?? link} ev={ev} goal={goal} />
+      <LiveChat link={evLink ?? link} ev={ev} goal={goal} />
     </div>
   );
 }

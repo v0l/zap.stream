@@ -1,0 +1,321 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "ภาพ"
+  },
+  "+vVZ/G": {
+    "defaultMessage": "เชื่อมต่อ"
+  },
+  "/0TOL5": {
+    "defaultMessage": "จำนวน"
+  },
+  "/GCoTA": {
+    "defaultMessage": "ล้าง"
+  },
+  "04lmFi": {
+    "defaultMessage": "บันทึกรหัส"
+  },
+  "0GfNiL": {
+    "defaultMessage": "เป้าหมาย Zaps"
+  },
+  "1EYCdR": {
+    "defaultMessage": "แท็ก"
+  },
+  "2/2yg+": {
+    "defaultMessage": "เพิ่ม"
+  },
+  "2CGh/0": {
+    "defaultMessage": "ถ่ายทอดสด"
+  },
+  "3HwrQo": {
+    "defaultMessage": "Zaps!"
+  },
+  "3adEeb": {
+    "defaultMessage": "ผู้ชม {n}"
+  },
+  "47FYwb": {
+    "defaultMessage": "ยกเลิก"
+  },
+  "4l6vz1": {
+    "defaultMessage": "คัดลอก"
+  },
+  "4uI538": {
+    "defaultMessage": "ความละเอียด"
+  },
+  "5JcXdV": {
+    "defaultMessage": "สร้างบัญชี"
+  },
+  "5QYdPU": {
+    "defaultMessage": "เวลาเริ่ม"
+  },
+  "5kx+2v": {
+    "defaultMessage": "ที่อยู่ของเซิร์ฟเวอร์"
+  },
+  "6Z2pvJ": {
+    "defaultMessage": "เริ่มถ่ายทอดสด"
+  },
+  "9WRlF4": {
+    "defaultMessage": "ส่ง"
+  },
+  "9a9+ww": {
+    "defaultMessage": "หัวข้อ"
+  },
+  "9anxhq": {
+    "defaultMessage": "เริ่ม"
+  },
+  "AIHaPH": {
+    "defaultMessage": "{person} ส่ง Zap ให้ {amount} ⚡"
+  },
+  "Atr2p4": {
+    "defaultMessage": "เนื้อหาที่ไม่เหมาะสม"
+  },
+  "AyGauy": {
+    "defaultMessage": "เข้าสู่ระบบ"
+  },
+  "BGxpTN": {
+    "defaultMessage": "ห้องสนทนา"
+  },
+  "C81/uG": {
+    "defaultMessage": "ออกจากระบบ"
+  },
+  "Dn82AL": {
+    "defaultMessage": "Live"
+  },
+  "ESyhzp": {
+    "defaultMessage": "ฝากข้อความถึง {name}"
+  },
+  "G/yZLu": {
+    "defaultMessage": "ลบ"
+  },
+  "Gq6x9o": {
+    "defaultMessage": "ภาพหน้าปก"
+  },
+  "H5+NAX": {
+    "defaultMessage": "ยอดคงเหลือ"
+  },
+  "HAlOn1": {
+    "defaultMessage": "ชื่อ"
+  },
+  "I1kjHI": {
+    "defaultMessage": "สนับสนุน {markdown}"
+  },
+  "IJDKz3": {
+    "defaultMessage": "Zap ด้วย {currency} จำนวน"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Uploading..."
+  },
+  "Jq3FDz": {
+    "defaultMessage": "เนื้อหา"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "ลบ"
+  },
+  "K3uH1C": {
+    "defaultMessage": "ออฟไลน์"
+  },
+  "K7AkdL": {
+    "defaultMessage": "แสดง"
+  },
+  "KkIL3s": {
+    "defaultMessage": "ฉันอายุต่ำกว่า 18 ปี"
+  },
+  "Ld5LAE": {
+    "defaultMessage": "โปรดจำไว้ว่า Nostr ใช้รหัส Private keys ในการเข้าสู่ระบบ, หากท่านสูญเสียรหัสนี้ไป จะไม่ใครสามารถเข้าใช้บัญชีของท่านอีกต่อไป"
+  },
+  "LknBsU": {
+    "defaultMessage": "Stream Key"
+  },
+  "My6HwN": {
+    "defaultMessage": "ฉันจัดเก็บรหัสไว้ดีแล้ว"
+  },
+  "O2Cy6m": {
+    "defaultMessage": "ฉันอายุมากกว่า 18 ปี"
+  },
+  "OKhRC6": {
+    "defaultMessage": "แชร์"
+  },
+  "OWgHbg": {
+    "defaultMessage": "เเก้ไขการ์ด"
+  },
+  "Q3au2v": {
+    "defaultMessage": "ประมาณ {estimate}"
+  },
+  "QRHNuF": {
+    "defaultMessage": "เลือกหัวข้อถ่ายทอดสดนี้"
+  },
+  "QRRCp0": {
+    "defaultMessage": "Stream URL"
+  },
+  "QceMQZ": {
+    "defaultMessage": "Zap ให้ถึง {amount}"
+  },
+  "Qe1MJu": {
+    "defaultMessage": "{name} with {amount}"
+  },
+  "RJOmzk": {
+    "defaultMessage": "ฉันได้อ่าน {terms} เรียบร้อยและ เห็นด้วยกับ {provider} ในข้อกำหนดและเงื่อนไขการใช้เว็บไซต์หรือการใช้แอปพลิเคชัน"
+  },
+  "RXQdxR": {
+    "defaultMessage": "โปรดเข้าสู่ระบบ เพื่อร่วมส่งข้อความ"
+  },
+  "RrCui3": {
+    "defaultMessage": "ภาพรวม"
+  },
+  "TP/cMX": {
+    "defaultMessage": "Ended"
+  },
+  "TaTRKo": {
+    "defaultMessage": "เริ่มการถ่ายทอดสด"
+  },
+  "UJBFYK": {
+    "defaultMessage": "เพิ่มการ์ด"
+  },
+  "UfSot5": {
+    "defaultMessage": "การถ่ายทอดสดที่ผ่านมา"
+  },
+  "VA/Z1S": {
+    "defaultMessage": "ซ่อน"
+  },
+  "W9355R": {
+    "defaultMessage": "เปิดการมองเห็น"
+  },
+  "X2PZ7D": {
+    "defaultMessage": "สร้างเป้าหมาย"
+  },
+  "ZmqxZs": {
+    "defaultMessage": "คุณยังสามารถเปลี่ยนได้ในภายหลัง"
+  },
+  "acrOoz": {
+    "defaultMessage": "ดำเนินการต่อ"
+  },
+  "cPIKU2": {
+    "defaultMessage": "Following"
+  },
+  "cvAsEh": {
+    "defaultMessage": "ถ่ายทอดสดเมื่อ {date}"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "กลับ"
+  },
+  "dVD/AR": {
+    "defaultMessage": "สุดยอดมือ Zap"
+  },
+  "ebmhes": {
+    "defaultMessage": "ติดตั้ง Extension"
+  },
+  "fBI91o": {
+    "defaultMessage": "Zaps"
+  },
+  "fc2iho": {
+    "defaultMessage": "Add File"
+  },
+  "hGQqkW": {
+    "defaultMessage": "กำหนดการ"
+  },
+  "hpl4BP": {
+    "defaultMessage": "Chat Widget"
+  },
+  "ieGrWo": {
+    "defaultMessage": "ติดตาม"
+  },
+  "itPgxd": {
+    "defaultMessage": "โปรไฟล์"
+  },
+  "izWS4J": {
+    "defaultMessage": "เลิกติดตาม"
+  },
+  "jr4+vD": {
+    "defaultMessage": "Markdown"
+  },
+  "jvo0vs": {
+    "defaultMessage": "บันทึก"
+  },
+  "k21gTS": {
+    "defaultMessage": "e.g. about me"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Planned"
+  },
+  "lZpRMR": {
+    "defaultMessage": "โปรดทำเครื่องหมาย หากเนื้อหามีภาพโป๊เปลือย หรือสื่อลามก"
+  },
+  "ljmS5P": {
+    "defaultMessage": "Endpoint"
+  },
+  "mtNGwh": {
+    "defaultMessage": "เพิ่มคำอธิบายเกี่ยวกับถ่ายทอดสดนี้"
+  },
+  "nBCvvJ": {
+    "defaultMessage": "เติมเงิน"
+  },
+  "nOaArs": {
+    "defaultMessage": "ตั้งค่าโปรไฟล์"
+  },
+  "nwA8Os": {
+    "defaultMessage": "เพิ่มการ์ด"
+  },
+  "oHPB8Q": {
+    "defaultMessage": "ส่ง Zap ให้ {name}"
+  },
+  "oZrFyI": {
+    "defaultMessage": "Stream type should be HLS"
+  },
+  "pO/lPX": {
+    "defaultMessage": "จะมีการถ่ายทอดสดเวลา {date}"
+  },
+  "rWBFZA": {
+    "defaultMessage": "เตือน! เนื้อหามีส่วนของภาพโป๊เปลือย หรือสื่อลามก"
+  },
+  "rbrahO": {
+    "defaultMessage": "ปิด"
+  },
+  "rfC1Zq": {
+    "defaultMessage": "บันทึกการ์ด"
+  },
+  "rgsbu9": {
+    "defaultMessage": "Current Viewers"
+  },
+  "s5ksS7": {
+    "defaultMessage": "ลิงค์รูปภาพ"
+  },
+  "s7V+5p": {
+    "defaultMessage": "ยืนยันอายุของคุณ"
+  },
+  "tG1ST3": {
+    "defaultMessage": "Incoming Zap"
+  },
+  "thsiMl": {
+    "defaultMessage": "ข้อตกลงและเงื่อนไข"
+  },
+  "tzMNF3": {
+    "defaultMessage": "สถานะ"
+  },
+  "uYw2LD": {
+    "defaultMessage": "ถ่ายทอดสด"
+  },
+  "vrTOHJ": {
+    "defaultMessage": "{amount} sats"
+  },
+  "w0Xm2F": {
+    "defaultMessage": "Start typing"
+  },
+  "wCIL7o": {
+    "defaultMessage": "แชร์ด้วย Nostr"
+  },
+  "wEQDC6": {
+    "defaultMessage": "แก้ไข"
+  },
+  "wOy57k": {
+    "defaultMessage": "เพิ่มเป้าหมายของการถ่ายทอดสดนี้"
+  },
+  "wzWWzV": {
+    "defaultMessage": "สุดยอดมือ Zap"
+  },
+  "x82IOl": {
+    "defaultMessage": "ปิดการมองเห็น"
+  },
+  "zVDHAu": {
+    "defaultMessage": "Zap Alert"
+  }
+}
+
