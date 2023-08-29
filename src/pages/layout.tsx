@@ -15,6 +15,7 @@ import { Login } from "index";
 import { FormattedMessage } from "react-intl";
 import { EventPublisher } from "@snort/system";
 import { LoginType } from "login";
+import LoginHeader from "../login-header.png";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -87,7 +88,10 @@ export function LayoutPage() {
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">
-            <LoginSignup close={() => setShowLogin(false)} />
+            <img src={LoginHeader} className="header-image"/>
+            <div className="content-inner">
+              <LoginSignup close={() => setShowLogin(false)} />
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

@@ -98,17 +98,25 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <h2>
-            <FormattedMessage defaultMessage="Login" />
+            <FormattedMessage defaultMessage="Create an Account" />
           </h2>
-          <button type="button" className="btn btn-primary" onClick={createAccount}>
+          <h3>
+            <FormattedMessage defaultMessage="No emails, just awesomeness!" />
+          </h3>
+          <button type="button" className="btn btn-primary btn-block" onClick={createAccount}>
             <FormattedMessage defaultMessage="Create Account" />
           </button>
+          <div className="or-divider">
+            <hr/>
+            <FormattedMessage defaultMessage="OR" />
+            <hr/>
+          </div>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary btn-block"
             onClick={doLoginNsec}
           >
-            Enter Nsec
+            <FormattedMessage defaultMessage="Login with Private Key (insecure)" />
           </button>
           {error && <b className="error">{error}</b>}
         </>
@@ -132,7 +140,7 @@ export function LoginSignup({ close }: { close: () => void }) {
               <Icon name="camera-plus" />
             </div>
           </div>
-          <div>
+          <div className="username">
             <div className="paper">
               <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
             </div>
