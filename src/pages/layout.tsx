@@ -13,6 +13,8 @@ import { Menu, MenuItem } from "@szhsin/react-menu";
 import { hexToBech32 } from "@snort/shared";
 import { Login } from "index";
 import { FormattedMessage } from "react-intl";
+import { EventPublisher } from "@snort/system";
+import { LoginType } from "login";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -62,14 +64,26 @@ export function LayoutPage() {
   function loggedOut() {
     if (login) return;
 
+    async function handleLogin() {
+      try {
+        const pub = await EventPublisher.nip7();
+        if (pub) {
+          Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
+          return;
+        }
+      }
+      catch(e) {
+        console.error(e);
+      }
+      setShowLogin(true);
+    }
+
     return (
       <Dialog.Root open={showLogin} onOpenChange={setShowLogin}>
-        <Dialog.Trigger asChild>
-          <button type="button" className="btn btn-border" onClick={() => setShowLogin(true)}>
-            <FormattedMessage defaultMessage="Login" />
-            <Icon name="login" />
-          </button>
-        </Dialog.Trigger>
+        <button type="button" className="btn btn-border" onClick={handleLogin}>
+          <FormattedMessage defaultMessage="Login" />
+          <Icon name="login" />
+        </button>
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">

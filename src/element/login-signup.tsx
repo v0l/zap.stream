@@ -10,7 +10,6 @@ import { Icon } from "./icon";
 import Copy from "./copy";
 import { hexToBech32, openFile } from "utils";
 import { VoidApi } from "@void-cat/api";
-import { LoginType } from "login";
 import { FormattedMessage } from "react-intl";
 import { bech32 } from "@scure/base";
 
@@ -27,23 +26,6 @@ export function LoginSignup({ close }: { close: () => void }) {
   const [avatar, setAvatar] = useState("");
   const [key, setNewKey] = useState("");
 
-  async function doLogin() {
-    try {
-      const pub = await EventPublisher.nip7();
-      if (pub) {
-        Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
-        close();
-      }
-    } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError(e as string);
-      }
-    }
-  }
-  
   function doLoginNsec() {
     try {
       let nsec = prompt("Enter your nsec\nWARNING: THIS IS NOT RECOMMENDED. DO NOT IMPORT ANY KEYS YOU CARE ABOUT");
@@ -118,11 +100,6 @@ export function LoginSignup({ close }: { close: () => void }) {
           <h2>
             <FormattedMessage defaultMessage="Login" />
           </h2>
-          {"nostr" in window && (
-            <AsyncButton type="button" className="btn btn-primary" onClick={doLogin}>
-              <FormattedMessage defaultMessage="Nostr Extension" />
-            </AsyncButton>
-          )}
           <button type="button" className="btn btn-primary" onClick={createAccount}>
             <FormattedMessage defaultMessage="Create Account" />
           </button>
