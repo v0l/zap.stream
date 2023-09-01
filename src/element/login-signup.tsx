@@ -74,7 +74,7 @@ export function LoginSignup({ close }: { close: () => void }) {
   function createAccount() {
     const newKey = bytesToHex(schnorr.utils.randomPrivateKey());
     setNewKey(newKey);
-    setLnAddress(`${getPublicKey(newKey)}@zap.stream`)
+    setLnAddress(`${getPublicKey(newKey)}@zap.stream`);
     setStage(Stage.Details);
   }
 
@@ -106,7 +106,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     const info = await px.info();
     setProviderInfo(info);
 
-    setStage(Stage.LnAddress)
+    setStage(Stage.LnAddress);
   }
 
   async function saveProfile() {
@@ -116,9 +116,11 @@ export function LoginSignup({ close }: { close: () => void }) {
         const lnurl = new LNURL(lnAddress);
         await lnurl.load();
       } catch {
-        throw new Error(formatMessage({
-          defaultMessage: "Hmm, your lightning address looks wrong"
-        }));
+        throw new Error(
+          formatMessage({
+            defaultMessage: "Hmm, your lightning address looks wrong",
+          })
+        );
       }
       const pub = EventPublisher.privateKey(key);
       const profile = {
@@ -162,11 +164,13 @@ export function LoginSignup({ close }: { close: () => void }) {
               <FormattedMessage defaultMessage="OR" />
               <hr />
             </div>
-            {hasNostrExtension && <>
-              <AsyncButton type="button" className="btn btn-primary btn-block" onClick={loginNip7}>
-                <FormattedMessage defaultMessage="Nostr Extension" />
-              </AsyncButton>
-            </>}
+            {hasNostrExtension && (
+              <>
+                <AsyncButton type="button" className="btn btn-primary btn-block" onClick={loginNip7}>
+                  <FormattedMessage defaultMessage="Nostr Extension" />
+                </AsyncButton>
+              </>
+            )}
             <button type="button" className="btn btn-primary btn-block" onClick={() => setStage(Stage.LoginInput)}>
               <FormattedMessage defaultMessage="Login with Private Key (insecure)" />
             </button>
@@ -184,22 +188,35 @@ export function LoginSignup({ close }: { close: () => void }) {
               <FormattedMessage defaultMessage="Login with private key" />
             </h2>
             <p>
-              <FormattedMessage defaultMessage="This method is insecure. We recommend using a {nostrlink}" values={{
-                nostrlink: <a href="">
-                  <FormattedMessage defaultMessage="nostr signer extension" />
-                </a>
-              }} />
+              <FormattedMessage
+                defaultMessage="This method is insecure. We recommend using a {nostrlink}"
+                values={{
+                  nostrlink: (
+                    <a href="">
+                      <FormattedMessage defaultMessage="nostr signer extension" />
+                    </a>
+                  ),
+                }}
+              />
             </p>
             <div className="paper">
-              <input type="text" value={key} onChange={e => setNewKey(e.target.value)} placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz" })} />
+              <input
+                type="text"
+                value={key}
+                onChange={e => setNewKey(e.target.value)}
+                placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz" })}
+              />
             </div>
             <div className="flex f-space">
               <div></div>
               <div className="flex g8">
-                <button type="button" className="btn btn-secondary" onClick={() => {
-                  setNewKey("");
-                  setStage(Stage.Login)
-                }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    setNewKey("");
+                    setStage(Stage.Login);
+                  }}>
                   <FormattedMessage defaultMessage="Cancel" />
                 </button>
                 <AsyncButton onClick={doLoginNsec} className="btn btn-primary">
@@ -210,7 +227,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             {error && <b className="error">{error}</b>}
           </div>
         </>
-      )
+      );
     }
     case Stage.Details: {
       return (
@@ -234,7 +251,12 @@ export function LoginSignup({ close }: { close: () => void }) {
             </div>
             <div className="username">
               <div className="paper">
-                <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                />
               </div>
               <small>
                 <FormattedMessage defaultMessage="You can change this later" />
@@ -258,14 +280,24 @@ export function LoginSignup({ close }: { close: () => void }) {
             <p>
               <FormattedMessage defaultMessage="We hooked you up with a lightning wallet so you can get paid by viewers right away!" />
             </p>
-            {providerInfo?.balance && <p>
-              <FormattedMessage defaultMessage="Oh, and you have {n} sats of free streaming on us! 💜" values={{
-                n: <FormattedNumber value={providerInfo.balance} />
-              }} />
-            </p>}
+            {providerInfo?.balance && (
+              <p>
+                <FormattedMessage
+                  defaultMessage="Oh, and you have {n} sats of free streaming on us! 💜"
+                  values={{
+                    n: <FormattedNumber value={providerInfo.balance} />,
+                  }}
+                />
+              </p>
+            )}
             <div className="username">
               <div className="paper">
-                <input type="text" placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com" })} value={lnAddress} onChange={e => setLnAddress(e.target.value)} />
+                <input
+                  type="text"
+                  placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com" })}
+                  value={lnAddress}
+                  onChange={e => setLnAddress(e.target.value)}
+                />
               </div>
               <small>
                 <FormattedMessage defaultMessage="You can always replace it with your own address later." />
@@ -277,7 +309,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             </AsyncButton>
           </div>
         </>
-      )
+      );
     }
     case Stage.SaveKey: {
       return (
