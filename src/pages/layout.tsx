@@ -30,9 +30,7 @@ export function LayoutPage() {
         menuClassName="ctx-menu"
         menuButton={
           <div className="flex f-center g24">
-            <div className="flag">
-
-            </div>
+            <div className="flag"></div>
             <div className="uppercase pointer">
               <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
             </div>
@@ -40,12 +38,13 @@ export function LayoutPage() {
         }
         align="end"
         gap={5}>
-        {AllLocales.sort().map(l => <MenuItem onClick={() => setLang(l)} key={l}>
-          {new Intl.DisplayNames([l], {
-            type: "language",
-          }).of(l)}
-        </MenuItem>)}
-
+        {AllLocales.sort().map(l => (
+          <MenuItem onClick={() => setLang(l)} key={l}>
+            {new Intl.DisplayNames([l], {
+              type: "language",
+            }).of(l)}
+          </MenuItem>
+        ))}
       </Menu>
     );
   }

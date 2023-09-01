@@ -11,12 +11,7 @@ async function importLang(code: string) {
   return Object.fromEntries(ent) as Record<string, string>;
 }
 
-export const AllLocales = [
-  "en",
-  "de",
-  "es",
-  "th"
-]
+export const AllLocales = ["en", "de", "es", "th"];
 
 const getMessages = (locale: string) => {
   const truncatedLocale = locale.toLowerCase().split(/[_-]+/)[0];
