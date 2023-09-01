@@ -18,6 +18,7 @@ import { LoginStore } from "login";
 import { StreamProvidersPage } from "pages/providers";
 import { defaultRelays } from "const";
 import { CatchAllRoutePage } from "pages/catch-all";
+import { SettingsPage } from "pages/settings-page";
 import { register } from "serviceWorker";
 import { IntlProvider } from "intl";
 import { WidgetsPage } from "pages/widgets";
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/providers/:id?",
         element: <StreamProvidersPage />,
+      },
+      {
+        path: "/settings",
+        element: <SettingsPage />,
       },
       {
         path: "/widgets",

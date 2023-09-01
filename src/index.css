@@ -17,6 +17,7 @@ body {
   --text-danger: #ff563f;
   --surface: #222;
   --border: #171717;
+  --border-2: #393939;
   --gradient-purple: linear-gradient(135deg, #882bff 0%, #f83838 100%);
   --gradient-yellow: linear-gradient(270deg, #adff27 0%, #ffd027 100%);
   --gradient-orange: linear-gradient(270deg, #ff5b27 0%, rgba(255, 182, 39, 0.99) 100%);
@@ -107,6 +108,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  height: 44px;
+}
+
+.btn-block {
+  width: 100%;
 }
 
 .btn-small {
@@ -226,6 +232,7 @@ div.paper {
 .dialog-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
   z-index: 2;
   background-color: #171717;
@@ -235,20 +242,44 @@ div.paper {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
-  max-width: 450px;
+  max-width: 430px;
   max-height: 85vh;
-  padding: 25px;
   overflow-y: auto;
+}
+.dialog-content .header-image {
+  width: 100%;
+  height: auto;
+}
+.dialog-content .content-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+.dialog-content .username, .dialog-content .username input {
+  width: 100%;
 }
 
 .dialog-content div.paper {
   background: #262626;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.dialog-content h3 {
+.dialog-content h2 {
   font-size: 24px;
   font-weight: 500;
   margin: 0;
+}
+.dialog-content h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 24px;
 }
 
 .dialog-content small {
@@ -303,4 +334,16 @@ div.paper {
 
 .secondary {
   color: #909090;
+}
+
+.or-divider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.or-divider hr {
+  width: 135px;
+  border-color: var(--border-2);
 }

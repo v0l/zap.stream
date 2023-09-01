@@ -13,6 +13,9 @@ import { Menu, MenuItem } from "@szhsin/react-menu";
 import { hexToBech32 } from "@snort/shared";
 import { Login } from "index";
 import { FormattedMessage } from "react-intl";
+import { EventPublisher } from "@snort/system";
+import { LoginType } from "login";
+import LoginHeader from "../login-header.png";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -46,6 +49,10 @@ export function LayoutPage() {
             <Icon name="user" size={24} />
             <FormattedMessage defaultMessage="Profile" />
           </MenuItem>
+          <MenuItem onClick={() => navigate("/settings")}>
+            <Icon name="settings" size={24} />
+            Settings
+          </MenuItem>
           <MenuItem onClick={() => Login.logout()}>
             <Icon name="logout" size={24} />
             <FormattedMessage defaultMessage="Logout" />
@@ -58,18 +65,33 @@ export function LayoutPage() {
   function loggedOut() {
     if (login) return;
 
+    async function handleLogin() {
+      try {
+        const pub = await EventPublisher.nip7();
+        if (pub) {
+          Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
+          return;
+        }
+      }
+      catch(e) {
+        console.error(e);
+      }
+      setShowLogin(true);
+    }
+
     return (
       <Dialog.Root open={showLogin} onOpenChange={setShowLogin}>
-        <Dialog.Trigger asChild>
-          <button type="button" className="btn btn-border" onClick={() => setShowLogin(true)}>
-            <FormattedMessage defaultMessage="Login" />
-            <Icon name="login" />
-          </button>
-        </Dialog.Trigger>
+        <button type="button" className="btn btn-border" onClick={handleLogin}>
+          <FormattedMessage defaultMessage="Login" />
+          <Icon name="login" />
+        </button>
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">
-            <LoginSignup close={() => setShowLogin(false)} />
+            <img src={LoginHeader} className="header-image"/>
+            <div className="content-inner">
+              <LoginSignup close={() => setShowLogin(false)} />
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

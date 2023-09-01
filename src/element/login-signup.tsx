@@ -10,8 +10,8 @@ import { Icon } from "./icon";
 import Copy from "./copy";
 import { hexToBech32, openFile } from "utils";
 import { VoidApi } from "@void-cat/api";
-import { LoginType } from "login";
 import { FormattedMessage } from "react-intl";
+import { bech32 } from "@scure/base";
 
 enum Stage {
   Login = 0,
@@ -26,13 +26,19 @@ export function LoginSignup({ close }: { close: () => void }) {
   const [avatar, setAvatar] = useState("");
   const [key, setNewKey] = useState("");
 
-  async function doLogin() {
+  function doLoginNsec() {
     try {
-      const pub = await EventPublisher.nip7();
-      if (pub) {
-        Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
-        close();
+      let nsec = prompt("Enter your nsec\nWARNING: THIS IS NOT RECOMMENDED. DO NOT IMPORT ANY KEYS YOU CARE ABOUT");
+      if (!nsec) {
+        throw new Error("no nsec provided");
       }
+      if (nsec.startsWith("nsec")) {
+        const {words} = bech32.decode(nsec, 5000);
+        const data = new Uint8Array(bech32.fromWords(words));
+        nsec = bytesToHex(data);
+      }
+      Login.loginWithPrivateKey(nsec);
+      close();
     } catch (e) {
       console.error(e);
       if (e instanceof Error) {
@@ -92,15 +98,25 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <h2>
-            <FormattedMessage defaultMessage="Login" />
+            <FormattedMessage defaultMessage="Create an Account" />
           </h2>
-          {"nostr" in window && (
-            <AsyncButton type="button" className="btn btn-primary" onClick={doLogin}>
-              <FormattedMessage defaultMessage="Nostr Extension" />
-            </AsyncButton>
-          )}
-          <button type="button" className="btn btn-primary" onClick={createAccount}>
+          <h3>
+            <FormattedMessage defaultMessage="No emails, just awesomeness!" />
+          </h3>
+          <button type="button" className="btn btn-primary btn-block" onClick={createAccount}>
             <FormattedMessage defaultMessage="Create Account" />
+          </button>
+          <div className="or-divider">
+            <hr/>
+            <FormattedMessage defaultMessage="OR" />
+            <hr/>
+          </div>
+          <button
+            type="button"
+            className="btn btn-primary btn-block"
+            onClick={doLoginNsec}
+          >
+            <FormattedMessage defaultMessage="Login with Private Key (insecure)" />
           </button>
           {error && <b className="error">{error}</b>}
         </>
@@ -124,7 +140,7 @@ export function LoginSignup({ close }: { close: () => void }) {
               <Icon name="camera-plus" />
             </div>
           </div>
-          <div>
+          <div className="username">
             <div className="paper">
               <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
             </div>
