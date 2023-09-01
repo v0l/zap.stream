@@ -13,9 +13,6 @@ import { Menu, MenuItem } from "@szhsin/react-menu";
 import { hexToBech32 } from "@snort/shared";
 import { Login } from "index";
 import { FormattedMessage } from "react-intl";
-import { EventPublisher } from "@snort/system";
-import { LoginType } from "login";
-import LoginHeader from "../login-header.png";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -65,16 +62,7 @@ export function LayoutPage() {
   function loggedOut() {
     if (login) return;
 
-    async function handleLogin() {
-      try {
-        const pub = await EventPublisher.nip7();
-        if (pub) {
-          Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
-          return;
-        }
-      } catch (e) {
-        console.error(e);
-      }
+    function handleLogin() {
       setShowLogin(true);
     }
 
@@ -87,10 +75,7 @@ export function LayoutPage() {
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">
-            <img src={LoginHeader} className="header-image" />
-            <div className="content-inner">
-              <LoginSignup close={() => setShowLogin(false)} />
-            </div>
+            <LoginSignup close={() => setShowLogin(false)} />
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

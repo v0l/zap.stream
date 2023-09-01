@@ -73,6 +73,8 @@ export interface StreamProviderStreamInfo {
   content_warning: string;
 }
 
+export const DefaultProvider = new Nip103StreamProvider("zap.stream", "https://api.zap.stream/api/nostr/");
+
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
   #providers: Array<StreamProvider> = [];
 
@@ -88,7 +90,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
             break;
           }
           case StreamProviders.NostrType: {
-            this.#providers.push(new Nip103StreamProvider(c.url as string));
+            this.#providers.push(new Nip103StreamProvider(new URL(c.url as string).host, c.url as string));
             break;
           }
           case StreamProviders.Owncast: {
@@ -107,8 +109,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
   }
 
   takeSnapshot() {
-    const defaultProvider = new Nip103StreamProvider("https://api.zap.stream/api/nostr/");
-    return [defaultProvider, new ManualProvider(), ...this.#providers];
+    return [DefaultProvider, new ManualProvider(), ...this.#providers];
   }
 
   #save() {

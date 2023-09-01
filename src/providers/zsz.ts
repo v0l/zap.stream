@@ -1,3 +1,4 @@
+import { base64 } from "@scure/base";
 import {
   StreamProvider,
   StreamProviderEndpoint,
@@ -5,20 +6,16 @@ import {
   StreamProviderStreamInfo,
   StreamProviders,
 } from ".";
-import { EventKind, NostrEvent } from "@snort/system";
+import { EventKind, EventPublisher, NostrEvent } from "@snort/system";
 import { Login, StreamState } from "index";
 import { getPublisher } from "login";
 import { findTag } from "utils";
 
 export class Nip103StreamProvider implements StreamProvider {
-  #url: string;
+  #publisher?: EventPublisher;
 
-  constructor(url: string) {
-    this.#url = url;
-  }
-
-  get name() {
-    return new URL(this.#url).host;
+  constructor(readonly name: string, readonly url: string, pub?: EventPublisher) {
+    this.#publisher = pub;
   }
 
   get type() {
@@ -52,7 +49,7 @@ export class Nip103StreamProvider implements StreamProvider {
   createConfig() {
     return {
       type: StreamProviders.NostrType,
-      url: this.#url,
+      url: this.url,
     };
   }
 
@@ -83,11 +80,17 @@ export class Nip103StreamProvider implements StreamProvider {
   }
 
   async #getJson<T>(method: "GET" | "POST" | "PATCH", path: string, body?: unknown): Promise<T> {
-    const login = Login.snapshot();
-    const pub = login && getPublisher(login);
+    const pub = (() => {
+      if (this.#publisher) {
+        return this.#publisher;
+      } else {
+        const login = Login.snapshot();
+        return login && getPublisher(login);
+      }
+    })();
     if (!pub) throw new Error("No signer");
 
-    const u = `${this.#url}${path}`;
+    const u = `${this.url}${path}`;
     const token = await pub.generic(eb => {
       return eb.kind(EventKind.HttpAuthentication).content("").tag(["u", u]).tag(["method", method]);
     });
@@ -96,7 +99,7 @@ export class Nip103StreamProvider implements StreamProvider {
       body: body ? JSON.stringify(body) : undefined,
       headers: {
         "content-type": "application/json",
-        authorization: `Nostr ${btoa(JSON.stringify(token))}`,
+        authorization: `Nostr ${base64.encode(new TextEncoder().encode(JSON.stringify(token)))}`,
       },
     });
     const json = await rsp.text();

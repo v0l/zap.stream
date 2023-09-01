@@ -15,7 +15,7 @@ export function ConfigureNostrType() {
 
   async function tryConnect() {
     try {
-      const api = new Nip103StreamProvider(url);
+      const api = new Nip103StreamProvider(new URL(url).host, url);
       const inf = await api.info();
       setInfo(inf);
     } catch (e) {
@@ -58,7 +58,7 @@ export function ConfigureNostrType() {
           <button
             className="btn btn-border"
             onClick={() => {
-              StreamProviderStore.add(new Nip103StreamProvider(url));
+              StreamProviderStore.add(new Nip103StreamProvider(new URL(url).host, url));
               navigate("/");
             }}>
             <FormattedMessage defaultMessage="Save" />

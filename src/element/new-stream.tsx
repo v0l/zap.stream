@@ -101,8 +101,10 @@ export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps)
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
-          <div className="new-stream">
-            <NewStream {...props} onFinish={() => setOpen(false)} />
+          <div className="content-inner">
+            <div className="new-stream">
+              <NewStream {...props} onFinish={() => setOpen(false)} />
+            </div>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
