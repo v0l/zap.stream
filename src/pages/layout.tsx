@@ -13,12 +13,42 @@ import { Profile } from "element/profile";
 import { NewStreamDialog } from "element/new-stream";
 import { LoginSignup } from "element/login-signup";
 import { Login } from "index";
+import { useLang } from "hooks/lang";
+import { AllLocales } from "intl";
 
 export function LayoutPage() {
   const navigate = useNavigate();
   const login = useLogin();
   const [showLogin, setShowLogin] = useState(false);
+  const { lang, setLang } = useLang();
+
   useLoginEvents(login?.pubkey, true);
+
+  function langSelector() {
+    return (
+      <Menu
+        menuClassName="ctx-menu"
+        menuButton={
+          <div className="flex f-center g24">
+            <div className="flag">
+
+            </div>
+            <div className="uppercase pointer">
+              <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
+            </div>
+          </div>
+        }
+        align="end"
+        gap={5}>
+        {AllLocales.sort().map(l => <MenuItem onClick={() => setLang(l)} key={l}>
+          {new Intl.DisplayNames([l], {
+            type: "language",
+          }).of(l)}
+        </MenuItem>)}
+
+      </Menu>
+    );
+  }
 
   function loggedIn() {
     if (!login) return;
@@ -95,6 +125,7 @@ export function LayoutPage() {
   </div>*/}
         <div className="f-grow">{/* Future menu items go here */}</div>
         <div className="header-right">
+          {langSelector()}
           {loggedIn()}
           {loggedOut()}
         </div>
