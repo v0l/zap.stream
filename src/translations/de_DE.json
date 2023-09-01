@@ -63,10 +63,10 @@
     "defaultMessage": "Beginnt"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} zappt {amount} sats"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW-Inhalt"
+    "defaultMessage": "NSFW Inhalt"
   },
   "AyGauy": {
     "defaultMessage": "Anmelden"
@@ -102,7 +102,7 @@
     "defaultMessage": "Zap Betrag in {currency}"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "Hochladen..."
   },
   "Jq3FDz": {
     "defaultMessage": "Inhalt"
@@ -117,7 +117,7 @@
     "defaultMessage": "Anzeigen"
   },
   "KkIL3s": {
-    "defaultMessage": "Nein, ich bin jünger als 18"
+    "defaultMessage": "Nein, ich bin unter 18 Jahre alt"
   },
   "Ld5LAE": {
     "defaultMessage": "Nostr verwendet private Schlüssel. Bitte speichere deinen Schlüssel, wenn du diesen verlierst, kannst du dich nicht mehr in deinen Account einloggen!"
@@ -129,7 +129,7 @@
     "defaultMessage": "Ok, er ist gesichert"
   },
   "O2Cy6m": {
-    "defaultMessage": "Ja, ich bin älter als 18"
+    "defaultMessage": "Ja, ich bin über 18 Jahre alt"
   },
   "OKhRC6": {
     "defaultMessage": "Teilen"
@@ -150,7 +150,7 @@
     "defaultMessage": "Ziel: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name} mit {amount}"
   },
   "RJOmzk": {
     "defaultMessage": "Ich habe die {provider} {terms} gelesen und stimme ihnen zu."
@@ -162,7 +162,7 @@
     "defaultMessage": "Zusammenfassung"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "Beendet"
   },
   "TaTRKo": {
     "defaultMessage": "Stream starten"
@@ -189,7 +189,7 @@
     "defaultMessage": "Weiter"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Folge ich"
   },
   "cvAsEh": {
     "defaultMessage": "Am {date} gestreamt"
@@ -207,7 +207,7 @@
     "defaultMessage": "Zap"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "Datei hinzufügen"
   },
   "hGQqkW": {
     "defaultMessage": "Zeitplan"
@@ -231,10 +231,10 @@
     "defaultMessage": "Speichern"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "z.B. über mich"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "Geplant"
   },
   "lZpRMR": {
     "defaultMessage": "Aktivieren Sie hier, wenn dieser Stream Nacktheit oder pornographische Inhalte enthält."
@@ -273,7 +273,7 @@
     "defaultMessage": "Karte speichern"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Aktuelle Zuschauer"
   },
   "s5ksS7": {
     "defaultMessage": "Bild-Link"
@@ -282,7 +282,7 @@
     "defaultMessage": "Bestätigen Sie ihr Alter"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Eingehender Zap"
   },
   "thsiMl": {
     "defaultMessage": "Allgemeinen Geschäftsbedingungen"
@@ -297,7 +297,7 @@
     "defaultMessage": "{amount} sats"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "Beginne zu tippen"
   },
   "wCIL7o": {
     "defaultMessage": "Auf Nostr senden"

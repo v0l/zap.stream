@@ -1,0 +1,321 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "Picha"
+  },
+  "+vVZ/G": {
+    "defaultMessage": "Unganisha"
+  },
+  "/0TOL5": {
+    "defaultMessage": "Kiasi"
+  },
+  "/GCoTA": {
+    "defaultMessage": "Futa"
+  },
+  "04lmFi": {
+    "defaultMessage": "Okoa ufunguo"
+  },
+  "0GfNiL": {
+    "defaultMessage": "Tiririsha Malengo ya Zap"
+  },
+  "1EYCdR": {
+    "defaultMessage": "Vitambulisho"
+  },
+  "2/2yg+": {
+    "defaultMessage": "Ongeza"
+  },
+  "2CGh/0": {
+    "defaultMessage": "moja kwa moja"
+  },
+  "3HwrQo": {
+    "defaultMessage": "Zap!"
+  },
+  "3adEeb": {
+    "defaultMessage": "{n} watazamaji"
+  },
+  "47FYwb": {
+    "defaultMessage": "Ghairi"
+  },
+  "4l6vz1": {
+    "defaultMessage": "Nakala"
+  },
+  "4uI538": {
+    "defaultMessage": "Maazimio"
+  },
+  "5JcXdV": {
+    "defaultMessage": "Tengeneza akaunti"
+  },
+  "5QYdPU": {
+    "defaultMessage": "Wakati wa kuanza"
+  },
+  "5kx+2v": {
+    "defaultMessage": "Url ya seva"
+  },
+  "6Z2pvJ": {
+    "defaultMessage": "Watoa huduma za mkondo"
+  },
+  "9WRlF4": {
+    "defaultMessage": "Tuma"
+  },
+  "9a9+ww": {
+    "defaultMessage": "Kichwa"
+  },
+  "9anxhq": {
+    "defaultMessage": "Huanza"
+  },
+  "AIHaPH": {
+    "defaultMessage": "{person} amezap {amount} sats"
+  },
+  "Atr2p4": {
+    "defaultMessage": "Maudhui ya NSFW"
+  },
+  "AyGauy": {
+    "defaultMessage": "Ingia"
+  },
+  "BGxpTN": {
+    "defaultMessage": "Mkondo Gumzo"
+  },
+  "C81/uG": {
+    "defaultMessage": "Toka nje"
+  },
+  "Dn82AL": {
+    "defaultMessage": "Moja kwa moja"
+  },
+  "ESyhzp": {
+    "defaultMessage": "Maoni yako ya {name}"
+  },
+  "G/yZLu": {
+    "defaultMessage": "Ondoa"
+  },
+  "Gq6x9o": {
+    "defaultMessage": "Picha ya Jalada"
+  },
+  "H5+NAX": {
+    "defaultMessage": "Mizani"
+  },
+  "HAlOn1": {
+    "defaultMessage": "Jina"
+  },
+  "I1kjHI": {
+    "defaultMessage": "Inaauni {markdown}"
+  },
+  "IJDKz3": {
+    "defaultMessage": "Kiasi cha Zap kwa {currency}"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Inapakia..."
+  },
+  "Jq3FDz": {
+    "defaultMessage": "Maudhui"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Futa"
+  },
+  "K3uH1C": {
+    "defaultMessage": "nje ya mtandao"
+  },
+  "K7AkdL": {
+    "defaultMessage": "Onyesha"
+  },
+  "KkIL3s": {
+    "defaultMessage": "Hapana, mimi ni chini ya miaka 18"
+  },
+  "Ld5LAE": {
+    "defaultMessage": "Nostr hutumia funguo za faragha, tafadhali hifadhi zako, ukipoteza ufunguo huu hutaweza tena kuingia kwenye akaunti yako!"
+  },
+  "LknBsU": {
+    "defaultMessage": "Ufunguo wa Kutiririsha"
+  },
+  "My6HwN": {
+    "defaultMessage": "Sawa, ni salama"
+  },
+  "O2Cy6m": {
+    "defaultMessage": "Ndiyo, nina zaidi ya miaka 18"
+  },
+  "OKhRC6": {
+    "defaultMessage": "Shiriki"
+  },
+  "OWgHbg": {
+    "defaultMessage": "Hariri kadi"
+  },
+  "Q3au2v": {
+    "defaultMessage": "Kuhusu {estimate}"
+  },
+  "QRHNuF": {
+    "defaultMessage": "Tunapika nini leo?"
+  },
+  "QRRCp0": {
+    "defaultMessage": "Tiririsha URL"
+  },
+  "QceMQZ": {
+    "defaultMessage": "Lengo: {amount}"
+  },
+  "Qe1MJu": {
+    "defaultMessage": "{name} pamoja na {amount}"
+  },
+  "RJOmzk": {
+    "defaultMessage": "Nimesoma na kukubaliana na {terms} ya {provider}."
+  },
+  "RXQdxR": {
+    "defaultMessage": "Tafadhali ingia ili kuandika ujumbe!"
+  },
+  "RrCui3": {
+    "defaultMessage": "Muhtasari"
+  },
+  "TP/cMX": {
+    "defaultMessage": "Imeisha"
+  },
+  "TaTRKo": {
+    "defaultMessage": "Anza Kutiririsha"
+  },
+  "UJBFYK": {
+    "defaultMessage": "Ongeza Kadi"
+  },
+  "UfSot5": {
+    "defaultMessage": "Mitiririko ya Zamani"
+  },
+  "VA/Z1S": {
+    "defaultMessage": "Ficha"
+  },
+  "W9355R": {
+    "defaultMessage": "Rejesha"
+  },
+  "X2PZ7D": {
+    "defaultMessage": "Tengeneza Lengo"
+  },
+  "ZmqxZs": {
+    "defaultMessage": "Unaweza kubadilisha hii baadaye"
+  },
+  "acrOoz": {
+    "defaultMessage": "Endelea"
+  },
+  "cPIKU2": {
+    "defaultMessage": "Kufuatia"
+  },
+  "cvAsEh": {
+    "defaultMessage": "Ilitiririshwa mnamo {date}"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Rudi"
+  },
+  "dVD/AR": {
+    "defaultMessage": "Zappers za Juu"
+  },
+  "ebmhes": {
+    "defaultMessage": "Ugani wa Nostr"
+  },
+  "fBI91o": {
+    "defaultMessage": "Zap"
+  },
+  "fc2iho": {
+    "defaultMessage": "Ongeza Faili"
+  },
+  "hGQqkW": {
+    "defaultMessage": "Schedule"
+  },
+  "hpl4BP": {
+    "defaultMessage": "Wijeti ya Soga"
+  },
+  "ieGrWo": {
+    "defaultMessage": "Fuata"
+  },
+  "itPgxd": {
+    "defaultMessage": "Wasifu"
+  },
+  "izWS4J": {
+    "defaultMessage": "Acha kufuata"
+  },
+  "jr4+vD": {
+    "defaultMessage": "Alama"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Hifadhi"
+  },
+  "k21gTS": {
+    "defaultMessage": "k.m. kuhusu mimi"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Imepangwa"
+  },
+  "lZpRMR": {
+    "defaultMessage": "Angalia hapa ikiwa mtiririko huu una maudhui ya uchi au ponografia."
+  },
+  "ljmS5P": {
+    "defaultMessage": "Mwisho"
+  },
+  "mtNGwh": {
+    "defaultMessage": "Maelezo mafupi ya yaliyomo"
+  },
+  "nBCvvJ": {
+    "defaultMessage": "Kuongeza"
+  },
+  "nOaArs": {
+    "defaultMessage": "Sanidi Wasifu"
+  },
+  "nwA8Os": {
+    "defaultMessage": "Ongeza kadi"
+  },
+  "oHPB8Q": {
+    "defaultMessage": "Zap {name}"
+  },
+  "oZrFyI": {
+    "defaultMessage": "Aina ya mtiririko inapaswa kuwa HLS"
+  },
+  "pO/lPX": {
+    "defaultMessage": "Imeratibiwa tarehe {date}"
+  },
+  "rWBFZA": {
+    "defaultMessage": "Nyenzo za ngono wazi mbele yako!"
+  },
+  "rbrahO": {
+    "defaultMessage": "Funga"
+  },
+  "rfC1Zq": {
+    "defaultMessage": "Hifadhi kadi"
+  },
+  "rgsbu9": {
+    "defaultMessage": "Watazamaji wa Sasa"
+  },
+  "s5ksS7": {
+    "defaultMessage": "Kiungo cha Picha"
+  },
+  "s7V+5p": {
+    "defaultMessage": "Thibitisha umri wako"
+  },
+  "tG1ST3": {
+    "defaultMessage": "Zap inayoingia"
+  },
+  "thsiMl": {
+    "defaultMessage": "sheria na Masharti"
+  },
+  "tzMNF3": {
+    "defaultMessage": "Hali"
+  },
+  "uYw2LD": {
+    "defaultMessage": "Tiririsha"
+  },
+  "vrTOHJ": {
+    "defaultMessage": "{amount} sats"
+  },
+  "w0Xm2F": {
+    "defaultMessage": "Anza kuandika"
+  },
+  "wCIL7o": {
+    "defaultMessage": "Tangaza kwenye Nostr"
+  },
+  "wEQDC6": {
+    "defaultMessage": "Hariri"
+  },
+  "wOy57k": {
+    "defaultMessage": "Ongeza lengo la mtiririko"
+  },
+  "wzWWzV": {
+    "defaultMessage": "Zappers wa juu"
+  },
+  "x82IOl": {
+    "defaultMessage": "Nyamazisha"
+  },
+  "zVDHAu": {
+    "defaultMessage": "Tahadhari ya Zap"
+  }
+}
+

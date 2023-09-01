@@ -1,321 +1,321 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "画像"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "接続"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "金額"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "クリア"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "鍵の保存"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "ザップ目標額を配信"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "タグ"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "追加"
   },
   "2CGh/0": {
-    "defaultMessage": "live"
+    "defaultMessage": "ライブ配信中"
   },
   "3HwrQo": {
-    "defaultMessage": "Zap!"
+    "defaultMessage": "ザップ！"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} 人が視聴中"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "キャンセル"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "コピー"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "解像度"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "アカウントを作成する"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "開始時間"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "サーバー URL"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "配信の提供元"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "送信"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "タイトル"
   },
   "9anxhq": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "開始"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} が {amount} sats をザップしました"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "不適切な内容"
   },
   "AyGauy": {
-    "defaultMessage": "Login"
+    "defaultMessage": "ログイン"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "チャット配信"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "ログアウト"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "ライブ配信中"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "{name} へのコメント"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "削除"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "カバー画像"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "残高"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "名前"
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "{markdown} をサポート"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "ザップ金額 ({currency})"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "アップロード中..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "コンテンツ"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "削除"
   },
   "K3uH1C": {
-    "defaultMessage": "offline"
+    "defaultMessage": "オフライン"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "表示"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "いいえ、私は18歳以下です"
   },
   "Ld5LAE": {
-    "defaultMessage": "Nostr uses private keys, please save yours, if you lose this key you wont be able to login to your account anymore!"
+    "defaultMessage": "Nostrは秘密鍵を使用しています。この鍵を紛失すると、アカウントにログインできなくなります！"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "配信キー"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "はい、大丈夫です"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "はい、18歳以上です"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "共有"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "カードの編集"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "{estimate} について"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "今日は何を配信していますか？"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "配信先URL"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "目標額： {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name}：{amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "{provider} の {terms} を読み、同意します。"
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "メッセージを書き込むにはログインしてください！"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "概要"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "終了しました"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "配信開始"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "カードを追加"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "過去の配信"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "非表示"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "ミュート解除"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "目標を設定"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "これはあとで変更することができます"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "続ける"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "フォロー中"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "{date} に配信されました"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "戻る"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "トップザッパー"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "Nostr 拡張機能"
   },
   "fBI91o": {
-    "defaultMessage": "Zap"
+    "defaultMessage": "ザップ"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "ファイルを追加"
   },
   "hGQqkW": {
-    "defaultMessage": "Schedule"
+    "defaultMessage": "配信予定"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "チャットウィジェット"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "フォロー"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "プロフィール"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "フォロー解除"
   },
   "jr4+vD": {
-    "defaultMessage": "Markdown"
+    "defaultMessage": "マークダウン"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "保存"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "例：自己紹介"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "予定あり"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "この配信にヌードやポルノコンテンツが含まれている場合は、ここをチェックしてください。"
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "エンドポイント"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "コンテンツの簡単な説明"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "アカウントチャージ"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "プロフィールを設定"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "カードを追加"
   },
   "oHPB8Q": {
-    "defaultMessage": "Zap {name}"
+    "defaultMessage": "{name} をザップ"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "配信タイプはHLSでなければなりません"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "配信予定：{date}"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "性的に露骨な表現が含まれています！"
   },
   "rbrahO": {
-    "defaultMessage": "Close"
+    "defaultMessage": "終了"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "カードを保存する"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "現在の視聴者数"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "画像リンク"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "年齢を確認してください"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "着金中のザップ"
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "利用規約"
   },
   "tzMNF3": {
-    "defaultMessage": "Status"
+    "defaultMessage": "ステータス"
   },
   "uYw2LD": {
-    "defaultMessage": "Stream"
+    "defaultMessage": "配信"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "入力を開始"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Nostr で配信"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "編集"
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "配信目標を追加"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "トップザッパー"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "ミュート"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "ザップアラート"
   }
 }
 

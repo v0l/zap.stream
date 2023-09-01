@@ -1,0 +1,321 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "تصویر"
+  },
+  "+vVZ/G": {
+    "defaultMessage": "اتصال"
+  },
+  "/0TOL5": {
+    "defaultMessage": "مبلغ"
+  },
+  "/GCoTA": {
+    "defaultMessage": "پاک کردن"
+  },
+  "04lmFi": {
+    "defaultMessage": "ذخیره کلید"
+  },
+  "0GfNiL": {
+    "defaultMessage": "اهداف زپ این پخش"
+  },
+  "1EYCdR": {
+    "defaultMessage": "برچسب‌ها"
+  },
+  "2/2yg+": {
+    "defaultMessage": "افزودن"
+  },
+  "2CGh/0": {
+    "defaultMessage": "زنده"
+  },
+  "3HwrQo": {
+    "defaultMessage": "زَپ!"
+  },
+  "3adEeb": {
+    "defaultMessage": "{n} بیننده"
+  },
+  "47FYwb": {
+    "defaultMessage": "لغو"
+  },
+  "4l6vz1": {
+    "defaultMessage": "کپی"
+  },
+  "4uI538": {
+    "defaultMessage": "وضوح"
+  },
+  "5JcXdV": {
+    "defaultMessage": "ساخت حساب کاربری"
+  },
+  "5QYdPU": {
+    "defaultMessage": "زمان شروع"
+  },
+  "5kx+2v": {
+    "defaultMessage": "آدرس سرور"
+  },
+  "6Z2pvJ": {
+    "defaultMessage": "ارائه دهندگان پخش زنده"
+  },
+  "9WRlF4": {
+    "defaultMessage": "ارسال"
+  },
+  "9a9+ww": {
+    "defaultMessage": "عنوان"
+  },
+  "9anxhq": {
+    "defaultMessage": "آغاز"
+  },
+  "AIHaPH": {
+    "defaultMessage": "{person} {amount} ساتوشی زپ زد"
+  },
+  "Atr2p4": {
+    "defaultMessage": "محتوای نامناسب برای کودکان و محل کار"
+  },
+  "AyGauy": {
+    "defaultMessage": "ورود"
+  },
+  "BGxpTN": {
+    "defaultMessage": "گپ پخش زنده"
+  },
+  "C81/uG": {
+    "defaultMessage": "خروج"
+  },
+  "Dn82AL": {
+    "defaultMessage": "زنده"
+  },
+  "ESyhzp": {
+    "defaultMessage": "نظر شما درباره {name}"
+  },
+  "G/yZLu": {
+    "defaultMessage": "حذف"
+  },
+  "Gq6x9o": {
+    "defaultMessage": "تصویر جلد"
+  },
+  "H5+NAX": {
+    "defaultMessage": "مانده حساب"
+  },
+  "HAlOn1": {
+    "defaultMessage": "نام"
+  },
+  "I1kjHI": {
+    "defaultMessage": "از {markdown} پشتیبانی می کند"
+  },
+  "IJDKz3": {
+    "defaultMessage": "مبلغ زپ به {currency}"
+  },
+  "JEsxDw": {
+    "defaultMessage": "در حال بارگذاری..."
+  },
+  "Jq3FDz": {
+    "defaultMessage": "محتوا"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "حذف"
+  },
+  "K3uH1C": {
+    "defaultMessage": "آفلاین"
+  },
+  "K7AkdL": {
+    "defaultMessage": "نمایش"
+  },
+  "KkIL3s": {
+    "defaultMessage": "نه، من زیر ۱۸ سال هستم"
+  },
+  "Ld5LAE": {
+    "defaultMessage": "ناستر از کلید خصوصی استفاده می کند، لطفا کلید خود را ذخیره کنید، اگر این کلید را گم کنید دیگر نمی توانید به حساب خود وارد شوید!"
+  },
+  "LknBsU": {
+    "defaultMessage": "کلید پخش زنده"
+  },
+  "My6HwN": {
+    "defaultMessage": "باشه، امن است"
+  },
+  "O2Cy6m": {
+    "defaultMessage": "بله، من بالای ۱۸ سال هستم"
+  },
+  "OKhRC6": {
+    "defaultMessage": "اشتراک‌گذاری"
+  },
+  "OWgHbg": {
+    "defaultMessage": "ویرایش کارت"
+  },
+  "Q3au2v": {
+    "defaultMessage": "حدود {estimate}"
+  },
+  "QRHNuF": {
+    "defaultMessage": "امروز چی پخش می کنیم؟"
+  },
+  "QRRCp0": {
+    "defaultMessage": "آدرس پخش زنده"
+  },
+  "QceMQZ": {
+    "defaultMessage": "هدف: {amount}"
+  },
+  "Qe1MJu": {
+    "defaultMessage": "{name} با {amount}"
+  },
+  "RJOmzk": {
+    "defaultMessage": "من {terms} {provider} را خوانده و با آن موافقم."
+  },
+  "RXQdxR": {
+    "defaultMessage": "لطفا برای نوشتن پیام وارد شوید!"
+  },
+  "RrCui3": {
+    "defaultMessage": "چکیده"
+  },
+  "TP/cMX": {
+    "defaultMessage": "به پایان رسید"
+  },
+  "TaTRKo": {
+    "defaultMessage": "شروع پخش زنده"
+  },
+  "UJBFYK": {
+    "defaultMessage": "افزودن کارت"
+  },
+  "UfSot5": {
+    "defaultMessage": "پخش های گذشته"
+  },
+  "VA/Z1S": {
+    "defaultMessage": "پنهان کردن"
+  },
+  "W9355R": {
+    "defaultMessage": "صداردار کردن"
+  },
+  "X2PZ7D": {
+    "defaultMessage": "ایجاد هدف"
+  },
+  "ZmqxZs": {
+    "defaultMessage": "بعدا می توانید این را تغییر دهید"
+  },
+  "acrOoz": {
+    "defaultMessage": "ادامه"
+  },
+  "cPIKU2": {
+    "defaultMessage": "بعدی"
+  },
+  "cvAsEh": {
+    "defaultMessage": "در تاریخ {date} پخش شده"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "بازگشت"
+  },
+  "dVD/AR": {
+    "defaultMessage": "بزرگترین زپ ها"
+  },
+  "ebmhes": {
+    "defaultMessage": "افزونه ناستر"
+  },
+  "fBI91o": {
+    "defaultMessage": "زَپ"
+  },
+  "fc2iho": {
+    "defaultMessage": "افزودن فایل"
+  },
+  "hGQqkW": {
+    "defaultMessage": "زمان‌بندی"
+  },
+  "hpl4BP": {
+    "defaultMessage": "ویجت گپ"
+  },
+  "ieGrWo": {
+    "defaultMessage": "دنبال کردن"
+  },
+  "itPgxd": {
+    "defaultMessage": "نمایه"
+  },
+  "izWS4J": {
+    "defaultMessage": "لغو دنبال کردن"
+  },
+  "jr4+vD": {
+    "defaultMessage": "مارک‌داون"
+  },
+  "jvo0vs": {
+    "defaultMessage": "ذخیره"
+  },
+  "k21gTS": {
+    "defaultMessage": "مثلا درباره من"
+  },
+  "kp0NPF": {
+    "defaultMessage": "برنامه ریزی شده"
+  },
+  "lZpRMR": {
+    "defaultMessage": "اگر این پخش شامل عریانی یا پورن است اینجا را ببینید."
+  },
+  "ljmS5P": {
+    "defaultMessage": "نقطه انتها"
+  },
+  "mtNGwh": {
+    "defaultMessage": "شرح مختصری از محتوا"
+  },
+  "nBCvvJ": {
+    "defaultMessage": "شارژ کردن"
+  },
+  "nOaArs": {
+    "defaultMessage": "تنظیم نمایه"
+  },
+  "nwA8Os": {
+    "defaultMessage": "افزودن کارت"
+  },
+  "oHPB8Q": {
+    "defaultMessage": "زپ کردن {name}"
+  },
+  "oZrFyI": {
+    "defaultMessage": "نوع پخش باید HLS باشد"
+  },
+  "pO/lPX": {
+    "defaultMessage": "زمان‌بندی شده برای {date}"
+  },
+  "rWBFZA": {
+    "defaultMessage": "محتوای نمایان جنسی در پیش است!"
+  },
+  "rbrahO": {
+    "defaultMessage": "بستن"
+  },
+  "rfC1Zq": {
+    "defaultMessage": "ذخیره کارت"
+  },
+  "rgsbu9": {
+    "defaultMessage": "بیننندگان فعلی"
+  },
+  "s5ksS7": {
+    "defaultMessage": "لینک تصویر"
+  },
+  "s7V+5p": {
+    "defaultMessage": "سن خود را تایید کنید"
+  },
+  "tG1ST3": {
+    "defaultMessage": "زپ ورودی"
+  },
+  "thsiMl": {
+    "defaultMessage": "شرایط و ضوابط"
+  },
+  "tzMNF3": {
+    "defaultMessage": "وضعیت"
+  },
+  "uYw2LD": {
+    "defaultMessage": "پخش زنده"
+  },
+  "vrTOHJ": {
+    "defaultMessage": "{amount} ساتوشی"
+  },
+  "w0Xm2F": {
+    "defaultMessage": "بنویسید"
+  },
+  "wCIL7o": {
+    "defaultMessage": "پخش در ناستر"
+  },
+  "wEQDC6": {
+    "defaultMessage": "ویرایش"
+  },
+  "wOy57k": {
+    "defaultMessage": "افزودن هدف زپ پخش زنده"
+  },
+  "wzWWzV": {
+    "defaultMessage": "بزرگترین زپ ها"
+  },
+  "x82IOl": {
+    "defaultMessage": "بيصدا"
+  },
+  "zVDHAu": {
+    "defaultMessage": "هشدار زپ"
+  }
+}
+

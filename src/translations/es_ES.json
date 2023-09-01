@@ -6,10 +6,10 @@
     "defaultMessage": "Conectar"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Cantidad"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Restablecer"
   },
   "04lmFi": {
     "defaultMessage": "Guardar clave"
@@ -78,7 +78,7 @@
     "defaultMessage": "Cerrar sesión"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "En directo"
   },
   "ESyhzp": {
     "defaultMessage": "Tu comentario para {name}"
@@ -102,7 +102,7 @@
     "defaultMessage": "Monto del zap en {currency}"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "Subiendo..."
   },
   "Jq3FDz": {
     "defaultMessage": "Contenido"
@@ -114,7 +114,7 @@
     "defaultMessage": "sin conexión"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "Mostrar"
   },
   "KkIL3s": {
     "defaultMessage": "No, soy menor de 18 años"
@@ -138,7 +138,7 @@
     "defaultMessage": "Editar tarjeta"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "Alrededor de {estimate}"
   },
   "QRHNuF": {
     "defaultMessage": "¿Qué estamos transmitiendo hoy?"
@@ -150,7 +150,7 @@
     "defaultMessage": "Objetivo: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name} con {amount}"
   },
   "RJOmzk": {
     "defaultMessage": "He leído y estoy de acuerdo con los {terms} del  {provider}."
@@ -162,7 +162,7 @@
     "defaultMessage": "Resumen"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "Finalizado"
   },
   "TaTRKo": {
     "defaultMessage": "Iniciar transmisión"
@@ -189,13 +189,13 @@
     "defaultMessage": "Continuar"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Siguiendo"
   },
   "cvAsEh": {
     "defaultMessage": "Transmitido el {date}"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "Volver"
   },
   "dVD/AR": {
     "defaultMessage": "Mejores Zapeadores"
@@ -207,13 +207,13 @@
     "defaultMessage": "Zap"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "Añadir archivo"
   },
   "hGQqkW": {
     "defaultMessage": "Programar"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "Widget de Chat"
   },
   "ieGrWo": {
     "defaultMessage": "Seguir"
@@ -231,22 +231,22 @@
     "defaultMessage": "Guardar"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "ej. acerca de mí"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "Planificado"
   },
   "lZpRMR": {
     "defaultMessage": "Marque aquí si esta transmisión contiene escenas de desnudez o pornografía."
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "Extremo"
   },
   "mtNGwh": {
     "defaultMessage": "Breve descripción del contenido"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "Recargar"
   },
   "nOaArs": {
     "defaultMessage": "Configurar el perfil"
@@ -273,7 +273,7 @@
     "defaultMessage": "Guardar tarjeta"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Espectadores Actuales"
   },
   "s5ksS7": {
     "defaultMessage": "Enlace de la Imagen"
@@ -282,7 +282,7 @@
     "defaultMessage": "Confirma tu edad"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Zap entrante"
   },
   "thsiMl": {
     "defaultMessage": "términos y condiciones"
@@ -297,25 +297,25 @@
     "defaultMessage": "{amount} sats"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "Empieza a escribir"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Transmitir en Nostr"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "Editar"
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "Añadir objetivo de directo"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "Mejores Zapeadores"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "Silenciar"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "Alerta de Zap"
   }
 }
 

@@ -1,27 +1,27 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "Afbeelding"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Verbinden"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Aantal"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Wissen"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "Bewaar Sleutel"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "Stream Zap-doelen"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "Labels"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "Toevoegen"
   },
   "2CGh/0": {
     "defaultMessage": "live"
@@ -30,262 +30,262 @@
     "defaultMessage": "Zap!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} kijkers"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "Annuleer"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "Kopiëren"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "Resoluties"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "Account aanmaken"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "Start Tijd"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "Url van server"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "Verzenden"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "Titel"
   },
   "9anxhq": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Begint"
   },
   "AIHaPH": {
     "defaultMessage": "{person} zapped {amount} sats"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "NSFW-inhoud"
   },
   "AyGauy": {
-    "defaultMessage": "Login"
+    "defaultMessage": "Inloggen"
   },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "Uitloggen"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "Uw reactie voor {name}"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "Verwijderen"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "Omslag Afbeelding"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "Saldo"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "Naam"
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "Ondersteunt {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "Zap hoeveelheid in {currency}"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "Bezig met uploaden..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "Inhoud"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "Wis"
   },
   "K3uH1C": {
     "defaultMessage": "offline"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "Weergeven"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "Nee, ik ben jonger dan 18"
   },
   "Ld5LAE": {
-    "defaultMessage": "Nostr uses private keys, please save yours, if you lose this key you wont be able to login to your account anymore!"
+    "defaultMessage": "Nostr gebruikt privésleutels. Bewaar uw sleutel goed. als u deze verliest kunt u niet meer inloggen op uw account!"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "Stream Sleutel"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "Oké, het is veilig"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "Ja, ik ben ouder dan 18"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "Deel"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "Kaart bewerken"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "Over {estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "Wat streamen we vandaag?"
   },
   "QRRCp0": {
     "defaultMessage": "Stream URL"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "Doel: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name} met {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "Ik heb {provider}'s {terms} gelezen en ga hiermee akkoord."
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "Log in om berichten te schrijven!"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "Overzicht"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "Beëindigd"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "Stream Starten"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "Kaart Toevoegen"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "Afgelopen Streams"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "Verberg"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "Niet langer negeren"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "Doel aanmaken"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "U kunt dit later wijzigen"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "Hervatten"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Volgend"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "Gestreamd op {date}"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "Vorige"
   },
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "Nostr Extensie"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "Bestand toevoegen"
   },
   "hGQqkW": {
-    "defaultMessage": "Schedule"
+    "defaultMessage": "Inplannen"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "Volgen"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "Profiel"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "Ontvolgen"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Opslaan"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "bijv. over mij"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "Gepland"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "Controleer hier of deze stream naaktheid of pornografische inhoud bevat."
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "Eindpunt"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "Een korte beschrijving van de inhoud"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "Opvullen"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "Profiel instellen"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "Kaart toevoegen"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "Stream type moet HLS zijn"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "Gepland voor {date}"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "Pas op. Seksueel expliciet materiaal!"
   },
   "rbrahO": {
-    "defaultMessage": "Close"
+    "defaultMessage": "Sluit"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "Bewaar kaart"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Huidige kijkers"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "Afbeeldingslink"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "Bevestig uw leeftijd"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Inkomende Zap"
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "algemene voorwaarden"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
@@ -297,19 +297,19 @@
     "defaultMessage": "{amount} sats"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "Begin met typen"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Uitzending op Nostr"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "Bewerk"
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "Voeg streamdoel toe"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "Top Zappers"
   },
   "x82IOl": {
     "defaultMessage": "Mute"
