@@ -89,8 +89,17 @@
   "BGxpTN": {
     "defaultMessage": "گپ پخش زنده"
   },
+  "Bep/gA": {
+    "defaultMessage": "Private key"
+  },
   "C81/uG": {
     "defaultMessage": "خروج"
+  },
+  "D3idYv": {
+    "defaultMessage": "Settings"
+  },
+  "DZKuuP": {
+    "defaultMessage": "Logged in as"
   },
   "Dn82AL": {
     "defaultMessage": "زنده"
@@ -155,6 +164,9 @@
   "O2Cy6m": {
     "defaultMessage": "بله، من بالای ۱۸ سال هستم"
   },
+  "OEW7yJ": {
+    "defaultMessage": "Zaps"
+  },
   "OKhRC6": {
     "defaultMessage": "اشتراک‌گذاری"
   },
@@ -193,6 +205,9 @@
   },
   "TaTRKo": {
     "defaultMessage": "شروع پخش زنده"
+  },
+  "TwyMau": {
+    "defaultMessage": "Account"
   },
   "UJBFYK": {
     "defaultMessage": "افزودن کارت"
@@ -366,3 +381,4 @@
     "defaultMessage": "هشدار زپ"
   }
 }
+

@@ -89,8 +89,17 @@
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
   },
+  "Bep/gA": {
+    "defaultMessage": "Private key"
+  },
   "C81/uG": {
     "defaultMessage": "Uitloggen"
+  },
+  "D3idYv": {
+    "defaultMessage": "Settings"
+  },
+  "DZKuuP": {
+    "defaultMessage": "Logged in as"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
@@ -155,6 +164,9 @@
   "O2Cy6m": {
     "defaultMessage": "Ja, ik ben ouder dan 18"
   },
+  "OEW7yJ": {
+    "defaultMessage": "Zaps"
+  },
   "OKhRC6": {
     "defaultMessage": "Deel"
   },
@@ -193,6 +205,9 @@
   },
   "TaTRKo": {
     "defaultMessage": "Stream Starten"
+  },
+  "TwyMau": {
+    "defaultMessage": "Account"
   },
   "UJBFYK": {
     "defaultMessage": "Kaart Toevoegen"
