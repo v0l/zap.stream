@@ -33,7 +33,7 @@ export function LoginSignup({ close }: { close: () => void }) {
         throw new Error("no nsec provided");
       }
       if (nsec.startsWith("nsec")) {
-        const {words} = bech32.decode(nsec, 5000);
+        const { words } = bech32.decode(nsec, 5000);
         const data = new Uint8Array(bech32.fromWords(words));
         nsec = bytesToHex(data);
       }
@@ -107,15 +107,11 @@ export function LoginSignup({ close }: { close: () => void }) {
             <FormattedMessage defaultMessage="Create Account" />
           </button>
           <div className="or-divider">
-            <hr/>
+            <hr />
             <FormattedMessage defaultMessage="OR" />
-            <hr/>
+            <hr />
           </div>
-          <button
-            type="button"
-            className="btn btn-primary btn-block"
-            onClick={doLoginNsec}
-          >
+          <button type="button" className="btn btn-primary btn-block" onClick={doLoginNsec}>
             <FormattedMessage defaultMessage="Login with Private Key (insecure)" />
           </button>
           {error && <b className="error">{error}</b>}

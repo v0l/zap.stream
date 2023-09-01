@@ -72,8 +72,7 @@ export function LayoutPage() {
           Login.loginWithPubkey(pub.pubKey, LoginType.Nip7);
           return;
         }
-      }
-      catch(e) {
+      } catch (e) {
         console.error(e);
       }
       setShowLogin(true);
@@ -88,7 +87,7 @@ export function LayoutPage() {
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">
-            <img src={LoginHeader} className="header-image"/>
+            <img src={LoginHeader} className="header-image" />
             <div className="content-inner">
               <LoginSignup close={() => setShowLogin(false)} />
             </div>

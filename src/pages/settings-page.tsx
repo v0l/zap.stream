@@ -12,26 +12,28 @@ export function SettingsPage() {
 
   React.useEffect(() => {
     if (!login) {
-
       navigate("/");
     }
-  }, [login])
-  
-  
+  }, [login]);
+
   return (
     <div className="settings-page">
       <h1>Account</h1>
-      {login?.pubkey && <div className="public-key">
-        <p>Logged in as</p>
-        <Copy text={login?.pubkey} maxSize={64} />
-      </div>}
-      {login?.privateKey && <div className="private-key">
-        <p>Private key</p>
-        <Copy text={hexToBech32('nsec', login.privateKey)} hideText />
-      </div>}
+      {login?.pubkey && (
+        <div className="public-key">
+          <p>Logged in as</p>
+          <Copy text={login?.pubkey} maxSize={64} />
+        </div>
+      )}
+      {login?.privateKey && (
+        <div className="private-key">
+          <p>Private key</p>
+          <Copy text={hexToBech32("nsec", login.privateKey)} hideText />
+        </div>
+      )}
 
       <h1>Zaps</h1>
-      <Button/>
+      <Button />
     </div>
   );
 }

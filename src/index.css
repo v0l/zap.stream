@@ -260,7 +260,8 @@ div.paper {
   gap: 16px;
 }
 
-.dialog-content .username, .dialog-content .username input {
+.dialog-content .username,
+.dialog-content .username input {
   width: 100%;
 }
 
