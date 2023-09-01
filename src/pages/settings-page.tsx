@@ -10,7 +10,7 @@ import Copy from "element/copy";
 
 const enum Tab {
   Account,
-  Notifications
+  Notifications,
 }
 
 export function SettingsPage() {
@@ -53,7 +53,7 @@ export function SettingsPage() {
             </h1>
             <AlbyZapsButton />
           </>
-        )
+        );
       }
     }
   }
@@ -69,12 +69,9 @@ export function SettingsPage() {
               <FormattedMessage defaultMessage="Account" />
             </div>
           </div>
-          <div className="tab-content">
-            {tabContent()}
-          </div>
+          <div className="tab-content">{tabContent()}</div>
         </div>
       </div>
-
     </div>
   );
 }
