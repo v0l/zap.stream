@@ -2,11 +2,17 @@
   "+0zv6g": {
     "defaultMessage": "Picha"
   },
+  "+AcVD+": {
+    "defaultMessage": "No emails, just awesomeness!"
+  },
   "+vVZ/G": {
     "defaultMessage": "Unganisha"
   },
   "/0TOL5": {
     "defaultMessage": "Kiasi"
+  },
+  "/EvlqN": {
+    "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
     "defaultMessage": "Futa"
@@ -20,6 +26,9 @@
   "1EYCdR": {
     "defaultMessage": "Vitambulisho"
   },
+  "1qsXCO": {
+    "defaultMessage": "eg. name@wallet.com"
+  },
   "2/2yg+": {
     "defaultMessage": "Ongeza"
   },
@@ -32,8 +41,14 @@
   "3adEeb": {
     "defaultMessage": "{n} watazamaji"
   },
+  "3df560": {
+    "defaultMessage": "Login with private key"
+  },
   "47FYwb": {
     "defaultMessage": "Ghairi"
+  },
+  "4l69eO": {
+    "defaultMessage": "Hmm, your lightning address looks wrong"
   },
   "4l6vz1": {
     "defaultMessage": "Nakala"
@@ -83,11 +98,20 @@
   "ESyhzp": {
     "defaultMessage": "Maoni yako ya {name}"
   },
+  "FjDlus": {
+    "defaultMessage": "You can always replace it with your own address later."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Get paid by viewers"
+  },
   "G/yZLu": {
     "defaultMessage": "Ondoa"
   },
   "Gq6x9o": {
     "defaultMessage": "Picha ya Jalada"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
   },
   "H5+NAX": {
     "defaultMessage": "Mizani"
@@ -100,6 +124,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Kiasi cha Zap kwa {currency}"
+  },
+  "INlWvJ": {
+    "defaultMessage": "OR"
   },
   "JEsxDw": {
     "defaultMessage": "Inapakia..."
@@ -119,9 +146,6 @@
   "KkIL3s": {
     "defaultMessage": "Hapana, mimi ni chini ya miaka 18"
   },
-  "Ld5LAE": {
-    "defaultMessage": "Nostr hutumia funguo za faragha, tafadhali hifadhi zako, ukipoteza ufunguo huu hutaweza tena kuingia kwenye akaunti yako!"
-  },
   "LknBsU": {
     "defaultMessage": "Ufunguo wa Kutiririsha"
   },
@@ -136,6 +160,9 @@
   },
   "OWgHbg": {
     "defaultMessage": "Hariri kadi"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "Q3au2v": {
     "defaultMessage": "Kuhusu {estimate}"
@@ -182,6 +209,9 @@
   "X2PZ7D": {
     "defaultMessage": "Tengeneza Lengo"
   },
+  "Z8ZOEY": {
+    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+  },
   "ZmqxZs": {
     "defaultMessage": "Unaweza kubadilisha hii baadaye"
   },
@@ -203,11 +233,17 @@
   "ebmhes": {
     "defaultMessage": "Ugani wa Nostr"
   },
+  "f6biFA": {
+    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+  },
   "fBI91o": {
     "defaultMessage": "Zap"
   },
   "fc2iho": {
     "defaultMessage": "Ongeza Faili"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Login with Private Key (insecure)"
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
@@ -263,6 +299,9 @@
   "pO/lPX": {
     "defaultMessage": "Imeratibiwa tarehe {date}"
   },
+  "r2Jjms": {
+    "defaultMessage": "Log In"
+  },
   "rWBFZA": {
     "defaultMessage": "Nyenzo za ngono wazi mbele yako!"
   },
@@ -284,11 +323,17 @@
   "tG1ST3": {
     "defaultMessage": "Zap inayoingia"
   },
+  "tM6fNW": {
+    "defaultMessage": "Amazing! Continue.."
+  },
   "thsiMl": {
     "defaultMessage": "sheria na Masharti"
   },
   "tzMNF3": {
     "defaultMessage": "Hali"
+  },
+  "u6uD94": {
+    "defaultMessage": "Create an Account"
   },
   "uYw2LD": {
     "defaultMessage": "Tiririsha"
@@ -313,6 +358,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Nyamazisha"
+  },
+  "yzKwBQ": {
+    "defaultMessage": "eg. nsec1xyz"
   },
   "zVDHAu": {
     "defaultMessage": "Tahadhari ya Zap"

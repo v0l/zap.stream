@@ -2,11 +2,17 @@
   "+0zv6g": {
     "defaultMessage": "Bild"
   },
+  "+AcVD+": {
+    "defaultMessage": "No emails, just awesomeness!"
+  },
   "+vVZ/G": {
     "defaultMessage": "Anslut"
   },
   "/0TOL5": {
     "defaultMessage": "Belopp"
+  },
+  "/EvlqN": {
+    "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
     "defaultMessage": "Rensa"
@@ -20,6 +26,9 @@
   "1EYCdR": {
     "defaultMessage": "Taggar"
   },
+  "1qsXCO": {
+    "defaultMessage": "eg. name@wallet.com"
+  },
   "2/2yg+": {
     "defaultMessage": "Lägg till"
   },
@@ -32,8 +41,14 @@
   "3adEeb": {
     "defaultMessage": "{n} tittare"
   },
+  "3df560": {
+    "defaultMessage": "Login with private key"
+  },
   "47FYwb": {
     "defaultMessage": "Avbryt"
+  },
+  "4l69eO": {
+    "defaultMessage": "Hmm, your lightning address looks wrong"
   },
   "4l6vz1": {
     "defaultMessage": "Kopiera"
@@ -83,11 +98,20 @@
   "ESyhzp": {
     "defaultMessage": "Din kommentar till {name}"
   },
+  "FjDlus": {
+    "defaultMessage": "You can always replace it with your own address later."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Get paid by viewers"
+  },
   "G/yZLu": {
     "defaultMessage": "Ta bort"
   },
   "Gq6x9o": {
     "defaultMessage": "Omslagsbild"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
   },
   "H5+NAX": {
     "defaultMessage": "Saldo"
@@ -100,6 +124,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Zap belopp i {currency}"
+  },
+  "INlWvJ": {
+    "defaultMessage": "OR"
   },
   "JEsxDw": {
     "defaultMessage": "Laddar upp..."
@@ -119,9 +146,6 @@
   "KkIL3s": {
     "defaultMessage": "Nej, jag är under 18 år"
   },
-  "Ld5LAE": {
-    "defaultMessage": "Nostr använder privata nycklar, vänligen spara din, om du förlorar denna nyckel kommer du inte att kunna logga in på ditt konto längre!"
-  },
   "LknBsU": {
     "defaultMessage": "Stream nyckel"
   },
@@ -136,6 +160,9 @@
   },
   "OWgHbg": {
     "defaultMessage": "Redigera kort"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "Q3au2v": {
     "defaultMessage": "Om {estimate}"
@@ -182,6 +209,9 @@
   "X2PZ7D": {
     "defaultMessage": "Skapa mål"
   },
+  "Z8ZOEY": {
+    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+  },
   "ZmqxZs": {
     "defaultMessage": "Du kan ändra detta senare"
   },
@@ -203,11 +233,17 @@
   "ebmhes": {
     "defaultMessage": "Nostr Tillägg"
   },
+  "f6biFA": {
+    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+  },
   "fBI91o": {
     "defaultMessage": "Zap"
   },
   "fc2iho": {
     "defaultMessage": "Lägg till fil"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Login with Private Key (insecure)"
   },
   "hGQqkW": {
     "defaultMessage": "Schemalagd"
@@ -263,6 +299,9 @@
   "pO/lPX": {
     "defaultMessage": "Schemalagd för {date}"
   },
+  "r2Jjms": {
+    "defaultMessage": "Log In"
+  },
   "rWBFZA": {
     "defaultMessage": "Sexuellt explicit material framöver!"
   },
@@ -284,11 +323,17 @@
   "tG1ST3": {
     "defaultMessage": "Inkommande Zap"
   },
+  "tM6fNW": {
+    "defaultMessage": "Amazing! Continue.."
+  },
   "thsiMl": {
     "defaultMessage": "regler och villkor"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
+  },
+  "u6uD94": {
+    "defaultMessage": "Create an Account"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -314,7 +359,11 @@
   "x82IOl": {
     "defaultMessage": "Tysta"
   },
+  "yzKwBQ": {
+    "defaultMessage": "eg. nsec1xyz"
+  },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"
   }
 }
+

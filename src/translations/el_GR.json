@@ -2,11 +2,17 @@
   "+0zv6g": {
     "defaultMessage": "Image"
   },
+  "+AcVD+": {
+    "defaultMessage": "No emails, just awesomeness!"
+  },
   "+vVZ/G": {
     "defaultMessage": "Connect"
   },
   "/0TOL5": {
     "defaultMessage": "Amount"
+  },
+  "/EvlqN": {
+    "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
     "defaultMessage": "Clear"
@@ -20,6 +26,9 @@
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
+  "1qsXCO": {
+    "defaultMessage": "eg. name@wallet.com"
+  },
   "2/2yg+": {
     "defaultMessage": "Add"
   },
@@ -32,8 +41,14 @@
   "3adEeb": {
     "defaultMessage": "{n} viewers"
   },
+  "3df560": {
+    "defaultMessage": "Login with private key"
+  },
   "47FYwb": {
     "defaultMessage": "Cancel"
+  },
+  "4l69eO": {
+    "defaultMessage": "Hmm, your lightning address looks wrong"
   },
   "4l6vz1": {
     "defaultMessage": "Copy"
@@ -83,11 +98,20 @@
   "ESyhzp": {
     "defaultMessage": "Your comment for {name}"
   },
+  "FjDlus": {
+    "defaultMessage": "You can always replace it with your own address later."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Get paid by viewers"
+  },
   "G/yZLu": {
     "defaultMessage": "Remove"
   },
   "Gq6x9o": {
     "defaultMessage": "Cover Image"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
   },
   "H5+NAX": {
     "defaultMessage": "Balance"
@@ -100,6 +124,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Zap amount in {currency}"
+  },
+  "INlWvJ": {
+    "defaultMessage": "OR"
   },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
@@ -119,9 +146,6 @@
   "KkIL3s": {
     "defaultMessage": "No, I am under 18"
   },
-  "Ld5LAE": {
-    "defaultMessage": "Nostr uses private keys, please save yours, if you lose this key you wont be able to login to your account anymore!"
-  },
   "LknBsU": {
     "defaultMessage": "Stream Key"
   },
@@ -136,6 +160,9 @@
   },
   "OWgHbg": {
     "defaultMessage": "Edit card"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "Q3au2v": {
     "defaultMessage": "About {estimate}"
@@ -182,6 +209,9 @@
   "X2PZ7D": {
     "defaultMessage": "Create Goal"
   },
+  "Z8ZOEY": {
+    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+  },
   "ZmqxZs": {
     "defaultMessage": "You can change this later"
   },
@@ -203,11 +233,17 @@
   "ebmhes": {
     "defaultMessage": "Nostr Extension"
   },
+  "f6biFA": {
+    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+  },
   "fBI91o": {
     "defaultMessage": "Zap"
   },
   "fc2iho": {
     "defaultMessage": "Add File"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Login with Private Key (insecure)"
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
@@ -263,6 +299,9 @@
   "pO/lPX": {
     "defaultMessage": "Scheduled for {date}"
   },
+  "r2Jjms": {
+    "defaultMessage": "Log In"
+  },
   "rWBFZA": {
     "defaultMessage": "Sexually explicit material ahead!"
   },
@@ -284,11 +323,17 @@
   "tG1ST3": {
     "defaultMessage": "Incoming Zap"
   },
+  "tM6fNW": {
+    "defaultMessage": "Amazing! Continue.."
+  },
   "thsiMl": {
     "defaultMessage": "terms and conditions"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
+  },
+  "u6uD94": {
+    "defaultMessage": "Create an Account"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -314,7 +359,11 @@
   "x82IOl": {
     "defaultMessage": "Mute"
   },
+  "yzKwBQ": {
+    "defaultMessage": "eg. nsec1xyz"
+  },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"
   }
 }
+

@@ -2,11 +2,17 @@
   "+0zv6g": {
     "defaultMessage": "画像"
   },
+  "+AcVD+": {
+    "defaultMessage": "No emails, just awesomeness!"
+  },
   "+vVZ/G": {
     "defaultMessage": "接続"
   },
   "/0TOL5": {
     "defaultMessage": "金額"
+  },
+  "/EvlqN": {
+    "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
     "defaultMessage": "クリア"
@@ -20,6 +26,9 @@
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
+  "1qsXCO": {
+    "defaultMessage": "eg. name@wallet.com"
+  },
   "2/2yg+": {
     "defaultMessage": "追加"
   },
@@ -32,8 +41,14 @@
   "3adEeb": {
     "defaultMessage": "{n} 人が視聴中"
   },
+  "3df560": {
+    "defaultMessage": "Login with private key"
+  },
   "47FYwb": {
     "defaultMessage": "キャンセル"
+  },
+  "4l69eO": {
+    "defaultMessage": "Hmm, your lightning address looks wrong"
   },
   "4l6vz1": {
     "defaultMessage": "コピー"
@@ -83,11 +98,20 @@
   "ESyhzp": {
     "defaultMessage": "{name} へのコメント"
   },
+  "FjDlus": {
+    "defaultMessage": "You can always replace it with your own address later."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Get paid by viewers"
+  },
   "G/yZLu": {
     "defaultMessage": "削除"
   },
   "Gq6x9o": {
     "defaultMessage": "カバー画像"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
   },
   "H5+NAX": {
     "defaultMessage": "残高"
@@ -100,6 +124,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "ザップ金額 ({currency})"
+  },
+  "INlWvJ": {
+    "defaultMessage": "OR"
   },
   "JEsxDw": {
     "defaultMessage": "アップロード中..."
@@ -119,9 +146,6 @@
   "KkIL3s": {
     "defaultMessage": "いいえ、私は18歳以下です"
   },
-  "Ld5LAE": {
-    "defaultMessage": "Nostrは秘密鍵を使用しています。この鍵を紛失すると、アカウントにログインできなくなります！"
-  },
   "LknBsU": {
     "defaultMessage": "配信キー"
   },
@@ -136,6 +160,9 @@
   },
   "OWgHbg": {
     "defaultMessage": "カードの編集"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "Q3au2v": {
     "defaultMessage": "{estimate} について"
@@ -182,6 +209,9 @@
   "X2PZ7D": {
     "defaultMessage": "目標を設定"
   },
+  "Z8ZOEY": {
+    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+  },
   "ZmqxZs": {
     "defaultMessage": "これはあとで変更することができます"
   },
@@ -203,11 +233,17 @@
   "ebmhes": {
     "defaultMessage": "Nostr 拡張機能"
   },
+  "f6biFA": {
+    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+  },
   "fBI91o": {
     "defaultMessage": "ザップ"
   },
   "fc2iho": {
     "defaultMessage": "ファイルを追加"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Login with Private Key (insecure)"
   },
   "hGQqkW": {
     "defaultMessage": "配信予定"
@@ -263,6 +299,9 @@
   "pO/lPX": {
     "defaultMessage": "配信予定：{date}"
   },
+  "r2Jjms": {
+    "defaultMessage": "Log In"
+  },
   "rWBFZA": {
     "defaultMessage": "性的に露骨な表現が含まれています！"
   },
@@ -284,11 +323,17 @@
   "tG1ST3": {
     "defaultMessage": "着金中のザップ"
   },
+  "tM6fNW": {
+    "defaultMessage": "Amazing! Continue.."
+  },
   "thsiMl": {
     "defaultMessage": "利用規約"
   },
   "tzMNF3": {
     "defaultMessage": "ステータス"
+  },
+  "u6uD94": {
+    "defaultMessage": "Create an Account"
   },
   "uYw2LD": {
     "defaultMessage": "配信"
@@ -314,7 +359,11 @@
   "x82IOl": {
     "defaultMessage": "ミュート"
   },
+  "yzKwBQ": {
+    "defaultMessage": "eg. nsec1xyz"
+  },
   "zVDHAu": {
     "defaultMessage": "ザップアラート"
   }
 }
+

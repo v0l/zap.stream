@@ -2,11 +2,17 @@
   "+0zv6g": {
     "defaultMessage": "ภาพ"
   },
+  "+AcVD+": {
+    "defaultMessage": "No emails, just awesomeness!"
+  },
   "+vVZ/G": {
     "defaultMessage": "เชื่อมต่อ"
   },
   "/0TOL5": {
     "defaultMessage": "จำนวน"
+  },
+  "/EvlqN": {
+    "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
     "defaultMessage": "ล้าง"
@@ -20,6 +26,9 @@
   "1EYCdR": {
     "defaultMessage": "แท็ก"
   },
+  "1qsXCO": {
+    "defaultMessage": "eg. name@wallet.com"
+  },
   "2/2yg+": {
     "defaultMessage": "เพิ่ม"
   },
@@ -32,8 +41,14 @@
   "3adEeb": {
     "defaultMessage": "ผู้ชม {n}"
   },
+  "3df560": {
+    "defaultMessage": "Login with private key"
+  },
   "47FYwb": {
     "defaultMessage": "ยกเลิก"
+  },
+  "4l69eO": {
+    "defaultMessage": "Hmm, your lightning address looks wrong"
   },
   "4l6vz1": {
     "defaultMessage": "คัดลอก"
@@ -83,11 +98,20 @@
   "ESyhzp": {
     "defaultMessage": "ฝากข้อความถึง {name}"
   },
+  "FjDlus": {
+    "defaultMessage": "You can always replace it with your own address later."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Get paid by viewers"
+  },
   "G/yZLu": {
     "defaultMessage": "ลบ"
   },
   "Gq6x9o": {
     "defaultMessage": "ภาพหน้าปก"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
   },
   "H5+NAX": {
     "defaultMessage": "ยอดคงเหลือ"
@@ -100,6 +124,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "Zap ด้วย {currency} จำนวน"
+  },
+  "INlWvJ": {
+    "defaultMessage": "OR"
   },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
@@ -119,9 +146,6 @@
   "KkIL3s": {
     "defaultMessage": "ฉันอายุต่ำกว่า 18 ปี"
   },
-  "Ld5LAE": {
-    "defaultMessage": "โปรดจำไว้ว่า Nostr ใช้รหัส Private keys ในการเข้าสู่ระบบ, หากท่านสูญเสียรหัสนี้ไป จะไม่ใครสามารถเข้าใช้บัญชีของท่านอีกต่อไป"
-  },
   "LknBsU": {
     "defaultMessage": "Stream Key"
   },
@@ -136,6 +160,9 @@
   },
   "OWgHbg": {
     "defaultMessage": "เเก้ไขการ์ด"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "Q3au2v": {
     "defaultMessage": "ประมาณ {estimate}"
@@ -182,6 +209,9 @@
   "X2PZ7D": {
     "defaultMessage": "สร้างเป้าหมาย"
   },
+  "Z8ZOEY": {
+    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+  },
   "ZmqxZs": {
     "defaultMessage": "คุณยังสามารถเปลี่ยนได้ในภายหลัง"
   },
@@ -203,11 +233,17 @@
   "ebmhes": {
     "defaultMessage": "ติดตั้ง Extension"
   },
+  "f6biFA": {
+    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+  },
   "fBI91o": {
     "defaultMessage": "Zaps"
   },
   "fc2iho": {
     "defaultMessage": "Add File"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Login with Private Key (insecure)"
   },
   "hGQqkW": {
     "defaultMessage": "กำหนดการ"
@@ -263,6 +299,9 @@
   "pO/lPX": {
     "defaultMessage": "จะมีการถ่ายทอดสดเวลา {date}"
   },
+  "r2Jjms": {
+    "defaultMessage": "Log In"
+  },
   "rWBFZA": {
     "defaultMessage": "เตือน! เนื้อหามีส่วนของภาพโป๊เปลือย หรือสื่อลามก"
   },
@@ -284,11 +323,17 @@
   "tG1ST3": {
     "defaultMessage": "Incoming Zap"
   },
+  "tM6fNW": {
+    "defaultMessage": "Amazing! Continue.."
+  },
   "thsiMl": {
     "defaultMessage": "ข้อตกลงและเงื่อนไข"
   },
   "tzMNF3": {
     "defaultMessage": "สถานะ"
+  },
+  "u6uD94": {
+    "defaultMessage": "Create an Account"
   },
   "uYw2LD": {
     "defaultMessage": "ถ่ายทอดสด"
@@ -314,7 +359,11 @@
   "x82IOl": {
     "defaultMessage": "ปิดการมองเห็น"
   },
+  "yzKwBQ": {
+    "defaultMessage": "eg. nsec1xyz"
+  },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"
   }
 }
+

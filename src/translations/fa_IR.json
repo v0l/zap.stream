@@ -2,11 +2,17 @@
   "+0zv6g": {
     "defaultMessage": "تصویر"
   },
+  "+AcVD+": {
+    "defaultMessage": "No emails, just awesomeness!"
+  },
   "+vVZ/G": {
     "defaultMessage": "اتصال"
   },
   "/0TOL5": {
     "defaultMessage": "مبلغ"
+  },
+  "/EvlqN": {
+    "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
     "defaultMessage": "پاک کردن"
@@ -20,6 +26,9 @@
   "1EYCdR": {
     "defaultMessage": "برچسب‌ها"
   },
+  "1qsXCO": {
+    "defaultMessage": "eg. name@wallet.com"
+  },
   "2/2yg+": {
     "defaultMessage": "افزودن"
   },
@@ -32,8 +41,14 @@
   "3adEeb": {
     "defaultMessage": "{n} بیننده"
   },
+  "3df560": {
+    "defaultMessage": "Login with private key"
+  },
   "47FYwb": {
     "defaultMessage": "لغو"
+  },
+  "4l69eO": {
+    "defaultMessage": "Hmm, your lightning address looks wrong"
   },
   "4l6vz1": {
     "defaultMessage": "کپی"
@@ -83,11 +98,20 @@
   "ESyhzp": {
     "defaultMessage": "نظر شما درباره {name}"
   },
+  "FjDlus": {
+    "defaultMessage": "You can always replace it with your own address later."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Get paid by viewers"
+  },
   "G/yZLu": {
     "defaultMessage": "حذف"
   },
   "Gq6x9o": {
     "defaultMessage": "تصویر جلد"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
   },
   "H5+NAX": {
     "defaultMessage": "مانده حساب"
@@ -100,6 +124,9 @@
   },
   "IJDKz3": {
     "defaultMessage": "مبلغ زپ به {currency}"
+  },
+  "INlWvJ": {
+    "defaultMessage": "OR"
   },
   "JEsxDw": {
     "defaultMessage": "در حال بارگذاری..."
@@ -119,9 +146,6 @@
   "KkIL3s": {
     "defaultMessage": "نه، من زیر ۱۸ سال هستم"
   },
-  "Ld5LAE": {
-    "defaultMessage": "ناستر از کلید خصوصی استفاده می کند، لطفا کلید خود را ذخیره کنید، اگر این کلید را گم کنید دیگر نمی توانید به حساب خود وارد شوید!"
-  },
   "LknBsU": {
     "defaultMessage": "کلید پخش زنده"
   },
@@ -136,6 +160,9 @@
   },
   "OWgHbg": {
     "defaultMessage": "ویرایش کارت"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "Q3au2v": {
     "defaultMessage": "حدود {estimate}"
@@ -182,6 +209,9 @@
   "X2PZ7D": {
     "defaultMessage": "ایجاد هدف"
   },
+  "Z8ZOEY": {
+    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+  },
   "ZmqxZs": {
     "defaultMessage": "بعدا می توانید این را تغییر دهید"
   },
@@ -203,11 +233,17 @@
   "ebmhes": {
     "defaultMessage": "افزونه ناستر"
   },
+  "f6biFA": {
+    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+  },
   "fBI91o": {
     "defaultMessage": "زَپ"
   },
   "fc2iho": {
     "defaultMessage": "افزودن فایل"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Login with Private Key (insecure)"
   },
   "hGQqkW": {
     "defaultMessage": "زمان‌بندی"
@@ -263,6 +299,9 @@
   "pO/lPX": {
     "defaultMessage": "زمان‌بندی شده برای {date}"
   },
+  "r2Jjms": {
+    "defaultMessage": "Log In"
+  },
   "rWBFZA": {
     "defaultMessage": "محتوای نمایان جنسی در پیش است!"
   },
@@ -284,11 +323,17 @@
   "tG1ST3": {
     "defaultMessage": "زپ ورودی"
   },
+  "tM6fNW": {
+    "defaultMessage": "Amazing! Continue.."
+  },
   "thsiMl": {
     "defaultMessage": "شرایط و ضوابط"
   },
   "tzMNF3": {
     "defaultMessage": "وضعیت"
+  },
+  "u6uD94": {
+    "defaultMessage": "Create an Account"
   },
   "uYw2LD": {
     "defaultMessage": "پخش زنده"
@@ -313,6 +358,9 @@
   },
   "x82IOl": {
     "defaultMessage": "بيصدا"
+  },
+  "yzKwBQ": {
+    "defaultMessage": "eg. nsec1xyz"
   },
   "zVDHAu": {
     "defaultMessage": "هشدار زپ"
