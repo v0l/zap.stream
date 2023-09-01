@@ -65,6 +65,12 @@ a {
   justify-content: space-between;
 }
 
+@media (max-width: 1020px) {
+  .f-col-mobile {
+    flex-direction: column;
+  }
+}
+
 .pill {
   background: #171717;
   padding: 4px 8px;
@@ -84,13 +90,14 @@ a {
 .g8 {
   gap: 8px;
 }
-
+.g12 {
+  gap: 12px;
+}
 .g24 {
   gap: 24px;
 }
-
-.g12 {
-  gap: 12px;
+.g48 {
+  gap: 48px;
 }
 
 .w-max {

@@ -3,16 +3,16 @@ import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { FormattedMessage } from "react-intl";
+import { Menu, MenuItem } from "@szhsin/react-menu";
+import { hexToBech32 } from "@snort/shared";
 
 import { Icon } from "element/icon";
 import { useLogin, useLoginEvents } from "hooks/login";
 import { Profile } from "element/profile";
 import { NewStreamDialog } from "element/new-stream";
 import { LoginSignup } from "element/login-signup";
-import { Menu, MenuItem } from "@szhsin/react-menu";
-import { hexToBech32 } from "@snort/shared";
 import { Login } from "index";
-import { FormattedMessage } from "react-intl";
 
 export function LayoutPage() {
   const navigate = useNavigate();
