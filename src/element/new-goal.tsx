@@ -2,19 +2,15 @@ import "./new-goal.css";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import AsyncButton from "./async-button";
-import { NostrLink } from "@snort/system";
 import { Icon } from "element/icon";
 import { useState } from "react";
 import { System } from "index";
 import { GOAL } from "const";
 import { useLogin } from "hooks/login";
 import { FormattedMessage } from "react-intl";
+import { defaultRelays } from "const";
 
-interface NewGoalDialogProps {
-  link: NostrLink;
-}
-
-export function NewGoalDialog({ link }: NewGoalDialogProps) {
+export function NewGoalDialog() {
   const [open, setOpen] = useState(false);
   const login = useLogin();
 
@@ -26,12 +22,9 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
     if (pub) {
       const evNew = await pub.generic(eb => {
         eb.kind(GOAL)
-          .tag(["a", `${link.kind}:${link.author}:${link.id}`])
           .tag(["amount", String(Number(goalAmount) * 1000)])
+          .tag(["relays", ...Object.keys(defaultRelays)])
           .content(goalName);
-        if (link.relays?.length) {
-          eb.tag(["relays", ...link.relays]);
-        }
         return eb;
       });
       console.debug(evNew);
