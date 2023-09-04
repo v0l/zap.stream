@@ -142,12 +142,16 @@ a {
 .btn-border {
   border: 1px solid transparent;
   color: inherit;
-  background: linear-gradient(black, black) padding-box, linear-gradient(94.73deg, #2bd9ff 0%, #f838d9 100%) border-box;
+  background:
+    linear-gradient(black, black) padding-box,
+    linear-gradient(94.73deg, #2bd9ff 0%, #f838d9 100%) border-box;
   transition: 0.3s;
 }
 
 .btn-border:hover {
-  background: linear-gradient(black, black) padding-box, linear-gradient(94.73deg, #14b4d8 0%, #ba179f 100%) border-box;
+  background:
+    linear-gradient(black, black) padding-box,
+    linear-gradient(94.73deg, #14b4d8 0%, #ba179f 100%) border-box;
 }
 
 .btn-primary {
