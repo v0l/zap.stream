@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "Stream Zap Goals"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Name"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "Supports {markdown}"
