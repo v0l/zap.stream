@@ -2478,44 +2478,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/shared@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@snort/shared@npm:1.0.4"
-  dependencies:
-    "@noble/curves": ^1.1.0
-    "@noble/hashes": ^1.3.1
-    "@scure/base": ^1.1.1
-    debug: ^4.3.4
-    dexie: ^3.2.4
-    light-bolt11-decoder: ^3.0.0
-  checksum: d0c481e1f29f72f3bb415977f9de79fc3b9d7c71004ca482fac139518256583fc5af57eded329703fe7ebc15d7bf306aace98db24f6317bc88161c28556b9f2f
-  languageName: node
-  linkType: hard
-
-"@snort/system-react@npm:^1.0.12":
-  version: 1.0.12
-  resolution: "@snort/system-react@npm:1.0.12"
-  dependencies:
-    "@snort/shared": ^1.0.4
-    "@snort/system": ^1.0.17
-    react: ^18.2.0
-  checksum: 3750f76de273a63493a8d23bb911a49fea17500e6224b643956ecfbf2e09e102ad6515a64739115538ec3e5cc97d4d44f36a38d37d0df862d99e9123a3198d57
-  languageName: node
-  linkType: hard
-
-"@snort/system@npm:^1.0.17":
-  version: 1.0.17
-  resolution: "@snort/system@npm:1.0.17"
+"@snort/shared@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@snort/shared@npm:1.0.5"
   dependencies:
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
     "@scure/base": ^1.1.2
-    "@snort/shared": ^1.0.4
+    debug: ^4.3.4
+    dexie: ^3.2.4
+    light-bolt11-decoder: ^3.0.0
+  checksum: 25ada095ecc059cbd0a1ff79d2372484aa4171ec8d697b880ad924a353d54290c5dbc9457ef52aac512bf1984d787a3cfaf35610b4d9bc968fe327da35fd7c1c
+  languageName: node
+  linkType: hard
+
+"@snort/system-react@npm:^1.0.13":
+  version: 1.0.13
+  resolution: "@snort/system-react@npm:1.0.13"
+  dependencies:
+    "@snort/shared": ^1.0.5
+    "@snort/system": ^1.0.18
+    react: ^18.2.0
+  checksum: 0d3cbc1291faed6cee2c12706932e84fd3c5f8ff91d3f03f92f493fe58846cd7c5691fec3750aa0579f6ae46e0ab57a67c055a417540379c435d91db9887f794
+  languageName: node
+  linkType: hard
+
+"@snort/system@npm:^1.0.18":
+  version: 1.0.18
+  resolution: "@snort/system@npm:1.0.18"
+  dependencies:
+    "@noble/curves": ^1.2.0
+    "@noble/hashes": ^1.3.2
+    "@scure/base": ^1.1.2
+    "@snort/shared": ^1.0.5
     "@stablelib/xchacha20": ^1.0.1
     debug: ^4.3.4
     dexie: ^3.2.4
     uuid: ^9.0.0
-  checksum: 20bc70d72b32da3e4f0a285b23ae08b408cec25318115fa85f8048c30e62dab93da0e5765a2c05f3e8c3d1f8ae5d4c3008343da01d2764b5bc68981af895116c
+  checksum: 6539126720e9cf3bee139eaeec96051df5b3ab082c5a1e8b9183a85bb3b51654076826e1ef14e85ecc1ffd5fed4809075756f0d912f5a5d51c37d785922f038f
   languageName: node
   linkType: hard
 
@@ -9927,9 +9927,9 @@ __metadata:
     "@radix-ui/react-toggle": ^1.0.3
     "@react-hook/resize-observer": ^1.2.6
     "@scure/base": ^1.1.1
-    "@snort/shared": ^1.0.4
-    "@snort/system": ^1.0.17
-    "@snort/system-react": ^1.0.12
+    "@snort/shared": ^1.0.5
+    "@snort/system": ^1.0.18
+    "@snort/system-react": ^1.0.13
     "@szhsin/react-menu": ^4.0.2
     "@testing-library/dom": ^9.3.1
     "@testing-library/jest-dom": ^5.14.1
