@@ -3,7 +3,7 @@
     "defaultMessage": "Bild"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Keine E-Mails, nur Großartigkeit!"
   },
   "+vVZ/G": {
     "defaultMessage": "Verbinden"
@@ -12,7 +12,7 @@
     "defaultMessage": "Betrag"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "Nostr Signier-Erweiterung"
   },
   "/GCoTA": {
     "defaultMessage": "Löschen"
@@ -27,7 +27,7 @@
     "defaultMessage": "Tags"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "z.B. name@wallet.com"
   },
   "2/2yg+": {
     "defaultMessage": "Hinzufügen"
@@ -42,13 +42,13 @@
     "defaultMessage": "{n} Zuschauer"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Mit privatem Schlüssel einloggen"
   },
   "47FYwb": {
     "defaultMessage": "Abbrechen"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, deine Lightning-Adresse sieht falsch aus"
   },
   "4l6vz1": {
     "defaultMessage": "Kopieren"
@@ -90,16 +90,16 @@
     "defaultMessage": "Stream Chat"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Privater Schlüssel"
   },
   "C81/uG": {
     "defaultMessage": "Abmelden"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Einstellungen"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Eingeloggt als"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
@@ -108,10 +108,10 @@
     "defaultMessage": "Dein Kommentar für {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Du kannst es später jederzeit durch deine eigene Adresse ersetzen."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Werde von Zuschauern bezahlt"
   },
   "G/yZLu": {
     "defaultMessage": "Entfernen"
@@ -120,7 +120,7 @@
     "defaultMessage": "Titelbild"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Speichere das und bewahre es sicher auf! Wenn du diesen Schlüssel verlierst, kannst du nie mehr auf dein Konto zugreifen. Ja, es ist folgenreich!"
   },
   "H5+NAX": {
     "defaultMessage": "Guthaben"
@@ -135,7 +135,7 @@
     "defaultMessage": "Zap Betrag in {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "ODER"
   },
   "JEsxDw": {
     "defaultMessage": "Hochladen..."
@@ -174,7 +174,7 @@
     "defaultMessage": "Karte bearbeiten"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
   },
   "Q3au2v": {
     "defaultMessage": "Ungefähr {estimate}"
@@ -207,7 +207,7 @@
     "defaultMessage": "Stream starten"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "Konto"
   },
   "UJBFYK": {
     "defaultMessage": "Karte hinzufügen"
@@ -225,7 +225,7 @@
     "defaultMessage": "Ziel erstellen"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Diese Methode ist unsicher. Wir empfehlen die Verwendung von {nostrlink}"
   },
   "ZmqxZs": {
     "defaultMessage": "Sie können das später ändern"
@@ -249,7 +249,7 @@
     "defaultMessage": "Nostr Erweiterung"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Oh, und du hast {n} sats kostenloses Streaming auf uns! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
@@ -258,7 +258,7 @@
     "defaultMessage": "Datei hinzufügen"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Mit privatem Schlüssel einloggen (unsicher)"
   },
   "hGQqkW": {
     "defaultMessage": "Zeitplan"
@@ -315,7 +315,7 @@
     "defaultMessage": "Geplant am {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Einloggen"
   },
   "rWBFZA": {
     "defaultMessage": "Sexuell explizites Material voraus!"
@@ -339,7 +339,7 @@
     "defaultMessage": "Eingehender Zap"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Großartig! Fahre fort..."
   },
   "thsiMl": {
     "defaultMessage": "Allgemeinen Geschäftsbedingungen"
@@ -348,7 +348,7 @@
     "defaultMessage": "Status"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Konto erstellen"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -375,9 +375,10 @@
     "defaultMessage": "Stummschalten"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "z.B. nsec1xyz"
   },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"
   }
 }
+
