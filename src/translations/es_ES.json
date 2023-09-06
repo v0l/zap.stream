@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "Zaps objetivos de la transmisión"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "Etiquetas"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Nombre"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "Soporta {markdown}"
@@ -381,3 +387,4 @@
     "defaultMessage": "Alerta de Zap"
   }
 }
+

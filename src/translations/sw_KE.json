@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "Tiririsha Malengo ya Zap"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "Vitambulisho"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Jina"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "Inaauni {markdown}"
@@ -381,3 +387,4 @@
     "defaultMessage": "Tahadhari ya Zap"
   }
 }
+

@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "اهداف زپ این پخش"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "برچسب‌ها"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "نام"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "از {markdown} پشتیبانی می کند"
@@ -381,3 +387,4 @@
     "defaultMessage": "هشدار زپ"
   }
 }
+

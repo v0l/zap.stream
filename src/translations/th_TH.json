@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "เป้าหมาย Zaps"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "แท็ก"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "ชื่อ"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "สนับสนุน {markdown}"
@@ -381,3 +387,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

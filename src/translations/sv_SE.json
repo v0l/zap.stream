@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "Stream Zap Mål"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "Taggar"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Namn"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "Stöder {markdown}"
@@ -381,3 +387,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

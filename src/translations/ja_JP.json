@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "ザップ目標額を配信"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "名前"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "{markdown} をサポート"
@@ -381,3 +387,4 @@
     "defaultMessage": "ザップアラート"
   }
 }
+

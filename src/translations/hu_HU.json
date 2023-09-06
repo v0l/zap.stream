@@ -1,15 +1,15 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "Kép"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Nincs szükség E-mailre, csak élvezd!"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Csatlakozás"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Mennyiség"
   },
   "/EvlqN": {
     "defaultMessage": "nostr signer extension"
@@ -22,6 +22,9 @@
   },
   "0GfNiL": {
     "defaultMessage": "Stream Zap Goals"
+  },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
   },
   "1EYCdR": {
     "defaultMessage": "Tags"
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Name"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "Supports {markdown}"
@@ -381,3 +387,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

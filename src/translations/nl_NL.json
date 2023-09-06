@@ -23,6 +23,9 @@
   "0GfNiL": {
     "defaultMessage": "Stream Zap-doelen"
   },
+  "0VV/sK": {
+    "defaultMessage": "Goal"
+  },
   "1EYCdR": {
     "defaultMessage": "Labels"
   },
@@ -127,6 +130,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Naam"
+  },
+  "I/TubD": {
+    "defaultMessage": "Select a goal..."
   },
   "I1kjHI": {
     "defaultMessage": "Ondersteunt {markdown}"
@@ -381,3 +387,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+
