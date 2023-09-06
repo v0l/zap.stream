@@ -26,6 +26,7 @@
     "@webscopeio/react-textarea-autocomplete": "^4.9.2",
     "buffer": "^6.0.3",
     "emoji-mart": "^5.5.2",
+    "flag-icons": "^6.11.0",
     "hls.js": "^1.4.6",
     "lodash": "^4.17.21",
     "lodash.uniqby": "^4.7.0",

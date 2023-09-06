@@ -167,3 +167,11 @@ button span.hide-on-mobile {
 .profile-menu {
   cursor: pointer;
 }
+
+.flag {
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-size: cover;
+}

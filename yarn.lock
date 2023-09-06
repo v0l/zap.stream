@@ -5579,6 +5579,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"flag-icons@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "flag-icons@npm:6.11.0"
+  checksum: 859c4dfa104bbaa3bf49484764e1d9144d644c8acfff581591e925733d5b4731226be065b91ccac4b0e30a49fda6ba3c1468af4d5e35642dcefd03f468040efe
+  languageName: node
+  linkType: hard
+
 "flat-cache@npm:^3.0.4":
   version: 3.1.0
   resolution: "flat-cache@npm:3.1.0"
@@ -9954,6 +9961,7 @@ __metadata:
     emoji-mart: ^5.5.2
     eslint: ^8.48.0
     eslint-webpack-plugin: ^4.0.1
+    flag-icons: ^6.11.0
     hls.js: ^1.4.6
     html-webpack-plugin: ^5.5.1
     lodash: ^4.17.21

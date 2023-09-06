@@ -1,7 +1,7 @@
 import { ExternalStore } from "@snort/shared";
 import { useSyncExternalStore } from "react";
 
-export const DefaultLocale = "en";
+export const DefaultLocale = "en-US";
 
 class LangStore extends ExternalStore<string> {
   setLang(lang: string) {

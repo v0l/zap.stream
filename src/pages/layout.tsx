@@ -1,4 +1,6 @@
+import "flag-icons/css/flag-icons.css";
 import "./layout.css";
+
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -29,8 +31,8 @@ export function LayoutPage() {
       <Menu
         menuClassName="ctx-menu"
         menuButton={
-          <div className="flex f-center g24">
-            <div className="flag"></div>
+          <div className="flex f-center g12">
+            <div className={`flag fi fi-${lang.split(/[-_]/i)[1]?.toLowerCase()}`}></div>
             <div className="uppercase pointer">
               <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
             </div>
