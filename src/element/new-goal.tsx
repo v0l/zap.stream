@@ -58,7 +58,7 @@ export function NewGoalDialog({ link }: NewGoalDialogProps) {
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
-          <div className="new-goal">
+          <div className="new-goal content-inner">
             <div className="zap-goals">
               <Icon name="zap-filled" className="stream-zap-goals-icon" size={16} />
               <h3>

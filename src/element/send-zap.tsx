@@ -129,7 +129,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
         </div>
         <div>
           <small>
-            <FormattedMessage defaultMessage="Zap amount in {currency}" values={{ amount: isFiat ? "USD" : "sats" }} />
+            <FormattedMessage defaultMessage="Zap amount in {currency}" values={{ currency: isFiat ? "USD" : "SATS" }} />
           </small>
           <div className="amounts">
             {(isFiat ? usdAmounts : satsAmounts).map(a => (
@@ -206,7 +206,9 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
-          <SendZaps {...props} onFinish={() => setIsOpen(false)} />
+          <div className="content-inner">
+            <SendZaps {...props} onFinish={() => setIsOpen(false)} />
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

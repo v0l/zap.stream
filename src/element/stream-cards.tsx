@@ -312,14 +312,16 @@ function EditCard({ card, cards }: EditCardProps) {
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content className="dialog-content">
-          <CardDialog
-            header={formatMessage({ defaultMessage: "Edit card" })}
-            cta={formatMessage({ defaultMessage: "Save card" })}
-            cancelCta={formatMessage({ defaultMessage: "Delete" })}
-            card={card}
-            onSave={editCard}
-            onCancel={onCancel}
-          />
+          <div className="content-inner">
+            <CardDialog
+              header={formatMessage({ defaultMessage: "Edit card" })}
+              cta={formatMessage({ defaultMessage: "Save card" })}
+              cancelCta={formatMessage({ defaultMessage: "Delete" })}
+              card={card}
+              onSave={editCard}
+              onCancel={onCancel}
+            />
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
@@ -383,7 +385,9 @@ function AddCard({ cards }: AddCardProps) {
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">
-            <CardDialog onSave={createCard} onCancel={onCancel} />
+            <div className="content-inner">
+              <CardDialog onSave={createCard} onCancel={onCancel} />
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

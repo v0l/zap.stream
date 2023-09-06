@@ -56,23 +56,25 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">
-            <h2>
-              <FormattedMessage defaultMessage="Share" />
-            </h2>
-            <div className="paper">
-              <Textarea
-                emojis={[]}
-                value={message}
-                onChange={e => setMessage(e.target.value)}
-                onKeyDown={() => {
-                  //noop
-                }}
-                rows={15}
-              />
+            <div className="content-inner">
+              <h2>
+                <FormattedMessage defaultMessage="Share" />
+              </h2>
+              <div className="paper">
+                <Textarea
+                  emojis={[]}
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  onKeyDown={() => {
+                    //noop
+                  }}
+                  rows={15}
+                />
+              </div>
+              <AsyncButton className="btn btn-primary" onClick={sendMessage}>
+                <FormattedMessage defaultMessage="Send" />
+              </AsyncButton>
             </div>
-            <AsyncButton className="btn btn-primary" onClick={sendMessage}>
-              <FormattedMessage defaultMessage="Send" />
-            </AsyncButton>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
