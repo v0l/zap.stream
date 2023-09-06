@@ -129,7 +129,10 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
         </div>
         <div>
           <small>
-            <FormattedMessage defaultMessage="Zap amount in {currency}" values={{ currency: isFiat ? "USD" : "SATS" }} />
+            <FormattedMessage
+              defaultMessage="Zap amount in {currency}"
+              values={{ currency: isFiat ? "USD" : "SATS" }}
+            />
           </small>
           <div className="amounts">
             {(isFiat ? usdAmounts : satsAmounts).map(a => (
