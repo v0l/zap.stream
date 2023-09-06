@@ -190,6 +190,16 @@ input[type="number"] {
   font-weight: 500;
 }
 
+select {
+  font-family: inherit;
+  border: unset;
+  background-color: unset;
+  color: inherit;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;

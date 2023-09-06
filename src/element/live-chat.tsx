@@ -12,7 +12,6 @@ import { Profile } from "element/profile";
 import { ChatMessage } from "element/chat-message";
 import { Goal } from "element/goal";
 import { Badge } from "element/badge";
-import { NewGoalDialog } from "element/new-goal";
 import { WriteMessage } from "element/write-message";
 import useEmoji, { packId } from "hooks/emoji";
 import { useLiveChatFeed } from "hooks/live-chat";
@@ -117,7 +116,6 @@ export function LiveChat({
             <TopZappers zaps={zaps} />
           </div>
           {goal && <Goal ev={goal} />}
-          {login?.pubkey === host && <NewGoalDialog link={link} />}
         </div>
       )}
       <div className="messages">

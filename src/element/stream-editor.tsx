@@ -3,12 +3,14 @@ import { useEffect, useState, useCallback } from "react";
 import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { TagsInput } from "react-tag-input-component";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import AsyncButton from "./async-button";
 import { StreamState } from "../index";
 import { findTag } from "../utils";
 import { useLogin } from "hooks/login";
-import { FormattedMessage, useIntl } from "react-intl";
+import { NewGoalDialog } from "element/new-goal";
+import { useGoals } from "hooks/goals";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -24,6 +26,27 @@ export interface StreamEditorProps {
   };
 }
 
+interface GoalSelectorProps {
+  goal?: string;
+  pubkey: string;
+  onGoalSelect: (g: string) => void;
+}
+
+function GoalSelector({ goal, pubkey, onGoalSelect }: GoalSelectorProps) {
+  const goals = useGoals(pubkey, true);
+  const { formatMessage } = useIntl();
+  return (
+    <select defaultValue={goal} onChange={ev => onGoalSelect(ev.target.value)}>
+      <option value="">{formatMessage({ defaultMessage: "Select a goal..." })}</option>
+      {goals?.map(goal => (
+        <option key={goal.id} value={goal.id}>
+          {goal.content}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -34,6 +57,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [tags, setTags] = useState<string[]>([]);
   const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [goal, setGoal] = useState<string | undefined>();
   const login = useLogin();
   const { formatMessage } = useIntl();
 
@@ -46,6 +70,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     setStart(findTag(ev, "starts"));
     setTags(ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []);
     setContentWarning(findTag(ev, "content-warning") !== undefined);
+    setGoal(findTag(ev, "goal"));
   }, [ev?.id]);
 
   const validate = useCallback(() => {
@@ -89,6 +114,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         }
         if (contentWarning) {
           eb.tag(["content-warning", "nsfw"]);
+        }
+        if (goal && goal.length > 0) {
+          eb.tag(["goal", goal]);
         }
         return eb;
       });
@@ -200,6 +228,19 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />
           </div>
         </div>
+      )}
+      {login?.pubkey && (
+        <>
+          <div>
+            <p>
+              <FormattedMessage defaultMessage="Goal" />
+            </p>
+            <div className="paper">
+              <GoalSelector goal={goal} pubkey={login?.pubkey} onGoalSelect={setGoal} />
+            </div>
+          </div>
+          <NewGoalDialog />
+        </>
       )}
       {(options?.canSetContentWarning ?? true) && (
         <div className="flex g12 content-warning">

@@ -114,7 +114,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const evLink = ev ? eventToLink(ev) : undefined;
-  const goal = useZapGoal(host, evLink, true);
+  const goal = useZapGoal(findTag(ev, "goal"));
 
   const title = findTag(ev, "title");
   const summary = findTag(ev, "summary");

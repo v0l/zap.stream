@@ -1,22 +1,31 @@
 import { useMemo } from "react";
-import { RequestBuilder, ReplaceableNoteStore, NostrLink } from "@snort/system";
+import { RequestBuilder, FlatNoteStore, ReplaceableNoteStore } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { unwrap } from "@snort/shared";
 import { GOAL } from "const";
 
-export function useZapGoal(host: string, link?: NostrLink, leaveOpen = false) {
+export function useZapGoal(id?: string) {
   const sub = useMemo(() => {
-    if (!link) return null;
-    const b = new RequestBuilder(`goals:${host.slice(0, 12)}`);
-    b.withOptions({ leaveOpen });
-    b.withFilter()
-      .kinds([GOAL])
-      .authors([host])
-      .tag("a", [`${link.kind}:${unwrap(link.author)}:${link.id}`]);
+    if (!id) return null;
+    const b = new RequestBuilder(`goal:${id.slice(0, 12)}`);
+    b.withFilter().kinds([GOAL]).ids([id]);
     return b;
-  }, [link, leaveOpen]);
+  }, [id]);
 
   const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
+
+  return data;
+}
+
+export function useGoals(pubkey?: string, leaveOpen = false) {
+  const sub = useMemo(() => {
+    if (!pubkey) return null;
+    const b = new RequestBuilder(`goals:${pubkey.slice(0, 12)}`);
+    b.withOptions({ leaveOpen });
+    b.withFilter().kinds([GOAL]).authors([pubkey]);
+    return b;
+  }, [pubkey, leaveOpen]);
+
+  const { data } = useRequestBuilder(FlatNoteStore, sub);
 
   return data;
 }
