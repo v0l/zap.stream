@@ -1,4 +1,3 @@
-import "flag-icons/css/flag-icons.css";
 import "./layout.css";
 
 import { useState } from "react";
@@ -32,7 +31,7 @@ export function LayoutPage() {
         menuClassName="ctx-menu"
         menuButton={
           <div className="flex f-center g12">
-            <div className={`flag fi fi-${lang.split(/[-_]/i)[1]?.toLowerCase()}`}></div>
+            <div className={`fi fi-${lang.split(/[-_]/i)[1]?.toLowerCase()}`}></div>
             <div className="uppercase pointer">
               <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
             </div>
