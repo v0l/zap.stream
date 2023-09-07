@@ -1,390 +1,390 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "图像"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "没有电子邮件，只是最棒！"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "连接"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "金额"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "nostr 签名扩展"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "清除"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "保存密钥"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "直播流打闪目标"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "目标"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "标签"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "例如 name@wallet.com"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "添加"
   },
   "2CGh/0": {
-    "defaultMessage": "live"
+    "defaultMessage": "在线"
   },
   "3HwrQo": {
-    "defaultMessage": "Zap!"
+    "defaultMessage": "打闪!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} 观看用户"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "使用私钥登录"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "取消"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "嗯，看起来你的闪电地址不对"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "复制"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "分辨率"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "创建帐户"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "开始时间"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "服务器 URL"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "直播流來源"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "发送"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "标题"
   },
   "9anxhq": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "开始"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person}已打闪{amount}聪"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "NSFW 内容"
   },
   "AyGauy": {
-    "defaultMessage": "Login"
+    "defaultMessage": "登录"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "直播流聊天室"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "私钥"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "登出"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "设置"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "已登录为"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "在线"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "你为{name}的留言"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "你始终可以用自己的地址替换它。"
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "获得观众付款"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "移除"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "封面图像"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "请将它安全保存！如果你丢失了此密钥，你将无法无法再次访问你的帐户。对，很严肃！"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "余额"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "名称"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "选择目标..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "支持 {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "打闪金额{currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "或"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "正在上传..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "内容"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "删除"
   },
   "K3uH1C": {
-    "defaultMessage": "offline"
+    "defaultMessage": "离线"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "显示"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "不，我未满18岁"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "直播流密钥"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "好，是安全的"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "是的，我已满18岁"
   },
   "OEW7yJ": {
-    "defaultMessage": "Zaps"
+    "defaultMessage": "打闪"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "分享"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "编辑卡片"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "我们已经为你设置了一个闪电钱包，因此你立即可以开始收取观众的付款！"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "大约{estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "我们今天直播些什么？"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "直播流链接"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "目标：{amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{amount}來自{name}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "我已阅读并同意{provider}的{terms}。"
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "请登录以撰写消息！"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "概要"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "已结束"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "开始直播"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "帐户"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "添加卡片"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "过去的直播流"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "隐藏"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "解除静音"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "创建目标"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "这个方式不安全。我们建议使用{nostrlink}"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "你可以稍后更改它"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "继续"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "已关注"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "已于{date}直播"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "返回"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "最高打闪用户"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "Nostr 扩展"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "哦，我们还为你提供了{n}聪的免费直播！💜"
   },
   "fBI91o": {
-    "defaultMessage": "Zap"
+    "defaultMessage": "打闪"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "新增文件"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "使用私钥登录 (不安全)"
   },
   "hGQqkW": {
-    "defaultMessage": "Schedule"
+    "defaultMessage": "时间表"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "聊天小部件"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "关注"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "个人档案"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "取消关注"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "保存"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "例如：关于我"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "已计划"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "如果该流含有裸体或色情内容，请选择此选项。"
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "端点"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "内容的简短描述"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "充值"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "设置个人档案"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "添加卡片"
   },
   "oHPB8Q": {
-    "defaultMessage": "Zap {name}"
+    "defaultMessage": "打闪 {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "直播流类型应该是 HLS"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "预定于{date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "登录"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "前方有色情内容！"
   },
   "rbrahO": {
-    "defaultMessage": "Close"
+    "defaultMessage": "关闭"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "保存卡片"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "当前观看用户"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "图像链接"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "确认你的年龄"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "传入打闪"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "太棒了！继续.."
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "使用条款"
   },
   "tzMNF3": {
-    "defaultMessage": "Status"
+    "defaultMessage": "状态"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "创建帐户"
   },
   "uYw2LD": {
-    "defaultMessage": "Stream"
+    "defaultMessage": "直播"
   },
   "vrTOHJ": {
-    "defaultMessage": "{amount} sats"
+    "defaultMessage": "{amount} 聪"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "开始键入"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "在 Nostr 上广播"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "编辑"
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "添加直播流目标"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "最高打闪用户"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "静音"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "例如 nsec1xyz"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "打闪提示"
   }
 }
 

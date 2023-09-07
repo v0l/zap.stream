@@ -3,7 +3,7 @@
     "defaultMessage": "Bild"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Inga e-post, bara fantastiskt!"
   },
   "+vVZ/G": {
     "defaultMessage": "Anslut"
@@ -12,7 +12,7 @@
     "defaultMessage": "Belopp"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "nostr signer-tillägg"
   },
   "/GCoTA": {
     "defaultMessage": "Rensa"
@@ -24,13 +24,13 @@
     "defaultMessage": "Stream Zap Mål"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Mål"
   },
   "1EYCdR": {
     "defaultMessage": "Taggar"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "t.ex namn@wallet.com"
   },
   "2/2yg+": {
     "defaultMessage": "Lägg till"
@@ -45,13 +45,13 @@
     "defaultMessage": "{n} tittare"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Logga in med privat nyckel"
   },
   "47FYwb": {
     "defaultMessage": "Avbryt"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, din lightning adress ser fel ut"
   },
   "4l6vz1": {
     "defaultMessage": "Kopiera"
@@ -93,16 +93,16 @@
     "defaultMessage": "Stream Chatt"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Privat nyckel"
   },
   "C81/uG": {
     "defaultMessage": "Logga ut"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Inställningar"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Inloggad som"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
@@ -111,10 +111,10 @@
     "defaultMessage": "Din kommentar till {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Du kan alltid ersätta den med din egen adress senare."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Få betalt av tittarna"
   },
   "G/yZLu": {
     "defaultMessage": "Ta bort"
@@ -123,7 +123,7 @@
     "defaultMessage": "Omslagsbild"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Spara detta och håll det säkert! Om du förlorar denna nyckel kommer du inte att kunna komma åt ditt konto någonsin igen. Japp, det är så allvarligt!"
   },
   "H5+NAX": {
     "defaultMessage": "Saldo"
@@ -132,7 +132,7 @@
     "defaultMessage": "Namn"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Välj ett mål..."
   },
   "I1kjHI": {
     "defaultMessage": "Stöder {markdown}"
@@ -141,7 +141,7 @@
     "defaultMessage": "Zap belopp i {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "ELLER"
   },
   "JEsxDw": {
     "defaultMessage": "Laddar upp..."
@@ -180,7 +180,7 @@
     "defaultMessage": "Redigera kort"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Vi fixade en lightning plånbok till dig så att du kan få betalt av tittarna direkt!"
   },
   "Q3au2v": {
     "defaultMessage": "Om {estimate}"
@@ -213,7 +213,7 @@
     "defaultMessage": "Starta Stream"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "Konto"
   },
   "UJBFYK": {
     "defaultMessage": "Lägg till kort"
@@ -231,7 +231,7 @@
     "defaultMessage": "Skapa mål"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Denna metod är osäker. Vi rekommenderar att du använder en {nostrlink}"
   },
   "ZmqxZs": {
     "defaultMessage": "Du kan ändra detta senare"
@@ -255,7 +255,7 @@
     "defaultMessage": "Nostr Tillägg"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Åh, och du har {n} sats fri streaming på oss! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
@@ -264,7 +264,7 @@
     "defaultMessage": "Lägg till fil"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Logga in med privat nyckel (osäkra)"
   },
   "hGQqkW": {
     "defaultMessage": "Schemalagd"
@@ -321,7 +321,7 @@
     "defaultMessage": "Schemalagd för {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Logga In"
   },
   "rWBFZA": {
     "defaultMessage": "Sexuellt explicit material framöver!"
@@ -345,7 +345,7 @@
     "defaultMessage": "Inkommande Zap"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Fantastiskt! Fortsätt.."
   },
   "thsiMl": {
     "defaultMessage": "regler och villkor"
@@ -354,7 +354,7 @@
     "defaultMessage": "Status"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Skapa ett konto"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -381,7 +381,7 @@
     "defaultMessage": "Tysta"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "t.ex nsec1xyz"
   },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"

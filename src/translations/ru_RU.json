@@ -1,390 +1,390 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "Изображение"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "В ящике нет ни одного письма, только величие!"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Подключить"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Количество"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "Расширение для подписи nostr"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Сбросить"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "Сохранить ключ"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "Зап-цели трансляции"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Цель"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "Теги"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "например, name@wallet.com"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "Добавить"
   },
   "2CGh/0": {
-    "defaultMessage": "live"
+    "defaultMessage": "Прямой эфир"
   },
   "3HwrQo": {
-    "defaultMessage": "Zap!"
+    "defaultMessage": "Зап!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} зрителей"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Войти с приватным ключом"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "Отменить"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Хм, похоже вы ввели неверный лайтнинг-адрес"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "Копировать"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "Расширения"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "Создать аккаунт"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "Время начала"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "URL сервера"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "Стрим-провайдеры"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "Отправить"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "Название"
   },
   "9anxhq": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Начало"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} запнул {amount} сат"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "NSFW контент"
   },
   "AyGauy": {
-    "defaultMessage": "Login"
+    "defaultMessage": "Логин"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "Чат стрима"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Приватный ключ"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "Выйти"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Настройки"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Авторизованы как"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "Прямой эфир"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "Ваш комментарий к {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Можно заменить своим адресом позже."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Получайте оплату от зрителей"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "Удалить"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "Обложка"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Сохраните этот ключ и храните его в безопасности! Если вы его потеряете, вы не сможете снова войти в свою учетную запись. Да, все настолько серьезно!"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "Баланс"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "Название"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Выберите цель..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "Поддерживает {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "Сумма запа в {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "ИЛИ"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "Загрузка..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "Контент"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "Удалить"
   },
   "K3uH1C": {
-    "defaultMessage": "offline"
+    "defaultMessage": "оффлайн"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "Показать"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "Нет, я моложе 18 лет"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "Ключ стрима"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "Ок, безопасно"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "Да, я старше 18 лет"
   },
   "OEW7yJ": {
-    "defaultMessage": "Zaps"
+    "defaultMessage": "Запы"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "Поделиться"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "Редактировать карточку"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Мы подключили вас с помощью лайтнинг-кошелька, чтобы вы уже сейчас могли получать средства от зрителей!"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "Примерно {estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "Что будем транслировать сегодня?"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "URL трансляции"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "Цель: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name} с {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "Я прочитал и согласен с {provider} {terms}."
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "Пожалуйста, войдите, чтобы писать сообщения!"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "Краткое описание"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "Завершено"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "Начать трансляцию"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "Аккаунт"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "Добавить карточку"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "Предыдущие трансляции"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "Скрыть"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "Включить уведомления"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "Установить цель"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Этот метод небезопасен. Мы рекомендуем использовать {nostrlink}"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "Вы сможете изменить эту настройку позже"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "Продолжить"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Подписки"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "Трансляция проведена {date}"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "Назад"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "Топ поддержавших"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "Nostr расширение"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "О, и вам зачислено {n} сат для стриминга за наш счет! 💜"
   },
   "fBI91o": {
-    "defaultMessage": "Zap"
+    "defaultMessage": "Зап"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "Добавить файл"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Войти с помощью приватного ключа (небезопасно)"
   },
   "hGQqkW": {
-    "defaultMessage": "Schedule"
+    "defaultMessage": "Запланировать"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "Виджет чата"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "Подписаться"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "Профиль"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "Отписаться"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Сохранить"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "например, обо мне"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "Запланировано"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "Поставьте галочку, если в этом стриме содержится нагота или порнографический контент."
   },
   "ljmS5P": {
     "defaultMessage": "Endpoint"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "Краткое описание контента"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "Пополнить"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "Настроить профиль"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "Добавить карточку"
   },
   "oHPB8Q": {
-    "defaultMessage": "Zap {name}"
+    "defaultMessage": "Запнуть ({name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "Тип потока должен быть HLS"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "Запланировано на {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Войти"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "Сексуально откровенный материал!"
   },
   "rbrahO": {
-    "defaultMessage": "Close"
+    "defaultMessage": "Закрыть"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "Сохранить карточку"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Текущие зрители"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "Ссылка на изображение"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "Подтвердите свой возраст"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Входящий Зап"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Отлично! Продолжаем.."
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "Условия использования"
   },
   "tzMNF3": {
-    "defaultMessage": "Status"
+    "defaultMessage": "Статус"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Создать аккаунт"
   },
   "uYw2LD": {
-    "defaultMessage": "Stream"
+    "defaultMessage": "Стрим"
   },
   "vrTOHJ": {
-    "defaultMessage": "{amount} sats"
+    "defaultMessage": "{amount} сат"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "Начните печатать"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Транслировать на Nostr"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "Редактировать"
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "Добавить цели стрима"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "Топ поддержавших"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "Заглушить"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "например, nsec1xyz"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "Оповещение о запе"
   }
 }
 
