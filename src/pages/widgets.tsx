@@ -27,6 +27,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
   const [textToSpeech, setTextToSpeech] = useState<boolean>(false);
   const [voice, setVoice] = useState<string | null>(null);
   const [minSatsForTextToSpeech, setMinSatsForTextToSpeech] = useState<string>("21");
+  const [volume, setVolume] = useState<number>(1);
 
   // Google propietary voices are not available on OBS browser
   const voices = getVoices().filter(v => !v.name.includes("Google"));
@@ -47,14 +48,15 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
     const params = toTextToSpeechParams({
       voiceURI: voice,
       minSats: voice ? Number(minSatsForTextToSpeech) : null,
+      volume,
     });
     const queryParams = params.toString();
     return queryParams.length > 0 ? `?${queryParams}` : "";
-  }, [voice, minSatsForTextToSpeech]);
+  }, [voice, volume, minSatsForTextToSpeech]);
 
   function testVoice() {
     if (selectedVoice) {
-      speak(selectedVoice, testText);
+      speak(selectedVoice, testText, volume);
     }
   }
 
@@ -101,6 +103,20 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
                 min="1"
                 value={minSatsForTextToSpeech}
                 onChange={ev => setMinSatsForTextToSpeech(ev.target.value)}
+              />
+            </div>
+            <div className="paper labeled-input">
+              <label htmlFor="volume">
+                <FormattedMessage defaultMessage="Volume" />
+              </label>
+              <input
+                id="volume"
+                type="number"
+                min="0"
+                max="1"
+                step="0.1"
+                value={volume}
+                onChange={ev => setVolume(Number(ev.target.value))}
               />
             </div>
             <div className="paper labeled-input">

@@ -39,7 +39,7 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
   const zaps = useZaps(currentLink, true);
   const zap = useZapQueue(zaps);
   const mutedPubkeys = useMutedPubkeys(host, true);
-  const { voiceURI, minSats } = useTextToSpeechParams();
+  const { voiceURI, minSats, volume } = useTextToSpeechParams();
   const voices = getVoices();
   const voice = useMemo(() => {
     return voices.find(v => v.voiceURI === voiceURI);
@@ -56,7 +56,7 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
     if (text.length > 0 && voice) {
       try {
         if (zap.amount >= minSats) {
-          speak(voice, text);
+          speak(voice, text, volume);
         }
       } catch (e) {
         console.error(e);

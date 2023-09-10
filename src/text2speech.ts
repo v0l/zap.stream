@@ -9,18 +9,21 @@ function useQuery() {
 interface TextToSpeechConfig {
   voiceURI: string | null;
   minSats: number;
+  volume: number;
 }
 
 export function useTextToSpeechParams(): TextToSpeechConfig {
   const q = useQuery();
   const voiceURI = q.get("voiceURI");
   const minSats = Number(q.get("minSats")) ?? 21;
-  return { voiceURI, minSats };
+  const volume = Number(q.get("volume")) ?? 1;
+  return { voiceURI, minSats, volume };
 }
 
 interface TextToSpeechConfigParams {
   voiceURI: string | null;
   minSats: number | null;
+  volume: number | null;
 }
 
 export function toTextToSpeechParams(config: TextToSpeechConfigParams): URLSearchParams {
@@ -30,6 +33,9 @@ export function toTextToSpeechParams(config: TextToSpeechConfigParams): URLSearc
   }
   if (config.minSats) {
     params.set("minSats", String(config.minSats));
+  }
+  if (config.volume) {
+    params.set("volume", String(config.volume));
   }
   return params;
 }
@@ -41,10 +47,11 @@ export function getVoices() {
   return [];
 }
 
-export function speak(voice: SpeechSynthesisVoice, text: string) {
+export function speak(voice: SpeechSynthesisVoice, text: string, volume: number) {
   try {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = voice;
+    utterance.volume = volume;
     utterance.rate = 0.8;
     speechSynthesis.speak(utterance);
   } catch (e) {
