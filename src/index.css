@@ -193,7 +193,7 @@ input[type="number"] {
 select {
   font-family: inherit;
   border: unset;
-  background-color: unset;
+  background-color: #262626;
   color: inherit;
   width: 100%;
   font-size: 16px;
