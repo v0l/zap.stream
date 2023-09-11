@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "Send"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Content"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "Login"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "Back"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Endpoint"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "A short description of the content"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "Confirm your age"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "Incoming Zap"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "Edit"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "Add stream goal"
   },
@@ -379,6 +403,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Mute"
+  },
+  "y867Vs": {
+    "defaultMessage": "Volume"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
