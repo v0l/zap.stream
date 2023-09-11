@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "Stream Leverantörer"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "Skicka"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-innehåll"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "Logga in"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "Tillbaka"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "Topp Zappers"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "Schemalagd"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "Chatt widget"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Slutpunkt"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "En kort beskrivning av innehållet"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "Bekräfta din ålder"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "Inkommande Zap"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "Redigera"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "Lägg till stream mål"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "Tysta"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "t.ex nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

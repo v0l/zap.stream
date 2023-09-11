@@ -3,31 +3,31 @@
     "defaultMessage": "Image"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Pas d'e-mails, juste génial!"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Se connecter"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Montant"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "Extension nostr signataire"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Effacer"
   },
   "04lmFi": {
     "defaultMessage": "Enregistrer la clé"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "Objectifs de Zap du Stream"
   },
   "0VV/sK": {
     "defaultMessage": "Objectif"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "Mots-clés"
   },
   "1qsXCO": {
     "defaultMessage": "eg. name@wallet.com"
@@ -54,10 +54,10 @@
     "defaultMessage": "Hmm, votre adresse lightning semble incorrecte"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "Copier"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "Résolutions"
   },
   "5JcXdV": {
     "defaultMessage": "Créer un Compte"
@@ -69,28 +69,37 @@
     "defaultMessage": "Url du serveur"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "Fournisseurs de Stream"
+  },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "Envoyer"
   },
   "9a9+ww": {
     "defaultMessage": "Titre"
   },
   "9anxhq": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Débute"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} a zappé {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "Contenu NSFW"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "Se Connecter"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "Chat du Stream"
   },
   "Bep/gA": {
     "defaultMessage": "Clé privée"
@@ -108,37 +117,37 @@
     "defaultMessage": "En direct"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "Votre commentaire pour {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Vous pourrez toujours le remplacer par votre propre adresse plus tard."
   },
   "Fodi9+": {
     "defaultMessage": "Soyez payé par les spectateurs"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "Retirer"
   },
   "Gq6x9o": {
     "defaultMessage": "Bannière"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Sauvegardez ceci et gardez-le en sécurité ! Si vous perdez cette clé, vous ne pourrez plus accéder à votre compte. Oui, c'est si grave !"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "Solde"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "Nom"
   },
   "I/TubD": {
     "defaultMessage": "Sélectionnez un objectif..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "Supporte {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "Montant du Zap en {currency}"
   },
   "INlWvJ": {
     "defaultMessage": "OU"
@@ -150,22 +159,22 @@
     "defaultMessage": "Contenu"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "Supprimer"
   },
   "K3uH1C": {
-    "defaultMessage": "offline"
+    "defaultMessage": "hors ligne"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "Montrer"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "Non, j'ai moins de 18 ans"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "Clé de stream"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "Ok, c'est sûr"
   },
   "O2Cy6m": {
     "defaultMessage": "Oui, j'ai plus de 18 ans"
@@ -177,16 +186,16 @@
     "defaultMessage": "Partager"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "Modifier la carte"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Nous vous avons branché avec un portefeuille Lightning afin que vous puissiez être payé par les spectateurs dès maintenant!"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "À propos de {estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "Qu'allons-nous streamer aujourd'hui ?"
   },
   "QRRCp0": {
     "defaultMessage": "URL du flux"
@@ -198,7 +207,7 @@
     "defaultMessage": "{name} avec {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "J'ai lu et j'accepte les {terms} de {provider}."
   },
   "RXQdxR": {
     "defaultMessage": "Veuillez vous connecter pour écrire des messages !"
@@ -216,46 +225,49 @@
     "defaultMessage": "Compte"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "Ajouter Carte"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "Streams passés"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "Cacher"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "Retirer sourdine"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "Créer un objectif"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Cette méthode n'est pas sécurisée. Nous vous recommandons d'utiliser un {nostrlink}"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "Vous pourrez modifier cela ultérieurement"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "Continuer"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Abonnements"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "Diffusé le {date}"
   },
   "cyR7Kh": {
     "defaultMessage": "Retour"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "Top Zappeurs"
   },
   "ebmhes": {
     "defaultMessage": "Extension Nostr"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Oh, et vous avez des sats {n} de streaming gratuit que nous vous offrons ! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
@@ -269,8 +281,11 @@
   "hGQqkW": {
     "defaultMessage": "Planning"
   },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
+  },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "Widget Chat"
   },
   "ieGrWo": {
     "defaultMessage": "Suivre"
@@ -285,10 +300,10 @@
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Sauvegarder"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "par ex. à propos de moi"
   },
   "kp0NPF": {
     "defaultMessage": "Planifié"
@@ -297,55 +312,61 @@
     "defaultMessage": "Vérifiez ici si ce flux contient de la nudité ou du contenu pornographique."
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "Point d’arrivée"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "Une courte description du contenu"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "Recharger"
   },
   "nOaArs": {
     "defaultMessage": "Configurer le profil"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "Ajouter carte"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "Le type de stream doit être HLS"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "Prévu pour le {date}"
   },
   "r2Jjms": {
     "defaultMessage": "Se connecter"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "Matériel sexuellement explicite à venir !"
   },
   "rbrahO": {
     "defaultMessage": "Fermer"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "Enregistrez la carte"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Spectateurs actuels"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "Lien de l'image"
   },
   "s7V+5p": {
     "defaultMessage": "Confirmez votre âge"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Zap entrant"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Incroyable! Continuez.."
   },
   "thsiMl": {
     "defaultMessage": "termes et conditions"
@@ -366,24 +387,31 @@
     "defaultMessage": "Commencer à écrire"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Diffuser sur Nostr"
   },
   "wEQDC6": {
     "defaultMessage": "Modifier"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "Ajouter un objectif de stream"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "Top Zappeurs"
   },
   "x82IOl": {
     "defaultMessage": "Muet"
+  },
+  "y867Vs": {
+    "defaultMessage": "Volume"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "Alerte Zap"
   }
 }
+

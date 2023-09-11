@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "ارائه دهندگان پخش زنده"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "ارسال"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "محتوای نامناسب برای کودکان و محل کار"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "ورود"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "بازگشت"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "بزرگترین زپ ها"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "زمان‌بندی"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "ویجت گپ"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "نقطه انتها"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "شرح مختصری از محتوا"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "سن خود را تایید کنید"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "زپ ورودی"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "ویرایش"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "افزودن هدف زپ پخش زنده"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "بيصدا"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "هشدار زپ"
   }
 }
+

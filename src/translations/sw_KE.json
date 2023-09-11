@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "Watoa huduma za mkondo"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "Tuma"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "Maudhui ya NSFW"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "Ingia"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "Rudi"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "Zappers za Juu"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "Wijeti ya Soga"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Mwisho"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "Maelezo mafupi ya yaliyomo"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "Thibitisha umri wako"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "Zap inayoingia"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "Hariri"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "Ongeza lengo la mtiririko"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "Nyamazisha"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "Tahadhari ya Zap"
   }
 }
+

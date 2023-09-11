@@ -1,39 +1,39 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "Kuva"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Ei sähköposteja, pelkästään mahtavuutta!"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Yhdistä"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Määrä"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "nostr-allekirjoituslaajennus"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Tyhjennä"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "Tallenna avain"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "Streamaa Zap-tavoitteet"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Tavoite"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "Tunnisteet"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "esim. nimi@lompakko.com"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "Lisää"
   },
   "2CGh/0": {
     "defaultMessage": "live"
@@ -42,348 +42,376 @@
     "defaultMessage": "Zap!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} katsojaa"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Kirjaudu sisään yksityisellä avaimella"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "Peruuta"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, lightning-oitteesi näyttää väärältä"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "Kopioi"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "Tarkkuudet"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "Luo tili"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "Aloitusaika"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "Palvelimen URL"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "Streamaustarjoajat"
+  },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "Lähetä"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "Otsikko"
   },
   "9anxhq": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Alkaa"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} zappasi {amount} satsia"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "NSFW-sisältöä"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
-    "defaultMessage": "Login"
+    "defaultMessage": "Kirjaudu sisään"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "Stream-keskustelu"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Yksityinen avain"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "Kirjaudu ulos"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Asetukset"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Kirjautuneena nimellä"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "Kommenttisi kohteelle {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Voit aina vaihtaa sen omaksi osoitteeksesi myöhemmin."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Saa maksuja katsojilta"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "Poista"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "Kansikuva"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Tallenna tämä ja pidä se tallessa! Jos menetät tämän avaimen, et pääse koskaan enää tilillesi. Kyllä, se on niin vakavaa!"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "Saldo"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "Nimi"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Valitse tavoite..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "Tukee {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "Zap-määrä valuuttassa {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "TAI"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "Ladataan..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "Sisältö"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "Poista"
   },
   "K3uH1C": {
     "defaultMessage": "offline"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "Näytä"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "Ei, olen alle 18"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "Streamin avain"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "Ok, se on turvassa"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "Kyllä, olen yli 18"
   },
   "OEW7yJ": {
-    "defaultMessage": "Zaps"
+    "defaultMessage": "Zapit"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "Jaa"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "Muokkaa korttia"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Sait lightning-lompakon, jotta voit saada heti maksuja katsojilta!"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "Tietoja {estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "Mitä me tänään lähetetään?"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "Streamin URL"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "Tavoite: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name} määrällä {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "Olen lukenut ja hyväksynyt {provider}:n {terms}."
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "Kirjaudu sisään kirjoittaaksesi viestejä!"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "Yhteenveto"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "Päättynyt"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "Aloita lähetys"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "Tili"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "Lisää kortti"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "Aikaisemmat lähetykset"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "Piilota"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "Poista mykistys"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "Luo tavoite"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Tämä menetelmä ei ole turvallinen. Suosittelemme käyttämään {nostrlink}"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "Voit muuttaa tätä myöhemmin"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "Jatka"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Seuraa"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "Lähetetty {date}"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "Takaisin"
+  },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "Parhaat Zapparit"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "Nostr-laajennus"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Ai niin, ja sinulla on {n} satsia ilmaista lähetystä meiltä! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "Lisää tiedosto"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Kirjaudu sisään yksityisellä avaimella (turvaton)"
   },
   "hGQqkW": {
-    "defaultMessage": "Schedule"
+    "defaultMessage": "Aikataulu"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "Keskusteluwidgetti"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "Seuraa"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "Profiili"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "Älä seuraa"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Tallenna"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "esim. itsestäni"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "Suunniteltu"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "Ruksita tämä, jos lähetys sisältää alastomuutta tai pornografiaa."
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "Loppupiste"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "Lyhyt kuvaus sisällöstä"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "Lataa saldoa"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "Aseta profiili"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "Lisää kortti"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "Streamin tyyppi tulisi olla HLS"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "Ajoitettu {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Kirjaudu sisään"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "Seksuaalisesti paljastavaa materiaalia tulossa!"
   },
   "rbrahO": {
-    "defaultMessage": "Close"
+    "defaultMessage": "Sulje"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "Tallenna kortti"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Nykyiset katsojat"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "Kuvan linkki"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "Vahvista ikäsi"
+  },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Saapuva Zap"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Mahtavaa! Jatka.."
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "käyttöehdot"
   },
   "tzMNF3": {
-    "defaultMessage": "Status"
+    "defaultMessage": "Tila"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Luo tili"
   },
   "uYw2LD": {
-    "defaultMessage": "Stream"
+    "defaultMessage": "Streamaa"
   },
   "vrTOHJ": {
-    "defaultMessage": "{amount} sats"
+    "defaultMessage": "{amount} satsia"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "Aloita kirjoittaminen"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Lähetä Nostrissa"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "Muokkaa"
+  },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "Lisää stream-tavoite"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "Parhaat Zapparit"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "Mykistä"
+  },
+  "y867Vs": {
+    "defaultMessage": "Volume"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "esim. nsec1xyz"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "Zap-hälytys"
   }
 }
+

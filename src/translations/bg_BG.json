@@ -1,0 +1,417 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "Изображение"
+  },
+  "+AcVD+": {
+    "defaultMessage": "Без имейли, просто страхотно!"
+  },
+  "+vVZ/G": {
+    "defaultMessage": "Свързване"
+  },
+  "/0TOL5": {
+    "defaultMessage": "Количество"
+  },
+  "/EvlqN": {
+    "defaultMessage": "ностър подписващо разширение"
+  },
+  "/GCoTA": {
+    "defaultMessage": "Изчисти"
+  },
+  "04lmFi": {
+    "defaultMessage": "Запази ключ"
+  },
+  "0GfNiL": {
+    "defaultMessage": "Стрийм Зап Цел"
+  },
+  "0VV/sK": {
+    "defaultMessage": "Цел"
+  },
+  "1EYCdR": {
+    "defaultMessage": "Тагове"
+  },
+  "1qsXCO": {
+    "defaultMessage": "напр.име@wallet.com"
+  },
+  "2/2yg+": {
+    "defaultMessage": "Добави"
+  },
+  "2CGh/0": {
+    "defaultMessage": "на живо"
+  },
+  "3HwrQo": {
+    "defaultMessage": "Зап!"
+  },
+  "3adEeb": {
+    "defaultMessage": "{н} зрители"
+  },
+  "3df560": {
+    "defaultMessage": "Вход със частен ключ"
+  },
+  "47FYwb": {
+    "defaultMessage": "Отказ"
+  },
+  "4l69eO": {
+    "defaultMessage": "Хмм, твоят лайтнинг адрес изглежда грешен"
+  },
+  "4l6vz1": {
+    "defaultMessage": "Копиране"
+  },
+  "4uI538": {
+    "defaultMessage": "Резолюция"
+  },
+  "5JcXdV": {
+    "defaultMessage": "Създай Акаунт"
+  },
+  "5QYdPU": {
+    "defaultMessage": "Време на започване"
+  },
+  "5kx+2v": {
+    "defaultMessage": "Url адрес на сървъра"
+  },
+  "6Z2pvJ": {
+    "defaultMessage": "Стрийм доставчици"
+  },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
+  "9WRlF4": {
+    "defaultMessage": "Изпрати"
+  },
+  "9a9+ww": {
+    "defaultMessage": "Заглавие"
+  },
+  "9anxhq": {
+    "defaultMessage": "Старт"
+  },
+  "AIHaPH": {
+    "defaultMessage": "{човек} запнат {количество} сатс"
+  },
+  "Atr2p4": {
+    "defaultMessage": "NSFW Съдържание"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
+  },
+  "AyGauy": {
+    "defaultMessage": "Вход"
+  },
+  "BGxpTN": {
+    "defaultMessage": "Стрийм Чат"
+  },
+  "Bep/gA": {
+    "defaultMessage": "Частен ключ"
+  },
+  "C81/uG": {
+    "defaultMessage": "Изход"
+  },
+  "D3idYv": {
+    "defaultMessage": "Настройки"
+  },
+  "DZKuuP": {
+    "defaultMessage": "Вписани сте като"
+  },
+  "Dn82AL": {
+    "defaultMessage": "На живо"
+  },
+  "ESyhzp": {
+    "defaultMessage": "Твоят коментар за {име}"
+  },
+  "FjDlus": {
+    "defaultMessage": "Винаги можете да замените вашият личен адрес по-късно."
+  },
+  "Fodi9+": {
+    "defaultMessage": "Бъди платен от зрители"
+  },
+  "G/yZLu": {
+    "defaultMessage": "Премахване"
+  },
+  "Gq6x9o": {
+    "defaultMessage": "Изображение на корицата"
+  },
+  "H/bNs9": {
+    "defaultMessage": "Запаметете това и пазете в безопасност! ако изгубите този ключ, никога повече няма да имате достъп до акаунта си. Да, толкова е сериозно!"
+  },
+  "H5+NAX": {
+    "defaultMessage": "Баланс"
+  },
+  "HAlOn1": {
+    "defaultMessage": "Име"
+  },
+  "I/TubD": {
+    "defaultMessage": "Изберете цел..."
+  },
+  "I1kjHI": {
+    "defaultMessage": "Поддръжка {намаление}"
+  },
+  "IJDKz3": {
+    "defaultMessage": "Зап количество във {валута}"
+  },
+  "INlWvJ": {
+    "defaultMessage": "Или"
+  },
+  "JEsxDw": {
+    "defaultMessage": "Качване..."
+  },
+  "Jq3FDz": {
+    "defaultMessage": "Съдържание"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Изтрий"
+  },
+  "K3uH1C": {
+    "defaultMessage": "Офлайн"
+  },
+  "K7AkdL": {
+    "defaultMessage": "Показване"
+  },
+  "KkIL3s": {
+    "defaultMessage": "Не, аз съм под 18"
+  },
+  "LknBsU": {
+    "defaultMessage": "Стрийм ключ"
+  },
+  "My6HwN": {
+    "defaultMessage": "Ок, безопасно е"
+  },
+  "O2Cy6m": {
+    "defaultMessage": "Да, Аз съм на 18 или повече"
+  },
+  "OEW7yJ": {
+    "defaultMessage": "Запове!"
+  },
+  "OKhRC6": {
+    "defaultMessage": "Сподели"
+  },
+  "OWgHbg": {
+    "defaultMessage": "Редактирай картата"
+  },
+  "Oxqtyf": {
+    "defaultMessage": "Свързахме ви със светкавичен портфейл, за да можете да получите плащане от зрителите веднага!"
+  },
+  "Q3au2v": {
+    "defaultMessage": "Относно {очаквано}"
+  },
+  "QRHNuF": {
+    "defaultMessage": "Какво стриймваме днес?"
+  },
+  "QRRCp0": {
+    "defaultMessage": "Стрийм ULR"
+  },
+  "QceMQZ": {
+    "defaultMessage": "Цел: {количесто}"
+  },
+  "Qe1MJu": {
+    "defaultMessage": "{име} със {количество}"
+  },
+  "RJOmzk": {
+    "defaultMessage": "Прочетох и се съгласявам със {доставчика} и неговите {общи условия}."
+  },
+  "RXQdxR": {
+    "defaultMessage": "Моля влезте в профила си за да може да пишете съобщения!"
+  },
+  "RrCui3": {
+    "defaultMessage": "Обобщение"
+  },
+  "TP/cMX": {
+    "defaultMessage": "Приключено"
+  },
+  "TaTRKo": {
+    "defaultMessage": "Започни Стрийм"
+  },
+  "TwyMau": {
+    "defaultMessage": "Акаунт"
+  },
+  "UJBFYK": {
+    "defaultMessage": "Добави карта"
+  },
+  "UfSot5": {
+    "defaultMessage": "Изминали Стриймове"
+  },
+  "VA/Z1S": {
+    "defaultMessage": "Скрий"
+  },
+  "W9355R": {
+    "defaultMessage": "Премахни заглушаването"
+  },
+  "X2PZ7D": {
+    "defaultMessage": "Създаване на цел"
+  },
+  "Z8ZOEY": {
+    "defaultMessage": "Този метод не е сигурен. Препоръчваме ви да използвате {ностърлинк}"
+  },
+  "ZmqxZs": {
+    "defaultMessage": "Можете да промените това по-късно"
+  },
+  "acrOoz": {
+    "defaultMessage": "Продължаване"
+  },
+  "cPIKU2": {
+    "defaultMessage": "Последвани"
+  },
+  "cvAsEh": {
+    "defaultMessage": "Стриймнат на {дата}"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Назад"
+  },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
+  "dVD/AR": {
+    "defaultMessage": "Топ запери"
+  },
+  "ebmhes": {
+    "defaultMessage": "Ностър добавка"
+  },
+  "f6biFA": {
+    "defaultMessage": "Ох, и ти имаш {н} безплатни сатс за стриймване от нас!💜"
+  },
+  "fBI91o": {
+    "defaultMessage": "Зап"
+  },
+  "fc2iho": {
+    "defaultMessage": "Добавям файлове"
+  },
+  "feZ/kG": {
+    "defaultMessage": "Вход със частен ключ (несигурно)"
+  },
+  "hGQqkW": {
+    "defaultMessage": "Планиран"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
+  },
+  "hpl4BP": {
+    "defaultMessage": "Чат джаджа"
+  },
+  "ieGrWo": {
+    "defaultMessage": "Последване"
+  },
+  "itPgxd": {
+    "defaultMessage": "Профил"
+  },
+  "izWS4J": {
+    "defaultMessage": "Прекратете следенето"
+  },
+  "jr4+vD": {
+    "defaultMessage": "Намаление"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Запамети"
+  },
+  "k21gTS": {
+    "defaultMessage": "напр. за мен"
+  },
+  "kp0NPF": {
+    "defaultMessage": "Планирано"
+  },
+  "lZpRMR": {
+    "defaultMessage": "Проверете тук дали този стрийм съдържа голота или порнографско съдържание."
+  },
+  "ljmS5P": {
+    "defaultMessage": "Крайна точка"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
+  },
+  "mtNGwh": {
+    "defaultMessage": "Кратко описание на съдържанието"
+  },
+  "nBCvvJ": {
+    "defaultMessage": "Допълване"
+  },
+  "nOaArs": {
+    "defaultMessage": "Настройване на профила"
+  },
+  "nwA8Os": {
+    "defaultMessage": "Добавяне на карта"
+  },
+  "oHPB8Q": {
+    "defaultMessage": "Зап {име}"
+  },
+  "oZrFyI": {
+    "defaultMessage": "Стрийм тип трябва да бъде HLS"
+  },
+  "pO/lPX": {
+    "defaultMessage": "Планирано за {дата}"
+  },
+  "r2Jjms": {
+    "defaultMessage": "Вход"
+  },
+  "rWBFZA": {
+    "defaultMessage": "Сексуално явен материал напред!"
+  },
+  "rbrahO": {
+    "defaultMessage": "Затвори"
+  },
+  "rfC1Zq": {
+    "defaultMessage": "Запази карта"
+  },
+  "rgsbu9": {
+    "defaultMessage": "Текущи Зрители"
+  },
+  "s5ksS7": {
+    "defaultMessage": "Линк към изображението"
+  },
+  "s7V+5p": {
+    "defaultMessage": "Потвърдете възрастта си"
+  },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
+  "tG1ST3": {
+    "defaultMessage": "Входящ Зап"
+  },
+  "tM6fNW": {
+    "defaultMessage": "Стахотно! Продължете.."
+  },
+  "thsiMl": {
+    "defaultMessage": "общи условия"
+  },
+  "tzMNF3": {
+    "defaultMessage": "Състояние"
+  },
+  "u6uD94": {
+    "defaultMessage": "Създай акаунт"
+  },
+  "uYw2LD": {
+    "defaultMessage": "Стрийм"
+  },
+  "vrTOHJ": {
+    "defaultMessage": "{количество} сатс"
+  },
+  "w0Xm2F": {
+    "defaultMessage": "Започнете да пишете"
+  },
+  "wCIL7o": {
+    "defaultMessage": "Излъчване във Ностър"
+  },
+  "wEQDC6": {
+    "defaultMessage": "Редактирай"
+  },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
+  "wOy57k": {
+    "defaultMessage": "Добави стрийм цел"
+  },
+  "wzWWzV": {
+    "defaultMessage": "Топ запери"
+  },
+  "x82IOl": {
+    "defaultMessage": "Заглуши"
+  },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
+  "yzKwBQ": {
+    "defaultMessage": "напр. nsec1xyz"
+  },
+  "zVDHAu": {
+    "defaultMessage": "Зап Тревога"
+  }
+}
+

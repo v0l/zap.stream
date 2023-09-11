@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "Verzenden"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-inhoud"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "Inloggen"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "Vorige"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "Inplannen"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Eindpunt"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "Een korte beschrijving van de inhoud"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "Bevestig uw leeftijd"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "Inkomende Zap"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "Bewerk"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "Voeg streamdoel toe"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "Mute"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

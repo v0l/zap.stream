@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "配信の提供元"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "送信"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "不適切な内容"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "ログイン"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "戻る"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "トップザッパー"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "配信予定"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "チャットウィジェット"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "エンドポイント"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "コンテンツの簡単な説明"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "年齢を確認してください"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "着金中のザップ"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "編集"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "配信目標を追加"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "ミュート"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "ザップアラート"
   }
 }
+

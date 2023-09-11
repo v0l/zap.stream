@@ -45,7 +45,7 @@
     "defaultMessage": "{n} Zuschauer"
   },
   "3df560": {
-    "defaultMessage": "Mit privatem Schlüssel einloggen"
+    "defaultMessage": "Mit privatem Schlüssel anmelden"
   },
   "47FYwb": {
     "defaultMessage": "Abbrechen"
@@ -57,19 +57,25 @@
     "defaultMessage": "Kopieren"
   },
   "4uI538": {
-    "defaultMessage": "Auflösung"
+    "defaultMessage": "Auflösungen"
   },
   "5JcXdV": {
-    "defaultMessage": "Account erstellen"
+    "defaultMessage": "Konto erstellen"
   },
   "5QYdPU": {
     "defaultMessage": "Startzeit"
   },
   "5kx+2v": {
-    "defaultMessage": "Server URL"
+    "defaultMessage": "Server-URL"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Anbieter"
+  },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
   },
   "9WRlF4": {
     "defaultMessage": "Senden"
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Inhalt"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "Anmelden"
@@ -102,7 +111,7 @@
     "defaultMessage": "Einstellungen"
   },
   "DZKuuP": {
-    "defaultMessage": "Eingeloggt als"
+    "defaultMessage": "Angemeldet als"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
@@ -201,7 +210,7 @@
     "defaultMessage": "Ich habe die {provider} {terms} gelesen und stimme ihnen zu."
   },
   "RXQdxR": {
-    "defaultMessage": "Bitte melden Sie sich an, um Nachrichten zu schreiben!"
+    "defaultMessage": "Bitte melde dich an, um Nachrichten zu schreiben!"
   },
   "RrCui3": {
     "defaultMessage": "Zusammenfassung"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "Zurück"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "Top Zapper"
   },
@@ -264,10 +276,13 @@
     "defaultMessage": "Datei hinzufügen"
   },
   "feZ/kG": {
-    "defaultMessage": "Mit privatem Schlüssel einloggen (unsicher)"
+    "defaultMessage": "Mit privatem Schlüssel anmelden (unsicher)"
   },
   "hGQqkW": {
     "defaultMessage": "Zeitplan"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
@@ -294,10 +309,13 @@
     "defaultMessage": "Geplant"
   },
   "lZpRMR": {
-    "defaultMessage": "Aktivieren Sie hier, wenn dieser Stream Nacktheit oder pornographische Inhalte enthält."
+    "defaultMessage": "Hier markieren, wenn dieser Stream Nacktheit oder pornografische Inhalte enthält."
   },
   "ljmS5P": {
     "defaultMessage": "Endpunkt"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "Eine kurze Beschreibung des Inhalts"
@@ -321,7 +339,7 @@
     "defaultMessage": "Geplant am {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Einloggen"
+    "defaultMessage": "Anmelden"
   },
   "rWBFZA": {
     "defaultMessage": "Sexuell explizites Material voraus!"
@@ -339,7 +357,10 @@
     "defaultMessage": "Bild-Link"
   },
   "s7V+5p": {
-    "defaultMessage": "Bestätigen Sie ihr Alter"
+    "defaultMessage": "Bestätige dein Alter"
+  },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
   },
   "tG1ST3": {
     "defaultMessage": "Eingehender Zap"
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "Bearbeiten"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "Stream-Ziel hinzufügen"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "Stummschalten"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "z.B. nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

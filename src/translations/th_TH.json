@@ -71,6 +71,12 @@
   "6Z2pvJ": {
     "defaultMessage": "เริ่มถ่ายทอดสด"
   },
+  "6pr6hJ": {
+    "defaultMessage": "Minimum amount for text to speech"
+  },
+  "8YT6ja": {
+    "defaultMessage": "Insert text to speak"
+  },
   "9WRlF4": {
     "defaultMessage": "ส่ง"
   },
@@ -85,6 +91,9 @@
   },
   "Atr2p4": {
     "defaultMessage": "เนื้อหาที่ไม่เหมาะสม"
+  },
+  "AukrPM": {
+    "defaultMessage": "No viewer data available"
   },
   "AyGauy": {
     "defaultMessage": "เข้าสู่ระบบ"
@@ -248,6 +257,9 @@
   "cyR7Kh": {
     "defaultMessage": "กลับ"
   },
+  "d5zWyh": {
+    "defaultMessage": "Test voice"
+  },
   "dVD/AR": {
     "defaultMessage": "สุดยอดมือ Zap"
   },
@@ -268,6 +280,9 @@
   },
   "hGQqkW": {
     "defaultMessage": "กำหนดการ"
+  },
+  "heyxZL": {
+    "defaultMessage": "Enable text to speech"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
@@ -298,6 +313,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Endpoint"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "Voice"
   },
   "mtNGwh": {
     "defaultMessage": "เพิ่มคำอธิบายเกี่ยวกับถ่ายทอดสดนี้"
@@ -341,6 +359,9 @@
   "s7V+5p": {
     "defaultMessage": "ยืนยันอายุของคุณ"
   },
+  "sInm1h": {
+    "defaultMessage": "Zap message"
+  },
   "tG1ST3": {
     "defaultMessage": "Incoming Zap"
   },
@@ -371,6 +392,9 @@
   "wEQDC6": {
     "defaultMessage": "แก้ไข"
   },
+  "wMKVFz": {
+    "defaultMessage": "Select voice..."
+  },
   "wOy57k": {
     "defaultMessage": "เพิ่มเป้าหมายของการถ่ายทอดสดนี้"
   },
@@ -380,6 +404,9 @@
   "x82IOl": {
     "defaultMessage": "ปิดการมองเห็น"
   },
+  "y867Vs": {
+    "defaultMessage": "Volume"
+  },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
   },
@@ -387,3 +414,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+
