@@ -209,3 +209,27 @@ button span.hide-on-mobile {
 .fi-se {
   background-image: url("flag-icons/flags/1x1/se.svg");
 }
+.fi-bg {
+  background-image: url("flag-icons/flags/1x1/bg.svg");
+}
+.fi-bd {
+  background-image: url("flag-icons/flags/1x1/bd.svg");
+}
+.fi-cn {
+  background-image: url("flag-icons/flags/1x1/cn.svg");
+}
+.fi-tw {
+  background-image: url("flag-icons/flags/1x1/tw.svg");
+}
+.fi-fi {
+  background-image: url("flag-icons/flags/1x1/fi.svg");
+}
+.fi-fr {
+  background-image: url("flag-icons/flags/1x1/fr.svg");
+}
+.fi-br {
+  background-image: url("flag-icons/flags/1x1/br.svg");
+}
+.fi-ru {
+  background-image: url("flag-icons/flags/1x1/ru.svg");
+}
