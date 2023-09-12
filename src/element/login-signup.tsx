@@ -1,6 +1,6 @@
 import "./login-signup.css";
-import LoginHeader from "../login-start.png";
-import LoginHeaderSmall from "../login-start-small.png";
+import LoginHeader from "../login-start.jpg";
+import LoginHeaderSmall from "../login-start-sm.jpg";
 import LoginVault from "../login-vault.png";
 import LoginProfile from "../login-profile.png";
 import LoginKey from "../login-key.png";
