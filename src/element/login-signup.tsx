@@ -1,5 +1,6 @@
 import "./login-signup.css";
 import LoginHeader from "../login-start.png";
+import LoginHeaderSmall from "../login-start-small.png";
 import LoginVault from "../login-vault.png";
 import LoginProfile from "../login-profile.png";
 import LoginKey from "../login-key.png";
@@ -21,6 +22,7 @@ import { hexToBech32, openFile } from "utils";
 import { LoginType } from "login";
 import { DefaultProvider, StreamProviderInfo } from "providers";
 import { Nip103StreamProvider } from "providers/zsz";
+import ProgressiveImage from "react-progressive-graceful-image";
 
 enum Stage {
   Login = 0,
@@ -147,7 +149,9 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Login: {
       return (
         <>
-          <img src={LoginHeader} className="header-image" />
+          <ProgressiveImage src={LoginHeader as string} placeholder={LoginHeaderSmall}>
+            {(src) => <img src={src} className="header-image" />}
+          </ProgressiveImage>
           <div className="content-inner">
             <h2>
               <FormattedMessage defaultMessage="Create an Account" />
