@@ -11,7 +11,25 @@ async function importLang(code: string) {
   return Object.fromEntries(ent) as Record<string, string>;
 }
 
-export const AllLocales = [DefaultLocale, "de-DE", "es-ES", "th-TH", "nl-NL", "ja-JP", "fa-IR", "sw-KE", "sv-SE"];
+export const AllLocales = [
+  DefaultLocale,
+  "de-DE",
+  "es-ES",
+  "th-TH",
+  "nl-NL",
+  "ja-JP",
+  "fa-IR",
+  "sw-KE",
+  "sv-SE",
+  "bn-BD",
+  "bg-BG",
+  "zh-CN",
+  "zh-TW",
+  "fi-FI",
+  "fr-FR",
+  "pt-BR",
+  "ru-RU",
+];
 
 const getMessages = (locale: string) => {
   const truncatedLocale = locale.toLowerCase().split(/[_-]+/)[0];
@@ -42,6 +60,28 @@ const getMessages = (locale: string) => {
       case "sv":
       case "sv-SE":
         return await importLang("sv_SE");
+      case "bn":
+      case "bn-BD":
+        return await importLang("bn_BD");
+      case "bg":
+      case "bg-BG":
+        return await importLang("bg_BG");
+      case "zh":
+      case "zh-CN":
+        return await importLang("zh_CN");
+      case "zh-TW":
+        return await importLang("zh_TW");
+      case "fi":
+      case "fi-FI":
+        return await importLang("fi_FI");
+      case "fr":
+      case "fr-FR":
+        return await importLang("fr_FR");
+      case "pt-BR":
+        return await importLang("pt_BR");
+      case "ru":
+      case "ru-RU":
+        return await importLang("ru_RU");
       case DefaultLocale:
       case "en":
         return enMessages;
