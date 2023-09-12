@@ -72,10 +72,10 @@
     "defaultMessage": "直播流來源"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "文字转语音的最小金额"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "输入要转为语音的文本"
   },
   "9WRlF4": {
     "defaultMessage": "发送"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW 内容"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "没有可用的观看用户数据"
   },
   "AyGauy": {
     "defaultMessage": "登录"
@@ -258,7 +258,7 @@
     "defaultMessage": "返回"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "测试语音"
   },
   "dVD/AR": {
     "defaultMessage": "最高打闪用户"
@@ -282,7 +282,7 @@
     "defaultMessage": "时间表"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "启用文字转语音"
   },
   "hpl4BP": {
     "defaultMessage": "聊天小部件"
@@ -315,7 +315,7 @@
     "defaultMessage": "端点"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "语音"
   },
   "mtNGwh": {
     "defaultMessage": "内容的简短描述"
@@ -360,7 +360,7 @@
     "defaultMessage": "确认你的年龄"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "打闪消息"
   },
   "tG1ST3": {
     "defaultMessage": "传入打闪"
@@ -393,7 +393,7 @@
     "defaultMessage": "编辑"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "选择语音..."
   },
   "wOy57k": {
     "defaultMessage": "添加直播流目标"
@@ -405,7 +405,7 @@
     "defaultMessage": "静音"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "音量"
   },
   "yzKwBQ": {
     "defaultMessage": "例如 nsec1xyz"
@@ -414,3 +414,4 @@
     "defaultMessage": "打闪提示"
   }
 }
+
