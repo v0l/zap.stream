@@ -72,10 +72,10 @@
     "defaultMessage": "Stream Anbieter"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Mindestbetrag für Text-to-Speech"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Text zum Sprechen einfügen"
   },
   "9WRlF4": {
     "defaultMessage": "Senden"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW Inhalt"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Keine Zuschauer-Daten verfügbar"
   },
   "AyGauy": {
     "defaultMessage": "Anmelden"
@@ -258,7 +258,7 @@
     "defaultMessage": "Zurück"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Stimme testen"
   },
   "dVD/AR": {
     "defaultMessage": "Top Zapper"
@@ -282,7 +282,7 @@
     "defaultMessage": "Zeitplan"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Text-to-Speech aktivieren"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
@@ -315,7 +315,7 @@
     "defaultMessage": "Endpunkt"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Stimme"
   },
   "mtNGwh": {
     "defaultMessage": "Eine kurze Beschreibung des Inhalts"
@@ -360,7 +360,7 @@
     "defaultMessage": "Bestätige dein Alter"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Zap-Nachricht"
   },
   "tG1ST3": {
     "defaultMessage": "Eingehender Zap"
@@ -393,7 +393,7 @@
     "defaultMessage": "Bearbeiten"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Stimme auswählen..."
   },
   "wOy57k": {
     "defaultMessage": "Stream-Ziel hinzufügen"
@@ -405,7 +405,7 @@
     "defaultMessage": "Stummschalten"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Lautstärke"
   },
   "yzKwBQ": {
     "defaultMessage": "z.B. nsec1xyz"
@@ -414,3 +414,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+
