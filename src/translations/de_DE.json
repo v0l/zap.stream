@@ -69,7 +69,7 @@
     "defaultMessage": "Server-URL"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Anbieter"
+    "defaultMessage": "Stream-Anbieter"
   },
   "6pr6hJ": {
     "defaultMessage": "Mindestbetrag für Text-to-Speech"
@@ -99,7 +99,7 @@
     "defaultMessage": "Anmelden"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "Stream-Chat"
   },
   "Bep/gA": {
     "defaultMessage": "Privater Schlüssel"
@@ -198,7 +198,7 @@
     "defaultMessage": "Was streamen wir heute?"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "Stream-URL"
   },
   "QceMQZ": {
     "defaultMessage": "Ziel: {amount}"
@@ -279,13 +279,13 @@
     "defaultMessage": "Mit privatem Schlüssel anmelden (unsicher)"
   },
   "hGQqkW": {
-    "defaultMessage": "Zeitplan"
+    "defaultMessage": "Programm"
   },
   "heyxZL": {
     "defaultMessage": "Text-to-Speech aktivieren"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "Chat-Widget"
   },
   "ieGrWo": {
     "defaultMessage": "Folgen"

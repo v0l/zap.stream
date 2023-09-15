@@ -3,7 +3,7 @@
     "defaultMessage": "Picha"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Hakuna barua pepe, uzuri tu!"
   },
   "+vVZ/G": {
     "defaultMessage": "Unganisha"
@@ -12,7 +12,7 @@
     "defaultMessage": "Kiasi"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "nostr signer ugani"
   },
   "/GCoTA": {
     "defaultMessage": "Futa"
@@ -24,13 +24,13 @@
     "defaultMessage": "Tiririsha Malengo ya Zap"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Lengo"
   },
   "1EYCdR": {
     "defaultMessage": "Vitambulisho"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "eg. jina@pochi.com"
   },
   "2/2yg+": {
     "defaultMessage": "Ongeza"
@@ -45,13 +45,13 @@
     "defaultMessage": "{n} watazamaji"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Ingia kwa kutumia ufunguo wa faragha"
   },
   "47FYwb": {
     "defaultMessage": "Ghairi"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, anwani yako ya umeme inaonekana si sahihi"
   },
   "4l6vz1": {
     "defaultMessage": "Nakala"
@@ -72,10 +72,10 @@
     "defaultMessage": "Watoa huduma za mkondo"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Kiasi cha chini cha maandishi hadi hotuba"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Ingiza maandishi ili kuzungumza"
   },
   "9WRlF4": {
     "defaultMessage": "Tuma"
@@ -93,7 +93,7 @@
     "defaultMessage": "Maudhui ya NSFW"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Hakuna data ya mtazamaji inayopatikana"
   },
   "AyGauy": {
     "defaultMessage": "Ingia"
@@ -102,16 +102,16 @@
     "defaultMessage": "Mkondo Gumzo"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Ufunguo wa kibinafsi"
   },
   "C81/uG": {
     "defaultMessage": "Toka nje"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Mipangilio"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Imeingia kama"
   },
   "Dn82AL": {
     "defaultMessage": "Moja kwa moja"
@@ -120,10 +120,10 @@
     "defaultMessage": "Maoni yako ya {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Unaweza kubadilisha na kuweka anwani yako mwenyewe baadaye."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Lipwe na watazamaji"
   },
   "G/yZLu": {
     "defaultMessage": "Ondoa"
@@ -132,7 +132,7 @@
     "defaultMessage": "Picha ya Jalada"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Hifadhi hii na ihifadhi salama! Ukipoteza ufunguo huu, hutaweza kufikia akaunti yako tena. Ndio, ni mbaya sana!"
   },
   "H5+NAX": {
     "defaultMessage": "Mizani"
@@ -141,7 +141,7 @@
     "defaultMessage": "Jina"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Chagua lengo..."
   },
   "I1kjHI": {
     "defaultMessage": "Inaauni {markdown}"
@@ -150,7 +150,7 @@
     "defaultMessage": "Kiasi cha Zap kwa {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "AU"
   },
   "JEsxDw": {
     "defaultMessage": "Inapakia..."
@@ -189,7 +189,7 @@
     "defaultMessage": "Hariri kadi"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Tulikuunganisha na pochi ya umeme ili uweze kulipwa na watazamaji mara moja!"
   },
   "Q3au2v": {
     "defaultMessage": "Kuhusu {estimate}"
@@ -222,7 +222,7 @@
     "defaultMessage": "Anza Kutiririsha"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "Akaunti"
   },
   "UJBFYK": {
     "defaultMessage": "Ongeza Kadi"
@@ -240,7 +240,7 @@
     "defaultMessage": "Tengeneza Lengo"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Njia hii haina usalama. Tunapendekeza utumie {nostrlink}"
   },
   "ZmqxZs": {
     "defaultMessage": "Unaweza kubadilisha hii baadaye"
@@ -258,7 +258,7 @@
     "defaultMessage": "Rudi"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Jaribu sauti"
   },
   "dVD/AR": {
     "defaultMessage": "Zappers za Juu"
@@ -267,7 +267,7 @@
     "defaultMessage": "Ugani wa Nostr"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Lo, na una {n} safu za utiririshaji bila malipo kwa ajili yetu! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
@@ -276,13 +276,13 @@
     "defaultMessage": "Ongeza Faili"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Ingia kwa kutumia Ufunguo wa Faragha (si salama)"
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Washa maandishi hadi usemi"
   },
   "hpl4BP": {
     "defaultMessage": "Wijeti ya Soga"
@@ -315,7 +315,7 @@
     "defaultMessage": "Mwisho"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Sauti"
   },
   "mtNGwh": {
     "defaultMessage": "Maelezo mafupi ya yaliyomo"
@@ -339,7 +339,7 @@
     "defaultMessage": "Imeratibiwa tarehe {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Ingia"
   },
   "rWBFZA": {
     "defaultMessage": "Nyenzo za ngono wazi mbele yako!"
@@ -360,13 +360,13 @@
     "defaultMessage": "Thibitisha umri wako"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Zap ujumbe"
   },
   "tG1ST3": {
     "defaultMessage": "Zap inayoingia"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Inashangaza! Endelea.."
   },
   "thsiMl": {
     "defaultMessage": "sheria na Masharti"
@@ -375,7 +375,7 @@
     "defaultMessage": "Hali"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Fungua Akaunti"
   },
   "uYw2LD": {
     "defaultMessage": "Tiririsha"
@@ -393,7 +393,7 @@
     "defaultMessage": "Hariri"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Chagua sauti..."
   },
   "wOy57k": {
     "defaultMessage": "Ongeza lengo la mtiririko"
@@ -405,7 +405,7 @@
     "defaultMessage": "Nyamazisha"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Kiasi"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

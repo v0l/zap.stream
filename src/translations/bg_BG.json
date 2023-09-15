@@ -72,10 +72,10 @@
     "defaultMessage": "Стрийм доставчици"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Минимално количество за текст към реч"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Вмъкнете текст за изговаряне"
   },
   "9WRlF4": {
     "defaultMessage": "Изпрати"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW Съдържание"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Няма налични данни за зрителите"
   },
   "AyGauy": {
     "defaultMessage": "Вход"
@@ -258,7 +258,7 @@
     "defaultMessage": "Назад"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Тестов глас"
   },
   "dVD/AR": {
     "defaultMessage": "Топ запери"
@@ -282,7 +282,7 @@
     "defaultMessage": "Планиран"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Активиране на текст към реч"
   },
   "hpl4BP": {
     "defaultMessage": "Чат джаджа"
@@ -315,7 +315,7 @@
     "defaultMessage": "Крайна точка"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Глас"
   },
   "mtNGwh": {
     "defaultMessage": "Кратко описание на съдържанието"
@@ -360,7 +360,7 @@
     "defaultMessage": "Потвърдете възрастта си"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Зап съобщение"
   },
   "tG1ST3": {
     "defaultMessage": "Входящ Зап"
@@ -393,7 +393,7 @@
     "defaultMessage": "Редактирай"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Избери глас..."
   },
   "wOy57k": {
     "defaultMessage": "Добави стрийм цел"
@@ -405,7 +405,7 @@
     "defaultMessage": "Заглуши"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Сила на звука"
   },
   "yzKwBQ": {
     "defaultMessage": "напр. nsec1xyz"

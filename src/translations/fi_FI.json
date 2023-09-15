@@ -72,10 +72,10 @@
     "defaultMessage": "Streamaustarjoajat"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Vähimmäismäärä teksti puheelle"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Lisää teksti puheeksi"
   },
   "9WRlF4": {
     "defaultMessage": "Lähetä"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW-sisältöä"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Katsojatietoja ei ole saatavilla"
   },
   "AyGauy": {
     "defaultMessage": "Kirjaudu sisään"
@@ -258,7 +258,7 @@
     "defaultMessage": "Takaisin"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Testiääni"
   },
   "dVD/AR": {
     "defaultMessage": "Parhaat Zapparit"
@@ -282,7 +282,7 @@
     "defaultMessage": "Aikataulu"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Käytä tekstiä puheeksi"
   },
   "hpl4BP": {
     "defaultMessage": "Keskusteluwidgetti"
@@ -315,7 +315,7 @@
     "defaultMessage": "Loppupiste"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Ääni"
   },
   "mtNGwh": {
     "defaultMessage": "Lyhyt kuvaus sisällöstä"
@@ -360,7 +360,7 @@
     "defaultMessage": "Vahvista ikäsi"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Zap-viesti"
   },
   "tG1ST3": {
     "defaultMessage": "Saapuva Zap"
@@ -393,7 +393,7 @@
     "defaultMessage": "Muokkaa"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Valitse ääni..."
   },
   "wOy57k": {
     "defaultMessage": "Lisää stream-tavoite"
@@ -405,7 +405,7 @@
     "defaultMessage": "Mykistä"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Äänenvoimakkuus"
   },
   "yzKwBQ": {
     "defaultMessage": "esim. nsec1xyz"

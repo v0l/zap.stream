@@ -1,39 +1,39 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "Immagine"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Niente emails, solo bellezza!"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Connetti"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Importo"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "estensione per firma con nostr"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Cancella"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "Salva la chiave"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "Obiettivo Zap dello Stream"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Obiettivo"
   },
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "es. nome@wallet.com"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "Aggiungi"
   },
   "2CGh/0": {
     "defaultMessage": "live"
@@ -42,58 +42,58 @@
     "defaultMessage": "Zap!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} spettatori"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Effettua il login tramite chiave privata"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "Elimina"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, il tuo indirizzo lightning sembra non essere corretto"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "Copia"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "Soluzioni"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "Crea un account"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "Ora di inizio"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "Url del server"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Importo minimo per \"da scritto a parlato\""
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Inserisci il testo da pronunciare"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "Invia"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "Titolo"
   },
   "9anxhq": {
     "defaultMessage": "Starts"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} ha effettuato uno zap di {amount} sats"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "Contenuto NSFW"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Dati spettatori non disponibili"
   },
   "AyGauy": {
     "defaultMessage": "Login"
@@ -102,52 +102,52 @@
     "defaultMessage": "Stream Chat"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Chiave privata"
   },
   "C81/uG": {
     "defaultMessage": "Logout"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Impostazioni"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Accesso effettuato come"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "Dal vivo"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "Il tuo commento per {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Puoi sempre sostituirlo con il tuo indirizzo in seguito."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Ricevi pagamenti da parte degli spettatori"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "Elimina"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "Immagine di copertina"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Salvalo e tienilo in un posto sicuro! Se perdi questa chiave non potrai più effettuare l'accesso al tuo account. Esatto, è una cosa seria!"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "Bilancio"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "Nome"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Selezione un obiettivo..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "Supporta {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "Importo dello Zap in {currency}"
   },
   "INlWvJ": {
     "defaultMessage": "OR"
@@ -300,10 +300,10 @@
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Salva"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "es. su di me"
   },
   "kp0NPF": {
     "defaultMessage": "Planned"
@@ -318,10 +318,10 @@
     "defaultMessage": "Voice"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "Un breve descrizione del contenuto"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "Ricarica"
   },
   "nOaArs": {
     "defaultMessage": "Setup Profile"
@@ -351,7 +351,7 @@
     "defaultMessage": "Save card"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Spettatori correnti"
   },
   "s5ksS7": {
     "defaultMessage": "Image Link"

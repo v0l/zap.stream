@@ -18,7 +18,7 @@
     "defaultMessage": "পরিষ্কার"
   },
   "04lmFi": {
-    "defaultMessage": "কি সংরক্ষণ করুন"
+    "defaultMessage": "চাবি সংরক্ষণ করুন"
   },
   "0GfNiL": {
     "defaultMessage": "Stream Zap লক্ষ্য ও উদ্দেশ্য"
@@ -45,13 +45,13 @@
     "defaultMessage": "{n} দর্শক"
   },
   "3df560": {
-    "defaultMessage": "ব্যক্তিগত-কি দিয়ে লগইন করুন"
+    "defaultMessage": "ব্যক্তিগত-চাবি দিয়ে লগইন করুন"
   },
   "47FYwb": {
     "defaultMessage": "বাতিল করুন"
   },
   "4l69eO": {
-    "defaultMessage": "হুম, আপনার লাইটনিং অ্যাড্রেসটি সঠিক নয়"
+    "defaultMessage": "হুম, আপনার লাইটনিং ঠিকানাটি সঠিক নয়"
   },
   "4l6vz1": {
     "defaultMessage": "প্রতিলিপি তৈরি করুন"
@@ -72,10 +72,10 @@
     "defaultMessage": "স্ট্রিম প্রদানকারীরা"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "মূলপাঠ থেকে পড়ার জন্য ন্যূনতম পরিমাণ"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "পড়ার জন্য মূলপাঠ সন্নিবেশ করুন"
   },
   "9WRlF4": {
     "defaultMessage": "পাঠান"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW আধেয়"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "দর্শকদের কোনো তথ্য সংগ্রহে নেই"
   },
   "AyGauy": {
     "defaultMessage": "লগইন করুন"
@@ -120,7 +120,7 @@
     "defaultMessage": "{name} এর উদ্দেশে আপনার মন্তব্য"
   },
   "FjDlus": {
-    "defaultMessage": "আপনি পরে সর্বদাই এটাকে নিজের ঠিকানা দিয়ে প্রতিস্থাপন করতে পারবেন."
+    "defaultMessage": "আপনি পরে সর্বদাই এটাকে নিজের ঠিকানা দিয়ে প্রতিস্থাপন করতে পারবেন।"
   },
   "Fodi9+": {
     "defaultMessage": "দর্শকদের কাছ থেকে পারিশ্রমিক নিন"
@@ -207,7 +207,7 @@
     "defaultMessage": "{name} দ্বারা {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "আমি {provider} এর {terms} পড়েছি এবং এর সাথে সহমত প্রকাশ করছি."
+    "defaultMessage": "আমি {provider} এর {terms} পড়েছি এবং এর সাথে সহমত প্রকাশ করছি।"
   },
   "RXQdxR": {
     "defaultMessage": "মেসেজ দিতে লগ ইন করুন!"
@@ -249,7 +249,7 @@
     "defaultMessage": "চালিয়ে যান"
   },
   "cPIKU2": {
-    "defaultMessage": "ফলোইং"
+    "defaultMessage": "অনুসরণ করা হচ্ছে"
   },
   "cvAsEh": {
     "defaultMessage": "{date} তারিখে স্ট্রিম করা হয়েছে"
@@ -258,7 +258,7 @@
     "defaultMessage": "পেছান"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "কণ্ঠস্বর পরীক্ষা করে দেখুন"
   },
   "dVD/AR": {
     "defaultMessage": "শীর্ষ জ্যাপ প্রদানকারী"
@@ -282,13 +282,13 @@
     "defaultMessage": "সময়সূচী"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "মূলপাঠ থেকে পড়ার পরিষেবা চালু করুন"
   },
   "hpl4BP": {
     "defaultMessage": "চ্যাট উইজেট"
   },
   "ieGrWo": {
-    "defaultMessage": "ফলো করুন"
+    "defaultMessage": "অনুসরণ করুন"
   },
   "itPgxd": {
     "defaultMessage": "প্রোফাইল"
@@ -309,13 +309,13 @@
     "defaultMessage": "পরিকল্পিত"
   },
   "lZpRMR": {
-    "defaultMessage": "এই স্ট্রিমটিতে নগ্নতা বা পর্নোগ্রাফিক আধেয় আছে কিনা তা এখানে পরীক্ষা করুন."
+    "defaultMessage": "এই স্ট্রিমটিতে নগ্নতা বা পর্নোগ্রাফিক আধেয় আছে কিনা তা এখানে পরীক্ষা করুন।"
   },
   "ljmS5P": {
     "defaultMessage": "শেষপ্রান্ত"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "কণ্ঠস্বর"
   },
   "mtNGwh": {
     "defaultMessage": "বিষয়বস্তুর একটি সংক্ষিপ্ত বিবরণ"
@@ -360,7 +360,7 @@
     "defaultMessage": "আপনার বয়স নিশ্চিত করুন"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "জ্যাপ-বার্তা"
   },
   "tG1ST3": {
     "defaultMessage": "আসন্ন জ্যাপ"
@@ -393,7 +393,7 @@
     "defaultMessage": "সম্পাদনা"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "কণ্ঠস্বর নির্বাচন করুন..."
   },
   "wOy57k": {
     "defaultMessage": "স্ট্রিমের লক্ষ্য সংযুক্ত করুন"
@@ -405,7 +405,7 @@
     "defaultMessage": "নিঃশব্দ করুন"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "ভলিউম"
   },
   "yzKwBQ": {
     "defaultMessage": "যেমন: nsec1xyz"
