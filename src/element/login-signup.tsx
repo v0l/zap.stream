@@ -1,10 +1,14 @@
 import "./login-signup.css";
 import LoginHeader from "../login-start.jpg";
-import LoginHeaderSmall from "../login-start-sm.jpg";
-import LoginVault from "../login-vault.png";
-import LoginProfile from "../login-profile.png";
-import LoginKey from "../login-key.png";
-import LoginWallet from "../login-wallet.png";
+import LoginHeader2x from "../login-start@2x.jpg";
+import LoginVault from "../login-vault.jpg";
+import LoginVault2x from "../login-vault@2x.jpg";
+import LoginProfile from "../login-profile.jpg";
+import LoginProfile2x from "../login-profile@2x.jpg";
+import LoginKey from "../login-key.jpg";
+import LoginKey2x from "../login-key@2x.jpg";
+import LoginWallet from "../login-wallet.jpg";
+import LoginWallet2x from "../login-wallet@2x.jpg";
 
 import { CSSProperties, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
@@ -22,7 +26,6 @@ import { hexToBech32, openFile } from "utils";
 import { LoginType } from "login";
 import { DefaultProvider, StreamProviderInfo } from "providers";
 import { Nip103StreamProvider } from "providers/zsz";
-import ProgressiveImage from "react-progressive-graceful-image";
 
 enum Stage {
   Login = 0,
@@ -149,9 +152,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Login: {
       return (
         <>
-          <ProgressiveImage src={LoginHeader as string} placeholder={LoginHeaderSmall}>
-            {(src) => <img src={src} className="header-image" />}
-          </ProgressiveImage>
+          <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
               <FormattedMessage defaultMessage="Create an Account" />
@@ -186,7 +187,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.LoginInput: {
       return (
         <>
-          <img src={LoginVault} className="header-image" />
+          <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
               <FormattedMessage defaultMessage="Login with private key" />
@@ -236,7 +237,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Details: {
       return (
         <>
-          <img src={LoginProfile} className="header-image" />
+          <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
               <FormattedMessage defaultMessage="Setup Profile" />
@@ -276,7 +277,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.LnAddress: {
       return (
         <>
-          <img src={LoginWallet} className="header-image" />
+          <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
               <FormattedMessage defaultMessage="Get paid by viewers" />
@@ -318,7 +319,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.SaveKey: {
       return (
         <>
-          <img src={LoginKey} className="header-image" />
+          <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
               <FormattedMessage defaultMessage="Save Key" />
