@@ -15,7 +15,8 @@ export function useRates(symbol: string, leaveOpen = true) {
     rb.withFilter()
       .kinds([1009 as EventKind])
       .authors([bech32ToHex(SnortPubkey)])
-      .tag("d", [symbol]);
+      .tag("d", [symbol])
+      .limit(1);
     return rb;
   }, [symbol]);
 
