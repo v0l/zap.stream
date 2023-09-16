@@ -13,7 +13,8 @@ import QrCode from "./qr-code";
 import { useLogin } from "hooks/login";
 import Copy from "./copy";
 import { defaultRelays } from "const";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedNumber } from "react-intl";
+import { useRates } from "hooks/rates";
 
 export interface LNURLLike {
   get name(): string;
@@ -33,8 +34,6 @@ export interface SendZapsProps {
 }
 
 export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: SendZapsProps) {
-  const UsdRate = 28_000;
-
   const satsAmounts = [
     21, 69, 121, 420, 1_000, 2_100, 4_200, 10_000, 21_000, 42_000, 69_000, 100_000, 210_000, 500_000, 1_000_000,
   ];
@@ -45,6 +44,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
   const login = useLogin();
+  const rate = useRates("BTCUSD");
   const relays = Object.keys(defaultRelays);
   const name = targetName ?? svc?.name;
   async function loadService(lnurl: string) {
@@ -52,6 +52,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
     await s.load();
     setSvc(s);
   }
+  const usdRate = rate.time ? rate.ask : 26_000;
 
   useEffect(() => {
     if (!svc) {
@@ -72,7 +73,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
       isAnon = true;
     }
 
-    const amountInSats = isFiat ? Math.floor((amount / UsdRate) * 1e8) : amount;
+    const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount;
     let zap: NostrEvent | undefined;
     if (pubkey) {
       zap = await pub.zap(amountInSats * 1000, pubkey, relays, undefined, comment, eb => {
@@ -132,6 +133,18 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
               defaultMessage="Zap amount in {currency}"
               values={{ currency: isFiat ? "USD" : "SATS" }}
             />
+            {isFiat && (
+              <>
+                &nbsp;
+                <FormattedMessage
+                  defaultMessage="@ {rate}"
+                  description="Showing zap amount in USD @ rate"
+                  values={{
+                    rate: <FormattedNumber value={usdRate} />,
+                  }}
+                />
+              </>
+            )}
           </small>
           <div className="amounts">
             {(isFiat ? usdAmounts : satsAmounts).map(a => (
