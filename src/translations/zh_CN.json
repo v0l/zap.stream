@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "创建目标"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "这个方式不安全。我们建议使用{nostrlink}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "打闪提示"
   }
 }
+

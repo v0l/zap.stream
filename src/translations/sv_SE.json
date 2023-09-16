@@ -72,10 +72,10 @@
     "defaultMessage": "Stream Leverantörer"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Minsta belopp för text till tal"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Infoga text att prata"
   },
   "9WRlF4": {
     "defaultMessage": "Skicka"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW-innehåll"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Ingen tittardata tillgänglig"
   },
   "AyGauy": {
     "defaultMessage": "Logga in"
@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Skapa mål"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Denna metod är osäker. Vi rekommenderar att du använder en {nostrlink}"
   },
@@ -258,7 +262,7 @@
     "defaultMessage": "Tillbaka"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Testa röst"
   },
   "dVD/AR": {
     "defaultMessage": "Topp Zappers"
@@ -282,7 +286,7 @@
     "defaultMessage": "Schemalagd"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Aktivera text till tal"
   },
   "hpl4BP": {
     "defaultMessage": "Chatt widget"
@@ -315,7 +319,7 @@
     "defaultMessage": "Slutpunkt"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Röst"
   },
   "mtNGwh": {
     "defaultMessage": "En kort beskrivning av innehållet"
@@ -360,7 +364,7 @@
     "defaultMessage": "Bekräfta din ålder"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Zap meddelande"
   },
   "tG1ST3": {
     "defaultMessage": "Inkommande Zap"
@@ -393,7 +397,7 @@
     "defaultMessage": "Redigera"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Välj röst..."
   },
   "wOy57k": {
     "defaultMessage": "Lägg till stream mål"
@@ -405,7 +409,7 @@
     "defaultMessage": "Tysta"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Volym"
   },
   "yzKwBQ": {
     "defaultMessage": "t.ex nsec1xyz"
@@ -414,3 +418,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+

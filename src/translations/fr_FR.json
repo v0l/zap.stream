@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Créer un objectif"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Cette méthode n'est pas sécurisée. Nous vous recommandons d'utiliser un {nostrlink}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "Alerte Zap"
   }
 }
+

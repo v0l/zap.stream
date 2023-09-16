@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Установить цель"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Этот метод небезопасен. Мы рекомендуем использовать {nostrlink}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "Оповещение о запе"
   }
 }
+

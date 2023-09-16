@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Luo tavoite"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Tämä menetelmä ei ole turvallinen. Suosittelemme käyttämään {nostrlink}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "Zap-hälytys"
   }
 }
+

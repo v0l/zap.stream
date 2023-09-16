@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Cél kitűzése"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Ez a módszer nem biztonságos. Javasoljuk a {nostrlink}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "Zap Riadó"
   }
 }
+

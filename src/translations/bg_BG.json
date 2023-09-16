@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Създаване на цел"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Този метод не е сигурен. Препоръчваме ви да използвате {ностърлинк}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "Зап Тревога"
   }
 }
+

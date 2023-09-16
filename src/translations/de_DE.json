@@ -239,6 +239,10 @@
   "X2PZ7D": {
     "defaultMessage": "Ziel erstellen"
   },
+  "YPh5Nq": {
+    "defaultMessage": "@ {rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
   "Z8ZOEY": {
     "defaultMessage": "Diese Methode ist unsicher. Wir empfehlen die Verwendung von {nostrlink}"
   },
@@ -414,3 +418,4 @@
     "defaultMessage": "Zap Alert"
   }
 }
+
