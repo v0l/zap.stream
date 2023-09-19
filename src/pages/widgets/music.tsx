@@ -10,10 +10,9 @@ export function Music({ link }: { link: NostrLink }) {
   const nowPlaying = useStatus("music", host, true);
   const cover = nowPlaying && findTag(nowPlaying, "cover");
   const expiry = nowPlaying && findTag(nowPlaying, "expiration");
-  const isExpired = expiry && Number(expiry) > unixNow();
+  const isExpired = expiry && Number(expiry) < unixNow();
   return (
-    nowPlaying &&
-    !isExpired && (
+    (nowPlaying && !isExpired) && (
       <div className="music">
         {cover && <img className="cover" src={cover} alt={nowPlaying.content} />}
         {nowPlaying && <p className="track">🎵 {nowPlaying.content}</p>}
