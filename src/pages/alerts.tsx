@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { ZapAlerts } from "./widgets/zaps";
 import { Views } from "./widgets/views";
 import { TopZappersWidget } from "./widgets/top-zappers";
+import { Music } from "./widgets/music";
 
 export function AlertsPage() {
   const params = useParams();
@@ -23,6 +24,9 @@ export function AlertsPage() {
     }
     case "top-zappers": {
       return <TopZappersWidget link={link} />;
+    }
+    case "music": {
+      return <Music link={link} />;
     }
   }
   return null;

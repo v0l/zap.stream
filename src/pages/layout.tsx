@@ -78,7 +78,11 @@ export function LayoutPage() {
           </MenuItem>
           <MenuItem onClick={() => navigate("/settings")}>
             <Icon name="settings" size={24} />
-            Settings
+            <FormattedMessage defaultMessage="Settings" />
+          </MenuItem>
+          <MenuItem onClick={() => navigate("/widgets")}>
+            <Icon name="widget" size={24} />
+            <FormattedMessage defaultMessage="Widgets" />
           </MenuItem>
           <MenuItem onClick={() => Login.logout()}>
             <Icon name="logout" size={24} />
