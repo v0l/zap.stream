@@ -12,6 +12,7 @@ import { eventToLink, hexToBech32 } from "utils";
 import { ZapAlertItem } from "./widgets/zaps";
 import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
+import { Music } from "./widgets/music";
 import groupBy from "lodash/groupBy";
 
 interface ZapAlertConfigurationProps {
@@ -194,6 +195,13 @@ export function WidgetsPage() {
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/views`} />
         {currentLink && <Views link={currentLink} />}
+      </div>
+      <div className="flex f-col g8">
+        <h3>
+          <FormattedMessage defaultMessage="Music" />
+        </h3>
+        <Copy text={`${baseUrl}/alert/${npub}/music`} />
+        {currentLink && <Music link={currentLink} />}
       </div>
     </div>
   );
