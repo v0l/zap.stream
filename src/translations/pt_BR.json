@@ -72,10 +72,10 @@
     "defaultMessage": "Provedores de Transmissão"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Quantidade mínima para texto em fala"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Insira texto para fala"
   },
   "9WRlF4": {
     "defaultMessage": "Enviar"
@@ -93,7 +93,7 @@
     "defaultMessage": "Conteúdo NSFW"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Sem dados disponíveis do telespectador"
   },
   "AyGauy": {
     "defaultMessage": "Entrar"
@@ -262,7 +262,7 @@
     "defaultMessage": "Voltar"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Testar voz"
   },
   "dVD/AR": {
     "defaultMessage": "Melhores Zappers"
@@ -286,7 +286,7 @@
     "defaultMessage": "Agendar"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Habilitar texto para fala"
   },
   "hpl4BP": {
     "defaultMessage": "Widget de chat"
@@ -319,7 +319,7 @@
     "defaultMessage": "Ponto final"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Voz"
   },
   "mtNGwh": {
     "defaultMessage": "Uma breve descrição do conteúdo"
@@ -364,7 +364,7 @@
     "defaultMessage": "Confirme sua idade"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Mensagem Zap"
   },
   "tG1ST3": {
     "defaultMessage": "Zap recebido"
@@ -397,7 +397,7 @@
     "defaultMessage": "Editar"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Selecionar voz..."
   },
   "wOy57k": {
     "defaultMessage": "Adicionar meta de transmissão"
