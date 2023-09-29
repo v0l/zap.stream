@@ -39,8 +39,9 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
                   location.href = `${__XXX_HOST}/${eventLink(ex)}`;
                 } else {
                   navigate(`/${eventLink(ex)}`, {
-                    state: ev,
+                    state: ex,
                   });
+                  onFinish?.(ex);
                 }
               } else {
                 onFinish?.(ev);
