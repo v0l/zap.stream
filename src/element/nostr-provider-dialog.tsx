@@ -190,6 +190,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
                 ["title", info.streamInfo?.title ?? ""],
                 ["summary", info.streamInfo?.summary ?? ""],
                 ["image", info.streamInfo?.image ?? ""],
+                ...(info.streamInfo?.goal ? [["goal", info.streamInfo.goal]] : []),
                 ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
                 ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? []),
               ],

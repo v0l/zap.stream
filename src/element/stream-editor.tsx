@@ -36,11 +36,11 @@ function GoalSelector({ goal, pubkey, onGoalSelect }: GoalSelectorProps) {
   const goals = useGoals(pubkey, true);
   const { formatMessage } = useIntl();
   return (
-    <select defaultValue={goal} onChange={ev => onGoalSelect(ev.target.value)}>
+    <select onChange={ev => onGoalSelect(ev.target.value)}>
       <option value="">{formatMessage({ defaultMessage: "Select a goal..." })}</option>
-      {goals?.map(goal => (
-        <option key={goal.id} value={goal.id}>
-          {goal.content}
+      {goals?.map(x => (
+        <option key={x.id} value={x.id} selected={goal === x.id}>
+          {x.content}
         </option>
       ))}
     </select>
@@ -57,7 +57,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [tags, setTags] = useState<string[]>([]);
   const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
-  const [goal, setGoal] = useState<string | undefined>();
+  const [goal, setGoal] = useState<string>();
   const login = useLogin();
   const { formatMessage } = useIntl();
 

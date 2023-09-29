@@ -69,8 +69,9 @@ export interface StreamProviderStreamInfo {
   title: string;
   summary: string;
   image: string;
-  tags: Array<string>;
-  content_warning: string;
+  tags?: Array<string>;
+  content_warning?: string;
+  goal?: string;
 }
 
 export const DefaultProvider = new Nip103StreamProvider("zap.stream", "https://api.zap.stream/api/nostr/");
