@@ -10,19 +10,20 @@ import LoginKey2x from "../login-key@2x.jpg";
 import LoginWallet from "../login-wallet.jpg";
 import LoginWallet2x from "../login-wallet@2x.jpg";
 
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useContext, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { EventPublisher, UserMetadata } from "@snort/system";
 import { schnorr } from "@noble/curves/secp256k1";
 import { bytesToHex } from "@noble/curves/abstract/utils";
-import { LNURL, bech32ToHex, getPublicKey } from "@snort/shared";
+import { LNURL, bech32ToHex, getPublicKey, hexToBech32 } from "@snort/shared";
 import { VoidApi } from "@void-cat/api";
+import { SnortContext } from "@snort/system-react";
 
 import AsyncButton from "./async-button";
-import { Login, System } from "index";
+import { Login } from "index";
 import { Icon } from "./icon";
 import Copy from "./copy";
-import { hexToBech32, openFile } from "utils";
+import { openFile } from "utils";
 import { LoginType } from "login";
 import { DefaultProvider, StreamProviderInfo } from "providers";
 import { Nip103StreamProvider } from "providers/zsz";
@@ -36,6 +37,7 @@ enum Stage {
 }
 
 export function LoginSignup({ close }: { close: () => void }) {
+  const system = useContext(SnortContext);
   const [error, setError] = useState("");
   const [stage, setStage] = useState(Stage.Login);
   const [username, setUsername] = useState("");
@@ -136,7 +138,7 @@ export function LoginSignup({ close }: { close: () => void }) {
 
       const ev = await pub.metadata(profile);
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      system.BroadcastEvent(ev);
 
       setStage(Stage.SaveKey);
     } catch (e) {

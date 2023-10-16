@@ -4,17 +4,18 @@ import { unwrap } from "@snort/shared";
 import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
 
 import { Icon } from "./icon";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Textarea } from "./textarea";
 import { findTag } from "utils";
 import AsyncButton from "./async-button";
 import { useLogin } from "hooks/login";
-import { System } from "index";
 import { FormattedMessage } from "react-intl";
+import { SnortContext } from "@snort/system-react";
 
 type ShareOn = "nostr" | "twitter";
 
 export function ShareMenu({ ev }: { ev: NostrEvent }) {
+  const system = useContext(SnortContext);
   const [share, setShare] = useState<ShareOn>();
   const [message, setMessage] = useState("");
   const login = useLogin();
@@ -27,7 +28,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
     if (pub) {
       const ev = await pub.note(message);
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       setShare(undefined);
     }
   }

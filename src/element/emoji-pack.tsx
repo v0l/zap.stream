@@ -6,11 +6,14 @@ import { toEmojiPack } from "hooks/emoji";
 import AsyncButton from "element/async-button";
 import { findTag } from "utils";
 import { USER_EMOJIS } from "const";
-import { Login, System } from "index";
+import { Login } from "index";
 import type { EmojiPack as EmojiPackType } from "types";
 import { FormattedMessage } from "react-intl";
+import { useContext } from "react";
+import { SnortContext } from "@snort/system-react";
 
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
+  const system = useContext(SnortContext);
   const login = useLogin();
   const name = findTag(ev, "d");
   const isUsed = login?.emojis.find(e => e.author === ev.pubkey && e.name === name);
@@ -33,7 +36,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
         return eb;
       });
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       Login.setEmojis(newPacks);
     }
   }
@@ -55,7 +58,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
           const [, name, image] = e;
           return (
             <div className="emoji-definition">
-              <img alt={name} className="emoji" src={image} />
+              <img alt={name} className="custom-emoji" src={image} />
               <span className="emoji-name">{name}</span>
             </div>
           );

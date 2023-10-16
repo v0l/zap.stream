@@ -1,5 +1,4 @@
-import { NostrEvent } from "@snort/system";
-import { System } from "index";
+import { NostrEvent, SystemInterface } from "@snort/system";
 import { StreamProvider, StreamProviderInfo, StreamProviders } from "providers";
 
 export class ManualProvider implements StreamProvider {
@@ -23,9 +22,8 @@ export class ManualProvider implements StreamProvider {
     };
   }
 
-  updateStreamInfo(ev: NostrEvent): Promise<void> {
-    System.BroadcastEvent(ev);
-    return Promise.resolve();
+  async updateStreamInfo(system: SystemInterface, ev: NostrEvent): Promise<void> {
+    await system.BroadcastEvent(ev);
   }
 
   topup(): Promise<string> {

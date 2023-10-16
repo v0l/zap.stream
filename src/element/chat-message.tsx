@@ -1,7 +1,8 @@
-import { useUserProfile, SnortContext } from "@snort/system-react";
-import { NostrEvent, parseZap, EventKind } from "@snort/system";
+import { useUserProfile, SnortContext, useEventReactions } from "@snort/system-react";
+import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import React, { useRef, useState, useMemo, useContext } from "react";
 import { useMediaQuery, useHover, useOnClickOutside, useIntersectionObserver } from "usehooks-ts";
+import { dedupe } from "@snort/shared";
 
 import { EmojiPicker } from "element/emoji-picker";
 import { Icon } from "element/icon";
@@ -13,7 +14,6 @@ import { SendZapsDialog } from "element/send-zap";
 import { CollapsibleEvent } from "element/collapsible";
 import { useLogin } from "hooks/login";
 import { formatSats } from "number";
-import { findTag } from "utils";
 import type { Badge, Emoji, EmojiPack } from "types";
 
 function emojifyReaction(reaction: string) {
@@ -26,28 +26,26 @@ function emojifyReaction(reaction: string) {
   return reaction;
 }
 
-const customComponents = {
-  Event: CollapsibleEvent,
-};
-
 export function ChatMessage({
   streamer,
   ev,
-  reactions,
+  related,
   emojiPacks,
   badges,
 }: {
-  ev: NostrEvent;
+  ev: TaggedNostrEvent;
   streamer: string;
-  reactions: readonly NostrEvent[];
+  related: ReadonlyArray<TaggedNostrEvent>;
   emojiPacks: EmojiPack[];
   badges: Badge[];
 }) {
+  const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useIntersectionObserver(ref, {
     freezeOnceVisible: true,
   });
   const emojiRef = useRef(null);
+  const link = NostrLink.fromEvent(ev);
   const isTablet = useMediaQuery("(max-width: 1020px)");
   const isHovering = useHover(ref);
   const { mute } = useMute(ev.pubkey);
@@ -57,25 +55,16 @@ export function ChatMessage({
   const profile = useUserProfile(inView?.isIntersecting ? ev.pubkey : undefined);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const system = useContext(SnortContext);
-  const zaps = useMemo(() => {
-    return reactions
-      .filter(a => a.kind === EventKind.ZapReceipt)
-      .map(a => parseZap(a, system.ProfileLoader.Cache))
-      .filter(a => a && a.valid);
-  }, [reactions]);
-  const emojiReactions = useMemo(() => {
-    const emojified = reactions
-      .filter(e => e.kind === EventKind.Reaction && findTag(e, "e") === ev.id)
-      .map(ev => emojifyReaction(ev.content));
-    return [...new Set(emojified)];
-  }, [ev, reactions]);
+  const { zaps, reactions } = useEventReactions(ev, related);
   const emojiNames = emojiPacks.map(p => p.emojis).flat();
 
-  const hasReactions = emojiReactions.length > 0;
+  const filteredReactions = useMemo(() => {
+    return reactions.all.filter(a => link.isReplyToThis(a));
+  }, [ev, reactions.all]);
+
+  const hasReactions = filteredReactions.length > 0;
   const totalZaps = useMemo(() => {
-    const messageZaps = zaps.filter(z => z.event === ev.id);
-    return messageZaps.reduce((acc, z) => acc + z.amount, 0);
+    return zaps.filter(a => a.event?.id === ev.id).reduce((acc, z) => acc + z.amount, 0);
   }, [zaps, ev]);
   const hasZaps = totalZaps > 0;
   const awardedBadges = badges.filter(b => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey));
@@ -153,7 +142,7 @@ export function ChatMessage({
           pubkey={ev.pubkey}
           profile={profile}
         />
-        <Text tags={ev.tags} content={ev.content} customComponents={customComponents} />
+        <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (
@@ -162,7 +151,7 @@ export function ChatMessage({
                 <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
               </div>
             )}
-            {emojiReactions.map(e => {
+            {dedupe(filteredReactions.map(v => emojifyReaction(v.content))).map(e => {
               const isCustomEmojiReaction = e.length > 1 && e.startsWith(":") && e.endsWith(":");
               const emojiName = e.replace(/:/g, "");
               const emoji = isCustomEmojiReaction && getEmojiById(emojiName);

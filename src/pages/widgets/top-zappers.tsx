@@ -3,11 +3,10 @@ import { TopZappers } from "element/top-zappers";
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { useZaps } from "hooks/zaps";
 import { FormattedMessage } from "react-intl";
-import { eventToLink } from "utils";
 
 export function TopZappersWidget({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true);
-  const zaps = useZaps(currentEvent ? eventToLink(currentEvent) : undefined, true);
+  const zaps = useZaps(currentEvent ? NostrLink.fromEvent(currentEvent) : undefined, true);
   return (
     <div className="top-zappers-widget">
       <div>

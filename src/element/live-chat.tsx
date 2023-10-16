@@ -2,7 +2,7 @@ import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
 import { EventKind, NostrPrefix, NostrLink, ParsedZap, NostrEvent, parseZap, encodeTLV } from "@snort/system";
 import { unixNow } from "@snort/shared";
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
 import { Icon } from "element/icon";
@@ -22,8 +22,8 @@ import { useAddress } from "hooks/event";
 import { formatSats } from "number";
 import { WEEK, LIVE_STREAM_CHAT } from "const";
 import { findTag, getTagValues, getHost } from "utils";
-import { System } from "index";
 import { TopZappers } from "element/top-zappers";
+import { SnortContext } from "@snort/system-react";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -61,6 +61,7 @@ export function LiveChat({
   options?: LiveChatOptions;
   height?: number;
 }) {
+  const system = useContext(SnortContext);
   const host = getHost(ev);
   const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
@@ -79,7 +80,7 @@ export function LiveChat({
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
 
-  const zaps = feed.zaps.map(ev => parseZap(ev, System.ProfileLoader.Cache)).filter(z => z && z.valid);
+  const zaps = feed.zaps.map(ev => parseZap(ev, system.ProfileLoader.Cache)).filter(z => z && z.valid);
   const events = useMemo(() => {
     return [...feed.messages, ...feed.zaps, ...awards].sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.zaps, awards]);
@@ -132,7 +133,7 @@ export function LiveChat({
                   streamer={host}
                   ev={a}
                   key={a.id}
-                  reactions={feed.reactions}
+                  related={feed.reactions}
                 />
               );
             }

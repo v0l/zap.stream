@@ -2,10 +2,13 @@ import { EventKind } from "@snort/system";
 
 import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
-import { Login, System } from "index";
+import { Login } from "index";
 import { FormattedMessage } from "react-intl";
+import { useContext } from "react";
+import { SnortContext } from "@snort/system-react";
 
 export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: string }) {
+  const system = useContext(SnortContext);
   const login = useLogin();
   if (!login) return;
 
@@ -25,7 +28,7 @@ export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: st
         return eb;
       });
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       Login.setFollows(newFollows, content ?? "", ev.created_at);
     }
   }
@@ -42,7 +45,7 @@ export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: st
         return eb;
       });
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       Login.setFollows(newFollows, content ?? "", ev.created_at);
     }
   }

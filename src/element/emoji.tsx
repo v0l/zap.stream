@@ -8,7 +8,7 @@ export type EmojiProps = {
 };
 
 export function Emoji({ name, url }: EmojiProps) {
-  return <img alt={name} src={url} className="emoji" />;
+  return <img alt={name} src={url} className="custom-emoji" />;
 }
 
 export function Emojify({ content, emoji }: { content: string; emoji: EmojiTag[] }) {

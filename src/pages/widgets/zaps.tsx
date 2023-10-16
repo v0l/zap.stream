@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 
 import { hexToBech32 } from "@snort/shared";
-import type { NostrLink, ParsedZap } from "@snort/system";
+import { NostrLink, ParsedZap } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
@@ -10,7 +10,7 @@ import { useMutedPubkeys } from "hooks/lists";
 import { formatSats } from "number";
 import { useTextToSpeechParams, getVoices, speak } from "text2speech";
 import { FormattedMessage } from "react-intl";
-import { getHost, eventToLink } from "utils";
+import { getHost } from "utils";
 
 function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
   const zaps = useMemo(() => {
@@ -34,7 +34,7 @@ function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
 
 export function ZapAlerts({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true);
-  const currentLink = currentEvent ? eventToLink(currentEvent) : undefined;
+  const currentLink = currentEvent ? NostrLink.fromEvent(currentEvent) : undefined;
   const host = getHost(currentEvent);
   const zaps = useZaps(currentLink, true);
   const zap = useZapQueue(zaps);

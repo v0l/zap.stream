@@ -1,11 +1,11 @@
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { RequestBuilder, NoteCollection, NostrLink, EventKind, parseZap } from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
+import { SnortContext, useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "const";
 import { findTag } from "utils";
-import { System } from "index";
 
 export function useProfile(link: NostrLink, leaveOpen = false) {
+  const system = useContext(SnortContext);
   const sub = useMemo(() => {
     const b = new RequestBuilder(`profile:${link.id.slice(0, 12)}`);
     b.withOptions({
@@ -43,7 +43,7 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
 
   const { data: zapsData } = useRequestBuilder(NoteCollection, zapsSub);
   const zaps = (zapsData ?? [])
-    .map(ev => parseZap(ev, System.ProfileLoader.Cache))
+    .map(ev => parseZap(ev, system.ProfileLoader.Cache))
     .filter(z => z && z.valid && z.receiver === link.id);
 
   const sortedStreams = useMemo(() => {

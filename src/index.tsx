@@ -6,6 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { NostrSystem } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
+import { SnortSystemDb } from "@snort/system-web";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { RootPage } from "pages/root";
@@ -30,7 +31,11 @@ export enum StreamState {
   Planned = "planned",
 }
 
-export const System = new NostrSystem({});
+const db = new SnortSystemDb();
+const System = new NostrSystem({
+  db,
+  checkSigs: false,
+});
 export const Login = new LoginStore();
 
 register();
@@ -44,6 +49,7 @@ const router = createBrowserRouter([
   {
     element: <LayoutPage />,
     loader: async () => {
+      db.ready = await db.isAvailable();
       await System.Init();
       return null;
     },
@@ -86,6 +92,7 @@ const router = createBrowserRouter([
     path: "/chat/:id",
     element: <ChatPopout />,
     loader: async () => {
+      db.ready = await db.isAvailable();
       await System.Init();
       return null;
     },
@@ -94,6 +101,7 @@ const router = createBrowserRouter([
     path: "/alert/:id/:type",
     element: <AlertsPage />,
     loader: async () => {
+      db.ready = await db.isAvailable();
       await System.Init();
       return null;
     },

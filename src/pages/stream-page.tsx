@@ -4,16 +4,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { LiveVideoPlayer } from "element/live-video-player";
-import { eventToLink, findTag, getEventFromLocationState, getHost } from "utils";
+import { findTag, getEventFromLocationState, getHost } from "utils";
 import { Profile, getName } from "element/profile";
 import { LiveChat } from "element/live-chat";
 import AsyncButton from "element/async-button";
 import { useLogin } from "hooks/login";
 import { useZapGoal } from "hooks/goals";
-import { StreamState, System } from "index";
+import { StreamState } from "index";
 import { SendZapsDialog } from "element/send-zap";
 import { NostrEvent } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
+import { SnortContext, useUserProfile } from "@snort/system-react";
 import { NewStreamDialog } from "element/new-stream";
 import { Tags } from "element/tags";
 import { StatePill } from "element/state-pill";
@@ -25,8 +25,10 @@ import { ContentWarningOverlay, isContentWarningAccepted } from "element/content
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { useStreamLink } from "hooks/stream-link";
 import { FormattedMessage } from "react-intl";
+import { useContext } from "react";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent }) {
+  const system = useContext(SnortContext);
   const login = useLogin();
   const navigate = useNavigate();
   const host = getHost(ev);
@@ -41,7 +43,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
     if (pub && ev) {
       const evDelete = await pub.delete(ev.id);
       console.debug(evDelete);
-      System.BroadcastEvent(evDelete);
+      await system.BroadcastEvent(evDelete);
       navigate("/");
     }
   }
@@ -113,7 +115,7 @@ export function StreamPageHandler() {
 export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: NostrLink }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
-  const evLink = ev ? eventToLink(ev) : undefined;
+  const evLink = ev ? NostrLink.fromEvent(ev) : undefined;
   const goal = useZapGoal(findTag(ev, "goal"));
 
   const title = findTag(ev, "title");

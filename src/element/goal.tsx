@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import Confetti from "react-confetti";
 
-import { type NostrEvent } from "@snort/system";
+import { NostrLink, type NostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 
-import { eventToLink, findTag } from "utils";
+import { findTag } from "utils";
 import { formatSats } from "number";
 import usePreviousValue from "hooks/usePreviousValue";
 import { SendZapsDialog } from "element/send-zap";
@@ -18,7 +18,7 @@ import { useZaps } from "hooks/zaps";
 export function Goal({ ev }: { ev: NostrEvent }) {
   const profile = useUserProfile(ev.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const link = eventToLink(ev);
+  const link = NostrLink.fromEvent(ev);
   const zaps = useZaps(link, true);
   const goalAmount = useMemo(() => {
     const amount = findTag(ev, "amount");
@@ -30,7 +30,7 @@ export function Goal({ ev }: { ev: NostrEvent }) {
   }
 
   const soFar = useMemo(() => {
-    return zaps.filter(z => z.receiver === ev.pubkey && z.event === ev.id).reduce((acc, z) => acc + z.amount, 0);
+    return zaps.filter(z => z.receiver === ev.pubkey && z.event?.id === ev.id).reduce((acc, z) => acc + z.amount, 0);
   }, [zaps]);
 
   const progress = Math.max(0, Math.min(100, (soFar / goalAmount) * 100));

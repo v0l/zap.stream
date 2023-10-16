@@ -3,14 +3,15 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import AsyncButton from "./async-button";
 import { Icon } from "element/icon";
-import { useState } from "react";
-import { System } from "index";
+import { useContext, useState } from "react";
 import { GOAL } from "const";
 import { useLogin } from "hooks/login";
 import { FormattedMessage } from "react-intl";
 import { defaultRelays } from "const";
+import { SnortContext } from "@snort/system-react";
 
 export function NewGoalDialog() {
+  const system = useContext(SnortContext);
   const [open, setOpen] = useState(false);
   const login = useLogin();
 
@@ -28,7 +29,7 @@ export function NewGoalDialog() {
         return eb;
       });
       console.debug(evNew);
-      System.BroadcastEvent(evNew);
+      await system.BroadcastEvent(evNew);
       setOpen(false);
       setGoalName("");
       setGoalAmount("");

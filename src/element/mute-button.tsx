@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { useLogin } from "hooks/login";
 import AsyncButton from "element/async-button";
-import { Login, System } from "index";
+import { Login } from "index";
 import { MUTED } from "const";
 import { FormattedMessage } from "react-intl";
+import { SnortContext } from "@snort/system-react";
 
 export function useMute(pubkey: string) {
+  const system = useContext(SnortContext);
   const login = useLogin();
   const { tags, content } = login?.muted ?? { tags: [] };
   const muted = useMemo(() => tags.filter(t => t.at(0) === "p"), [tags]);
@@ -23,7 +25,7 @@ export function useMute(pubkey: string) {
         return eb;
       });
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       Login.setMuted(newMuted, content ?? "", ev.created_at);
     }
   }
@@ -40,7 +42,7 @@ export function useMute(pubkey: string) {
         return eb;
       });
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       Login.setMuted(newMuted, content ?? "", ev.created_at);
     }
   }

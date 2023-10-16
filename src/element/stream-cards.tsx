@@ -1,12 +1,13 @@
 import "./stream-cards.css";
 
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useContext } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import { TaggedNostrEvent } from "@snort/system";
+import { removeUndefined, unwrap } from "@snort/shared";
+import { NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import { Toggle } from "element/toggle";
 import { Icon } from "element/icon";
@@ -16,9 +17,10 @@ import { Markdown } from "element/markdown";
 import { useLogin } from "hooks/login";
 import { useCards, useUserCards } from "hooks/cards";
 import { CARD, USER_CARDS } from "const";
-import { toTag, findTag } from "utils";
-import { Login, System } from "index";
+import { findTag } from "utils";
+import { Login } from "index";
 import type { Tags } from "types";
+import { SnortContext } from "@snort/system-react";
 
 interface CardType {
   identifier: string;
@@ -71,6 +73,7 @@ interface CardItem {
 }
 
 function Card({ canEdit, ev, cards }: CardProps) {
+  const system = useContext(SnortContext);
   const login = useLogin();
   const identifier = findTag(ev, "d") ?? "";
   const title = findTag(ev, "title") || findTag(ev, "subject");
@@ -78,7 +81,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
   const link = findTag(ev, "r");
   const content = ev.content;
   const evCard = { title, image, link, content, identifier };
-  const tags = cards.map(toTag);
+  const tags = removeUndefined(cards.map(a => NostrLink.fromEvent(a).toEventTag()));
   const [style, dragRef] = useDrag(
     () => ({
       type: "card",
@@ -140,7 +143,7 @@ function Card({ canEdit, ev, cards }: CardProps) {
             return eb;
           });
           console.debug(userCardsEv);
-          System.BroadcastEvent(userCardsEv);
+          await system.BroadcastEvent(userCardsEv);
           Login.setCards(newTags, userCardsEv.created_at);
         }
       },
@@ -255,10 +258,11 @@ interface EditCardProps {
 }
 
 function EditCard({ card, cards }: EditCardProps) {
+  const system = useContext(SnortContext);
   const login = useLogin();
   const [isOpen, setIsOpen] = useState(false);
   const identifier = card.identifier;
-  const tags = cards.map(toTag);
+  const tags = removeUndefined(cards.map(a => NostrLink.fromEvent(a).toEventTag()));
   const { formatMessage } = useIntl();
 
   async function editCard({ title, image, link, content }: CardType) {
@@ -278,7 +282,7 @@ function EditCard({ card, cards }: EditCardProps) {
         return eb;
       });
       console.debug(ev);
-      System.BroadcastEvent(ev);
+      await system.BroadcastEvent(ev);
       setIsOpen(false);
     }
   }
@@ -296,7 +300,7 @@ function EditCard({ card, cards }: EditCardProps) {
       });
 
       console.debug(userCardsEv);
-      System.BroadcastEvent(userCardsEv);
+      await system.BroadcastEvent(userCardsEv);
       Login.setCards(newTags, userCardsEv.created_at);
       setIsOpen(false);
     }
@@ -333,8 +337,9 @@ interface AddCardProps {
 }
 
 function AddCard({ cards }: AddCardProps) {
+  const system = useContext(SnortContext);
   const login = useLogin();
-  const tags = cards.map(toTag);
+  const tags = removeUndefined(cards.map(a => NostrLink.fromEvent(a).toEventTag()));
   const [isOpen, setIsOpen] = useState(false);
 
   async function createCard({ title, image, link, content }: NewCard) {
@@ -356,18 +361,16 @@ function AddCard({ cards }: AddCardProps) {
       });
       const userCardsEv = await pub.generic(eb => {
         eb.kind(USER_CARDS).content("");
-        for (const tag of tags) {
-          eb.tag(tag);
-        }
-        eb.tag(toTag(ev));
+        tags.forEach(a => eb.tag(a));
+        eb.tag(unwrap(NostrLink.fromEvent(ev).toEventTag()));
         return eb;
       });
 
       console.debug(ev);
       console.debug(userCardsEv);
 
-      System.BroadcastEvent(ev);
-      System.BroadcastEvent(userCardsEv);
+      await system.BroadcastEvent(ev);
+      await system.BroadcastEvent(userCardsEv);
       setIsOpen(false);
     }
   }

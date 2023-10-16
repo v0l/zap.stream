@@ -6,7 +6,7 @@ const FileExtensionRegex = /\.([\w]+)$/i;
 
 interface HyperTextProps {
   link: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export function HyperText({ link, children }: HyperTextProps) {

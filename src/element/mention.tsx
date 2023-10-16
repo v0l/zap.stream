@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
-import { hexToBech32 } from "utils";
+import { hexToBech32 } from "@snort/shared";
 
 interface MentionProps {
   pubkey: string;

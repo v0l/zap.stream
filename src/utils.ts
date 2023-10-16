@@ -1,9 +1,7 @@
-import { NostrEvent, NostrPrefix, TaggedNostrEvent, createNostrLink, encodeTLV } from "@snort/system";
-import * as utils from "@noble/curves/abstract/utils";
-import { bech32 } from "@scure/base";
-import type { Tag, Tags } from "types";
+import { NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
+
+import type { Tags } from "types";
 import { LIVE_STREAM } from "const";
-import { unwrap } from "@snort/shared";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -19,46 +17,11 @@ export function toAddress(e: NostrEvent): string {
   return e.id;
 }
 
-export function toTag(e: NostrEvent): Tag {
-  if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
-    const dTag = findTag(e, "d");
-
-    return ["a", `${e.kind}:${e.pubkey}:${dTag}`];
-  }
-
-  if (e.kind === 0 || e.kind === 3) {
-    return ["p", e.pubkey];
-  }
-
-  return ["e", e.id];
-}
-
 export function findTag(e: NostrEvent | undefined, tag: string) {
   const maybeTag = e?.tags.find(evTag => {
     return evTag[0] === tag;
   });
   return maybeTag && maybeTag[1];
-}
-
-/**
- * Convert hex to bech32
- */
-export function hexToBech32(hrp: string, hex?: string) {
-  if (typeof hex !== "string" || hex.length === 0 || hex.length % 2 !== 0) {
-    return "";
-  }
-
-  try {
-    if (hrp === NostrPrefix.Note || hrp === NostrPrefix.PrivateKey || hrp === NostrPrefix.PublicKey) {
-      const buf = utils.hexToBytes(hex);
-      return bech32.encode(hrp, bech32.toWords(buf));
-    } else {
-      return encodeTLV(hrp as NostrPrefix, hex);
-    }
-  } catch (e) {
-    console.warn("Invalid hex", hex, e);
-    return "";
-  }
 }
 
 export function splitByUrl(str: string) {
@@ -69,12 +32,7 @@ export function splitByUrl(str: string) {
 }
 
 export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
-  if (ev.kind && ev.kind >= 30000 && ev.kind <= 40000) {
-    const d = findTag(ev, "d") ?? "";
-    return encodeTLV(NostrPrefix.Address, d, "relays" in ev ? ev.relays : undefined, ev.kind, ev.pubkey);
-  } else {
-    return encodeTLV(NostrPrefix.Event, ev.id, "relays" in ev ? ev.relays : undefined);
-  }
+  return NostrLink.fromEvent(ev).encode();
 }
 
 export function getHost(ev?: NostrEvent) {
@@ -109,12 +67,4 @@ export function getEventFromLocationState(state: unknown | undefined | null) {
   return state && typeof state === "object" && "kind" in state && state.kind === LIVE_STREAM
     ? (state as NostrEvent)
     : undefined;
-}
-
-export function eventToLink(ev: NostrEvent) {
-  if (ev.kind >= 30_000 && ev.kind < 40_000) {
-    const dTag = unwrap(findTag(ev, "d"));
-    return createNostrLink(NostrPrefix.Address, dTag, undefined, ev.kind, ev.pubkey);
-  }
-  return createNostrLink(NostrPrefix.Event, ev.id, undefined, ev.kind, ev.pubkey);
 }

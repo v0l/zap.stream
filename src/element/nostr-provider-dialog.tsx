@@ -1,13 +1,15 @@
 import { NostrEvent } from "@snort/system";
 import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo } from "providers";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SendZaps } from "./send-zap";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
 import AsyncButton from "./async-button";
 import { FormattedMessage } from "react-intl";
+import { SnortContext } from "@snort/system-react";
 
 export function NostrProviderDialog({ provider, ...others }: { provider: StreamProvider } & StreamEditorProps) {
+  const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
   const [ep, setEndpoint] = useState<StreamProviderEndpoint>();
@@ -181,7 +183,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
       ) : (
         <StreamEditor
           onFinish={ex => {
-            provider.updateStreamInfo(ex);
+            provider.updateStreamInfo(system, ex);
             others.onFinish?.(ex);
           }}
           ev={

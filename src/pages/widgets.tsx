@@ -2,18 +2,18 @@
 import "./widgets.css";
 import { useState, useMemo } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
+import { NostrLink, NostrPrefix } from "@snort/system";
 
-import { NostrPrefix, createNostrLink } from "@snort/system";
 import Copy from "element/copy";
 import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { getVoices, speak, toTextToSpeechParams } from "text2speech";
 import { useLogin } from "hooks/login";
-import { eventToLink, hexToBech32 } from "utils";
 import { ZapAlertItem } from "./widgets/zaps";
 import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
 import groupBy from "lodash/groupBy";
+import { hexToBech32 } from "@snort/shared";
 
 interface ZapAlertConfigurationProps {
   npub: string;
@@ -164,9 +164,9 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
 
 export function WidgetsPage() {
   const login = useLogin();
-  const profileLink = createNostrLink(NostrPrefix.PublicKey, login?.pubkey ?? "");
+  const profileLink = new NostrLink(NostrPrefix.PublicKey, login?.pubkey ?? "");
   const current = useCurrentStreamFeed(profileLink);
-  const currentLink = current ? eventToLink(current) : undefined;
+  const currentLink = current ? NostrLink.fromEvent(current) : undefined;
   const npub = hexToBech32("npub", login?.pubkey);
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`;

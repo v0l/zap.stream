@@ -1,17 +1,17 @@
 import "./textarea.css";
-import type { KeyboardEvent, ChangeEvent } from "react";
+import { type KeyboardEvent, type ChangeEvent, useContext } from "react";
 import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
 import isEqual from "lodash/isEqual";
 
+import { hexToBech32 } from "@snort/shared";
+import { SnortContext } from "@snort/system-react";
 import { MetadataCache, NostrPrefix, UserProfileCache } from "@snort/system";
 
 import { Emoji } from "element/emoji";
 import { Avatar } from "element/avatar";
-import { hexToBech32 } from "utils";
 import type { EmojiTag } from "types";
-import { System } from "index";
 
 interface EmojiItemProps {
   name: string;
@@ -48,8 +48,9 @@ interface TextareaProps {
 }
 
 export function Textarea({ emojis, ...props }: TextareaProps) {
+  const system = useContext(SnortContext);
   const userDataProvider = async (token: string) => {
-    const cache = System.ProfileLoader.Cache;
+    const cache = system.ProfileLoader.Cache;
     if (cache instanceof UserProfileCache) {
       return await cache.search(token);
     }

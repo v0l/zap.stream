@@ -4,15 +4,17 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Icon } from "element/icon";
 import { useStreamProvider } from "hooks/stream-provider";
 import { StreamProvider, StreamProviders } from "providers";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { useNavigate } from "react-router-dom";
 import { eventLink, findTag } from "utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
 import { unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
+import { SnortContext } from "@snort/system-react";
 
 function NewStream({ ev, onFinish }: StreamEditorProps) {
+  const system = useContext(SnortContext);
   const providers = useStreamProvider();
   const [currentProvider, setCurrentProvider] = useState<StreamProvider>();
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
         return (
           <StreamEditor
             onFinish={ex => {
-              currentProvider.updateStreamInfo(ex);
+              currentProvider.updateStreamInfo(system, ex);
               if (!ev) {
                 if (findTag(ex, "content-warning") && __XXX_HOST && __XXX === false) {
                   location.href = `${__XXX_HOST}/${eventLink(ex)}`;

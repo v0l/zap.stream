@@ -6,7 +6,7 @@ import {
   StreamProviderStreamInfo,
   StreamProviders,
 } from ".";
-import { EventKind, EventPublisher, NostrEvent } from "@snort/system";
+import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login, StreamState } from "index";
 import { getPublisher } from "login";
 import { findTag } from "utils";
@@ -53,7 +53,7 @@ export class Nip103StreamProvider implements StreamProvider {
     };
   }
 
-  async updateStreamInfo(ev: NostrEvent): Promise<void> {
+  async updateStreamInfo(system: SystemInterface, ev: NostrEvent): Promise<void> {
     const title = findTag(ev, "title");
     const summary = findTag(ev, "summary");
     const image = findTag(ev, "image");

@@ -1,20 +1,37 @@
-.markdown a {
-  color: var(--text-link);
-}
-
-.markdown > ul,
-.markdown > ol {
-  margin: 0;
-  padding: 0 12px;
+.markdown {
   font-size: 18px;
   font-weight: 400;
   line-height: 29px;
 }
 
-.markdown > p {
-  font-size: 18px;
-  font-style: normal;
-  overflow-wrap: break-word;
-  font-weight: 400;
-  line-height: 29px; /* 161.111% */
+.markdown a {
+  color: var(--text-link);
+}
+
+.markdown blockquote {
+  margin: 0;
+  color: var(--font-secondary-color);
+  border-left: 2px solid var(--font-secondary-color);
+  padding-left: 12px;
+}
+
+.markdown hr {
+  border: 0;
+  height: 1px;
+  background-image: var(--gray-gradient);
+  margin: 20px;
+}
+
+.markdown img:not(.custom-emoji),
+.markdown video,
+.markdown iframe,
+.markdown audio {
+  width: 100%;
+  display: block;
+}
+
+.markdown iframe,
+.markdown video {
+  width: -webkit-fill-available;
+  aspect-ratio: 16 / 9;
 }

@@ -1,8 +1,7 @@
+import { useContext, useMemo, useEffect } from "react";
 import { unwrap } from "@snort/shared";
 import { NostrLink, RequestBuilder, NostrPrefix, EventKind, NoteCollection, parseZap } from "@snort/system";
 import { SnortContext, useRequestBuilder } from "@snort/system-react";
-import { System } from "index";
-import { useContext, useMemo, useEffect } from "react";
 import { findTag } from "utils";
 
 export function useZaps(link?: NostrLink, leaveOpen = false) {
@@ -34,7 +33,7 @@ export function useZaps(link?: NostrLink, leaveOpen = false) {
   return (
     [...(zaps ?? [])]
       .sort((a, b) => (b.created_at > a.created_at ? 1 : -1))
-      .map(ev => parseZap(ev, System.ProfileLoader.Cache))
+      .map(ev => parseZap(ev, system.ProfileLoader.Cache))
       .filter(z => z && z.valid) ?? []
   );
 }

@@ -1,5 +1,5 @@
 import { NostrLink, EventKind } from "@snort/system";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { useLogin } from "hooks/login";
@@ -8,10 +8,11 @@ import { Icon } from "element/icon";
 import { Textarea } from "element/textarea";
 import { EmojiPicker } from "element/emoji-picker";
 import type { EmojiPack, Emoji } from "types";
-import { System } from "index";
 import { LIVE_STREAM_CHAT } from "const";
+import { SnortContext } from "@snort/system-react";
 
 export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
+  const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
   const emojiRef = useRef(null);
   const [chat, setChat] = useState("");
@@ -49,7 +50,7 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
       });
       if (reply) {
         console.debug(reply);
-        System.BroadcastEvent(reply);
+        system.BroadcastEvent(reply);
       }
       setChat("");
     }

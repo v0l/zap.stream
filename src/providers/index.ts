@@ -1,5 +1,5 @@
 import { StreamState } from "index";
-import { NostrEvent } from "@snort/system";
+import { NostrEvent, SystemInterface } from "@snort/system";
 import { ExternalStore } from "@snort/shared";
 import { Nip103StreamProvider } from "./zsz";
 import { ManualProvider } from "./manual";
@@ -22,7 +22,7 @@ export interface StreamProvider {
   /**
    * Update stream info event
    */
-  updateStreamInfo(ev: NostrEvent): Promise<void>;
+  updateStreamInfo(system: SystemInterface, ev: NostrEvent): Promise<void>;
 
   /**
    * Top-up balance with provider
