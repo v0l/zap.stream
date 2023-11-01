@@ -23,7 +23,11 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
     if (streamCached && video.current) {
       if (Hls.isSupported()) {
         try {
-          const hls = new Hls();
+          const hls = new Hls({
+            enableWorker: true,
+            lowLatencyMode: true,
+            backBufferLength: 90
+          });
           hls.loadSource(streamCached);
           hls.attachMedia(video.current);
           hls.on(Hls.Events.ERROR, (event, data) => {
