@@ -17,9 +17,16 @@ export function useStreamsFeed(tag?: string) {
       leaveOpen: true,
     });
     if (tag) {
-      rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).since(since);
+      rb.withFilter()
+        .kinds([LIVE_STREAM])
+        .tag("t", [tag])
+        .since(since)
+        .authors(__SINGLE_PUBLISHER ? [__SINGLE_PUBLISHER] : undefined);
     } else {
-      rb.withFilter().kinds([LIVE_STREAM]).since(since);
+      rb.withFilter()
+        .kinds([LIVE_STREAM])
+        .since(since)
+        .authors(__SINGLE_PUBLISHER ? [__SINGLE_PUBLISHER] : undefined);
     }
     return rb;
   }, [tag, since]);

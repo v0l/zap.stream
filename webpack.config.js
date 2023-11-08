@@ -61,6 +61,7 @@ const config = {
     new webpack.DefinePlugin({
       __XXX: process.env["__XXX"] || JSON.stringify(false),
       __XXX_HOST: JSON.stringify("https://xxzap.com"),
+      __SINGLE_PUBLISHER: JSON.stringify(process.env.__SINGLE_PUBLISHER),
     }),
     isProduction
       ? new WorkboxPlugin.InjectManifest({

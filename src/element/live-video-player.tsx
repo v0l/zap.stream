@@ -26,7 +26,7 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
           const hls = new Hls({
             enableWorker: true,
             lowLatencyMode: true,
-            backBufferLength: 90
+            backBufferLength: 90,
           });
           hls.loadSource(streamCached);
           hls.attachMedia(video.current);

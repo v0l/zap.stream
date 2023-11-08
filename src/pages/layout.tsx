@@ -55,7 +55,9 @@ export function LayoutPage() {
 
     return (
       <>
-        <NewStreamDialog btnClassName="btn btn-primary" />
+        {(!__SINGLE_PUBLISHER || __SINGLE_PUBLISHER === login.pubkey) && (
+          <NewStreamDialog btnClassName="btn btn-primary" />
+        )}
         <Menu
           menuClassName="ctx-menu"
           menuButton={

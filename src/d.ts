@@ -47,3 +47,5 @@ declare module "light-bolt11-decoder" {
     value: string | Uint8Array | number | undefined;
   }
 }
+
+declare const __SINGLE_PUBLISHER: string;
