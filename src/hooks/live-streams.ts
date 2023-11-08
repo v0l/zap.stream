@@ -6,7 +6,7 @@ import { useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { LIVE_STREAM } from "const";
 import { StreamState } from "index";
-import { findTag } from "utils";
+import { findTag, getHost } from "utils";
 import { WEEK } from "const";
 
 export function useStreamsFeed(tag?: string) {
@@ -17,16 +17,9 @@ export function useStreamsFeed(tag?: string) {
       leaveOpen: true,
     });
     if (tag) {
-      rb.withFilter()
-        .kinds([LIVE_STREAM])
-        .tag("t", [tag])
-        .since(since)
-        .authors(__SINGLE_PUBLISHER ? [__SINGLE_PUBLISHER] : undefined);
+      rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).since(since);
     } else {
-      rb.withFilter()
-        .kinds([LIVE_STREAM])
-        .since(since)
-        .authors(__SINGLE_PUBLISHER ? [__SINGLE_PUBLISHER] : undefined);
+      rb.withFilter().kinds([LIVE_STREAM]).since(since);
     }
     return rb;
   }, [tag, since]);
@@ -45,9 +38,13 @@ export function useStreamsFeed(tag?: string) {
   const feedSorted = useMemo(() => {
     if (feed.data) {
       if (__XXX) {
-        return [...feed.data].filter(a => findTag(a, "content-warning") !== undefined);
+        return [...feed.data].filter(
+          a => findTag(a, "content-warning") !== undefined && (!__SINGLE_PUBLISHER || __SINGLE_PUBLISHER === getHost(a))
+        );
       } else {
-        return [...feed.data].filter(a => findTag(a, "content-warning") === undefined);
+        return [...feed.data].filter(
+          a => findTag(a, "content-warning") === undefined && (!__SINGLE_PUBLISHER || __SINGLE_PUBLISHER === getHost(a))
+        );
       }
     }
     return [];
