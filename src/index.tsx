@@ -24,6 +24,7 @@ import { register } from "serviceWorker";
 import { IntlProvider } from "intl";
 import { WidgetsPage } from "pages/widgets";
 import { AlertsPage } from "pages/alerts";
+import { unixNowMs } from "@snort/shared";
 
 export enum StreamState {
   Live = "live",
@@ -45,12 +46,23 @@ Object.entries(defaultRelays).forEach(params => {
   System.ConnectToRelay(relay, settings);
 });
 
+export let TimeSync = 0;
+
 const router = createBrowserRouter([
   {
     element: <LayoutPage />,
     loader: async () => {
       db.ready = await db.isAvailable();
       await System.Init();
+      try {
+        const req = await fetch("https://api.zap.stream/api/time");
+        const nowAtServer = (await req.json()).time as number;
+        const now = unixNowMs();
+        TimeSync = now - nowAtServer;
+        console.debug("Time clock sync", TimeSync);
+      } catch {
+        // ignore
+      }
       return null;
     },
     children: [

@@ -10,6 +10,8 @@ import { EmojiPicker } from "element/emoji-picker";
 import type { EmojiPack, Emoji } from "types";
 import { LIVE_STREAM_CHAT } from "const";
 import { SnortContext } from "@snort/system-react";
+import { unixNowMs } from "@snort/shared";
+import { TimeSync } from "index";
 
 export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
   const system = useContext(SnortContext);
@@ -39,6 +41,7 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
         const emoji = [...emojiNames].map(name => emojis.find(e => e.at(1) === name));
         eb.kind(LIVE_STREAM_CHAT as EventKind)
           .content(chat)
+          .createdAt(Math.floor((unixNowMs() - TimeSync) / 1000))
           .tag(["a", `${link.kind}:${link.author}:${link.id}`, "", "root"])
           .processContent();
         for (const e of emoji) {
