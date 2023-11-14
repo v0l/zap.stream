@@ -1,11 +1,10 @@
-import { useContext, useMemo } from "react";
-import { RequestBuilder, NoteCollection, NostrLink, EventKind, parseZap } from "@snort/system";
-import { SnortContext, useRequestBuilder } from "@snort/system-react";
+import { useMemo } from "react";
+import { RequestBuilder, NoteCollection, NostrLink } from "@snort/system";
+import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "const";
-import { findTag } from "utils";
+import { useZaps } from "./zaps";
 
 export function useProfile(link: NostrLink, leaveOpen = false) {
-  const system = useContext(SnortContext);
   const sub = useMemo(() => {
     const b = new RequestBuilder(`profile:${link.id.slice(0, 12)}`);
     b.withOptions({
@@ -20,35 +19,11 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const { data: streamsData } = useRequestBuilder(NoteCollection, sub);
-  const streams = streamsData ?? [];
-
-  const addresses = useMemo(() => {
-    if (streamsData) {
-      return streamsData.map(e => `${e.kind}:${e.pubkey}:${findTag(e, "d")}`);
-    }
-    return [];
-  }, [streamsData]);
-
-  const zapsSub = useMemo(() => {
-    const b = new RequestBuilder(`profile-zaps:${link.id.slice(0, 12)}`);
-    b.withOptions({
-      leaveOpen,
-    })
-      .withFilter()
-      .kinds([EventKind.ZapReceipt])
-      .tag("a", addresses);
-    return b;
-  }, [link, addresses, leaveOpen]);
-
-  const { data: zapsData } = useRequestBuilder(NoteCollection, zapsSub);
-  const zaps = (zapsData ?? [])
-    .map(ev => parseZap(ev, system.ProfileLoader.Cache))
-    .filter(z => z && z.valid && z.receiver === link.id);
+  const streams = useRequestBuilder(NoteCollection, sub);
+  const zaps = useZaps(link);
 
   const sortedStreams = useMemo(() => {
-    const sorted = [...streams];
-    sorted.sort((a, b) => b.created_at - a.created_at);
+    const sorted = [...(streams.data ?? [])].sort((a, b) => b.created_at - a.created_at);
     return sorted;
   }, [streams]);
 

@@ -77,6 +77,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
           errors: [],
           sender: login?.pubkey,
           amount: 1_000_000,
+          targetEvents: []
         }}
       />
       <div className="text-to-speech-settings">

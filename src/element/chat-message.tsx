@@ -55,7 +55,7 @@ export function ChatMessage({
   const profile = useUserProfile(inView?.isIntersecting ? ev.pubkey : undefined);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const { zaps, reactions } = useEventReactions(ev, related);
+  const { zaps, reactions } = useEventReactions(link, related);
   const emojiNames = emojiPacks.map(p => p.emojis).flat();
 
   const filteredReactions = useMemo(() => {
@@ -175,15 +175,15 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+                }
             }>
             {zapTarget && (
               <SendZapsDialog

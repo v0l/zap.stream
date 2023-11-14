@@ -1,8 +1,9 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrPrefix, NostrLink, ParsedZap, NostrEvent, parseZap, encodeTLV } from "@snort/system";
+import { EventKind, NostrLink, ParsedZap, NostrEvent } from "@snort/system";
+import { useEventReactions } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
 import { Icon } from "element/icon";
@@ -23,7 +24,6 @@ import { formatSats } from "number";
 import { WEEK, LIVE_STREAM_CHAT } from "const";
 import { findTag, getTagValues, getHost } from "utils";
 import { TopZappers } from "element/top-zappers";
-import { SnortContext } from "@snort/system-react";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -61,7 +61,6 @@ export function LiveChat({
   options?: LiveChatOptions;
   height?: number;
 }) {
-  const system = useContext(SnortContext);
   const host = getHost(ev);
   const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
   const login = useLogin();
@@ -80,15 +79,11 @@ export function LiveChat({
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
 
-  const zaps = feed.zaps.map(ev => parseZap(ev, system.ProfileLoader.Cache)).filter(z => z && z.valid);
+  const reactions = useEventReactions(link, feed.reactions);
   const events = useMemo(() => {
-    return [...feed.messages, ...feed.zaps, ...awards].sort((a, b) => b.created_at - a.created_at);
-  }, [feed.messages, feed.zaps, awards]);
-  const naddr = useMemo(() => {
-    if (ev) {
-      return encodeTLV(NostrPrefix.Address, findTag(ev, "d") ?? "", undefined, ev.kind, ev.pubkey);
-    }
-  }, [ev]);
+    return [...feed.messages, ...feed.reactions, ...awards].sort((a, b) => b.created_at - a.created_at);
+  }, [feed.messages, feed.reactions, awards]);
+
   const filteredEvents = useMemo(() => {
     return events.filter(e => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey));
   }, [events, mutedPubkeys, hostMutedPubkeys]);
@@ -104,17 +99,17 @@ export function LiveChat({
             name="link"
             className="secondary"
             size={32}
-            onClick={() => window.open(`/chat/${naddr}?chat=true`, "_blank", "popup,width=400,height=800")}
+            onClick={() => window.open(`/chat/${link.encode()}?chat=true`, "_blank", "popup,width=400,height=800")}
           />
         </div>
       )}
-      {zaps.length > 0 && (
+      {reactions.zaps.length > 0 && (
         <div className="top-zappers">
           <h3>
             <FormattedMessage defaultMessage="Top zappers" />
           </h3>
           <div className="top-zappers-container">
-            <TopZappers zaps={zaps} />
+            <TopZappers zaps={reactions.zaps} />
           </div>
           {goal && <Goal ev={goal} />}
         </div>
@@ -138,7 +133,7 @@ export function LiveChat({
               );
             }
             case EventKind.ZapReceipt: {
-              const zap = zaps.find(b => b.id === a.id && b.receiver === host);
+              const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
               if (zap) {
                 return <ChatZap zap={zap} key={a.id} />;
               }
