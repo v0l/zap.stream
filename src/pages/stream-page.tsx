@@ -26,6 +26,7 @@ import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { useStreamLink } from "hooks/stream-link";
 import { FormattedMessage } from "react-intl";
 import { useContext } from "react";
+import { FollowButton } from "element/follow-button";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -81,6 +82,9 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
         <div className="profile-info">
           <Profile pubkey={host ?? ""} />
           <div className="flex g12">
+            <div className="hide-on-mobile" >
+              <FollowButton pubkey={host} />
+            </div>
             {ev && (
               <>
                 <ShareMenu ev={ev} />

@@ -108,12 +108,12 @@ header .profile img {
   }
 }
 
-button span.hide-on-mobile {
+.hide-on-mobile {
   display: none;
 }
 
 @media (min-width: 1020px) {
-  button span.hide-on-mobile {
+  .hide-on-mobile {
     display: block;
   }
 }
