@@ -49,9 +49,10 @@ export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOp
   return cards;
 }
 
-export function useCards(pubkey: string, leaveOpen = false): TaggedNostrEvent[] {
+export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[] {
   const sub = useMemo(() => {
-    const b = new RequestBuilder(`user-cards:${pubkey.slice(0, 12)}`);
+    if (!pubkey) return null;
+    const b = new RequestBuilder(`user-cards:${pubkey?.slice(0, 12)}`);
     b.withOptions({
       leaveOpen,
     })

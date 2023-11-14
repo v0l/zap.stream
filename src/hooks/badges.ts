@@ -12,10 +12,10 @@ export function useBadges(
   leaveOpen = true
 ): { badges: Badge[]; awards: TaggedNostrEvent[] } {
   const rb = useMemo(() => {
+    if (!pubkey) return null;
     const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
     rb.withOptions({ leaveOpen });
-    rb.withFilter().authors([pubkey]).kinds([EventKind.Badge]);
-    rb.withFilter().authors([pubkey]).kinds([EventKind.BadgeAward]).since(since);
+    rb.withFilter().authors([pubkey]).kinds([EventKind.Badge, EventKind.BadgeAward]);
     return rb;
   }, [pubkey, since]);
 

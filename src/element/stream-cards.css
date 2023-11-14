@@ -48,6 +48,7 @@
   gap: 16px;
   flex: 1;
   width: 100%;
+  overflow-wrap: break-word;
 }
 
 .stream-card.image-card {
