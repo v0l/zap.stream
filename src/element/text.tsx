@@ -24,7 +24,7 @@ export function Text({ content, tags, eventComponent }: TextProps) {
   function renderFrag(f: ParsedFragment) {
     switch (f.type) {
       case "custom_emoji":
-        return <Emoji name="" url={f.content} />;
+        return <Emoji name={f.content} url={f.content} />;
       case "media":
       case "link": {
         if (f.content.startsWith("nostr:")) {

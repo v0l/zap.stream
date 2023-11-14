@@ -67,17 +67,17 @@
 .live-chat .message {
   word-wrap: break-word;
   position: relative;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
 }
 
 .live-chat .message .profile {
   gap: 8px;
   font-weight: 600;
-  font-size: 15px;
   float: left;
-}
-
-.live-chat .message .profile {
   color: #34d2fe;
+  margin-right: 8px;
 }
 
 .live-chat .message.streamer .profile {
@@ -86,18 +86,12 @@
 
 .live-chat .message a {
   color: #f838d9;
+  display: inline-flex;
 }
 
 .live-chat .profile img {
   width: 24px;
   height: 24px;
-}
-
-.live-chat .message > span {
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 24px;
-  margin-left: 8px;
 }
 
 .live-chat .messages {
