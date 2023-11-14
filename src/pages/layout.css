@@ -168,6 +168,10 @@ header .profile img {
   cursor: pointer;
 }
 
+.tnum {
+  font-feature-settings: "tnum";
+}
+
 .fi {
   background-position: 50%;
   background-repeat: no-repeat;
