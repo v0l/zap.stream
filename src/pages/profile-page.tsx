@@ -76,7 +76,11 @@ export function ProfilePage() {
   return (
     <div className="profile-page">
       <div className="profile-container">
-        <img className="banner" alt={profile?.name || link.id} src={profile?.banner ? profile?.banner : defaultBanner} />
+        <img
+          className="banner"
+          alt={profile?.name || link.id}
+          src={profile?.banner ? profile?.banner : defaultBanner}
+        />
         <div className="profile-content">
           {profile?.picture ? (
             <img className="avatar" alt={profile.name || link.id} src={profile.picture} />

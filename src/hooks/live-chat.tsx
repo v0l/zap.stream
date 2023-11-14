@@ -22,6 +22,11 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
     return (feed.data ?? []).filter(ev => ev.kind === LIVE_STREAM_CHAT);
   }, [feed.data]);
 
-  const reactions = useReactions(`live:${link.id}:${link.author}:reactions`, messages.map(a => NostrLink.fromEvent(a)).concat(link), undefined, true);
+  const reactions = useReactions(
+    `live:${link.id}:${link.author}:reactions`,
+    messages.map(a => NostrLink.fromEvent(a)).concat(link),
+    undefined,
+    true
+  );
   return { messages, reactions: reactions.data ?? [] };
 }

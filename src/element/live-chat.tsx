@@ -81,7 +81,9 @@ export function LiveChat({
 
   const reactions = useEventReactions(link, feed.reactions);
   const events = useMemo(() => {
-    return [...feed.messages, ...feed.reactions, ...awards].filter(a => a.created_at > started).sort((a, b) => b.created_at - a.created_at);
+    return [...feed.messages, ...feed.reactions, ...awards]
+      .filter(a => a.created_at > started)
+      .sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.reactions, awards]);
 
   const filteredEvents = useMemo(() => {

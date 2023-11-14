@@ -50,9 +50,7 @@ export function Text({ content, tags, eventComponent }: TextProps) {
           // LUD-17: https://github.com/lnurl/luds/blob/luds/17.md
           const url = new URL(f.content);
           url.protocol = "https:";
-          return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>
-            {f.content}
-          </Link>} />
+          return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} />;
         }
         return <span className="text">{f.content}</span>;
       }

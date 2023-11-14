@@ -28,7 +28,5 @@ export function StreamTimer({ ev }: { ev?: NostrEvent }) {
     return () => clearInterval(t);
   }, []);
 
-  return <span className="tnum">
-    {time}
-  </span>;
+  return <span className="tnum">{time}</span>;
 }

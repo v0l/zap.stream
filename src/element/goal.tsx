@@ -30,7 +30,9 @@ export function Goal({ ev }: { ev: NostrEvent }) {
   }
 
   const soFar = useMemo(() => {
-    return zaps.filter(z => z.receiver === ev.pubkey && z.targetEvents.some(a => a.matchesEvent(ev))).reduce((acc, z) => acc + z.amount, 0);
+    return zaps
+      .filter(z => z.receiver === ev.pubkey && z.targetEvents.some(a => a.matchesEvent(ev)))
+      .reduce((acc, z) => acc + z.amount, 0);
   }, [zaps]);
 
   const progress = Math.max(0, Math.min(100, (soFar / goalAmount) * 100));

@@ -82,7 +82,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
         <div className="profile-info">
           <Profile pubkey={host ?? ""} />
           <div className="flex g12">
-            <div className="hide-on-mobile" >
+            <div className="hide-on-mobile">
               <FollowButton pubkey={host} />
             </div>
             {ev && (
