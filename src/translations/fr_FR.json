@@ -72,10 +72,10 @@
     "defaultMessage": "Fournisseurs de Stream"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Montant minimum pour la synthèse vocale"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Insérer un texte pour parler"
   },
   "9WRlF4": {
     "defaultMessage": "Envoyer"
@@ -93,7 +93,7 @@
     "defaultMessage": "Contenu NSFW"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Aucune donnée sur les spectateurs n'est disponible"
   },
   "AyGauy": {
     "defaultMessage": "Se Connecter"
@@ -262,7 +262,7 @@
     "defaultMessage": "Retour"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Voix de test"
   },
   "dVD/AR": {
     "defaultMessage": "Top Zappeurs"
@@ -286,7 +286,7 @@
     "defaultMessage": "Planning"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Activer la synthèse vocale"
   },
   "hpl4BP": {
     "defaultMessage": "Widget Chat"
@@ -319,7 +319,7 @@
     "defaultMessage": "Point d’arrivée"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Voix"
   },
   "mtNGwh": {
     "defaultMessage": "Une courte description du contenu"
@@ -364,7 +364,7 @@
     "defaultMessage": "Confirmez votre âge"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Message Zap"
   },
   "tG1ST3": {
     "defaultMessage": "Zap entrant"
@@ -397,7 +397,7 @@
     "defaultMessage": "Modifier"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Sélectionner la voix..."
   },
   "wOy57k": {
     "defaultMessage": "Ajouter un objectif de stream"

@@ -3,7 +3,7 @@
     "defaultMessage": "画像"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "メールもない！"
   },
   "+vVZ/G": {
     "defaultMessage": "接続"
@@ -12,7 +12,7 @@
     "defaultMessage": "金額"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "ノストル・シグナー・エクステンション"
   },
   "/GCoTA": {
     "defaultMessage": "クリア"
@@ -24,13 +24,13 @@
     "defaultMessage": "ザップ目標額を配信"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "ゴール"
   },
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "例： name@wallet.com"
   },
   "2/2yg+": {
     "defaultMessage": "追加"
@@ -45,13 +45,13 @@
     "defaultMessage": "{n} 人が視聴中"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "秘密鍵でログイン"
   },
   "47FYwb": {
     "defaultMessage": "キャンセル"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "うーん、あなたのライトニングアドレスは間違っているようだ"
   },
   "4l6vz1": {
     "defaultMessage": "コピー"
@@ -72,10 +72,10 @@
     "defaultMessage": "配信の提供元"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "音声合成の最低金額"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "テキストを挿入して話す"
   },
   "9WRlF4": {
     "defaultMessage": "送信"
@@ -93,7 +93,7 @@
     "defaultMessage": "不適切な内容"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "視聴者データなし"
   },
   "AyGauy": {
     "defaultMessage": "ログイン"
@@ -102,16 +102,16 @@
     "defaultMessage": "チャット配信"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "秘密鍵"
   },
   "C81/uG": {
     "defaultMessage": "ログアウト"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "設定"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "ログイン名"
   },
   "Dn82AL": {
     "defaultMessage": "ライブ配信中"
@@ -120,10 +120,10 @@
     "defaultMessage": "{name} へのコメント"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "後でいつでも自分の住所に置き換えることができる。"
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "視聴者から報酬を得る"
   },
   "G/yZLu": {
     "defaultMessage": "削除"
@@ -132,7 +132,7 @@
     "defaultMessage": "カバー画像"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "これを保存し、安全に保管してください！このキーを紛失すると、二度とアカウントにアクセスできなくなります。そう、それほど深刻なのだ！"
   },
   "H5+NAX": {
     "defaultMessage": "残高"
@@ -141,7 +141,7 @@
     "defaultMessage": "名前"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "ゴールを選択..."
   },
   "I1kjHI": {
     "defaultMessage": "{markdown} をサポート"
@@ -150,7 +150,7 @@
     "defaultMessage": "ザップ金額 ({currency})"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "または"
   },
   "JEsxDw": {
     "defaultMessage": "アップロード中..."
@@ -180,7 +180,7 @@
     "defaultMessage": "はい、18歳以上です"
   },
   "OEW7yJ": {
-    "defaultMessage": "Zaps"
+    "defaultMessage": "ザップ"
   },
   "OKhRC6": {
     "defaultMessage": "共有"
@@ -189,7 +189,7 @@
     "defaultMessage": "カードの編集"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
   },
   "Q3au2v": {
     "defaultMessage": "{estimate} について"
@@ -222,7 +222,7 @@
     "defaultMessage": "配信開始"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "アカウント"
   },
   "UJBFYK": {
     "defaultMessage": "カードを追加"
@@ -240,11 +240,11 @@
     "defaultMessage": "目標を設定"
   },
   "YPh5Nq": {
-    "defaultMessage": "@ {rate}",
+    "defaultMessage": "{rate}",
     "description": "Showing zap amount in USD @ rate"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "この方法は安全ではありません。 {nostrlink}。"
   },
   "ZmqxZs": {
     "defaultMessage": "これはあとで変更することができます"
@@ -262,7 +262,7 @@
     "defaultMessage": "戻る"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "テスト音声"
   },
   "dVD/AR": {
     "defaultMessage": "トップザッパー"
@@ -271,7 +271,7 @@
     "defaultMessage": "Nostr 拡張機能"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "{n} satsの無料ストリーミングもあります！💜"
   },
   "fBI91o": {
     "defaultMessage": "ザップ"
@@ -280,13 +280,13 @@
     "defaultMessage": "ファイルを追加"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "秘密鍵によるログイン（安全ではありません）"
   },
   "hGQqkW": {
     "defaultMessage": "配信予定"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "テキスト読み上げを有効にする"
   },
   "hpl4BP": {
     "defaultMessage": "チャットウィジェット"
@@ -319,7 +319,7 @@
     "defaultMessage": "エンドポイント"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "声"
   },
   "mtNGwh": {
     "defaultMessage": "コンテンツの簡単な説明"
@@ -343,7 +343,7 @@
     "defaultMessage": "配信予定：{date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "ログイン"
   },
   "rWBFZA": {
     "defaultMessage": "性的に露骨な表現が含まれています！"
@@ -364,13 +364,13 @@
     "defaultMessage": "年齢を確認してください"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "ザップメッセージ"
   },
   "tG1ST3": {
     "defaultMessage": "着金中のザップ"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "驚いた！続けて..."
   },
   "thsiMl": {
     "defaultMessage": "利用規約"
@@ -379,7 +379,7 @@
     "defaultMessage": "ステータス"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "アカウントの作成"
   },
   "uYw2LD": {
     "defaultMessage": "配信"
@@ -397,7 +397,7 @@
     "defaultMessage": "編集"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "音声を選択..."
   },
   "wOy57k": {
     "defaultMessage": "配信目標を追加"
@@ -409,10 +409,10 @@
     "defaultMessage": "ミュート"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "ボリューム"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "例：nsec1xyz"
   },
   "zVDHAu": {
     "defaultMessage": "ザップアラート"

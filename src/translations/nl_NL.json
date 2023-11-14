@@ -3,7 +3,7 @@
     "defaultMessage": "Afbeelding"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Geen e-mails, gewoon geweldig!"
   },
   "+vVZ/G": {
     "defaultMessage": "Verbinden"
@@ -12,7 +12,7 @@
     "defaultMessage": "Aantal"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "nostr ondertekenaar uitbreiding"
   },
   "/GCoTA": {
     "defaultMessage": "Wissen"
@@ -24,13 +24,13 @@
     "defaultMessage": "Stream Zap-doelen"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Doel"
   },
   "1EYCdR": {
     "defaultMessage": "Labels"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "bijv. name@wallet.com"
   },
   "2/2yg+": {
     "defaultMessage": "Toevoegen"
@@ -45,13 +45,13 @@
     "defaultMessage": "{n} kijkers"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Inloggen met privésleutel"
   },
   "47FYwb": {
     "defaultMessage": "Annuleer"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, je bliksemadres ziet er verkeerd uit"
   },
   "4l6vz1": {
     "defaultMessage": "Kopiëren"
@@ -72,10 +72,10 @@
     "defaultMessage": "Stream Providers"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Minimumbedrag voor tekst naar spraak"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Tekst invoegen om te spreken"
   },
   "9WRlF4": {
     "defaultMessage": "Verzenden"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW-inhoud"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Geen kijkergegevens beschikbaar"
   },
   "AyGauy": {
     "defaultMessage": "Inloggen"
@@ -102,16 +102,16 @@
     "defaultMessage": "Stream Chat"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Privé sleutel"
   },
   "C81/uG": {
     "defaultMessage": "Uitloggen"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Instellingen"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Aangemeld als"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
@@ -120,10 +120,10 @@
     "defaultMessage": "Uw reactie voor {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Je kunt het later altijd vervangen door je eigen adres."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Betaald worden door kijkers"
   },
   "G/yZLu": {
     "defaultMessage": "Verwijderen"
@@ -132,7 +132,7 @@
     "defaultMessage": "Omslag Afbeelding"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Bewaar deze en bewaar hem goed! Als je deze sleutel verliest, heb je nooit meer toegang tot je account. Ja, zo serieus is het!"
   },
   "H5+NAX": {
     "defaultMessage": "Saldo"
@@ -141,7 +141,7 @@
     "defaultMessage": "Naam"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Selecteer een doel..."
   },
   "I1kjHI": {
     "defaultMessage": "Ondersteunt {markdown}"
@@ -150,7 +150,7 @@
     "defaultMessage": "Zap hoeveelheid in {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "OF"
   },
   "JEsxDw": {
     "defaultMessage": "Bezig met uploaden..."
@@ -189,7 +189,7 @@
     "defaultMessage": "Kaart bewerken"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "We hebben een bliksemportemonnee voor je gemaakt, zodat je meteen door kijkers kunt worden betaald!"
   },
   "Q3au2v": {
     "defaultMessage": "Over {estimate}"
@@ -244,7 +244,7 @@
     "description": "Showing zap amount in USD @ rate"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Deze methode is onveilig. We raden aan een {nostrlink}te gebruiken."
   },
   "ZmqxZs": {
     "defaultMessage": "U kunt dit later wijzigen"
@@ -262,7 +262,7 @@
     "defaultMessage": "Vorige"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Test stem"
   },
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
@@ -271,7 +271,7 @@
     "defaultMessage": "Nostr Extensie"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Oh, en je hebt {n} sats gratis streaming bij ons! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
@@ -280,13 +280,13 @@
     "defaultMessage": "Bestand toevoegen"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Inloggen met privésleutel (onveilig)"
   },
   "hGQqkW": {
     "defaultMessage": "Inplannen"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Tekst naar spraak inschakelen"
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
@@ -319,7 +319,7 @@
     "defaultMessage": "Eindpunt"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Stem"
   },
   "mtNGwh": {
     "defaultMessage": "Een korte beschrijving van de inhoud"
@@ -343,7 +343,7 @@
     "defaultMessage": "Gepland voor {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Aanmelden"
   },
   "rWBFZA": {
     "defaultMessage": "Pas op. Seksueel expliciet materiaal!"
@@ -364,13 +364,13 @@
     "defaultMessage": "Bevestig uw leeftijd"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Zap bericht"
   },
   "tG1ST3": {
     "defaultMessage": "Inkomende Zap"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Verbazingwekkend! Ga door."
   },
   "thsiMl": {
     "defaultMessage": "algemene voorwaarden"
@@ -379,7 +379,7 @@
     "defaultMessage": "Status"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Maak een account aan"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -397,7 +397,7 @@
     "defaultMessage": "Bewerk"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Selecteer stem..."
   },
   "wOy57k": {
     "defaultMessage": "Voeg streamdoel toe"
@@ -412,7 +412,7 @@
     "defaultMessage": "Volume"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "bijv. nsec1xyz"
   },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"

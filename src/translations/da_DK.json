@@ -1,39 +1,39 @@
 {
   "+0zv6g": {
-    "defaultMessage": "Image"
+    "defaultMessage": "Billede"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Ingen e-mails, bare fantastiskhed!"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Forbind"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Beløb"
   },
   "/EvlqN": {
     "defaultMessage": "nostr signer extension"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "Klar"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "Gem nøgle"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "Stream Zap-mål"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "Mål"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "Mærker"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "F.eks. name@wallet.com"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "Tilføj"
   },
   "2CGh/0": {
     "defaultMessage": "live"
@@ -42,58 +42,58 @@
     "defaultMessage": "Zap!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} Seerne"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "Log ind med privat nøgle"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "Annuller"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "Hmm, din lynadresse ser forkert ud"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "Kopi"
   },
   "4uI538": {
-    "defaultMessage": "Resolutions"
+    "defaultMessage": "Beslutninger"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "Opret konto"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "Starttidspunkt"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "Server-URL"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "Strømudbydere"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Minimumsbeløb for tekst til tale"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Indsæt tekst for at tale"
   },
   "9WRlF4": {
     "defaultMessage": "Send"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "Titel"
   },
   "9anxhq": {
     "defaultMessage": "Starts"
   },
   "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
+    "defaultMessage": "{person} zappet {amount} sats"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "NSFW-indhold"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Ingen tilgængelige data for seere"
   },
   "AyGauy": {
     "defaultMessage": "Login"
@@ -102,320 +102,320 @@
     "defaultMessage": "Stream Chat"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "Privat nøgle"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "Log ud"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "Indstillinger"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "Logget ind som"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "Levende"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "Din kommentar til {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "Du kan altid erstatte den med din egen adresse senere."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "Bliv betalt af seerne"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "Fjern"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "Forsidebillede"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "Gem denne og opbevar den sikkert! Hvis du mister denne nøgle, vil du aldrig kunne få adgang til din konto igen. Jep, så alvorligt er det!"
   },
   "H5+NAX": {
     "defaultMessage": "Balance"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "Navn"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "Vælg et mål..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "Understøtter {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "Zap beløb i {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "ELLER"
   },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "Indhold"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "Slet"
   },
   "K3uH1C": {
     "defaultMessage": "offline"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "Vis"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "Nej, jeg er under 18"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "Stream-nøgle"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "Okay, det er sikkert"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "Ja, jeg er over 18 år"
   },
   "OEW7yJ": {
     "defaultMessage": "Zaps"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "Del"
   },
   "OWgHbg": {
-    "defaultMessage": "Edit card"
+    "defaultMessage": "Rediger kort"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "Vi har udstyret dig med en lightning wallet, så du kan blive betalt af seerne med det samme!"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "Om {estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "Hvad damper vi i dag?"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "Stream-URL"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "Mål: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
+    "defaultMessage": "{name} med {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "Jeg har læst og er enig i {provider}' s {terms}."
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "Log ind for at skrive beskeder!"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "Resumé"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "Afsluttet"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "Start strøm"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "Konto"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "Tilføj kort"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "Tidligere strømme"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "Skjul"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "Slå lyden fra"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "Opret mål"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "Denne metode er usikker. Vi anbefaler at bruge en {nostrlink}"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "Du kan ændre dette senere"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "Fortsæt"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "Følgende"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "Streamet på {date}"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "Tilbage"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Test stemme"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "De bedste zappere"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "Nostr-forlængelse"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "Åh, og du har {n} sats gratis streaming på os! 💜"
   },
   "fBI91o": {
     "defaultMessage": "Zap"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "Tilføj fil"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "Login med privat nøgle (usikkert)"
   },
   "hGQqkW": {
-    "defaultMessage": "Schedule"
+    "defaultMessage": "Tidsplan"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Aktiver tekst til tale"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "Chat-widget"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "Følg efter"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "Profil"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "Følg ikke"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "Gem"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "f.eks. om mig"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "Planlagt"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "Tjek her, om denne stream indeholder nøgenhed eller pornografisk indhold."
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "Slutpunkt"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Stemme"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "En kort beskrivelse af indholdet"
   },
   "nBCvvJ": {
     "defaultMessage": "Topup"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "Opsætning af profil"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "Tilføj kort"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "Stream-typen skal være HLS"
   },
   "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+    "defaultMessage": "Planlagt til {date}"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "Log ind"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "Seksuelt eksplicit materiale forude!"
   },
   "rbrahO": {
-    "defaultMessage": "Close"
+    "defaultMessage": "Luk"
   },
   "rfC1Zq": {
-    "defaultMessage": "Save card"
+    "defaultMessage": "Gem kort"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "Nuværende seere"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "Link til billede"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "Bekræft din alder"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Zap-besked"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "Indkommende Zap"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "Fantastisk! Fortsæt..."
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "vilkår og betingelser"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "Opret en konto"
   },
   "uYw2LD": {
-    "defaultMessage": "Stream"
+    "defaultMessage": "Strøm"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "Begynd at skrive"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "Udsendt på Nostr"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "Rediger"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Vælg stemme..."
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "Tilføj mål for strøm"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "De bedste zappere"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "Lydløs"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Volumen"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "f.eks. nsec1xyz"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "Zap-alarm"
   }
 }
 

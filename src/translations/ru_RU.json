@@ -72,10 +72,10 @@
     "defaultMessage": "Стрим-провайдеры"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "Минимальная сумма для преобразования текста в речь"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "Вставка текста для выступления"
   },
   "9WRlF4": {
     "defaultMessage": "Отправить"
@@ -93,7 +93,7 @@
     "defaultMessage": "NSFW контент"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "Данные по просмотру отсутствуют"
   },
   "AyGauy": {
     "defaultMessage": "Логин"
@@ -262,7 +262,7 @@
     "defaultMessage": "Назад"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "Тестовый голос"
   },
   "dVD/AR": {
     "defaultMessage": "Топ поддержавших"
@@ -286,7 +286,7 @@
     "defaultMessage": "Запланировать"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "Включить функцию преобразования текста в речь"
   },
   "hpl4BP": {
     "defaultMessage": "Виджет чата"
@@ -319,7 +319,7 @@
     "defaultMessage": "Endpoint"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "Голос"
   },
   "mtNGwh": {
     "defaultMessage": "Краткое описание контента"
@@ -364,7 +364,7 @@
     "defaultMessage": "Подтвердите свой возраст"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "Сообщение Zap"
   },
   "tG1ST3": {
     "defaultMessage": "Входящий Зап"
@@ -397,7 +397,7 @@
     "defaultMessage": "Редактировать"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "Выберите голос..."
   },
   "wOy57k": {
     "defaultMessage": "Добавить цели стрима"
@@ -409,7 +409,7 @@
     "defaultMessage": "Заглушить"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "Объем"
   },
   "yzKwBQ": {
     "defaultMessage": "например, nsec1xyz"
