@@ -25,6 +25,7 @@ import { IntlProvider } from "intl";
 import { WidgetsPage } from "pages/widgets";
 import { AlertsPage } from "pages/alerts";
 import { unixNowMs } from "@snort/shared";
+import { StreamSummaryPage } from "pages/summary";
 
 export enum StreamState {
   Live = "live",
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
       {
         path: "/widgets",
         element: <WidgetsPage />,
+      },
+      {
+        path: "/summary/:id",
+        element: <StreamSummaryPage />,
       },
       {
         path: "*",

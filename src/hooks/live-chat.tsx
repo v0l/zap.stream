@@ -4,7 +4,7 @@ import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
 import { LIVE_STREAM_CHAT, WEEK } from "const";
 
-export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
+export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>, limit = 100) {
   const since = useMemo(() => unixNow() - WEEK, [link.id]);
   const sub = useMemo(() => {
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
@@ -12,7 +12,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>) {
       leaveOpen: true,
     });
     const aTag = `${link.kind}:${link.author}:${link.id}`;
-    rb.withFilter().kinds([LIVE_STREAM_CHAT]).tag("a", [aTag]).limit(100);
+    rb.withFilter().kinds([LIVE_STREAM_CHAT]).tag("a", [aTag]).limit(limit);
     return rb;
   }, [link.id, since, eZaps]);
 

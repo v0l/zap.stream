@@ -48,6 +48,10 @@ a {
   display: flex;
 }
 
+.f-1 {
+  flex: 1;
+}
+
 .f-grow {
   flex-grow: 1;
 }
@@ -226,6 +230,12 @@ input[type="checkbox"]:after {
 
 input[type="checkbox"]:checked:after {
   display: block;
+}
+
+.plain-paper {
+  background: #171717;
+  border-radius: 16px;
+  padding: 8px 16px;
 }
 
 div.paper {
