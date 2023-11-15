@@ -4,9 +4,10 @@ import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
 import { LIVE_STREAM_CHAT, WEEK } from "const";
 
-export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>, limit = 100) {
-  const since = useMemo(() => unixNow() - WEEK, [link.id]);
+export function useLiveChatFeed(link?: NostrLink, eZaps?: Array<string>, limit = 100) {
+  const since = useMemo(() => unixNow() - WEEK, [link?.id]);
   const sub = useMemo(() => {
+    if (!link) return null;
     const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
     rb.withOptions({
       leaveOpen: true,
@@ -14,7 +15,7 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>, limit = 
     const aTag = `${link.kind}:${link.author}:${link.id}`;
     rb.withFilter().kinds([LIVE_STREAM_CHAT]).tag("a", [aTag]).limit(limit);
     return rb;
-  }, [link.id, since, eZaps]);
+  }, [link?.id, since, eZaps]);
 
   const feed = useRequestBuilder(NoteCollection, sub);
 
@@ -23,8 +24,8 @@ export function useLiveChatFeed(link: NostrLink, eZaps?: Array<string>, limit = 
   }, [feed.data]);
 
   const reactions = useReactions(
-    `live:${link.id}:${link.author}:reactions`,
-    messages.map(a => NostrLink.fromEvent(a)).concat(link),
+    `live:${link?.id}:${link?.author}:reactions`,
+    messages.map(a => NostrLink.fromEvent(a)).concat(link ? [link] : []),
     undefined,
     true
   );
