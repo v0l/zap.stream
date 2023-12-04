@@ -9,7 +9,11 @@ import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
 import AsyncButton from "./async-button";
 
-export function NostrProviderDialog({ provider, showEndpoints, ...others }: { provider: StreamProvider, showEndpoints: boolean } & StreamEditorProps) {
+export function NostrProviderDialog({
+  provider,
+  showEndpoints,
+  ...others
+}: { provider: StreamProvider; showEndpoints: boolean } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
@@ -119,73 +123,75 @@ export function NostrProviderDialog({ provider, showEndpoints, ...others }: { pr
 
   function streamEndpoints() {
     if (!info) return;
-    return <>
-      {info.endpoints.length > 1 && (
+    return (
+      <>
+        {info.endpoints.length > 1 && (
+          <div>
+            <p>
+              <FormattedMessage defaultMessage="Endpoint" id="ljmS5P" />
+            </p>
+            <div className="flex gap-2">
+              {sortEndpoints(info.endpoints).map(a => (
+                <span className={`pill${ep?.name === a.name ? " active" : ""}`} onClick={() => setEndpoint(a)}>
+                  {a.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
         <div>
           <p>
-            <FormattedMessage defaultMessage="Endpoint" id="ljmS5P" />
+            <FormattedMessage defaultMessage="Server Url" id="5kx+2v" />
+          </p>
+          <div className="paper">
+            <input type="text" value={ep?.url} disabled />
+          </div>
+        </div>
+        <div>
+          <p>
+            <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
           </p>
           <div className="flex gap-2">
-            {sortEndpoints(info.endpoints).map(a => (
-              <span className={`pill${ep?.name === a.name ? " active" : ""}`} onClick={() => setEndpoint(a)}>
-                {a.name}
-              </span>
+            <div className="paper grow">
+              <input type="password" value={ep?.key} disabled />
+            </div>
+            <button className="btn btn-primary" onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
+              <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
+            </button>
+          </div>
+        </div>
+        <div>
+          <p>
+            <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
+          </p>
+          <div className="flex gap-2">
+            <div className="paper grow">
+              <FormattedMessage
+                defaultMessage="{amount} sats"
+                id="vrTOHJ"
+                values={{ amount: info.balance?.toLocaleString() }}
+              />
+            </div>
+            <button className="btn btn-primary" onClick={() => setTopup(true)}>
+              <FormattedMessage defaultMessage="Topup" id="nBCvvJ" />
+            </button>
+          </div>
+          <small>
+            <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />
+          </small>
+        </div>
+        <div>
+          <p>
+            <FormattedMessage defaultMessage="Resolutions" id="4uI538" />
+          </p>
+          <div className="flex gap-2">
+            {ep?.capabilities?.map(a => (
+              <span className="pill">{parseCapability(a)}</span>
             ))}
           </div>
         </div>
-      )}
-      <div>
-        <p>
-          <FormattedMessage defaultMessage="Server Url" id="5kx+2v" />
-        </p>
-        <div className="paper">
-          <input type="text" value={ep?.url} disabled />
-        </div>
-      </div>
-      <div>
-        <p>
-          <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
-        </p>
-        <div className="flex gap-2">
-          <div className="paper grow">
-            <input type="password" value={ep?.key} disabled />
-          </div>
-          <button className="btn btn-primary" onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
-            <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
-          </button>
-        </div>
-      </div>
-      <div>
-        <p>
-          <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
-        </p>
-        <div className="flex gap-2">
-          <div className="paper grow">
-            <FormattedMessage
-              defaultMessage="{amount} sats"
-              id="vrTOHJ"
-              values={{ amount: info.balance?.toLocaleString() }}
-            />
-          </div>
-          <button className="btn btn-primary" onClick={() => setTopup(true)}>
-            <FormattedMessage defaultMessage="Topup" id="nBCvvJ" />
-          </button>
-        </div>
-        <small>
-          <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />
-        </small>
-      </div>
-      <div>
-        <p>
-          <FormattedMessage defaultMessage="Resolutions" id="4uI538" />
-        </p>
-        <div className="flex gap-2">
-          {ep?.capabilities?.map(a => (
-            <span className="pill">{parseCapability(a)}</span>
-          ))}
-        </div>
-      </div>
-    </>
+      </>
+    );
   }
   return (
     <>

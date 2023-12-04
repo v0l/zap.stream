@@ -9,7 +9,6 @@ import { useLogin } from "@/hooks/login";
 import Copy from "@/element/copy";
 import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
 import { useStreamProvider } from "@/hooks/stream-provider";
-import { StreamProviders } from "@/providers";
 
 const enum Tab {
   Account,
@@ -61,20 +60,24 @@ export function SettingsPage() {
         );
       }
       case Tab.Stream: {
-        return <>
-          <h1>
-            <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
-          </h1>
-          <NostrProviderDialog provider={unwrap(providers.find(a => a.name === "zap.stream"))} showEndpoints={true} />
-        </>
+        return (
+          <>
+            <h1>
+              <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
+            </h1>
+            <NostrProviderDialog provider={unwrap(providers.find(a => a.name === "zap.stream"))} showEndpoints={true} />
+          </>
+        );
       }
     }
   }
 
   function tabName(t: Tab) {
     switch (t) {
-      case Tab.Account: return <FormattedMessage defaultMessage="Account" id="TwyMau" />;
-      case Tab.Stream: return <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
+      case Tab.Account:
+        return <FormattedMessage defaultMessage="Account" id="TwyMau" />;
+      case Tab.Stream:
+        return <FormattedMessage defaultMessage="Stream" id="uYw2LD" />;
     }
   }
 
@@ -86,10 +89,9 @@ export function SettingsPage() {
         </h1>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 tab-options">
-            {[Tab.Account, Tab.Stream].map(t => <div onClick={() => setTab(t)}>
-              {tabName(t)}
-            </div>
-            )}
+            {[Tab.Account, Tab.Stream].map(t => (
+              <div onClick={() => setTab(t)}>{tabName(t)}</div>
+            ))}
           </div>
           <div className="tab-content">{tabContent()}</div>
         </div>

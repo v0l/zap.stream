@@ -64,7 +64,11 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
     }
   }, [zap?.id]);
 
-  return <div className="flex items-center flex-col gap-2 zap-alerts-widget">{zap && <ZapAlertItem key={zap.id} item={zap} />}</div>;
+  return (
+    <div className="flex items-center flex-col gap-2 zap-alerts-widget">
+      {zap && <ZapAlertItem key={zap.id} item={zap} />}
+    </div>
+  );
 }
 
 export function ZapAlertItem({ item }: { item: ParsedZap }) {
