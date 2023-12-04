@@ -19,7 +19,7 @@ export default defineConfig({
       name: "zap.stream",
       ifGitSHA: true,
       command: "git describe --always --tags",
-      ifMeta: false
+      ifMeta: false,
     }),
   ],
   build: {

@@ -27,7 +27,7 @@
     "defaultMessage": "Ziel"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Beginnt"
   },
   "1EYCdR": {
     "defaultMessage": "Tags"
@@ -78,7 +78,7 @@
     "defaultMessage": "Mindestbetrag für Text-to-Speech"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Musik"
   },
   "8YT6ja": {
     "defaultMessage": "Text zum Sprechen einfügen"
@@ -135,7 +135,7 @@
     "defaultMessage": "Entfernen"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "Top-Chatter"
   },
   "Gq6x9o": {
     "defaultMessage": "Titelbild"
@@ -162,7 +162,7 @@
     "defaultMessage": "ODER"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Streamdauer {duration} min"
   },
   "JEsxDw": {
     "defaultMessage": "Hochladen..."
@@ -252,7 +252,7 @@
     "defaultMessage": "Ziel erstellen"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Reaktionen"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -298,13 +298,13 @@
     "defaultMessage": "Mit privatem Schlüssel anmelden (unsicher)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} Nachrichten"
   },
   "hGQqkW": {
     "defaultMessage": "Programm"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Nachrichten"
   },
   "heyxZL": {
     "defaultMessage": "Text-to-Speech aktivieren"

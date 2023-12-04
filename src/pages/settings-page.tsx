@@ -89,7 +89,9 @@ export function SettingsPage() {
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
             {[Tab.Account, Tab.Stream].map(t => (
-              <button onClick={() => setTab(t)} className="rounded-xl px-3 py-2 bg-gray-2 hover:bg-gray-1">{tabName(t)}</button>
+              <button onClick={() => setTab(t)} className="rounded-xl px-3 py-2 bg-gray-2 hover:bg-gray-1">
+                {tabName(t)}
+              </button>
             ))}
           </div>
           <div className="p-5 bg-gray-2 rounded-3xl flex flex-col gap-3">{tabContent()}</div>
