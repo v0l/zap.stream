@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "目標"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "標籤"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "文字轉語音的最低金額"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "輸入要轉為語音的文本"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "標題"
-  },
-  "9anxhq": {
-    "defaultMessage": "開始"
   },
   "AIHaPH": {
     "defaultMessage": "{person}已打閃{amount}聰"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "登出"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "設置"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "移除"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "封面圖片"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "或"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "正在上傳..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "創建目標"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "使用私鑰登錄（不安全）"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "時間表"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "開啟文字轉語音"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "取消關注"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"

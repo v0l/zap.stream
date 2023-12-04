@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Mål"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Mærker"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Minimumsbeløb for tekst til tale"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Indsæt tekst for at tale"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "9anxhq": {
-    "defaultMessage": "Starts"
   },
   "AIHaPH": {
     "defaultMessage": "{person} zappet {amount} sats"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Log ud"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Indstillinger"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Fjern"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Forsidebillede"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "ELLER"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Opret mål"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Login med privat nøgle (usikkert)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Tidsplan"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Aktiver tekst til tale"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Følg ikke"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"

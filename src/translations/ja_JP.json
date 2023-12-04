@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "ゴール"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "音声合成の最低金額"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "テキストを挿入して話す"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "タイトル"
-  },
-  "9anxhq": {
-    "defaultMessage": "開始"
   },
   "AIHaPH": {
     "defaultMessage": "{person} が {amount} sats をザップしました"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "ログアウト"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "設定"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "削除"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "カバー画像"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "または"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "アップロード中..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "目標を設定"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "{rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "秘密鍵によるログイン（安全ではありません）"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "配信予定"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "テキスト読み上げを有効にする"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "フォロー解除"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "マークダウン"

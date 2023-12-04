@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Tavoite"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Tunnisteet"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Vähimmäismäärä teksti puheelle"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Lisää teksti puheeksi"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Otsikko"
-  },
-  "9anxhq": {
-    "defaultMessage": "Alkaa"
   },
   "AIHaPH": {
     "defaultMessage": "{person} zappasi {amount} satsia"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Kirjaudu ulos"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Asetukset"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Poista"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Kansikuva"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "TAI"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Ladataan..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Luo tavoite"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Kirjaudu sisään yksityisellä avaimella (turvaton)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Aikataulu"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Käytä tekstiä puheeksi"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Älä seuraa"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"

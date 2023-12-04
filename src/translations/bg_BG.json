@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Цел"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Тагове"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Минимално количество за текст към реч"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Вмъкнете текст за изговаряне"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Заглавие"
-  },
-  "9anxhq": {
-    "defaultMessage": "Старт"
   },
   "AIHaPH": {
     "defaultMessage": "{човек} запнат {количество} сатс"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Изход"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Настройки"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Премахване"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Изображение на корицата"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "Или"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Качване..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Създаване на цел"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {курс}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Вход със частен ключ (несигурно)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Планиран"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Активиране на текст към реч"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Прекратете следенето"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Намаление"

@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Mål"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Taggar"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Minsta belopp för text till tal"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Infoga text att prata"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "9anxhq": {
-    "defaultMessage": "Startar"
   },
   "AIHaPH": {
     "defaultMessage": "{person} zapped {amount} sats"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Logga ut"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Inställningar"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Ta bort"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Omslagsbild"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "ELLER"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Laddar upp..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Skapa mål"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Logga in med privat nyckel (osäkra)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Schemalagd"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Aktivera text till tal"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Sluta följa"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"

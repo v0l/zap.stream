@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Meta"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Etiquetas"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Quantidade mínima para texto em fala"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Insira texto para fala"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Título"
-  },
-  "9anxhq": {
-    "defaultMessage": "Começar"
   },
   "AIHaPH": {
     "defaultMessage": "{person} zapeou {amount} sats"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Sair"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Configurações"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Remover"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Imagem de Capa"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "OU"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Carregando..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Criar Meta"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Entrar com Chave Privada (inseguro)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Agendar"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Habilitar texto para fala"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Deixar de seguir"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Formatação (markdown)"

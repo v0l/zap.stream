@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Doel"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Labels"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Minimumbedrag voor tekst naar spraak"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Tekst invoegen om te spreken"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "9anxhq": {
-    "defaultMessage": "Begint"
   },
   "AIHaPH": {
     "defaultMessage": "{person} zapped {amount} sats"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Uitloggen"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Instellingen"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Verwijderen"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Omslag Afbeelding"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "OF"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Bezig met uploaden..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Doel aanmaken"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Inloggen met privésleutel (onveilig)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Inplannen"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Tekst naar spraak inschakelen"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Ontvolgen"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"

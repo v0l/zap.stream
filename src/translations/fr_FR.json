@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "Objectif"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "Mots-clés"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "Montant minimum pour la synthèse vocale"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "Insérer un texte pour parler"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titre"
-  },
-  "9anxhq": {
-    "defaultMessage": "Débute"
   },
   "AIHaPH": {
     "defaultMessage": "{person} a zappé {amount} sats"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "Se déconnecter"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "Paramètres"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "Retirer"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "Bannière"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "OU"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Envoi..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "Créer un objectif"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "Se connecter avec une Clé Privée (non sécurisé)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "Planning"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "Activer la synthèse vocale"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Ne plus suivre"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"

@@ -26,6 +26,9 @@
   "0VV/sK": {
     "defaultMessage": "লক্ষ্য ও উদ্দেশ্য"
   },
+  "0hNxBy": {
+    "defaultMessage": "Starts"
+  },
   "1EYCdR": {
     "defaultMessage": "ট্যাগগুলি"
   },
@@ -74,6 +77,9 @@
   "6pr6hJ": {
     "defaultMessage": "মূলপাঠ থেকে পড়ার জন্য ন্যূনতম পরিমাণ"
   },
+  "79lLl+": {
+    "defaultMessage": "Music"
+  },
   "8YT6ja": {
     "defaultMessage": "পড়ার জন্য মূলপাঠ সন্নিবেশ করুন"
   },
@@ -82,9 +88,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "শিরোনাম"
-  },
-  "9anxhq": {
-    "defaultMessage": "শুরু"
   },
   "AIHaPH": {
     "defaultMessage": "{person} {amount} পরিমাণ স্যাট জ্যাপ করেছেন"
@@ -107,6 +110,9 @@
   "C81/uG": {
     "defaultMessage": "লগ আউট করুন"
   },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
   "D3idYv": {
     "defaultMessage": "সেটিংস"
   },
@@ -127,6 +133,9 @@
   },
   "G/yZLu": {
     "defaultMessage": "অপসারণ করুন"
+  },
+  "GGaJMU": {
+    "defaultMessage": "Top Chatters"
   },
   "Gq6x9o": {
     "defaultMessage": "কভারের ছবি"
@@ -151,6 +160,9 @@
   },
   "INlWvJ": {
     "defaultMessage": "OR"
+  },
+  "J/+m9y": {
+    "defaultMessage": "Stream Duration {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "আপলোড করা হচ্ছে..."
@@ -239,6 +251,9 @@
   "X2PZ7D": {
     "defaultMessage": "লক্ষ্য নির্ধারণ করুন"
   },
+  "XgWvGA": {
+    "defaultMessage": "Reactions"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -282,8 +297,14 @@
   "feZ/kG": {
     "defaultMessage": "ব্যক্তিগত চাবি দিয়ে লগ ইন করুন (অনিরাপদ)"
   },
+  "gzsn7k": {
+    "defaultMessage": "{n} messages"
+  },
   "hGQqkW": {
     "defaultMessage": "সময়সূচী"
+  },
+  "hMzcSq": {
+    "defaultMessage": "Messages"
   },
   "heyxZL": {
     "defaultMessage": "মূলপাঠ থেকে পড়ার পরিষেবা চালু করুন"
@@ -299,6 +320,9 @@
   },
   "izWS4J": {
     "defaultMessage": "আনফলো করুন"
+  },
+  "jgOqxt": {
+    "defaultMessage": "Widgets"
   },
   "jr4+vD": {
     "defaultMessage": "মার্কডাউন"
