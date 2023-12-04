@@ -22,11 +22,10 @@ export const AllLocales = [
   "fr-FR",
   "pt-BR",
   "ru-RU",
-] as const;
+];
 
-function importLang(src: any) {
-  const typed = src.default as Record<string, { defaultMessage: string }>;
-  const ent = Object.entries(typed).map(([k, v]) => [k, v.defaultMessage]);
+function importLang(src: { default: Record<string, { defaultMessage: string }> }) {
+  const ent = Object.entries(src.default).map(([k, v]) => [k, v.defaultMessage]);
   return Object.fromEntries(ent) as Record<string, string>;
 }
 

@@ -2,7 +2,7 @@ import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore, unwrap } from "@snort/shared";
 import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
-import type { EmojiPack, Tags } from "types";
+import type { EmojiPack, Tags } from "@/types";
 
 export enum LoginType {
   Nip7 = "nip7",

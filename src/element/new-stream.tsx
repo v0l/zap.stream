@@ -54,7 +54,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
         );
       }
       case StreamProviders.NostrType: {
-        return <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} />;
+        return <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} showEndpoints={false} />;
       }
       case StreamProviders.Owncast: {
         return;

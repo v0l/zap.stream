@@ -9,7 +9,7 @@ import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
 import AsyncButton from "./async-button";
 
-export function NostrProviderDialog({ provider, ...others }: { provider: StreamProvider } & StreamEditorProps) {
+export function NostrProviderDialog({ provider, showEndpoints, ...others }: { provider: StreamProvider, showEndpoints: boolean } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
@@ -117,8 +117,9 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
     );
   }
 
-  return (
-    <>
+  function streamEndpoints() {
+    if (!info) return;
+    return <>
       {info.endpoints.length > 1 && (
         <div>
           <p>
@@ -184,6 +185,11 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
           ))}
         </div>
       </div>
+    </>
+  }
+  return (
+    <>
+      {showEndpoints && streamEndpoints()}
       {info.tosAccepted === false ? (
         tosInput()
       ) : (
