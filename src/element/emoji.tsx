@@ -1,6 +1,6 @@
 import "./emoji.css";
 import { useMemo } from "react";
-import { EmojiTag } from "types";
+import { EmojiTag } from "@/types";
 
 export type EmojiProps = {
   name: string;

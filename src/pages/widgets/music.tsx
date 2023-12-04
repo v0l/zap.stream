@@ -1,8 +1,9 @@
 import { NostrLink } from "@snort/system";
 import { unixNow } from "@snort/shared";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { useStatus } from "hooks/status";
-import { getHost, findTag } from "utils";
+
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { useStatus } from "@/hooks/status";
+import { findTag, getHost } from "@/utils";
 
 export function Music({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true);

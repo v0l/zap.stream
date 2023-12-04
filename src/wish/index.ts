@@ -1,6 +1,6 @@
 import adapter from "webrtc-adapter";
 import { CandidateInfo, SDPInfo } from "semantic-sdp";
-import { TypedEventTarget, type StatusEvent, type LogEvent } from "./events";
+import { type LogEvent, type StatusEvent, TypedEventTarget } from "./events";
 import { parserLinkHeader } from "./parser";
 
 export const DEFAULT_ICE_SERVERS = ["stun:stun.cloudflare.com:3478", "stun:stun.l.google.com:19302"];

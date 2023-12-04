@@ -1,16 +1,17 @@
+import "./video-tile.css";
 import { Link } from "react-router-dom";
 import { Profile } from "./profile";
-import "./video-tile.css";
-import { NostrEvent, encodeTLV, NostrPrefix } from "@snort/system";
+import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
 import { useInView } from "react-intersection-observer";
-import { StatePill } from "./state-pill";
-import { StreamState } from "index";
-import { findTag, getHost } from "utils";
-import { formatSats } from "number";
-import ZapStream from "../../public/zap-stream.svg";
-import { isContentWarningAccepted } from "./content-warning";
-import { Tags } from "element/tags";
 import { FormattedMessage } from "react-intl";
+
+import { StatePill } from "./state-pill";
+import { StreamState } from "@/index";
+import { findTag, getHost } from "@/utils";
+import { formatSats } from "@/number";
+import ZapStream from "/zap-stream.svg";
+import { isContentWarningAccepted } from "./content-warning";
+import { Tags } from "./tags";
 
 export function VideoTile({
   ev,
@@ -42,7 +43,7 @@ export function VideoTile({
           {showStatus && <StatePill state={status as StreamState} />}
           {viewers && (
             <span className="pill viewers">
-              <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(viewers)) }} />
+              <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(Number(viewers)) }} />
             </span>
           )}
         </span>

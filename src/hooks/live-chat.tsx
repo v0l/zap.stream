@@ -1,8 +1,8 @@
-import { NostrLink, RequestBuilder, NoteCollection } from "@snort/system";
+import { NostrLink, NoteCollection, RequestBuilder } from "@snort/system";
 import { useReactions, useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
-import { LIVE_STREAM_CHAT, WEEK } from "const";
+import { LIVE_STREAM_CHAT, WEEK } from "@/const";
 
 export function useLiveChatFeed(link?: NostrLink, eZaps?: Array<string>, limit = 100) {
   const since = useMemo(() => unixNow() - WEEK, [link?.id]);

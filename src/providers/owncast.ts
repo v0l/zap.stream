@@ -1,5 +1,5 @@
-import { StreamState } from "index";
-import { StreamProvider, StreamProviderInfo, StreamProviders } from "providers";
+import { StreamState } from "@/index";
+import { StreamProvider, StreamProviderInfo, StreamProviders } from "@/providers";
 
 export class OwncastProvider implements StreamProvider {
   #url: string;

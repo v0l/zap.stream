@@ -1,6 +1,6 @@
 import "./badge.css";
 import type { NostrEvent } from "@snort/system";
-import { findTag } from "utils";
+import { findTag } from "@/utils";
 
 export function Badge({ ev }: { ev: NostrEvent }) {
   const name = findTag(ev, "name") || findTag(ev, "d");

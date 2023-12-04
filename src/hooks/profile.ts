@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { RequestBuilder, NoteCollection, NostrLink } from "@snort/system";
+import { NostrLink, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { LIVE_STREAM } from "const";
+import { LIVE_STREAM } from "@/const";
 import { useZaps } from "./zaps";
 
 export function useProfile(link: NostrLink, leaveOpen = false) {

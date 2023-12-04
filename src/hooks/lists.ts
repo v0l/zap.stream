@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import { RequestBuilder, ReplaceableNoteStore } from "@snort/system";
+import { ReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { MUTED } from "const";
-import { getTagValues } from "utils";
+import { MUTED } from "@/const";
+import { getTagValues } from "@/utils";
 
 export function useMutedPubkeys(host?: string, leaveOpen = false) {
   const mutedSub = useMemo(() => {

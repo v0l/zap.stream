@@ -1,6 +1,6 @@
 import { fetchNip05Pubkey } from "@snort/shared";
-import { NostrLink, tryParseNostrLink, NostrPrefix } from "@snort/system";
-import { useState, useEffect } from "react";
+import { NostrLink, NostrPrefix, tryParseNostrLink } from "@snort/system";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export function useStreamLink() {

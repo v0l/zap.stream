@@ -1,4 +1,4 @@
-import { StreamState } from "index";
+import { StreamState } from "@/index";
 import { NostrEvent, SystemInterface } from "@snort/system";
 import { ExternalStore } from "@snort/shared";
 import { Nip103StreamProvider } from "./zsz";

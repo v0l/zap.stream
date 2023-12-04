@@ -1,11 +1,12 @@
 import "./chat-popout.css";
-import { LiveChat } from "element/live-chat";
 import { useParams } from "react-router-dom";
 import { NostrPrefix, encodeTLV, parseNostrLink } from "@snort/system";
 import { unwrap } from "@snort/shared";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { findTag } from "utils";
-import { useZapGoal } from "hooks/goals";
+
+import { LiveChat } from "@/element/live-chat";
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { findTag } from "@/utils";
+import { useZapGoal } from "@/hooks/goals";
 
 export function ChatPopout() {
   const params = useParams();

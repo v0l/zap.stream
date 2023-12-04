@@ -2,9 +2,9 @@ import "./tag.css";
 import { useParams } from "react-router-dom";
 import { unwrap } from "@snort/shared";
 
-import { VideoTile } from "element/video-tile";
-import { FollowTagButton } from "element/follow-button";
-import { useStreamsFeed } from "hooks/live-streams";
+import { VideoTile } from "@/element/video-tile";
+import { FollowTagButton } from "@/element/follow-button";
+import { useStreamsFeed } from "@/hooks/live-streams";
 
 export function TagPage() {
   const { tag } = useParams();

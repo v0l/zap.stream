@@ -1,10 +1,10 @@
 import "./note.css";
 import { type NostrEvent, NostrPrefix } from "@snort/system";
-
-import { Markdown } from "element/markdown";
-import { ExternalIconLink } from "element/external-link";
-import { Profile } from "element/profile";
 import { hexToBech32 } from "@snort/shared";
+
+import { Markdown } from "./markdown";
+import { ExternalIconLink } from "./external-link";
+import { Profile } from "./profile";
 
 export function Note({ ev }: { ev: NostrEvent }) {
   return (

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { NostrPrefix, ReplaceableNoteStore, RequestBuilder, type NostrLink } from "@snort/system";
+import { type NostrLink, NostrPrefix, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 export function useAddress(kind: number, pubkey: string, identifier: string) {

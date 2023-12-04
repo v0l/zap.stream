@@ -1,16 +1,16 @@
-import { useMemo, useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 import { hexToBech32 } from "@snort/shared";
 import { NostrLink, ParsedZap } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { useZaps } from "hooks/zaps";
-import { useMutedPubkeys } from "hooks/lists";
-import { formatSats } from "number";
-import { useTextToSpeechParams, getVoices, speak } from "text2speech";
-import { FormattedMessage } from "react-intl";
-import { getHost } from "utils";
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { useZaps } from "@/hooks/zaps";
+import { useMutedPubkeys } from "@/hooks/lists";
+import { formatSats } from "@/number";
+import { getVoices, speak, useTextToSpeechParams } from "@/text2speech";
+import { getHost } from "@/utils";
 
 function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
   const zaps = useMemo(() => {
@@ -76,11 +76,12 @@ export function ZapAlertItem({ item }: { item: ParsedZap }) {
     <>
       <div className="zap-alert">
         <div className="zap-alert-title">
-          <FormattedMessage defaultMessage="Incoming Zap" />
+          <FormattedMessage defaultMessage="Incoming Zap" id="tG1ST3" />
         </div>
         <div className="zap-alert-header">
           <FormattedMessage
             defaultMessage="{name} with {amount}"
+            id="Qe1MJu"
             values={{
               name: (
                 <span className="highlight">

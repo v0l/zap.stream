@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
-import { findTag } from "../utils";
+import { findTag } from "@/utils";
 
 export function StreamTimer({ ev }: { ev?: NostrEvent }) {
   const [time, setTime] = useState("");

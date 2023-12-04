@@ -1,29 +1,29 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrLink, ParsedZap, NostrEvent } from "@snort/system";
+import { EventKind, NostrEvent, NostrLink, ParsedZap } from "@snort/system";
 import { useEventReactions } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
-import { Icon } from "element/icon";
-import Spinner from "element/spinner";
-import { Text } from "element/text";
-import { Profile } from "element/profile";
-import { ChatMessage } from "element/chat-message";
-import { Goal } from "element/goal";
-import { Badge } from "element/badge";
-import { WriteMessage } from "element/write-message";
-import useEmoji, { packId } from "hooks/emoji";
-import { useLiveChatFeed } from "hooks/live-chat";
-import { useMutedPubkeys } from "hooks/lists";
-import { useBadges } from "hooks/badges";
-import { useLogin } from "hooks/login";
-import { useAddress } from "hooks/event";
-import { formatSats } from "number";
-import { WEEK, LIVE_STREAM_CHAT } from "const";
-import { findTag, getTagValues, getHost } from "utils";
-import { TopZappers } from "element/top-zappers";
+import { Icon } from "./icon";
+import Spinner from "./spinner";
+import { Text } from "./text";
+import { Profile } from "./profile";
+import { ChatMessage } from "./chat-message";
+import { Goal } from "./goal";
+import { Badge } from "./badge";
+import { WriteMessage } from "./write-message";
+import useEmoji, { packId } from "@/hooks/emoji";
+import { useLiveChatFeed } from "@/hooks/live-chat";
+import { useMutedPubkeys } from "@/hooks/lists";
+import { useBadges } from "@/hooks/badges";
+import { useLogin } from "@/hooks/login";
+import { useAddress } from "@/hooks/event";
+import { formatSats } from "@/number";
+import { LIVE_STREAM_CHAT, WEEK } from "@/const";
+import { findTag, getHost, getTagValues } from "@/utils";
+import { TopZappers } from "./top-zappers";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -95,7 +95,7 @@ export function LiveChat({
       {(options?.showHeader ?? true) && (
         <div className="header">
           <h2 className="title">
-            <FormattedMessage defaultMessage="Stream Chat" />
+            <FormattedMessage defaultMessage="Stream Chat" id="BGxpTN" />
           </h2>
           <Icon
             name="link"
@@ -108,7 +108,7 @@ export function LiveChat({
       {reactions.zaps.length > 0 && (
         <div className="top-zappers">
           <h3>
-            <FormattedMessage defaultMessage="Top zappers" />
+            <FormattedMessage defaultMessage="Top zappers" id="wzWWzV" />
           </h3>
           <div className="top-zappers-container">
             <TopZappers zaps={reactions.zaps} />
@@ -151,7 +151,7 @@ export function LiveChat({
             <WriteMessage emojiPacks={allEmojiPacks} link={link} />
           ) : (
             <p>
-              <FormattedMessage defaultMessage="Please login to write messages!" />
+              <FormattedMessage defaultMessage="Please login to write messages!" id="RXQdxR" />
             </p>
           )}
         </div>
@@ -174,6 +174,7 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
         <Icon name="zap-filled" className="zap-icon" />
         <FormattedMessage
           defaultMessage="{person} zapped {amount} sats"
+          id="AIHaPH"
           values={{
             person: (
               <Profile

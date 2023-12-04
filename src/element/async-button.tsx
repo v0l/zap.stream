@@ -1,6 +1,6 @@
 import "./async-button.css";
 import { useState } from "react";
-import Spinner from "element/spinner";
+import Spinner from "./spinner";
 
 interface AsyncButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;

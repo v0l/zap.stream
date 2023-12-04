@@ -1,6 +1,6 @@
 import Hls from "hls.js";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { WISH } from "wish";
+import { WISH } from "@/wish";
 
 export enum VideoStatus {
   Online = "online",

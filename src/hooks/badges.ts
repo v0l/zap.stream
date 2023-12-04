@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import { TaggedNostrEvent, EventKind, NoteCollection, RequestBuilder } from "@snort/system";
+import { EventKind, NoteCollection, RequestBuilder, TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { findTag, toAddress, getTagValues } from "utils";
-import type { Badge } from "types";
+import { findTag, getTagValues, toAddress } from "@/utils";
+import type { Badge } from "@/types";
 
 export function useBadges(
   pubkey: string,

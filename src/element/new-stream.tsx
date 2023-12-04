@@ -1,17 +1,17 @@
 import "./new-stream.css";
 import * as Dialog from "@radix-ui/react-dialog";
-
-import { Icon } from "element/icon";
-import { useStreamProvider } from "hooks/stream-provider";
-import { StreamProvider, StreamProviders } from "providers";
 import { useContext, useEffect, useState } from "react";
-import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { useNavigate } from "react-router-dom";
-import { eventLink, findTag } from "utils";
-import { NostrProviderDialog } from "./nostr-provider-dialog";
 import { unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
+
+import { Icon } from "./icon";
+import { useStreamProvider } from "@/hooks/stream-provider";
+import { StreamProvider, StreamProviders } from "@/providers";
+import { StreamEditor, StreamEditorProps } from "./stream-editor";
+import { eventLink, findTag } from "@/utils";
+import { NostrProviderDialog } from "./nostr-provider-dialog";
 
 function NewStream({ ev, onFinish }: StreamEditorProps) {
   const system = useContext(SnortContext);
@@ -65,7 +65,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
   return (
     <>
       <p>
-        <FormattedMessage defaultMessage="Stream Providers" />
+        <FormattedMessage defaultMessage="Stream Providers" id="6Z2pvJ" />
       </p>
       <div className="flex g12">
         {providers.map(v => (
@@ -94,7 +94,7 @@ export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps)
           {!props.text && (
             <>
               <span className="hide-on-mobile">
-                <FormattedMessage defaultMessage="Stream" />
+                <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
               </span>
               <Icon name="signal" />
             </>

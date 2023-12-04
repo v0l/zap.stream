@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { NostrLink } from "element/nostr-link";
-import { MediaURL } from "element/collapsible";
+import { NostrLink } from "./nostr-link";
+import { MediaURL } from "./collapsible";
 
 const FileExtensionRegex = /\.([\w]+)$/i;
 

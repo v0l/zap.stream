@@ -1,8 +1,9 @@
 import { NostrLink } from "@snort/system";
-import { TopZappers } from "element/top-zappers";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { useZaps } from "hooks/zaps";
 import { FormattedMessage } from "react-intl";
+
+import { TopZappers } from "@/element/top-zappers";
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { useZaps } from "@/hooks/zaps";
 
 export function TopZappersWidget({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true);
@@ -10,7 +11,7 @@ export function TopZappersWidget({ link }: { link: NostrLink }) {
   return (
     <div className="top-zappers-widget">
       <div>
-        <FormattedMessage defaultMessage="Top Zappers" />
+        <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
       </div>
       <div className="flex g8">
         <TopZappers zaps={zaps} limit={3} />

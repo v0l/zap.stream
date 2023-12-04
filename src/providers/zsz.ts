@@ -7,9 +7,9 @@ import {
   StreamProviders,
 } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
-import { Login, StreamState } from "index";
-import { getPublisher } from "login";
-import { findTag } from "utils";
+import { Login, StreamState } from "@/index";
+import { getPublisher } from "@/login";
+import { findTag } from "@/utils";
 
 export class Nip103StreamProvider implements StreamProvider {
   #publisher?: EventPublisher;

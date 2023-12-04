@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { RequestBuilder, FlatNoteStore, ReplaceableNoteStore } from "@snort/system";
+import { FlatNoteStore, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { GOAL } from "const";
+import { GOAL } from "@/const";
 
 export function useZapGoal(id?: string) {
   const sub = useMemo(() => {

@@ -2,31 +2,31 @@ import "./stream-page.css";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
-import { LiveVideoPlayer } from "element/live-video-player";
-import { findTag, getEventFromLocationState, getHost } from "utils";
-import { Profile, getName } from "element/profile";
-import { LiveChat } from "element/live-chat";
-import AsyncButton from "element/async-button";
-import { useLogin } from "hooks/login";
-import { useZapGoal } from "hooks/goals";
-import { StreamState } from "index";
-import { SendZapsDialog } from "element/send-zap";
 import { NostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
-import { NewStreamDialog } from "element/new-stream";
-import { Tags } from "element/tags";
-import { StatePill } from "element/state-pill";
-import { StreamCards } from "element/stream-cards";
-import { formatSats } from "number";
-import { StreamTimer } from "element/stream-time";
-import { ShareMenu } from "element/share-menu";
-import { ContentWarningOverlay, isContentWarningAccepted } from "element/content-warning";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { useStreamLink } from "hooks/stream-link";
 import { FormattedMessage } from "react-intl";
 import { useContext } from "react";
-import { FollowButton } from "element/follow-button";
+
+import { LiveVideoPlayer } from "@/element/live-video-player";
+import { findTag, getEventFromLocationState, getHost } from "@/utils";
+import { Profile, getName } from "@/element/profile";
+import { LiveChat } from "@/element/live-chat";
+import AsyncButton from "@/element/async-button";
+import { useLogin } from "@/hooks/login";
+import { useZapGoal } from "@/hooks/goals";
+import { StreamState } from "@/index";
+import { SendZapsDialog } from "@/element/send-zap";
+import { NewStreamDialog } from "@/element/new-stream";
+import { Tags } from "@/element/tags";
+import { StatePill } from "@/element/state-pill";
+import { StreamCards } from "@/element/stream-cards";
+import { formatSats } from "@/number";
+import { StreamTimer } from "@/element/stream-time";
+import { ShareMenu } from "@/element/share-menu";
+import { ContentWarningOverlay, isContentWarningAccepted } from "@/element/content-warning";
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { useStreamLink } from "@/hooks/stream-link";
+import { FollowButton } from "@/element/follow-button";
 
 function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -60,7 +60,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
             <StatePill state={status as StreamState} />
             {viewers > 0 && (
               <span className="pill viewers">
-                <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(viewers) }} />
+                <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(viewers) }} />
               </span>
             )}
             {status === StreamState.Live && (
@@ -74,7 +74,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
             <div className="actions">
               {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
               <AsyncButton type="button" className="btn btn-warning" onClick={deleteStream}>
-                <FormattedMessage defaultMessage="Delete" />
+                <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
               </AsyncButton>
             </div>
           )}

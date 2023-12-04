@@ -1,16 +1,16 @@
 import "./stream-editor.css";
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { TagsInput } from "react-tag-input-component";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import AsyncButton from "./async-button";
-import { StreamState } from "../index";
-import { findTag } from "../utils";
-import { useLogin } from "hooks/login";
-import { NewGoalDialog } from "element/new-goal";
-import { useGoals } from "hooks/goals";
+import { StreamState } from "@/index";
+import { findTag } from "@/utils";
+import { useLogin } from "@/hooks/login";
+import { NewGoalDialog } from "./new-goal";
+import { useGoals } from "@/hooks/goals";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -37,9 +37,9 @@ function GoalSelector({ goal, pubkey, onGoalSelect }: GoalSelectorProps) {
   const { formatMessage } = useIntl();
   return (
     <select onChange={ev => onGoalSelect(ev.target.value)}>
-      <option value="">{formatMessage({ defaultMessage: "Select a goal..." })}</option>
+      <option value={goal}>{formatMessage({ defaultMessage: "Select a goal...", id: "I/TubD" })}</option>
       {goals?.map(x => (
-        <option key={x.id} value={x.id} selected={goal === x.id}>
+        <option key={x.id} value={x.id}>
           {x.content}
         </option>
       ))}
@@ -139,12 +139,12 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetTitle ?? true) && (
         <div>
           <p>
-            <FormattedMessage defaultMessage="Title" />
+            <FormattedMessage defaultMessage="Title" id="9a9+ww" />
           </p>
           <div className="paper">
             <input
               type="text"
-              placeholder={formatMessage({ defaultMessage: "What are we steaming today?" })}
+              placeholder={formatMessage({ defaultMessage: "What are we steaming today?", id: "QRHNuF" })}
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
@@ -154,12 +154,12 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetSummary ?? true) && (
         <div>
           <p>
-            <FormattedMessage defaultMessage="Summary" />
+            <FormattedMessage defaultMessage="Summary" id="RrCui3" />
           </p>
           <div className="paper">
             <input
               type="text"
-              placeholder={formatMessage({ defaultMessage: "A short description of the content" })}
+              placeholder={formatMessage({ defaultMessage: "A short description of the content", id: "mtNGwh" })}
               value={summary}
               onChange={e => setSummary(e.target.value)}
             />
@@ -169,7 +169,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetImage ?? true) && (
         <div>
           <p>
-            <FormattedMessage defaultMessage="Cover Image" />
+            <FormattedMessage defaultMessage="Cover Image" id="Gq6x9o" />
           </p>
           <div className="paper">
             <input type="text" placeholder="https://" value={image} onChange={e => setImage(e.target.value)} />
@@ -179,13 +179,13 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetStream ?? true) && (
         <div>
           <p>
-            <FormattedMessage defaultMessage="Stream URL" />
+            <FormattedMessage defaultMessage="Stream URL" id="QRRCp0" />
           </p>
           <div className="paper">
             <input type="text" placeholder="https://" value={stream} onChange={e => setStream(e.target.value)} />
           </div>
           <small>
-            <FormattedMessage defaultMessage="Stream type should be HLS" />
+            <FormattedMessage defaultMessage="Stream type should be HLS" id="oZrFyI" />
           </small>
         </div>
       )}
@@ -193,7 +193,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         <>
           <div>
             <p>
-              <FormattedMessage defaultMessage="Status" />
+              <FormattedMessage defaultMessage="Status" id="tzMNF3" />
             </p>
             <div className="flex g12">
               {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => (
@@ -206,7 +206,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           {status === StreamState.Planned && (
             <div>
               <p>
-                <FormattedMessage defaultMessage="Start Time" />
+                <FormattedMessage defaultMessage="Start Time" id="5QYdPU" />
               </p>
               <div className="paper">
                 <input
@@ -222,7 +222,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetTags ?? true) && (
         <div>
           <p>
-            <FormattedMessage defaultMessage="Tags" />
+            <FormattedMessage defaultMessage="Tags" id="1EYCdR" />
           </p>
           <div className="paper">
             <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />
@@ -233,7 +233,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         <>
           <div>
             <p>
-              <FormattedMessage defaultMessage="Goal" />
+              <FormattedMessage defaultMessage="Goal" id="0VV/sK" />
             </p>
             <div className="paper">
               <GoalSelector goal={goal} pubkey={login?.pubkey} onGoalSelect={setGoal} />
@@ -249,15 +249,22 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           </div>
           <div>
             <div className="warning">
-              <FormattedMessage defaultMessage="NSFW Content" />
+              <FormattedMessage defaultMessage="NSFW Content" id="Atr2p4" />
             </div>
-            <FormattedMessage defaultMessage="Check here if this stream contains nudity or pornographic content." />
+            <FormattedMessage
+              defaultMessage="Check here if this stream contains nudity or pornographic content."
+              id="lZpRMR"
+            />
           </div>
         </div>
       )}
       <div>
         <AsyncButton type="button" className="btn btn-primary wide" disabled={!isValid} onClick={publishStream}>
-          {ev ? <FormattedMessage defaultMessage="Save" /> : <FormattedMessage defaultMessage="Start Stream" />}
+          {ev ? (
+            <FormattedMessage defaultMessage="Save" id="jvo0vs" />
+          ) : (
+            <FormattedMessage defaultMessage="Start Stream" id="TaTRKo" />
+          )}
         </AsyncButton>
       </div>
     </>

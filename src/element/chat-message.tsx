@@ -1,20 +1,21 @@
-import { useUserProfile, SnortContext, useEventReactions } from "@snort/system-react";
+import { SnortContext, useEventReactions, useUserProfile } from "@snort/system-react";
 import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
-import React, { useRef, useState, useMemo, useContext } from "react";
-import { useMediaQuery, useHover, useOnClickOutside, useIntersectionObserver } from "usehooks-ts";
+import React, { useContext, useMemo, useRef, useState } from "react";
+import { useHover, useIntersectionObserver, useMediaQuery, useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 
-import { EmojiPicker } from "element/emoji-picker";
-import { Icon } from "element/icon";
-import { Emoji as EmojiComponent } from "element/emoji";
+import { EmojiPicker } from "./emoji-picker";
+import { Icon } from "./icon";
+import { Emoji as EmojiComponent } from "./emoji";
 import { Profile } from "./profile";
-import { Text } from "element/text";
-import { useMute } from "element/mute-button";
-import { SendZapsDialog } from "element/send-zap";
-import { CollapsibleEvent } from "element/collapsible";
-import { useLogin } from "hooks/login";
-import { formatSats } from "number";
-import type { Badge, Emoji, EmojiPack } from "types";
+import { Text } from "./text";
+import { useMute } from "./mute-button";
+import { SendZapsDialog } from "./send-zap";
+import { CollapsibleEvent } from "./collapsible";
+
+import { useLogin } from "@/hooks/login";
+import { formatSats } from "@/number";
+import type { Badge, Emoji, EmojiPack } from "@/types";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {

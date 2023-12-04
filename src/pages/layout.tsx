@@ -8,14 +8,14 @@ import { FormattedMessage } from "react-intl";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { hexToBech32 } from "@snort/shared";
 
-import { Icon } from "element/icon";
-import { useLogin, useLoginEvents } from "hooks/login";
-import { Profile } from "element/profile";
-import { NewStreamDialog } from "element/new-stream";
-import { LoginSignup } from "element/login-signup";
-import { Login } from "index";
-import { useLang } from "hooks/lang";
-import { AllLocales } from "intl";
+import { Icon } from "@/element/icon";
+import { useLogin, useLoginEvents } from "@/hooks/login";
+import { Profile } from "@/element/profile";
+import { NewStreamDialog } from "@/element/new-stream";
+import { LoginSignup } from "@/element/login-signup";
+import { Login } from "@/index";
+import { useLang } from "@/hooks/lang";
+import { AllLocales } from "@/intl";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -76,19 +76,19 @@ export function LayoutPage() {
           gap={5}>
           <MenuItem onClick={() => navigate(`/p/${hexToBech32("npub", login.pubkey)}`)}>
             <Icon name="user" size={24} />
-            <FormattedMessage defaultMessage="Profile" />
+            <FormattedMessage defaultMessage="Profile" id="itPgxd" />
           </MenuItem>
           <MenuItem onClick={() => navigate("/settings")}>
             <Icon name="settings" size={24} />
-            <FormattedMessage defaultMessage="Settings" />
+            <FormattedMessage defaultMessage="Settings" id="D3idYv" />
           </MenuItem>
           <MenuItem onClick={() => navigate("/widgets")}>
             <Icon name="widget" size={24} />
-            <FormattedMessage defaultMessage="Widgets" />
+            <FormattedMessage defaultMessage="Widgets" id="jgOqxt" />
           </MenuItem>
           <MenuItem onClick={() => Login.logout()}>
             <Icon name="logout" size={24} />
-            <FormattedMessage defaultMessage="Logout" />
+            <FormattedMessage defaultMessage="Logout" id="C81/uG" />
           </MenuItem>
         </Menu>
       </>
@@ -105,7 +105,7 @@ export function LayoutPage() {
     return (
       <Dialog.Root open={showLogin} onOpenChange={setShowLogin}>
         <button type="button" className="btn btn-border" onClick={handleLogin}>
-          <FormattedMessage defaultMessage="Login" />
+          <FormattedMessage defaultMessage="Login" id="AyGauy" />
           <Icon name="login" />
         </button>
         <Dialog.Portal>

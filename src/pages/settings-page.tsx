@@ -5,8 +5,8 @@ import { FormattedMessage } from "react-intl";
 import { Button as AlbyZapsButton } from "@getalby/bitcoin-connect-react";
 import { hexToBech32 } from "@snort/shared";
 
-import { useLogin } from "hooks/login";
-import Copy from "element/copy";
+import { useLogin } from "@/hooks/login";
+import Copy from "@/element/copy";
 
 const enum Tab {
   Account,
@@ -30,12 +30,12 @@ export function SettingsPage() {
         return (
           <>
             <h1>
-              <FormattedMessage defaultMessage="Account" />
+              <FormattedMessage defaultMessage="Account" id="TwyMau" />
             </h1>
             {login?.pubkey && (
               <div className="public-key">
                 <p>
-                  <FormattedMessage defaultMessage="Logged in as" />
+                  <FormattedMessage defaultMessage="Logged in as" id="DZKuuP" />
                 </p>
                 <Copy text={hexToBech32("npub", login.pubkey)} />
               </div>
@@ -43,13 +43,13 @@ export function SettingsPage() {
             {login?.privateKey && (
               <div className="private-key">
                 <p>
-                  <FormattedMessage defaultMessage="Private key" />
+                  <FormattedMessage defaultMessage="Private key" id="Bep/gA" />
                 </p>
                 <Copy text={hexToBech32("nsec", login.privateKey)} />
               </div>
             )}
             <h1>
-              <FormattedMessage defaultMessage="Zaps" />
+              <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
             </h1>
             <AlbyZapsButton />
           </>
@@ -61,12 +61,12 @@ export function SettingsPage() {
     <div className="settings-page">
       <div className="flex f-col g48">
         <h1>
-          <FormattedMessage defaultMessage="Settings" />
+          <FormattedMessage defaultMessage="Settings" id="D3idYv" />
         </h1>
         <div className="flex g24 f-col-mobile">
           <div className="flex f-col g24 tab-options">
             <div onClick={() => setTab(Tab.Account)}>
-              <FormattedMessage defaultMessage="Account" />
+              <FormattedMessage defaultMessage="Account" id="TwyMau" />
             </div>
           </div>
           <div className="tab-content">{tabContent()}</div>

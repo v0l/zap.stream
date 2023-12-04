@@ -8,24 +8,24 @@ import { NostrSystem } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { SnortSystemDb } from "@snort/system-web";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-import { RootPage } from "pages/root";
-import { TagPage } from "pages/tag";
-import { LayoutPage } from "pages/layout";
-import { ProfilePage } from "pages/profile-page";
-import { StreamPageHandler } from "pages/stream-page";
-import { ChatPopout } from "pages/chat-popout";
-import { LoginStore } from "login";
-import { StreamProvidersPage } from "pages/providers";
-import { defaultRelays } from "const";
-import { CatchAllRoutePage } from "pages/catch-all";
-import { SettingsPage } from "pages/settings-page";
-import { register } from "serviceWorker";
-import { IntlProvider } from "intl";
-import { WidgetsPage } from "pages/widgets";
-import { AlertsPage } from "pages/alerts";
 import { unixNowMs } from "@snort/shared";
-import { StreamSummaryPage } from "pages/summary";
+
+import { RootPage } from "@/pages/root";
+import { TagPage } from "@/pages/tag";
+import { LayoutPage } from "@/pages/layout";
+import { ProfilePage } from "@/pages/profile-page";
+import { StreamPageHandler } from "@/pages/stream-page";
+import { ChatPopout } from "@/pages/chat-popout";
+import { LoginStore } from "@/login";
+import { StreamProvidersPage } from "@/pages/providers";
+import { defaultRelays } from "@/const";
+import { CatchAllRoutePage } from "@/pages/catch-all";
+import { SettingsPage } from "@/pages/settings-page";
+import { register } from "@/serviceWorker";
+import { IntlProvider } from "@/intl";
+import { WidgetsPage } from "@/pages/widgets";
+import { AlertsPage } from "@/pages/alerts";
+import { StreamSummaryPage } from "@/pages/summary";
 
 export enum StreamState {
   Live = "live",

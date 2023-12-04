@@ -1,6 +1,6 @@
 import { ParsedZap } from "@snort/system";
-import useTopZappers from "hooks/top-zappers";
-import { formatSats } from "number";
+import useTopZappers from "@/hooks/top-zappers";
+import { formatSats } from "@/number";
 import { Icon } from "./icon";
 import { Profile } from "./profile";
 

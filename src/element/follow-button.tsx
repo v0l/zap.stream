@@ -1,11 +1,11 @@
 import { EventKind } from "@snort/system";
-
-import { useLogin } from "hooks/login";
-import AsyncButton from "element/async-button";
-import { Login } from "index";
 import { FormattedMessage } from "react-intl";
 import { useContext } from "react";
 import { SnortContext } from "@snort/system-react";
+
+import { useLogin } from "@/hooks/login";
+import AsyncButton from "./async-button";
+import { Login } from "@/index";
 
 export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: string }) {
   const system = useContext(SnortContext);
@@ -56,7 +56,11 @@ export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: st
       type="button"
       className="btn btn-primary"
       onClick={isFollowing ? unfollow : follow}>
-      {isFollowing ? <FormattedMessage defaultMessage="Unfollow" /> : <FormattedMessage defaultMessage="Follow" />}
+      {isFollowing ? (
+        <FormattedMessage defaultMessage="Unfollow" id="izWS4J" />
+      ) : (
+        <FormattedMessage defaultMessage="Follow" id="ieGrWo" />
+      )}
     </AsyncButton>
   );
 }

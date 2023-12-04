@@ -1,12 +1,13 @@
 import { NostrEvent } from "@snort/system";
-import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo } from "providers";
 import { useContext, useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { SnortContext } from "@snort/system-react";
+
+import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo } from "@/providers";
 import { SendZaps } from "./send-zap";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
 import AsyncButton from "./async-button";
-import { FormattedMessage } from "react-intl";
-import { SnortContext } from "@snort/system-react";
 
 export function NostrProviderDialog({ provider, ...others }: { provider: StreamProvider } & StreamEditorProps) {
   const system = useContext(SnortContext);
@@ -92,13 +93,14 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
             <p>
               <FormattedMessage
                 defaultMessage="I have read and agree with {provider}'s {terms}."
+                id="RJOmzk"
                 values={{
                   provider: info.name,
                   terms: (
                     <span
                       className="tos-link"
                       onClick={() => window.open(info.tosLink, "popup", "width=400,height=800")}>
-                      <FormattedMessage defaultMessage="terms and conditions" />
+                      <FormattedMessage defaultMessage="terms and conditions" id="thsiMl" />
                     </span>
                   ),
                 }}
@@ -108,7 +110,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
         </div>
         <div>
           <AsyncButton type="button" className="btn btn-primary wide" disabled={!tos} onClick={acceptTos}>
-            <FormattedMessage defaultMessage="Continue" />
+            <FormattedMessage defaultMessage="Continue" id="acrOoz" />
           </AsyncButton>
         </div>
       </>
@@ -120,7 +122,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
       {info.endpoints.length > 1 && (
         <div>
           <p>
-            <FormattedMessage defaultMessage="Endpoint" />
+            <FormattedMessage defaultMessage="Endpoint" id="ljmS5P" />
           </p>
           <div className="flex g12">
             {sortEndpoints(info.endpoints).map(a => (
@@ -133,7 +135,7 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
       )}
       <div>
         <p>
-          <FormattedMessage defaultMessage="Server Url" />
+          <FormattedMessage defaultMessage="Server Url" id="5kx+2v" />
         </p>
         <div className="paper">
           <input type="text" value={ep?.url} disabled />
@@ -141,36 +143,40 @@ export function NostrProviderDialog({ provider, ...others }: { provider: StreamP
       </div>
       <div>
         <p>
-          <FormattedMessage defaultMessage="Stream Key" />
+          <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
         </p>
         <div className="flex g12">
           <div className="paper f-grow">
             <input type="password" value={ep?.key} disabled />
           </div>
           <button className="btn btn-primary" onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
-            <FormattedMessage defaultMessage="Copy" />
+            <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
           </button>
         </div>
       </div>
       <div>
         <p>
-          <FormattedMessage defaultMessage="Balance" />
+          <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
         </p>
         <div className="flex g12">
           <div className="paper f-grow">
-            <FormattedMessage defaultMessage="{amount} sats" values={{ amount: info.balance?.toLocaleString() }} />
+            <FormattedMessage
+              defaultMessage="{amount} sats"
+              id="vrTOHJ"
+              values={{ amount: info.balance?.toLocaleString() }}
+            />
           </div>
           <button className="btn btn-primary" onClick={() => setTopup(true)}>
-            <FormattedMessage defaultMessage="Topup" />
+            <FormattedMessage defaultMessage="Topup" id="nBCvvJ" />
           </button>
         </div>
         <small>
-          <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
+          <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />
         </small>
       </div>
       <div>
         <p>
-          <FormattedMessage defaultMessage="Resolutions" />
+          <FormattedMessage defaultMessage="Resolutions" id="4uI538" />
         </p>
         <div className="flex g12">
           {ep?.capabilities?.map(a => (

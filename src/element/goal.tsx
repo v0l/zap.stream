@@ -2,18 +2,18 @@ import "./goal.css";
 import { useMemo } from "react";
 import * as Progress from "@radix-ui/react-progress";
 import Confetti from "react-confetti";
+import { FormattedMessage } from "react-intl";
 
-import { NostrLink, type NostrEvent } from "@snort/system";
+import { type NostrEvent, NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 
-import { findTag } from "utils";
-import { formatSats } from "number";
-import usePreviousValue from "hooks/usePreviousValue";
-import { SendZapsDialog } from "element/send-zap";
-import { getName } from "element/profile";
+import { findTag } from "@/utils";
+import { formatSats } from "@/number";
+import usePreviousValue from "@/hooks/usePreviousValue";
+import { SendZapsDialog } from "./send-zap";
+import { getName } from "./profile";
 import { Icon } from "./icon";
-import { FormattedMessage } from "react-intl";
-import { useZaps } from "hooks/zaps";
+import { useZaps } from "@/hooks/zaps";
 
 export function Goal({ ev }: { ev: NostrEvent }) {
   const profile = useUserProfile(ev.pubkey);
@@ -48,7 +48,7 @@ export function Goal({ ev }: { ev: NostrEvent }) {
             {!isFinished && <span className="amount so-far">{formatSats(soFar)}</span>}
           </Progress.Indicator>
           <span className="amount target">
-            <FormattedMessage defaultMessage="Goal: {amount}" values={{ amount: formatSats(goalAmount) }} />
+            <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
           </span>
         </Progress.Root>
         <div className="zap-circle">

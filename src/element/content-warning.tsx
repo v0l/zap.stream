@@ -19,17 +19,17 @@ export function ContentWarningOverlay() {
   return (
     <div className="fullscreen-exclusive age-check">
       <h1>
-        <FormattedMessage defaultMessage="Sexually explicit material ahead!" />
+        <FormattedMessage defaultMessage="Sexually explicit material ahead!" id="rWBFZA" />
       </h1>
       <h2>
-        <FormattedMessage defaultMessage="Confirm your age" />
+        <FormattedMessage defaultMessage="Confirm your age" id="s7V+5p" />
       </h2>
       <div className="flex g24">
         <button className="btn btn-warning" onClick={grownUp}>
-          <FormattedMessage defaultMessage="Yes, I am over 18" />
+          <FormattedMessage defaultMessage="Yes, I am over 18" id="O2Cy6m" />
         </button>
         <button className="btn" onClick={() => navigate("/")}>
-          <FormattedMessage defaultMessage="No, I am under 18" />
+          <FormattedMessage defaultMessage="No, I am under 18" id="KkIL3s" />
         </button>
       </div>
     </div>

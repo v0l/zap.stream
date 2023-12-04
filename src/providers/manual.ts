@@ -1,5 +1,5 @@
 import { NostrEvent, SystemInterface } from "@snort/system";
-import { StreamProvider, StreamProviderInfo, StreamProviders } from "providers";
+import { StreamProvider, StreamProviderInfo, StreamProviders } from "@/providers";
 
 export class ManualProvider implements StreamProvider {
   get name(): string {

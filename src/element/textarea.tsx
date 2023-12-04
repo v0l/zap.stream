@@ -1,5 +1,5 @@
 import "./textarea.css";
-import { type KeyboardEvent, type ChangeEvent, useContext } from "react";
+import { type ChangeEvent, type KeyboardEvent, useContext } from "react";
 import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
@@ -9,9 +9,9 @@ import { hexToBech32 } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
 import { MetadataCache, NostrPrefix, UserProfileCache } from "@snort/system";
 
-import { Emoji } from "element/emoji";
-import { Avatar } from "element/avatar";
-import type { EmojiTag } from "types";
+import { Emoji } from "./emoji";
+import { Avatar } from "./avatar";
+import type { EmojiTag } from "@/types";
 
 interface EmojiItemProps {
   name: string;

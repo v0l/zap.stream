@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
 import { UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
-
-import { Icon } from "element/icon";
-import usePlaceholder from "hooks/placeholders";
 import { useInView } from "react-intersection-observer";
+
+import { Icon } from "./icon";
+import usePlaceholder from "@/hooks/placeholders";
 
 export interface ProfileOptions {
   showName?: boolean;

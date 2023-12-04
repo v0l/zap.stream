@@ -1,5 +1,5 @@
 import "./copy.css";
-import { useCopy } from "hooks/copy";
+import { useCopy } from "@/hooks/copy";
 import { Icon } from "./icon";
 
 export interface CopyProps {

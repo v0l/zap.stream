@@ -4,10 +4,10 @@ import { NostrEvent, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { unixNow } from "@snort/shared";
-import { LIVE_STREAM } from "const";
-import { StreamState } from "index";
-import { findTag, getHost } from "utils";
-import { WEEK } from "const";
+import { LIVE_STREAM } from "@/const";
+import { StreamState } from "@/index";
+import { findTag, getHost } from "@/utils";
+import { WEEK } from "@/const";
 
 export function useStreamsFeed(tag?: string) {
   const since = useMemo(() => unixNow() - WEEK, [tag]);

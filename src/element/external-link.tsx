@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Icon } from "element/icon";
+import { Icon } from "./icon";
 
 interface ExternalLinkProps {
   href: string;

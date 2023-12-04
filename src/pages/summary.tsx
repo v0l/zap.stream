@@ -6,15 +6,15 @@ import { useEventReactions } from "@snort/system-react";
 import { FormattedDate, FormattedMessage, FormattedNumber } from "react-intl";
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-import { LIVE_STREAM_CHAT } from "const";
-import { Profile } from "element/profile";
-import { StatePill } from "element/state-pill";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { useLiveChatFeed } from "hooks/live-chat";
-import { useStreamLink } from "hooks/stream-link";
-import { StreamState } from "index";
-import { formatSats } from "number";
-import { findTag, getEventFromLocationState } from "utils";
+import { LIVE_STREAM_CHAT } from "@/const";
+import { Profile } from "@/element/profile";
+import { StatePill } from "@/element/state-pill";
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { useLiveChatFeed } from "@/hooks/live-chat";
+import { useStreamLink } from "@/hooks/stream-link";
+import { StreamState } from "@/index";
+import { formatSats } from "@/number";
+import { findTag, getEventFromLocationState } from "@/utils";
 
 export function StreamSummaryPage() {
   const location = useLocation();

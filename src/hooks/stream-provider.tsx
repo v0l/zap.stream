@@ -1,4 +1,4 @@
-import { StreamProviderStore } from "providers";
+import { StreamProviderStore } from "@/providers";
 import { useSyncExternalStore } from "react";
 
 export function useStreamProvider() {

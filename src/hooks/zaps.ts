@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { NostrLink, RequestBuilder, EventKind, NoteCollection, parseZap } from "@snort/system";
+import { EventKind, NostrLink, NoteCollection, RequestBuilder, parseZap } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 export function useZaps(link?: NostrLink, leaveOpen = false) {

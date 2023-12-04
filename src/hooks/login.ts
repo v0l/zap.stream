@@ -1,13 +1,13 @@
-import { useSyncExternalStore, useMemo, useState, useEffect } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 
 import { EventKind, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { useUserEmojiPacks } from "hooks/emoji";
-import { MUTED, USER_CARDS, USER_EMOJIS } from "const";
-import type { Tags } from "types";
-import { getPublisher } from "login";
-import { Login } from "index";
+import { useUserEmojiPacks } from "@/hooks/emoji";
+import { MUTED, USER_CARDS, USER_EMOJIS } from "@/const";
+import type { Tags } from "@/types";
+import { getPublisher } from "@/login";
+import { Login } from "@/index";
 
 export function useLogin() {
   const session = useSyncExternalStore(

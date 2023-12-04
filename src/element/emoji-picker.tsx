@@ -1,7 +1,7 @@
 import data, { Emoji } from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import { RefObject } from "react";
-import { EmojiPack } from "types";
+import { EmojiPack } from "@/types";
 
 interface EmojiPickerProps {
   topOffset: number;

@@ -1,9 +1,9 @@
 import "./index.css";
-import { StreamProviders } from "providers";
-
-import Owncast from "owncast.png";
-import Cloudflare from "cloudflare.png";
 import { useNavigate, useParams } from "react-router-dom";
+
+import { StreamProviders } from "@/providers";
+import Owncast from "@/owncast.png";
+import Cloudflare from "@/cloudflare.png";
 import { ConfigureOwncast } from "./owncast";
 import { ConfigureNostrType } from "./nostr";
 

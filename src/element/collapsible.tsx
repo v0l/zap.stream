@@ -8,10 +8,10 @@ import * as Collapsible from "@radix-ui/react-collapsible";
 
 import type { NostrLink } from "@snort/system";
 
-import { Mention } from "element/mention";
-import { NostrEvent, EventIcon } from "element/Event";
-import { ExternalLink } from "element/external-link";
-import { useEvent } from "hooks/event";
+import { Mention } from "./mention";
+import { EventIcon, NostrEvent } from "./Event";
+import { ExternalLink } from "./external-link";
+import { useEvent } from "@/hooks/event";
 
 interface MediaURLProps {
   url: URL;
@@ -32,7 +32,7 @@ export function MediaURL({ url, children }: MediaURLProps) {
           </div>
           <Dialog.Close asChild>
             <button className="btn delete-button" aria-label="Close">
-              <FormattedMessage defaultMessage="Close" />
+              <FormattedMessage defaultMessage="Close" id="rbrahO" />
             </button>
           </Dialog.Close>
         </Dialog.Content>
@@ -55,7 +55,11 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
         </div>
         <Collapsible.Trigger asChild>
           <button className={`${open ? "btn btn-small delete-button" : "btn btn-small"}`}>
-            {open ? <FormattedMessage defaultMessage="Hide" /> : <FormattedMessage defaultMessage="Show" />}
+            {open ? (
+              <FormattedMessage defaultMessage="Hide" id="VA/Z1S" />
+            ) : (
+              <FormattedMessage defaultMessage="Show" id="K7AkdL" />
+            )}
           </button>
         </Collapsible.Trigger>
       </div>

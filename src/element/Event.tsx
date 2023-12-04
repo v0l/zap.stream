@@ -1,14 +1,14 @@
 import "./event.css";
 
-import { type NostrLink, type NostrEvent as NostrEventType, EventKind } from "@snort/system";
+import { EventKind, type NostrEvent as NostrEventType, type NostrLink } from "@snort/system";
 
-import { Icon } from "element/icon";
-import { Goal } from "element/goal";
-import { Note } from "element/note";
-import { EmojiPack } from "element/emoji-pack";
-import { Badge } from "element/badge";
-import { useEvent } from "hooks/event";
-import { GOAL, EMOJI_PACK } from "const";
+import { Icon } from "./icon";
+import { Goal } from "./goal";
+import { Note } from "./note";
+import { EmojiPack } from "./emoji-pack";
+import { Badge } from "./badge";
+import { useEvent } from "@/hooks/event";
+import { EMOJI_PACK, GOAL } from "@/const";
 
 interface EventProps {
   link: NostrLink;

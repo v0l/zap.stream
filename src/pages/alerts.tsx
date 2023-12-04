@@ -1,7 +1,8 @@
 import "./alerts.css";
-import Spinner from "element/spinner";
-import { useStreamLink } from "hooks/stream-link";
 import { useParams } from "react-router-dom";
+
+import Spinner from "@/element/spinner";
+import { useStreamLink } from "@/hooks/stream-link";
 import { ZapAlerts } from "./widgets/zaps";
 import { Views } from "./widgets/views";
 import { TopZappersWidget } from "./widgets/top-zappers";

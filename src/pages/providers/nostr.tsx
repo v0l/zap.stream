@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import AsyncButton from "element/async-button";
-import { StatePill } from "element/state-pill";
-import { StreamState } from "index";
-import { StreamProviderInfo, StreamProviderStore } from "providers";
-import { Nip103StreamProvider } from "providers/zsz";
 import { FormattedMessage } from "react-intl";
+
+import AsyncButton from "@/element/async-button";
+import { StatePill } from "@/element/state-pill";
+import { StreamState } from "@/index";
+import { StreamProviderInfo, StreamProviderStore } from "@/providers";
+import { Nip103StreamProvider } from "@/providers/zsz";
 
 export function ConfigureNostrType() {
   const [url, setUrl] = useState("");
@@ -61,7 +61,7 @@ export function ConfigureNostrType() {
               StreamProviderStore.add(new Nip103StreamProvider(new URL(url).host, url));
               navigate("/");
             }}>
-            <FormattedMessage defaultMessage="Save" />
+            <FormattedMessage defaultMessage="Save" id="jvo0vs" />
           </button>
         </div>
       </>
@@ -78,7 +78,7 @@ export function ConfigureNostrType() {
           </div>
         </div>
         <AsyncButton className="btn btn-primary" onClick={tryConnect}>
-          <FormattedMessage defaultMessage="Connect" />
+          <FormattedMessage defaultMessage="Connect" id="+vVZ/G" />
         </AsyncButton>
       </div>
       <div>{status()}</div>

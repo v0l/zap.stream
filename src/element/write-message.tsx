@@ -1,17 +1,17 @@
-import { NostrLink, EventKind } from "@snort/system";
+import { EventKind, NostrLink } from "@snort/system";
 import React, { useContext, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-
-import { useLogin } from "hooks/login";
-import AsyncButton from "element/async-button";
-import { Icon } from "element/icon";
-import { Textarea } from "element/textarea";
-import { EmojiPicker } from "element/emoji-picker";
-import type { EmojiPack, Emoji } from "types";
-import { LIVE_STREAM_CHAT } from "const";
 import { SnortContext } from "@snort/system-react";
 import { unixNowMs } from "@snort/shared";
-import { TimeSync } from "index";
+
+import { useLogin } from "@/hooks/login";
+import AsyncButton from "./async-button";
+import { Icon } from "./icon";
+import { Textarea } from "./textarea";
+import { EmojiPicker } from "./emoji-picker";
+import type { Emoji, EmojiPack } from "@/types";
+import { LIVE_STREAM_CHAT } from "@/const";
+import { TimeSync } from "@/index";
 
 export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
   const system = useContext(SnortContext);
@@ -99,7 +99,7 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
         )}
       </div>
       <AsyncButton onClick={sendChatMessage} className="btn btn-border">
-        <FormattedMessage defaultMessage="Send" />
+        <FormattedMessage defaultMessage="Send" id="9WRlF4" />
       </AsyncButton>
     </>
   );

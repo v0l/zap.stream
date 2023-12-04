@@ -1,6 +1,6 @@
 import "./stream-cards.css";
 
-import { useState, forwardRef, useContext } from "react";
+import { forwardRef, useContext, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
@@ -8,19 +8,19 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { removeUndefined, unwrap } from "@snort/shared";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
-
-import { Toggle } from "element/toggle";
-import { Icon } from "element/icon";
-import { ExternalLink } from "element/external-link";
-import { FileUploader } from "element/file-uploader";
-import { Markdown } from "element/markdown";
-import { useLogin } from "hooks/login";
-import { useCards, useUserCards } from "hooks/cards";
-import { CARD, USER_CARDS } from "const";
-import { findTag } from "utils";
-import { Login } from "index";
-import type { Tags } from "types";
 import { SnortContext } from "@snort/system-react";
+
+import { Toggle } from "./toggle";
+import { Icon } from "./icon";
+import { ExternalLink } from "./external-link";
+import { FileUploader } from "./file-uploader";
+import { Markdown } from "./markdown";
+import { useLogin } from "@/hooks/login";
+import { useCards, useUserCards } from "@/hooks/cards";
+import { CARD, USER_CARDS } from "@/const";
+import { findTag } from "@/utils";
+import { Login } from "@/index";
+import type { Tags } from "@/types";
 
 interface CardType {
   identifier: string;
@@ -187,28 +187,28 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
 
   return (
     <div className="new-card">
-      <h3>{header || <FormattedMessage defaultMessage="Add card" />}</h3>
+      <h3>{header || <FormattedMessage defaultMessage="Add card" id="nwA8Os" />}</h3>
       <div className="form-control">
         <label htmlFor="card-title">
-          <FormattedMessage defaultMessage="Title" />
+          <FormattedMessage defaultMessage="Title" id="9a9+ww" />
         </label>
         <input
           id="card-title"
           type="text"
           value={title}
           onChange={e => setTitle(e.target.value)}
-          placeholder={formatMessage({ defaultMessage: "e.g. about me" })}
+          placeholder={formatMessage({ defaultMessage: "e.g. about me", id: "k21gTS" })}
         />
       </div>
       <div className="form-control">
         <label htmlFor="card-image">
-          <FormattedMessage defaultMessage="Image" />
+          <FormattedMessage defaultMessage="Image" id="+0zv6g" />
         </label>
         <FileUploader defaultImage={image} onFileUpload={setImage} onClear={() => setImage("")} />
       </div>
       <div className="form-control">
         <label htmlFor="card-image-link">
-          <FormattedMessage defaultMessage="Image Link" />
+          <FormattedMessage defaultMessage="Image Link" id="s5ksS7" />
         </label>
         <input
           id="card-image-link"
@@ -220,20 +220,21 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
       </div>
       <div className="form-control">
         <label htmlFor="card-content">
-          <FormattedMessage defaultMessage="Content" />
+          <FormattedMessage defaultMessage="Content" id="Jq3FDz" />
         </label>
         <textarea
-          placeholder={formatMessage({ defaultMessage: "Start typing" })}
+          placeholder={formatMessage({ defaultMessage: "Start typing", id: "w0Xm2F" })}
           value={content}
           onChange={e => setContent(e.target.value)}
         />
         <span className="help-text">
           <FormattedMessage
             defaultMessage="Supports {markdown}"
+            id="I1kjHI"
             values={{
               markdown: (
                 <ExternalLink href="https://www.markdownguide.org/cheat-sheet">
-                  <FormattedMessage defaultMessage="Markdown" />
+                  <FormattedMessage defaultMessage="Markdown" id="jr4+vD" />
                 </ExternalLink>
               ),
             }}
@@ -242,10 +243,10 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
       </div>
       <div className="new-card-buttons">
         <button className="btn btn-primary add-button" onClick={() => onSave({ title, image, content, link })}>
-          {cta || <FormattedMessage defaultMessage="Add Card" />}
+          {cta || <FormattedMessage defaultMessage="Add Card" id="UJBFYK" />}
         </button>
         <button className="btn delete-button" onClick={onCancel}>
-          {cancelCta || <FormattedMessage defaultMessage="Cancel" />}
+          {cancelCta || <FormattedMessage defaultMessage="Cancel" id="47FYwb" />}
         </button>
       </div>
     </div>
@@ -310,7 +311,7 @@ function EditCard({ card, cards }: EditCardProps) {
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
         <button className="btn btn-primary">
-          <FormattedMessage defaultMessage="Edit" />
+          <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -318,9 +319,9 @@ function EditCard({ card, cards }: EditCardProps) {
         <Dialog.Content className="dialog-content">
           <div className="content-inner">
             <CardDialog
-              header={formatMessage({ defaultMessage: "Edit card" })}
-              cta={formatMessage({ defaultMessage: "Save card" })}
-              cancelCta={formatMessage({ defaultMessage: "Delete" })}
+              header={formatMessage({ defaultMessage: "Edit card", id: "OWgHbg" })}
+              cta={formatMessage({ defaultMessage: "Save card", id: "rfC1Zq" })}
+              cancelCta={formatMessage({ defaultMessage: "Delete", id: "K3r6DQ" })}
               card={card}
               onSave={editCard}
               onCancel={onCancel}

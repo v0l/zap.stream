@@ -1,15 +1,8 @@
-import { DefaultLocale, useLang } from "hooks/lang";
-import { useEffect, useState, type ReactNode } from "react";
+import { DefaultLocale, useLang } from "@/hooks/lang";
+import { type ReactNode, useEffect, useState } from "react";
 import { IntlProvider as ReactIntlProvider } from "react-intl";
 
-import enMessages from "translations/en.json";
-
-async function importLang(code: string) {
-  const src = await import(`translations/${code}.json`);
-  const typed = src.default as Record<string, { defaultMessage: string }>;
-  const ent = Object.entries(typed).map(([k, v]) => [k, v.defaultMessage]);
-  return Object.fromEntries(ent) as Record<string, string>;
-}
+import enMessages from "@/translations/en.json";
 
 export const AllLocales = [
   DefaultLocale,
@@ -29,7 +22,13 @@ export const AllLocales = [
   "fr-FR",
   "pt-BR",
   "ru-RU",
-];
+] as const;
+
+function importLang(src: any) {
+  const typed = src.default as Record<string, { defaultMessage: string }>;
+  const ent = Object.entries(typed).map(([k, v]) => [k, v.defaultMessage]);
+  return Object.fromEntries(ent) as Record<string, string>;
+}
 
 const getMessages = (locale: string) => {
   const truncatedLocale = locale.toLowerCase().split(/[_-]+/)[0];
@@ -38,50 +37,50 @@ const getMessages = (locale: string) => {
     switch (lng) {
       case "de":
       case "de-DE":
-        return await importLang("de_DE");
+        return importLang(await import("@/translations/de_DE.json"));
       case "es":
       case "es-ES":
-        return await importLang("es_ES");
+        return importLang(await import("@/translations/es_ES.json"));
       case "th":
       case "th-TH":
-        return await importLang("th_TH");
+        return importLang(await import("@/translations/th_TH.json"));
       case "nl":
       case "nl-NL":
-        return await importLang("nl_NL");
+        return importLang(await import("@/translations/nl_NL.json"));
       case "ja":
       case "ja-JP":
-        return await importLang("ja_JP");
+        return importLang(await import("@/translations/ja_JP.json"));
       case "fa":
       case "fa-IR":
-        return await importLang("fa_IR");
+        return importLang(await import("@/translations/fa_IR.json"));
       case "sw":
       case "sw-KE":
-        return await importLang("sw_KE");
+        return importLang(await import("@/translations/sw_KE.json"));
       case "sv":
       case "sv-SE":
-        return await importLang("sv_SE");
+        return importLang(await import("@/translations/sv_SE.json"));
       case "bn":
       case "bn-BD":
-        return await importLang("bn_BD");
+        return importLang(await import("@/translations/bn_BD.json"));
       case "bg":
       case "bg-BG":
-        return await importLang("bg_BG");
+        return importLang(await import("@/translations/bg_BG.json"));
       case "zh":
       case "zh-CN":
-        return await importLang("zh_CN");
+        return importLang(await import("@/translations/zh_CN.json"));
       case "zh-TW":
-        return await importLang("zh_TW");
+        return importLang(await import("@/translations/zh_TW.json"));
       case "fi":
       case "fi-FI":
-        return await importLang("fi_FI");
+        return importLang(await import("@/translations/fi_FI.json"));
       case "fr":
       case "fr-FR":
-        return await importLang("fr_FR");
+        return importLang(await import("@/translations/fr_FR.json"));
       case "pt-BR":
-        return await importLang("pt_BR");
+        return importLang(await import("@/translations/pt_BR.json"));
       case "ru":
       case "ru-RU":
-        return await importLang("ru_RU");
+        return importLang(await import("@/translations/ru_RU.json"));
       case DefaultLocale:
       case "en":
         return enMessages;

@@ -1,8 +1,9 @@
 import { unwrap } from "@snort/shared";
 import { NostrEvent, NostrLink, NostrPrefix, NoteCollection, RequestBuilder, TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { LIVE_STREAM } from "const";
 import { useMemo } from "react";
+
+import { LIVE_STREAM } from "@/const";
 
 export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPreload?: NostrEvent) {
   const author = link.type === NostrPrefix.Address ? unwrap(link.author) : link.id;

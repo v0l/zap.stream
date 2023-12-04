@@ -1,20 +1,20 @@
 import "./send-zap.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
-import { NostrEvent, EventPublisher } from "@snort/system";
+import { EventPublisher, NostrEvent } from "@snort/system";
 import { secp256k1 } from "@noble/curves/secp256k1";
 import { bytesToHex } from "@noble/curves/abstract/utils";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 
 import { formatSats } from "../number";
 import { Icon } from "./icon";
 import AsyncButton from "./async-button";
 import QrCode from "./qr-code";
-import { useLogin } from "hooks/login";
+import { useLogin } from "@/hooks/login";
 import Copy from "./copy";
-import { defaultRelays } from "const";
-import { FormattedMessage, FormattedNumber } from "react-intl";
-import { useRates } from "hooks/rates";
+import { defaultRelays } from "@/const";
+import { useRates } from "@/hooks/rates";
 
 export interface LNURLLike {
   get name(): string;
@@ -131,6 +131,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
           <small>
             <FormattedMessage
               defaultMessage="Zap amount in {currency}"
+              id="IJDKz3"
               values={{ currency: isFiat ? "USD" : "SATS" }}
             />
             {isFiat && (
@@ -138,6 +139,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
                 &nbsp;
                 <FormattedMessage
                   defaultMessage="@ {rate}"
+                  id="YPh5Nq"
                   description="Showing zap amount in USD @ rate"
                   values={{
                     rate: <FormattedNumber value={usdRate} />,
@@ -157,7 +159,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
         {svc && (svc.maxCommentLength > 0 || svc.canZap) && (
           <div>
             <small>
-              <FormattedMessage defaultMessage="Your comment for {name}" values={{ name }} />
+              <FormattedMessage defaultMessage="Your comment for {name}" id="ESyhzp" values={{ name }} />
             </small>
             <div className="paper">
               <textarea placeholder="Nice!" value={comment} onChange={e => setComment(e.target.value)} />
@@ -166,7 +168,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
         )}
         <div>
           <AsyncButton onClick={send} className="btn btn-primary">
-            <FormattedMessage defaultMessage="Zap!" />
+            <FormattedMessage defaultMessage="Zap!" id="3HwrQo" />
           </AsyncButton>
         </div>
       </>
@@ -184,7 +186,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
           <Copy text={invoice} />
         </div>
         <button className="btn btn-primary wide" onClick={() => onFinish()}>
-          <FormattedMessage defaultMessage="Back" />
+          <FormattedMessage defaultMessage="Back" id="cyR7Kh" />
         </button>
       </>
     );
@@ -193,7 +195,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
   return (
     <div className="send-zap">
       <h3>
-        <FormattedMessage defaultMessage="Zap {name}" values={{ name }} />
+        <FormattedMessage defaultMessage="Zap {name}" id="oHPB8Q" values={{ name }} />
         <Icon name="zap" />
       </h3>
       {input()}
@@ -212,7 +214,7 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
         ) : (
           <button className="btn btn-primary zap">
             <span className="hide-on-mobile">
-              <FormattedMessage defaultMessage="Zap" />
+              <FormattedMessage defaultMessage="Zap" id="fBI91o" />
             </span>
             <Icon name="zap-filled" size={16} />
           </button>

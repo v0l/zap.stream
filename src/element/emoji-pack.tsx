@@ -1,16 +1,16 @@
 import "./emoji-pack.css";
 import { type NostrEvent } from "@snort/system";
-
-import { useLogin } from "hooks/login";
-import { toEmojiPack } from "hooks/emoji";
-import AsyncButton from "element/async-button";
-import { findTag } from "utils";
-import { USER_EMOJIS } from "const";
-import { Login } from "index";
-import type { EmojiPack as EmojiPackType } from "types";
 import { FormattedMessage } from "react-intl";
 import { useContext } from "react";
 import { SnortContext } from "@snort/system-react";
+
+import { useLogin } from "@/hooks/login";
+import { toEmojiPack } from "@/hooks/emoji";
+import AsyncButton from "./async-button";
+import { findTag } from "@/utils";
+import { USER_EMOJIS } from "@/const";
+import { Login } from "@/index";
+import type { EmojiPack as EmojiPackType } from "@/types";
 
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
   const system = useContext(SnortContext);
@@ -49,7 +49,11 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
           <AsyncButton
             className={`btn btn-small btn-primary ${isUsed ? "delete-button" : ""}`}
             onClick={toggleEmojiPack}>
-            {isUsed ? <FormattedMessage defaultMessage="Remove" /> : <FormattedMessage defaultMessage="Add" />}
+            {isUsed ? (
+              <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
+            ) : (
+              <FormattedMessage defaultMessage="Add" id="2/2yg+" />
+            )}
           </AsyncButton>
         )}
       </div>

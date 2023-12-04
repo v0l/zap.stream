@@ -2,15 +2,15 @@ import { Menu, MenuItem } from "@szhsin/react-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import { unwrap } from "@snort/shared";
 import { NostrEvent, NostrPrefix, encodeTLV } from "@snort/system";
+import { FormattedMessage } from "react-intl";
+import { useContext, useState } from "react";
+import { SnortContext } from "@snort/system-react";
 
 import { Icon } from "./icon";
-import { useContext, useState } from "react";
 import { Textarea } from "./textarea";
-import { findTag } from "utils";
+import { findTag } from "@/utils";
 import AsyncButton from "./async-button";
-import { useLogin } from "hooks/login";
-import { FormattedMessage } from "react-intl";
-import { SnortContext } from "@snort/system-react";
+import { useLogin } from "@/hooks/login";
 
 type ShareOn = "nostr" | "twitter";
 
@@ -41,7 +41,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
         menuClassName="ctx-menu"
         menuButton={
           <button type="button" className="btn btn-secondary">
-            <FormattedMessage defaultMessage="Share" />
+            <FormattedMessage defaultMessage="Share" id="OKhRC6" />
           </button>
         }>
         <MenuItem
@@ -50,7 +50,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
             setShare("nostr");
           }}>
           <Icon name="nostrich" size={24} />
-          <FormattedMessage defaultMessage="Broadcast on Nostr" />
+          <FormattedMessage defaultMessage="Broadcast on Nostr" id="wCIL7o" />
         </MenuItem>
       </Menu>
       <Dialog.Root open={Boolean(share)} onOpenChange={() => setShare(undefined)}>
@@ -59,7 +59,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
           <Dialog.Content className="dialog-content">
             <div className="content-inner">
               <h2>
-                <FormattedMessage defaultMessage="Share" />
+                <FormattedMessage defaultMessage="Share" id="OKhRC6" />
               </h2>
               <div className="paper">
                 <Textarea
@@ -73,7 +73,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
                 />
               </div>
               <AsyncButton className="btn btn-primary" onClick={sendMessage}>
-                <FormattedMessage defaultMessage="Send" />
+                <FormattedMessage defaultMessage="Send" id="9WRlF4" />
               </AsyncButton>
             </div>
           </Dialog.Content>

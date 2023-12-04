@@ -34,7 +34,7 @@ header {
 }
 
 header .logo {
-  background: url("public/logo.png") no-repeat #171717;
+  background: url("/logo.png") no-repeat #171717;
   background-size: cover;
   border-radius: 16px;
   width: 48px;
@@ -148,7 +148,7 @@ header .profile img {
 
 .age-check::after {
   content: " ";
-  background: url("public/zap-stream.svg") no-repeat;
+  background: url("/zap-stream.svg") no-repeat;
   background-position: center;
   background-size: contain;
   position: absolute;

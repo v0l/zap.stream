@@ -1,14 +1,14 @@
 import "./new-goal.css";
 import * as Dialog from "@radix-ui/react-dialog";
+import { FormattedMessage } from "react-intl";
+import { useContext, useState } from "react";
+import { SnortContext } from "@snort/system-react";
 
 import AsyncButton from "./async-button";
-import { Icon } from "element/icon";
-import { useContext, useState } from "react";
-import { GOAL } from "const";
-import { useLogin } from "hooks/login";
-import { FormattedMessage } from "react-intl";
-import { defaultRelays } from "const";
-import { SnortContext } from "@snort/system-react";
+import { Icon } from "./icon";
+import { GOAL } from "@/const";
+import { useLogin } from "@/hooks/login";
+import { defaultRelays } from "@/const";
 
 export function NewGoalDialog() {
   const system = useContext(SnortContext);
@@ -44,7 +44,7 @@ export function NewGoalDialog() {
           <span>
             <Icon name="zap-filled" size={12} />
             <span>
-              <FormattedMessage defaultMessage="Add stream goal" />
+              <FormattedMessage defaultMessage="Add stream goal" id="wOy57k" />
             </span>
           </span>
         </button>
@@ -56,12 +56,12 @@ export function NewGoalDialog() {
             <div className="zap-goals">
               <Icon name="zap-filled" className="stream-zap-goals-icon" size={16} />
               <h3>
-                <FormattedMessage defaultMessage="Stream Zap Goals" />
+                <FormattedMessage defaultMessage="Stream Zap Goals" id="0GfNiL" />
               </h3>
             </div>
             <div>
               <p>
-                <FormattedMessage defaultMessage="Name" />
+                <FormattedMessage defaultMessage="Name" id="HAlOn1" />
               </p>
               <div className="paper">
                 <input
@@ -74,7 +74,7 @@ export function NewGoalDialog() {
             </div>
             <div>
               <p>
-                <FormattedMessage defaultMessage="Amount" />
+                <FormattedMessage defaultMessage="Amount" id="/0TOL5" />
               </p>
               <div className="paper">
                 <input
@@ -89,7 +89,7 @@ export function NewGoalDialog() {
             </div>
             <div className="create-goal">
               <AsyncButton type="button" className="btn btn-primary wide" disabled={!isValid} onClick={publishGoal}>
-                <FormattedMessage defaultMessage="Create Goal" />
+                <FormattedMessage defaultMessage="Create Goal" id="X2PZ7D" />
               </AsyncButton>
             </div>
           </div>

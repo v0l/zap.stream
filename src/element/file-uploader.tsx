@@ -79,15 +79,15 @@ export function FileUploader({ defaultImage, onClear, onFileUpload }: FileUpload
       <label className="file-uploader">
         <input type="file" onChange={onFileChange} />
         {isUploading ? (
-          <FormattedMessage defaultMessage="Uploading..." />
+          <FormattedMessage defaultMessage="Uploading..." id="JEsxDw" />
         ) : (
-          <FormattedMessage defaultMessage="Add File" />
+          <FormattedMessage defaultMessage="Add File" id="fc2iho" />
         )}
       </label>
       <div className="file-uploader-preview">
         {img?.length > 0 && (
           <button className="btn btn-primary clear-button" onClick={clearImage}>
-            <FormattedMessage defaultMessage="Clear" />
+            <FormattedMessage defaultMessage="Clear" id="/GCoTA" />
           </button>
         )}
         {img && <img className="image-preview" src={img} />}

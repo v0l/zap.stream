@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import { TaggedNostrEvent, ReplaceableNoteStore, NoteCollection, RequestBuilder } from "@snort/system";
+import { NoteCollection, ReplaceableNoteStore, RequestBuilder, TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { USER_CARDS, CARD } from "const";
-import { findTag } from "utils";
+import { CARD, USER_CARDS } from "@/const";
+import { findTag } from "@/utils";
 
 export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOpen = false): TaggedNostrEvent[] {
   const related = useMemo(() => {

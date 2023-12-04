@@ -20,13 +20,13 @@ import { VoidApi } from "@void-cat/api";
 import { SnortContext } from "@snort/system-react";
 
 import AsyncButton from "./async-button";
-import { Login } from "index";
+import { Login } from "@/index";
 import { Icon } from "./icon";
 import Copy from "./copy";
-import { openFile } from "utils";
-import { LoginType } from "login";
-import { DefaultProvider, StreamProviderInfo } from "providers";
-import { Nip103StreamProvider } from "providers/zsz";
+import { openFile } from "@/utils";
+import { LoginType } from "@/login";
+import { DefaultProvider, StreamProviderInfo } from "@/providers";
+import { Nip103StreamProvider } from "@/providers/zsz";
 
 enum Stage {
   Login = 0,
@@ -126,6 +126,7 @@ export function LoginSignup({ close }: { close: () => void }) {
         throw new Error(
           formatMessage({
             defaultMessage: "Hmm, your lightning address looks wrong",
+            id: "4l69eO",
           })
         );
       }
@@ -157,29 +158,29 @@ export function LoginSignup({ close }: { close: () => void }) {
           <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
-              <FormattedMessage defaultMessage="Create an Account" />
+              <FormattedMessage defaultMessage="Create an Account" id="u6uD94" />
             </h2>
             <h3>
-              <FormattedMessage defaultMessage="No emails, just awesomeness!" />
+              <FormattedMessage defaultMessage="No emails, just awesomeness!" id="+AcVD+" />
             </h3>
             <button type="button" className="btn btn-primary btn-block" onClick={createAccount}>
-              <FormattedMessage defaultMessage="Create Account" />
+              <FormattedMessage defaultMessage="Create Account" id="5JcXdV" />
             </button>
 
             <div className="or-divider">
               <hr />
-              <FormattedMessage defaultMessage="OR" />
+              <FormattedMessage defaultMessage="OR" id="INlWvJ" />
               <hr />
             </div>
             {hasNostrExtension && (
               <>
                 <AsyncButton type="button" className="btn btn-primary btn-block" onClick={loginNip7}>
-                  <FormattedMessage defaultMessage="Nostr Extension" />
+                  <FormattedMessage defaultMessage="Nostr Extension" id="ebmhes" />
                 </AsyncButton>
               </>
             )}
             <button type="button" className="btn btn-primary btn-block" onClick={() => setStage(Stage.LoginInput)}>
-              <FormattedMessage defaultMessage="Login with Private Key (insecure)" />
+              <FormattedMessage defaultMessage="Login with Private Key (insecure)" id="feZ/kG" />
             </button>
             {error && <b className="error">{error}</b>}
           </div>
@@ -192,15 +193,16 @@ export function LoginSignup({ close }: { close: () => void }) {
           <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
-              <FormattedMessage defaultMessage="Login with private key" />
+              <FormattedMessage defaultMessage="Login with private key" id="3df560" />
             </h2>
             <p>
               <FormattedMessage
                 defaultMessage="This method is insecure. We recommend using a {nostrlink}"
+                id="Z8ZOEY"
                 values={{
                   nostrlink: (
                     <a href="">
-                      <FormattedMessage defaultMessage="nostr signer extension" />
+                      <FormattedMessage defaultMessage="nostr signer extension" id="/EvlqN" />
                     </a>
                   ),
                 }}
@@ -211,7 +213,7 @@ export function LoginSignup({ close }: { close: () => void }) {
                 type="text"
                 value={key}
                 onChange={e => setNewKey(e.target.value)}
-                placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz" })}
+                placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz", id: "yzKwBQ" })}
               />
             </div>
             <div className="flex f-space">
@@ -224,10 +226,10 @@ export function LoginSignup({ close }: { close: () => void }) {
                     setNewKey("");
                     setStage(Stage.Login);
                   }}>
-                  <FormattedMessage defaultMessage="Cancel" />
+                  <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
                 </button>
                 <AsyncButton onClick={doLoginNsec} className="btn btn-primary">
-                  <FormattedMessage defaultMessage="Log In" />
+                  <FormattedMessage defaultMessage="Log In" id="r2Jjms" />
                 </AsyncButton>
               </div>
             </div>
@@ -242,7 +244,7 @@ export function LoginSignup({ close }: { close: () => void }) {
           <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
-              <FormattedMessage defaultMessage="Setup Profile" />
+              <FormattedMessage defaultMessage="Setup Profile" id="nOaArs" />
             </h2>
             <div className="flex f-center">
               <div
@@ -266,11 +268,11 @@ export function LoginSignup({ close }: { close: () => void }) {
                 />
               </div>
               <small>
-                <FormattedMessage defaultMessage="You can change this later" />
+                <FormattedMessage defaultMessage="You can change this later" id="ZmqxZs" />
               </small>
             </div>
             <AsyncButton type="button" className="btn btn-primary" onClick={setupProfile}>
-              <FormattedMessage defaultMessage="Save" />
+              <FormattedMessage defaultMessage="Save" id="jvo0vs" />
             </AsyncButton>
           </div>
         </>
@@ -282,15 +284,19 @@ export function LoginSignup({ close }: { close: () => void }) {
           <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
-              <FormattedMessage defaultMessage="Get paid by viewers" />
+              <FormattedMessage defaultMessage="Get paid by viewers" id="Fodi9+" />
             </h2>
             <p>
-              <FormattedMessage defaultMessage="We hooked you up with a lightning wallet so you can get paid by viewers right away!" />
+              <FormattedMessage
+                defaultMessage="We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+                id="Oxqtyf"
+              />
             </p>
             {providerInfo?.balance && (
               <p>
                 <FormattedMessage
                   defaultMessage="Oh, and you have {n} sats of free streaming on us! 💜"
+                  id="f6biFA"
                   values={{
                     n: <FormattedNumber value={providerInfo.balance} />,
                   }}
@@ -301,18 +307,18 @@ export function LoginSignup({ close }: { close: () => void }) {
               <div className="paper">
                 <input
                   type="text"
-                  placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com" })}
+                  placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com", id: "1qsXCO" })}
                   value={lnAddress}
                   onChange={e => setLnAddress(e.target.value)}
                 />
               </div>
               <small>
-                <FormattedMessage defaultMessage="You can always replace it with your own address later." />
+                <FormattedMessage defaultMessage="You can always replace it with your own address later." id="FjDlus" />
               </small>
             </div>
             {error && <b className="error">{error}</b>}
             <AsyncButton type="button" className="btn btn-primary" onClick={saveProfile}>
-              <FormattedMessage defaultMessage="Amazing! Continue.." />
+              <FormattedMessage defaultMessage="Amazing! Continue.." id="tM6fNW" />
             </AsyncButton>
           </div>
         </>
@@ -324,16 +330,19 @@ export function LoginSignup({ close }: { close: () => void }) {
           <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="header-image" />
           <div className="content-inner">
             <h2>
-              <FormattedMessage defaultMessage="Save Key" />
+              <FormattedMessage defaultMessage="Save Key" id="04lmFi" />
             </h2>
             <p>
-              <FormattedMessage defaultMessage="Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!" />
+              <FormattedMessage
+                defaultMessage="Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+                id="H/bNs9"
+              />
             </p>
             <div className="paper">
               <Copy text={hexToBech32("nsec", key)} />
             </div>
             <button type="button" className="btn btn-primary" onClick={loginWithKey}>
-              <FormattedMessage defaultMessage="Ok, it's safe" />
+              <FormattedMessage defaultMessage="Ok, it's safe" id="My6HwN" />
             </button>
           </div>
         </>

@@ -1,6 +1,6 @@
 import * as BaseToggle from "@radix-ui/react-toggle";
 import "./toggle.css";
-import { Icon } from "element/icon";
+import { Icon } from "./icon";
 
 interface ToggleProps {
   label: string;

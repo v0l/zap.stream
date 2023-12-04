@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import uniqBy from "lodash.uniqby";
 
-import { RequestBuilder, ReplaceableNoteStore, NoteCollection, NostrEvent } from "@snort/system";
+import { NostrEvent, NoteCollection, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { findTag } from "utils";
-import { EMOJI_PACK, USER_EMOJIS } from "const";
-import type { EmojiPack, Tags, EmojiTag } from "types";
+import { findTag } from "@/utils";
+import { EMOJI_PACK, USER_EMOJIS } from "@/const";
+import type { EmojiPack, EmojiTag, Tags } from "@/types";
 
 function cleanShortcode(shortcode?: string) {
   return shortcode?.replace(/\s+/g, "_").replace(/_$/, "");

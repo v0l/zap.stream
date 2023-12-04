@@ -1,25 +1,25 @@
 import "./profile-page.css";
 import { useMemo } from "react";
-import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Tabs from "@radix-ui/react-tabs";
-import { parseNostrLink, NostrPrefix, ParsedZap, encodeTLV } from "@snort/system";
+import { NostrPrefix, ParsedZap, encodeTLV, parseNostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { unwrap } from "@snort/shared";
-import { Profile } from "element/profile";
-import { Icon } from "element/icon";
-import { SendZapsDialog } from "element/send-zap";
-import { VideoTile } from "element/video-tile";
-import { FollowButton } from "element/follow-button";
-import { MuteButton } from "element/mute-button";
-import { useProfile } from "hooks/profile";
-import useTopZappers from "hooks/top-zappers";
-import usePlaceholder from "hooks/placeholders";
-import { Text } from "element/text";
-import { StreamState } from "index";
-import { findTag } from "utils";
-import { formatSats } from "number";
 import { FormattedMessage } from "react-intl";
+
+import { Profile } from "@/element/profile";
+import { Icon } from "@/element/icon";
+import { SendZapsDialog } from "@/element/send-zap";
+import { VideoTile } from "@/element/video-tile";
+import { FollowButton } from "@/element/follow-button";
+import { MuteButton } from "@/element/mute-button";
+import { useProfile } from "@/hooks/profile";
+import useTopZappers from "@/hooks/top-zappers";
+import usePlaceholder from "@/hooks/placeholders";
+import { Text } from "@/element/text";
+import { StreamState } from "@/index";
+import { findTag } from "@/utils";
+import { formatSats } from "@/number";
 
 function Zapper({ pubkey, total }: { pubkey: string; total: number }) {
   return (
@@ -92,12 +92,12 @@ export function ProfilePage() {
               <div className="live-button pill live" onClick={goToLive}>
                 <Icon name="signal" />
                 <span>
-                  <FormattedMessage defaultMessage="live" />
+                  <FormattedMessage defaultMessage="live" id="2CGh/0" />
                 </span>
               </div>
             ) : (
               <span className="pill offline">
-                <FormattedMessage defaultMessage="offline" />
+                <FormattedMessage defaultMessage="offline" id="K3uH1C" />
               </span>
             )}
           </div>
@@ -111,7 +111,7 @@ export function ProfilePage() {
                     <div className="zap-button">
                       <Icon name="zap-filled" className="zap-button-icon" />
                       <span>
-                        <FormattedMessage defaultMessage="Zap" />
+                        <FormattedMessage defaultMessage="Zap" id="fBI91o" />
                       </span>
                     </div>
                   </button>
@@ -133,15 +133,15 @@ export function ProfilePage() {
           <Tabs.Root className="tabs-root" defaultValue="top-zappers">
             <Tabs.List className="tabs-list" aria-label={`Information about ${profile ? profile.name : link.id}`}>
               <Tabs.Trigger className="tabs-tab" value="top-zappers">
-                <FormattedMessage defaultMessage="Top Zappers" />
+                <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
                 <div className="tab-border"></div>
               </Tabs.Trigger>
               <Tabs.Trigger className="tabs-tab" value="past-streams">
-                <FormattedMessage defaultMessage="Past Streams" />
+                <FormattedMessage defaultMessage="Past Streams" id="UfSot5" />
                 <div className="tab-border"></div>
               </Tabs.Trigger>
               <Tabs.Trigger className="tabs-tab" value="schedule">
-                <FormattedMessage defaultMessage="Schedule" />
+                <FormattedMessage defaultMessage="Schedule" id="hGQqkW" />
                 <div className="tab-border"></div>
               </Tabs.Trigger>
             </Tabs.List>
@@ -156,8 +156,9 @@ export function ProfilePage() {
                     <span className="timestamp">
                       <FormattedMessage
                         defaultMessage="Streamed on {date}"
+                        id="cvAsEh"
                         values={{
-                          date: moment(Number(ev.created_at) * 1000).format("MMM DD, YYYY"),
+                          date: new Date(ev.created_at * 1000).toLocaleDateString(),
                         }}
                       />
                     </span>
@@ -173,8 +174,9 @@ export function ProfilePage() {
                     <span className="timestamp">
                       <FormattedMessage
                         defaultMessage="Scheduled for {date}"
+                        id="pO/lPX"
                         values={{
-                          date: moment(Number(ev.created_at) * 1000).format("MMM DD, YYYY h:mm:ss a"),
+                          date: new Date(ev.created_at * 1000).toLocaleDateString(),
                         }}
                       />
                     </span>

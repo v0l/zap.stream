@@ -3,10 +3,10 @@ import { FormattedMessage } from "react-intl";
 import { useCallback } from "react";
 import type { NostrEvent } from "@snort/system";
 
-import { VideoTile } from "element/video-tile";
-import { useLogin } from "hooks/login";
-import { getHost, getTagValues } from "utils";
-import { useStreamsFeed } from "hooks/live-streams";
+import { VideoTile } from "@/element/video-tile";
+import { useLogin } from "@/hooks/login";
+import { getHost, getTagValues } from "@/utils";
+import { useStreamsFeed } from "@/hooks/live-streams";
 
 export function RootPage() {
   const login = useLogin();
@@ -33,7 +33,7 @@ export function RootPage() {
       {hasFollowingLive && (
         <>
           <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Following" />
+            <FormattedMessage defaultMessage="Following" id="cPIKU2" />
           </h2>
           <div className="video-grid">
             {following.map(e => (
@@ -70,7 +70,7 @@ export function RootPage() {
       {hasFollowingLive && liveNow.length > 0 && (
         <>
           <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Live" />
+            <FormattedMessage defaultMessage="Live" id="Dn82AL" />
           </h2>
           <div className="video-grid">
             {liveNow
@@ -84,7 +84,7 @@ export function RootPage() {
       {plannedEvents.length > 0 && (
         <>
           <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Planned" />
+            <FormattedMessage defaultMessage="Planned" id="kp0NPF" />
           </h2>
           <div className="video-grid">
             {plannedEvents.map(e => (
@@ -96,7 +96,7 @@ export function RootPage() {
       {endedEvents.length > 0 && (
         <>
           <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Ended" />
+            <FormattedMessage defaultMessage="Ended" id="TP/cMX" />
           </h2>
           <div className="video-grid">
             {endedEvents.map(e => (

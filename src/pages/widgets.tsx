@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./widgets.css";
-import { useState, useMemo } from "react";
-import { useIntl, FormattedMessage } from "react-intl";
+import { useMemo, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { NostrLink, NostrPrefix } from "@snort/system";
 
-import Copy from "element/copy";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
-import { getVoices, speak, toTextToSpeechParams } from "text2speech";
-import { useLogin } from "hooks/login";
+import Copy from "@/element/copy";
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { getVoices, speak, toTextToSpeechParams } from "@/text2speech";
+import { useLogin } from "@/hooks/login";
 import { ZapAlertItem } from "./widgets/zaps";
 import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
@@ -64,7 +64,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
   return (
     <>
       <h3>
-        <FormattedMessage defaultMessage="Zap Alert" />
+        <FormattedMessage defaultMessage="Zap Alert" id="zVDHAu" />
       </h3>
       <Copy text={`${baseUrl}/alert/${npub}/zaps${query}`} />
       <ZapAlertItem
@@ -91,13 +91,13 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
             checked={textToSpeech}
             onChange={ev => setTextToSpeech(ev.target.checked)}
           />
-          <FormattedMessage defaultMessage="Enable text to speech" />
+          <FormattedMessage defaultMessage="Enable text to speech" id="heyxZL" />
         </div>
         {isTextToSpeechEnabled && (
           <>
             <div className="paper labeled-input">
               <label htmlFor="minimum-sats">
-                <FormattedMessage defaultMessage="Minimum amount for text to speech" />
+                <FormattedMessage defaultMessage="Minimum amount for text to speech" id="6pr6hJ" />
               </label>
               <input
                 id="minimum-sats"
@@ -109,7 +109,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
             </div>
             <div className="paper labeled-input">
               <label htmlFor="volume">
-                <FormattedMessage defaultMessage="Volume" />
+                <FormattedMessage defaultMessage="Volume" id="y867Vs" />
               </label>
               <input
                 id="volume"
@@ -123,11 +123,11 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
             </div>
             <div className="paper labeled-input">
               <label htmlFor="voice-selector">
-                <FormattedMessage defaultMessage="Voice" />
+                <FormattedMessage defaultMessage="Voice" id="mnJYBQ" />
               </label>
               <select id="voice-selector" onChange={ev => setVoice(ev.target.value)}>
                 <option value="">
-                  <FormattedMessage defaultMessage="Select voice..." />
+                  <FormattedMessage defaultMessage="Select voice..." id="wMKVFz" />
                 </option>
                 {languages.map(l => (
                   <optgroup label={formatDisplayName(l, { type: "language" })}>
@@ -142,17 +142,17 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
               <>
                 <div className="paper labeled-input">
                   <label htmlFor="zap-alert-text">
-                    <FormattedMessage defaultMessage="Zap message" />
+                    <FormattedMessage defaultMessage="Zap message" id="sInm1h" />
                   </label>
                   <textarea
                     id="zap-alert-text"
-                    placeholder={formatMessage({ defaultMessage: "Insert text to speak" })}
+                    placeholder={formatMessage({ defaultMessage: "Insert text to speak", id: "8YT6ja" })}
                     value={testText}
                     onChange={ev => setTestText(ev.target.value)}
                   />
                 </div>
                 <button disabled={testText.length === 0} className="btn" onClick={testVoice}>
-                  <FormattedMessage defaultMessage="Test voice" />
+                  <FormattedMessage defaultMessage="Test voice" id="d5zWyh" />
                 </button>
               </>
             )}
@@ -176,7 +176,7 @@ export function WidgetsPage() {
     <div className="widgets g8">
       <div className="flex f-col g8">
         <h3>
-          <FormattedMessage defaultMessage="Chat Widget" />
+          <FormattedMessage defaultMessage="Chat Widget" id="hpl4BP" />
         </h3>
         <Copy text={`${baseUrl}/chat/${npub}`} />
       </div>
@@ -185,21 +185,21 @@ export function WidgetsPage() {
       </div>
       <div className="flex f-col g8">
         <h3>
-          <FormattedMessage defaultMessage="Top Zappers" />
+          <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/top-zappers`} />
         {currentLink && <TopZappersWidget link={currentLink} />}
       </div>
       <div className="flex f-col g8">
         <h3>
-          <FormattedMessage defaultMessage="Current Viewers" />
+          <FormattedMessage defaultMessage="Current Viewers" id="rgsbu9" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/views`} />
         {currentLink && <Views link={currentLink} />}
       </div>
       <div className="flex f-col g8">
         <h3>
-          <FormattedMessage defaultMessage="Music" />
+          <FormattedMessage defaultMessage="Music" id="79lLl+" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/music`} />
         {currentLink && <Music link={currentLink} />}

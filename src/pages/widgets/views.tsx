@@ -1,7 +1,8 @@
 import { NostrLink } from "@snort/system";
-import { useCurrentStreamFeed } from "hooks/current-stream-feed";
 import { FormattedMessage } from "react-intl";
-import { findTag } from "utils";
+
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
+import { findTag } from "@/utils";
 
 export function Views({ link }: { link: NostrLink }) {
   const current = useCurrentStreamFeed(link, true);
@@ -11,9 +12,9 @@ export function Views({ link }: { link: NostrLink }) {
   return (
     <div className="views">
       {isNaN(n) ? (
-        <FormattedMessage defaultMessage="No viewer data available" />
+        <FormattedMessage defaultMessage="No viewer data available" id="AukrPM" />
       ) : (
-        <FormattedMessage defaultMessage="{n} viewers" values={{ n }} />
+        <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n }} />
       )}
     </div>
   );
