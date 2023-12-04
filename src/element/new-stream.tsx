@@ -54,15 +54,25 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
         );
       }
       case StreamProviders.NostrType: {
-        return <>
-          <button className="btn btn-secondary" onClick={() => {
-            navigate("/settings");
-            onFinish?.();
-          }}>
-            <FormattedMessage defaultMessage="Get stream key" id="KdYELp" />
-          </button>
-          <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} showEndpoints={false} showEditor={true} />
-        </>;
+        return (
+          <>
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                navigate("/settings");
+                onFinish?.();
+              }}>
+              <FormattedMessage defaultMessage="Get stream key" id="KdYELp" />
+            </button>
+            <NostrProviderDialog
+              provider={currentProvider}
+              onFinish={onFinish}
+              ev={ev}
+              showEndpoints={false}
+              showEditor={true}
+            />
+          </>
+        );
       }
       case StreamProviders.Owncast: {
         return;

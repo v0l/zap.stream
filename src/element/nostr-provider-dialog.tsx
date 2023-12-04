@@ -14,7 +14,7 @@ export function NostrProviderDialog({
   showEndpoints,
   showEditor,
   ...others
-}: { provider: StreamProvider; showEndpoints: boolean, showEditor: boolean } & StreamEditorProps) {
+}: { provider: StreamProvider; showEndpoints: boolean; showEditor: boolean } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();

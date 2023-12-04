@@ -11,7 +11,7 @@ import { useStreamProvider } from "@/hooks/stream-provider";
 
 const enum Tab {
   Account,
-  Notifications
+  Notifications,
 }
 
 export function SettingsPage() {
@@ -57,7 +57,11 @@ export function SettingsPage() {
             <h1>
               <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
             </h1>
-            <NostrProviderDialog provider={unwrap(providers.find(a => a.name === "zap.stream"))} showEndpoints={true} showEditor={false} />
+            <NostrProviderDialog
+              provider={unwrap(providers.find(a => a.name === "zap.stream"))}
+              showEndpoints={true}
+              showEditor={false}
+            />
           </>
         );
       }
