@@ -69,7 +69,7 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
   }
 
   async function onKeyDown(e: React.KeyboardEvent) {
-    if (e.code === "Enter") {
+    if (e.code === "Enter" && !e.nativeEvent.isComposing) {
       e.preventDefault();
       await sendChatMessage();
     }

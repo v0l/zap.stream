@@ -1,5 +1,5 @@
 import "./textarea.css";
-import { type ChangeEvent, type KeyboardEvent, useContext } from "react";
+import { useContext } from "react";
 import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import uniqWith from "lodash/uniqWith";
@@ -39,13 +39,7 @@ const UserItem = (metadata: MetadataCache) => {
   );
 };
 
-interface TextareaProps {
-  emojis: EmojiTag[];
-  value: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  onKeyDown: (e: KeyboardEvent<Element>) => void;
-  rows?: number;
-}
+type TextareaProps = { emojis: EmojiTag[] } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export function Textarea({ emojis, ...props }: TextareaProps) {
   const system = useContext(SnortContext);
