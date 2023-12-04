@@ -136,6 +136,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
         {streamLength > 0 && (
           <FormattedMessage
             defaultMessage="Stream Duration {duration} mins"
+            id="J/+m9y"
             values={{
               duration: <FormattedNumber value={streamLength / 60} maximumFractionDigits={2} />,
             }}
@@ -143,7 +144,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
         )}
       </div>
       <h2>
-        <FormattedMessage defaultMessage="Summary" />
+        <FormattedMessage defaultMessage="Summary" id="RrCui3" />
       </h2>
       <ResponsiveContainer height={200}>
         <BarChart data={Object.values(stats)} margin={{ left: 0, right: 0 }} style={{ userSelect: "none" }}>
@@ -164,19 +165,19 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
                     </div>
                     <div className="flex justify-between">
                       <div>
-                        <FormattedMessage defaultMessage="Messages" />
+                        <FormattedMessage defaultMessage="Messages" id="hMzcSq" />
                       </div>
                       <div>{data.messages}</div>
                     </div>
                     <div className="flex justify-between">
                       <div>
-                        <FormattedMessage defaultMessage="Reactions" />
+                        <FormattedMessage defaultMessage="Reactions" id="XgWvGA" />
                       </div>
                       <div>{data.reactions}</div>
                     </div>
                     <div className="flex justify-between">
                       <div>
-                        <FormattedMessage defaultMessage="Zaps" />
+                        <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
                       </div>
                       <div>{data.zaps}</div>
                     </div>
@@ -192,7 +193,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
       <div className="flex gap-1">
         <div className="plain-paper flex-1">
           <h3>
-            <FormattedMessage defaultMessage="Top Chatters" />
+            <FormattedMessage defaultMessage="Top Chatters" id="GGaJMU" />
           </h3>
           <div className="flex flex-col gap-2">
             {chatSummary.slice(0, 5).map(a => (
@@ -201,6 +202,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
                 <div>
                   <FormattedMessage
                     defaultMessage="{n} messages"
+                    id="gzsn7k"
                     values={{
                       n: <FormattedNumber value={a.messages.length} />,
                     }}
@@ -212,7 +214,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
         </div>
         <div className="plain-paper flex-1">
           <h3>
-            <FormattedMessage defaultMessage="Top Zappers" />
+            <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
           </h3>
           <div className="flex flex-col gap-2">
             {zapsSummary.slice(0, 5).map(a => (
@@ -221,6 +223,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
                 <div>
                   <FormattedMessage
                     defaultMessage="{n} sats"
+                    id="CsCUYo"
                     values={{
                       n: formatSats(a.total),
                     }}
