@@ -125,10 +125,6 @@ export function LayoutPage() {
       </Helmet>
       <header>
         <div className="logo" onClick={() => navigate("/")}></div>
-        {/*<div className="paper">
-          <input className="search-input" type="text" placeholder="Search" />
-          <Icon name="search" size={15} />
-  </div>*/}
         <div className="grow">{/* Future menu items go here */}</div>
         <div className="flex items-center gap-3">
           {langSelector()}

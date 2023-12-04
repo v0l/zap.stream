@@ -1,4 +1,3 @@
-import "./settings-page.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
@@ -82,18 +81,18 @@ export function SettingsPage() {
   }
 
   return (
-    <div className="settings-page">
-      <div className="flex flex-col gap-5">
+    <div className="rounded-2xl p-3 md:w-[700px] mx-auto w-full">
+      <div className="flex flex-col gap-2">
         <h1>
           <FormattedMessage defaultMessage="Settings" id="D3idYv" />
         </h1>
         <div className="flex flex-col gap-2">
-          <div className="flex gap-2 tab-options">
+          <div className="flex gap-2">
             {[Tab.Account, Tab.Stream].map(t => (
-              <div onClick={() => setTab(t)}>{tabName(t)}</div>
+              <button onClick={() => setTab(t)} className="rounded-xl px-3 py-2 bg-gray-2 hover:bg-gray-1">{tabName(t)}</button>
             ))}
           </div>
-          <div className="tab-content">{tabContent()}</div>
+          <div className="p-5 bg-gray-2 rounded-3xl flex flex-col gap-3">{tabContent()}</div>
         </div>
       </div>
     </div>
