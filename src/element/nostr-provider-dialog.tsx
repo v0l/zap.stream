@@ -12,8 +12,9 @@ import AsyncButton from "./async-button";
 export function NostrProviderDialog({
   provider,
   showEndpoints,
+  showEditor,
   ...others
-}: { provider: StreamProvider; showEndpoints: boolean } & StreamEditorProps) {
+}: { provider: StreamProvider; showEndpoints: boolean, showEditor: boolean } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
@@ -198,7 +199,7 @@ export function NostrProviderDialog({
       {showEndpoints && streamEndpoints()}
       {info.tosAccepted === false ? (
         tosInput()
-      ) : (
+      ) : showEditor ? (
         <StreamEditor
           onFinish={ex => {
             provider.updateStreamInfo(system, ex);
@@ -221,7 +222,7 @@ export function NostrProviderDialog({
             canSetStatus: false,
           }}
         />
-      )}
+      ) : null}
     </>
   );
 }

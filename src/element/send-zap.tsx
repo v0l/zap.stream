@@ -194,7 +194,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
 
   return (
     <div className="send-zap">
-      <h3>
+      <h3 className="flex gap-2 items-center">
         <FormattedMessage defaultMessage="Zap {name}" id="oHPB8Q" values={{ name }} />
         <Icon name="zap" />
       </h3>

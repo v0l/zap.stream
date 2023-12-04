@@ -11,8 +11,7 @@ import { useStreamProvider } from "@/hooks/stream-provider";
 
 const enum Tab {
   Account,
-  Notifications,
-  Stream,
+  Notifications
 }
 
 export function SettingsPage() {
@@ -55,16 +54,10 @@ export function SettingsPage() {
               <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
             </h1>
             <AlbyZapsButton />
-          </>
-        );
-      }
-      case Tab.Stream: {
-        return (
-          <>
             <h1>
               <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
             </h1>
-            <NostrProviderDialog provider={unwrap(providers.find(a => a.name === "zap.stream"))} showEndpoints={true} />
+            <NostrProviderDialog provider={unwrap(providers.find(a => a.name === "zap.stream"))} showEndpoints={true} showEditor={false} />
           </>
         );
       }
@@ -75,8 +68,6 @@ export function SettingsPage() {
     switch (t) {
       case Tab.Account:
         return <FormattedMessage defaultMessage="Account" id="TwyMau" />;
-      case Tab.Stream:
-        return <FormattedMessage defaultMessage="Stream" id="uYw2LD" />;
     }
   }
 
@@ -88,7 +79,7 @@ export function SettingsPage() {
         </h1>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
-            {[Tab.Account, Tab.Stream].map(t => (
+            {[Tab.Account].map(t => (
               <button onClick={() => setTab(t)} className="rounded-xl px-3 py-2 bg-gray-2 hover:bg-gray-1">
                 {tabName(t)}
               </button>

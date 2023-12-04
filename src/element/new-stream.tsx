@@ -13,7 +13,7 @@ import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { eventLink, findTag } from "@/utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
 
-function NewStream({ ev, onFinish }: StreamEditorProps) {
+function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onFinish: () => void }) {
   const system = useContext(SnortContext);
   const providers = useStreamProvider();
   const [currentProvider, setCurrentProvider] = useState<StreamProvider>();
@@ -43,10 +43,10 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
                   navigate(`/${eventLink(ex)}`, {
                     state: ex,
                   });
-                  onFinish?.(ex);
+                  onFinish?.();
                 }
               } else {
-                onFinish?.(ev);
+                onFinish?.();
               }
             }}
             ev={ev}
@@ -54,7 +54,15 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
         );
       }
       case StreamProviders.NostrType: {
-        return <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} showEndpoints={false} />;
+        return <>
+          <button className="btn btn-secondary" onClick={() => {
+            navigate("/settings");
+            onFinish?.();
+          }}>
+            <FormattedMessage defaultMessage="Get stream key" id="KdYELp" />
+          </button>
+          <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} showEndpoints={false} showEditor={true} />
+        </>;
       }
       case StreamProviders.Owncast: {
         return;
