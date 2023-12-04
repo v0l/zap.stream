@@ -24,7 +24,7 @@ export function ContentWarningOverlay() {
       <h2>
         <FormattedMessage defaultMessage="Confirm your age" id="s7V+5p" />
       </h2>
-      <div className="flex g24">
+      <div className="flex gap-3">
         <button className="btn btn-warning" onClick={grownUp}>
           <FormattedMessage defaultMessage="Yes, I am over 18" id="O2Cy6m" />
         </button>

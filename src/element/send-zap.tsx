@@ -109,7 +109,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
     if (invoice) return;
     return (
       <>
-        <div className="flex g12">
+        <div className="flex gap-2">
           <span
             className={`pill${isFiat ? "" : " active"}`}
             onClick={() => {
@@ -182,7 +182,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
     return (
       <>
         <QrCode data={link} link={link} />
-        <div className="flex f-center">
+        <div className="flex items-center">
           <Copy text={invoice} />
         </div>
         <button className="btn btn-primary wide" onClick={() => onFinish()}>

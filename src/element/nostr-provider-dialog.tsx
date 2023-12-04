@@ -88,7 +88,7 @@ export function NostrProviderDialog({ provider, showEndpoints, ...others }: { pr
     return (
       <>
         <div>
-          <div className="flex g12">
+          <div className="flex gap-2">
             <input type="checkbox" checked={tos} onChange={e => setTos(e.target.checked)} />
             <p>
               <FormattedMessage
@@ -125,7 +125,7 @@ export function NostrProviderDialog({ provider, showEndpoints, ...others }: { pr
           <p>
             <FormattedMessage defaultMessage="Endpoint" id="ljmS5P" />
           </p>
-          <div className="flex g12">
+          <div className="flex gap-2">
             {sortEndpoints(info.endpoints).map(a => (
               <span className={`pill${ep?.name === a.name ? " active" : ""}`} onClick={() => setEndpoint(a)}>
                 {a.name}
@@ -146,8 +146,8 @@ export function NostrProviderDialog({ provider, showEndpoints, ...others }: { pr
         <p>
           <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
         </p>
-        <div className="flex g12">
-          <div className="paper f-grow">
+        <div className="flex gap-2">
+          <div className="paper grow">
             <input type="password" value={ep?.key} disabled />
           </div>
           <button className="btn btn-primary" onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
@@ -159,8 +159,8 @@ export function NostrProviderDialog({ provider, showEndpoints, ...others }: { pr
         <p>
           <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
         </p>
-        <div className="flex g12">
-          <div className="paper f-grow">
+        <div className="flex gap-2">
+          <div className="paper grow">
             <FormattedMessage
               defaultMessage="{amount} sats"
               id="vrTOHJ"
@@ -179,7 +179,7 @@ export function NostrProviderDialog({ provider, showEndpoints, ...others }: { pr
         <p>
           <FormattedMessage defaultMessage="Resolutions" id="4uI538" />
         </p>
-        <div className="flex g12">
+        <div className="flex gap-2">
           {ep?.capabilities?.map(a => (
             <span className="pill">{parseCapability(a)}</span>
           ))}

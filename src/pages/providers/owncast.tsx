@@ -70,7 +70,7 @@ export function ConfigureOwncast() {
 
   return (
     <div className="owncast-config">
-      <div className="flex f-col g24">
+      <div className="flex flex-col gap-3">
         <div>
           <p>Owncast instance url</p>
           <div className="paper">

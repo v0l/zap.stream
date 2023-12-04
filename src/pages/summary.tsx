@@ -131,7 +131,7 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
     <div className="stream-summary">
       <h1>{title}</h1>
       <p>{summary}</p>
-      <div className="flex g8">
+      <div className="flex gap-1">
         <StatePill state={status as StreamState} />
         {streamLength > 0 && (
           <FormattedMessage
@@ -158,23 +158,23 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
               if (active && payload && payload.length) {
                 const data = payload[0].payload as StatSlot;
                 return (
-                  <div className="plain-paper flex f-col g8">
+                  <div className="plain-paper flex flex-col gap-2">
                     <div>
                       <FormattedDate value={data.time * 1000} timeStyle="short" dateStyle="short" />
                     </div>
-                    <div className="flex f-space">
+                    <div className="flex justify-between">
                       <div>
                         <FormattedMessage defaultMessage="Messages" />
                       </div>
                       <div>{data.messages}</div>
                     </div>
-                    <div className="flex f-space">
+                    <div className="flex justify-between">
                       <div>
                         <FormattedMessage defaultMessage="Reactions" />
                       </div>
                       <div>{data.reactions}</div>
                     </div>
-                    <div className="flex f-space">
+                    <div className="flex justify-between">
                       <div>
                         <FormattedMessage defaultMessage="Zaps" />
                       </div>
@@ -189,14 +189,14 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
         </BarChart>
       </ResponsiveContainer>
 
-      <div className="flex g8">
-        <div className="plain-paper f-1">
+      <div className="flex gap-1">
+        <div className="plain-paper flex-1">
           <h3>
             <FormattedMessage defaultMessage="Top Chatters" />
           </h3>
-          <div className="flex f-col g8">
+          <div className="flex flex-col gap-2">
             {chatSummary.slice(0, 5).map(a => (
-              <div className="flex f-space f-center" key={a.pubkey}>
+              <div className="flex justify-between items-center" key={a.pubkey}>
                 <Profile pubkey={a.pubkey} />
                 <div>
                   <FormattedMessage
@@ -210,13 +210,13 @@ export function StreamSummary({ link, preload }: { link: NostrLink; preload?: No
             ))}
           </div>
         </div>
-        <div className="plain-paper f-1">
+        <div className="plain-paper flex-1">
           <h3>
             <FormattedMessage defaultMessage="Top Zappers" />
           </h3>
-          <div className="flex f-col g8">
+          <div className="flex flex-col gap-2">
             {zapsSummary.slice(0, 5).map(a => (
-              <div className="flex f-space f-center" key={a.pubkey}>
+              <div className="flex justify-between items-center" key={a.pubkey}>
                 <Profile pubkey={a.pubkey} />
                 <div>
                   <FormattedMessage

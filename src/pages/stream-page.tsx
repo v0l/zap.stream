@@ -52,8 +52,8 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
   const viewers = Number(findTag(ev, "current_participants") ?? "0");
   return (
     <>
-      <div className="flex f-center info">
-        <div className="f-grow stream-info">
+      <div className="flex items-center info">
+        <div className="grow stream-info">
           <h1>{findTag(ev, "title")}</h1>
           <p>{findTag(ev, "summary")}</p>
           <div className="tags">
@@ -81,7 +81,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
         </div>
         <div className="profile-info">
           <Profile pubkey={host ?? ""} />
-          <div className="flex g12">
+          <div className="flex gap-2">
             <div className="hide-on-mobile">
               <FollowButton pubkey={host} />
             </div>

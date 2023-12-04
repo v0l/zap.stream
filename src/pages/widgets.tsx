@@ -173,31 +173,31 @@ export function WidgetsPage() {
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
 
   return (
-    <div className="widgets g8">
-      <div className="flex f-col g8">
+    <div className="widgets gap-2">
+      <div className="flex flex-col gap-2">
         <h3>
           <FormattedMessage defaultMessage="Chat Widget" id="hpl4BP" />
         </h3>
         <Copy text={`${baseUrl}/chat/${npub}`} />
       </div>
-      <div className="flex f-col g8">
+      <div className="flex flex-col gap-2">
         <ZapAlertConfiguration npub={npub} baseUrl={baseUrl} />
       </div>
-      <div className="flex f-col g8">
+      <div className="flex flex-col gap-2">
         <h3>
           <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/top-zappers`} />
         {currentLink && <TopZappersWidget link={currentLink} />}
       </div>
-      <div className="flex f-col g8">
+      <div className="flex flex-col gap-2">
         <h3>
           <FormattedMessage defaultMessage="Current Viewers" id="rgsbu9" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/views`} />
         {currentLink && <Views link={currentLink} />}
       </div>
-      <div className="flex f-col g8">
+      <div className="flex flex-col gap-2">
         <h3>
           <FormattedMessage defaultMessage="Music" id="79lLl+" />
         </h3>

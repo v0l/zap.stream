@@ -70,7 +70,7 @@ export function ConfigureNostrType() {
 
   return (
     <div className="owncast-config">
-      <div className="flex f-col g24">
+      <div className="flex flex-col gap-3">
         <div>
           <p>Nostr streaming provider URL</p>
           <div className="paper">

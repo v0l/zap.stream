@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: "Outfit", sans-serif;
@@ -31,6 +35,19 @@ body {
   }
 }
 
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 21px;
+}
+h4 {
+  font-size: 18px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -42,37 +59,6 @@ a {
 
 :focus-visible {
   outline: none;
-}
-
-.flex {
-  display: flex;
-}
-
-.f-1 {
-  flex: 1;
-}
-
-.f-grow {
-  flex-grow: 1;
-}
-
-.f-col {
-  flex-direction: column;
-}
-
-.f-center {
-  align-items: center;
-  justify-content: center;
-}
-
-.f-space {
-  justify-content: space-between;
-}
-
-@media (max-width: 1020px) {
-  .f-col-mobile {
-    flex-direction: column;
-  }
 }
 
 .pill {
@@ -91,27 +77,10 @@ a {
   color: white;
 }
 
-.g8 {
-  gap: 8px;
-}
-.g12 {
-  gap: 12px;
-}
-.g24 {
-  gap: 24px;
-}
-.g48 {
-  gap: 48px;
-}
-
 .w-max {
   width: stretch;
   width: -webkit-fill-available;
   width: -moz-available;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
 
 .pointer {
@@ -131,6 +100,8 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  background: white;
+  color: black;
 }
 
 .btn-block {

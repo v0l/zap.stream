@@ -67,7 +67,7 @@ function NewStream({ ev, onFinish }: StreamEditorProps) {
       <p>
         <FormattedMessage defaultMessage="Stream Providers" id="6Z2pvJ" />
       </p>
-      <div className="flex g12">
+      <div className="flex gap-2">
         {providers.map(v => (
           <span className={`pill${v === currentProvider ? " active" : ""}`} onClick={() => setCurrentProvider(v)}>
             {v.name}

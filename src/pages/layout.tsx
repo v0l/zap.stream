@@ -30,7 +30,7 @@ export function LayoutPage() {
       <Menu
         menuClassName="ctx-menu"
         menuButton={
-          <div className="flex f-center g12">
+          <div className="flex gap-2 items-center">
             <div className={`fi fi-${lang.split(/[-_]/i)[1]?.toLowerCase()}`}></div>
             <div className="uppercase pointer">
               <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
@@ -129,8 +129,8 @@ export function LayoutPage() {
           <input className="search-input" type="text" placeholder="Search" />
           <Icon name="search" size={15} />
   </div>*/}
-        <div className="f-grow">{/* Future menu items go here */}</div>
-        <div className="header-right">
+        <div className="grow">{/* Future menu items go here */}</div>
+        <div className="flex items-center gap-3">
           {langSelector()}
           {loggedIn()}
           {loggedOut()}

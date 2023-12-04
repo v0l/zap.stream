@@ -216,9 +216,9 @@ export function LoginSignup({ close }: { close: () => void }) {
                 placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz", id: "yzKwBQ" })}
               />
             </div>
-            <div className="flex f-space">
+            <div className="flex justify-between">
               <div></div>
-              <div className="flex g8">
+              <div className="flex gap-1">
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -246,7 +246,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             <h2>
               <FormattedMessage defaultMessage="Setup Profile" id="nOaArs" />
             </h2>
-            <div className="flex f-center">
+            <div className="flex items-center">
               <div
                 className="avatar-input"
                 onClick={uploadAvatar}

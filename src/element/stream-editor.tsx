@@ -195,7 +195,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             <p>
               <FormattedMessage defaultMessage="Status" id="tzMNF3" />
             </p>
-            <div className="flex g12">
+            <div className="flex gap-2">
               {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => (
                 <span className={`pill${status === v ? " active" : ""}`} onClick={() => setStatus(v)} key={v}>
                   {v}
@@ -243,7 +243,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </>
       )}
       {(options?.canSetContentWarning ?? true) && (
-        <div className="flex g12 content-warning">
+        <div className="flex gap-2 content-warning">
           <div>
             <input type="checkbox" checked={contentWarning} onChange={e => setContentWarning(e.target.checked)} />
           </div>

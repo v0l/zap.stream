@@ -3,20 +3,25 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { Button as AlbyZapsButton } from "@getalby/bitcoin-connect-react";
-import { hexToBech32 } from "@snort/shared";
+import { hexToBech32, unwrap } from "@snort/shared";
 
 import { useLogin } from "@/hooks/login";
 import Copy from "@/element/copy";
+import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
+import { useStreamProvider } from "@/hooks/stream-provider";
+import { StreamProviders } from "@/providers";
 
 const enum Tab {
   Account,
   Notifications,
+  Stream,
 }
 
 export function SettingsPage() {
   const navigate = useNavigate();
   const login = useLogin();
   const [tab, setTab] = useState(Tab.Account);
+  const providers = useStreamProvider();
 
   useEffect(() => {
     if (!login) {
@@ -55,19 +60,36 @@ export function SettingsPage() {
           </>
         );
       }
+      case Tab.Stream: {
+        return <>
+          <h1>
+            <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
+          </h1>
+          <NostrProviderDialog provider={unwrap(providers.find(a => a.name === "zap.stream"))} showEndpoints={true} />
+        </>
+      }
     }
   }
+
+  function tabName(t: Tab) {
+    switch (t) {
+      case Tab.Account: return <FormattedMessage defaultMessage="Account" id="TwyMau" />;
+      case Tab.Stream: return <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
+    }
+  }
+
   return (
     <div className="settings-page">
-      <div className="flex f-col g48">
+      <div className="flex flex-col gap-5">
         <h1>
           <FormattedMessage defaultMessage="Settings" id="D3idYv" />
         </h1>
-        <div className="flex g24 f-col-mobile">
-          <div className="flex f-col g24 tab-options">
-            <div onClick={() => setTab(Tab.Account)}>
-              <FormattedMessage defaultMessage="Account" id="TwyMau" />
+        <div className="flex flex-col gap-2">
+          <div className="flex gap-2 tab-options">
+            {[Tab.Account, Tab.Stream].map(t => <div onClick={() => setTab(t)}>
+              {tabName(t)}
             </div>
+            )}
           </div>
           <div className="tab-content">{tabContent()}</div>
         </div>
