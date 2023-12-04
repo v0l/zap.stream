@@ -1,9 +1,14 @@
 {
-  "short_name": "zap_stream",
+  "short_name": "zap.stream",
   "name": "zap.stream",
   "icons": [
     {
       "src": "logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "logo_256.png",
       "type": "image/png",
       "sizes": "256x256"
     }

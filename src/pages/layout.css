@@ -34,7 +34,7 @@ header {
 }
 
 header .logo {
-  background: url("/logo.png") no-repeat #171717;
+  background: url("/zap-stream.svg") no-repeat;
   background-size: cover;
   border-radius: 16px;
   width: 48px;
