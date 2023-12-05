@@ -140,6 +140,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "Gmiwnd": {
+    "defaultMessage": "Refresh the page to use the latest version"
+  },
   "Gq6x9o": {
     "defaultMessage": "Imagen de portada"
   },
@@ -226,6 +229,9 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} con {amount}"
+  },
+  "RJ2VxG": {
+    "defaultMessage": "A new version has been detected"
   },
   "RJOmzk": {
     "defaultMessage": "He leído y estoy de acuerdo con los {terms} del  {provider}."
@@ -380,6 +386,9 @@
   },
   "r2Jjms": {
     "defaultMessage": "Iniciar sesión"
+  },
+  "rELDbB": {
+    "defaultMessage": "Refresh"
   },
   "rWBFZA": {
     "defaultMessage": "¡Material sexualmente explícito por delante!"

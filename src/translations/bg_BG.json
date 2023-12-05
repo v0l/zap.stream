@@ -140,6 +140,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "Gmiwnd": {
+    "defaultMessage": "Refresh the page to use the latest version"
+  },
   "Gq6x9o": {
     "defaultMessage": "Изображение на корицата"
   },
@@ -226,6 +229,9 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{име} със {количество}"
+  },
+  "RJ2VxG": {
+    "defaultMessage": "A new version has been detected"
   },
   "RJOmzk": {
     "defaultMessage": "Прочетох и се съгласявам със {доставчика} и неговите {общи условия}."
@@ -380,6 +386,9 @@
   },
   "r2Jjms": {
     "defaultMessage": "Вход"
+  },
+  "rELDbB": {
+    "defaultMessage": "Refresh"
   },
   "rWBFZA": {
     "defaultMessage": "Сексуално явен материал напред!"

@@ -140,6 +140,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "Gmiwnd": {
+    "defaultMessage": "Refresh the page to use the latest version"
+  },
   "Gq6x9o": {
     "defaultMessage": "Picha ya Jalada"
   },
@@ -226,6 +229,9 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} pamoja na {amount}"
+  },
+  "RJ2VxG": {
+    "defaultMessage": "A new version has been detected"
   },
   "RJOmzk": {
     "defaultMessage": "Nimesoma na kukubaliana na {terms} ya {provider}."
@@ -380,6 +386,9 @@
   },
   "r2Jjms": {
     "defaultMessage": "Ingia"
+  },
+  "rELDbB": {
+    "defaultMessage": "Refresh"
   },
   "rWBFZA": {
     "defaultMessage": "Nyenzo za ngono wazi mbele yako!"

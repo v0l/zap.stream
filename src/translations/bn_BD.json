@@ -140,6 +140,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "Gmiwnd": {
+    "defaultMessage": "Refresh the page to use the latest version"
+  },
   "Gq6x9o": {
     "defaultMessage": "কভারের ছবি"
   },
@@ -226,6 +229,9 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} দ্বারা {amount}"
+  },
+  "RJ2VxG": {
+    "defaultMessage": "A new version has been detected"
   },
   "RJOmzk": {
     "defaultMessage": "আমি {provider} এর {terms} পড়েছি এবং এর সাথে সহমত প্রকাশ করছি।"
@@ -380,6 +386,9 @@
   },
   "r2Jjms": {
     "defaultMessage": "লগ ইন করুন"
+  },
+  "rELDbB": {
+    "defaultMessage": "Refresh"
   },
   "rWBFZA": {
     "defaultMessage": "সামনে যৌনতাপূর্ণ উপাদান রয়েছে!"

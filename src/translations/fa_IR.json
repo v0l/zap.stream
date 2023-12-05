@@ -140,6 +140,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "Gmiwnd": {
+    "defaultMessage": "Refresh the page to use the latest version"
+  },
   "Gq6x9o": {
     "defaultMessage": "تصویر جلد"
   },
@@ -226,6 +229,9 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} با {amount}"
+  },
+  "RJ2VxG": {
+    "defaultMessage": "A new version has been detected"
   },
   "RJOmzk": {
     "defaultMessage": "من {terms} {provider} را خوانده و با آن موافقم."
@@ -380,6 +386,9 @@
   },
   "r2Jjms": {
     "defaultMessage": "Log In"
+  },
+  "rELDbB": {
+    "defaultMessage": "Refresh"
   },
   "rWBFZA": {
     "defaultMessage": "محتوای نمایان جنسی در پیش است!"
