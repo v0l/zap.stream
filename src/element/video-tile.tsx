@@ -9,7 +9,6 @@ import { StatePill } from "./state-pill";
 import { StreamState } from "@/index";
 import { findTag, getHost } from "@/utils";
 import { formatSats } from "@/number";
-import ZapStream from "/zap-stream.svg";
 import { isContentWarningAccepted } from "./content-warning";
 import { Tags } from "./tags";
 
@@ -37,7 +36,7 @@ export function VideoTile({
       <Link to={`/${link}`} className={`video-tile${contentWarning ? " nsfw" : ""}`} ref={ref} state={ev}>
         <div
           style={{
-            backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : ZapStream) : ""})`,
+            backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : "/zap-stream.svg") : ""})`,
           }}></div>
         <span className="pill-box">
           {showStatus && <StatePill state={status as StreamState} />}

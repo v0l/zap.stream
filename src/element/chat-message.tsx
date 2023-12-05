@@ -157,7 +157,7 @@ export function ChatMessage({
               const emojiName = e.replace(/:/g, "");
               const emoji = isCustomEmojiReaction && getEmojiById(emojiName);
               return (
-                <div className="message-reaction-container">
+                <div className="message-reaction-container" key={`${ev.id}-${emojiName}`}>
                   {isCustomEmojiReaction && emoji ? (
                     <span className="message-reaction">
                       <EmojiComponent name={emoji[1]} url={emoji[2]} />
@@ -176,15 +176,15 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+                }
             }>
             {zapTarget && (
               <SendZapsDialog

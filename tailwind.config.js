@@ -7,6 +7,9 @@ module.exports = {
         "gray-1": "#171717",
         "gray-2": "#222",
       },
+      animation: {
+        "ping-once": "ping 1s cubic-bezier(0, 0, 0.2, 1);",
+      },
     },
   },
   plugins: [],
