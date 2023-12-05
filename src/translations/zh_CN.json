@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "添加"
   },
-  "2CGh/0": {
-    "defaultMessage": "在线"
-  },
   "3HwrQo": {
     "defaultMessage": "打闪!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "删除"
   },
-  "K3uH1C": {
-    "defaultMessage": "离线"
-  },
   "K7AkdL": {
     "defaultMessage": "显示"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "好，是安全的"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "是的，我已满18岁"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "添加卡片"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "打闪 {name}"

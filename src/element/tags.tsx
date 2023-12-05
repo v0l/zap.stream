@@ -15,12 +15,12 @@ export function Tags({ children, max, ev }: { children?: ReactNode; max?: number
     <>
       {children}
       {status === StreamState.Planned && (
-        <span className="pill">
+        <span className="pill bg-gray-1">
           {status === StreamState.Planned ? <FormattedMessage defaultMessage="Starts " id="0hNxBy" /> : ""}
         </span>
       )}
       {tags.map(a => (
-        <a href={`/t/${encodeURIComponent(a)}`} className="pill" key={a}>
+        <a href={`/t/${encodeURIComponent(a)}`} className="pill bg-gray-1" key={a}>
           {a}
         </a>
       ))}

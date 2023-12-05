@@ -78,23 +78,6 @@
   padding: 12px 16px;
 }
 
-.pill {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  color: #a7a7a7;
-}
-
-.pill.live {
-  color: inherit;
-  text-transform: uppercase;
-}
-
-.pill.viewers {
-  color: white;
-  background: rgba(23, 23, 23, 0.7);
-}
-
 .info h1 {
   margin: 0 0 8px 0;
   font-weight: 600;

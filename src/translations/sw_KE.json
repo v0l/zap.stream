@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "Ongeza"
   },
-  "2CGh/0": {
-    "defaultMessage": "moja kwa moja"
-  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "Futa"
   },
-  "K3uH1C": {
-    "defaultMessage": "nje ya mtandao"
-  },
   "K7AkdL": {
     "defaultMessage": "Onyesha"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "Sawa, ni salama"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "Ndiyo, nina zaidi ya miaka 18"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "Ongeza kadi"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"

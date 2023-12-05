@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "Добави"
   },
-  "2CGh/0": {
-    "defaultMessage": "на живо"
-  },
   "3HwrQo": {
     "defaultMessage": "Зап!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "Изтрий"
   },
-  "K3uH1C": {
-    "defaultMessage": "Офлайн"
-  },
   "K7AkdL": {
     "defaultMessage": "Показване"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "Ок, безопасно е"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "Да, Аз съм на 18 или повече"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "Добавяне на карта"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "Зап {име}"

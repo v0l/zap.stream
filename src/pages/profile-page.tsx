@@ -20,6 +20,7 @@ import { Text } from "@/element/text";
 import { StreamState } from "@/index";
 import { findTag } from "@/utils";
 import { formatSats } from "@/number";
+import { StatePill } from "@/element/state-pill";
 
 function Zapper({ pubkey, total }: { pubkey: string; total: number }) {
   return (
@@ -87,20 +88,7 @@ export function ProfilePage() {
           ) : (
             <img className="avatar" alt={profile?.name || link.id} src={placeholder} />
           )}
-          <div className="status-indicator">
-            {isLive ? (
-              <div className="live-button pill live" onClick={goToLive}>
-                <Icon name="signal" />
-                <span>
-                  <FormattedMessage defaultMessage="live" id="2CGh/0" />
-                </span>
-              </div>
-            ) : (
-              <span className="pill offline">
-                <FormattedMessage defaultMessage="offline" id="K3uH1C" />
-              </span>
-            )}
-          </div>
+          <div className="status-indicator">{isLive && <StatePill state={StreamState.Live} onClick={goToLive} />}</div>
           <div className="profile-actions">
             {zapTarget && (
               <SendZapsDialog

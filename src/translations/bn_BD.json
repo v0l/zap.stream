@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "যুক্ত করুন"
   },
-  "2CGh/0": {
-    "defaultMessage": "সরাসরি সম্প্রচার"
-  },
   "3HwrQo": {
     "defaultMessage": "জ্যাপ!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "মুছে ফেলুন"
   },
-  "K3uH1C": {
-    "defaultMessage": "অফলাইন"
-  },
   "K7AkdL": {
     "defaultMessage": "দেখান"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "ঠিক আছে, এটা নিরাপদ"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "হ্যাঁ, আমি ১৮ বছরের উর্ধ্বে"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "কার্ড যুক্ত করুন"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "জ্যাপ {name}"

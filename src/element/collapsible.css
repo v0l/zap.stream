@@ -5,7 +5,7 @@
 }
 
 .collapsible-media a {
-  color: var(--text-link);
+  color: var(--primary);
   word-wrap: break-word;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .url-preview {
-  color: var(--text-link);
+  color: var(--primary);
   cursor: zoom-in;
 }
 
