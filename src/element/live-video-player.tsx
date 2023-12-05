@@ -25,8 +25,10 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
   const [src, setSrc] = useState<string>();
   const [levels, setLevels] = useState<Array<{ level: number; height: number }>>();
   const [level, setLevel] = useState<number>(-1);
-  const [playState, setPlayState] = useState(true);
+  const [playState, setPlayState] = useState<"loading" | "playing" | "paused">("loading");
   const [volume, setVolume] = useState(1);
+  const [position, setPosition] = useState<number>();
+  const [maxPosition, setMaxPosition] = useState<number>();
 
   useEffect(() => {
     if (streamCached && video.current) {
@@ -59,6 +61,7 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
           });
           hls.on(Hls.Events.LEVEL_SWITCHING, (_, l) => {
             console.debug("HLS Level Switch", l);
+            setMaxPosition(l.details?.totalduration);
           });
           // @ts-ignore Can write anyway
           hlsObj.current = hls;
@@ -88,9 +91,12 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
 
   useEffect(() => {
     if (video.current) {
-      video.current.onplaying = () => setPlayState(true);
-      video.current.onpause = () => setPlayState(false);
+      video.current.onplaying = () => setPlayState("playing");
+      video.current.onpause = () => setPlayState("paused");
+      video.current.onseeking = () => setPlayState("loading");
+      video.current.onplay = () => setPlayState("loading");
       video.current.onvolumechange = () => setVolume(video.current?.volume ?? 1);
+      video.current.ontimeupdate = () => setPosition(video.current?.currentTime);
     }
   }, [video]);
 
@@ -110,6 +116,31 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
     }
   }
 
+  function seek(e: React.MouseEvent) {
+    if (e.currentTarget === e.target) {
+      const bb = (e.target as HTMLDivElement).getBoundingClientRect();
+
+      const x = e.clientX - bb.x;
+      const pos = Math.max(0, Math.min(1.0, x / bb.width));
+
+      if (video.current && maxPosition) {
+        const ct = maxPosition * pos;
+        video.current.currentTime = ct;
+        setPosition(ct);
+      }
+    }
+  }
+
+  function playStateToIcon() {
+    switch (playState) {
+      case "playing":
+        return "pause";
+      case "paused":
+        return "play";
+      case "loading":
+        return "loading";
+    }
+  }
   return (
     <div className="relative">
       {status === VideoStatus.Online && (
@@ -117,19 +148,32 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
           className="absolute opacity-0 hover:opacity-100 transition-opacity w-full h-full z-20 bg-[#00000055]"
           onClick={() => {
             if (video.current) {
-              if (playState) {
+              if (playState === "playing") {
                 video.current.pause();
-              } else {
+              } else if (playState === "paused") {
                 video.current.play();
               }
             }
           }}>
           <div className="absolute w-full h-full flex items-center justify-center pointer">
-            <Icon name={playState ? "pause" : "play"} size={80} />
+            <Icon
+              name={playStateToIcon()}
+              size={80}
+              className={playState === "loading" ? "animate-spin" : "animate-ping-once"}
+            />
           </div>
           <div className="absolute flex gap-1 bottom-0 w-full bg-[rgba(0,0,0,0.5)]" onClick={e => e.stopPropagation()}>
-            <div className="grow">
+            <div className="flex grow gap-1">
               <StatePill state={props.status as StreamState} />
+              {props.status === StreamState.Ended && playState && maxPosition && position && (
+                <div className="relative w-full h-full border" onClick={seek}>
+                  <div
+                    className="absolute h-full w-[4px] bg-white"
+                    style={{
+                      width: `${((position / maxPosition) * 100).toFixed(1)}%`,
+                    }}></div>
+                </div>
+              )}
             </div>
             <div className="flex gap-1 items-center">
               <Icon name="volume" />
