@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "追加"
   },
-  "2CGh/0": {
-    "defaultMessage": "ライブ配信中"
-  },
   "3HwrQo": {
     "defaultMessage": "ザップ！"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "削除"
   },
-  "K3uH1C": {
-    "defaultMessage": "オフライン"
-  },
   "K7AkdL": {
     "defaultMessage": "表示"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "はい、大丈夫です"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "はい、18歳以上です"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "カードを追加"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "{name} をザップ"

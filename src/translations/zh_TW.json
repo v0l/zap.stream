@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "添加"
   },
-  "2CGh/0": {
-    "defaultMessage": "在線"
-  },
   "3HwrQo": {
     "defaultMessage": "打閃!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "刪除"
   },
-  "K3uH1C": {
-    "defaultMessage": "離線"
-  },
   "K7AkdL": {
     "defaultMessage": "顯示"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "好，是安全的"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "是的，我已滿18歲"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "新增卡片"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "打閃{name}"

@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "Adicionar"
   },
-  "2CGh/0": {
-    "defaultMessage": "ao vivo"
-  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "Excluir"
   },
-  "K3uH1C": {
-    "defaultMessage": "desconectado"
-  },
   "K7AkdL": {
     "defaultMessage": "Mostrar"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "Ok, está seguro"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "Sim, eu sou maior de 18"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "Adicionar cartão"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"

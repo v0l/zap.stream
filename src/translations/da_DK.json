@@ -38,9 +38,6 @@
   "2/2yg+": {
     "defaultMessage": "Tilføj"
   },
-  "2CGh/0": {
-    "defaultMessage": "live"
-  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -179,9 +176,6 @@
   "K3r6DQ": {
     "defaultMessage": "Slet"
   },
-  "K3uH1C": {
-    "defaultMessage": "offline"
-  },
   "K7AkdL": {
     "defaultMessage": "Vis"
   },
@@ -196,9 +190,6 @@
   },
   "My6HwN": {
     "defaultMessage": "Okay, det er sikkert"
-  },
-  "NXI/XL": {
-    "defaultMessage": "Auto"
   },
   "O2Cy6m": {
     "defaultMessage": "Ja, jeg er over 18 år"
@@ -374,6 +365,9 @@
   },
   "nwA8Os": {
     "defaultMessage": "Tilføj kort"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
