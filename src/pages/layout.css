@@ -33,15 +33,6 @@ header {
   gap: 24px;
 }
 
-header .logo {
-  background: url("/zap-stream.svg") no-repeat;
-  background-size: cover;
-  border-radius: 16px;
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-}
-
 header .btn-header {
   height: 32px;
   border-bottom: 2px solid transparent;
