@@ -81,11 +81,11 @@
 }
 
 .live-chat .message.streamer .profile {
-  color: #f838d9;
+  color: var(--primary);
 }
 
 .live-chat .message a {
-  color: #f838d9;
+  color: var(--primary);
   display: inline-flex;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .live-chat .zap-content a {
-  color: var(--text-link);
+  color: var(--primary);
 }
 
 .top-zappers {

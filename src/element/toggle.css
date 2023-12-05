@@ -23,5 +23,5 @@
   color: white;
 }
 .toggle[data-state="on"] svg {
-  color: var(--text-link);
+  color: var(--primary);
 }

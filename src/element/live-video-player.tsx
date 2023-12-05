@@ -2,9 +2,10 @@
 import Hls from "hls.js";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { StatePill } from "./state-pill";
 import { StreamState } from "..";
 import { Icon } from "./icon";
+import { ProgressBar } from "./progress-bar";
+import { Menu, MenuItem } from "@szhsin/react-menu";
 
 export enum VideoStatus {
   Online = "online",
@@ -52,12 +53,16 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
           });
           hls.on(Hls.Events.MANIFEST_PARSED, () => {
             setStatus(VideoStatus.Online);
-            setLevels(
-              hls.levels.map((a, i) => ({
+            setLevels([
+              {
+                level: -1,
+                height: 0,
+              },
+              ...hls.levels.map((a, i) => ({
                 level: i,
                 height: a.height,
-              }))
-            );
+              })),
+            ]);
           });
           hls.on(Hls.Events.LEVEL_SWITCHING, (_, l) => {
             console.debug("HLS Level Switch", l);
@@ -106,31 +111,6 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
     }
   }, [video, volume]);
 
-  function changeVolume(e: React.MouseEvent) {
-    if (e.currentTarget === e.target) {
-      const bb = (e.target as HTMLDivElement).getBoundingClientRect();
-
-      const x = e.clientX - bb.x;
-      const vol = Math.max(0, Math.min(1.0, x / bb.width));
-      setVolume(vol);
-    }
-  }
-
-  function seek(e: React.MouseEvent) {
-    if (e.currentTarget === e.target) {
-      const bb = (e.target as HTMLDivElement).getBoundingClientRect();
-
-      const x = e.clientX - bb.x;
-      const pos = Math.max(0, Math.min(1.0, x / bb.width));
-
-      if (video.current && maxPosition) {
-        const ct = maxPosition * pos;
-        video.current.currentTime = ct;
-        setPosition(ct);
-      }
-    }
-  }
-
   function playStateToIcon() {
     switch (playState) {
       case "playing":
@@ -141,68 +121,87 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
         return "loading";
     }
   }
+
+  function togglePlay() {
+    if (video.current) {
+      if (playState === "playing") {
+        video.current.pause();
+      } else if (playState === "paused") {
+        video.current.play();
+      }
+    }
+  }
+
+  function levelName(l: number) {
+    if (l === -1) {
+      return <FormattedMessage defaultMessage="AUTO" id="o8pHw3" />;
+    } else {
+      const h = levels?.find(a => a.level === l)?.height;
+      return <FormattedMessage defaultMessage="{n}p" id="YagVIe" values={{ n: h }} />;
+    }
+  }
+
   return (
     <div className="relative">
       {status === VideoStatus.Online && (
         <div
-          className="absolute opacity-0 hover:opacity-100 transition-opacity w-full h-full z-20 bg-[#00000055]"
-          onClick={() => {
-            if (video.current) {
-              if (playState === "playing") {
-                video.current.pause();
-              } else if (playState === "paused") {
-                video.current.play();
-              }
-            }
-          }}>
+          className="absolute opacity-0 hover:opacity-90 transition-opacity w-full h-full z-20 bg-[#00000055]"
+          onClick={() => togglePlay()}>
           <div className="absolute w-full h-full flex items-center justify-center pointer">
-            <Icon
-              name={playStateToIcon()}
-              size={80}
-              className={playState === "loading" ? "animate-spin" : "animate-ping-once"}
-            />
+            <Icon name={playStateToIcon()} size={80} className={playState === "loading" ? "animate-spin" : ""} />
           </div>
-          <div className="absolute flex gap-1 bottom-0 w-full bg-[rgba(0,0,0,0.5)]" onClick={e => e.stopPropagation()}>
-            <div className="flex grow gap-1">
-              <StatePill state={props.status as StreamState} />
-              {props.status === StreamState.Ended && playState && maxPosition && position && (
-                <div className="relative w-full h-full border" onClick={seek}>
-                  <div
-                    className="absolute h-full w-[4px] bg-white"
-                    style={{
-                      width: `${((position / maxPosition) * 100).toFixed(1)}%`,
-                    }}></div>
-                </div>
+          <div
+            className="absolute flex items-center gap-1 bottom-0 w-full bg-primary h-[40px]"
+            onClick={e => e.stopPropagation()}>
+            <div className="flex grow gap-1 items-center">
+              <div className="px-5 py-2 pointer" onClick={() => togglePlay()}>
+                <Icon name={playStateToIcon()} className={playState === "loading" ? "animate-spin" : ""} />
+              </div>
+              <div className="px-3 py-2 uppercase font-bold tracking-wide hover:bg-primary-hover">{props.status}</div>
+              {props.status === StreamState.Ended && maxPosition !== undefined && position !== undefined && (
+                <ProgressBar
+                  value={position / maxPosition}
+                  setValue={v => {
+                    const ct = maxPosition * v;
+                    if (video.current) {
+                      video.current.currentTime = ct;
+                    }
+                    setPosition(ct);
+                  }}
+                  marker={<div className="w-[16px] h-[16px] mt-[-8px] rounded-full bg-white"></div>}
+                  style={{ width: "100%", height: "4px" }}
+                />
               )}
             </div>
-            <div className="flex gap-1 items-center">
+            <div className="flex gap-1 items-center h-full py-2">
               <Icon name="volume" />
-              <div
-                className="relative w-[104px] h-full border"
-                onMouseDown={changeVolume}
-                onMouseMove={e => {
-                  if (e.buttons > 0) {
-                    changeVolume(e);
-                  }
-                }}>
-                <div
-                  className="absolute h-full w-[4px] bg-white"
-                  style={{
-                    left: `${Math.floor(100 * volume)}px`,
-                  }}></div>
-              </div>
+              <ProgressBar value={volume} setValue={v => setVolume(v)} style={{ width: "100px", height: "100%" }} />
             </div>
             <div>
-              <select onChange={e => setLevel(Number(e.target.value))}>
-                <option value={-1}>
-                  <FormattedMessage defaultMessage="Auto" id="NXI/XL" />
-                </option>
+              <Menu
+                direction="top"
+                align="center"
+                menuButton={<div className="px-3 py-2 tracking-wide pointer">{levelName(level)}</div>}
+                menuClassName="bg-primary w-fit">
                 {levels?.map(v => (
-                  <option value={v.level} key={v.level}>
-                    <FormattedMessage defaultMessage="{n}p" id="YagVIe" values={{ n: v.height }} />
-                  </option>
+                  <MenuItem
+                    value={v.level}
+                    key={v.level}
+                    onClick={() => setLevel(v.level)}
+                    className="bg-primary px-3 py-2 text-white">
+                    {levelName(v.level)}
+                  </MenuItem>
                 ))}
-              </select>
+              </Menu>
+            </div>
+            <div
+              className="px-3 py-2 pointer"
+              onClick={() => {
+                if (video.current) {
+                  video.current.requestFullscreen();
+                }
+              }}>
+              <Icon name="fullscreen" size={24} />
             </div>
           </div>
         </div>

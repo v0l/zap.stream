@@ -48,7 +48,7 @@
 
 .new-stream .tos-link {
   cursor: pointer;
-  color: var(--text-link);
+  color: var(--primary);
 }
 
 .new-stream .tos-link:hover {

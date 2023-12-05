@@ -59,12 +59,12 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
           <div className="tags">
             <StatePill state={status as StreamState} />
             {viewers > 0 && (
-              <span className="pill viewers">
+              <span className="pill bg-gray-1">
                 <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(viewers) }} />
               </span>
             )}
             {status === StreamState.Live && (
-              <span className="pill">
+              <span className="pill bg-gray-1">
                 <StreamTimer ev={ev} />
               </span>
             )}
