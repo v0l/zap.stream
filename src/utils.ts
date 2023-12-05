@@ -68,3 +68,13 @@ export function getEventFromLocationState(state: unknown | undefined | null) {
     ? (state as NostrEvent)
     : undefined;
 }
+
+export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
+  return Object.values(
+    vals.reduce((acc, v) => {
+      const k = key(v);
+      acc[k] ??= v;
+      return acc;
+    }, {} as Record<string, T>)
+  );
+}

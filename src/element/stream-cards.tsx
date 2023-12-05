@@ -1,6 +1,6 @@
 import "./stream-cards.css";
 
-import { forwardRef, useContext, useState } from "react";
+import { Suspense, forwardRef, lazy, useContext, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
@@ -10,11 +10,11 @@ import { removeUndefined, unwrap } from "@snort/shared";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 
+const Markdown = lazy(() => import("./markdown"));
 import { Toggle } from "./toggle";
 import { Icon } from "./icon";
 import { ExternalLink } from "./external-link";
 import { FileUploader } from "./file-uploader";
-import { Markdown } from "./markdown";
 import { useLogin } from "@/hooks/login";
 import { useCards, useUserCards } from "@/hooks/cards";
 import { CARD, USER_CARDS } from "@/const";
@@ -57,7 +57,9 @@ const CardPreview = forwardRef(({ style, title, link, image, content }: CardPrev
         ) : (
           <img className="card-image" src={image} alt={title} />
         ))}
-      <Markdown content={content} />
+      <Suspense>
+        <Markdown content={content} />
+      </Suspense>
     </div>
   );
 });

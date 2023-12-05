@@ -1,8 +1,9 @@
 import "./note.css";
+import { lazy } from "react";
 import { type NostrEvent, NostrPrefix } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
 
-import { Markdown } from "./markdown";
+const Markdown = lazy(() => import("./markdown"));
 import { ExternalIconLink } from "./external-link";
 import { Profile } from "./profile";
 

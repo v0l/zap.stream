@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet";
 import { NostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
-import { useContext } from "react";
+import { Suspense, lazy, useContext } from "react";
 
-import { LiveVideoPlayer } from "@/element/live-video-player";
+const LiveVideoPlayer = lazy(() => import("@/element/live-video-player"));
 import { findTag, getEventFromLocationState, getHost } from "@/utils";
 import { Profile, getName } from "@/element/profile";
 import { LiveChat } from "@/element/live-chat";
@@ -147,7 +147,9 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
         <meta property="og:image" content={image ?? ""} />
       </Helmet>
       <div className="video-content">
-        <LiveVideoPlayer stream={stream} poster={image} status={status} />
+        <Suspense>
+          <LiveVideoPlayer stream={stream} poster={image} status={status} />
+        </Suspense>
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />
       </div>

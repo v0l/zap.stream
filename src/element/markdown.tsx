@@ -82,7 +82,7 @@ function renderToken(t: Token): ReactNode {
   }
 }
 
-export const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps, ref) => {
+const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps, ref) => {
   const parsed = useMemo(() => {
     return marked.lexer(props.content);
   }, [props.content, props.tags]);
@@ -93,3 +93,5 @@ export const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: Markdo
     </div>
   );
 });
+
+export default Markdown;

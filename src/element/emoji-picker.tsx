@@ -13,7 +13,7 @@ interface EmojiPickerProps {
   ref: RefObject<HTMLDivElement>;
 }
 
-export function EmojiPicker({
+export default function EmojiPicker({
   topOffset,
   leftOffset,
   onEmojiSelect,

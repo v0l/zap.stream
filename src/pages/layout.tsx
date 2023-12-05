@@ -1,6 +1,6 @@
 import "./layout.css";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -16,6 +16,8 @@ import { LoginSignup } from "@/element/login-signup";
 import { Login } from "@/index";
 import { useLang } from "@/hooks/lang";
 import { AllLocales } from "@/intl";
+import { NewVersion } from "@/serviceWorker";
+import AsyncButton from "@/element/async-button";
 
 export function LayoutPage() {
   const navigate = useNavigate();
@@ -137,6 +139,26 @@ export function LayoutPage() {
         </div>
       </header>
       <Outlet />
+      {NewVersion && <NewVersionBanner />}
     </div>
   );
+}
+
+function NewVersionBanner() {
+  const newVersion = useSyncExternalStore(c => NewVersion.hook(c), () => NewVersion.snapshot());
+  if (!newVersion) return;
+
+  return <div className="fixed top-0 left-0 w-max flex bg-slate-800 py-2 px-4 opacity-95">
+    <div className="grow">
+      <h1>
+        <FormattedMessage defaultMessage="A new version has been detected" id="RJ2VxG" />
+      </h1>
+      <p>
+        <FormattedMessage defaultMessage="Refresh the page to use the latest version" id="Gmiwnd" />
+      </p>
+    </div>
+    <AsyncButton onClick={() => window.location.reload()} className="btn">
+      <FormattedMessage defaultMessage="Refresh" id="rELDbB" />
+    </AsyncButton>
+  </div>
 }

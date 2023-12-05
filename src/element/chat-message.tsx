@@ -1,10 +1,10 @@
 import { SnortContext, useEventReactions, useUserProfile } from "@snort/system-react";
 import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
-import React, { useContext, useMemo, useRef, useState } from "react";
+import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
 import { useHover, useIntersectionObserver, useMediaQuery, useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 
-import { EmojiPicker } from "./emoji-picker";
+const EmojiPicker = lazy(() => import("./emoji-picker"));
 import { Icon } from "./icon";
 import { Emoji as EmojiComponent } from "./emoji";
 import { Profile } from "./profile";
@@ -176,15 +176,15 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+                }
             }>
             {zapTarget && (
               <SendZapsDialog
@@ -211,14 +211,16 @@ export function ChatMessage({
         )}
       </div>
       {showEmojiPicker && (
-        <EmojiPicker
-          topOffset={topOffset ?? 0}
-          leftOffset={leftOffset ?? 0}
-          emojiPacks={emojiPacks}
-          onEmojiSelect={onEmojiSelect}
-          onClickOutside={() => setShowEmojiPicker(false)}
-          ref={emojiRef}
-        />
+        <Suspense>
+          <EmojiPicker
+            topOffset={topOffset ?? 0}
+            leftOffset={leftOffset ?? 0}
+            emojiPacks={emojiPacks}
+            onEmojiSelect={onEmojiSelect}
+            onClickOutside={() => setShowEmojiPicker(false)}
+            ref={emojiRef}
+          />
+        </Suspense>
       )}
     </>
   );

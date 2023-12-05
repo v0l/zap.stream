@@ -17,7 +17,7 @@ export interface VideoPlayerProps {
   poster?: string;
 }
 
-export function LiveVideoPlayer(props: VideoPlayerProps) {
+export default function LiveVideoPlayer(props: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const hlsObj = useRef<Hls>(null);
   const streamCached = useMemo(() => props.stream, [props.stream]);

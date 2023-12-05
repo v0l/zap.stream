@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { Button as AlbyZapsButton } from "@getalby/bitcoin-connect-react";
 import { hexToBech32, unwrap } from "@snort/shared";
 
+const AlbyButton = lazy(() => import("@/element/alby-button"));
 import { useLogin } from "@/hooks/login";
 import Copy from "@/element/copy";
 import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
@@ -53,7 +53,9 @@ export function SettingsPage() {
             <h1>
               <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
             </h1>
-            <AlbyZapsButton />
+            <Suspense>
+              <AlbyButton />
+            </Suspense>
             <h1>
               <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
             </h1>

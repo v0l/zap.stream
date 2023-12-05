@@ -1,14 +1,14 @@
 import { EventKind, NostrLink } from "@snort/system";
-import React, { useContext, useRef, useState } from "react";
+import React, { Suspense, lazy, useContext, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
 import { unixNowMs } from "@snort/shared";
 
+const EmojiPicker = lazy(() => import("./emoji-picker"));
 import { useLogin } from "@/hooks/login";
 import AsyncButton from "./async-button";
 import { Icon } from "./icon";
 import { Textarea } from "./textarea";
-import { EmojiPicker } from "./emoji-picker";
 import type { Emoji, EmojiPack } from "@/types";
 import { LIVE_STREAM_CHAT } from "@/const";
 import { TimeSync } from "@/index";
@@ -88,14 +88,16 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
           <Icon name="face" className="write-emoji-button" />
         </div>
         {showEmojiPicker && (
-          <EmojiPicker
-            topOffset={topOffset ?? 0}
-            leftOffset={leftOffset ?? 0}
-            emojiPacks={emojiPacks}
-            onEmojiSelect={onEmojiSelect}
-            onClickOutside={() => setShowEmojiPicker(false)}
-            ref={emojiRef}
-          />
+          <Suspense>
+            <EmojiPicker
+              topOffset={topOffset ?? 0}
+              leftOffset={leftOffset ?? 0}
+              emojiPacks={emojiPacks}
+              onEmojiSelect={onEmojiSelect}
+              onClickOutside={() => setShowEmojiPicker(false)}
+              ref={emojiRef}
+            />
+          </Suspense>
         )}
       </div>
       <AsyncButton onClick={sendChatMessage} className="btn btn-border">

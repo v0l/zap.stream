@@ -1,9 +1,8 @@
 import { useMemo } from "react";
-import uniqBy from "lodash.uniqby";
 
 import { NostrEvent, NoteCollection, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { findTag } from "@/utils";
+import { findTag, uniqBy } from "@/utils";
 import { EMOJI_PACK, USER_EMOJIS } from "@/const";
 import type { EmojiPack, EmojiTag, Tags } from "@/types";
 

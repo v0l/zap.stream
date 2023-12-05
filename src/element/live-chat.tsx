@@ -4,7 +4,6 @@ import { EventKind, NostrEvent, NostrLink, ParsedZap } from "@snort/system";
 import { useEventReactions } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
-import uniqBy from "lodash.uniqby";
 
 import { Icon } from "./icon";
 import Spinner from "./spinner";
@@ -22,7 +21,7 @@ import { useLogin } from "@/hooks/login";
 import { useAddress } from "@/hooks/event";
 import { formatSats } from "@/number";
 import { LIVE_STREAM_CHAT, WEEK } from "@/const";
-import { findTag, getHost, getTagValues } from "@/utils";
+import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "./top-zappers";
 
 export interface LiveChatOptions {
