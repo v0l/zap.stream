@@ -124,7 +124,9 @@ export function LayoutPage() {
         <title>Home - zap.stream</title>
       </Helmet>
       <header>
-        <div className="bg-[#f1f0ff] flex items-center pointer rounded-2xl aspect-square px-1" onClick={() => navigate("/")}>
+        <div
+          className="bg-[#f1f0ff] flex items-center pointer rounded-2xl aspect-square px-1"
+          onClick={() => navigate("/")}>
           <img src="/zap-stream.svg" width={40} />
         </div>
         <div className="grow">{/* Future menu items go here */}</div>
