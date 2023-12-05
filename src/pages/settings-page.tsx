@@ -8,6 +8,8 @@ import { useLogin } from "@/hooks/login";
 import Copy from "@/element/copy";
 import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
 import { useStreamProvider } from "@/hooks/stream-provider";
+import { Login, StreamState } from "..";
+import { StatePill } from "@/element/state-pill";
 
 const enum Tab {
   Account,
@@ -50,6 +52,21 @@ export function SettingsPage() {
                 <Copy text={hexToBech32("nsec", login.privateKey)} />
               </div>
             )}
+            <h1>
+              <FormattedMessage defaultMessage="Theme" id="Pe0ogR" />
+            </h1>
+            <div>
+              <StatePill state={StreamState.Live} />
+            </div>
+            <div className="flex gap-2">
+              {["#7F006A", "#E206BF", "#7406E2", "#3F06E2", "#393939", "#ff563f", "#ff8d2b", "#34d2fe"].map(a => (
+                <div
+                  className={`w-4 h-4 pointer${login?.color === a ? " border" : ""}`}
+                  title={a}
+                  style={{ backgroundColor: a }}
+                  onClick={() => Login.setColor(a)}></div>
+              ))}
+            </div>
             <h1>
               <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
             </h1>

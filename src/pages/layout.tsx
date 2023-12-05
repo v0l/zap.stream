@@ -1,6 +1,6 @@
 import "./layout.css";
 
-import { useState, useSyncExternalStore } from "react";
+import { CSSProperties, useState, useSyncExternalStore } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -120,8 +120,12 @@ export function LayoutPage() {
     );
   }
 
+  const styles = {} as CSSProperties;
+  if (login?.color) {
+    (styles as Record<string, string>)["--primary"] = login.color;
+  }
   return (
-    <div className={`page${location.pathname.startsWith("/naddr1") ? " stream" : ""}`}>
+    <div className={`page${location.pathname.startsWith("/naddr1") ? " stream" : ""}`} style={styles}>
       <Helmet>
         <title>Home - zap.stream</title>
       </Helmet>

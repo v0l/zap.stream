@@ -41,7 +41,7 @@ export function VideoTile({
         <span className="pill-box">
           {showStatus && <StatePill state={status as StreamState} />}
           {viewers && (
-            <span className="pill viewers">
+            <span className="pill viewers bg-gray-1">
               <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(Number(viewers)) }} />
             </span>
           )}

@@ -23,6 +23,7 @@ export interface LoginSession {
   muted: ReplaceableTags;
   cards: ReplaceableTags;
   emojis: Array<EmojiPack>;
+  color?: string;
 }
 
 const initialState = {
@@ -111,6 +112,12 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     }
     this.#session.cards.tags = cards;
     this.#session.cards.timestamp = ts;
+    this.#save();
+  }
+
+  setColor(color: string) {
+    if (!this.#session) return;
+    this.#session.color = color;
     this.#save();
   }
 

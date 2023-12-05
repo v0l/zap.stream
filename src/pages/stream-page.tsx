@@ -58,11 +58,9 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
           <p>{findTag(ev, "summary")}</p>
           <div className="tags">
             <StatePill state={status as StreamState} />
-            {viewers > 0 && (
-              <span className="pill bg-gray-1">
-                <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(viewers) }} />
-              </span>
-            )}
+            <span className="pill bg-gray-1">
+              <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(viewers) }} />
+            </span>
             {status === StreamState.Live && (
               <span className="pill bg-gray-1">
                 <StreamTimer ev={ev} />
