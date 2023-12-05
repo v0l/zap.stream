@@ -124,7 +124,7 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
         </div>
         <div className="absolute flex gap-1 bottom-0 w-full bg-[rgba(0,0,0,0.5)]" onClick={e => e.stopPropagation()}>
           <div className="grow">
-            <StatePill state={StreamState.Live} />
+            <StatePill state={props.status as StreamState} />
           </div>
           <div className="flex gap-1 items-center">
             <Icon name="volume" />
