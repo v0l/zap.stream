@@ -80,6 +80,9 @@
   "79lLl+": {
     "defaultMessage": "Music"
   },
+  "7UOvbT": {
+    "defaultMessage": "Offline"
+  },
   "8YT6ja": {
     "defaultMessage": "Ingiza maandishi ili kuzungumza"
   },
@@ -191,6 +194,9 @@
   "My6HwN": {
     "defaultMessage": "Sawa, ni salama"
   },
+  "NXI/XL": {
+    "defaultMessage": "Auto"
+  },
   "O2Cy6m": {
     "defaultMessage": "Ndiyo, nina zaidi ya miaka 18"
   },
@@ -260,6 +266,9 @@
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
+  },
+  "YagVIe": {
+    "defaultMessage": "{n}p"
   },
   "Z8ZOEY": {
     "defaultMessage": "Njia hii haina usalama. Tunapendekeza utumie {nostrlink}"

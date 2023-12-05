@@ -80,6 +80,9 @@
   "79lLl+": {
     "defaultMessage": "Music"
   },
+  "7UOvbT": {
+    "defaultMessage": "Offline"
+  },
   "8YT6ja": {
     "defaultMessage": "পড়ার জন্য মূলপাঠ সন্নিবেশ করুন"
   },
@@ -191,6 +194,9 @@
   "My6HwN": {
     "defaultMessage": "ঠিক আছে, এটা নিরাপদ"
   },
+  "NXI/XL": {
+    "defaultMessage": "Auto"
+  },
   "O2Cy6m": {
     "defaultMessage": "হ্যাঁ, আমি ১৮ বছরের উর্ধ্বে"
   },
@@ -260,6 +266,9 @@
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
+  },
+  "YagVIe": {
+    "defaultMessage": "{n}p"
   },
   "Z8ZOEY": {
     "defaultMessage": "এই পদ্ধতিটি নিরাপদ নয়। আমরা একটি {nostrlink} ব্যবহারের পরামর্শ দিচ্ছি।"

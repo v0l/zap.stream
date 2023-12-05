@@ -80,6 +80,9 @@
   "79lLl+": {
     "defaultMessage": "Music"
   },
+  "7UOvbT": {
+    "defaultMessage": "Offline"
+  },
   "8YT6ja": {
     "defaultMessage": "输入要转为语音的文本"
   },
@@ -191,6 +194,9 @@
   "My6HwN": {
     "defaultMessage": "好，是安全的"
   },
+  "NXI/XL": {
+    "defaultMessage": "Auto"
+  },
   "O2Cy6m": {
     "defaultMessage": "是的，我已满18岁"
   },
@@ -260,6 +266,9 @@
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
+  },
+  "YagVIe": {
+    "defaultMessage": "{n}p"
   },
   "Z8ZOEY": {
     "defaultMessage": "这个方式不安全。我们建议使用{nostrlink}"

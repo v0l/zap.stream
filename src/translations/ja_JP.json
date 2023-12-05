@@ -80,6 +80,9 @@
   "79lLl+": {
     "defaultMessage": "Music"
   },
+  "7UOvbT": {
+    "defaultMessage": "Offline"
+  },
   "8YT6ja": {
     "defaultMessage": "テキストを挿入して話す"
   },
@@ -191,6 +194,9 @@
   "My6HwN": {
     "defaultMessage": "はい、大丈夫です"
   },
+  "NXI/XL": {
+    "defaultMessage": "Auto"
+  },
   "O2Cy6m": {
     "defaultMessage": "はい、18歳以上です"
   },
@@ -260,6 +266,9 @@
   "YPh5Nq": {
     "defaultMessage": "{rate}",
     "description": "Showing zap amount in USD @ rate"
+  },
+  "YagVIe": {
+    "defaultMessage": "{n}p"
   },
   "Z8ZOEY": {
     "defaultMessage": "この方法は安全ではありません。 {nostrlink}。"

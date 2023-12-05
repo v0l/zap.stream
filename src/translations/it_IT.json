@@ -80,6 +80,9 @@
   "79lLl+": {
     "defaultMessage": "Music"
   },
+  "7UOvbT": {
+    "defaultMessage": "Offline"
+  },
   "8YT6ja": {
     "defaultMessage": "Inserisci il testo da pronunciare"
   },
@@ -191,6 +194,9 @@
   "My6HwN": {
     "defaultMessage": "Ok, è sicuro"
   },
+  "NXI/XL": {
+    "defaultMessage": "Auto"
+  },
   "O2Cy6m": {
     "defaultMessage": "Sì, ho più di 18 anni"
   },
@@ -260,6 +266,9 @@
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
+  },
+  "YagVIe": {
+    "defaultMessage": "{n}p"
   },
   "Z8ZOEY": {
     "defaultMessage": "Questo metodo non è sicuro. Si consiglia di utilizzare un sito {nostrlink}"

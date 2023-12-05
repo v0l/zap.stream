@@ -23,7 +23,7 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
   const streamCached = useMemo(() => props.stream, [props.stream]);
   const [status, setStatus] = useState<VideoStatus>();
   const [src, setSrc] = useState<string>();
-  const [levels, setLevels] = useState<Array<{ level: number, height: number }>>();
+  const [levels, setLevels] = useState<Array<{ level: number; height: number }>>();
   const [level, setLevel] = useState<number>(-1);
   const [playState, setPlayState] = useState(true);
   const [volume, setVolume] = useState(1);
@@ -50,10 +50,12 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
           });
           hls.on(Hls.Events.MANIFEST_PARSED, () => {
             setStatus(VideoStatus.Online);
-            setLevels(hls.levels.map((a, i) => ({
-              level: i,
-              height: a.height
-            })));
+            setLevels(
+              hls.levels.map((a, i) => ({
+                level: i,
+                height: a.height,
+              }))
+            );
           });
           hls.on(Hls.Events.LEVEL_SWITCHING, (_, l) => {
             console.debug("HLS Level Switch", l);
@@ -64,7 +66,7 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
             // @ts-ignore Can write anyway
             hlsObj.current = null;
             hls.destroy();
-          }
+          };
         } catch (e) {
           console.error(e);
           setStatus(VideoStatus.Offline);
@@ -110,59 +112,63 @@ export function LiveVideoPlayer(props: VideoPlayerProps) {
 
   return (
     <div className="relative">
-      {status === VideoStatus.Online && <div className="absolute opacity-0 hover:opacity-100 transition-opacity w-full h-full z-20 bg-[#00000055]" onClick={() => {
-        if (video.current) {
-          if (playState) {
-            video.current.pause();
-          } else {
-            video.current.play();
-          }
-        }
-      }}>
-        <div className="absolute w-full h-full flex items-center justify-center pointer">
-          <Icon name={playState ? "pause" : "play"} size={80} />
-        </div>
-        <div className="absolute flex gap-1 bottom-0 w-full bg-[rgba(0,0,0,0.5)]" onClick={e => e.stopPropagation()}>
-          <div className="grow">
-            <StatePill state={props.status as StreamState} />
-          </div>
-          <div className="flex gap-1 items-center">
-            <Icon name="volume" />
-            <div className="relative w-[104px] h-full border" onMouseDown={changeVolume} onMouseMove={e => {
-              if (e.buttons > 0) {
-                changeVolume(e);
+      {status === VideoStatus.Online && (
+        <div
+          className="absolute opacity-0 hover:opacity-100 transition-opacity w-full h-full z-20 bg-[#00000055]"
+          onClick={() => {
+            if (video.current) {
+              if (playState) {
+                video.current.pause();
+              } else {
+                video.current.play();
               }
-            }}>
-              <div className="absolute h-full w-[4px] bg-white" style={{
-                left: `${Math.floor(100 * volume)}px`
-              }}></div>
+            }
+          }}>
+          <div className="absolute w-full h-full flex items-center justify-center pointer">
+            <Icon name={playState ? "pause" : "play"} size={80} />
+          </div>
+          <div className="absolute flex gap-1 bottom-0 w-full bg-[rgba(0,0,0,0.5)]" onClick={e => e.stopPropagation()}>
+            <div className="grow">
+              <StatePill state={props.status as StreamState} />
+            </div>
+            <div className="flex gap-1 items-center">
+              <Icon name="volume" />
+              <div
+                className="relative w-[104px] h-full border"
+                onMouseDown={changeVolume}
+                onMouseMove={e => {
+                  if (e.buttons > 0) {
+                    changeVolume(e);
+                  }
+                }}>
+                <div
+                  className="absolute h-full w-[4px] bg-white"
+                  style={{
+                    left: `${Math.floor(100 * volume)}px`,
+                  }}></div>
+              </div>
+            </div>
+            <div>
+              <select onChange={e => setLevel(Number(e.target.value))}>
+                <option value={-1}>
+                  <FormattedMessage defaultMessage="Auto" id="NXI/XL" />
+                </option>
+                {levels?.map(v => (
+                  <option value={v.level} key={v.level}>
+                    <FormattedMessage defaultMessage="{n}p" id="YagVIe" values={{ n: v.height }} />
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-          <div>
-            <select onChange={e => setLevel(Number(e.target.value))}>
-              <option value={-1}>
-                <FormattedMessage defaultMessage="Auto" id="NXI/XL" />
-              </option>
-              {levels?.map(v => <option value={v.level} key={v.level}>
-                <FormattedMessage defaultMessage="{n}p" id="YagVIe" values={{ n: v.height }} />
-              </option>)}
-            </select>
-          </div>
         </div>
-      </div>}
-      {
-        status === VideoStatus.Offline && <div className="absolute w-full h-full z-20 bg-[#000000aa] flex items-center justify-center text-3xl font-bold uppercase">
+      )}
+      {status === VideoStatus.Offline && (
+        <div className="absolute w-full h-full z-20 bg-[#000000aa] flex items-center justify-center text-3xl font-bold uppercase">
           <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
         </div>
-      }
-      <video
-        className="z-10"
-        ref={video}
-        autoPlay={true}
-        poster={props.poster}
-        src={src}
-        playsInline={true}
-      />
-    </div >
+      )}
+      <video className="z-10" ref={video} autoPlay={true} poster={props.poster} src={src} playsInline={true} />
+    </div>
   );
 }
