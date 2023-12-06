@@ -1,6 +1,6 @@
 import "./root.css";
 import { FormattedMessage } from "react-intl";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import type { NostrEvent } from "@snort/system";
 
 import { VideoTile } from "@/element/video-tile";
@@ -28,6 +28,20 @@ export function RootPage() {
   const plannedEvents = planned.filter(e => !mutedHosts.has(getHost(e))).filter(followsHost);
   const endedEvents = ended.filter(e => !mutedHosts.has(getHost(e)));
 
+  const liveByHashtag = useMemo(() => {
+    return hashtags
+      .map(t => ({
+        tag: t,
+        live: live
+          .filter(e => !mutedHosts.has(getHost(e)))
+          .filter(e => {
+            const evTags = getTagValues(e.tags, "t");
+            return evTags.includes(t);
+          }),
+      }))
+      .filter(t => t.live.length > 0);
+  }, [live, hashtags]);
+
   return (
     <div className="homepage">
       {hasFollowingLive && (
@@ -51,19 +65,13 @@ export function RootPage() {
             ))}
         </div>
       )}
-      {hashtags.map(t => (
+      {liveByHashtag.map(t => (
         <>
-          <h2 className="divider line one-line">#{t}</h2>
+          <h2 className="divider line one-line">#{t.tag}</h2>
           <div className="video-grid">
-            {live
-              .filter(e => !mutedHosts.has(getHost(e)))
-              .filter(e => {
-                const evTags = getTagValues(e.tags, "t");
-                return evTags.includes(t);
-              })
-              .map(e => (
-                <VideoTile ev={e} key={e.id} />
-              ))}
+            {t.live.map(e => (
+              <VideoTile ev={e} key={e.id} />
+            ))}
           </div>
         </>
       ))}
