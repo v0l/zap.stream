@@ -207,7 +207,7 @@
     "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Erscheinungsbild"
   },
   "Q3au2v": {
     "defaultMessage": "Ungefähr {estimate}"
@@ -228,7 +228,7 @@
     "defaultMessage": "Eine neue Version wurde gefunden"
   },
   "RJOmzk": {
-    "defaultMessage": "Ich habe die {provider} {terms} gelesen und stimme ihnen zu."
+    "defaultMessage": "Ich habe die {terms} von {provider} gelesen und bin damit einverstanden."
   },
   "RXQdxR": {
     "defaultMessage": "Bitte melde dich an, um Nachrichten zu schreiben!"
