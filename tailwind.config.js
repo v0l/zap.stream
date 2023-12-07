@@ -13,7 +13,7 @@ module.exports = {
       },
       animation: {
         "ping-once": "ping 1s cubic-bezier(0, 0, 0.2, 1);",
-        flash: "pulse 0.5s 6 linear;"
+        flash: "pulse 0.5s 6 linear;",
       },
     },
   },

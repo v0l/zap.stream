@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "No emails, just awesomeness!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Connect"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Add"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Cancel"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, your lightning address looks wrong"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Server Url"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Title"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Content"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream Key"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ok, it's safe"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "I have read and agree with {provider}''s {terms}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Please login to write messages!"
   },
   "RrCui3": {
     "defaultMessage": "Summary"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Ended"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "You can change this later"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Continue"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Following"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Unfollow"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Endpoint"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Voice"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream type should be HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Log In"

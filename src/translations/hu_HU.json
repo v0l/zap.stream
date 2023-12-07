@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Nincs szükség E-mailre, csak élvezd!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Csatlakozás"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Hozzáad"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Mégse"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, a LN címed rossznak tűnik"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Kiszolgáló URL-címe"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Streamszolgáltatók"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Cím"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zap-elt {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "Kifogásolható tartalom"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream kulcs"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ok, biztonságos"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Elolvastam és egyetértek a {provider} {terms}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Üzenetek írásához kérjük jelentkezz be!"
   },
   "RrCui3": {
     "defaultMessage": "Összegzés"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Befejezve"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Ezt később megváltoztathatod"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Folytatás"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Követek"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Követés visszavonása"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Árleszállítás"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Végpont"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Hang"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "A stream típusának HLS-nek kell lennie"
   },
-  "pO/lPX": {
-    "defaultMessage": "Ütemezett: {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Bejelentkezés"

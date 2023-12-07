@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Ei sähköposteja, pelkästään mahtavuutta!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Yhdistä"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Lisää"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Peruuta"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, lightning-oitteesi näyttää väärältä"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Palvelimen URL"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Streamaustarjoajat"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Otsikko"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zappasi {amount} satsia"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-sisältöä"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Streamin avain"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ok, se on turvassa"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Olen lukenut ja hyväksynyt {provider}:n {terms}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Kirjaudu sisään kirjoittaaksesi viestejä!"
   },
   "RrCui3": {
     "defaultMessage": "Yhteenveto"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Päättynyt"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Voit muuttaa tätä myöhemmin"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Jatka"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Seuraa"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Älä seuraa"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Loppupiste"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Ääni"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Streamin tyyppi tulisi olla HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Ajoitettu {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Kirjaudu sisään"

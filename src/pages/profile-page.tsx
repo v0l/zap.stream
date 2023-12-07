@@ -21,7 +21,6 @@ import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
 import { ZapperRow } from "@/element/zapper-row";
 
-
 function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
   const zappers = useTopZappers(zaps);
   return (
@@ -131,20 +130,22 @@ export function ProfilePage() {
 }
 
 function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
-  return <div className="flex gap-3 flex-wrap justify-center">
-    {streams.map(ev => (
-      <div key={ev.id} className="flex flex-col gap-1 sm:w-64 w-full">
-        <VideoTile ev={ev} showAuthor={false} showStatus={false} />
-        <span className="text-neutral-500">
-          <FormattedMessage
-            defaultMessage="Streamed on {date}"
-            id="cvAsEh"
-            values={{
-              date: new Date(ev.created_at * 1000).toLocaleDateString(),
-            }}
-          />
-        </span>
-      </div>
-    ))}
-  </div>;
+  return (
+    <div className="flex gap-3 flex-wrap justify-center">
+      {streams.map(ev => (
+        <div key={ev.id} className="flex flex-col gap-1 sm:w-64 w-full">
+          <VideoTile ev={ev} showAuthor={false} showStatus={false} />
+          <span className="text-neutral-500">
+            <FormattedMessage
+              defaultMessage="Streamed on {date}"
+              id="cvAsEh"
+              values={{
+                date: new Date(ev.created_at * 1000).toLocaleDateString(),
+              }}
+            />
+          </span>
+        </div>
+      ))}
+    </div>
+  );
 }

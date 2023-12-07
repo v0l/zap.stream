@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "No emails, just awesomeness!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "اتصال"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "افزودن"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "زَپ!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "لغو"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, your lightning address looks wrong"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "آدرس سرور"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "ارائه دهندگان پخش زنده"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "عنوان"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} {amount} ساتوشی زپ زد"
   },
   "Atr2p4": {
     "defaultMessage": "محتوای نامناسب برای کودکان و محل کار"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "کلید پخش زنده"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "باشه، امن است"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "من {terms} {provider} را خوانده و با آن موافقم."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "لطفا برای نوشتن پیام وارد شوید!"
   },
   "RrCui3": {
     "defaultMessage": "چکیده"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "به پایان رسید"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "بعدا می توانید این را تغییر دهید"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "ادامه"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "بعدی"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "لغو دنبال کردن"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "مارک‌داون"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "نقطه انتها"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Voice"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "نوع پخش باید HLS باشد"
   },
-  "pO/lPX": {
-    "defaultMessage": "زمان‌بندی شده برای {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Log In"

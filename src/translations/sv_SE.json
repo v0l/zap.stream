@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Inga e-post, bara fantastiskt!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Anslut"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Lägg till"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Avbryt"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, din lightning adress ser fel ut"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Server Url"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Leverantörer"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-innehåll"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream nyckel"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ok, det är säkert"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Jag har läst och godkänner {provider}'s {terms}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Vänligen logga in för att skriva meddelanden!"
   },
   "RrCui3": {
     "defaultMessage": "Summering"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Avslutade"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Du kan ändra detta senare"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Fortsätt"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Följer"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Sluta följa"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Slutpunkt"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Röst"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream typ bör vara HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Schemalagd för {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Logga In"

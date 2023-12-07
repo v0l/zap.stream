@@ -118,9 +118,18 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const evLink = ev ? NostrLink.fromEvent(ev) : undefined;
-  const { title, summary, image, status, tags, contentWarning, stream, recording, goal: goalTag } = extractStreamInfo(ev);
+  const {
+    title,
+    summary,
+    image,
+    status,
+    tags,
+    contentWarning,
+    stream,
+    recording,
+    goal: goalTag,
+  } = extractStreamInfo(ev);
   const goal = useZapGoal(goalTag);
-
 
   if (contentWarning && !isContentWarningAccepted()) {
     return <ContentWarningOverlay />;
@@ -145,9 +154,14 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />
       </div>
-      <LiveChat link={evLink ?? link} ev={ev} goal={goal} options={{
-        canWrite: status === StreamState.Live
-      }} />
+      <LiveChat
+        link={evLink ?? link}
+        ev={ev}
+        goal={goal}
+        options={{
+          canWrite: status === StreamState.Live,
+        }}
+      />
     </div>
   );
 }

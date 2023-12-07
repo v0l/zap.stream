@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Geen e-mails, gewoon geweldig!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Verbinden"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Toevoegen"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Annuleer"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, je bliksemadres ziet er verkeerd uit"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Url van server"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-inhoud"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream Sleutel"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Oké, het is veilig"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Ik heb {provider}'s {terms} gelezen en ga hiermee akkoord."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Log in om berichten te schrijven!"
   },
   "RrCui3": {
     "defaultMessage": "Overzicht"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Beëindigd"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "U kunt dit later wijzigen"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Hervatten"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Volgend"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Ontvolgen"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Eindpunt"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Stem"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream type moet HLS zijn"
   },
-  "pO/lPX": {
-    "defaultMessage": "Gepland voor {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Aanmelden"

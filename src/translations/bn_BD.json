@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "কোনো ইমেইল নয়, কেবল বিস্ময়!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "সংযুক্ত হোন"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "যুক্ত করুন"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "জ্যাপ!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "বাতিল করুন"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "হুম, আপনার বিজলি ঠিকানাটি সঠিক নয়"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "সার্ভারের Url"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "স্ট্রিম প্রদানকারীরা"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "শিরোনাম"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} {amount} পরিমাণ স্যাট জ্যাপ করেছেন"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW আধেয়"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "চাবি স্ট্রিম করুন"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "ঠিক আছে, এটা নিরাপদ"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "আমি {provider} এর {terms} পড়েছি এবং এর সাথে সহমত প্রকাশ করছি।"
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "মেসেজ দিতে লগইন করুন!"
   },
   "RrCui3": {
     "defaultMessage": "সারসংক্ষেপ"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "শেষ হয়েছে"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "আপনি এটি পরে পরিবর্তন করতে পারবেন"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "চালিয়ে যান"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "অনুসরণ করা হচ্ছে"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "আনফলো করুন"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "মার্কডাউন"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "শেষপ্রান্ত"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "কণ্ঠস্বর"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "স্ট্রিমের ধরন HLS হওয়া উচিত"
   },
-  "pO/lPX": {
-    "defaultMessage": "{date} তারিখের জন্য নির্ধারিত"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "লগ ইন করুন"

@@ -7,7 +7,13 @@ type StatePillProps = { state: StreamState } & HTMLProps<HTMLSpanElement>;
 
 export function StatePill({ state, ...props }: StatePillProps) {
   return (
-    <span {...props} className={classNames("uppercase font-white pill", state === StreamState.Live ? "bg-primary" : "bg-gray-1", props.className)}>
+    <span
+      {...props}
+      className={classNames(
+        "uppercase font-white pill",
+        state === StreamState.Live ? "bg-primary" : "bg-gray-1",
+        props.className
+      )}>
       {state}
     </span>
   );

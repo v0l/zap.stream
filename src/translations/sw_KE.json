@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Hakuna barua pepe, uzuri tu!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Unganisha"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Ongeza"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Ghairi"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, anwani yako ya umeme inaonekana si sahihi"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Url ya seva"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Watoa huduma za mkondo"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Kichwa"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} amezap {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "Maudhui ya NSFW"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Ufunguo wa Kutiririsha"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Sawa, ni salama"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Nimesoma na kukubaliana na {terms} ya {provider}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Tafadhali ingia ili kuandika ujumbe!"
   },
   "RrCui3": {
     "defaultMessage": "Muhtasari"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Imeisha"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Unaweza kubadilisha hii baadaye"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Endelea"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Kufuatia"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Acha kufuata"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Alama"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Mwisho"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Sauti"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Aina ya mtiririko inapaswa kuwa HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Imeratibiwa tarehe {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Ingia"

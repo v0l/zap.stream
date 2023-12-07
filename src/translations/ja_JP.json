@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "メールもない！"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "接続"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "追加"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "ザップ！"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "キャンセル"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "うーん、あなたのライトニングアドレスは間違っているようだ"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "サーバー URL"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "配信の提供元"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "タイトル"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} が {amount} sats をザップしました"
   },
   "Atr2p4": {
     "defaultMessage": "不適切な内容"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "配信キー"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "はい、大丈夫です"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "{provider} の {terms} を読み、同意します。"
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "メッセージを書き込むにはログインしてください！"
   },
   "RrCui3": {
     "defaultMessage": "概要"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "終了しました"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "これはあとで変更することができます"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "続ける"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "フォロー中"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "フォロー解除"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "マークダウン"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "エンドポイント"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "声"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "配信タイプはHLSでなければなりません"
   },
-  "pO/lPX": {
-    "defaultMessage": "配信予定：{date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "ログイン"

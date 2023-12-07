@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Ingen e-mails, bare fantastiskhed!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Forbind"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Tilføj"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Annuller"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, din lynadresse ser forkert ud"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Server-URL"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Strømudbydere"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zappet {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-indhold"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream-nøgle"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Okay, det er sikkert"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Jeg har læst og er enig i {provider}' s {terms}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Log ind for at skrive beskeder!"
   },
   "RrCui3": {
     "defaultMessage": "Resumé"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Afsluttet"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Du kan ændre dette senere"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Fortsæt"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Følgende"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Følg ikke"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Slutpunkt"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Stemme"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream-typen skal være HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Planlagt til {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Log ind"

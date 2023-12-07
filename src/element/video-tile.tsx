@@ -29,7 +29,11 @@ export function VideoTile({
   const link = encodeTLV(NostrPrefix.Address, id, undefined, ev.kind, ev.pubkey);
   return (
     <div className="video-tile-container">
-      <Link to={`/${link}`} className={`video-tile${(contentWarning && !isContentWarningAccepted()) ? " nsfw" : ""}`} ref={ref} state={ev}>
+      <Link
+        to={`/${link}`}
+        className={`video-tile${contentWarning && !isContentWarningAccepted() ? " nsfw" : ""}`}
+        ref={ref}
+        state={ev}>
         <div
           style={{
             backgroundImage: `url(${inView ? ((image?.length ?? 0) > 0 ? image : "/zap-stream.svg") : ""})`,
@@ -38,7 +42,11 @@ export function VideoTile({
           {showStatus && <StatePill state={status as StreamState} />}
           {participants && (
             <span className="pill viewers bg-gray-1">
-              <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(Number(participants)) }} />
+              <FormattedMessage
+                defaultMessage="{n} viewers"
+                id="3adEeb"
+                values={{ n: formatSats(Number(participants)) }}
+              />
             </span>
           )}
         </span>

@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Sin correos electrónicos, ¡sólo genialidad!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Conectar"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Agregar"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Cancelar"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, tu dirección de rayos parece incorrecta"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Url del servidor"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Proveedores de transmisión"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Título"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zapearon {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "Contenido NSFW -No Apto Para el Trabajo-"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Clave de transmisión"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ok, es seguro"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "He leído y estoy de acuerdo con los {terms} del  {provider}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "¡Por favor, inicia sesión para escribir mensajes!"
   },
   "RrCui3": {
     "defaultMessage": "Resumen"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Finalizado"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Podrás cambiar esto más tarde"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Continuar"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Siguiendo"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Dejar de seguir"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Extremo"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Voz"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "El tipo de la transmisión debe ser HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Programada para el {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Iniciar sesión"

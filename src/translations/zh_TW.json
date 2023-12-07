@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "沒有電子郵件，只有最棒！"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "連接"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "添加"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "打閃!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "取消"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "嗯，看起來你的閃電地址不對"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "伺服器 URL"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "直播流來源"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "標題"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person}已打閃{amount}聰"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW 内容"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "直播流密鑰"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "好，是安全的"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "我已閱讀並同意{provider}的{terms}。"
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "請登錄以撰寫消息！"
   },
   "RrCui3": {
     "defaultMessage": "概要"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "已結束"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "你可以稍後更改它"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "繼續"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "已關注"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "取消關注"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "端點"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "語音"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "直播流類型應該是 HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "預定於{date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "登錄"

@@ -91,8 +91,7 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
-    return [...feed.messages, ...feed.reactions, ...awards, ...extra]
-      .sort((a, b) => b.created_at - a.created_at);
+    return [...feed.messages, ...feed.reactions, ...awards, ...extra].sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.reactions, awards]);
 
   const filteredEvents = useMemo(() => {
@@ -130,10 +129,15 @@ export function LiveChat({
           switch (a.kind) {
             case -1:
             case -2: {
-              return <b className="border px-3 py-2 text-center border-gray-2 rounded-xl bg-primary uppercase">
-                {a.kind === -1 ? <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />
-                  : <FormattedMessage defaultMessage="Stream Ended" id="jkAQj5" />}
-              </b>;
+              return (
+                <b className="border px-3 py-2 text-center border-gray-2 rounded-xl bg-primary uppercase">
+                  {a.kind === -1 ? (
+                    <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />
+                  ) : (
+                    <FormattedMessage defaultMessage="Stream Ended" id="jkAQj5" />
+                  )}
+                </b>
+              );
             }
             case EventKind.BadgeAward: {
               return <BadgeAward ev={a} />;
@@ -195,12 +199,12 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
           defaultMessage="<s>{person}</s> zapped <s>{amount}</s> sats"
           id="q+zTWM"
           values={{
-            s: (c) => <span className="text-zap">{c}</span>,
+            s: c => <span className="text-zap">{c}</span>,
             person: (
               <Profile
                 pubkey={zap.anonZap ? "anon" : zap.sender ?? ""}
                 options={{
-                  showAvatar: !zap.anonZap
+                  showAvatar: !zap.anonZap,
                 }}
               />
             ),
@@ -213,7 +217,7 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
   );
 }
 
-export function ChatRaid({ link, ev }: { link: NostrLink, ev: TaggedNostrEvent }) {
+export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }) {
   const from = ev.tags.find(a => a[0] === "a" && a[3] === "root");
   const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention");
   const isRaiding = link.toEventTag()?.at(1) === from?.at(1);
@@ -222,15 +226,29 @@ export function ChatRaid({ link, ev }: { link: NostrLink, ev: TaggedNostrEvent }
   const otherProfile = useUserProfile(getHost(otherEvent));
 
   if (isRaiding) {
-    return <Link to={`/${otherLink.encode()}`} className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
-      <FormattedMessage defaultMessage="Raiding {name}" id="j/jueq" values={{
-        name: otherProfile?.name
-      }} />
-    </Link>;
+    return (
+      <Link
+        to={`/${otherLink.encode()}`}
+        className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
+        <FormattedMessage
+          defaultMessage="Raiding {name}"
+          id="j/jueq"
+          values={{
+            name: otherProfile?.name,
+          }}
+        />
+      </Link>
+    );
   }
-  return <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
-    <FormattedMessage defaultMessage="Raid from {name}" id="69hmpj" values={{
-      name: otherProfile?.name
-    }} />
-  </div>;
+  return (
+    <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
+      <FormattedMessage
+        defaultMessage="Raid from {name}"
+        id="69hmpj"
+        values={{
+          name: otherProfile?.name,
+        }}
+      />
+    </div>
+  );
 }

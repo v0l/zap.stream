@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "No emails, just awesomeness!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "เชื่อมต่อ"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "เพิ่ม"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zaps!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "ยกเลิก"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, your lightning address looks wrong"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "ที่อยู่ของเซิร์ฟเวอร์"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "เริ่มถ่ายทอดสด"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "หัวข้อ"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} ส่ง Zap ให้ {amount} ⚡"
   },
   "Atr2p4": {
     "defaultMessage": "เนื้อหาที่ไม่เหมาะสม"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream Key"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "ฉันจัดเก็บรหัสไว้ดีแล้ว"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "ฉันได้อ่าน {terms} เรียบร้อยและ เห็นด้วยกับ {provider} ในข้อกำหนดและเงื่อนไขการใช้เว็บไซต์หรือการใช้แอปพลิเคชัน"
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "โปรดเข้าสู่ระบบ เพื่อร่วมส่งข้อความ"
   },
   "RrCui3": {
     "defaultMessage": "ภาพรวม"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Ended"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "คุณยังสามารถเปลี่ยนได้ในภายหลัง"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "ดำเนินการต่อ"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Following"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "เลิกติดตาม"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Endpoint"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Voice"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream type should be HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "จะมีการถ่ายทอดสดเวลา {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Log In"

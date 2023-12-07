@@ -20,7 +20,13 @@ type VideoPlayerProps = {
   muted?: boolean;
 } & HTMLProps<HTMLVideoElement>;
 
-export default function LiveVideoPlayer({ stream, status: pStatus, poster, muted: pMuted, ...props }: VideoPlayerProps) {
+export default function LiveVideoPlayer({
+  stream,
+  status: pStatus,
+  poster,
+  muted: pMuted,
+  ...props
+}: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const hlsObj = useRef<Hls>(null);
   const streamCached = useMemo(() => stream, [stream]);
@@ -219,7 +225,15 @@ export default function LiveVideoPlayer({ stream, status: pStatus, poster, muted
           <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
         </div>
       )}
-      <video {...props} className={classNames("z-10", props.className)} ref={video} autoPlay={true} poster={poster} src={src} playsInline={true} />
+      <video
+        {...props}
+        className={classNames("z-10", props.className)}
+        ref={video}
+        autoPlay={true}
+        poster={poster}
+        src={src}
+        playsInline={true}
+      />
     </div>
   );
 }

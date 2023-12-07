@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Без имейли, просто страхотно!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Свързване"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Добави"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Зап!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Отказ"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Хмм, твоят лайтнинг адрес изглежда грешен"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Url адрес на сървъра"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Стрийм доставчици"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Заглавие"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{човек} запнат {количество} сатс"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Съдържание"
@@ -188,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Стрийм ключ"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ок, безопасно е"
   },
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Прочетох и се съгласявам със {доставчика} и неговите {общи условия}."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Моля влезте в профила си за да може да пишете съобщения!"
   },
   "RrCui3": {
     "defaultMessage": "Обобщение"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Приключено"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Можете да промените това по-късно"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Продължаване"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Последвани"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Прекратете следенето"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Намаление"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Крайна точка"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Глас"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Стрийм тип трябва да бъде HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Планирано за {дата}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Вход"

@@ -102,9 +102,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Suspense>
-          <DashboardPage />
-        </Suspense>,
+        element: (
+          <Suspense>
+            <DashboardPage />
+          </Suspense>
+        ),
       },
       {
         path: "*",

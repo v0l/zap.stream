@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "Keine E-Mails, nur Großartigkeit!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Verbinden"
   },
@@ -38,6 +41,9 @@
   "2/2yg+": {
     "defaultMessage": "Hinzufügen"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -49,6 +55,9 @@
   },
   "47FYwb": {
     "defaultMessage": "Abbrechen"
+  },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, deine Lightning-Adresse sieht falsch aus"
@@ -67,6 +76,12 @@
   },
   "5kx+2v": {
     "defaultMessage": "Server-URL"
+  },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream-Anbieter"
@@ -88,9 +103,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zappt {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Inhalt"
@@ -165,7 +177,7 @@
     "defaultMessage": "ODER"
   },
   "J/+m9y": {
-    "defaultMessage": "Streamdauer {duration} min"
+    "defaultMessage": "Streamdauer {duration} Min."
   },
   "JEsxDw": {
     "defaultMessage": "Hochladen..."
@@ -187,6 +199,9 @@
   },
   "LknBsU": {
     "defaultMessage": "Stream-Schlüssel"
+  },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
   },
   "My6HwN": {
     "defaultMessage": "Ok, er ist gesichert"
@@ -230,11 +245,17 @@
   "RJOmzk": {
     "defaultMessage": "Ich habe die {terms} von {provider} gelesen und bin damit einverstanden."
   },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
+  },
   "RXQdxR": {
     "defaultMessage": "Bitte melde dich an, um Nachrichten zu schreiben!"
   },
   "RrCui3": {
     "defaultMessage": "Zusammenfassung"
+  },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
   },
   "TP/cMX": {
     "defaultMessage": "Beendet"
@@ -255,7 +276,7 @@
     "defaultMessage": "Verbergen"
   },
   "W9355R": {
-    "defaultMessage": "Stummschaltung aufheben"
+    "defaultMessage": "Entstummen"
   },
   "X2PZ7D": {
     "defaultMessage": "Ziel erstellen"
@@ -276,8 +297,17 @@
   "ZmqxZs": {
     "defaultMessage": "Sie können das später ändern"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Weiter"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Folge ich"
@@ -333,8 +363,17 @@
   "izWS4J": {
     "defaultMessage": "Entfolgen"
   },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
+  },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +392,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Endpunkt"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Stimme"
@@ -378,8 +420,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream Typ sollte HLS sein"
   },
-  "pO/lPX": {
-    "defaultMessage": "Geplant am {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Anmelden"
