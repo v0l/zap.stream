@@ -2896,14 +2896,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^1.1.5":
-  version: 1.1.5
-  resolution: "@snort/system-react@npm:1.1.5"
+"@snort/system-react@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "@snort/system-react@npm:1.1.6"
   dependencies:
     "@snort/shared": ^1.0.10
-    "@snort/system": ^1.1.5
+    "@snort/system": ^1.1.6
     react: ^18.2.0
-  checksum: 3192ca161b89d0f040e0432c37d7d90976f5977506bae5079dec0f370f913e8e5f9498f38636bb025ea2638ab00b5c9505cdc83a1c350a2dcf8cdbbd7aee8fa5
+  checksum: ea7658d6cf14508e87b6239346b89de34db848817beac7da7cc1b33e1f776920ecc6d079b3470eece3e60c6ec37b50fca94b84bd57b6d7ee24234fa3eb1fc945
   languageName: node
   linkType: hard
 
@@ -2943,9 +2943,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^1.1.5":
-  version: 1.1.5
-  resolution: "@snort/system@npm:1.1.5"
+"@snort/system@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "@snort/system@npm:1.1.6"
   dependencies:
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
@@ -2957,7 +2957,7 @@ __metadata:
     isomorphic-ws: ^5.0.0
     uuid: ^9.0.0
     ws: ^8.14.0
-  checksum: 91561b2266d392ece8656f765325dd0a04d504a86d71a866c08616197a34e58049ef63ac25adabcbe28878aefc97cc14e386f0471b5e5afc57e40246cac37493
+  checksum: 087c25f72cab8b547e23190f9e3db398366f3dc1965cc5fcd6eee6983aaf3fe15a9b028047edca8080c3d63348e7359a44c42c91b2d6fa2bf36346acc0d69fda
   languageName: node
   linkType: hard
 
@@ -7806,8 +7806,8 @@ __metadata:
     "@react-hook/resize-observer": ^1.2.6
     "@scure/base": ^1.1.3
     "@snort/shared": ^1.0.10
-    "@snort/system": ^1.1.5
-    "@snort/system-react": ^1.1.5
+    "@snort/system": ^1.1.6
+    "@snort/system-react": ^1.1.6
     "@snort/system-wasm": ^1.0.1
     "@snort/system-web": ^1.0.2
     "@szhsin/react-menu": ^4.0.2

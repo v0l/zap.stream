@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 import { Suspense, lazy, useContext } from "react";
 
 const LiveVideoPlayer = lazy(() => import("@/element/live-video-player"));
-import { findTag, getEventFromLocationState, getHost } from "@/utils";
+import { extractStreamInfo, findTag, getEventFromLocationState, getHost } from "@/utils";
 import { Profile, getName } from "@/element/profile";
 import { LiveChat } from "@/element/live-chat";
 import AsyncButton from "@/element/async-button";
@@ -36,7 +36,7 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
   const profile = useUserProfile(host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
-  const status = findTag(ev, "status") ?? "";
+  const { status, participants, title, summary } = extractStreamInfo(ev);
   const isMine = ev?.pubkey === login?.pubkey;
 
   async function deleteStream() {
@@ -49,13 +49,13 @@ function ProfileInfo({ ev, goal }: { ev?: NostrEvent; goal?: TaggedNostrEvent })
     }
   }
 
-  const viewers = Number(findTag(ev, "current_participants") ?? "0");
+  const viewers = Number(participants ?? "0");
   return (
     <>
       <div className="flex items-center info">
         <div className="grow stream-info">
-          <h1>{findTag(ev, "title")}</h1>
-          <p>{findTag(ev, "summary")}</p>
+          <h1>{title}</h1>
+          <p>{summary}</p>
           <div className="tags">
             <StatePill state={status as StreamState} />
             <span className="pill bg-gray-1">
@@ -118,15 +118,9 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const evLink = ev ? NostrLink.fromEvent(ev) : undefined;
-  const goal = useZapGoal(findTag(ev, "goal"));
+  const { title, summary, image, status, tags, contentWarning, stream, goal: goalTag } = extractStreamInfo(ev);
+  const goal = useZapGoal(goalTag);
 
-  const title = findTag(ev, "title");
-  const summary = findTag(ev, "summary");
-  const image = findTag(ev, "image");
-  const status = findTag(ev, "status");
-  const stream = status === StreamState.Live ? findTag(ev, "streaming") : findTag(ev, "recording");
-  const contentWarning = findTag(ev, "content-warning");
-  const tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? [];
 
   if (contentWarning && !isContentWarningAccepted()) {
     return <ContentWarningOverlay />;
@@ -134,7 +128,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
 
   const descriptionContent = [title, (summary?.length ?? 0) > 0 ? summary : "Nostr live streaming", ...tags].join(", ");
   return (
-    <div className="stream-page">
+    <div className="stream-page full-page-height">
       <Helmet>
         <title>{`${title} - zap.stream`}</title>
         <meta name="description" content={descriptionContent} />

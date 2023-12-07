@@ -76,7 +76,7 @@
 }
 
 .add-card .add-icon {
-  color: #797979;
+  color: var(--text-muted);
   cursor: pointer;
   width: 24px;
   height: 24px;

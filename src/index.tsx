@@ -26,6 +26,7 @@ import { IntlProvider } from "@/intl";
 import { WidgetsPage } from "@/pages/widgets";
 import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
+import DashboardPage from "./pages/dashboard";
 
 export enum StreamState {
   Live = "live",
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "/summary/:id",
         element: <StreamSummaryPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardPage />,
       },
       {
         path: "*",

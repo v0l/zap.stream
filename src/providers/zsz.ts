@@ -9,7 +9,7 @@ import {
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login, StreamState } from "@/index";
 import { getPublisher } from "@/login";
-import { findTag } from "@/utils";
+import { extractStreamInfo } from "@/utils";
 
 export class Nip103StreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
@@ -53,13 +53,8 @@ export class Nip103StreamProvider implements StreamProvider {
     };
   }
 
-  async updateStreamInfo(system: SystemInterface, ev: NostrEvent): Promise<void> {
-    const title = findTag(ev, "title");
-    const summary = findTag(ev, "summary");
-    const image = findTag(ev, "image");
-    const tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]);
-    const contentWarning = findTag(ev, "content-warning");
-    const goal = findTag(ev, "goal");
+  async updateStreamInfo(_: SystemInterface, ev: NostrEvent): Promise<void> {
+    const { title, summary, image, tags, contentWarning, goal } = extractStreamInfo(ev);
     await this.#getJson("PATCH", "event", {
       title,
       summary,

@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import AsyncButton from "./async-button";
 import { StreamState } from "@/index";
-import { findTag } from "@/utils";
+import { extractStreamInfo, findTag } from "@/utils";
 import { useLogin } from "@/hooks/login";
 import { NewGoalDialog } from "./new-goal";
 import { useGoals } from "@/hooks/goals";
@@ -62,15 +62,16 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const { formatMessage } = useIntl();
 
   useEffect(() => {
-    setTitle(findTag(ev, "title") ?? "");
-    setSummary(findTag(ev, "summary") ?? "");
-    setImage(findTag(ev, "image") ?? "");
-    setStream(findTag(ev, "streaming") ?? "");
-    setStatus(findTag(ev, "status") ?? StreamState.Live);
-    setStart(findTag(ev, "starts"));
-    setTags(ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? []);
-    setContentWarning(findTag(ev, "content-warning") !== undefined);
-    setGoal(findTag(ev, "goal"));
+    const { title, summary, image, stream, status, starts, tags, contentWarning, goal } = extractStreamInfo(ev);
+    setTitle(title ?? "");
+    setSummary(summary ?? "");
+    setImage(image ?? "");
+    setStream(stream ?? "");
+    setStatus(status ?? StreamState.Live);
+    setStart(starts);
+    setTags(tags ?? []);
+    setContentWarning(contentWarning !== undefined);
+    setGoal(goal);
   }, [ev?.id]);
 
   const validate = useCallback(() => {

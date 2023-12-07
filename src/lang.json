@@ -38,6 +38,9 @@
   "2/2yg+": {
     "defaultMessage": "Add"
   },
+  "37mth/": {
+    "defaultMessage": "Viewers"
+  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
   },
@@ -68,6 +71,9 @@
   "5kx+2v": {
     "defaultMessage": "Server Url"
   },
+  "5tM0VD": {
+    "defaultMessage": "Stream Started"
+  },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
   },
@@ -88,9 +94,6 @@
   },
   "9a9+ww": {
     "defaultMessage": "Title"
-  },
-  "AIHaPH": {
-    "defaultMessage": "{person} zapped {amount} sats"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Content"
@@ -236,6 +239,9 @@
   "RrCui3": {
     "defaultMessage": "Summary"
   },
+  "RtYNX5": {
+    "defaultMessage": "Chat Users"
+  },
   "TP/cMX": {
     "defaultMessage": "Ended"
   },
@@ -278,6 +284,9 @@
   },
   "acrOoz": {
     "defaultMessage": "Continue"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
   },
   "cPIKU2": {
     "defaultMessage": "Following"
@@ -333,8 +342,14 @@
   "izWS4J": {
     "defaultMessage": "Unfollow"
   },
+  "jctiUc": {
+    "defaultMessage": "Highest Viewers"
+  },
   "jgOqxt": {
     "defaultMessage": "Widgets"
+  },
+  "jkAQj5": {
+    "defaultMessage": "Stream Ended"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -353,6 +368,9 @@
   },
   "ljmS5P": {
     "defaultMessage": "Endpoint"
+  },
+  "miQKuZ": {
+    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Voice"
@@ -378,8 +396,8 @@
   "oZrFyI": {
     "defaultMessage": "Stream type should be HLS"
   },
-  "pO/lPX": {
-    "defaultMessage": "Scheduled for {date}"
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Log In"

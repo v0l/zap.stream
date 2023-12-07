@@ -34,6 +34,7 @@ export function Profile({
   options,
   linkToProfile,
   avatarSize,
+  gap,
 }: {
   pubkey: string;
   icon?: ReactNode;
@@ -42,6 +43,7 @@ export function Profile({
   options?: ProfileOptions;
   linkToProfile?: boolean;
   avatarSize?: number;
+  gap?: number
 }) {
   const { inView, ref } = useInView({ triggerOnce: true });
   const pLoaded = useUserProfile(inView ? pubkey : undefined);
@@ -56,7 +58,7 @@ export function Profile({
     </>
   );
 
-  const cls = classNames("flex gap-1 items-center align-bottom font-medium", className);
+  const cls = classNames("flex items-center align-bottom font-medium", `gap-${gap ?? 2}`, className);
   return isAnon || linkToProfile === false ? (
     <div className={cls} ref={ref}>
       {content}

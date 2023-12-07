@@ -1,33 +1,36 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Hls from "hls.js";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { HTMLProps, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { StreamState } from "..";
 import { Icon } from "./icon";
 import { ProgressBar } from "./progress-bar";
 import { Menu, MenuItem } from "@szhsin/react-menu";
+import classNames from "classnames";
 
 export enum VideoStatus {
   Online = "online",
   Offline = "offline",
 }
 
-export interface VideoPlayerProps {
+type VideoPlayerProps = {
   stream?: string;
   status?: string;
   poster?: string;
-}
+  muted?: boolean;
+} & HTMLProps<HTMLVideoElement>;
 
-export default function LiveVideoPlayer(props: VideoPlayerProps) {
+export default function LiveVideoPlayer({ stream, status: pStatus, poster, muted: pMuted, ...props }: VideoPlayerProps) {
   const video = useRef<HTMLVideoElement>(null);
   const hlsObj = useRef<Hls>(null);
-  const streamCached = useMemo(() => props.stream, [props.stream]);
+  const streamCached = useMemo(() => stream, [stream]);
   const [status, setStatus] = useState<VideoStatus>();
   const [src, setSrc] = useState<string>();
   const [levels, setLevels] = useState<Array<{ level: number; height: number }>>();
   const [level, setLevel] = useState<number>(-1);
   const [playState, setPlayState] = useState<"loading" | "playing" | "paused">("loading");
   const [volume, setVolume] = useState(1);
+  const [muted, setMuted] = useState(pMuted ?? false);
   const [position, setPosition] = useState<number>();
   const [maxPosition, setMaxPosition] = useState<number>();
 
@@ -86,7 +89,7 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
         video.current.load();
       }
     }
-  }, [video, streamCached, props.status]);
+  }, [video, streamCached, pStatus]);
 
   useEffect(() => {
     if (hlsObj.current) {
@@ -108,8 +111,9 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
   useEffect(() => {
     if (video.current) {
       video.current.volume = volume;
+      video.current.muted = muted;
     }
-  }, [video, volume]);
+  }, [video, volume, muted]);
 
   function playStateToIcon() {
     switch (playState) {
@@ -130,6 +134,10 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
         video.current.play();
       }
     }
+  }
+
+  function toggleMute() {
+    setMuted(s => !s);
   }
 
   function levelName(l: number) {
@@ -157,8 +165,8 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
               <div className="px-5 py-2 pointer" onClick={() => togglePlay()}>
                 <Icon name={playStateToIcon()} className={playState === "loading" ? "animate-spin" : ""} />
               </div>
-              <div className="px-3 py-2 uppercase font-bold tracking-wide hover:bg-primary-hover">{props.status}</div>
-              {props.status === StreamState.Ended && maxPosition !== undefined && position !== undefined && (
+              <div className="px-3 py-2 uppercase font-bold tracking-wide hover:bg-primary-hover">{pStatus}</div>
+              {pStatus === StreamState.Ended && maxPosition !== undefined && position !== undefined && (
                 <ProgressBar
                   value={position / maxPosition}
                   setValue={v => {
@@ -174,7 +182,7 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
               )}
             </div>
             <div className="flex gap-1 items-center h-full py-2">
-              <Icon name="volume" />
+              <Icon name={muted ? "volume-muted" : "volume"} onClick={toggleMute} />
               <ProgressBar value={volume} setValue={v => setVolume(v)} style={{ width: "100px", height: "100%" }} />
             </div>
             <div>
@@ -211,7 +219,7 @@ export default function LiveVideoPlayer(props: VideoPlayerProps) {
           <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
         </div>
       )}
-      <video className="z-10" ref={video} autoPlay={true} poster={props.poster} src={src} playsInline={true} />
+      <video {...props} className={classNames("z-10", props.className)} ref={video} autoPlay={true} poster={poster} src={src} playsInline={true} />
     </div>
   );
 }

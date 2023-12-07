@@ -55,7 +55,7 @@ export function LoggedInMuteButton({ pubkey }: { pubkey: string }) {
   const { isMuted, mute, unmute } = useMute(pubkey);
 
   return (
-    <AsyncButton type="button" className="btn delete-button" onClick={() => (isMuted ? unmute() : mute())}>
+    <AsyncButton onClick={() => (isMuted ? unmute() : mute())} className="font-bold">
       {isMuted ? (
         <FormattedMessage defaultMessage="Unmute" id="W9355R" />
       ) : (

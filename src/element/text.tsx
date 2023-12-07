@@ -41,7 +41,7 @@ export function Text({ content, tags, eventComponent }: TextProps) {
             }
           }
         }
-        return <HyperText link={f.content}>{f.content}</HyperText>;
+        return <span className="text"><HyperText link={f.content}>{f.content}</HyperText></span>;
       }
       case "mention":
         return <Mention pubkey={f.content} />;

@@ -2,7 +2,7 @@ import { LIVE_STREAM_CHAT } from "@/const";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useLiveChatFeed } from "@/hooks/live-chat";
 import { formatSats } from "@/number";
-import { findTag } from "@/utils";
+import { extractStreamInfo, findTag } from "@/utils";
 import { unixNow } from "@snort/shared";
 import { NostrLink, NostrEvent, ParsedZap, EventKind } from "@snort/system";
 import { useEventReactions } from "@snort/system-react";
@@ -58,10 +58,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
       .sort((a, b) => (a.total > b.total ? -1 : 1));
   }, [reactions.zaps]);
 
-  const title = findTag(ev, "title");
-  const summary = findTag(ev, "summary");
-  const status = findTag(ev, "status");
-  const starts = findTag(ev, "starts");
+  const { title, summary, status, starts } = extractStreamInfo(ev);
 
   const Day = 60 * 60 * 24;
   const startTime = starts ? Number(starts) : ev?.created_at ?? unixNow();
