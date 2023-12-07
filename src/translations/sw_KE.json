@@ -239,6 +239,9 @@
   "Qe1MJu": {
     "defaultMessage": "{name} pamoja na {amount}"
   },
+  "QuXHCg": {
+    "defaultMessage": "Human readable name"
+  },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
   },
@@ -274,6 +277,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Ficha"
+  },
+  "W7DNWx": {
+    "defaultMessage": "Stream Forwarding"
   },
   "W9355R": {
     "defaultMessage": "Rejesha"
