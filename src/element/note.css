@@ -12,16 +12,6 @@
   justify-content: space-between;
 }
 
-.note .note-header .profile {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.note .note-header .note-avatar {
-  width: 24px;
-  height: 24px;
-}
-
 .note .note-header .note-link-icon {
   color: #909090;
 }

@@ -23,6 +23,7 @@
     "@void-cat/api": "^1.0.7",
     "@webscopeio/react-textarea-autocomplete": "^4.9.2",
     "buffer": "^6.0.3",
+    "classnames": "^2.3.2",
     "emoji-mart": "^5.5.2",
     "flag-icons": "^6.11.0",
     "hls.js": "^1.4.6",

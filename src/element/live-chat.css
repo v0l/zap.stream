@@ -52,7 +52,6 @@
 }
 
 .live-chat > .write-message > div:nth-child(1) {
-  height: 40px;
   flex-grow: 1;
 }
 
@@ -72,26 +71,12 @@
   line-height: 24px;
 }
 
-.live-chat .message .profile {
-  gap: 8px;
-  font-weight: 600;
-  float: left;
-  color: #34d2fe;
-  margin-right: 8px;
-}
-
-.live-chat .message.streamer .profile {
-  color: var(--primary);
-}
-
 .live-chat .message a {
-  color: var(--primary);
   display: inline-flex;
 }
 
-.live-chat .profile img {
-  width: 24px;
-  height: 24px;
+.live-chat .message .text a {
+  color: var(--primary);
 }
 
 .live-chat .messages {
@@ -103,10 +88,6 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-}
-
-.live-chat .zap-content a {
-  color: var(--primary);
 }
 
 .top-zappers {
@@ -144,28 +125,6 @@
   }
 }
 
-.top-zapper {
-  display: flex;
-  padding: 4px 8px 4px 4px;
-  align-items: center;
-  gap: 8px;
-  border-radius: 49px;
-  border: 1px solid var(--border, #171717);
-}
-
-.top-zapper .top-zapper-amount {
-  font-size: 15px;
-  font-family: Outfit;
-  font-weight: 700;
-  line-height: 22px;
-  margin: 0;
-}
-
-.top-zapper .top-zapper-name {
-  font-size: 14px;
-  margin: 0;
-}
-
 .zap-container {
   position: relative;
   border-radius: 12px;
@@ -188,14 +147,6 @@
   border-radius: inherit;
 }
 
-.zap-container .profile {
-  color: #ff8d2b;
-}
-
-.zap-container .zap-amount {
-  color: #ff8d2b;
-}
-
 .zap-container.big-zap:before {
   background: linear-gradient(60deg, #2bd9ff, #8c8ded, #f838d9, #f83838, #ff902b, #ddf838);
   animation: animatedgradient 3s ease alternate infinite;
@@ -216,10 +167,6 @@
   }
 }
 
-.zap-content {
-  margin-top: 8px;
-}
-
 .zap-pill {
   border-radius: 100px;
   background: rgba(255, 255, 255, 0.1);
@@ -229,12 +176,6 @@
   padding: 0px 4px;
   align-items: center;
   gap: 2px;
-}
-
-.zap-pill-icon {
-  width: 12px;
-  height: 12px;
-  color: #ff8d2b;
 }
 
 .message-zap-container {

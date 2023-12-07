@@ -129,6 +129,7 @@ export function ChatMessage({
     <>
       <div className={`message${streamer === ev.pubkey ? " streamer" : ""}`} ref={ref}>
         <Profile
+          className="text-secondary"
           icon={
             ev.pubkey === streamer ? (
               <Icon name="signal" size={16} />
@@ -141,14 +142,14 @@ export function ChatMessage({
             )
           }
           pubkey={ev.pubkey}
-          profile={profile}
         />
+        &nbsp;
         <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} />
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (
               <div className="zap-pill">
-                <Icon name="zap-filled" className="zap-pill-icon" />
+                <Icon name="zap-filled" className="text-zap" size={12} />
                 <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
               </div>
             )}
@@ -176,15 +177,15 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+                }
             }>
             {zapTarget && (
               <SendZapsDialog

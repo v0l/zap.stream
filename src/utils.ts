@@ -78,3 +78,7 @@ export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
     }, {} as Record<string, T>)
   );
 }
+
+export function getPlaceholder(id: string) {
+  return `https://robohash.v0l.io/${id}.png`;
+}

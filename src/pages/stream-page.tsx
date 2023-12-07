@@ -151,7 +151,9 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />
       </div>
-      <LiveChat link={evLink ?? link} ev={ev} goal={goal} />
+      <LiveChat link={evLink ?? link} ev={ev} goal={goal} options={{
+        canWrite: status === StreamState.Live
+      }} />
     </div>
   );
 }

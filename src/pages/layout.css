@@ -9,19 +9,10 @@
   gap: var(--gap-s);
 }
 
-.page.stream {
-  height: calc(100vh - var(--header-page-padding));
-  overflow: hidden;
-}
-
 @media (max-width: 1020px) {
   .page {
     --page-pad-tb: 8px;
     --page-pad-lr: 0;
-  }
-  .page.stream {
-    display: flex;
-    flex-direction: column;
   }
   header {
     padding: 0 16px;
@@ -107,10 +98,6 @@ header .profile img {
   .hide-on-mobile {
     display: block;
   }
-}
-
-.zap-icon {
-  color: #ff8d2b;
 }
 
 .tags {

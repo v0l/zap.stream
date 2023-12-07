@@ -11,7 +11,7 @@ export function Note({ ev }: { ev: NostrEvent }) {
   return (
     <div className="surface note">
       <div className="note-header">
-        <Profile avatarClassname="note-avatar" pubkey={ev.pubkey} />
+        <Profile pubkey={ev.pubkey} />
         <ExternalIconLink
           size={24}
           className="note-link-icon"

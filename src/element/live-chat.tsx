@@ -1,6 +1,6 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrEvent, NostrLink, ParsedZap } from "@snort/system";
+import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
 import { useEventReactions } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
@@ -80,8 +80,16 @@ export function LiveChat({
 
   const reactions = useEventReactions(link, feed.reactions);
   const events = useMemo(() => {
-    return [...feed.messages, ...feed.reactions, ...awards]
-      .filter(a => a.created_at > started)
+    const extra = [];
+    const starts = findTag(ev, "starts");
+    if (starts) {
+      extra.push({ kind: -1, created_at: Number(starts) } as TaggedNostrEvent);
+    }
+    const ends = findTag(ev, "ends");
+    if (ends) {
+      extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
+    }
+    return [...feed.messages, ...feed.reactions, ...awards, ...extra]
       .sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.reactions, awards]);
 
@@ -118,6 +126,13 @@ export function LiveChat({
       <div className="messages">
         {filteredEvents.map(a => {
           switch (a.kind) {
+            case -1:
+            case -2: {
+              return <b className="border px-3 py-2 text-center border-gray-2 rounded-xl bg-primary uppercase">
+                {a.kind === -1 ? <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />
+                  : <FormattedMessage defaultMessage="Stream Ended" id="jkAQj5" />}
+              </b>;
+            }
             case EventKind.BadgeAward: {
               return <BadgeAward ev={a} />;
             }
@@ -169,18 +184,18 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
 
   return (
     <div className={`zap-container ${isBig ? "big-zap" : ""}`}>
-      <div className="zap">
-        <Icon name="zap-filled" className="zap-icon" />
+      <div className="flex gap-1 items-center">
+        <Icon name="zap-filled" className="text-zap" />
         <FormattedMessage
-          defaultMessage="{person} zapped {amount} sats"
-          id="AIHaPH"
+          defaultMessage="<s>{person}</s> zapped <s>{amount}</s> sats"
+          id="q+zTWM"
           values={{
+            s: (c) => <span className="text-zap">{c}</span>,
             person: (
               <Profile
-                pubkey={zap.anonZap ? "anon" : zap.sender ?? "anon"}
+                pubkey={zap.anonZap ? "anon" : zap.sender ?? ""}
                 options={{
-                  showAvatar: !zap.anonZap,
-                  overrideName: zap.anonZap ? "Anon" : undefined,
+                  showAvatar: !zap.anonZap
                 }}
               />
             ),
@@ -188,11 +203,7 @@ function ChatZap({ zap }: { zap: ParsedZap }) {
           }}
         />
       </div>
-      {zap.content && (
-        <div className="zap-content">
-          <Text content={zap.content} tags={[]} />
-        </div>
-      )}
+      {zap.content && <Text content={zap.content} tags={[]} />}
     </div>
   );
 }

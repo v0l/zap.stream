@@ -83,7 +83,7 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
   return (
     <>
       <div className="paper" ref={ref}>
-        <Textarea emojis={emojis} value={chat} onKeyDown={onKeyDown} onChange={e => setChat(e.target.value)} />
+        <Textarea emojis={emojis} value={chat} onKeyDown={onKeyDown} onChange={e => setChat(e.target.value)} rows={2} />
         <div onClick={pickEmoji}>
           <Icon name="face" className="write-emoji-button" />
         </div>

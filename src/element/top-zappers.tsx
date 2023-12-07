@@ -1,27 +1,10 @@
 import { ParsedZap } from "@snort/system";
 import useTopZappers from "@/hooks/top-zappers";
-import { formatSats } from "@/number";
-import { Icon } from "./icon";
-import { Profile } from "./profile";
+import { ZapperRow } from "./zapper-row";
 
 export function TopZappers({ zaps, limit }: { zaps: ParsedZap[]; limit?: number }) {
   const zappers = useTopZappers(zaps);
-
-  return (
-    <>
-      {zappers.slice(0, limit ?? 10).map(({ pubkey, total }) => {
-        return (
-          <div className="top-zapper" key={pubkey}>
-            {pubkey === "anon" ? (
-              <p className="top-zapper-name">Anon</p>
-            ) : (
-              <Profile pubkey={pubkey} options={{ showName: false }} />
-            )}
-            <Icon name="zap-filled" className="zap-icon" />
-            <p className="top-zapper-amount">{formatSats(total)}</p>
-          </div>
-        );
-      })}
-    </>
-  );
+  return zappers.slice(0, limit ?? 10).map(({ pubkey, total }) => <div className="border rounded-full px-2 py-1 border-gray-1 grow-0 shrink-0 basis-auto font-bold">
+    <ZapperRow pubkey={pubkey} total={total} key={pubkey} showName={false} />
+  </div>);
 }

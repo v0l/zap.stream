@@ -65,7 +65,7 @@ export function LayoutPage() {
           menuButton={
             <div className="profile-menu">
               <Profile
-                avatarClassname="mb-squared"
+                avatarSize={48}
                 pubkey={login.pubkey}
                 options={{
                   showName: false,
@@ -125,7 +125,7 @@ export function LayoutPage() {
     (styles as Record<string, string>)["--primary"] = login.color;
   }
   return (
-    <div className={`page${location.pathname.startsWith("/naddr1") ? " stream" : ""}`} style={styles}>
+    <div className="page" style={styles}>
       <Helmet>
         <title>Home - zap.stream</title>
       </Helmet>
