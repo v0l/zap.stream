@@ -2,7 +2,7 @@ import "@szhsin/react-menu/dist/index.css";
 import "./index.css";
 import "./fonts/outfit/outfit.css";
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { NostrSystem } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
@@ -26,7 +26,7 @@ import { IntlProvider } from "@/intl";
 import { WidgetsPage } from "@/pages/widgets";
 import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
-import DashboardPage from "./pages/dashboard";
+const DashboardPage = lazy(() => import("./pages/dashboard"));
 
 export enum StreamState {
   Live = "live",
@@ -102,7 +102,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <DashboardPage />,
+        element: <Suspense>
+          <DashboardPage />
+        </Suspense>,
       },
       {
         path: "*",
