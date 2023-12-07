@@ -15,7 +15,12 @@ export function NostrProviderDialog({
   showEditor,
   showForwards,
   ...others
-}: { provider: NostrStreamProvider; showEndpoints: boolean; showEditor: boolean, showForwards: boolean } & StreamEditorProps) {
+}: {
+  provider: NostrStreamProvider;
+  showEndpoints: boolean;
+  showEditor: boolean;
+  showForwards: boolean;
+} & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
@@ -134,7 +139,9 @@ export function NostrProviderDialog({
             </p>
             <div className="flex gap-2">
               {sortEndpoints(info.endpoints).map(a => (
-                <span className={`pill bg-gray-1${ep?.name === a.name ? " active" : ""}`} onClick={() => setEndpoint(a)}>
+                <span
+                  className={`pill bg-gray-1${ep?.name === a.name ? " active" : ""}`}
+                  onClick={() => setEndpoint(a)}>
                   {a.name}
                 </span>
               ))}
@@ -202,51 +209,59 @@ export function NostrProviderDialog({
       return tosInput();
     }
 
-    return <StreamEditor
-      onFinish={ex => {
-        provider.updateStreamInfo(system, ex);
-        others.onFinish?.(ex);
-      }}
-      ev={
-        {
-          tags: [
-            ["title", info.streamInfo?.title ?? ""],
-            ["summary", info.streamInfo?.summary ?? ""],
-            ["image", info.streamInfo?.image ?? ""],
-            ...(info.streamInfo?.goal ? [["goal", info.streamInfo.goal]] : []),
-            ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
-            ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? []),
-          ],
-        } as NostrEvent
-      }
-      options={{
-        canSetStream: false,
-        canSetStatus: false,
-      }}
-    />;
+    return (
+      <StreamEditor
+        onFinish={ex => {
+          provider.updateStreamInfo(system, ex);
+          others.onFinish?.(ex);
+        }}
+        ev={
+          {
+            tags: [
+              ["title", info.streamInfo?.title ?? ""],
+              ["summary", info.streamInfo?.summary ?? ""],
+              ["image", info.streamInfo?.image ?? ""],
+              ...(info.streamInfo?.goal ? [["goal", info.streamInfo.goal]] : []),
+              ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
+              ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? []),
+            ],
+          } as NostrEvent
+        }
+        options={{
+          canSetStream: false,
+          canSetStatus: false,
+        }}
+      />
+    );
   }
 
   function forwardInputs() {
     if (!info || !showForwards) return;
 
-    return <div className="flex flex-col gap-4">
-      <h3>
-        <FormattedMessage defaultMessage="Stream Forwarding" id="W7DNWx" />
-      </h3>
+    return (
+      <div className="flex flex-col gap-4">
+        <h3>
+          <FormattedMessage defaultMessage="Stream Forwarding" id="W7DNWx" />
+        </h3>
 
-      <div className="grid grid-cols-3 gap-2">
-        {info.forwards?.map(a => <>
-          <div className="paper">{a.name}</div>
-          <AsyncButton className="btn btn-primary" onClick={async () => {
-            await provider.removeForward(a.id);
-          }}>
-            <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
-          </AsyncButton>
-          <div></div>
-        </>)}
-        <AddForwardInputs provider={provider} onAdd={() => { }} />
+        <div className="grid grid-cols-3 gap-2">
+          {info.forwards?.map(a => (
+            <>
+              <div className="paper">{a.name}</div>
+              <AsyncButton
+                className="btn btn-primary"
+                onClick={async () => {
+                  await provider.removeForward(a.id);
+                }}>
+                <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
+              </AsyncButton>
+              <div></div>
+            </>
+          ))}
+          <AddForwardInputs provider={provider} onAdd={() => {}} />
+        </div>
       </div>
-    </div>
+    );
   }
 
   return (
@@ -258,7 +273,13 @@ export function NostrProviderDialog({
   );
 }
 
-function AddForwardInputs({ provider, onAdd }: { provider: NostrStreamProvider, onAdd: (name: string, target: string) => void }) {
+function AddForwardInputs({
+  provider,
+  onAdd,
+}: {
+  provider: NostrStreamProvider;
+  onAdd: (name: string, target: string) => void;
+}) {
   const [name, setName] = useState("");
   const [target, setTarget] = useState("");
   const { formatMessage } = useIntl();
@@ -270,19 +291,22 @@ function AddForwardInputs({ provider, onAdd }: { provider: NostrStreamProvider, 
     onAdd(name, target);
   }
 
-  return <>
-    <div className="paper">
-      <input type="text"
-        placeholder={formatMessage({ defaultMessage: "Human readable name", id: 'QuXHCg' })}
-        value={name} onChange={e => setName(e.target.value)} />
-    </div>
-    <div className="paper">
-      <input type="text"
-        placeholder="rtmp://"
-        value={target} onChange={e => setTarget(e.target.value)} />
-    </div>
-    <AsyncButton className="btn btn-primary" onClick={doAdd}>
-      <FormattedMessage defaultMessage="Add" id="2/2yg+" />
-    </AsyncButton>
-  </>
+  return (
+    <>
+      <div className="paper">
+        <input
+          type="text"
+          placeholder={formatMessage({ defaultMessage: "Human readable name", id: "QuXHCg" })}
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+      </div>
+      <div className="paper">
+        <input type="text" placeholder="rtmp://" value={target} onChange={e => setTarget(e.target.value)} />
+      </div>
+      <AsyncButton className="btn btn-primary" onClick={doAdd}>
+        <FormattedMessage defaultMessage="Add" id="2/2yg+" />
+      </AsyncButton>
+    </>
+  );
 }
