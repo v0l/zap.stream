@@ -1,9 +1,11 @@
 import { StreamState } from "@/index";
 import { NostrEvent, SystemInterface } from "@snort/system";
 import { ExternalStore } from "@snort/shared";
-import { Nip103StreamProvider } from "./zsz";
+import { NostrStreamProvider } from "./zsz";
 import { ManualProvider } from "./manual";
 import { OwncastProvider } from "./owncast";
+
+export { NostrStreamProvider } from "./zsz";
 
 export interface StreamProvider {
   get name(): string;
@@ -54,6 +56,7 @@ export interface StreamProviderInfo {
   endpoints: Array<StreamProviderEndpoint>;
   tosAccepted?: boolean;
   tosLink?: string;
+  forwards?: Array<{ id: string; name: string }>;
 }
 
 export interface StreamProviderEndpoint {
@@ -74,7 +77,7 @@ export interface StreamProviderStreamInfo {
   goal?: string;
 }
 
-export const DefaultProvider = new Nip103StreamProvider("zap.stream", "https://api.zap.stream/api/nostr/");
+export const DefaultProvider = new NostrStreamProvider("zap.stream", "https://api.zap.stream/api/nostr/");
 
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
   #providers: Array<StreamProvider> = [];
@@ -91,7 +94,7 @@ export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
             break;
           }
           case StreamProviders.NostrType: {
-            this.#providers.push(new Nip103StreamProvider(new URL(c.url as string).host, c.url as string));
+            this.#providers.push(new NostrStreamProvider(new URL(c.url as string).host, c.url as string));
             break;
           }
           case StreamProviders.Owncast: {

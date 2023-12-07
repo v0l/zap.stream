@@ -11,7 +11,7 @@ import { Login, StreamState } from "@/index";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
 
-export class Nip103StreamProvider implements StreamProvider {
+export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
 
   constructor(readonly name: string, readonly url: string, pub?: EventPublisher) {
@@ -43,6 +43,7 @@ export class Nip103StreamProvider implements StreamProvider {
           capabilities: a.capabilities,
         } as StreamProviderEndpoint;
       }),
+      forwards: rsp.forwards,
     } as StreamProviderInfo;
   }
 
@@ -76,7 +77,18 @@ export class Nip103StreamProvider implements StreamProvider {
     });
   }
 
-  async #getJson<T>(method: "GET" | "POST" | "PATCH", path: string, body?: unknown): Promise<T> {
+  async addForward(name: string, target: string): Promise<void> {
+    await this.#getJson("POST", "account/forward", {
+      name,
+      target,
+    });
+  }
+
+  async removeForward(id: string): Promise<void> {
+    await this.#getJson("DELETE", `account/forward/${id}`);
+  }
+
+  async #getJson<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<T> {
     const pub = (() => {
       if (this.#publisher) {
         return this.#publisher;
@@ -115,6 +127,12 @@ interface AccountResponse {
     accepted: boolean;
     link: string;
   };
+  forwards: Array<ForwardDest>;
+}
+
+interface ForwardDest {
+  id: string;
+  name: string;
 }
 
 interface IngestEndpoint {

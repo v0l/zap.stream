@@ -6,7 +6,7 @@ import AsyncButton from "@/element/async-button";
 import { StatePill } from "@/element/state-pill";
 import { StreamState } from "@/index";
 import { StreamProviderInfo, StreamProviderStore } from "@/providers";
-import { Nip103StreamProvider } from "@/providers/zsz";
+import { NostrStreamProvider } from "@/providers/zsz";
 
 export function ConfigureNostrType() {
   const [url, setUrl] = useState("");
@@ -15,7 +15,7 @@ export function ConfigureNostrType() {
 
   async function tryConnect() {
     try {
-      const api = new Nip103StreamProvider(new URL(url).host, url);
+      const api = new NostrStreamProvider(new URL(url).host, url);
       const inf = await api.info();
       setInfo(inf);
     } catch (e) {
@@ -58,7 +58,7 @@ export function ConfigureNostrType() {
           <button
             className="btn btn-border"
             onClick={() => {
-              StreamProviderStore.add(new Nip103StreamProvider(new URL(url).host, url));
+              StreamProviderStore.add(new NostrStreamProvider(new URL(url).host, url));
               navigate("/");
             }}>
             <FormattedMessage defaultMessage="Save" id="jvo0vs" />

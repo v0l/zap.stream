@@ -8,7 +8,7 @@ import { SnortContext } from "@snort/system-react";
 
 import { Icon } from "./icon";
 import { useStreamProvider } from "@/hooks/stream-provider";
-import { StreamProvider, StreamProviders } from "@/providers";
+import { NostrStreamProvider, StreamProvider, StreamProviders } from "@/providers";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { eventLink, findTag } from "@/utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
@@ -65,11 +65,12 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
               <FormattedMessage defaultMessage="Get stream key" id="KdYELp" />
             </button>
             <NostrProviderDialog
-              provider={currentProvider}
+              provider={currentProvider as NostrStreamProvider}
               onFinish={onFinish}
               ev={ev}
               showEndpoints={false}
               showEditor={true}
+              showForwards={false}
             />
           </>
         );

@@ -10,6 +10,7 @@ import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { Login, StreamState } from "..";
 import { StatePill } from "@/element/state-pill";
+import { NostrStreamProvider } from "@/providers";
 
 const enum Tab {
   Account,
@@ -77,9 +78,10 @@ export function SettingsPage() {
               <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
             </h1>
             <NostrProviderDialog
-              provider={unwrap(providers.find(a => a.name === "zap.stream"))}
+              provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
               showEndpoints={true}
               showEditor={false}
+              showForwards={true}
             />
           </>
         );

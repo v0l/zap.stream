@@ -2896,14 +2896,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^1.1.7":
-  version: 1.1.7
-  resolution: "@snort/system-react@npm:1.1.7"
+"@snort/system-react@npm:^1.1.8":
+  version: 1.1.8
+  resolution: "@snort/system-react@npm:1.1.8"
   dependencies:
     "@snort/shared": ^1.0.10
-    "@snort/system": ^1.1.6
+    "@snort/system": ^1.1.8
     react: ^18.2.0
-  checksum: 6e958a8b03c473c9c7878893cc1c79e678a713ea8ab717b2c56eb2b5702809fcfd9944fd9215db3f4e5336acef2d27959d2cfff27a753630b28b037a1e74b2a1
+  checksum: dfe30788f3c8c24bd7d9bc50f60b924ffc679b2438f172e11e56f8a00942f7bd1add1aa9adcebddba43498a92d7a49a69a5dc566b6fac16575a553ba2923275f
   languageName: node
   linkType: hard
 
@@ -2943,9 +2943,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^1.1.6":
-  version: 1.1.6
-  resolution: "@snort/system@npm:1.1.6"
+"@snort/system@npm:^1.1.8":
+  version: 1.1.8
+  resolution: "@snort/system@npm:1.1.8"
   dependencies:
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
@@ -2957,25 +2957,7 @@ __metadata:
     isomorphic-ws: ^5.0.0
     uuid: ^9.0.0
     ws: ^8.14.0
-  checksum: 087c25f72cab8b547e23190f9e3db398366f3dc1965cc5fcd6eee6983aaf3fe15a9b028047edca8080c3d63348e7359a44c42c91b2d6fa2bf36346acc0d69fda
-  languageName: node
-  linkType: hard
-
-"@snort/system@npm:^1.1.7":
-  version: 1.1.7
-  resolution: "@snort/system@npm:1.1.7"
-  dependencies:
-    "@noble/curves": ^1.2.0
-    "@noble/hashes": ^1.3.2
-    "@scure/base": ^1.1.2
-    "@snort/shared": ^1.0.10
-    "@stablelib/xchacha20": ^1.0.1
-    debug: ^4.3.4
-    eventemitter3: ^5.0.1
-    isomorphic-ws: ^5.0.0
-    uuid: ^9.0.0
-    ws: ^8.14.0
-  checksum: 881101fc44babb7b7ff081ac5c67c78afc81377b019bc9316be13789a7eaf5cd55dd6001248c8a3c3f837ac90b5082d3509d83ea63dff69103daf357b353ab9b
+  checksum: f27685c55cde1b409b763a553c0cbadf972fefc449d22ea045d004da3658000c65587cef2983ba03f45df50f1eec58d9858256a7a809275a625635267b77b482
   languageName: node
   linkType: hard
 
@@ -7824,8 +7806,8 @@ __metadata:
     "@react-hook/resize-observer": ^1.2.6
     "@scure/base": ^1.1.3
     "@snort/shared": ^1.0.10
-    "@snort/system": ^1.1.7
-    "@snort/system-react": ^1.1.7
+    "@snort/system": ^1.1.8
+    "@snort/system-react": ^1.1.8
     "@snort/system-wasm": ^1.0.1
     "@snort/system-web": ^1.0.2
     "@szhsin/react-menu": ^4.0.2

@@ -26,7 +26,7 @@ import Copy from "./copy";
 import { openFile } from "@/utils";
 import { LoginType } from "@/login";
 import { DefaultProvider, StreamProviderInfo } from "@/providers";
-import { Nip103StreamProvider } from "@/providers/zsz";
+import { NostrStreamProvider } from "@/providers/zsz";
 
 enum Stage {
   Login = 0,
@@ -109,7 +109,7 @@ export function LoginSignup({ close }: { close: () => void }) {
   }
 
   async function setupProfile() {
-    const px = new Nip103StreamProvider(DefaultProvider.name, DefaultProvider.url, EventPublisher.privateKey(key));
+    const px = new NostrStreamProvider(DefaultProvider.name, DefaultProvider.url, EventPublisher.privateKey(key));
     const info = await px.info();
     setProviderInfo(info);
 
