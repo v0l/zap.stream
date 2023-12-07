@@ -118,7 +118,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const evLink = ev ? NostrLink.fromEvent(ev) : undefined;
-  const { title, summary, image, status, tags, contentWarning, stream, goal: goalTag } = extractStreamInfo(ev);
+  const { title, summary, image, status, tags, contentWarning, stream, recording, goal: goalTag } = extractStreamInfo(ev);
   const goal = useZapGoal(goalTag);
 
 
@@ -140,7 +140,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
       </Helmet>
       <div className="video-content">
         <Suspense>
-          <LiveVideoPlayer stream={stream} poster={image} status={status} />
+          <LiveVideoPlayer stream={status === StreamState.Live ? stream : recording} poster={image} status={status} />
         </Suspense>
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />
