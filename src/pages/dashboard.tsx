@@ -24,7 +24,7 @@ export default function DashboardPage() {
 }
 
 function DashboardForLink({ link }: { link: NostrLink }) {
-    const streamEvent = useCurrentStreamFeed(link);
+    const streamEvent = useCurrentStreamFeed(link, true);
     const streamLink = streamEvent ? NostrLink.fromEvent(streamEvent) : undefined;
     const { stream, status, image, participants } = extractStreamInfo(streamEvent);
     const [maxParticipants, setMaxParticipants] = useState(0);
