@@ -249,14 +249,16 @@ div.paper {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
-  max-width: 450px;
+  max-width: 550px;
   max-height: 85vh;
   overflow-y: auto;
 }
+
 .dialog-content .header-image {
   width: 100%;
   height: auto;
 }
+
 .dialog-content .content-inner {
   width: 100%;
   display: flex;

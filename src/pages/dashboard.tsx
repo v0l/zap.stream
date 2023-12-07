@@ -15,6 +15,8 @@ import { HTMLProps, ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { Text } from "@/element/text";
 import { StreamTimer } from "@/element/stream-time";
+import * as Dialog from "@radix-ui/react-dialog";
+import { DashboardRaidMenu } from "@/element/raid-menu";
 
 export default function DashboardPage() {
     const login = useLogin();
@@ -47,6 +49,7 @@ function DashboardForLink({ link }: { link: NostrLink }) {
                     <DashboardStatsCard name={<FormattedMessage defaultMessage="Viewers" id="37mth/" />} value={participants} />
                     <DashboardStatsCard name={<FormattedMessage defaultMessage="Highest Viewers" id="jctiUc" />} value={maxParticipants} />
                 </div>
+                <DashboardRaidButton link={streamLink} />
             </DashboardCard>
             <DashboardCard className="flex flex-col gap-4">
                 <h3>
@@ -132,4 +135,19 @@ function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
             <Text content={zap.content} tags={[]} />
         </div>}
     </div>;
+}
+
+function DashboardRaidButton({ link }: { link: NostrLink }) {
+    const [show, setShow] = useState(false);
+    return <Dialog.Root open={show} onOpenChange={setShow}>
+        <AsyncButton className="btn btn-primary" onClick={() => setShow(true)}>
+            <FormattedMessage defaultMessage="Raid" id="4iBdw1" />
+        </AsyncButton>
+        <Dialog.Portal>
+            <Dialog.Overlay className="dialog-overlay" />
+            <Dialog.Content className="dialog-content">
+                <DashboardRaidMenu link={link} onClose={() => setShow(false)} />
+            </Dialog.Content>
+        </Dialog.Portal>
+    </Dialog.Root>
 }

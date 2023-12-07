@@ -5,6 +5,9 @@
   "+AcVD+": {
     "defaultMessage": "No emails, just awesomeness!"
   },
+  "+sdKx8": {
+    "defaultMessage": "Live now"
+  },
   "+vVZ/G": {
     "defaultMessage": "Connect"
   },
@@ -53,6 +56,9 @@
   "47FYwb": {
     "defaultMessage": "Cancel"
   },
+  "4iBdw1": {
+    "defaultMessage": "Raid"
+  },
   "4l69eO": {
     "defaultMessage": "Hmm, your lightning address looks wrong"
   },
@@ -73,6 +79,9 @@
   },
   "5tM0VD": {
     "defaultMessage": "Stream Started"
+  },
+  "69hmpj": {
+    "defaultMessage": "Raid from {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
@@ -191,6 +200,9 @@
   "LknBsU": {
     "defaultMessage": "Stream Key"
   },
+  "MTHO1W": {
+    "defaultMessage": "Start Raid"
+  },
   "My6HwN": {
     "defaultMessage": "Ok, it's safe"
   },
@@ -232,6 +244,9 @@
   },
   "RJOmzk": {
     "defaultMessage": "I have read and agree with {provider}''s {terms}."
+  },
+  "RS6smY": {
+    "defaultMessage": "Raid Message"
   },
   "RXQdxR": {
     "defaultMessage": "Please login to write messages!"
@@ -282,8 +297,14 @@
   "ZmqxZs": {
     "defaultMessage": "You can change this later"
   },
+  "Zse7yG": {
+    "defaultMessage": "Raid target"
+  },
   "acrOoz": {
     "defaultMessage": "Continue"
+  },
+  "aqjZxs": {
+    "defaultMessage": "Raid!"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -341,6 +362,9 @@
   },
   "izWS4J": {
     "defaultMessage": "Unfollow"
+  },
+  "j/jueq": {
+    "defaultMessage": "Raiding {name}"
   },
   "jctiUc": {
     "defaultMessage": "Highest Viewers"

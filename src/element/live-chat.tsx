@@ -1,8 +1,8 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
-import { useEventReactions } from "@snort/system-react";
-import { unixNow } from "@snort/shared";
+import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent, parseNostrLink } from "@snort/system";
+import { useEventReactions, useUserProfile } from "@snort/system-react";
+import { unixNow, unwrap } from "@snort/shared";
 import { useMemo } from "react";
 
 import { Icon } from "./icon";
@@ -18,11 +18,13 @@ import { useLiveChatFeed } from "@/hooks/live-chat";
 import { useMutedPubkeys } from "@/hooks/lists";
 import { useBadges } from "@/hooks/badges";
 import { useLogin } from "@/hooks/login";
-import { useAddress } from "@/hooks/event";
+import { useAddress, useEvent } from "@/hooks/event";
 import { formatSats } from "@/number";
-import { LIVE_STREAM_CHAT, WEEK } from "@/const";
+import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "./top-zappers";
+import { Mention } from "./mention";
+import { Link } from "react-router-dom";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -148,6 +150,9 @@ export function LiveChat({
                 />
               );
             }
+            case LIVE_STREAM_RAID: {
+              return <ChatRaid ev={a} link={link} />;
+            }
             case EventKind.ZapReceipt: {
               const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
               if (zap) {
@@ -206,4 +211,26 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
       {zap.content && <Text content={zap.content} tags={[]} />}
     </div>
   );
+}
+
+export function ChatRaid({ link, ev }: { link: NostrLink, ev: TaggedNostrEvent }) {
+  const from = ev.tags.find(a => a[0] === "a" && a[3] === "root");
+  const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention");
+  const isRaiding = link.toEventTag()?.at(1) === from?.at(1);
+  const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from));
+  const otherEvent = useEvent(otherLink);
+  const otherProfile = useUserProfile(getHost(otherEvent));
+
+  if (isRaiding) {
+    return <Link to={`/${otherLink.encode()}`} className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
+      <FormattedMessage defaultMessage="Raiding {name}" id="j/jueq" values={{
+        name: otherProfile?.name
+      }} />
+    </Link>;
+  }
+  return <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
+    <FormattedMessage defaultMessage="Raid from {name}" id="69hmpj" values={{
+      name: otherProfile?.name
+    }} />
+  </div>;
 }

@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 interface AsyncButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
-  onClick(e: React.MouseEvent): Promise<void> | void;
+  onClick?: (e: React.MouseEvent) => Promise<void> | void;
   children?: React.ReactNode;
 }
 
