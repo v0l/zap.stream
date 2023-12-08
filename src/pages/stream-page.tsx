@@ -27,7 +27,6 @@ import { ContentWarningOverlay, isContentWarningAccepted } from "@/element/conte
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useStreamLink } from "@/hooks/stream-link";
 import { FollowButton } from "@/element/follow-button";
-import { ClipButton } from "@/element/clip-button";
 
 function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -86,7 +85,6 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
             </div>
             {ev && (
               <>
-                <ClipButton ev={ev} />
                 <ShareMenu ev={ev} />
                 {zapTarget && (
                   <SendZapsDialog
