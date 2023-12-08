@@ -139,7 +139,7 @@ export function LiveChat({
               );
             }
             case EventKind.BadgeAward: {
-              return <BadgeAward ev={a} />;
+              return <BadgeAward ev={a} key={a.id} />;
             }
             case LIVE_STREAM_CHAT: {
               return (
@@ -154,10 +154,10 @@ export function LiveChat({
               );
             }
             case LIVE_STREAM_RAID: {
-              return <ChatRaid ev={a} link={link} />;
+              return <ChatRaid ev={a} link={link} key={a.id} />;
             }
             case LIVE_STREAM_CLIP: {
-              return <ChatClip ev={a} />;
+              return <ChatClip ev={a} key={a.id} />;
             }
             case EventKind.ZapReceipt: {
               const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
@@ -257,7 +257,7 @@ export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }
 
 function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
   const profile = useUserProfile(ev.pubkey);
-  const rTag = findTag(ev, "r");
+  const rTag = useMemo(() => findTag(ev, "r"), [ev]);
   return (
     <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold flex flex-col gap-2">
       <div>
