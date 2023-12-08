@@ -80,6 +80,10 @@ export function LayoutPage() {
             <Icon name="user" size={24} />
             <FormattedMessage defaultMessage="Profile" id="itPgxd" />
           </MenuItem>
+          <MenuItem onClick={() => navigate("/dashboard")}>
+            <Icon name="line-chart-up" size={24} />
+            <FormattedMessage defaultMessage="Dashboard" id="hzSNj4" />
+          </MenuItem>
           <MenuItem onClick={() => navigate("/settings")}>
             <Icon name="settings" size={24} />
             <FormattedMessage defaultMessage="Settings" id="D3idYv" />
