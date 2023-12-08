@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "標籤"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "例如 name@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "解析度"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "創建帳戶"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "文字轉語音的最低金額"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Music"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "在線"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "你為{name}的留言"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "封面圖片"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "請將它安全保存！如果你丟失了此密鑰，你將無法再次訪問你的帳戶。對，很嚴肅！"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "直播流 URL"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "目標：{amount}"
   },
   "Qe1MJu": {
     "defaultMessage": "{amount}來自{name}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "測試語音"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "最高打閃用戶"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "聊天小部件"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "關注"

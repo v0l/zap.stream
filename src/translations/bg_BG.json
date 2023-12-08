@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "Тагове"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "напр.име@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "Резолюция"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "Създай Акаунт"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "Минимално количество за текст към реч"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Music"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "На живо"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "Твоят коментар за {име}"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "Изображение на корицата"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "Запаметете това и пазете в безопасност! ако изгубите този ключ, никога повече няма да имате достъп до акаунта си. Да, толкова е сериозно!"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "Стрийм ULR"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "Цел: {количесто}"
   },
   "Qe1MJu": {
     "defaultMessage": "{име} със {количество}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "Тестов глас"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "Топ запери"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Чат джаджа"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Последване"

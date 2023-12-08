@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "例： name@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "解像度"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "アカウントを作成する"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "音声合成の最低金額"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Music"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "ライブ配信中"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "{name} へのコメント"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "カバー画像"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "これを保存し、安全に保管してください！このキーを紛失すると、二度とアカウントにアクセスできなくなります。そう、それほど深刻なのだ！"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "配信先URL"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "目標額： {amount}"
   },
   "Qe1MJu": {
     "defaultMessage": "{name}：{amount}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "テスト音声"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "トップザッパー"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "チャットウィジェット"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "フォロー"

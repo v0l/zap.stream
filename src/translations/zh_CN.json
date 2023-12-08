@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "标签"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "例如 name@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "分辨率"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "创建帐户"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "文字转语音的最小金额"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Music"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "在线"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "你为{name}的留言"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "封面图像"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "请将它安全保存！如果你丢失了此密钥，你将无法无法再次访问你的帐户。对，很严肃！"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "直播流链接"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "目标：{amount}"
   },
   "Qe1MJu": {
     "defaultMessage": "{amount}來自{name}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "测试语音"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "最高打闪用户"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "聊天小部件"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "关注"

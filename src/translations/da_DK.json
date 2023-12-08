@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "Mærker"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "F.eks. name@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "Beslutninger"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "Opret konto"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "Minimumsbeløb for tekst til tale"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Music"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "Levende"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "Din kommentar til {name}"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "Forsidebillede"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "Gem denne og opbevar den sikkert! Hvis du mister denne nøgle, vil du aldrig kunne få adgang til din konto igen. Jep, så alvorligt er det!"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "Stream-URL"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "Mål: {amount}"
   },
   "Qe1MJu": {
     "defaultMessage": "{name} med {amount}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "Test stemme"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "De bedste zappere"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chat-widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Følg efter"

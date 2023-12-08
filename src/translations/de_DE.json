@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "z.B. name@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "Auflösungen"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "Konto erstellen"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "Mindestbetrag für Text-to-Speech"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Musik"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "Live"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "Dein Kommentar für {name}"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "Titelbild"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "Speichere das und bewahre es sicher auf! Wenn du diesen Schlüssel verlierst, kannst du nie mehr auf dein Konto zugreifen. Ja, es ist folgenreich!"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "Stream-URL"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "Ziel: {amount}"
   },
   "Qe1MJu": {
     "defaultMessage": "{name} mit {amount}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "Eine neue Version wurde gefunden"
@@ -279,7 +294,7 @@
     "defaultMessage": "Verbergen"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Stream-Weiterleitung"
   },
   "W9355R": {
     "defaultMessage": "Entstummen"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "Stimme testen"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "Top Zapper"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chat-Widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Folgen"
@@ -424,7 +445,7 @@
     "defaultMessage": "Zap {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream Typ sollte HLS sein"
+    "defaultMessage": "Stream-Typ sollte HLS sein"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zappte <s>{amount}</s> sats"

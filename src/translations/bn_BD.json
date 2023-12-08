@@ -35,6 +35,9 @@
   "1EYCdR": {
     "defaultMessage": "ট্যাগগুলি"
   },
+  "1q4BO/": {
+    "defaultMessage": "Not a valid URL"
+  },
   "1qsXCO": {
     "defaultMessage": "যেমন: name@wallet.com"
   },
@@ -68,6 +71,9 @@
   "4uI538": {
     "defaultMessage": "রেজোলিউশন"
   },
+  "50+/JW": {
+    "defaultMessage": "Stream Key is required"
+  },
   "5JcXdV": {
     "defaultMessage": "অ্যাকাউন্ট তৈরি করুন"
   },
@@ -88,6 +94,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "মূলপাঠ থেকে পড়ার জন্য ন্যূনতম পরিমাণ"
+  },
+  "7+bCC1": {
+    "defaultMessage": "Stream url must start with rtmp://"
   },
   "79lLl+": {
     "defaultMessage": "Music"
@@ -134,6 +143,9 @@
   "Dn82AL": {
     "defaultMessage": "সরাসরি সম্প্রচার"
   },
+  "E9APoR": {
+    "defaultMessage": "Could not create stream URL"
+  },
   "ESyhzp": {
     "defaultMessage": "{name} এর উদ্দেশে আপনার মন্তব্য"
   },
@@ -154,6 +166,9 @@
   },
   "Gq6x9o": {
     "defaultMessage": "কভারের ছবি"
+  },
+  "Gvxoji": {
+    "defaultMessage": "Name is required"
   },
   "H/bNs9": {
     "defaultMessage": "এটি সংরক্ষণ করুন এবং নিরাপদে রাখুন! আপনি যদি এই চাবিটি হারিয়ে ফেলেন, তাহলে আপনি আর কখনো আপনার অ্যাকাউন্টে প্রবেশ করতে পারবেন না৷ হ্যাঁ, এটা অত্যন্ত গুরুত্বপূর্ণ!"
@@ -233,14 +248,14 @@
   "QRRCp0": {
     "defaultMessage": "URL স্ট্রিম করুন"
   },
+  "QWlMq9": {
+    "defaultMessage": "Stream key"
+  },
   "QceMQZ": {
     "defaultMessage": "লক্ষ্য: {amount}"
   },
   "Qe1MJu": {
     "defaultMessage": "{name} দ্বারা {amount}"
-  },
-  "QuXHCg": {
-    "defaultMessage": "Human readable name"
   },
   "RJ2VxG": {
     "defaultMessage": "A new version has been detected"
@@ -327,6 +342,9 @@
   "d5zWyh": {
     "defaultMessage": "কণ্ঠস্বর পরীক্ষা করে দেখুন"
   },
+  "dOQCL8": {
+    "defaultMessage": "Display name"
+  },
   "dVD/AR": {
     "defaultMessage": "শীর্ষ জ্যাপ প্রদানকারী"
   },
@@ -359,6 +377,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "চ্যাট উইজেট"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "অনুসরণ করুন"
