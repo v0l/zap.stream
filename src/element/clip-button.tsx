@@ -9,13 +9,14 @@ import { unwrap } from "@snort/shared";
 import { useContext } from "react";
 import { SnortContext } from "@snort/system-react";
 import { Icon } from "./icon";
+import { StreamState } from "..";
 
 export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
-  const { id, service } = extractStreamInfo(ev);
+  const { id, service, status } = extractStreamInfo(ev);
   const login = useLogin();
 
-  if (!service) return;
+  if (!service || status !== StreamState.Live) return;
 
   async function makeClip() {
     if (!service || !id) return;
