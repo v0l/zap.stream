@@ -1,6 +1,6 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent, parseNostrLink } from "@snort/system";
+import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
 import { useEventReactions, useUserProfile } from "@snort/system-react";
 import { unixNow, unwrap } from "@snort/shared";
 import { useMemo } from "react";
@@ -20,10 +20,9 @@ import { useBadges } from "@/hooks/badges";
 import { useLogin } from "@/hooks/login";
 import { useAddress, useEvent } from "@/hooks/event";
 import { formatSats } from "@/number";
-import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, WEEK } from "@/const";
+import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "./top-zappers";
-import { Mention } from "./mention";
 import { Link } from "react-router-dom";
 
 export interface LiveChatOptions {
@@ -157,6 +156,9 @@ export function LiveChat({
             case LIVE_STREAM_RAID: {
               return <ChatRaid ev={a} link={link} />;
             }
+            case LIVE_STREAM_CLIP: {
+              return <ChatClip ev={a} />;
+            }
             case EventKind.ZapReceipt: {
               const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
               if (zap) {
@@ -249,6 +251,25 @@ export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }
           name: otherProfile?.name,
         }}
       />
+    </div>
+  );
+}
+
+function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
+  const profile = useUserProfile(ev.pubkey);
+  const rTag = findTag(ev, "r");
+  return (
+    <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold flex flex-col gap-2">
+      <div>
+        <FormattedMessage
+          defaultMessage="{name} created a clip"
+          id="BD0vyn"
+          values={{
+            name: profile?.name,
+          }}
+        />
+      </div>
+      {rTag && <video src={rTag} controls playsInline={true} muted={true} />}
     </div>
   );
 }

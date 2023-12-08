@@ -57,12 +57,15 @@
   .stream-page .profile-info {
     width: calc(100% - 32px);
   }
+
+  .stream-page .video-content video {
+    max-height: 30vh;
+  }
 }
 
 .profile-info {
   display: flex;
   justify-content: space-between;
-  padding: 0 16px;
   gap: var(--gap-m);
 }
 

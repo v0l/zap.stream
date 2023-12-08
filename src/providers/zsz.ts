@@ -15,6 +15,9 @@ export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
 
   constructor(readonly name: string, readonly url: string, pub?: EventPublisher) {
+    if (!url.endsWith("/")) {
+      this.url = `${url}/`;
+    }
     this.#publisher = pub;
   }
 
@@ -86,6 +89,10 @@ export class NostrStreamProvider implements StreamProvider {
 
   async removeForward(id: string): Promise<void> {
     await this.#getJson("DELETE", `account/forward/${id}`);
+  }
+
+  async createClip(id: string) {
+    return await this.#getJson<{ url: string }>("POST", `clip/${id}`);
   }
 
   async #getJson<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<T> {

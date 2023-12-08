@@ -85,6 +85,7 @@ export function getPlaceholder(id: string) {
 }
 
 interface StreamInfo {
+  id?: string;
   title?: string;
   summary?: string;
   image?: string;
@@ -97,7 +98,9 @@ interface StreamInfo {
   participants?: string;
   starts?: string;
   ends?: string;
+  service?: string;
 }
+
 export function extractStreamInfo(ev?: NostrEvent) {
   const ret = {} as StreamInfo;
   const matchTag = (tag: Array<string>, k: string, into: (v: string) => void) => {
@@ -107,6 +110,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
   };
 
   for (const t of ev?.tags ?? []) {
+    matchTag(t, "d", v => (ret.id = v));
     matchTag(t, "title", v => (ret.title = v));
     matchTag(t, "summary", v => (ret.summary = v));
     matchTag(t, "image", v => (ret.image = v));
@@ -118,6 +122,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "goal", v => (ret.goal = v));
     matchTag(t, "starts", v => (ret.starts = v));
     matchTag(t, "ends", v => (ret.ends = v));
+    matchTag(t, "service", v => (ret.service = v));
   }
   ret.tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? [];
 
