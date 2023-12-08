@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Iniciar Sesión"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Chat de la transmisión"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "¡Te conectamos con un monedero relámpago para que puedas cobrar de inmediato de los espectadores!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

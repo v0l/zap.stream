@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Logga in"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "Vi fixade en lightning plånbok till dig så att du kan få betalt av tittarna direkt!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

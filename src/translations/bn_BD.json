@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "লগইন করুন"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "চ্যাট স্ট্রিম করুন"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "আমরা আপনাকে একটি বিজলি ওয়ালেটের ব্যবস্থা করে দিয়েছি যাতে আপনি দর্শকদের কাছ থেকে তৎক্ষণাৎ পারিশ্রমিক নিতে পারেন!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

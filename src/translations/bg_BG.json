@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Вход"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Стрийм Чат"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "Свързахме ви със светкавичен портфейл, за да можете да получите плащане от зрителите веднага!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

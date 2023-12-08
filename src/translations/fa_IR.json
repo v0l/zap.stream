@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "ورود"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "گپ پخش زنده"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

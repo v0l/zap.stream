@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "ログイン"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "チャット配信"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

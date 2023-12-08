@@ -36,7 +36,7 @@
     "defaultMessage": "Tags"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "Ungültige URL"
   },
   "1qsXCO": {
     "defaultMessage": "z.B. name@wallet.com"
@@ -72,7 +72,7 @@
     "defaultMessage": "Auflösungen"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "Stream-Schlüssel ist erforderlich"
   },
   "5JcXdV": {
     "defaultMessage": "Konto erstellen"
@@ -96,7 +96,7 @@
     "defaultMessage": "Mindestbetrag für Text-to-Speech"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "Stream-URL muss mit rtmp:// beginnen"
   },
   "79lLl+": {
     "defaultMessage": "Musik"
@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Anmelden"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Stream-Chat"
   },
@@ -144,7 +147,7 @@
     "defaultMessage": "Live"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "Stream-URL konnte nicht erstellt werden"
   },
   "ESyhzp": {
     "defaultMessage": "Dein Kommentar für {name}"
@@ -168,7 +171,7 @@
     "defaultMessage": "Titelbild"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "Name ist erforderlich"
   },
   "H/bNs9": {
     "defaultMessage": "Speichere das und bewahre es sicher auf! Wenn du diesen Schlüssel verlierst, kannst du nie mehr auf dein Konto zugreifen. Ja, es ist folgenreich!"
@@ -236,6 +239,9 @@
   "Oxqtyf": {
     "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
   },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
+  },
   "Pe0ogR": {
     "defaultMessage": "Erscheinungsbild"
   },
@@ -249,7 +255,7 @@
     "defaultMessage": "Stream-URL"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Stream-Schlüssel"
   },
   "QceMQZ": {
     "defaultMessage": "Ziel: {amount}"
@@ -343,7 +349,7 @@
     "defaultMessage": "Stimme testen"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Anzeigename"
   },
   "dVD/AR": {
     "defaultMessage": "Top Zapper"
@@ -448,7 +454,7 @@
     "defaultMessage": "Stream-Typ sollte HLS sein"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zappte <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> hat <s>{amount}</s> sats gezappt"
   },
   "r2Jjms": {
     "defaultMessage": "Anmelden"

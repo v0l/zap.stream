@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Se Connecter"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Chat du Stream"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "Nous vous avons branché avec un portefeuille Lightning afin que vous puissiez être payé par les spectateurs dès maintenant!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Bejelentkezés"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "Egy LN tárcával összekötöttünk, hogy a nézők támogatásait azonnal megkaphasd!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

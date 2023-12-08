@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Логин"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Чат стрима"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "Мы подключили вас с помощью лайтнинг-кошелька, чтобы вы уже сейчас могли получать средства от зрителей!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

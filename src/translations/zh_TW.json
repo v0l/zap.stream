@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "登錄"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "直播流聊天室"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "我們已經為你設置了一個閃電錢包，因此你立即可以開始收取觀眾的付款！"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"

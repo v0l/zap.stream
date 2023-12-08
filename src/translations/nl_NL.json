@@ -122,6 +122,9 @@
   "AyGauy": {
     "defaultMessage": "Inloggen"
   },
+  "BD0vyn": {
+    "defaultMessage": "{name} created a clip"
+  },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
   },
@@ -235,6 +238,9 @@
   },
   "Oxqtyf": {
     "defaultMessage": "We hebben een bliksemportemonnee voor je gemaakt, zodat je meteen door kijkers kunt worden betaald!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "Create Clip"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"
