@@ -6,7 +6,7 @@
     "defaultMessage": "Ei sähköposteja, pelkästään mahtavuutta!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "Livenä nyt"
   },
   "+vVZ/G": {
     "defaultMessage": "Yhdistä"
@@ -30,13 +30,13 @@
     "defaultMessage": "Tavoite"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Alkaa"
   },
   "1EYCdR": {
     "defaultMessage": "Tunnisteet"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "Virheellinen URL"
   },
   "1qsXCO": {
     "defaultMessage": "esim. nimi@lompakko.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "Lisää"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "Katsojaa"
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
@@ -60,7 +60,7 @@
     "defaultMessage": "Peruuta"
   },
   "4iBdw1": {
-    "defaultMessage": "Raid"
+    "defaultMessage": "Rynnäkkö"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, lightning-oitteesi näyttää väärältä"
@@ -72,7 +72,7 @@
     "defaultMessage": "Tarkkuudet"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "Suoratoistoavain on pakollinen"
   },
   "5JcXdV": {
     "defaultMessage": "Luo tili"
@@ -84,10 +84,10 @@
     "defaultMessage": "Palvelimen URL"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "Suoratoisto aloitettu"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "{name}:n rynnäkkö"
   },
   "6Z2pvJ": {
     "defaultMessage": "Streamaustarjoajat"
@@ -96,13 +96,13 @@
     "defaultMessage": "Vähimmäismäärä teksti puheelle"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "Suoratoisto url-osoitteen on alettava rtmp://"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Musiikki"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "Offline-tilassa"
   },
   "8YT6ja": {
     "defaultMessage": "Lisää teksti puheeksi"
@@ -123,7 +123,7 @@
     "defaultMessage": "Kirjaudu sisään"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} loi leikkeen"
   },
   "BGxpTN": {
     "defaultMessage": "Stream-keskustelu"
@@ -135,7 +135,7 @@
     "defaultMessage": "Kirjaudu ulos"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} sats"
+    "defaultMessage": "{n} satsia"
   },
   "D3idYv": {
     "defaultMessage": "Asetukset"
@@ -147,7 +147,7 @@
     "defaultMessage": "Live"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "SuoratoistoURL-osoitetta ei voitu luoda"
   },
   "ESyhzp": {
     "defaultMessage": "Kommenttisi kohteelle {name}"
@@ -162,16 +162,16 @@
     "defaultMessage": "Poista"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "Eniten Keskusteluja"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "Päivitä sivu käyttääksesi uusinta versiota"
   },
   "Gq6x9o": {
     "defaultMessage": "Kansikuva"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "Nimi on pakollinen"
   },
   "H/bNs9": {
     "defaultMessage": "Tallenna tämä ja pidä se tallessa! Jos menetät tämän avaimen, et pääse koskaan enää tilillesi. Kyllä, se on niin vakavaa!"
@@ -195,7 +195,7 @@
     "defaultMessage": "TAI"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Suoratoiston kesto {duration} minuuttia"
   },
   "JEsxDw": {
     "defaultMessage": "Ladataan..."
@@ -210,7 +210,7 @@
     "defaultMessage": "Näytä"
   },
   "KdYELp": {
-    "defaultMessage": "Get stream key"
+    "defaultMessage": "Hanki lähetysavain"
   },
   "KkIL3s": {
     "defaultMessage": "Ei, olen alle 18"
@@ -219,7 +219,7 @@
     "defaultMessage": "Streamin avain"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "Aloita rynnäkkö"
   },
   "My6HwN": {
     "defaultMessage": "Ok, se on turvassa"
@@ -240,10 +240,10 @@
     "defaultMessage": "Sait lightning-lompakon, jotta voit saada heti maksuja katsojilta!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "Luo leike"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Teema"
   },
   "Q3au2v": {
     "defaultMessage": "Tietoja {estimate}"
@@ -255,7 +255,7 @@
     "defaultMessage": "Streamin URL"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Lähetysavain"
   },
   "QceMQZ": {
     "defaultMessage": "Tavoite: {amount}"
@@ -264,13 +264,13 @@
     "defaultMessage": "{name} määrällä {amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "Uusi versio on havaittu"
   },
   "RJOmzk": {
     "defaultMessage": "Olen lukenut ja hyväksynyt {provider}:n {terms}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "Rynnäkkö-viesti"
   },
   "RXQdxR": {
     "defaultMessage": "Kirjaudu sisään kirjoittaaksesi viestejä!"
@@ -279,7 +279,7 @@
     "defaultMessage": "Yhteenveto"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "Chat-käyttäjät"
   },
   "TP/cMX": {
     "defaultMessage": "Päättynyt"
@@ -300,7 +300,7 @@
     "defaultMessage": "Piilota"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Lähetyksen edelleenlähetys"
   },
   "W9355R": {
     "defaultMessage": "Poista mykistys"
@@ -309,7 +309,7 @@
     "defaultMessage": "Luo tavoite"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Reaktiot"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -325,13 +325,13 @@
     "defaultMessage": "Voit muuttaa tätä myöhemmin"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "Rynnäkön kohde"
   },
   "acrOoz": {
     "defaultMessage": "Jatka"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "Rynnäkkö!"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -349,7 +349,7 @@
     "defaultMessage": "Testiääni"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Näyttönimi"
   },
   "dVD/AR": {
     "defaultMessage": "Parhaat Zapparit"
@@ -370,13 +370,13 @@
     "defaultMessage": "Kirjaudu sisään yksityisellä avaimella (turvaton)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} viestiä"
   },
   "hGQqkW": {
     "defaultMessage": "Aikataulu"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Viestit"
   },
   "heyxZL": {
     "defaultMessage": "Käytä tekstiä puheeksi"
@@ -385,7 +385,7 @@
     "defaultMessage": "Keskusteluwidgetti"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Hallintapaneeli"
   },
   "ieGrWo": {
     "defaultMessage": "Seuraa"
@@ -397,16 +397,16 @@
     "defaultMessage": "Älä seuraa"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "Rynnäköidään {name}"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "Eniten Katsojia"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "Vimpaimet"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "Lähetys päättyi"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -427,7 +427,7 @@
     "defaultMessage": "Loppupiste"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "Lähetyksen aika"
   },
   "mnJYBQ": {
     "defaultMessage": "Ääni"
@@ -454,13 +454,13 @@
     "defaultMessage": "Streamin tyyppi tulisi olla HLS"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> zappasi <s>{amount}</s> satsia"
   },
   "r2Jjms": {
     "defaultMessage": "Kirjaudu sisään"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "Päivitä"
   },
   "rWBFZA": {
     "defaultMessage": "Seksuaalisesti paljastavaa materiaalia tulossa!"
