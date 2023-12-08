@@ -1,7 +1,6 @@
 import "./note.css";
-import { lazy } from "react";
-import { type NostrEvent, NostrPrefix } from "@snort/system";
-import { hexToBech32 } from "@snort/shared";
+import { Suspense, lazy } from "react";
+import { type NostrEvent, NostrLink } from "@snort/system";
 
 const Markdown = lazy(() => import("./markdown"));
 import { ExternalIconLink } from "./external-link";
@@ -15,11 +14,13 @@ export function Note({ ev }: { ev: NostrEvent }) {
         <ExternalIconLink
           size={24}
           className="note-link-icon"
-          href={`https://snort.social/e/${hexToBech32(NostrPrefix.Event, ev.id)}`}
+          href={`https://snort.social/e/${NostrLink.fromEvent(ev).encode()}`}
         />
       </div>
       <div className="note-content">
-        <Markdown tags={ev.tags} content={ev.content} />
+        <Suspense>
+          <Markdown tags={ev.tags} content={ev.content} />
+        </Suspense>
       </div>
     </div>
   );
