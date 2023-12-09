@@ -2,7 +2,7 @@ import "./layout.css";
 
 import { CSSProperties, useState, useSyncExternalStore } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { FormattedMessage } from "react-intl";
 import { Menu, MenuItem } from "@szhsin/react-menu";
@@ -135,12 +135,18 @@ export function LayoutPage() {
       </Helmet>
       <header>
         <div
-          className="bg-[#f1f0ff] flex items-center pointer rounded-2xl aspect-square px-1"
+          className="bg-white flex items-center pointer rounded-2xl aspect-square px-1"
           onClick={() => navigate("/")}>
           <img src="/zap-stream.svg" width={40} />
         </div>
-        <div className="grow">{/* Future menu items go here */}</div>
+        <div className="grow flex items-center gap-2">
+
+        </div>
         <div className="flex items-center gap-3">
+          <Link to="https://discord.gg/Wtg6NVDdbT" target="_blank" className="flex items-center gap-1 bg-gray-1 hover:bg-gray-2 font-bold p-2 rounded-xl">
+            <Icon name="link" />
+            Discord
+          </Link>
           {langSelector()}
           {loggedIn()}
           {loggedOut()}
