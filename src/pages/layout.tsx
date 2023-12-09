@@ -143,7 +143,7 @@ export function LayoutPage() {
 
         </div>
         <div className="flex items-center gap-3">
-          <Link to="https://discord.gg/Wtg6NVDdbT" target="_blank" className="flex items-center gap-1 bg-gray-1 hover:bg-gray-2 font-bold p-2 rounded-xl">
+          <Link to="https://discord.gg/Wtg6NVDdbT" target="_blank" className="flex items-center max-md:hidden gap-1 bg-gray-1 hover:bg-gray-2 font-bold p-2 rounded-xl">
             <Icon name="link" />
             Discord
           </Link>
