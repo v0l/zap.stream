@@ -6,7 +6,6 @@ import { StreamState } from "..";
 import { Icon } from "./icon";
 import { ProgressBar } from "./progress-bar";
 import { Menu, MenuItem } from "@szhsin/react-menu";
-import classNames from "classnames";
 
 export enum VideoStatus {
   Online = "online",
@@ -34,7 +33,7 @@ export default function LiveVideoPlayer({
   const [src, setSrc] = useState<string>();
   const [levels, setLevels] = useState<Array<{ level: number; height: number }>>();
   const [level, setLevel] = useState<number>(-1);
-  const [playState, setPlayState] = useState<"loading" | "playing" | "paused">("loading");
+  const [playState, setPlayState] = useState<"loading" | "playing" | "paused">("playing");
   const [volume, setVolume] = useState(1);
   const [muted, setMuted] = useState(pMuted ?? false);
   const [position, setPosition] = useState<number>();
@@ -107,7 +106,13 @@ export default function LiveVideoPlayer({
     if (video.current) {
       video.current.onplaying = () => setPlayState("playing");
       video.current.onpause = () => setPlayState("paused");
-      video.current.onseeking = () => setPlayState("loading");
+      video.current.onseeking = () => {
+        if (video.current?.paused) {
+          setPlayState("paused")
+        } else {
+          setPlayState("loading")
+        }
+      }
       video.current.onplay = () => setPlayState("loading");
       video.current.onvolumechange = () => setVolume(video.current?.volume ?? 1);
       video.current.ontimeupdate = () => setPosition(video.current?.currentTime);
@@ -116,8 +121,12 @@ export default function LiveVideoPlayer({
 
   useEffect(() => {
     if (video.current) {
-      video.current.volume = volume;
-      video.current.muted = muted;
+      if (video.current.volume !== volume) {
+        video.current.volume = volume;
+      }
+      if (video.current.muted !== muted) {
+        video.current.muted = muted;
+      }
     }
   }, [video, volume, muted]);
 
@@ -155,8 +164,8 @@ export default function LiveVideoPlayer({
     }
   }
 
-  return (
-    <div className="relative">
+  function playerOverlay() {
+    return <>
       {status === VideoStatus.Online && (
         <div
           className="absolute opacity-0 hover:opacity-90 transition-opacity w-full h-full z-20 bg-[#00000055]"
@@ -225,9 +234,14 @@ export default function LiveVideoPlayer({
           <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
         </div>
       )}
+    </>
+  }
+  return (
+    <div className="relative">
+      {playerOverlay()}
       <video
         {...props}
-        className={classNames("z-10", props.className)}
+        className={props.className}
         ref={video}
         autoPlay={true}
         poster={poster}
