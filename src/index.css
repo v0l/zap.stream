@@ -234,7 +234,7 @@ div.paper {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 99;
 }
 
 .dialog-content {
@@ -252,6 +252,7 @@ div.paper {
   max-width: 550px;
   max-height: 85vh;
   overflow-y: auto;
+  z-index: 100;
 }
 
 .dialog-content .header-image {
