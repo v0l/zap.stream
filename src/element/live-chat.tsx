@@ -90,7 +90,9 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
-    return [...feed.messages, ...feed.reactions, ...awards, ...extra].sort((a, b) => b.created_at - a.created_at);
+    return [...feed.messages, ...feed.reactions, ...awards, ...extra]
+      .filter(a => a.created_at >= started)
+      .sort((a, b) => b.created_at - a.created_at);
   }, [feed.messages, feed.reactions, awards]);
 
   const filteredEvents = useMemo(() => {
