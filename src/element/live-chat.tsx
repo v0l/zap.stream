@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
 import { useEventReactions, useUserProfile } from "@snort/system-react";
 import { unixNow, unwrap } from "@snort/shared";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import { Icon } from "./icon";
 import Spinner from "./spinner";
@@ -23,7 +23,7 @@ import { formatSats } from "@/number";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "./top-zappers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface LiveChatOptions {
   canWrite?: boolean;
@@ -224,12 +224,20 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
 }
 
 export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }) {
+  const navigate = useNavigate();
   const from = ev.tags.find(a => a[0] === "a" && a[3] === "root");
   const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention");
   const isRaiding = link.toEventTag()?.at(1) === from?.at(1);
   const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from));
   const otherEvent = useEvent(otherLink);
   const otherProfile = useUserProfile(getHost(otherEvent));
+
+  useEffect(() => {
+    const raidDiff = Math.abs(unixNow() - ev.created_at);
+    if (isRaiding === true && raidDiff < 60) {
+      navigate(`/${otherLink.encode()}`);
+    }
+  }, [isRaiding]);
 
   if (isRaiding) {
     return (
