@@ -6,7 +6,7 @@
     "defaultMessage": "Ingen e-mails, bare fantastiskhed!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "Live nu"
   },
   "+vVZ/G": {
     "defaultMessage": "Forbind"
@@ -36,7 +36,7 @@
     "defaultMessage": "Mærker"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "Ikke en gyldig URL"
   },
   "1qsXCO": {
     "defaultMessage": "F.eks. name@wallet.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "Tilføj"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "Seere"
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
@@ -60,7 +60,7 @@
     "defaultMessage": "Annuller"
   },
   "4iBdw1": {
-    "defaultMessage": "Raid"
+    "defaultMessage": "Razzia"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, din lynadresse ser forkert ud"
@@ -72,7 +72,7 @@
     "defaultMessage": "Beslutninger"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "Stream Key er påkrævet"
   },
   "5JcXdV": {
     "defaultMessage": "Opret konto"
@@ -84,10 +84,10 @@
     "defaultMessage": "Server-URL"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "Stream i gang"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "Angreb fra {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Strømudbydere"
@@ -96,10 +96,10 @@
     "defaultMessage": "Minimumsbeløb for tekst til tale"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "Stream url skal starte med rtmp://"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Musik"
   },
   "7UOvbT": {
     "defaultMessage": "Offline"
@@ -123,7 +123,7 @@
     "defaultMessage": "Login"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} oprettet et klip"
   },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
@@ -147,7 +147,7 @@
     "defaultMessage": "Levende"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "Kunne ikke oprette stream-URL"
   },
   "ESyhzp": {
     "defaultMessage": "Din kommentar til {name}"
@@ -162,16 +162,16 @@
     "defaultMessage": "Fjern"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "De bedste chattere"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "Opdater siden for at bruge den nyeste version"
   },
   "Gq6x9o": {
     "defaultMessage": "Forsidebillede"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "Navn er påkrævet"
   },
   "H/bNs9": {
     "defaultMessage": "Gem denne og opbevar den sikkert! Hvis du mister denne nøgle, vil du aldrig kunne få adgang til din konto igen. Jep, så alvorligt er det!"
@@ -195,7 +195,7 @@
     "defaultMessage": "ELLER"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Streamens varighed {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
@@ -210,7 +210,7 @@
     "defaultMessage": "Vis"
   },
   "KdYELp": {
-    "defaultMessage": "Get stream key"
+    "defaultMessage": "Hent stream-nøgle"
   },
   "KkIL3s": {
     "defaultMessage": "Nej, jeg er under 18"
@@ -240,10 +240,10 @@
     "defaultMessage": "Vi har udstyret dig med en lightning wallet, så du kan blive betalt af seerne med det samme!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "Opret klip"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Tema"
   },
   "Q3au2v": {
     "defaultMessage": "Om {estimate}"
@@ -255,7 +255,7 @@
     "defaultMessage": "Stream-URL"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Stream-nøgle"
   },
   "QceMQZ": {
     "defaultMessage": "Mål: {amount}"
@@ -264,13 +264,13 @@
     "defaultMessage": "{name} med {amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "En ny version er blevet opdaget"
   },
   "RJOmzk": {
     "defaultMessage": "Jeg har læst og er enig i {provider}' s {terms}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "Raid-besked"
   },
   "RXQdxR": {
     "defaultMessage": "Log ind for at skrive beskeder!"
@@ -279,7 +279,7 @@
     "defaultMessage": "Resumé"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "Chat-brugere"
   },
   "TP/cMX": {
     "defaultMessage": "Afsluttet"
@@ -300,7 +300,7 @@
     "defaultMessage": "Skjul"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Videresendelse af strøm"
   },
   "W9355R": {
     "defaultMessage": "Slå lyden fra"
@@ -309,7 +309,7 @@
     "defaultMessage": "Opret mål"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Reaktioner"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -325,13 +325,13 @@
     "defaultMessage": "Du kan ændre dette senere"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "Mål for razzia"
   },
   "acrOoz": {
     "defaultMessage": "Fortsæt"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "Razzia!"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -349,7 +349,7 @@
     "defaultMessage": "Test stemme"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Vis navn"
   },
   "dVD/AR": {
     "defaultMessage": "De bedste zappere"
@@ -370,13 +370,13 @@
     "defaultMessage": "Login med privat nøgle (usikkert)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} meddelelser"
   },
   "hGQqkW": {
     "defaultMessage": "Tidsplan"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Beskeder"
   },
   "heyxZL": {
     "defaultMessage": "Aktiver tekst til tale"
@@ -397,16 +397,16 @@
     "defaultMessage": "Følg ikke"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "Razzia {name}"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "Flest seere"
   },
   "jgOqxt": {
     "defaultMessage": "Widgets"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "Stream afsluttet"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -427,7 +427,7 @@
     "defaultMessage": "Slutpunkt"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "Strømtid"
   },
   "mnJYBQ": {
     "defaultMessage": "Stemme"
@@ -454,13 +454,13 @@
     "defaultMessage": "Stream-typen skal være HLS"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> zappet <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Log ind"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "Opdatering"
   },
   "rWBFZA": {
     "defaultMessage": "Seksuelt eksplicit materiale forude!"

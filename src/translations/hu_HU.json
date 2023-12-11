@@ -6,7 +6,7 @@
     "defaultMessage": "Nincs szükség E-mailre, csak élvezd!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "Élőben most"
   },
   "+vVZ/G": {
     "defaultMessage": "Csatlakozás"
@@ -30,13 +30,13 @@
     "defaultMessage": "Cél"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Indul"
   },
   "1EYCdR": {
     "defaultMessage": "Címkék"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "Nem érvényes URL"
   },
   "1qsXCO": {
     "defaultMessage": "pl. név@tárca.hu"
@@ -45,7 +45,7 @@
     "defaultMessage": "Hozzáad"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "Nézők"
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
@@ -72,7 +72,7 @@
     "defaultMessage": "Felbontások"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "Stream Key szükséges"
   },
   "5JcXdV": {
     "defaultMessage": "Fiók Létrehozása"
@@ -84,10 +84,10 @@
     "defaultMessage": "Kiszolgáló URL-címe"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "Stream elindult"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "Raid a {name}oldalról"
   },
   "6Z2pvJ": {
     "defaultMessage": "Streamszolgáltatók"
@@ -96,10 +96,10 @@
     "defaultMessage": "Szövegfelolvasás minimális összege"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "A folyam url-jének rtmp://-vel kell kezdődnie"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Zene"
   },
   "7UOvbT": {
     "defaultMessage": "Offline"
@@ -123,7 +123,7 @@
     "defaultMessage": "Bejelentkezés"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} készített egy klipet"
   },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
@@ -147,7 +147,7 @@
     "defaultMessage": "Élő"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "Nem sikerült létrehozni a stream URL-t"
   },
   "ESyhzp": {
     "defaultMessage": "Megjegyzésed neki: {name}"
@@ -162,16 +162,16 @@
     "defaultMessage": "Eltávolítás"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "Top csevegők"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "Frissítse az oldalt a legújabb verzió használatához"
   },
   "Gq6x9o": {
     "defaultMessage": "Borítókép"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "A név kötelező"
   },
   "H/bNs9": {
     "defaultMessage": "Mentsd le és őrizd meg! Ha ezt a kulcsot elveszíted, a fiókodhoz soha többé nem fogsz tudni hozzáférni. Igen, ez ennyire komoly!"
@@ -195,7 +195,7 @@
     "defaultMessage": "VAGY"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Stream időtartama {duration} perc"
   },
   "JEsxDw": {
     "defaultMessage": "Feltöltés..."
@@ -210,7 +210,7 @@
     "defaultMessage": "Megjelenít"
   },
   "KdYELp": {
-    "defaultMessage": "Get stream key"
+    "defaultMessage": "Stream kulcs lekérése"
   },
   "KkIL3s": {
     "defaultMessage": "Nem, 18 év alatti vagyok"
@@ -240,10 +240,10 @@
     "defaultMessage": "Egy LN tárcával összekötöttünk, hogy a nézők támogatásait azonnal megkaphasd!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "Clip létrehozása"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Téma"
   },
   "Q3au2v": {
     "defaultMessage": "Kb. {estimate}"
@@ -255,7 +255,7 @@
     "defaultMessage": "Stream URL"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Patak kulcs"
   },
   "QceMQZ": {
     "defaultMessage": "Cél: {amount}"
@@ -264,13 +264,13 @@
     "defaultMessage": "{name} ennyivel: {amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "Új verziót észleltek"
   },
   "RJOmzk": {
     "defaultMessage": "Elolvastam és egyetértek a {provider} {terms}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "Raid üzenet"
   },
   "RXQdxR": {
     "defaultMessage": "Üzenetek írásához kérjük jelentkezz be!"
@@ -279,7 +279,7 @@
     "defaultMessage": "Összegzés"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "Chat felhasználók"
   },
   "TP/cMX": {
     "defaultMessage": "Befejezve"
@@ -300,7 +300,7 @@
     "defaultMessage": "Elrejtés"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Stream továbbítása"
   },
   "W9355R": {
     "defaultMessage": "Némítás visszavonása"
@@ -309,7 +309,7 @@
     "defaultMessage": "Cél kitűzése"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Reakciók"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -325,13 +325,13 @@
     "defaultMessage": "Ezt később megváltoztathatod"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "Rajtaütés célpontja"
   },
   "acrOoz": {
     "defaultMessage": "Folytatás"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "Rajtaütés!"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -349,7 +349,7 @@
     "defaultMessage": "Hang tesztelése"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Név megjelenítése"
   },
   "dVD/AR": {
     "defaultMessage": "Top zapperek"
@@ -370,13 +370,13 @@
     "defaultMessage": "Bejelentkezés privát kulccsal (nem biztonságos)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} üzenetek"
   },
   "hGQqkW": {
     "defaultMessage": "Időzítés"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Üzenetek"
   },
   "heyxZL": {
     "defaultMessage": "Szövegfelolvasás engedélyezése"
@@ -385,7 +385,7 @@
     "defaultMessage": "Chat Widget"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Műszerfal"
   },
   "ieGrWo": {
     "defaultMessage": "Követem"
@@ -400,13 +400,13 @@
     "defaultMessage": "Raiding {name}"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "Legnagyobb nézettség"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "Widgetek"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "Stream Befejeződött"
   },
   "jr4+vD": {
     "defaultMessage": "Árleszállítás"
@@ -460,7 +460,7 @@
     "defaultMessage": "Bejelentkezés"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "Frissítés"
   },
   "rWBFZA": {
     "defaultMessage": "Nyíltan szexuális tartalmú anyagok lesznek!"

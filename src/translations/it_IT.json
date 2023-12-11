@@ -6,7 +6,7 @@
     "defaultMessage": "Niente emails, solo bellezza!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "In diretta ora"
   },
   "+vVZ/G": {
     "defaultMessage": "Connetti"
@@ -30,13 +30,13 @@
     "defaultMessage": "Obiettivo"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Inizio"
   },
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "URL non valido"
   },
   "1qsXCO": {
     "defaultMessage": "es. nome@wallet.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "Aggiungi"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "Spettatori"
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
@@ -72,7 +72,7 @@
     "defaultMessage": "Soluzioni"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "È richiesta la Stream Key"
   },
   "5JcXdV": {
     "defaultMessage": "Crea un account"
@@ -84,10 +84,10 @@
     "defaultMessage": "Url del server"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "Flusso avviato"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "Raid da {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
@@ -96,13 +96,13 @@
     "defaultMessage": "Importo minimo per \"da scritto a parlato\""
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "L'url del flusso deve iniziare con rtmp://"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Musica"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "Non in linea"
   },
   "8YT6ja": {
     "defaultMessage": "Inserisci il testo da pronunciare"
@@ -123,7 +123,7 @@
     "defaultMessage": "Login"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} ha creato un clip"
   },
   "BGxpTN": {
     "defaultMessage": "Stream Chat"
@@ -135,7 +135,7 @@
     "defaultMessage": "Logout"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} sats"
+    "defaultMessage": "{n} saturazione"
   },
   "D3idYv": {
     "defaultMessage": "Impostazioni"
@@ -147,7 +147,7 @@
     "defaultMessage": "Dal vivo"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "Impossibile creare un URL di flusso"
   },
   "ESyhzp": {
     "defaultMessage": "Il tuo commento per {name}"
@@ -165,13 +165,13 @@
     "defaultMessage": "Top Chatters"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "Aggiornare la pagina per utilizzare la versione più recente"
   },
   "Gq6x9o": {
     "defaultMessage": "Immagine di copertina"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "Il nome è obbligatorio"
   },
   "H/bNs9": {
     "defaultMessage": "Salvalo e tienilo in un posto sicuro! Se perdi questa chiave non potrai più effettuare l'accesso al tuo account. Esatto, è una cosa seria!"
@@ -195,7 +195,7 @@
     "defaultMessage": "O"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Durata del flusso {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Caricamento..."
@@ -210,7 +210,7 @@
     "defaultMessage": "Mostra"
   },
   "KdYELp": {
-    "defaultMessage": "Get stream key"
+    "defaultMessage": "Ottenere la chiave del flusso"
   },
   "KkIL3s": {
     "defaultMessage": "No, ho meno di 18 anni"
@@ -219,7 +219,7 @@
     "defaultMessage": "Chiave di flusso"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "Avvio del raid"
   },
   "My6HwN": {
     "defaultMessage": "Ok, è sicuro"
@@ -240,10 +240,10 @@
     "defaultMessage": "Ti abbiamo messo a disposizione un portafoglio lightning per farti pagare subito dagli spettatori!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "Crea clip"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Tema"
   },
   "Q3au2v": {
     "defaultMessage": "Informazioni su {estimate}"
@@ -255,7 +255,7 @@
     "defaultMessage": "URL del flusso"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Chiave del flusso"
   },
   "QceMQZ": {
     "defaultMessage": "Obiettivo: {amount}"
@@ -264,13 +264,13 @@
     "defaultMessage": "{name} con {amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "È stata rilevata una nuova versione"
   },
   "RJOmzk": {
     "defaultMessage": "Ho letto e sono d'accordo con {provider}''s {terms}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "Messaggio di incursione"
   },
   "RXQdxR": {
     "defaultMessage": "Effettuare il login per scrivere i messaggi!"
@@ -279,7 +279,7 @@
     "defaultMessage": "Sintesi"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "Utenti della chat"
   },
   "TP/cMX": {
     "defaultMessage": "Terminato"
@@ -300,7 +300,7 @@
     "defaultMessage": "Nascondere"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Inoltro del flusso"
   },
   "W9355R": {
     "defaultMessage": "Disattivare l'audio"
@@ -309,7 +309,7 @@
     "defaultMessage": "Creare l'obiettivo"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Reazioni"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -325,7 +325,7 @@
     "defaultMessage": "È possibile modificarlo in seguito"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "Obiettivo del raid"
   },
   "acrOoz": {
     "defaultMessage": "Continua"
@@ -349,7 +349,7 @@
     "defaultMessage": "Voce di prova"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Nome visualizzato"
   },
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
@@ -370,13 +370,13 @@
     "defaultMessage": "Accesso con chiave privata (non sicuro)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} messaggi"
   },
   "hGQqkW": {
     "defaultMessage": "Programma"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Messaggi"
   },
   "heyxZL": {
     "defaultMessage": "Abilitare la sintesi vocale"
@@ -385,7 +385,7 @@
     "defaultMessage": "Widget di chat"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Cruscotto"
   },
   "ieGrWo": {
     "defaultMessage": "Seguire"
@@ -400,13 +400,13 @@
     "defaultMessage": "Raiding {name}"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "I più alti spettatori"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "Widget"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "Flusso Terminato"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -427,7 +427,7 @@
     "defaultMessage": "Punto finale"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "Tempo di flusso"
   },
   "mnJYBQ": {
     "defaultMessage": "Voce"
@@ -460,7 +460,7 @@
     "defaultMessage": "Accedi"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "Aggiornare"
   },
   "rWBFZA": {
     "defaultMessage": "Materiale sessualmente esplicito!"

@@ -6,7 +6,7 @@
     "defaultMessage": "Без имейли, просто страхотно!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "На живо сега"
   },
   "+vVZ/G": {
     "defaultMessage": "Свързване"
@@ -30,13 +30,13 @@
     "defaultMessage": "Цел"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Започва"
   },
   "1EYCdR": {
     "defaultMessage": "Тагове"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "Не е валиден URL адрес"
   },
   "1qsXCO": {
     "defaultMessage": "напр.име@wallet.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "Добави"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "Зрители"
   },
   "3HwrQo": {
     "defaultMessage": "Зап!"
@@ -72,7 +72,7 @@
     "defaultMessage": "Резолюция"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "Изисква се ключ за поток"
   },
   "5JcXdV": {
     "defaultMessage": "Създай Акаунт"
@@ -84,10 +84,10 @@
     "defaultMessage": "Url адрес на сървъра"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "Започнат поток"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "Набег от {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Стрийм доставчици"
@@ -96,13 +96,13 @@
     "defaultMessage": "Минимално количество за текст към реч"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "URL адресът на потока трябва да започва с rtmp://"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Музика"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "Офлайн"
   },
   "8YT6ja": {
     "defaultMessage": "Вмъкнете текст за изговаряне"
@@ -123,7 +123,7 @@
     "defaultMessage": "Вход"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} създаде клип"
   },
   "BGxpTN": {
     "defaultMessage": "Стрийм Чат"
@@ -147,7 +147,7 @@
     "defaultMessage": "На живо"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "Не може да се създаде URL адрес на поток"
   },
   "ESyhzp": {
     "defaultMessage": "Твоят коментар за {име}"
@@ -162,16 +162,16 @@
     "defaultMessage": "Премахване"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "Топ чатъри"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "Опреснете страницата, за да използвате най-новата версия"
   },
   "Gq6x9o": {
     "defaultMessage": "Изображение на корицата"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "Изисква се име"
   },
   "H/bNs9": {
     "defaultMessage": "Запаметете това и пазете в безопасност! ако изгубите този ключ, никога повече няма да имате достъп до акаунта си. Да, толкова е сериозно!"
@@ -195,7 +195,7 @@
     "defaultMessage": "Или"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Продължителност на потока {duration} mins"
   },
   "JEsxDw": {
     "defaultMessage": "Качване..."
@@ -210,7 +210,7 @@
     "defaultMessage": "Показване"
   },
   "KdYELp": {
-    "defaultMessage": "Get stream key"
+    "defaultMessage": "Получаване на ключ за поток"
   },
   "KkIL3s": {
     "defaultMessage": "Не, аз съм под 18"
@@ -219,7 +219,7 @@
     "defaultMessage": "Стрийм ключ"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "Начален рейд"
   },
   "My6HwN": {
     "defaultMessage": "Ок, безопасно е"
@@ -240,10 +240,10 @@
     "defaultMessage": "Свързахме ви със светкавичен портфейл, за да можете да получите плащане от зрителите веднага!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "Създаване на клип"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Тема"
   },
   "Q3au2v": {
     "defaultMessage": "Относно {очаквано}"
@@ -255,7 +255,7 @@
     "defaultMessage": "Стрийм ULR"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Ключ за поток"
   },
   "QceMQZ": {
     "defaultMessage": "Цел: {количесто}"
@@ -264,13 +264,13 @@
     "defaultMessage": "{име} със {количество}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "Открита е нова версия"
   },
   "RJOmzk": {
     "defaultMessage": "Прочетох и се съгласявам със {доставчика} и неговите {общи условия}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "Съобщение за рейда"
   },
   "RXQdxR": {
     "defaultMessage": "Моля влезте в профила си за да може да пишете съобщения!"
@@ -279,7 +279,7 @@
     "defaultMessage": "Обобщение"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "Потребители на чата"
   },
   "TP/cMX": {
     "defaultMessage": "Приключено"
@@ -300,7 +300,7 @@
     "defaultMessage": "Скрий"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Препращане на потоци"
   },
   "W9355R": {
     "defaultMessage": "Премахни заглушаването"
@@ -309,7 +309,7 @@
     "defaultMessage": "Създаване на цел"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Реакции"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {курс}",
@@ -325,16 +325,16 @@
     "defaultMessage": "Можете да промените това по-късно"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "Цел на рейда"
   },
   "acrOoz": {
     "defaultMessage": "Продължаване"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "Набег!"
   },
   "bfvyfs": {
-    "defaultMessage": "Anon"
+    "defaultMessage": "Анонимен"
   },
   "cPIKU2": {
     "defaultMessage": "Последвани"
@@ -349,7 +349,7 @@
     "defaultMessage": "Тестов глас"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Показвайте името"
   },
   "dVD/AR": {
     "defaultMessage": "Топ запери"
@@ -370,13 +370,13 @@
     "defaultMessage": "Вход със частен ключ (несигурно)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} съобщения"
   },
   "hGQqkW": {
     "defaultMessage": "Планиран"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Съобщения"
   },
   "heyxZL": {
     "defaultMessage": "Активиране на текст към реч"
@@ -385,7 +385,7 @@
     "defaultMessage": "Чат джаджа"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Информационно табло"
   },
   "ieGrWo": {
     "defaultMessage": "Последване"
@@ -397,16 +397,16 @@
     "defaultMessage": "Прекратете следенето"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "Набези {name}"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "Най-висока гледаемост"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "Уиджети"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "Потокът завърши"
   },
   "jr4+vD": {
     "defaultMessage": "Намаление"
@@ -427,7 +427,7 @@
     "defaultMessage": "Крайна точка"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "Време на потока"
   },
   "mnJYBQ": {
     "defaultMessage": "Глас"
@@ -454,13 +454,13 @@
     "defaultMessage": "Стрийм тип трябва да бъде HLS"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> Zapped <s>{amount}</s> sats"
   },
   "r2Jjms": {
     "defaultMessage": "Вход"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "Обновяване"
   },
   "rWBFZA": {
     "defaultMessage": "Сексуално явен материал напред!"

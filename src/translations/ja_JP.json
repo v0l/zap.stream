@@ -6,7 +6,7 @@
     "defaultMessage": "メールもない！"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "ライブ配信中"
   },
   "+vVZ/G": {
     "defaultMessage": "接続"
@@ -30,13 +30,13 @@
     "defaultMessage": "ゴール"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "スタート"
   },
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "有効なURLではない"
   },
   "1qsXCO": {
     "defaultMessage": "例： name@wallet.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "追加"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "視聴者"
   },
   "3HwrQo": {
     "defaultMessage": "ザップ！"
@@ -60,7 +60,7 @@
     "defaultMessage": "キャンセル"
   },
   "4iBdw1": {
-    "defaultMessage": "Raid"
+    "defaultMessage": "襲撃"
   },
   "4l69eO": {
     "defaultMessage": "うーん、あなたのライトニングアドレスは間違っているようだ"
@@ -72,7 +72,7 @@
     "defaultMessage": "解像度"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "ストリームキーが必要"
   },
   "5JcXdV": {
     "defaultMessage": "アカウントを作成する"
@@ -84,10 +84,10 @@
     "defaultMessage": "サーバー URL"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "ストリーム開始"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "{name}からの襲撃"
   },
   "6Z2pvJ": {
     "defaultMessage": "配信の提供元"
@@ -96,13 +96,13 @@
     "defaultMessage": "音声合成の最低金額"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "ストリームのURLはrtmp://で始まる必要があります。"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "音楽"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "オフライン"
   },
   "8YT6ja": {
     "defaultMessage": "テキストを挿入して話す"
@@ -123,7 +123,7 @@
     "defaultMessage": "ログイン"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} クリップを作成"
   },
   "BGxpTN": {
     "defaultMessage": "チャット配信"
@@ -135,7 +135,7 @@
     "defaultMessage": "ログアウト"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} sats"
+    "defaultMessage": "{n} 衛星"
   },
   "D3idYv": {
     "defaultMessage": "設定"
@@ -147,7 +147,7 @@
     "defaultMessage": "ライブ配信中"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "ストリームURLを作成できませんでした"
   },
   "ESyhzp": {
     "defaultMessage": "{name} へのコメント"
@@ -162,16 +162,16 @@
     "defaultMessage": "削除"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "トップ・チャッター"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "ページを更新して最新バージョンを使用する"
   },
   "Gq6x9o": {
     "defaultMessage": "カバー画像"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "名前は必須"
   },
   "H/bNs9": {
     "defaultMessage": "これを保存し、安全に保管してください！このキーを紛失すると、二度とアカウントにアクセスできなくなります。そう、それほど深刻なのだ！"
@@ -195,7 +195,7 @@
     "defaultMessage": "または"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "ストリームの所要時間 {duration} 分"
   },
   "JEsxDw": {
     "defaultMessage": "アップロード中..."
@@ -210,7 +210,7 @@
     "defaultMessage": "表示"
   },
   "KdYELp": {
-    "defaultMessage": "Get stream key"
+    "defaultMessage": "ストリーム・キーの取得"
   },
   "KkIL3s": {
     "defaultMessage": "いいえ、私は18歳以下です"
@@ -219,7 +219,7 @@
     "defaultMessage": "配信キー"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "レイド開始"
   },
   "My6HwN": {
     "defaultMessage": "はい、大丈夫です"
@@ -240,10 +240,10 @@
     "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "クリップ作成"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "テーマ"
   },
   "Q3au2v": {
     "defaultMessage": "{estimate} について"
@@ -255,7 +255,7 @@
     "defaultMessage": "配信先URL"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "ストリームキー"
   },
   "QceMQZ": {
     "defaultMessage": "目標額： {amount}"
@@ -264,13 +264,13 @@
     "defaultMessage": "{name}：{amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "新しいバージョンが検出されました"
   },
   "RJOmzk": {
     "defaultMessage": "{provider} の {terms} を読み、同意します。"
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "襲撃メッセージ"
   },
   "RXQdxR": {
     "defaultMessage": "メッセージを書き込むにはログインしてください！"
@@ -279,7 +279,7 @@
     "defaultMessage": "概要"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "チャットユーザー"
   },
   "TP/cMX": {
     "defaultMessage": "終了しました"
@@ -300,7 +300,7 @@
     "defaultMessage": "非表示"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "ストリーム転送"
   },
   "W9355R": {
     "defaultMessage": "ミュート解除"
@@ -309,7 +309,7 @@
     "defaultMessage": "目標を設定"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "反応"
   },
   "YPh5Nq": {
     "defaultMessage": "{rate}",
@@ -325,16 +325,16 @@
     "defaultMessage": "これはあとで変更することができます"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "襲撃目標"
   },
   "acrOoz": {
     "defaultMessage": "続ける"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "襲撃だ！"
   },
   "bfvyfs": {
-    "defaultMessage": "Anon"
+    "defaultMessage": "アノン"
   },
   "cPIKU2": {
     "defaultMessage": "フォロー中"
@@ -349,7 +349,7 @@
     "defaultMessage": "テスト音声"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "表示名"
   },
   "dVD/AR": {
     "defaultMessage": "トップザッパー"
@@ -370,13 +370,13 @@
     "defaultMessage": "秘密鍵によるログイン（安全ではありません）"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} メッセージ"
   },
   "hGQqkW": {
     "defaultMessage": "配信予定"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "メッセージ"
   },
   "heyxZL": {
     "defaultMessage": "テキスト読み上げを有効にする"
@@ -385,7 +385,7 @@
     "defaultMessage": "チャットウィジェット"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "ダッシュボード"
   },
   "ieGrWo": {
     "defaultMessage": "フォロー"
@@ -397,16 +397,16 @@
     "defaultMessage": "フォロー解除"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "襲撃 {name}"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "最高視聴者数"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "ウィジェット"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "ストリーム 終了"
   },
   "jr4+vD": {
     "defaultMessage": "マークダウン"
@@ -427,7 +427,7 @@
     "defaultMessage": "エンドポイント"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "ストリーム・タイム"
   },
   "mnJYBQ": {
     "defaultMessage": "声"
@@ -445,7 +445,7 @@
     "defaultMessage": "カードを追加"
   },
   "o8pHw3": {
-    "defaultMessage": "AUTO"
+    "defaultMessage": "オート"
   },
   "oHPB8Q": {
     "defaultMessage": "{name} をザップ"
@@ -454,13 +454,13 @@
     "defaultMessage": "配信タイプはHLSでなければなりません"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> ザップ <s>{amount}</s> サッツ"
   },
   "r2Jjms": {
     "defaultMessage": "ログイン"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "リフレッシュ"
   },
   "rWBFZA": {
     "defaultMessage": "性的に露骨な表現が含まれています！"
