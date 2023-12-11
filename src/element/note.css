@@ -4,7 +4,8 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 22px;
-  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .note .note-header {

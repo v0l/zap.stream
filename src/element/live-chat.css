@@ -65,6 +65,7 @@
 
 .live-chat .message {
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   position: relative;
   font-weight: 400;
   font-size: 15px;
