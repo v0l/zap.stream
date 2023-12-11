@@ -10,5 +10,9 @@ interface MentionProps {
 export function Mention({ pubkey }: MentionProps) {
   const user = useUserProfile(pubkey);
   const npub = hexToBech32("npub", pubkey);
-  return <Link to={`/p/${npub}`} className="text-primary">{user?.name || pubkey}</Link>;
+  return (
+    <Link to={`/p/${npub}`} className="text-primary">
+      {user?.name || pubkey}
+    </Link>
+  );
 }

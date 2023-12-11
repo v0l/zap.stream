@@ -108,11 +108,11 @@ export default function LiveVideoPlayer({
       video.current.onpause = () => setPlayState("paused");
       video.current.onseeking = () => {
         if (video.current?.paused) {
-          setPlayState("paused")
+          setPlayState("paused");
         } else {
-          setPlayState("loading")
+          setPlayState("loading");
         }
-      }
+      };
       video.current.onplay = () => setPlayState("loading");
       video.current.onvolumechange = () => setVolume(video.current?.volume ?? 1);
       video.current.ontimeupdate = () => setPosition(video.current?.currentTime);
@@ -165,76 +165,78 @@ export default function LiveVideoPlayer({
   }
 
   function playerOverlay() {
-    return <>
-      {status === VideoStatus.Online && (
-        <div
-          className="absolute opacity-0 hover:opacity-90 transition-opacity w-full h-full z-20 bg-[#00000055]"
-          onClick={() => togglePlay()}>
-          <div className="absolute w-full h-full flex items-center justify-center pointer">
-            <Icon name={playStateToIcon()} size={80} className={playState === "loading" ? "animate-spin" : ""} />
-          </div>
+    return (
+      <>
+        {status === VideoStatus.Online && (
           <div
-            className="absolute flex items-center gap-1 bottom-0 w-full bg-primary h-[40px]"
-            onClick={e => e.stopPropagation()}>
-            <div className="flex grow gap-1 items-center">
-              <div className="px-5 py-2 pointer" onClick={() => togglePlay()}>
-                <Icon name={playStateToIcon()} className={playState === "loading" ? "animate-spin" : ""} />
-              </div>
-              <div className="px-3 py-2 uppercase font-bold tracking-wide hover:bg-primary-hover">{pStatus}</div>
-              {pStatus === StreamState.Ended && maxPosition !== undefined && position !== undefined && (
-                <ProgressBar
-                  value={position / maxPosition}
-                  setValue={v => {
-                    const ct = maxPosition * v;
-                    if (video.current) {
-                      video.current.currentTime = ct;
-                    }
-                    setPosition(ct);
-                  }}
-                  marker={<div className="w-[16px] h-[16px] mt-[-8px] rounded-full bg-white"></div>}
-                  style={{ width: "100%", height: "4px" }}
-                />
-              )}
-            </div>
-            <div className="flex gap-1 items-center h-full py-2">
-              <Icon name={muted ? "volume-muted" : "volume"} onClick={toggleMute} />
-              <ProgressBar value={volume} setValue={v => setVolume(v)} style={{ width: "100px", height: "100%" }} />
-            </div>
-            <div>
-              <Menu
-                direction="top"
-                align="center"
-                menuButton={<div className="px-3 py-2 tracking-wide pointer">{levelName(level)}</div>}
-                menuClassName="bg-primary w-fit">
-                {levels?.map(v => (
-                  <MenuItem
-                    value={v.level}
-                    key={v.level}
-                    onClick={() => setLevel(v.level)}
-                    className="bg-primary px-3 py-2 text-white">
-                    {levelName(v.level)}
-                  </MenuItem>
-                ))}
-              </Menu>
+            className="absolute opacity-0 hover:opacity-90 transition-opacity w-full h-full z-20 bg-[#00000055]"
+            onClick={() => togglePlay()}>
+            <div className="absolute w-full h-full flex items-center justify-center pointer">
+              <Icon name={playStateToIcon()} size={80} className={playState === "loading" ? "animate-spin" : ""} />
             </div>
             <div
-              className="px-3 py-2 pointer"
-              onClick={() => {
-                if (video.current) {
-                  video.current.requestFullscreen();
-                }
-              }}>
-              <Icon name="fullscreen" size={24} />
+              className="absolute flex items-center gap-1 bottom-0 w-full bg-primary h-[40px]"
+              onClick={e => e.stopPropagation()}>
+              <div className="flex grow gap-1 items-center">
+                <div className="px-5 py-2 pointer" onClick={() => togglePlay()}>
+                  <Icon name={playStateToIcon()} className={playState === "loading" ? "animate-spin" : ""} />
+                </div>
+                <div className="px-3 py-2 uppercase font-bold tracking-wide hover:bg-primary-hover">{pStatus}</div>
+                {pStatus === StreamState.Ended && maxPosition !== undefined && position !== undefined && (
+                  <ProgressBar
+                    value={position / maxPosition}
+                    setValue={v => {
+                      const ct = maxPosition * v;
+                      if (video.current) {
+                        video.current.currentTime = ct;
+                      }
+                      setPosition(ct);
+                    }}
+                    marker={<div className="w-[16px] h-[16px] mt-[-8px] rounded-full bg-white"></div>}
+                    style={{ width: "100%", height: "4px" }}
+                  />
+                )}
+              </div>
+              <div className="flex gap-1 items-center h-full py-2">
+                <Icon name={muted ? "volume-muted" : "volume"} onClick={toggleMute} />
+                <ProgressBar value={volume} setValue={v => setVolume(v)} style={{ width: "100px", height: "100%" }} />
+              </div>
+              <div>
+                <Menu
+                  direction="top"
+                  align="center"
+                  menuButton={<div className="px-3 py-2 tracking-wide pointer">{levelName(level)}</div>}
+                  menuClassName="bg-primary w-fit">
+                  {levels?.map(v => (
+                    <MenuItem
+                      value={v.level}
+                      key={v.level}
+                      onClick={() => setLevel(v.level)}
+                      className="bg-primary px-3 py-2 text-white">
+                      {levelName(v.level)}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </div>
+              <div
+                className="px-3 py-2 pointer"
+                onClick={() => {
+                  if (video.current) {
+                    video.current.requestFullscreen();
+                  }
+                }}>
+                <Icon name="fullscreen" size={24} />
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {status === VideoStatus.Offline && (
-        <div className="absolute w-full h-full z-20 bg-[#000000aa] flex items-center justify-center text-3xl font-bold uppercase">
-          <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
-        </div>
-      )}
-    </>
+        )}
+        {status === VideoStatus.Offline && (
+          <div className="absolute w-full h-full z-20 bg-[#000000aa] flex items-center justify-center text-3xl font-bold uppercase">
+            <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
+          </div>
+        )}
+      </>
+    );
   }
   return (
     <div className="relative">
