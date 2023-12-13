@@ -1,4 +1,4 @@
-import { StreamState } from "@/index";
+import { StreamState } from "@/const";
 import { StreamProvider, StreamProviderInfo, StreamProviders } from "@/providers";
 
 export class OwncastProvider implements StreamProvider {

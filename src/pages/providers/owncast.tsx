@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import AsyncButton from "@/element/async-button";
 import { StatePill } from "@/element/state-pill";
-import { StreamState } from "@/index";
 import { StreamProviderInfo, StreamProviderStore } from "@/providers";
 import { OwncastProvider } from "@/providers/owncast";
+import { StreamState } from "@/const";
 
 export function ConfigureOwncast() {
   const [url, setUrl] = useState("");
@@ -55,14 +55,14 @@ export function ConfigureOwncast() {
           </div>
         )}
         <div>
-          <button
+          <AsyncButton
             className="btn btn-border"
             onClick={() => {
               StreamProviderStore.add(new OwncastProvider(url, token));
               navigate("/");
             }}>
             Save
-          </button>
+          </AsyncButton>
         </div>
       </>
     );

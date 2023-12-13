@@ -40,9 +40,9 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
         gap={5}
         menuClassName="ctx-menu"
         menuButton={
-          <button type="button" className="btn btn-secondary">
+          <AsyncButton className="btn btn-secondary">
             <FormattedMessage defaultMessage="Share" id="OKhRC6" />
-          </button>
+          </AsyncButton>
         }>
         <MenuItem
           onClick={() => {

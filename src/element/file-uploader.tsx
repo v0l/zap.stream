@@ -3,6 +3,7 @@ import type { ChangeEvent } from "react";
 import { VoidApi } from "@void-cat/api";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import AsyncButton from "./async-button";
 
 const voidCatHost = "https://void.cat";
 const fileExtensionRegex = /\.([\w]{1,7})$/i;
@@ -13,7 +14,7 @@ type UploadResult = {
   error?: string;
 };
 
-async function voidCatUpload(file: File | Blob): Promise<UploadResult> {
+async function voidCatUpload(file: File): Promise<UploadResult> {
   const uploader = voidCatApi.getUploader(file);
 
   const rsp = await uploader.upload({
@@ -86,9 +87,9 @@ export function FileUploader({ defaultImage, onClear, onFileUpload }: FileUpload
       </label>
       <div className="file-uploader-preview">
         {img?.length > 0 && (
-          <button className="btn btn-primary clear-button" onClick={clearImage}>
+          <AsyncButton className="btn btn-primary clear-button" onClick={clearImage}>
             <FormattedMessage defaultMessage="Clear" id="/GCoTA" />
-          </button>
+          </AsyncButton>
         )}
         {img && <img className="image-preview" src={img} />}
       </div>

@@ -2,7 +2,6 @@ import { NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
 import { LIVE_STREAM } from "@/const";
-import { StreamState } from ".";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {

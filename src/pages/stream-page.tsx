@@ -14,7 +14,6 @@ import { LiveChat } from "@/element/live-chat";
 import AsyncButton from "@/element/async-button";
 import { useLogin } from "@/hooks/login";
 import { useZapGoal } from "@/hooks/goals";
-import { StreamState } from "@/index";
 import { SendZapsDialog } from "@/element/send-zap";
 import { NewStreamDialog } from "@/element/new-stream";
 import { Tags } from "@/element/tags";
@@ -27,6 +26,8 @@ import { ContentWarningOverlay, isContentWarningAccepted } from "@/element/conte
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useStreamLink } from "@/hooks/stream-link";
 import { FollowButton } from "@/element/follow-button";
+import { ClipButton } from "@/element/clip-button";
+import { StreamState } from "@/const";
 
 function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -52,8 +53,8 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
   const viewers = Number(participants ?? "0");
   return (
     <>
-      <div className="flex items-center info">
-        <div className="grow stream-info">
+      <div className="flex gap-2 max-lg:px-2 max-xl:flex-col">
+        <div className="grow flex flex-col gap-2 max-xl:hidden">
           <h1>{title}</h1>
           <p>{summary}</p>
           <div className="tags">
@@ -77,15 +78,14 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
             </div>
           )}
         </div>
-        <div className="profile-info">
+        <div className="flex justify-between sm:gap-4 max-sm:gap-2 nowrap max-md:flex-col lg:items-center">
           <Profile pubkey={host ?? ""} />
           <div className="flex gap-2">
-            <div className="hide-on-mobile">
-              <FollowButton pubkey={host} />
-            </div>
+            <FollowButton pubkey={host} hideWhenFollowing={true} />
             {ev && (
               <>
                 <ShareMenu ev={ev} />
+                <ClipButton ev={ev} />
                 {zapTarget && (
                   <SendZapsDialog
                     lnurl={zapTarget}
@@ -135,7 +135,11 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
     return <ContentWarningOverlay />;
   }
 
-  const descriptionContent = [title, (summary?.length ?? 0) > 0 ? summary : "Nostr live streaming", ...tags].join(", ");
+  const descriptionContent = [
+    title,
+    (summary?.length ?? 0) > 0 ? summary : "Nostr live streaming",
+    ...(tags ?? []),
+  ].join(", ");
   return (
     <div className="stream-page full-page-height">
       <Helmet>
@@ -149,7 +153,12 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
       </Helmet>
       <div className="video-content">
         <Suspense>
-          <LiveVideoPlayer stream={status === StreamState.Live ? stream : recording} poster={image} status={status} />
+          <LiveVideoPlayer
+            title={title}
+            stream={status === StreamState.Live ? stream : recording}
+            poster={image}
+            status={status}
+          />
         </Suspense>
         <ProfileInfo ev={ev} goal={goal} />
         <StreamCards host={host} />

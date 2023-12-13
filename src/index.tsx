@@ -28,12 +28,6 @@ import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
 
-export enum StreamState {
-  Live = "live",
-  Ended = "ended",
-  Planned = "planned",
-}
-
 const db = new SnortSystemDb();
 const System = new NostrSystem({
   db,

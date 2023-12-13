@@ -14,6 +14,7 @@ import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
 import groupBy from "lodash/groupBy";
 import { hexToBech32 } from "@snort/shared";
+import AsyncButton from "@/element/async-button";
 
 interface ZapAlertConfigurationProps {
   npub: string;
@@ -78,6 +79,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
           sender: login?.pubkey,
           amount: 1_000_000,
           targetEvents: [],
+          created_at: 0,
         }}
       />
       <div className="text-to-speech-settings">
@@ -151,9 +153,9 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
                     onChange={ev => setTestText(ev.target.value)}
                   />
                 </div>
-                <button disabled={testText.length === 0} className="btn" onClick={testVoice}>
+                <AsyncButton disabled={testText.length === 0} className="btn" onClick={testVoice}>
                   <FormattedMessage defaultMessage="Test voice" id="d5zWyh" />
-                </button>
+                </AsyncButton>
               </>
             )}
           </>

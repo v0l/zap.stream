@@ -6,11 +6,11 @@ import { TagsInput } from "react-tag-input-component";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import AsyncButton from "./async-button";
-import { StreamState } from "@/index";
 import { extractStreamInfo, findTag } from "@/utils";
 import { useLogin } from "@/hooks/login";
 import { NewGoalDialog } from "./new-goal";
 import { useGoals } from "@/hooks/goals";
+import { StreamState } from "@/const";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;

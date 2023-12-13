@@ -21,6 +21,7 @@ import { CARD, USER_CARDS } from "@/const";
 import { findTag } from "@/utils";
 import { Login } from "@/index";
 import type { Tags } from "@/types";
+import AsyncButton from "./async-button";
 
 interface CardType {
   identifier: string;
@@ -244,12 +245,12 @@ function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDial
         </span>
       </div>
       <div className="new-card-buttons">
-        <button className="btn btn-primary add-button" onClick={() => onSave({ title, image, content, link })}>
+        <AsyncButton className="btn btn-primary add-button" onClick={() => onSave({ title, image, content, link })}>
           {cta || <FormattedMessage defaultMessage="Add Card" id="UJBFYK" />}
-        </button>
-        <button className="btn delete-button" onClick={onCancel}>
+        </AsyncButton>
+        <AsyncButton className="btn delete-button" onClick={onCancel}>
           {cancelCta || <FormattedMessage defaultMessage="Cancel" id="47FYwb" />}
-        </button>
+        </AsyncButton>
       </div>
     </div>
   );
@@ -312,9 +313,9 @@ function EditCard({ card, cards }: EditCardProps) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className="btn btn-primary">
+        <AsyncButton className="btn btn-primary">
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
-        </button>
+        </AsyncButton>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />

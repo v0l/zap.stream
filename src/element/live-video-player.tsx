@@ -2,10 +2,10 @@
 import Hls from "hls.js";
 import { HTMLProps, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { StreamState } from "..";
 import { Icon } from "./icon";
 import { ProgressBar } from "./progress-bar";
 import { Menu, MenuItem } from "@szhsin/react-menu";
+import { StreamState } from "@/const";
 
 export enum VideoStatus {
   Online = "online",
@@ -13,6 +13,7 @@ export enum VideoStatus {
 }
 
 type VideoPlayerProps = {
+  title?: string;
   stream?: string;
   status?: string;
   poster?: string;
@@ -20,6 +21,7 @@ type VideoPlayerProps = {
 } & HTMLProps<HTMLVideoElement>;
 
 export default function LiveVideoPlayer({
+  title,
   stream,
   status: pStatus,
   poster,
@@ -169,11 +171,17 @@ export default function LiveVideoPlayer({
       <>
         {status === VideoStatus.Online && (
           <div
-            className="absolute opacity-0 hover:opacity-90 transition-opacity w-full h-full z-20 bg-[#00000055]"
+            className="absolute opacity-0 hover:opacity-90 transition-opacity w-full h-full z-20 bg-[#00000055] select-none"
             onClick={() => togglePlay()}>
+            {/* TITLE */}
+            <div className="absolute top-2 w-full text-center">
+              <h2>{title}</h2>
+            </div>
+            {/* CENTER PLAY ICON */}
             <div className="absolute w-full h-full flex items-center justify-center pointer">
               <Icon name={playStateToIcon()} size={80} className={playState === "loading" ? "animate-spin" : ""} />
             </div>
+            {/* PLAYER CONTROLS OVERLAY */}
             <div
               className="absolute flex items-center gap-1 bottom-0 w-full bg-primary h-[40px]"
               onClick={e => e.stopPropagation()}>

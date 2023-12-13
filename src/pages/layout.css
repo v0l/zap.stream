@@ -85,16 +85,6 @@ header button {
   }
 }
 
-.hide-on-mobile {
-  display: none;
-}
-
-@media (min-width: 1020px) {
-  .hide-on-mobile {
-    display: block;
-  }
-}
-
 .tags {
   display: flex;
   flex-wrap: wrap;

@@ -6,11 +6,11 @@ import { useInView } from "react-intersection-observer";
 import { FormattedMessage } from "react-intl";
 
 import { StatePill } from "./state-pill";
-import { StreamState } from "@/index";
 import { extractStreamInfo, findTag, getHost } from "@/utils";
 import { formatSats } from "@/number";
 import { isContentWarningAccepted } from "./content-warning";
 import { Tags } from "./tags";
+import { StreamState } from "@/const";
 
 export function VideoTile({
   ev,

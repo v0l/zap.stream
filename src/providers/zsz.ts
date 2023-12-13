@@ -7,9 +7,10 @@ import {
   StreamProviders,
 } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
-import { Login, StreamState } from "@/index";
+import { Login } from "@/index";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
+import { StreamState } from "@/const";
 
 export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
@@ -91,8 +92,16 @@ export class NostrStreamProvider implements StreamProvider {
     await this.#getJson("DELETE", `account/forward/${id}`);
   }
 
-  async createClip(id: string) {
-    return await this.#getJson<{ url: string }>("POST", `clip/${id}`);
+  async prepareClip(id: string) {
+    return await this.#getJson<{ id: string; length: number }>("GET", `clip/${id}`);
+  }
+
+  async createClip(id: string, clipId: string, start: number, length: number) {
+    return await this.#getJson<{ url: string }>("POST", `clip/${id}/${clipId}?start=${start}&length=${length}`);
+  }
+
+  getTempClipUrl(id: string, clipId: string) {
+    return `${this.url}clip/${id}/${clipId}`;
   }
 
   async #getJson<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<T> {

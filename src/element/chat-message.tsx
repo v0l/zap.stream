@@ -16,6 +16,7 @@ import { CollapsibleEvent } from "./collapsible";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import type { Badge, Emoji, EmojiPack } from "@/types";
+import AsyncButton from "./async-button";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -193,20 +194,20 @@ export function ChatMessage({
                 eTag={ev.id}
                 pubkey={ev.pubkey}
                 button={
-                  <button className="message-zap-button">
+                  <AsyncButton className="message-zap-button">
                     <Icon name="zap" className="message-zap-button-icon" />
-                  </button>
+                  </AsyncButton>
                 }
                 targetName={profile?.name || ev.pubkey}
               />
             )}
-            <button className="message-zap-button" onClick={pickEmoji}>
+            <AsyncButton className="message-zap-button" onClick={pickEmoji}>
               <Icon name="face" className="message-zap-button-icon" />
-            </button>
+            </AsyncButton>
             {shouldShowMuteButton && (
-              <button className="message-zap-button" onClick={muteUser}>
+              <AsyncButton className="message-zap-button" onClick={muteUser}>
                 <Icon name="user-x" className="message-zap-button-icon" />
-              </button>
+              </AsyncButton>
             )}
           </div>
         )}

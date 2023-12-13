@@ -4,9 +4,9 @@ import { FormattedMessage } from "react-intl";
 
 import AsyncButton from "@/element/async-button";
 import { StatePill } from "@/element/state-pill";
-import { StreamState } from "@/index";
 import { StreamProviderInfo, StreamProviderStore } from "@/providers";
 import { NostrStreamProvider } from "@/providers/zsz";
+import { StreamState } from "@/const";
 
 export function ConfigureNostrType() {
   const [url, setUrl] = useState("");
@@ -55,14 +55,14 @@ export function ConfigureNostrType() {
           </div>
         )}
         <div>
-          <button
+          <AsyncButton
             className="btn btn-border"
             onClick={() => {
               StreamProviderStore.add(new NostrStreamProvider(new URL(url).host, url));
               navigate("/");
             }}>
             <FormattedMessage defaultMessage="Save" id="jvo0vs" />
-          </button>
+          </AsyncButton>
         </div>
       </>
     );

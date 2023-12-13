@@ -6,6 +6,7 @@ import Owncast from "@/owncast.png";
 import Cloudflare from "@/cloudflare.png";
 import { ConfigureOwncast } from "./owncast";
 import { ConfigureNostrType } from "./nostr";
+import AsyncButton from "@/element/async-button";
 
 export function StreamProvidersPage() {
   const navigate = useNavigate();
@@ -37,9 +38,9 @@ export function StreamProvidersPage() {
       <div className="paper">
         <h3>{mapName(p)}</h3>
         {mapLogo(p)}
-        <button className="btn btn-border" onClick={() => navigate(p)}>
+        <AsyncButton className="btn btn-border" onClick={() => navigate(p)}>
           + Configure
-        </button>
+        </AsyncButton>
       </div>
     );
   }

@@ -40,14 +40,14 @@ export function NewGoalDialog() {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button type="button" className="btn btn-primary">
+        <AsyncButton className="btn btn-primary">
           <span>
             <Icon name="zap-filled" size={12} />
             <span>
               <FormattedMessage defaultMessage="Add stream goal" id="wOy57k" />
             </span>
           </span>
-        </button>
+        </AsyncButton>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />

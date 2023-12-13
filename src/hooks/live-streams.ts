@@ -4,8 +4,7 @@ import { NostrEvent, NoteCollection, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { unixNow } from "@snort/shared";
-import { LIVE_STREAM } from "@/const";
-import { StreamState } from "@/index";
+import { LIVE_STREAM, StreamState } from "@/const";
 import { findTag, getHost } from "@/utils";
 import { WEEK } from "@/const";
 

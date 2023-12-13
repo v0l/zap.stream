@@ -165,9 +165,11 @@ export function NostrProviderDialog({
             <div className="paper grow">
               <input type="password" value={ep?.key} disabled />
             </div>
-            <button className="btn btn-primary" onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
+            <AsyncButton
+              className="btn btn-primary"
+              onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
               <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
-            </button>
+            </AsyncButton>
           </div>
         </div>
         <div>
@@ -182,9 +184,9 @@ export function NostrProviderDialog({
                 values={{ amount: info.balance?.toLocaleString() }}
               />
             </div>
-            <button className="btn btn-primary" onClick={() => setTopup(true)}>
+            <AsyncButton className="btn btn-primary" onClick={() => setTopup(true)}>
               <FormattedMessage defaultMessage="Topup" id="nBCvvJ" />
-            </button>
+            </AsyncButton>
           </div>
           <small>
             <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />

@@ -1,7 +1,7 @@
 import { HTMLProps } from "react";
 import "./state-pill.css";
-import { StreamState } from "@/index";
 import classNames from "classnames";
+import { StreamState } from "@/const";
 
 type StatePillProps = { state: StreamState } & HTMLProps<HTMLSpanElement>;
 

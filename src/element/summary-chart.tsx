@@ -1,15 +1,14 @@
-import { LIVE_STREAM_CHAT } from "@/const";
+import { LIVE_STREAM_CHAT, StreamState } from "@/const";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useLiveChatFeed } from "@/hooks/live-chat";
 import { formatSats } from "@/number";
-import { extractStreamInfo, findTag } from "@/utils";
+import { extractStreamInfo } from "@/utils";
 import { unixNow } from "@snort/shared";
 import { NostrLink, NostrEvent, ParsedZap, EventKind } from "@snort/system";
 import { useEventReactions } from "@snort/system-react";
 import { useMemo } from "react";
 import { FormattedMessage, FormattedNumber, FormattedDate } from "react-intl";
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip } from "recharts";
-import { StreamState } from "..";
 import { Profile } from "./profile";
 import { StatePill } from "./state-pill";
 

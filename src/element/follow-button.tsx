@@ -7,7 +7,15 @@ import { useLogin } from "@/hooks/login";
 import AsyncButton from "./async-button";
 import { Login } from "@/index";
 
-export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: string }) {
+export function LoggedInFollowButton({
+  tag,
+  value,
+  hideWhenFollowing,
+}: {
+  tag: "p" | "t";
+  value: string;
+  hideWhenFollowing?: boolean;
+}) {
   const system = useContext(SnortContext);
   const login = useLogin();
   if (!login) return;
@@ -50,6 +58,7 @@ export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: st
     }
   }
 
+  if (isFollowing && hideWhenFollowing) return;
   return (
     <AsyncButton
       disabled={timestamp ? timestamp === 0 : true}
@@ -65,12 +74,12 @@ export function LoggedInFollowButton({ tag, value }: { tag: "p" | "t"; value: st
   );
 }
 
-export function FollowTagButton({ tag }: { tag: string }) {
+export function FollowTagButton({ tag, hideWhenFollowing }: { tag: string; hideWhenFollowing?: boolean }) {
   const login = useLogin();
-  return login?.pubkey ? <LoggedInFollowButton tag={"t"} value={tag} /> : null;
+  return login?.pubkey ? <LoggedInFollowButton tag={"t"} value={tag} hideWhenFollowing={hideWhenFollowing} /> : null;
 }
 
-export function FollowButton({ pubkey }: { pubkey: string }) {
+export function FollowButton({ pubkey, hideWhenFollowing }: { pubkey: string; hideWhenFollowing?: boolean }) {
   const login = useLogin();
-  return login?.pubkey ? <LoggedInFollowButton tag={"p"} value={pubkey} /> : null;
+  return login?.pubkey ? <LoggedInFollowButton tag={"p"} value={pubkey} hideWhenFollowing={hideWhenFollowing} /> : null;
 }

@@ -1,9 +1,9 @@
-import { StreamState } from "@/index";
 import { NostrEvent, SystemInterface } from "@snort/system";
 import { ExternalStore } from "@snort/shared";
 import { NostrStreamProvider } from "./zsz";
 import { ManualProvider } from "./manual";
 import { OwncastProvider } from "./owncast";
+import { StreamState } from "@/const";
 
 export { NostrStreamProvider } from "./zsz";
 

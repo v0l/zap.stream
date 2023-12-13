@@ -110,10 +110,10 @@ export function LayoutPage() {
 
     return (
       <Dialog.Root open={showLogin} onOpenChange={setShowLogin}>
-        <button type="button" className="btn btn-border" onClick={handleLogin}>
+        <AsyncButton className="btn btn-border" onClick={handleLogin}>
           <FormattedMessage defaultMessage="Login" id="AyGauy" />
           <Icon name="login" />
-        </button>
+        </AsyncButton>
         <Dialog.Portal>
           <Dialog.Overlay className="dialog-overlay" />
           <Dialog.Content className="dialog-content">

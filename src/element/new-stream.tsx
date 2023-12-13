@@ -12,6 +12,7 @@ import { NostrStreamProvider, StreamProvider, StreamProviders } from "@/provider
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { eventLink, findTag } from "@/utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
+import AsyncButton from "./async-button";
 
 function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onFinish: () => void }) {
   const system = useContext(SnortContext);
@@ -56,14 +57,14 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
       case StreamProviders.NostrType: {
         return (
           <>
-            <button
+            <AsyncButton
               className="btn btn-secondary"
               onClick={() => {
                 navigate("/settings");
                 onFinish?.();
               }}>
-              <FormattedMessage defaultMessage="Get stream key" id="KdYELp" />
-            </button>
+              <FormattedMessage defaultMessage="Get Stream Key" id="Vn2WiP" />
+            </AsyncButton>
             <NostrProviderDialog
               provider={currentProvider as NostrStreamProvider}
               onFinish={onFinish}
@@ -108,17 +109,17 @@ export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps)
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button type="button" className={props.btnClassName}>
+        <AsyncButton className={props.btnClassName}>
           {props.text && props.text}
           {!props.text && (
             <>
-              <span className="hide-on-mobile">
+              <span className="max-xl:hidden">
                 <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
               </span>
               <Icon name="signal" />
             </>
           )}
-        </button>
+        </AsyncButton>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />

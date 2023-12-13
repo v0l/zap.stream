@@ -12,6 +12,7 @@ import { Mention } from "./mention";
 import { EventIcon, NostrEvent } from "./Event";
 import { ExternalLink } from "./external-link";
 import { useEvent } from "@/hooks/event";
+import AsyncButton from "./async-button";
 
 interface MediaURLProps {
   url: URL;
@@ -31,9 +32,9 @@ export function MediaURL({ url, children }: MediaURLProps) {
             {children}
           </div>
           <Dialog.Close asChild>
-            <button className="btn delete-button" aria-label="Close">
+            <AsyncButton className="btn delete-button" aria-label="Close">
               <FormattedMessage defaultMessage="Close" id="rbrahO" />
-            </button>
+            </AsyncButton>
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>
@@ -54,13 +55,13 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
           {author && <Mention pubkey={author} />}
         </div>
         <Collapsible.Trigger asChild>
-          <button className={`${open ? "btn btn-small delete-button" : "btn btn-small"}`}>
+          <AsyncButton className={`${open ? "btn btn-small delete-button" : "btn btn-small"}`}>
             {open ? (
               <FormattedMessage defaultMessage="Hide" id="VA/Z1S" />
             ) : (
               <FormattedMessage defaultMessage="Show" id="K7AkdL" />
             )}
-          </button>
+          </AsyncButton>
         </Collapsible.Trigger>
       </div>
       <Collapsible.Content>{open && event && <NostrEvent ev={event} />}</Collapsible.Content>

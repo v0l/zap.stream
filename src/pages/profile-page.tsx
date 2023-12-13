@@ -15,11 +15,12 @@ import { MuteButton } from "@/element/mute-button";
 import { useProfile } from "@/hooks/profile";
 import useTopZappers from "@/hooks/top-zappers";
 import { Text } from "@/element/text";
-import { StreamState } from "@/index";
 import { findTag } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
 import { ZapperRow } from "@/element/zapper-row";
+import { StreamState } from "@/const";
+import AsyncButton from "@/element/async-button";
 
 function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
   const zappers = useTopZappers(zaps);
@@ -88,10 +89,10 @@ export function ProfilePage() {
               aTag={liveEvent ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(liveEvent, "d")}` : undefined}
               lnurl={zapTarget}
               button={
-                <button className="btn">
+                <AsyncButton className="btn">
                   <Icon name="zap-filled" className="zap-button-icon" />
                   <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-                </button>
+                </AsyncButton>
               }
               targetName={profile?.name || link.id}
             />

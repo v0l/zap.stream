@@ -95,10 +95,6 @@ a {
   line-height: 20px;
   padding: 8px 16px;
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   background: white;
   color: black;
 }
@@ -141,13 +137,6 @@ a {
 .btn-warning {
   background: #ff563f;
   color: white;
-}
-
-.btn > span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
 }
 
 input[type="text"],
@@ -248,8 +237,8 @@ div.paper {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 550px;
+  width: 500px;
+  max-width: 90vw;
   max-height: 85vh;
   overflow-y: auto;
   z-index: 100;

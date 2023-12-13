@@ -2,9 +2,8 @@ import type { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { NostrEvent } from "@snort/system";
-
-import { StreamState } from "@/index";
 import { findTag, getTagValues } from "@/utils";
+import { StreamState } from "@/const";
 
 export function Tags({ children, max, ev }: { children?: ReactNode; max?: number; ev: NostrEvent }) {
   const status = findTag(ev, "status");
