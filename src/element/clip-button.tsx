@@ -23,6 +23,7 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   const [start, setStart] = useState(0);
   const [length, setLength] = useState(0.1);
   const [clipLength, setClipLength] = useState(0);
+  const [title, setTitle] = useState("");
 
   const publisher = login?.publisher();
 
@@ -68,6 +69,7 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
         .kind(LIVE_STREAM_CLIP)
         .tag(unwrap(NostrLink.fromEvent(ev).toEventTag("root")))
         .tag(["r", newClip.url])
+        .tag(["title", title])
         .tag(["alt", `Live stream clip created on https://zap.stream\n${newClip.url}`]);
     });
     console.debug(ee);
@@ -104,6 +106,14 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
                 setOffset={setStart}
                 setLength={setLength}
               />
+              <div className="flex flex-col gap-1">
+                <small>
+                  <FormattedMessage defaultMessage="Clip title" id="YwzT/0" />
+                </small>
+                <div className="paper">
+                  <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Epic combo!" />
+                </div>
+              </div>
               <AsyncButton onClick={saveClip}>
                 <FormattedMessage defaultMessage="Publish Clip" id="jJLRgo" />
               </AsyncButton>

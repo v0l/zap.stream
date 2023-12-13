@@ -269,10 +269,11 @@ export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }
 
 function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
   const profile = useUserProfile(ev.pubkey);
-  const rTag = useMemo(() => findTag(ev, "r"), [ev]);
+  const rTag = findTag(ev, "r");
+  const title = findTag(ev, "title");
   return (
-    <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold flex flex-col gap-2">
-      <div>
+    <div className="px-3 py-2 text-center rounded-xl bg-primary pointer flex flex-col gap-2">
+      <div className="font-bold uppercase">
         <FormattedMessage
           defaultMessage="{name} created a clip"
           id="BD0vyn"
@@ -281,6 +282,7 @@ function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
           }}
         />
       </div>
+      <div>{title}</div>
       {rTag && <video src={rTag} controls playsInline={true} muted={true} />}
     </div>
   );
