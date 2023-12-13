@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "表示"
   },
-  "KdYELp": {
-    "defaultMessage": "ストリーム・キーの取得"
-  },
   "KkIL3s": {
     "defaultMessage": "いいえ、私は18歳以下です"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "非表示"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "ストリーム転送"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "襲撃 {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "最高視聴者数"

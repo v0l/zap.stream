@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Mostrar"
   },
-  "KdYELp": {
-    "defaultMessage": "Obter chave de fluxo"
-  },
   "KkIL3s": {
     "defaultMessage": "Não, eu tenho menos de 18"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Ocultar"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Encaminhamento de fluxo"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Raiding {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Maior número de espectadores"

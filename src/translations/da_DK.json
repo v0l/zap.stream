@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Vis"
   },
-  "KdYELp": {
-    "defaultMessage": "Hent stream-nøgle"
-  },
   "KkIL3s": {
     "defaultMessage": "Nej, jeg er under 18"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Skjul"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Videresendelse af strøm"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Razzia {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Flest seere"

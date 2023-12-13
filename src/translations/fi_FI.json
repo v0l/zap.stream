@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Näytä"
   },
-  "KdYELp": {
-    "defaultMessage": "Hanki lähetysavain"
-  },
   "KkIL3s": {
     "defaultMessage": "Ei, olen alle 18"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Piilota"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Lähetyksen edelleenlähetys"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Rynnäköidään {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Eniten Katsojia"

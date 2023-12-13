@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Megjelenít"
   },
-  "KdYELp": {
-    "defaultMessage": "Stream kulcs lekérése"
-  },
   "KkIL3s": {
     "defaultMessage": "Nem, 18 év alatti vagyok"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Elrejtés"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Stream továbbítása"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Raiding {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Legnagyobb nézettség"

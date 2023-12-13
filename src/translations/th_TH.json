@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "แสดง"
   },
-  "KdYELp": {
-    "defaultMessage": "Get stream key"
-  },
   "KkIL3s": {
     "defaultMessage": "ฉันอายุต่ำกว่า 18 ปี"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "ซ่อน"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Stream Forwarding"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Raiding {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Highest Viewers"

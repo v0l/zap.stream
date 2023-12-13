@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Weergeven"
   },
-  "KdYELp": {
-    "defaultMessage": "Ontvang stream sleutel"
-  },
   "KkIL3s": {
     "defaultMessage": "Nee, ik ben jonger dan 18"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Verberg"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Stream doorsturen"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Plundering {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Hoogste kijkers"

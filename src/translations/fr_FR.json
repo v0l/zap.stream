@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Montrer"
   },
-  "KdYELp": {
-    "defaultMessage": "Obtenir la clé du flux"
-  },
   "KkIL3s": {
     "defaultMessage": "Non, j'ai moins de 18 ans"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Cacher"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Transfert de flux"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Raid {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Le plus grand nombre de téléspectateurs"

@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Показать"
   },
-  "KdYELp": {
-    "defaultMessage": "Получить ключ потока"
-  },
   "KkIL3s": {
     "defaultMessage": "Нет, я моложе 18 лет"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Скрыть"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Переадресация потоков"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Рейд {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Наибольшее количество зрителей"

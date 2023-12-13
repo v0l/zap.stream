@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Anzeigen"
   },
-  "KdYELp": {
-    "defaultMessage": "Stream-Schlüssel anfordern"
-  },
   "KkIL3s": {
     "defaultMessage": "Nein, ich bin unter 18 Jahre alt"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Verbergen"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Stream-Weiterleitung"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "{name} raiden"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Höchste Zuschauer"

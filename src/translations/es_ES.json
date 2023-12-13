@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Mostrar"
   },
-  "KdYELp": {
-    "defaultMessage": "Obtener clave de flujo"
-  },
   "KkIL3s": {
     "defaultMessage": "No, soy menor de 18 años"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Ocultar"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Reenvío de flujos"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Incursiones {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Mayor audiencia"

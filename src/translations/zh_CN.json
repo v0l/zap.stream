@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "显示"
   },
-  "KdYELp": {
-    "defaultMessage": "获取数据流密钥"
-  },
   "KkIL3s": {
     "defaultMessage": "不，我未满18岁"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "隐藏"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "数据流转发"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "突袭 {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "最高收视率"

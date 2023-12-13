@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Visa"
   },
-  "KdYELp": {
-    "defaultMessage": "Hämta strömnyckel"
-  },
   "KkIL3s": {
     "defaultMessage": "Nej, jag är under 18 år"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Göm"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Vidarebefordran av strömmar"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Plundring {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Flest tittare"

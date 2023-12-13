@@ -209,9 +209,6 @@
   "K7AkdL": {
     "defaultMessage": "Показване"
   },
-  "KdYELp": {
-    "defaultMessage": "Получаване на ключ за поток"
-  },
   "KkIL3s": {
     "defaultMessage": "Не, аз съм под 18"
   },
@@ -298,6 +295,9 @@
   },
   "VA/Z1S": {
     "defaultMessage": "Скрий"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Препращане на потоци"
@@ -398,6 +398,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Набези {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "Publish Clip"
   },
   "jctiUc": {
     "defaultMessage": "Най-висока гледаемост"
