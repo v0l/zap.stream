@@ -297,7 +297,7 @@
     "defaultMessage": "Verbergen"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Stream-Schlüssel anfordern"
   },
   "W7DNWx": {
     "defaultMessage": "Stream-Weiterleitung"
@@ -317,6 +317,9 @@
   },
   "YagVIe": {
     "defaultMessage": "{n}p"
+  },
+  "YwzT/0": {
+    "defaultMessage": "Clip title"
   },
   "Z8ZOEY": {
     "defaultMessage": "Diese Methode ist unsicher. Wir empfehlen die Verwendung von {nostrlink}"
@@ -400,7 +403,7 @@
     "defaultMessage": "{name} raiden"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Clip veröffentlichen"
   },
   "jctiUc": {
     "defaultMessage": "Höchste Zuschauer"

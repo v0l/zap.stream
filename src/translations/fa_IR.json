@@ -3,10 +3,10 @@
     "defaultMessage": "تصویر"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "ایمیلی در کار نیست، فقط عشق و صفا!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "زنده"
   },
   "+vVZ/G": {
     "defaultMessage": "اتصال"
@@ -15,7 +15,7 @@
     "defaultMessage": "مبلغ"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "افزونه امضای ناستر"
   },
   "/GCoTA": {
     "defaultMessage": "پاک کردن"
@@ -27,16 +27,16 @@
     "defaultMessage": "اهداف زپ این پخش"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "هدف"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "آغاز"
   },
   "1EYCdR": {
     "defaultMessage": "برچسب‌ها"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "آدرس اینترنتی نامعتبر"
   },
   "1qsXCO": {
     "defaultMessage": "eg. name@wallet.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "افزودن"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "بیننده"
   },
   "3HwrQo": {
     "defaultMessage": "زَپ!"
@@ -54,16 +54,16 @@
     "defaultMessage": "{n} بیننده"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "ورود با کلید خصوصی"
   },
   "47FYwb": {
     "defaultMessage": "لغو"
   },
   "4iBdw1": {
-    "defaultMessage": "Raid"
+    "defaultMessage": "گسیل"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "همم، آدرس لایتنینگ شما به نظر اشتباه می رسد"
   },
   "4l6vz1": {
     "defaultMessage": "کپی"
@@ -72,7 +72,7 @@
     "defaultMessage": "وضوح"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "کلید پخش لازم است"
   },
   "5JcXdV": {
     "defaultMessage": "ساخت حساب کاربری"
@@ -84,28 +84,28 @@
     "defaultMessage": "آدرس سرور"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "پخش زنده شروع شد"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "گسیل از {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "ارائه دهندگان پخش زنده"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "حداقل مقدار برای تبدیل متن به گفتار"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "آدرس پخش باید با rtmp:// شروع شود"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "موسیقی"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "آفلاین"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "وارد کردن متن به گفتار"
   },
   "9WRlF4": {
     "defaultMessage": "ارسال"
@@ -117,64 +117,64 @@
     "defaultMessage": "محتوای نامناسب برای کودکان و محل کار"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "داده های بیننده موجود نیست"
   },
   "AyGauy": {
     "defaultMessage": "ورود"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} یک کلیپ ساخته است"
   },
   "BGxpTN": {
     "defaultMessage": "گپ پخش زنده"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "کلید خصوصی"
   },
   "C81/uG": {
     "defaultMessage": "خروج"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} sats"
+    "defaultMessage": "{n} ساتوشی"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "تنظیمات"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "وارد شده به عنوان"
   },
   "Dn82AL": {
     "defaultMessage": "زنده"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "نمیتوان آدرس پخش ایجاد کرد"
   },
   "ESyhzp": {
     "defaultMessage": "نظر شما درباره {name}"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "بعدا می توانید این را با آدرس خود تعویض کنید."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "از ببنندگان دستمزد بگیرید"
   },
   "G/yZLu": {
     "defaultMessage": "حذف"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "گفتگو کنندگان برتر"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "صفحه را بازآوری کنید تا آخرین نسخه را استفاده کنید"
   },
   "Gq6x9o": {
     "defaultMessage": "تصویر جلد"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "نام الزامی است"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "این را ذخیره کرده و امن نگه دارید! اگر این کلید را گم کنید، هرگز دیگر نمی توانید به حساب کاربری خود دسترسی داشته باشید. بله، این مسئله خیلی جدی است!"
   },
   "H5+NAX": {
     "defaultMessage": "مانده حساب"
@@ -183,7 +183,7 @@
     "defaultMessage": "نام"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "هدفی انتخاب کنید..."
   },
   "I1kjHI": {
     "defaultMessage": "از {markdown} پشتیبانی می کند"
@@ -192,10 +192,10 @@
     "defaultMessage": "مبلغ زپ به {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "یا"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "مدت پخش {duration} دقیقه"
   },
   "JEsxDw": {
     "defaultMessage": "در حال بارگذاری..."
@@ -216,7 +216,7 @@
     "defaultMessage": "کلید پخش زنده"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "گسیل مستقیم"
   },
   "My6HwN": {
     "defaultMessage": "باشه، امن است"
@@ -225,7 +225,7 @@
     "defaultMessage": "بله، من بالای ۱۸ سال هستم"
   },
   "OEW7yJ": {
-    "defaultMessage": "Zaps"
+    "defaultMessage": "زپ"
   },
   "OKhRC6": {
     "defaultMessage": "اشتراک‌گذاری"
@@ -234,13 +234,13 @@
     "defaultMessage": "ویرایش کارت"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "شما را به یک کیف پول لایتنینگ وصل کردیم تا بتوانید بی درنگ از ببینندگان خود ساتوشی بگیرید!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "ساخت کلیپ"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "پوسته"
   },
   "Q3au2v": {
     "defaultMessage": "حدود {estimate}"
@@ -252,7 +252,7 @@
     "defaultMessage": "آدرس پخش زنده"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "کلید پخش زنده"
   },
   "QceMQZ": {
     "defaultMessage": "هدف: {amount}"
@@ -261,13 +261,13 @@
     "defaultMessage": "{name} با {amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "نسخه ای جدید موجود است"
   },
   "RJOmzk": {
     "defaultMessage": "من {terms} {provider} را خوانده و با آن موافقم."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "پیغام گسیل"
   },
   "RXQdxR": {
     "defaultMessage": "لطفا برای نوشتن پیام وارد شوید!"
@@ -276,7 +276,7 @@
     "defaultMessage": "چکیده"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "کاربران گفتگو"
   },
   "TP/cMX": {
     "defaultMessage": "به پایان رسید"
@@ -285,7 +285,7 @@
     "defaultMessage": "شروع پخش زنده"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "حساب کاربری"
   },
   "UJBFYK": {
     "defaultMessage": "افزودن کارت"
@@ -297,10 +297,10 @@
     "defaultMessage": "پنهان کردن"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "کلید پخش را بگیرید"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "فرافرستادن پخش زنده"
   },
   "W9355R": {
     "defaultMessage": "صداردار کردن"
@@ -309,7 +309,7 @@
     "defaultMessage": "ایجاد هدف"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "واکنش ها"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -318,23 +318,26 @@
   "YagVIe": {
     "defaultMessage": "{n}p"
   },
+  "YwzT/0": {
+    "defaultMessage": "Clip title"
+  },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "این روش ناامن است. توصیه می کنیم از یک {nostrlink} استفاده کنید"
   },
   "ZmqxZs": {
     "defaultMessage": "بعدا می توانید این را تغییر دهید"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "مقصد گسیل"
   },
   "acrOoz": {
     "defaultMessage": "ادامه"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "گسیل!"
   },
   "bfvyfs": {
-    "defaultMessage": "Anon"
+    "defaultMessage": "ناشناس"
   },
   "cPIKU2": {
     "defaultMessage": "بعدی"
@@ -346,10 +349,10 @@
     "defaultMessage": "بازگشت"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "صدای تست"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "نام نمایشی"
   },
   "dVD/AR": {
     "defaultMessage": "بزرگترین زپ ها"
@@ -358,7 +361,7 @@
     "defaultMessage": "افزونه ناستر"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "اوه، و {n} ساتوشی از پخش آنلاین رایگان از ما دارید! 💜"
   },
   "fBI91o": {
     "defaultMessage": "زَپ"
@@ -367,25 +370,25 @@
     "defaultMessage": "افزودن فایل"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "ورود با کلید خصوصی (ناایمن)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} پیام"
   },
   "hGQqkW": {
     "defaultMessage": "زمان‌بندی"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "پیام"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "فعال سازی متن به گفتار"
   },
   "hpl4BP": {
     "defaultMessage": "ویجت گپ"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "پیشخوان"
   },
   "ieGrWo": {
     "defaultMessage": "دنبال کردن"
@@ -397,19 +400,19 @@
     "defaultMessage": "لغو دنبال کردن"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "گسیل {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "انتشار کلیپ"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "بیشترین بینندگان"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "ابزارک‌ها"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "پخش آنلاین تمام شد"
   },
   "jr4+vD": {
     "defaultMessage": "مارک‌داون"
@@ -430,10 +433,10 @@
     "defaultMessage": "نقطه انتها"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "زمان پخش"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "صدا"
   },
   "mtNGwh": {
     "defaultMessage": "شرح مختصری از محتوا"
@@ -448,7 +451,7 @@
     "defaultMessage": "افزودن کارت"
   },
   "o8pHw3": {
-    "defaultMessage": "AUTO"
+    "defaultMessage": "خودکار"
   },
   "oHPB8Q": {
     "defaultMessage": "زپ کردن {name}"
@@ -457,13 +460,13 @@
     "defaultMessage": "نوع پخش باید HLS باشد"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> <s>{amount}</s> ساتوشی زپ زد"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
+    "defaultMessage": "ورود"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "تازه سازی"
   },
   "rWBFZA": {
     "defaultMessage": "محتوای نمایان جنسی در پیش است!"
@@ -484,13 +487,13 @@
     "defaultMessage": "سن خود را تایید کنید"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "پیغام زپ"
   },
   "tG1ST3": {
     "defaultMessage": "زپ ورودی"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "عالی! ادامه بده.."
   },
   "thsiMl": {
     "defaultMessage": "شرایط و ضوابط"
@@ -499,7 +502,7 @@
     "defaultMessage": "وضعیت"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "ایجاد حساب کاربری"
   },
   "uYw2LD": {
     "defaultMessage": "پخش زنده"
@@ -517,7 +520,7 @@
     "defaultMessage": "ویرایش"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "انتخاب صدا..."
   },
   "wOy57k": {
     "defaultMessage": "افزودن هدف زپ پخش زنده"
@@ -529,7 +532,7 @@
     "defaultMessage": "بيصدا"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "درجه صدا"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"
