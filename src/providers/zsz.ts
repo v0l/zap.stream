@@ -100,6 +100,26 @@ export class NostrStreamProvider implements StreamProvider {
     return await this.#getJson<{ url: string }>("POST", `clip/${id}/${clipId}?start=${start}&length=${length}`);
   }
 
+  async getNotificationsInfo() {
+    return await this.#getJson<{ publicKey: string }>("GET", "notifications/info");
+  }
+
+  async subscribeNotifications(req: { endpoint: string; key: string; auth: string; scope: string }) {
+    return await this.#getJson<{ id: string }>("POST", "notifications/register", req);
+  }
+
+  async listStreamerSubscriptions(auth: string) {
+    return await this.#getJson<Array<string>>("GET", `notifications?auth=${auth}`);
+  }
+
+  async addStreamerSubscription(pubkey: string) {
+    return await this.#getJson("PATCH", `notifications?pubkey=${pubkey}`);
+  }
+
+  async removeStreamerSubscription(pubkey: string) {
+    return await this.#getJson("DELETE", `notifications?pubkey=${pubkey}`);
+  }
+
   getTempClipUrl(id: string, clipId: string) {
     return `${this.url}clip/${id}/${clipId}`;
   }

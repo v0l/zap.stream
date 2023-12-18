@@ -28,6 +28,7 @@ import { useStreamLink } from "@/hooks/stream-link";
 import { FollowButton } from "@/element/follow-button";
 import { ClipButton } from "@/element/clip-button";
 import { StreamState } from "@/const";
+import { NotificationsButton } from "@/element/notifications-button";
 
 function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -37,7 +38,7 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
   const profile = useUserProfile(host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
-  const { status, participants, title, summary } = extractStreamInfo(ev);
+  const { status, participants, title, summary, service } = extractStreamInfo(ev);
   const isMine = ev?.pubkey === login?.pubkey;
 
   async function deleteStream() {
@@ -86,6 +87,7 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
               <>
                 <ShareMenu ev={ev} />
                 <ClipButton ev={ev} />
+                {service && <NotificationsButton host={host} service={service} />}
                 {zapTarget && (
                   <SendZapsDialog
                     lnurl={zapTarget}
