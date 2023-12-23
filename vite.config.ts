@@ -30,6 +30,7 @@ export default defineConfig({
   ],
   build: {
     outDir: "build",
+    sourcemap: true,
   },
   clearScreen: false,
   resolve: {

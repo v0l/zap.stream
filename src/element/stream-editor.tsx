@@ -52,6 +52,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [summary, setSummary] = useState("");
   const [image, setImage] = useState("");
   const [stream, setStream] = useState("");
+  const [recording, setRecording] = useState("");
   const [status, setStatus] = useState("");
   const [start, setStart] = useState<string>();
   const [tags, setTags] = useState<string[]>([]);
@@ -62,12 +63,14 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const { formatMessage } = useIntl();
 
   useEffect(() => {
-    const { title, summary, image, stream, status, starts, tags, contentWarning, goal } = extractStreamInfo(ev);
+    const { title, summary, image, stream, status, starts, tags, contentWarning, goal, recording } =
+      extractStreamInfo(ev);
     setTitle(title ?? "");
     setSummary(summary ?? "");
     setImage(image ?? "");
     setStream(stream ?? "");
     setStatus(status ?? StreamState.Live);
+    setRecording(recording ?? "");
     setStart(starts);
     setTags(tags ?? []);
     setContentWarning(contentWarning !== undefined);
@@ -104,11 +107,16 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           .tag(["title", title])
           .tag(["summary", summary])
           .tag(["image", image])
-          .tag(["streaming", stream])
           .tag(["status", status])
           .tag(["starts", starts]);
+        if (status === StreamState.Live) {
+          eb.tag(["streaming", stream]);
+        }
         if (status === StreamState.Ended) {
           eb.tag(["ends", ends]);
+          if (recording) {
+            eb.tag(["recording", recording]);
+          }
         }
         for (const tx of tags) {
           eb.tag(["t", tx.trim()]);
@@ -215,6 +223,16 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
                   value={toDateTimeString(Number(start ?? "0"))}
                   onChange={e => setStart(fromDateTimeString(e.target.value).toString())}
                 />
+              </div>
+            </div>
+          )}
+          {status === StreamState.Ended && (
+            <div>
+              <p>
+                <FormattedMessage defaultMessage="Recording URL" id="Y0DXJb" />
+              </p>
+              <div className="paper">
+                <input type="text" value={recording} onChange={e => setRecording(e.target.value)} />
               </div>
             </div>
           )}

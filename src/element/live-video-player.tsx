@@ -43,7 +43,7 @@ export default function LiveVideoPlayer({
 
   useEffect(() => {
     if (streamCached && video.current) {
-      if (Hls.isSupported()) {
+      if (Hls.isSupported() && streamCached.endsWith(".m3u8")) {
         try {
           const hls = new Hls({
             enableWorker: true,
