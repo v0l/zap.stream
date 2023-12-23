@@ -3,10 +3,10 @@
     "defaultMessage": "ภาพ"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "Email ไม่ต้อง ใช้แค่ความเท่"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "ถ่ายทอดสดตอนนี้"
   },
   "+vVZ/G": {
     "defaultMessage": "เชื่อมต่อ"
@@ -15,7 +15,7 @@
     "defaultMessage": "จำนวน"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "Nostr Extension"
   },
   "/GCoTA": {
     "defaultMessage": "ล้าง"
@@ -27,25 +27,25 @@
     "defaultMessage": "เป้าหมาย Zaps"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "เป้าหมาย"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "เริ่ม"
   },
   "1EYCdR": {
     "defaultMessage": "แท็ก"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "URL ไม่ถูกต้อง"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "เช่น name@wallet.com"
   },
   "2/2yg+": {
     "defaultMessage": "เพิ่ม"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "ผู้ชม"
   },
   "3HwrQo": {
     "defaultMessage": "Zaps!"
@@ -54,7 +54,7 @@
     "defaultMessage": "ผู้ชม {n}"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "เข้าสู่ระบบด้วย nsec"
   },
   "47FYwb": {
     "defaultMessage": "ยกเลิก"
@@ -310,6 +310,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reactions"
+  },
+  "Y0DXJb": {
+    "defaultMessage": "Recording URL"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",

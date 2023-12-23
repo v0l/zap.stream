@@ -297,7 +297,7 @@
     "defaultMessage": "Piilota"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Hae lähetysavain"
   },
   "W7DNWx": {
     "defaultMessage": "Lähetyksen edelleenlähetys"
@@ -311,6 +311,9 @@
   "XgWvGA": {
     "defaultMessage": "Reaktiot"
   },
+  "Y0DXJb": {
+    "defaultMessage": "Recording URL"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -319,7 +322,7 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Leikkeen nimi"
   },
   "Z8ZOEY": {
     "defaultMessage": "Tämä menetelmä ei ole turvallinen. Suosittelemme käyttämään {nostrlink}"
@@ -403,7 +406,7 @@
     "defaultMessage": "Rynnäköidään {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Julkaise leike"
   },
   "jctiUc": {
     "defaultMessage": "Eniten Katsojia"

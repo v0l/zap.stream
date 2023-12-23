@@ -311,6 +311,9 @@
   "XgWvGA": {
     "defaultMessage": "Реакции"
   },
+  "Y0DXJb": {
+    "defaultMessage": "Recording URL"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {курс}",
     "description": "Showing zap amount in USD @ rate"

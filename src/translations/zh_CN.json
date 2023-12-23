@@ -3,7 +3,7 @@
     "defaultMessage": "图像"
   },
   "+AcVD+": {
-    "defaultMessage": "没有电子邮件，只是最棒！"
+    "defaultMessage": "没有电子邮件，只有精彩！"
   },
   "+sdKx8": {
     "defaultMessage": "现在直播"
@@ -60,7 +60,7 @@
     "defaultMessage": "取消"
   },
   "4iBdw1": {
-    "defaultMessage": "袭击"
+    "defaultMessage": "突袭"
   },
   "4l69eO": {
     "defaultMessage": "嗯，看起来你的闪电地址不对"
@@ -72,7 +72,7 @@
     "defaultMessage": "分辨率"
   },
   "50+/JW": {
-    "defaultMessage": "需要流密钥"
+    "defaultMessage": "需要直播流密钥"
   },
   "5JcXdV": {
     "defaultMessage": "创建帐户"
@@ -84,7 +84,7 @@
     "defaultMessage": "服务器 URL"
   },
   "5tM0VD": {
-    "defaultMessage": "流水启动"
+    "defaultMessage": "直播已开始"
   },
   "69hmpj": {
     "defaultMessage": "来自 {name}的突袭"
@@ -96,7 +96,7 @@
     "defaultMessage": "文字转语音的最小金额"
   },
   "7+bCC1": {
-    "defaultMessage": "数据流 URL 必须以 rtmp:// 开头"
+    "defaultMessage": "直播流 URL 必须以 rtmp:// 开头"
   },
   "79lLl+": {
     "defaultMessage": "音乐"
@@ -135,7 +135,7 @@
     "defaultMessage": "登出"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} 卫星"
+    "defaultMessage": "{n} 聪"
   },
   "D3idYv": {
     "defaultMessage": "设置"
@@ -150,7 +150,7 @@
     "defaultMessage": "无法创建流 URL"
   },
   "ESyhzp": {
-    "defaultMessage": "你为{name}的留言"
+    "defaultMessage": "給 {name} 的留言"
   },
   "FjDlus": {
     "defaultMessage": "你始终可以用自己的地址替换它。"
@@ -195,7 +195,7 @@
     "defaultMessage": "或"
   },
   "J/+m9y": {
-    "defaultMessage": "视频流时长 {duration} 分钟"
+    "defaultMessage": "直播时长 {duration} 分钟"
   },
   "JEsxDw": {
     "defaultMessage": "正在上传..."
@@ -252,7 +252,7 @@
     "defaultMessage": "直播流链接"
   },
   "QWlMq9": {
-    "defaultMessage": "流体键"
+    "defaultMessage": "直播流密钥"
   },
   "QceMQZ": {
     "defaultMessage": "目标：{amount}"
@@ -291,16 +291,16 @@
     "defaultMessage": "添加卡片"
   },
   "UfSot5": {
-    "defaultMessage": "过去的直播流"
+    "defaultMessage": "过去的直播"
   },
   "VA/Z1S": {
     "defaultMessage": "隐藏"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "获取直播流密钥"
   },
   "W7DNWx": {
-    "defaultMessage": "数据流转发"
+    "defaultMessage": "直播流转发"
   },
   "W9355R": {
     "defaultMessage": "解除静音"
@@ -311,6 +311,9 @@
   "XgWvGA": {
     "defaultMessage": "反应"
   },
+  "Y0DXJb": {
+    "defaultMessage": "Recording URL"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -319,7 +322,7 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "剪辑标题"
   },
   "Z8ZOEY": {
     "defaultMessage": "这个方式不安全。我们建议使用{nostrlink}"
@@ -337,7 +340,7 @@
     "defaultMessage": "突袭"
   },
   "bfvyfs": {
-    "defaultMessage": "安诺"
+    "defaultMessage": "匿名"
   },
   "cPIKU2": {
     "defaultMessage": "已关注"
@@ -361,7 +364,7 @@
     "defaultMessage": "Nostr 扩展"
   },
   "f6biFA": {
-    "defaultMessage": "哦，我们还为你提供了{n}聪的免费直播！💜"
+    "defaultMessage": "哦，我们还为你提供了 {n} 聪的免费直播！💜"
   },
   "fBI91o": {
     "defaultMessage": "打闪"
@@ -403,7 +406,7 @@
     "defaultMessage": "突袭 {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "剪辑片段"
   },
   "jctiUc": {
     "defaultMessage": "最高收视率"
@@ -412,7 +415,7 @@
     "defaultMessage": "小工具"
   },
   "jkAQj5": {
-    "defaultMessage": "流水结束"
+    "defaultMessage": "直播已结束"
   },
   "jr4+vD": {
     "defaultMessage": "Markdown"
@@ -433,7 +436,7 @@
     "defaultMessage": "端点"
   },
   "miQKuZ": {
-    "defaultMessage": "流水时间"
+    "defaultMessage": "直播时间"
   },
   "mnJYBQ": {
     "defaultMessage": "语音"
@@ -460,7 +463,7 @@
     "defaultMessage": "直播流类型应该是 HLS"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> 打闪了 <s>{amount}</s> 聪"
   },
   "r2Jjms": {
     "defaultMessage": "登录"
@@ -505,7 +508,7 @@
     "defaultMessage": "创建帐户"
   },
   "uYw2LD": {
-    "defaultMessage": "直播"
+    "defaultMessage": "直播流"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} 聪"
@@ -523,7 +526,7 @@
     "defaultMessage": "选择语音..."
   },
   "wOy57k": {
-    "defaultMessage": "添加直播流目标"
+    "defaultMessage": "添加直播目标"
   },
   "wzWWzV": {
     "defaultMessage": "最高打闪用户"
