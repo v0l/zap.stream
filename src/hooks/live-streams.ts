@@ -17,11 +17,21 @@ export function useStreamsFeed(tag?: string) {
     });
     if (import.meta.env.VITE_SINGLE_PUBLISHER) {
       if (tag) {
-        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).authors([import.meta.env.VITE_SINGLE_PUBLISHER]);
-        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).tag("p", [import.meta.env.VITE_SINGLE_PUBLISHER]);
+        rb.withFilter()
+          .kinds([LIVE_STREAM])
+          .tag("t", [tag])
+          .authors([import.meta.env.VITE_SINGLE_PUBLISHER]);
+        rb.withFilter()
+          .kinds([LIVE_STREAM])
+          .tag("t", [tag])
+          .tag("p", [import.meta.env.VITE_SINGLE_PUBLISHER]);
       } else {
-        rb.withFilter().kinds([LIVE_STREAM]).authors([import.meta.env.VITE_SINGLE_PUBLISHER]);
-        rb.withFilter().kinds([LIVE_STREAM]).tag("p", [import.meta.env.VITE_SINGLE_PUBLISHER]);
+        rb.withFilter()
+          .kinds([LIVE_STREAM])
+          .authors([import.meta.env.VITE_SINGLE_PUBLISHER]);
+        rb.withFilter()
+          .kinds([LIVE_STREAM])
+          .tag("p", [import.meta.env.VITE_SINGLE_PUBLISHER]);
       }
     } else {
       if (tag) {
@@ -48,11 +58,15 @@ export function useStreamsFeed(tag?: string) {
     if (feed.data) {
       if (__XXX) {
         return [...feed.data].filter(
-          a => findTag(a, "content-warning") !== undefined && (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
+          a =>
+            findTag(a, "content-warning") !== undefined &&
+            (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
         );
       } else {
         return [...feed.data].filter(
-          a => findTag(a, "content-warning") === undefined && (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
+          a =>
+            findTag(a, "content-warning") === undefined &&
+            (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
         );
       }
     }
