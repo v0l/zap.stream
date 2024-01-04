@@ -15,10 +15,20 @@ export function useStreamsFeed(tag?: string) {
     rb.withOptions({
       leaveOpen: true,
     });
-    if (tag) {
-      rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).since(since);
+    if (__SINGLE_PUBLISHER) {
+      if (tag) {
+        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).authors([__SINGLE_PUBLISHER]);
+        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).tag("p", [__SINGLE_PUBLISHER]);
+      } else {
+        rb.withFilter().kinds([LIVE_STREAM]).authors([__SINGLE_PUBLISHER]);
+        rb.withFilter().kinds([LIVE_STREAM]).tag("p", [__SINGLE_PUBLISHER]);
+      }
     } else {
-      rb.withFilter().kinds([LIVE_STREAM]).since(since);
+      if (tag) {
+        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).since(since);
+      } else {
+        rb.withFilter().kinds([LIVE_STREAM]).since(since);
+      }
     }
     return rb;
   }, [tag, since]);
