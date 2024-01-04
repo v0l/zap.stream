@@ -297,7 +297,7 @@
     "defaultMessage": "Elrejtés"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Stream kulcs beszerzése"
   },
   "W7DNWx": {
     "defaultMessage": "Stream továbbítása"
@@ -312,7 +312,7 @@
     "defaultMessage": "Reakciók"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "Felvétel URL"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -322,7 +322,7 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Klip címe"
   },
   "Z8ZOEY": {
     "defaultMessage": "Ez a módszer nem biztonságos. Javasoljuk a {nostrlink}"
@@ -406,7 +406,7 @@
     "defaultMessage": "Raiding {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Clip közzététele"
   },
   "jctiUc": {
     "defaultMessage": "Legnagyobb nézettség"

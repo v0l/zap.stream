@@ -297,7 +297,7 @@
     "defaultMessage": "Göm"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Hämta Stream-nyckel"
   },
   "W7DNWx": {
     "defaultMessage": "Vidarebefordran av strömmar"
@@ -312,7 +312,7 @@
     "defaultMessage": "Reaktioner"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "URL för inspelning"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -322,7 +322,7 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Titel på klipp"
   },
   "Z8ZOEY": {
     "defaultMessage": "Denna metod är osäker. Vi rekommenderar att du använder en {nostrlink}"
@@ -406,7 +406,7 @@
     "defaultMessage": "Plundring {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Publicera klipp"
   },
   "jctiUc": {
     "defaultMessage": "Flest tittare"

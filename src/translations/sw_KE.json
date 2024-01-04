@@ -6,7 +6,7 @@
     "defaultMessage": "Hakuna barua pepe, uzuri tu!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "Ishi sasa"
   },
   "+vVZ/G": {
     "defaultMessage": "Unganisha"
@@ -30,13 +30,13 @@
     "defaultMessage": "Lengo"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "Huanza"
   },
   "1EYCdR": {
     "defaultMessage": "Vitambulisho"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "Sio URL halali"
   },
   "1qsXCO": {
     "defaultMessage": "eg. jina@pochi.com"
@@ -45,7 +45,7 @@
     "defaultMessage": "Ongeza"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "Watazamaji"
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
@@ -60,7 +60,7 @@
     "defaultMessage": "Ghairi"
   },
   "4iBdw1": {
-    "defaultMessage": "Raid"
+    "defaultMessage": "Uvamizi"
   },
   "4l69eO": {
     "defaultMessage": "Hmm, anwani yako ya umeme inaonekana si sahihi"
@@ -72,7 +72,7 @@
     "defaultMessage": "Maazimio"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "Ufunguo wa Kutiririsha unahitajika"
   },
   "5JcXdV": {
     "defaultMessage": "Tengeneza akaunti"
@@ -84,10 +84,10 @@
     "defaultMessage": "Url ya seva"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "Utiririshaji Umeanza"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "Uvamizi kutoka kwa {name}"
   },
   "6Z2pvJ": {
     "defaultMessage": "Watoa huduma za mkondo"
@@ -96,13 +96,13 @@
     "defaultMessage": "Kiasi cha chini cha maandishi hadi hotuba"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "Url ya mtiririko lazima ianze na rtmp://"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "Muziki"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "Nje ya mtandao"
   },
   "8YT6ja": {
     "defaultMessage": "Ingiza maandishi ili kuzungumza"
@@ -123,7 +123,7 @@
     "defaultMessage": "Ingia"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} aliunda klipu"
   },
   "BGxpTN": {
     "defaultMessage": "Mkondo Gumzo"
@@ -135,7 +135,7 @@
     "defaultMessage": "Toka nje"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} sats"
+    "defaultMessage": "{n} ameketi"
   },
   "D3idYv": {
     "defaultMessage": "Mipangilio"
@@ -147,7 +147,7 @@
     "defaultMessage": "Moja kwa moja"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "Haikuweza kuunda URL ya mtiririko"
   },
   "ESyhzp": {
     "defaultMessage": "Maoni yako ya {name}"
@@ -162,16 +162,16 @@
     "defaultMessage": "Ondoa"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
+    "defaultMessage": "Wapiga Soga Maarufu"
   },
   "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "Onyesha upya ukurasa ili kutumia toleo jipya zaidi"
   },
   "Gq6x9o": {
     "defaultMessage": "Picha ya Jalada"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "Jina linahitajika"
   },
   "H/bNs9": {
     "defaultMessage": "Hifadhi hii na ihifadhi salama! Ukipoteza ufunguo huu, hutaweza kufikia akaunti yako tena. Ndio, ni mbaya sana!"
@@ -195,7 +195,7 @@
     "defaultMessage": "AU"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "Muda wa Kutiririsha dak {duration}"
   },
   "JEsxDw": {
     "defaultMessage": "Inapakia..."
@@ -216,7 +216,7 @@
     "defaultMessage": "Ufunguo wa Kutiririsha"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "Anza Uvamizi"
   },
   "My6HwN": {
     "defaultMessage": "Sawa, ni salama"
@@ -237,10 +237,10 @@
     "defaultMessage": "Tulikuunganisha na pochi ya umeme ili uweze kulipwa na watazamaji mara moja!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "Tengeneza Klipu"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "Mandhari"
   },
   "Q3au2v": {
     "defaultMessage": "Kuhusu {estimate}"
@@ -252,7 +252,7 @@
     "defaultMessage": "Tiririsha URL"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "Kitufe cha kutiririsha"
   },
   "QceMQZ": {
     "defaultMessage": "Lengo: {amount}"
@@ -261,13 +261,13 @@
     "defaultMessage": "{name} pamoja na {amount}"
   },
   "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "Toleo jipya limegunduliwa"
   },
   "RJOmzk": {
     "defaultMessage": "Nimesoma na kukubaliana na {terms} ya {provider}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "Ujumbe wa uvamizi"
   },
   "RXQdxR": {
     "defaultMessage": "Tafadhali ingia ili kuandika ujumbe!"
@@ -276,7 +276,7 @@
     "defaultMessage": "Muhtasari"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "Watumiaji wa Gumzo"
   },
   "TP/cMX": {
     "defaultMessage": "Imeisha"
@@ -297,10 +297,10 @@
     "defaultMessage": "Ficha"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Pata Ufunguo wa Kutiririsha"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "Usambazaji wa Mtiririko"
   },
   "W9355R": {
     "defaultMessage": "Rejesha"
@@ -309,10 +309,10 @@
     "defaultMessage": "Tengeneza Lengo"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "Miitikio"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "URL ya kurekodi"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -322,7 +322,7 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Kichwa cha klipu"
   },
   "Z8ZOEY": {
     "defaultMessage": "Njia hii haina usalama. Tunapendekeza utumie {nostrlink}"
@@ -331,13 +331,13 @@
     "defaultMessage": "Unaweza kubadilisha hii baadaye"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "Lengo la uvamizi"
   },
   "acrOoz": {
     "defaultMessage": "Endelea"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "Uvamizi!"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -355,7 +355,7 @@
     "defaultMessage": "Jaribu sauti"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "Jina la kuonyesha"
   },
   "dVD/AR": {
     "defaultMessage": "Zappers za Juu"
@@ -376,13 +376,13 @@
     "defaultMessage": "Ingia kwa kutumia Ufunguo wa Faragha (si salama)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} ujumbe"
   },
   "hGQqkW": {
     "defaultMessage": "Schedule"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "Ujumbe"
   },
   "heyxZL": {
     "defaultMessage": "Washa maandishi hadi usemi"
@@ -391,7 +391,7 @@
     "defaultMessage": "Wijeti ya Soga"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Dashibodi"
   },
   "ieGrWo": {
     "defaultMessage": "Fuata"
@@ -403,19 +403,19 @@
     "defaultMessage": "Acha kufuata"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "Kuvamia {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Chapisha Klipu"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "Watazamaji wa Juu"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "Wijeti"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "Utiririshaji Umeisha"
   },
   "jr4+vD": {
     "defaultMessage": "Alama"
@@ -436,7 +436,7 @@
     "defaultMessage": "Mwisho"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "Muda wa Kutiririsha"
   },
   "mnJYBQ": {
     "defaultMessage": "Sauti"
@@ -469,7 +469,7 @@
     "defaultMessage": "Ingia"
   },
   "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "Onyesha upya"
   },
   "rWBFZA": {
     "defaultMessage": "Nyenzo za ngono wazi mbele yako!"
