@@ -4,7 +4,6 @@
 declare const __XXX: boolean;
 declare const __XXX_HOST: string;
 declare const __ZAP_STREAM_VERSION__: string;
-declare const __SINGLE_PUBLISHER: string;
 
 declare module "*.jpg" {
   const value: unknown;

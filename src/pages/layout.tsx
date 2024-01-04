@@ -57,7 +57,7 @@ export function LayoutPage() {
 
     return (
       <>
-        {(!__SINGLE_PUBLISHER || __SINGLE_PUBLISHER === login.pubkey) && (
+        {(!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === login.pubkey) && (
           <NewStreamDialog btnClassName="btn btn-primary" />
         )}
         <Menu
