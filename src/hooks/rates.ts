@@ -1,5 +1,5 @@
 import { bech32ToHex } from "@snort/shared";
-import { EventKind, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
+import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
 
@@ -20,11 +20,11 @@ export function useRates(symbol: string, leaveOpen = true) {
     return rb;
   }, [symbol]);
 
-  const data = useRequestBuilder(ReplaceableNoteStore, sub);
+  const data = useRequestBuilder(sub);
 
-  const tag = data?.data?.tags.find(a => a[0] === "d" && a[1] === symbol);
+  const tag = data?.at(0)?.tags.find(a => a[0] === "d" && a[1] === symbol);
   return {
-    time: data.data?.created_at,
+    time: data?.at(0)?.created_at,
     ask: Number(tag?.[2]),
     bid: Number(tag?.[3]),
     low: Number(tag?.[4]),

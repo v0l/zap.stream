@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { NostrEvent, NoteCollection, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
+import { NostrEvent, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { findTag, uniqBy } from "@/utils";
 import { EMOJI_PACK, USER_EMOJIS } from "@/const";
@@ -55,7 +55,7 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
     return rb;
   }, [pubkey, related]);
 
-  const { data: relatedData } = useRequestBuilder(NoteCollection, subRelated);
+  const relatedData = useRequestBuilder(subRelated);
 
   const emojiPacks = useMemo(() => {
     return relatedData ?? [];
@@ -79,8 +79,8 @@ export default function useEmoji(pubkey?: string) {
     return rb;
   }, [pubkey]);
 
-  const { data: userEmoji } = useRequestBuilder(ReplaceableNoteStore, sub);
+  const userEmoji = useRequestBuilder(sub);
 
-  const emojis = useUserEmojiPacks(pubkey, userEmoji?.tags ?? []);
+  const emojis = useUserEmojiPacks(pubkey, userEmoji?.at(0)?.tags ?? []);
   return emojis;
 }

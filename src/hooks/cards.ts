@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { NoteCollection, ReplaceableNoteStore, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { RequestBuilder, TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { CARD, USER_CARDS } from "@/const";
@@ -33,7 +33,7 @@ export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOp
     return rb;
   }, [pubkey, related]);
 
-  const { data } = useRequestBuilder(NoteCollection, subRelated);
+  const data = useRequestBuilder(subRelated);
 
   const cards = useMemo(() => {
     return related
@@ -62,12 +62,12 @@ export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[]
     return b;
   }, [pubkey, leaveOpen]);
 
-  const { data: userCards } = useRequestBuilder(ReplaceableNoteStore, sub);
+  const userCards = useRequestBuilder(sub);
 
   const related = useMemo(() => {
     // filtering to only show CARD kinds for now, but in the future we could link and render anything
-    if (userCards) {
-      return userCards.tags.filter(t => t.at(0) === "a" && t.at(1)?.startsWith(`${CARD}:`));
+    if (userCards.length > 0) {
+      return userCards[0].tags.filter(t => t.at(0) === "a" && t.at(1)?.startsWith(`${CARD}:`));
     }
     return [];
   }, [userCards]);
@@ -90,7 +90,7 @@ export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[]
     return rb;
   }, [pubkey, related]);
 
-  const { data } = useRequestBuilder(NoteCollection, subRelated);
+  const data = useRequestBuilder(subRelated);
   const cardEvents = data ?? [];
 
   const cards = useMemo(() => {

@@ -1,4 +1,4 @@
-import { NostrLink, NoteCollection, RequestBuilder } from "@snort/system";
+import { NostrLink, RequestBuilder } from "@snort/system";
 import { useReactions, useRequestBuilder } from "@snort/system-react";
 import { unixNow } from "@snort/shared";
 import { useMemo } from "react";
@@ -17,13 +17,13 @@ export function useLiveChatFeed(link?: NostrLink, eZaps?: Array<string>, limit =
     return rb;
   }, [link?.id, since, eZaps]);
 
-  const feed = useRequestBuilder(NoteCollection, sub);
+  const feed = useRequestBuilder(sub);
 
   const messages = useMemo(() => {
-    return (feed.data ?? []).filter(
+    return (feed ?? []).filter(
       ev => ev.kind === LIVE_STREAM_CHAT || ev.kind === LIVE_STREAM_RAID || ev.kind === LIVE_STREAM_CLIP
     );
-  }, [feed.data]);
+  }, [feed]);
 
   const reactions = useReactions(
     `live:${link?.id}:${link?.author}:reactions`,
@@ -31,5 +31,5 @@ export function useLiveChatFeed(link?: NostrLink, eZaps?: Array<string>, limit =
     undefined,
     true
   );
-  return { messages, reactions: reactions.data ?? [] };
+  return { messages, reactions: reactions ?? [] };
 }

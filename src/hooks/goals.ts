@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { FlatNoteStore, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
+import { RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { GOAL } from "@/const";
 
@@ -11,9 +11,8 @@ export function useZapGoal(id?: string) {
     return b;
   }, [id]);
 
-  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
-
-  return data;
+  const data = useRequestBuilder(sub);
+  return data.at(0);
 }
 
 export function useGoals(pubkey?: string, leaveOpen = false) {
@@ -25,7 +24,6 @@ export function useGoals(pubkey?: string, leaveOpen = false) {
     return b;
   }, [pubkey, leaveOpen]);
 
-  const { data } = useRequestBuilder(FlatNoteStore, sub);
-
+  const data = useRequestBuilder(sub);
   return data;
 }

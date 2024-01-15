@@ -13,7 +13,7 @@ export function useZaps(link?: NostrLink, leaveOpen = false) {
     return null;
   }, [link, leaveOpen]);
 
-  const { data: zaps } = useRequestBuilder(NoteCollection, sub);
+  const zaps = useRequestBuilder(sub);
 
   return (
     [...(zaps ?? [])]

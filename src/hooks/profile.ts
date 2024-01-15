@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { NostrLink, NoteCollection, RequestBuilder } from "@snort/system";
+import { NostrLink, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "@/const";
 import { useZaps } from "./zaps";
@@ -19,11 +19,11 @@ export function useProfile(link: NostrLink, leaveOpen = false) {
     return b;
   }, [link, leaveOpen]);
 
-  const streams = useRequestBuilder(NoteCollection, sub);
+  const streams = useRequestBuilder(sub);
   const zaps = useZaps(link);
 
   const sortedStreams = useMemo(() => {
-    const sorted = [...(streams.data ?? [])].sort((a, b) => b.created_at - a.created_at);
+    const sorted = [...(streams ?? [])].sort((a, b) => b.created_at - a.created_at);
     return sorted;
   }, [streams]);
 

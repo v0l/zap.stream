@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { EventKind, ReplaceableNoteStore, RequestBuilder } from "@snort/system";
+import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 type StatusTag = "general" | "music";
@@ -17,6 +17,6 @@ export function useStatus(tag: StatusTag, author?: string, leaveOpen = true) {
     return b;
   }, [author]);
 
-  const { data } = useRequestBuilder(ReplaceableNoteStore, sub);
-  return data;
+  const data = useRequestBuilder(sub);
+  return data.at(0);
 }

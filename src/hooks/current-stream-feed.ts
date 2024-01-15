@@ -1,6 +1,6 @@
 import { unwrap } from "@snort/shared";
-import { NostrEvent, NostrLink, NostrPrefix, NoteCollection, RequestBuilder, TaggedNostrEvent } from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
+import { NostrEvent, NostrLink, NostrPrefix, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { useRequestBuilderAdvanced } from "@snort/system-react";
 import { useMemo } from "react";
 
 import { LIVE_STREAM } from "@/const";
@@ -27,16 +27,16 @@ export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPrelo
     return b;
   }, [link.id, leaveOpen]);
 
-  const q = useRequestBuilder(NoteCollection, sub);
+  const q = useRequestBuilderAdvanced(sub);
 
   if (evPreload) {
-    q.add(evPreload as TaggedNostrEvent);
+    q?.feed.add([evPreload as TaggedNostrEvent]);
   }
 
   return useMemo(() => {
-    const hosting = q.data?.filter(
+    const hosting = q?.snapshot?.filter(
       a => a.pubkey === author || a.tags.some(b => b[0] === "p" && b[1] === author && b[3] === "host")
     );
     return [...(hosting ?? [])].sort((a, b) => (b.created_at > a.created_at ? 1 : -1)).at(0);
-  }, [q.data]);
+  }, [q]);
 }

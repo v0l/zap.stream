@@ -1,7 +1,7 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
-import { useEventReactions, useUserProfile } from "@snort/system-react";
+import { EventKind, NostrEvent, NostrLink, NostrPrefix, ParsedZap, TaggedNostrEvent } from "@snort/system";
+import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react";
 import { unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
@@ -18,7 +18,6 @@ import { useLiveChatFeed } from "@/hooks/live-chat";
 import { useMutedPubkeys } from "@/hooks/lists";
 import { useBadges } from "@/hooks/badges";
 import { useLogin } from "@/hooks/login";
-import { useAddress, useEvent } from "@/hooks/event";
 import { formatSats } from "@/number";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
@@ -34,7 +33,7 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? "";
   const [k, pubkey, d] = badge.split(":");
   const awardees = getTagValues(ev.tags, "p");
-  const event = useAddress(Number(k), pubkey, d);
+  const event = useEventFeed(new NostrLink(NostrPrefix.Address, d, Number(k), pubkey));
   return (
     <div className="badge-award">
       {event && <Badge ev={event} />}
@@ -229,7 +228,7 @@ export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }
   const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention");
   const isRaiding = link.toEventTag()?.at(1) === from?.at(1);
   const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from));
-  const otherEvent = useEvent(otherLink);
+  const otherEvent = useEventFeed(otherLink);
   const otherProfile = useUserProfile(getHost(otherEvent));
 
   useEffect(() => {

@@ -2877,40 +2877,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/shared@npm:^1.0.10":
-  version: 1.0.10
-  resolution: "@snort/shared@npm:1.0.10"
+"@snort/shared@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "@snort/shared@npm:1.0.11"
   dependencies:
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
     "@scure/base": ^1.1.2
     debug: ^4.3.4
+    eventemitter3: ^5.0.1
     light-bolt11-decoder: ^3.0.0
-  checksum: a9d6f3bebfa8266b5323f12bd1ebaf1fd3db316ff6b02524425b876a9902f1d763116c8c8f47259cfc2fd9aee19974333849ee08c3ec038122d3a5d385292fb8
+  checksum: 4a5441c9a1b2636283a9d39533821fcf4606dbbfbb39329aa814e6512282adf48768e761553e906f0c9c62c3862a0cb48b05a5a84cc871562a2d1120c7a902ac
   languageName: node
   linkType: hard
 
-"@snort/shared@npm:^1.0.9":
-  version: 1.0.9
-  resolution: "@snort/shared@npm:1.0.9"
+"@snort/system-react@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@snort/system-react@npm:1.2.0"
   dependencies:
-    "@noble/curves": ^1.2.0
-    "@noble/hashes": ^1.3.2
-    "@scure/base": ^1.1.2
-    debug: ^4.3.4
-    light-bolt11-decoder: ^3.0.0
-  checksum: cb1c918f614486d46ab0c41f3a14644c8dcc34d7bd02bd1ca7473003119b08eacfba9a3b46f72f197261fb9af85d3717d638e21a09b914ab9bec262fe32219c4
-  languageName: node
-  linkType: hard
-
-"@snort/system-react@npm:^1.1.8":
-  version: 1.1.8
-  resolution: "@snort/system-react@npm:1.1.8"
-  dependencies:
-    "@snort/shared": ^1.0.10
-    "@snort/system": ^1.1.8
+    "@snort/shared": ^1.0.11
+    "@snort/system": ^1.2.0
     react: ^18.2.0
-  checksum: dfe30788f3c8c24bd7d9bc50f60b924ffc679b2438f172e11e56f8a00942f7bd1add1aa9adcebddba43498a92d7a49a69a5dc566b6fac16575a553ba2923275f
+  checksum: 4a4444cfe6f91e92b814c11ebc26061e46bb771c2458919ec2c886671d7a3c9e920bc98b43831c40411869950d4e5d4633f7b5d51291347220ca12dd4f98fe6b
   languageName: node
   linkType: hard
 
@@ -2921,50 +2909,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-web@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@snort/system-web@npm:1.0.2"
+"@snort/system-web@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@snort/system-web@npm:1.0.4"
   dependencies:
-    "@snort/shared": ^1.0.9
-    "@snort/system": ^1.1.1
+    "@snort/shared": ^1.0.11
+    "@snort/system": ^1.2.0
     dexie: ^3.2.4
-  checksum: 1beed3de3256bb94a952034bdb0739272dfba0a48c985f8f4f9d7730b409182b4abea0e00ba9b519d30729e18b9db0d0752d99281238d1789f47c3c076154339
+  checksum: ee705a586009cdc35c167aaeb4e505afac4d4c5f8eb80ae3b8519e631a7e9cfae828a7e00cc589eeff509bb5bd5e9398888763e03e26e1ce888393d3f5daf11b
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@snort/system@npm:1.1.1"
+"@snort/system@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@snort/system@npm:1.2.0"
   dependencies:
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
     "@scure/base": ^1.1.2
-    "@snort/shared": ^1.0.9
+    "@snort/shared": ^1.0.11
     "@stablelib/xchacha20": ^1.0.1
     debug: ^4.3.4
     eventemitter3: ^5.0.1
     isomorphic-ws: ^5.0.0
+    lokijs: ^1.5.12
     uuid: ^9.0.0
     ws: ^8.14.0
-  checksum: 8c6d2b4061084245fbfa83e698949aba2e47dc23ca38af3d1ac0b2166dae4a397ea432a36f24891f2ff3d88aab7734818f13d013ae9615eb6bbdad0dddd82101
-  languageName: node
-  linkType: hard
-
-"@snort/system@npm:^1.1.8":
-  version: 1.1.8
-  resolution: "@snort/system@npm:1.1.8"
-  dependencies:
-    "@noble/curves": ^1.2.0
-    "@noble/hashes": ^1.3.2
-    "@scure/base": ^1.1.2
-    "@snort/shared": ^1.0.10
-    "@stablelib/xchacha20": ^1.0.1
-    debug: ^4.3.4
-    eventemitter3: ^5.0.1
-    isomorphic-ws: ^5.0.0
-    uuid: ^9.0.0
-    ws: ^8.14.0
-  checksum: f27685c55cde1b409b763a553c0cbadf972fefc449d22ea045d004da3658000c65587cef2983ba03f45df50f1eec58d9858256a7a809275a625635267b77b482
+  checksum: f5fb8a89f3d35db87c0c9a9e6cc49081d3c93c5092c51a6105ca020ff6679ae24b688d59c66482124e81eb839313ad5d723087eac948cad76f460a7f34876213
   languageName: node
   linkType: hard
 
@@ -6157,6 +6128,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lokijs@npm:^1.5.12":
+  version: 1.5.12
+  resolution: "lokijs@npm:1.5.12"
+  checksum: 5cd45facb890048e83977de1451a7b70e1f9e4cfe41c40d2212dfc160df7919b821072f95b10d692f6932c1080193e0715e8fe18dee332f04da4fda0f08984b6
+  languageName: node
+  linkType: hard
+
 "loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
@@ -7813,11 +7791,11 @@ __metadata:
     "@radix-ui/react-toggle": ^1.0.3
     "@react-hook/resize-observer": ^1.2.6
     "@scure/base": ^1.1.3
-    "@snort/shared": ^1.0.10
-    "@snort/system": ^1.1.8
-    "@snort/system-react": ^1.1.8
+    "@snort/shared": ^1.0.11
+    "@snort/system": ^1.2.0
+    "@snort/system-react": ^1.2.0
     "@snort/system-wasm": ^1.0.1
-    "@snort/system-web": ^1.0.2
+    "@snort/system-web": ^1.0.4
     "@szhsin/react-menu": ^4.0.2
     "@testing-library/dom": ^9.3.1
     "@types/lodash": ^4.14.195

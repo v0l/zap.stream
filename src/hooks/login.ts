@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 
-import { EventKind, NoteCollection, RequestBuilder } from "@snort/system";
+import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { useUserEmojiPacks } from "@/hooks/emoji";
@@ -42,7 +42,7 @@ export function useLoginEvents(pubkey?: string, leaveOpen = false) {
     return b;
   }, [pubkey, leaveOpen]);
 
-  const { data } = useRequestBuilder(NoteCollection, sub);
+  const data = useRequestBuilder(sub);
 
   useEffect(() => {
     if (!data) {

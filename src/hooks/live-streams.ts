@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { NostrEvent, NoteCollection, RequestBuilder } from "@snort/system";
+import { NostrEvent, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { unixNow } from "@snort/shared";
@@ -53,17 +53,17 @@ export function useStreamsFeed(tag?: string) {
     return bStart > aStart ? 1 : -1;
   }
 
-  const feed = useRequestBuilder(NoteCollection, rb);
+  const feed = useRequestBuilder(rb);
   const feedSorted = useMemo(() => {
-    if (feed.data) {
+    if (feed) {
       if (__XXX) {
-        return [...feed.data].filter(
+        return [...feed].filter(
           a =>
             findTag(a, "content-warning") !== undefined &&
             (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
         );
       } else {
-        return [...feed.data].filter(
+        return [...feed].filter(
           a =>
             findTag(a, "content-warning") === undefined &&
             (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
@@ -71,7 +71,7 @@ export function useStreamsFeed(tag?: string) {
       }
     }
     return [];
-  }, [feed.data]);
+  }, [feed]);
 
   const live = feedSorted.filter(a => findTag(a, "status") === StreamState.Live).sort(sortStarts);
   const planned = feedSorted.filter(a => findTag(a, "status") === StreamState.Planned).sort(sortStarts);

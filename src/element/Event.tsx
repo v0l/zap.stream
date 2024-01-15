@@ -7,8 +7,8 @@ import { Goal } from "./goal";
 import { Note } from "./note";
 import { EmojiPack } from "./emoji-pack";
 import { Badge } from "./badge";
-import { useEvent } from "@/hooks/event";
 import { EMOJI_PACK, GOAL } from "@/const";
+import { useEventFeed } from "@snort/system-react";
 
 interface EventProps {
   link: NostrLink;
@@ -71,6 +71,6 @@ export function NostrEvent({ ev }: { ev: NostrEventType }) {
 }
 
 export function Event({ link }: EventProps) {
-  const event = useEvent(link);
+  const event = useEventFeed(link);
   return event ? <NostrEvent ev={event} /> : null;
 }

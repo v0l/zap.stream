@@ -11,8 +11,8 @@ import type { NostrLink } from "@snort/system";
 import { Mention } from "./mention";
 import { EventIcon, NostrEvent } from "./Event";
 import { ExternalLink } from "./external-link";
-import { useEvent } from "@/hooks/event";
 import AsyncButton from "./async-button";
+import { useEventFeed } from "@snort/system-react";
 
 interface MediaURLProps {
   url: URL;
@@ -43,7 +43,7 @@ export function MediaURL({ url, children }: MediaURLProps) {
 }
 
 export function CollapsibleEvent({ link }: { link: NostrLink }) {
-  const event = useEvent(link);
+  const event = useEventFeed(link);
   const [open, setOpen] = useState(false);
   const author = event?.pubkey || link.author;
 
