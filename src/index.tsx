@@ -135,7 +135,7 @@ const router = createBrowserRouter([
       await System.Init();
       return null;
     },
-  }
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement);
 root.render(
