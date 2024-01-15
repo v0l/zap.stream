@@ -17,11 +17,6 @@
   display: none;
 }
 
-.stream-page .video-content video {
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-
 @media (max-width: 1020px) {
   .stream-page {
     display: flex;

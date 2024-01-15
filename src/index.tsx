@@ -26,6 +26,7 @@ import { IntlProvider } from "@/intl";
 import { WidgetsPage } from "@/pages/widgets";
 import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
+import { EmbededPage } from "./pages/embed";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
 
 const db = new SnortSystemDb();
@@ -126,6 +127,15 @@ const router = createBrowserRouter([
       return null;
     },
   },
+  {
+    path: "/embed/:id",
+    element: <EmbededPage />,
+    loader: async () => {
+      db.ready = await db.isAvailable();
+      await System.Init();
+      return null;
+    },
+  }
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement);
 root.render(

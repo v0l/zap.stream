@@ -6,6 +6,7 @@ import { Icon } from "./icon";
 import { ProgressBar } from "./progress-bar";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { StreamState } from "@/const";
+import classNames from "classnames";
 
 export enum VideoStatus {
   Online = "online",
@@ -251,7 +252,7 @@ export default function LiveVideoPlayer({
       {playerOverlay()}
       <video
         {...props}
-        className={props.className}
+        className={classNames(props.className, "w-full aspect-video")}
         ref={video}
         autoPlay={true}
         poster={poster}
