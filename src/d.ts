@@ -1,33 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /// <reference types="@webbtc/webln-types" />
+/// <reference types="vite/client" />
 
 declare const __XXX: boolean;
 declare const __XXX_HOST: string;
 declare const __ZAP_STREAM_VERSION__: string;
 
-declare module "*.jpg" {
-  const value: unknown;
-  export default value;
-}
-
-declare module "*.svg" {
-  const value: unknown;
-  export default value;
-}
-
-declare module "*.webp" {
+declare module "*.md" {
   const value: string;
   export default value;
-}
-
-declare module "*.png" {
-  const value: string;
-  export default value;
-}
-
-declare module "*.css" {
-  const stylesheet: CSSStyleSheet;
-  export default stylesheet;
 }
 
 declare module "translations/*.json" {

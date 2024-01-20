@@ -27,7 +27,11 @@ import { WidgetsPage } from "@/pages/widgets";
 import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
 import { EmbededPage } from "./pages/embed";
+import Markdown from "./element/markdown";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
+
+import Faq from "@/faq.md";
+import { Async } from "./element/async-loader";
 
 const db = new SnortSystemDb();
 const System = new NostrSystem({
@@ -102,6 +106,13 @@ const router = createBrowserRouter([
             <DashboardPage />
           </Suspense>
         ),
+      },
+      {
+        path: "/faq",
+        element: <Async loader={async () => {
+          const req = await fetch(Faq);
+          return await req.text();
+        }} then={(v) => <Markdown content={v} tags={[]} plainText={true} />} />
       },
       {
         path: "*",
