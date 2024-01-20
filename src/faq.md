@@ -1,6 +1,6 @@
 # FAQ
 
-# Reccomended Stream Settings
+# Recommended Stream Settings
 
 | Name              | Value |
 | ----------------- | ----- |
