@@ -14,7 +14,6 @@ interface MarkdownProps {
 }
 
 const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps, ref) => {
-
   function renderToken(t: Token): ReactNode {
     try {
       switch (t.type) {
@@ -76,18 +75,26 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           return <s>{t.tokens ? t.tokens.map(renderToken) : t.raw}</s>;
         }
         case "table": {
-          return <table className="table-auto border-collapse">
-            <thead>
-              <tr>
-                {(t.header as Tokens.TableCell[]).map(v => <th className="border">{v.tokens ? v.tokens.map(renderToken) : v.text}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {(t.rows as Tokens.TableCell[][]).map(v => <tr>
-                {v.map(d => <td className="border px-2 py-1">{d.tokens ? d.tokens.map(renderToken) : d.text}</td>)}
-              </tr>)}
-            </tbody>
-          </table>;
+          return (
+            <table className="table-auto border-collapse">
+              <thead>
+                <tr>
+                  {(t.header as Tokens.TableCell[]).map(v => (
+                    <th className="border">{v.tokens ? v.tokens.map(renderToken) : v.text}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {(t.rows as Tokens.TableCell[][]).map(v => (
+                  <tr>
+                    {v.map(d => (
+                      <td className="border px-2 py-1">{d.tokens ? d.tokens.map(renderToken) : d.text}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          );
         }
         default: {
           if ("tokens" in t) {
@@ -103,7 +110,6 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
       console.error(e);
     }
   }
-
 
   const parsed = useMemo(() => {
     return marked.lexer(props.content);

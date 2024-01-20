@@ -109,10 +109,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <Async loader={async () => {
-          const req = await fetch(Faq);
-          return await req.text();
-        }} then={(v) => <Markdown content={v} tags={[]} plainText={true} />} />
+        element: (
+          <Async
+            loader={async () => {
+              const req = await fetch(Faq);
+              return await req.text();
+            }}
+            then={v => <Markdown content={v} tags={[]} plainText={true} />}
+          />
+        ),
       },
       {
         path: "*",
