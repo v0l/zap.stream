@@ -134,7 +134,7 @@ export function trackEvent(
   e?: { destination?: { url: string } }
 ) {
   if (!import.meta.env.DEV) {
-    fetch("https://analytics.v0l.io/api/event", {
+    fetch("https://pa.v0l.io/api/event", {
       method: "POST",
       headers: {
         "content-type": "application/json",
