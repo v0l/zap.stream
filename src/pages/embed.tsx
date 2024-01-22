@@ -2,12 +2,19 @@ import { StreamState } from "@/const";
 import LiveVideoPlayer from "@/element/live-video-player";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useStreamLink } from "@/hooks/stream-link";
-import { extractStreamInfo } from "@/utils";
+import { extractStreamInfo, trackEvent } from "@/utils";
 import { NostrLink } from "@snort/system";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export function EmbededPage() {
   const link = useStreamLink();
+  const location = useLocation();
+  
+  useEffect(() => {
+    trackEvent("pageview");
+  }, [location]);
+
   if (link) {
     return <EmbededPagePlayer link={link} />;
   }

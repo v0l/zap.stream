@@ -28,10 +28,10 @@ import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
 import { EmbededPage } from "./pages/embed";
 import Markdown from "./element/markdown";
+import { Async } from "./element/async-loader";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
 
 import Faq from "@/faq.md";
-import { Async } from "./element/async-loader";
 
 const db = new SnortSystemDb();
 const System = new NostrSystem({

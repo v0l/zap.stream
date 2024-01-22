@@ -127,3 +127,25 @@ export function extractStreamInfo(ev?: NostrEvent) {
 
   return ret;
 }
+
+export function trackEvent(
+  event: string,
+  props?: Record<string, string | boolean>,
+  e?: { destination?: { url: string } }
+) {
+  if (!import.meta.env.DEV) {
+    fetch("https://analytics.v0l.io/api/event", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        d: window.location.host,
+        n: event,
+        r: document.referrer === location.href ? null : document.referrer,
+        p: props,
+        u: e?.destination?.url ?? `${location.protocol}//${location.host}${location.pathname}`,
+      }),
+    });
+  }
+}

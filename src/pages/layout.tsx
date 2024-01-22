@@ -1,8 +1,8 @@
 import "./layout.css";
 
-import { CSSProperties, useState, useSyncExternalStore } from "react";
+import { CSSProperties, useEffect, useState, useSyncExternalStore } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { FormattedMessage } from "react-intl";
 import { Menu, MenuItem } from "@szhsin/react-menu";
@@ -18,14 +18,20 @@ import { useLang } from "@/hooks/lang";
 import { AllLocales } from "@/intl";
 import { NewVersion } from "@/serviceWorker";
 import AsyncButton from "@/element/async-button";
+import { trackEvent } from "@/utils";
 
 export function LayoutPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const login = useLogin();
   const [showLogin, setShowLogin] = useState(false);
   const { lang, setLang } = useLang();
 
   useLoginEvents(login?.pubkey, true);
+
+  useEffect(() => {
+    trackEvent("pageview");
+  }, [location]);
 
   function langSelector() {
     return (
