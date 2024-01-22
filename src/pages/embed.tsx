@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 export function EmbededPage() {
   const link = useStreamLink();
   const location = useLocation();
-  
+
   useEffect(() => {
     trackEvent("pageview");
   }, [location]);
