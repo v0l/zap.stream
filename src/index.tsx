@@ -29,6 +29,7 @@ import { StreamSummaryPage } from "@/pages/summary";
 import { EmbededPage } from "./pages/embed";
 import Markdown from "./element/markdown";
 import { Async } from "./element/async-loader";
+import { WasmOptimizer, WasmPath, wasmInit } from "./wasm";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
 
 import Faq from "@/faq.md";
@@ -36,7 +37,7 @@ import Faq from "@/faq.md";
 const db = new SnortSystemDb();
 const System = new NostrSystem({
   db,
-  checkSigs: false,
+  optimizer: WasmOptimizer
 });
 export const Login = new LoginStore();
 
@@ -48,22 +49,26 @@ Object.entries(defaultRelays).forEach(params => {
 });
 
 export let TimeSync = 0;
+async function doInit() {
+  await wasmInit(WasmPath)
+  db.ready = await db.isAvailable();
+  await System.Init();
+  try {
+    const req = await fetch("https://api.zap.stream/api/time");
+    const nowAtServer = (await req.json()).time as number;
+    const now = unixNowMs();
+    TimeSync = now - nowAtServer;
+    console.debug("Time clock sync", TimeSync);
+  } catch {
+    // ignore
+  }
+}
 
 const router = createBrowserRouter([
   {
     element: <LayoutPage />,
     loader: async () => {
-      db.ready = await db.isAvailable();
-      await System.Init();
-      try {
-        const req = await fetch("https://api.zap.stream/api/time");
-        const nowAtServer = (await req.json()).time as number;
-        const now = unixNowMs();
-        TimeSync = now - nowAtServer;
-        console.debug("Time clock sync", TimeSync);
-      } catch {
-        // ignore
-      }
+      await doInit();
       return null;
     },
     children: [
@@ -129,8 +134,7 @@ const router = createBrowserRouter([
     path: "/chat/:id",
     element: <ChatPopout />,
     loader: async () => {
-      db.ready = await db.isAvailable();
-      await System.Init();
+      await doInit();
       return null;
     },
   },
@@ -138,8 +142,7 @@ const router = createBrowserRouter([
     path: "/alert/:id/:type",
     element: <AlertsPage />,
     loader: async () => {
-      db.ready = await db.isAvailable();
-      await System.Init();
+      await doInit();
       return null;
     },
   },
@@ -147,8 +150,7 @@ const router = createBrowserRouter([
     path: "/embed/:id",
     element: <EmbededPage />,
     loader: async () => {
-      db.ready = await db.isAvailable();
-      await System.Init();
+      await doInit();
       return null;
     },
   },

@@ -28,7 +28,7 @@ export default defineConfig({
       filename: "build/stats.html",
     }),
   ],
-  assetsInclude: ["**/*.md"],
+  assetsInclude: ["**/*.md", "**/*.wasm"],
   build: {
     outDir: "build",
     sourcemap: true,
