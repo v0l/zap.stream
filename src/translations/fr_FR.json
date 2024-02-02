@@ -297,7 +297,7 @@
     "defaultMessage": "Cacher"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Récupérer la Clé de Stream"
   },
   "W7DNWx": {
     "defaultMessage": "Transfert de flux"
@@ -312,7 +312,7 @@
     "defaultMessage": "Réactions"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "URL d'enregistrement"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -322,7 +322,7 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Titre du clip"
   },
   "Z8ZOEY": {
     "defaultMessage": "Cette méthode n'est pas sécurisée. Nous vous recommandons d'utiliser un {nostrlink}"
@@ -406,7 +406,7 @@
     "defaultMessage": "Raid {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Publier le clip"
   },
   "jctiUc": {
     "defaultMessage": "Le plus grand nombre de téléspectateurs"

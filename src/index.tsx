@@ -38,7 +38,7 @@ const hasWasm = "WebAssembly" in globalThis;
 const db = new SnortSystemDb();
 const System = new NostrSystem({
   db,
-  optimizer: hasWasm ? WasmOptimizer : undefined
+  optimizer: hasWasm ? WasmOptimizer : undefined,
 });
 export const Login = new LoginStore();
 
@@ -52,7 +52,7 @@ Object.entries(defaultRelays).forEach(params => {
 export let TimeSync = 0;
 async function doInit() {
   if (hasWasm) {
-    await wasmInit(WasmPath)
+    await wasmInit(WasmPath);
   }
   db.ready = await db.isAvailable();
   await System.Init();
