@@ -114,7 +114,9 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "summary", v => (ret.summary = v));
     matchTag(t, "image", v => (ret.image = v));
     matchTag(t, "status", v => (ret.status = v));
-    matchTag(t, "streaming", v => (ret.stream = v));
+    if (t[0] === "streaming" && t[1].startsWith("http")) {
+      matchTag(t, "streaming", v => (ret.stream = v));
+    }
     matchTag(t, "recording", v => (ret.recording = v));
     matchTag(t, "content-warning", v => (ret.contentWarning = v));
     matchTag(t, "current_participants", v => (ret.participants = v));

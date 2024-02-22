@@ -4,7 +4,6 @@
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
-    "@getalby/bitcoin-connect-react": "^1.1.0",
     "@noble/curves": "^1.2.0",
     "@radix-ui/react-collapsible": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.4",

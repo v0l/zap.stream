@@ -3,7 +3,7 @@ import { ExternalStore } from "@snort/shared";
 import { NostrStreamProvider } from "./zsz";
 import { ManualProvider } from "./manual";
 import { OwncastProvider } from "./owncast";
-import { StreamState } from "@/const";
+import { DefaultProviderUrl, StreamState } from "@/const";
 
 export { NostrStreamProvider } from "./zsz";
 
@@ -77,7 +77,7 @@ export interface StreamProviderStreamInfo {
   goal?: string;
 }
 
-export const DefaultProvider = new NostrStreamProvider("zap.stream", "https://api.zap.stream/api/nostr/");
+export const DefaultProvider = new NostrStreamProvider("zap.stream", DefaultProviderUrl);
 
 export class ProviderStore extends ExternalStore<Array<StreamProvider>> {
   #providers: Array<StreamProvider> = [];

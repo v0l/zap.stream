@@ -1,9 +1,8 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { hexToBech32, unwrap } from "@snort/shared";
 
-const AlbyButton = lazy(() => import("@/element/alby-button"));
 import { useLogin } from "@/hooks/login";
 import Copy from "@/element/copy";
 import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
@@ -71,20 +70,16 @@ export function SettingsPage() {
               ))}
             </div>
             <h1>
-              <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
-            </h1>
-            <Suspense>
-              <AlbyButton />
-            </Suspense>
-            <h1>
               <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
             </h1>
-            <NostrProviderDialog
-              provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
-              showEndpoints={true}
-              showEditor={false}
-              showForwards={true}
-            />
+            <div className="flex flex-col gap-4">
+              <NostrProviderDialog
+                provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
+                showEndpoints={true}
+                showEditor={false}
+                showForwards={true}
+              />
+            </div>
           </>
         );
       }

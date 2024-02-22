@@ -9,6 +9,7 @@ import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
 import AsyncButton from "./async-button";
 import { unwrap } from "@snort/shared";
+import { useRates } from "@/hooks/rates";
 
 export function NostrProviderDialog({
   provider,
@@ -26,7 +27,9 @@ export function NostrProviderDialog({
   const [topup, setTopup] = useState(false);
   const [info, setInfo] = useState<StreamProviderInfo>();
   const [ep, setEndpoint] = useState<StreamProviderEndpoint>();
+  const [hrs, setHrs] = useState(25);
   const [tos, setTos] = useState(false);
+  const rate = useRates("BTCUSD");
 
   function sortEndpoints(arr: Array<StreamProviderEndpoint>) {
     return arr.sort((a, b) => ((a.rate ?? 0) > (b.rate ?? 0) ? -1 : 1));
@@ -71,7 +74,16 @@ export function NostrProviderDialog({
 
     const raw = Math.max(0, info.balance / ep.rate);
     if (ep.unit === "min" && raw > 60) {
-      return `${(raw / 60).toFixed(0)} hour @ ${ep.rate} sats/${ep.unit}`;
+      const pm = hrs * 60 * ep.rate;
+      return <>
+        {`${(raw / 60).toFixed(0)} hour @ ${ep.rate} sats/${ep.unit}`}
+        &nbsp; or <br />
+        {`${pm.toLocaleString()} sats/month ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo) streaming ${hrs} hrs/month`}
+        <div className="paper">
+          Hrs
+          <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
+        </div>
+      </>
     }
     return `${raw.toFixed(0)} ${ep.unit} @ ${ep.rate} sats/${ep.unit}`;
   }
@@ -80,7 +92,7 @@ export function NostrProviderDialog({
     const [tag, ...others] = cap.split(":");
     if (tag === "variant") {
       const [height] = others;
-      return height === "source" ? height : `${height.slice(0, -1)}p`;
+      return height === "source" ? "source" : `${height.slice(0, -1)}p`;
     }
     if (tag === "output") {
       return others[0];
@@ -193,8 +205,8 @@ export function NostrProviderDialog({
           </small>
         </div>
         <div>
-          <p>
-            <FormattedMessage defaultMessage="Resolutions" id="4uI538" />
+          <p className="pb-2">
+            <FormattedMessage defaultMessage="Features" id="ZXp0z1" />
           </p>
           <div className="flex gap-2">
             {ep?.capabilities?.map(a => (
@@ -261,7 +273,7 @@ export function NostrProviderDialog({
             </>
           ))}
         </div>
-        <AddForwardInputs provider={provider} onAdd={() => {}} />
+        <AddForwardInputs provider={provider} onAdd={() => { }} />
       </div>
     );
   }
