@@ -10,7 +10,7 @@ import { Icon } from "./icon";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { NostrStreamProvider, StreamProvider, StreamProviders } from "@/providers";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
-import { eventLink, findTag } from "@/utils";
+import { eventLink } from "@/utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
 import AsyncButton from "./async-button";
 
@@ -38,14 +38,10 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
             onFinish={ex => {
               currentProvider.updateStreamInfo(system, ex);
               if (!ev) {
-                if (findTag(ex, "content-warning") && __XXX_HOST && __XXX === false) {
-                  location.href = `${__XXX_HOST}/${eventLink(ex)}`;
-                } else {
-                  navigate(`/${eventLink(ex)}`, {
-                    state: ex,
-                  });
-                  onFinish?.();
-                }
+                navigate(`/${eventLink(ex)}`, {
+                  state: ex,
+                });
+                onFinish?.();
               } else {
                 onFinish?.();
               }

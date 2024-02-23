@@ -75,15 +75,17 @@ export function NostrProviderDialog({
     const raw = Math.max(0, info.balance / ep.rate);
     if (ep.unit === "min" && raw > 60) {
       const pm = hrs * 60 * ep.rate;
-      return <>
-        {`${(raw / 60).toFixed(0)} hour @ ${ep.rate} sats/${ep.unit}`}
-        &nbsp; or <br />
-        {`${pm.toLocaleString()} sats/month ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo) streaming ${hrs} hrs/month`}
-        <div className="paper">
-          Hrs
-          <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
-        </div>
-      </>
+      return (
+        <>
+          {`${(raw / 60).toFixed(0)} hour @ ${ep.rate} sats/${ep.unit}`}
+          &nbsp; or <br />
+          {`${pm.toLocaleString()} sats/month ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo) streaming ${hrs} hrs/month`}
+          <div className="paper">
+            Hrs
+            <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
+          </div>
+        </>
+      );
     }
     return `${raw.toFixed(0)} ${ep.unit} @ ${ep.rate} sats/${ep.unit}`;
   }
@@ -273,7 +275,7 @@ export function NostrProviderDialog({
             </>
           ))}
         </div>
-        <AddForwardInputs provider={provider} onAdd={() => { }} />
+        <AddForwardInputs provider={provider} onAdd={() => {}} />
       </div>
     );
   }

@@ -162,7 +162,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
             status={status}
           />
         </Suspense>
-        <ProfileInfo ev={ev} goal={goal} />
+        <ProfileInfo ev={ev as TaggedNostrEvent} goal={goal} />
         <StreamCards host={host} />
       </div>
       <LiveChat

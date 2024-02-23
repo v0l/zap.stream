@@ -52,8 +52,6 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "deploy": "__XXX='false' && yarn build && npx wrangler pages publish --project-name nostr-live build",
-    "deploy:xxzap": "__XXX='true' && yarn build && npx wrangler pages publish --project-name xxzap build",
     "intl-extract": "formatjs extract 'src/**/*.ts*' --ignore='**/*.d.ts' --out-file src/lang.json --flatten true",
     "intl-compile": "formatjs compile src/lang.json --out-file src/translations/en.json"
   },

@@ -2,8 +2,6 @@
 /// <reference types="@webbtc/webln-types" />
 /// <reference types="vite/client" />
 
-declare const __XXX: boolean;
-declare const __XXX_HOST: string;
 declare const __ZAP_STREAM_VERSION__: string;
 
 declare module "*.md" {

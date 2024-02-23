@@ -56,24 +56,25 @@ export function useStreamsFeed(tag?: string) {
   const feed = useRequestBuilder(rb);
   const feedSorted = useMemo(() => {
     if (feed) {
-      if (__XXX) {
-        return [...feed].filter(
-          a =>
-            findTag(a, "content-warning") !== undefined &&
-            (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
-        );
-      } else {
-        return [...feed].filter(
-          a =>
-            findTag(a, "content-warning") === undefined &&
-            (!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a))
-        );
-      }
+      return [...feed].filter(
+        a => !import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a)
+      );
     }
     return [];
   }, [feed]);
 
-  const live = feedSorted.filter(a => findTag(a, "status") === StreamState.Live).sort(sortStarts);
+  const live = feedSorted
+    .filter(a => {
+      try {
+        return (
+          findTag(a, "status") === StreamState.Live &&
+          a.tags.some(a => a[0] === "streaming" && new URL(a[1]).pathname.includes(".m3u8"))
+        );
+      } catch {
+        return false;
+      }
+    })
+    .sort(sortStarts);
   const planned = feedSorted.filter(a => findTag(a, "status") === StreamState.Planned).sort(sortStarts);
   const ended = feedSorted
     .filter(a => {
