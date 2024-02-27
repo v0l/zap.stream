@@ -110,15 +110,18 @@ export function LayoutPage() {
 
   function loggedOut() {
     if (login) return;
-    return (<>
-      <BorderButton onClick={() => setShowLogin(true)}>
-        <FormattedMessage defaultMessage="Login" id="AyGauy" />
-        <Icon name="login" />
-      </BorderButton>
-      {showLogin && <Modal id="login">
-        <LoginSignup close={() => setShowLogin(false)} />
-      </Modal>}
-    </>
+    return (
+      <>
+        <BorderButton onClick={() => setShowLogin(true)}>
+          <FormattedMessage defaultMessage="Login" id="AyGauy" />
+          <Icon name="login" />
+        </BorderButton>
+        {showLogin && (
+          <Modal id="login">
+            <LoginSignup close={() => setShowLogin(false)} />
+          </Modal>
+        )}
+      </>
     );
   }
 

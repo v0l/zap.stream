@@ -86,31 +86,33 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
           <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
         </span>
       </DefaultButton>
-      {open && <Modal id="create-clip" onClose={() => setOpen(false)}>
-        <div className="flex flex-col">
-          <h1>
-            <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
-          </h1>
-          {id && tempClipId && <video ref={ref} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
-          <TimelineBar
-            length={length}
-            offset={start}
-            width={300}
-            height={60}
-            setOffset={setStart}
-            setLength={setLength}
-          />
-          <div className="flex flex-col gap-1">
-            <small>
-              <FormattedMessage defaultMessage="Clip title" id="YwzT/0" />
-            </small>
-            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Epic combo!" />
+      {open && (
+        <Modal id="create-clip" onClose={() => setOpen(false)}>
+          <div className="flex flex-col">
+            <h1>
+              <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
+            </h1>
+            {id && tempClipId && <video ref={ref} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
+            <TimelineBar
+              length={length}
+              offset={start}
+              width={300}
+              height={60}
+              setOffset={setStart}
+              setLength={setLength}
+            />
+            <div className="flex flex-col gap-1">
+              <small>
+                <FormattedMessage defaultMessage="Clip title" id="YwzT/0" />
+              </small>
+              <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Epic combo!" />
+            </div>
+            <DefaultButton onClick={saveClip}>
+              <FormattedMessage defaultMessage="Publish Clip" id="jJLRgo" />
+            </DefaultButton>
           </div>
-          <DefaultButton onClick={saveClip}>
-            <FormattedMessage defaultMessage="Publish Clip" id="jJLRgo" />
-          </DefaultButton>
-        </div>
-      </Modal>}
+        </Modal>
+      )}
     </>
   );
 }

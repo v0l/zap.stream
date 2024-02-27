@@ -15,9 +15,7 @@ export function Tags({ children, max, ev }: { children?: ReactNode; max?: number
     <>
       {children}
       {status === StreamState.Planned && (
-        <Pill>
-          {status === StreamState.Planned ? <FormattedMessage defaultMessage="Starts " id="0hNxBy" /> : ""}
-        </Pill>
+        <Pill>{status === StreamState.Planned ? <FormattedMessage defaultMessage="Starts " id="0hNxBy" /> : ""}</Pill>
       )}
       {tags.map(a => (
         <a href={`/t/${encodeURIComponent(a)}`} key={a}>

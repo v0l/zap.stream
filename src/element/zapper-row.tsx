@@ -4,7 +4,19 @@ import { Profile } from "./profile";
 import { FormattedMessage } from "react-intl";
 import classNames from "classnames";
 
-export function ZapperRow({ pubkey, total, showName, avatarSize, className }: { pubkey: string; total: number; showName?: boolean, avatarSize?: number, className?: string }) {
+export function ZapperRow({
+  pubkey,
+  total,
+  showName,
+  avatarSize,
+  className,
+}: {
+  pubkey: string;
+  total: number;
+  showName?: boolean;
+  avatarSize?: number;
+  className?: string;
+}) {
   return (
     <div className={classNames(className, "flex gap-1 justify-between items-center")}>
       {pubkey === "anon" ? (

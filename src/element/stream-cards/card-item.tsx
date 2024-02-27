@@ -97,20 +97,15 @@ export function Card({ canEdit, ev, cards }: CardProps) {
   );
 
   const card = (
-    <CardPreview
-      ref={dropRef}
-      title={title}
-      link={link}
-      image={image}
-      content={content}
-      style={dropStyle}
-    />
+    <CardPreview ref={dropRef} title={title} link={link} image={image} content={content} style={dropStyle} />
   );
   if (canEdit) {
-    return <div ref={dragRef} style={style}>
-      {card}
-      <EditCard card={evCard} cards={cards} />
-    </div>
+    return (
+      <div ref={dragRef} style={style}>
+        {card}
+        <EditCard card={evCard} cards={cards} />
+      </div>
+    );
   }
   return card;
 }

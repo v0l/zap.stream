@@ -82,9 +82,7 @@ export function ConfigureOwncast() {
             <input type="password" value={token} onChange={e => setToken(e.target.value)} />
           </div>
         </div>
-        <DefaultButton onClick={tryConnect}>
-          Connect
-        </DefaultButton>
+        <DefaultButton onClick={tryConnect}>Connect</DefaultButton>
       </div>
       <div>{status()}</div>
     </div>

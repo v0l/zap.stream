@@ -20,17 +20,25 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
   const { formatMessage } = useIntl();
   const host = getHost(ev);
 
-  const defaultMyMsg = formatMessage({
-    defaultMessage: "Come check out my stream on zap.stream!\n\n{link}\n\n", id: 'HsgeUk'
-  }, {
-    link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`
-  });
-  const defaultHostMsg = formatMessage({
-    defaultMessage: "Come check out {name} stream on zap.stream!\n\n{link}", id: 'PUymyQ'
-  }, {
-    name: `nostr:${new NostrLink(NostrPrefix.PublicKey, host ?? ev.pubkey).encode()}`,
-    link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`
-  });
+  const defaultMyMsg = formatMessage(
+    {
+      defaultMessage: "Come check out my stream on zap.stream!\n\n{link}\n\n",
+      id: "HsgeUk",
+    },
+    {
+      link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`,
+    }
+  );
+  const defaultHostMsg = formatMessage(
+    {
+      defaultMessage: "Come check out {name} stream on zap.stream!\n\n{link}",
+      id: "PUymyQ",
+    },
+    {
+      name: `nostr:${new NostrLink(NostrPrefix.PublicKey, host ?? ev.pubkey).encode()}`,
+      link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`,
+    }
+  );
   const [message, setMessage] = useState(login?.pubkey === host ? defaultMyMsg : defaultHostMsg);
 
   async function sendMessage() {
@@ -62,25 +70,27 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
           <FormattedMessage defaultMessage="Broadcast on Nostr" id="wCIL7o" />
         </MenuItem>
       </Menu>
-      {share && <Modal id="share" onClose={() => setShare(undefined)}>
-        <div className="flex flex-col gap-4">
-          <h2>
-            <FormattedMessage defaultMessage="Share" id="OKhRC6" />
-          </h2>
-          <Textarea
-            emojis={[]}
-            value={message}
-            onChange={e => setMessage(e.target.value)}
-            onKeyDown={() => {
-              //noop
-            }}
-            rows={15}
-          />
-          <DefaultButton onClick={sendMessage}>
-            <FormattedMessage defaultMessage="Send" id="9WRlF4" />
-          </DefaultButton>
-        </div>
-      </Modal>}
+      {share && (
+        <Modal id="share" onClose={() => setShare(undefined)}>
+          <div className="flex flex-col gap-4">
+            <h2>
+              <FormattedMessage defaultMessage="Share" id="OKhRC6" />
+            </h2>
+            <Textarea
+              emojis={[]}
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+              onKeyDown={() => {
+                //noop
+              }}
+              rows={15}
+            />
+            <DefaultButton onClick={sendMessage}>
+              <FormattedMessage defaultMessage="Send" id="9WRlF4" />
+            </DefaultButton>
+          </div>
+        </Modal>
+      )}
     </>
   );
 }

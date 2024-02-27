@@ -75,7 +75,15 @@ export function ProfilePage() {
   );
 }
 
-function ProfileHeader({ profile, link, streams }: { profile?: CachedMetadata, link: NostrLink, streams: Array<NostrEvent> }) {
+function ProfileHeader({
+  profile,
+  link,
+  streams,
+}: {
+  profile?: CachedMetadata;
+  link: NostrLink;
+  streams: Array<NostrEvent>;
+}) {
   const navigate = useNavigate();
   const liveEvent = useMemo(() => {
     return streams.find(ev => findTag(ev, "status") === StreamState.Live);
@@ -90,44 +98,46 @@ function ProfileHeader({ profile, link, streams }: { profile?: CachedMetadata, l
     }
   }
 
-  return <div className="flex max-sm:flex-col gap-3 justify-between">
-    <div className="flex items-center gap-3">
-      <div className="relative flex flex-col items-center">
-        <Avatar user={profile} pubkey={link.id} size={88} className="border border-4" />
-        {isLive && <StatePill state={StreamState.Live} onClick={goToLive} className="absolute bottom-0 -mb-2" />}
+  return (
+    <div className="flex max-sm:flex-col gap-3 justify-between">
+      <div className="flex items-center gap-3">
+        <div className="relative flex flex-col items-center">
+          <Avatar user={profile} pubkey={link.id} size={88} className="border border-4" />
+          {isLive && <StatePill state={StreamState.Live} onClick={goToLive} className="absolute bottom-0 -mb-2" />}
+        </div>
+        <div className="flex flex-col gap-1">
+          {profile?.name && <h1 className="name">{profile.name}</h1>}
+          {profile?.about && (
+            <p className="text-neutral-400">
+              <Text content={profile.about} tags={[]} />
+            </p>
+          )}
+        </div>
       </div>
-      <div className="flex flex-col gap-1">
-        {profile?.name && <h1 className="name">{profile.name}</h1>}
-        {profile?.about && (
-          <p className="text-neutral-400">
-            <Text content={profile.about} tags={[]} />
-          </p>
+      <div className="flex gap-2 items-center">
+        {zapTarget && (
+          <SendZapsDialog
+            aTag={liveEvent ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(liveEvent, "d")}` : undefined}
+            lnurl={zapTarget}
+            button={
+              <DefaultButton>
+                <Icon name="zap-filled" className="zap-button-icon" />
+                <FormattedMessage defaultMessage="Zap" id="fBI91o" />
+              </DefaultButton>
+            }
+            targetName={profile?.name || link.id}
+          />
         )}
+        <FollowButton pubkey={link.id} />
+        <MuteButton pubkey={link.id} />
       </div>
     </div>
-    <div className="flex gap-2 items-center">
-      {zapTarget && (
-        <SendZapsDialog
-          aTag={liveEvent ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(liveEvent, "d")}` : undefined}
-          lnurl={zapTarget}
-          button={
-            <DefaultButton>
-              <Icon name="zap-filled" className="zap-button-icon" />
-              <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-            </DefaultButton>
-          }
-          targetName={profile?.name || link.id}
-        />
-      )}
-      <FollowButton pubkey={link.id} />
-      <MuteButton pubkey={link.id} />
-    </div>
-  </div>
+  );
 }
 
 function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
   if (streams.length === 0) {
-    return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />
+    return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />;
   }
   return (
     <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8">
@@ -153,23 +163,25 @@ function ProfileZapGoals({ link }: { link: NostrLink }) {
   const limit = 5;
   const goals = useGoals(link.id, false, limit);
   if (goals.length === 0) {
-    return <FormattedMessage defaultMessage="No goals yet" id="ZaNcK4" />
+    return <FormattedMessage defaultMessage="No goals yet" id="ZaNcK4" />;
   }
   return goals
-    .sort((a, b) => a.created_at > b.created_at ? -1 : 1)
+    .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
     .slice(0, limit)
-    .map(a => <div key={a.id} className="bg-layer-1 rounded-xl px-4 py-3">
-      <Goal ev={a} confetti={false} />
-    </div>);
+    .map(a => (
+      <div key={a.id} className="bg-layer-1 rounded-xl px-4 py-3">
+        <Goal ev={a} confetti={false} />
+      </div>
+    ));
 }
 
 function ProfileClips({ link }: { link: NostrLink }) {
   const clips = useClips(link, 10);
   if (clips.length === 0) {
-    return <FormattedMessage defaultMessage="No clips yet" id="ObZZEz" />
+    return <FormattedMessage defaultMessage="No clips yet" id="ObZZEz" />;
   }
   return clips.map(a => {
     const r = findTag(a, "r");
-    return <video src={r} />
-  })
+    return <video src={r} />;
+  });
 }

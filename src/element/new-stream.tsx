@@ -89,9 +89,7 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
           </Pill>
         ))}
       </div>
-      <div className="flex flex-col gap-4">
-        {providerDialog()}
-      </div>
+      <div className="flex flex-col gap-4">{providerDialog()}</div>
     </>
   );
 }
@@ -116,11 +114,13 @@ export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps)
           </>
         )}
       </DefaultButton>
-      {open && <Modal id="new-stream" onClose={() => setOpen(false)}>
-        <div className="new-stream">
-          <NewStream {...props} onFinish={() => setOpen(false)} />
-        </div>
-      </Modal>}
+      {open && (
+        <Modal id="new-stream" onClose={() => setOpen(false)}>
+          <div className="new-stream">
+            <NewStream {...props} onFinish={() => setOpen(false)} />
+          </div>
+        </Modal>
+      )}
     </>
   );
 }

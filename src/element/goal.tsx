@@ -14,7 +14,7 @@ import { Icon } from "./icon";
 import { useZaps } from "@/hooks/zaps";
 import classNames from "classnames";
 
-export function Goal({ ev, confetti }: { ev: NostrEvent, confetti?: boolean }) {
+export function Goal({ ev, confetti }: { ev: NostrEvent; confetti?: boolean }) {
   const profile = useUserProfile(ev.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const link = NostrLink.fromEvent(ev);
@@ -43,22 +43,28 @@ export function Goal({ ev, confetti }: { ev: NostrEvent, confetti?: boolean }) {
       {ev.content.length > 0 && <p>{ev.content}</p>}
       <div className="relative h-10">
         <div className="absolute bg-layer-2 h-3 rounded-full my-4 w-full"></div>
-        <div className="absolute bg-zap h-3 rounded-full text-xs font-medium my-4 leading-3 pl-2" style={{
-          width: `${progress}%`
-        }}>
+        <div
+          className="absolute bg-zap h-3 rounded-full text-xs font-medium my-4 leading-3 pl-2"
+          style={{
+            width: `${progress}%`,
+          }}>
           {soFar > 0 ? formatSats(soFar) : ""}
         </div>
         <div className="absolute text-right text-xs right-10 font-medium my-4 leading-3">
           <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
         </div>
-        <div className={classNames("absolute right-0 rounded-full p-2 my-1",
-          { "bg-zap": isFinished, "bg-layer-2": !isFinished })}>
+        <div
+          className={classNames("absolute right-0 rounded-full p-2 my-1", {
+            "bg-zap": isFinished,
+            "bg-layer-2": !isFinished,
+          })}>
           <Icon name="zap-filled" />
         </div>
       </div>
-      {isFinished && previousValue === false && (confetti ?? true) &&
-        <Confetti numberOfPieces={2100} recycle={false} />}
-    </div >
+      {isFinished && previousValue === false && (confetti ?? true) && (
+        <Confetti numberOfPieces={2100} recycle={false} />
+      )}
+    </div>
   );
 
   return zapTarget ? (

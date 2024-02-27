@@ -38,9 +38,7 @@ export function StreamProvidersPage() {
       <div className="paper">
         <h3>{mapName(p)}</h3>
         {mapLogo(p)}
-        <DefaultButton onClick={() => navigate(p)}>
-          + Configure
-        </DefaultButton>
+        <DefaultButton onClick={() => navigate(p)}>+ Configure</DefaultButton>
       </div>
     );
   }

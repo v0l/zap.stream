@@ -5,20 +5,16 @@ import { Suspense } from "react";
 import LiveVideoPlayer from "./live-video-player";
 
 export default function LiveEvent({ ev }: { ev: TaggedNostrEvent }) {
-    const {
-        title,
-        image,
-        status,
-        stream,
-        recording,
-    } = extractStreamInfo(ev);
+  const { title, image, status, stream, recording } = extractStreamInfo(ev);
 
-    return <Suspense>
-        <LiveVideoPlayer
-            title={title}
-            stream={status === StreamState.Live ? stream : recording}
-            poster={image}
-            status={status}
-        />
+  return (
+    <Suspense>
+      <LiveVideoPlayer
+        title={title}
+        stream={status === StreamState.Live ? stream : recording}
+        poster={image}
+        status={status}
+      />
     </Suspense>
+  );
 }

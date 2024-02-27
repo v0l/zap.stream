@@ -9,7 +9,6 @@ import Modal from "../modal";
 import { NewCard } from ".";
 import { CardDialog } from "./new-card";
 
-
 interface AddCardProps {
   cards: TaggedNostrEvent[];
 }
@@ -54,11 +53,15 @@ export function AddCard({ cards }: AddCardProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-layer-1 rounded-xl gap-4 p-2 cursor-pointer" onClick={() => setOpen(true)}>
+    <div
+      className="flex flex-col items-center justify-center bg-layer-1 rounded-xl gap-4 p-2 cursor-pointer"
+      onClick={() => setOpen(true)}>
       <Icon name="plus" />
-      {open && <Modal id="add-card" onClose={() => setOpen(false)}>
-        <CardDialog onSave={createCard} onCancel={() => setOpen(false)} />
-      </Modal>}
+      {open && (
+        <Modal id="add-card" onClose={() => setOpen(false)}>
+          <CardDialog onSave={createCard} onCancel={() => setOpen(false)} />
+        </Modal>
+      )}
     </div>
   );
 }

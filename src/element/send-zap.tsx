@@ -207,20 +207,23 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
 
 export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   const [open, setOpen] = useState(false);
-  return (<>
-    {props.button ? (
-      props.button
-    ) : (
-      <DefaultButton onClick={() => setOpen(true)}>
-        <span className="max-xl:hidden">
-          <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-        </span>
-        <Icon name="zap-filled" size={16} />
-      </DefaultButton>
-    )}
-    {open && <Modal id="send-zaps" onClose={() => setOpen(false)}>
-      <SendZaps {...props} onFinish={() => setOpen(false)} />
-    </Modal>}
-  </>
+  return (
+    <>
+      {props.button ? (
+        props.button
+      ) : (
+        <DefaultButton onClick={() => setOpen(true)}>
+          <span className="max-xl:hidden">
+            <FormattedMessage defaultMessage="Zap" id="fBI91o" />
+          </span>
+          <Icon name="zap-filled" size={16} />
+        </DefaultButton>
+      )}
+      {open && (
+        <Modal id="send-zaps" onClose={() => setOpen(false)}>
+          <SendZaps {...props} onFinish={() => setOpen(false)} />
+        </Modal>
+      )}
+    </>
   );
 }

@@ -9,8 +9,7 @@ export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGE
       width={size}
       height={props.height ?? size}
       className={className}
-      onClick={props.onClick}
-    >
+      onClick={props.onClick}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -24,7 +23,7 @@ export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGE
         fill="#ffffff"
         className="transition-transform"
         style={{
-          transform: checked ? "translateX(12px)" : "translateX(0px)"
+          transform: checked ? "translateX(12px)" : "translateX(0px)",
         }}
       />
     </svg>

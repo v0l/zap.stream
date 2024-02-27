@@ -45,14 +45,16 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
     <div className="outline emoji-pack">
       <div className="emoji-pack-title">
         <h4>{name}</h4>
-        {login?.pubkey && (isUsed ?
-          <WarningButton onClick={toggleEmojiPack}>
-            <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
-          </WarningButton> :
-          <DefaultButton onClick={toggleEmojiPack}>
-            <FormattedMessage defaultMessage="Add" id="2/2yg+" />
-          </DefaultButton>
-        )}
+        {login?.pubkey &&
+          (isUsed ? (
+            <WarningButton onClick={toggleEmojiPack}>
+              <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
+            </WarningButton>
+          ) : (
+            <DefaultButton onClick={toggleEmojiPack}>
+              <FormattedMessage defaultMessage="Add" id="2/2yg+" />
+            </DefaultButton>
+          ))}
       </div>
       <div className="emoji-pack-emojis">
         {emoji.map(e => {

@@ -60,9 +60,7 @@ export function LoggedInFollowButton({
 
   if (isFollowing && hideWhenFollowing) return;
   return (
-    <DefaultButton
-      disabled={timestamp ? timestamp === 0 : true}
-      onClick={isFollowing ? unfollow : follow}>
+    <DefaultButton disabled={timestamp ? timestamp === 0 : true} onClick={isFollowing ? unfollow : follow}>
       {isFollowing ? (
         <FormattedMessage defaultMessage="Unfollow" id="izWS4J" />
       ) : (

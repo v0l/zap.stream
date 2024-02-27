@@ -25,12 +25,7 @@ const AsyncButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((props: Asyn
   }
 
   return (
-    <button
-      ref={ref}
-      disabled={loading || props.disabled}
-      {...props}
-      onClick={handle}
-      className={props.className}>
+    <button ref={ref} disabled={loading || props.disabled} {...props} onClick={handle} className={props.className}>
       <span
         style={{ visibility: loading ? "hidden" : "visible" }}
         className="whitespace-nowrap flex gap-2 items-center justify-center">

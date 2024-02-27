@@ -75,19 +75,21 @@ export function SettingsPage() {
         );
       }
       case Tab.Stream: {
-        return <>
-          <h1>
-            <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
-          </h1>
-          <div className="flex flex-col gap-4">
-            <NostrProviderDialog
-              provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
-              showEndpoints={true}
-              showEditor={false}
-              showForwards={true}
-            />
-          </div>
-        </>
+        return (
+          <>
+            <h1>
+              <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
+            </h1>
+            <div className="flex flex-col gap-4">
+              <NostrProviderDialog
+                provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
+                showEndpoints={true}
+                showEditor={false}
+                showForwards={true}
+              />
+            </div>
+          </>
+        );
       }
     }
   }

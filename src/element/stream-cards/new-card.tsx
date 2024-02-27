@@ -5,7 +5,6 @@ import { FileUploader } from "../file-uploader";
 import { DefaultButton, WarningButton } from "../buttons";
 import { CardType, NewCard } from ".";
 
-
 interface CardDialogProps {
   header?: string;
   cta?: string;
@@ -34,24 +33,28 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
         type="text"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        placeholder={formatMessage({ defaultMessage: "e.g. about me", id: "k21gTS" })} />
+        placeholder={formatMessage({ defaultMessage: "e.g. about me", id: "k21gTS" })}
+      />
       {/* IMAGE */}
       <label htmlFor="card-image">
         <FormattedMessage defaultMessage="Image" id="+0zv6g" />
       </label>
       <FileUploader defaultImage={image} onFileUpload={setImage} onClear={() => setImage("")} />
-      {image.length > 0 && <>
-        {/* IMAGE LINK */}
-        <label htmlFor="card-image-link">
-          <FormattedMessage defaultMessage="Image Link" id="s5ksS7" />
-        </label>
-        <input
-          id="card-image-link"
-          type="text"
-          placeholder="https://"
-          value={link}
-          onChange={e => setLink(e.target.value)} />
-      </>}
+      {image.length > 0 && (
+        <>
+          {/* IMAGE LINK */}
+          <label htmlFor="card-image-link">
+            <FormattedMessage defaultMessage="Image Link" id="s5ksS7" />
+          </label>
+          <input
+            id="card-image-link"
+            type="text"
+            placeholder="https://"
+            value={link}
+            onChange={e => setLink(e.target.value)}
+          />
+        </>
+      )}
       {/* CONTENT */}
       <label htmlFor="card-content">
         <FormattedMessage defaultMessage="Content" id="Jq3FDz" />
@@ -60,7 +63,8 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
         placeholder={formatMessage({ defaultMessage: "Start typing", id: "w0Xm2F" })}
         value={content}
         rows={5}
-        onChange={e => setContent(e.target.value)} />
+        onChange={e => setContent(e.target.value)}
+      />
       <span className="help-text">
         <FormattedMessage
           defaultMessage="Supports {markdown}"
@@ -71,7 +75,8 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
                 <FormattedMessage defaultMessage="Markdown" id="jr4+vD" />
               </ExternalLink>
             ),
-          }} />
+          }}
+        />
       </span>
       <div className="flex justify-between">
         <WarningButton onClick={onCancel}>

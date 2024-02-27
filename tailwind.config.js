@@ -11,7 +11,7 @@ module.exports = {
         secondary: "var(--secondary)",
         zap: "var(--zap)",
         success: "rgb(0 127 0 / <alpha-value>)",
-        warning: "rgb(255 86 63 / <alpha-value>)"
+        warning: "rgb(255 86 63 / <alpha-value>)",
       },
       animation: {
         "ping-once": "ping 1s cubic-bezier(0, 0, 0.2, 1);",

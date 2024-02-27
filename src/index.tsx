@@ -60,7 +60,7 @@ async function doInit() {
   await System.Init();
   try {
     const req = await fetch("https://api.zap.stream/api/time", {
-      signal: AbortSignal.timeout(1000)
+      signal: AbortSignal.timeout(1000),
     });
     const nowAtServer = (await req.json()).time as number;
     const now = unixNowMs();
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/mock",
-        element: <MockPage />
+        element: <MockPage />,
       },
       {
         path: "/",

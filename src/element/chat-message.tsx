@@ -179,30 +179,38 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                  display: showZapDialog || isHovering ? "flex" : "none",
-                }
+                    display: showZapDialog || isHovering ? "flex" : "none",
+                  }
                 : {
-                  position: "fixed",
-                  top: topOffset ? topOffset - 12 : 0,
-                  left: leftOffset ? leftOffset - 32 : 0,
-                  opacity: showZapDialog || isHovering ? 1 : 0,
-                  pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                }
+                    position: "fixed",
+                    top: topOffset ? topOffset - 12 : 0,
+                    left: leftOffset ? leftOffset - 32 : 0,
+                    opacity: showZapDialog || isHovering ? 1 : 0,
+                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+                  }
             }>
             {zapTarget && (
               <SendZapsDialog
                 lnurl={zapTarget}
                 eTag={ev.id}
                 pubkey={ev.pubkey}
-                button={
-                  <IconButton iconName="zap" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />
-                }
+                button={<IconButton iconName="zap" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />}
                 targetName={profile?.name || ev.pubkey}
               />
             )}
-            <IconButton onClick={pickEmoji} iconName="face" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />
+            <IconButton
+              onClick={pickEmoji}
+              iconName="face"
+              iconSize={14}
+              className="rounded-full bg-layer-2 aspect-square"
+            />
             {shouldShowMuteButton && (
-              <IconButton onClick={muteUser} iconName="user-x" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />
+              <IconButton
+                onClick={muteUser}
+                iconName="user-x"
+                iconSize={14}
+                className="rounded-full bg-layer-2 aspect-square"
+              />
             )}
           </div>
         )}

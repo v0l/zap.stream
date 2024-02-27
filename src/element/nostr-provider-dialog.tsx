@@ -157,9 +157,7 @@ export function NostrProviderDialog({
             </p>
             <div className="flex gap-2">
               {sortEndpoints(info.endpoints).map(a => (
-                <Pill
-                  selected={ep?.name === a.name}
-                  onClick={() => setEndpoint(a)}>
+                <Pill selected={ep?.name === a.name} onClick={() => setEndpoint(a)}>
                   {a.name}
                 </Pill>
               ))}
@@ -178,8 +176,7 @@ export function NostrProviderDialog({
           </p>
           <div className="flex gap-2">
             <input type="password" value={ep?.key} disabled />
-            <DefaultButton
-              onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
+            <DefaultButton onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
               <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
             </DefaultButton>
           </div>

@@ -17,13 +17,16 @@ interface MediaURLProps {
 
 export function MediaURL({ url, children }: MediaURLProps) {
   const [open, setOpen] = useState(false);
-  return (<>
-    <span onClick={() => setOpen(true)}>{url.toString()}</span>
-    {open && <Modal id="media-preview" onClose={() => setOpen(false)}>
-      <ExternalLink href={url.toString()}>{url.toString()}</ExternalLink>
-      {children}
-    </Modal>}
-  </>
+  return (
+    <>
+      <span onClick={() => setOpen(true)}>{url.toString()}</span>
+      {open && (
+        <Modal id="media-preview" onClose={() => setOpen(false)}>
+          <ExternalLink href={url.toString()}>{url.toString()}</ExternalLink>
+          {children}
+        </Modal>
+      )}
+    </>
   );
 }
 
@@ -37,12 +40,20 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
       <div className="flex justify-between">
         <div className="flex gap-2">
           <EventIcon kind={event?.kind} />
-          <FormattedMessage defaultMessage="Note by {name}" id="ALdW69" values={{
-            name: <Mention pubkey={author ?? ""} />
-          }} />
+          <FormattedMessage
+            defaultMessage="Note by {name}"
+            id="ALdW69"
+            values={{
+              name: <Mention pubkey={author ?? ""} />,
+            }}
+          />
         </div>
         <DefaultButton onClick={() => setOpen(s => !s)}>
-          {open ? <FormattedMessage defaultMessage="Hide" id="VA/Z1S" /> : <FormattedMessage defaultMessage="Show" id="K7AkdL" />}
+          {open ? (
+            <FormattedMessage defaultMessage="Hide" id="VA/Z1S" />
+          ) : (
+            <FormattedMessage defaultMessage="Show" id="K7AkdL" />
+          )}
         </DefaultButton>
       </div>
       {open && event && <NostrEvent ev={event} />}

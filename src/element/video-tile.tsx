@@ -28,13 +28,13 @@ export function VideoTile({
   const hasImg = (image?.length ?? 0) > 0;
   return (
     <div className="flex flex-col gap-2">
-      <Link
-        to={`/${link.encode()}`}
-        className={classNames({ "blur": contentWarning }, "h-full")}
-        state={ev}>
+      <Link to={`/${link.encode()}`} className={classNames({ blur: contentWarning }, "h-full")} state={ev}>
         <div className="relative mb-2 aspect-video">
-          {hasImg ? <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} /> :
-            <Logo className="text-white aspect-video" />}
+          {hasImg ? (
+            <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} />
+          ) : (
+            <Logo className="text-white aspect-video" />
+          )}
           <span className="flex flex-col justify-between absolute top-0 h-full right-4 items-end py-2">
             {showStatus && <StatePill state={status as StreamState} />}
             {participants && (

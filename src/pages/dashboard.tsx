@@ -110,7 +110,7 @@ function DashboardChatList({ link }: { link: NostrLink }) {
       <Profile pubkey={a} avatarSize={32} gap={4} />
       <div className="flex gap-2">
         <MuteButton pubkey={a} />
-        <DefaultButton onClick={() => { }} className="font-bold">
+        <DefaultButton onClick={() => {}} className="font-bold">
           <FormattedMessage defaultMessage="Zap" id="fBI91o" />
         </DefaultButton>
       </div>
@@ -173,13 +173,16 @@ function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
 
 function DashboardRaidButton({ link }: { link: NostrLink }) {
   const [show, setShow] = useState(false);
-  return (<>
-    <DefaultButton onClick={() => setShow(true)}>
-      <FormattedMessage defaultMessage="Raid" id="4iBdw1" />
-    </DefaultButton>
-    {show && <Modal id="raid-menu" onClose={() => setShow(false)}>
-      <DashboardRaidMenu link={link} onClose={() => setShow(false)} />
-    </Modal>}
-  </>
+  return (
+    <>
+      <DefaultButton onClick={() => setShow(true)}>
+        <FormattedMessage defaultMessage="Raid" id="4iBdw1" />
+      </DefaultButton>
+      {show && (
+        <Modal id="raid-menu" onClose={() => setShow(false)}>
+          <DashboardRaidMenu link={link} onClose={() => setShow(false)} />
+        </Modal>
+      )}
+    </>
   );
 }

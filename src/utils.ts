@@ -103,7 +103,7 @@ interface StreamInfo {
 
 export function extractStreamInfo(ev?: NostrEvent) {
   const ret = {
-    host: getHost(ev)
+    host: getHost(ev),
   } as StreamInfo;
   const matchTag = (tag: Array<string>, k: string, into: (v: string) => void) => {
     if (tag[0] === k) {
@@ -161,5 +161,5 @@ export function groupBy<T>(val: Array<T>, selector: (a: T) => string | number): 
     acc[key] ??= [];
     acc[key].push(v);
     return acc;
-  }, {} as Record<string, Array<T>>)
+  }, {} as Record<string, Array<T>>);
 }

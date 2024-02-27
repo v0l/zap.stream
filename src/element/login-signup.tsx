@@ -255,12 +255,7 @@ export function LoginSignup({ close }: { close: () => void }) {
               </div>
             </div>
             <div className="username">
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-              />
+              <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
               <small>
                 <FormattedMessage defaultMessage="You can change this later" id="ZmqxZs" />
               </small>
