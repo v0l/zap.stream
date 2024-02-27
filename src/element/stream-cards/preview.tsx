@@ -1,4 +1,3 @@
-import { isEmpty } from "lodash";
 import { forwardRef, lazy, Suspense } from "react";
 import { ExternalLink } from "../external-link";
 import { NewCard } from ".";
@@ -7,6 +6,10 @@ const Markdown = lazy(() => import("../markdown"));
 
 interface CardPreviewProps extends NewCard {
     style: object;
+}
+
+function isEmpty(s: string | undefined) {
+    return s === undefined || s.trim().length > 0;
 }
 
 export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(({ style, title, link, image, content }: CardPreviewProps, ref) => {

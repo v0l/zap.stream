@@ -154,3 +154,12 @@ export function trackEvent(
     });
   }
 }
+
+export function groupBy<T>(val: Array<T>, selector: (a: T) => string | number): Record<string, Array<T>> {
+  return val.reduce((acc, v) => {
+    const key = selector(v);
+    acc[key] ??= [];
+    acc[key].push(v);
+    return acc;
+  }, {} as Record<string, Array<T>>)
+}

@@ -12,9 +12,9 @@ import { ZapAlertItem } from "./widgets/zaps";
 import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
-import groupBy from "lodash/groupBy";
 import { hexToBech32 } from "@snort/shared";
 import { DefaultButton } from "@/element/buttons";
+import { groupBy } from "@/utils";
 
 interface ZapAlertConfigurationProps {
   npub: string;

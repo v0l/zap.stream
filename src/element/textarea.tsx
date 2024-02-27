@@ -2,12 +2,10 @@ import "./textarea.css";
 import { useContext } from "react";
 import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
-import uniqWith from "lodash/uniqWith";
-import isEqual from "lodash/isEqual";
 
 import { hexToBech32 } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
-import { MetadataCache, NostrPrefix, UserProfileCache } from "@snort/system";
+import { CachedMetadata, NostrPrefix, UserProfileCache } from "@snort/system";
 
 import { Emoji } from "./emoji";
 import { Avatar } from "./avatar";
@@ -29,7 +27,7 @@ const EmojiItem = ({ entity: { name, url } }: { entity: EmojiItemProps }) => {
   );
 };
 
-const UserItem = (metadata: MetadataCache) => {
+const UserItem = (metadata: CachedMetadata) => {
   const { pubkey, display_name, ...rest } = metadata;
   return (
     <div key={pubkey} className="user-item">
@@ -44,7 +42,7 @@ type TextareaProps = { emojis: EmojiTag[] } & React.TextareaHTMLAttributes<HTMLT
 export function Textarea({ emojis, ...props }: TextareaProps) {
   const system = useContext(SnortContext);
   const userDataProvider = async (token: string) => {
-    const cache = system.ProfileLoader.Cache;
+    const cache = system.profileLoader.cache;
     if (cache instanceof UserProfileCache) {
       return await cache.search(token);
     }
@@ -59,7 +57,7 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
         };
       })
       .filter(({ name }) => name.toLowerCase().includes(token.toLowerCase()));
-    return uniqWith(results, isEqual).slice(0, 5);
+    return results.slice(0, 5);
   };
 
   const trigger = {
@@ -71,7 +69,7 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
     "@": {
       afterWhitespace: true,
       dataProvider: userDataProvider,
-      component: (props: { entity: MetadataCache }) => <UserItem {...props.entity} />,
+      component: (props: { entity: CachedMetadata }) => <UserItem {...props.entity} />,
       output: (item: { pubkey: string }) => `@${hexToBech32(NostrPrefix.PublicKey, item.pubkey)}`,
     },
   } as TriggerType<string | object>;
