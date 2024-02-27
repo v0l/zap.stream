@@ -21,7 +21,7 @@ export enum StreamState {
 }
 
 export const defaultRelays = {
-  "ws://localhost:8081": { read: true, write: true },
+  //"ws://localhost:8081": { read: true, write: true },
   "wss://relay.snort.social": { read: true, write: true },
   "wss://nos.lol": { read: true, write: true },
   "wss://relay.damus.io": { read: true, write: true },
