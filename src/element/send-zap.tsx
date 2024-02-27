@@ -1,5 +1,4 @@
 import "./send-zap.css";
-import * as Dialog from "@radix-ui/react-dialog";
 import { type ReactNode, useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
 import { EventPublisher, NostrEvent } from "@snort/system";
@@ -9,12 +8,14 @@ import { FormattedMessage, FormattedNumber } from "react-intl";
 
 import { formatSats } from "../number";
 import { Icon } from "./icon";
-import AsyncButton from "./async-button";
 import QrCode from "./qr-code";
 import { useLogin } from "@/hooks/login";
 import Copy from "./copy";
 import { defaultRelays } from "@/const";
 import { useRates } from "@/hooks/rates";
+import { DefaultButton } from "./buttons";
+import Modal from "./modal";
+import Pill from "./pill";
 
 export interface LNURLLike {
   get name(): string;
@@ -110,25 +111,25 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
     return (
       <>
         <div className="flex gap-2">
-          <span
-            className={`pill${isFiat ? "" : " active"}`}
+          <Pill
+            selected={!isFiat}
             onClick={() => {
               setIsFiat(false);
               setAmount(satsAmounts[0]);
             }}>
             SATS
-          </span>
-          <span
-            className={`pill${isFiat ? " active" : ""}`}
+          </Pill>
+          <Pill
+            selected={isFiat}
             onClick={() => {
               setIsFiat(true);
               setAmount(usdAmounts[0]);
             }}>
             USD
-          </span>
+          </Pill>
         </div>
         <div>
-          <small>
+          <small className="mb-2">
             <FormattedMessage
               defaultMessage="Zap amount in {currency}"
               id="IJDKz3"
@@ -148,11 +149,11 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
               </>
             )}
           </small>
-          <div className="amounts">
+          <div className="grid grid-cols-5 gap-2 text-center">
             {(isFiat ? usdAmounts : satsAmounts).map(a => (
-              <span key={a} className={`pill${a === amount ? " active" : ""}`} onClick={() => setAmount(a)}>
+              <Pill key={a} selected={a === amount} onClick={() => setAmount(a)}>
                 {isFiat ? `$${a.toLocaleString()}` : formatSats(a)}
-              </span>
+              </Pill>
             ))}
           </div>
         </div>
@@ -167,9 +168,9 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
           </div>
         )}
         <div>
-          <AsyncButton onClick={send} className="btn btn-primary">
+          <DefaultButton onClick={send}>
             <FormattedMessage defaultMessage="Zap!" id="3HwrQo" />
-          </AsyncButton>
+          </DefaultButton>
         </div>
       </>
     );
@@ -185,18 +186,18 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
         <div className="flex items-center">
           <Copy text={invoice} />
         </div>
-        <AsyncButton className="btn btn-primary wide" onClick={() => onFinish()}>
+        <DefaultButton onClick={() => onFinish()}>
           <FormattedMessage defaultMessage="Back" id="cyR7Kh" />
-        </AsyncButton>
+        </DefaultButton>
       </>
     );
   }
 
   return (
-    <div className="send-zap">
+    <div className="flex flex-col gap-4">
       <h3 className="flex gap-2 items-center">
         <FormattedMessage defaultMessage="Zap {name}" id="oHPB8Q" values={{ name }} />
-        <Icon name="zap" />
+        <Icon name="zap-filled" />
       </h3>
       {input()}
       {payInvoice()}
@@ -205,29 +206,21 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
 }
 
 export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Dialog.Trigger asChild>
-        {props.button ? (
-          props.button
-        ) : (
-          <AsyncButton className="btn btn-primary zap">
-            <span className="max-xl:hidden">
-              <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-            </span>
-            <Icon name="zap-filled" size={16} />
-          </AsyncButton>
-        )}
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content">
-          <div className="content-inner">
-            <SendZaps {...props} onFinish={() => setIsOpen(false)} />
-          </div>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+  const [open, setOpen] = useState(false);
+  return (<>
+    {props.button ? (
+      props.button
+    ) : (
+      <DefaultButton onClick={() => setOpen(true)}>
+        <span className="max-xl:hidden">
+          <FormattedMessage defaultMessage="Zap" id="fBI91o" />
+        </span>
+        <Icon name="zap-filled" size={16} />
+      </DefaultButton>
+    )}
+    {open && <Modal id="send-zaps" onClose={() => setOpen(false)}>
+      <SendZaps {...props} onFinish={() => setOpen(false)} />
+    </Modal>}
+  </>
   );
 }

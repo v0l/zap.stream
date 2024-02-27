@@ -3,7 +3,7 @@ import type { ChangeEvent } from "react";
 import { VoidApi } from "@void-cat/api";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import AsyncButton from "./async-button";
+import { DefaultButton } from "./buttons";
 
 const voidCatHost = "https://void.cat";
 const fileExtensionRegex = /\.([\w]{1,7})$/i;
@@ -87,9 +87,9 @@ export function FileUploader({ defaultImage, onClear, onFileUpload }: FileUpload
       </label>
       <div className="file-uploader-preview">
         {img?.length > 0 && (
-          <AsyncButton className="btn btn-primary clear-button" onClick={clearImage}>
+          <DefaultButton onClick={clearImage}>
             <FormattedMessage defaultMessage="Clear" id="/GCoTA" />
-          </AsyncButton>
+          </DefaultButton>
         )}
         {img && <img className="image-preview" src={img} />}
       </div>

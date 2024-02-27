@@ -14,7 +14,7 @@ export function TopZappersWidget({ link }: { link: NostrLink }) {
         <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
       </div>
       <div className="flex gap-1">
-        <TopZappers zaps={zaps} limit={3} />
+        <TopZappers zaps={zaps} limit={3} className="border rounded-full px-2 py-1 border-layer-1 font-bold" />
       </div>
     </div>
   );

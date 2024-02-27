@@ -1,6 +1,4 @@
-import "./goal.css";
 import { useMemo } from "react";
-import * as Progress from "@radix-ui/react-progress";
 import Confetti from "react-confetti";
 import { FormattedMessage } from "react-intl";
 
@@ -14,8 +12,9 @@ import { SendZapsDialog } from "./send-zap";
 import { getName } from "./profile";
 import { Icon } from "./icon";
 import { useZaps } from "@/hooks/zaps";
+import classNames from "classnames";
 
-export function Goal({ ev }: { ev: NostrEvent }) {
+export function Goal({ ev, confetti }: { ev: NostrEvent, confetti?: boolean }) {
   const profile = useUserProfile(ev.pubkey);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const link = NostrLink.fromEvent(ev);
@@ -40,23 +39,26 @@ export function Goal({ ev }: { ev: NostrEvent }) {
   const previousValue = usePreviousValue(isFinished);
 
   const goalContent = (
-    <div className="goal" style={{ cursor: zapTarget ? "pointer" : "auto" }}>
+    <div className="flex flex-col gap-2 cursor-pointer">
       {ev.content.length > 0 && <p>{ev.content}</p>}
-      <div className={`progress-container ${isFinished ? "finished" : ""}`}>
-        <Progress.Root className="progress-root" value={progress}>
-          <Progress.Indicator className="progress-indicator" style={{ transform: `translateX(-${100 - progress}%)` }}>
-            {!isFinished && <span className="amount so-far">{formatSats(soFar)}</span>}
-          </Progress.Indicator>
-          <span className="amount target">
-            <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
-          </span>
-        </Progress.Root>
-        <div className="zap-circle">
-          <Icon name="zap-filled" className={isFinished ? "goal-finished" : "goal-unfinished"} />
+      <div className="relative h-10">
+        <div className="absolute bg-layer-2 h-3 rounded-full my-4 w-full"></div>
+        <div className="absolute bg-zap h-3 rounded-full text-xs font-medium my-4 leading-3 pl-2" style={{
+          width: `${progress}%`
+        }}>
+          {soFar > 0 ? formatSats(soFar) : ""}
+        </div>
+        <div className="absolute text-right text-xs right-10 font-medium my-4 leading-3">
+          <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
+        </div>
+        <div className={classNames("absolute right-0 rounded-full p-2 my-1",
+          { "bg-zap": isFinished, "bg-layer-2": !isFinished })}>
+          <Icon name="zap-filled" />
         </div>
       </div>
-      {isFinished && previousValue === false && <Confetti numberOfPieces={2100} recycle={false} />}
-    </div>
+      {isFinished && previousValue === false && (confetti ?? true) &&
+        <Confetti numberOfPieces={2100} recycle={false} />}
+    </div >
   );
 
   return zapTarget ? (

@@ -4,8 +4,8 @@ import { useContext } from "react";
 import { SnortContext } from "@snort/system-react";
 
 import { useLogin } from "@/hooks/login";
-import AsyncButton from "./async-button";
 import { Login } from "@/index";
+import { DefaultButton } from "./buttons";
 
 export function LoggedInFollowButton({
   tag,
@@ -60,17 +60,15 @@ export function LoggedInFollowButton({
 
   if (isFollowing && hideWhenFollowing) return;
   return (
-    <AsyncButton
+    <DefaultButton
       disabled={timestamp ? timestamp === 0 : true}
-      type="button"
-      className="btn btn-primary"
       onClick={isFollowing ? unfollow : follow}>
       {isFollowing ? (
         <FormattedMessage defaultMessage="Unfollow" id="izWS4J" />
       ) : (
         <FormattedMessage defaultMessage="Follow" id="ieGrWo" />
       )}
-    </AsyncButton>
+    </DefaultButton>
   );
 }
 

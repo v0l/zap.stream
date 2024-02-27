@@ -14,7 +14,7 @@ interface EventProps {
   link: NostrLink;
 }
 
-export function EventIcon({ kind }: { kind: EventKind }) {
+export function EventIcon({ kind }: { kind?: EventKind }) {
   if (kind === GOAL) {
     return <Icon name="piggybank" />;
   }

@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-import AsyncButton from "@/element/async-button";
 import { StatePill } from "@/element/state-pill";
 import { StreamProviderInfo, StreamProviderStore } from "@/providers";
 import { NostrStreamProvider } from "@/providers/zsz";
 import { StreamState } from "@/const";
+import { DefaultButton } from "@/element/buttons";
 
 export function ConfigureNostrType() {
   const [url, setUrl] = useState("");
@@ -55,14 +55,13 @@ export function ConfigureNostrType() {
           </div>
         )}
         <div>
-          <AsyncButton
-            className="btn btn-border"
+          <DefaultButton
             onClick={() => {
               StreamProviderStore.add(new NostrStreamProvider(new URL(url).host, url));
               navigate("/");
             }}>
             <FormattedMessage defaultMessage="Save" id="jvo0vs" />
-          </AsyncButton>
+          </DefaultButton>
         </div>
       </>
     );
@@ -77,9 +76,9 @@ export function ConfigureNostrType() {
             <input type="text" placeholder="https://" value={url} onChange={e => setUrl(e.target.value)} />
           </div>
         </div>
-        <AsyncButton className="btn btn-primary" onClick={tryConnect}>
+        <DefaultButton onClick={tryConnect}>
           <FormattedMessage defaultMessage="Connect" id="+vVZ/G" />
-        </AsyncButton>
+        </DefaultButton>
       </div>
       <div>{status()}</div>
     </div>

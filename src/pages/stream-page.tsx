@@ -11,7 +11,6 @@ const LiveVideoPlayer = lazy(() => import("@/element/live-video-player"));
 import { extractStreamInfo, findTag, getEventFromLocationState, getHost } from "@/utils";
 import { Profile, getName } from "@/element/profile";
 import { LiveChat } from "@/element/live-chat";
-import AsyncButton from "@/element/async-button";
 import { useLogin } from "@/hooks/login";
 import { useZapGoal } from "@/hooks/goals";
 import { SendZapsDialog } from "@/element/send-zap";
@@ -29,6 +28,8 @@ import { FollowButton } from "@/element/follow-button";
 import { ClipButton } from "@/element/clip-button";
 import { StreamState } from "@/const";
 import { NotificationsButton } from "@/element/notifications-button";
+import { WarningButton } from "@/element/buttons";
+import Pill from "@/element/pill";
 
 function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -60,22 +61,22 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
           <p>{summary}</p>
           <div className="tags">
             <StatePill state={status as StreamState} />
-            <span className="pill bg-gray-1">
+            <Pill>
               <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(viewers) }} />
-            </span>
+            </Pill>
             {status === StreamState.Live && (
-              <span className="pill bg-gray-1">
+              <Pill>
                 <StreamTimer ev={ev} />
-              </span>
+              </Pill>
             )}
             {ev && <Tags ev={ev} />}
           </div>
           {isMine && (
             <div className="actions">
               {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
-              <AsyncButton type="button" className="btn btn-warning" onClick={deleteStream}>
+              <WarningButton onClick={deleteStream}>
                 <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
-              </AsyncButton>
+              </WarningButton>
             </div>
           )}
         </div>

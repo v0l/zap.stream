@@ -4,12 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "gray-1": "#171717",
-        "gray-2": "#222",
-        "gray-3": "#797979",
+        "layer-1": "rgb(23 23 23 / <alpha-value>)",
+        "layer-2": "rgb(34 34 34 / <alpha-value>)",
+        "layer-3": "rgb(50 50 50 / <alpha-value>)",
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         zap: "var(--zap)",
+        success: "rgb(0 127 0 / <alpha-value>)",
+        warning: "rgb(255 86 63 / <alpha-value>)"
       },
       animation: {
         "ping-once": "ping 1s cubic-bezier(0, 0, 0.2, 1);",

@@ -1,8 +1,7 @@
 import "./profile-page.css";
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as Tabs from "@radix-ui/react-tabs";
-import { NostrPrefix, ParsedZap, TaggedNostrEvent, encodeTLV, parseNostrLink } from "@snort/system";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, parseNostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
@@ -13,128 +12,127 @@ import { VideoTile } from "@/element/video-tile";
 import { FollowButton } from "@/element/follow-button";
 import { MuteButton } from "@/element/mute-button";
 import { useProfile } from "@/hooks/profile";
-import useTopZappers from "@/hooks/top-zappers";
 import { Text } from "@/element/text";
 import { findTag } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
-import { ZapperRow } from "@/element/zapper-row";
 import { StreamState } from "@/const";
-import AsyncButton from "@/element/async-button";
-
-function TopZappers({ zaps }: { zaps: ParsedZap[] }) {
-  const zappers = useTopZappers(zaps);
-  return (
-    <section className="flex flex-col gap-2">
-      {zappers.map(z => (
-        <ZapperRow key={z.pubkey} pubkey={z.pubkey} total={z.total} />
-      ))}
-    </section>
-  );
-}
+import { DefaultButton } from "@/element/buttons";
+import { useGoals } from "@/hooks/goals";
+import { Goal } from "@/element/goal";
+import { TopZappers } from "@/element/top-zappers";
+import { useClips } from "@/hooks/clips";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 
 export function ProfilePage() {
-  const navigate = useNavigate();
   const params = useParams();
   const link = parseNostrLink(unwrap(params.npub));
-  const profile = useUserProfile(link.id);
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
   const { streams, zaps } = useProfile(link, true);
-  const liveEvent = useMemo(() => {
-    return streams.find(ev => findTag(ev, "status") === StreamState.Live);
-  }, [streams]);
+  const profile = useUserProfile(link.id);
+
   const pastStreams = useMemo(() => {
     return streams.filter(ev => findTag(ev, "status") === StreamState.Ended);
   }, [streams]);
-  const futureStreams = useMemo(() => {
-    return streams.filter(ev => findTag(ev, "status") === StreamState.Planned);
-  }, [streams]);
-  const isLive = Boolean(liveEvent);
-
-  function goToLive() {
-    if (liveEvent) {
-      const d = findTag(liveEvent, "d") || "";
-      const naddr = encodeTLV(NostrPrefix.Address, d, undefined, liveEvent.kind, liveEvent.pubkey);
-      navigate(`/${naddr}`);
-    }
-  }
 
   return (
-    <div className="flex flex-col gap-3 max-sm:px-4">
+    <div className="flex flex-col gap-3 px-4">
       <img
         className="rounded-xl object-cover h-[360px]"
         alt={profile?.name || link.id}
         src={profile?.banner ? profile?.banner : defaultBanner}
       />
-      <div className="flex justify-between">
-        <div className="flex items-center gap-3">
-          <div className="relative flex flex-col items-center">
-            <Avatar user={profile} pubkey={link.id} size={88} className="border border-4" />
-            {isLive && <StatePill state={StreamState.Live} onClick={goToLive} className="absolute bottom-0 -mb-2" />}
-          </div>
-          <div className="flex flex-col gap-1">
-            {profile?.name && <h1 className="name">{profile.name}</h1>}
-            {profile?.about && (
-              <p className="text-neutral-400">
-                <Text content={profile.about} tags={[]} />
-              </p>
-            )}
+      <ProfileHeader link={link} profile={profile} streams={streams} />
+      <div className="grid lg:grid-cols-2 gap-4 py-2">
+        <div>
+          <h3 className="text-xl py-2">
+            <FormattedMessage defaultMessage="All Time Top Zappers" id="FIDK5Y" />
+          </h3>
+          <div className="flex flex-col gap-4">
+            <TopZappers zaps={zaps} limit={10} avatarSize={40} showName={true} />
           </div>
         </div>
-        <div className="flex gap-2 items-center">
-          {zapTarget && (
-            <SendZapsDialog
-              aTag={liveEvent ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(liveEvent, "d")}` : undefined}
-              lnurl={zapTarget}
-              button={
-                <AsyncButton className="btn">
-                  <Icon name="zap-filled" className="zap-button-icon" />
-                  <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-                </AsyncButton>
-              }
-              targetName={profile?.name || link.id}
-            />
-          )}
-          <FollowButton pubkey={link.id} />
-          <MuteButton pubkey={link.id} />
+        <div>
+          <h3 className="text-xl py-2">
+            <FormattedMessage defaultMessage="Zap Goals" id="LEmxc8" />
+          </h3>
+          <div className="flex flex-col gap-2">
+            <ProfileZapGoals link={link} />
+          </div>
         </div>
       </div>
-      <Tabs.Root className="tabs-root" defaultValue="top-zappers">
-        <Tabs.List className="tabs-list" aria-label={`Information about ${profile ? profile.name : link.id}`}>
-          <Tabs.Trigger className="tabs-tab" value="top-zappers">
-            <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
-            <div className="tab-border"></div>
-          </Tabs.Trigger>
-          <Tabs.Trigger className="tabs-tab" value="past-streams">
-            <FormattedMessage defaultMessage="Past Streams" id="UfSot5" />
-            <div className="tab-border"></div>
-          </Tabs.Trigger>
-          <Tabs.Trigger className="tabs-tab" value="schedule">
-            <FormattedMessage defaultMessage="Schedule" id="hGQqkW" />
-            <div className="tab-border"></div>
-          </Tabs.Trigger>
-        </Tabs.List>
-        <Tabs.Content className="tabs-content" value="top-zappers">
-          <TopZappers zaps={zaps} />
-        </Tabs.Content>
-        <Tabs.Content className="tabs-content" value="past-streams">
-          <ProfileStreamList streams={pastStreams} />
-        </Tabs.Content>
-        <Tabs.Content className="tabs-content" value="schedule">
-          <ProfileStreamList streams={futureStreams} />
-        </Tabs.Content>
-      </Tabs.Root>
+      <h1>
+        <FormattedMessage defaultMessage="Recent Clips" id="XMGfiA" />
+      </h1>
+      <div className="flex gap-4">
+        <ProfileClips link={link} />
+      </div>
+      <h1>
+        <FormattedMessage defaultMessage="Past Streams" id="UfSot5" />
+      </h1>
+      <ProfileStreamList streams={pastStreams} />
     </div>
   );
 }
 
+function ProfileHeader({ profile, link, streams }: { profile?: CachedMetadata, link: NostrLink, streams: Array<NostrEvent> }) {
+  const navigate = useNavigate();
+  const liveEvent = useMemo(() => {
+    return streams.find(ev => findTag(ev, "status") === StreamState.Live);
+  }, [streams]);
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const isLive = Boolean(liveEvent);
+
+  function goToLive() {
+    if (liveEvent) {
+      const evLink = NostrLink.fromEvent(liveEvent);
+      navigate(`/${evLink.encode()}`);
+    }
+  }
+
+  return <div className="flex max-sm:flex-col gap-3 justify-between">
+    <div className="flex items-center gap-3">
+      <div className="relative flex flex-col items-center">
+        <Avatar user={profile} pubkey={link.id} size={88} className="border border-4" />
+        {isLive && <StatePill state={StreamState.Live} onClick={goToLive} className="absolute bottom-0 -mb-2" />}
+      </div>
+      <div className="flex flex-col gap-1">
+        {profile?.name && <h1 className="name">{profile.name}</h1>}
+        {profile?.about && (
+          <p className="text-neutral-400">
+            <Text content={profile.about} tags={[]} />
+          </p>
+        )}
+      </div>
+    </div>
+    <div className="flex gap-2 items-center">
+      {zapTarget && (
+        <SendZapsDialog
+          aTag={liveEvent ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(liveEvent, "d")}` : undefined}
+          lnurl={zapTarget}
+          button={
+            <DefaultButton>
+              <Icon name="zap-filled" className="zap-button-icon" />
+              <FormattedMessage defaultMessage="Zap" id="fBI91o" />
+            </DefaultButton>
+          }
+          targetName={profile?.name || link.id}
+        />
+      )}
+      <FollowButton pubkey={link.id} />
+      <MuteButton pubkey={link.id} />
+    </div>
+  </div>
+}
+
 function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
+  if (streams.length === 0) {
+    return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />
+  }
   return (
-    <div className="flex gap-3 flex-wrap justify-center">
+    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8">
       {streams.map(ev => (
-        <div key={ev.id} className="flex flex-col gap-1 sm:w-64 w-full">
+        <div key={ev.id} className="flex flex-col gap-1">
           <VideoTile ev={ev} showAuthor={false} showStatus={false} />
           <span className="text-neutral-500">
             <FormattedMessage
@@ -149,4 +147,29 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
       ))}
     </div>
   );
+}
+
+function ProfileZapGoals({ link }: { link: NostrLink }) {
+  const limit = 5;
+  const goals = useGoals(link.id, false, limit);
+  if (goals.length === 0) {
+    return <FormattedMessage defaultMessage="No goals yet" id="ZaNcK4" />
+  }
+  return goals
+    .sort((a, b) => a.created_at > b.created_at ? -1 : 1)
+    .slice(0, limit)
+    .map(a => <div key={a.id} className="bg-layer-1 rounded-xl px-4 py-3">
+      <Goal ev={a} confetti={false} />
+    </div>);
+}
+
+function ProfileClips({ link }: { link: NostrLink }) {
+  const clips = useClips(link, 10);
+  if (clips.length === 0) {
+    return <FormattedMessage defaultMessage="No clips yet" id="ObZZEz" />
+  }
+  return clips.map(a => {
+    const r = findTag(a, "r");
+    return <video src={r} />
+  })
 }

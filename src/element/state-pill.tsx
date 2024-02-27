@@ -2,19 +2,20 @@ import { HTMLProps } from "react";
 import "./state-pill.css";
 import classNames from "classnames";
 import { StreamState } from "@/const";
+import Pill from "./pill";
 
 type StatePillProps = { state: StreamState } & HTMLProps<HTMLSpanElement>;
 
 export function StatePill({ state, ...props }: StatePillProps) {
   return (
-    <span
+    <Pill
       {...props}
       className={classNames(
-        "uppercase font-white pill",
-        state === StreamState.Live ? "bg-primary" : "bg-gray-1",
+        "uppercase font-white",
+        state === StreamState.Live ? "bg-primary" : "bg-layer-1",
         props.className
       )}>
       {state}
-    </span>
+    </Pill>
   );
 }

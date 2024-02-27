@@ -7,9 +7,10 @@ import { NostrStreamProvider, StreamProviderEndpoint, StreamProviderInfo } from 
 import { SendZaps } from "./send-zap";
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import Spinner from "./spinner";
-import AsyncButton from "./async-button";
 import { unwrap } from "@snort/shared";
 import { useRates } from "@/hooks/rates";
+import { DefaultButton } from "./buttons";
+import Pill from "./pill";
 
 export function NostrProviderDialog({
   provider,
@@ -35,12 +36,14 @@ export function NostrProviderDialog({
     return arr.sort((a, b) => ((a.rate ?? 0) > (b.rate ?? 0) ? -1 : 1));
   }
 
+  async function loadInfo() {
+    const info = await provider.info();
+    setInfo(info);
+    setTos(info.tosAccepted ?? true);
+    setEndpoint(sortEndpoints(info.endpoints)[0]);
+  }
   useEffect(() => {
-    provider.info().then(v => {
-      setInfo(v);
-      setTos(v.tosAccepted ?? true);
-      setEndpoint(sortEndpoints(v.endpoints)[0]);
-    });
+    loadInfo();
   }, [provider]);
 
   if (!info) {
@@ -80,7 +83,7 @@ export function NostrProviderDialog({
           {`${(raw / 60).toFixed(0)} hour @ ${ep.rate} sats/${ep.unit}`}
           &nbsp; or <br />
           {`${pm.toLocaleString()} sats/month ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo) streaming ${hrs} hrs/month`}
-          <div className="paper">
+          <div className="bg-layer-2 rounded-xl flex items-center px-2">
             Hrs
             <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
           </div>
@@ -135,9 +138,9 @@ export function NostrProviderDialog({
           </div>
         </div>
         <div>
-          <AsyncButton type="button" className="btn btn-primary wide" disabled={!tos} onClick={acceptTos}>
+          <DefaultButton disabled={!tos} onClick={acceptTos}>
             <FormattedMessage defaultMessage="Continue" id="acrOoz" />
-          </AsyncButton>
+          </DefaultButton>
         </div>
       </>
     );
@@ -154,11 +157,11 @@ export function NostrProviderDialog({
             </p>
             <div className="flex gap-2">
               {sortEndpoints(info.endpoints).map(a => (
-                <span
-                  className={`pill bg-gray-1${ep?.name === a.name ? " active" : ""}`}
+                <Pill
+                  selected={ep?.name === a.name}
                   onClick={() => setEndpoint(a)}>
                   {a.name}
-                </span>
+                </Pill>
               ))}
             </div>
           </div>
@@ -167,23 +170,18 @@ export function NostrProviderDialog({
           <p>
             <FormattedMessage defaultMessage="Server Url" id="5kx+2v" />
           </p>
-          <div className="paper">
-            <input type="text" value={ep?.url} disabled />
-          </div>
+          <input type="text" value={ep?.url} disabled />
         </div>
         <div>
           <p>
             <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
           </p>
           <div className="flex gap-2">
-            <div className="paper grow">
-              <input type="password" value={ep?.key} disabled />
-            </div>
-            <AsyncButton
-              className="btn btn-primary"
+            <input type="password" value={ep?.key} disabled />
+            <DefaultButton
               onClick={() => window.navigator.clipboard.writeText(ep?.key ?? "")}>
               <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
-            </AsyncButton>
+            </DefaultButton>
           </div>
         </div>
         <div>
@@ -191,16 +189,16 @@ export function NostrProviderDialog({
             <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
           </p>
           <div className="flex gap-2">
-            <div className="paper grow">
+            <div className="bg-layer-2 rounded-xl w-full flex items-center px-3">
               <FormattedMessage
                 defaultMessage="{amount} sats"
                 id="vrTOHJ"
                 values={{ amount: info.balance?.toLocaleString() }}
               />
             </div>
-            <AsyncButton className="btn btn-primary" onClick={() => setTopup(true)}>
+            <DefaultButton onClick={() => setTopup(true)}>
               <FormattedMessage defaultMessage="Topup" id="nBCvvJ" />
-            </AsyncButton>
+            </DefaultButton>
           </div>
           <small>
             <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />
@@ -212,7 +210,7 @@ export function NostrProviderDialog({
           </p>
           <div className="flex gap-2">
             {ep?.capabilities?.map(a => (
-              <span className="pill bg-gray-1">{parseCapability(a)}</span>
+              <Pill>{parseCapability(a)}</Pill>
             ))}
           </div>
         </div>
@@ -264,18 +262,18 @@ export function NostrProviderDialog({
         <div className="grid grid-cols-2 gap-2">
           {info.forwards?.map(a => (
             <>
-              <div className="paper">{a.name}</div>
-              <AsyncButton
-                className="btn btn-primary"
+              <div className="bg-layer-2 rounded-xl px-3 flex items-center">{a.name}</div>
+              <DefaultButton
                 onClick={async () => {
                   await provider.removeForward(a.id);
+                  await loadInfo();
                 }}>
                 <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
-              </AsyncButton>
+              </DefaultButton>
             </>
           ))}
         </div>
-        <AddForwardInputs provider={provider} onAdd={() => {}} />
+        <AddForwardInputs provider={provider} onAdd={loadInfo} />
       </div>
     );
   }
@@ -419,40 +417,35 @@ function AddForwardInputs({
   }
 
   return (
-    <div className="flex flex-col p-4 gap-2 bg-gray-3 rounded-xl">
+    <div className="flex flex-col p-4 gap-2 bg-layer-3 rounded-xl">
       <div className="flex gap-2">
-        <div className="paper flex-1">
-          <select value={svc} onChange={e => setService(e.target.value as ForwardService)} className="bg-gray-1">
-            <option value="twitch">Twitch</option>
-            <option value="youtube">Youtube</option>
-            <option value="facebook">Facebook Gaming</option>
-            <option value="kick">Kick</option>
-            <option value="trovo">Trovo</option>
-            <option value="custom">Custom</option>
-          </select>
-        </div>
-        <div className="paper flex-1">
-          <input
-            type="text"
-            placeholder={formatMessage({ defaultMessage: "Display name", id: "dOQCL8" })}
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="paper">
+        <select value={svc} onChange={e => setService(e.target.value as ForwardService)} className="flex-1">
+          <option value="twitch">Twitch</option>
+          <option value="youtube">Youtube</option>
+          <option value="facebook">Facebook Gaming</option>
+          <option value="kick">Kick</option>
+          <option value="trovo">Trovo</option>
+          <option value="custom">Custom</option>
+        </select>
         <input
           type="text"
-          placeholder={
-            svc === ForwardService.Custom ? "rtmp://" : formatMessage({ defaultMessage: "Stream key", id: "QWlMq9" })
-          }
-          value={target}
-          onChange={e => setTarget(e.target.value)}
+          className="flex-1"
+          placeholder={formatMessage({ defaultMessage: "Display name", id: "dOQCL8" })}
+          value={name}
+          onChange={e => setName(e.target.value)}
         />
       </div>
-      <AsyncButton className="btn btn-primary" onClick={doAdd}>
+      <input
+        type="text"
+        placeholder={
+          svc === ForwardService.Custom ? "rtmp://" : formatMessage({ defaultMessage: "Stream key", id: "QWlMq9" })
+        }
+        value={target}
+        onChange={e => setTarget(e.target.value)}
+      />
+      <DefaultButton onClick={doAdd}>
         <FormattedMessage defaultMessage="Add" id="2/2yg+" />
-      </AsyncButton>
+      </DefaultButton>
       {error && <b className="warning">{error}</b>}
     </div>
   );

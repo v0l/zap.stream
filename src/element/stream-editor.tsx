@@ -5,12 +5,13 @@ import { unixNow } from "@snort/shared";
 import { TagsInput } from "react-tag-input-component";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import AsyncButton from "./async-button";
 import { extractStreamInfo, findTag } from "@/utils";
 import { useLogin } from "@/hooks/login";
 import { NewGoalDialog } from "./new-goal";
 import { useGoals } from "@/hooks/goals";
 import { StreamState } from "@/const";
+import { DefaultButton } from "./buttons";
+import Pill from "./pill";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -206,9 +207,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             </p>
             <div className="flex gap-2">
               {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => (
-                <span className={`pill${status === v ? " active" : ""}`} onClick={() => setStatus(v)} key={v}>
+                <Pill className={status === v ? " active" : ""} onClick={() => setStatus(v)} key={v}>
                   {v}
-                </span>
+                </Pill>
               ))}
             </div>
           </div>
@@ -262,12 +263,12 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </>
       )}
       {(options?.canSetContentWarning ?? true) && (
-        <div className="flex gap-2 content-warning">
+        <div className="flex gap-2 rounded-xl border border-warning px-4 py-3">
           <div>
             <input type="checkbox" checked={contentWarning} onChange={e => setContentWarning(e.target.checked)} />
           </div>
           <div>
-            <div className="warning">
+            <div className="text-warning">
               <FormattedMessage defaultMessage="NSFW Content" id="Atr2p4" />
             </div>
             <FormattedMessage
@@ -278,13 +279,13 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </div>
       )}
       <div>
-        <AsyncButton type="button" className="btn btn-primary wide" disabled={!isValid} onClick={publishStream}>
+        <DefaultButton disabled={!isValid} onClick={publishStream}>
           {ev ? (
             <FormattedMessage defaultMessage="Save" id="jvo0vs" />
           ) : (
             <FormattedMessage defaultMessage="Start Stream" id="TaTRKo" />
           )}
-        </AsyncButton>
+        </DefaultButton>
       </div>
     </>
   );

@@ -14,7 +14,7 @@ import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
 import groupBy from "lodash/groupBy";
 import { hexToBech32 } from "@snort/shared";
-import AsyncButton from "@/element/async-button";
+import { DefaultButton } from "@/element/buttons";
 
 interface ZapAlertConfigurationProps {
   npub: string;
@@ -153,9 +153,9 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
                     onChange={ev => setTestText(ev.target.value)}
                   />
                 </div>
-                <AsyncButton disabled={testText.length === 0} className="btn" onClick={testVoice}>
+                <DefaultButton disabled={testText.length === 0} onClick={testVoice}>
                   <FormattedMessage defaultMessage="Test voice" id="d5zWyh" />
-                </AsyncButton>
+                </DefaultButton>
               </>
             )}
           </>

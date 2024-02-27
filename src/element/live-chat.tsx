@@ -131,7 +131,7 @@ export function LiveChat({
             case -2: {
               return (
                 <b
-                  className="border px-3 py-2 text-center border-gray-2 rounded-xl bg-primary uppercase"
+                  className="border px-3 py-2 text-center border-layer-2 rounded-xl bg-primary uppercase"
                   key={`${a.kind}-${a.created_at}`}>
                   {a.kind === -1 ? (
                     <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />

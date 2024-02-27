@@ -19,11 +19,6 @@
   text-align: center;
 }
 
-.send-zap .pill.active {
-  color: inherit;
-  background: #353535;
-}
-
 .send-zap p {
   margin: 0 0 8px 0;
   font-weight: 500;

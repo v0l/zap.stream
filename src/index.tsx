@@ -33,12 +33,14 @@ import { WasmOptimizer, WasmPath, wasmInit } from "./wasm";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
 
 import Faq from "@/faq.md";
+import MockPage from "./pages/mock";
 
 const hasWasm = "WebAssembly" in globalThis;
 const db = new SnortSystemDb();
 const System = new NostrSystem({
   db,
   optimizer: hasWasm ? WasmOptimizer : undefined,
+  automaticOutboxModel: false,
 });
 export const Login = new LoginStore();
 
@@ -57,7 +59,9 @@ async function doInit() {
   db.ready = await db.isAvailable();
   await System.Init();
   try {
-    const req = await fetch("https://api.zap.stream/api/time");
+    const req = await fetch("https://api.zap.stream/api/time", {
+      signal: AbortSignal.timeout(1000)
+    });
     const nowAtServer = (await req.json()).time as number;
     const now = unixNowMs();
     TimeSync = now - nowAtServer;
@@ -75,6 +79,10 @@ const router = createBrowserRouter([
       return null;
     },
     children: [
+      {
+        path: "/mock",
+        element: <MockPage />
+      },
       {
         path: "/",
         element: <RootPage />,

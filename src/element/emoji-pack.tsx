@@ -6,11 +6,11 @@ import { SnortContext } from "@snort/system-react";
 
 import { useLogin } from "@/hooks/login";
 import { toEmojiPack } from "@/hooks/emoji";
-import AsyncButton from "./async-button";
 import { findTag } from "@/utils";
 import { USER_EMOJIS } from "@/const";
 import { Login } from "@/index";
 import type { EmojiPack as EmojiPackType } from "@/types";
+import { DefaultButton, WarningButton } from "./buttons";
 
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
   const system = useContext(SnortContext);
@@ -45,16 +45,13 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
     <div className="outline emoji-pack">
       <div className="emoji-pack-title">
         <h4>{name}</h4>
-        {login?.pubkey && (
-          <AsyncButton
-            className={`btn btn-small btn-primary ${isUsed ? "delete-button" : ""}`}
-            onClick={toggleEmojiPack}>
-            {isUsed ? (
-              <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
-            ) : (
-              <FormattedMessage defaultMessage="Add" id="2/2yg+" />
-            )}
-          </AsyncButton>
+        {login?.pubkey && (isUsed ?
+          <WarningButton onClick={toggleEmojiPack}>
+            <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
+          </WarningButton> :
+          <DefaultButton onClick={toggleEmojiPack}>
+            <FormattedMessage defaultMessage="Add" id="2/2yg+" />
+          </DefaultButton>
         )}
       </div>
       <div className="emoji-pack-emojis">

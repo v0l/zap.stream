@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { NostrEvent } from "@snort/system";
 import { findTag, getTagValues } from "@/utils";
 import { StreamState } from "@/const";
+import Pill from "./pill";
 
 export function Tags({ children, max, ev }: { children?: ReactNode; max?: number; ev: NostrEvent }) {
   const status = findTag(ev, "status");
@@ -14,13 +15,13 @@ export function Tags({ children, max, ev }: { children?: ReactNode; max?: number
     <>
       {children}
       {status === StreamState.Planned && (
-        <span className="pill bg-gray-1">
+        <Pill>
           {status === StreamState.Planned ? <FormattedMessage defaultMessage="Starts " id="0hNxBy" /> : ""}
-        </span>
+        </Pill>
       )}
       {tags.map(a => (
-        <a href={`/t/${encodeURIComponent(a)}`} className="pill bg-gray-1" key={a}>
-          {a}
+        <a href={`/t/${encodeURIComponent(a)}`} key={a}>
+          <Pill>{a}</Pill>
         </a>
       ))}
     </>

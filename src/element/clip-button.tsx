@@ -1,4 +1,3 @@
-import * as Dialog from "@radix-ui/react-dialog";
 import { useLogin } from "@/hooks/login";
 import { useContext, useEffect, useRef, useState } from "react";
 import { NostrStreamProvider } from "@/providers";
@@ -6,16 +5,17 @@ import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 
-import AsyncButton from "./async-button";
 import { LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { extractStreamInfo } from "@/utils";
 import { Icon } from "./icon";
 import { unwrap } from "@snort/shared";
 import { TimelineBar } from "./timeline";
+import { DefaultButton } from "./buttons";
+import Modal from "./modal";
 
 export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
-  const { id, service, status } = extractStreamInfo(ev);
+  const { id, service, status, host } = extractStreamInfo(ev);
   const ref = useRef<HTMLVideoElement | null>(null);
   const login = useLogin();
   const [open, setOpen] = useState(false);
@@ -68,6 +68,7 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
       return eb
         .kind(LIVE_STREAM_CLIP)
         .tag(unwrap(NostrLink.fromEvent(ev).toEventTag("root")))
+        .tag(["p", host ?? ev.pubkey])
         .tag(["r", newClip.url])
         .tag(["title", title])
         .tag(["alt", `Live stream clip created on https://zap.stream\n${newClip.url}`]);
@@ -79,48 +80,37 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
 
   return (
     <>
-      <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Dialog.Trigger asChild>
-          <div className="contents">
-            <AsyncButton onClick={makeClip} className="btn btn-primary">
-              <Icon name="clapperboard" />
-              <span className="max-lg:hidden">
-                <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
-              </span>
-            </AsyncButton>
+      <DefaultButton onClick={makeClip}>
+        <Icon name="clapperboard" />
+        <span className="max-lg:hidden">
+          <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
+        </span>
+      </DefaultButton>
+      {open && <Modal id="create-clip" onClose={() => setOpen(false)}>
+        <div className="flex flex-col">
+          <h1>
+            <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
+          </h1>
+          {id && tempClipId && <video ref={ref} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
+          <TimelineBar
+            length={length}
+            offset={start}
+            width={300}
+            height={60}
+            setOffset={setStart}
+            setLength={setLength}
+          />
+          <div className="flex flex-col gap-1">
+            <small>
+              <FormattedMessage defaultMessage="Clip title" id="YwzT/0" />
+            </small>
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Epic combo!" />
           </div>
-        </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className="dialog-overlay" />
-          <Dialog.Content className="dialog-content">
-            <div className="content-inner">
-              <h1>
-                <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
-              </h1>
-              {id && tempClipId && <video ref={ref} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
-              <TimelineBar
-                length={length}
-                offset={start}
-                width={300}
-                height={60}
-                setOffset={setStart}
-                setLength={setLength}
-              />
-              <div className="flex flex-col gap-1">
-                <small>
-                  <FormattedMessage defaultMessage="Clip title" id="YwzT/0" />
-                </small>
-                <div className="paper">
-                  <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Epic combo!" />
-                </div>
-              </div>
-              <AsyncButton onClick={saveClip}>
-                <FormattedMessage defaultMessage="Publish Clip" id="jJLRgo" />
-              </AsyncButton>
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
+          <DefaultButton onClick={saveClip}>
+            <FormattedMessage defaultMessage="Publish Clip" id="jJLRgo" />
+          </DefaultButton>
+        </div>
+      </Modal>}
     </>
   );
 }

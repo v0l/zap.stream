@@ -31,7 +31,3 @@
   align-items: flex-start;
   gap: 12px;
 }
-
-.file-uploader-preview .clear-button {
-  color: var(--text-danger);
-}

@@ -9,11 +9,6 @@
   gap: 8px;
 }
 
-.new-goal .paper {
-  background: #262626;
-  height: 32px;
-}
-
 .new-goal .btn:disabled {
   opacity: 0.3;
 }

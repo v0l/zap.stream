@@ -11,11 +11,11 @@ import { Login } from "..";
 import { StatePill } from "@/element/state-pill";
 import { NostrStreamProvider } from "@/providers";
 import { StreamState } from "@/const";
-import AsyncButton from "@/element/async-button";
+import { Layer1Button } from "@/element/buttons";
 
 const enum Tab {
   Account,
-  Notifications,
+  Stream,
 }
 
 export function SettingsPage() {
@@ -51,7 +51,9 @@ export function SettingsPage() {
                 <p>
                   <FormattedMessage defaultMessage="Private key" id="Bep/gA" />
                 </p>
-                <Copy text={hexToBech32("nsec", login.privateKey)} />
+                <Layer1Button>
+                  <FormattedMessage defaultMessage="Copy" id="4l6vz1" />
+                </Layer1Button>
               </div>
             )}
             <h1>
@@ -69,19 +71,23 @@ export function SettingsPage() {
                   onClick={() => Login.setColor(a)}></div>
               ))}
             </div>
-            <h1>
-              <FormattedMessage defaultMessage="Stream Key" id="LknBsU" />
-            </h1>
-            <div className="flex flex-col gap-4">
-              <NostrProviderDialog
-                provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
-                showEndpoints={true}
-                showEditor={false}
-                showForwards={true}
-              />
-            </div>
           </>
         );
+      }
+      case Tab.Stream: {
+        return <>
+          <h1>
+            <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
+          </h1>
+          <div className="flex flex-col gap-4">
+            <NostrProviderDialog
+              provider={unwrap(providers.find(a => a.name === "zap.stream")) as NostrStreamProvider}
+              showEndpoints={true}
+              showEditor={false}
+              showForwards={true}
+            />
+          </div>
+        </>
       }
     }
   }
@@ -90,6 +96,8 @@ export function SettingsPage() {
     switch (t) {
       case Tab.Account:
         return <FormattedMessage defaultMessage="Account" id="TwyMau" />;
+      case Tab.Stream:
+        return <FormattedMessage defaultMessage="Stream" id="uYw2LD" />;
     }
   }
 
@@ -101,13 +109,13 @@ export function SettingsPage() {
         </h1>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
-            {[Tab.Account].map(t => (
-              <AsyncButton onClick={() => setTab(t)} className="rounded-xl px-3 py-2 bg-gray-2 hover:bg-gray-1">
+            {[Tab.Account, Tab.Stream].map(t => (
+              <Layer1Button onClick={() => setTab(t)} className={t === tab ? "active" : ""}>
                 {tabName(t)}
-              </AsyncButton>
+              </Layer1Button>
             ))}
           </div>
-          <div className="p-5 bg-gray-2 rounded-3xl flex flex-col gap-3">{tabContent()}</div>
+          <div className="p-5 bg-layer-1 rounded-3xl flex flex-col gap-3">{tabContent()}</div>
         </div>
       </div>
     </div>

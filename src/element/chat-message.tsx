@@ -16,7 +16,8 @@ import { CollapsibleEvent } from "./collapsible";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import type { Badge, Emoji, EmojiPack } from "@/types";
-import AsyncButton from "./async-button";
+import { IconButton } from "./buttons";
+import Pill from "./pill";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -149,10 +150,10 @@ export function ChatMessage({
         {(hasReactions || hasZaps) && (
           <div className="message-reactions">
             {hasZaps && (
-              <div className="zap-pill">
+              <Pill>
                 <Icon name="zap-filled" className="text-zap" size={12} />
-                <span className="zap-pill-amount">{formatSats(totalZaps)}</span>
-              </div>
+                <span className="text-xs">{formatSats(totalZaps)}</span>
+              </Pill>
             )}
             {dedupe(filteredReactions.map(v => emojifyReaction(v.content))).map(e => {
               const isCustomEmojiReaction = e.length > 1 && e.startsWith(":") && e.endsWith(":");
@@ -178,15 +179,15 @@ export function ChatMessage({
             style={
               isTablet
                 ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
+                  display: showZapDialog || isHovering ? "flex" : "none",
+                }
                 : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                  }
+                  position: "fixed",
+                  top: topOffset ? topOffset - 12 : 0,
+                  left: leftOffset ? leftOffset - 32 : 0,
+                  opacity: showZapDialog || isHovering ? 1 : 0,
+                  pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+                }
             }>
             {zapTarget && (
               <SendZapsDialog
@@ -194,20 +195,14 @@ export function ChatMessage({
                 eTag={ev.id}
                 pubkey={ev.pubkey}
                 button={
-                  <AsyncButton className="message-zap-button">
-                    <Icon name="zap" className="message-zap-button-icon" />
-                  </AsyncButton>
+                  <IconButton iconName="zap" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />
                 }
                 targetName={profile?.name || ev.pubkey}
               />
             )}
-            <AsyncButton className="message-zap-button" onClick={pickEmoji}>
-              <Icon name="face" className="message-zap-button-icon" />
-            </AsyncButton>
+            <IconButton onClick={pickEmoji} iconName="face" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />
             {shouldShowMuteButton && (
-              <AsyncButton className="message-zap-button" onClick={muteUser}>
-                <Icon name="user-x" className="message-zap-button-icon" />
-              </AsyncButton>
+              <IconButton onClick={muteUser} iconName="user-x" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />
             )}
           </div>
         )}

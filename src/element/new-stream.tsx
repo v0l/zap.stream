@@ -1,5 +1,3 @@
-import "./new-stream.css";
-import * as Dialog from "@radix-ui/react-dialog";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { unwrap } from "@snort/shared";
@@ -12,7 +10,9 @@ import { NostrStreamProvider, StreamProvider, StreamProviders } from "@/provider
 import { StreamEditor, StreamEditorProps } from "./stream-editor";
 import { eventLink } from "@/utils";
 import { NostrProviderDialog } from "./nostr-provider-dialog";
-import AsyncButton from "./async-button";
+import { DefaultButton } from "./buttons";
+import Pill from "./pill";
+import Modal from "./modal";
 
 function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onFinish: () => void }) {
   const system = useContext(SnortContext);
@@ -53,14 +53,13 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
       case StreamProviders.NostrType: {
         return (
           <>
-            <AsyncButton
-              className="btn btn-secondary"
+            <DefaultButton
               onClick={() => {
                 navigate("/settings");
                 onFinish?.();
               }}>
               <FormattedMessage defaultMessage="Get Stream Key" id="Vn2WiP" />
-            </AsyncButton>
+            </DefaultButton>
             <NostrProviderDialog
               provider={currentProvider as NostrStreamProvider}
               onFinish={onFinish}
@@ -85,12 +84,14 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
       </p>
       <div className="flex gap-2">
         {providers.map(v => (
-          <span className={`pill${v === currentProvider ? " active" : ""}`} onClick={() => setCurrentProvider(v)}>
+          <Pill className={`${v === currentProvider ? " text-bold" : ""}`} onClick={() => setCurrentProvider(v)}>
             {v.name}
-          </span>
+          </Pill>
         ))}
       </div>
-      {providerDialog()}
+      <div className="flex flex-col gap-4">
+        {providerDialog()}
+      </div>
     </>
   );
 }
@@ -103,30 +104,23 @@ interface NewStreamDialogProps {
 export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps) {
   const [open, setOpen] = useState(false);
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger asChild>
-        <AsyncButton className={props.btnClassName}>
-          {props.text && props.text}
-          {!props.text && (
-            <>
-              <span className="max-xl:hidden">
-                <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
-              </span>
-              <Icon name="signal" />
-            </>
-          )}
-        </AsyncButton>
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content">
-          <div className="content-inner">
-            <div className="new-stream">
-              <NewStream {...props} onFinish={() => setOpen(false)} />
-            </div>
-          </div>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <>
+      <DefaultButton className={props.btnClassName} onClick={() => setOpen(true)}>
+        {props.text && props.text}
+        {!props.text && (
+          <>
+            <span className="max-xl:hidden">
+              <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
+            </span>
+            <Icon name="signal" />
+          </>
+        )}
+      </DefaultButton>
+      {open && <Modal id="new-stream" onClose={() => setOpen(false)}>
+        <div className="new-stream">
+          <NewStream {...props} onFinish={() => setOpen(false)} />
+        </div>
+      </Modal>}
+    </>
   );
 }

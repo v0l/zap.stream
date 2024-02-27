@@ -15,15 +15,14 @@ export function useZapGoal(id?: string) {
   return data.at(0);
 }
 
-export function useGoals(pubkey?: string, leaveOpen = false) {
+export function useGoals(pubkey?: string, leaveOpen?: boolean, limit?: number) {
   const sub = useMemo(() => {
     if (!pubkey) return null;
     const b = new RequestBuilder(`goals:${pubkey.slice(0, 12)}`);
     b.withOptions({ leaveOpen });
-    b.withFilter().kinds([GOAL]).authors([pubkey]);
+    b.withFilter().kinds([GOAL]).authors([pubkey]).limit(limit);
     return b;
-  }, [pubkey, leaveOpen]);
+  }, [pubkey, leaveOpen, limit]);
 
-  const data = useRequestBuilder(sub);
-  return data;
+  return useRequestBuilder(sub);
 }

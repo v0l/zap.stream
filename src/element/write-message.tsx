@@ -6,12 +6,12 @@ import { unixNowMs } from "@snort/shared";
 
 const EmojiPicker = lazy(() => import("./emoji-picker"));
 import { useLogin } from "@/hooks/login";
-import AsyncButton from "./async-button";
 import { Icon } from "./icon";
 import { Textarea } from "./textarea";
 import type { Emoji, EmojiPack } from "@/types";
 import { LIVE_STREAM_CHAT } from "@/const";
 import { TimeSync } from "@/index";
+import { BorderButton } from "./buttons";
 
 export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
   const system = useContext(SnortContext);
@@ -100,9 +100,9 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
           </Suspense>
         )}
       </div>
-      <AsyncButton onClick={sendChatMessage} className="btn btn-border">
+      <BorderButton onClick={sendChatMessage}>
         <FormattedMessage defaultMessage="Send" id="9WRlF4" />
-      </AsyncButton>
+      </BorderButton>
     </>
   );
 }

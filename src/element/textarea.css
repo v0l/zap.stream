@@ -15,7 +15,7 @@
 .emoji-item,
 .user-item {
   color: white;
-  background: #171717;
+  @apply bg-layer-2;
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -26,7 +26,7 @@
 
 .emoji-item:hover,
 .user-item:hover {
-  color: #171717;
+  @apply text-layer-2;
   background: white;
 }
 

@@ -98,10 +98,13 @@ interface StreamInfo {
   starts?: string;
   ends?: string;
   service?: string;
+  host?: string;
 }
 
 export function extractStreamInfo(ev?: NostrEvent) {
-  const ret = {} as StreamInfo;
+  const ret = {
+    host: getHost(ev)
+  } as StreamInfo;
   const matchTag = (tag: Array<string>, k: string, into: (v: string) => void) => {
     if (tag[0] === k) {
       into(tag[1]);

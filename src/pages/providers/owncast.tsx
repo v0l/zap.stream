@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AsyncButton from "@/element/async-button";
 import { StatePill } from "@/element/state-pill";
 import { StreamProviderInfo, StreamProviderStore } from "@/providers";
 import { OwncastProvider } from "@/providers/owncast";
 import { StreamState } from "@/const";
+import { DefaultButton } from "@/element/buttons";
 
 export function ConfigureOwncast() {
   const [url, setUrl] = useState("");
@@ -55,14 +55,13 @@ export function ConfigureOwncast() {
           </div>
         )}
         <div>
-          <AsyncButton
-            className="btn btn-border"
+          <DefaultButton
             onClick={() => {
               StreamProviderStore.add(new OwncastProvider(url, token));
               navigate("/");
             }}>
             Save
-          </AsyncButton>
+          </DefaultButton>
         </div>
       </>
     );
@@ -83,9 +82,9 @@ export function ConfigureOwncast() {
             <input type="password" value={token} onChange={e => setToken(e.target.value)} />
           </div>
         </div>
-        <AsyncButton className="btn btn-primary" onClick={tryConnect}>
+        <DefaultButton onClick={tryConnect}>
           Connect
-        </AsyncButton>
+        </DefaultButton>
       </div>
       <div>{status()}</div>
     </div>

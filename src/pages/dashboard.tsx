@@ -1,4 +1,3 @@
-import AsyncButton from "@/element/async-button";
 import { ChatZap, LiveChat } from "@/element/live-chat";
 import LiveVideoPlayer from "@/element/live-video-player";
 import { MuteButton } from "@/element/mute-button";
@@ -15,8 +14,9 @@ import { HTMLProps, ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { Text } from "@/element/text";
 import { StreamTimer } from "@/element/stream-time";
-import * as Dialog from "@radix-ui/react-dialog";
 import { DashboardRaidMenu } from "@/element/raid-menu";
+import { DefaultButton } from "@/element/buttons";
+import Modal from "@/element/modal";
 
 export default function DashboardPage() {
   const login = useLogin();
@@ -77,7 +77,7 @@ function DashboardForLink({ link }: { link: NostrLink }) {
 
 function DashboardCard(props: HTMLProps<HTMLDivElement>) {
   return (
-    <div {...props} className={classNames("px-4 py-6 rounded-3xl border border-gray-1", props.className)}>
+    <div {...props} className={classNames("px-4 py-6 rounded-3xl border border-layer-1", props.className)}>
       {props.children}
     </div>
   );
@@ -91,8 +91,8 @@ function DashboardStatsCard({
   return (
     <div
       {...props}
-      className={classNames("flex-1 bg-gray-1 flex flex-col gap-1 px-4 py-2 rounded-xl", props.className)}>
-      <div className="text-gray-3 font-medium">{name}</div>
+      className={classNames("flex-1 bg-layer-1 flex flex-col gap-1 px-4 py-2 rounded-xl", props.className)}>
+      <div className="text-layer-3 font-medium">{name}</div>
       <div>{value}</div>
     </div>
   );
@@ -106,13 +106,13 @@ function DashboardChatList({ link }: { link: NostrLink }) {
   }, [feed]);
 
   return pubkeys.map(a => (
-    <div className="flex justify-between items-center px-4 py-2 border-b border-gray-1">
+    <div className="flex justify-between items-center px-4 py-2 border-b border-layer-1">
       <Profile pubkey={a} avatarSize={32} gap={4} />
       <div className="flex gap-2">
         <MuteButton pubkey={a} />
-        <AsyncButton onClick={() => {}} className="font-bold">
+        <DefaultButton onClick={() => { }} className="font-bold">
           <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-        </AsyncButton>
+        </DefaultButton>
       </div>
     </div>
   ));
@@ -144,7 +144,7 @@ function DashboardZapColumn({ link }: { link: NostrLink }) {
 
 function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
   return (
-    <div className="px-4 py-6 bg-gray-1 flex flex-col gap-4 rounded-xl animate-flash">
+    <div className="px-4 py-6 bg-layer-1 flex flex-col gap-4 rounded-xl animate-flash">
       <div className="flex justify-between items-center text-zap text-2xl font-semibold">
         <Profile
           pubkey={zap.sender ?? "anon"}
@@ -173,17 +173,13 @@ function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
 
 function DashboardRaidButton({ link }: { link: NostrLink }) {
   const [show, setShow] = useState(false);
-  return (
-    <Dialog.Root open={show} onOpenChange={setShow}>
-      <AsyncButton className="btn btn-primary" onClick={() => setShow(true)}>
-        <FormattedMessage defaultMessage="Raid" id="4iBdw1" />
-      </AsyncButton>
-      <Dialog.Portal>
-        <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content">
-          <DashboardRaidMenu link={link} onClose={() => setShow(false)} />
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+  return (<>
+    <DefaultButton onClick={() => setShow(true)}>
+      <FormattedMessage defaultMessage="Raid" id="4iBdw1" />
+    </DefaultButton>
+    {show && <Modal id="raid-menu" onClose={() => setShow(false)}>
+      <DashboardRaidMenu link={link} onClose={() => setShow(false)} />
+    </Modal>}
+  </>
   );
 }

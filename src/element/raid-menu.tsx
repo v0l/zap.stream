@@ -6,9 +6,9 @@ import { Profile } from "./profile";
 import { useLogin } from "@/hooks/login";
 import { useContext, useState } from "react";
 import { NostrLink, parseNostrLink } from "@snort/system";
-import AsyncButton from "./async-button";
 import { SnortContext } from "@snort/system-react";
 import { LIVE_STREAM_RAID } from "@/const";
+import { DefaultButton } from "./buttons";
 
 export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose: () => void }) {
   const system = useContext(SnortContext);
@@ -41,13 +41,13 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         <FormattedMessage defaultMessage="Start Raid" id="MTHO1W" />
       </h2>
       <div className="flex flex-col gap-1">
-        <p className="text-gray-3 uppercase font-semibold text-sm">
+        <p className="text-layer-3 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Live now" id="+sdKx8" />
         </p>
         <div className="flex gap-2 flex-wrap">
           {livePubkeys.map(a => (
             <div
-              className="border border-gray-1 rounded-full px-4 py-2 bg-gray-2 pointer"
+              className="border border-layer-1 rounded-full px-4 py-2 bg-layer-2 pointer"
               onClick={() => {
                 const liveEvent = live.find(b => getHost(b) === a);
                 if (liveEvent) {
@@ -60,7 +60,7 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <p className="text-gray-3 uppercase font-semibold text-sm">
+        <p className="text-layer-3 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Raid target" id="Zse7yG" />
         </p>
         <div className="paper">
@@ -68,16 +68,16 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <p className="text-gray-3 uppercase font-semibold text-sm">
+        <p className="text-layer-3 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Raid Message" id="RS6smY" />
         </p>
         <div className="paper">
           <input type="text" value={msg} onChange={e => setMsg(e.target.value)} />
         </div>
       </div>
-      <AsyncButton className="btn btn-primary" onClick={raid}>
+      <DefaultButton onClick={raid}>
         <FormattedMessage defaultMessage="Raid!" id="aqjZxs" />
-      </AsyncButton>
+      </DefaultButton>
     </div>
   );
 }
