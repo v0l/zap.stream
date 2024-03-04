@@ -32,7 +32,7 @@ export default defineConfig({
   assetsInclude: ["**/*.md", "**/*.wasm"],
   build: {
     outDir: "build",
-    sourcemap: true
+    sourcemap: true,
   },
   worker: {
     format: "es",

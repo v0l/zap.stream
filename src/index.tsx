@@ -35,13 +35,13 @@ import { StreamSettingsTab } from "./pages/settings/stream";
 import Faq from "@/faq.md";
 
 import { WorkerRelayInterface } from "@snort/worker-relay";
-import WorkerVite from "@snort/worker-relay/src/worker?worker"
+import WorkerVite from "@snort/worker-relay/src/worker?worker";
 
 const hasWasm = "WebAssembly" in globalThis;
 const db = new SnortSystemDb();
-const workerRelay = new WorkerRelayInterface(import.meta.env.DEV ?
-  new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) :
-  new WorkerVite());
+const workerRelay = new WorkerRelayInterface(
+  import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite()
+);
 const System = new NostrSystem({
   db,
   optimizer: hasWasm ? WasmOptimizer : undefined,
@@ -50,7 +50,7 @@ const System = new NostrSystem({
 });
 System.on("event", (_, ev) => {
   workerRelay.event(ev);
-})
+});
 
 Object.entries(defaultRelays).forEach(params => {
   const [relay, settings] = params;
