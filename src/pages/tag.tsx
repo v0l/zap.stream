@@ -1,4 +1,3 @@
-import "./tag.css";
 import { useParams } from "react-router-dom";
 import { unwrap } from "@snort/shared";
 

@@ -3,10 +3,15 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        "3xl": "1920px",
+      },
       colors: {
+        "layer-0": "#0a0a0a",
         "layer-1": "rgb(23 23 23 / <alpha-value>)",
         "layer-2": "rgb(34 34 34 / <alpha-value>)",
         "layer-3": "rgb(50 50 50 / <alpha-value>)",
+        "layer-4": "rgb(121 121 121 / <alpha-value>)",
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         zap: "var(--zap)",

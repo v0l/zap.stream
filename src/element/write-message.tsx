@@ -10,7 +10,7 @@ import { Icon } from "./icon";
 import { Textarea } from "./textarea";
 import type { Emoji, EmojiPack } from "@/types";
 import { LIVE_STREAM_CHAT } from "@/const";
-import { TimeSync } from "@/index";
+import { TimeSync } from "@/time-sync";
 import { BorderButton } from "./buttons";
 
 export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
@@ -82,10 +82,10 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
 
   return (
     <>
-      <div className="paper" ref={ref}>
+      <div className="grow flex bg-layer-2 rounded-xl items-center" ref={ref}>
         <Textarea emojis={emojis} value={chat} onKeyDown={onKeyDown} onChange={e => setChat(e.target.value)} rows={2} />
-        <div onClick={pickEmoji}>
-          <Icon name="face" className="write-emoji-button" />
+        <div onClick={pickEmoji} className="p-2">
+          <Icon name="face" />
         </div>
         {showEmojiPicker && (
           <Suspense>

@@ -8,7 +8,7 @@ import { useLogin } from "@/hooks/login";
 import { toEmojiPack } from "@/hooks/emoji";
 import { findTag } from "@/utils";
 import { USER_EMOJIS } from "@/const";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import type { EmojiPack as EmojiPackType } from "@/types";
 import { DefaultButton, WarningButton } from "./buttons";
 

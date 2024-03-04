@@ -182,8 +182,8 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
     const link = `lightning:${invoice}`;
     return (
       <>
-        <QrCode data={link} link={link} />
-        <div className="flex items-center">
+        <QrCode data={link} link={link} className="mx-auto" />
+        <div className="flex items-center justify-center">
           <Copy text={invoice} />
         </div>
         <DefaultButton onClick={() => onFinish()}>
@@ -210,7 +210,7 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   return (
     <>
       {props.button ? (
-        props.button
+        <div onClick={() => setOpen(true)}>{props.button}</div>
       ) : (
         <DefaultButton onClick={() => setOpen(true)}>
           <span className="max-xl:hidden">

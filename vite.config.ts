@@ -11,6 +11,7 @@ export default defineConfig({
       strategies: "injectManifest",
       srcDir: "src",
       filename: "service-worker.ts",
+      registerType: "autoUpdate",
       devOptions: {
         enabled: false,
         type: "module",
@@ -31,7 +32,10 @@ export default defineConfig({
   assetsInclude: ["**/*.md", "**/*.wasm"],
   build: {
     outDir: "build",
-    sourcemap: true,
+    sourcemap: true
+  },
+  worker: {
+    format: "es",
   },
   clearScreen: false,
   resolve: {

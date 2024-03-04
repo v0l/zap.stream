@@ -1,7 +1,7 @@
 import { SnortContext, useEventReactions, useUserProfile } from "@snort/system-react";
 import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
-import { useHover, useIntersectionObserver, useMediaQuery, useOnClickOutside } from "usehooks-ts";
+import { useHover, useIntersectionObserver, useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 
 const EmojiPicker = lazy(() => import("./emoji-picker"));
@@ -18,6 +18,7 @@ import { formatSats } from "@/number";
 import type { Badge, Emoji, EmojiPack } from "@/types";
 import { IconButton } from "./buttons";
 import Pill from "./pill";
+import classNames from "classnames";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -49,7 +50,6 @@ export function ChatMessage({
   });
   const emojiRef = useRef(null);
   const link = NostrLink.fromEvent(ev);
-  const isTablet = useMediaQuery("(max-width: 1020px)");
   const isHovering = useHover(ref);
   const { mute } = useMute(ev.pubkey);
   const [showZapDialog, setShowZapDialog] = useState(false);
@@ -129,9 +129,9 @@ export function ChatMessage({
 
   return (
     <>
-      <div className={`message${streamer === ev.pubkey ? " streamer" : ""}`} ref={ref}>
+      <div className="leading-6 overflow-wrap" ref={ref}>
         <Profile
-          className="text-secondary"
+          className={classNames("text-secondary inline-flex", { "!text-primary": streamer === ev.pubkey })}
           icon={
             ev.pubkey === streamer ? (
               <Icon name="signal" size={16} />
@@ -144,14 +144,13 @@ export function ChatMessage({
             )
           }
           pubkey={ev.pubkey}
-        />
-        &nbsp;
-        <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} />
+        />{" "}
+        <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} className="inline" />
         {(hasReactions || hasZaps) && (
-          <div className="message-reactions">
+          <div className="flex gap-1 mt-1">
             {hasZaps && (
-              <Pill>
-                <Icon name="zap-filled" className="text-zap" size={12} />
+              <Pill className="flex gap-1 items-center">
+                <Icon name="zap-filled" size={12} className="text-zap" />
                 <span className="text-xs">{formatSats(totalZaps)}</span>
               </Pill>
             )}
@@ -160,14 +159,8 @@ export function ChatMessage({
               const emojiName = e.replace(/:/g, "");
               const emoji = isCustomEmojiReaction && getEmojiById(emojiName);
               return (
-                <div className="message-reaction-container" key={`${ev.id}-${emojiName}`}>
-                  {isCustomEmojiReaction && emoji ? (
-                    <span className="message-reaction">
-                      <EmojiComponent name={emoji[1]} url={emoji[2]} />
-                    </span>
-                  ) : (
-                    <span className="message-reaction">{e}</span>
-                  )}
+                <div className="bg-layer-2 rounded-full px-1" key={`${ev.id}-${emojiName}`}>
+                  {isCustomEmojiReaction && emoji ? <EmojiComponent name={emoji[1]} url={emoji[2]} /> : e}
                 </div>
               );
             })}
@@ -175,26 +168,21 @@ export function ChatMessage({
         )}
         {ref.current && (
           <div
-            className="message-zap-container"
-            style={
-              isTablet
-                ? {
-                    display: showZapDialog || isHovering ? "flex" : "none",
-                  }
-                : {
-                    position: "fixed",
-                    top: topOffset ? topOffset - 12 : 0,
-                    left: leftOffset ? leftOffset - 32 : 0,
-                    opacity: showZapDialog || isHovering ? 1 : 0,
-                    pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-                  }
-            }>
+            className="fixed rounded-lg p-2 bg-layer-1 border border-layer-2 flex gap-1 z-10"
+            style={{
+              top: topOffset ? topOffset + 24 : 0,
+              left: leftOffset ? leftOffset : 0,
+              opacity: showZapDialog || isHovering ? 1 : 0,
+              pointerEvents: showZapDialog || isHovering ? "auto" : "none",
+            }}>
             {zapTarget && (
               <SendZapsDialog
                 lnurl={zapTarget}
                 eTag={ev.id}
                 pubkey={ev.pubkey}
-                button={<IconButton iconName="zap" iconSize={14} className="rounded-full bg-layer-2 aspect-square" />}
+                button={
+                  <IconButton iconName="zap" iconSize={14} className="p-2 rounded-full bg-layer-2 aspect-square" />
+                }
                 targetName={profile?.name || ev.pubkey}
               />
             )}
@@ -202,14 +190,14 @@ export function ChatMessage({
               onClick={pickEmoji}
               iconName="face"
               iconSize={14}
-              className="rounded-full bg-layer-2 aspect-square"
+              className="p-2 rounded-full bg-layer-2 aspect-square"
             />
             {shouldShowMuteButton && (
               <IconButton
                 onClick={muteUser}
                 iconName="user-x"
                 iconSize={14}
-                className="rounded-full bg-layer-2 aspect-square"
+                className="p-2 rounded-full bg-layer-2 aspect-square"
               />
             )}
           </div>

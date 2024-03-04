@@ -248,11 +248,11 @@ export default function LiveVideoPlayer({
     );
   }
   return (
-    <div className="relative">
+    <div className="relative h-inherit">
       {playerOverlay()}
       <video
         {...props}
-        className={classNames(props.className, "w-full aspect-video")}
+        className={classNames(props.className, "aspect-video")}
         ref={video}
         autoPlay={true}
         poster={poster}

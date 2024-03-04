@@ -23,7 +23,7 @@
 
 .badge .badge-description {
   margin: 0;
-  color: var(--text-muted);
+  @apply text-layer-4;
   text-align: center;
 }
 

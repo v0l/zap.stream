@@ -7,7 +7,7 @@ import {
   StreamProviders,
 } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
 import { StreamState } from "@/const";

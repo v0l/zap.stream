@@ -21,7 +21,7 @@ export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
         <Toggle onClick={() => setIsEditing(s => !s)} checked={isEditing} size={40} />
       </div>
 
-      <div className="max-xl:hidden grid lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {cards.map(ev => (
           <Card canEdit={isEditing} cards={cards} key={ev.id} ev={ev} />
         ))}

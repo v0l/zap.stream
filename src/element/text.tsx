@@ -7,6 +7,7 @@ import { Mention } from "./mention";
 import { HyperText } from "./hypertext";
 import { Event } from "./Event";
 import { SendZapsDialog } from "./send-zap";
+import classNames from "classnames";
 
 export type EventComponent = FunctionComponent<{ link: NostrLink }>;
 
@@ -14,9 +15,10 @@ interface TextProps {
   content: string;
   tags: Array<Array<string>>;
   eventComponent?: EventComponent;
+  className?: string;
 }
 
-export function Text({ content, tags, eventComponent }: TextProps) {
+export function Text({ content, tags, eventComponent, className }: TextProps) {
   const frags = useMemo(() => {
     return transformText(content, tags);
   }, [content, tags]);
@@ -58,7 +60,7 @@ export function Text({ content, tags, eventComponent }: TextProps) {
           url.protocol = "https:";
           return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} />;
         }
-        return <span className="text">{f.content}</span>;
+        return <span className={classNames(className, "text")}>{f.content}</span>;
       }
     }
   }

@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "Connect"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "Amount"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "Clear"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Save Key"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Starts"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "Tags"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "Copy"
-  },
-  "4uI538": {
-    "defaultMessage": "Resolutions"
   },
   "50+/JW": {
     "defaultMessage": "Stream Key is required"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Title"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW Content"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "Your comment for {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "You can always replace it with your own address later."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "Name"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "Select a goal..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Stream Duration {duration} mins"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "No, I am under 18"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Stream Key"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "Share"
   },
-  "OWgHbg": {
-    "defaultMessage": "Edit card"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
   },
   "PA0ej4": {
     "defaultMessage": "Create Clip"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "Create Goal"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Reactions"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "You can change this later"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Raid!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Nostr Extension"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} messages"
-  },
-  "hGQqkW": {
-    "defaultMessage": "Schedule"
   },
   "hMzcSq": {
     "defaultMessage": "Messages"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "Voice"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "A short description of the content"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "Sexually explicit material ahead!"
   },
-  "rbrahO": {
-    "defaultMessage": "Close"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "Save card"
-  },
   "rgsbu9": {
     "defaultMessage": "Current Viewers"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Create an Account"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "Volume"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

@@ -1,34 +1,17 @@
-import { NostrLink, RequestBuilder } from "@snort/system";
-import { useReactions, useRequestBuilder } from "@snort/system-react";
-import { unixNow } from "@snort/shared";
-import { useMemo } from "react";
-import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
+import { NostrLink } from "@snort/system";
+import { useReactions } from "@snort/system-react";
+import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID } from "@/const";
 
-export function useLiveChatFeed(link?: NostrLink, eZaps?: Array<string>, limit = 100) {
-  const since = useMemo(() => unixNow() - WEEK, [link?.id]);
-  const sub = useMemo(() => {
-    if (!link) return null;
-    const rb = new RequestBuilder(`live:${link.id}:${link.author}`);
-    rb.withOptions({
-      leaveOpen: true,
-    });
-    const aTag = `${link.kind}:${link.author}:${link.id}`;
-    rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(limit);
-    return rb;
-  }, [link?.id, since, eZaps]);
-
-  const feed = useRequestBuilder(sub);
-
-  const messages = useMemo(() => {
-    return (feed ?? []).filter(
-      ev => ev.kind === LIVE_STREAM_CHAT || ev.kind === LIVE_STREAM_RAID || ev.kind === LIVE_STREAM_CLIP
-    );
-  }, [feed]);
-
+export function useLiveChatFeed(link?: NostrLink, limit?: number) {
   const reactions = useReactions(
     `live:${link?.id}:${link?.author}:reactions`,
-    messages.map(a => NostrLink.fromEvent(a)).concat(link ? [link] : []),
-    undefined,
+    [],
+    rb => {
+      if (link) {
+        const aTag = `${link.kind}:${link.author}:${link.id}`;
+        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(limit);
+      }
+    },
     true
   );
   return { messages, reactions: reactions ?? [] };

@@ -1,4 +1,3 @@
-import "./emoji.css";
 import { useMemo } from "react";
 import { EmojiTag } from "@/types";
 
@@ -8,7 +7,7 @@ export type EmojiProps = {
 };
 
 export function Emoji({ name, url }: EmojiProps) {
-  return <img alt={name} title={name} src={url} className="custom-emoji" />;
+  return <img alt={name} title={name} src={url} className="w-[24px] h-[24px] inline" />;
 }
 
 export function Emojify({ content, emoji }: { content: string; emoji: EmojiTag[] }) {

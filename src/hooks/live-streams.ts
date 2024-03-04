@@ -3,13 +3,10 @@ import { useMemo } from "react";
 import { NostrEvent, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
-import { unixNow } from "@snort/shared";
 import { LIVE_STREAM, StreamState } from "@/const";
 import { findTag, getHost } from "@/utils";
-import { WEEK } from "@/const";
 
 export function useStreamsFeed(tag?: string) {
-  const since = useMemo(() => unixNow() - WEEK, [tag]);
   const rb = useMemo(() => {
     const rb = new RequestBuilder(tag ? `streams:${tag}` : "streams");
     rb.withOptions({
@@ -35,13 +32,13 @@ export function useStreamsFeed(tag?: string) {
       }
     } else {
       if (tag) {
-        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]).since(since);
+        rb.withFilter().kinds([LIVE_STREAM]).tag("t", [tag]);
       } else {
-        rb.withFilter().kinds([LIVE_STREAM]).since(since);
+        rb.withFilter().kinds([LIVE_STREAM]);
       }
     }
     return rb;
-  }, [tag, since]);
+  }, [tag]);
 
   function sortCreatedAt(a: NostrEvent, b: NostrEvent) {
     return b.created_at > a.created_at ? 1 : -1;

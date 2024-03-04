@@ -5,6 +5,7 @@ import { useLogin } from "@/hooks/login";
 import { useCards } from "@/hooks/cards";
 import { StreamCardEditor } from "./stream-card-editor";
 import { Card } from "./card-item";
+import classNames from "classnames";
 
 export interface CardType {
   identifier: string;
@@ -22,12 +23,13 @@ export interface CardItem {
 
 interface StreamCardsProps {
   host: string;
+  className?: string;
 }
 
-export function ReadOnlyStreamCards({ host }: StreamCardsProps) {
+export function ReadOnlyStreamCards({ host, className }: StreamCardsProps) {
   const cards = useCards(host);
   return (
-    <div className="max-xl:hidden grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+    <div className={classNames("grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6", className)}>
       {cards.map(ev => (
         <Card cards={cards} key={ev.id} ev={ev} />
       ))}

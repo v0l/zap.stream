@@ -3,12 +3,11 @@ import LiveVideoPlayer from "@/element/live-video-player";
 import { MuteButton } from "@/element/mute-button";
 import { Profile } from "@/element/profile";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import { useLiveChatFeed } from "@/hooks/live-chat";
 import { useLogin } from "@/hooks/login";
 import { extractStreamInfo } from "@/utils";
 import { dedupe } from "@snort/shared";
-import { NostrLink, NostrPrefix, ParsedZap } from "@snort/system";
-import { useEventReactions } from "@snort/system-react";
+import { NostrLink, NostrPrefix, ParsedZap, TaggedNostrEvent } from "@snort/system";
+import { useEventReactions, useReactions } from "@snort/system-react";
 import classNames from "classnames";
 import { HTMLProps, ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
@@ -17,6 +16,7 @@ import { StreamTimer } from "@/element/stream-time";
 import { DashboardRaidMenu } from "@/element/raid-menu";
 import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
+import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP } from "@/const";
 
 export default function DashboardPage() {
   const login = useLogin();
@@ -35,11 +35,22 @@ function DashboardForLink({ link }: { link: NostrLink }) {
       setMaxParticipants(v => (v < Number(participants) ? Number(participants) : v));
     }
   }, [participants]);
+
+  const feed = useReactions(
+    `live:${link?.id}:${streamLink?.author}:reactions`,
+    streamLink ? [streamLink] : [],
+    rb => {
+      if (streamLink) {
+        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).replyToLink([streamLink]);
+      }
+    },
+    true
+  );
   if (!streamLink) return;
 
   return (
-    <div className="grid grid-cols-3 gap-2 full-page-height">
-      <div className="h-inhreit flex gap-4 flex-col">
+    <div className="grid grid-cols-3 gap-2 h-[calc(100%-48px-1rem)]">
+      <div className="min-h-0 h-full grid grid-rows-[min-content_auto] gap-2">
         <DashboardCard className="flex flex-col gap-4">
           <h3>
             <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
@@ -63,14 +74,12 @@ function DashboardForLink({ link }: { link: NostrLink }) {
             <FormattedMessage defaultMessage="Chat Users" id="RtYNX5" />
           </h3>
           <div className="h-[calc(100%-4rem)] overflow-y-scroll">
-            <DashboardChatList link={streamLink} />
+            <DashboardChatList feed={feed} />
           </div>
         </DashboardCard>
       </div>
-      <div className="h-inhreit flex gap-4 flex-col">
-        <DashboardZapColumn link={streamLink} />
-      </div>
-      <LiveChat link={streamLink} ev={streamEvent} />
+      <DashboardZapColumn link={streamLink} feed={feed} />
+      <LiveChat link={streamLink} ev={streamEvent} className="min-h-0" />
     </div>
   );
 }
@@ -92,17 +101,15 @@ function DashboardStatsCard({
     <div
       {...props}
       className={classNames("flex-1 bg-layer-1 flex flex-col gap-1 px-4 py-2 rounded-xl", props.className)}>
-      <div className="text-layer-3 font-medium">{name}</div>
+      <div className="text-layer-4 font-medium">{name}</div>
       <div>{value}</div>
     </div>
   );
 }
 
-function DashboardChatList({ link }: { link: NostrLink }) {
-  const feed = useLiveChatFeed(link);
-
+function DashboardChatList({ feed }: { feed: Array<TaggedNostrEvent> }) {
   const pubkeys = useMemo(() => {
-    return dedupe(feed.messages.map(a => a.pubkey));
+    return dedupe(feed.map(a => a.pubkey));
   }, [feed]);
 
   return pubkeys.map(a => (
@@ -118,9 +125,8 @@ function DashboardChatList({ link }: { link: NostrLink }) {
   ));
 }
 
-function DashboardZapColumn({ link }: { link: NostrLink }) {
-  const feed = useLiveChatFeed(link);
-  const reactions = useEventReactions(link, feed.reactions);
+function DashboardZapColumn({ link, feed }: { link: NostrLink; feed: Array<TaggedNostrEvent> }) {
+  const reactions = useEventReactions(link, feed);
 
   const sortedZaps = useMemo(
     () => reactions.zaps.sort((a, b) => (b.created_at > a.created_at ? 1 : -1)),
@@ -128,11 +134,11 @@ function DashboardZapColumn({ link }: { link: NostrLink }) {
   );
   const latestZap = sortedZaps.at(0);
   return (
-    <DashboardCard className="h-inhreit flex flex-col gap-4">
+    <DashboardCard className="min-h-0 h-full flex flex-col gap-4">
       <h3>
         <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
       </h3>
-      <div className="h-inhreit flex flex-col gap-2 overflow-y-scroll">
+      <div className="flex flex-col gap-2 overflow-y-scroll">
         {latestZap && <DashboardHighlightZap zap={latestZap} />}
         {sortedZaps.slice(1).map(a => (
           <ChatZap zap={a} />

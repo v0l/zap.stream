@@ -141,3 +141,5 @@ export function getPublisher(session: LoginSession) {
     }
   }
 }
+
+export const Login = new LoginStore();

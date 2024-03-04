@@ -1,4 +1,3 @@
-import "./chat-popout.css";
 import { useParams } from "react-router-dom";
 import { NostrPrefix, encodeTLV, parseNostrLink } from "@snort/system";
 import { unwrap } from "@snort/shared";
@@ -17,15 +16,15 @@ export function ChatPopout() {
   const lnk = parseNostrLink(encodeTLV(NostrPrefix.Address, findTag(ev, "d") ?? "", undefined, ev?.kind, ev?.pubkey));
   const chat = Boolean(new URL(window.location.href).searchParams.get("chat"));
   return (
-    <div className={`popout-chat${chat ? "" : " embed"}`}>
+    <div className="h-[calc(100vh-1rem)] w-screen px-2 my-2">
       <LiveChat
         ev={ev}
         link={lnk}
-        options={{
-          canWrite: chat,
-          showHeader: false,
-        }}
+        canWrite={chat}
+        showHeader={false}
+        showScrollbar={false}
         goal={goal}
+        className="h-inherit"
       />
     </div>
   );

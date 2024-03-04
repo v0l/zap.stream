@@ -1,4 +1,3 @@
-import "./login-signup.css";
 import LoginHeader from "../login-start.jpg";
 import LoginHeader2x from "../login-start@2x.jpg";
 import LoginVault from "../login-vault.jpg";
@@ -10,7 +9,7 @@ import LoginKey2x from "../login-key@2x.jpg";
 import LoginWallet from "../login-wallet.jpg";
 import LoginWallet2x from "../login-wallet@2x.jpg";
 
-import { CSSProperties, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { EventPublisher, UserMetadata } from "@snort/system";
 import { schnorr } from "@noble/curves/secp256k1";
@@ -19,11 +18,10 @@ import { LNURL, bech32ToHex, getPublicKey, hexToBech32 } from "@snort/shared";
 import { VoidApi } from "@void-cat/api";
 import { SnortContext } from "@snort/system-react";
 
-import { Login } from "@/index";
+import { Login, LoginType } from "@/login";
 import { Icon } from "./icon";
 import Copy from "./copy";
 import { openFile } from "@/utils";
-import { LoginType } from "@/login";
 import { DefaultProvider, StreamProviderInfo } from "@/providers";
 import { NostrStreamProvider } from "@/providers/zsz";
 import { DefaultButton, Layer1Button } from "./buttons";
@@ -91,20 +89,30 @@ export function LoginSignup({ close }: { close: () => void }) {
   }
 
   async function uploadAvatar() {
-    const file = await openFile();
-    if (file) {
-      const VoidCatHost = "https://void.cat";
-      const api = new VoidApi(VoidCatHost);
-      const uploader = api.getUploader(file);
-      const result = await uploader.upload({
-        "V-Strip-Metadata": "true",
-      });
-      if (result.ok) {
-        const resultUrl = result.file?.metadata?.url ?? `${VoidCatHost}/d/${result.file?.id}`;
-        setAvatar(resultUrl);
-      } else {
-        setError(result.errorMessage ?? "Upload failed");
+    const defaultError = formatMessage({
+      defaultMessage: "Avatar upload fialed",
+      id: "uTonxS",
+    });
+
+    try {
+      const file = await openFile();
+      if (file) {
+        const VoidCatHost = "https://void.cat";
+        const api = new VoidApi(VoidCatHost);
+        const uploader = api.getUploader(file);
+        const result = await uploader.upload({
+          "V-Strip-Metadata": "true",
+        });
+        console.debug(result);
+        if (result.ok) {
+          const resultUrl = result.file?.metadata?.url ?? `${VoidCatHost}/d/${result.file?.id}`;
+          setAvatar(resultUrl);
+        } else {
+          setError(result.errorMessage ?? defaultError);
+        }
       }
+    } catch {
+      setError(defaultError);
     }
   }
 
@@ -156,21 +164,17 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="header-image" />
-          <div className="content-inner">
+          <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Create an Account" id="u6uD94" />
             </h2>
-            <h3>
-              <FormattedMessage defaultMessage="No emails, just awesomeness!" id="+AcVD+" />
-            </h3>
+            <FormattedMessage defaultMessage="No emails, just awesomeness!" id="+AcVD+" />
             <DefaultButton onClick={createAccount}>
               <FormattedMessage defaultMessage="Create Account" id="5JcXdV" />
             </DefaultButton>
 
-            <div className="or-divider">
-              <hr />
+            <div className="border-t border-b my-4 py-2 border-layer-3 text-center">
               <FormattedMessage defaultMessage="OR" id="INlWvJ" />
-              <hr />
             </div>
             {hasNostrExtension && (
               <>
@@ -191,7 +195,7 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="header-image" />
-          <div className="content-inner">
+          <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Login with private key" id="3df560" />
             </h2>
@@ -238,31 +242,34 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="header-image" />
-          <div className="content-inner">
+          <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Setup Profile" id="nOaArs" />
             </h2>
-            <div className="flex items-center">
+            <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden">
+              {avatar && <img className="absolute object-fit w-full h-full" src={avatar} />}
               <div
-                className="avatar-input"
-                onClick={uploadAvatar}
-                style={
-                  {
-                    "--img": `url(${avatar})`,
-                  } as CSSProperties
-                }>
+                className="absolute flex items-center justify-center w-full h-full hover:opacity-100 opacity-0 transition bg-layer-2/50 cursor-pointer"
+                onClick={uploadAvatar}>
                 <Icon name="camera-plus" />
               </div>
             </div>
-            <div className="username">
-              <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-              <small>
-                <FormattedMessage defaultMessage="You can change this later" id="ZmqxZs" />
-              </small>
-            </div>
+            <input
+              type="text"
+              placeholder={formatMessage({
+                defaultMessage: "Username",
+                id: "JCIgkj",
+              })}
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+            <small className="text-neutral-300">
+              <FormattedMessage defaultMessage="You can change this later" id="ZmqxZs" />
+            </small>
             <DefaultButton onClick={setupProfile}>
               <FormattedMessage defaultMessage="Save" id="jvo0vs" />
             </DefaultButton>
+            {error && <b className="error">{error}</b>}
           </div>
         </>
       );
@@ -271,7 +278,7 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="header-image" />
-          <div className="content-inner">
+          <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Get paid by viewers" id="Fodi9+" />
             </h2>
@@ -292,17 +299,15 @@ export function LoginSignup({ close }: { close: () => void }) {
                 />
               </p>
             )}
-            <div className="username">
-              <input
-                type="text"
-                placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com", id: "1qsXCO" })}
-                value={lnAddress}
-                onChange={e => setLnAddress(e.target.value)}
-              />
-              <small>
-                <FormattedMessage defaultMessage="You can always replace it with your own address later." id="FjDlus" />
-              </small>
-            </div>
+            <input
+              type="text"
+              placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com", id: "1qsXCO" })}
+              value={lnAddress}
+              onChange={e => setLnAddress(e.target.value)}
+            />
+            <small>
+              <FormattedMessage defaultMessage="You can always replace it with your own address later." id="FjDlus" />
+            </small>
             {error && <b className="error">{error}</b>}
             <DefaultButton onClick={saveProfile}>
               <FormattedMessage defaultMessage="Amazing! Continue.." id="tM6fNW" />
@@ -315,7 +320,7 @@ export function LoginSignup({ close }: { close: () => void }) {
       return (
         <>
           <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="header-image" />
-          <div className="content-inner">
+          <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Save Key" id="04lmFi" />
             </h2>

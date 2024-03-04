@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
 
 import { useLogin } from "@/hooks/login";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import { MUTED } from "@/const";
 import { DefaultButton } from "./buttons";
 

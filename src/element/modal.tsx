@@ -75,7 +75,7 @@ export default function Modal(props: ModalProps) {
         e.stopPropagation();
       }}>
       <div
-        className={"bg-layer-1 p-8 rounded-3xl my-auto lg:w-[500px] max-lg:w-full"}
+        className={props.bodyClassName ?? "bg-layer-1 p-8 rounded-3xl my-auto lg:w-[500px] max-lg:w-full"}
         onMouseDown={e => e.stopPropagation()}
         onClick={e => {
           e.stopPropagation();

@@ -1,6 +1,6 @@
 import { CARD, USER_CARDS } from "@/const";
 import { useLogin } from "@/hooks/login";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import { removeUndefined } from "@snort/shared";
 import { TaggedNostrEvent, NostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";

@@ -8,7 +8,6 @@ import { NostrSystem } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { SnortSystemDb } from "@snort/system-web";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { unixNowMs } from "@snort/shared";
 
 import { RootPage } from "@/pages/root";
 import { TagPage } from "@/pages/tag";
@@ -16,12 +15,9 @@ import { LayoutPage } from "@/pages/layout";
 import { ProfilePage } from "@/pages/profile-page";
 import { StreamPageHandler } from "@/pages/stream-page";
 import { ChatPopout } from "@/pages/chat-popout";
-import { LoginStore } from "@/login";
 import { StreamProvidersPage } from "@/pages/providers";
 import { defaultRelays } from "@/const";
 import { CatchAllRoutePage } from "@/pages/catch-all";
-import { SettingsPage } from "@/pages/settings-page";
-import { register } from "@/serviceWorker";
 import { IntlProvider } from "@/intl";
 import { WidgetsPage } from "@/pages/widgets";
 import { AlertsPage } from "@/pages/alerts";
@@ -31,44 +27,51 @@ import Markdown from "./element/markdown";
 import { Async } from "./element/async-loader";
 import { WasmOptimizer, WasmPath, wasmInit } from "./wasm";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
-
-import Faq from "@/faq.md";
 import MockPage from "./pages/mock";
+import { syncClock } from "./time-sync";
+import SettingsPage from "./pages/settings";
+import AccountSettingsTab from "./pages/settings/account";
+import { StreamSettingsTab } from "./pages/settings/stream";
+import Faq from "@/faq.md";
+
+import { WorkerRelayInterface } from "@snort/worker-relay";
 
 const hasWasm = "WebAssembly" in globalThis;
 const db = new SnortSystemDb();
+const workerRelay = new WorkerRelayInterface();
 const System = new NostrSystem({
   db,
   optimizer: hasWasm ? WasmOptimizer : undefined,
   automaticOutboxModel: false,
+  cachingRelay: workerRelay,
 });
-export const Login = new LoginStore();
-
-register();
+System.on("event", (_, ev) => {
+  workerRelay.event(ev);
+})
 
 Object.entries(defaultRelays).forEach(params => {
   const [relay, settings] = params;
   System.ConnectToRelay(relay, settings);
 });
 
-export let TimeSync = 0;
+let hasInit = false;
 async function doInit() {
+  if (hasInit) return;
+  hasInit = true;
   if (hasWasm) {
     await wasmInit(WasmPath);
   }
+  try {
+    //await workerRelay.debug("*");
+    await workerRelay.init("relay.db");
+    const stat = await workerRelay.summary();
+    console.log(stat);
+  } catch (e) {
+    console.error(e);
+  }
   db.ready = await db.isAvailable();
   await System.Init();
-  try {
-    const req = await fetch("https://api.zap.stream/api/time", {
-      signal: AbortSignal.timeout(1000),
-    });
-    const nowAtServer = (await req.json()).time as number;
-    const now = unixNowMs();
-    TimeSync = now - nowAtServer;
-    console.debug("Time clock sync", TimeSync);
-  } catch {
-    // ignore
-  }
+  syncClock();
 }
 
 const router = createBrowserRouter([
@@ -106,6 +109,16 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: <SettingsPage />,
+        children: [
+          {
+            path: "",
+            element: <AccountSettingsTab />,
+          },
+          {
+            path: "stream",
+            element: <StreamSettingsTab />,
+          },
+        ],
       },
       {
         path: "/widgets",

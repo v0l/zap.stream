@@ -31,7 +31,7 @@
 
 .text-to-speech-settings .labeled-input label {
   font-size: 14px;
-  color: var(--text-muted);
+  @apply text-layer-4;
 }
 
 .text-to-speech-settings textarea {

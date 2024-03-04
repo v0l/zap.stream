@@ -55,7 +55,7 @@ function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> & { onF
           <>
             <DefaultButton
               onClick={() => {
-                navigate("/settings");
+                navigate("/settings/stream");
                 onFinish?.();
               }}>
               <FormattedMessage defaultMessage="Get Stream Key" id="Vn2WiP" />

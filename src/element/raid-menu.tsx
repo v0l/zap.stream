@@ -36,12 +36,12 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
   }
 
   return (
-    <div className="flex flex-col gap-4 p-6">
+    <div className="flex flex-col gap-4">
       <h2>
         <FormattedMessage defaultMessage="Start Raid" id="MTHO1W" />
       </h2>
       <div className="flex flex-col gap-1">
-        <p className="text-layer-3 uppercase font-semibold text-sm">
+        <p className="text-layer-4 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Live now" id="+sdKx8" />
         </p>
         <div className="flex gap-2 flex-wrap">
@@ -60,7 +60,7 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <p className="text-layer-3 uppercase font-semibold text-sm">
+        <p className="text-layer-4 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Raid target" id="Zse7yG" />
         </p>
         <div className="paper">
@@ -68,7 +68,7 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <p className="text-layer-3 uppercase font-semibold text-sm">
+        <p className="text-layer-4 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Raid Message" id="RS6smY" />
         </p>
         <div className="paper">

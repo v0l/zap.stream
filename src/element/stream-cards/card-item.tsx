@@ -6,7 +6,7 @@ import { SnortContext } from "@snort/system-react";
 import { CardItem } from ".";
 import { USER_CARDS } from "@/const";
 import { useLogin } from "@/hooks/login";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import { Tags } from "@/types";
 import { findTag } from "@/utils";
 import { EditCard } from "./edit-card";

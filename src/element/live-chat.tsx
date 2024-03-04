@@ -1,7 +1,7 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
 import { EventKind, NostrEvent, NostrLink, NostrPrefix, ParsedZap, TaggedNostrEvent } from "@snort/system";
-import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react";
+import { useEventFeed, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
 import { unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
@@ -14,7 +14,6 @@ import { Goal } from "./goal";
 import { Badge } from "./badge";
 import { WriteMessage } from "./write-message";
 import useEmoji, { packId } from "@/hooks/emoji";
-import { useLiveChatFeed } from "@/hooks/live-chat";
 import { useMutedPubkeys } from "@/hooks/lists";
 import { useBadges } from "@/hooks/badges";
 import { useLogin } from "@/hooks/login";
@@ -23,11 +22,7 @@ import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/co
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "./top-zappers";
 import { Link, useNavigate } from "react-router-dom";
-
-export interface LiveChatOptions {
-  canWrite?: boolean;
-  showHeader?: boolean;
-}
+import classNames from "classnames";
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? "";
@@ -51,17 +46,37 @@ export function LiveChat({
   link,
   ev,
   goal,
-  options,
+  canWrite,
+  showHeader,
+  showTopZappers,
+  showGoal,
+  showScrollbar,
   height,
+  className,
 }: {
   link: NostrLink;
   ev?: NostrEvent;
   goal?: NostrEvent;
-  options?: LiveChatOptions;
+  canWrite?: boolean;
+  showHeader?: boolean;
+  showTopZappers?: boolean;
+  showGoal?: boolean;
+  showScrollbar?: boolean;
   height?: number;
+  className?: string;
 }) {
   const host = getHost(ev);
-  const feed = useLiveChatFeed(link, goal ? [goal.id] : undefined);
+  const feed = useReactions(
+    `live:${link?.id}:${link?.author}:reactions`,
+    goal ? [link, NostrLink.fromEvent(goal)] : [link],
+    rb => {
+      if (link) {
+        const aTag = `${link.kind}:${link.author}:${link.id}`;
+        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(200);
+      }
+    },
+    true
+  );
   const login = useLogin();
   const started = useMemo(() => {
     const starts = findTag(ev, "starts");
@@ -78,7 +93,7 @@ export function LiveChat({
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
 
-  const reactions = useEventReactions(link, feed.reactions);
+  const reactions = useEventReactions(link, feed);
   const events = useMemo(() => {
     const extra = [];
     const starts = findTag(ev, "starts");
@@ -89,20 +104,20 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
-    return [...feed.messages, ...feed.reactions, ...awards, ...extra]
+    return [...feed, ...awards, ...extra]
       .filter(a => a.created_at >= started)
       .sort((a, b) => b.created_at - a.created_at);
-  }, [feed.messages, feed.reactions, awards]);
+  }, [feed, awards]);
 
   const filteredEvents = useMemo(() => {
     return events.filter(e => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey));
   }, [events, mutedPubkeys, hostMutedPubkeys]);
 
   return (
-    <div className="live-chat" style={height ? { height: `${height}px` } : {}}>
-      {(options?.showHeader ?? true) && (
-        <div className="header">
-          <h2 className="title">
+    <div className={classNames("flex flex-col gap-2", className)} style={height ? { height: `${height}px` } : {}}>
+      {(showHeader ?? true) && (
+        <div className={classNames("flex justify-between items-center")}>
+          <h2 className="py-4">
             <FormattedMessage defaultMessage="Stream Chat" id="BGxpTN" />
           </h2>
           <Icon
@@ -113,18 +128,21 @@ export function LiveChat({
           />
         </div>
       )}
-      {reactions.zaps.length > 0 && (
-        <div className="top-zappers">
+      {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
+        <div className="py-2">
           <h3>
             <FormattedMessage defaultMessage="Top zappers" id="wzWWzV" />
           </h3>
-          <div className="top-zappers-container">
-            <TopZappers zaps={reactions.zaps} />
+          <div className="mt-1 flex gap-1 overflow-x-auto scrollbar-hidden">
+            <TopZappers zaps={reactions.zaps} className="border border-layer-1 rounded-full py-1 px-2" />
           </div>
-          {goal && <Goal ev={goal} />}
         </div>
       )}
-      <div className="messages">
+      {(showGoal ?? true) && goal && <Goal ev={goal} />}
+      <div
+        className={classNames("flex flex-col-reverse grow gap-2 overflow-y-auto", {
+          "scrollbar-hidden": !(showScrollbar ?? true),
+        })}>
         {filteredEvents.map(a => {
           switch (a.kind) {
             case -1:
@@ -152,7 +170,7 @@ export function LiveChat({
                   streamer={host}
                   ev={a}
                   key={a.id}
-                  related={feed.reactions}
+                  related={feed}
                 />
               );
             }
@@ -171,10 +189,10 @@ export function LiveChat({
           }
           return null;
         })}
-        {feed.messages.length === 0 && <Spinner />}
+        {feed.length === 0 && <Spinner />}
       </div>
-      {(options?.canWrite ?? true) && (
-        <div className="write-message">
+      {(canWrite ?? true) && (
+        <div className="flex gap-2 border-t pt-2 border-layer-1">
           {login ? (
             <WriteMessage emojiPacks={allEmojiPacks} link={link} />
           ) : (

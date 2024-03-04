@@ -1,12 +1,12 @@
-import "./root.css";
 import { FormattedMessage } from "react-intl";
-import { useCallback, useMemo } from "react";
-import type { NostrEvent } from "@snort/system";
+import { ReactNode, useCallback, useMemo } from "react";
+import type { NostrEvent, TaggedNostrEvent } from "@snort/system";
 
 import { VideoTile } from "@/element/video-tile";
 import { useLogin } from "@/hooks/login";
 import { getHost, getTagValues } from "@/utils";
 import { useStreamsFeed } from "@/hooks/live-streams";
+import VideoGrid from "@/element/video-grid";
 
 export function RootPage() {
   const login = useLogin();
@@ -43,76 +43,47 @@ export function RootPage() {
   }, [live, hashtags]);
 
   return (
-    <div className="homepage">
+    <div className="flex flex-col gap-6">
       {hasFollowingLive && (
-        <>
-          <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Following" id="cPIKU2" />
-          </h2>
-          <div className="video-grid">
-            {following.map(e => (
-              <VideoTile ev={e} key={e.id} />
-            ))}
-          </div>
-        </>
+        <RootSection header={<FormattedMessage defaultMessage="Following" id="cPIKU2" />} items={following} />
       )}
       {!hasFollowingLive && (
-        <div className="video-grid">
+        <VideoGrid>
           {live
             .filter(e => !mutedHosts.has(getHost(e)))
             .map(e => (
               <VideoTile ev={e} key={e.id} />
             ))}
-        </div>
+        </VideoGrid>
       )}
       {liveByHashtag.map(t => (
-        <>
-          <h2 className="divider line one-line">#{t.tag}</h2>
-          <div className="video-grid">
-            {t.live.map(e => (
-              <VideoTile ev={e} key={e.id} />
-            ))}
-          </div>
-        </>
+        <RootSection header={`#${t.tag}`} items={t.live} />
       ))}
       {hasFollowingLive && liveNow.length > 0 && (
-        <>
-          <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Live" id="Dn82AL" />
-          </h2>
-          <div className="video-grid">
-            {liveNow
-              .filter(e => !mutedHosts.has(getHost(e)))
-              .map(e => (
-                <VideoTile ev={e} key={e.id} />
-              ))}
-          </div>
-        </>
+        <RootSection header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />} items={liveNow} />
       )}
       {plannedEvents.length > 0 && (
-        <>
-          <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Planned" id="kp0NPF" />
-          </h2>
-          <div className="video-grid">
-            {plannedEvents.map(e => (
-              <VideoTile ev={e} key={e.id} />
-            ))}
-          </div>
-        </>
+        <RootSection header={<FormattedMessage defaultMessage="Planned" id="kp0NPF" />} items={plannedEvents} />
       )}
       {endedEvents.length > 0 && (
-        <>
-          <h2 className="divider line one-line">
-            <FormattedMessage defaultMessage="Ended" id="TP/cMX" />
-          </h2>
-          <div className="video-grid">
-            {endedEvents.map(e => (
-              <VideoTile ev={e} key={e.id} />
-            ))}
-          </div>
-        </>
+        <RootSection header={<FormattedMessage defaultMessage="Ended" id="TP/cMX" />} items={endedEvents} />
       )}
     </div>
+  );
+}
+
+function RootSection({ header, items }: { header: ReactNode; items: Array<TaggedNostrEvent> }) {
+  return (
+    <>
+      <h2 className="flex items-center gap-4">
+        {header}
+        <span className="h-[1px] bg-layer-1 w-full" />
+      </h2>
+      <VideoGrid>
+        {items.map(e => (
+          <VideoTile ev={e} key={e.id} />
+        ))}
+      </VideoGrid>
+    </>
   );
 }

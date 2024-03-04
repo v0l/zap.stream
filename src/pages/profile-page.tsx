@@ -1,7 +1,7 @@
 import "./profile-page.css";
 import { useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, parseNostrLink } from "@snort/system";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { CachedMetadata, NostrEvent, NostrLink, NostrPrefix, TaggedNostrEvent, parseNostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
@@ -22,6 +22,8 @@ import { useGoals } from "@/hooks/goals";
 import { Goal } from "@/element/goal";
 import { TopZappers } from "@/element/top-zappers";
 import { useClips } from "@/hooks/clips";
+import { getName } from "@/element/profile";
+import VideoGrid from "@/element/video-grid";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 
@@ -36,7 +38,7 @@ export function ProfilePage() {
   }, [streams]);
 
   return (
-    <div className="flex flex-col gap-3 px-4">
+    <div className="flex flex-col gap-3 xl:px-4">
       <img
         className="rounded-xl object-cover h-[360px]"
         alt={profile?.name || link.id}
@@ -140,7 +142,7 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
     return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />;
   }
   return (
-    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8">
+    <VideoGrid>
       {streams.map(ev => (
         <div key={ev.id} className="flex flex-col gap-1">
           <VideoTile ev={ev} showAuthor={false} showStatus={false} />
@@ -155,7 +157,7 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
           </span>
         </div>
       ))}
-    </div>
+    </VideoGrid>
   );
 }
 
@@ -180,8 +182,32 @@ function ProfileClips({ link }: { link: NostrLink }) {
   if (clips.length === 0) {
     return <FormattedMessage defaultMessage="No clips yet" id="ObZZEz" />;
   }
-  return clips.map(a => {
-    const r = findTag(a, "r");
-    return <video src={r} />;
-  });
+  return clips.map(a => <ProfileClip ev={a} key={a.id} />);
+}
+
+function ProfileClip({ ev }: { ev: NostrEvent }) {
+  const profile = useUserProfile(ev.pubkey);
+  const r = findTag(ev, "r");
+  const title = findTag(ev, "title");
+  return (
+    <div className="w-[300px] flex flex-col gap-4 bg-layer-1 rounded-xl px-3 py-2">
+      <span>
+        <FormattedMessage
+          defaultMessage="Clip by {name}"
+          id="dkUMIH"
+          values={{
+            name: (
+              <Link
+                to={`/p/${new NostrLink(NostrPrefix.PublicKey, ev.pubkey).encode()}`}
+                className="font-medium text-primary">
+                {getName(ev.pubkey, profile)}
+              </Link>
+            ),
+          }}
+        />
+      </span>
+      {title}
+      <video src={r} controls />
+    </div>
+  );
 }

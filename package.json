@@ -11,6 +11,8 @@
     "@snort/system-react": "^1.2.12",
     "@snort/system-wasm": "^1.0.2",
     "@snort/system-web": "^1.2.11",
+    "@snort/worker-relay": "^1.0.5",
+    "@sqlite.org/sqlite-wasm": "^3.45.1-build1",
     "@szhsin/react-menu": "^4.0.2",
     "@types/webscopeio__react-textarea-autocomplete": "^4.7.2",
     "@void-cat/api": "^1.0.7",

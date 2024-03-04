@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { SnortContext } from "@snort/system-react";
 
 import { useLogin } from "@/hooks/login";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import { DefaultButton } from "./buttons";
 
 export function LoggedInFollowButton({

@@ -1,4 +1,3 @@
-import "./stream-page.css";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -30,8 +29,9 @@ import { StreamState } from "@/const";
 import { NotificationsButton } from "@/element/notifications-button";
 import { WarningButton } from "@/element/buttons";
 import Pill from "@/element/pill";
+import { useMediaQuery } from "usehooks-ts";
 
-function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
+function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
   const login = useLogin();
   const navigate = useNavigate();
@@ -55,11 +55,11 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
   const viewers = Number(participants ?? "0");
   return (
     <>
-      <div className="flex gap-2 max-lg:px-2 max-xl:flex-col">
+      <div className="flex gap-2 max-xl:flex-col">
         <div className="grow flex flex-col gap-2 max-xl:hidden">
           <h1>{title}</h1>
           <p>{summary}</p>
-          <div className="tags">
+          <div className="flex gap-2 flex-wrap">
             <StatePill state={status as StreamState} />
             <Pill>
               <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n: formatSats(viewers) }} />
@@ -72,7 +72,7 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
             {ev && <Tags ev={ev} />}
           </div>
           {isMine && (
-            <div className="actions">
+            <div className="flex gap-4">
               {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
               <WarningButton onClick={deleteStream}>
                 <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
@@ -80,7 +80,7 @@ function ProfileInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEv
             </div>
           )}
         </div>
-        <div className="flex justify-between sm:gap-4 max-sm:gap-2 nowrap max-md:flex-col lg:items-center">
+        <div className="flex justify-between sm:gap-4 max-sm:gap-2 flex-wrap max-md:flex-col lg:items-center">
           <Profile pubkey={host ?? ""} />
           <div className="flex gap-2">
             <FollowButton pubkey={host} hideWhenFollowing={true} />
@@ -133,6 +133,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
     goal: goalTag,
   } = extractStreamInfo(ev);
   const goal = useZapGoal(goalTag);
+  const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   if (contentWarning && !isContentWarningAccepted()) {
     return <ContentWarningOverlay />;
@@ -144,7 +145,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
     ...(tags ?? []),
   ].join(", ");
   return (
-    <div className="stream-page full-page-height">
+    <div className="xl:grid xl:grid-cols-[auto_450px] 2xl:xl:grid-cols-[auto_500px] max-xl:flex max-xl:flex-col xl:gap-4 h-[calc(100%-48px-1rem)]">
       <Helmet>
         <title>{`${title} - zap.stream`}</title>
         <meta name="description" content={descriptionContent} />
@@ -154,25 +155,28 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
         <meta property="og:description" content={descriptionContent} />
         <meta property="og:image" content={image ?? ""} />
       </Helmet>
-      <div className="video-content">
+      <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
         <Suspense>
           <LiveVideoPlayer
             title={title}
             stream={status === StreamState.Live ? stream : recording}
             poster={image}
             status={status}
+            className="max-xl:max-h-[30vh] xl:w-full mx-auto"
           />
         </Suspense>
-        <ProfileInfo ev={ev as TaggedNostrEvent} goal={goal} />
-        <StreamCards host={host} />
+        <StreamInfo ev={ev as TaggedNostrEvent} goal={goal} />
+        {isDesktop && <StreamCards host={host} />}
       </div>
       <LiveChat
         link={evLink ?? link}
         ev={ev}
         goal={goal}
-        options={{
-          canWrite: status === StreamState.Live,
-        }}
+        canWrite={status === StreamState.Live}
+        showHeader={isDesktop}
+        showTopZappers={isDesktop}
+        showGoal={true}
+        className="min-h-0 xl:border xl:border-layer-1 xl:rounded-xl xl:p-5"
       />
     </div>
   );

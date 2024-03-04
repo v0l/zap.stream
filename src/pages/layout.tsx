@@ -12,10 +12,9 @@ import { useLogin, useLoginEvents } from "@/hooks/login";
 import { Profile } from "@/element/profile";
 import { NewStreamDialog } from "@/element/new-stream";
 import { LoginSignup } from "@/element/login-signup";
-import { Login } from "@/index";
+import { Login } from "@/login";
 import { useLang } from "@/hooks/lang";
 import { AllLocales } from "@/intl";
-import { NewVersion } from "@/serviceWorker";
 import { trackEvent } from "@/utils";
 import { BorderButton, DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
@@ -117,8 +116,13 @@ export function LayoutPage() {
           <Icon name="login" />
         </BorderButton>
         {showLogin && (
-          <Modal id="login">
-            <LoginSignup close={() => setShowLogin(false)} />
+          <Modal
+            id="login"
+            onClose={() => setShowLogin(false)}
+            bodyClassName="my-auto bg-layer-1 rounded-xl overflow-hidden">
+            <div className="w-full">
+              <LoginSignup close={() => setShowLogin(false)} />
+            </div>
           </Modal>
         )}
       </>
@@ -130,17 +134,16 @@ export function LayoutPage() {
     (styles as Record<string, string>)["--primary"] = login.color;
   }
   return (
-    <div className="page" style={styles}>
+    <div className="pt-4 px-2 xl:px-5 h-[calc(100dvh-1rem)]" style={styles}>
       <Helmet>
         <title>Home - zap.stream</title>
       </Helmet>
-      <header>
+      <div className="flex justify-between mb-4">
         <div
           className="bg-white text-black flex items-center cursor-pointer rounded-2xl aspect-square px-1"
           onClick={() => navigate("/")}>
           <Logo width={40} height={40} />
         </div>
-        <div className="grow flex items-center gap-2"></div>
         <div className="flex items-center gap-3">
           <Link
             to="https://discord.gg/Wtg6NVDdbT"
@@ -153,9 +156,8 @@ export function LayoutPage() {
           {loggedIn()}
           {loggedOut()}
         </div>
-      </header>
+      </div>
       <Outlet />
-      {NewVersion && <NewVersionBanner />}
     </div>
   );
 }

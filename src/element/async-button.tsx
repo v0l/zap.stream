@@ -12,15 +12,17 @@ const AsyncButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((props: Asyn
   const [loading, setLoading] = useState<boolean>(false);
 
   async function handle(e: React.MouseEvent) {
-    e.stopPropagation();
-    if (loading || props.disabled) return;
-    setLoading(true);
-    try {
-      if (props.onClick) {
-        await props.onClick(e);
+    if (props.onClick) {
+      e.stopPropagation();
+      if (loading || props.disabled) return;
+      setLoading(true);
+      try {
+        if (props.onClick) {
+          await props.onClick(e);
+        }
+      } finally {
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
     }
   }
 

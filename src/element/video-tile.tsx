@@ -50,7 +50,7 @@ export function VideoTile({
         </div>
         <h3>{title}</h3>
       </Link>
-      <div className="flex gap-1">
+      <div className="flex gap-1 flex-wrap">
         <Tags ev={ev} max={3} />
       </div>
       {showAuthor && <Profile pubkey={host} />}
