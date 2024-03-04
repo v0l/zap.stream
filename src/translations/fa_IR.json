@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "اتصال"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "مبلغ"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "پاک کردن"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "ذخیره کلید"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "آغاز"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "برچسب‌ها"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "کپی"
-  },
-  "4uI538": {
-    "defaultMessage": "وضوح"
   },
   "50+/JW": {
     "defaultMessage": "کلید پخش لازم است"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "عنوان"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "محتوای نامناسب برای کودکان و محل کار"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "نظر شما درباره {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "بعدا می توانید این را با آدرس خود تعویض کنید."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "نام"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "هدفی انتخاب کنید..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "مدت پخش {duration} دقیقه"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "در حال بارگذاری..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "نه، من زیر ۱۸ سال هستم"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "کلید پخش زنده"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "اشتراک‌گذاری"
   },
-  "OWgHbg": {
-    "defaultMessage": "ویرایش کارت"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "شما را به یک کیف پول لایتنینگ وصل کردیم تا بتوانید بی درنگ از ببینندگان خود ساتوشی بگیرید!"
   },
   "PA0ej4": {
     "defaultMessage": "ساخت کلیپ"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "پوسته"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "ایجاد هدف"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "واکنش ها"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "این روش ناامن است. توصیه می کنیم از یک {nostrlink} استفاده کنید"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "بعدا می توانید این را تغییر دهید"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "گسیل!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "ناشناس"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "بزرگترین زپ ها"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "افزونه ناستر"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} پیام"
-  },
-  "hGQqkW": {
-    "defaultMessage": "زمان‌بندی"
   },
   "hMzcSq": {
     "defaultMessage": "پیام"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "صدا"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "شرح مختصری از محتوا"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "محتوای نمایان جنسی در پیش است!"
   },
-  "rbrahO": {
-    "defaultMessage": "بستن"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "ذخیره کارت"
-  },
   "rgsbu9": {
     "defaultMessage": "بیننندگان فعلی"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "ایجاد حساب کاربری"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "پخش زنده"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "درجه صدا"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "Unganisha"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "Kiasi"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "Futa"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Okoa ufunguo"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Huanza"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "Vitambulisho"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "Nakala"
-  },
-  "4uI538": {
-    "defaultMessage": "Maazimio"
   },
   "50+/JW": {
     "defaultMessage": "Ufunguo wa Kutiririsha unahitajika"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Kichwa"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "Maudhui ya NSFW"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "Maoni yako ya {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "Unaweza kubadilisha na kuweka anwani yako mwenyewe baadaye."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "Jina"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "Chagua lengo..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Muda wa Kutiririsha dak {duration}"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "Inapakia..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "Hapana, mimi ni chini ya miaka 18"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Ufunguo wa Kutiririsha"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "Shiriki"
   },
-  "OWgHbg": {
-    "defaultMessage": "Hariri kadi"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "Tulikuunganisha na pochi ya umeme ili uweze kulipwa na watazamaji mara moja!"
   },
   "PA0ej4": {
     "defaultMessage": "Tengeneza Klipu"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Mandhari"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "Tengeneza Lengo"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Miitikio"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "Njia hii haina usalama. Tunapendekeza utumie {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "Unaweza kubadilisha hii baadaye"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Uvamizi!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "Zappers za Juu"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Ugani wa Nostr"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} ujumbe"
-  },
-  "hGQqkW": {
-    "defaultMessage": "Schedule"
   },
   "hMzcSq": {
     "defaultMessage": "Ujumbe"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "Sauti"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "Maelezo mafupi ya yaliyomo"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "Nyenzo za ngono wazi mbele yako!"
   },
-  "rbrahO": {
-    "defaultMessage": "Funga"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "Hifadhi kadi"
-  },
   "rgsbu9": {
     "defaultMessage": "Watazamaji wa Sasa"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Fungua Akaunti"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Tiririsha"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "Kiasi"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

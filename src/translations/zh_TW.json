@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "連接"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "金額"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "清除"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "保存密鑰"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "開始"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "標籤"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "複製"
-  },
-  "4uI538": {
-    "defaultMessage": "解析度"
   },
   "50+/JW": {
     "defaultMessage": "需要直播流密鑰"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "標題"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW 内容"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "給 {name} 的留言"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "你始終可以用你自己的地址替換它。"
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "名稱"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "選擇目標..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "直播時長 {duration} 分鐘"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "正在上傳..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "不，我未滿18歲"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "直播流密鑰"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "分享"
   },
-  "OWgHbg": {
-    "defaultMessage": "編輯卡片"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "我們已經為你設置了一個閃電錢包，因此你立即可以開始收取觀眾的付款！"
   },
   "PA0ej4": {
     "defaultMessage": "創建剪輯"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "主題"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "創建目標"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "回應"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "這個方式不安全。我們建議使用{nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "你可以稍後更改它"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Raid!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "匿名"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "最高打閃用戶"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Nostr 擴充功能"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} 條消息"
-  },
-  "hGQqkW": {
-    "defaultMessage": "時間表"
   },
   "hMzcSq": {
     "defaultMessage": "消息"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "語音"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "內容的簡短描述"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "前方有色情內容！"
   },
-  "rbrahO": {
-    "defaultMessage": "關閉"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "保存卡片"
-  },
   "rgsbu9": {
     "defaultMessage": "目前觀看用戶"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "創建帳户"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "直播"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "音量"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "例如 nsec1xyz"

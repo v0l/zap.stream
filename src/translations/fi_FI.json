@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "Yhdistä"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "Määrä"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "Tyhjennä"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Tallenna avain"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Alkaa"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "Tunnisteet"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "Kopioi"
-  },
-  "4uI538": {
-    "defaultMessage": "Tarkkuudet"
   },
   "50+/JW": {
     "defaultMessage": "Suoratoistoavain on pakollinen"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Otsikko"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW-sisältöä"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "Kommenttisi kohteelle {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "Voit aina vaihtaa sen omaksi osoitteeksesi myöhemmin."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "Nimi"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "Valitse tavoite..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Suoratoiston kesto {duration} minuuttia"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "Ladataan..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "Ei, olen alle 18"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Streamin avain"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "Jaa"
   },
-  "OWgHbg": {
-    "defaultMessage": "Muokkaa korttia"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "Sait lightning-lompakon, jotta voit saada heti maksuja katsojilta!"
   },
   "PA0ej4": {
     "defaultMessage": "Luo leike"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Teema"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "Luo tavoite"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Reaktiot"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "Tämä menetelmä ei ole turvallinen. Suosittelemme käyttämään {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "Voit muuttaa tätä myöhemmin"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Rynnäkkö!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "Parhaat Zapparit"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Nostr-laajennus"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} viestiä"
-  },
-  "hGQqkW": {
-    "defaultMessage": "Aikataulu"
   },
   "hMzcSq": {
     "defaultMessage": "Viestit"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "Ääni"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "Lyhyt kuvaus sisällöstä"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "Seksuaalisesti paljastavaa materiaalia tulossa!"
   },
-  "rbrahO": {
-    "defaultMessage": "Sulje"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "Tallenna kortti"
-  },
   "rgsbu9": {
     "defaultMessage": "Nykyiset katsojat"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Luo tili"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Streamaa"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "Äänenvoimakkuus"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "esim. nsec1xyz"

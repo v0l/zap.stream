@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "Csatlakozás"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "Mennyiség"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "Töröl"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Kulcs Mentése"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Indul"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "Címkék"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "Másolás"
-  },
-  "4uI538": {
-    "defaultMessage": "Felbontások"
   },
   "50+/JW": {
     "defaultMessage": "Stream Key szükséges"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Cím"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "Kifogásolható tartalom"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "Megjegyzésed neki: {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "Később a saját címedre bármikor lecserélheted."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "Név"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "Tűzz ki egy célt..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Stream időtartama {duration} perc"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "Feltöltés..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "Nem, 18 év alatti vagyok"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Stream kulcs"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "Megosztás"
   },
-  "OWgHbg": {
-    "defaultMessage": "Kártya szerkesztése"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "Egy LN tárcával összekötöttünk, hogy a nézők támogatásait azonnal megkaphasd!"
   },
   "PA0ej4": {
     "defaultMessage": "Clip létrehozása"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Téma"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "Cél kitűzése"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Reakciók"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "Ez a módszer nem biztonságos. Javasoljuk a {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "Ezt később megváltoztathatod"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Rajtaütés!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "Top zapperek"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Nostr Kiegészítő"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} üzenetek"
-  },
-  "hGQqkW": {
-    "defaultMessage": "Időzítés"
   },
   "hMzcSq": {
     "defaultMessage": "Üzenetek"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "Hang"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "A tartalom rövid leírása"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "Nyíltan szexuális tartalmú anyagok lesznek!"
   },
-  "rbrahO": {
-    "defaultMessage": "Bezárás"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "Kártya mentése"
-  },
   "rgsbu9": {
     "defaultMessage": "Jelenleg Nézik"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Fiók létrehozása"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Közvetítés"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "Hangerő"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "pl. nsec1xyz"

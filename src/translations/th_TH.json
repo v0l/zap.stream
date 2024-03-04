@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "เชื่อมต่อ"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "จำนวน"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "ล้าง"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "บันทึกรหัส"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "เริ่ม"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "แท็ก"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "คัดลอก"
-  },
-  "4uI538": {
-    "defaultMessage": "ความละเอียด"
   },
   "50+/JW": {
     "defaultMessage": "ต้องการใช้ Stream Key"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "หัวข้อ"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "เนื้อหาที่ไม่เหมาะสม"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "ฝากข้อความถึง {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "คุณสามารถเปลี่ยนเป็นที่อยู่ของคุณได้ภายหลัง"
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "ชื่อ"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "เลือกเป้าหมาย Zap"
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "ถ่ายทอดแล้ว {duration} นาที"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "กำลังอัปโหลด..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "ฉันอายุต่ำกว่า 18 ปี"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Stream Key"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "แชร์"
   },
-  "OWgHbg": {
-    "defaultMessage": "เเก้ไขการ์ด"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "เราได้เพิ่มกระเป๋า Lightning ให้คุณสามารถรับ sats จากผู้เข้าชมได้"
   },
   "PA0ej4": {
     "defaultMessage": "สร้างคลิป"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "ธีม"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "สร้างเป้าหมาย"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "ปฏิกิริยา"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "วิธีนี้แลจะไม่ปลอดภัยเท่าไหร่ แนะนำให้ใช้ {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "คุณยังสามารถเปลี่ยนได้ในภายหลัง"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "เข้าชม!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "อานนท์"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "สุดยอดมือ Zap"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "ติดตั้ง Extension"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} ข้อความ"
-  },
-  "hGQqkW": {
-    "defaultMessage": "กำหนดการ"
   },
   "hMzcSq": {
     "defaultMessage": "ข้อความ"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "เสียงพูด"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "เพิ่มคำอธิบายเกี่ยวกับถ่ายทอดสดนี้"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "เตือน! เนื้อหามีส่วนของภาพโป๊เปลือย หรือสื่อลามก"
   },
-  "rbrahO": {
-    "defaultMessage": "ปิด"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "บันทึกการ์ด"
-  },
   "rgsbu9": {
     "defaultMessage": "ผู้ชมตอนนี้"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "สร้างบัญชีใหม่"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "ถ่ายทอดสด"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "ระดับเสียง"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "ตัวอย่าง: nsec1xyzy"

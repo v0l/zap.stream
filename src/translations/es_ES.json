@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "Conectar"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "Cantidad"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "Restablecer"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Guardar clave"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Inicia"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "Etiquetas"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "Copiar"
-  },
-  "4uI538": {
-    "defaultMessage": "Resoluciones"
   },
   "50+/JW": {
     "defaultMessage": "Stream Key es necesario"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Título"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "Contenido NSFW -No Apto Para el Trabajo-"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "Tu comentario para {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "Siempre puedes sustituirla por tu propia dirección más adelante."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "Nombre"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "Selecciona un objetivo..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Duración del flujo {duration} mins"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "Subiendo..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "No, soy menor de 18 años"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Clave de transmisión"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "Compartir"
   },
-  "OWgHbg": {
-    "defaultMessage": "Editar tarjeta"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "¡Te conectamos con un monedero relámpago para que puedas cobrar de inmediato de los espectadores!"
   },
   "PA0ej4": {
     "defaultMessage": "Crear clip"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Tema"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "Crear objetivo"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Reacciones"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "Este método es inseguro. Le recomendamos que utilice {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "Podrás cambiar esto más tarde"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "¡Redada!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "Mejores Zapeadores"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Extensión Nostr"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} mensajes"
-  },
-  "hGQqkW": {
-    "defaultMessage": "Programar"
   },
   "hMzcSq": {
     "defaultMessage": "Mensajes"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "Voz"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "Breve descripción del contenido"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "¡Material sexualmente explícito por delante!"
   },
-  "rbrahO": {
-    "defaultMessage": "Cerrar"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "Guardar tarjeta"
-  },
   "rgsbu9": {
     "defaultMessage": "Espectadores Actuales"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Crear una cuenta"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Transmisión"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "Volumen"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "ej. nsec1xyz"

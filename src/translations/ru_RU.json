@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "Подключить"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "Количество"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "Сбросить"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Сохранить ключ"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Начало"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "Теги"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "Копировать"
-  },
-  "4uI538": {
-    "defaultMessage": "Расширения"
   },
   "50+/JW": {
     "defaultMessage": "Требуется ключ потока"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Название"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW контент"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "Ваш комментарий к {name}"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "Можно заменить своим адресом позже."
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "Название"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "Выберите цель..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Продолжительность потока {duration} мин."
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "Загрузка..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "Нет, я моложе 18 лет"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "Ключ стрима"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "Поделиться"
   },
-  "OWgHbg": {
-    "defaultMessage": "Редактировать карточку"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "Мы подключили вас с помощью лайтнинг-кошелька, чтобы вы уже сейчас могли получать средства от зрителей!"
   },
   "PA0ej4": {
     "defaultMessage": "Создать клип"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Тема"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "Установить цель"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Отклики"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "Этот метод небезопасен. Мы рекомендуем использовать {nostrlink}"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "Вы сможете изменить эту настройку позже"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Рейд!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Анон"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "Топ поддержавших"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Nostr расширение"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} сообщения"
-  },
-  "hGQqkW": {
-    "defaultMessage": "Запланировать"
   },
   "hMzcSq": {
     "defaultMessage": "Сообщения"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "Голос"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "Краткое описание контента"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "Сексуально откровенный материал!"
   },
-  "rbrahO": {
-    "defaultMessage": "Закрыть"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "Сохранить карточку"
-  },
   "rgsbu9": {
     "defaultMessage": "Текущие зрители"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Создать аккаунт"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Стрим"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "Объем"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "например, nsec1xyz"

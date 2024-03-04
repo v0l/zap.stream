@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "সংযুক্ত হোন"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "পরিমাণ"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "পরিষ্কার"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "চাবি সংরক্ষণ করুন"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "Starts"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "ট্যাগগুলি"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "প্রতিলিপি তৈরি করুন"
-  },
-  "4uI538": {
-    "defaultMessage": "রেজোলিউশন"
   },
   "50+/JW": {
     "defaultMessage": "Stream Key is required"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "শিরোনাম"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW আধেয়"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "{name} এর উদ্দেশে আপনার মন্তব্য"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "আপনি পরে সর্বদাই এটাকে নিজের ঠিকানা দিয়ে প্রতিস্থাপন করতে পারবেন।"
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "নাম"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "একটি লক্ষ্য নির্বাচন করুন..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "Stream Duration {duration} mins"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "আপলোড করা হচ্ছে..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "না, আমি ১৮ বছরের নিচে"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "চাবি স্ট্রিম করুন"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "শেয়ার করুন"
   },
-  "OWgHbg": {
-    "defaultMessage": "কার্ড সম্পাদনা করুন"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "আমরা আপনাকে একটি বিজলি ওয়ালেটের ব্যবস্থা করে দিয়েছি যাতে আপনি দর্শকদের কাছ থেকে তৎক্ষণাৎ পারিশ্রমিক নিতে পারেন!"
   },
   "PA0ej4": {
     "defaultMessage": "Create Clip"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "লক্ষ্য নির্ধারণ করুন"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "Reactions"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "এই পদ্ধতিটি নিরাপদ নয়। আমরা একটি {nostrlink} ব্যবহারের পরামর্শ দিচ্ছি।"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "আপনি এটি পরে পরিবর্তন করতে পারবেন"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "Raid!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "শীর্ষ জ্যাপ প্রদানকারী"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "নস্টার এক্সটেনশন"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} messages"
-  },
-  "hGQqkW": {
-    "defaultMessage": "সময়সূচী"
   },
   "hMzcSq": {
     "defaultMessage": "Messages"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "কণ্ঠস্বর"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "বিষয়বস্তুর একটি সংক্ষিপ্ত বিবরণ"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "সামনে যৌনতাপূর্ণ উপাদান রয়েছে!"
   },
-  "rbrahO": {
-    "defaultMessage": "বন্ধ করুন"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "কার্ড সংরক্ষণ করুন"
-  },
   "rgsbu9": {
     "defaultMessage": "বর্তমান দর্শক"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "একটি অ্যাকাউন্ট তৈরি করুন"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "স্ট্রিম"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "ভলিউম"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "যেমন: nsec1xyz"

@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "defaultMessage": "接続"
   },
+  "+y6JUK": {
+    "defaultMessage": "Raids"
+  },
   "/0TOL5": {
     "defaultMessage": "金額"
   },
@@ -19,6 +22,9 @@
   },
   "/GCoTA": {
     "defaultMessage": "クリア"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "Total: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "鍵の保存"
@@ -31,6 +37,9 @@
   },
   "0hNxBy": {
     "defaultMessage": "スタート"
+  },
+  "0rVLjV": {
+    "defaultMessage": "No streams yet"
   },
   "1EYCdR": {
     "defaultMessage": "タグ"
@@ -67,9 +76,6 @@
   },
   "4l6vz1": {
     "defaultMessage": "コピー"
-  },
-  "4uI538": {
-    "defaultMessage": "解像度"
   },
   "50+/JW": {
     "defaultMessage": "ストリームキーが必要"
@@ -113,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "タイトル"
   },
+  "ALdW69": {
+    "defaultMessage": "Note by {name}"
+  },
   "Atr2p4": {
     "defaultMessage": "不適切な内容"
   },
@@ -152,6 +161,9 @@
   "ESyhzp": {
     "defaultMessage": "{name} へのコメント"
   },
+  "FIDK5Y": {
+    "defaultMessage": "All Time Top Zappers"
+  },
   "FjDlus": {
     "defaultMessage": "後でいつでも自分の住所に置き換えることができる。"
   },
@@ -182,6 +194,9 @@
   "HAlOn1": {
     "defaultMessage": "名前"
   },
+  "HsgeUk": {
+    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  },
   "I/TubD": {
     "defaultMessage": "ゴールを選択..."
   },
@@ -197,6 +212,9 @@
   "J/+m9y": {
     "defaultMessage": "ストリームの所要時間 {duration} 分"
   },
+  "JCIgkj": {
+    "defaultMessage": "Username"
+  },
   "JEsxDw": {
     "defaultMessage": "アップロード中..."
   },
@@ -211,6 +229,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "いいえ、私は18歳以下です"
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap Goals"
   },
   "LknBsU": {
     "defaultMessage": "配信キー"
@@ -230,14 +251,17 @@
   "OKhRC6": {
     "defaultMessage": "共有"
   },
-  "OWgHbg": {
-    "defaultMessage": "カードの編集"
+  "ObZZEz": {
+    "defaultMessage": "No clips yet"
   },
   "Oxqtyf": {
     "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
   },
   "PA0ej4": {
     "defaultMessage": "クリップ作成"
+  },
+  "PUymyQ": {
+    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "テーマ"
@@ -308,6 +332,9 @@
   "X2PZ7D": {
     "defaultMessage": "目標を設定"
   },
+  "XMGfiA": {
+    "defaultMessage": "Recent Clips"
+  },
   "XgWvGA": {
     "defaultMessage": "反応"
   },
@@ -327,6 +354,12 @@
   "Z8ZOEY": {
     "defaultMessage": "この方法は安全ではありません。 {nostrlink}。"
   },
+  "ZXp0z1": {
+    "defaultMessage": "Features"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "No goals yet"
+  },
   "ZmqxZs": {
     "defaultMessage": "これはあとで変更することができます"
   },
@@ -338,6 +371,9 @@
   },
   "aqjZxs": {
     "defaultMessage": "襲撃だ！"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "Edit Cards"
   },
   "bfvyfs": {
     "defaultMessage": "アノン"
@@ -360,6 +396,9 @@
   "dVD/AR": {
     "defaultMessage": "トップザッパー"
   },
+  "dkUMIH": {
+    "defaultMessage": "Clip by {name}"
+  },
   "ebmhes": {
     "defaultMessage": "Nostr 拡張機能"
   },
@@ -377,9 +416,6 @@
   },
   "gzsn7k": {
     "defaultMessage": "{n} メッセージ"
-  },
-  "hGQqkW": {
-    "defaultMessage": "配信予定"
   },
   "hMzcSq": {
     "defaultMessage": "メッセージ"
@@ -441,6 +477,9 @@
   "mnJYBQ": {
     "defaultMessage": "声"
   },
+  "mrwfXX": {
+    "defaultMessage": "Shares"
+  },
   "mtNGwh": {
     "defaultMessage": "コンテンツの簡単な説明"
   },
@@ -474,12 +513,6 @@
   "rWBFZA": {
     "defaultMessage": "性的に露骨な表現が含まれています！"
   },
-  "rbrahO": {
-    "defaultMessage": "終了"
-  },
-  "rfC1Zq": {
-    "defaultMessage": "カードを保存する"
-  },
   "rgsbu9": {
     "defaultMessage": "現在の視聴者数"
   },
@@ -506,6 +539,9 @@
   },
   "u6uD94": {
     "defaultMessage": "アカウントの作成"
+  },
+  "uTonxS": {
+    "defaultMessage": "Avatar upload fialed"
   },
   "uYw2LD": {
     "defaultMessage": "配信"
@@ -536,6 +572,9 @@
   },
   "y867Vs": {
     "defaultMessage": "ボリューム"
+  },
+  "yLxIgl": {
+    "defaultMessage": "Clips"
   },
   "yzKwBQ": {
     "defaultMessage": "例：nsec1xyz"
