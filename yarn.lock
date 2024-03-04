@@ -2385,14 +2385,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/worker-relay@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@snort/worker-relay@npm:1.0.5"
+"@snort/worker-relay@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "@snort/worker-relay@npm:1.0.8"
   dependencies:
     "@sqlite.org/sqlite-wasm": ^3.45.1-build1
     eventemitter3: ^5.0.1
     uuid: ^9.0.1
-  checksum: 165512a60cc447cde41902ba9a653e6a29cfe9747d626650e23f67e6dab307194a9a7f0dd8b78fa94fae1b20ce60f8425441388b94a1991854a68ef2df218c82
+  checksum: 5e99396754634575069aee135cecb94a29eb2b77637daa48ac7a08ea3c5ef5f3e35374b7eff8623bc0bf7f1aab55b177492c7a0ac7cf8f003bb21131391b37e0
   languageName: node
   linkType: hard
 
@@ -6148,6 +6148,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.4.35":
+  version: 8.4.35
+  resolution: "postcss@npm:8.4.35"
+  dependencies:
+    nanoid: ^3.3.7
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: cf3c3124d3912a507603f6d9a49b3783f741075e9aa73eb592a6dd9194f9edab9d20a8875d16d137d4f779fe7b6fbd1f5727e39bfd1c3003724980ee4995e1da
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -7104,7 +7115,7 @@ __metadata:
     "@snort/system-react": ^1.2.12
     "@snort/system-wasm": ^1.0.2
     "@snort/system-web": ^1.2.11
-    "@snort/worker-relay": ^1.0.5
+    "@snort/worker-relay": ^1.0.8
     "@sqlite.org/sqlite-wasm": ^3.45.1-build1
     "@szhsin/react-menu": ^4.0.2
     "@testing-library/dom": ^9.3.1
@@ -7148,7 +7159,7 @@ __metadata:
     tailwindcss: ^3.3.5
     typescript: ^5.2.2
     usehooks-ts: ^2.9.1
-    vite: ^5.0.5
+    vite: ^5.1.4
     vite-plugin-pwa: ^0.17.2
     vite-plugin-version-mark: ^0.0.10
     web-vitals: ^2.1.0
@@ -7814,13 +7825,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.5":
-  version: 5.0.5
-  resolution: "vite@npm:5.0.5"
+"vite@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "vite@npm:5.1.4"
   dependencies:
     esbuild: ^0.19.3
     fsevents: ~2.3.3
-    postcss: ^8.4.32
+    postcss: ^8.4.35
     rollup: ^4.2.0
   peerDependencies:
     "@types/node": ^18.0.0 || >=20.0.0
@@ -7850,7 +7861,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 8df70302934de39ad6fda4f28246e07850f849c2bd197b7af93615f5f39955be460dd19940a46ec5bf2adf81bc32b60985eb5990142212754c733eba4fe3bfa3
+  checksum: fb8b944c69fd738b412ad10471f01db01ed59b5d7fdf182b836b420b221a8bd5ada74d225a87aaa80cf8d2b693cc4a89ab7c291254a8b4e6faefd93843ebb9d3
   languageName: node
   linkType: hard
 

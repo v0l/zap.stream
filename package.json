@@ -11,7 +11,7 @@
     "@snort/system-react": "^1.2.12",
     "@snort/system-wasm": "^1.0.2",
     "@snort/system-web": "^1.2.11",
-    "@snort/worker-relay": "^1.0.5",
+    "@snort/worker-relay": "^1.0.8",
     "@sqlite.org/sqlite-wasm": "^3.45.1-build1",
     "@szhsin/react-menu": "^4.0.2",
     "@types/webscopeio__react-textarea-autocomplete": "^4.7.2",
@@ -92,7 +92,7 @@
     "rollup-plugin-visualizer": "^5.10.0",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.5",
+    "vite": "^5.1.4",
     "vite-plugin-pwa": "^0.17.2",
     "vite-plugin-version-mark": "^0.0.10"
   },
