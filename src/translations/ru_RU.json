@@ -12,7 +12,7 @@
     "defaultMessage": "Подключить"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "Рейды"
   },
   "/0TOL5": {
     "defaultMessage": "Количество"
@@ -24,7 +24,7 @@
     "defaultMessage": "Сбросить"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "Всего: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Сохранить ключ"
@@ -39,7 +39,7 @@
     "defaultMessage": "Начало"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Потоков пока нет"
   },
   "1EYCdR": {
     "defaultMessage": "Теги"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Название"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "Заметка на сайте {name}"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW контент"
@@ -162,7 +165,7 @@
     "defaultMessage": "Ваш комментарий к {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Самые лучшие загрузчики за все время"
   },
   "FjDlus": {
     "defaultMessage": "Можно заменить своим адресом позже."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Лучшие чаты"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Обновите страницу, чтобы использовать последнюю версию"
   },
   "Gq6x9o": {
     "defaultMessage": "Обложка"
@@ -195,7 +195,7 @@
     "defaultMessage": "Название"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Загляните в мой поток на zap.stream! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Выберите цель..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Продолжительность потока {duration} мин."
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Имя пользователя"
   },
   "JEsxDw": {
     "defaultMessage": "Загрузка..."
@@ -231,7 +231,7 @@
     "defaultMessage": "Нет, я моложе 18 лет"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "Цели"
   },
   "LknBsU": {
     "defaultMessage": "Ключ стрима"
@@ -252,7 +252,7 @@
     "defaultMessage": "Поделиться"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Клипов пока нет"
   },
   "Oxqtyf": {
     "defaultMessage": "Мы подключили вас с помощью лайтнинг-кошелька, чтобы вы уже сейчас могли получать средства от зрителей!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Создать клип"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Загляните на {name} stream на zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Тема"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} с {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "Обнаружена новая версия"
   },
   "RJOmzk": {
     "defaultMessage": "Я прочитал и согласен с {provider} {terms}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Скрыть"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Получить ключ потока"
   },
   "W7DNWx": {
     "defaultMessage": "Переадресация потоков"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Включить уведомления"
@@ -333,13 +336,13 @@
     "defaultMessage": "Установить цель"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Последние клипы"
   },
   "XgWvGA": {
     "defaultMessage": "Отклики"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "URL-адрес записи"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -349,16 +352,16 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Название клипа"
   },
   "Z8ZOEY": {
     "defaultMessage": "Этот метод небезопасен. Мы рекомендуем использовать {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Характеристики"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Целей пока нет"
   },
   "ZmqxZs": {
     "defaultMessage": "Вы сможете изменить эту настройку позже"
@@ -373,7 +376,7 @@
     "defaultMessage": "Рейд!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Редактировать карты"
   },
   "bfvyfs": {
     "defaultMessage": "Анон"
@@ -397,7 +400,7 @@
     "defaultMessage": "Топ поддержавших"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "Клип: {name}"
   },
   "ebmhes": {
     "defaultMessage": "Nostr расширение"
@@ -442,7 +445,7 @@
     "defaultMessage": "Рейд {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Опубликовать клип"
   },
   "jctiUc": {
     "defaultMessage": "Наибольшее количество зрителей"
@@ -478,7 +481,7 @@
     "defaultMessage": "Голос"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Акции"
   },
   "mtNGwh": {
     "defaultMessage": "Краткое описание контента"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Войти"
-  },
-  "rELDbB": {
-    "defaultMessage": "Обновить"
   },
   "rWBFZA": {
     "defaultMessage": "Сексуально откровенный материал!"
@@ -541,7 +541,7 @@
     "defaultMessage": "Создать аккаунт"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "Аватар загружается с ошибкой"
   },
   "uYw2LD": {
     "defaultMessage": "Стрим"
@@ -570,11 +570,14 @@
   "x82IOl": {
     "defaultMessage": "Заглушить"
   },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
   "y867Vs": {
     "defaultMessage": "Объем"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "Клипы"
   },
   "yzKwBQ": {
     "defaultMessage": "например, nsec1xyz"

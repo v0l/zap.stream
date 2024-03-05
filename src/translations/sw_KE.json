@@ -119,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Kichwa"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
     "defaultMessage": "Note by {name}"
   },
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Wapiga Soga Maarufu"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Onyesha upya ukurasa ili kutumia toleo jipya zaidi"
   },
   "Gq6x9o": {
     "defaultMessage": "Picha ya Jalada"
@@ -284,9 +284,6 @@
   "Qe1MJu": {
     "defaultMessage": "{name} pamoja na {amount}"
   },
-  "RJ2VxG": {
-    "defaultMessage": "Toleo jipya limegunduliwa"
-  },
   "RJOmzk": {
     "defaultMessage": "Nimesoma na kukubaliana na {terms} ya {provider}."
   },
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Ficha"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "Pata Ufunguo wa Kutiririsha"
   },
   "W7DNWx": {
     "defaultMessage": "Usambazaji wa Mtiririko"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Rejesha"
@@ -507,9 +510,6 @@
   "r2Jjms": {
     "defaultMessage": "Ingia"
   },
-  "rELDbB": {
-    "defaultMessage": "Onyesha upya"
-  },
   "rWBFZA": {
     "defaultMessage": "Nyenzo za ngono wazi mbele yako!"
   },
@@ -569,6 +569,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Nyamazisha"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
     "defaultMessage": "Kiasi"

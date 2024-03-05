@@ -12,7 +12,7 @@
     "defaultMessage": "Anslut"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "Räder"
   },
   "/0TOL5": {
     "defaultMessage": "Belopp"
@@ -24,7 +24,7 @@
     "defaultMessage": "Rensa"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "Totalt: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Spara nyckel"
@@ -39,7 +39,7 @@
     "defaultMessage": "Startar"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Inga strömmar ännu"
   },
   "1EYCdR": {
     "defaultMessage": "Taggar"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Titel"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "Not från {name}"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-innehåll"
@@ -162,7 +165,7 @@
     "defaultMessage": "Din kommentar till {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Alla tiders toppzappare"
   },
   "FjDlus": {
     "defaultMessage": "Du kan alltid ersätta den med din egen adress senare."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "De bästa chattarna"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Uppdatera sidan för att använda den senaste versionen"
   },
   "Gq6x9o": {
     "defaultMessage": "Omslagsbild"
@@ -195,7 +195,7 @@
     "defaultMessage": "Namn"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Kom och kolla in min stream på zap.stream! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Välj ett mål..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Strömmens varaktighet {duration} min"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Användarnamn"
   },
   "JEsxDw": {
     "defaultMessage": "Laddar upp..."
@@ -231,7 +231,7 @@
     "defaultMessage": "Nej, jag är under 18 år"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "Zapa mål"
   },
   "LknBsU": {
     "defaultMessage": "Stream nyckel"
@@ -252,7 +252,7 @@
     "defaultMessage": "Dela"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Inga klipp ännu"
   },
   "Oxqtyf": {
     "defaultMessage": "Vi fixade en lightning plånbok till dig så att du kan få betalt av tittarna direkt!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Skapa klipp"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Kolla in {name} stream på zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Tema"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} med {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "En ny version har upptäckts"
   },
   "RJOmzk": {
     "defaultMessage": "Jag har läst och godkänner {provider}'s {terms}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Göm"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "Hämta Stream-nyckel"
   },
   "W7DNWx": {
     "defaultMessage": "Vidarebefordran av strömmar"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Avtysta"
@@ -333,7 +336,7 @@
     "defaultMessage": "Skapa mål"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Nya klipp"
   },
   "XgWvGA": {
     "defaultMessage": "Reaktioner"
@@ -355,10 +358,10 @@
     "defaultMessage": "Denna metod är osäker. Vi rekommenderar att du använder en {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Funktioner"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Inga mål ännu"
   },
   "ZmqxZs": {
     "defaultMessage": "Du kan ändra detta senare"
@@ -373,7 +376,7 @@
     "defaultMessage": "Raid!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Redigera kort"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -397,7 +400,7 @@
     "defaultMessage": "Topp Zappers"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "Klipp av {name}"
   },
   "ebmhes": {
     "defaultMessage": "Nostr Tillägg"
@@ -478,7 +481,7 @@
     "defaultMessage": "Röst"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Aktier"
   },
   "mtNGwh": {
     "defaultMessage": "En kort beskrivning av innehållet"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Logga In"
-  },
-  "rELDbB": {
-    "defaultMessage": "Uppdatera"
   },
   "rWBFZA": {
     "defaultMessage": "Sexuellt explicit material framöver!"
@@ -541,7 +541,7 @@
     "defaultMessage": "Skapa ett konto"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "Avatar uppladdning fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -570,11 +570,14 @@
   "x82IOl": {
     "defaultMessage": "Tysta"
   },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
   "y867Vs": {
     "defaultMessage": "Volym"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "Klipp"
   },
   "yzKwBQ": {
     "defaultMessage": "t.ex nsec1xyz"

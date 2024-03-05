@@ -119,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "標題"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
     "defaultMessage": "Note by {name}"
   },
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "最高聊天"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "刷新頁面以使用最新版本"
   },
   "Gq6x9o": {
     "defaultMessage": "封面圖片"
@@ -284,9 +284,6 @@
   "Qe1MJu": {
     "defaultMessage": "{amount}來自{name}"
   },
-  "RJ2VxG": {
-    "defaultMessage": "檢測到了新版本"
-  },
   "RJOmzk": {
     "defaultMessage": "我已閱讀並同意{provider}的{terms}。"
   },
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "隱藏"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "獲取直播流密鑰"
   },
   "W7DNWx": {
     "defaultMessage": "直播流轉發"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "解除静音"
@@ -507,9 +510,6 @@
   "r2Jjms": {
     "defaultMessage": "登錄"
   },
-  "rELDbB": {
-    "defaultMessage": "刷新"
-  },
   "rWBFZA": {
     "defaultMessage": "前方有色情內容！"
   },
@@ -569,6 +569,9 @@
   },
   "x82IOl": {
     "defaultMessage": "靜音"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
     "defaultMessage": "音量"

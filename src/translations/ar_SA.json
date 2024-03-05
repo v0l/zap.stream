@@ -3,343 +3,346 @@
     "defaultMessage": "صورة"
   },
   "+AcVD+": {
-    "defaultMessage": "No emails, just awesomeness!"
+    "defaultMessage": "لا رسائل بريد إلكتروني، فقط روعة!"
   },
   "+sdKx8": {
-    "defaultMessage": "Live now"
+    "defaultMessage": "بث مباشر الآن"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "الاتصال"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "المداهمات"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "المبلغ"
   },
   "/EvlqN": {
-    "defaultMessage": "nostr signer extension"
+    "defaultMessage": "تمديد موقّع نوستر"
   },
   "/GCoTA": {
-    "defaultMessage": "Clear"
+    "defaultMessage": "واضح"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "المجموع: {amount} ساتس"
   },
   "04lmFi": {
-    "defaultMessage": "Save Key"
+    "defaultMessage": "مفتاح الحفظ"
   },
   "0GfNiL": {
-    "defaultMessage": "Stream Zap Goals"
+    "defaultMessage": "أهداف البث Zap Zap Goals"
   },
   "0VV/sK": {
-    "defaultMessage": "Goal"
+    "defaultMessage": "الهدف"
   },
   "0hNxBy": {
-    "defaultMessage": "Starts"
+    "defaultMessage": "البدء"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "لا توجد تدفقات بعد"
   },
   "1EYCdR": {
-    "defaultMessage": "Tags"
+    "defaultMessage": "الوسوم"
   },
   "1q4BO/": {
-    "defaultMessage": "Not a valid URL"
+    "defaultMessage": "عنوان URL غير صالح"
   },
   "1qsXCO": {
-    "defaultMessage": "eg. name@wallet.com"
+    "defaultMessage": "على سبيل المثال: name@wallet.com"
   },
   "2/2yg+": {
-    "defaultMessage": "Add"
+    "defaultMessage": "إضافة"
   },
   "37mth/": {
-    "defaultMessage": "Viewers"
+    "defaultMessage": "المشاهدون"
   },
   "3HwrQo": {
-    "defaultMessage": "Zap!"
+    "defaultMessage": "انطلق!"
   },
   "3adEeb": {
-    "defaultMessage": "{n} viewers"
+    "defaultMessage": "{n} المشاهدون"
   },
   "3df560": {
-    "defaultMessage": "Login with private key"
+    "defaultMessage": "تسجيل الدخول بالمفتاح الخاص"
   },
   "47FYwb": {
-    "defaultMessage": "Cancel"
+    "defaultMessage": "إلغاء"
   },
   "4iBdw1": {
-    "defaultMessage": "Raid"
+    "defaultMessage": "الغارة"
   },
   "4l69eO": {
-    "defaultMessage": "Hmm, your lightning address looks wrong"
+    "defaultMessage": "يبدو عنوان البرق الخاص بك خاطئاً"
   },
   "4l6vz1": {
-    "defaultMessage": "Copy"
+    "defaultMessage": "نسخ"
   },
   "50+/JW": {
-    "defaultMessage": "Stream Key is required"
+    "defaultMessage": "مفتاح الدفق مطلوب"
   },
   "5JcXdV": {
-    "defaultMessage": "Create Account"
+    "defaultMessage": "إنشاء حساب"
   },
   "5QYdPU": {
-    "defaultMessage": "Start Time"
+    "defaultMessage": "وقت البدء"
   },
   "5kx+2v": {
-    "defaultMessage": "Server Url"
+    "defaultMessage": "عنوان الخادم"
   },
   "5tM0VD": {
-    "defaultMessage": "Stream Started"
+    "defaultMessage": "بدء البث"
   },
   "69hmpj": {
-    "defaultMessage": "Raid from {name}"
+    "defaultMessage": "غارة من {name}"
   },
   "6Z2pvJ": {
-    "defaultMessage": "Stream Providers"
+    "defaultMessage": "موفرو التدفق"
   },
   "6pr6hJ": {
-    "defaultMessage": "Minimum amount for text to speech"
+    "defaultMessage": "الحد الأدنى لمبلغ تحويل النص إلى كلام"
   },
   "7+bCC1": {
-    "defaultMessage": "Stream url must start with rtmp://"
+    "defaultMessage": "يجب أن يبدأ عنوان url البث ب rtmp://"
   },
   "79lLl+": {
-    "defaultMessage": "Music"
+    "defaultMessage": "الموسيقى"
   },
   "7UOvbT": {
-    "defaultMessage": "Offline"
+    "defaultMessage": "غير متصل بالإنترنت"
   },
   "8YT6ja": {
-    "defaultMessage": "Insert text to speak"
+    "defaultMessage": "إدراج نص للتحدث"
   },
   "9WRlF4": {
-    "defaultMessage": "Send"
+    "defaultMessage": "إرسال"
   },
   "9a9+ww": {
-    "defaultMessage": "Title"
+    "defaultMessage": "العنوان"
+  },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
   },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "ملاحظة من {name}"
   },
   "Atr2p4": {
-    "defaultMessage": "NSFW Content"
+    "defaultMessage": "محتوى غير لائق جنسيًا"
   },
   "AukrPM": {
-    "defaultMessage": "No viewer data available"
+    "defaultMessage": "لا تتوفر بيانات المشاهدين"
   },
   "AyGauy": {
-    "defaultMessage": "Login"
+    "defaultMessage": "تسجيل الدخول"
   },
   "BD0vyn": {
-    "defaultMessage": "{name} created a clip"
+    "defaultMessage": "{name} إنشاء مقطع"
   },
   "BGxpTN": {
-    "defaultMessage": "Stream Chat"
+    "defaultMessage": "دردشة البث"
   },
   "Bep/gA": {
-    "defaultMessage": "Private key"
+    "defaultMessage": "المفتاح الخاص"
   },
   "C81/uG": {
-    "defaultMessage": "Logout"
+    "defaultMessage": "تسجيل الخروج"
   },
   "CsCUYo": {
-    "defaultMessage": "{n} sats"
+    "defaultMessage": "{n} ساتس"
   },
   "D3idYv": {
-    "defaultMessage": "Settings"
+    "defaultMessage": "الإعدادات"
   },
   "DZKuuP": {
-    "defaultMessage": "Logged in as"
+    "defaultMessage": "تم تسجيل الدخول باسم"
   },
   "Dn82AL": {
-    "defaultMessage": "Live"
+    "defaultMessage": "بث مباشر"
   },
   "E9APoR": {
-    "defaultMessage": "Could not create stream URL"
+    "defaultMessage": "تعذر إنشاء عنوان URL للبث"
   },
   "ESyhzp": {
-    "defaultMessage": "Your comment for {name}"
+    "defaultMessage": "تعليقك على {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "أفضل الصاعقين في كل الأوقات"
   },
   "FjDlus": {
-    "defaultMessage": "You can always replace it with your own address later."
+    "defaultMessage": "يمكنك دائمًا استبداله بعنوانك الخاص لاحقًا."
   },
   "Fodi9+": {
-    "defaultMessage": "Get paid by viewers"
+    "defaultMessage": "الحصول على أموال من المشاهدين"
   },
   "G/yZLu": {
-    "defaultMessage": "Remove"
+    "defaultMessage": "إزالة"
   },
   "GGaJMU": {
-    "defaultMessage": "Top Chatters"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
+    "defaultMessage": "أفضل الدردشات"
   },
   "Gq6x9o": {
-    "defaultMessage": "Cover Image"
+    "defaultMessage": "صورة الغلاف"
   },
   "Gvxoji": {
-    "defaultMessage": "Name is required"
+    "defaultMessage": "الاسم مطلوب"
   },
   "H/bNs9": {
-    "defaultMessage": "Save this and keep it safe! If you lose this key, you won't be able to access your account ever again. Yep, it's that serious!"
+    "defaultMessage": "احفظ هذا واحتفظ به في مكان آمن! إذا فقدت هذا المفتاح، فلن تتمكن من الوصول إلى حسابك مرة أخرى. نعم، الأمر بهذه الجدية!"
   },
   "H5+NAX": {
-    "defaultMessage": "Balance"
+    "defaultMessage": "الرصيد"
   },
   "HAlOn1": {
-    "defaultMessage": "Name"
+    "defaultMessage": "الاسم"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "تعال وشاهد البث الخاص بي على zap.stream! {link}"
   },
   "I/TubD": {
-    "defaultMessage": "Select a goal..."
+    "defaultMessage": "اختر هدفاً..."
   },
   "I1kjHI": {
-    "defaultMessage": "Supports {markdown}"
+    "defaultMessage": "يدعم {markdown}"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap amount in {currency}"
+    "defaultMessage": "مقدار Zap في {currency}"
   },
   "INlWvJ": {
-    "defaultMessage": "OR"
+    "defaultMessage": "أو"
   },
   "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
+    "defaultMessage": "مدة البث {duration} دقيقة"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "اسم المستخدم"
   },
   "JEsxDw": {
-    "defaultMessage": "Uploading..."
+    "defaultMessage": "تحميل..."
   },
   "Jq3FDz": {
-    "defaultMessage": "Content"
+    "defaultMessage": "المحتوى"
   },
   "K3r6DQ": {
-    "defaultMessage": "Delete"
+    "defaultMessage": "حذف"
   },
   "K7AkdL": {
-    "defaultMessage": "Show"
+    "defaultMessage": "عرض"
   },
   "KkIL3s": {
-    "defaultMessage": "No, I am under 18"
+    "defaultMessage": "لا، عمري أقل من 18 عاماً"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "أهداف Zap Goals"
   },
   "LknBsU": {
-    "defaultMessage": "Stream Key"
+    "defaultMessage": "مفتاح الدفق"
   },
   "MTHO1W": {
-    "defaultMessage": "Start Raid"
+    "defaultMessage": "بدء الغارة"
   },
   "My6HwN": {
-    "defaultMessage": "Ok, it's safe"
+    "defaultMessage": "حسناً، إنه آمن"
   },
   "O2Cy6m": {
-    "defaultMessage": "Yes, I am over 18"
+    "defaultMessage": "نعم، عمري فوق 18 عاماً"
   },
   "OEW7yJ": {
-    "defaultMessage": "Zaps"
+    "defaultMessage": "الزابس"
   },
   "OKhRC6": {
-    "defaultMessage": "Share"
+    "defaultMessage": "شارك"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "لا توجد مقاطع بعد"
   },
   "Oxqtyf": {
-    "defaultMessage": "We hooked you up with a lightning wallet so you can get paid by viewers right away!"
+    "defaultMessage": "لقد قمنا بتزويدك بمحفظة برق حتى تتمكن من الحصول على أموالك من قبل المشاهدين على الفور!"
   },
   "PA0ej4": {
-    "defaultMessage": "Create Clip"
+    "defaultMessage": "إنشاء مقطع"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "تعال وشاهد البث {name} على zap.stream! {link}"
   },
   "Pe0ogR": {
-    "defaultMessage": "Theme"
+    "defaultMessage": "الموضوع"
   },
   "Q3au2v": {
-    "defaultMessage": "About {estimate}"
+    "defaultMessage": "حول {estimate}"
   },
   "QRHNuF": {
-    "defaultMessage": "What are we steaming today?"
+    "defaultMessage": "ما الذي نتبخره اليوم؟"
   },
   "QRRCp0": {
-    "defaultMessage": "Stream URL"
+    "defaultMessage": "عنوان URL للبث"
   },
   "QWlMq9": {
-    "defaultMessage": "Stream key"
+    "defaultMessage": "مفتاح الدفق"
   },
   "QceMQZ": {
-    "defaultMessage": "Goal: {amount}"
+    "defaultMessage": "الهدف: {amount}"
   },
   "Qe1MJu": {
-    "defaultMessage": "{name} with {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
+    "defaultMessage": "{name} مع {amount}"
   },
   "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
+    "defaultMessage": "لقد قرأت واتفق مع {provider}' {terms}."
   },
   "RS6smY": {
-    "defaultMessage": "Raid Message"
+    "defaultMessage": "رسالة الغارة"
   },
   "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+    "defaultMessage": "يرجى تسجيل الدخول لكتابة الرسائل!"
   },
   "RrCui3": {
-    "defaultMessage": "Summary"
+    "defaultMessage": "الملخص"
   },
   "RtYNX5": {
-    "defaultMessage": "Chat Users"
+    "defaultMessage": "مستخدمو الدردشة"
   },
   "TP/cMX": {
-    "defaultMessage": "Ended"
+    "defaultMessage": "انتهى"
   },
   "TaTRKo": {
-    "defaultMessage": "Start Stream"
+    "defaultMessage": "بدء البث"
   },
   "TwyMau": {
-    "defaultMessage": "Account"
+    "defaultMessage": "الحساب"
   },
   "UJBFYK": {
-    "defaultMessage": "Add Card"
+    "defaultMessage": "إضافة بطاقة"
   },
   "UfSot5": {
-    "defaultMessage": "Past Streams"
+    "defaultMessage": "التدفقات السابقة"
   },
   "VA/Z1S": {
-    "defaultMessage": "Hide"
+    "defaultMessage": "إخفاء"
+  },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
   },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "الحصول على مفتاح البث"
   },
   "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
+    "defaultMessage": "إعادة توجيه الدفق"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
-    "defaultMessage": "Unmute"
+    "defaultMessage": "إلغاء الكتم"
   },
   "X2PZ7D": {
-    "defaultMessage": "Create Goal"
+    "defaultMessage": "إنشاء هدف"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "أحدث المقاطع"
   },
   "XgWvGA": {
-    "defaultMessage": "Reactions"
+    "defaultMessage": "ردود الفعل"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "عنوان URL للتسجيل"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -349,237 +352,237 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "عنوان المقطع"
   },
   "Z8ZOEY": {
-    "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
+    "defaultMessage": "هذه الطريقة غير آمنة. نوصي باستخدام {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "الميزات"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "لا توجد أهداف بعد"
   },
   "ZmqxZs": {
-    "defaultMessage": "You can change this later"
+    "defaultMessage": "يمكنك تغيير ذلك لاحقاً"
   },
   "Zse7yG": {
-    "defaultMessage": "Raid target"
+    "defaultMessage": "هدف المداهمة"
   },
   "acrOoz": {
-    "defaultMessage": "Continue"
+    "defaultMessage": "تابع"
   },
   "aqjZxs": {
-    "defaultMessage": "Raid!"
+    "defaultMessage": "غارة"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "تحرير البطاقات"
   },
   "bfvyfs": {
-    "defaultMessage": "Anon"
+    "defaultMessage": "أنون"
   },
   "cPIKU2": {
-    "defaultMessage": "Following"
+    "defaultMessage": "ما يلي"
   },
   "cvAsEh": {
-    "defaultMessage": "Streamed on {date}"
+    "defaultMessage": "تم البث على {date}"
   },
   "cyR7Kh": {
-    "defaultMessage": "Back"
+    "defaultMessage": "رجوع"
   },
   "d5zWyh": {
-    "defaultMessage": "Test voice"
+    "defaultMessage": "اختبار الصوت"
   },
   "dOQCL8": {
-    "defaultMessage": "Display name"
+    "defaultMessage": "اسم العرض"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zappers"
+    "defaultMessage": "أفضل الصاعقين"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "مقطع من {name}"
   },
   "ebmhes": {
-    "defaultMessage": "Nostr Extension"
+    "defaultMessage": "ملحق نوستر"
   },
   "f6biFA": {
-    "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
+    "defaultMessage": "أوه، ولديك {n} سات من البث المجاني علينا! 💜"
   },
   "fBI91o": {
-    "defaultMessage": "Zap"
+    "defaultMessage": "زاب"
   },
   "fc2iho": {
-    "defaultMessage": "Add File"
+    "defaultMessage": "إضافة ملف"
   },
   "feZ/kG": {
-    "defaultMessage": "Login with Private Key (insecure)"
+    "defaultMessage": "تسجيل الدخول باستخدام المفتاح الخاص (غير آمن)"
   },
   "gzsn7k": {
-    "defaultMessage": "{n} messages"
+    "defaultMessage": "{n} الرسائل"
   },
   "hMzcSq": {
-    "defaultMessage": "Messages"
+    "defaultMessage": "الرسائل"
   },
   "heyxZL": {
-    "defaultMessage": "Enable text to speech"
+    "defaultMessage": "تمكين تحويل النص إلى كلام"
   },
   "hpl4BP": {
-    "defaultMessage": "Chat Widget"
+    "defaultMessage": "أداة الدردشة"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "لوحة التحكم"
   },
   "ieGrWo": {
-    "defaultMessage": "Follow"
+    "defaultMessage": "اتبع"
   },
   "itPgxd": {
-    "defaultMessage": "Profile"
+    "defaultMessage": "الملف الشخصي"
   },
   "izWS4J": {
-    "defaultMessage": "Unfollow"
+    "defaultMessage": "إلغاء المتابعة"
   },
   "j/jueq": {
-    "defaultMessage": "Raiding {name}"
+    "defaultMessage": "الإغارة {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "نشر المقطع"
   },
   "jctiUc": {
-    "defaultMessage": "Highest Viewers"
+    "defaultMessage": "أعلى نسبة مشاهدة"
   },
   "jgOqxt": {
-    "defaultMessage": "Widgets"
+    "defaultMessage": "الأدوات"
   },
   "jkAQj5": {
-    "defaultMessage": "Stream Ended"
+    "defaultMessage": "انتهى البث"
   },
   "jr4+vD": {
-    "defaultMessage": "Markdown"
+    "defaultMessage": "تخفيض السعر"
   },
   "jvo0vs": {
-    "defaultMessage": "Save"
+    "defaultMessage": "الحفظ"
   },
   "k21gTS": {
-    "defaultMessage": "e.g. about me"
+    "defaultMessage": "على سبيل المثال عني"
   },
   "kp0NPF": {
-    "defaultMessage": "Planned"
+    "defaultMessage": "مخطط"
   },
   "lZpRMR": {
-    "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+    "defaultMessage": "تحقق هنا إذا كان هذا البث يحتوي على محتوى إباحي أو عري."
   },
   "ljmS5P": {
-    "defaultMessage": "Endpoint"
+    "defaultMessage": "نقطة النهاية"
   },
   "miQKuZ": {
-    "defaultMessage": "Stream Time"
+    "defaultMessage": "وقت البث"
   },
   "mnJYBQ": {
-    "defaultMessage": "Voice"
+    "defaultMessage": "الصوت"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "الأسهم"
   },
   "mtNGwh": {
-    "defaultMessage": "A short description of the content"
+    "defaultMessage": "وصف موجز للمحتوى"
   },
   "nBCvvJ": {
-    "defaultMessage": "Topup"
+    "defaultMessage": "تعبئة الرصيد"
   },
   "nOaArs": {
-    "defaultMessage": "Setup Profile"
+    "defaultMessage": "ملف تعريف الإعداد"
   },
   "nwA8Os": {
-    "defaultMessage": "Add card"
+    "defaultMessage": "إضافة بطاقة"
   },
   "o8pHw3": {
-    "defaultMessage": "AUTO"
+    "defaultMessage": "تلقائي"
   },
   "oHPB8Q": {
-    "defaultMessage": "Zap {name}"
+    "defaultMessage": "زاب {name}"
   },
   "oZrFyI": {
-    "defaultMessage": "Stream type should be HLS"
+    "defaultMessage": "يجب أن يكون نوع الدفق HLS"
   },
   "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
+    "defaultMessage": "<s>{person}</s> انطلق <s>{amount}</s> ساتس"
   },
   "r2Jjms": {
-    "defaultMessage": "Log In"
-  },
-  "rELDbB": {
-    "defaultMessage": "Refresh"
+    "defaultMessage": "تسجيل الدخول"
   },
   "rWBFZA": {
-    "defaultMessage": "Sexually explicit material ahead!"
+    "defaultMessage": "مواد جنسية صريحة في الأمام!"
   },
   "rgsbu9": {
-    "defaultMessage": "Current Viewers"
+    "defaultMessage": "المشاهدون الحاليون"
   },
   "s5ksS7": {
-    "defaultMessage": "Image Link"
+    "defaultMessage": "رابط الصورة"
   },
   "s7V+5p": {
-    "defaultMessage": "Confirm your age"
+    "defaultMessage": "تأكد من عمرك"
   },
   "sInm1h": {
-    "defaultMessage": "Zap message"
+    "defaultMessage": "رسالة Zap"
   },
   "tG1ST3": {
-    "defaultMessage": "Incoming Zap"
+    "defaultMessage": "زاب واردة"
   },
   "tM6fNW": {
-    "defaultMessage": "Amazing! Continue.."
+    "defaultMessage": "مدهش! ..أكمل"
   },
   "thsiMl": {
-    "defaultMessage": "terms and conditions"
+    "defaultMessage": "الشروط والأحكام"
   },
   "tzMNF3": {
-    "defaultMessage": "Status"
+    "defaultMessage": "الحالة"
   },
   "u6uD94": {
-    "defaultMessage": "Create an Account"
+    "defaultMessage": "إنشاء حساب"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "تم إلغاء تحميل الصورة الرمزية"
   },
   "uYw2LD": {
-    "defaultMessage": "Stream"
+    "defaultMessage": "الدفق"
   },
   "vrTOHJ": {
-    "defaultMessage": "{amount} sats"
+    "defaultMessage": "{amount} ساتس"
   },
   "w0Xm2F": {
-    "defaultMessage": "Start typing"
+    "defaultMessage": "ابدأ الكتابة"
   },
   "wCIL7o": {
-    "defaultMessage": "Broadcast on Nostr"
+    "defaultMessage": "البث على Nostr"
   },
   "wEQDC6": {
-    "defaultMessage": "Edit"
+    "defaultMessage": "تحرير"
   },
   "wMKVFz": {
-    "defaultMessage": "Select voice..."
+    "defaultMessage": "حدد الصوت..."
   },
   "wOy57k": {
-    "defaultMessage": "Add stream goal"
+    "defaultMessage": "إضافة هدف الدفق"
   },
   "wzWWzV": {
-    "defaultMessage": "Top zappers"
+    "defaultMessage": "أفضل الصواعق"
   },
   "x82IOl": {
-    "defaultMessage": "Mute"
+    "defaultMessage": "كتم الصوت"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
-    "defaultMessage": "Volume"
+    "defaultMessage": "الحجم"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "المقاطع"
   },
   "yzKwBQ": {
-    "defaultMessage": "eg. nsec1xyz"
+    "defaultMessage": "على سبيل المثال. nsec1xyz"
   },
   "zVDHAu": {
-    "defaultMessage": "Zap Alert"
+    "defaultMessage": "تنبيه Zap Alert"
   }
 }

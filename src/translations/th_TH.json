@@ -119,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "หัวข้อ"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
     "defaultMessage": "Note by {name}"
   },
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "โคตรปากแจ๋ว"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "โหลดหน้าเว็บใหม่เพื่อใช้เวอร์ชั่นล่าสุด"
   },
   "Gq6x9o": {
     "defaultMessage": "ภาพหน้าปก"
@@ -284,9 +284,6 @@
   "Qe1MJu": {
     "defaultMessage": "{name} แจก {amount}"
   },
-  "RJ2VxG": {
-    "defaultMessage": "ตรวจพบการอัพเดต"
-  },
   "RJOmzk": {
     "defaultMessage": "ฉันได้อ่าน {terms} เรียบร้อยและ เห็นด้วยกับ {provider} ในข้อกำหนดและเงื่อนไขการใช้เว็บไซต์หรือการใช้แอปพลิเคชัน"
   },
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "ซ่อน"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "รับ Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "ส่งต่อการถ่ายทอดสด"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "เปิดการมองเห็น"
@@ -507,9 +510,6 @@
   "r2Jjms": {
     "defaultMessage": "เข้าสู่ระบบ"
   },
-  "rELDbB": {
-    "defaultMessage": "โหลดใหม่"
-  },
   "rWBFZA": {
     "defaultMessage": "เตือน! เนื้อหามีส่วนของภาพโป๊เปลือย หรือสื่อลามก"
   },
@@ -569,6 +569,9 @@
   },
   "x82IOl": {
     "defaultMessage": "ปิดการมองเห็น"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
     "defaultMessage": "ระดับเสียง"

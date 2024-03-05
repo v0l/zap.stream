@@ -12,7 +12,7 @@
     "defaultMessage": "Свързване"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "Набези"
   },
   "/0TOL5": {
     "defaultMessage": "Количество"
@@ -24,7 +24,7 @@
     "defaultMessage": "Изчисти"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "Общо: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Запази ключ"
@@ -39,7 +39,7 @@
     "defaultMessage": "Започва"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Все още няма потоци"
   },
   "1EYCdR": {
     "defaultMessage": "Тагове"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Заглавие"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "Бележка от {name}"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW Съдържание"
@@ -162,7 +165,7 @@
     "defaultMessage": "Твоят коментар за {име}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Всички времена Top Zappers"
   },
   "FjDlus": {
     "defaultMessage": "Винаги можете да замените вашият личен адрес по-късно."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Топ чатъри"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Опреснете страницата, за да използвате най-новата версия"
   },
   "Gq6x9o": {
     "defaultMessage": "Изображение на корицата"
@@ -195,7 +195,7 @@
     "defaultMessage": "Име"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Елате да проверите моя поток на zap.stream! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Изберете цел..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Продължителност на потока {duration} mins"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Потребителско име"
   },
   "JEsxDw": {
     "defaultMessage": "Качване..."
@@ -231,7 +231,7 @@
     "defaultMessage": "Не, аз съм под 18"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "Цели на Zap"
   },
   "LknBsU": {
     "defaultMessage": "Стрийм ключ"
@@ -252,7 +252,7 @@
     "defaultMessage": "Сподели"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Все още няма клипове"
   },
   "Oxqtyf": {
     "defaultMessage": "Свързахме ви със светкавичен портфейл, за да можете да получите плащане от зрителите веднага!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Създаване на клип"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Елате да проверите {name} поток на zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Тема"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{име} със {количество}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "Открита е нова версия"
   },
   "RJOmzk": {
     "defaultMessage": "Прочетох и се съгласявам със {доставчика} и неговите {общи условия}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Скрий"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "Получи Стрийм Ключ"
   },
   "W7DNWx": {
     "defaultMessage": "Препращане на потоци"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Премахни заглушаването"
@@ -333,7 +336,7 @@
     "defaultMessage": "Създаване на цел"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Последни клипове"
   },
   "XgWvGA": {
     "defaultMessage": "Реакции"
@@ -355,10 +358,10 @@
     "defaultMessage": "Този метод не е сигурен. Препоръчваме ви да използвате {ностърлинк}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Характеристики"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Все още няма цели"
   },
   "ZmqxZs": {
     "defaultMessage": "Можете да промените това по-късно"
@@ -373,7 +376,7 @@
     "defaultMessage": "Набег!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Редактиране на карти"
   },
   "bfvyfs": {
     "defaultMessage": "Анонимен"
@@ -397,7 +400,7 @@
     "defaultMessage": "Топ запери"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "Клип от {name}"
   },
   "ebmhes": {
     "defaultMessage": "Ностър добавка"
@@ -478,7 +481,7 @@
     "defaultMessage": "Глас"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Акции"
   },
   "mtNGwh": {
     "defaultMessage": "Кратко описание на съдържанието"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Вход"
-  },
-  "rELDbB": {
-    "defaultMessage": "Обновяване"
   },
   "rWBFZA": {
     "defaultMessage": "Сексуално явен материал напред!"
@@ -541,7 +541,7 @@
     "defaultMessage": "Създай акаунт"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "Качване на аватар fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Стрийм"
@@ -570,11 +570,14 @@
   "x82IOl": {
     "defaultMessage": "Заглуши"
   },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
   "y867Vs": {
     "defaultMessage": "Сила на звука"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "Клипове"
   },
   "yzKwBQ": {
     "defaultMessage": "напр. nsec1xyz"

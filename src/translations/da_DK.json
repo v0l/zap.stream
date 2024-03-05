@@ -12,7 +12,7 @@
     "defaultMessage": "Forbind"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "Razziaer"
   },
   "/0TOL5": {
     "defaultMessage": "Beløb"
@@ -24,7 +24,7 @@
     "defaultMessage": "Klar"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "I alt: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Gem nøgle"
@@ -39,7 +39,7 @@
     "defaultMessage": "Starts"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Ingen streams endnu"
   },
   "1EYCdR": {
     "defaultMessage": "Mærker"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Titel"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "Note fra {name}"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-indhold"
@@ -162,7 +165,7 @@
     "defaultMessage": "Din kommentar til {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Alle tiders bedste zappere"
   },
   "FjDlus": {
     "defaultMessage": "Du kan altid erstatte den med din egen adresse senere."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "De bedste chattere"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Opdater siden for at bruge den nyeste version"
   },
   "Gq6x9o": {
     "defaultMessage": "Forsidebillede"
@@ -195,7 +195,7 @@
     "defaultMessage": "Navn"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Kom og se min stream på zap.stream! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Vælg et mål..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Streamens varighed {duration} mins"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Brugernavn"
   },
   "JEsxDw": {
     "defaultMessage": "Uploading..."
@@ -231,7 +231,7 @@
     "defaultMessage": "Nej, jeg er under 18"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "Zap Mål"
   },
   "LknBsU": {
     "defaultMessage": "Stream-nøgle"
@@ -252,7 +252,7 @@
     "defaultMessage": "Del"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Ingen klip endnu"
   },
   "Oxqtyf": {
     "defaultMessage": "Vi har udstyret dig med en lightning wallet, så du kan blive betalt af seerne med det samme!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Opret klip"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Kom og tjek {name} stream på zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Tema"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} med {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "En ny version er blevet opdaget"
   },
   "RJOmzk": {
     "defaultMessage": "Jeg har læst og er enig i {provider}' s {terms}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Skjul"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Hent Stream-nøgle"
   },
   "W7DNWx": {
     "defaultMessage": "Videresendelse af strøm"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Slå lyden fra"
@@ -333,13 +336,13 @@
     "defaultMessage": "Opret mål"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Seneste klip"
   },
   "XgWvGA": {
     "defaultMessage": "Reaktioner"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "Optagelses-URL"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -349,16 +352,16 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Titel på klip"
   },
   "Z8ZOEY": {
     "defaultMessage": "Denne metode er usikker. Vi anbefaler at bruge en {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Funktioner"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Ingen mål endnu"
   },
   "ZmqxZs": {
     "defaultMessage": "Du kan ændre dette senere"
@@ -373,7 +376,7 @@
     "defaultMessage": "Razzia!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Rediger kort"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -397,7 +400,7 @@
     "defaultMessage": "De bedste zappere"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "Klip af {name}"
   },
   "ebmhes": {
     "defaultMessage": "Nostr-forlængelse"
@@ -442,7 +445,7 @@
     "defaultMessage": "Razzia {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Udgiv klip"
   },
   "jctiUc": {
     "defaultMessage": "Flest seere"
@@ -478,7 +481,7 @@
     "defaultMessage": "Stemme"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Aktier"
   },
   "mtNGwh": {
     "defaultMessage": "En kort beskrivelse af indholdet"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Log ind"
-  },
-  "rELDbB": {
-    "defaultMessage": "Opdatering"
   },
   "rWBFZA": {
     "defaultMessage": "Seksuelt eksplicit materiale forude!"
@@ -570,11 +570,14 @@
   "x82IOl": {
     "defaultMessage": "Lydløs"
   },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
   "y867Vs": {
     "defaultMessage": "Volumen"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "Klip"
   },
   "yzKwBQ": {
     "defaultMessage": "f.eks. nsec1xyz"

@@ -1,0 +1,588 @@
+{
+  "+0zv6g": {
+    "defaultMessage": "이미지"
+  },
+  "+AcVD+": {
+    "defaultMessage": "이메일은 필요 없고, 멋진 기능만 있습니다!"
+  },
+  "+sdKx8": {
+    "defaultMessage": "지금 라이브"
+  },
+  "+vVZ/G": {
+    "defaultMessage": "연결"
+  },
+  "+y6JUK": {
+    "defaultMessage": "레이드"
+  },
+  "/0TOL5": {
+    "defaultMessage": "금액"
+  },
+  "/EvlqN": {
+    "defaultMessage": "노스트르 서명자 확장"
+  },
+  "/GCoTA": {
+    "defaultMessage": "지우기"
+  },
+  "/Jp9pC": {
+    "defaultMessage": "합계: {amount} sats"
+  },
+  "04lmFi": {
+    "defaultMessage": "키 저장"
+  },
+  "0GfNiL": {
+    "defaultMessage": "스트림 Zap 목표"
+  },
+  "0VV/sK": {
+    "defaultMessage": "목표"
+  },
+  "0hNxBy": {
+    "defaultMessage": "시작"
+  },
+  "0rVLjV": {
+    "defaultMessage": "아직 스트림이 없습니다."
+  },
+  "1EYCdR": {
+    "defaultMessage": "태그"
+  },
+  "1q4BO/": {
+    "defaultMessage": "유효한 URL이 아닙니다."
+  },
+  "1qsXCO": {
+    "defaultMessage": "예: name@wallet.com"
+  },
+  "2/2yg+": {
+    "defaultMessage": "추가"
+  },
+  "37mth/": {
+    "defaultMessage": "시청자"
+  },
+  "3HwrQo": {
+    "defaultMessage": "Zap!"
+  },
+  "3adEeb": {
+    "defaultMessage": "{n} 시청자"
+  },
+  "3df560": {
+    "defaultMessage": "개인 키로 로그인"
+  },
+  "47FYwb": {
+    "defaultMessage": "취소"
+  },
+  "4iBdw1": {
+    "defaultMessage": "레이드"
+  },
+  "4l69eO": {
+    "defaultMessage": "라이트닝 주소가 잘못된 것 같습니다."
+  },
+  "4l6vz1": {
+    "defaultMessage": "복사"
+  },
+  "50+/JW": {
+    "defaultMessage": "스트림 키가 필요합니다."
+  },
+  "5JcXdV": {
+    "defaultMessage": "계정 만들기"
+  },
+  "5QYdPU": {
+    "defaultMessage": "시작 시간"
+  },
+  "5kx+2v": {
+    "defaultMessage": "서버 URL"
+  },
+  "5tM0VD": {
+    "defaultMessage": "스트림 시작"
+  },
+  "69hmpj": {
+    "defaultMessage": "{name}에서 레이드"
+  },
+  "6Z2pvJ": {
+    "defaultMessage": "스트림 공급자"
+  },
+  "6pr6hJ": {
+    "defaultMessage": "텍스트 음성 변환을 위한 최소 금액"
+  },
+  "7+bCC1": {
+    "defaultMessage": "스트림 URL은 rtmp://로 시작해야 합니다."
+  },
+  "79lLl+": {
+    "defaultMessage": "음악"
+  },
+  "7UOvbT": {
+    "defaultMessage": "오프라인"
+  },
+  "8YT6ja": {
+    "defaultMessage": "말할 텍스트 삽입"
+  },
+  "9WRlF4": {
+    "defaultMessage": "보내기"
+  },
+  "9a9+ww": {
+    "defaultMessage": "제목"
+  },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
+  "ALdW69": {
+    "defaultMessage": "참고: {name}"
+  },
+  "Atr2p4": {
+    "defaultMessage": "NSFW 콘텐츠"
+  },
+  "AukrPM": {
+    "defaultMessage": "사용 가능한 시청자 데이터 없음"
+  },
+  "AyGauy": {
+    "defaultMessage": "로그인"
+  },
+  "BD0vyn": {
+    "defaultMessage": "{name} 클립 생성"
+  },
+  "BGxpTN": {
+    "defaultMessage": "스트림 채팅"
+  },
+  "Bep/gA": {
+    "defaultMessage": "개인 키"
+  },
+  "C81/uG": {
+    "defaultMessage": "로그아웃"
+  },
+  "CsCUYo": {
+    "defaultMessage": "{n} sats"
+  },
+  "D3idYv": {
+    "defaultMessage": "설정"
+  },
+  "DZKuuP": {
+    "defaultMessage": "다음 계정으로 로그인"
+  },
+  "Dn82AL": {
+    "defaultMessage": "라이브"
+  },
+  "E9APoR": {
+    "defaultMessage": "스트림 URL을 만들 수 없습니다."
+  },
+  "ESyhzp": {
+    "defaultMessage": "{name}에 대한 귀하의 코멘트"
+  },
+  "FIDK5Y": {
+    "defaultMessage": "역대 최고 재퍼"
+  },
+  "FjDlus": {
+    "defaultMessage": "나중에 언제든지 자신의 주소로 바꿀 수 있습니다."
+  },
+  "Fodi9+": {
+    "defaultMessage": "시청자로부터 결제 받기"
+  },
+  "G/yZLu": {
+    "defaultMessage": "제거"
+  },
+  "GGaJMU": {
+    "defaultMessage": "인기 채팅자"
+  },
+  "Gq6x9o": {
+    "defaultMessage": "표지 이미지"
+  },
+  "Gvxoji": {
+    "defaultMessage": "이름은 필수 입력 사항입니다."
+  },
+  "H/bNs9": {
+    "defaultMessage": "이 키를 저장하여 안전하게 보관하세요! 이 키를 분실하면 다시는 계정에 액세스할 수 없습니다. 네, 그만큼 심각합니다!"
+  },
+  "H5+NAX": {
+    "defaultMessage": "잔액"
+  },
+  "HAlOn1": {
+    "defaultMessage": "이름"
+  },
+  "HsgeUk": {
+    "defaultMessage": "zap.stream에서 제 스트리밍을 확인해 보세요! {link}"
+  },
+  "I/TubD": {
+    "defaultMessage": "목표 선택..."
+  },
+  "I1kjHI": {
+    "defaultMessage": "지원 {markdown}"
+  },
+  "IJDKz3": {
+    "defaultMessage": "Zap 금액 {currency}"
+  },
+  "INlWvJ": {
+    "defaultMessage": "또는"
+  },
+  "J/+m9y": {
+    "defaultMessage": "스트리밍 시간 {duration} 분"
+  },
+  "JCIgkj": {
+    "defaultMessage": "사용자 이름"
+  },
+  "JEsxDw": {
+    "defaultMessage": "업로드 중..."
+  },
+  "Jq3FDz": {
+    "defaultMessage": "콘텐츠"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "삭제"
+  },
+  "K7AkdL": {
+    "defaultMessage": "표시"
+  },
+  "KkIL3s": {
+    "defaultMessage": "아니요, 저는 18세 미만입니다."
+  },
+  "LEmxc8": {
+    "defaultMessage": "Zap 목표"
+  },
+  "LknBsU": {
+    "defaultMessage": "스트림 키"
+  },
+  "MTHO1W": {
+    "defaultMessage": "레이드 시작"
+  },
+  "My6HwN": {
+    "defaultMessage": "좋아요, 안전합니다."
+  },
+  "O2Cy6m": {
+    "defaultMessage": "예, 18세 이상입니다."
+  },
+  "OEW7yJ": {
+    "defaultMessage": "Zaps"
+  },
+  "OKhRC6": {
+    "defaultMessage": "공유"
+  },
+  "ObZZEz": {
+    "defaultMessage": "아직 클립이 없습니다."
+  },
+  "Oxqtyf": {
+    "defaultMessage": "시청자로부터 바로 수익을 받을 수 있도록 라이트닝 월렛을 연결해 드렸습니다!"
+  },
+  "PA0ej4": {
+    "defaultMessage": "클립 만들기"
+  },
+  "PUymyQ": {
+    "defaultMessage": "zap.stream에서 {name} 스트림을 확인하세요! {link}"
+  },
+  "Pe0ogR": {
+    "defaultMessage": "테마"
+  },
+  "Q3au2v": {
+    "defaultMessage": "{estimate}정보"
+  },
+  "QRHNuF": {
+    "defaultMessage": "오늘은 무엇을 찌고 있나요?"
+  },
+  "QRRCp0": {
+    "defaultMessage": "스트림 URL"
+  },
+  "QWlMq9": {
+    "defaultMessage": "스트림 키"
+  },
+  "QceMQZ": {
+    "defaultMessage": "목표: {amount}"
+  },
+  "Qe1MJu": {
+    "defaultMessage": "{name} {amount}"
+  },
+  "RJOmzk": {
+    "defaultMessage": "본인은 {provider}의 {terms}을 읽었으며 이에 동의합니다."
+  },
+  "RS6smY": {
+    "defaultMessage": "레이드 메시지"
+  },
+  "RXQdxR": {
+    "defaultMessage": "메시지를 작성하려면 로그인하세요!"
+  },
+  "RrCui3": {
+    "defaultMessage": "요약"
+  },
+  "RtYNX5": {
+    "defaultMessage": "채팅 사용자"
+  },
+  "TP/cMX": {
+    "defaultMessage": "종료"
+  },
+  "TaTRKo": {
+    "defaultMessage": "스트림 시작"
+  },
+  "TwyMau": {
+    "defaultMessage": "계정"
+  },
+  "UJBFYK": {
+    "defaultMessage": "카드 추가"
+  },
+  "UfSot5": {
+    "defaultMessage": "과거 스트림"
+  },
+  "VA/Z1S": {
+    "defaultMessage": "숨기기"
+  },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
+  "Vn2WiP": {
+    "defaultMessage": "스트림 키 받기"
+  },
+  "W7DNWx": {
+    "defaultMessage": "스트림 포워딩"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
+  },
+  "W9355R": {
+    "defaultMessage": "음소거 해제"
+  },
+  "X2PZ7D": {
+    "defaultMessage": "목표 만들기"
+  },
+  "XMGfiA": {
+    "defaultMessage": "최근 클립"
+  },
+  "XgWvGA": {
+    "defaultMessage": "반응"
+  },
+  "Y0DXJb": {
+    "defaultMessage": "레코딩 URL"
+  },
+  "YPh5Nq": {
+    "defaultMessage": "{rate}",
+    "description": "Showing zap amount in USD @ rate"
+  },
+  "YagVIe": {
+    "defaultMessage": "{n}p"
+  },
+  "YwzT/0": {
+    "defaultMessage": "클립 제목"
+  },
+  "Z8ZOEY": {
+    "defaultMessage": "이 방법은 안전하지 않습니다. {nostrlink}"
+  },
+  "ZXp0z1": {
+    "defaultMessage": "특징"
+  },
+  "ZaNcK4": {
+    "defaultMessage": "아직 목표 없음"
+  },
+  "ZmqxZs": {
+    "defaultMessage": "나중에 변경할 수 있습니다."
+  },
+  "Zse7yG": {
+    "defaultMessage": "레이드 대상"
+  },
+  "acrOoz": {
+    "defaultMessage": "계속하기"
+  },
+  "aqjZxs": {
+    "defaultMessage": "레이드!"
+  },
+  "bD/ZwY": {
+    "defaultMessage": "카드 편집"
+  },
+  "bfvyfs": {
+    "defaultMessage": "Anon"
+  },
+  "cPIKU2": {
+    "defaultMessage": "팔로잉"
+  },
+  "cvAsEh": {
+    "defaultMessage": "{date}에서 스트리밍"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "뒤로"
+  },
+  "d5zWyh": {
+    "defaultMessage": "음성 테스트"
+  },
+  "dOQCL8": {
+    "defaultMessage": "표시 이름"
+  },
+  "dVD/AR": {
+    "defaultMessage": "최고의 재퍼"
+  },
+  "dkUMIH": {
+    "defaultMessage": "{name}클립"
+  },
+  "ebmhes": {
+    "defaultMessage": "Nostr 확장"
+  },
+  "f6biFA": {
+    "defaultMessage": "아, 그리고 저희에겐 {n} 무료 스트리밍이 있습니다! 💜"
+  },
+  "fBI91o": {
+    "defaultMessage": "Zap"
+  },
+  "fc2iho": {
+    "defaultMessage": "파일 추가"
+  },
+  "feZ/kG": {
+    "defaultMessage": "개인 키로 로그인(안전하지 않음)"
+  },
+  "gzsn7k": {
+    "defaultMessage": "{n} 메시지"
+  },
+  "hMzcSq": {
+    "defaultMessage": "메시지"
+  },
+  "heyxZL": {
+    "defaultMessage": "텍스트 음성 변환 사용"
+  },
+  "hpl4BP": {
+    "defaultMessage": "채팅 위젯"
+  },
+  "hzSNj4": {
+    "defaultMessage": "대시보드"
+  },
+  "ieGrWo": {
+    "defaultMessage": "팔로우"
+  },
+  "itPgxd": {
+    "defaultMessage": "프로필"
+  },
+  "izWS4J": {
+    "defaultMessage": "언팔로우하기"
+  },
+  "j/jueq": {
+    "defaultMessage": "레이드 {name}"
+  },
+  "jJLRgo": {
+    "defaultMessage": "클립 게시"
+  },
+  "jctiUc": {
+    "defaultMessage": "최고 시청자 수"
+  },
+  "jgOqxt": {
+    "defaultMessage": "위젯"
+  },
+  "jkAQj5": {
+    "defaultMessage": "스트림 종료"
+  },
+  "jr4+vD": {
+    "defaultMessage": "마크다운"
+  },
+  "jvo0vs": {
+    "defaultMessage": "저장"
+  },
+  "k21gTS": {
+    "defaultMessage": "예: 내 정보"
+  },
+  "kp0NPF": {
+    "defaultMessage": "계획된"
+  },
+  "lZpRMR": {
+    "defaultMessage": "이 스트림에 노출 또는 음란 콘텐츠가 포함되어 있는지 여기에서 확인하세요."
+  },
+  "ljmS5P": {
+    "defaultMessage": "엔드포인트"
+  },
+  "miQKuZ": {
+    "defaultMessage": "스트리밍 시간"
+  },
+  "mnJYBQ": {
+    "defaultMessage": "음성"
+  },
+  "mrwfXX": {
+    "defaultMessage": "공유"
+  },
+  "mtNGwh": {
+    "defaultMessage": "콘텐츠에 대한 간단한 설명"
+  },
+  "nBCvvJ": {
+    "defaultMessage": "충전"
+  },
+  "nOaArs": {
+    "defaultMessage": "프로필 설정"
+  },
+  "nwA8Os": {
+    "defaultMessage": "카드 추가"
+  },
+  "o8pHw3": {
+    "defaultMessage": "AUTO"
+  },
+  "oHPB8Q": {
+    "defaultMessage": "Zap {name}"
+  },
+  "oZrFyI": {
+    "defaultMessage": "스트림 유형은 HLS여야 합니다."
+  },
+  "q+zTWM": {
+    "defaultMessage": "<s>{person}</s> ZAPP <s>{amount}</s> SATS"
+  },
+  "r2Jjms": {
+    "defaultMessage": "로그인"
+  },
+  "rWBFZA": {
+    "defaultMessage": "성적으로 노골적인 자료를 미리 확인하세요!"
+  },
+  "rgsbu9": {
+    "defaultMessage": "현재 시청자"
+  },
+  "s5ksS7": {
+    "defaultMessage": "이미지 링크"
+  },
+  "s7V+5p": {
+    "defaultMessage": "나이 확인"
+  },
+  "sInm1h": {
+    "defaultMessage": "Zap 메시지"
+  },
+  "tG1ST3": {
+    "defaultMessage": "수신 Zap"
+  },
+  "tM6fNW": {
+    "defaultMessage": "놀랍습니다! 계속..."
+  },
+  "thsiMl": {
+    "defaultMessage": "이용 약관"
+  },
+  "tzMNF3": {
+    "defaultMessage": "상태"
+  },
+  "u6uD94": {
+    "defaultMessage": "계정 만들기"
+  },
+  "uTonxS": {
+    "defaultMessage": "아바타 업로드 실패"
+  },
+  "uYw2LD": {
+    "defaultMessage": "스트림"
+  },
+  "vrTOHJ": {
+    "defaultMessage": "{amount} sats"
+  },
+  "w0Xm2F": {
+    "defaultMessage": "입력 시작"
+  },
+  "wCIL7o": {
+    "defaultMessage": "Nostr에서 방송"
+  },
+  "wEQDC6": {
+    "defaultMessage": "편집"
+  },
+  "wMKVFz": {
+    "defaultMessage": "음성 선택..."
+  },
+  "wOy57k": {
+    "defaultMessage": "스트림 목표 추가"
+  },
+  "wzWWzV": {
+    "defaultMessage": "최고의 재퍼"
+  },
+  "x82IOl": {
+    "defaultMessage": "음소거"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
+  "y867Vs": {
+    "defaultMessage": "볼륨"
+  },
+  "yLxIgl": {
+    "defaultMessage": "클립"
+  },
+  "yzKwBQ": {
+    "defaultMessage": "예: nsec1xyz"
+  },
+  "zVDHAu": {
+    "defaultMessage": "Zap 알림"
+  }
+}

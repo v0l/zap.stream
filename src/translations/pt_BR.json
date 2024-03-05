@@ -12,7 +12,7 @@
     "defaultMessage": "Conectar"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "Incursões"
   },
   "/0TOL5": {
     "defaultMessage": "Quantidade"
@@ -39,7 +39,7 @@
     "defaultMessage": "Início"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Ainda não há transmissões"
   },
   "1EYCdR": {
     "defaultMessage": "Etiquetas"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Título"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "Nota de {name}"
   },
   "Atr2p4": {
     "defaultMessage": "Conteúdo NSFW"
@@ -162,7 +165,7 @@
     "defaultMessage": "Seu comentário para {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Os melhores zappers de todos os tempos"
   },
   "FjDlus": {
     "defaultMessage": "Você sempre pode substituí-lo com seu próprio endereço mais tarde."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Principais Chatters"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Atualize a página para usar a versão mais recente"
   },
   "Gq6x9o": {
     "defaultMessage": "Imagem de Capa"
@@ -195,7 +195,7 @@
     "defaultMessage": "Nome"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Venha conferir minha transmissão no zap.stream! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Selecione uma meta..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Duração da transmissão {duration} mins"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Nome de usuário"
   },
   "JEsxDw": {
     "defaultMessage": "Carregando..."
@@ -231,7 +231,7 @@
     "defaultMessage": "Não, eu tenho menos de 18"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "Metas do Zap"
   },
   "LknBsU": {
     "defaultMessage": "Chave de Transmissão"
@@ -252,7 +252,7 @@
     "defaultMessage": "Compartilhar"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Ainda não há clipes"
   },
   "Oxqtyf": {
     "defaultMessage": "Nós conectamos você com uma carteira lightning para que você possa ser pago pelos seus espectadores imediatamente!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Criar clipe"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Venha conferir o {name} stream no zap.stream! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Tema"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} com {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "Uma nova versão foi detectada"
   },
   "RJOmzk": {
     "defaultMessage": "Eu li e concordo com {provider} {terms}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Ocultar"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
+    "defaultMessage": "Obter chave de fluxo"
   },
   "W7DNWx": {
     "defaultMessage": "Encaminhamento de fluxo"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Desmutar"
@@ -333,13 +336,13 @@
     "defaultMessage": "Criar Meta"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Clipes recentes"
   },
   "XgWvGA": {
     "defaultMessage": "Reações"
   },
   "Y0DXJb": {
-    "defaultMessage": "Recording URL"
+    "defaultMessage": "URL de registro"
   },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
@@ -349,16 +352,16 @@
     "defaultMessage": "{n}p"
   },
   "YwzT/0": {
-    "defaultMessage": "Clip title"
+    "defaultMessage": "Título do clipe"
   },
   "Z8ZOEY": {
     "defaultMessage": "Este método é inseguro. Recomendamos usar um {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Recursos"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Ainda não há metas"
   },
   "ZmqxZs": {
     "defaultMessage": "Você pode alterar isto mais tarde"
@@ -373,7 +376,7 @@
     "defaultMessage": "Incursão!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Editar cartões"
   },
   "bfvyfs": {
     "defaultMessage": "Anônimo"
@@ -397,7 +400,7 @@
     "defaultMessage": "Melhores Zappers"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "Clipe de {name}"
   },
   "ebmhes": {
     "defaultMessage": "Extensão Nostr"
@@ -442,7 +445,7 @@
     "defaultMessage": "Raiding {name}"
   },
   "jJLRgo": {
-    "defaultMessage": "Publish Clip"
+    "defaultMessage": "Publicar clipe"
   },
   "jctiUc": {
     "defaultMessage": "Maior número de espectadores"
@@ -478,7 +481,7 @@
     "defaultMessage": "Voz"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Ações"
   },
   "mtNGwh": {
     "defaultMessage": "Uma breve descrição do conteúdo"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Entrar"
-  },
-  "rELDbB": {
-    "defaultMessage": "Atualizar"
   },
   "rWBFZA": {
     "defaultMessage": "Conteúdo sexual explícito à frente!"
@@ -541,7 +541,7 @@
     "defaultMessage": "Criar uma Conta"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "Carregamento do avatar falhou"
   },
   "uYw2LD": {
     "defaultMessage": "Fazer Transmissão"
@@ -570,11 +570,14 @@
   "x82IOl": {
     "defaultMessage": "Silenciar"
   },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
   "y867Vs": {
     "defaultMessage": "Volume"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "Clipes"
   },
   "yzKwBQ": {
     "defaultMessage": "ex. nsec1xyz"

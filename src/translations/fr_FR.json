@@ -24,7 +24,7 @@
     "defaultMessage": "Effacer"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "Total : {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Enregistrer la clé"
@@ -39,7 +39,7 @@
     "defaultMessage": "Démarrage"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Pas encore de flux"
   },
   "1EYCdR": {
     "defaultMessage": "Mots-clés"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Titre"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "Note de {name}"
   },
   "Atr2p4": {
     "defaultMessage": "Contenu NSFW"
@@ -162,7 +165,7 @@
     "defaultMessage": "Votre commentaire pour {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Les meilleurs zappeurs de tous les temps"
   },
   "FjDlus": {
     "defaultMessage": "Vous pourrez toujours le remplacer par votre propre adresse plus tard."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Actualiser la page pour utiliser la dernière version"
   },
   "Gq6x9o": {
     "defaultMessage": "Bannière"
@@ -195,7 +195,7 @@
     "defaultMessage": "Nom"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Venez voir mon stream sur zap.stream ! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Sélectionnez un objectif..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Durée du flux {duration} mins"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Nom d'utilisateur"
   },
   "JEsxDw": {
     "defaultMessage": "Envoi..."
@@ -252,7 +252,7 @@
     "defaultMessage": "Partager"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Pas encore de clips"
   },
   "Oxqtyf": {
     "defaultMessage": "Nous vous avons branché avec un portefeuille Lightning afin que vous puissiez être payé par les spectateurs dès maintenant!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Créer un clip"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Venez découvrir {name} stream sur zap.stream ! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Thème"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} avec {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "Une nouvelle version a été détectée"
   },
   "RJOmzk": {
     "defaultMessage": "J'ai lu et j'accepte les {terms} de {provider}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Cacher"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "Récupérer la Clé de Stream"
   },
   "W7DNWx": {
     "defaultMessage": "Transfert de flux"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Retirer sourdine"
@@ -333,7 +336,7 @@
     "defaultMessage": "Créer un objectif"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Clips récents"
   },
   "XgWvGA": {
     "defaultMessage": "Réactions"
@@ -355,10 +358,10 @@
     "defaultMessage": "Cette méthode n'est pas sécurisée. Nous vous recommandons d'utiliser un {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Caractéristiques"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Pas encore d'objectifs"
   },
   "ZmqxZs": {
     "defaultMessage": "Vous pourrez modifier cela ultérieurement"
@@ -373,7 +376,7 @@
     "defaultMessage": "Raid !"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Cartes d'édition"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -397,7 +400,7 @@
     "defaultMessage": "Top Zappeurs"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "Clip de {name}"
   },
   "ebmhes": {
     "defaultMessage": "Extension Nostr"
@@ -478,7 +481,7 @@
     "defaultMessage": "Voix"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Actions"
   },
   "mtNGwh": {
     "defaultMessage": "Une courte description du contenu"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Se connecter"
-  },
-  "rELDbB": {
-    "defaultMessage": "Rafraîchir"
   },
   "rWBFZA": {
     "defaultMessage": "Matériel sexuellement explicite à venir !"
@@ -541,7 +541,7 @@
     "defaultMessage": "Créer un Compte"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "Le téléchargement de l'avatar a échoué"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
@@ -569,6 +569,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Muet"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
     "defaultMessage": "Volume"

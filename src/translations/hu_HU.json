@@ -12,7 +12,7 @@
     "defaultMessage": "Csatlakozás"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "Rajtaütések"
   },
   "/0TOL5": {
     "defaultMessage": "Mennyiség"
@@ -24,7 +24,7 @@
     "defaultMessage": "Töröl"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "Összesen: {amount} sats"
   },
   "04lmFi": {
     "defaultMessage": "Kulcs Mentése"
@@ -39,7 +39,7 @@
     "defaultMessage": "Indul"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "Még nincsenek streamek"
   },
   "1EYCdR": {
     "defaultMessage": "Címkék"
@@ -119,8 +119,11 @@
   "9a9+ww": {
     "defaultMessage": "Cím"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "A {name}feljegyzése."
   },
   "Atr2p4": {
     "defaultMessage": "Kifogásolható tartalom"
@@ -162,7 +165,7 @@
     "defaultMessage": "Megjegyzésed neki: {name}"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "Minden idők legjobb zapperei"
   },
   "FjDlus": {
     "defaultMessage": "Később a saját címedre bármikor lecserélheted."
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Top csevegők"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Frissítse az oldalt a legújabb verzió használatához"
   },
   "Gq6x9o": {
     "defaultMessage": "Borítókép"
@@ -195,7 +195,7 @@
     "defaultMessage": "Név"
   },
   "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+    "defaultMessage": "Gyere és nézd meg a streamemet a zap.stream-en! {link}"
   },
   "I/TubD": {
     "defaultMessage": "Tűzz ki egy célt..."
@@ -213,7 +213,7 @@
     "defaultMessage": "Stream időtartama {duration} perc"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
+    "defaultMessage": "Felhasználónév"
   },
   "JEsxDw": {
     "defaultMessage": "Feltöltés..."
@@ -231,7 +231,7 @@
     "defaultMessage": "Nem, 18 év alatti vagyok"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "Zap célok"
   },
   "LknBsU": {
     "defaultMessage": "Stream kulcs"
@@ -252,7 +252,7 @@
     "defaultMessage": "Megosztás"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "Még nincsenek klipek"
   },
   "Oxqtyf": {
     "defaultMessage": "Egy LN tárcával összekötöttünk, hogy a nézők támogatásait azonnal megkaphasd!"
@@ -261,7 +261,7 @@
     "defaultMessage": "Clip létrehozása"
   },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "Gyere és nézd meg a {name} stream-et a zap.stream-en! {link}"
   },
   "Pe0ogR": {
     "defaultMessage": "Téma"
@@ -283,9 +283,6 @@
   },
   "Qe1MJu": {
     "defaultMessage": "{name} ennyivel: {amount}"
-  },
-  "RJ2VxG": {
-    "defaultMessage": "Új verziót észleltek"
   },
   "RJOmzk": {
     "defaultMessage": "Elolvastam és egyetértek a {provider} {terms}."
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Elrejtés"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "Stream kulcs beszerzése"
   },
   "W7DNWx": {
     "defaultMessage": "Stream továbbítása"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Némítás visszavonása"
@@ -333,7 +336,7 @@
     "defaultMessage": "Cél kitűzése"
   },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "Legutóbbi klipek"
   },
   "XgWvGA": {
     "defaultMessage": "Reakciók"
@@ -355,10 +358,10 @@
     "defaultMessage": "Ez a módszer nem biztonságos. Javasoljuk a {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "Jellemzők"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "Még nincsenek célok"
   },
   "ZmqxZs": {
     "defaultMessage": "Ezt később megváltoztathatod"
@@ -373,7 +376,7 @@
     "defaultMessage": "Rajtaütés!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "Kártyák szerkesztése"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -478,7 +481,7 @@
     "defaultMessage": "Hang"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "Részvények"
   },
   "mtNGwh": {
     "defaultMessage": "A tartalom rövid leírása"
@@ -506,9 +509,6 @@
   },
   "r2Jjms": {
     "defaultMessage": "Bejelentkezés"
-  },
-  "rELDbB": {
-    "defaultMessage": "Frissítés"
   },
   "rWBFZA": {
     "defaultMessage": "Nyíltan szexuális tartalmú anyagok lesznek!"
@@ -541,7 +541,7 @@
     "defaultMessage": "Fiók létrehozása"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "Avatar feltöltés fialed"
   },
   "uYw2LD": {
     "defaultMessage": "Közvetítés"
@@ -569,6 +569,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Némítás"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
     "defaultMessage": "Hangerő"
