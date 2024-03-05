@@ -18,7 +18,7 @@ export function useLiveStreams(feed: Array<TaggedNostrEvent>, oldest?: number) {
   const feedSorted = useMemo(() => {
     if (feed) {
       return feed
-        .filter(a => a.created_at > (oldest ?? (unixNow() - 7 * DAY)))
+        .filter(a => a.created_at > (oldest ?? unixNow() - 7 * DAY))
         .filter(a => !import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a));
     }
     return [];

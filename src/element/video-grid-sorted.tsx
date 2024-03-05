@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import VideoGrid from "./video-grid";
 import { VideoTile } from "./video-tile";
 
-export default function VideoGridSorted({ evs, showAll }: { evs: Array<TaggedNostrEvent>, showAll?: boolean }) {
+export default function VideoGridSorted({ evs, showAll }: { evs: Array<TaggedNostrEvent>; showAll?: boolean }) {
   const login = useLogin();
   const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
   const tags = login?.follows.tags ?? [];

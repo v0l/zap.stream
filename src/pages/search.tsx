@@ -49,21 +49,24 @@ export default function SearchPage() {
           className="text-layer-4 ml-4 my-1"
           size={16}
           onClick={() => {
-            navigate("/search")
-          }} />
+            navigate("/search");
+          }}
+        />
       </div>
-      {term && <>
-        <h2 className="mb-4">
-          <FormattedMessage
-            defaultMessage="Search results: {term}"
-            id="A1zT+z"
-            values={{
-              term,
-            }}
-          />
-        </h2>
-        <VideoGridSorted evs={results} showAll={true} />
-      </>}
+      {term && (
+        <>
+          <h2 className="mb-4">
+            <FormattedMessage
+              defaultMessage="Search results: {term}"
+              id="A1zT+z"
+              values={{
+                term,
+              }}
+            />
+          </h2>
+          <VideoGridSorted evs={results} showAll={true} />
+        </>
+      )}
     </div>
   );
 }

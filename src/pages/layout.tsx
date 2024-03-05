@@ -197,10 +197,11 @@ function SearchBar() {
       <Icon
         name="search"
         className="max-xl:text-black mx:text-layer-4 max-xl:ml-4 max-xl:my-1"
-        size={16} 
+        size={16}
         onClick={() => {
-          navigate("/search")
-        }}/>
+          navigate("/search");
+        }}
+      />
     </div>
   );
 }
