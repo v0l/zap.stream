@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "清除"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "总计： {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "Nostr 地址不属于您"
   },
   "04lmFi": {
     "defaultMessage": "保存密钥"
@@ -72,7 +75,7 @@
     "defaultMessage": "取消"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "OBS 中的设置示例（Apple M1 Mac）"
   },
   "4iBdw1": {
     "defaultMessage": "突袭"
@@ -99,7 +102,7 @@
     "defaultMessage": "直播已开始"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "用户名在Nostr上不是唯一的。Nostr地址是您注册时独有的人类可读地址。"
   },
   "69hmpj": {
     "defaultMessage": "来自 {name}的突袭"
@@ -123,10 +126,10 @@
     "defaultMessage": "输入要转为语音的文本"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "对于手动托管，您所需要的只是流 URL 字段中的 HLS URL。您可以在托管设置中找到它。"
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "视频编解码器"
   },
   "9WRlF4": {
     "defaultMessage": "发送"
@@ -135,13 +138,13 @@
     "defaultMessage": "标题"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "地址"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS（Open Broadcaster Software）是一款免费开源软件，用于在 Windows、Mac 和 Linux 上进行视频录制和直播。它深受流媒体用户的欢迎。您需要安装该软件来捕捉视频、音频和其他任何您想添加到流媒体中的内容。安装并按偏好配置后，将流媒体设置中的流 URL 和流媒体密钥添加到 OBS，与 zap.stream 建立连接。"
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "搜索结果： {term}"
   },
   "ALdW69": {
     "defaultMessage": "{name}的说明"
@@ -168,7 +171,7 @@
     "defaultMessage": "登出"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "如果还没有账户，请创建一个新账户。"
   },
   "CsCUYo": {
     "defaultMessage": "{n} 聪"
@@ -180,7 +183,7 @@
     "defaultMessage": "已登录为"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "如何在 zap.stream 上进行流媒体传输？"
   },
   "Dn82AL": {
     "defaultMessage": "在线"
@@ -192,7 +195,7 @@
     "defaultMessage": "給 {name} 的留言"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "什么是 Sats？"
   },
   "FIDK5Y": {
     "defaultMessage": "历史上最受欢迎的 Zappers"
@@ -210,10 +213,10 @@
     "defaultMessage": "热门聊天室"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "闪电地址"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "无效的闪电地址"
   },
   "Gq6x9o": {
     "defaultMessage": "封面图像"
@@ -240,7 +243,7 @@
     "defaultMessage": "支持 {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "游戏"
   },
   "IJDKz3": {
     "defaultMessage": "打闪金额{currency}"
@@ -249,7 +252,7 @@
     "defaultMessage": "或"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "什么是 nostr 扩展名？"
   },
   "J/+m9y": {
     "defaultMessage": "直播时长 {duration} 分钟"
@@ -261,7 +264,7 @@
     "defaultMessage": "正在上传..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "网站"
   },
   "Jq3FDz": {
     "defaultMessage": "内容"
@@ -276,13 +279,13 @@
     "defaultMessage": "不，我未满18岁"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "如果你已经有一个账户，可以使用 nostr 扩展登录。如果你已经使用了 nostr 扩展，你将自动登录。如果没有设置 nostr 扩展，可以使用 nos2x 或 Alby。"
   },
   "LEmxc8": {
     "defaultMessage": "斩获目标"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "zap.stream 最多可免费提供 2 小时的高质量托管和最多 8 小时的 \"源 \"质量托管。之后，您可以根据您选择的质量，选择每分钟 5 sats 或每分钟 10 sats 的流媒体。如果您不使用 zap.stream 托管，价格将取决于您选择的流媒体提供商。"
   },
   "LknBsU": {
     "defaultMessage": "直播流密钥"
@@ -306,7 +309,7 @@
     "defaultMessage": "暂无片段"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "最大音频比特率"
   },
   "Oxqtyf": {
     "defaultMessage": "我们已经为你设置了一个闪电钱包，因此你立即可以开始收取观众的付款！"
@@ -324,7 +327,7 @@
     "defaultMessage": "大约{estimate}"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "在 X 上分享"
   },
   "QRHNuF": {
     "defaultMessage": "我们今天直播些什么？"
@@ -342,7 +345,7 @@
     "defaultMessage": "{amount}來自{name}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "您可以选择使用我们的内部主机或您自己的主机（如 Cloudflare）。"
   },
   "RJOmzk": {
     "defaultMessage": "我已阅读并同意{provider}的{terms}。"
@@ -360,10 +363,10 @@
     "defaultMessage": "聊天用户"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "什么是 OBS？"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "音频编解码器"
   },
   "TP/cMX": {
     "defaultMessage": "已结束"
@@ -381,16 +384,16 @@
     "defaultMessage": "过去的直播"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "关于时间过长"
   },
   "VA/Z1S": {
     "defaultMessage": "隐藏"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "什么是电击？"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "类别"
   },
   "Vn2WiP": {
     "defaultMessage": "获取直播流密钥"
@@ -399,17 +402,17 @@
     "defaultMessage": "直播流转发"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "常见问题"
   },
   "W9355R": {
     "defaultMessage": "解除静音"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "价值",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "点击登录"
   },
   "X2PZ7D": {
     "defaultMessage": "创建目标"
@@ -443,13 +446,13 @@
     "defaultMessage": "尚无目标"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "我们整理了一份简单易用的交易所清单，您可以通过这些交易所购买少量比特币 (sats)，并将其转移到您选择的钱包中。"
   },
   "ZmqxZs": {
     "defaultMessage": "你可以稍后更改它"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Zaps 是闪电付款，作为收据在 nostr 上公布。"
   },
   "Zse7yG": {
     "defaultMessage": "突袭目标"
@@ -464,7 +467,7 @@
     "defaultMessage": "编辑卡"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "推荐的流媒体设置"
   },
   "bfvyfs": {
     "defaultMessage": "匿名"
@@ -491,7 +494,7 @@
     "defaultMessage": "剪辑： {name}"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "常见问题",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -510,13 +513,13 @@
     "defaultMessage": "使用私钥登录 (不安全)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "关于"
   },
   "gzsn7k": {
     "defaultMessage": "{n} 信息"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "如果您使用我们内部的 zap.stream 托管（最便宜、最简单），请将您的流 URL 和流密钥复制到您的 OBS 设置中，然后就可以使用了。"
   },
   "hMzcSq": {
     "defaultMessage": "信息"
@@ -534,7 +537,7 @@
     "defaultMessage": "关注"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "流媒体的成本是多少？"
   },
   "itPgxd": {
     "defaultMessage": "个人档案"
@@ -567,7 +570,7 @@
     "defaultMessage": "例如：关于我"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "用户名太长"
   },
   "kp0NPF": {
     "defaultMessage": "已计划"
@@ -588,7 +591,7 @@
     "defaultMessage": "股份"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "关键帧间隔"
   },
   "mtNGwh": {
     "defaultMessage": "内容的简短描述"
@@ -633,7 +636,7 @@
     "defaultMessage": "打闪消息"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "点击右上角的 \"流 \"按钮"
   },
   "tG1ST3": {
     "defaultMessage": "传入打闪"
@@ -642,17 +645,20 @@
     "defaultMessage": "太棒了！继续.."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "名称",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "Sats 是比特币的小单位。在 zap.stream 上发送比特币被称为 \"zapping \"或 \"zaps\"。"
   },
   "thsiMl": {
     "defaultMessage": "使用条款"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "艺术"
   },
   "tzMNF3": {
     "defaultMessage": "状态"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "开始键入"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "在 Nostr 上广播"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "添加直播目标"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "nostr 扩展只需保存你的密钥，这样你就可以安全登录，而不必每次都重新输入。ZapStream 使用该扩展代表你授权操作，而不会看到你的密钥信息。这比相信网站会安全处理你的凭据更有优势。"
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "无效的 nostr 地址"
   },
   "wzWWzV": {
     "defaultMessage": "最高打闪用户"
@@ -697,10 +706,10 @@
     "defaultMessage": "静音"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "我怎样才能获得更多 Sats？"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "搜索"
   },
   "y867Vs": {
     "defaultMessage": "音量"
@@ -709,16 +718,16 @@
     "defaultMessage": "剪辑"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "要在 zap.stream 上开始串流，请按照以下步骤操作："
   },
   "yzKwBQ": {
     "defaultMessage": "例如 nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "最大视频比特率"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "谈话"
   },
   "zVDHAu": {
     "defaultMessage": "打闪提示"

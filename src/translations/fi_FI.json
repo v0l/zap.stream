@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "Tyhjennä"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "Yhteensä: {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "Nostr-osoite ei kuulu sinulle"
   },
   "04lmFi": {
     "defaultMessage": "Tallenna avain"
@@ -72,7 +75,7 @@
     "defaultMessage": "Peruuta"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "Esimerkkiasetukset OBS:ssä (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "Rynnäkkö"
@@ -99,7 +102,7 @@
     "defaultMessage": "Suoratoisto aloitettu"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "Käyttäjätunnukset eivät ole ainutlaatuisia Nostrissa. Nostr-osoite on yksilöllinen ihmisen luettavissa oleva osoitteesi, joka on yksilöllinen sinulle rekisteröitymisen yhteydessä."
   },
   "69hmpj": {
     "defaultMessage": "{name}:n rynnäkkö"
@@ -123,10 +126,10 @@
     "defaultMessage": "Lisää teksti puheeksi"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "Manuaalista isännöintiä varten tarvitset vain HLS-URL-osoitteen Stream URL -kenttään. Tämä pitäisi löytyä hosting-asetuksista."
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "Videokoodekki"
   },
   "9WRlF4": {
     "defaultMessage": "Lähetä"
@@ -135,13 +138,13 @@
     "defaultMessage": "Otsikko"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "Nostr Osoite"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS (Open Broadcaster Software) on ilmainen ja avoimen lähdekoodin ohjelmisto videotallennukseen ja suoratoistoon Windowsissa, Macissa ja Linuxissa. Se on suosittu valinta striimaajien keskuudessa. Sinun on asennettava tämä, jotta voit tallentaa videon, äänen ja kaiken muun, mitä haluat lisätä streamiin. Kun olet asentanut ja määrittänyt haluamasi, lisää Stream URL-osoite ja Stream Key Stream-asetuksista OBS:ään muodostaaksesi yhteyden zap.streamiin."
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "Hakutulokset: {term}"
   },
   "ALdW69": {
     "defaultMessage": "Muistio {name}"
@@ -168,7 +171,7 @@
     "defaultMessage": "Kirjaudu ulos"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "Luo uusi tili, jos sinulla ei vielä ole sellaista."
   },
   "CsCUYo": {
     "defaultMessage": "{n} satsia"
@@ -180,7 +183,7 @@
     "defaultMessage": "Kirjautuneena nimellä"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "Miten voin suoratoistaa zap.streamissa?"
   },
   "Dn82AL": {
     "defaultMessage": "Live"
@@ -192,7 +195,7 @@
     "defaultMessage": "Kommenttisi kohteelle {name}"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "Mitä satsit ovat?"
   },
   "FIDK5Y": {
     "defaultMessage": "Kaikkien aikojen Top Zappers"
@@ -210,10 +213,10 @@
     "defaultMessage": "Eniten Keskusteluja"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "Salama-osoite"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "Virheellinen salaman osoite"
   },
   "Gq6x9o": {
     "defaultMessage": "Kansikuva"
@@ -240,7 +243,7 @@
     "defaultMessage": "Tukee {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "Pelaaminen"
   },
   "IJDKz3": {
     "defaultMessage": "Zap-määrä valuuttassa {currency}"
@@ -249,7 +252,7 @@
     "defaultMessage": "TAI"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "Mikä on nostr-laajennus?"
   },
   "J/+m9y": {
     "defaultMessage": "Suoratoiston kesto {duration} minuuttia"
@@ -261,7 +264,7 @@
     "defaultMessage": "Ladataan..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "Verkkosivusto"
   },
   "Jq3FDz": {
     "defaultMessage": "Sisältö"
@@ -276,13 +279,13 @@
     "defaultMessage": "Ei, olen alle 18"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "Jos sinulla on jo tili, voit käyttää nostr-laajennusta kirjautumiseen. Jos käytät jo nostr-laajennusta, kirjaudut sisään automaattisesti. Jos sinulla ei ole nostr-laajennusta, voit käyttää nos2x:ää tai Albya."
   },
   "LEmxc8": {
     "defaultMessage": "Zap Tavoitteet"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "zap.stream on ilmainen jopa 2 tuntia hosting korkealla laadulla ja jopa 8 tuntia \"lähde\" laatua. Sen jälkeen sinulla on mahdollisuus streamata 5 satsia minuutissa tai 10 satsia minuutissa valitsemastasi laadusta riippuen. Jos et käytä zap.streamia isännöintiin, hinnoittelu riippuu valitsemastasi suoratoistopalveluntarjoajasta."
   },
   "LknBsU": {
     "defaultMessage": "Streamin avain"
@@ -306,7 +309,7 @@
     "defaultMessage": "Ei vielä leikkeitä"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "Maksimi äänen bittinopeus"
   },
   "Oxqtyf": {
     "defaultMessage": "Sait lightning-lompakon, jotta voit saada heti maksuja katsojilta!"
@@ -324,7 +327,7 @@
     "defaultMessage": "Tietoja {estimate}"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "Jaa X:ssä"
   },
   "QRHNuF": {
     "defaultMessage": "Mitä me tänään lähetetään?"
@@ -342,7 +345,7 @@
     "defaultMessage": "{name} määrällä {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "Tässä sinulla on muutama vaihtoehto: voit käyttää sisäistä tai omaa (kuten Cloudflare) hosting-palvelua."
   },
   "RJOmzk": {
     "defaultMessage": "Olen lukenut ja hyväksynyt {provider}:n {terms}."
@@ -360,7 +363,7 @@
     "defaultMessage": "Chat-käyttäjät"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "Mikä on OBS?"
   },
   "SC2nJT": {
     "defaultMessage": "Audio Codec"
@@ -381,16 +384,16 @@
     "defaultMessage": "Aikaisemmat lähetykset"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "Noin liian kauan"
   },
   "VA/Z1S": {
     "defaultMessage": "Piilota"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "Mitä ovat zapsit?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "Kategoriat"
   },
   "Vn2WiP": {
     "defaultMessage": "Hae lähetysavain"
@@ -405,11 +408,11 @@
     "defaultMessage": "Poista mykistys"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "Arvo",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "Klikkaa Kirjaudu sisään"
   },
   "X2PZ7D": {
     "defaultMessage": "Luo tavoite"
@@ -443,13 +446,13 @@
     "defaultMessage": "Ei vielä tavoitteita"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "Olemme koonneet listan helppokäyttöisistä pörsseistä, joiden avulla voit ostaa pienen määrän bitcoineja (sats) ja siirtää ne haluamaasi lompakkoon."
   },
   "ZmqxZs": {
     "defaultMessage": "Voit muuttaa tätä myöhemmin"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Zapsit ovat salamamaksuja, jotka julkaistaan nostrissa kuitteina."
   },
   "Zse7yG": {
     "defaultMessage": "Rynnäkön kohde"
@@ -464,7 +467,7 @@
     "defaultMessage": "Muokkaa kortteja"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "Suositellut Stream-asetukset"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -510,13 +513,13 @@
     "defaultMessage": "Kirjaudu sisään yksityisellä avaimella (turvaton)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "Tietoja"
   },
   "gzsn7k": {
     "defaultMessage": "{n} viestiä"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "Jos käytät sisäistä zap.stream-hostingia (halvin ja helpoin), kopioi stream URL-osoite ja Stream Key OBS-asetuksiisi, ja sinun pitäisi olla valmis."
   },
   "hMzcSq": {
     "defaultMessage": "Viestit"
@@ -534,7 +537,7 @@
     "defaultMessage": "Seuraa"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "Mitä suoratoisto maksaa?"
   },
   "itPgxd": {
     "defaultMessage": "Profiili"
@@ -567,7 +570,7 @@
     "defaultMessage": "esim. itsestäni"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "Käyttäjätunnus on liian pitkä"
   },
   "kp0NPF": {
     "defaultMessage": "Suunniteltu"
@@ -588,7 +591,7 @@
     "defaultMessage": "Osakkeet"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "Näppäinkehyksen väli"
   },
   "mtNGwh": {
     "defaultMessage": "Lyhyt kuvaus sisällöstä"
@@ -633,7 +636,7 @@
     "defaultMessage": "Zap-viesti"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "Napsauta oikeassa yläkulmassa olevaa \"Stream\"-painiketta."
   },
   "tG1ST3": {
     "defaultMessage": "Saapuva Zap"
@@ -642,11 +645,14 @@
     "defaultMessage": "Mahtavaa! Jatka.."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "Nimi",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "Satsit ovat pieniä Bitcoin-yksiköitä. Satsin lähettämistä zap.streamissa kutsutaan \"zappingiksi\" tai zapsiksi."
   },
   "thsiMl": {
     "defaultMessage": "käyttöehdot"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "Aloita kirjoittaminen"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Lähetä Nostrissa"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "Lisää stream-tavoite"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "Nostr-laajennus yksinkertaisesti tallentaa avaimesi, jotta voit turvallisesti kirjautua sisään ilman, että sinun tarvitsee syöttää niitä joka kerta uudelleen. ZapStream käyttää laajennusta valtuuttamaan toimintoja puolestasi näkemättä koskaan avaintietojasi. Tämä on merkittävä etu verrattuna siihen, että sinun pitäisi luottaa siihen, että verkkosivustot käsittelevät tunnuksiasi turvallisesti."
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "Virheellinen nostr-osoite"
   },
   "wzWWzV": {
     "defaultMessage": "Parhaat Zapparit"
@@ -697,10 +706,10 @@
     "defaultMessage": "Mykistä"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "Miten saan lisää satsia?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "Etsi"
   },
   "y867Vs": {
     "defaultMessage": "Äänenvoimakkuus"
@@ -709,16 +718,16 @@
     "defaultMessage": "Klipsit"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "Voit aloittaa suoratoiston zap.streamissa noudattamalla seuraavia ohjeita:"
   },
   "yzKwBQ": {
     "defaultMessage": "esim. nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "Maksimi videon bittinopeus"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "Puhu"
   },
   "zVDHAu": {
     "defaultMessage": "Zap-hälytys"

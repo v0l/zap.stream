@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "Klar"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "I alt: {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "Nostr-adressen tilhører ikke dig"
   },
   "04lmFi": {
     "defaultMessage": "Gem nøgle"
@@ -72,7 +75,7 @@
     "defaultMessage": "Annuller"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "Eksempel på indstillinger i OBS (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "Razzia"
@@ -99,7 +102,7 @@
     "defaultMessage": "Stream i gang"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "Brugernavne er ikke unikke på Nostr. Nostr-adressen er din unikke menneskeligt læsbare adresse, som er unik for dig ved registrering."
   },
   "69hmpj": {
     "defaultMessage": "Angreb fra {name}"
@@ -123,10 +126,10 @@
     "defaultMessage": "Indsæt tekst for at tale"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "Til manuel hosting skal du blot bruge HLS-URL'en i feltet Stream URL. Du bør kunne finde den i din hostingopsætning."
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "Video-codec"
   },
   "9WRlF4": {
     "defaultMessage": "Send"
@@ -135,13 +138,13 @@
     "defaultMessage": "Titel"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "Nostr-adresse"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS (Open Broadcaster Software) er en gratis open source-software til videooptagelse og livestreaming på Windows, Mac og Linux. Det er et populært valg blandt streamere. Du skal installere det for at optage din video, lyd og alt andet, du gerne vil føje til din stream. Når det er installeret og konfigureret efter dine præferencer, skal du tilføje din Stream URL og Stream Key fra Stream-indstillingerne til OBS for at oprette forbindelse til zap.stream."
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "Søgeresultater: {term}"
   },
   "ALdW69": {
     "defaultMessage": "Note fra {name}"
@@ -168,7 +171,7 @@
     "defaultMessage": "Log ud"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "Opret en ny konto, hvis du ikke allerede har en."
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
@@ -180,7 +183,7 @@
     "defaultMessage": "Logget ind som"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "Hvordan streamer jeg på zap.stream?"
   },
   "Dn82AL": {
     "defaultMessage": "Levende"
@@ -192,7 +195,7 @@
     "defaultMessage": "Din kommentar til {name}"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "Hvad er sats?"
   },
   "FIDK5Y": {
     "defaultMessage": "Alle tiders bedste zappere"
@@ -210,10 +213,10 @@
     "defaultMessage": "De bedste chattere"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "Lynets adresse"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "Ugyldig lynadresse"
   },
   "Gq6x9o": {
     "defaultMessage": "Forsidebillede"
@@ -240,7 +243,7 @@
     "defaultMessage": "Understøtter {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "Spil"
   },
   "IJDKz3": {
     "defaultMessage": "Zap beløb i {currency}"
@@ -249,7 +252,7 @@
     "defaultMessage": "ELLER"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "Hvad er en nostr-udvidelse?"
   },
   "J/+m9y": {
     "defaultMessage": "Streamens varighed {duration} mins"
@@ -261,7 +264,7 @@
     "defaultMessage": "Uploading..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "Hjemmeside"
   },
   "Jq3FDz": {
     "defaultMessage": "Indhold"
@@ -276,13 +279,13 @@
     "defaultMessage": "Nej, jeg er under 18"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "Hvis du allerede har en konto, kan du bruge en nostr-udvidelse til at logge ind. Hvis du allerede bruger en nostr-udvidelse, vil du automatisk blive logget ind. Hvis du ikke har oprettet en nostr-udvidelse, kan du bruge nos2x eller Alby."
   },
   "LEmxc8": {
     "defaultMessage": "Zap Mål"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "zap.stream er gratis i op til 2 timers hosting i høj kvalitet og op til 8 timer i \"source\"-kvalitet. Derefter har du mulighed for at streame for 5 sats pr. minut eller 10 sats pr. minut afhængigt af din valgte kvalitet. Hvis du ikke bruger zap.stream til at hoste, vil prisen afhænge af din valgte streamingudbyder."
   },
   "LknBsU": {
     "defaultMessage": "Stream-nøgle"
@@ -306,7 +309,7 @@
     "defaultMessage": "Ingen klip endnu"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "Maks. lydbitrate"
   },
   "Oxqtyf": {
     "defaultMessage": "Vi har udstyret dig med en lightning wallet, så du kan blive betalt af seerne med det samme!"
@@ -324,7 +327,7 @@
     "defaultMessage": "Om {estimate}"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "Del på X"
   },
   "QRHNuF": {
     "defaultMessage": "Hvad damper vi i dag?"
@@ -342,7 +345,7 @@
     "defaultMessage": "{name} med {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "Her har du et par muligheder: Brug vores interne hosting eller din egen (f.eks. Cloudflare)."
   },
   "RJOmzk": {
     "defaultMessage": "Jeg har læst og er enig i {provider}' s {terms}."
@@ -360,7 +363,7 @@
     "defaultMessage": "Chat-brugere"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "Hvad er OBS?"
   },
   "SC2nJT": {
     "defaultMessage": "Audio Codec"
@@ -381,16 +384,16 @@
     "defaultMessage": "Tidligere strømme"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "Om for lang tid"
   },
   "VA/Z1S": {
     "defaultMessage": "Skjul"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "Hvad er zaps?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "Kategorier"
   },
   "Vn2WiP": {
     "defaultMessage": "Hent Stream-nøgle"
@@ -399,17 +402,17 @@
     "defaultMessage": "Videresendelse af strøm"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "OFTE STILLEDE SPØRGSMÅL"
   },
   "W9355R": {
     "defaultMessage": "Slå lyden fra"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "Værdi",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "Klik på Log ind"
   },
   "X2PZ7D": {
     "defaultMessage": "Opret mål"
@@ -443,13 +446,13 @@
     "defaultMessage": "Ingen mål endnu"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "Vi har sammensat en liste over brugervenlige børser, der giver dig mulighed for at købe en lille mængde bitcoin (sats) og overføre dem til din valgte wallet."
   },
   "ZmqxZs": {
     "defaultMessage": "Du kan ændre dette senere"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Zaps er lynbetalinger, der offentliggøres på nostr som kvitteringer."
   },
   "Zse7yG": {
     "defaultMessage": "Mål for razzia"
@@ -464,7 +467,7 @@
     "defaultMessage": "Rediger kort"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "Anbefalede indstillinger for stream"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -491,7 +494,7 @@
     "defaultMessage": "Klip af {name}"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "OFTE STILLEDE SPØRGSMÅL",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -510,13 +513,13 @@
     "defaultMessage": "Login med privat nøgle (usikkert)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "Om"
   },
   "gzsn7k": {
     "defaultMessage": "{n} meddelelser"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "Hvis du bruger vores egen zap.stream-hosting (billigst og nemmest), skal du kopiere din stream-URL og stream-nøgle til dine OBS-indstillinger, og så skulle du være klar til at gå i gang."
   },
   "hMzcSq": {
     "defaultMessage": "Beskeder"
@@ -534,7 +537,7 @@
     "defaultMessage": "Følg efter"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "Hvad koster det at streame?"
   },
   "itPgxd": {
     "defaultMessage": "Profil"
@@ -567,7 +570,7 @@
     "defaultMessage": "f.eks. om mig"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "Brugernavnet er for langt"
   },
   "kp0NPF": {
     "defaultMessage": "Planlagt"
@@ -588,7 +591,7 @@
     "defaultMessage": "Aktier"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "Keyframe-interval"
   },
   "mtNGwh": {
     "defaultMessage": "En kort beskrivelse af indholdet"
@@ -633,7 +636,7 @@
     "defaultMessage": "Zap-besked"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "Klik på knappen \"Stream\" i øverste højre hjørne."
   },
   "tG1ST3": {
     "defaultMessage": "Indkommende Zap"
@@ -642,17 +645,20 @@
     "defaultMessage": "Fantastisk! Fortsæt..."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "Navn",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "Sats er små enheder af Bitcoin. At sende sats på zap.stream kaldes at \"zappe\" eller zappe."
   },
   "thsiMl": {
     "defaultMessage": "vilkår og betingelser"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "Kunst"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "Begynd at skrive"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Udsendt på Nostr"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "Tilføj mål for strøm"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "En nostr-udvidelse gemmer simpelthen dine nøgler, så du sikkert kan logge ind uden at skulle indtaste dem igen hver gang. ZapStream bruger udvidelsen til at godkende handlinger på dine vegne uden nogensinde at se dine nøgleoplysninger. Det er en stor fordel i forhold til at skulle stole på, at hjemmesider håndterer dine legitimationsoplysninger sikkert."
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "Ugyldig nostr-adresse"
   },
   "wzWWzV": {
     "defaultMessage": "De bedste zappere"
@@ -697,10 +706,10 @@
     "defaultMessage": "Lydløs"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "Hvordan får jeg flere sats?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "Søgning"
   },
   "y867Vs": {
     "defaultMessage": "Volumen"
@@ -709,16 +718,16 @@
     "defaultMessage": "Klip"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "Følg disse trin for at starte streaming på zap.stream:"
   },
   "yzKwBQ": {
     "defaultMessage": "f.eks. nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "Maks. videobitrate"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "Snak"
   },
   "zVDHAu": {
     "defaultMessage": "Zap-alarm"

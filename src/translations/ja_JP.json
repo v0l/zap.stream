@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "クリア"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "合計： {amount}"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "Nostrアドレスはあなたのものではありません"
   },
   "04lmFi": {
     "defaultMessage": "鍵の保存"
@@ -72,7 +75,7 @@
     "defaultMessage": "キャンセル"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "OBSでの設定例（Apple M1 Mac）"
   },
   "4iBdw1": {
     "defaultMessage": "襲撃"
@@ -99,7 +102,7 @@
     "defaultMessage": "ストリーム開始"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "Nostrではユーザー名は一意ではありません。nostrのアドレスは、登録時にあなただけが持つ、人間が読めるアドレスです。"
   },
   "69hmpj": {
     "defaultMessage": "{name}からの襲撃"
@@ -123,10 +126,10 @@
     "defaultMessage": "テキストを挿入して話す"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "手動ホスティングに必要なのは、ストリームURLフィールドのHLS URLだけです。これはホスティングのセットアップで見つけることができるはずです。"
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "ビデオコーデック"
   },
   "9WRlF4": {
     "defaultMessage": "送信"
@@ -135,13 +138,13 @@
     "defaultMessage": "タイトル"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "住所"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS（Open Broadcaster Software）は、Windows、Mac、Linux上でビデオ録画とライブストリーミングを行うためのフリーでオープンソースのソフトウェアです。ストリーマーに人気がある。ビデオ、オーディオ、その他ストリームに追加したいものをキャプチャするために、これをインストールする必要があります。インストールして好みの設定にしたら、ストリーム設定からストリームURLとストリームキーをOBSに追加し、zap.streamとの接続を形成する。"
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "検索結果 {term}"
   },
   "ALdW69": {
     "defaultMessage": "{name}。"
@@ -168,7 +171,7 @@
     "defaultMessage": "ログアウト"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "まだアカウントをお持ちでない場合は、新規アカウントを作成してください。"
   },
   "CsCUYo": {
     "defaultMessage": "{n} 衛星"
@@ -180,7 +183,7 @@
     "defaultMessage": "ログイン名"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "zap.streamでストリーミングするには？"
   },
   "Dn82AL": {
     "defaultMessage": "ライブ配信中"
@@ -192,7 +195,7 @@
     "defaultMessage": "{name} へのコメント"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "サッツとは？"
   },
   "FIDK5Y": {
     "defaultMessage": "歴代トップ・ザッパー"
@@ -210,10 +213,10 @@
     "defaultMessage": "トップ・チャッター"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "ライトニングアドレス"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "無効なライトニングアドレス"
   },
   "Gq6x9o": {
     "defaultMessage": "カバー画像"
@@ -240,7 +243,7 @@
     "defaultMessage": "{markdown} をサポート"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "ゲーミング"
   },
   "IJDKz3": {
     "defaultMessage": "ザップ金額 ({currency})"
@@ -249,7 +252,7 @@
     "defaultMessage": "または"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "ノストル・エクステンションとは何ですか？"
   },
   "J/+m9y": {
     "defaultMessage": "ストリームの所要時間 {duration} 分"
@@ -261,7 +264,7 @@
     "defaultMessage": "アップロード中..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "ウェブサイト"
   },
   "Jq3FDz": {
     "defaultMessage": "コンテンツ"
@@ -276,13 +279,13 @@
     "defaultMessage": "いいえ、私は18歳以下です"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "すでにアカウントをお持ちの方は、nostr拡張機能を使ってログインできます。すでにnostr拡張機能を使用している場合は、自動的にログインされます。nostr拡張機能を設定していない場合は、nos2xまたはAlbyを使用することができます。"
   },
   "LEmxc8": {
     "defaultMessage": "ザップ・ゴール"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "zap.streamは高画質で2時間、「ソース」画質で8時間まで無料でホスティングできます。その後、選択した品質に応じて、1分あたり5サットまたは1分あたり10サットでストリーミングするオプションがあります。ホスティングにzap.streamを使用しない場合、価格は選択したストリーミングプロバイダーによって異なります。"
   },
   "LknBsU": {
     "defaultMessage": "配信キー"
@@ -306,7 +309,7 @@
     "defaultMessage": "クリップはまだない"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "最大オーディオ・ビットレート"
   },
   "Oxqtyf": {
     "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
@@ -324,7 +327,7 @@
     "defaultMessage": "{estimate} について"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "Xで共有する"
   },
   "QRHNuF": {
     "defaultMessage": "今日は何を配信していますか？"
@@ -342,7 +345,7 @@
     "defaultMessage": "{name}：{amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "ここで、いくつかのオプションがあります。弊社の社内ホスティングを使用するか、独自のホスティング（Cloudflareなど）を使用するかです。"
   },
   "RJOmzk": {
     "defaultMessage": "{provider} の {terms} を読み、同意します。"
@@ -360,10 +363,10 @@
     "defaultMessage": "チャットユーザー"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "OBSとは？"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "オーディオ・コーデック"
   },
   "TP/cMX": {
     "defaultMessage": "終了しました"
@@ -381,16 +384,16 @@
     "defaultMessage": "過去の配信"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "長すぎる"
   },
   "VA/Z1S": {
     "defaultMessage": "非表示"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "ザップとは何か？"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "カテゴリー"
   },
   "Vn2WiP": {
     "defaultMessage": "ストリームキー取得"
@@ -399,17 +402,17 @@
     "defaultMessage": "ストリーム転送"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "よくあるご質問"
   },
   "W9355R": {
     "defaultMessage": "ミュート解除"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "価値",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "ログインをクリック"
   },
   "X2PZ7D": {
     "defaultMessage": "目標を設定"
@@ -443,13 +446,13 @@
     "defaultMessage": "ゴールはまだない"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "少量のビットコイン（sats）を購入し、希望のウォレットに送金できる使いやすい取引所のリストをまとめた。"
   },
   "ZmqxZs": {
     "defaultMessage": "これはあとで変更することができます"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "ザップとはライトニングペイメントのことで、レシートとしてnostrに掲載される。"
   },
   "Zse7yG": {
     "defaultMessage": "襲撃目標"
@@ -464,7 +467,7 @@
     "defaultMessage": "編集カード"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "推奨ストリーム設定"
   },
   "bfvyfs": {
     "defaultMessage": "アノン"
@@ -491,7 +494,7 @@
     "defaultMessage": "クリップ： {name}"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "よくあるご質問",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -510,13 +513,13 @@
     "defaultMessage": "秘密鍵によるログイン（安全ではありません）"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "について"
   },
   "gzsn7k": {
     "defaultMessage": "{n} メッセージ"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "社内のzap.streamホスティング（最も安くて簡単）をご利用の場合は、ストリームURLとストリームキーをOBSの設定にコピーしてください。"
   },
   "hMzcSq": {
     "defaultMessage": "メッセージ"
@@ -534,7 +537,7 @@
     "defaultMessage": "フォロー"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "ストリーミングの料金は？"
   },
   "itPgxd": {
     "defaultMessage": "プロフィール"
@@ -567,7 +570,7 @@
     "defaultMessage": "例：自己紹介"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "ユーザー名が長すぎる"
   },
   "kp0NPF": {
     "defaultMessage": "予定あり"
@@ -588,7 +591,7 @@
     "defaultMessage": "株式"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "キーフレーム間隔"
   },
   "mtNGwh": {
     "defaultMessage": "コンテンツの簡単な説明"
@@ -633,7 +636,7 @@
     "defaultMessage": "ザップメッセージ"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "右上の \"Stream \"ボタンをクリックする。"
   },
   "tG1ST3": {
     "defaultMessage": "着金中のザップ"
@@ -642,17 +645,20 @@
     "defaultMessage": "驚いた！続けて..."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "名称",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "サットはビットコインの小さな単位です。zap.streamでサットを送信することは、「ザッピング」またはザップと呼ばれます。"
   },
   "thsiMl": {
     "defaultMessage": "利用規約"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "アート"
   },
   "tzMNF3": {
     "defaultMessage": "ステータス"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "入力を開始"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Nostr で配信"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "配信目標を追加"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "nostr拡張機能はキーを保存するだけで、毎回キーを再入力することなく安全にログインできる。ZapStreamはこの拡張機能を使い、あなたのキー情報を見ることなく、あなたに代わってアクションを承認する。これは、ウェブサイトがあなたのクレデンシャルを安全に扱うことを信頼するよりも大きな利点があります。"
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "無効なアドレス"
   },
   "wzWWzV": {
     "defaultMessage": "トップザッパー"
@@ -697,10 +706,10 @@
     "defaultMessage": "ミュート"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "サッツを増やすには？"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "検索"
   },
   "y867Vs": {
     "defaultMessage": "ボリューム"
@@ -709,16 +718,16 @@
     "defaultMessage": "クリップス"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "zap.streamでストリーミングを開始するには、以下の手順に従ってください："
   },
   "yzKwBQ": {
     "defaultMessage": "例：nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "最大ビデオ・ビットレート"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "トーク"
   },
   "zVDHAu": {
     "defaultMessage": "ザップアラート"

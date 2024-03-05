@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "Изчисти"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "Общо: {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "Адресът Nostr не ви принадлежи"
   },
   "04lmFi": {
     "defaultMessage": "Запази ключ"
@@ -72,7 +75,7 @@
     "defaultMessage": "Отказ"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "Примерни настройки в OBS (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -99,7 +102,7 @@
     "defaultMessage": "Започнат поток"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "Потребителските имена не са уникални в Nostr. Адресът на nostr е вашият уникален адрес, който може да бъде прочетен от човек и който е уникален за вас при регистрацията."
   },
   "69hmpj": {
     "defaultMessage": "Набег от {name}"
@@ -123,10 +126,10 @@
     "defaultMessage": "Вмъкнете текст за изговаряне"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "За ръчен хостинг ви е необходим само HLS URL адресът за полето Stream URL. Би трябвало да можете да го намерите в настройките на хостинга си."
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "Видеокодек"
   },
   "9WRlF4": {
     "defaultMessage": "Изпрати"
@@ -135,13 +138,13 @@
     "defaultMessage": "Заглавие"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "Адрес на Nostr"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS (Open Broadcaster Software) е безплатен софтуер с отворен код за запис на видео и стрийминг на живо за Windows, Mac и Linux. Той е популярен избор сред стриймърите. Ще трябва да го инсталирате, за да заснемате видео, аудио и всичко друго, което искате да добавите към потока си. След като инсталирате и конфигурирате според предпочитанията, добавете URL адреса на потока и ключа на потока от настройките на потока в OBS, за да създадете връзка със zap.stream."
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "Резултати от търсенето: {term}"
   },
   "ALdW69": {
     "defaultMessage": "Бележка от {name}"
@@ -168,7 +171,7 @@
     "defaultMessage": "Изход"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "Създайте нов акаунт, ако все още нямате такъв."
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
@@ -180,7 +183,7 @@
     "defaultMessage": "Вписани сте като"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "Как да предавам поточно в zap.stream?"
   },
   "Dn82AL": {
     "defaultMessage": "На живо"
@@ -192,7 +195,7 @@
     "defaultMessage": "Твоят коментар за {име}"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "Какво представляват сателитите?"
   },
   "FIDK5Y": {
     "defaultMessage": "Всички времена Top Zappers"
@@ -210,10 +213,10 @@
     "defaultMessage": "Топ чатъри"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "Адрес за мълнии"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "Невалиден адрес на мълнията"
   },
   "Gq6x9o": {
     "defaultMessage": "Изображение на корицата"
@@ -240,7 +243,7 @@
     "defaultMessage": "Поддръжка {намаление}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "Гейминг"
   },
   "IJDKz3": {
     "defaultMessage": "Зап количество във {валута}"
@@ -249,7 +252,7 @@
     "defaultMessage": "Или"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "Какво представлява разширението nostr?"
   },
   "J/+m9y": {
     "defaultMessage": "Продължителност на потока {duration} mins"
@@ -261,7 +264,7 @@
     "defaultMessage": "Качване..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "Уебсайт"
   },
   "Jq3FDz": {
     "defaultMessage": "Съдържание"
@@ -276,13 +279,13 @@
     "defaultMessage": "Не, аз съм под 18"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "Ако вече имате акаунт, можете да използвате разширение nostr, за да влезете в него. Ако вече използвате разширение на nostr, ще бъдете вписани автоматично. Ако нямате настроено разширение nostr, можете да използвате nos2x или Alby."
   },
   "LEmxc8": {
     "defaultMessage": "Цели на Zap"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "Zap.stream е безплатен до 2 часа хостинг с високо качество и до 8 часа с качество \"източник\". След това имате възможност да стриймвате за 5 sats на минута или 10 sats на минута в зависимост от избраното качество. Ако не използвате zap.stream за хостинг, цената ще зависи от избрания от вас доставчик на стрийминг."
   },
   "LknBsU": {
     "defaultMessage": "Стрийм ключ"
@@ -306,7 +309,7 @@
     "defaultMessage": "Все още няма клипове"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "Максимален аудиобитрейт"
   },
   "Oxqtyf": {
     "defaultMessage": "Свързахме ви със светкавичен портфейл, за да можете да получите плащане от зрителите веднага!"
@@ -324,7 +327,7 @@
     "defaultMessage": "Относно {очаквано}"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "Споделяне в X"
   },
   "QRHNuF": {
     "defaultMessage": "Какво стриймваме днес?"
@@ -342,7 +345,7 @@
     "defaultMessage": "{име} със {количество}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "Тук имате няколко възможности - да използвате нашия собствен хостинг или свой собствен (например Cloudflare)."
   },
   "RJOmzk": {
     "defaultMessage": "Прочетох и се съгласявам със {доставчика} и неговите {общи условия}."
@@ -360,10 +363,10 @@
     "defaultMessage": "Потребители на чата"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "Какво е OBS?"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "Аудио кодек"
   },
   "TP/cMX": {
     "defaultMessage": "Приключено"
@@ -381,16 +384,16 @@
     "defaultMessage": "Изминали Стриймове"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "За твърде дълго"
   },
   "VA/Z1S": {
     "defaultMessage": "Скрий"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "Какво представляват удрянията?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "Категории"
   },
   "Vn2WiP": {
     "defaultMessage": "Получи Стрийм Ключ"
@@ -399,17 +402,17 @@
     "defaultMessage": "Препращане на потоци"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ"
   },
   "W9355R": {
     "defaultMessage": "Премахни заглушаването"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "Стойност",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "Кликнете върху Вход"
   },
   "X2PZ7D": {
     "defaultMessage": "Създаване на цел"
@@ -443,13 +446,13 @@
     "defaultMessage": "Все още няма цели"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "Съставихме списък с лесни за използване борси, които ще ви позволят да закупите малко количество биткойни (sats) и да ги прехвърлите в избрания от вас портфейл."
   },
   "ZmqxZs": {
     "defaultMessage": "Можете да промените това по-късно"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Плащанията са мълниеносни плащания, които се публикуват в nostr като разписки."
   },
   "Zse7yG": {
     "defaultMessage": "Цел на рейда"
@@ -464,7 +467,7 @@
     "defaultMessage": "Редактиране на карти"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "Препоръчителни настройки на потока"
   },
   "bfvyfs": {
     "defaultMessage": "Анонимен"
@@ -491,7 +494,7 @@
     "defaultMessage": "Клип от {name}"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -510,13 +513,13 @@
     "defaultMessage": "Вход със частен ключ (несигурно)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "За"
   },
   "gzsn7k": {
     "defaultMessage": "{n} съобщения"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "Ако използвате нашия собствен хостинг zap.stream (най-евтиният и най-лесният), копирайте URL адреса на потока и ключа на потока в настройките на OBS и ще можете да започнете работа."
   },
   "hMzcSq": {
     "defaultMessage": "Съобщения"
@@ -534,7 +537,7 @@
     "defaultMessage": "Последване"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "Колко струва стриймингът?"
   },
   "itPgxd": {
     "defaultMessage": "Профил"
@@ -567,7 +570,7 @@
     "defaultMessage": "напр. за мен"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "Потребителското име е твърде дълго"
   },
   "kp0NPF": {
     "defaultMessage": "Планирано"
@@ -588,7 +591,7 @@
     "defaultMessage": "Акции"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "Интервал на ключовите кадри"
   },
   "mtNGwh": {
     "defaultMessage": "Кратко описание на съдържанието"
@@ -633,7 +636,7 @@
     "defaultMessage": "Зап съобщение"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "Кликнете върху бутона \"Stream\" в горния десен ъгъл"
   },
   "tG1ST3": {
     "defaultMessage": "Входящ Зап"
@@ -642,17 +645,20 @@
     "defaultMessage": "Стахотно! Продължете.."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "Име",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "Сатите са малки единици биткойн. Изпращането на сатове в zap.stream се нарича \"zapping\" или \"zaps\"."
   },
   "thsiMl": {
     "defaultMessage": "общи условия"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "Изкуство"
   },
   "tzMNF3": {
     "defaultMessage": "Състояние"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "Започнете да пишете"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Излъчване във Ностър"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "Добави стрийм цел"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "Разширението nostr просто запазва ключовете ви, за да можете безопасно да влизате в системата, без да се налага да ги въвеждате всеки път отново. ZapStream използва разширението, за да оторизира действия от ваше име, без да вижда информацията за вашите ключове. Това има значително предимство пред необходимостта да се доверявате, че уебсайтовете обработват безопасно вашите идентификационни данни."
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "Невалиден адрес на nostr"
   },
   "wzWWzV": {
     "defaultMessage": "Топ запери"
@@ -697,10 +706,10 @@
     "defaultMessage": "Заглуши"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "Как да получа повече точки?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "Търсене"
   },
   "y867Vs": {
     "defaultMessage": "Сила на звука"
@@ -709,16 +718,16 @@
     "defaultMessage": "Клипове"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "За да започнете стрийминг в zap.stream, следвайте следните стъпки:"
   },
   "yzKwBQ": {
     "defaultMessage": "напр. nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "Максимален видеобитрейт"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "Говори"
   },
   "zVDHAu": {
     "defaultMessage": "Зап Тревога"

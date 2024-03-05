@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "Cancella"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "Totale: {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "L'indirizzo Nostr non appartiene all'utente"
   },
   "04lmFi": {
     "defaultMessage": "Salva la chiave"
@@ -72,7 +75,7 @@
     "defaultMessage": "Elimina"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "Esempio di impostazioni in OBS (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -99,7 +102,7 @@
     "defaultMessage": "Flusso avviato"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "I nomi utente non sono unici su Nostr. L'indirizzo nostr è l'indirizzo unico leggibile dall'uomo che viene assegnato all'utente al momento della registrazione."
   },
   "69hmpj": {
     "defaultMessage": "Raid da {name}"
@@ -123,10 +126,10 @@
     "defaultMessage": "Inserisci il testo da pronunciare"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "Per l'hosting manuale, tutto ciò che serve è l'URL HLS per il campo URL del flusso. Dovreste poterlo trovare nella vostra configurazione di hosting."
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "Codec video"
   },
   "9WRlF4": {
     "defaultMessage": "Invia"
@@ -135,13 +138,13 @@
     "defaultMessage": "Titolo"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "Indirizzo"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS (Open Broadcaster Software) è un software gratuito e open source per la registrazione video e lo streaming live su Windows, Mac e Linux. È una scelta popolare tra gli streamer. È necessario installarlo per catturare il video, l'audio e qualsiasi altra cosa si voglia aggiungere allo streaming. Una volta installato e configurato in base alle preferenze, aggiungete l'URL dello streaming e la chiave dello streaming dalle impostazioni dello streaming a OBS per creare una connessione con zap.stream."
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "Risultati della ricerca: {term}"
   },
   "ALdW69": {
     "defaultMessage": "Nota di {name}"
@@ -168,7 +171,7 @@
     "defaultMessage": "Logout"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "Create un nuovo account se non ne avete già uno."
   },
   "CsCUYo": {
     "defaultMessage": "{n} saturazione"
@@ -180,7 +183,7 @@
     "defaultMessage": "Accesso effettuato come"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "Come si effettua lo streaming su zap.stream?"
   },
   "Dn82AL": {
     "defaultMessage": "Dal vivo"
@@ -192,7 +195,7 @@
     "defaultMessage": "Il tuo commento per {name}"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "Che cosa sono i saggi?"
   },
   "FIDK5Y": {
     "defaultMessage": "I migliori zappatori di tutti i tempi"
@@ -210,10 +213,10 @@
     "defaultMessage": "Top Chatters"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "Indirizzo del fulmine"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "Indirizzo fulmineo non valido"
   },
   "Gq6x9o": {
     "defaultMessage": "Immagine di copertina"
@@ -240,7 +243,7 @@
     "defaultMessage": "Supporta {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "Gioco"
   },
   "IJDKz3": {
     "defaultMessage": "Importo dello Zap in {currency}"
@@ -249,7 +252,7 @@
     "defaultMessage": "O"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "Che cos'è un'estensione nostr?"
   },
   "J/+m9y": {
     "defaultMessage": "Durata del flusso {duration} mins"
@@ -261,7 +264,7 @@
     "defaultMessage": "Caricamento..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "Sito web"
   },
   "Jq3FDz": {
     "defaultMessage": "Contenuto"
@@ -276,13 +279,13 @@
     "defaultMessage": "No, ho meno di 18 anni"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "Se si dispone già di un account, è possibile utilizzare un'estensione nostr per effettuare il login. Se si utilizza già un'estensione nostr, l'accesso avverrà automaticamente. Se non si dispone di un'estensione nostr, è possibile utilizzare nos2x o Alby."
   },
   "LEmxc8": {
     "defaultMessage": "Obiettivi Zap"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "zap.stream è gratuito fino a 2 ore di hosting ad alta qualità e fino a 8 ore di qualità \"sorgente\". Dopodiché si ha la possibilità di trasmettere per 5 sats al minuto o 10 sats al minuto, a seconda della qualità scelta. Se non si utilizza zap.stream per l'hosting, il prezzo dipenderà dal provider di streaming scelto."
   },
   "LknBsU": {
     "defaultMessage": "Chiave di flusso"
@@ -306,7 +309,7 @@
     "defaultMessage": "Non ci sono ancora clip"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "Bitrate audio massimo"
   },
   "Oxqtyf": {
     "defaultMessage": "Ti abbiamo messo a disposizione un portafoglio lightning per farti pagare subito dagli spettatori!"
@@ -324,7 +327,7 @@
     "defaultMessage": "Informazioni su {estimate}"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "Condividi su X"
   },
   "QRHNuF": {
     "defaultMessage": "Che cosa stiamo fumando oggi?"
@@ -342,7 +345,7 @@
     "defaultMessage": "{name} con {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "Qui avete alcune opzioni, utilizzando il nostro hosting interno o il vostro (come Cloudflare)."
   },
   "RJOmzk": {
     "defaultMessage": "Ho letto e sono d'accordo con {provider}''s {terms}."
@@ -360,10 +363,10 @@
     "defaultMessage": "Utenti della chat"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "Che cos'è l'OBS?"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "Codec audio"
   },
   "TP/cMX": {
     "defaultMessage": "Terminato"
@@ -381,16 +384,16 @@
     "defaultMessage": "Flussi passati"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "Troppo a lungo"
   },
   "VA/Z1S": {
     "defaultMessage": "Nascondere"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "Cosa sono gli zap?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "Categorie"
   },
   "Vn2WiP": {
     "defaultMessage": "Ottenere la chiave di flusso"
@@ -405,11 +408,11 @@
     "defaultMessage": "Disattivare l'audio"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "Valore",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "Fare clic su Accedi"
   },
   "X2PZ7D": {
     "defaultMessage": "Creare l'obiettivo"
@@ -443,13 +446,13 @@
     "defaultMessage": "Non ci sono ancora obiettivi"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "Abbiamo messo insieme un elenco di exchange facili da usare che vi permetteranno di acquistare una piccola quantità di bitcoin (sats) e di trasferirli al vostro portafoglio preferito."
   },
   "ZmqxZs": {
     "defaultMessage": "È possibile modificarlo in seguito"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Gli Zap sono pagamenti lampo che vengono pubblicati su nostr come ricevute."
   },
   "Zse7yG": {
     "defaultMessage": "Obiettivo del raid"
@@ -464,7 +467,7 @@
     "defaultMessage": "Modifica delle carte"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "Impostazioni di flusso consigliate"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -510,13 +513,13 @@
     "defaultMessage": "Accesso con chiave privata (non sicuro)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "Circa"
   },
   "gzsn7k": {
     "defaultMessage": "{n} messaggi"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "Se utilizzate il nostro hosting interno zap.stream (il più economico e semplice), copiate l'URL del vostro stream e la Stream Key nelle impostazioni di OBS e sarete pronti a partire."
   },
   "hMzcSq": {
     "defaultMessage": "Messaggi"
@@ -534,7 +537,7 @@
     "defaultMessage": "Seguire"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "Quanto costa lo streaming?"
   },
   "itPgxd": {
     "defaultMessage": "Profilo"
@@ -567,7 +570,7 @@
     "defaultMessage": "es. su di me"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "Il nome utente è troppo lungo"
   },
   "kp0NPF": {
     "defaultMessage": "Pianificato"
@@ -588,7 +591,7 @@
     "defaultMessage": "Azioni"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "Intervallo dei fotogrammi chiave"
   },
   "mtNGwh": {
     "defaultMessage": "Un breve descrizione del contenuto"
@@ -633,7 +636,7 @@
     "defaultMessage": "Messaggio Zap"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "Fare clic sul pulsante \"Stream\" nell'angolo in alto a destra"
   },
   "tG1ST3": {
     "defaultMessage": "Zap in arrivo"
@@ -642,17 +645,20 @@
     "defaultMessage": "Incredibile! Continua..."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "Nome",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "I sats sono piccole unità di Bitcoin. L'invio di sats su zap.stream viene definito \"zapping\" o \"zaps\"."
   },
   "thsiMl": {
     "defaultMessage": "termini e condizioni"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "Arte"
   },
   "tzMNF3": {
     "defaultMessage": "Stato"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "Iniziare a digitare"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Trasmissione su Nostr"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "Aggiungere l'obiettivo del flusso"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "L'estensione nostr non fa altro che salvare le chiavi, in modo da poter accedere in tutta sicurezza senza doverle reinserire ogni volta. ZapStream utilizza l'estensione per autorizzare le azioni per conto dell'utente senza mai vedere le informazioni sulle chiavi. Questo ha un vantaggio significativo rispetto al dover confidare che i siti web gestiscano le vostre credenziali in modo sicuro."
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "Indirizzo nostr non valido"
   },
   "wzWWzV": {
     "defaultMessage": "Top zapper"
@@ -697,10 +706,10 @@
     "defaultMessage": "Muto"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "Come posso ottenere più saturazioni?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "Ricerca"
   },
   "y867Vs": {
     "defaultMessage": "Volume"
@@ -709,16 +718,16 @@
     "defaultMessage": "Clip"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "Per avviare lo streaming su zap.stream, procedere come segue:"
   },
   "yzKwBQ": {
     "defaultMessage": "es. nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "Bitrate video massimo"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "Parlare"
   },
   "zVDHAu": {
     "defaultMessage": "Allarme Zap"

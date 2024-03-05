@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "지우기"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "합계: {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "귀하의 주소는 귀하의 소유가 아닙니다."
   },
   "04lmFi": {
     "defaultMessage": "키 저장"
@@ -72,7 +75,7 @@
     "defaultMessage": "취소"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "OBS의 설정 예시(Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "레이드"
@@ -99,7 +102,7 @@
     "defaultMessage": "스트림 시작"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "노스트르에서 사용자 아이디는 고유하지 않습니다. 노스트르 주소는 등록 시 부여되는 사람이 읽을 수 있는 고유한 주소로, 회원님에게만 부여됩니다."
   },
   "69hmpj": {
     "defaultMessage": "{name}에서 레이드"
@@ -123,10 +126,10 @@
     "defaultMessage": "말할 텍스트 삽입"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "수동 호스팅의 경우 스트림 URL 필드에 HLS URL만 있으면 됩니다. 호스팅 설정에서 이를 쉽게 찾을 수 있을 것입니다."
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "비디오 코덱"
   },
   "9WRlF4": {
     "defaultMessage": "보내기"
@@ -135,13 +138,13 @@
     "defaultMessage": "제목"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "노스트르 주소"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS(오픈 방송사 소프트웨어)는 Windows, Mac, Linux에서 동영상 녹화 및 실시간 스트리밍을 위한 무료 오픈 소스 소프트웨어입니다. 스트리머들이 많이 사용하는 소프트웨어입니다. 동영상, 오디오 및 스트림에 추가하려는 다른 모든 것을 캡처하려면 이 소프트웨어를 설치해야 합니다. 설치하고 기본 설정에 맞게 구성한 후 스트림 설정에서 스트림 URL과 스트림 키를 OBS에 추가하여 zap.stream과 연결합니다."
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "검색 결과: {term}"
   },
   "ALdW69": {
     "defaultMessage": "참고: {name}"
@@ -168,7 +171,7 @@
     "defaultMessage": "로그아웃"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "아직 계정이 없는 경우 새 계정을 만드세요."
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
@@ -180,7 +183,7 @@
     "defaultMessage": "다음 계정으로 로그인"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "zap.stream에서 스트리밍하려면 어떻게 하나요?"
   },
   "Dn82AL": {
     "defaultMessage": "라이브"
@@ -192,7 +195,7 @@
     "defaultMessage": "{name}에 대한 귀하의 코멘트"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "수능이란 무엇인가요?"
   },
   "FIDK5Y": {
     "defaultMessage": "역대 최고 재퍼"
@@ -210,10 +213,10 @@
     "defaultMessage": "인기 채팅자"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "라이트닝 주소"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "잘못된 라이트닝 주소"
   },
   "Gq6x9o": {
     "defaultMessage": "표지 이미지"
@@ -240,7 +243,7 @@
     "defaultMessage": "지원 {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "게임"
   },
   "IJDKz3": {
     "defaultMessage": "Zap 금액 {currency}"
@@ -249,7 +252,7 @@
     "defaultMessage": "또는"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "노스트란 무엇인가요?"
   },
   "J/+m9y": {
     "defaultMessage": "스트리밍 시간 {duration} 분"
@@ -261,7 +264,7 @@
     "defaultMessage": "업로드 중..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "웹사이트"
   },
   "Jq3FDz": {
     "defaultMessage": "콘텐츠"
@@ -276,13 +279,13 @@
     "defaultMessage": "아니요, 저는 18세 미만입니다."
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "이미 계정이 있는 경우 nostr 확장자를 사용하여 로그인할 수 있습니다. 이미 nostr 확장 프로그램을 사용 중이라면 자동으로 로그인됩니다. nostr 확장 프로그램을 설정하지 않은 경우 nos2x 또는 Alby를 사용할 수 있습니다."
   },
   "LEmxc8": {
     "defaultMessage": "Zap 목표"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "zap.stream은 고화질로 최대 2시간, '소스' 화질로 최대 8시간까지 무료로 호스팅할 수 있습니다. 그 이후에는 선택한 화질에 따라 분당 5초 또는 분당 10초 동안 스트리밍할 수 있는 옵션이 있습니다. zap.stream을 사용하여 호스팅하지 않는 경우 가격은 선택한 스트리밍 제공업체에 따라 달라집니다."
   },
   "LknBsU": {
     "defaultMessage": "스트림 키"
@@ -306,7 +309,7 @@
     "defaultMessage": "아직 클립이 없습니다."
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "최대 오디오 비트레이트"
   },
   "Oxqtyf": {
     "defaultMessage": "시청자로부터 바로 수익을 받을 수 있도록 라이트닝 월렛을 연결해 드렸습니다!"
@@ -324,7 +327,7 @@
     "defaultMessage": "{estimate}정보"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "X에서 공유"
   },
   "QRHNuF": {
     "defaultMessage": "오늘은 무엇을 찌고 있나요?"
@@ -342,7 +345,7 @@
     "defaultMessage": "{name} {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "여기에는 사내 호스팅 또는 자체 호스팅(예: Cloudflare)을 사용하는 몇 가지 옵션이 있습니다."
   },
   "RJOmzk": {
     "defaultMessage": "본인은 {provider}의 {terms}을 읽었으며 이에 동의합니다."
@@ -360,10 +363,10 @@
     "defaultMessage": "채팅 사용자"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "OBS란 무엇인가요?"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "오디오 코덱"
   },
   "TP/cMX": {
     "defaultMessage": "종료"
@@ -381,16 +384,16 @@
     "defaultMessage": "과거 스트림"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "너무 오래"
   },
   "VA/Z1S": {
     "defaultMessage": "숨기기"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "잽이란 무엇인가요?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "카테고리"
   },
   "Vn2WiP": {
     "defaultMessage": "스트림 키 받기"
@@ -399,17 +402,17 @@
     "defaultMessage": "스트림 포워딩"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "자주 묻는 질문"
   },
   "W9355R": {
     "defaultMessage": "음소거 해제"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "가치",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "로그인을 클릭합니다."
   },
   "X2PZ7D": {
     "defaultMessage": "목표 만들기"
@@ -443,13 +446,13 @@
     "defaultMessage": "아직 목표 없음"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "소량의 비트코인을 구매하고 원하는 지갑으로 이체할 수 있는 사용하기 쉬운 거래소 목록을 정리해 보았습니다."
   },
   "ZmqxZs": {
     "defaultMessage": "나중에 변경할 수 있습니다."
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Zaps는 번개 결제로, 노스트르에 영수증으로 게시됩니다."
   },
   "Zse7yG": {
     "defaultMessage": "레이드 대상"
@@ -464,7 +467,7 @@
     "defaultMessage": "카드 편집"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "권장 스트림 설정"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -491,7 +494,7 @@
     "defaultMessage": "{name}클립"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "자주 묻는 질문",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -510,13 +513,13 @@
     "defaultMessage": "개인 키로 로그인(안전하지 않음)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "정보"
   },
   "gzsn7k": {
     "defaultMessage": "{n} 메시지"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "가장 저렴하고 간편한 자체 zap.stream 호스팅을 사용하는 경우 스트림 URL과 스트림 키를 OBS 설정에 복사하면 바로 사용할 수 있습니다."
   },
   "hMzcSq": {
     "defaultMessage": "메시지"
@@ -534,7 +537,7 @@
     "defaultMessage": "팔로우"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "스트리밍 비용은 얼마인가요?"
   },
   "itPgxd": {
     "defaultMessage": "프로필"
@@ -567,7 +570,7 @@
     "defaultMessage": "예: 내 정보"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "사용자 이름이 너무 깁니다."
   },
   "kp0NPF": {
     "defaultMessage": "계획된"
@@ -588,7 +591,7 @@
     "defaultMessage": "공유"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "키프레임 간격"
   },
   "mtNGwh": {
     "defaultMessage": "콘텐츠에 대한 간단한 설명"
@@ -633,7 +636,7 @@
     "defaultMessage": "Zap 메시지"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "오른쪽 상단의 '스트림' 버튼을 클릭합니다."
   },
   "tG1ST3": {
     "defaultMessage": "수신 Zap"
@@ -642,17 +645,20 @@
     "defaultMessage": "놀랍습니다! 계속..."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "이름",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "샛은 비트코인의 작은 단위입니다. zap.stream에서 새트를 전송하는 것을 \"재핑\" 또는 재핑이라고 합니다."
   },
   "thsiMl": {
     "defaultMessage": "이용 약관"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "예술"
   },
   "tzMNF3": {
     "defaultMessage": "상태"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "입력 시작"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Nostr에서 방송"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "스트림 목표 추가"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "nostr 확장 프로그램은 키를 저장하기만 하면 매번 키를 다시 입력할 필요 없이 안전하게 로그인할 수 있습니다. ZapStream은 확장 프로그램을 사용하여 사용자의 키 정보를 보지 않고도 사용자를 대신하여 작업을 승인합니다. 이는 웹사이트가 사용자의 자격 증명을 안전하게 처리한다고 믿어야 하는 것에 비해 상당한 이점이 있습니다."
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "잘못된 주소"
   },
   "wzWWzV": {
     "defaultMessage": "최고의 재퍼"
@@ -697,10 +706,10 @@
     "defaultMessage": "음소거"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "수능 점수를 더 높이려면 어떻게 해야 하나요?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "검색"
   },
   "y867Vs": {
     "defaultMessage": "볼륨"
@@ -709,13 +718,13 @@
     "defaultMessage": "클립"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "zap.stream에서 스트리밍을 시작하려면 다음 단계를 따르세요:"
   },
   "yzKwBQ": {
     "defaultMessage": "예: nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "최대 비디오 비트레이트"
   },
   "zEYkgY": {
     "defaultMessage": "Talk"

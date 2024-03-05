@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "Töröl"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "Összesen: {amount} sats"
   },
@@ -27,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "A Nostr cím nem az Öné"
   },
   "04lmFi": {
     "defaultMessage": "Kulcs Mentése"
@@ -72,7 +75,7 @@
     "defaultMessage": "Mégse"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "Példa beállítások az OBS-ben (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -99,7 +102,7 @@
     "defaultMessage": "Stream elindult"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "A felhasználónevek nem egyediek a Nostr-on. A Nostr-cím az Ön egyedi, ember által olvasható címe, amely a regisztrációkor egyedi."
   },
   "69hmpj": {
     "defaultMessage": "Raid a {name}oldalról"
@@ -123,10 +126,10 @@
     "defaultMessage": "Szöveg beszúrása a beszédfelolvasáshoz"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "A manuális tárhelyszolgáltatáshoz csak a HLS URL-re van szükség a Stream URL mezőben. Ezt a tárhelybeállítások között kell megtalálnia."
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "Videó kódc"
   },
   "9WRlF4": {
     "defaultMessage": "Küldés"
@@ -135,13 +138,13 @@
     "defaultMessage": "Cím"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "Nostr cím"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "Az OBS (Open Broadcaster Software) egy ingyenes és nyílt forráskódú szoftver videofelvételhez és élő közvetítéshez Windows, Mac és Linux rendszereken. A streamelők körében népszerű választás. Ezt kell telepítened a videó és hang rögzítéséhez, valamint bármi máshoz, amit hozzá szeretnél adni a streamedhez. A telepítés és a preferenciáknak megfelelő beállítások után adja hozzá a Stream URL-címét és a Stream kulcsát a Stream beállításaiból az OBS-hez, hogy kapcsolatot alakítson ki a zap.streammel."
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "Keresés eredményei: {term}"
   },
   "ALdW69": {
     "defaultMessage": "A {name}feljegyzése."
@@ -168,7 +171,7 @@
     "defaultMessage": "Kijelentkezés"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "Hozzon létre egy új fiókot, ha még nincs."
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
@@ -180,7 +183,7 @@
     "defaultMessage": "Bejelentkezve mint"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "Hogyan streamelek a zap.stream-en?"
   },
   "Dn82AL": {
     "defaultMessage": "Élő"
@@ -192,7 +195,7 @@
     "defaultMessage": "Megjegyzésed neki: {name}"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "Mi az a sats?"
   },
   "FIDK5Y": {
     "defaultMessage": "Minden idők legjobb zapperei"
@@ -210,10 +213,10 @@
     "defaultMessage": "Top csevegők"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "Villám cím"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "Érvénytelen villámcím"
   },
   "Gq6x9o": {
     "defaultMessage": "Borítókép"
@@ -240,7 +243,7 @@
     "defaultMessage": "Támogatott {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "Játék"
   },
   "IJDKz3": {
     "defaultMessage": "Zap értéke {currency}"
@@ -249,7 +252,7 @@
     "defaultMessage": "VAGY"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "Mi az a nostr kiterjesztés?"
   },
   "J/+m9y": {
     "defaultMessage": "Stream időtartama {duration} perc"
@@ -261,7 +264,7 @@
     "defaultMessage": "Feltöltés..."
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "Honlap"
   },
   "Jq3FDz": {
     "defaultMessage": "Tartalom"
@@ -276,13 +279,13 @@
     "defaultMessage": "Nem, 18 év alatti vagyok"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "Ha már rendelkezik fiókkal, akkor a nostr kiterjesztés segítségével bejelentkezhet. Ha már használ nostr-bővítményt, automatikusan bejelentkezik. Ha nincs nostr-bővítménye, akkor használhatja a nos2x vagy az Alby alkalmazást."
   },
   "LEmxc8": {
     "defaultMessage": "Zap célok"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "A zap.stream akár 2 órányi tárhelyet is ingyenesen biztosít magas minőségben, és akár 8 órányi \"forrás\" minőségben. Ezt követően lehetőséged van percenként 5 vagy 10 szat/perc streamelésre, a választott minőségtől függően. Ha nem a zap.streamet használja tárhelyként, az árak az Ön által választott streamingszolgáltatótól függnek."
   },
   "LknBsU": {
     "defaultMessage": "Stream kulcs"
@@ -306,7 +309,7 @@
     "defaultMessage": "Még nincsenek klipek"
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "Maximális hangbitráta"
   },
   "Oxqtyf": {
     "defaultMessage": "Egy LN tárcával összekötöttünk, hogy a nézők támogatásait azonnal megkaphasd!"
@@ -324,7 +327,7 @@
     "defaultMessage": "Kb. {estimate}"
   },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "Megosztás az X-en"
   },
   "QRHNuF": {
     "defaultMessage": "Mit streamelünk ma?"
@@ -342,7 +345,7 @@
     "defaultMessage": "{name} ennyivel: {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "Itt néhány lehetőséged van, a mi házon belüli tárhelyünk vagy a sajátod (például Cloudflare) használata."
   },
   "RJOmzk": {
     "defaultMessage": "Elolvastam és egyetértek a {provider} {terms}."
@@ -360,10 +363,10 @@
     "defaultMessage": "Chat felhasználók"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "Mi az OBS?"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "Audio codec"
   },
   "TP/cMX": {
     "defaultMessage": "Befejezve"
@@ -381,16 +384,16 @@
     "defaultMessage": "Múltbeli Streamek"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "A túl hosszú"
   },
   "VA/Z1S": {
     "defaultMessage": "Elrejtés"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "Mik azok a zapok?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "Kategóriák"
   },
   "Vn2WiP": {
     "defaultMessage": "Stream kulcs beszerzése"
@@ -399,17 +402,17 @@
     "defaultMessage": "Stream továbbítása"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "GYIK"
   },
   "W9355R": {
     "defaultMessage": "Némítás visszavonása"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "Érték",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "Kattintson a Bejelentkezés gombra"
   },
   "X2PZ7D": {
     "defaultMessage": "Cél kitűzése"
@@ -443,13 +446,13 @@
     "defaultMessage": "Még nincsenek célok"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "Összeállítottunk egy listát könnyen használható tőzsdékről, amelyek lehetővé teszik, hogy kis mennyiségű bitcoint (sats) vásároljon, és átutalja a választott pénztárcájába."
   },
   "ZmqxZs": {
     "defaultMessage": "Ezt később megváltoztathatod"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "A zaps villámfizetések, amelyeket a nostr-on nyugtaként tesznek közzé."
   },
   "Zse7yG": {
     "defaultMessage": "Rajtaütés célpontja"
@@ -464,7 +467,7 @@
     "defaultMessage": "Kártyák szerkesztése"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "Ajánlott stream beállítások"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -491,7 +494,7 @@
     "defaultMessage": "Clip by {name}"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "GYIK",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -510,13 +513,13 @@
     "defaultMessage": "Bejelentkezés privát kulccsal (nem biztonságos)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "A  oldalról"
   },
   "gzsn7k": {
     "defaultMessage": "{n} üzenetek"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "Ha a házon belüli zap.stream tárhelyet használja (ez a legolcsóbb és legegyszerűbb), másolja be a stream URL-jét és a Stream Key-t az OBS beállításaiba, és máris készen áll."
   },
   "hMzcSq": {
     "defaultMessage": "Üzenetek"
@@ -534,7 +537,7 @@
     "defaultMessage": "Követem"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "Mennyibe kerül a streamelés?"
   },
   "itPgxd": {
     "defaultMessage": "Profil"
@@ -567,7 +570,7 @@
     "defaultMessage": "pl. rólam"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "A felhasználónév túl hosszú"
   },
   "kp0NPF": {
     "defaultMessage": "Tervezett"
@@ -588,7 +591,7 @@
     "defaultMessage": "Részvények"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "Kulcskocka intervallum"
   },
   "mtNGwh": {
     "defaultMessage": "A tartalom rövid leírása"
@@ -633,7 +636,7 @@
     "defaultMessage": "Zap üzenet"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "Kattintson a \"Stream\" gombra a jobb felső sarokban."
   },
   "tG1ST3": {
     "defaultMessage": "Bejövő Zap"
@@ -642,11 +645,14 @@
     "defaultMessage": "Elképesztő! Folytasd..."
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "Név",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "A Sats a Bitcoin kis egységei. A zap.stream-en történő sats küldést \"zapping\"-nek vagy zapsnek nevezik."
   },
   "thsiMl": {
     "defaultMessage": "felhasználási feltételek"
@@ -672,6 +678,9 @@
   "w0Xm2F": {
     "defaultMessage": "Kezdj el gépelni"
   },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
+  },
   "wCIL7o": {
     "defaultMessage": "Közvetítés a Nostr-án"
   },
@@ -685,10 +694,10 @@
     "defaultMessage": "Add meg a streamelésed célját"
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "A nostr kiterjesztés egyszerűen elmenti a kulcsokat, így biztonságosan bejelentkezhet anélkül, hogy minden alkalommal újra be kellene írnia őket. A ZapStream a bővítményt használja a műveletek engedélyezésére az Ön nevében anélkül, hogy valaha is látná a kulcsadatait. Ez jelentős előnnyel jár ahhoz képest, hogy bíznod kelljen abban, hogy a webhelyek biztonságosan kezelik a hitelesítő adatait."
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "Érvénytelen nostr cím"
   },
   "wzWWzV": {
     "defaultMessage": "Top zapperek"
@@ -697,10 +706,10 @@
     "defaultMessage": "Némítás"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "Hogyan kaphatok több sats-ot?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "Keresés"
   },
   "y867Vs": {
     "defaultMessage": "Hangerő"
@@ -709,16 +718,16 @@
     "defaultMessage": "Clips"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "A zap.stream streamelés elindításához kövesse az alábbi lépéseket:"
   },
   "yzKwBQ": {
     "defaultMessage": "pl. nsec1xyz"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "Maximális videó bitráta"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "Beszélgetés"
   },
   "zVDHAu": {
     "defaultMessage": "Zap Riadó"

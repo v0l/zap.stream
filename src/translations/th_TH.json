@@ -20,6 +20,9 @@
   "/GCoTA": {
     "defaultMessage": "ล้าง"
   },
+  "/JkXBo": {
+    "defaultMessage": "Clip from {title}"
+  },
   "/Jp9pC": {
     "defaultMessage": "Total: {amount} sats"
   },
@@ -645,6 +648,9 @@
     "defaultMessage": "Name",
     "description": "Config name column header"
   },
+  "tTgdmx": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "tVCC9m": {
     "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
   },
@@ -671,6 +677,9 @@
   },
   "w0Xm2F": {
     "defaultMessage": "เริ่มพิมพ์ข้อความ"
+  },
+  "w3btjR": {
+    "defaultMessage": "Gambling"
   },
   "wCIL7o": {
     "defaultMessage": "แชร์ด้วย Nostr"
