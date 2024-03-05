@@ -24,13 +24,6 @@ export function findTag(e: NostrEvent | undefined, tag: string) {
   return maybeTag && maybeTag[1];
 }
 
-export function splitByUrl(str: string) {
-  const urlRegex =
-    /((?:http|ftp|https|nostr|web\+nostr|magnet):\/?\/?(?:[\w+?.\w+])+(?:[a-zA-Z0-9~!@#$%^&*()_\-=+\\/?.:;',]*)?(?:[-A-Za-z0-9+&@#/%=~()_|]))/i;
-
-  return str.split(urlRegex);
-}
-
 export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
   return NostrLink.fromEvent(ev).encode();
 }
@@ -81,6 +74,11 @@ export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
 
 export function getPlaceholder(id: string) {
   return `https://robohash.v0l.io/${id}.png`;
+}
+
+export function debounce(time: number, fn: () => void): () => void {
+  const t = setTimeout(fn, time);
+  return () => clearTimeout(t);
 }
 
 interface StreamInfo {

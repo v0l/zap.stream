@@ -119,6 +119,9 @@
   "9a9+ww": {
     "defaultMessage": "Title"
   },
+  "A1zT+z": {
+    "defaultMessage": "Search results: {term}"
+  },
   "ALdW69": {
     "defaultMessage": "Note by {name}"
   },
@@ -175,9 +178,6 @@
   },
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
-  },
-  "Gmiwnd": {
-    "defaultMessage": "Refresh the page to use the latest version"
   },
   "Gq6x9o": {
     "defaultMessage": "Cover Image"
@@ -284,9 +284,6 @@
   "Qe1MJu": {
     "defaultMessage": "{name} with {amount}"
   },
-  "RJ2VxG": {
-    "defaultMessage": "A new version has been detected"
-  },
   "RJOmzk": {
     "defaultMessage": "I have read and agree with {provider}''s {terms}."
   },
@@ -320,11 +317,17 @@
   "VA/Z1S": {
     "defaultMessage": "Hide"
   },
+  "VKb1MS": {
+    "defaultMessage": "Categories"
+  },
   "Vn2WiP": {
     "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Stream Forwarding"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Unmute"
@@ -507,9 +510,6 @@
   "r2Jjms": {
     "defaultMessage": "Log In"
   },
-  "rELDbB": {
-    "defaultMessage": "Refresh"
-  },
   "rWBFZA": {
     "defaultMessage": "Sexually explicit material ahead!"
   },
@@ -569,6 +569,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Mute"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
   },
   "y867Vs": {
     "defaultMessage": "Volume"

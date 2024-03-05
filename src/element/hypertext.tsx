@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { NostrLink } from "./nostr-link";
 import { MediaURL } from "./collapsible";
+import { ExternalLink } from "./external-link";
 
 const FileExtensionRegex = /\.([\w]+)$/i;
 
@@ -50,22 +51,16 @@ export function HyperText({ link, children }: HyperTextProps) {
           );
         }
         default:
-          return <a href={url.toString()}>{children || url.toString()}</a>;
+          return <ExternalLink href={url.toString()}>{children || url.toString()}</ExternalLink>;
       }
     } else if (url.protocol === "nostr:" || url.protocol === "web+nostr:") {
       return <NostrLink link={link} />;
     } else {
-      <a href={link} target="_blank" rel="noreferrer">
-        {children}
-      </a>;
+      <ExternalLink href={link}>{children}</ExternalLink>;
     }
   } catch (error) {
     console.error(error);
     // Ignore the error.
   }
-  return (
-    <a href={link} target="_blank" rel="noreferrer">
-      {children}
-    </a>
-  );
+  return <ExternalLink href={link}>{children}</ExternalLink>;
 }

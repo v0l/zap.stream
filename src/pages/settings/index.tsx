@@ -4,13 +4,17 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 const Tabs = [
   {
-    name: <FormattedMessage defaultMessage="Account" id="TwyMau" />,
+    name: <FormattedMessage defaultMessage="Account" />,
     path: "",
-  } as const,
+  },
   {
-    name: <FormattedMessage defaultMessage="Stream" id="uYw2LD" />,
+    name: <FormattedMessage defaultMessage="Profile" />,
+    path: "profile",
+  },
+  {
+    name: <FormattedMessage defaultMessage="Stream" />,
     path: "stream",
-  } as const,
+  },
 ];
 export default function SettingsPage() {
   const naviage = useNavigate();
@@ -19,7 +23,7 @@ export default function SettingsPage() {
     <div className="rounded-2xl p-3 md:w-[700px] mx-auto w-full">
       <div className="flex flex-col gap-2">
         <h1>
-          <FormattedMessage defaultMessage="Settings" id="D3idYv" />
+          <FormattedMessage defaultMessage="Settings" />
         </h1>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">

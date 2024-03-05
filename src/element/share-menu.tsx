@@ -59,7 +59,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
         menuClassName="ctx-menu"
         menuButton={
           <DefaultButton>
-            <FormattedMessage defaultMessage="Share" id="OKhRC6" />
+            <FormattedMessage defaultMessage="Share" />
           </DefaultButton>
         }>
         <MenuItem
@@ -67,14 +67,24 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
             setShare("nostr");
           }}>
           <Icon name="nostrich" size={24} />
-          <FormattedMessage defaultMessage="Broadcast on Nostr" id="wCIL7o" />
+          <FormattedMessage defaultMessage="Broadcast on Nostr" />
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            window.open(
+              `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&via=zap_stream`,
+              "_blank"
+            );
+          }}>
+          <Icon name="twitter" size={24} />
+          <FormattedMessage defaultMessage="Share on X" />
         </MenuItem>
       </Menu>
       {share && (
         <Modal id="share" onClose={() => setShare(undefined)}>
           <div className="flex flex-col gap-4">
             <h2>
-              <FormattedMessage defaultMessage="Share" id="OKhRC6" />
+              <FormattedMessage defaultMessage="Share" />
             </h2>
             <Textarea
               emojis={[]}

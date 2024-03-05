@@ -6,7 +6,11 @@ import { vitePluginVersionMark } from "vite-plugin-version-mark";
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel: {
+        configFile: true,
+      },
+    }),
     VitePWA({
       strategies: "injectManifest",
       srcDir: "src",

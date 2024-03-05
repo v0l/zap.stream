@@ -25,6 +25,7 @@ import { openFile } from "@/utils";
 import { DefaultProvider, StreamProviderInfo } from "@/providers";
 import { NostrStreamProvider } from "@/providers/zsz";
 import { DefaultButton, Layer1Button } from "./buttons";
+import { ExternalLink } from "./external-link";
 
 enum Stage {
   Login = 0,
@@ -205,9 +206,9 @@ export function LoginSignup({ close }: { close: () => void }) {
                 id="Z8ZOEY"
                 values={{
                   nostrlink: (
-                    <a href="">
+                    <ExternalLink href="">
                       <FormattedMessage defaultMessage="nostr signer extension" id="/EvlqN" />
-                    </a>
+                    </ExternalLink>
                   ),
                 }}
               />

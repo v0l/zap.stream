@@ -1,9 +1,9 @@
 import "./layout.css";
 
-import { CSSProperties, useEffect, useState, useSyncExternalStore } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { CSSProperties, useEffect, useState } from "react";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { hexToBech32 } from "@snort/shared";
 
@@ -16,7 +16,7 @@ import { Login } from "@/login";
 import { useLang } from "@/hooks/lang";
 import { AllLocales } from "@/intl";
 import { trackEvent } from "@/utils";
-import { BorderButton, DefaultButton } from "@/element/buttons";
+import { BorderButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 import Logo from "@/element/logo";
 
@@ -139,10 +139,19 @@ export function LayoutPage() {
         <title>Home - zap.stream</title>
       </Helmet>
       <div className="flex justify-between mb-4">
-        <div
-          className="bg-white text-black flex items-center cursor-pointer rounded-2xl aspect-square px-1"
-          onClick={() => navigate("/")}>
-          <Logo width={40} height={40} />
+        <div className="flex gap-6 items-center">
+          <div
+            className="bg-white text-black flex items-center cursor-pointer rounded-2xl aspect-square px-1"
+            onClick={() => navigate("/")}>
+            <Logo width={40} height={40} />
+          </div>
+          <SearchBar />
+          <Link to="/category">
+            <FormattedMessage defaultMessage="Categories" id="VKb1MS" />
+          </Link>
+          <Link to="/faq">
+            <FormattedMessage defaultMessage="FAQ" id="W8nHSd" />
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <Link
@@ -162,26 +171,29 @@ export function LayoutPage() {
   );
 }
 
-function NewVersionBanner() {
-  const newVersion = useSyncExternalStore(
-    c => NewVersion.hook(c),
-    () => NewVersion.snapshot()
-  );
-  if (!newVersion) return;
+function SearchBar() {
+  const { term } = useParams();
+  const { formatMessage } = useIntl();
+  const navigate = useNavigate();
+  const [search, setSearch] = useState(term ?? "");
 
   return (
-    <div className="fixed top-0 left-0 w-max flex bg-slate-800 py-2 px-4 opacity-95">
-      <div className="grow">
-        <h1>
-          <FormattedMessage defaultMessage="A new version has been detected" id="RJ2VxG" />
-        </h1>
-        <p>
-          <FormattedMessage defaultMessage="Refresh the page to use the latest version" id="Gmiwnd" />
-        </p>
-      </div>
-      <DefaultButton onClick={() => window.location.reload()} className="btn">
-        <FormattedMessage defaultMessage="Refresh" id="rELDbB" />
-      </DefaultButton>
+    <div className="bg-layer-2 rounded-xl pr-4 py-1 flex items-center">
+      <input
+        type="text"
+        placeholder={formatMessage({
+          defaultMessage: "Search",
+          id: "xmcVZ0",
+        })}
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        onKeyDown={e => {
+          if (e.key === "Enter") {
+            navigate(`/search/${encodeURIComponent(search)}`);
+          }
+        }}
+      />
+      <Icon name="search" className="text-layer-4" size={16} />
     </div>
   );
 }

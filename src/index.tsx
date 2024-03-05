@@ -15,7 +15,6 @@ import { LayoutPage } from "@/pages/layout";
 import { ProfilePage } from "@/pages/profile-page";
 import { StreamPageHandler } from "@/pages/stream-page";
 import { ChatPopout } from "@/pages/chat-popout";
-import { StreamProvidersPage } from "@/pages/providers";
 import { defaultRelays } from "@/const";
 import { CatchAllRoutePage } from "@/pages/catch-all";
 import { IntlProvider } from "@/intl";
@@ -23,8 +22,6 @@ import { WidgetsPage } from "@/pages/widgets";
 import { AlertsPage } from "@/pages/alerts";
 import { StreamSummaryPage } from "@/pages/summary";
 import { EmbededPage } from "./pages/embed";
-import Markdown from "./element/markdown";
-import { Async } from "./element/async-loader";
 import { WasmOptimizer, WasmPath, wasmInit } from "./wasm";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
 import MockPage from "./pages/mock";
@@ -32,10 +29,12 @@ import { syncClock } from "./time-sync";
 import SettingsPage from "./pages/settings";
 import AccountSettingsTab from "./pages/settings/account";
 import { StreamSettingsTab } from "./pages/settings/stream";
-import Faq from "@/faq.md";
-
+import SearchPage from "./pages/search";
+import ProfileSettings from "./pages/settings/profile";
+import CategoryPage from "./pages/category";
 import { WorkerRelayInterface } from "@snort/worker-relay";
 import WorkerVite from "@snort/worker-relay/src/worker?worker";
+import FaqPage from "./pages/faq";
 
 const hasWasm = "WebAssembly" in globalThis;
 const db = new SnortSystemDb();
@@ -65,10 +64,7 @@ async function doInit() {
     await wasmInit(WasmPath);
   }
   try {
-    await workerRelay.debug("*");
     await workerRelay.init("relay.db");
-    const stat = await workerRelay.summary();
-    console.log(stat);
   } catch (e) {
     console.error(e);
   }
@@ -106,10 +102,6 @@ const router = createBrowserRouter([
         element: <StreamPageHandler />,
       },
       {
-        path: "/providers/:id?",
-        element: <StreamProvidersPage />,
-      },
-      {
         path: "/settings",
         element: <SettingsPage />,
         children: [
@@ -120,6 +112,10 @@ const router = createBrowserRouter([
           {
             path: "stream",
             element: <StreamSettingsTab />,
+          },
+          {
+            path: "profile",
+            element: <ProfileSettings />,
           },
         ],
       },
@@ -140,16 +136,16 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/search/:term",
+        element: <SearchPage />,
+      },
+      {
+        path: "/category/:id?",
+        element: <CategoryPage />,
+      },
+      {
         path: "/faq",
-        element: (
-          <Async
-            loader={async () => {
-              const req = await fetch(Faq);
-              return await req.text();
-            }}
-            then={v => <Markdown content={v} tags={[]} plainText={true} />}
-          />
-        ),
+        element: <FaqPage />,
       },
       {
         path: "*",

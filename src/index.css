@@ -134,3 +134,11 @@ select {
 .overflow-wrap {
   overflow-wrap: anywhere;
 }
+
+table td,
+table th {
+  @apply border border-layer-2 px-2;
+}
+table th {
+  @apply bg-layer-1;
+}

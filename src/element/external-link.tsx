@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Icon } from "./icon";
+import { Link } from "react-router-dom";
 
 interface ExternalLinkProps {
   href: string;
@@ -8,9 +9,9 @@ interface ExternalLinkProps {
 
 export function ExternalLink({ children, href }: ExternalLinkProps) {
   return (
-    <a href={href} rel="noopener noreferrer" target="_blank" className="text-primary">
+    <Link to={href} rel="noopener noreferrer" target="_blank" className="text-primary">
       {children}
-    </a>
+    </Link>
   );
 }
 

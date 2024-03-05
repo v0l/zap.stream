@@ -1,15 +1,8 @@
 module.exports = {
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "formatjs"],
-  rules: {
-    "formatjs/enforce-id": [
-      "error",
-      {
-        idInterpolationPattern: "[sha512:contenthash:base64:6]",
-      },
-    ],
-  },
+  plugins: ["@typescript-eslint"],
+  rules: {},
   root: true,
   ignorePatterns: ["build/", "*.test.ts", "*.js"],
   env: {

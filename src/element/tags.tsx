@@ -5,6 +5,7 @@ import { NostrEvent } from "@snort/system";
 import { findTag, getTagValues } from "@/utils";
 import { StreamState } from "@/const";
 import Pill from "./pill";
+import { Link } from "react-router-dom";
 
 export function Tags({ children, max, ev }: { children?: ReactNode; max?: number; ev: NostrEvent }) {
   const status = findTag(ev, "status");
@@ -18,9 +19,9 @@ export function Tags({ children, max, ev }: { children?: ReactNode; max?: number
         <Pill>{status === StreamState.Planned ? <FormattedMessage defaultMessage="Starts " id="0hNxBy" /> : ""}</Pill>
       )}
       {tags.map(a => (
-        <a href={`/t/${encodeURIComponent(a)}`} key={a}>
+        <Link to={`/t/${encodeURIComponent(a)}`} key={a}>
           <Pill>{a}</Pill>
-        </a>
+        </Link>
       ))}
     </>
   );
