@@ -8,7 +8,7 @@ export function RootPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex gap-4">
+      <div className="flex gap-4 overflow-x-scroll scrollbar-hidden">
         {AllCategories.filter(a => a.priority === 0).map(a => (
           <CategoryLink key={a.id} {...a} />
         ))}

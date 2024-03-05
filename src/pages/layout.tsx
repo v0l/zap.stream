@@ -146,10 +146,10 @@ export function LayoutPage() {
             <Logo width={40} height={40} />
           </div>
           <SearchBar />
-          <Link to="/category">
+          <Link to="/category" className="max-xl:hidden">
             <FormattedMessage defaultMessage="Categories" id="VKb1MS" />
           </Link>
-          <Link to="/faq">
+          <Link to="/faq" className="max-xl:hidden">
             <FormattedMessage defaultMessage="FAQ" id="W8nHSd" />
           </Link>
         </div>
@@ -178,9 +178,10 @@ function SearchBar() {
   const [search, setSearch] = useState(term ?? "");
 
   return (
-    <div className="bg-layer-2 rounded-xl pr-4 py-1 flex items-center">
+    <div className="max-xl:bg-white xl:bg-layer-2 rounded-xl pr-4 py-1 flex items-center">
       <input
         type="text"
+        className="max-xl:hidden"
         placeholder={formatMessage({
           defaultMessage: "Search",
           id: "xmcVZ0",
@@ -193,7 +194,13 @@ function SearchBar() {
           }
         }}
       />
-      <Icon name="search" className="text-layer-4" size={16} />
+      <Icon
+        name="search"
+        className="max-xl:text-black mx:text-layer-4 max-xl:ml-4 max-xl:my-1"
+        size={16} 
+        onClick={() => {
+          navigate("/search")
+        }}/>
     </div>
   );
 }

@@ -56,11 +56,7 @@ export default function Category() {
     rb.withFilter().kinds([EventKind.LiveEvent]).tag("t", cat.tags);
     return rb;
   }, [cat]);
-  const results = useRequestBuilder(sub).filter(a => {
-    const { status } = extractStreamInfo(a);
-    return status === StreamState.Live;
-  });
-
+  const results = useRequestBuilder(sub);
   return (
     <div>
       <div className="flex gap-4">
@@ -69,7 +65,7 @@ export default function Category() {
         ))}
       </div>
       <h1 className="uppercase my-4">{id}</h1>
-      <VideoGridSorted evs={results} />
+      <VideoGridSorted evs={results} showAll={true} />
     </div>
   );
 }

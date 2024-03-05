@@ -4,7 +4,7 @@ import { unixNow } from "@snort/shared";
 import { NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { useMemo } from "react";
 
-export function useLiveStreams(feed: Array<TaggedNostrEvent>) {
+export function useLiveStreams(feed: Array<TaggedNostrEvent>, oldest?: number) {
   function sortCreatedAt(a: NostrEvent, b: NostrEvent) {
     return b.created_at > a.created_at ? 1 : -1;
   }
@@ -18,7 +18,7 @@ export function useLiveStreams(feed: Array<TaggedNostrEvent>) {
   const feedSorted = useMemo(() => {
     if (feed) {
       return feed
-        .filter(a => a.created_at > unixNow() - 7 * DAY)
+        .filter(a => a.created_at > (oldest ?? (unixNow() - 7 * DAY)))
         .filter(a => !import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === getHost(a));
     }
     return [];

@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import VideoGrid from "./video-grid";
 import { VideoTile } from "./video-tile";
 
-export default function VideoGridSorted({ evs }: { evs: Array<TaggedNostrEvent> }) {
+export default function VideoGridSorted({ evs, showAll }: { evs: Array<TaggedNostrEvent>, showAll?: boolean }) {
   const login = useLogin();
   const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
   const tags = login?.follows.tags ?? [];
@@ -17,7 +17,7 @@ export default function VideoGridSorted({ evs }: { evs: Array<TaggedNostrEvent> 
     },
     [tags]
   );
-  const { live, planned, ended } = useLiveStreams(evs);
+  const { live, planned, ended } = useLiveStreams(evs, showAll ? 0 : undefined);
   const hashtags = getTagValues(tags, "t");
   const following = live.filter(followsHost);
   const liveNow = live.filter(e => !following.includes(e));
