@@ -2440,37 +2440,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-web@npm:^1.2.11":
-  version: 1.2.11
-  resolution: "@snort/system-web@npm:1.2.11"
-  dependencies:
-    "@snort/shared": ^1.0.14
-    "@snort/system": ^1.2.11
-    dexie: ^3.2.4
-  checksum: 851db0c1c830df3507297a54f0c944da42e8bc35a97fcb6fd8de1e7891b97d50e2b919ccea7c5da62ccdba3cb2c6c788207b317d404fd92a003771a6ebe070f3
-  languageName: node
-  linkType: hard
-
-"@snort/system@npm:^1.2.11":
-  version: 1.2.11
-  resolution: "@snort/system@npm:1.2.11"
-  dependencies:
-    "@noble/curves": ^1.2.0
-    "@noble/hashes": ^1.3.2
-    "@scure/base": ^1.1.2
-    "@snort/shared": ^1.0.14
-    "@stablelib/xchacha20": ^1.0.1
-    debug: ^4.3.4
-    eventemitter3: ^5.0.1
-    isomorphic-ws: ^5.0.0
-    lokijs: ^1.5.12
-    lru-cache: ^10.2.0
-    uuid: ^9.0.0
-    ws: ^8.14.0
-  checksum: 6aa810f8be82f9d8825cb93097ad4da4f8da546294058627fb6968818f8264886ad73b1d42822a7e92c2f4840496be7f21a489abe962262db344ca0d221239ee
-  languageName: node
-  linkType: hard
-
 "@snort/system@npm:^1.2.12":
   version: 1.2.12
   resolution: "@snort/system@npm:1.2.12"
@@ -3890,13 +3859,6 @@ __metadata:
   version: 1.0.0
   resolution: "delegates@npm:1.0.0"
   checksum: a51744d9b53c164ba9c0492471a1a2ffa0b6727451bdc89e31627fdf4adda9d51277cfcbfb20f0a6f08ccb3c436f341df3e92631a3440226d93a8971724771fd
-  languageName: node
-  linkType: hard
-
-"dexie@npm:^3.2.4":
-  version: 3.2.4
-  resolution: "dexie@npm:3.2.4"
-  checksum: 4e5294a954118b6862c864b8c3970904a1733daebcd919488624520696411e2e81ed1bceeac3634c5c15a21e37ce4b8502ed41c4edfbc5ba3f5925c34d56497b
   languageName: node
   linkType: hard
 
@@ -7161,7 +7123,6 @@ __metadata:
     "@snort/system": ^1.2.12
     "@snort/system-react": ^1.2.12
     "@snort/system-wasm": ^1.0.2
-    "@snort/system-web": ^1.2.11
     "@snort/worker-relay": ^1.0.8
     "@sqlite.org/sqlite-wasm": ^3.45.1-build1
     "@szhsin/react-menu": ^4.0.2

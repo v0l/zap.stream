@@ -6,7 +6,6 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { NostrSystem } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
-import { SnortSystemDb } from "@snort/system-web";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { RootPage } from "@/pages/root";
@@ -37,12 +36,10 @@ import WorkerVite from "@snort/worker-relay/src/worker?worker";
 import FaqPage from "./pages/faq";
 
 const hasWasm = "WebAssembly" in globalThis;
-const db = new SnortSystemDb();
 const workerRelay = new WorkerRelayInterface(
   import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite()
 );
 const System = new NostrSystem({
-  db,
   optimizer: hasWasm ? WasmOptimizer : undefined,
   automaticOutboxModel: false,
   cachingRelay: workerRelay,
@@ -68,7 +65,6 @@ async function doInit() {
   } catch (e) {
     console.error(e);
   }
-  db.ready = await db.isAvailable();
   await System.Init();
   syncClock();
 }
