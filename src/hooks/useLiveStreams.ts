@@ -4,7 +4,7 @@ import { unixNow } from "@snort/shared";
 import { NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { useMemo } from "react";
 
-export function useLiveStreams(feed: Array<TaggedNostrEvent>, oldest?: number) {
+export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number) {
   function sortCreatedAt(a: NostrEvent, b: NostrEvent) {
     return b.created_at > a.created_at ? 1 : -1;
   }

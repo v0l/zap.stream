@@ -1,27 +1,22 @@
-import "./note.css";
 import { Suspense, lazy } from "react";
-import { type NostrEvent, NostrLink } from "@snort/system";
+import { NostrLink, TaggedNostrEvent } from "@snort/system";
 
 const Markdown = lazy(() => import("./markdown"));
 import { ExternalIconLink } from "./external-link";
 import { Profile } from "./profile";
+import EventReactions from "./event-reactions";
 
-export function Note({ ev }: { ev: NostrEvent }) {
+export function Note({ ev }: { ev: TaggedNostrEvent }) {
   return (
-    <div className="surface note">
-      <div className="note-header">
-        <Profile pubkey={ev.pubkey} />
-        <ExternalIconLink
-          size={24}
-          className="note-link-icon"
-          href={`https://snort.social/e/${NostrLink.fromEvent(ev).encode()}`}
-        />
+    <div className="bg-layer-2 rounded-xl px-4 py-3 flex flex-col gap-2">
+      <div className="flex justify-between items-center">
+        <Profile pubkey={ev.pubkey} avatarSize={30} />
+        <ExternalIconLink size={24} href={`https://snort.social/${NostrLink.fromEvent(ev).encode()}`} />
       </div>
-      <div className="note-content">
-        <Suspense>
-          <Markdown tags={ev.tags} content={ev.content} />
-        </Suspense>
-      </div>
+      <Suspense>
+        <Markdown tags={ev.tags} content={ev.content} />
+      </Suspense>
+      <EventReactions ev={ev} />
     </div>
   );
 }

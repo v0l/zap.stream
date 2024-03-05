@@ -1,7 +1,5 @@
-import { StreamState } from "@/const";
 import CategoryLink from "@/element/category-link";
 import VideoGridSorted from "@/element/video-grid-sorted";
-import { extractStreamInfo } from "@/utils";
 import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
@@ -15,6 +13,7 @@ export const AllCategories = [
     icon: "face",
     tags: ["irl"],
     priority: 0,
+    className: "bg-category-gradient-1",
   },
   {
     id: "gaming",
@@ -22,6 +21,7 @@ export const AllCategories = [
     icon: "gaming-pad",
     tags: ["gaming"],
     priority: 0,
+    className: "bg-category-gradient-2",
   },
   {
     id: "music",
@@ -29,6 +29,7 @@ export const AllCategories = [
     icon: "music",
     tags: ["music"],
     priority: 0,
+    className: "bg-category-gradient-3",
   },
   {
     id: "talk",
@@ -36,6 +37,7 @@ export const AllCategories = [
     icon: "mic",
     tags: ["talk"],
     priority: 0,
+    className: "bg-category-gradient-4",
   },
   {
     id: "art",
@@ -43,6 +45,15 @@ export const AllCategories = [
     icon: "art",
     tags: ["art"],
     priority: 0,
+    className: "bg-category-gradient-5",
+  },
+  {
+    id: "gambling",
+    name: <FormattedMessage defaultMessage="Gambling" />,
+    icon: "dice",
+    tags: ["gambling", "casino", "slots"],
+    priority: 1,
+    className: "bg-category-gradient-6",
   },
 ];
 

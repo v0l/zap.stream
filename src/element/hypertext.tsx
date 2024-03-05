@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
-import { NostrLink } from "./nostr-link";
 import { MediaURL } from "./collapsible";
 import { ExternalLink } from "./external-link";
+import { EventEmbed } from "./event-embed";
+import { parseNostrLink } from "@snort/system";
 
 const FileExtensionRegex = /\.([\w]+)$/i;
 
@@ -54,7 +55,7 @@ export function HyperText({ link, children }: HyperTextProps) {
           return <ExternalLink href={url.toString()}>{children || url.toString()}</ExternalLink>;
       }
     } else if (url.protocol === "nostr:" || url.protocol === "web+nostr:") {
-      return <NostrLink link={link} />;
+      return <EventEmbed link={parseNostrLink(link)} />;
     } else {
       <ExternalLink href={link}>{children}</ExternalLink>;
     }

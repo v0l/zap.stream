@@ -1,5 +1,5 @@
 import { useLogin } from "@/hooks/login";
-import { useLiveStreams } from "@/hooks/useLiveStreams";
+import { useSortedStreams } from "@/hooks/useLiveStreams";
 import { getTagValues, getHost } from "@/utils";
 import { NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { ReactNode, useCallback, useMemo } from "react";
@@ -17,7 +17,7 @@ export default function VideoGridSorted({ evs, showAll }: { evs: Array<TaggedNos
     },
     [tags]
   );
-  const { live, planned, ended } = useLiveStreams(evs, showAll ? 0 : undefined);
+  const { live, planned, ended } = useSortedStreams(evs, showAll ? 0 : undefined);
   const hashtags = getTagValues(tags, "t");
   const following = live.filter(followsHost);
   const liveNow = live.filter(e => !following.includes(e));

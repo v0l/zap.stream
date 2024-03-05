@@ -9,11 +9,13 @@ import { NostrLink, parseNostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { LIVE_STREAM_RAID } from "@/const";
 import { DefaultButton } from "./buttons";
+import { useSortedStreams } from "@/hooks/useLiveStreams";
 
 export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose: () => void }) {
   const system = useContext(SnortContext);
   const login = useLogin();
-  const { live } = useStreamsFeed();
+  const streams = useStreamsFeed();
+  const { live } = useSortedStreams(streams);
   const [raiding, setRaiding] = useState("");
   const [msg, setMsg] = useState("");
 

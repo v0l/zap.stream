@@ -44,9 +44,11 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
   async function sendMessage() {
     const pub = login?.publisher();
     if (pub) {
-      const ev = await pub.note(message);
-      console.debug(ev);
-      await system.BroadcastEvent(ev);
+      const evn = await pub.note(message, eb => {
+        return eb.tag(NostrLink.fromEvent(ev).toEventTag("mention")!);
+      });
+      console.debug(evn);
+      await system.BroadcastEvent(evn);
       setShare(undefined);
     }
   }

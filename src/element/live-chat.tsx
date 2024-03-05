@@ -53,6 +53,7 @@ export function LiveChat({
   showScrollbar,
   height,
   className,
+  autoRaid,
 }: {
   link: NostrLink;
   ev?: NostrEvent;
@@ -64,6 +65,7 @@ export function LiveChat({
   showScrollbar?: boolean;
   height?: number;
   className?: string;
+  autoRaid?: boolean;
 }) {
   const host = getHost(ev);
   const feed = useReactions(
@@ -175,7 +177,7 @@ export function LiveChat({
               );
             }
             case LIVE_STREAM_RAID: {
-              return <ChatRaid ev={a} link={link} key={a.id} />;
+              return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;
             }
             case LIVE_STREAM_CLIP: {
               return <ChatClip ev={a} key={a.id} />;
@@ -240,7 +242,7 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
   );
 }
 
-export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }) {
+export function ChatRaid({ link, ev, autoRaid }: { link: NostrLink; ev: TaggedNostrEvent; autoRaid?: boolean }) {
   const navigate = useNavigate();
   const from = ev.tags.find(a => a[0] === "a" && a[3] === "root");
   const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention");
@@ -251,10 +253,10 @@ export function ChatRaid({ link, ev }: { link: NostrLink; ev: TaggedNostrEvent }
 
   useEffect(() => {
     const raidDiff = Math.abs(unixNow() - ev.created_at);
-    if (isRaiding === true && raidDiff < 60) {
+    if (isRaiding === true && raidDiff < 60 && otherLink.id !== link.id && (autoRaid ?? true)) {
       navigate(`/${otherLink.encode()}`);
     }
-  }, [isRaiding]);
+  }, [isRaiding, autoRaid]);
 
   if (isRaiding) {
     return (

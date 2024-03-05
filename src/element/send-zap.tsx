@@ -1,7 +1,7 @@
 import "./send-zap.css";
 import { type ReactNode, useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
-import { EventPublisher, NostrEvent } from "@snort/system";
+import { EventPublisher, NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { secp256k1 } from "@noble/curves/secp256k1";
 import { bytesToHex } from "@noble/curves/abstract/utils";
 import { FormattedMessage, FormattedNumber } from "react-intl";
@@ -16,6 +16,9 @@ import { useRates } from "@/hooks/rates";
 import { DefaultButton } from "./buttons";
 import Modal from "./modal";
 import Pill from "./pill";
+import { useUserProfile } from "@snort/system-react";
+import { getHost } from "@/utils";
+import { getName } from "./profile";
 
 export interface LNURLLike {
   get name(): string;
@@ -128,11 +131,10 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
             USD
           </Pill>
         </div>
-        <div>
-          <small className="mb-2">
+        <div className="flex flex-col gap-2">
+          <small>
             <FormattedMessage
               defaultMessage="Zap amount in {currency}"
-              id="IJDKz3"
               values={{ currency: isFiat ? "USD" : "SATS" }}
             />
             {isFiat && (
@@ -140,7 +142,6 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
                 &nbsp;
                 <FormattedMessage
                   defaultMessage="@ {rate}"
-                  id="YPh5Nq"
                   description="Showing zap amount in USD @ rate"
                   values={{
                     rate: <FormattedNumber value={usdRate} />,
@@ -158,20 +159,18 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
           </div>
         </div>
         {svc && (svc.maxCommentLength > 0 || svc.canZap) && (
-          <div>
+          <div className="flex flex-col gap-2">
             <small>
-              <FormattedMessage defaultMessage="Your comment for {name}" id="ESyhzp" values={{ name }} />
+              <FormattedMessage defaultMessage="Your comment for {name}" values={{ name }} />
             </small>
-            <div className="paper">
+            <div>
               <textarea placeholder="Nice!" value={comment} onChange={e => setComment(e.target.value)} />
             </div>
           </div>
         )}
-        <div>
-          <DefaultButton onClick={send}>
-            <FormattedMessage defaultMessage="Zap!" id="3HwrQo" />
-          </DefaultButton>
-        </div>
+        <DefaultButton onClick={send}>
+          <FormattedMessage defaultMessage="Zap!" />
+        </DefaultButton>
       </>
     );
   }
@@ -222,6 +221,30 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
       {open && (
         <Modal id="send-zaps" onClose={() => setOpen(false)}>
           <SendZaps {...props} onFinish={() => setOpen(false)} />
+        </Modal>
+      )}
+    </>
+  );
+}
+
+export function ZapEvent({ ev, children }: { children: ReactNode; ev: TaggedNostrEvent }) {
+  const host = getHost(ev);
+  const profile = useUserProfile(host);
+  const [open, setOpen] = useState(false);
+  const target = profile?.lud16 ?? profile?.lud06;
+
+  return (
+    <>
+      <div onClick={() => setOpen(true)}>{children}</div>
+      {open && (
+        <Modal id="send-zaps" onClose={() => setOpen(false)}>
+          <SendZaps
+            lnurl={target ?? ""}
+            eTag={ev.id}
+            pubkey={host}
+            targetName={getName(host, profile)}
+            onFinish={() => setOpen(false)}
+          />
         </Modal>
       )}
     </>

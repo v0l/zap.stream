@@ -1,4 +1,4 @@
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { NostrEvent } from "@snort/system";
@@ -30,6 +30,7 @@ import { NotificationsButton } from "@/element/notifications-button";
 import { WarningButton } from "@/element/buttons";
 import Pill from "@/element/pill";
 import { useMediaQuery } from "usehooks-ts";
+import { EventEmbed as NostrEventElement } from "@/element/event-embed";
 
 function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -112,8 +113,16 @@ export function StreamPageHandler() {
   const evPreload = getEventFromLocationState(location.state);
   const link = useStreamLink();
 
-  if (link) {
+  if (!link) return;
+
+  if (link.kind === EventKind.LiveEvent) {
     return <StreamPage link={link} evPreload={evPreload} />;
+  } else {
+    return (
+      <div className="rounded-2xl px-4 py-3 md:w-[700px] mx-auto w-full">
+        <NostrEventElement link={link} />
+      </div>
+    );
   }
 }
 

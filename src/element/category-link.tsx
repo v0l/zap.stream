@@ -1,13 +1,27 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "./icon";
+import classNames from "classnames";
 
-export default function CategoryLink({ id, name, icon }: { id: string; name: ReactNode; icon: string }) {
+export default function CategoryLink({
+  id,
+  name,
+  icon,
+  className,
+}: {
+  id: string;
+  name: ReactNode;
+  icon: string;
+  className?: string;
+}) {
   return (
     <Link
       to={`/category/${id}`}
       key={id}
-      className="min-w-[10rem] flex items-center justify-between px-6 py-4 rounded-xl bg-layer-1">
+      className={classNames(
+        "min-w-[12rem] flex items-center justify-between px-6 py-2 text-xl font-semibold rounded-xl",
+        className
+      )}>
       {name}
       <Icon name={icon} />
     </Link>

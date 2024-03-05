@@ -22,6 +22,16 @@ module.exports = {
         "ping-once": "ping 1s cubic-bezier(0, 0, 0.2, 1);",
         flash: "pulse 0.5s 6 linear;",
       },
+      backgroundImage: {
+        "category-gradient-1":
+          "linear-gradient(90deg, #5433FF 0%, #3B77FF 24.5%, #20BDFF 50%, #60DCE6 74%, #A5FECB 100%)",
+        "category-gradient-2": "linear-gradient(90deg, #9796F0 0%, #C6ADE3 46.5%, #FBC7D4 100%)",
+        "category-gradient-3": "linear-gradient(90deg, #FFE259 0%, #FFC555 48.5%, #FFA751 100%)",
+        "category-gradient-4": "linear-gradient(90deg, #1488CC 0%, #1F5EBF 48.5%, #2B32B2 100%)",
+        "category-gradient-5": "linear-gradient(90deg, #CC2B5E 0%, #A33272 47.5%, #753A88 100%)",
+        "category-gradient-6": "linear-gradient(90deg, #ED4264 0%, #F5928D 46.5%, #FFEDBC 100%)",
+        "category-gradient-7": "linear-gradient(90deg, #A8C0FF 0%, #7375CA 50.5%, #3F2B96 100%)",
+      },
     },
   },
   plugins: [],

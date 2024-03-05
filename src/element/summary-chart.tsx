@@ -1,9 +1,9 @@
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, StreamState } from "@/const";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { formatSats } from "@/number";
-import { extractStreamInfo, findTag } from "@/utils";
+import { extractStreamInfo } from "@/utils";
 import { unixNow } from "@snort/shared";
-import { NostrLink, NostrEvent, ParsedZap, EventKind } from "@snort/system";
+import { NostrLink, NostrEvent, ParsedZap, EventKind, TaggedNostrEvent } from "@snort/system";
 import { useEventReactions, useReactions } from "@snort/system-react";
 import { useMemo } from "react";
 import { FormattedMessage, FormattedNumber, FormattedDate } from "react-intl";
@@ -12,6 +12,7 @@ import { Profile } from "./profile";
 import { StatePill } from "./state-pill";
 import { Link } from "react-router-dom";
 import { Icon } from "./icon";
+import EventReactions from "./event-reactions";
 
 interface StatSlot {
   time: number;
@@ -40,11 +41,13 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
 
   const chatSummary = useMemo(() => {
     return Object.entries(
-      data.reduce((acc, v) => {
-        acc[v.pubkey] ??= [];
-        acc[v.pubkey].push(v);
-        return acc;
-      }, {} as Record<string, Array<NostrEvent>>)
+      data
+        .filter(a => a.kind === LIVE_STREAM_CHAT)
+        .reduce((acc, v) => {
+          acc[v.pubkey] ??= [];
+          acc[v.pubkey].push(v);
+          return acc;
+        }, {} as Record<string, Array<NostrEvent>>)
     )
       .map(([k, v]) => ({
         pubkey: k,
@@ -90,6 +93,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
     let max = 0;
     const ret = data
       .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
+      .filter(a => a.created_at >= startTime && a.created_at < endTime)
       .reduce((acc, v) => {
         const time = Math.floor(v.created_at - (v.created_at % windowSize));
         if (time < min) {
@@ -145,7 +149,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
   return (
     <div className="flex flex-col gap-4">
       <h1>{title}</h1>
-      <p>{summary}</p>
+      {summary && <p>{summary}</p>}
       <div className="flex gap-1">
         <StatePill state={status as StreamState} />
         {streamLength > 0 && (
@@ -226,7 +230,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
         </BarChart>
       </ResponsiveContainer>
 
-      <div className="flex gap-2">
+      <div className="grid gap-2 grid-cols-3">
         <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
           <h3>
             <FormattedMessage defaultMessage="Top Chatters" id="GGaJMU" />
@@ -270,11 +274,10 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
           <div className="flex flex-col gap-2">
             {zapsSummary.slice(0, 5).map(a => (
               <div className="flex justify-between items-center" key={a.pubkey}>
-                <Profile pubkey={a.pubkey} avatarSize={30} />
+                <Profile pubkey={a.zaps.some(b => b.anonZap) ? "anon" : a.pubkey} avatarSize={30} />
                 <div>
                   <FormattedMessage
                     defaultMessage="{n} sats"
-                    id="CsCUYo"
                     values={{
                       n: formatSats(a.total),
                     }}
@@ -288,33 +291,71 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
           <h3>
             <FormattedMessage defaultMessage="Raids" id="+y6JUK" />
           </h3>
+          <div className="flex flex-col gap-2">
+            {data
+              .filter(a => a.kind === LIVE_STREAM_RAID)
+              .map(a => {
+                const mins = a.created_at - startTime;
+                return (
+                  <div className="flex justify-between items-center" key={a.id}>
+                    <Profile pubkey={a.pubkey} avatarSize={30} />
+                    <FormattedMessage
+                      defaultMessage="@ {n,selectordinal, one {#st} two {#nd} few {#rd} other {#th}} min"
+                      values={{
+                        n: Math.floor(mins / 60),
+                      }}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+      <div className="grid gap-2 grid-cols-2">
+        <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
+          <h3>
+            <FormattedMessage defaultMessage="Shares" id="mrwfXX" />
+          </h3>
+          {data
+            .filter(a => a.kind === EventKind.TextNote)
+            .map(a => (
+              <SharedNote ev={a} key={a.id} />
+            ))}
         </div>
         <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
           <h3>
             <FormattedMessage defaultMessage="Clips" id="yLxIgl" />
           </h3>
           <div className="flex flex-col gap-2">
-            {reactions.others[String(LIVE_STREAM_CLIP)]?.map(a => {
-              const link = findTag(a, "r");
-              return (
-                <div className="flex justify-between items-center" key={a.id}>
-                  <Profile pubkey={a.pubkey} avatarSize={30} />
-                  <div>
-                    <Link to={link ?? ""}>
-                      <Icon name="link" />
-                    </Link>
+            {data
+              .filter(a => a.kind === LIVE_STREAM_CLIP)
+              .map(a => {
+                const link = NostrLink.fromEvent(a)!;
+                return (
+                  <div className="flex justify-between items-center" key={a.id}>
+                    <Profile pubkey={a.pubkey} avatarSize={30} />
+                    <div className="flex gap-2">
+                      <EventReactions ev={a} />
+                      <Link to={`/${link.encode()}`}>
+                        <Icon name="link" size={26} />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </div>
-      <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
-        <h3>
-          <FormattedMessage defaultMessage="Shares" id="mrwfXX" />
-        </h3>
-      </div>
+    </div>
+  );
+}
+
+function SharedNote({ ev }: { ev: TaggedNostrEvent }) {
+  return (
+    <div className="flex gap-2 items-center">
+      <Profile pubkey={ev.pubkey} avatarSize={30} />
+      <div className="truncate text-layer-4">{ev.content}</div>
+      <EventReactions ev={ev} />
     </div>
   );
 }

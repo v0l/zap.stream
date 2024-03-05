@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import type { NostrLink } from "@snort/system";
 import { Mention } from "./mention";
-import { EventIcon, NostrEvent } from "./Event";
+import { EventIcon, NostrEvent } from "./event-embed";
 import { ExternalLink } from "./external-link";
 import { useEventFeed } from "@snort/system-react";
 import Modal from "./modal";

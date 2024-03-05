@@ -25,6 +25,7 @@ export function ChatPopout() {
         showScrollbar={false}
         goal={goal}
         className="h-inherit"
+        autoRaid={false}
       />
     </div>
   );

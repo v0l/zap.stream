@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import { Emoji } from "./emoji";
 import { Mention } from "./mention";
 import { HyperText } from "./hypertext";
-import { Event } from "./Event";
+import { EventEmbed } from "./event-embed";
 import { SendZapsDialog } from "./send-zap";
-import classNames from "classnames";
 
 export type EventComponent = FunctionComponent<{ link: NostrLink }>;
 
@@ -34,10 +33,10 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
           if (link) {
             if (
               link.type === NostrPrefix.Event ||
-              link?.type === NostrPrefix.Address ||
-              link?.type === NostrPrefix.Note
+              link.type === NostrPrefix.Address ||
+              link.type === NostrPrefix.Note
             ) {
-              return eventComponent?.({ link }) ?? <Event link={link} />;
+              return eventComponent?.({ link }) ?? <EventEmbed link={link} />;
             } else {
               return <Mention pubkey={link.id} />;
             }
@@ -60,10 +59,10 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
           url.protocol = "https:";
           return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} />;
         }
-        return <span className={classNames(className, "text")}>{f.content}</span>;
+        return <span>{f.content}</span>;
       }
     }
   }
 
-  return frags.map(renderFrag);
+  return <span className={className}>{frags.map(renderFrag)}</span>;
 }
