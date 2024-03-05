@@ -636,7 +636,7 @@
     "defaultMessage": "Zap-Nachricht"
   },
   "sj6WAe": {
-    "defaultMessage": "Klicken Sie auf die Schaltfläche \"Stream\" in der oberen rechten Ecke"
+    "defaultMessage": "Klicke auf die Schaltfläche \"Stream\" in der oberen rechten Ecke"
   },
   "tG1ST3": {
     "defaultMessage": "Eingehender Zap"
@@ -658,7 +658,7 @@
     "defaultMessage": "Allgemeinen Geschäftsbedingungen"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "Kunst"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
@@ -694,7 +694,7 @@
     "defaultMessage": "Stream-Ziel hinzufügen"
   },
   "wRGjPp": {
-    "defaultMessage": "Eine nostr-Erweiterung speichert einfach Ihre Schlüssel, damit Sie sich sicher anmelden können, ohne sie jedes Mal neu eingeben zu müssen. ZapStream verwendet die Erweiterung, um Aktionen in Ihrem Namen zu autorisieren, ohne Ihre Schlüsselinformationen jemals zu sehen. Dies ist ein großer Vorteil gegenüber dem Vertrauen darauf, dass Websites Ihre Anmeldedaten sicher behandeln."
+    "defaultMessage": "Eine Nostr-Erweiterung speichert lediglich deine Schlüssel, damit du dich sicher anmelden kannst, ohne sie jedes Mal neu eingeben zu müssen. ZapStream verwendet die Erweiterung, um Aktionen in deinem Namen zu autorisieren, ohne deine Schlüsselinformationen jemals zu sehen. Dies hat den entscheidenden Vorteil, dass du nicht darauf vertrauen musst, dass Webseiten deine Anmeldedaten sicher behandeln."
   },
   "wTwfnv": {
     "defaultMessage": "Ungültige Nostr-Adresse"
