@@ -77,7 +77,7 @@ const getMessages = (locale: string) => {
         return importLang(await import("@/translations/ja_JP.json"));
       case "ko":
       case "ko-KR":
-        return importLang(await import("@/translations/ja_JP.json"));
+        return importLang(await import("@/translations/ko_KR.json"));
       case "nl":
       case "nl-NL":
         return importLang(await import("@/translations/nl_NL.json"));
