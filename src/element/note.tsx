@@ -1,10 +1,9 @@
-import { Suspense, lazy } from "react";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 
-const Markdown = lazy(() => import("./markdown"));
 import { ExternalIconLink } from "./external-link";
 import { Profile } from "./profile";
 import EventReactions from "./event-reactions";
+import { Text } from "@/element/text";
 
 export function Note({ ev }: { ev: TaggedNostrEvent }) {
   return (
@@ -13,9 +12,7 @@ export function Note({ ev }: { ev: TaggedNostrEvent }) {
         <Profile pubkey={ev.pubkey} avatarSize={30} />
         <ExternalIconLink size={24} href={`https://snort.social/${NostrLink.fromEvent(ev).encode()}`} />
       </div>
-      <Suspense>
-        <Markdown tags={ev.tags} content={ev.content} />
-      </Suspense>
+      <Text tags={ev.tags} content={ev.content} className="whitespace-pre-line overflow-wrap" />
       <EventReactions ev={ev} />
     </div>
   );

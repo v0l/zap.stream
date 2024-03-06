@@ -1,10 +1,10 @@
-import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, NostrPrefix, TaggedNostrEvent } from "@snort/system";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { NostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 import { Suspense, lazy, useContext } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 const LiveVideoPlayer = lazy(() => import("@/element/live-video-player"));
 import { extractStreamInfo, findTag, getEventFromLocationState, getHost } from "@/utils";
@@ -20,7 +20,7 @@ import { StreamCards } from "@/element/stream-cards";
 import { formatSats } from "@/number";
 import { StreamTimer } from "@/element/stream-time";
 import { ShareMenu } from "@/element/share-menu";
-import { ContentWarningOverlay, isContentWarningAccepted } from "@/element/content-warning";
+import { ContentWarningOverlay, useContentWarning } from "@/element/nsfw";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useStreamLink } from "@/hooks/stream-link";
 import { FollowButton } from "@/element/follow-button";
@@ -29,8 +29,8 @@ import { StreamState } from "@/const";
 import { NotificationsButton } from "@/element/notifications-button";
 import { WarningButton } from "@/element/buttons";
 import Pill from "@/element/pill";
-import { useMediaQuery } from "usehooks-ts";
 import { EventEmbed as NostrEventElement } from "@/element/event-embed";
+import GameInfoCard from "@/element/game-info";
 
 function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -40,7 +40,7 @@ function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEve
   const profile = useUserProfile(host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
 
-  const { status, participants, title, summary, service } = extractStreamInfo(ev);
+  const { status, participants, title, summary, service, gameId, gameInfo } = extractStreamInfo(ev);
   const isMine = ev?.pubkey === login?.pubkey;
 
   async function deleteStream() {
@@ -60,6 +60,7 @@ function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEve
         <div className="grow flex flex-col gap-2 max-xl:hidden">
           <h1>{title}</h1>
           <p>{summary}</p>
+
           <div className="flex gap-2 flex-wrap">
             <StatePill state={status as StreamState} />
             <Pill>
@@ -70,13 +71,16 @@ function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEve
                 <StreamTimer ev={ev} />
               </Pill>
             )}
+            <Pill>
+              <GameInfoCard gameId={gameId} gameInfo={gameInfo} showImage={false} link={true} />
+            </Pill>
             {ev && <Tags ev={ev} />}
           </div>
           {isMine && (
             <div className="flex gap-4">
-              {ev && <NewStreamDialog text="Edit" ev={ev} btnClassName="btn" />}
+              {ev && <NewStreamDialog text={<FormattedMessage defaultMessage="Edit" />} ev={ev} />}
               <WarningButton onClick={deleteStream}>
-                <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
+                <FormattedMessage defaultMessage="Delete" />
               </WarningButton>
             </div>
           )}
@@ -115,18 +119,18 @@ export function StreamPageHandler() {
 
   if (!link) return;
 
-  if (link.kind === EventKind.LiveEvent) {
-    return <StreamPage link={link} evPreload={evPreload} />;
-  } else {
+  if (link.type === NostrPrefix.Event) {
     return (
       <div className="rounded-2xl px-4 py-3 md:w-[700px] mx-auto w-full">
         <NostrEventElement link={link} />
       </div>
     );
+  } else {
+    return <StreamPage link={link} evPreload={evPreload} />;
   }
 }
 
-export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: NostrLink }) {
+export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; link: NostrLink }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const evLink = ev ? NostrLink.fromEvent(ev) : undefined;
@@ -143,8 +147,9 @@ export function StreamPage({ link, evPreload }: { evPreload?: NostrEvent; link: 
   } = extractStreamInfo(ev);
   const goal = useZapGoal(goalTag);
   const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isGrownUp = useContentWarning();
 
-  if (contentWarning && !isContentWarningAccepted()) {
+  if (contentWarning && !isGrownUp) {
     return <ContentWarningOverlay />;
   }
 

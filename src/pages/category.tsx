@@ -1,5 +1,7 @@
 import CategoryLink from "@/element/category-link";
+import Pill from "@/element/pill";
 import VideoGridSorted from "@/element/video-grid-sorted";
+import useGameInfo from "@/hooks/game-info";
 import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
@@ -55,18 +57,29 @@ export const AllCategories = [
     priority: 1,
     className: "bg-category-gradient-6",
   },
+  {
+    id: "science-and-technology",
+    name: <FormattedMessage defaultMessage="Science & Technology" />,
+    icon: "dice",
+    tags: ["science", "technology"],
+    priority: 1,
+    className: "bg-category-gradient-7",
+  },
 ];
 
 export default function Category() {
   const { id } = useParams();
+  const game = useGameInfo(id);
 
-  const cat = AllCategories.find(a => a.id === id);
   const sub = useMemo(() => {
-    if (!cat) return;
-    const rb = new RequestBuilder(`category:${cat.id}`);
-    rb.withFilter().kinds([EventKind.LiveEvent]).tag("t", cat.tags);
+    if (!id) return;
+
+    const cat = AllCategories.find(a => a.id === id);
+    const rb = new RequestBuilder(`category:${id}`);
+    rb.withFilter().kinds([EventKind.LiveEvent]).tag("t", cat?.tags ?? [id]);
     return rb;
-  }, [cat]);
+  }, [id]);
+
   const results = useRequestBuilder(sub);
   return (
     <div>
@@ -75,7 +88,17 @@ export default function Category() {
           <CategoryLink key={a.id} {...a} />
         ))}
       </div>
-      <h1 className="uppercase my-4">{id}</h1>
+      <div className="flex gap-8 py-8">
+        {game?.cover && <img src={game?.cover} className="h-[250px]" />}
+        <div className="flex flex-col gap-4">
+          <h1>{game?.name}</h1>
+          {game?.genres && <div className="flex gap-2">
+            {game?.genres?.map(a => <Pill>
+              {a}
+            </Pill>)}
+          </div>}
+        </div>
+      </div>
       <VideoGridSorted evs={results} showAll={true} />
     </div>
   );

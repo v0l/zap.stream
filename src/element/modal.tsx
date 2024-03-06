@@ -75,7 +75,7 @@ export default function Modal(props: ModalProps) {
         e.stopPropagation();
       }}>
       <div
-        className={props.bodyClassName ?? "bg-layer-1 p-8 rounded-3xl my-auto lg:w-[500px] max-lg:w-full"}
+        className={props.bodyClassName ?? "relative bg-layer-1 p-8 rounded-3xl my-auto lg:w-[500px] max-lg:w-full"}
         onMouseDown={e => e.stopPropagation()}
         onClick={e => {
           e.stopPropagation();
@@ -88,7 +88,7 @@ export default function Modal(props: ModalProps) {
               e.stopPropagation();
               props.onClose?.(e);
             }}
-            className="rounded-full aspect-square"
+            className="rounded-full aspect-square bg-layer-2 p-3"
             iconSize={10}
           />
         </div>

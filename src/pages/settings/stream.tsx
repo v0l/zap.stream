@@ -1,4 +1,4 @@
-import { NostrProviderDialog } from "@/element/nostr-provider-dialog";
+import NostrProviderDialog from "@/element/provider/nostr";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { NostrStreamProvider } from "@/providers";
 import { unwrap } from "@snort/shared";

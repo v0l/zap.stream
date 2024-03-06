@@ -132,12 +132,14 @@ export function LoginSignup({ close }: { close: () => void }) {
         const lnurl = new LNURL(lnAddress);
         await lnurl.load();
       } catch {
-        throw new Error(
-          formatMessage({
-            defaultMessage: "Hmm, your lightning address looks wrong",
-            id: "4l69eO",
-          })
-        );
+        if (!lnAddress.includes("localhost") && import.meta.env.DEV) {
+          throw new Error(
+            formatMessage({
+              defaultMessage: "Hmm, your lightning address looks wrong",
+              id: "4l69eO",
+            })
+          );
+        }
       }
       const pub = EventPublisher.privateKey(key);
       const profile = {

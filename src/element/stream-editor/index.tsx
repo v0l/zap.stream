@@ -1,4 +1,4 @@
-import "./stream-editor.css";
+import "./index.css";
 import { useCallback, useEffect, useState } from "react";
 import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
@@ -7,11 +7,16 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { extractStreamInfo, findTag } from "@/utils";
 import { useLogin } from "@/hooks/login";
-import { NewGoalDialog } from "./new-goal";
-import { useGoals } from "@/hooks/goals";
 import { StreamState } from "@/const";
-import { DefaultButton } from "./buttons";
-import Pill from "./pill";
+import { DefaultButton, IconButton } from "@/element/buttons";
+import Pill from "@/element/pill";
+
+import { NewGoalDialog } from "./new-goal";
+import { StreamInput } from "./input";
+import { SearchCategory } from "./category-search";
+import { GoalSelector } from "./goal-selector";
+import GameDatabase, { GameInfo } from "@/service/game-database";
+import GameInfoCard from "../game-info";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -27,27 +32,6 @@ export interface StreamEditorProps {
   };
 }
 
-interface GoalSelectorProps {
-  goal?: string;
-  pubkey: string;
-  onGoalSelect: (g: string) => void;
-}
-
-function GoalSelector({ goal, pubkey, onGoalSelect }: GoalSelectorProps) {
-  const goals = useGoals(pubkey, true);
-  const { formatMessage } = useIntl();
-  return (
-    <select onChange={ev => onGoalSelect(ev.target.value)}>
-      <option value={goal}>{formatMessage({ defaultMessage: "Select a goal...", id: "I/TubD" })}</option>
-      {goals?.map(x => (
-        <option key={x.id} value={x.id}>
-          {x.content}
-        </option>
-      ))}
-    </select>
-  );
-}
-
 export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -60,11 +44,13 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [goal, setGoal] = useState<string>();
+  const [game, setGame] = useState<GameInfo>();
+  const [gameId, setGameId] = useState<string>();
   const login = useLogin();
   const { formatMessage } = useIntl();
 
   useEffect(() => {
-    const { title, summary, image, stream, status, starts, tags, contentWarning, goal, recording } =
+    const { gameInfo, gameId, title, summary, image, stream, status, starts, tags, contentWarning, goal, recording } =
       extractStreamInfo(ev);
     setTitle(title ?? "");
     setSummary(summary ?? "");
@@ -76,6 +62,12 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     setTags(tags ?? []);
     setContentWarning(contentWarning !== undefined);
     setGoal(goal);
+    setGameId(gameId)
+    if (gameInfo) {
+      setGame(gameInfo);
+    } else if (gameId) {
+      new GameDatabase().getGame(gameId).then(setGame);
+    }
   }, [ev?.id]);
 
   const validate = useCallback(() => {
@@ -128,6 +120,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         if (goal && goal.length > 0) {
           eb.tag(["goal", goal]);
         }
+        if (gameId) {
+          eb.tag(["t", gameId]);
+        }
         return eb;
       });
       console.debug(evNew);
@@ -147,64 +142,46 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     <>
       <h3>{ev ? "Edit Stream" : "New Stream"}</h3>
       {(options?.canSetTitle ?? true) && (
-        <div>
-          <p>
-            <FormattedMessage defaultMessage="Title" id="9a9+ww" />
-          </p>
-          <div className="paper">
-            <input
-              type="text"
-              placeholder={formatMessage({ defaultMessage: "What are we steaming today?", id: "QRHNuF" })}
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-            />
-          </div>
-        </div>
+        <StreamInput label={<FormattedMessage defaultMessage="Title" />}>
+          <input
+            type="text"
+            placeholder={formatMessage({ defaultMessage: "What are we steaming today?" })}
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </StreamInput>
       )}
       {(options?.canSetSummary ?? true) && (
-        <div>
-          <p>
-            <FormattedMessage defaultMessage="Summary" id="RrCui3" />
-          </p>
-          <div className="paper">
-            <input
-              type="text"
-              placeholder={formatMessage({ defaultMessage: "A short description of the content", id: "mtNGwh" })}
-              value={summary}
-              onChange={e => setSummary(e.target.value)}
-            />
-          </div>
-        </div>
+        <StreamInput label={<FormattedMessage defaultMessage="Summary" />}>
+          <input
+            type="text"
+            placeholder={formatMessage({ defaultMessage: "A short description of the content" })}
+            value={summary}
+            onChange={e => setSummary(e.target.value)}
+          />
+        </StreamInput>
       )}
       {(options?.canSetImage ?? true) && (
-        <div>
-          <p>
-            <FormattedMessage defaultMessage="Cover Image" id="Gq6x9o" />
-          </p>
-          <div className="paper">
+        <StreamInput label={<FormattedMessage defaultMessage="Cover Image" />}>
+          <div className="flex gap-2">
             <input type="text" placeholder="https://" value={image} onChange={e => setImage(e.target.value)} />
+            <DefaultButton>
+              <FormattedMessage defaultMessage="Upload" />
+            </DefaultButton>
           </div>
-        </div>
+        </StreamInput>
       )}
       {(options?.canSetStream ?? true) && (
-        <div>
-          <p>
-            <FormattedMessage defaultMessage="Stream URL" id="QRRCp0" />
-          </p>
-          <div className="paper">
-            <input type="text" placeholder="https://" value={stream} onChange={e => setStream(e.target.value)} />
-          </div>
+        <StreamInput label={<FormattedMessage defaultMessage="Stream URL" />}>
+          <input type="text" placeholder="https://" value={stream} onChange={e => setStream(e.target.value)} />
           <small>
-            <FormattedMessage defaultMessage="Stream type should be HLS" id="oZrFyI" />
+            <FormattedMessage defaultMessage="Stream type should be HLS" />
           </small>
-        </div>
+        </StreamInput>
       )}
       {(options?.canSetStatus ?? true) && (
         <>
-          <div>
-            <p>
-              <FormattedMessage defaultMessage="Status" id="tzMNF3" />
-            </p>
+          <StreamInput label={<FormattedMessage defaultMessage="Status" />}>
             <div className="flex gap-2">
               {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => (
                 <Pill className={status === v ? " active" : ""} onClick={() => setStatus(v)} key={v}>
@@ -212,55 +189,54 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
                 </Pill>
               ))}
             </div>
-          </div>
+          </StreamInput>
           {status === StreamState.Planned && (
-            <div>
-              <p>
-                <FormattedMessage defaultMessage="Start Time" id="5QYdPU" />
-              </p>
-              <div className="paper">
-                <input
-                  type="datetime-local"
-                  value={toDateTimeString(Number(start ?? "0"))}
-                  onChange={e => setStart(fromDateTimeString(e.target.value).toString())}
-                />
-              </div>
-            </div>
+            <StreamInput label={<FormattedMessage defaultMessage="Start Time" />}>
+              <input
+                type="datetime-local"
+                value={toDateTimeString(Number(start ?? "0"))}
+                onChange={e => setStart(fromDateTimeString(e.target.value).toString())}
+              />
+            </StreamInput>
           )}
           {status === StreamState.Ended && (
-            <div>
-              <p>
-                <FormattedMessage defaultMessage="Recording URL" id="Y0DXJb" />
-              </p>
-              <div className="paper">
-                <input type="text" value={recording} onChange={e => setRecording(e.target.value)} />
-              </div>
-            </div>
+            <StreamInput label={<FormattedMessage defaultMessage="Recording URL" />}>
+              <input type="text" value={recording} onChange={e => setRecording(e.target.value)} />
+            </StreamInput>
           )}
         </>
       )}
       {(options?.canSetTags ?? true) && (
-        <div>
-          <p>
-            <FormattedMessage defaultMessage="Tags" id="1EYCdR" />
-          </p>
-          <div className="paper">
+        <>
+          <StreamInput label={<FormattedMessage defaultMessage="Category" />}>
+            {!game && <SearchCategory onSelect={g => {
+              setGame(g);
+              setGameId(g.id);
+            }} />}
+            {game && <div className="flex justify-between rounded-xl px-3 py-2 border border-layer-2">
+              <GameInfoCard gameInfo={game} gameId={gameId} imageSize={80} />
+              <IconButton iconName="x"
+                iconSize={12}
+                className="text-layer-4"
+                onClick={() => {
+                  setGame(undefined);
+                  setGameId(undefined);
+                }}
+              />
+            </div>}
+          </StreamInput>
+          <StreamInput label={<FormattedMessage defaultMessage="Tags" />}>
             <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />
-          </div>
-        </div>
+          </StreamInput>
+        </>
       )}
       {login?.pubkey && (
-        <>
-          <div>
-            <p>
-              <FormattedMessage defaultMessage="Goal" id="0VV/sK" />
-            </p>
-            <div className="paper">
-              <GoalSelector goal={goal} pubkey={login?.pubkey} onGoalSelect={setGoal} />
-            </div>
+        <StreamInput label={<FormattedMessage defaultMessage="Goal" />}>
+          <div className="flex flex-col gap-2">
+            <GoalSelector goal={goal} pubkey={login?.pubkey} onGoalSelect={setGoal} />
+            <NewGoalDialog />
           </div>
-          <NewGoalDialog />
-        </>
+        </StreamInput>
       )}
       {(options?.canSetContentWarning ?? true) && (
         <div className="flex gap-2 rounded-xl border border-warning px-4 py-3">
@@ -269,7 +245,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           </div>
           <div>
             <div className="text-warning">
-              <FormattedMessage defaultMessage="NSFW Content" id="Atr2p4" />
+              <FormattedMessage defaultMessage="NSFW Content" />
             </div>
             <FormattedMessage
               defaultMessage="Check here if this stream contains nudity or pornographic content."
@@ -280,11 +256,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       )}
       <div>
         <DefaultButton disabled={!isValid} onClick={publishStream}>
-          {ev ? (
-            <FormattedMessage defaultMessage="Save" id="jvo0vs" />
-          ) : (
-            <FormattedMessage defaultMessage="Start Stream" id="TaTRKo" />
-          )}
+          <FormattedMessage defaultMessage="Save" />
         </DefaultButton>
       </div>
     </>

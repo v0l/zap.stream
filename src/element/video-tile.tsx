@@ -11,6 +11,7 @@ import { StreamState } from "@/const";
 import Pill from "./pill";
 import classNames from "classnames";
 import Logo from "./logo";
+import { useContentWarning } from "./nsfw";
 
 export function VideoTile({
   ev,
@@ -23,12 +24,16 @@ export function VideoTile({
 }) {
   const { title, image, status, participants, contentWarning } = extractStreamInfo(ev);
   const host = getHost(ev);
+  const isGrownUp = useContentWarning();
 
   const link = NostrLink.fromEvent(ev);
   const hasImg = (image?.length ?? 0) > 0;
   return (
     <div className="flex flex-col gap-2">
-      <Link to={`/${link.encode()}`} className={classNames({ blur: contentWarning }, "h-full")} state={ev}>
+      <Link to={`/${link.encode()}`} className={classNames({
+        "blur transition": contentWarning,
+        "hover:blur-none": isGrownUp,
+      }, "h-full")} state={ev}>
         <div className="relative mb-2 aspect-video">
           {hasImg ? (
             <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} />

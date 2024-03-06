@@ -11,6 +11,7 @@ import { Login } from "@/login";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
 import { StreamState } from "@/const";
+import { appendDedupe } from "@snort/shared";
 
 export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
@@ -59,12 +60,12 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async updateStreamInfo(_: SystemInterface, ev: NostrEvent): Promise<void> {
-    const { title, summary, image, tags, contentWarning, goal } = extractStreamInfo(ev);
+    const { title, summary, image, tags, contentWarning, goal, gameId } = extractStreamInfo(ev);
     await this.#getJson("PATCH", "event", {
       title,
       summary,
       image,
-      tags,
+      tags: appendDedupe(tags, gameId ? [gameId] : undefined),
       content_warning: contentWarning,
       goal,
     });

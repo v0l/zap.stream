@@ -1,8 +1,5 @@
 import type { ReactNode } from "react";
-import { MediaURL } from "./collapsible";
 import { ExternalLink } from "./external-link";
-import { EventEmbed } from "./event-embed";
-import { parseNostrLink } from "@snort/system";
 
 const FileExtensionRegex = /\.([\w]+)$/i;
 
@@ -25,18 +22,14 @@ export function HyperText({ link, children }: HyperTextProps) {
         case "bmp":
         case "webp": {
           return (
-            <MediaURL url={url}>
-              <img src={url.toString()} alt={url.toString()} style={{ objectFit: "contain" }} />
-            </MediaURL>
+            <img src={url.toString()} alt={url.toString()} style={{ objectFit: "contain" }} />
           );
         }
         case "wav":
         case "mp3":
         case "ogg": {
           return (
-            <MediaURL url={url}>
-              <audio key={url.toString()} src={url.toString()} controls />;
-            </MediaURL>
+            <audio key={url.toString()} src={url.toString()} controls />
           );
         }
         case "mp4":
@@ -46,16 +39,12 @@ export function HyperText({ link, children }: HyperTextProps) {
         case "m4v":
         case "webm": {
           return (
-            <MediaURL url={url}>
-              <video key={url.toString()} src={url.toString()} controls />
-            </MediaURL>
+            <video key={url.toString()} src={url.toString()} controls />
           );
         }
         default:
           return <ExternalLink href={url.toString()}>{children || url.toString()}</ExternalLink>;
       }
-    } else if (url.protocol === "nostr:" || url.protocol === "web+nostr:") {
-      return <EventEmbed link={parseNostrLink(link)} />;
     } else {
       <ExternalLink href={link}>{children}</ExternalLink>;
     }

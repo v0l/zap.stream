@@ -10,13 +10,12 @@ import { hexToBech32 } from "@snort/shared";
 import { Icon } from "@/element/icon";
 import { useLogin, useLoginEvents } from "@/hooks/login";
 import { Profile } from "@/element/profile";
-import { NewStreamDialog } from "@/element/new-stream";
 import { LoginSignup } from "@/element/login-signup";
 import { Login } from "@/login";
 import { useLang } from "@/hooks/lang";
 import { AllLocales } from "@/intl";
 import { trackEvent } from "@/utils";
-import { BorderButton } from "@/element/buttons";
+import { BorderButton, DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 import Logo from "@/element/logo";
 
@@ -64,7 +63,14 @@ export function LayoutPage() {
     return (
       <>
         {(!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === login.pubkey) && (
-          <NewStreamDialog btnClassName="btn btn-primary" />
+          <Link to="/dashboard">
+            <DefaultButton>
+              <span className="max-lg:hidden">
+                <FormattedMessage defaultMessage="Stream" />
+              </span>
+              <Icon name="signal" />
+            </DefaultButton>
+          </Link>
         )}
         <Menu
           menuClassName="ctx-menu"

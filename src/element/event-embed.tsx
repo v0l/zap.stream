@@ -5,7 +5,7 @@ import { Goal } from "./goal";
 import { Note } from "./note";
 import { EmojiPack } from "./emoji-pack";
 import { Badge } from "./badge";
-import { EMOJI_PACK, GOAL, LIVE_STREAM_CLIP } from "@/const";
+import { EMOJI_PACK, GOAL, LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { useEventFeed } from "@snort/system-react";
 import LiveStreamClip from "./clip";
 import { ExternalLink } from "./external-link";
@@ -48,7 +48,12 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
     }
     case EventKind.LiveEvent: {
       const info = extractStreamInfo(ev);
-      return <LiveVideoPlayer {...info} />;
+      return <LiveVideoPlayer
+        title={info.title}
+        status={info.status}
+        stream={info.status === StreamState.Live ? info.stream : info.recording}
+        poster={info.image}
+      />;
     }
     default: {
       const link = NostrLink.fromEvent(ev);

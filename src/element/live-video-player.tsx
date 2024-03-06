@@ -16,7 +16,7 @@ export enum VideoStatus {
 type VideoPlayerProps = {
   title?: string;
   stream?: string;
-  status?: string;
+  status?: StreamState;
   poster?: string;
   muted?: boolean;
 } & HTMLProps<HTMLVideoElement>;

@@ -2,13 +2,13 @@ import { useStreamsFeed } from "@/hooks/live-streams";
 import { getHost, getTagValues } from "@/utils";
 import { dedupe, unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
-import { Profile } from "./profile";
+import { Profile } from "../../element/profile";
 import { useLogin } from "@/hooks/login";
 import { useContext, useState } from "react";
 import { NostrLink, parseNostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { LIVE_STREAM_RAID } from "@/const";
-import { DefaultButton } from "./buttons";
+import { DefaultButton } from "../../element/buttons";
 import { useSortedStreams } from "@/hooks/useLiveStreams";
 
 export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose: () => void }) {

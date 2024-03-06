@@ -1,7 +1,9 @@
 import { NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
-import { LIVE_STREAM } from "@/const";
+import { LIVE_STREAM, StreamState } from "@/const";
+import { GameInfo } from "./service/game-database";
+import { AllCategories } from "./pages/category";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -58,7 +60,7 @@ export function getTagValues(tags: Tags, tag: string): Array<string> {
 
 export function getEventFromLocationState(state: unknown | undefined | null) {
   return state && typeof state === "object" && "kind" in state && state.kind === LIVE_STREAM
-    ? (state as NostrEvent)
+    ? (state as TaggedNostrEvent)
     : undefined;
 }
 
@@ -81,22 +83,24 @@ export function debounce(time: number, fn: () => void): () => void {
   return () => clearTimeout(t);
 }
 
-interface StreamInfo {
+export interface StreamInfo {
   id?: string;
   title?: string;
   summary?: string;
   image?: string;
-  status?: string;
+  status?: StreamState;
   stream?: string;
   recording?: string;
   contentWarning?: string;
-  tags?: Array<string>;
+  tags: Array<string>;
   goal?: string;
   participants?: string;
   starts?: string;
   ends?: string;
   service?: string;
   host?: string;
+  gameId?: string;
+  gameInfo?: GameInfo;
 }
 
 export function extractStreamInfo(ev?: NostrEvent) {
@@ -114,7 +118,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "title", v => (ret.title = v));
     matchTag(t, "summary", v => (ret.summary = v));
     matchTag(t, "image", v => (ret.image = v));
-    matchTag(t, "status", v => (ret.status = v));
+    matchTag(t, "status", v => (ret.status = v as StreamState));
     if (t[0] === "streaming" && t[1].startsWith("http")) {
       matchTag(t, "streaming", v => (ret.stream = v));
     }
@@ -126,8 +130,23 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "ends", v => (ret.ends = v));
     matchTag(t, "service", v => (ret.service = v));
   }
-  ret.tags = ev?.tags.filter(a => a[0] === "t").map(a => a[1]) ?? [];
+  const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
+  ret.tags = ev?.tags.filter(a => a[0] === "t" && !a[1].match(gameTagFormat)).map(a => a[1]) ?? [];
 
+  const game = ev?.tags.find(a => a[0] === "t" && a[1].match(gameTagFormat))?.[1];
+  if (game?.startsWith("internal:")) {
+    const internal = AllCategories.find(a => game === `internal:${a.id}`);
+    if (internal) {
+      ret.gameInfo = {
+        id: internal?.id,
+        name: internal.name,
+        genres: internal.tags,
+        className: internal.className
+      }
+    }
+  } else {
+    ret.gameId = game;
+  }
   return ret;
 }
 

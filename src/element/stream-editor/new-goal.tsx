@@ -1,14 +1,13 @@
-import "./new-goal.css";
 import { FormattedMessage } from "react-intl";
 import { useContext, useState } from "react";
 import { SnortContext } from "@snort/system-react";
 
-import { Icon } from "./icon";
+import { Icon } from "../icon";
 import { GOAL } from "@/const";
 import { useLogin } from "@/hooks/login";
 import { defaultRelays } from "@/const";
-import { DefaultButton } from "./buttons";
-import Modal from "./modal";
+import { DefaultButton } from "../buttons";
+import Modal from "../modal";
 
 export function NewGoalDialog() {
   const system = useContext(SnortContext);
@@ -42,7 +41,7 @@ export function NewGoalDialog() {
       <DefaultButton onClick={() => setOpen(true)}>
         <Icon name="zap-filled" size={12} />
         <span>
-          <FormattedMessage defaultMessage="Add stream goal" id="wOy57k" />
+          <FormattedMessage defaultMessage="New Goal" />
         </span>
       </DefaultButton>
       {open && (

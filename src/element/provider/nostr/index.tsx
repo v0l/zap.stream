@@ -4,15 +4,15 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { SnortContext } from "@snort/system-react";
 
 import { NostrStreamProvider, StreamProviderEndpoint, StreamProviderInfo } from "@/providers";
-import { SendZaps } from "./send-zap";
-import { StreamEditor, StreamEditorProps } from "./stream-editor";
-import Spinner from "./spinner";
+import { SendZaps } from "@/element/send-zap";
+import { StreamEditor, StreamEditorProps } from "@/element/stream-editor";
+import Spinner from "@/element/spinner";
 import { unwrap } from "@snort/shared";
 import { useRates } from "@/hooks/rates";
-import { DefaultButton } from "./buttons";
-import Pill from "./pill";
+import { DefaultButton } from "@/element/buttons";
+import Pill from "@/element/pill";
 
-export function NostrProviderDialog({
+export default function NostrProviderDialog({
   provider,
   showEndpoints,
   showEditor,
