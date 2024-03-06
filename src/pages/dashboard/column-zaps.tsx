@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 import { DashboardCard } from "./card";
 import { DashboardHighlightZap } from "./zap-highlight";
 
-export function DashboardZapColumn({ link, feed }: { link: NostrLink; feed: Array<TaggedNostrEvent>; }) {
+export function DashboardZapColumn({ link, feed }: { link: NostrLink; feed: Array<TaggedNostrEvent> }) {
   const reactions = useEventReactions(link, feed);
 
   const sortedZaps = useMemo(

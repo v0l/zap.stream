@@ -67,16 +67,18 @@ export function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> 
 
   return (
     <>
-      {!ev && <>
-        <FormattedMessage defaultMessage="Stream Providers" id="6Z2pvJ" />
-        <div className="flex gap-2">
-          {providers.map(v => (
-            <Pill className={`${v === currentProvider ? " text-bold" : ""}`} onClick={() => setCurrentProvider(v)}>
-              {v.name}
-            </Pill>
-          ))}
-        </div>
-      </>}
+      {!ev && (
+        <>
+          <FormattedMessage defaultMessage="Stream Providers" id="6Z2pvJ" />
+          <div className="flex gap-2">
+            {providers.map(v => (
+              <Pill className={`${v === currentProvider ? " text-bold" : ""}`} onClick={() => setCurrentProvider(v)}>
+                {v.name}
+              </Pill>
+            ))}
+          </div>
+        </>
+      )}
       <div className="flex flex-col gap-4">{providerDialog()}</div>
     </>
   );

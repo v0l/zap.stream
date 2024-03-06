@@ -21,16 +21,12 @@ export function HyperText({ link, children }: HyperTextProps) {
         case "png":
         case "bmp":
         case "webp": {
-          return (
-            <img src={url.toString()} alt={url.toString()} style={{ objectFit: "contain" }} />
-          );
+          return <img src={url.toString()} alt={url.toString()} style={{ objectFit: "contain" }} />;
         }
         case "wav":
         case "mp3":
         case "ogg": {
-          return (
-            <audio key={url.toString()} src={url.toString()} controls />
-          );
+          return <audio key={url.toString()} src={url.toString()} controls />;
         }
         case "mp4":
         case "mov":
@@ -38,9 +34,7 @@ export function HyperText({ link, children }: HyperTextProps) {
         case "avi":
         case "m4v":
         case "webm": {
-          return (
-            <video key={url.toString()} src={url.toString()} controls />
-          );
+          return <video key={url.toString()} src={url.toString()} controls />;
         }
         default:
           return <ExternalLink href={url.toString()}>{children || url.toString()}</ExternalLink>;

@@ -12,7 +12,7 @@ export function GoalSelector({ goal, pubkey, onGoalSelect }: GoalSelectorProps) 
   const { formatMessage } = useIntl();
   return (
     <select value={goal} onChange={ev => onGoalSelect(ev.target.value)}>
-      <option >{formatMessage({ defaultMessage: "Select a goal..." })}</option>
+      <option>{formatMessage({ defaultMessage: "Select a goal..." })}</option>
       {goals?.map(x => (
         <option key={x.id} value={x.id}>
           {x.content}

@@ -76,7 +76,9 @@ export default function Category() {
 
     const cat = AllCategories.find(a => a.id === id);
     const rb = new RequestBuilder(`category:${id}`);
-    rb.withFilter().kinds([EventKind.LiveEvent]).tag("t", cat?.tags ?? [id]);
+    rb.withFilter()
+      .kinds([EventKind.LiveEvent])
+      .tag("t", cat?.tags ?? [id]);
     return rb;
   }, [id]);
 
@@ -92,11 +94,13 @@ export default function Category() {
         {game?.cover && <img src={game?.cover} className="h-[250px]" />}
         <div className="flex flex-col gap-4">
           <h1>{game?.name}</h1>
-          {game?.genres && <div className="flex gap-2">
-            {game?.genres?.map(a => <Pill>
-              {a}
-            </Pill>)}
-          </div>}
+          {game?.genres && (
+            <div className="flex gap-2">
+              {game?.genres?.map(a => (
+                <Pill>{a}</Pill>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <VideoGridSorted evs={results} showAll={true} />

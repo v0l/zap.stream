@@ -17,7 +17,7 @@ import { NewStreamDialog } from "@/element/new-stream";
 import { DashboardSettingsButton } from "./button-settings";
 import DashboardIntro from "./intro";
 
-export function DashboardForLink({ link }: { link: NostrLink; }) {
+export function DashboardForLink({ link }: { link: NostrLink }) {
   const streamEvent = useCurrentStreamFeed(link, true);
   const streamLink = streamEvent ? NostrLink.fromEvent(streamEvent) : undefined;
   const { stream, status, image, participants } = extractStreamInfo(streamEvent);
@@ -34,9 +34,7 @@ export function DashboardForLink({ link }: { link: NostrLink; }) {
     streamLink ? [streamLink] : [],
     rb => {
       if (streamLink) {
-        rb.withFilter()
-          .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
-          .replyToLink([streamLink]);
+        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).replyToLink([streamLink]);
       }
     },
     true
@@ -54,11 +52,13 @@ export function DashboardForLink({ link }: { link: NostrLink; }) {
           <div className="flex gap-4">
             <DashboardStatsCard
               name={<FormattedMessage defaultMessage="Stream Time" id="miQKuZ" />}
-              value={<StreamTimer ev={streamEvent} />} />
+              value={<StreamTimer ev={streamEvent} />}
+            />
             <DashboardStatsCard name={<FormattedMessage defaultMessage="Viewers" id="37mth/" />} value={participants} />
             <DashboardStatsCard
               name={<FormattedMessage defaultMessage="Highest Viewers" id="jctiUc" />}
-              value={maxParticipants} />
+              value={maxParticipants}
+            />
           </div>
           <div className="grid gap-2 grid-cols-3">
             <DashboardRaidButton link={streamLink} />

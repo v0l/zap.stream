@@ -36,4 +36,4 @@ export function ContentWarningOverlay() {
   );
 }
 
-export { useContentWarning }
+export { useContentWarning };

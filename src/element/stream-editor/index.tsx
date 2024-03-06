@@ -62,7 +62,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     setTags(tags ?? []);
     setContentWarning(contentWarning !== undefined);
     setGoal(goal);
-    setGameId(gameId)
+    setGameId(gameId);
     if (gameInfo) {
       setGame(gameInfo);
     } else if (gameId) {
@@ -209,21 +209,28 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetTags ?? true) && (
         <>
           <StreamInput label={<FormattedMessage defaultMessage="Category" />}>
-            {!game && <SearchCategory onSelect={g => {
-              setGame(g);
-              setGameId(g.id);
-            }} />}
-            {game && <div className="flex justify-between rounded-xl px-3 py-2 border border-layer-2">
-              <GameInfoCard gameInfo={game} gameId={gameId} imageSize={80} />
-              <IconButton iconName="x"
-                iconSize={12}
-                className="text-layer-4"
-                onClick={() => {
-                  setGame(undefined);
-                  setGameId(undefined);
+            {!game && (
+              <SearchCategory
+                onSelect={g => {
+                  setGame(g);
+                  setGameId(g.id);
                 }}
               />
-            </div>}
+            )}
+            {game && (
+              <div className="flex justify-between rounded-xl px-3 py-2 border border-layer-2">
+                <GameInfoCard gameInfo={game} gameId={gameId} imageSize={80} />
+                <IconButton
+                  iconName="x"
+                  iconSize={12}
+                  className="text-layer-4"
+                  onClick={() => {
+                    setGame(undefined);
+                    setGameId(undefined);
+                  }}
+                />
+              </div>
+            )}
           </StreamInput>
           <StreamInput label={<FormattedMessage defaultMessage="Tags" />}>
             <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />

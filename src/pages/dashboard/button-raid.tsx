@@ -5,7 +5,7 @@ import { DashboardRaidMenu } from "./raid-menu";
 import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 
-export function DashboardRaidButton({ link }: { link: NostrLink; }) {
+export function DashboardRaidButton({ link }: { link: NostrLink }) {
   const [show, setShow] = useState(false);
   return (
     <>

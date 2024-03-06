@@ -141,8 +141,8 @@ export function extractStreamInfo(ev?: NostrEvent) {
         id: internal?.id,
         name: internal.name,
         genres: internal.tags,
-        className: internal.className
-      }
+        className: internal.className,
+      };
     }
   } else {
     ret.gameId = game;

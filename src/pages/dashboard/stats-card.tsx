@@ -2,8 +2,10 @@ import classNames from "classnames";
 import { HTMLProps, ReactNode } from "react";
 
 export function DashboardStatsCard({
-  name, value, ...props
-}: { name: ReactNode; value: ReactNode; } & Omit<HTMLProps<HTMLDivElement>, "children" | "name" | "value">) {
+  name,
+  value,
+  ...props
+}: { name: ReactNode; value: ReactNode } & Omit<HTMLProps<HTMLDivElement>, "children" | "name" | "value">) {
   return (
     <div
       {...props}

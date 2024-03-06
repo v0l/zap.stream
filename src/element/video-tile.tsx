@@ -30,10 +30,16 @@ export function VideoTile({
   const hasImg = (image?.length ?? 0) > 0;
   return (
     <div className="flex flex-col gap-2">
-      <Link to={`/${link.encode()}`} className={classNames({
-        "blur transition": contentWarning,
-        "hover:blur-none": isGrownUp,
-      }, "h-full")} state={ev}>
+      <Link
+        to={`/${link.encode()}`}
+        className={classNames(
+          {
+            "blur transition": contentWarning,
+            "hover:blur-none": isGrownUp,
+          },
+          "h-full"
+        )}
+        state={ev}>
         <div className="relative mb-2 aspect-video">
           {hasImg ? (
             <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} />

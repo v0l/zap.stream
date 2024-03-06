@@ -48,12 +48,14 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
     }
     case EventKind.LiveEvent: {
       const info = extractStreamInfo(ev);
-      return <LiveVideoPlayer
-        title={info.title}
-        status={info.status}
-        stream={info.status === StreamState.Live ? info.stream : info.recording}
-        poster={info.image}
-      />;
+      return (
+        <LiveVideoPlayer
+          title={info.title}
+          status={info.status}
+          stream={info.status === StreamState.Live ? info.stream : info.recording}
+          poster={info.image}
+        />
+      );
     }
     default: {
       const link = NostrLink.fromEvent(ev);
