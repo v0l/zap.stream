@@ -1,4 +1,4 @@
-import { SnortContext, useEventReactions, useUserProfile } from "@snort/system-react";
+import { SnortContext, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
 import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
 import { useHover, useIntersectionObserver, useOnClickOutside } from "usehooks-ts";
@@ -33,13 +33,11 @@ function emojifyReaction(reaction: string) {
 export function ChatMessage({
   streamer,
   ev,
-  related,
   emojiPacks,
   badges,
 }: {
   ev: TaggedNostrEvent;
   streamer: string;
-  related: ReadonlyArray<TaggedNostrEvent>;
   emojiPacks: EmojiPack[];
   badges: Badge[];
 }) {
@@ -58,6 +56,7 @@ export function ChatMessage({
   const profile = useUserProfile(inView?.isIntersecting ? ev.pubkey : undefined);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
+  const related = useReactions("reactions", [link], undefined, true);
   const { zaps, reactions } = useEventReactions(link, related);
   const emojiNames = emojiPacks.map(p => p.emojis).flat();
 

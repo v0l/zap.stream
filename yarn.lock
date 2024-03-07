@@ -2460,14 +2460,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/worker-relay@npm:^1.0.8":
-  version: 1.0.8
-  resolution: "@snort/worker-relay@npm:1.0.8"
+"@snort/worker-relay@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "@snort/worker-relay@npm:1.0.9"
   dependencies:
     "@sqlite.org/sqlite-wasm": ^3.45.1-build1
     eventemitter3: ^5.0.1
     uuid: ^9.0.1
-  checksum: 5e99396754634575069aee135cecb94a29eb2b77637daa48ac7a08ea3c5ef5f3e35374b7eff8623bc0bf7f1aab55b177492c7a0ac7cf8f003bb21131391b37e0
+  checksum: a66723f963da980c54eab1bb9001ca07b19001ac0ad7780df41a1eacacb1a317cb66ffb0bfdadfa46f033f1811821a763ee13b329245dfcde0988ef7e0d7e541
   languageName: node
   linkType: hard
 
@@ -7123,7 +7123,7 @@ __metadata:
     "@snort/system": ^1.2.12
     "@snort/system-react": ^1.2.12
     "@snort/system-wasm": ^1.0.2
-    "@snort/worker-relay": ^1.0.8
+    "@snort/worker-relay": ^1.0.9
     "@sqlite.org/sqlite-wasm": ^3.45.1-build1
     "@szhsin/react-menu": ^4.0.2
     "@testing-library/dom": ^9.3.1

@@ -172,7 +172,6 @@ export function LiveChat({
                   streamer={host}
                   ev={a}
                   key={a.id}
-                  related={feed}
                 />
               );
             }
