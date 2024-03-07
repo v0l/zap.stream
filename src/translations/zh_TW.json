@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "創建帳戶"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "開始時間"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "沒有可用的觀看用戶數據"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "登錄"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "正在上傳..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "已結束"
   },
-  "TaTRKo": {
-    "defaultMessage": "開始直播"
-  },
   "TwyMau": {
     "defaultMessage": "帳戶"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "新增卡片"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categories"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "獲取直播流密鑰"
   },
   "W7DNWx": {
     "defaultMessage": "直播流轉發"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "已關注"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "已於{date}直播"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "直播流類型應該是 HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> 打閃了 <s>{amount}</s> 聰"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "選擇語音..."
-  },
-  "wOy57k": {
-    "defaultMessage": "添加直播流目標"
   },
   "wRGjPp": {
     "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."

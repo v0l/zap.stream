@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Skapa konto"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Starttid"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Ingen tittardata tillgänglig"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Logga in"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Laddar upp..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Webbplats"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Avslutade"
   },
-  "TaTRKo": {
-    "defaultMessage": "Starta Stream"
-  },
   "TwyMau": {
     "defaultMessage": "Konto"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Lägg till kort"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Kategorier"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Hämta Stream-nyckel"
   },
   "W7DNWx": {
     "defaultMessage": "Vidarebefordran av strömmar"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Följer"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Streamas på {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Stream typ bör vara HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Välj röst..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Lägg till stream mål"
   },
   "wRGjPp": {
     "defaultMessage": "Ett nostr-tillägg sparar helt enkelt dina nycklar så att du kan logga in på ett säkert sätt utan att behöva ange dem varje gång. ZapStream använder tillägget för att auktorisera åtgärder för din räkning utan att någonsin se din nyckelinformation. Detta är en stor fördel jämfört med att behöva lita på att webbplatser hanterar dina inloggningsuppgifter på ett säkert sätt."

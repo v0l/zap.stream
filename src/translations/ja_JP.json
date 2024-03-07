@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "アカウントを作成する"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "開始時間"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "視聴者データなし"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "ログイン"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "アップロード中..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "ウェブサイト"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "終了しました"
   },
-  "TaTRKo": {
-    "defaultMessage": "配信開始"
-  },
   "TwyMau": {
     "defaultMessage": "アカウント"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "カードを追加"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "カテゴリー"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "ストリームキー取得"
   },
   "W7DNWx": {
     "defaultMessage": "ストリーム転送"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "フォロー中"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "{date} に配信されました"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "配信タイプはHLSでなければなりません"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> ザップ <s>{amount}</s> サッツ"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "音声を選択..."
-  },
-  "wOy57k": {
-    "defaultMessage": "配信目標を追加"
   },
   "wRGjPp": {
     "defaultMessage": "nostr拡張機能はキーを保存するだけで、毎回キーを再入力することなく安全にログインできる。ZapStreamはこの拡張機能を使い、あなたのキー情報を見ることなく、あなたに代わってアクションを承認する。これは、ウェブサイトがあなたのクレデンシャルを安全に扱うことを信頼するよりも大きな利点があります。"

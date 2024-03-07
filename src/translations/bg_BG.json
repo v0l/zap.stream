@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Създай Акаунт"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Време на започване"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Няма налични данни за зрителите"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Вход"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Качване..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Уебсайт"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Приключено"
   },
-  "TaTRKo": {
-    "defaultMessage": "Започни Стрийм"
-  },
   "TwyMau": {
     "defaultMessage": "Акаунт"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Добави карта"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Категории"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Получи Стрийм Ключ"
   },
   "W7DNWx": {
     "defaultMessage": "Препращане на потоци"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Последвани"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Стриймнат на {дата}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Стрийм тип трябва да бъде HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> Zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Избери глас..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Добави стрийм цел"
   },
   "wRGjPp": {
     "defaultMessage": "Разширението nostr просто запазва ключовете ви, за да можете безопасно да влизате в системата, без да се налага да ги въвеждате всеки път отново. ZapStream използва разширението, за да оторизира действия от ваше име, без да вижда информацията за вашите ключове. Това има значително предимство пред необходимостта да се доверявате, че уебсайтовете обработват безопасно вашите идентификационни данни."

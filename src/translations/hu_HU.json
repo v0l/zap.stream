@@ -21,7 +21,7 @@
     "defaultMessage": "Töröl"
   },
   "/JkXBo": {
-    "defaultMessage": "Clip from {title}"
+    "defaultMessage": "Klip a következőtől: {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Összesen: {amount} sats"
@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Fiók Létrehozása"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Kezdés ideje"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Nézői adatok nem állnak rendelkezésre"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Bejelentkezés"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Feltöltés..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Honlap"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Befejezve"
   },
-  "TaTRKo": {
-    "defaultMessage": "Stream indítása"
-  },
   "TwyMau": {
     "defaultMessage": "Fiók"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Kártya hozzáadása"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Kategóriák"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Stream kulcs beszerzése"
   },
   "W7DNWx": {
     "defaultMessage": "Stream továbbítása"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Követek"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "{date} közvetítve"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "A stream típusának HLS-nek kell lennie"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -679,7 +691,7 @@
     "defaultMessage": "Kezdj el gépelni"
   },
   "w3btjR": {
-    "defaultMessage": "Gambling"
+    "defaultMessage": "Szerencsejáték"
   },
   "wCIL7o": {
     "defaultMessage": "Közvetítés a Nostr-án"
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Válassz hangot..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Add meg a streamelésed célját"
   },
   "wRGjPp": {
     "defaultMessage": "A nostr kiterjesztés egyszerűen elmenti a kulcsokat, így biztonságosan bejelentkezhet anélkül, hogy minden alkalommal újra be kellene írnia őket. A ZapStream a bővítményt használja a műveletek engedélyezésére az Ön nevében anélkül, hogy valaha is látná a kulcsadatait. Ez jelentős előnnyel jár ahhoz képest, hogy bíznod kelljen abban, hogy a webhelyek biztonságosan kezelik a hitelesítő adatait."

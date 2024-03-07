@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Account aanmaken"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Start Tijd"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Geen kijkergegevens beschikbaar"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Inloggen"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Bezig met uploaden..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Beëindigd"
   },
-  "TaTRKo": {
-    "defaultMessage": "Stream Starten"
-  },
   "TwyMau": {
     "defaultMessage": "Account"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Kaart Toevoegen"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categorieën"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Stream-sleutel ophalen"
   },
   "W7DNWx": {
     "defaultMessage": "Stream doorsturen"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Volgend"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Gestreamd op {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Stream type moet HLS zijn"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> gezapt <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Selecteer stem..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Voeg streamdoel toe"
   },
   "wRGjPp": {
     "defaultMessage": "Een nostr-extensie slaat gewoon je sleutels op, zodat je veilig kunt inloggen zonder dat je ze elke keer opnieuw hoeft in te voeren. ZapStream gebruikt de extensie om acties namens jou te autoriseren zonder ooit je sleutelgegevens te zien. Dit heeft een groot voordeel ten opzichte van het vertrouwen dat websites veilig met je gegevens omgaan."

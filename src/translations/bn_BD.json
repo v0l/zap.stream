@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "অ্যাকাউন্ট তৈরি করুন"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "সময় শুরু করুন"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "দর্শকদের কোনো তথ্য সংগ্রহে নেই"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "লগইন করুন"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "আপলোড করা হচ্ছে..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "শেষ হয়েছে"
   },
-  "TaTRKo": {
-    "defaultMessage": "স্ট্রিম শুরু করুন"
-  },
   "TwyMau": {
     "defaultMessage": "অ্যাকাউন্ট"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "কার্ড যুক্ত করুন"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categories"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Get Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "Stream Forwarding"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "অনুসরণ করা হচ্ছে"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "{date} তারিখে স্ট্রিম করা হয়েছে"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "স্ট্রিমের ধরন HLS হওয়া উচিত"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "কণ্ঠস্বর নির্বাচন করুন..."
-  },
-  "wOy57k": {
-    "defaultMessage": "স্ট্রিমের লক্ষ্য সংযুক্ত করুন"
   },
   "wRGjPp": {
     "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."

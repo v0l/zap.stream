@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "إنشاء حساب"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "وقت البدء"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "لا تتوفر بيانات المشاهدين"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "تسجيل الدخول"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "تحميل..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "الموقع الإلكتروني"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "انتهى"
   },
-  "TaTRKo": {
-    "defaultMessage": "بدء البث"
-  },
   "TwyMau": {
     "defaultMessage": "الحساب"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "إضافة بطاقة"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "الفئات"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "الحصول على مفتاح البث"
   },
   "W7DNWx": {
     "defaultMessage": "إعادة توجيه الدفق"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "ما يلي"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "تم البث على {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "يجب أن يكون نوع الدفق HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> انطلق <s>{amount}</s> ساتس"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "حدد الصوت..."
-  },
-  "wOy57k": {
-    "defaultMessage": "إضافة هدف الدفق"
   },
   "wRGjPp": {
     "defaultMessage": "يحفظ امتداد nostr ببساطة مفاتيحك حتى تتمكن من تسجيل الدخول بأمان دون الحاجة إلى إعادة إدخالها في كل مرة. يستخدم ZapStream الامتداد لتخويل الإجراءات نيابةً عنك دون الحاجة إلى رؤية معلومات مفتاحك الرئيسية. هذا له ميزة كبيرة على الاضطرار إلى الثقة في أن المواقع الإلكترونية تتعامل مع بيانات اعتمادك بأمان."

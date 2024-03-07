@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Luo tili"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Aloitusaika"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Katsojatietoja ei ole saatavilla"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Kirjaudu sisään"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Ladataan..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Verkkosivusto"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Päättynyt"
   },
-  "TaTRKo": {
-    "defaultMessage": "Aloita lähetys"
-  },
   "TwyMau": {
     "defaultMessage": "Tili"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Lisää kortti"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Kategoriat"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Hae lähetysavain"
   },
   "W7DNWx": {
     "defaultMessage": "Lähetyksen edelleenlähetys"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Seuraa"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Lähetetty {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Streamin tyyppi tulisi olla HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zappasi <s>{amount}</s> satsia"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Valitse ääni..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Lisää stream-tavoite"
   },
   "wRGjPp": {
     "defaultMessage": "Nostr-laajennus yksinkertaisesti tallentaa avaimesi, jotta voit turvallisesti kirjautua sisään ilman, että sinun tarvitsee syöttää niitä joka kerta uudelleen. ZapStream käyttää laajennusta valtuuttamaan toimintoja puolestasi näkemättä koskaan avaintietojasi. Tämä on merkittävä etu verrattuna siihen, että sinun pitäisi luottaa siihen, että verkkosivustot käsittelevät tunnuksiasi turvallisesti."

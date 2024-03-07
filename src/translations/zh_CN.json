@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "创建帐户"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "开始时间"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "没有可用的观看用户数据"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "登录"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "正在上传..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "网站"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "已结束"
   },
-  "TaTRKo": {
-    "defaultMessage": "开始直播"
-  },
   "TwyMau": {
     "defaultMessage": "帐户"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "添加卡片"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "类别"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "获取直播流密钥"
   },
   "W7DNWx": {
     "defaultMessage": "直播流转发"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "已关注"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "已于{date}直播"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "直播流类型应该是 HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> 打闪了 <s>{amount}</s> 聪"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "选择语音..."
-  },
-  "wOy57k": {
-    "defaultMessage": "添加直播目标"
   },
   "wRGjPp": {
     "defaultMessage": "nostr 扩展只需保存你的密钥，这样你就可以安全登录，而不必每次都重新输入。ZapStream 使用该扩展代表你授权操作，而不会看到你的密钥信息。这比相信网站会安全处理你的凭据更有优势。"

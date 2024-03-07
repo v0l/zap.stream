@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Создать аккаунт"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Время начала"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Данные по просмотру отсутствуют"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Логин"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Загрузка..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Сайт"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Завершено"
   },
-  "TaTRKo": {
-    "defaultMessage": "Начать трансляцию"
-  },
   "TwyMau": {
     "defaultMessage": "Аккаунт"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Добавить карточку"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Категории"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Получить ключ потока"
   },
   "W7DNWx": {
     "defaultMessage": "Переадресация потоков"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Подписки"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Трансляция проведена {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Тип потока должен быть HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Выберите голос..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Добавить цели стрима"
   },
   "wRGjPp": {
     "defaultMessage": "Расширение nostr просто сохраняет ваши ключи, чтобы вы могли безопасно войти в систему без необходимости каждый раз вводить их заново. ZapStream использует расширение для авторизации действий от вашего имени, никогда не видя информацию о вашем ключе. Это дает значительное преимущество по сравнению с необходимостью доверять веб-сайтам, которые безопасно обрабатывают ваши учетные данные."

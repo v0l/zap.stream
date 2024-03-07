@@ -21,7 +21,7 @@
     "defaultMessage": "Löschen"
   },
   "/JkXBo": {
-    "defaultMessage": "Clip from {title}"
+    "defaultMessage": "Clip von {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Total: {amount} Sats"
@@ -30,7 +30,7 @@
     "defaultMessage": "IRL"
   },
   "01iNut": {
-    "defaultMessage": "Nostr-Adresse gehört nicht zu Ihnen"
+    "defaultMessage": "Nostr-Adresse gehört nicht zu dir"
   },
   "04lmFi": {
     "defaultMessage": "Schlüssel speichern"
@@ -75,7 +75,7 @@
     "defaultMessage": "Abbrechen"
   },
   "4RhY4O": {
-    "defaultMessage": "Beispiel-Einstellungen im OBS (Apple M1 Mac)"
+    "defaultMessage": "Beispiel-Einstellungen in OBS (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Konto erstellen"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Startzeit"
   },
@@ -102,7 +105,7 @@
     "defaultMessage": "Stream gestartet"
   },
   "5vMmmR": {
-    "defaultMessage": "Nutzernamen sind auf Nostr nicht eindeutig. Die Nostr-Adresse ist Ihre eindeutige, von Menschen lesbare Adresse, die Ihnen bei der Registrierung eindeutig zugeordnet wird."
+    "defaultMessage": "Benutzernamen sind auf Nostr nicht einzigartig. Die Nostr-Adresse ist deine eindeutige, menschenlesbare Adresse, die dir bei der Registrierung eindeutig zugeordnet ist."
   },
   "69hmpj": {
     "defaultMessage": "Raid von {name}"
@@ -126,7 +129,7 @@
     "defaultMessage": "Text zum Sprechen einfügen"
   },
   "8aAwpp": {
-    "defaultMessage": "Für das manuelle Hosting benötigen Sie lediglich die HLS-URL für das Feld Stream-URL. Sie sollten diese in Ihrem Hosting-Setup finden können."
+    "defaultMessage": "Für das manuelle Hosting benötigst du nur die HLS-URL für die Stream-URL. Dies solltest du in der Konfiguration deines Hostings finden können."
   },
   "8xVdjn": {
     "defaultMessage": "Video-Codec"
@@ -141,7 +144,7 @@
     "defaultMessage": "Nostr-Adresse"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) ist eine kostenlose und quelloffene Software für Videoaufnahmen und Live-Streaming unter Windows, Mac und Linux. Sie ist eine beliebte Wahl bei Streamern. Sie müssen diese Software installieren, um Ihr Video, Audio und alles andere, was Sie zu Ihrem Stream hinzufügen möchten, aufzunehmen. Nach der Installation und Konfiguration fügen Sie Ihre Stream-URL und den Stream-Schlüssel aus den Stream-Einstellungen zu OBS hinzu, um eine Verbindung mit zap.stream herzustellen."
+    "defaultMessage": "OBS (Open Broadcaster Software) ist eine kostenlose und quelloffene Software für Videoaufnahmen und Live-Streaming für Windows, Mac und Linux. Es ist eine beliebte Wahl bei Streamern. Du brauchst diese Software, um dein Video, Audio und alles andere, was du zu deinem Stream hinzufügen möchtest, aufzunehmen. Nach der Installation und Konfiguration fügst du deine Stream-URL und den Stream-Schlüssel aus den Stream-Einstellungen zu OBS hinzu, um eine Verbindung mit zap.stream herzustellen."
   },
   "A1zT+z": {
     "defaultMessage": "Suchergebnisse: {term}"
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Keine Zuschauer-Daten verfügbar"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Anmelden"
@@ -171,7 +177,7 @@
     "defaultMessage": "Abmelden"
   },
   "CTgA2G": {
-    "defaultMessage": "Erstellen Sie ein neues Konto, wenn Sie noch keines haben."
+    "defaultMessage": "Erstelle ein neues Konto, wenn du noch keins hast."
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
@@ -213,10 +219,10 @@
     "defaultMessage": "Top-Chatter"
   },
   "GSye7T": {
-    "defaultMessage": "Blitz-Adresse"
+    "defaultMessage": "Lightning-Adresse"
   },
   "GcozGF": {
-    "defaultMessage": "Ungültige Blitzadresse"
+    "defaultMessage": "Ungültige Lightning-Adresse"
   },
   "Gq6x9o": {
     "defaultMessage": "Titelbild"
@@ -243,7 +249,7 @@
     "defaultMessage": "Unterstützt {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Spielen"
+    "defaultMessage": "Gaming"
   },
   "IJDKz3": {
     "defaultMessage": "Zap Betrag in {currency}"
@@ -263,8 +269,11 @@
   "JEsxDw": {
     "defaultMessage": "Hochladen..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "Webseite"
   },
   "Jq3FDz": {
     "defaultMessage": "Inhalt"
@@ -279,13 +288,13 @@
     "defaultMessage": "Nein, ich bin unter 18 Jahre alt"
   },
   "KtrGU6": {
-    "defaultMessage": "Wenn Sie bereits ein Konto haben, können Sie sich mit einer nostr-Erweiterung anmelden. Wenn Sie bereits eine Nostr-Erweiterung verwenden, werden Sie automatisch eingeloggt. Wenn Sie keine nostr-Erweiterung eingerichtet haben, können Sie nos2x oder Alby verwenden."
+    "defaultMessage": "Wenn du bereits ein Konto hast, kannst du eine Nostr-Erweiterung verwenden, um dich anzumelden. Solltest du bereits eine Nostr-Erweiterung verwenden, wirst du automatisch eingeloggt. Falls du noch keine Nostr-Erweiterung eingerichtet hast, kannst du nos2x oder Alby verwenden."
   },
   "LEmxc8": {
     "defaultMessage": "Zap-Ziele"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream ist bis zu 2 Stunden Hosting in hoher Qualität und bis zu 8 Stunden in \"Quell\"-Qualität kostenlos. Danach haben Sie die Möglichkeit, für 5 Sats pro Minute oder 10 Sats pro Minute zu streamen, je nach gewählter Qualität. Wenn Sie zap.stream nicht zum Hosten verwenden, hängt der Preis von dem von Ihnen gewählten Streaming-Anbieter ab."
+    "defaultMessage": "Das Hosting von zap.stream ist bis 2 Stunden in hoher Qualität und bis 8 Stunden in \"Quell\"-Qualität kostenlos. Danach hast du die Möglichkeit, für 5 Sats pro Minute oder 10 Sats pro Minute zu streamen, entsprechend der von dir gewählten Qualität. Wenn du zap.stream nicht zum Hosten verwendest, hängt der Preis von deinem gewählten Streaming-Anbieter ab."
   },
   "LknBsU": {
     "defaultMessage": "Stream-Schlüssel"
@@ -327,7 +336,7 @@
     "defaultMessage": "Ungefähr {estimate}"
   },
   "QNvtaq": {
-    "defaultMessage": "Teilen auf X"
+    "defaultMessage": "Auf X teilen"
   },
   "QRHNuF": {
     "defaultMessage": "Was streamen wir heute?"
@@ -345,7 +354,7 @@
     "defaultMessage": "{name} mit {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Hier haben Sie mehrere Möglichkeiten: Sie können unser internes Hosting oder Ihr eigenes (z. B. Cloudflare) nutzen."
+    "defaultMessage": "Hier hast du mehrere Möglichkeiten: Du kannst unser hauseigenes Hosting oder dein eigenes (wie z.B. Cloudflare) nutzen."
   },
   "RJOmzk": {
     "defaultMessage": "Ich habe die {terms} von {provider} gelesen und bin damit einverstanden."
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Beendet"
   },
-  "TaTRKo": {
-    "defaultMessage": "Stream starten"
-  },
   "TwyMau": {
     "defaultMessage": "Konto"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Karte hinzufügen"
@@ -384,7 +393,7 @@
     "defaultMessage": "Vergangene Streams"
   },
   "Uo/DWG": {
-    "defaultMessage": "Über zu lange"
+    "defaultMessage": "Über ist zu lang"
   },
   "VA/Z1S": {
     "defaultMessage": "Verbergen"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Kategorien"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Stream-Schlüssel anfordern"
   },
   "W7DNWx": {
     "defaultMessage": "Stream-Weiterleitung"
@@ -412,7 +418,7 @@
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Klicken Sie auf Log In"
+    "defaultMessage": "Klicke auf Anmelden"
   },
   "X2PZ7D": {
     "defaultMessage": "Ziel erstellen"
@@ -446,13 +452,13 @@
     "defaultMessage": "Noch keine Ziele"
   },
   "ZcgtZo": {
-    "defaultMessage": "Wir haben eine Liste von einfach zu bedienenden Börsen zusammengestellt, die es Ihnen ermöglichen, eine kleine Menge an Bitcoin (sats) zu kaufen und sie auf die Geldbörse Ihrer Wahl zu übertragen."
+    "defaultMessage": "Wir haben eine Liste von einfach zu bedienenden Börsen zusammengestellt, die es dir ermöglichen, eine kleine Menge Bitcoin (Sats) zu kaufen und sie auf die Wallet deiner Wahl zu übertragen."
   },
   "ZmqxZs": {
     "defaultMessage": "Sie können das später ändern"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps sind Blitzzahlungen, die auf nostr als Quittungen veröffentlicht werden."
+    "defaultMessage": "Zaps sind Lightning-Zahlungen, die auf Nostr als Belege veröffentlicht werden."
   },
   "Zse7yG": {
     "defaultMessage": "Raid-Empfänger"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Folge ich"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Am {date} gestreamt"
@@ -519,7 +528,7 @@
     "defaultMessage": "{n} Nachrichten"
   },
   "h9mX2/": {
-    "defaultMessage": "Wenn Sie unser hauseigenes zap.stream-Hosting nutzen (am billigsten und einfachsten), kopieren Sie Ihre Stream-URL und Ihren Stream-Schlüssel in Ihre OBS-Einstellungen, und schon sollten Sie startklar sein."
+    "defaultMessage": "Wenn du unser hauseigenes zap.stream-Hosting verwendest (am billigsten und einfachsten), kopiere deine Stream-URL und deinen Stream-Schlüssel in deine OBS-Einstellungen und schon solltest du startklar sein."
   },
   "hMzcSq": {
     "defaultMessage": "Nachrichten"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Stream-Typ sollte HLS sein"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> hat <s>{amount}</s> sats gezappt"
   },
@@ -649,7 +661,7 @@
     "description": "Config name column header"
   },
   "tTgdmx": {
-    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+    "defaultMessage": "{n,selectordinal,one{@ #. Min.} two{@ #. Min.} few{@ #. Min.} other{@ #. Min.}}"
   },
   "tVCC9m": {
     "defaultMessage": "Sats sind kleine Einheiten von Bitcoin. Das Senden von Sats auf zap.stream wird als \"Zapping\" oder Zaps bezeichnet."
@@ -679,7 +691,7 @@
     "defaultMessage": "Beginne zu tippen"
   },
   "w3btjR": {
-    "defaultMessage": "Gambling"
+    "defaultMessage": "Glücksspiel"
   },
   "wCIL7o": {
     "defaultMessage": "Auf Nostr verbreiten"
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Stimme auswählen..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Stream-Ziel hinzufügen"
   },
   "wRGjPp": {
     "defaultMessage": "Eine Nostr-Erweiterung speichert lediglich deine Schlüssel, damit du dich sicher anmelden kannst, ohne sie jedes Mal neu eingeben zu müssen. ZapStream verwendet die Erweiterung, um Aktionen in deinem Namen zu autorisieren, ohne deine Schlüsselinformationen jemals zu sehen. Dies hat den entscheidenden Vorteil, dass du nicht darauf vertrauen musst, dass Webseiten deine Anmeldedaten sicher behandeln."

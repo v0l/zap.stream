@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Criar Conta"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Hora de Início"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Sem dados disponíveis do telespectador"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Entrar"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Carregando..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Site"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Encerrado"
   },
-  "TaTRKo": {
-    "defaultMessage": "Iniciar Transmissão"
-  },
   "TwyMau": {
     "defaultMessage": "Conta"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Adicionar Cartão"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categorias"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Obter chave de fluxo"
   },
   "W7DNWx": {
     "defaultMessage": "Encaminhamento de fluxo"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Seguindo"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Transmitido em {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "O tipo de transmissão deve ser HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Selecionar voz..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Adicionar meta de transmissão"
   },
   "wRGjPp": {
     "defaultMessage": "Uma extensão nostr simplesmente salva suas chaves para que você possa fazer login com segurança sem precisar digitá-las novamente todas as vezes. O ZapStream usa a extensão para autorizar ações em seu nome sem nunca ver suas informações de chave. Isso tem uma vantagem significativa em relação à necessidade de confiar que os sites tratam suas credenciais com segurança."

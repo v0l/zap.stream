@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Opret konto"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Starttidspunkt"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Ingen tilgængelige data for seere"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Login"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Uploading..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Hjemmeside"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Afsluttet"
   },
-  "TaTRKo": {
-    "defaultMessage": "Start strøm"
-  },
   "TwyMau": {
     "defaultMessage": "Konto"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Tilføj kort"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Kategorier"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Hent Stream-nøgle"
   },
   "W7DNWx": {
     "defaultMessage": "Videresendelse af strøm"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Følgende"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Streamet på {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Stream-typen skal være HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zappet <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Vælg stemme..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Tilføj mål for strøm"
   },
   "wRGjPp": {
     "defaultMessage": "En nostr-udvidelse gemmer simpelthen dine nøgler, så du sikkert kan logge ind uden at skulle indtaste dem igen hver gang. ZapStream bruger udvidelsen til at godkende handlinger på dine vegne uden nogensinde at se dine nøgleoplysninger. Det er en stor fordel i forhold til at skulle stole på, at hjemmesider håndterer dine legitimationsoplysninger sikkert."

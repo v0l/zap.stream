@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "계정 만들기"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "시작 시간"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "사용 가능한 시청자 데이터 없음"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "로그인"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "업로드 중..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "웹사이트"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "종료"
   },
-  "TaTRKo": {
-    "defaultMessage": "스트림 시작"
-  },
   "TwyMau": {
     "defaultMessage": "계정"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "카드 추가"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "카테고리"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "스트림 키 받기"
   },
   "W7DNWx": {
     "defaultMessage": "스트림 포워딩"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "팔로잉"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "{date}에서 스트리밍"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "스트림 유형은 HLS여야 합니다."
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> ZAPP <s>{amount}</s> SATS"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "음성 선택..."
-  },
-  "wOy57k": {
-    "defaultMessage": "스트림 목표 추가"
   },
   "wRGjPp": {
     "defaultMessage": "nostr 확장 프로그램은 키를 저장하기만 하면 매번 키를 다시 입력할 필요 없이 안전하게 로그인할 수 있습니다. ZapStream은 확장 프로그램을 사용하여 사용자의 키 정보를 보지 않고도 사용자를 대신하여 작업을 승인합니다. 이는 웹사이트가 사용자의 자격 증명을 안전하게 처리한다고 믿어야 하는 것에 비해 상당한 이점이 있습니다."

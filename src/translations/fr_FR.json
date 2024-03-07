@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Créer un Compte"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Heure de Début"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Aucune donnée sur les spectateurs n'est disponible"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Se Connecter"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Envoi..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Site web"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Terminé"
   },
-  "TaTRKo": {
-    "defaultMessage": "Commencer la Diffusion"
-  },
   "TwyMau": {
     "defaultMessage": "Compte"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Ajouter Carte"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Catégories"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Récupérer la Clé de Stream"
   },
   "W7DNWx": {
     "defaultMessage": "Transfert de flux"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Abonnements"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Diffusé le {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Le type de stream doit être HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Sélectionner la voix..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Ajouter un objectif de stream"
   },
   "wRGjPp": {
     "defaultMessage": "L'extension nostr enregistre simplement vos clés afin que vous puissiez vous connecter en toute sécurité sans avoir à les saisir à nouveau à chaque fois. ZapStream utilise l'extension pour autoriser des actions en votre nom sans jamais voir vos informations clés. Cela présente un avantage considérable par rapport au fait de devoir faire confiance aux sites web pour gérer vos informations d'identification en toute sécurité."

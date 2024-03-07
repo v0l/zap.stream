@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Crea un account"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Ora di inizio"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Dati spettatori non disponibili"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Login"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Caricamento..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Sito web"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Terminato"
   },
-  "TaTRKo": {
-    "defaultMessage": "Avvio del flusso"
-  },
   "TwyMau": {
     "defaultMessage": "Conto"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Aggiungi scheda"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categorie"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Ottenere la chiave di flusso"
   },
   "W7DNWx": {
     "defaultMessage": "Inoltro del flusso"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Di seguito"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "In streaming su {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Il tipo di flusso dovrebbe essere HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Selezionare la voce..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Aggiungere l'obiettivo del flusso"
   },
   "wRGjPp": {
     "defaultMessage": "L'estensione nostr non fa altro che salvare le chiavi, in modo da poter accedere in tutta sicurezza senza doverle reinserire ogni volta. ZapStream utilizza l'estensione per autorizzare le azioni per conto dell'utente senza mai vedere le informazioni sulle chiavi. Questo ha un vantaggio significativo rispetto al dover confidare che i siti web gestiscano le vostre credenziali in modo sicuro."

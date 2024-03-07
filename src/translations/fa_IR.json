@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "ساخت حساب کاربری"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "زمان شروع"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "داده های بیننده موجود نیست"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "ورود"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "در حال بارگذاری..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "به پایان رسید"
   },
-  "TaTRKo": {
-    "defaultMessage": "شروع پخش زنده"
-  },
   "TwyMau": {
     "defaultMessage": "حساب کاربری"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "افزودن کارت"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categories"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "کلید پخش را بگیرید"
   },
   "W7DNWx": {
     "defaultMessage": "فرافرستادن پخش زنده"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "بعدی"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "در تاریخ {date} پخش شده"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "نوع پخش باید HLS باشد"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> <s>{amount}</s> ساتوشی زپ زد"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "انتخاب صدا..."
-  },
-  "wOy57k": {
-    "defaultMessage": "افزودن هدف زپ پخش زنده"
   },
   "wRGjPp": {
     "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."

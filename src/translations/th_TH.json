@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "สร้างบัญชี"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "เวลาเริ่ม"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "ไม่พบข้อมูลผู้ชม"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "เข้าสู่ระบบ"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "กำลังอัปโหลด..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "จบแล้ว"
   },
-  "TaTRKo": {
-    "defaultMessage": "เริ่มการถ่ายทอดสด"
-  },
   "TwyMau": {
     "defaultMessage": "บัญชี"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "เพิ่มการ์ด"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categories"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "รับ Stream Key"
   },
   "W7DNWx": {
     "defaultMessage": "ส่งต่อการถ่ายทอดสด"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "กำลังติดตาม"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "ถ่ายทอดสดเมื่อ {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Stream type should be HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "เลือกเสียง.."
-  },
-  "wOy57k": {
-    "defaultMessage": "เพิ่มเป้าหมายของการถ่ายทอดสดนี้"
   },
   "wRGjPp": {
     "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."

@@ -92,6 +92,9 @@
   "5JcXdV": {
     "defaultMessage": "Tengeneza akaunti"
   },
+  "5LXWMX": {
+    "defaultMessage": "New Goal"
+  },
   "5QYdPU": {
     "defaultMessage": "Wakati wa kuanza"
   },
@@ -154,6 +157,9 @@
   },
   "AukrPM": {
     "defaultMessage": "Hakuna data ya mtazamaji inayopatikana"
+  },
+  "Axo/o5": {
+    "defaultMessage": "Science & Technology"
   },
   "AyGauy": {
     "defaultMessage": "Ingia"
@@ -263,6 +269,9 @@
   "JEsxDw": {
     "defaultMessage": "Inapakia..."
   },
+  "JO0kq9": {
+    "defaultMessage": "Edit Stream Info"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -371,11 +380,11 @@
   "TP/cMX": {
     "defaultMessage": "Imeisha"
   },
-  "TaTRKo": {
-    "defaultMessage": "Anza Kutiririsha"
-  },
   "TwyMau": {
     "defaultMessage": "Akaunti"
+  },
+  "UGFYV8": {
+    "defaultMessage": "Welcome to zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Ongeza Kadi"
@@ -394,9 +403,6 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categories"
-  },
-  "Vn2WiP": {
-    "defaultMessage": "Pata Ufunguo wa Kutiririsha"
   },
   "W7DNWx": {
     "defaultMessage": "Usambazaji wa Mtiririko"
@@ -474,6 +480,9 @@
   },
   "cPIKU2": {
     "defaultMessage": "Kufuatia"
+  },
+  "ccXLVi": {
+    "defaultMessage": "Category"
   },
   "cvAsEh": {
     "defaultMessage": "Ilitiririshwa mnamo {date}"
@@ -614,6 +623,9 @@
   "oZrFyI": {
     "defaultMessage": "Aina ya mtiririko inapaswa kuwa HLS"
   },
+  "p4N05H": {
+    "defaultMessage": "Upload"
+  },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
@@ -689,9 +701,6 @@
   },
   "wMKVFz": {
     "defaultMessage": "Chagua sauti..."
-  },
-  "wOy57k": {
-    "defaultMessage": "Ongeza lengo la mtiririko"
   },
   "wRGjPp": {
     "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
