@@ -7,7 +7,10 @@ export const DefaultButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((pr
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-white text-black")}
+      className={classNames(
+        props.className,
+        "px-3 py-2 font-semibold rounded-xl bg-white text-black disabled:opacity-20"
+      )}
       ref={ref}
     />
   );
@@ -16,7 +19,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((pr
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-primary")}
+      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-primary disabled:opacity-20")}
       ref={ref}
     />
   );
@@ -25,7 +28,7 @@ export const Layer1Button = forwardRef<HTMLButtonElement, AsyncButtonProps>((pro
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-layer-1")}
+      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-layer-1 disabled:opacity-20")}
       ref={ref}
     />
   );
@@ -34,7 +37,7 @@ export const Layer2Button = forwardRef<HTMLButtonElement, AsyncButtonProps>((pro
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-layer-2")}
+      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-layer-2 disabled:opacity-20")}
       ref={ref}
     />
   );
@@ -43,7 +46,7 @@ export const Layer3Button = forwardRef<HTMLButtonElement, AsyncButtonProps>((pro
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-layer-3")}
+      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-layer-3 disabled:opacity-20")}
       ref={ref}
     />
   );
@@ -52,7 +55,7 @@ export const WarningButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((pr
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-warning")}
+      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl bg-warning disabled:opacity-20")}
       ref={ref}
     />
   );
@@ -70,7 +73,7 @@ export const BorderButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((pro
   return (
     <AsyncButton
       {...props}
-      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl btn-border")}
+      className={classNames(props.className, "px-3 py-2 font-semibold rounded-xl btn-border disabled:opacity-20")}
       ref={ref}
     />
   );

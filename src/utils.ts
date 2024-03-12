@@ -103,6 +103,7 @@ export interface StreamInfo {
   gameInfo?: GameInfo;
 }
 
+const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
 export function extractStreamInfo(ev?: NostrEvent) {
   const ret = {
     host: getHost(ev),
@@ -130,24 +131,39 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "ends", v => (ret.ends = v));
     matchTag(t, "service", v => (ret.service = v));
   }
-  const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
-  ret.tags = ev?.tags.filter(a => a[0] === "t" && !a[1].match(gameTagFormat)).map(a => a[1]) ?? [];
+  const { regularTags, prefixedTags } = sortStreamTags(ev?.tags ?? []);
+  ret.tags = regularTags;
 
-  const game = ev?.tags.find(a => a[0] === "t" && a[1].match(gameTagFormat))?.[1];
-  if (game?.startsWith("internal:")) {
-    const internal = AllCategories.find(a => game === `internal:${a.id}`);
+  const { gameInfo, gameId } = extractGameTag(prefixedTags);
+  ret.gameId = gameId;
+  ret.gameInfo = gameInfo;
+
+  return ret;
+}
+
+export function sortStreamTags(tags: Array<string | Array<string>>) {
+  const plainTags = tags.filter(a => (Array.isArray(a) ? a[0] === "t" : true)).map(a => (Array.isArray(a) ? a[1] : a));
+
+  const regularTags = plainTags.filter(a => !a.match(gameTagFormat)) ?? [];
+  const prefixedTags = plainTags.filter(a => !regularTags.includes(a));
+  return { regularTags, prefixedTags };
+}
+
+export function extractGameTag(tags: Array<string>) {
+  let gameInfo: GameInfo | undefined = undefined;
+  const gameId = tags.find(a => a.match(gameTagFormat));
+  if (gameId?.startsWith("internal:")) {
+    const internal = AllCategories.find(a => gameId === `internal:${a.id}`);
     if (internal) {
-      ret.gameInfo = {
+      gameInfo = {
         id: internal?.id,
         name: internal.name,
         genres: internal.tags,
         className: internal.className,
       };
     }
-  } else {
-    ret.gameId = game;
   }
-  return ret;
+  return { gameInfo, gameId };
 }
 
 export function trackEvent(

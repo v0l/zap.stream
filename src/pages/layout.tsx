@@ -125,10 +125,9 @@ export function LayoutPage() {
           <Modal
             id="login"
             onClose={() => setShowLogin(false)}
-            bodyClassName="my-auto bg-layer-1 rounded-xl overflow-hidden">
-            <div className="w-full">
-              <LoginSignup close={() => setShowLogin(false)} />
-            </div>
+            bodyClassName="relative bg-layer-1 rounded-3xl overflow-hidden my-auto lg:w-[500px] max-lg:w-full"
+            showClose={false}>
+            <LoginSignup close={() => setShowLogin(false)} />
           </Modal>
         )}
       </>

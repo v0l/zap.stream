@@ -2,21 +2,19 @@ import "./index.css";
 import { useCallback, useEffect, useState } from "react";
 import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
-import { TagsInput } from "react-tag-input-component";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { extractStreamInfo, findTag } from "@/utils";
 import { useLogin } from "@/hooks/login";
 import { StreamState } from "@/const";
-import { DefaultButton, IconButton } from "@/element/buttons";
+import { DefaultButton } from "@/element/buttons";
 import Pill from "@/element/pill";
 
 import { NewGoalDialog } from "./new-goal";
 import { StreamInput } from "./input";
-import { SearchCategory } from "./category-search";
 import { GoalSelector } from "./goal-selector";
 import GameDatabase, { GameInfo } from "@/service/game-database";
-import GameInfoCard from "../game-info";
+import CategoryInput from "./category-input";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -207,40 +205,19 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </>
       )}
       {(options?.canSetTags ?? true) && (
-        <>
-          <StreamInput label={<FormattedMessage defaultMessage="Category" />}>
-            {!game && (
-              <SearchCategory
-                onSelect={g => {
-                  setGame(g);
-                  setGameId(g.id);
-                }}
-              />
-            )}
-            {game && (
-              <div className="flex justify-between rounded-xl px-3 py-2 border border-layer-2">
-                <GameInfoCard gameInfo={game} gameId={gameId} imageSize={80} />
-                <IconButton
-                  iconName="x"
-                  iconSize={12}
-                  className="text-layer-4"
-                  onClick={() => {
-                    setGame(undefined);
-                    setGameId(undefined);
-                  }}
-                />
-              </div>
-            )}
-          </StreamInput>
-          <StreamInput label={<FormattedMessage defaultMessage="Tags" />}>
-            <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />
-          </StreamInput>
-        </>
+        <CategoryInput
+          tags={tags}
+          game={game}
+          gameId={gameId}
+          setTags={setTags}
+          setGame={setGame}
+          setGameId={setGameId}
+        />
       )}
       {login?.pubkey && (
         <StreamInput label={<FormattedMessage defaultMessage="Goal" />}>
           <div className="flex flex-col gap-2">
-            <GoalSelector goal={goal} pubkey={login?.pubkey} onGoalSelect={setGoal} />
+            <GoalSelector goal={goal} onGoalSelect={setGoal} />
             <NewGoalDialog />
           </div>
         </StreamInput>

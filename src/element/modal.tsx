@@ -10,6 +10,7 @@ export interface ModalProps {
   onClose?: (e: React.MouseEvent | KeyboardEvent) => void;
   onClick?: (e: React.MouseEvent) => void;
   children: ReactNode;
+  showClose?: boolean;
 }
 
 let scrollbarWidth: number | null = null;
@@ -81,17 +82,19 @@ export default function Modal(props: ModalProps) {
           e.stopPropagation();
           props.onClick?.(e);
         }}>
-        <div className="absolute right-4 top-4">
-          <IconButton
-            iconName="x"
-            onClick={e => {
-              e.stopPropagation();
-              props.onClose?.(e);
-            }}
-            className="rounded-full aspect-square bg-layer-2 p-3"
-            iconSize={10}
-          />
-        </div>
+        {(props.showClose ?? true) && (
+          <div className="absolute right-4 top-4">
+            <IconButton
+              iconName="x"
+              onClick={e => {
+                e.stopPropagation();
+                props.onClose?.(e);
+              }}
+              className="rounded-full aspect-square bg-layer-2 p-3"
+              iconSize={10}
+            />
+          </div>
+        )}
         {props.children}
       </div>
     </div>,

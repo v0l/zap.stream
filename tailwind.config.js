@@ -12,6 +12,7 @@ module.exports = {
         "layer-2": "rgb(34 34 34 / <alpha-value>)",
         "layer-3": "rgb(50 50 50 / <alpha-value>)",
         "layer-4": "rgb(121 121 121 / <alpha-value>)",
+        "layer-5": "rgb(173 173 173 / <alpha-value>)",
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         zap: "var(--zap)",

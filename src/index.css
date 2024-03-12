@@ -142,3 +142,10 @@ table th {
 table th {
   @apply bg-layer-1;
 }
+
+.zap-glow {
+  border: 0.83px solid rgba(94, 31, 11, 1);
+  background: rgba(46, 23, 16, 1);
+  box-shadow: 0px 0px 5px 5px rgba(255, 91, 39, 0.22);
+  color: rgba(255, 91, 39, 1);
+}

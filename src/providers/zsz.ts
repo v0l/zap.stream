@@ -71,6 +71,17 @@ export class NostrStreamProvider implements StreamProvider {
     });
   }
 
+  async updateStream(props: {
+    title?: string;
+    summary?: string;
+    image?: string;
+    tags?: Array<string>;
+    content_warning?: string;
+    goal?: string;
+  }): Promise<void> {
+    await this.#getJson("PATCH", "event", props);
+  }
+
   async topup(amount: number): Promise<string> {
     const rsp = await this.#getJson<TopUpResponse>("GET", `topup?amount=${amount}`);
     return rsp.pr;

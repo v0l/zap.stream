@@ -34,6 +34,11 @@ import CategoryPage from "./pages/category";
 import { WorkerRelayInterface } from "@snort/worker-relay";
 import WorkerVite from "@snort/worker-relay/src/worker?worker";
 import FaqPage from "./pages/faq";
+import DashboardIntroStep1 from "./pages/dashboard/intro/step1";
+import DashboardIntroStep2 from "./pages/dashboard/intro/step2";
+import DashboardIntroStep3 from "./pages/dashboard/intro/step3";
+import DashboardIntroStep4 from "./pages/dashboard/intro/step4";
+import DashboardIntroFinal from "./pages/dashboard/intro/final";
 
 const hasWasm = "WebAssembly" in globalThis;
 const workerRelay = new WorkerRelayInterface(
@@ -130,6 +135,26 @@ const router = createBrowserRouter([
             <DashboardPage />
           </Suspense>
         ),
+      },
+      {
+        path: "/dashboard/step-1",
+        element: <DashboardIntroStep1 />,
+      },
+      {
+        path: "/dashboard/step-2",
+        element: <DashboardIntroStep2 />,
+      },
+      {
+        path: "/dashboard/step-3",
+        element: <DashboardIntroStep3 />,
+      },
+      {
+        path: "/dashboard/step-4",
+        element: <DashboardIntroStep4 />,
+      },
+      {
+        path: "/dashboard/final",
+        element: <DashboardIntroFinal />,
       },
       {
         path: "/search/:term?",

@@ -56,7 +56,12 @@ export interface StreamProviderInfo {
   endpoints: Array<StreamProviderEndpoint>;
   tosAccepted?: boolean;
   tosLink?: string;
-  forwards?: Array<{ id: string; name: string }>;
+  forwards?: Array<StreamProviderForward>;
+}
+
+export interface StreamProviderForward {
+  id: string;
+  name?: string;
 }
 
 export interface StreamProviderEndpoint {

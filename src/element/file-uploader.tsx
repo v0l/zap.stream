@@ -1,9 +1,8 @@
-import "./file-uploader.css";
-import type { ChangeEvent } from "react";
 import { VoidApi } from "@void-cat/api";
-import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { DefaultButton } from "./buttons";
+import { Layer2Button } from "./buttons";
+import { openFile } from "@/utils";
+import { Icon } from "./icon";
 
 const voidCatHost = "https://void.cat";
 const fileExtensionRegex = /\.([\w]{1,7})$/i;
@@ -40,59 +39,31 @@ async function voidCatUpload(file: File): Promise<UploadResult> {
 }
 
 interface FileUploaderProps {
-  defaultImage?: string;
-  onClear(): void;
-  onFileUpload(url: string): void;
+  onResult(url: string | undefined): void;
 }
 
-export function FileUploader({ defaultImage, onClear, onFileUpload }: FileUploaderProps) {
-  const [img, setImg] = useState<string>(defaultImage ?? "");
-  const [isUploading, setIsUploading] = useState(false);
-
-  async function onFileChange(ev: ChangeEvent<HTMLInputElement>) {
-    const file = ev.target.files && ev.target.files[0];
+export function FileUploader({ onResult }: FileUploaderProps) {
+  async function uploadFile() {
+    const file = await openFile();
     if (file) {
       try {
-        setIsUploading(true);
         const upload = await voidCatUpload(file);
         if (upload.url) {
-          setImg(upload.url);
-          onFileUpload(upload.url);
+          onResult(upload.url);
         }
         if (upload.error) {
           console.error(upload.error);
         }
       } catch (error) {
         console.error(error);
-      } finally {
-        setIsUploading(false);
       }
     }
   }
 
-  function clearImage() {
-    setImg("");
-    onClear();
-  }
-
   return (
-    <div className="file-uploader-container">
-      <label className="file-uploader">
-        <input type="file" onChange={onFileChange} />
-        {isUploading ? (
-          <FormattedMessage defaultMessage="Uploading..." id="JEsxDw" />
-        ) : (
-          <FormattedMessage defaultMessage="Add File" id="fc2iho" />
-        )}
-      </label>
-      <div className="file-uploader-preview">
-        {img?.length > 0 && (
-          <DefaultButton onClick={clearImage}>
-            <FormattedMessage defaultMessage="Clear" id="/GCoTA" />
-          </DefaultButton>
-        )}
-        {img && <img className="image-preview" src={img} />}
-      </div>
-    </div>
+    <Layer2Button onClick={uploadFile}>
+      <FormattedMessage defaultMessage="Upload" />
+      <Icon name="upload" size={14} />
+    </Layer2Button>
   );
 }

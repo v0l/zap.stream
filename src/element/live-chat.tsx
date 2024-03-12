@@ -165,15 +165,7 @@ export function LiveChat({
               return <BadgeAward ev={a} key={a.id} />;
             }
             case LIVE_STREAM_CHAT: {
-              return (
-                <ChatMessage
-                  badges={badges}
-                  emojiPacks={allEmojiPacks}
-                  streamer={host}
-                  ev={a}
-                  key={a.id}
-                />
-              );
+              return <ChatMessage badges={badges} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
             }
             case LIVE_STREAM_RAID: {
               return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;

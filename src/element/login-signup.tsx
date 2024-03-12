@@ -166,7 +166,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Login: {
       return (
         <>
-          <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="header-image" />
+          <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="w-full" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Create an Account" id="u6uD94" />
@@ -197,19 +197,18 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.LoginInput: {
       return (
         <>
-          <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="header-image" />
+          <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="w-full" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
-              <FormattedMessage defaultMessage="Login with private key" id="3df560" />
+              <FormattedMessage defaultMessage="Login with private key" />
             </h2>
             <p>
               <FormattedMessage
                 defaultMessage="This method is insecure. We recommend using a {nostrlink}"
-                id="Z8ZOEY"
                 values={{
                   nostrlink: (
                     <ExternalLink href="">
-                      <FormattedMessage defaultMessage="nostr signer extension" id="/EvlqN" />
+                      <FormattedMessage defaultMessage="nostr signer extension" />
                     </ExternalLink>
                   ),
                 }}
@@ -219,7 +218,7 @@ export function LoginSignup({ close }: { close: () => void }) {
               type="text"
               value={key}
               onChange={e => setNewKey(e.target.value)}
-              placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz", id: "yzKwBQ" })}
+              placeholder={formatMessage({ defaultMessage: "eg. nsec1xyz" })}
             />
             <div className="flex justify-between">
               <div></div>
@@ -244,10 +243,10 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Details: {
       return (
         <>
-          <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="header-image" />
+          <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="w-full" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
-              <FormattedMessage defaultMessage="Setup Profile" id="nOaArs" />
+              <FormattedMessage defaultMessage="Setup Profile" />
             </h2>
             <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden">
               {avatar && <img className="absolute object-fit w-full h-full" src={avatar} />}
@@ -261,16 +260,15 @@ export function LoginSignup({ close }: { close: () => void }) {
               type="text"
               placeholder={formatMessage({
                 defaultMessage: "Username",
-                id: "JCIgkj",
               })}
               value={username}
               onChange={e => setUsername(e.target.value)}
             />
             <small className="text-neutral-300">
-              <FormattedMessage defaultMessage="You can change this later" id="ZmqxZs" />
+              <FormattedMessage defaultMessage="You can change this later" />
             </small>
             <DefaultButton onClick={setupProfile}>
-              <FormattedMessage defaultMessage="Save" id="jvo0vs" />
+              <FormattedMessage defaultMessage="Save" />
             </DefaultButton>
             {error && <b className="error">{error}</b>}
           </div>
@@ -280,22 +278,18 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.LnAddress: {
       return (
         <>
-          <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="header-image" />
+          <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="w-full" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
-              <FormattedMessage defaultMessage="Get paid by viewers" id="Fodi9+" />
+              <FormattedMessage defaultMessage="Get paid by viewers" />
             </h2>
             <p>
-              <FormattedMessage
-                defaultMessage="We hooked you up with a lightning wallet so you can get paid by viewers right away!"
-                id="Oxqtyf"
-              />
+              <FormattedMessage defaultMessage="We hooked you up with a lightning wallet so you can get paid by viewers right away!" />
             </p>
             {providerInfo?.balance && (
               <p>
                 <FormattedMessage
                   defaultMessage="Oh, and you have {n} sats of free streaming on us! 💜"
-                  id="f6biFA"
                   values={{
                     n: <FormattedNumber value={providerInfo.balance} />,
                   }}
@@ -304,16 +298,16 @@ export function LoginSignup({ close }: { close: () => void }) {
             )}
             <input
               type="text"
-              placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com", id: "1qsXCO" })}
+              placeholder={formatMessage({ defaultMessage: "eg. name@wallet.com" })}
               value={lnAddress}
               onChange={e => setLnAddress(e.target.value)}
             />
             <small>
-              <FormattedMessage defaultMessage="You can always replace it with your own address later." id="FjDlus" />
+              <FormattedMessage defaultMessage="You can always replace it with your own address later." />
             </small>
             {error && <b className="error">{error}</b>}
             <DefaultButton onClick={saveProfile}>
-              <FormattedMessage defaultMessage="Amazing! Continue.." id="tM6fNW" />
+              <FormattedMessage defaultMessage="Amazing! Continue.." />
             </DefaultButton>
           </div>
         </>
@@ -322,7 +316,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.SaveKey: {
       return (
         <>
-          <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="header-image" />
+          <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="w-full" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Save Key" id="04lmFi" />

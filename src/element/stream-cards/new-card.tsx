@@ -16,35 +16,43 @@ interface CardDialogProps {
 
 export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDialogProps) {
   const [title, setTitle] = useState(card?.title ?? "");
-  const [image, setImage] = useState(card?.image ?? "");
+  const [image, setImage] = useState<string | undefined>(card?.image);
   const [content, setContent] = useState(card?.content ?? "");
   const [link, setLink] = useState(card?.link ?? "");
   const { formatMessage } = useIntl();
 
   return (
     <div className="flex flex-col gap-2">
-      <h3>{header || <FormattedMessage defaultMessage="Add card" id="nwA8Os" />}</h3>
+      <h3>{header || <FormattedMessage defaultMessage="Add card" />}</h3>
       {/* TITLE */}
       <label htmlFor="card-title">
-        <FormattedMessage defaultMessage="Title" id="9a9+ww" />
+        <FormattedMessage defaultMessage="Title" />
       </label>
       <input
         id="card-title"
         type="text"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        placeholder={formatMessage({ defaultMessage: "e.g. about me", id: "k21gTS" })}
+        placeholder={formatMessage({ defaultMessage: "e.g. about me" })}
       />
       {/* IMAGE */}
       <label htmlFor="card-image">
-        <FormattedMessage defaultMessage="Image" id="+0zv6g" />
+        <FormattedMessage defaultMessage="Image" />
       </label>
-      <FileUploader defaultImage={image} onFileUpload={setImage} onClear={() => setImage("")} />
-      {image.length > 0 && (
+      {image && (
+        <>
+          <img src={image} />
+          <WarningButton onClick={() => setImage(undefined)}>
+            <FormattedMessage defaultMessage="Remove Image" />
+          </WarningButton>
+        </>
+      )}
+      <FileUploader defaultImage={image} onResult={setImage} />
+      {image && (
         <>
           {/* IMAGE LINK */}
           <label htmlFor="card-image-link">
-            <FormattedMessage defaultMessage="Image Link" id="s5ksS7" />
+            <FormattedMessage defaultMessage="Image Link" />
           </label>
           <input
             id="card-image-link"
@@ -57,10 +65,10 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
       )}
       {/* CONTENT */}
       <label htmlFor="card-content">
-        <FormattedMessage defaultMessage="Content" id="Jq3FDz" />
+        <FormattedMessage defaultMessage="Content" />
       </label>
       <textarea
-        placeholder={formatMessage({ defaultMessage: "Start typing", id: "w0Xm2F" })}
+        placeholder={formatMessage({ defaultMessage: "Start typing" })}
         value={content}
         rows={5}
         onChange={e => setContent(e.target.value)}
@@ -68,7 +76,6 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
       <span className="help-text">
         <FormattedMessage
           defaultMessage="Supports {markdown}"
-          id="I1kjHI"
           values={{
             markdown: (
               <ExternalLink href="https://www.markdownguide.org/cheat-sheet">
@@ -79,12 +86,10 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
         />
       </span>
       <div className="flex justify-between">
-        <WarningButton onClick={onCancel}>
-          {cancelCta || <FormattedMessage defaultMessage="Cancel" id="47FYwb" />}
-        </WarningButton>
+        <WarningButton onClick={onCancel}>{cancelCta || <FormattedMessage defaultMessage="Cancel" />}</WarningButton>
 
         <DefaultButton onClick={() => onSave({ title, image, content, link })}>
-          {cta || <FormattedMessage defaultMessage="Add Card" id="UJBFYK" />}
+          {cta || <FormattedMessage defaultMessage="Add Card" />}
         </DefaultButton>
       </div>
     </div>

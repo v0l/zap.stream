@@ -8,6 +8,7 @@ import { useLogin } from "@/hooks/login";
 import { defaultRelays } from "@/const";
 import { DefaultButton } from "../buttons";
 import Modal from "../modal";
+import { StreamInput } from "./input";
 
 export function NewGoalDialog() {
   const system = useContext(SnortContext);
@@ -46,28 +47,22 @@ export function NewGoalDialog() {
       </DefaultButton>
       {open && (
         <Modal id="new-goal" onClose={() => setOpen(false)}>
-          <div className="new-goal content-inner">
-            <div className="zap-goals">
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-2 items-center">
               <Icon name="zap-filled" className="stream-zap-goals-icon" size={16} />
               <h3>
-                <FormattedMessage defaultMessage="Stream Zap Goals" id="0GfNiL" />
+                <FormattedMessage defaultMessage="New Stream Goal" />
               </h3>
             </div>
-            <div>
-              <p>
-                <FormattedMessage defaultMessage="Name" id="HAlOn1" />
-              </p>
+            <StreamInput label={<FormattedMessage defaultMessage="Name" />}>
               <input
                 type="text"
                 value={goalName}
                 placeholder="e.g. New Laptop"
                 onChange={e => setGoalName(e.target.value)}
               />
-            </div>
-            <div>
-              <p>
-                <FormattedMessage defaultMessage="Amount" id="/0TOL5" />
-              </p>
+            </StreamInput>
+            <StreamInput label={<FormattedMessage defaultMessage="Amount" />}>
               <input
                 type="number"
                 placeholder="21"
@@ -76,12 +71,10 @@ export function NewGoalDialog() {
                 value={goalAmount}
                 onChange={e => setGoalAmount(e.target.value)}
               />
-            </div>
-            <div className="create-goal">
-              <DefaultButton disabled={!isValid} onClick={publishGoal}>
-                <FormattedMessage defaultMessage="Create Goal" id="X2PZ7D" />
-              </DefaultButton>
-            </div>
+            </StreamInput>
+            <DefaultButton disabled={!isValid} onClick={publishGoal}>
+              <FormattedMessage defaultMessage="Create Goal" id="X2PZ7D" />
+            </DefaultButton>
           </div>
         </Modal>
       )}
