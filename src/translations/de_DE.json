@@ -93,7 +93,7 @@
     "defaultMessage": "Konto erstellen"
   },
   "5LXWMX": {
-    "defaultMessage": "New Goal"
+    "defaultMessage": "Neues Ziel"
   },
   "5QYdPU": {
     "defaultMessage": "Startzeit"
@@ -159,7 +159,7 @@
     "defaultMessage": "Keine Zuschauer-Daten verfügbar"
   },
   "Axo/o5": {
-    "defaultMessage": "Science & Technology"
+    "defaultMessage": "Wissenschaft & Technik"
   },
   "AyGauy": {
     "defaultMessage": "Anmelden"
@@ -270,7 +270,7 @@
     "defaultMessage": "Hochladen..."
   },
   "JO0kq9": {
-    "defaultMessage": "Edit Stream Info"
+    "defaultMessage": "Stream-Info bearbeiten"
   },
   "JkLHGw": {
     "defaultMessage": "Webseite"
@@ -384,7 +384,7 @@
     "defaultMessage": "Konto"
   },
   "UGFYV8": {
-    "defaultMessage": "Welcome to zap.stream!"
+    "defaultMessage": "Willkommen bei zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Karte hinzufügen"
@@ -482,7 +482,7 @@
     "defaultMessage": "Folge ich"
   },
   "ccXLVi": {
-    "defaultMessage": "Category"
+    "defaultMessage": "Kategorie"
   },
   "cvAsEh": {
     "defaultMessage": "Am {date} gestreamt"
@@ -624,7 +624,7 @@
     "defaultMessage": "Stream-Typ sollte HLS sein"
   },
   "p4N05H": {
-    "defaultMessage": "Upload"
+    "defaultMessage": "Hochladen"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> hat <s>{amount}</s> sats gezappt"

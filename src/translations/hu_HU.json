@@ -93,7 +93,7 @@
     "defaultMessage": "Fiók Létrehozása"
   },
   "5LXWMX": {
-    "defaultMessage": "New Goal"
+    "defaultMessage": "Új cél"
   },
   "5QYdPU": {
     "defaultMessage": "Kezdés ideje"
@@ -159,7 +159,7 @@
     "defaultMessage": "Nézői adatok nem állnak rendelkezésre"
   },
   "Axo/o5": {
-    "defaultMessage": "Science & Technology"
+    "defaultMessage": "Tudomány / Technológia"
   },
   "AyGauy": {
     "defaultMessage": "Bejelentkezés"
@@ -270,7 +270,7 @@
     "defaultMessage": "Feltöltés..."
   },
   "JO0kq9": {
-    "defaultMessage": "Edit Stream Info"
+    "defaultMessage": "Stream információ szerkesztése"
   },
   "JkLHGw": {
     "defaultMessage": "Honlap"
@@ -384,7 +384,7 @@
     "defaultMessage": "Fiók"
   },
   "UGFYV8": {
-    "defaultMessage": "Welcome to zap.stream!"
+    "defaultMessage": "Üdvözöllek a zap.stream-en!"
   },
   "UJBFYK": {
     "defaultMessage": "Kártya hozzáadása"
@@ -482,7 +482,7 @@
     "defaultMessage": "Követek"
   },
   "ccXLVi": {
-    "defaultMessage": "Category"
+    "defaultMessage": "Kategória"
   },
   "cvAsEh": {
     "defaultMessage": "{date} közvetítve"
@@ -624,7 +624,7 @@
     "defaultMessage": "A stream típusának HLS-nek kell lennie"
   },
   "p4N05H": {
-    "defaultMessage": "Upload"
+    "defaultMessage": "Feltöltés"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
