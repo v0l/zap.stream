@@ -26,7 +26,7 @@ export function DashboardZapColumn({
   const zapSum = sortedZaps.reduce((acc, v) => acc + v.amount, 0);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <DashboardCard className="flex flex-col gap-2">
         <div className="flex justify-between items-center">
           <div className="flex gap-4 items-center">

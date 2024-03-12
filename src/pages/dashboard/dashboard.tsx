@@ -2,9 +2,9 @@ import { LiveChat } from "@/element/live-chat";
 import LiveVideoPlayer from "@/element/live-video-player";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { extractStreamInfo } from "@/utils";
-import { NostrLink } from "@snort/system";
-import { useReactions } from "@snort/system-react";
-import { useEffect, useMemo, useState } from "react";
+import { EventExt, NostrEvent, NostrLink } from "@snort/system";
+import { SnortContext, useReactions } from "@snort/system-react";
+import { Suspense, lazy, useContext, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { StreamTimer } from "@/element/stream-time";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP, StreamState } from "@/const";
@@ -21,9 +21,13 @@ import StreamKey from "@/element/provider/nostr/stream-key";
 import { DefaultProvider, NostrStreamProvider, StreamProviderInfo } from "@/providers";
 import { ExternalLink } from "@/element/external-link";
 import BalanceTimeEstimate from "@/element/balance-time-estimate";
-import { DefaultButton } from "@/element/buttons";
+import { WarningButton } from "@/element/buttons";
 import { useLogin } from "@/hooks/login";
 import AccountTopup from "@/element/provider/nostr/topup";
+import classNames from "classnames";
+import ManualStream from "./manual-stream";
+import { unixNow } from "@snort/shared";
+const StreamSummary = lazy(() => import("@/element/summary-chart"));
 
 export function DashboardForLink({ link }: { link: NostrLink }) {
   const streamEvent = useCurrentStreamFeed(link, true);
@@ -32,6 +36,8 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
   const streamLink = streamEvent ? NostrLink.fromEvent(streamEvent) : undefined;
   const { stream, status, image, participants, service } = extractStreamInfo(streamEvent);
   const [info, setInfo] = useState<StreamProviderInfo>();
+  const isMyManual = streamEvent?.pubkey === login?.pubkey;
+  const system = useContext(SnortContext);
 
   const provider = useMemo(() => (service ? new NostrStreamProvider("", service) : DefaultProvider), [service]);
   const defaultEndpoint = useMemo(() => {
@@ -39,14 +45,16 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
   }, [info]);
 
   useEffect(() => {
-    provider.info().then(setInfo);
-    const t = setInterval(() => {
+    if (!isMyManual) {
       provider.info().then(setInfo);
-    }, 1000 * 60);
-    return () => {
-      clearInterval(t);
-    };
-  }, [provider]);
+      const t = setInterval(() => {
+        provider.info().then(setInfo);
+      }, 1000 * 60);
+      return () => {
+        clearInterval(t);
+      };
+    }
+  }, [isMyManual, provider]);
 
   const [maxParticipants, setMaxParticipants] = useState(0);
   useEffect(() => {
@@ -69,7 +77,11 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
   if (!streamLink && !location.search.includes("setupComplete=true")) return <DashboardIntro />;
 
   return (
-    <div className="grid grid-cols-3 gap-2 h-[calc(100%-48px-1rem)]">
+    <div
+      className={classNames("grid gap-2 h-[calc(100%-48px-1rem)]", {
+        "grid-cols-3": status === StreamState.Live,
+        "grid-cols-[20%_80%]": status === StreamState.Ended,
+      })}>
       <div className="min-h-0 h-full grid grid-rows-[min-content_auto] gap-2">
         <DashboardCard className="flex flex-col gap-4">
           <div className="flex justify-between items-center">
@@ -88,7 +100,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
               )}
             </div>
           </div>
-          {streamLink && (
+          {streamLink && status === StreamState.Live && !isMyManual && (
             <>
               <LiveVideoPlayer stream={stream} status={status} poster={image} muted={true} className="w-full" />
               <div className="flex gap-4">
@@ -129,14 +141,42 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
                 <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
                 <DashboardSettingsButton ev={streamEvent} />
               </div>
-              {streamEvent?.pubkey === login?.pubkey && (
-                <DefaultButton>
-                  <FormattedMessage defaultMessage="End Stream" />
-                </DefaultButton>
-              )}
             </>
           )}
-          {!streamLink && (
+          {streamLink && isMyManual && status === StreamState.Live && (
+            <>
+              <LiveVideoPlayer stream={stream} status={status} poster={image} muted={true} className="w-full" />
+              <div className="grid gap-2 grid-cols-3">
+                <DashboardRaidButton link={streamLink} />
+                <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
+                <WarningButton
+                  onClick={async () => {
+                    //todo: clean this up
+                    const copy = streamEvent ? ({ ...streamEvent } as NostrEvent) : undefined;
+                    const statusTag = copy?.tags.find(a => a[0] === "status");
+                    const endedTag = copy?.tags.find(a => a[0] === "ends");
+                    const pub = login?.signer();
+                    if (statusTag && copy && pub) {
+                      statusTag[1] = StreamState.Ended;
+                      if (endedTag) {
+                        endedTag[1] = String(unixNow());
+                      } else {
+                        copy.tags.push(["ends", String(unixNow())]);
+                      }
+                      copy.created_at = unixNow();
+                      copy.id = EventExt.createId(copy);
+                      const evPub = await pub.sign(copy);
+                      if (evPub) {
+                        await system.BroadcastEvent(evPub);
+                      }
+                    }
+                  }}>
+                  <FormattedMessage defaultMessage="End Stream" />
+                </WarningButton>
+              </div>
+            </>
+          )}
+          {(!streamLink || status === StreamState.Ended) && (
             <>
               <div className="bg-layer-1 rounded-xl aspect-video flex items-center justify-center uppercase text-warning font-semibold">
                 <FormattedMessage defaultMessage="Offline" />
@@ -155,11 +195,12 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
                   />
                 </p>
                 {defaultEndpoint && <StreamKey ep={defaultEndpoint} />}
+                <ManualStream />
               </div>
             </>
           )}
         </DashboardCard>
-        {streamLink && (
+        {streamLink && status === StreamState.Live && (
           <DashboardCard className="flex flex-col gap-4">
             <h3>
               <FormattedMessage defaultMessage="Chat Users" />
@@ -170,16 +211,22 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
           </DashboardCard>
         )}
       </div>
-      {streamLink && (
+      {streamLink && status === StreamState.Live && (
         <>
           <DashboardZapColumn ev={streamEvent!} link={streamLink} feed={feed} />
-          <LiveChat link={streamLink} ev={streamEvent} className="min-h-0" />
+          <LiveChat link={streamLink} ev={streamEvent} className="min-h-0 border border-layer-2 rounded-xl px-4 py-3" />
         </>
       )}
-      {!streamLink && (
+      {streamLink && status === StreamState.Ended && (
         <>
-          <DashboardCard></DashboardCard>
-          <DashboardCard></DashboardCard>
+          <DashboardCard className="overflow-y-auto">
+            <h1>
+              <FormattedMessage defaultMessage="Last Stream Summary" />
+            </h1>
+            <Suspense>
+              <StreamSummary link={streamLink} />
+            </Suspense>
+          </DashboardCard>
         </>
       )}
     </div>

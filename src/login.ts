@@ -132,12 +132,19 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
 }
 
 export function getPublisher(session: LoginSession) {
+  const signer = getSigner(session);
+  if (signer) {
+    return new EventPublisher(signer, session.pubkey);
+  }
+}
+
+export function getSigner(session: LoginSession) {
   switch (session?.type) {
     case LoginType.Nip7: {
-      return new EventPublisher(new Nip7Signer(), session.pubkey);
+      return new Nip7Signer();
     }
     case LoginType.PrivateKey: {
-      return new EventPublisher(new PrivateKeySigner(unwrap(session.privateKey)), session.pubkey);
+      return new PrivateKeySigner(unwrap(session.privateKey));
     }
   }
 }

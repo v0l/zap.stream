@@ -1,20 +1,21 @@
 import "./index.css";
-import { useCallback, useEffect, useState } from "react";
-import { NostrEvent } from "@snort/system";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { EventKind, NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { FormattedMessage, useIntl } from "react-intl";
+import { SnortContext } from "@snort/system-react";
 
 import { extractStreamInfo, findTag } from "@/utils";
 import { useLogin } from "@/hooks/login";
-import { StreamState } from "@/const";
+import { GOAL, StreamState, defaultRelays } from "@/const";
 import { DefaultButton } from "@/element/buttons";
 import Pill from "@/element/pill";
-
-import { NewGoalDialog } from "./new-goal";
 import { StreamInput } from "./input";
 import { GoalSelector } from "./goal-selector";
 import GameDatabase, { GameInfo } from "@/service/game-database";
 import CategoryInput from "./category-input";
+import { FileUploader } from "@/element/file-uploader";
+import AmountInput from "@/element/amount-input";
 
 export interface StreamEditorProps {
   ev?: NostrEvent;
@@ -42,10 +43,13 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [contentWarning, setContentWarning] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [goal, setGoal] = useState<string>();
+  const [goalName, setGoalName] = useState("");
+  const [goalAmount, setGoalMount] = useState(0);
   const [game, setGame] = useState<GameInfo>();
   const [gameId, setGameId] = useState<string>();
   const login = useLogin();
   const { formatMessage } = useIntl();
+  const system = useContext(SnortContext);
 
   useEffect(() => {
     const { gameInfo, gameId, title, summary, image, stream, status, starts, tags, contentWarning, goal, recording } =
@@ -88,12 +92,24 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   async function publishStream() {
     const pub = login?.publisher();
     if (pub) {
+      let thisGoal = goal;
+      if (!goal && goalName && goalAmount) {
+        const goalEvent = await pub.generic(eb => {
+          return eb
+            .kind(GOAL)
+            .tag(["amount", String(goalAmount * 1000)])
+            .tag(["relays", ...Object.keys(defaultRelays)])
+            .content(goalName);
+        });
+        await system.BroadcastEvent(goalEvent);
+        thisGoal = goalEvent.id;
+      }
       const evNew = await pub.generic(eb => {
         const now = unixNow();
         const dTag = findTag(ev, "d") ?? now.toString();
         const starts = start ?? now.toString();
         const ends = findTag(ev, "ends") ?? now.toString();
-        eb.kind(30311)
+        eb.kind(EventKind.LiveEvent)
           .tag(["d", dTag])
           .tag(["title", title])
           .tag(["summary", summary])
@@ -115,8 +131,8 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         if (contentWarning) {
           eb.tag(["content-warning", "nsfw"]);
         }
-        if (goal && goal.length > 0) {
-          eb.tag(["goal", goal]);
+        if (thisGoal && thisGoal.length > 0) {
+          eb.tag(["goal", thisGoal]);
         }
         if (gameId) {
           eb.tag(["t", gameId]);
@@ -161,11 +177,10 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       )}
       {(options?.canSetImage ?? true) && (
         <StreamInput label={<FormattedMessage defaultMessage="Cover Image" />}>
+          {image && <img src={image} className="mb-2 aspect-video object-cover rounded-xl" />}
           <div className="flex gap-2">
             <input type="text" placeholder="https://" value={image} onChange={e => setImage(e.target.value)} />
-            <DefaultButton>
-              <FormattedMessage defaultMessage="Upload" />
-            </DefaultButton>
+            <FileUploader onResult={v => setImage(v ?? "")} />
           </div>
         </StreamInput>
       )}
@@ -180,9 +195,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       {(options?.canSetStatus ?? true) && (
         <>
           <StreamInput label={<FormattedMessage defaultMessage="Status" />}>
-            <div className="flex gap-2">
+            <div className="flex gap-2 uppercase">
               {[StreamState.Live, StreamState.Planned, StreamState.Ended].map(v => (
-                <Pill className={status === v ? " active" : ""} onClick={() => setStatus(v)} key={v}>
+                <Pill selected={status === v} onClick={() => setStatus(v)} key={v}>
                   {v}
                 </Pill>
               ))}
@@ -218,7 +233,19 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         <StreamInput label={<FormattedMessage defaultMessage="Goal" />}>
           <div className="flex flex-col gap-2">
             <GoalSelector goal={goal} onGoalSelect={setGoal} />
-            <NewGoalDialog />
+            {!goal && (
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder={formatMessage({
+                    defaultMessage: "Goal Name",
+                  })}
+                  value={goalName}
+                  onChange={e => setGoalName(e.target.value)}
+                />
+                <AmountInput onChange={setGoalMount} />
+              </div>
+            )}
           </div>
         </StreamInput>
       )}

@@ -58,7 +58,7 @@ export default function DashboardIntroStep4() {
         <DefaultButton
           onClick={async () => {
             const pub = login?.publisher();
-            if (!goal && pub) {
+            if (!goal && pub && goalName && goalAmount) {
               const goalEvent = await pub.generic(eb => {
                 return eb
                   .kind(GOAL)

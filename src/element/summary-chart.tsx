@@ -25,7 +25,7 @@ interface StatSlot {
 }
 
 export default function StreamSummary({ link, preload }: { link: NostrLink; preload?: NostrEvent }) {
-  const ev = useCurrentStreamFeed(link, true, preload);
+  const ev = useCurrentStreamFeed(link, true, preload ? ({ ...preload, relays: [] } as TaggedNostrEvent) : undefined);
   const thisLink = ev ? NostrLink.fromEvent(ev) : undefined;
   const data = useReactions(
     `live:${link?.id}:${link?.author}:reactions`,
@@ -148,7 +148,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
 
   return (
     <div className="flex flex-col gap-4">
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       {summary && <p>{summary}</p>}
       <div className="flex gap-1">
         <StatePill state={status as StreamState} />
