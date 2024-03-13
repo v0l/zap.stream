@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { ExternalLink } from "./external-link";
 
-const FileExtensionRegex = /\.([\w]+)$/i;
+//const FileExtensionRegex = /\.([\w]+)$/i;
 
 interface HyperTextProps {
   link: string;
@@ -9,7 +9,7 @@ interface HyperTextProps {
 }
 
 export function HyperText({ link, children }: HyperTextProps) {
-  try {
+  /*try {
     const url = new URL(link);
     const extension = FileExtensionRegex.test(url.pathname.toLowerCase()) && RegExp.$1;
 
@@ -40,11 +40,11 @@ export function HyperText({ link, children }: HyperTextProps) {
           return <ExternalLink href={url.toString()}>{children || url.toString()}</ExternalLink>;
       }
     } else {
-      <ExternalLink href={link}>{children}</ExternalLink>;
+      return <ExternalLink href={link}>{children}</ExternalLink>;
     }
   } catch (error) {
     console.error(error);
     // Ignore the error.
-  }
+  }*/
   return <ExternalLink href={link}>{children}</ExternalLink>;
 }

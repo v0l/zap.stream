@@ -208,7 +208,7 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
   const isBig = zap.amount >= BIG_ZAP_THRESHOLD;
 
   return (
-    <div className={`zap-container ${isBig ? "big-zap" : ""}`}>
+    <div className={`zap-container overflow-wrap ${isBig ? "big-zap" : ""}`}>
       <div className="flex gap-1 items-center">
         <Icon name="zap-filled" className="text-zap" />
         <FormattedMessage

@@ -55,7 +55,7 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
           url.protocol = "https:";
           return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} />;
         }
-        return <span>{f.content}</span>;
+        return f.content;
       }
     }
   }
