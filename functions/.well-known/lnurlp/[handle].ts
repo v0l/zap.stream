@@ -6,13 +6,15 @@ interface NostrJson {
   nip46?: Record<string, Array<string>>;
 }
 
-async function fetchNip05Pubkey(name: string, domain: string, timeout = 2_000): Promise<string | undefined> {
-  if (!name || !domain) {
+async function fetchNip05Pubkey(name: string, timeout = 2_000): Promise<string | undefined> {
+  if (!name) {
     return undefined;
   }
   try {
-    const res = await fetch(`https://${domain}/.well-known/nostr.json?name=${encodeURIComponent(name)}`, {
-      signal: AbortSignal.timeout(timeout),
+    const res = await fetch(`https://api.snort.social/.well-known/nostr.json?name=${encodeURIComponent(name)}`, {
+      headers: {
+        "X-Proxy-Host": "zap.stream",
+      },
     });
     const data: NostrJson = await res.json();
     const match = Object.keys(data.names).find(n => {
@@ -29,7 +31,7 @@ export const onRequest: PagesFunction<Env> = async context => {
   const handle = context.params.handle as string | undefined;
   let pubkey = handle;
   if (handle && handle.length !== 64) {
-    const nip5 = await fetchNip05Pubkey(handle, "zap.stream");
+    const nip5 = await fetchNip05Pubkey(handle);
     if (nip5) {
       pubkey = nip5;
     }
