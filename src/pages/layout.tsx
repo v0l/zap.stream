@@ -145,11 +145,12 @@ export function LayoutPage() {
       </Helmet>
       <div className="flex justify-between mb-4">
         <div className="flex gap-6 items-center">
-          <div
-            className="bg-white text-black flex items-center cursor-pointer rounded-2xl aspect-square px-1"
-            onClick={() => navigate("/")}>
-            <Logo width={40} height={40} />
-          </div>
+          <Link to="/" href="/">
+            <div
+              className="bg-white text-black flex items-center cursor-pointer rounded-2xl aspect-square px-1">
+              <Logo width={40} height={40} />
+            </div>
+          </Link>
           <SearchBar />
           <Link to="/category" className="max-xl:hidden">
             <FormattedMessage defaultMessage="Categories" id="VKb1MS" />
