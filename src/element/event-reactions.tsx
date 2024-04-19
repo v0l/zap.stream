@@ -18,7 +18,7 @@ export default function EventReactions({ ev }: { ev: TaggedNostrEvent }) {
   const totalZaps = grouped.zaps.reduce((acc, v) => acc + v.amount, 0);
   const iconClass = "flex gap-2 items-center tabular-nums cursor-pointer select-none hover:text-primary transition";
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex flex-wrap gap-4 mt-2 items-center">
       <ZapEvent ev={ev}>
         <div className={iconClass}>
           <Icon name="zap-filled" />

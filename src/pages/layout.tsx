@@ -25,6 +25,7 @@ export function LayoutPage() {
   const login = useLogin();
   const [showLogin, setShowLogin] = useState(false);
   const { lang, setLang } = useLang();
+  const country = lang.split(/[-_]/i)[1]?.toLowerCase();
 
   useLoginEvents(login?.pubkey, true);
 
@@ -38,7 +39,7 @@ export function LayoutPage() {
         menuClassName="ctx-menu"
         menuButton={
           <div className="flex gap-2 items-center">
-            <div className={`fi fi-${lang.split(/[-_]/i)[1]?.toLowerCase()}`}></div>
+            {country && <div className={`fi fi-${country}`}></div>}
             <div className="uppercase pointer">
               <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
             </div>
@@ -47,7 +48,7 @@ export function LayoutPage() {
         align="end"
         gap={5}>
         {AllLocales.sort().map(l => (
-          <MenuItem onClick={() => setLang(l)} key={l}>
+          <MenuItem className="capitalize" onClick={() => setLang(l)} key={l}>
             {new Intl.DisplayNames([l], {
               type: "language",
             }).of(l)}

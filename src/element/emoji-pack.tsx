@@ -42,7 +42,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
   }
 
   return (
-    <div className="outline emoji-pack">
+    <div className="emoji-pack">
       <div className="emoji-pack-title">
         <h4>{name}</h4>
         {login?.pubkey &&

@@ -71,9 +71,11 @@ function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEve
                 <StreamTimer ev={ev} />
               </Pill>
             )}
-            <Pill>
-              <GameInfoCard gameId={gameId} gameInfo={gameInfo} showImage={false} link={true} />
-            </Pill>
+            {gameId && gameInfo && (
+              <Pill>
+                <GameInfoCard gameId={gameId} gameInfo={gameInfo} showImage={false} link={true} />
+              </Pill>
+            )}
             {ev && <Tags ev={ev} />}
           </div>
           {isMine && (
