@@ -77,7 +77,7 @@ export function LiveChat({
         rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(200);
       }
     },
-    true
+    true,
   );
   const login = useLogin();
   const started = useMemo(() => {
