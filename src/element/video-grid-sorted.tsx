@@ -15,7 +15,7 @@ export default function VideoGridSorted({ evs, showAll }: { evs: Array<TaggedNos
     (ev: NostrEvent) => {
       return tags.find(t => t.at(1) === getHost(ev));
     },
-    [tags]
+    [tags],
   );
   const { live, planned, ended } = useSortedStreams(evs, showAll ? 0 : undefined);
   const hashtags = getTagValues(tags, "t");
