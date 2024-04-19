@@ -73,10 +73,10 @@ export default function VideoGridSorted({ evs, showAll }: { evs: Array<TaggedNos
 function GridSection({ header, items }: { header: ReactNode; items: Array<TaggedNostrEvent> }) {
   return (
     <>
-      <h2 className="flex items-center gap-4">
-        {header}
+      <div className="flex items-center gap-4">
+        <h2 className="whitespace-nowrap">{header}</h2>
         <span className="h-[1px] bg-layer-1 w-full" />
-      </h2>
+      </div>
       <VideoGrid>
         {items.map(e => (
           <VideoTile ev={e} key={e.id} />
