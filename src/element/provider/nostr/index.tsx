@@ -13,6 +13,7 @@ import Pill from "@/element/pill";
 import { AddForwardInputs } from "./fowards";
 import StreamKey from "./stream-key";
 import AccountTopup from "./topup";
+import AccountWithdrawl from "./withdraw";
 
 export default function NostrProviderDialog({
   provider,
@@ -179,12 +180,8 @@ export default function NostrProviderDialog({
                 values={{ amount: info.balance?.toLocaleString() }}
               />
             </div>
-            <AccountTopup
-              provider={provider}
-              onFinish={async () => {
-                loadInfo();
-              }}
-            />
+            <AccountTopup provider={provider} onFinish={loadInfo} />
+            <AccountWithdrawl provider={provider} onFinish={loadInfo} />
           </div>
           <small>
             <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />

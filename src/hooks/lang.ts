@@ -19,7 +19,7 @@ const LangSelector = new LangStore();
 export function useLang() {
   const store = useSyncExternalStore(
     c => LangSelector.hook(c),
-    () => LangSelector.snapshot(),
+    () => LangSelector.snapshot()
   );
 
   return {

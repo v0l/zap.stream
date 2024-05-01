@@ -87,6 +87,10 @@ export class NostrStreamProvider implements StreamProvider {
     return rsp.pr;
   }
 
+  async withdraw(invoice: string) {
+    return await this.#getJson<{ fee: number; preimage: string }>("POST", `withdraw?invoice=${invoice}`);
+  }
+
   async acceptTos(): Promise<void> {
     await this.#getJson("PATCH", "account", {
       accept_tos: true,
