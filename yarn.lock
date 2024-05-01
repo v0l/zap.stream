@@ -2558,14 +2558,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@snort/system-react@npm:1.3.0"
+"@snort/system-react@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@snort/system-react@npm:1.3.1"
   dependencies:
     "@snort/shared": "npm:^1.0.15"
-    "@snort/system": "npm:^1.3.0"
+    "@snort/system": "npm:^1.3.1"
     react: "npm:^18.2.0"
-  checksum: 10c0/a012dfa5a167dfa3a1e2b8c203cf9850934cbf22cb48000f8f6e3f65b3fb60394a09c6c3900073fe25c1e8426d9acc17e08242084c51538ddb02027c644c9291
+  checksum: 10c0/4aed9a494dd45e70e4c7009cc31da13042f71803d1ba046abbcf79fe78f2661211a50bc361da4b3a753af42d75698c38d6767f5a9242cfd3524710acbef6b3b1
   languageName: node
   linkType: hard
 
@@ -2576,9 +2576,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@snort/system@npm:1.3.0"
+"@snort/system@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@snort/system@npm:1.3.1"
   dependencies:
     "@noble/curves": "npm:^1.2.0"
     "@noble/hashes": "npm:^1.3.2"
@@ -2593,7 +2593,7 @@ __metadata:
     lru-cache: "npm:^10.2.0"
     uuid: "npm:^9.0.0"
     ws: "npm:^8.14.0"
-  checksum: 10c0/6e0eceeb4ae21ff77fcd8ec66f95b28a63f0058a835370020054bfeed4ff042d6583baf3270a247996c1ccc4c3f3db57d0e6ddbf7c11eaf5c3644e054f3374f9
+  checksum: 10c0/0cd3249582c684cb604a779563c646ffa86e9c7db51108ee6d9e59129237f8ea106c0d6c56e528e35e2dfdbbdfd3990691d896c338e7c37821d6e1495af82d37
   languageName: node
   linkType: hard
 
@@ -7475,8 +7475,8 @@ __metadata:
     "@noble/curves": "npm:^1.2.0"
     "@scure/base": "npm:^1.1.3"
     "@snort/shared": "npm:^1.0.15"
-    "@snort/system": "npm:^1.3.0"
-    "@snort/system-react": "npm:^1.3.0"
+    "@snort/system": "npm:^1.3.1"
+    "@snort/system-react": "npm:^1.3.1"
     "@snort/system-wasm": "npm:^1.0.2"
     "@snort/worker-relay": "npm:^1.0.10"
     "@sqlite.org/sqlite-wasm": "npm:^3.45.1-build1"
