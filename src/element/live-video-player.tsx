@@ -51,6 +51,7 @@ export default function LiveVideoPlayer({
             lowLatencyMode: true,
             backBufferLength: 90,
           });
+          let timeout: NodeJS.Timeout;
           hls.loadSource(streamCached);
           hls.attachMedia(video.current);
           hls.on(Hls.Events.ERROR, (event, data) => {
@@ -74,6 +75,11 @@ export default function LiveVideoPlayer({
                 height: a.height,
               })),
             ]);
+            timeout = setTimeout(() => {
+              video.current?.play()
+                .catch(e =>
+                  console.log(e));
+            }, 1000);
           });
           hls.on(Hls.Events.LEVEL_SWITCHING, (_, l) => {
             console.debug("HLS Level Switch", l);
@@ -85,6 +91,7 @@ export default function LiveVideoPlayer({
             // @ts-ignore Can write anyway
             hlsObj.current = null;
             hls.destroy();
+            clearTimeout(timeout);
           };
         } catch (e) {
           console.error(e);
