@@ -77,8 +77,10 @@ export default function LiveVideoPlayer({
             ]);
             timeout = setTimeout(() => {
               video.current?.play()
-                .catch(e =>
-                  console.log(e));
+                .catch(e => {
+                  console.log(e);
+                  setPlayState("paused");
+                });
             }, 1000);
           });
           hls.on(Hls.Events.LEVEL_SWITCHING, (_, l) => {
