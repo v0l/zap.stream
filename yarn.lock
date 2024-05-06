@@ -6838,6 +6838,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-use-pip@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "react-use-pip@npm:1.5.0"
+  peerDependencies:
+    react: ^16.9.0 || ^17 || ^18
+  checksum: 10c0/448a6d176eada90cafdcc2465dd9c974ba46e80c033168b3ecef87a064dd5f2976a8758f039e8b5c3f4abf15f844ad4096a2db6b1b0465f8a76988bee28aefdc
+  languageName: node
+  linkType: hard
+
 "react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -7516,6 +7525,7 @@ __metadata:
     react-intl: "npm:^6.4.4"
     react-router-dom: "npm:^6.13.0"
     react-tag-input-component: "npm:^2.0.2"
+    react-use-pip: "npm:^1.5.0"
     recharts: "npm:^2.9.3"
     rollup-plugin-visualizer: "npm:^5.10.0"
     semantic-sdp: "npm:^3.26.3"
