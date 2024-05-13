@@ -197,9 +197,7 @@ function ProfileClip({ ev }: { ev: NostrEvent }) {
           id="dkUMIH"
           values={{
             name: (
-              <Link
-                to={profileLink(profile, ev.pubkey)}
-                className="font-medium text-primary">
+              <Link to={profileLink(profile, ev.pubkey)} className="font-medium text-primary">
                 {getName(ev.pubkey, profile)}
               </Link>
             ),
