@@ -262,13 +262,6 @@ export default function LiveVideoPlayer({
             </div>
           </div>
         )}
-        {isPictureInPictureActive && (
-          <div
-            className="absolute z-20 bg-[#00000055] select-none w-full h-full flex items-center justify-center cursor-pointer">
-            <h2 onClick={async () => togglePictureInPicture(!isPictureInPictureActive)}>Video is playing in PIP
-              window</h2>
-          </div>
-        )}
         {status === VideoStatus.Offline && (
           <div className="absolute w-full h-full z-20 bg-[#000000aa] flex items-center justify-center text-3xl font-bold uppercase">
             <FormattedMessage defaultMessage="Offline" id="7UOvbT" />
