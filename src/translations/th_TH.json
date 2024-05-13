@@ -9,7 +9,7 @@
     "defaultMessage": "ถ่ายทอดสดตอนนี้"
   },
   "+y6JUK": {
-    "defaultMessage": "Raids"
+    "defaultMessage": "เข้าชม"
   },
   "/0TOL5": {
     "defaultMessage": "จำนวน"
@@ -17,26 +17,23 @@
   "/EvlqN": {
     "defaultMessage": "Nostr Extension"
   },
-  "/GCoTA": {
-    "defaultMessage": "ล้าง"
-  },
   "/JkXBo": {
-    "defaultMessage": "Clip from {title}"
+    "defaultMessage": "คลิปจาก {title}"
   },
   "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
+    "defaultMessage": "ทั้งหมด: {amount} sats"
+  },
+  "/aFYQ5": {
+    "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
-    "defaultMessage": "IRL"
+    "defaultMessage": "เหตุการณ์ในชีวิตจริง"
   },
   "01iNut": {
-    "defaultMessage": "Nostr address does not belong to you"
+    "defaultMessage": "ที่อยู่ Nostr ไม่ได้เป็นของคุณ"
   },
   "04lmFi": {
     "defaultMessage": "บันทึกรหัส"
-  },
-  "0GfNiL": {
-    "defaultMessage": "เป้าหมาย Zaps"
   },
   "0VV/sK": {
     "defaultMessage": "เป้าหมาย"
@@ -45,10 +42,13 @@
     "defaultMessage": "เริ่ม"
   },
   "0rVLjV": {
-    "defaultMessage": "No streams yet"
+    "defaultMessage": "ยังไม่มีสตรีมเลย"
   },
   "1EYCdR": {
     "defaultMessage": "แท็ก"
+  },
+  "1LBny5": {
+    "defaultMessage": "Stopped"
   },
   "1q4BO/": {
     "defaultMessage": "URL ไม่ถูกต้อง"
@@ -58,6 +58,12 @@
   },
   "2/2yg+": {
     "defaultMessage": "เพิ่ม"
+  },
+  "2ukA4d": {
+    "defaultMessage": "{n} hours"
+  },
+  "2wdFaB": {
+    "defaultMessage": "End Stream"
   },
   "37mth/": {
     "defaultMessage": "ผู้ชม"
@@ -75,7 +81,7 @@
     "defaultMessage": "ยกเลิก"
   },
   "4RhY4O": {
-    "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+    "defaultMessage": "ตัวอย่างการตั้งค่าใน OBS (Apple M1 Mac)"
   },
   "4iBdw1": {
     "defaultMessage": "เข้าชม"
@@ -89,14 +95,20 @@
   "50+/JW": {
     "defaultMessage": "ต้องการใช้ Stream Key"
   },
+  "58DXVG": {
+    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+  },
   "5JcXdV": {
     "defaultMessage": "สร้างบัญชี"
   },
   "5LXWMX": {
-    "defaultMessage": "New Goal"
+    "defaultMessage": "เป้าหมายใหม่"
   },
   "5QYdPU": {
     "defaultMessage": "เวลาเริ่ม"
+  },
+  "5Wwopw": {
+    "defaultMessage": "Pricing"
   },
   "5kx+2v": {
     "defaultMessage": "ที่อยู่ของเซิร์ฟเวอร์"
@@ -105,7 +117,7 @@
     "defaultMessage": "การถ่ายทอดสดเริ่มแล้ว"
   },
   "5vMmmR": {
-    "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
+    "defaultMessage": "ไม่มีชื่อผู้ใช้งานซ้ำกันใน Nostr. nostr คือแอปที่เฉพาะกลุ่มคนสามารถอ่านได้ ซึ่งเป็นที่อยู่เฉพาะของคุณเมื่อลงทะเบียนแล้ว"
   },
   "69hmpj": {
     "defaultMessage": "เข้าชม {name}"
@@ -119,20 +131,26 @@
   "7+bCC1": {
     "defaultMessage": "Stream url ต้องขึ้นต้นด้วย rtmp://"
   },
+  "74PejI": {
+    "defaultMessage": "Top Viewers"
+  },
   "79lLl+": {
     "defaultMessage": "ดนตรี"
   },
   "7UOvbT": {
     "defaultMessage": "ออฟไลน์"
   },
+  "89UZph": {
+    "defaultMessage": "Configure your streaming software"
+  },
   "8YT6ja": {
     "defaultMessage": "ป้อนข้อความที่ต้องการให้พูด"
   },
   "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
+    "defaultMessage": "สำหรับการโฮสต์ด้วยตัวคุณเอง สิ่งที่คุณต้องมีคือ HLS URL สำหรับช่อง Stream URL คุณควรยินดีเมื่อพบสิ่งนี้ในการตั้งค่าโฮสติ้งของคุณ"
   },
   "8xVdjn": {
-    "defaultMessage": "Video Codec"
+    "defaultMessage": "ตัวแปลงสัญญาณวิดีโอ"
   },
   "9WRlF4": {
     "defaultMessage": "ส่ง"
@@ -141,16 +159,19 @@
     "defaultMessage": "หัวข้อ"
   },
   "9pMqYs": {
-    "defaultMessage": "Nostr Address"
+    "defaultMessage": "Nostr address"
   },
   "9rmSgv": {
-    "defaultMessage": "OBS (Open Broadcaster Software) is a free and open source software for video recording and live streaming on Windows, Mac and Linux. It is a popular choice with streamers. You'll need to install this to capture your video, audio and anything else you'd like to add to your stream. Once installed and configured to preference, add your Stream URL and Stream Key from the Stream settings to OBS to form a connection with zap.stream."
+    "defaultMessage": "OBS (Open Broadcaster Software) เป็นซอฟต์แวร์โอเพ่นซอร์สฟรีสำหรับการบันทึกวิดีโอและการสตรีมสดบน Windows, Mac และ Linux เป็นตัวเลือกที่นิยมของเหล่าสตรีมเมอร์ คุณจะต้องติดตั้งสิ่งนี้เพื่อจับภาพวิดีโอ เสียง และสิ่งอื่นๆ ที่คุณต้องการเพิ่มลงในสตรีมของคุณ เมื่อติดตั้งและกำหนดค่าตามต้องการแล้ว ให้เพิ่ม URL สตรีมและคีย์สตรีมของคุณจากการตั้งค่าสตรีมไปที่ OBS เพื่อสร้างการเชื่อมต่อกับ zap.stream"
   },
   "A1zT+z": {
-    "defaultMessage": "Search results: {term}"
+    "defaultMessage": "ผลลัพธ์การค้นหา"
   },
   "ALdW69": {
-    "defaultMessage": "Note by {name}"
+    "defaultMessage": "เขียนโดย {ชื่อ}"
+  },
+  "AYIR/J": {
+    "defaultMessage": "Remove Image"
   },
   "Atr2p4": {
     "defaultMessage": "เนื้อหาที่ไม่เหมาะสม"
@@ -159,7 +180,7 @@
     "defaultMessage": "ไม่พบข้อมูลผู้ชม"
   },
   "Axo/o5": {
-    "defaultMessage": "Science & Technology"
+    "defaultMessage": "วิทยาศาสตร์และเทคโนโลยี"
   },
   "AyGauy": {
     "defaultMessage": "เข้าสู่ระบบ"
@@ -170,17 +191,26 @@
   "BGxpTN": {
     "defaultMessage": "ห้องสนทนา"
   },
+  "Bd1yEX": {
+    "defaultMessage": "New Stream Goal"
+  },
   "Bep/gA": {
     "defaultMessage": "Private key"
+  },
+  "BzQPM+": {
+    "defaultMessage": "Destination"
   },
   "C81/uG": {
     "defaultMessage": "ออกจากระบบ"
   },
   "CTgA2G": {
-    "defaultMessage": "Create a new account if you don't have one already."
+    "defaultMessage": "สร้างบัญชี nostr ใหม่"
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
+  },
+  "CsS/fy": {
+    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "การตั้งค่า"
@@ -189,10 +219,13 @@
     "defaultMessage": "เข้าสู่ระบบในฐานะ"
   },
   "DkgCAz": {
-    "defaultMessage": "How do i stream on zap.stream?"
+    "defaultMessage": "จะ stream บน zap.stream ยังไงดี?"
   },
   "Dn82AL": {
     "defaultMessage": "ถ่ายทอดสด"
+  },
+  "E7n6zr": {
+    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
   },
   "E9APoR": {
     "defaultMessage": "ไม่สามารถสร้าง stream url ได้"
@@ -201,10 +234,10 @@
     "defaultMessage": "ฝากข้อความถึง {name}"
   },
   "FAUhZf": {
-    "defaultMessage": "What are sats?"
+    "defaultMessage": "ซาโตชิ (sats) คืออะไร?"
   },
   "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
+    "defaultMessage": "นัก Zap ดีเด่น"
   },
   "FjDlus": {
     "defaultMessage": "คุณสามารถเปลี่ยนเป็นที่อยู่ของคุณได้ภายหลัง"
@@ -215,14 +248,17 @@
   "G/yZLu": {
     "defaultMessage": "ลบ"
   },
+  "G857ni": {
+    "defaultMessage": "LNURL or invoice"
+  },
   "GGaJMU": {
     "defaultMessage": "โคตรปากแจ๋ว"
   },
   "GSye7T": {
-    "defaultMessage": "Lightning Address"
+    "defaultMessage": "บัญชี Lightning"
   },
   "GcozGF": {
-    "defaultMessage": "Invalid lightning address"
+    "defaultMessage": "บัญชี Lightning ไม่ถูกต้อง"
   },
   "Gq6x9o": {
     "defaultMessage": "ภาพหน้าปก"
@@ -233,23 +269,29 @@
   "H/bNs9": {
     "defaultMessage": "โปรดจำไว้ว่า! บันทึกรหัสกุญแจลับนี้ไว้ให้ดี ไม่งั้นคุณจะไม่สามารถเข้าสู่บัญชีนี้ได้อีก หรือหากใครได้ไปเขาก็จะใช้บัญชีของคุณได้"
   },
+  "H4hJvF": {
+    "defaultMessage": "Choose a category"
+  },
   "H5+NAX": {
     "defaultMessage": "ยอดคงเหลือ"
   },
   "HAlOn1": {
     "defaultMessage": "ชื่อ"
   },
-  "HsgeUk": {
-    "defaultMessage": "Come check out my stream on zap.stream! {link}"
+  "HDgXO/": {
+    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
   },
-  "I/TubD": {
-    "defaultMessage": "เลือกเป้าหมาย Zap"
+  "HsgeUk": {
+    "defaultMessage": "ตอนนี้ฉัน stream อยู่บน zap.stream นะ! {link}"
+  },
+  "Ht231k": {
+    "defaultMessage": "Forwarding"
   },
   "I1kjHI": {
     "defaultMessage": "สนับสนุน {markdown}"
   },
   "I2AKfn": {
-    "defaultMessage": "Gaming"
+    "defaultMessage": "เกม"
   },
   "IJDKz3": {
     "defaultMessage": "Zap ด้วย {currency} จำนวน"
@@ -257,23 +299,23 @@
   "INlWvJ": {
     "defaultMessage": "หรือ"
   },
+  "IPXhUW": {
+    "defaultMessage": "Last Stream Summary"
+  },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "nostr extension คืออะไร?"
   },
   "J/+m9y": {
     "defaultMessage": "ถ่ายทอดแล้ว {duration} นาที"
   },
   "JCIgkj": {
-    "defaultMessage": "Username"
-  },
-  "JEsxDw": {
-    "defaultMessage": "กำลังอัปโหลด..."
+    "defaultMessage": "ชื่อผู้ใช้"
   },
   "JO0kq9": {
-    "defaultMessage": "Edit Stream Info"
+    "defaultMessage": "แก้ไขรายละเอียดการ Stream"
   },
   "JkLHGw": {
-    "defaultMessage": "Website"
+    "defaultMessage": "เว็บไซต์"
   },
   "Jq3FDz": {
     "defaultMessage": "เนื้อหา"
@@ -288,16 +330,28 @@
     "defaultMessage": "ฉันอายุต่ำกว่า 18 ปี"
   },
   "KtrGU6": {
-    "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
+    "defaultMessage": "ถ้าคุณมีบัญชี nostr แล้ว คุณสามารถเข้าสู่ระบบได้อีกทางหนึ่งผ่าน nostr extension และถ้าคุณใช้ nostr extension อยู่แล้ว คุณจะสามารถเข้าสู่ระบบได้โดยอัตโนมัติ แต่ถ้าคุณยังไม่มี nostr extension เลย ลองใช้ nos2x หรือ Alby สิ "
+  },
+  "KxfKnW": {
+    "defaultMessage": "Withdraw funds"
   },
   "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+    "defaultMessage": "ยอด Zap ที่อยากได้"
   },
   "LUvSJB": {
-    "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
+    "defaultMessage": "คุณสามารถใช้ zap.stream เป็น host สำหรับการ stream ได้ฟรีด้วยวีดิโอคุณภาพสูงเป็นเวลา 2 ชั่วโมง และ stream ได้สูงสุดถึง 8 ชั่วโมงโดยคุณภาพของวีดิโอหลังจากนั้นจะขึ้นอยู่กับกับอุปกรณ์ของคุณ หลังจากนั้นคุณจะสามารถ stream ได้โดยมีค่าใช้จ่ายในอัตรา 5 sats ต่อนาที หรือ 10 sats ต่อนาที ตามคุณภาพของการ stream ที่คุณต้องการ หากคุณ stream ผ่าน zap.stream แต่ไม่ได้ใช้ zap.stream ในการ host ค่าใช้จ่ายในการ stream นั้นจะขึ้นอยู่กับผู้ให้บริการ stream ที่คุณใช้"
+  },
+  "Le+99Z": {
+    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+  },
+  "Lg2ye2": {
+    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
   },
   "LknBsU": {
     "defaultMessage": "Stream Key"
+  },
+  "LxSJOb": {
+    "defaultMessage": "Go to Dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "เริ่มบุกเข้าชม"
@@ -315,10 +369,10 @@
     "defaultMessage": "แชร์"
   },
   "ObZZEz": {
-    "defaultMessage": "No clips yet"
+    "defaultMessage": "ยังไม่มีคลิป."
   },
   "OkXMLE": {
-    "defaultMessage": "Max Audio Bitrate"
+    "defaultMessage": "บิตเรตสูงสุด"
   },
   "Oxqtyf": {
     "defaultMessage": "เราได้เพิ่มกระเป๋า Lightning ให้คุณสามารถรับ sats จากผู้เข้าชมได้"
@@ -326,8 +380,14 @@
   "PA0ej4": {
     "defaultMessage": "สร้างคลิป"
   },
+  "PHE60k": {
+    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+  },
   "PUymyQ": {
-    "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+    "defaultMessage": "ตอนนี้ {name} stream อยู่บน zap.stream นะ! {link}"
+  },
+  "PXAur5": {
+    "defaultMessage": "Withdraw"
   },
   "Pe0ogR": {
     "defaultMessage": "ธีม"
@@ -335,8 +395,11 @@
   "Q3au2v": {
     "defaultMessage": "ประมาณ {estimate}"
   },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
+  },
   "QNvtaq": {
-    "defaultMessage": "Share on X"
+    "defaultMessage": "แชร์ไปที่ X"
   },
   "QRHNuF": {
     "defaultMessage": "เลือกหัวข้อถ่ายทอดสดนี้"
@@ -354,7 +417,10 @@
     "defaultMessage": "{name} แจก {amount}"
   },
   "Qf0ugr": {
-    "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
+    "defaultMessage": "คุณมีไม่กี่ตัวเลือก, คือใช้โฮสติ้งภายในของเราหรือของคุณเอง (เช่น Cloudflare)"
+  },
+  "R72je0": {
+    "defaultMessage": "Stream Title"
   },
   "RJOmzk": {
     "defaultMessage": "ฉันได้อ่าน {terms} เรียบร้อยและ เห็นด้วยกับ {provider} ในข้อกำหนดและเงื่อนไขการใช้เว็บไซต์หรือการใช้แอปพลิเคชัน"
@@ -372,10 +438,13 @@
     "defaultMessage": "ผู้ร่วมแชท"
   },
   "S39ba6": {
-    "defaultMessage": "What is OBS?"
+    "defaultMessage": "OBS คืออะไร?"
   },
   "SC2nJT": {
-    "defaultMessage": "Audio Codec"
+    "defaultMessage": "ตัวแปลงสัญญาณเสียง"
+  },
+  "TDUfVk": {
+    "defaultMessage": "Started"
   },
   "TP/cMX": {
     "defaultMessage": "จบแล้ว"
@@ -384,7 +453,7 @@
     "defaultMessage": "บัญชี"
   },
   "UGFYV8": {
-    "defaultMessage": "Welcome to zap.stream!"
+    "defaultMessage": "ยินดีต้อนรับสู่ zap.stream จ้า"
   },
   "UJBFYK": {
     "defaultMessage": "เพิ่มการ์ด"
@@ -393,41 +462,47 @@
     "defaultMessage": "การถ่ายทอดสดที่ผ่านมา"
   },
   "Uo/DWG": {
-    "defaultMessage": "About too long"
+    "defaultMessage": "ยาวนานเกินไป"
   },
   "VA/Z1S": {
     "defaultMessage": "ซ่อน"
   },
   "VDOpia": {
-    "defaultMessage": "What are zaps?"
+    "defaultMessage": "การ zaps คืออะไร?"
   },
   "VKb1MS": {
-    "defaultMessage": "Categories"
+    "defaultMessage": "หมวดหมู่"
   },
   "W7DNWx": {
     "defaultMessage": "ส่งต่อการถ่ายทอดสด"
   },
   "W8nHSd": {
-    "defaultMessage": "FAQ"
+    "defaultMessage": "คำถามที่พบบ่อย"
   },
   "W9355R": {
     "defaultMessage": "เปิดการมองเห็น"
   },
   "WVJZ0U": {
-    "defaultMessage": "Value",
+    "defaultMessage": "มูลค่า",
     "description": "Config value column header"
   },
   "WsjXrZ": {
-    "defaultMessage": "Click on Log In"
+    "defaultMessage": "คลิกที่เข้าสู่ระบบ"
   },
   "X2PZ7D": {
     "defaultMessage": "สร้างเป้าหมาย"
   },
+  "XIvYvF": {
+    "defaultMessage": "Failed to get invoice"
+  },
   "XMGfiA": {
-    "defaultMessage": "Recent Clips"
+    "defaultMessage": "คลิปล่าสุด"
   },
   "XgWvGA": {
     "defaultMessage": "ปฏิกิริยา"
+  },
+  "Xq2sb0": {
+    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "URL ในการบันทึก"
@@ -439,6 +514,9 @@
   "YagVIe": {
     "defaultMessage": "{n}p"
   },
+  "YjhNaf": {
+    "defaultMessage": "Create Stream"
+  },
   "YwzT/0": {
     "defaultMessage": "พาดหัวคลิป"
   },
@@ -446,19 +524,19 @@
     "defaultMessage": "วิธีนี้แลจะไม่ปลอดภัยเท่าไหร่ แนะนำให้ใช้ {nostrlink}"
   },
   "ZXp0z1": {
-    "defaultMessage": "Features"
+    "defaultMessage": "คุณสมบัติ"
   },
   "ZaNcK4": {
-    "defaultMessage": "No goals yet"
+    "defaultMessage": "ยังไม่มีเป้าหมาย"
   },
   "ZcgtZo": {
-    "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
+    "defaultMessage": "เราได้รวบรวมรายการการแลกเปลี่ยนที่ใช้งานง่ายซึ่งจะช่วยให้คุณซื้อ bitcoin (sats) จำนวนเล็กน้อยและโอนไปยังกระเป๋าเงินที่คุณเลือกได้"
   },
   "ZmqxZs": {
     "defaultMessage": "คุณยังสามารถเปลี่ยนได้ในภายหลัง"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "Zaps คือการชำระเงินแบบสายฟ้าแลบ, ซึ่งแสดงบน nostr เป็นเหมือนเครื่องหมายรับเงิน"
   },
   "Zse7yG": {
     "defaultMessage": "เป้าหมายการบุกชม"
@@ -470,10 +548,10 @@
     "defaultMessage": "เข้าชม!"
   },
   "bD/ZwY": {
-    "defaultMessage": "Edit Cards"
+    "defaultMessage": "แก้ไขการ์ด"
   },
   "bbUGS7": {
-    "defaultMessage": "Recommended Stream Settings"
+    "defaultMessage": "คำแนะนำสำหรับการตั้งค่าสตรีม"
   },
   "bfvyfs": {
     "defaultMessage": "อานนท์"
@@ -482,7 +560,10 @@
     "defaultMessage": "กำลังติดตาม"
   },
   "ccXLVi": {
-    "defaultMessage": "Category"
+    "defaultMessage": "หมวดหมู่"
+  },
+  "cntHHJ": {
+    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
   },
   "cvAsEh": {
     "defaultMessage": "ถ่ายทอดสดเมื่อ {date}"
@@ -500,10 +581,10 @@
     "defaultMessage": "สุดยอดมือ Zap"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "คลิปของ {name}"
   },
   "e011kf": {
-    "defaultMessage": "FAQ",
+    "defaultMessage": "คำถามที่พบบ่อย",
     "description": "Title: FAQ page"
   },
   "ebmhes": {
@@ -515,20 +596,23 @@
   "fBI91o": {
     "defaultMessage": "Zaps"
   },
-  "fc2iho": {
-    "defaultMessage": "เพิ่มไฟล์"
-  },
   "feZ/kG": {
     "defaultMessage": "เข้าสู่ระบบด้วย nsec (ไม่ปลอดภัย)"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "เกี่ยวกับ"
+  },
+  "gQxxlw": {
+    "defaultMessage": "Goal Name"
+  },
+  "gt65Gg": {
+    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} ข้อความ"
   },
   "h9mX2/": {
-    "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+    "defaultMessage": "หากคุณใช้โฮสติ้ง zap.stream ของเรา (ถูกที่สุดและง่ายที่สุด) ให้คัดลอก URL สตรีมและคีย์สตรีมของคุณไปที่การตั้งค่า OBS เท่านี้คุณก็พร้อมแล้ว"
   },
   "hMzcSq": {
     "defaultMessage": "ข้อความ"
@@ -539,14 +623,11 @@
   "hpl4BP": {
     "defaultMessage": "เครื่องมือแชท"
   },
-  "hzSNj4": {
-    "defaultMessage": "แดชบอร์ด"
-  },
   "ieGrWo": {
     "defaultMessage": "ติดตาม"
   },
   "ieKb+k": {
-    "defaultMessage": "What does it cost to stream?"
+    "defaultMessage": "การสตรีมมีค่าใช้จ่ายเท่าไร?"
   },
   "itPgxd": {
     "defaultMessage": "โปรไฟล์"
@@ -559,9 +640,6 @@
   },
   "jJLRgo": {
     "defaultMessage": "เผยแแพร่คลิป"
-  },
-  "jctiUc": {
-    "defaultMessage": "ผู้ชมมากที่สุด"
   },
   "jgOqxt": {
     "defaultMessage": "เครื่องมือถ่ายทอดสด"
@@ -579,7 +657,10 @@
     "defaultMessage": "เช่น เกี่ยวกับฉัน"
   },
   "kc5EOy": {
-    "defaultMessage": "Username is too long"
+    "defaultMessage": "ชื่อผู้ใช้ยาวเกินไป"
+  },
+  "khJ51Q": {
+    "defaultMessage": "Stream Earnings"
   },
   "kp0NPF": {
     "defaultMessage": "วางกำหนดการแล้ว"
@@ -597,13 +678,16 @@
     "defaultMessage": "เสียงพูด"
   },
   "mrwfXX": {
-    "defaultMessage": "Shares"
+    "defaultMessage": "แบ่ง"
   },
   "msjwph": {
-    "defaultMessage": "Keyframe Interval"
+    "defaultMessage": "ช่วงเวลาคีย์เฟรม"
   },
   "mtNGwh": {
     "defaultMessage": "เพิ่มคำอธิบายเกี่ยวกับถ่ายทอดสดนี้"
+  },
+  "n19IQE": {
+    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
   },
   "nBCvvJ": {
     "defaultMessage": "เติมเงิน"
@@ -624,13 +708,22 @@
     "defaultMessage": "Stream type should be HLS"
   },
   "p4N05H": {
-    "defaultMessage": "Upload"
+    "defaultMessage": "อัพโหลด"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
+  "q9ryv4": {
+    "defaultMessage": "Cover image URL (optional)"
+  },
+  "qx6bv2": {
+    "defaultMessage": "Stream Goal (optional)"
+  },
   "r2Jjms": {
     "defaultMessage": "เข้าสู่ระบบ"
+  },
+  "rJqhFR": {
+    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "เตือน! เนื้อหามีส่วนของภาพโป๊เปลือย หรือสื่อลามก"
@@ -648,7 +741,7 @@
     "defaultMessage": "ฝากข้อความ"
   },
   "sj6WAe": {
-    "defaultMessage": "Click the “Stream” button in the top right corner"
+    "defaultMessage": "คลิกปุ่ม \"สตรีม\" ที่มุมขวาบน"
   },
   "tG1ST3": {
     "defaultMessage": "ขอบคุณ"
@@ -657,20 +750,20 @@
     "defaultMessage": "ยอดไปเลย! ต่อไป"
   },
   "tNtB9I": {
-    "defaultMessage": "Name",
+    "defaultMessage": "ชื่อ",
     "description": "Config name column header"
   },
   "tTgdmx": {
     "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
   },
   "tVCC9m": {
-    "defaultMessage": "Sats are small units of Bitcoin. Sending sats on zap.stream is referred to as “zapping” or zaps."
+    "defaultMessage": "Sats เป็นหน่วยเล็กๆ ของ Bitcoin การส่ง sats บน zap.stream เรียกว่า \"zapping\" หรือ zaps"
   },
   "thsiMl": {
     "defaultMessage": "ข้อตกลงและเงื่อนไข"
   },
   "twCRVi": {
-    "defaultMessage": "Art"
+    "defaultMessage": "ศิลปะ"
   },
   "tzMNF3": {
     "defaultMessage": "สถานะ"
@@ -679,7 +772,7 @@
     "defaultMessage": "สร้างบัญชีใหม่"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "การอัปโหลดอวาตาร์ล้มเหลว"
   },
   "uYw2LD": {
     "defaultMessage": "ถ่ายทอดสด"
@@ -691,7 +784,7 @@
     "defaultMessage": "เริ่มพิมพ์ข้อความ"
   },
   "w3btjR": {
-    "defaultMessage": "Gambling"
+    "defaultMessage": "การพนัน"
   },
   "wCIL7o": {
     "defaultMessage": "แชร์ด้วย Nostr"
@@ -703,10 +796,13 @@
     "defaultMessage": "เลือกเสียง.."
   },
   "wRGjPp": {
-    "defaultMessage": "A nostr extension simply saves your keys so you can safely log in without having to re-enter them every time. ZapStream uses the extension to authorize actions on your behalf without ever seeing your key information. This has a significant advantage over having to trust that websites handle your credentials safely."
+    "defaultMessage": "ส่วนขยาย Nostr จะบันทึกคีย์ของคุณเพื่อให้คุณสามารถเข้าสู่ระบบได้อย่างปลอดภัยโดยไม่ต้องป้อนใหม่ทุกครั้ง. ZapStream ใช้ส่วนขยายเพื่ออนุญาตการดำเนินการในชื่อของคุณโดยไม่เคยเห็นข้อมูลสำคัญของคุณ. นี่เป็นข้อได้เปรียบที่สำคัญมากกว่าการต้องไว้ใจว่าเว็บไซต์จะจัดการข้อมูลส่วนตัวของคุณได้อย่างปลอดภัย"
   },
   "wTwfnv": {
-    "defaultMessage": "Invalid nostr address"
+    "defaultMessage": "ที่อยู่ Nostr ไม่ถูกต้อง"
+  },
+  "we4Lby": {
+    "defaultMessage": "Info"
   },
   "wzWWzV": {
     "defaultMessage": "สุดยอดมือ Zap"
@@ -715,28 +811,31 @@
     "defaultMessage": "ปิดการมองเห็น"
   },
   "xi3sgh": {
-    "defaultMessage": "How do i get more sats?"
+    "defaultMessage": "ฉันจะได้รับ sats มากขึ้นได้อย่างไร?"
   },
   "xmcVZ0": {
-    "defaultMessage": "Search"
+    "defaultMessage": "ค้นหา"
   },
   "y867Vs": {
     "defaultMessage": "ระดับเสียง"
   },
   "yLxIgl": {
-    "defaultMessage": "Clips"
+    "defaultMessage": "คลิป"
   },
   "yR0V+W": {
-    "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+    "defaultMessage": "หากต้องการเริ่มการสตรีมบน zap.stream,ให้ทำตามขั้นตอนเหล่านี้:"
   },
   "yzKwBQ": {
     "defaultMessage": "ตัวอย่าง: nsec1xyzy"
   },
   "z2qCcJ": {
-    "defaultMessage": "Max Video Bitrate"
+    "defaultMessage": "บิตเรตวิดีโอสูงสุด"
   },
   "zEYkgY": {
-    "defaultMessage": "Talk"
+    "defaultMessage": "พูดคุย"
+  },
+  "zSYDJP": {
+    "defaultMessage": "I have my own stream host"
   },
   "zVDHAu": {
     "defaultMessage": "การแสดงผู้ Zap"

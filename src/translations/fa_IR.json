@@ -17,14 +17,14 @@
   "/EvlqN": {
     "defaultMessage": "افزونه امضای ناستر"
   },
-  "/GCoTA": {
-    "defaultMessage": "پاک کردن"
-  },
   "/JkXBo": {
     "defaultMessage": "Clip from {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Total: {amount} sats"
+  },
+  "/aFYQ5": {
+    "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -34,9 +34,6 @@
   },
   "04lmFi": {
     "defaultMessage": "ذخیره کلید"
-  },
-  "0GfNiL": {
-    "defaultMessage": "اهداف زپ این پخش"
   },
   "0VV/sK": {
     "defaultMessage": "هدف"
@@ -50,6 +47,9 @@
   "1EYCdR": {
     "defaultMessage": "برچسب‌ها"
   },
+  "1LBny5": {
+    "defaultMessage": "Stopped"
+  },
   "1q4BO/": {
     "defaultMessage": "آدرس اینترنتی نامعتبر"
   },
@@ -58,6 +58,12 @@
   },
   "2/2yg+": {
     "defaultMessage": "افزودن"
+  },
+  "2ukA4d": {
+    "defaultMessage": "{n} hours"
+  },
+  "2wdFaB": {
+    "defaultMessage": "End Stream"
   },
   "37mth/": {
     "defaultMessage": "بیننده"
@@ -89,6 +95,9 @@
   "50+/JW": {
     "defaultMessage": "کلید پخش لازم است"
   },
+  "58DXVG": {
+    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+  },
   "5JcXdV": {
     "defaultMessage": "ساخت حساب کاربری"
   },
@@ -97,6 +106,9 @@
   },
   "5QYdPU": {
     "defaultMessage": "زمان شروع"
+  },
+  "5Wwopw": {
+    "defaultMessage": "Pricing"
   },
   "5kx+2v": {
     "defaultMessage": "آدرس سرور"
@@ -119,11 +131,17 @@
   "7+bCC1": {
     "defaultMessage": "آدرس پخش باید با rtmp:// شروع شود"
   },
+  "74PejI": {
+    "defaultMessage": "Top Viewers"
+  },
   "79lLl+": {
     "defaultMessage": "موسیقی"
   },
   "7UOvbT": {
     "defaultMessage": "آفلاین"
+  },
+  "89UZph": {
+    "defaultMessage": "Configure your streaming software"
   },
   "8YT6ja": {
     "defaultMessage": "وارد کردن متن به گفتار"
@@ -152,6 +170,9 @@
   "ALdW69": {
     "defaultMessage": "Note by {name}"
   },
+  "AYIR/J": {
+    "defaultMessage": "Remove Image"
+  },
   "Atr2p4": {
     "defaultMessage": "محتوای نامناسب برای کودکان و محل کار"
   },
@@ -170,8 +191,14 @@
   "BGxpTN": {
     "defaultMessage": "گپ پخش زنده"
   },
+  "Bd1yEX": {
+    "defaultMessage": "New Stream Goal"
+  },
   "Bep/gA": {
     "defaultMessage": "کلید خصوصی"
+  },
+  "BzQPM+": {
+    "defaultMessage": "Destination"
   },
   "C81/uG": {
     "defaultMessage": "خروج"
@@ -181,6 +208,9 @@
   },
   "CsCUYo": {
     "defaultMessage": "{n} ساتوشی"
+  },
+  "CsS/fy": {
+    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "تنظیمات"
@@ -193,6 +223,9 @@
   },
   "Dn82AL": {
     "defaultMessage": "زنده"
+  },
+  "E7n6zr": {
+    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
   },
   "E9APoR": {
     "defaultMessage": "نمیتوان آدرس پخش ایجاد کرد"
@@ -215,6 +248,9 @@
   "G/yZLu": {
     "defaultMessage": "حذف"
   },
+  "G857ni": {
+    "defaultMessage": "LNURL or invoice"
+  },
   "GGaJMU": {
     "defaultMessage": "گفتگو کنندگان برتر"
   },
@@ -233,17 +269,23 @@
   "H/bNs9": {
     "defaultMessage": "این را ذخیره کرده و امن نگه دارید! اگر این کلید را گم کنید، هرگز دیگر نمی توانید به حساب کاربری خود دسترسی داشته باشید. بله، این مسئله خیلی جدی است!"
   },
+  "H4hJvF": {
+    "defaultMessage": "Choose a category"
+  },
   "H5+NAX": {
     "defaultMessage": "مانده حساب"
   },
   "HAlOn1": {
     "defaultMessage": "نام"
   },
+  "HDgXO/": {
+    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+  },
   "HsgeUk": {
     "defaultMessage": "Come check out my stream on zap.stream! {link}"
   },
-  "I/TubD": {
-    "defaultMessage": "هدفی انتخاب کنید..."
+  "Ht231k": {
+    "defaultMessage": "Forwarding"
   },
   "I1kjHI": {
     "defaultMessage": "از {markdown} پشتیبانی می کند"
@@ -257,6 +299,9 @@
   "INlWvJ": {
     "defaultMessage": "یا"
   },
+  "IPXhUW": {
+    "defaultMessage": "Last Stream Summary"
+  },
   "IqcyS0": {
     "defaultMessage": "What is a nostr extension?"
   },
@@ -265,9 +310,6 @@
   },
   "JCIgkj": {
     "defaultMessage": "Username"
-  },
-  "JEsxDw": {
-    "defaultMessage": "در حال بارگذاری..."
   },
   "JO0kq9": {
     "defaultMessage": "Edit Stream Info"
@@ -290,14 +332,26 @@
   "KtrGU6": {
     "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
   },
+  "KxfKnW": {
+    "defaultMessage": "Withdraw funds"
+  },
   "LEmxc8": {
     "defaultMessage": "Zap Goals"
   },
   "LUvSJB": {
     "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
   },
+  "Le+99Z": {
+    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+  },
+  "Lg2ye2": {
+    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+  },
   "LknBsU": {
     "defaultMessage": "کلید پخش زنده"
+  },
+  "LxSJOb": {
+    "defaultMessage": "Go to Dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "گسیل مستقیم"
@@ -326,14 +380,23 @@
   "PA0ej4": {
     "defaultMessage": "ساخت کلیپ"
   },
+  "PHE60k": {
+    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+  },
   "PUymyQ": {
     "defaultMessage": "Come check out {name} stream on zap.stream! {link}"
+  },
+  "PXAur5": {
+    "defaultMessage": "Withdraw"
   },
   "Pe0ogR": {
     "defaultMessage": "پوسته"
   },
   "Q3au2v": {
     "defaultMessage": "حدود {estimate}"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
   },
   "QNvtaq": {
     "defaultMessage": "Share on X"
@@ -356,6 +419,9 @@
   "Qf0ugr": {
     "defaultMessage": "Here you have a few options, using our in-house hosting, or your own (such as Cloudflare)."
   },
+  "R72je0": {
+    "defaultMessage": "Stream Title"
+  },
   "RJOmzk": {
     "defaultMessage": "من {terms} {provider} را خوانده و با آن موافقم."
   },
@@ -376,6 +442,9 @@
   },
   "SC2nJT": {
     "defaultMessage": "Audio Codec"
+  },
+  "TDUfVk": {
+    "defaultMessage": "Started"
   },
   "TP/cMX": {
     "defaultMessage": "به پایان رسید"
@@ -423,11 +492,17 @@
   "X2PZ7D": {
     "defaultMessage": "ایجاد هدف"
   },
+  "XIvYvF": {
+    "defaultMessage": "Failed to get invoice"
+  },
   "XMGfiA": {
     "defaultMessage": "Recent Clips"
   },
   "XgWvGA": {
     "defaultMessage": "واکنش ها"
+  },
+  "Xq2sb0": {
+    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "Recording URL"
@@ -438,6 +513,9 @@
   },
   "YagVIe": {
     "defaultMessage": "{n}p"
+  },
+  "YjhNaf": {
+    "defaultMessage": "Create Stream"
   },
   "YwzT/0": {
     "defaultMessage": "Clip title"
@@ -484,6 +562,9 @@
   "ccXLVi": {
     "defaultMessage": "Category"
   },
+  "cntHHJ": {
+    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+  },
   "cvAsEh": {
     "defaultMessage": "در تاریخ {date} پخش شده"
   },
@@ -515,14 +596,17 @@
   "fBI91o": {
     "defaultMessage": "زَپ"
   },
-  "fc2iho": {
-    "defaultMessage": "افزودن فایل"
-  },
   "feZ/kG": {
     "defaultMessage": "ورود با کلید خصوصی (ناایمن)"
   },
   "g5pX+a": {
     "defaultMessage": "About"
+  },
+  "gQxxlw": {
+    "defaultMessage": "Goal Name"
+  },
+  "gt65Gg": {
+    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} پیام"
@@ -538,9 +622,6 @@
   },
   "hpl4BP": {
     "defaultMessage": "ویجت گپ"
-  },
-  "hzSNj4": {
-    "defaultMessage": "پیشخوان"
   },
   "ieGrWo": {
     "defaultMessage": "دنبال کردن"
@@ -560,9 +641,6 @@
   "jJLRgo": {
     "defaultMessage": "انتشار کلیپ"
   },
-  "jctiUc": {
-    "defaultMessage": "بیشترین بینندگان"
-  },
   "jgOqxt": {
     "defaultMessage": "ابزارک‌ها"
   },
@@ -580,6 +658,9 @@
   },
   "kc5EOy": {
     "defaultMessage": "Username is too long"
+  },
+  "khJ51Q": {
+    "defaultMessage": "Stream Earnings"
   },
   "kp0NPF": {
     "defaultMessage": "برنامه ریزی شده"
@@ -605,6 +686,9 @@
   "mtNGwh": {
     "defaultMessage": "شرح مختصری از محتوا"
   },
+  "n19IQE": {
+    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
   "nBCvvJ": {
     "defaultMessage": "شارژ کردن"
   },
@@ -629,8 +713,17 @@
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> <s>{amount}</s> ساتوشی زپ زد"
   },
+  "q9ryv4": {
+    "defaultMessage": "Cover image URL (optional)"
+  },
+  "qx6bv2": {
+    "defaultMessage": "Stream Goal (optional)"
+  },
   "r2Jjms": {
     "defaultMessage": "ورود"
+  },
+  "rJqhFR": {
+    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "محتوای نمایان جنسی در پیش است!"
@@ -708,6 +801,9 @@
   "wTwfnv": {
     "defaultMessage": "Invalid nostr address"
   },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
   "wzWWzV": {
     "defaultMessage": "بزرگترین زپ ها"
   },
@@ -737,6 +833,9 @@
   },
   "zEYkgY": {
     "defaultMessage": "Talk"
+  },
+  "zSYDJP": {
+    "defaultMessage": "I have my own stream host"
   },
   "zVDHAu": {
     "defaultMessage": "هشدار زپ"

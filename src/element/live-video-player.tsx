@@ -139,16 +139,13 @@ export default function LiveVideoPlayer({
     }
   }, [video, volume, muted]);
 
-  const {
-    isPictureInPictureActive,
-    isPictureInPictureAvailable,
-    togglePictureInPicture
-  } = usePictureInPicture(video as VideoRefType);
+  const { isPictureInPictureActive, isPictureInPictureAvailable, togglePictureInPicture } = usePictureInPicture(
+    video as VideoRefType
+  );
 
   const handlePIPClick = useCallback(async () => {
     togglePictureInPicture(!isPictureInPictureActive);
-  }, [
-    isPictureInPictureActive, togglePictureInPicture]);
+  }, [isPictureInPictureActive, togglePictureInPicture]);
 
   function playStateToIcon() {
     switch (playState) {
@@ -247,8 +244,9 @@ export default function LiveVideoPlayer({
                 </Menu>
               </div>
               {isPictureInPictureAvailable && (
-                <div className="pl-3 py-2 cursor-pointer tracking-wide font-bold text-sm"
-                     onClick={handlePIPClick}>PIP</div>
+                <div className="pl-3 py-2 cursor-pointer tracking-wide font-bold text-sm" onClick={handlePIPClick}>
+                  PIP
+                </div>
               )}
               <div
                 className="px-2 py-2 cursor-pointer"

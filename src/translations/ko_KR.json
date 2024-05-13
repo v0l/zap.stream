@@ -17,14 +17,14 @@
   "/EvlqN": {
     "defaultMessage": "노스트르 서명자 확장"
   },
-  "/GCoTA": {
-    "defaultMessage": "지우기"
-  },
   "/JkXBo": {
     "defaultMessage": "Clip from {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "합계: {amount} sats"
+  },
+  "/aFYQ5": {
+    "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -34,9 +34,6 @@
   },
   "04lmFi": {
     "defaultMessage": "키 저장"
-  },
-  "0GfNiL": {
-    "defaultMessage": "스트림 Zap 목표"
   },
   "0VV/sK": {
     "defaultMessage": "목표"
@@ -50,6 +47,9 @@
   "1EYCdR": {
     "defaultMessage": "태그"
   },
+  "1LBny5": {
+    "defaultMessage": "Stopped"
+  },
   "1q4BO/": {
     "defaultMessage": "유효한 URL이 아닙니다."
   },
@@ -58,6 +58,12 @@
   },
   "2/2yg+": {
     "defaultMessage": "추가"
+  },
+  "2ukA4d": {
+    "defaultMessage": "{n} hours"
+  },
+  "2wdFaB": {
+    "defaultMessage": "End Stream"
   },
   "37mth/": {
     "defaultMessage": "시청자"
@@ -89,6 +95,9 @@
   "50+/JW": {
     "defaultMessage": "스트림 키가 필요합니다."
   },
+  "58DXVG": {
+    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+  },
   "5JcXdV": {
     "defaultMessage": "계정 만들기"
   },
@@ -97,6 +106,9 @@
   },
   "5QYdPU": {
     "defaultMessage": "시작 시간"
+  },
+  "5Wwopw": {
+    "defaultMessage": "Pricing"
   },
   "5kx+2v": {
     "defaultMessage": "서버 URL"
@@ -119,11 +131,17 @@
   "7+bCC1": {
     "defaultMessage": "스트림 URL은 rtmp://로 시작해야 합니다."
   },
+  "74PejI": {
+    "defaultMessage": "Top Viewers"
+  },
   "79lLl+": {
     "defaultMessage": "음악"
   },
   "7UOvbT": {
     "defaultMessage": "오프라인"
+  },
+  "89UZph": {
+    "defaultMessage": "Configure your streaming software"
   },
   "8YT6ja": {
     "defaultMessage": "말할 텍스트 삽입"
@@ -152,6 +170,9 @@
   "ALdW69": {
     "defaultMessage": "참고: {name}"
   },
+  "AYIR/J": {
+    "defaultMessage": "Remove Image"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW 콘텐츠"
   },
@@ -170,8 +191,14 @@
   "BGxpTN": {
     "defaultMessage": "스트림 채팅"
   },
+  "Bd1yEX": {
+    "defaultMessage": "New Stream Goal"
+  },
   "Bep/gA": {
     "defaultMessage": "개인 키"
+  },
+  "BzQPM+": {
+    "defaultMessage": "Destination"
   },
   "C81/uG": {
     "defaultMessage": "로그아웃"
@@ -181,6 +208,9 @@
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
+  },
+  "CsS/fy": {
+    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "설정"
@@ -193,6 +223,9 @@
   },
   "Dn82AL": {
     "defaultMessage": "라이브"
+  },
+  "E7n6zr": {
+    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
   },
   "E9APoR": {
     "defaultMessage": "스트림 URL을 만들 수 없습니다."
@@ -215,6 +248,9 @@
   "G/yZLu": {
     "defaultMessage": "제거"
   },
+  "G857ni": {
+    "defaultMessage": "LNURL or invoice"
+  },
   "GGaJMU": {
     "defaultMessage": "인기 채팅자"
   },
@@ -233,17 +269,23 @@
   "H/bNs9": {
     "defaultMessage": "이 키를 저장하여 안전하게 보관하세요! 이 키를 분실하면 다시는 계정에 액세스할 수 없습니다. 네, 그만큼 심각합니다!"
   },
+  "H4hJvF": {
+    "defaultMessage": "Choose a category"
+  },
   "H5+NAX": {
     "defaultMessage": "잔액"
   },
   "HAlOn1": {
     "defaultMessage": "이름"
   },
+  "HDgXO/": {
+    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+  },
   "HsgeUk": {
     "defaultMessage": "zap.stream에서 제 스트리밍을 확인해 보세요! {link}"
   },
-  "I/TubD": {
-    "defaultMessage": "목표 선택..."
+  "Ht231k": {
+    "defaultMessage": "Forwarding"
   },
   "I1kjHI": {
     "defaultMessage": "지원 {markdown}"
@@ -257,6 +299,9 @@
   "INlWvJ": {
     "defaultMessage": "또는"
   },
+  "IPXhUW": {
+    "defaultMessage": "Last Stream Summary"
+  },
   "IqcyS0": {
     "defaultMessage": "노스트란 무엇인가요?"
   },
@@ -265,9 +310,6 @@
   },
   "JCIgkj": {
     "defaultMessage": "사용자 이름"
-  },
-  "JEsxDw": {
-    "defaultMessage": "업로드 중..."
   },
   "JO0kq9": {
     "defaultMessage": "Edit Stream Info"
@@ -290,14 +332,26 @@
   "KtrGU6": {
     "defaultMessage": "이미 계정이 있는 경우 nostr 확장자를 사용하여 로그인할 수 있습니다. 이미 nostr 확장 프로그램을 사용 중이라면 자동으로 로그인됩니다. nostr 확장 프로그램을 설정하지 않은 경우 nos2x 또는 Alby를 사용할 수 있습니다."
   },
+  "KxfKnW": {
+    "defaultMessage": "Withdraw funds"
+  },
   "LEmxc8": {
     "defaultMessage": "Zap 목표"
   },
   "LUvSJB": {
     "defaultMessage": "zap.stream은 고화질로 최대 2시간, '소스' 화질로 최대 8시간까지 무료로 호스팅할 수 있습니다. 그 이후에는 선택한 화질에 따라 분당 5초 또는 분당 10초 동안 스트리밍할 수 있는 옵션이 있습니다. zap.stream을 사용하여 호스팅하지 않는 경우 가격은 선택한 스트리밍 제공업체에 따라 달라집니다."
   },
+  "Le+99Z": {
+    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+  },
+  "Lg2ye2": {
+    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+  },
   "LknBsU": {
     "defaultMessage": "스트림 키"
+  },
+  "LxSJOb": {
+    "defaultMessage": "Go to Dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "레이드 시작"
@@ -326,14 +380,23 @@
   "PA0ej4": {
     "defaultMessage": "클립 만들기"
   },
+  "PHE60k": {
+    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+  },
   "PUymyQ": {
     "defaultMessage": "zap.stream에서 {name} 스트림을 확인하세요! {link}"
+  },
+  "PXAur5": {
+    "defaultMessage": "Withdraw"
   },
   "Pe0ogR": {
     "defaultMessage": "테마"
   },
   "Q3au2v": {
     "defaultMessage": "{estimate}정보"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
   },
   "QNvtaq": {
     "defaultMessage": "X에서 공유"
@@ -356,6 +419,9 @@
   "Qf0ugr": {
     "defaultMessage": "여기에는 사내 호스팅 또는 자체 호스팅(예: Cloudflare)을 사용하는 몇 가지 옵션이 있습니다."
   },
+  "R72je0": {
+    "defaultMessage": "Stream Title"
+  },
   "RJOmzk": {
     "defaultMessage": "본인은 {provider}의 {terms}을 읽었으며 이에 동의합니다."
   },
@@ -376,6 +442,9 @@
   },
   "SC2nJT": {
     "defaultMessage": "오디오 코덱"
+  },
+  "TDUfVk": {
+    "defaultMessage": "Started"
   },
   "TP/cMX": {
     "defaultMessage": "종료"
@@ -423,11 +492,17 @@
   "X2PZ7D": {
     "defaultMessage": "목표 만들기"
   },
+  "XIvYvF": {
+    "defaultMessage": "Failed to get invoice"
+  },
   "XMGfiA": {
     "defaultMessage": "최근 클립"
   },
   "XgWvGA": {
     "defaultMessage": "반응"
+  },
+  "Xq2sb0": {
+    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "레코딩 URL"
@@ -438,6 +513,9 @@
   },
   "YagVIe": {
     "defaultMessage": "{n}p"
+  },
+  "YjhNaf": {
+    "defaultMessage": "Create Stream"
   },
   "YwzT/0": {
     "defaultMessage": "클립 제목"
@@ -484,6 +562,9 @@
   "ccXLVi": {
     "defaultMessage": "Category"
   },
+  "cntHHJ": {
+    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+  },
   "cvAsEh": {
     "defaultMessage": "{date}에서 스트리밍"
   },
@@ -515,14 +596,17 @@
   "fBI91o": {
     "defaultMessage": "Zap"
   },
-  "fc2iho": {
-    "defaultMessage": "파일 추가"
-  },
   "feZ/kG": {
     "defaultMessage": "개인 키로 로그인(안전하지 않음)"
   },
   "g5pX+a": {
     "defaultMessage": "정보"
+  },
+  "gQxxlw": {
+    "defaultMessage": "Goal Name"
+  },
+  "gt65Gg": {
+    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} 메시지"
@@ -538,9 +622,6 @@
   },
   "hpl4BP": {
     "defaultMessage": "채팅 위젯"
-  },
-  "hzSNj4": {
-    "defaultMessage": "대시보드"
   },
   "ieGrWo": {
     "defaultMessage": "팔로우"
@@ -560,9 +641,6 @@
   "jJLRgo": {
     "defaultMessage": "클립 게시"
   },
-  "jctiUc": {
-    "defaultMessage": "최고 시청자 수"
-  },
   "jgOqxt": {
     "defaultMessage": "위젯"
   },
@@ -580,6 +658,9 @@
   },
   "kc5EOy": {
     "defaultMessage": "사용자 이름이 너무 깁니다."
+  },
+  "khJ51Q": {
+    "defaultMessage": "Stream Earnings"
   },
   "kp0NPF": {
     "defaultMessage": "계획된"
@@ -605,6 +686,9 @@
   "mtNGwh": {
     "defaultMessage": "콘텐츠에 대한 간단한 설명"
   },
+  "n19IQE": {
+    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
   "nBCvvJ": {
     "defaultMessage": "충전"
   },
@@ -629,8 +713,17 @@
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> ZAPP <s>{amount}</s> SATS"
   },
+  "q9ryv4": {
+    "defaultMessage": "Cover image URL (optional)"
+  },
+  "qx6bv2": {
+    "defaultMessage": "Stream Goal (optional)"
+  },
   "r2Jjms": {
     "defaultMessage": "로그인"
+  },
+  "rJqhFR": {
+    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "성적으로 노골적인 자료를 미리 확인하세요!"
@@ -708,6 +801,9 @@
   "wTwfnv": {
     "defaultMessage": "잘못된 주소"
   },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
   "wzWWzV": {
     "defaultMessage": "최고의 재퍼"
   },
@@ -737,6 +833,9 @@
   },
   "zEYkgY": {
     "defaultMessage": "Talk"
+  },
+  "zSYDJP": {
+    "defaultMessage": "I have my own stream host"
   },
   "zVDHAu": {
     "defaultMessage": "Zap 알림"

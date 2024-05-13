@@ -17,14 +17,14 @@
   "/EvlqN": {
     "defaultMessage": "nostr-allekirjoituslaajennus"
   },
-  "/GCoTA": {
-    "defaultMessage": "Tyhjennä"
-  },
   "/JkXBo": {
     "defaultMessage": "Clip from {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Yhteensä: {amount} sats"
+  },
+  "/aFYQ5": {
+    "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -34,9 +34,6 @@
   },
   "04lmFi": {
     "defaultMessage": "Tallenna avain"
-  },
-  "0GfNiL": {
-    "defaultMessage": "Streamaa Zap-tavoitteet"
   },
   "0VV/sK": {
     "defaultMessage": "Tavoite"
@@ -50,6 +47,9 @@
   "1EYCdR": {
     "defaultMessage": "Tunnisteet"
   },
+  "1LBny5": {
+    "defaultMessage": "Stopped"
+  },
   "1q4BO/": {
     "defaultMessage": "Virheellinen URL"
   },
@@ -58,6 +58,12 @@
   },
   "2/2yg+": {
     "defaultMessage": "Lisää"
+  },
+  "2ukA4d": {
+    "defaultMessage": "{n} hours"
+  },
+  "2wdFaB": {
+    "defaultMessage": "End Stream"
   },
   "37mth/": {
     "defaultMessage": "Katsojaa"
@@ -89,6 +95,9 @@
   "50+/JW": {
     "defaultMessage": "Suoratoistoavain on pakollinen"
   },
+  "58DXVG": {
+    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+  },
   "5JcXdV": {
     "defaultMessage": "Luo tili"
   },
@@ -97,6 +106,9 @@
   },
   "5QYdPU": {
     "defaultMessage": "Aloitusaika"
+  },
+  "5Wwopw": {
+    "defaultMessage": "Pricing"
   },
   "5kx+2v": {
     "defaultMessage": "Palvelimen URL"
@@ -119,11 +131,17 @@
   "7+bCC1": {
     "defaultMessage": "Suoratoisto url-osoitteen on alettava rtmp://"
   },
+  "74PejI": {
+    "defaultMessage": "Top Viewers"
+  },
   "79lLl+": {
     "defaultMessage": "Musiikki"
   },
   "7UOvbT": {
     "defaultMessage": "Offline-tilassa"
+  },
+  "89UZph": {
+    "defaultMessage": "Configure your streaming software"
   },
   "8YT6ja": {
     "defaultMessage": "Lisää teksti puheeksi"
@@ -152,6 +170,9 @@
   "ALdW69": {
     "defaultMessage": "Muistio {name}"
   },
+  "AYIR/J": {
+    "defaultMessage": "Remove Image"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW-sisältöä"
   },
@@ -170,8 +191,14 @@
   "BGxpTN": {
     "defaultMessage": "Stream-keskustelu"
   },
+  "Bd1yEX": {
+    "defaultMessage": "New Stream Goal"
+  },
   "Bep/gA": {
     "defaultMessage": "Yksityinen avain"
+  },
+  "BzQPM+": {
+    "defaultMessage": "Destination"
   },
   "C81/uG": {
     "defaultMessage": "Kirjaudu ulos"
@@ -181,6 +208,9 @@
   },
   "CsCUYo": {
     "defaultMessage": "{n} satsia"
+  },
+  "CsS/fy": {
+    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "Asetukset"
@@ -193,6 +223,9 @@
   },
   "Dn82AL": {
     "defaultMessage": "Live"
+  },
+  "E7n6zr": {
+    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
   },
   "E9APoR": {
     "defaultMessage": "SuoratoistoURL-osoitetta ei voitu luoda"
@@ -215,6 +248,9 @@
   "G/yZLu": {
     "defaultMessage": "Poista"
   },
+  "G857ni": {
+    "defaultMessage": "LNURL or invoice"
+  },
   "GGaJMU": {
     "defaultMessage": "Eniten Keskusteluja"
   },
@@ -233,17 +269,23 @@
   "H/bNs9": {
     "defaultMessage": "Tallenna tämä ja pidä se tallessa! Jos menetät tämän avaimen, et pääse koskaan enää tilillesi. Kyllä, se on niin vakavaa!"
   },
+  "H4hJvF": {
+    "defaultMessage": "Choose a category"
+  },
   "H5+NAX": {
     "defaultMessage": "Saldo"
   },
   "HAlOn1": {
     "defaultMessage": "Nimi"
   },
+  "HDgXO/": {
+    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+  },
   "HsgeUk": {
     "defaultMessage": "Tule katsomaan streamiani zap.streamiin! {link}"
   },
-  "I/TubD": {
-    "defaultMessage": "Valitse tavoite..."
+  "Ht231k": {
+    "defaultMessage": "Forwarding"
   },
   "I1kjHI": {
     "defaultMessage": "Tukee {markdown}"
@@ -257,6 +299,9 @@
   "INlWvJ": {
     "defaultMessage": "TAI"
   },
+  "IPXhUW": {
+    "defaultMessage": "Last Stream Summary"
+  },
   "IqcyS0": {
     "defaultMessage": "Mikä on nostr-laajennus?"
   },
@@ -265,9 +310,6 @@
   },
   "JCIgkj": {
     "defaultMessage": "Käyttäjätunnus"
-  },
-  "JEsxDw": {
-    "defaultMessage": "Ladataan..."
   },
   "JO0kq9": {
     "defaultMessage": "Edit Stream Info"
@@ -290,14 +332,26 @@
   "KtrGU6": {
     "defaultMessage": "Jos sinulla on jo tili, voit käyttää nostr-laajennusta kirjautumiseen. Jos käytät jo nostr-laajennusta, kirjaudut sisään automaattisesti. Jos sinulla ei ole nostr-laajennusta, voit käyttää nos2x:ää tai Albya."
   },
+  "KxfKnW": {
+    "defaultMessage": "Withdraw funds"
+  },
   "LEmxc8": {
     "defaultMessage": "Zap Tavoitteet"
   },
   "LUvSJB": {
     "defaultMessage": "zap.stream on ilmainen jopa 2 tuntia hosting korkealla laadulla ja jopa 8 tuntia \"lähde\" laatua. Sen jälkeen sinulla on mahdollisuus streamata 5 satsia minuutissa tai 10 satsia minuutissa valitsemastasi laadusta riippuen. Jos et käytä zap.streamia isännöintiin, hinnoittelu riippuu valitsemastasi suoratoistopalveluntarjoajasta."
   },
+  "Le+99Z": {
+    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+  },
+  "Lg2ye2": {
+    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+  },
   "LknBsU": {
     "defaultMessage": "Streamin avain"
+  },
+  "LxSJOb": {
+    "defaultMessage": "Go to Dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "Aloita rynnäkkö"
@@ -326,14 +380,23 @@
   "PA0ej4": {
     "defaultMessage": "Luo leike"
   },
+  "PHE60k": {
+    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+  },
   "PUymyQ": {
     "defaultMessage": "Tule katsomaan {name} stream osoitteessa zap.stream! {link}"
+  },
+  "PXAur5": {
+    "defaultMessage": "Withdraw"
   },
   "Pe0ogR": {
     "defaultMessage": "Teema"
   },
   "Q3au2v": {
     "defaultMessage": "Tietoja {estimate}"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
   },
   "QNvtaq": {
     "defaultMessage": "Jaa X:ssä"
@@ -356,6 +419,9 @@
   "Qf0ugr": {
     "defaultMessage": "Tässä sinulla on muutama vaihtoehto: voit käyttää sisäistä tai omaa (kuten Cloudflare) hosting-palvelua."
   },
+  "R72je0": {
+    "defaultMessage": "Stream Title"
+  },
   "RJOmzk": {
     "defaultMessage": "Olen lukenut ja hyväksynyt {provider}:n {terms}."
   },
@@ -376,6 +442,9 @@
   },
   "SC2nJT": {
     "defaultMessage": "Audio Codec"
+  },
+  "TDUfVk": {
+    "defaultMessage": "Started"
   },
   "TP/cMX": {
     "defaultMessage": "Päättynyt"
@@ -423,11 +492,17 @@
   "X2PZ7D": {
     "defaultMessage": "Luo tavoite"
   },
+  "XIvYvF": {
+    "defaultMessage": "Failed to get invoice"
+  },
   "XMGfiA": {
     "defaultMessage": "Viimeisimmät klipit"
   },
   "XgWvGA": {
     "defaultMessage": "Reaktiot"
+  },
+  "Xq2sb0": {
+    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "Tallennuksen URL-osoite"
@@ -438,6 +513,9 @@
   },
   "YagVIe": {
     "defaultMessage": "{n}p"
+  },
+  "YjhNaf": {
+    "defaultMessage": "Create Stream"
   },
   "YwzT/0": {
     "defaultMessage": "Leikkeen nimi"
@@ -484,6 +562,9 @@
   "ccXLVi": {
     "defaultMessage": "Category"
   },
+  "cntHHJ": {
+    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+  },
   "cvAsEh": {
     "defaultMessage": "Lähetetty {date}"
   },
@@ -515,14 +596,17 @@
   "fBI91o": {
     "defaultMessage": "Zap"
   },
-  "fc2iho": {
-    "defaultMessage": "Lisää tiedosto"
-  },
   "feZ/kG": {
     "defaultMessage": "Kirjaudu sisään yksityisellä avaimella (turvaton)"
   },
   "g5pX+a": {
     "defaultMessage": "Tietoja"
+  },
+  "gQxxlw": {
+    "defaultMessage": "Goal Name"
+  },
+  "gt65Gg": {
+    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} viestiä"
@@ -538,9 +622,6 @@
   },
   "hpl4BP": {
     "defaultMessage": "Keskusteluwidgetti"
-  },
-  "hzSNj4": {
-    "defaultMessage": "Hallintapaneeli"
   },
   "ieGrWo": {
     "defaultMessage": "Seuraa"
@@ -560,9 +641,6 @@
   "jJLRgo": {
     "defaultMessage": "Julkaise leike"
   },
-  "jctiUc": {
-    "defaultMessage": "Eniten Katsojia"
-  },
   "jgOqxt": {
     "defaultMessage": "Vimpaimet"
   },
@@ -580,6 +658,9 @@
   },
   "kc5EOy": {
     "defaultMessage": "Käyttäjätunnus on liian pitkä"
+  },
+  "khJ51Q": {
+    "defaultMessage": "Stream Earnings"
   },
   "kp0NPF": {
     "defaultMessage": "Suunniteltu"
@@ -605,6 +686,9 @@
   "mtNGwh": {
     "defaultMessage": "Lyhyt kuvaus sisällöstä"
   },
+  "n19IQE": {
+    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
   "nBCvvJ": {
     "defaultMessage": "Lataa saldoa"
   },
@@ -629,8 +713,17 @@
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zappasi <s>{amount}</s> satsia"
   },
+  "q9ryv4": {
+    "defaultMessage": "Cover image URL (optional)"
+  },
+  "qx6bv2": {
+    "defaultMessage": "Stream Goal (optional)"
+  },
   "r2Jjms": {
     "defaultMessage": "Kirjaudu sisään"
+  },
+  "rJqhFR": {
+    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "Seksuaalisesti paljastavaa materiaalia tulossa!"
@@ -708,6 +801,9 @@
   "wTwfnv": {
     "defaultMessage": "Virheellinen nostr-osoite"
   },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
   "wzWWzV": {
     "defaultMessage": "Parhaat Zapparit"
   },
@@ -737,6 +833,9 @@
   },
   "zEYkgY": {
     "defaultMessage": "Puhu"
+  },
+  "zSYDJP": {
+    "defaultMessage": "I have my own stream host"
   },
   "zVDHAu": {
     "defaultMessage": "Zap-hälytys"

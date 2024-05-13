@@ -17,14 +17,14 @@
   "/EvlqN": {
     "defaultMessage": "ノストル・シグナー・エクステンション"
   },
-  "/GCoTA": {
-    "defaultMessage": "クリア"
-  },
   "/JkXBo": {
     "defaultMessage": "Clip from {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "合計： {amount}"
+  },
+  "/aFYQ5": {
+    "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -34,9 +34,6 @@
   },
   "04lmFi": {
     "defaultMessage": "鍵の保存"
-  },
-  "0GfNiL": {
-    "defaultMessage": "ザップ目標額を配信"
   },
   "0VV/sK": {
     "defaultMessage": "ゴール"
@@ -50,6 +47,9 @@
   "1EYCdR": {
     "defaultMessage": "タグ"
   },
+  "1LBny5": {
+    "defaultMessage": "Stopped"
+  },
   "1q4BO/": {
     "defaultMessage": "有効なURLではない"
   },
@@ -58,6 +58,12 @@
   },
   "2/2yg+": {
     "defaultMessage": "追加"
+  },
+  "2ukA4d": {
+    "defaultMessage": "{n} hours"
+  },
+  "2wdFaB": {
+    "defaultMessage": "End Stream"
   },
   "37mth/": {
     "defaultMessage": "視聴者"
@@ -89,6 +95,9 @@
   "50+/JW": {
     "defaultMessage": "ストリームキーが必要"
   },
+  "58DXVG": {
+    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+  },
   "5JcXdV": {
     "defaultMessage": "アカウントを作成する"
   },
@@ -97,6 +106,9 @@
   },
   "5QYdPU": {
     "defaultMessage": "開始時間"
+  },
+  "5Wwopw": {
+    "defaultMessage": "Pricing"
   },
   "5kx+2v": {
     "defaultMessage": "サーバー URL"
@@ -119,11 +131,17 @@
   "7+bCC1": {
     "defaultMessage": "ストリームのURLはrtmp://で始まる必要があります。"
   },
+  "74PejI": {
+    "defaultMessage": "Top Viewers"
+  },
   "79lLl+": {
     "defaultMessage": "音楽"
   },
   "7UOvbT": {
     "defaultMessage": "オフライン"
+  },
+  "89UZph": {
+    "defaultMessage": "Configure your streaming software"
   },
   "8YT6ja": {
     "defaultMessage": "テキストを挿入して話す"
@@ -152,6 +170,9 @@
   "ALdW69": {
     "defaultMessage": "{name}。"
   },
+  "AYIR/J": {
+    "defaultMessage": "Remove Image"
+  },
   "Atr2p4": {
     "defaultMessage": "不適切な内容"
   },
@@ -170,8 +191,14 @@
   "BGxpTN": {
     "defaultMessage": "チャット配信"
   },
+  "Bd1yEX": {
+    "defaultMessage": "New Stream Goal"
+  },
   "Bep/gA": {
     "defaultMessage": "秘密鍵"
+  },
+  "BzQPM+": {
+    "defaultMessage": "Destination"
   },
   "C81/uG": {
     "defaultMessage": "ログアウト"
@@ -181,6 +208,9 @@
   },
   "CsCUYo": {
     "defaultMessage": "{n} 衛星"
+  },
+  "CsS/fy": {
+    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "設定"
@@ -193,6 +223,9 @@
   },
   "Dn82AL": {
     "defaultMessage": "ライブ配信中"
+  },
+  "E7n6zr": {
+    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
   },
   "E9APoR": {
     "defaultMessage": "ストリームURLを作成できませんでした"
@@ -215,6 +248,9 @@
   "G/yZLu": {
     "defaultMessage": "削除"
   },
+  "G857ni": {
+    "defaultMessage": "LNURL or invoice"
+  },
   "GGaJMU": {
     "defaultMessage": "トップ・チャッター"
   },
@@ -233,17 +269,23 @@
   "H/bNs9": {
     "defaultMessage": "これを保存し、安全に保管してください！このキーを紛失すると、二度とアカウントにアクセスできなくなります。そう、それほど深刻なのだ！"
   },
+  "H4hJvF": {
+    "defaultMessage": "Choose a category"
+  },
   "H5+NAX": {
     "defaultMessage": "残高"
   },
   "HAlOn1": {
     "defaultMessage": "名前"
   },
+  "HDgXO/": {
+    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+  },
   "HsgeUk": {
     "defaultMessage": "zap.streamで僕のストリームをチェックしよう！ {link}"
   },
-  "I/TubD": {
-    "defaultMessage": "ゴールを選択..."
+  "Ht231k": {
+    "defaultMessage": "Forwarding"
   },
   "I1kjHI": {
     "defaultMessage": "{markdown} をサポート"
@@ -257,6 +299,9 @@
   "INlWvJ": {
     "defaultMessage": "または"
   },
+  "IPXhUW": {
+    "defaultMessage": "Last Stream Summary"
+  },
   "IqcyS0": {
     "defaultMessage": "ノストル・エクステンションとは何ですか？"
   },
@@ -265,9 +310,6 @@
   },
   "JCIgkj": {
     "defaultMessage": "ユーザー名"
-  },
-  "JEsxDw": {
-    "defaultMessage": "アップロード中..."
   },
   "JO0kq9": {
     "defaultMessage": "Edit Stream Info"
@@ -290,14 +332,26 @@
   "KtrGU6": {
     "defaultMessage": "すでにアカウントをお持ちの方は、nostr拡張機能を使ってログインできます。すでにnostr拡張機能を使用している場合は、自動的にログインされます。nostr拡張機能を設定していない場合は、nos2xまたはAlbyを使用することができます。"
   },
+  "KxfKnW": {
+    "defaultMessage": "Withdraw funds"
+  },
   "LEmxc8": {
     "defaultMessage": "ザップ・ゴール"
   },
   "LUvSJB": {
     "defaultMessage": "zap.streamは高画質で2時間、「ソース」画質で8時間まで無料でホスティングできます。その後、選択した品質に応じて、1分あたり5サットまたは1分あたり10サットでストリーミングするオプションがあります。ホスティングにzap.streamを使用しない場合、価格は選択したストリーミングプロバイダーによって異なります。"
   },
+  "Le+99Z": {
+    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+  },
+  "Lg2ye2": {
+    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+  },
   "LknBsU": {
     "defaultMessage": "配信キー"
+  },
+  "LxSJOb": {
+    "defaultMessage": "Go to Dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "レイド開始"
@@ -326,14 +380,23 @@
   "PA0ej4": {
     "defaultMessage": "クリップ作成"
   },
+  "PHE60k": {
+    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+  },
   "PUymyQ": {
     "defaultMessage": "zap.streamで {name} ！ {link}"
+  },
+  "PXAur5": {
+    "defaultMessage": "Withdraw"
   },
   "Pe0ogR": {
     "defaultMessage": "テーマ"
   },
   "Q3au2v": {
     "defaultMessage": "{estimate} について"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
   },
   "QNvtaq": {
     "defaultMessage": "Xで共有する"
@@ -356,6 +419,9 @@
   "Qf0ugr": {
     "defaultMessage": "ここで、いくつかのオプションがあります。弊社の社内ホスティングを使用するか、独自のホスティング（Cloudflareなど）を使用するかです。"
   },
+  "R72je0": {
+    "defaultMessage": "Stream Title"
+  },
   "RJOmzk": {
     "defaultMessage": "{provider} の {terms} を読み、同意します。"
   },
@@ -376,6 +442,9 @@
   },
   "SC2nJT": {
     "defaultMessage": "オーディオ・コーデック"
+  },
+  "TDUfVk": {
+    "defaultMessage": "Started"
   },
   "TP/cMX": {
     "defaultMessage": "終了しました"
@@ -423,11 +492,17 @@
   "X2PZ7D": {
     "defaultMessage": "目標を設定"
   },
+  "XIvYvF": {
+    "defaultMessage": "Failed to get invoice"
+  },
   "XMGfiA": {
     "defaultMessage": "最近のクリップ"
   },
   "XgWvGA": {
     "defaultMessage": "反応"
+  },
+  "Xq2sb0": {
+    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "録画URL"
@@ -438,6 +513,9 @@
   },
   "YagVIe": {
     "defaultMessage": "{n}p"
+  },
+  "YjhNaf": {
+    "defaultMessage": "Create Stream"
   },
   "YwzT/0": {
     "defaultMessage": "クリップのタイトル"
@@ -484,6 +562,9 @@
   "ccXLVi": {
     "defaultMessage": "Category"
   },
+  "cntHHJ": {
+    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+  },
   "cvAsEh": {
     "defaultMessage": "{date} に配信されました"
   },
@@ -515,14 +596,17 @@
   "fBI91o": {
     "defaultMessage": "ザップ"
   },
-  "fc2iho": {
-    "defaultMessage": "ファイルを追加"
-  },
   "feZ/kG": {
     "defaultMessage": "秘密鍵によるログイン（安全ではありません）"
   },
   "g5pX+a": {
     "defaultMessage": "について"
+  },
+  "gQxxlw": {
+    "defaultMessage": "Goal Name"
+  },
+  "gt65Gg": {
+    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} メッセージ"
@@ -538,9 +622,6 @@
   },
   "hpl4BP": {
     "defaultMessage": "チャットウィジェット"
-  },
-  "hzSNj4": {
-    "defaultMessage": "ダッシュボード"
   },
   "ieGrWo": {
     "defaultMessage": "フォロー"
@@ -560,9 +641,6 @@
   "jJLRgo": {
     "defaultMessage": "パブリッシュ・クリップ"
   },
-  "jctiUc": {
-    "defaultMessage": "最高視聴者数"
-  },
   "jgOqxt": {
     "defaultMessage": "ウィジェット"
   },
@@ -580,6 +658,9 @@
   },
   "kc5EOy": {
     "defaultMessage": "ユーザー名が長すぎる"
+  },
+  "khJ51Q": {
+    "defaultMessage": "Stream Earnings"
   },
   "kp0NPF": {
     "defaultMessage": "予定あり"
@@ -605,6 +686,9 @@
   "mtNGwh": {
     "defaultMessage": "コンテンツの簡単な説明"
   },
+  "n19IQE": {
+    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
   "nBCvvJ": {
     "defaultMessage": "アカウントチャージ"
   },
@@ -629,8 +713,17 @@
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> ザップ <s>{amount}</s> サッツ"
   },
+  "q9ryv4": {
+    "defaultMessage": "Cover image URL (optional)"
+  },
+  "qx6bv2": {
+    "defaultMessage": "Stream Goal (optional)"
+  },
   "r2Jjms": {
     "defaultMessage": "ログイン"
+  },
+  "rJqhFR": {
+    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "性的に露骨な表現が含まれています！"
@@ -708,6 +801,9 @@
   "wTwfnv": {
     "defaultMessage": "無効なアドレス"
   },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
   "wzWWzV": {
     "defaultMessage": "トップザッパー"
   },
@@ -737,6 +833,9 @@
   },
   "zEYkgY": {
     "defaultMessage": "トーク"
+  },
+  "zSYDJP": {
+    "defaultMessage": "I have my own stream host"
   },
   "zVDHAu": {
     "defaultMessage": "ザップアラート"

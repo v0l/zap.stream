@@ -17,14 +17,14 @@
   "/EvlqN": {
     "defaultMessage": "Расширение для подписи nostr"
   },
-  "/GCoTA": {
-    "defaultMessage": "Сбросить"
-  },
   "/JkXBo": {
     "defaultMessage": "Clip from {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Всего: {amount} sats"
+  },
+  "/aFYQ5": {
+    "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -34,9 +34,6 @@
   },
   "04lmFi": {
     "defaultMessage": "Сохранить ключ"
-  },
-  "0GfNiL": {
-    "defaultMessage": "Зап-цели трансляции"
   },
   "0VV/sK": {
     "defaultMessage": "Цель"
@@ -50,6 +47,9 @@
   "1EYCdR": {
     "defaultMessage": "Теги"
   },
+  "1LBny5": {
+    "defaultMessage": "Stopped"
+  },
   "1q4BO/": {
     "defaultMessage": "Недействительный URL"
   },
@@ -58,6 +58,12 @@
   },
   "2/2yg+": {
     "defaultMessage": "Добавить"
+  },
+  "2ukA4d": {
+    "defaultMessage": "{n} hours"
+  },
+  "2wdFaB": {
+    "defaultMessage": "End Stream"
   },
   "37mth/": {
     "defaultMessage": "Зрители"
@@ -89,6 +95,9 @@
   "50+/JW": {
     "defaultMessage": "Требуется ключ потока"
   },
+  "58DXVG": {
+    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+  },
   "5JcXdV": {
     "defaultMessage": "Создать аккаунт"
   },
@@ -97,6 +106,9 @@
   },
   "5QYdPU": {
     "defaultMessage": "Время начала"
+  },
+  "5Wwopw": {
+    "defaultMessage": "Pricing"
   },
   "5kx+2v": {
     "defaultMessage": "URL сервера"
@@ -119,11 +131,17 @@
   "7+bCC1": {
     "defaultMessage": "url потока должен начинаться с rtmp://"
   },
+  "74PejI": {
+    "defaultMessage": "Top Viewers"
+  },
   "79lLl+": {
     "defaultMessage": "Музыка"
   },
   "7UOvbT": {
     "defaultMessage": "Offline"
+  },
+  "89UZph": {
+    "defaultMessage": "Configure your streaming software"
   },
   "8YT6ja": {
     "defaultMessage": "Вставка текста для выступления"
@@ -152,6 +170,9 @@
   "ALdW69": {
     "defaultMessage": "Заметка на сайте {name}"
   },
+  "AYIR/J": {
+    "defaultMessage": "Remove Image"
+  },
   "Atr2p4": {
     "defaultMessage": "NSFW контент"
   },
@@ -170,8 +191,14 @@
   "BGxpTN": {
     "defaultMessage": "Чат стрима"
   },
+  "Bd1yEX": {
+    "defaultMessage": "New Stream Goal"
+  },
   "Bep/gA": {
     "defaultMessage": "Приватный ключ"
+  },
+  "BzQPM+": {
+    "defaultMessage": "Destination"
   },
   "C81/uG": {
     "defaultMessage": "Выйти"
@@ -181,6 +208,9 @@
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
+  },
+  "CsS/fy": {
+    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "Настройки"
@@ -193,6 +223,9 @@
   },
   "Dn82AL": {
     "defaultMessage": "Прямой эфир"
+  },
+  "E7n6zr": {
+    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
   },
   "E9APoR": {
     "defaultMessage": "Не удалось создать URL-адрес потока"
@@ -215,6 +248,9 @@
   "G/yZLu": {
     "defaultMessage": "Удалить"
   },
+  "G857ni": {
+    "defaultMessage": "LNURL or invoice"
+  },
   "GGaJMU": {
     "defaultMessage": "Лучшие чаты"
   },
@@ -233,17 +269,23 @@
   "H/bNs9": {
     "defaultMessage": "Сохраните этот ключ и храните его в безопасности! Если вы его потеряете, вы не сможете снова войти в свою учетную запись. Да, все настолько серьезно!"
   },
+  "H4hJvF": {
+    "defaultMessage": "Choose a category"
+  },
   "H5+NAX": {
     "defaultMessage": "Баланс"
   },
   "HAlOn1": {
     "defaultMessage": "Название"
   },
+  "HDgXO/": {
+    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+  },
   "HsgeUk": {
     "defaultMessage": "Загляните в мой поток на zap.stream! {link}"
   },
-  "I/TubD": {
-    "defaultMessage": "Выберите цель..."
+  "Ht231k": {
+    "defaultMessage": "Forwarding"
   },
   "I1kjHI": {
     "defaultMessage": "Поддерживает {markdown}"
@@ -257,6 +299,9 @@
   "INlWvJ": {
     "defaultMessage": "ИЛИ"
   },
+  "IPXhUW": {
+    "defaultMessage": "Last Stream Summary"
+  },
   "IqcyS0": {
     "defaultMessage": "Что такое расширение ноздрей?"
   },
@@ -265,9 +310,6 @@
   },
   "JCIgkj": {
     "defaultMessage": "Имя пользователя"
-  },
-  "JEsxDw": {
-    "defaultMessage": "Загрузка..."
   },
   "JO0kq9": {
     "defaultMessage": "Edit Stream Info"
@@ -290,14 +332,26 @@
   "KtrGU6": {
     "defaultMessage": "Если у вас уже есть аккаунт, вы можете использовать расширение nostr для входа в систему. Если вы уже используете расширение nostr, вы автоматически войдете в систему. Если у вас не настроено расширение nostr, вы можете использовать nos2x или Alby."
   },
+  "KxfKnW": {
+    "defaultMessage": "Withdraw funds"
+  },
   "LEmxc8": {
     "defaultMessage": "Цели"
   },
   "LUvSJB": {
     "defaultMessage": "zap.stream предоставляет бесплатно до 2 часов хостинга в высоком качестве и до 8 часов в качестве \"исходника\". После этого у вас есть возможность транслировать 5 сатов в минуту или 10 сатов в минуту в зависимости от выбранного вами качества. Если вы не используете zap.stream для хостинга, цены будут зависеть от выбранного вами провайдера потокового вещания."
   },
+  "Le+99Z": {
+    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+  },
+  "Lg2ye2": {
+    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+  },
   "LknBsU": {
     "defaultMessage": "Ключ стрима"
+  },
+  "LxSJOb": {
+    "defaultMessage": "Go to Dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "Стартовый рейд"
@@ -326,14 +380,23 @@
   "PA0ej4": {
     "defaultMessage": "Создать клип"
   },
+  "PHE60k": {
+    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+  },
   "PUymyQ": {
     "defaultMessage": "Загляните на {name} stream на zap.stream! {link}"
+  },
+  "PXAur5": {
+    "defaultMessage": "Withdraw"
   },
   "Pe0ogR": {
     "defaultMessage": "Тема"
   },
   "Q3au2v": {
     "defaultMessage": "Примерно {estimate}"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
   },
   "QNvtaq": {
     "defaultMessage": "Поделиться на X"
@@ -356,6 +419,9 @@
   "Qf0ugr": {
     "defaultMessage": "Здесь у вас есть несколько вариантов: использовать наш собственный хостинг или свой собственный (например, Cloudflare)."
   },
+  "R72je0": {
+    "defaultMessage": "Stream Title"
+  },
   "RJOmzk": {
     "defaultMessage": "Я прочитал и согласен с {provider} {terms}."
   },
@@ -376,6 +442,9 @@
   },
   "SC2nJT": {
     "defaultMessage": "Аудиокодек"
+  },
+  "TDUfVk": {
+    "defaultMessage": "Started"
   },
   "TP/cMX": {
     "defaultMessage": "Завершено"
@@ -423,11 +492,17 @@
   "X2PZ7D": {
     "defaultMessage": "Установить цель"
   },
+  "XIvYvF": {
+    "defaultMessage": "Failed to get invoice"
+  },
   "XMGfiA": {
     "defaultMessage": "Последние клипы"
   },
   "XgWvGA": {
     "defaultMessage": "Отклики"
+  },
+  "Xq2sb0": {
+    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "URL-адрес записи"
@@ -438,6 +513,9 @@
   },
   "YagVIe": {
     "defaultMessage": "{n}p"
+  },
+  "YjhNaf": {
+    "defaultMessage": "Create Stream"
   },
   "YwzT/0": {
     "defaultMessage": "Название клипа"
@@ -484,6 +562,9 @@
   "ccXLVi": {
     "defaultMessage": "Category"
   },
+  "cntHHJ": {
+    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+  },
   "cvAsEh": {
     "defaultMessage": "Трансляция проведена {date}"
   },
@@ -515,14 +596,17 @@
   "fBI91o": {
     "defaultMessage": "Зап"
   },
-  "fc2iho": {
-    "defaultMessage": "Добавить файл"
-  },
   "feZ/kG": {
     "defaultMessage": "Войти с помощью приватного ключа (небезопасно)"
   },
   "g5pX+a": {
     "defaultMessage": "О сайте"
+  },
+  "gQxxlw": {
+    "defaultMessage": "Goal Name"
+  },
+  "gt65Gg": {
+    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} сообщения"
@@ -538,9 +622,6 @@
   },
   "hpl4BP": {
     "defaultMessage": "Виджет чата"
-  },
-  "hzSNj4": {
-    "defaultMessage": "Приборная панель"
   },
   "ieGrWo": {
     "defaultMessage": "Подписаться"
@@ -560,9 +641,6 @@
   "jJLRgo": {
     "defaultMessage": "Опубликовать клип"
   },
-  "jctiUc": {
-    "defaultMessage": "Наибольшее количество зрителей"
-  },
   "jgOqxt": {
     "defaultMessage": "Виджеты"
   },
@@ -580,6 +658,9 @@
   },
   "kc5EOy": {
     "defaultMessage": "Имя пользователя слишком длинное"
+  },
+  "khJ51Q": {
+    "defaultMessage": "Stream Earnings"
   },
   "kp0NPF": {
     "defaultMessage": "Запланировано"
@@ -605,6 +686,9 @@
   "mtNGwh": {
     "defaultMessage": "Краткое описание контента"
   },
+  "n19IQE": {
+    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
   "nBCvvJ": {
     "defaultMessage": "Пополнить"
   },
@@ -629,8 +713,17 @@
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
+  "q9ryv4": {
+    "defaultMessage": "Cover image URL (optional)"
+  },
+  "qx6bv2": {
+    "defaultMessage": "Stream Goal (optional)"
+  },
   "r2Jjms": {
     "defaultMessage": "Войти"
+  },
+  "rJqhFR": {
+    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "Сексуально откровенный материал!"
@@ -708,6 +801,9 @@
   "wTwfnv": {
     "defaultMessage": "Неверный ностровый адрес"
   },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
   "wzWWzV": {
     "defaultMessage": "Топ поддержавших"
   },
@@ -737,6 +833,9 @@
   },
   "zEYkgY": {
     "defaultMessage": "Поговорите"
+  },
+  "zSYDJP": {
+    "defaultMessage": "I have my own stream host"
   },
   "zVDHAu": {
     "defaultMessage": "Оповещение о запе"
