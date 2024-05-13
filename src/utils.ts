@@ -1,9 +1,10 @@
-import { NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
 import { LIVE_STREAM, StreamState } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
+import { hexToBech32 } from "@snort/shared";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -32,6 +33,14 @@ export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
 
 export function getHost(ev?: NostrEvent) {
   return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
+}
+
+export function profileLink(meta: CachedMetadata | undefined, pubkey: string) {
+  if (meta && meta.nip05 && meta.nip05.endsWith("@zap.stream") && meta.isNostrAddressValid) {
+    const [name,] = meta.nip05.split("@");
+    return `/p/${name}`;
+  }
+  return `/p/${hexToBech32("npub", pubkey)}`;
 }
 
 export function openFile(): Promise<File | undefined> {
@@ -75,7 +84,7 @@ export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
 }
 
 export function getPlaceholder(id: string) {
-  return `https://robohash.v0l.io/${id}.png`;
+  return `https://nostr.api.v0l.io/api/v1/avatar/robots/${id}.webp`;
 }
 
 export function debounce(time: number, fn: () => void): () => void {

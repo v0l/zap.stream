@@ -1,7 +1,7 @@
 import "./profile-page.css";
 import { useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, NostrPrefix, TaggedNostrEvent, parseNostrLink } from "@snort/system";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, parseNostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
@@ -13,7 +13,7 @@ import { FollowButton } from "@/element/follow-button";
 import { MuteButton } from "@/element/mute-button";
 import { useProfile } from "@/hooks/profile";
 import { Text } from "@/element/text";
-import { findTag } from "@/utils";
+import { findTag, profileLink } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
 import { StreamState } from "@/const";
@@ -198,7 +198,7 @@ function ProfileClip({ ev }: { ev: NostrEvent }) {
           values={{
             name: (
               <Link
-                to={`/p/${new NostrLink(NostrPrefix.PublicKey, ev.pubkey).encode()}`}
+                to={profileLink(profile, ev.pubkey)}
                 className="font-medium text-primary">
                 {getName(ev.pubkey, profile)}
               </Link>

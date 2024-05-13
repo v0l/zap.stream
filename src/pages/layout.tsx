@@ -5,7 +5,6 @@ import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-
 import { Helmet } from "react-helmet";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Menu, MenuItem } from "@szhsin/react-menu";
-import { hexToBech32 } from "@snort/shared";
 
 import { Icon } from "@/element/icon";
 import { useLogin, useLoginEvents } from "@/hooks/login";
@@ -14,7 +13,7 @@ import { LoginSignup } from "@/element/login-signup";
 import { Login } from "@/login";
 import { useLang } from "@/hooks/lang";
 import { AllLocales } from "@/intl";
-import { trackEvent } from "@/utils";
+import { profileLink, trackEvent } from "@/utils";
 import { BorderButton, DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 import Logo from "@/element/logo";
@@ -89,7 +88,7 @@ export function LayoutPage() {
           }
           align="end"
           gap={5}>
-          <MenuItem onClick={() => navigate(`/p/${hexToBech32("npub", login.pubkey)}`)}>
+          <MenuItem onClick={() => navigate(profileLink(undefined, login.pubkey))}>
             <Icon name="user" size={24} />
             <FormattedMessage defaultMessage="Profile" id="itPgxd" />
           </MenuItem>

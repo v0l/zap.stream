@@ -6,6 +6,7 @@ import { hexToBech32 } from "@snort/shared";
 import { useInView } from "react-intersection-observer";
 import { Avatar } from "./avatar";
 import classNames from "classnames";
+import { profileLink } from "@/utils";
 
 export interface ProfileOptions {
   showName?: boolean;
@@ -64,7 +65,7 @@ export function Profile({
       {content}
     </div>
   ) : (
-    <Link to={`/p/${hexToBech32("npub", pubkey)}`} className={cls} ref={ref}>
+    <Link to={profileLink(pLoaded, pubkey)} className={cls} ref={ref}>
       {content}
     </Link>
   );
