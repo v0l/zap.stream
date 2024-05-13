@@ -36,11 +36,16 @@ export default function LiveVideoPlayer({
   const [src, setSrc] = useState<string>();
   const [levels, setLevels] = useState<Array<{ level: number; height: number }>>();
   const [level, setLevel] = useState<number>(-1);
-  const [playState, setPlayState] = useState<"loading" | "playing" | "paused">("playing");
+  const [playState, iSetPlayState] = useState<"loading" | "playing" | "paused">("paused");
   const [volume, setVolume] = useState(1);
   const [muted, setMuted] = useState(pMuted ?? false);
   const [position, setPosition] = useState<number>();
   const [maxPosition, setMaxPosition] = useState<number>();
+
+  function setPlayState(s: typeof playState) {
+    console.debug("PLAY STATE", s);
+    iSetPlayState(s);
+  }
 
   useEffect(() => {
     if (streamCached && video.current) {
@@ -120,7 +125,7 @@ export default function LiveVideoPlayer({
       video.current.onvolumechange = () => setVolume(video.current?.volume ?? 1);
       video.current.ontimeupdate = () => setPosition(video.current?.currentTime);
     }
-  }, [video]);
+  }, [video.current]);
 
   useEffect(() => {
     if (video.current) {
