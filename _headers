@@ -1,2 +1,0 @@
-/*
-  Content-Security-Policy: default-src 'self'; manifest-src *; child-src 'none'; worker-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src *; img-src * data: blob:; font-src 'self'; media-src * blob:; script-src 'self';
