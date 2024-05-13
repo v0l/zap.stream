@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Hls from "hls.js";
-import { HTMLProps, useEffect, useMemo, useRef, useState } from "react";
+import { HTMLProps, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Icon } from "./icon";
 import { ProgressBar } from "./progress-bar";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { StreamState } from "@/const";
 import classNames from "classnames";
+import usePictureInPicture, { VideoRefType } from "react-use-pip";
 
 export enum VideoStatus {
   Online = "online",
@@ -138,6 +139,17 @@ export default function LiveVideoPlayer({
     }
   }, [video, volume, muted]);
 
+  const {
+    isPictureInPictureActive,
+    isPictureInPictureAvailable,
+    togglePictureInPicture
+  } = usePictureInPicture(video as VideoRefType);
+
+  const handlePIPClick = useCallback(async () => {
+    togglePictureInPicture(!isPictureInPictureActive);
+  }, [
+    isPictureInPictureActive, togglePictureInPicture]);
+
   function playStateToIcon() {
     switch (playState) {
       case "playing":
@@ -184,15 +196,17 @@ export default function LiveVideoPlayer({
               <h2>{title}</h2>
             </div>
             {/* CENTER PLAY ICON */}
-            <div className="absolute w-full h-full flex items-center justify-center pointer">
-              <Icon name={playStateToIcon()} size={80} className={playState === "loading" ? "animate-spin" : ""} />
+            <div className="absolute w-full h-full flex items-center justify-center cursor-pointer">
+              {!isPictureInPictureActive && (
+                <Icon name={playStateToIcon()} size={80} className={playState === "loading" ? "animate-spin" : ""} />
+              )}
             </div>
             {/* PLAYER CONTROLS OVERLAY */}
             <div
               className="absolute flex items-center gap-1 bottom-0 w-full bg-primary h-[40px]"
               onClick={e => e.stopPropagation()}>
               <div className="flex grow gap-1 items-center">
-                <div className="px-5 py-2 pointer" onClick={() => togglePlay()}>
+                <div className="px-5 py-2 cursor-pointer" onClick={() => togglePlay()}>
                   <Icon name={playStateToIcon()} className={playState === "loading" ? "animate-spin" : ""} />
                 </div>
                 <div className="px-3 py-2 uppercase font-bold tracking-wide hover:bg-primary-hover">{pStatus}</div>
@@ -219,7 +233,7 @@ export default function LiveVideoPlayer({
                 <Menu
                   direction="top"
                   align="center"
-                  menuButton={<div className="px-3 py-2 tracking-wide pointer">{levelName(level)}</div>}
+                  menuButton={<div className="px-3 py-2 tracking-wide cursor-pointer">{levelName(level)}</div>}
                   menuClassName="bg-primary w-fit">
                   {levels?.map(v => (
                     <MenuItem
@@ -232,8 +246,12 @@ export default function LiveVideoPlayer({
                   ))}
                 </Menu>
               </div>
+              {isPictureInPictureAvailable && (
+                <div className="pl-3 py-2 cursor-pointer tracking-wide font-bold text-sm"
+                     onClick={handlePIPClick}>PIP</div>
+              )}
               <div
-                className="px-3 py-2 pointer"
+                className="px-2 py-2 cursor-pointer"
                 onClick={() => {
                   if (video.current) {
                     video.current.requestFullscreen();
@@ -242,6 +260,13 @@ export default function LiveVideoPlayer({
                 <Icon name="fullscreen" size={24} />
               </div>
             </div>
+          </div>
+        )}
+        {isPictureInPictureActive && (
+          <div
+            className="absolute z-20 bg-[#00000055] select-none w-full h-full flex items-center justify-center cursor-pointer">
+            <h2 onClick={async () => togglePictureInPicture(!isPictureInPictureActive)}>Video is playing in PIP
+              window</h2>
           </div>
         )}
         {status === VideoStatus.Offline && (
