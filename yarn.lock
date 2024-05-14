@@ -3950,6 +3950,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.11":
+  version: 1.11.11
+  resolution: "dayjs@npm:1.11.11"
+  checksum: 10c0/0131d10516b9945f05a57e13f4af49a6814de5573a494824e103131a3bbe4cc470b1aefe8e17e51f9a478a22cd116084be1ee5725cedb66ec4c3f9091202dc4b
+  languageName: node
+  linkType: hard
+
 "debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
@@ -7506,6 +7513,7 @@ __metadata:
     babel-plugin-formatjs: "npm:^10.5.13"
     buffer: "npm:^6.0.3"
     classnames: "npm:^2.3.2"
+    dayjs: "npm:^1.11.11"
     emoji-mart: "npm:^5.5.2"
     eslint: "npm:^8.48.0"
     flag-icons: "npm:^6.11.0"

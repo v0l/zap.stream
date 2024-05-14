@@ -3,6 +3,7 @@ import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
 import { useHover, useIntersectionObserver, useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
+import dayjs from "dayjs";
 
 const EmojiPicker = lazy(() => import("./emoji-picker"));
 import { Icon } from "./icon";
@@ -144,7 +145,9 @@ export function ChatMessage({
           }
           pubkey={ev.pubkey}
         />{" "}
-        <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} className="inline" />
+        <span title={dayjs(ev.created_at * 1000).format('MMM D, h:mm A')}>
+          <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} className="inline" />
+        </span>
         {(hasReactions || hasZaps) && (
           <div className="flex gap-1 mt-1">
             {hasZaps && (
