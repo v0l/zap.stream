@@ -1,5 +1,5 @@
 import { NostrLink, NostrPrefix, ParsedFragment, transformText, tryParseNostrLink } from "@snort/system";
-import { FunctionComponent, useMemo } from "react";
+import { Fragment, FunctionComponent, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import { Emoji } from "./emoji";
@@ -22,10 +22,10 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
     return transformText(content, tags);
   }, [content, tags]);
 
-  function renderFrag(f: ParsedFragment) {
+  function renderFrag(f: ParsedFragment, key: number) {
     switch (f.type) {
       case "custom_emoji":
-        return <Emoji name={f.content} url={f.content} />;
+        return <Emoji name={f.content} url={f.content} key={key} />;
       case "media":
       case "link": {
         if (f.content.startsWith("nostr:")) {
@@ -36,24 +36,25 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
               link.type === NostrPrefix.Address ||
               link.type === NostrPrefix.Note
             ) {
-              return eventComponent?.({ link }) ?? <EventEmbed link={link} />;
+              return <Fragment key={key}>
+                {eventComponent?.({ link })} </Fragment> ?? <EventEmbed link={link} key={key} />;
             } else {
-              return <Mention pubkey={link.id} />;
+              return <Mention pubkey={link.id} key={key} />;
             }
           }
         }
-        return <HyperText link={f.content}>{f.content}</HyperText>;
+        return <HyperText link={f.content} key={key}>{f.content}</HyperText>;
       }
       case "mention":
-        return <Mention pubkey={f.content} />;
+        return <Mention pubkey={f.content} key={key} />;
       case "hashtag":
-        return <Link to={`/t/${f.content}`}>#{f.content}</Link>;
+        return <Link to={`/t/${f.content}`} key={key}>#{f.content}</Link>;
       default: {
         if (f.content.startsWith("lnurlp:")) {
           // LUD-17: https://github.com/lnurl/luds/blob/luds/17.md
           const url = new URL(f.content);
           url.protocol = "https:";
-          return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} />;
+          return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} key={key} />;
         }
         return f.content;
       }
