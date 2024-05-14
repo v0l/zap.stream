@@ -20,6 +20,7 @@
     "@webscopeio/react-textarea-autocomplete": "^4.9.2",
     "buffer": "^6.0.3",
     "classnames": "^2.5.1",
+    "dayjs": "^1.11.11",
     "emoji-mart": "^5.6.0",
     "flag-icons": "^7.2.1",
     "hls.js": "^1.5.8",
