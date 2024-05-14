@@ -1,5 +1,5 @@
 import "./send-zap.css";
-import { type ReactNode, useEffect, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
 import { EventPublisher, NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { secp256k1 } from "@noble/curves/secp256k1";
@@ -35,6 +35,7 @@ export interface SendZapsProps {
   targetName?: string;
   onFinish: () => void;
   button?: ReactNode;
+  key?: string;
 }
 
 export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: SendZapsProps) {
@@ -207,7 +208,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
 export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   const [open, setOpen] = useState(false);
   return (
-    <>
+    <Fragment key={props.key}>
       {props.button ? (
         <div onClick={() => setOpen(true)}>{props.button}</div>
       ) : (
@@ -223,7 +224,7 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
           <SendZaps {...props} onFinish={() => setOpen(false)} />
         </Modal>
       )}
-    </>
+    </Fragment>
   );
 }
 
