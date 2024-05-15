@@ -145,7 +145,10 @@ function PopularCategories({ items }: { items: Array<TaggedNostrEvent> }) {
       </div>
       <div className="flex flex-wrap gap-4">
         {categories.map(a => (
-          <Link key={a.gameId} to={`/category/${a.gameId}`} className="xl:w-[180px] lg:w-[170px] max-lg:w-[calc(33.3%-0.75rem)]">
+          <Link
+            key={a.gameId}
+            to={`/category/${a.gameId}`}
+            className="xl:w-[180px] lg:w-[170px] max-lg:w-[calc(33.3%-0.75rem)]">
             <CategoryTile gameId={a.gameId} showFooterTitle={true}>
               <div className="flex gap-2 flex-wrap">
                 <CategoryZaps gameId={a.gameId} />
