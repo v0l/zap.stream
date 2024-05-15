@@ -84,7 +84,7 @@ export default function Category() {
   const results = useRequestBuilder(sub);
   return (
     <div>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex gap-4 overflow-x-scroll scrollbar-hidden">
         {AllCategories.map(a => (
           <CategoryLink key={a.id} {...a} />
         ))}

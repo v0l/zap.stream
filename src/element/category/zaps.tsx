@@ -9,8 +9,8 @@ export function CategoryZaps({ gameId }: { gameId: string }) {
   const total = zaps.reduce((acc, v) => (acc += v.amount), 0);
 
   return (
-    <Pill className="flex gap-2">
-      <Icon name="zap-filled" />
+    <Pill className="flex gap-2 items-center">
+      <Icon name="zap-filled" size={14} />
       {formatSatsCompact(total)}
     </Pill>
   );
