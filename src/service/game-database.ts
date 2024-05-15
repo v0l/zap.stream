@@ -14,9 +14,18 @@ export default class GameDatabase {
   }
 
   async getGame(id: string) {
+    const cacheKey = `game:${id}`;
+    const cached = window.sessionStorage.getItem(cacheKey);
+    if (cached) {
+      return JSON.parse(cached) as GameInfo;
+    }
     const rsp = await fetch(`${this.url}/games/${id}`);
     if (rsp.ok) {
-      return (await rsp.json()) as GameInfo | undefined;
+      const info = (await rsp.json()) as GameInfo | undefined;
+      if (info) {
+        window.sessionStorage.setItem(cacheKey, JSON.stringify(info));
+      }
+      return info;
     }
   }
 }

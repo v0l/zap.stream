@@ -66,7 +66,10 @@ async function doInit() {
     await wasmInit(WasmPath);
   }
   try {
-    await workerRelay.init("relay.db");
+    await workerRelay.init({
+      databasePath: "relay.db",
+      insertBatchSize: 100,
+    });
   } catch (e) {
     console.error(e);
   }

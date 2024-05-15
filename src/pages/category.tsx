@@ -1,7 +1,7 @@
 import CategoryLink from "@/element/category-link";
-import Pill from "@/element/pill";
+import { CategoryTile } from "@/element/category/category-tile";
+import { CategoryZaps } from "@/element/category/zaps";
 import VideoGridSorted from "@/element/video-grid-sorted";
-import useGameInfo from "@/hooks/game-info";
 import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
@@ -29,7 +29,7 @@ export const AllCategories = [
     id: "music",
     name: <FormattedMessage defaultMessage="Music" />,
     icon: "music",
-    tags: ["music"],
+    tags: ["music", "radio"],
     priority: 0,
     className: "bg-category-gradient-3",
   },
@@ -69,7 +69,6 @@ export const AllCategories = [
 
 export default function Category() {
   const { id } = useParams();
-  const game = useGameInfo(id);
 
   const sub = useMemo(() => {
     if (!id) return;
@@ -90,19 +89,19 @@ export default function Category() {
           <CategoryLink key={a.id} {...a} />
         ))}
       </div>
-      <div className="flex gap-8 py-8">
-        {game?.cover && <img src={game?.cover} className="h-[250px]" />}
-        <div className="flex flex-col gap-4">
-          <h1>{game?.name}</h1>
-          {game?.genres && (
-            <div className="flex gap-2">
-              {game?.genres?.map(a => (
-                <Pill>{a}</Pill>
-              ))}
-            </div>
-          )}
+      {id && (
+        <div className="flex gap-4 py-8">
+          <CategoryTile
+            gameId={id}
+            showDetail={true}
+            extraDetail={
+              <div className="flex">
+                <CategoryZaps gameId={id} />
+              </div>
+            }
+          />
         </div>
-      </div>
+      )}
       <VideoGridSorted evs={results} showAll={true} />
     </div>
   );

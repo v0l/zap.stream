@@ -172,6 +172,18 @@ export function extractGameTag(tags: Array<string>) {
       };
     }
   }
+  if (gameId === undefined) {
+    const lowerTags = tags.map(a => a.toLowerCase());
+    const anyCat = AllCategories.find(a => a.tags.some(b => lowerTags.includes(b)));
+    if (anyCat) {
+      gameInfo = {
+        id: anyCat?.id,
+        name: anyCat.name,
+        genres: anyCat.tags,
+        className: anyCat.className,
+      };
+    }
+  }
   return { gameInfo, gameId };
 }
 

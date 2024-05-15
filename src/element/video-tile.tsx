@@ -50,11 +50,7 @@ export function VideoTile({
             {showStatus && <StatePill state={status as StreamState} />}
             {participants && (
               <Pill>
-                <FormattedMessage
-                  defaultMessage="{n} viewers"
-                  id="3adEeb"
-                  values={{ n: formatSats(Number(participants)) }}
-                />
+                <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
               </Pill>
             )}
           </span>

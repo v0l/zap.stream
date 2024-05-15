@@ -3,6 +3,11 @@ const intlSats = new Intl.NumberFormat(undefined, {
   maximumFractionDigits: 2,
 });
 
+const intlShortSats = new Intl.NumberFormat(undefined, {
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+
 export function formatShort(fmt: Intl.NumberFormat, n: number) {
   if (n < 2e3) {
     return n;
@@ -17,4 +22,8 @@ export function formatShort(fmt: Intl.NumberFormat, n: number) {
 
 export function formatSats(n: number) {
   return formatShort(intlSats, n);
+}
+
+export function formatSatsCompact(n: number) {
+  return formatShort(intlShortSats, n);
 }

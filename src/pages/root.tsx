@@ -13,7 +13,7 @@ export function RootPage() {
           <CategoryLink key={a.id} {...a} />
         ))}
       </div>
-      <VideoGridSorted evs={streams} />
+      <VideoGridSorted evs={streams} showEnded={false} showPopular={true} />
     </div>
   );
 }

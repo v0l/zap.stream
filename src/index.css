@@ -73,6 +73,10 @@ a {
   outline: none;
 }
 
+.h-inherit {
+  height: inherit;
+}
+
 input[type="text"],
 textarea,
 input[type="datetime-local"],
