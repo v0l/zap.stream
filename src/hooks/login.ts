@@ -6,7 +6,7 @@ import { useRequestBuilder } from "@snort/system-react";
 import { useUserEmojiPacks } from "@/hooks/emoji";
 import { MUTED, USER_CARDS, USER_EMOJIS } from "@/const";
 import type { Tags } from "@/types";
-import { getPublisher, getSigner, Login } from "@/login";
+import { getPublisher, getSigner, Login, LoginSession } from "@/login";
 
 export function useLogin() {
   const session = useSyncExternalStore(
@@ -21,6 +21,9 @@ export function useLogin() {
     },
     signer: () => {
       return getSigner(session);
+    },
+    update: (fn: (s: LoginSession) => void) => {
+      Login.update(fn);
     },
   };
 }

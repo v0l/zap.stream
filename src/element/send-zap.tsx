@@ -19,6 +19,7 @@ import Pill from "./pill";
 import { useUserProfile } from "@snort/system-react";
 import { getHost } from "@/utils";
 import { getName } from "./profile";
+import { useWallet } from "@/hooks/wallet";
 
 export interface LNURLLike {
   get name(): string;
@@ -48,6 +49,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
   const login = useLogin();
+  const wallet = useWallet();
   const rate = useRates("BTCUSD");
   const relays = Object.keys(defaultRelays);
   const name = targetName ?? svc?.name;
@@ -96,10 +98,9 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
     const invoice = await svc.getInvoice(amountInSats, comment, zap);
     if (!invoice.pr) return;
 
-    if (window.webln) {
-      await window.webln.enable();
+    if (wallet) {
       try {
-        await window.webln.sendPayment(invoice.pr);
+        await wallet.payInvoice(invoice.pr);
         onFinish();
       } catch (error) {
         setInvoice(invoice.pr);
