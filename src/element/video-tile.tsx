@@ -12,6 +12,7 @@ import Pill from "./pill";
 import classNames from "classnames";
 import Logo from "./logo";
 import { useContentWarning } from "./nsfw";
+import { useState } from "react";
 
 export function VideoTile({
   ev,
@@ -27,7 +28,7 @@ export function VideoTile({
   const isGrownUp = useContentWarning();
 
   const link = NostrLink.fromEvent(ev);
-  const hasImg = (image?.length ?? 0) > 0;
+  const [hasImg, setHasImage] = useState((image?.length ?? 0) > 0);
   return (
     <div className="flex flex-col gap-2">
       <Link
@@ -42,7 +43,9 @@ export function VideoTile({
         state={ev}>
         <div className="relative mb-2 aspect-video">
           {hasImg ? (
-            <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} />
+            <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} onError={() => {
+              setHasImage(false);
+            }} />
           ) : (
             <Logo className="text-white aspect-video" />
           )}
