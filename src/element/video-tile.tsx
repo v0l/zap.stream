@@ -43,9 +43,14 @@ export function VideoTile({
         state={ev}>
         <div className="relative mb-2 aspect-video">
           {hasImg ? (
-            <img loading="lazy" className="aspect-video object-cover rounded-xl" src={image} onError={() => {
-              setHasImage(false);
-            }} />
+            <img
+              loading="lazy"
+              className="aspect-video object-cover rounded-xl"
+              src={image}
+              onError={() => {
+                setHasImage(false);
+              }}
+            />
           ) : (
             <Logo className="text-white aspect-video" />
           )}
