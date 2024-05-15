@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "Sasa moja kwa moja"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Uvamizi"
   },
   "/0TOL5": {
     "defaultMessage": "Kiasi"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Kiongeza cha Saini ya Nostr"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Ingia kwa kutumia Ufunguo Binafsi"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Ghairi"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Jamii"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

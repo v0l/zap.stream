@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "Ao vivo agora"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Incursões"
   },
   "/0TOL5": {
     "defaultMessage": "Quantidade"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "extensão do nostr signer"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Entrar com chave privada"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Cancelar"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

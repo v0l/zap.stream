@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "En directo"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Redadas"
   },
   "/0TOL5": {
     "defaultMessage": "Cantidad"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "extensión del firmante nostr"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Inicio de sesión con clave privada"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Cancelar"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

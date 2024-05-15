@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "На живо сега"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Набези"
   },
   "/0TOL5": {
     "defaultMessage": "Количество"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "ностър подписващо разширение"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Вход със частен ключ"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Отказ"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

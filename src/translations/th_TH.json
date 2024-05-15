@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "ถ่ายทอดสดตอนนี้"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "เข้าชม"
   },
   "/0TOL5": {
     "defaultMessage": "จำนวน"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Nostr Extension"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "เข้าสู่ระบบด้วย nsec"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "ยกเลิก"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "หมวดหมู่"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

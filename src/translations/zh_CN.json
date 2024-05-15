@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "现在直播"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "突袭"
   },
   "/0TOL5": {
     "defaultMessage": "金额"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "nostr 签名扩展"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "使用私钥登录"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "取消"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "类别"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "Jetzt live"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Raids"
   },
   "/0TOL5": {
     "defaultMessage": "Betrag"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Nostr Signier-Erweiterung"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Mit privatem Schlüssel anmelden"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Abbrechen"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Kategorie"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "Dies erlaubt dir, deinen Stream an andere Plattformen weiterzuleiten, um ein breiteres Publikum zu erreichen."

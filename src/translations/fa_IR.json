@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "زنده"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Raids"
   },
   "/0TOL5": {
     "defaultMessage": "مبلغ"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "افزونه امضای ناستر"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "ورود با کلید خصوصی"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "لغو"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

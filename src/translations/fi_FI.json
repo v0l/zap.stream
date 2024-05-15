@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "Livenä nyt"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Ratsiat"
   },
   "/0TOL5": {
     "defaultMessage": "Määrä"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "nostr-allekirjoituslaajennus"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Kirjaudu sisään yksityisellä avaimella"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Peruuta"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

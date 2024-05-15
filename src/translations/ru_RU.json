@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "Живите сейчас"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "Рейды"
   },
   "/0TOL5": {
     "defaultMessage": "Количество"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Расширение для подписи nostr"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "Войти с приватным ключом"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "Отменить"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."

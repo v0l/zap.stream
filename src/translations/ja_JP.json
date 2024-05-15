@@ -8,11 +8,17 @@
   "+sdKx8": {
     "defaultMessage": "ライブ配信中"
   },
+  "+vVZ/G": {
+    "defaultMessage": "Connect"
+  },
   "+y6JUK": {
     "defaultMessage": "襲撃"
   },
   "/0TOL5": {
     "defaultMessage": "金額"
+  },
+  "/563b0": {
+    "defaultMessage": "Balance: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "ノストル・シグナー・エクステンション"
@@ -76,6 +82,9 @@
   },
   "3df560": {
     "defaultMessage": "秘密鍵でログイン"
+  },
+  "3yk8fB": {
+    "defaultMessage": "Wallet"
   },
   "47FYwb": {
     "defaultMessage": "キャンセル"
@@ -561,6 +570,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cg1VJ2": {
+    "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
