@@ -18,7 +18,7 @@
     "defaultMessage": "จำนวน"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "คงเหลือ: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Nostr Extension"
@@ -30,7 +30,7 @@
     "defaultMessage": "ทั้งหมด: {amount} sats"
   },
   "/aFYQ5": {
-    "defaultMessage": "Stream Forwarding (optional)"
+    "defaultMessage": "การเผยแพร่สตรีม (ถ้ามี)"
   },
   "/w4RM6": {
     "defaultMessage": "เหตุการณ์ในชีวิตจริง"
@@ -54,7 +54,7 @@
     "defaultMessage": "แท็ก"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "หยุดแล้ว"
   },
   "1q4BO/": {
     "defaultMessage": "URL ไม่ถูกต้อง"
@@ -66,10 +66,10 @@
     "defaultMessage": "เพิ่ม"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "{n} ชั่วโมง"
   },
   "2wdFaB": {
-    "defaultMessage": "End Stream"
+    "defaultMessage": "สิ้นสุดการถ่ายทอดสด"
   },
   "37mth/": {
     "defaultMessage": "ผู้ชม"
@@ -84,7 +84,7 @@
     "defaultMessage": "เข้าสู่ระบบด้วย nsec"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "กระเป๋า"
   },
   "47FYwb": {
     "defaultMessage": "ยกเลิก"
@@ -105,7 +105,7 @@
     "defaultMessage": "ต้องการใช้ Stream Key"
   },
   "58DXVG": {
-    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+    "defaultMessage": "หากคุณต้องการเริ่มเผยแพร่ เพียงแค่นำรหัสสตรีมจากแพลตฟอร์มที่ต้องการเผยแพร่ มาตั้งค่าในกล่องด้านล่างได้เลย"
   },
   "5JcXdV": {
     "defaultMessage": "สร้างบัญชี"
@@ -117,7 +117,7 @@
     "defaultMessage": "เวลาเริ่ม"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "ราคา"
   },
   "5kx+2v": {
     "defaultMessage": "ที่อยู่ของเซิร์ฟเวอร์"
@@ -150,7 +150,7 @@
     "defaultMessage": "ออฟไลน์"
   },
   "89UZph": {
-    "defaultMessage": "Configure your streaming software"
+    "defaultMessage": "ตั้งค่าโปรแกรมที่ใช้ในการสตรีมของคุณ"
   },
   "8YT6ja": {
     "defaultMessage": "ป้อนข้อความที่ต้องการให้พูด"
@@ -180,7 +180,7 @@
     "defaultMessage": "เขียนโดย {ชื่อ}"
   },
   "AYIR/J": {
-    "defaultMessage": "Remove Image"
+    "defaultMessage": "ลบรูปภาพ"
   },
   "Atr2p4": {
     "defaultMessage": "เนื้อหาที่ไม่เหมาะสม"
@@ -234,7 +234,7 @@
     "defaultMessage": "ถ่ายทอดสด"
   },
   "E7n6zr": {
-    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
+    "defaultMessage": "ค่าใช้จ่าย: {amount} sats/{unit} (ประมาณ {usd}/วัน สำหรับการถ่ายทอดสด {x} ชั่วโมง)"
   },
   "E9APoR": {
     "defaultMessage": "ไม่สามารถสร้าง stream url ได้"
@@ -258,7 +258,7 @@
     "defaultMessage": "ลบ"
   },
   "G857ni": {
-    "defaultMessage": "LNURL or invoice"
+    "defaultMessage": "LNURL หรือ invoice"
   },
   "GGaJMU": {
     "defaultMessage": "โคตรปากแจ๋ว"
@@ -279,7 +279,7 @@
     "defaultMessage": "โปรดจำไว้ว่า! บันทึกรหัสกุญแจลับนี้ไว้ให้ดี ไม่งั้นคุณจะไม่สามารถเข้าสู่บัญชีนี้ได้อีก หรือหากใครได้ไปเขาก็จะใช้บัญชีของคุณได้"
   },
   "H4hJvF": {
-    "defaultMessage": "Choose a category"
+    "defaultMessage": "เลือกหมวดหมู่"
   },
   "H5+NAX": {
     "defaultMessage": "ยอดคงเหลือ"
@@ -294,7 +294,7 @@
     "defaultMessage": "ตอนนี้ฉัน stream อยู่บน zap.stream นะ! {link}"
   },
   "Ht231k": {
-    "defaultMessage": "Forwarding"
+    "defaultMessage": "การเผยแพร่"
   },
   "I1kjHI": {
     "defaultMessage": "สนับสนุน {markdown}"
@@ -309,7 +309,7 @@
     "defaultMessage": "หรือ"
   },
   "IPXhUW": {
-    "defaultMessage": "Last Stream Summary"
+    "defaultMessage": "สรุปผลการสตรีมล่าสุด"
   },
   "IqcyS0": {
     "defaultMessage": "nostr extension คืออะไร?"
@@ -360,7 +360,7 @@
     "defaultMessage": "Stream Key"
   },
   "LxSJOb": {
-    "defaultMessage": "Go to Dashboard"
+    "defaultMessage": "ไปหน้าแดชบอร์ด"
   },
   "MTHO1W": {
     "defaultMessage": "เริ่มบุกเข้าชม"
@@ -390,13 +390,13 @@
     "defaultMessage": "สร้างคลิป"
   },
   "PHE60k": {
-    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+    "defaultMessage": "เว้นว่างไว้หากคุณไม่ต้องการกำหนดเป้าหมาย"
   },
   "PUymyQ": {
     "defaultMessage": "ตอนนี้ {name} stream อยู่บน zap.stream นะ! {link}"
   },
   "PXAur5": {
-    "defaultMessage": "Withdraw"
+    "defaultMessage": "ถอนเงิน"
   },
   "Pe0ogR": {
     "defaultMessage": "ธีม"
@@ -405,7 +405,7 @@
     "defaultMessage": "ประมาณ {estimate}"
   },
   "Q8Qw5B": {
-    "defaultMessage": "Description"
+    "defaultMessage": "คำอธิบาย"
   },
   "QNvtaq": {
     "defaultMessage": "แชร์ไปที่ X"
@@ -429,7 +429,7 @@
     "defaultMessage": "คุณมีไม่กี่ตัวเลือก, คือใช้โฮสติ้งภายในของเราหรือของคุณเอง (เช่น Cloudflare)"
   },
   "R72je0": {
-    "defaultMessage": "Stream Title"
+    "defaultMessage": "ชื่อสตรีม"
   },
   "RJOmzk": {
     "defaultMessage": "ฉันได้อ่าน {terms} เรียบร้อยและ เห็นด้วยกับ {provider} ในข้อกำหนดและเงื่อนไขการใช้เว็บไซต์หรือการใช้แอปพลิเคชัน"
@@ -453,7 +453,7 @@
     "defaultMessage": "ตัวแปลงสัญญาณเสียง"
   },
   "TDUfVk": {
-    "defaultMessage": "Started"
+    "defaultMessage": "เริ่มไปแล้ว"
   },
   "TP/cMX": {
     "defaultMessage": "จบแล้ว"
@@ -511,7 +511,7 @@
     "defaultMessage": "ปฏิกิริยา"
   },
   "Xq2sb0": {
-    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+    "defaultMessage": "หากต้องการถ่ายทอดสด คัดลอกที่อยู่ของเซิร์ฟเวอร์และรหัสสตรีมด้านล่าง ไปตั้งค่าในโปรแกรมการถ่ายทอดสด (แนะนำให้ใช้โปรแกรม <a>OBS</a>.) จากนั้นกดปุ่มเริ่มการสตรีม"
   },
   "Y0DXJb": {
     "defaultMessage": "URL ในการบันทึก"
@@ -524,7 +524,7 @@
     "defaultMessage": "{n}p"
   },
   "YjhNaf": {
-    "defaultMessage": "Create Stream"
+    "defaultMessage": "เริ่มถ่ายทอดสด"
   },
   "YwzT/0": {
     "defaultMessage": "พาดหัวคลิป"
@@ -572,10 +572,10 @@
     "defaultMessage": "หมวดหมู่"
   },
   "cg1VJ2": {
-    "defaultMessage": "Connect Wallet"
+    "defaultMessage": "เชื่อมต่อกระเป๋า"
   },
   "cntHHJ": {
-    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+    "defaultMessage": "การตั้งค่านี้จะทำให้คุณสามารถเผยแพร่การถ่ายทอดสดไปยังแพลตฟอร์มอื่น ๆ ได้ เพื่อเข้าถึงผู้ชมได้มากยิ่งขึ้น"
   },
   "cvAsEh": {
     "defaultMessage": "ถ่ายทอดสดเมื่อ {date}"
@@ -615,10 +615,10 @@
     "defaultMessage": "เกี่ยวกับ"
   },
   "gQxxlw": {
-    "defaultMessage": "Goal Name"
+    "defaultMessage": "ชื่อเป้าหมาย"
   },
   "gt65Gg": {
-    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
+    "defaultMessage": "การตั้งเป้าหมายการสตรีมจะช่วยให้ผู้ชมต้องการสนับสนุนสตรีมเมอร์มากขึ้น ผ่านช่องทางการสนับสนุนต่าง ๆ"
   },
   "gzsn7k": {
     "defaultMessage": "{n} ข้อความ"
@@ -672,7 +672,7 @@
     "defaultMessage": "ชื่อผู้ใช้ยาวเกินไป"
   },
   "khJ51Q": {
-    "defaultMessage": "Stream Earnings"
+    "defaultMessage": "รายได้จากการสตรีม"
   },
   "kp0NPF": {
     "defaultMessage": "วางกำหนดการแล้ว"
@@ -699,7 +699,7 @@
     "defaultMessage": "เพิ่มคำอธิบายเกี่ยวกับถ่ายทอดสดนี้"
   },
   "n19IQE": {
-    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+    "defaultMessage": "ขนาดหน้าจอแนะนำ: 1920x1080 (16:9)"
   },
   "nBCvvJ": {
     "defaultMessage": "เติมเงิน"
@@ -723,22 +723,22 @@
     "defaultMessage": "อัพโหลด"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "เป็นที่นิยม"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "q9ryv4": {
-    "defaultMessage": "Cover image URL (optional)"
+    "defaultMessage": "ลิงก์ภาพหน้าปก (ถ้ามี)"
   },
   "qx6bv2": {
-    "defaultMessage": "Stream Goal (optional)"
+    "defaultMessage": "เป้าหมายการสตรีม (ถ้ามี)"
   },
   "r2Jjms": {
     "defaultMessage": "เข้าสู่ระบบ"
   },
   "rJqhFR": {
-    "defaultMessage": "Stream Setup"
+    "defaultMessage": "ตั้งค่าการสตรีม"
   },
   "rWBFZA": {
     "defaultMessage": "เตือน! เนื้อหามีส่วนของภาพโป๊เปลือย หรือสื่อลามก"
@@ -817,7 +817,7 @@
     "defaultMessage": "ที่อยู่ Nostr ไม่ถูกต้อง"
   },
   "we4Lby": {
-    "defaultMessage": "Info"
+    "defaultMessage": "ข้อมูล"
   },
   "wzWWzV": {
     "defaultMessage": "สุดยอดมือ Zap"
@@ -850,7 +850,7 @@
     "defaultMessage": "พูดคุย"
   },
   "zSYDJP": {
-    "defaultMessage": "I have my own stream host"
+    "defaultMessage": "ฉันมีโฮสต์ในการสตรีมของตัวเอง"
   },
   "zVDHAu": {
     "defaultMessage": "การแสดงผู้ Zap"

@@ -9,7 +9,7 @@
     "defaultMessage": "Jetzt live"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Verbinden"
   },
   "+y6JUK": {
     "defaultMessage": "Raids"
@@ -18,7 +18,7 @@
     "defaultMessage": "Betrag"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "Guthaben: {n} Sats"
   },
   "/EvlqN": {
     "defaultMessage": "Nostr Signier-Erweiterung"
@@ -572,7 +572,7 @@
     "defaultMessage": "Kategorie"
   },
   "cg1VJ2": {
-    "defaultMessage": "Connect Wallet"
+    "defaultMessage": "Wallet verbinden"
   },
   "cntHHJ": {
     "defaultMessage": "Dies erlaubt dir, deinen Stream an andere Plattformen weiterzuleiten, um ein breiteres Publikum zu erreichen."
@@ -723,7 +723,7 @@
     "defaultMessage": "Hochladen"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "Beliebt"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> hat <s>{amount}</s> sats gezappt"
