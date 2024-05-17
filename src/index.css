@@ -77,12 +77,12 @@ a {
   height: inherit;
 }
 
-input[type="text"],
-textarea,
-input[type="datetime-local"],
-input[type="password"],
-input[type="number"],
-select {
+input[type="text"]:not(.reset),
+textarea:not(.reset),
+input[type="datetime-local"]:not(.reset),
+input[type="password"]:not(.reset),
+input[type="number"]:not(.reset),
+select:not(.reset) {
   @apply bg-layer-2 w-full font-medium px-4 py-2 rounded-xl;
 }
 

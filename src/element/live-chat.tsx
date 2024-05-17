@@ -47,7 +47,6 @@ export function LiveChat({
   ev,
   goal,
   canWrite,
-  showHeader,
   showTopZappers,
   showGoal,
   showScrollbar,
@@ -59,7 +58,6 @@ export function LiveChat({
   ev?: NostrEvent;
   goal?: NostrEvent;
   canWrite?: boolean;
-  showHeader?: boolean;
   showTopZappers?: boolean;
   showGoal?: boolean;
   showScrollbar?: boolean;
@@ -116,27 +114,11 @@ export function LiveChat({
   }, [events, mutedPubkeys, hostMutedPubkeys]);
 
   return (
-    <div className={classNames("flex flex-col gap-2", className)} style={height ? { height: `${height}px` } : {}}>
-      {(showHeader ?? true) && (
-        <div className={classNames("flex justify-between items-center")}>
-          <h2 className="py-4">
-            <FormattedMessage defaultMessage="Stream Chat" id="BGxpTN" />
-          </h2>
-          <Icon
-            name="link"
-            className="secondary"
-            size={32}
-            onClick={() => window.open(`/chat/${link.encode()}?chat=true`, "_blank", "popup,width=400,height=800")}
-          />
-        </div>
-      )}
+    <div className={classNames("flex flex-col gap-1", className)} style={height ? { height: `${height}px` } : {}}>
       {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
-        <div className="py-2">
-          <h3>
-            <FormattedMessage defaultMessage="Top zappers" id="wzWWzV" />
-          </h3>
-          <div className="mt-1 flex gap-1 overflow-x-auto scrollbar-hidden">
-            <TopZappers zaps={reactions.zaps} className="border border-layer-1 rounded-full py-1 px-2" />
+        <div>
+          <div className="flex gap-1 overflow-x-auto scrollbar-hidden">
+            <TopZappers zaps={reactions.zaps} className="border border-layer-2 rounded-full py-1 px-2" />
           </div>
         </div>
       )}

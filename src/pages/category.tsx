@@ -1,4 +1,4 @@
-import CategoryLink from "@/element/category-link";
+import CategoryLink from "@/element/category/category-link";
 import { CategoryTile } from "@/element/category/category-tile";
 import { CategoryZaps } from "@/element/category/zaps";
 import VideoGridSorted from "@/element/video-grid-sorted";
@@ -68,11 +68,10 @@ export const AllCategories = [
 ];
 
 export default function Category() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id ?? AllCategories[0].id;
 
   const sub = useMemo(() => {
-    if (!id) return;
-
     const cat = AllCategories.find(a => a.id === id);
     const rb = new RequestBuilder(`category:${id}`);
     rb.withFilter()
@@ -86,7 +85,7 @@ export default function Category() {
     <div>
       <div className="flex gap-4 overflow-x-scroll scrollbar-hidden">
         {AllCategories.map(a => (
-          <CategoryLink key={a.id} {...a} />
+          <CategoryLink key={a.id} id={a.id} name={a.name} icon={a.icon} />
         ))}
       </div>
       {id && (

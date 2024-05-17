@@ -12,6 +12,7 @@ export default function useGameInfo(gameId?: string, gameInfo?: GameInfo) {
         const ix = AllCategories.find(a => a.id === id || a.id === gameId);
         if (ix) {
           setGame({
+            ...ix,
             id: `internal:${ix.id}`,
             name: ix.name,
             genres: ix.tags,

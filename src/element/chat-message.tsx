@@ -43,7 +43,7 @@ export function ChatMessage({
 }) {
   const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useIntersectionObserver(ref, {
+  const inView = useIntersectionObserver({
     freezeOnceVisible: true,
   });
   const emojiRef = useRef(null);
@@ -136,9 +136,7 @@ export function ChatMessage({
               <Icon name="signal" size={16} />
             ) : (
               awardedBadges.map(badge => {
-                return (
-                  <img key={badge.name} className="badge-icon" src={badge.thumb || badge.image} alt={badge.name} />
-                );
+                return <img key={badge.name} className="h-4" src={badge.thumb || badge.image} alt={badge.name} />;
               })
             )
           }

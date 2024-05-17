@@ -34,7 +34,6 @@ export default function SearchPage() {
           type="text"
           placeholder={formatMessage({
             defaultMessage: "Search",
-            id: "xmcVZ0",
           })}
           value={search}
           onChange={e => setSearch(e.target.value)}
@@ -58,7 +57,6 @@ export default function SearchPage() {
           <h2 className="mb-4">
             <FormattedMessage
               defaultMessage="Search results: {term}"
-              id="A1zT+z"
               values={{
                 term,
               }}

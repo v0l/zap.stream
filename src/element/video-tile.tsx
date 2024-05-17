@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
-import { Profile } from "./profile";
+import { getName } from "./profile";
 import { NostrEvent, NostrLink } from "@snort/system";
 import { FormattedMessage } from "react-intl";
 
 import { StatePill } from "./state-pill";
-import { extractStreamInfo, getHost } from "@/utils";
+import { extractStreamInfo, getHost, profileLink } from "@/utils";
 import { formatSats } from "@/number";
-import { Tags } from "./tags";
 import { StreamState } from "@/const";
 import Pill from "./pill";
 import classNames from "classnames";
 import Logo from "./logo";
 import { useContentWarning } from "./nsfw";
 import { useState } from "react";
+import { Avatar } from "./avatar";
+import { useUserProfile } from "@snort/system-react";
 
 export function VideoTile({
   ev,
@@ -25,6 +26,7 @@ export function VideoTile({
 }) {
   const { title, image, status, participants, contentWarning } = extractStreamInfo(ev);
   const host = getHost(ev);
+  const hostProfile = useUserProfile(host);
   const isGrownUp = useContentWarning();
 
   const link = NostrLink.fromEvent(ev);
@@ -63,12 +65,18 @@ export function VideoTile({
             )}
           </span>
         </div>
-        <h3>{title}</h3>
       </Link>
-      <div className="flex gap-1 flex-wrap">
-        <Tags ev={ev} max={3} />
+      <div className="flex gap-3">
+        {showAuthor && (
+          <Link to={profileLink(hostProfile, host)}>
+            <Avatar pubkey={host} user={hostProfile} />
+          </Link>
+        )}
+        <div className="flex flex-col">
+          <span className="font-medium">{title}</span>
+          {showAuthor && <span className="text-layer-4">{getName(host, hostProfile)}</span>}
+        </div>
       </div>
-      {showAuthor && <Profile pubkey={host} />}
     </div>
   );
 }

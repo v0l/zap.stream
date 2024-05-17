@@ -12,7 +12,6 @@ import { RootPage } from "@/pages/root";
 import { TagPage } from "@/pages/tag";
 import { LayoutPage } from "@/pages/layout";
 import { ProfilePage } from "@/pages/profile-page";
-import { StreamPageHandler } from "@/pages/stream-page";
 import { ChatPopout } from "@/pages/chat-popout";
 import { defaultRelays } from "@/const";
 import { CatchAllRoutePage } from "@/pages/catch-all";
@@ -39,6 +38,10 @@ import DashboardIntroStep2 from "./pages/dashboard/intro/step2";
 import DashboardIntroStep3 from "./pages/dashboard/intro/step3";
 import DashboardIntroStep4 from "./pages/dashboard/intro/step4";
 import DashboardIntroFinal from "./pages/dashboard/intro/final";
+import { LayoutContextProvider } from "./pages/layout/context";
+import { VideosPage } from "./pages/videos";
+import { LinkHandler } from "./pages/link-handler";
+import { UploadPage } from "./pages/upload";
 
 const hasWasm = "WebAssembly" in globalThis;
 const workerRelay = new WorkerRelayInterface(
@@ -94,6 +97,18 @@ const router = createBrowserRouter([
         element: <RootPage />,
       },
       {
+        path: "/streams",
+        element: <RootPage />,
+      },
+      {
+        path: "/videos",
+        element: <VideosPage />,
+      },
+      {
+        path: "/upload",
+        element: <UploadPage />,
+      },
+      {
         path: "/t/:tag",
         element: <TagPage />,
       },
@@ -103,7 +118,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:id",
-        element: <StreamPageHandler />,
+        element: <LinkHandler />,
       },
       {
         path: "/settings",
@@ -207,7 +222,9 @@ root.render(
   <React.StrictMode>
     <SnortContext.Provider value={System}>
       <IntlProvider>
-        <RouterProvider router={router} />
+        <LayoutContextProvider>
+          <RouterProvider router={router} />
+        </LayoutContextProvider>
       </IntlProvider>
     </SnortContext.Provider>
   </React.StrictMode>

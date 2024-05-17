@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import Pill from "./pill";
 import { CategoryZaps } from "./category/zaps";
 import { StreamState } from "@/const";
+import { useRecentClips } from "@/hooks/clips";
+import { ClipTile } from "./clip-tile";
 
 interface VideoGridSortedProps {
   evs: Array<TaggedNostrEvent>;
@@ -18,9 +20,17 @@ interface VideoGridSortedProps {
   showEnded?: boolean;
   showPlanned?: boolean;
   showPopular?: boolean;
+  showRecentClips?: boolean;
 }
 
-export default function VideoGridSorted({ evs, showAll, showEnded, showPlanned, showPopular }: VideoGridSortedProps) {
+export default function VideoGridSorted({
+  evs,
+  showAll,
+  showEnded,
+  showPlanned,
+  showPopular,
+  showRecentClips,
+}: VideoGridSortedProps) {
   const login = useLogin();
   const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
   const tags = login?.follows.tags ?? [];
@@ -71,6 +81,7 @@ export default function VideoGridSorted({ evs, showAll, showEnded, showPlanned, 
         <GridSection header={`#${t.tag}`} items={t.live} />
       ))}
       {showPopular && <PopularCategories items={evs} />}
+      {showRecentClips && <RecentClips />}
       {hasFollowingLive && liveNow.length > 0 && (
         <GridSection header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />} items={liveNow} />
       )}
@@ -167,6 +178,26 @@ function PopularCategories({ items }: { items: Array<TaggedNostrEvent> }) {
           </Link>
         ))}
       </div>
+    </>
+  );
+}
+
+function RecentClips() {
+  const clips = useRecentClips();
+
+  return (
+    <>
+      <div className="flex items-center gap-4">
+        <h3 className="whitespace-nowrap">
+          <FormattedMessage defaultMessage="Recent Clips" />
+        </h3>
+        <span className="h-[1px] bg-layer-1 w-full" />
+      </div>
+      <VideoGrid>
+        {clips.slice(0, 5).map(a => (
+          <ClipTile ev={a} key={a.id} />
+        ))}
+      </VideoGrid>
     </>
   );
 }

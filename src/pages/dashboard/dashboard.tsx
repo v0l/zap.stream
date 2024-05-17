@@ -78,7 +78,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
 
   return (
     <div
-      className={classNames("grid gap-2 h-[calc(100%-48px-1rem)]", {
+      className={classNames("grid gap-2 h-[calc(100dvh-52px)]", {
         "grid-cols-3": status === StreamState.Live,
         "grid-cols-[20%_80%]": status === StreamState.Ended,
       })}>

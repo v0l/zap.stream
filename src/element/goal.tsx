@@ -10,9 +10,7 @@ import { formatSats } from "@/number";
 import usePreviousValue from "@/hooks/usePreviousValue";
 import { SendZapsDialog } from "./send-zap";
 import { getName } from "./profile";
-import { Icon } from "./icon";
 import { useZaps } from "@/hooks/zaps";
-import classNames from "classnames";
 
 export function Goal({ ev, confetti }: { ev: NostrEvent; confetti?: boolean }) {
   const profile = useUserProfile(ev.pubkey);
@@ -39,26 +37,19 @@ export function Goal({ ev, confetti }: { ev: NostrEvent; confetti?: boolean }) {
   const previousValue = usePreviousValue(isFinished);
 
   const goalContent = (
-    <div className="flex flex-col gap-2 cursor-pointer">
+    <div className="flex flex-col cursor-pointer">
       {ev.content.length > 0 && <p>{ev.content}</p>}
       <div className="relative h-10">
         <div className="absolute bg-layer-2 h-3 rounded-full my-4 w-full"></div>
         <div
-          className="absolute bg-zap h-3 rounded-full text-xs font-medium my-4 leading-3 pl-2"
+          className="absolute bg-zap h-3 rounded-full text-xs font-medium my-4 leading-3 pl-1"
           style={{
             width: `${progress}%`,
           }}>
           {soFar > 0 ? formatSats(soFar) : ""}
         </div>
-        <div className="absolute text-right text-xs right-10 font-medium my-4 leading-3">
+        <div className="absolute text-right text-xs right-1 font-medium my-4 leading-3">
           <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
-        </div>
-        <div
-          className={classNames("absolute right-0 rounded-full p-2 my-1", {
-            "bg-zap": isFinished,
-            "bg-layer-2": !isFinished,
-          })}>
-          <Icon name="zap-filled" />
         </div>
       </div>
       {isFinished && previousValue === false && (confetti ?? true) && (

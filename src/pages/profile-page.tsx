@@ -1,6 +1,6 @@
 import "./profile-page.css";
 import { useMemo } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, parseNostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { unwrap } from "@snort/shared";
@@ -13,7 +13,7 @@ import { FollowButton } from "@/element/follow-button";
 import { MuteButton } from "@/element/mute-button";
 import { useProfile } from "@/hooks/profile";
 import { Text } from "@/element/text";
-import { findTag, profileLink } from "@/utils";
+import { findTag } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
 import { StreamState } from "@/const";
@@ -21,9 +21,9 @@ import { DefaultButton } from "@/element/buttons";
 import { useGoals } from "@/hooks/goals";
 import { Goal } from "@/element/goal";
 import { TopZappers } from "@/element/top-zappers";
-import { useClips } from "@/hooks/clips";
-import { getName } from "@/element/profile";
+import { useProfileClips } from "@/hooks/clips";
 import VideoGrid from "@/element/video-grid";
+import { ClipTile } from "@/element/clip-tile";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 
@@ -178,34 +178,9 @@ function ProfileZapGoals({ link }: { link: NostrLink }) {
 }
 
 function ProfileClips({ link }: { link: NostrLink }) {
-  const clips = useClips(link, 10);
+  const clips = useProfileClips(link, 10);
   if (clips.length === 0) {
     return <FormattedMessage defaultMessage="No clips yet" id="ObZZEz" />;
   }
-  return clips.map(a => <ProfileClip ev={a} key={a.id} />);
-}
-
-function ProfileClip({ ev }: { ev: NostrEvent }) {
-  const profile = useUserProfile(ev.pubkey);
-  const r = findTag(ev, "r");
-  const title = findTag(ev, "title");
-  return (
-    <div className="w-[300px] flex flex-col gap-4 bg-layer-1 rounded-xl px-3 py-2">
-      <span>
-        <FormattedMessage
-          defaultMessage="Clip by {name}"
-          id="dkUMIH"
-          values={{
-            name: (
-              <Link to={profileLink(profile, ev.pubkey)} className="font-medium text-primary">
-                {getName(ev.pubkey, profile)}
-              </Link>
-            ),
-          }}
-        />
-      </span>
-      {title}
-      <video src={r} controls />
-    </div>
-  );
+  return clips.map(a => <ClipTile ev={a} key={a.id} />);
 }

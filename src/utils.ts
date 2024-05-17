@@ -133,6 +133,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
       matchTag(t, "streaming", v => (ret.stream = v));
     }
     matchTag(t, "recording", v => (ret.recording = v));
+    matchTag(t, "url", v => (ret.recording = v));
     matchTag(t, "content-warning", v => (ret.contentWarning = v));
     matchTag(t, "current_participants", v => (ret.participants = v));
     matchTag(t, "goal", v => (ret.goal = v));
@@ -147,6 +148,10 @@ export function extractStreamInfo(ev?: NostrEvent) {
   ret.gameId = gameId;
   ret.gameInfo = gameInfo;
 
+  // video patch
+  if (ev?.kind === 34_235) {
+    ret.status = StreamState.VOD;
+  }
   return ret;
 }
 

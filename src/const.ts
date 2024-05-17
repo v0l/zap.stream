@@ -11,6 +11,8 @@ export const USER_CARDS = 17_777 as EventKind;
 export const CARD = 37_777 as EventKind;
 export const MUTED = 10_000 as EventKind;
 
+export const VIDEO_KIND = 34_235 as EventKind;
+
 export const DAY = 60 * 60 * 24;
 export const WEEK = 7 * DAY;
 
@@ -18,6 +20,7 @@ export enum StreamState {
   Live = "live",
   Ended = "ended",
   Planned = "planned",
+  VOD = "vod",
 }
 
 export const defaultRelays = {
