@@ -13,7 +13,7 @@ import { useLogin } from "@/hooks/login";
 import Copy from "./copy";
 import { defaultRelays } from "@/const";
 import { useRates } from "@/hooks/rates";
-import { DefaultButton } from "./buttons";
+import { DefaultButton, PrimaryButton } from "./buttons";
 import Modal from "./modal";
 import Pill from "./pill";
 import { useUserProfile } from "@snort/system-react";
@@ -212,12 +212,10 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
       {props.button ? (
         <div onClick={() => setOpen(true)}>{props.button}</div>
       ) : (
-        <DefaultButton onClick={() => setOpen(true)}>
-          <span className="max-xl:hidden">
-            <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-          </span>
+        <PrimaryButton onClick={() => setOpen(true)}>
           <Icon name="zap-filled" size={16} />
-        </DefaultButton>
+          <FormattedMessage defaultMessage="Zap" />
+        </PrimaryButton>
       )}
       {open && (
         <Modal id="send-zaps" onClose={() => setOpen(false)}>

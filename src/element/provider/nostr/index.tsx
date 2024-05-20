@@ -191,11 +191,7 @@ export default function NostrProviderDialog({
           <p className="pb-2">
             <FormattedMessage defaultMessage="Features" id="ZXp0z1" />
           </p>
-          <div className="flex gap-2">
-            {ep?.capabilities?.map(a => (
-              <Pill>{parseCapability(a)}</Pill>
-            ))}
-          </div>
+          <div className="flex gap-2">{ep?.capabilities?.map(a => <Pill>{parseCapability(a)}</Pill>)}</div>
         </div>
       </>
     );

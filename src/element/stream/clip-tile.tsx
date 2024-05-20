@@ -3,7 +3,7 @@ import { NostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { getName } from "./profile";
+import { getName } from "../profile";
 
 export function ClipTile({ ev }: { ev: NostrEvent }) {
   const profile = useUserProfile(ev.pubkey);

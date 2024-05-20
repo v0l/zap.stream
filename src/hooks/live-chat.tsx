@@ -12,7 +12,7 @@ export function useLiveChatFeed(link?: NostrLink, limit?: number) {
         rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(limit);
       }
     },
-    true
+    true,
   );
   return { messages, reactions: reactions ?? [] };
 }

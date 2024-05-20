@@ -3,8 +3,8 @@ import { NostrStreamProvider } from "@/providers";
 import { base64 } from "@scure/base";
 import { unwrap } from "@snort/shared";
 import { useEffect, useState } from "react";
-import { Icon } from "./icon";
-import { DefaultButton } from "./buttons";
+import { Icon } from "../icon";
+import { DefaultButton } from "../buttons";
 
 export function NotificationsButton({ host, service }: { host: string; service: string }) {
   const login = useLogin();
@@ -81,7 +81,7 @@ export function NotificationsButton({ host, service }: { host: string; service: 
 
   return (
     <DefaultButton onClick={subscribed ? unsubscribe : subscribe}>
-      <Icon name={subscribed ? "bell-off" : "bell-ringing"} />
+      <Icon name={subscribed ? "bell-off" : "bell-plus"} />
     </DefaultButton>
   );
 }

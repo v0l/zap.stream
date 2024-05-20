@@ -1,19 +1,26 @@
 import { EventKind, NostrLink } from "@snort/system";
 import React, { Suspense, lazy, useContext, useRef, useState } from "react";
-import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
-import { unixNowMs } from "@snort/shared";
+import { unixNowMs, unwrap } from "@snort/shared";
 
-const EmojiPicker = lazy(() => import("./emoji-picker"));
+const EmojiPicker = lazy(() => import("../emoji-picker"));
 import { useLogin } from "@/hooks/login";
-import { Icon } from "./icon";
+import { Icon } from "../icon";
 import { Textarea } from "./textarea";
 import type { Emoji, EmojiPack } from "@/types";
 import { LIVE_STREAM_CHAT } from "@/const";
 import { TimeSync } from "@/time-sync";
-import { BorderButton } from "./buttons";
+import AsyncButton from "../async-button";
 
-export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks: EmojiPack[] }) {
+export function WriteMessage({
+  link,
+  emojiPacks,
+  kind,
+}: {
+  link: NostrLink;
+  emojiPacks: EmojiPack[];
+  kind?: EventKind;
+}) {
   const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
   const emojiRef = useRef(null);
@@ -39,10 +46,10 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
 
       const reply = await pub?.generic(eb => {
         const emoji = [...emojiNames].map(name => emojis.find(e => e.at(1) === name));
-        eb.kind(LIVE_STREAM_CHAT as EventKind)
+        eb.kind(kind ?? (LIVE_STREAM_CHAT as EventKind))
           .content(chat)
           .createdAt(Math.floor((unixNowMs() - TimeSync) / 1000))
-          .tag(["a", `${link.kind}:${link.author}:${link.id}`, "", "root"])
+          .tag(unwrap(link.toEventTag("root")))
           .processContent();
         for (const e of emoji) {
           if (e) {
@@ -82,11 +89,21 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
 
   return (
     <>
-      <div className="grow flex bg-layer-2 rounded-xl items-center" ref={ref}>
-        <Textarea emojis={emojis} value={chat} onKeyDown={onKeyDown} onChange={e => setChat(e.target.value)} rows={2} />
-        <div onClick={pickEmoji} className="p-2">
+      <div className="grow flex bg-layer-2 px-3 py-2 rounded-xl items-center" ref={ref}>
+        <Textarea
+          className="!p-0 !rounded-none"
+          emojis={emojis}
+          value={chat}
+          onKeyDown={onKeyDown}
+          onChange={e => setChat(e.target.value)}
+          rows={1}
+        />
+        <AsyncButton onClick={pickEmoji} className="px-3 opacity-80">
           <Icon name="face" />
-        </div>
+        </AsyncButton>
+        <AsyncButton onClick={sendChatMessage} className="px-3 opacity-80">
+          <Icon name="send" />
+        </AsyncButton>
         {showEmojiPicker && (
           <Suspense>
             <EmojiPicker
@@ -100,9 +117,6 @@ export function WriteMessage({ link, emojiPacks }: { link: NostrLink; emojiPacks
           </Suspense>
         )}
       </div>
-      <BorderButton onClick={sendChatMessage}>
-        <FormattedMessage defaultMessage="Send" id="9WRlF4" />
-      </BorderButton>
     </>
   );
 }

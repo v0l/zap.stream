@@ -2,8 +2,8 @@
 import Hls from "hls.js";
 import { HTMLProps, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Icon } from "./icon";
-import { ProgressBar } from "./progress-bar";
+import { Icon } from "../icon";
+import { ProgressBar } from "../progress-bar";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { StreamState } from "@/const";
 import classNames from "classnames";
@@ -140,7 +140,7 @@ export default function LiveVideoPlayer({
   }, [video, volume, muted]);
 
   const { isPictureInPictureActive, isPictureInPictureAvailable, togglePictureInPicture } = usePictureInPicture(
-    video as VideoRefType
+    video as VideoRefType,
   );
 
   const handlePIPClick = useCallback(async () => {
@@ -222,7 +222,7 @@ export default function LiveVideoPlayer({
                   />
                 )}
               </div>
-              <div className="flex gap-1 items-center h-full py-2">
+              <div className="flex gap-1 items-center h-full py-2 max-sm:hidden">
                 <Icon name={muted ? "volume-muted" : "volume"} onClick={toggleMute} />
                 <ProgressBar value={volume} setValue={v => setVolume(v)} style={{ width: "100px", height: "100%" }} />
               </div>
@@ -244,7 +244,9 @@ export default function LiveVideoPlayer({
                 </Menu>
               </div>
               {isPictureInPictureAvailable && (
-                <div className="pl-3 py-2 cursor-pointer tracking-wide font-bold text-sm" onClick={handlePIPClick}>
+                <div
+                  className="pl-3 py-2 cursor-pointer tracking-wide font-bold text-sm max-xl:hidden"
+                  onClick={handlePIPClick}>
                   PIP
                 </div>
               )}

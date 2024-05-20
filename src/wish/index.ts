@@ -58,7 +58,7 @@ export class WISH extends TypedEventTarget {
         detail: {
           message: str,
         },
-      })
+      }),
     );
   }
 
@@ -139,7 +139,7 @@ export class WISH extends TypedEventTarget {
       }
       if (pair.local && pair.remote) {
         this.logMessage(
-          `[${track.kind}] Selected Candidate: (local ${pair.local.address})-(remote ${pair.remote.candidate})`
+          `[${track.kind}] Selected Candidate: (local ${pair.local.address})-(remote ${pair.remote.candidate})`,
         );
       }
     };
@@ -178,7 +178,7 @@ export class WISH extends TypedEventTarget {
             detail: {
               status: "disconnected",
             },
-          })
+          }),
         );
         break;
     }
@@ -299,7 +299,7 @@ export class WISH extends TypedEventTarget {
             detail: {
               status: "connected",
             },
-          })
+          }),
         );
         this.connecting = false;
         this.connectedResolver();

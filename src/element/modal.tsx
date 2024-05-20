@@ -69,7 +69,7 @@ export default function Modal(props: ModalProps) {
   return createPortal(
     <div
       className={classNames(
-        "z-[42] w-screen h-screen top-0 left-0 fixed bg-black/80 flex justify-center overflow-y-auto"
+        "z-[42] w-screen h-screen top-0 left-0 fixed bg-black/80 flex justify-center overflow-y-auto",
       )}
       onMouseDown={handleBackdropClick}
       onClick={e => {
@@ -98,6 +98,6 @@ export default function Modal(props: ModalProps) {
         {props.children}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

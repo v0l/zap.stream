@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
-import { UserMetadata } from "@snort/system";
+import { CachedMetadata, UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
 import { useInView } from "react-intersection-observer";
 import { Avatar } from "./avatar";
@@ -36,6 +36,7 @@ export function Profile({
   linkToProfile,
   avatarSize,
   gap,
+  profile,
 }: {
   pubkey: string;
   icon?: ReactNode;
@@ -45,9 +46,10 @@ export function Profile({
   linkToProfile?: boolean;
   avatarSize?: number;
   gap?: number;
+  profile?: CachedMetadata;
 }) {
   const { inView, ref } = useInView({ triggerOnce: true });
-  const pLoaded = useUserProfile(inView ? pubkey : undefined);
+  const pLoaded = useUserProfile(inView && !profile ? pubkey : undefined) ?? profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
   const isAnon = pubkey === "anon";

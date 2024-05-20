@@ -7,11 +7,11 @@ import { NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import { LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { extractStreamInfo } from "@/utils";
-import { Icon } from "./icon";
+import { Icon } from "../icon";
 import { unwrap } from "@snort/shared";
-import { TimelineBar } from "./timeline";
-import { DefaultButton } from "./buttons";
-import Modal from "./modal";
+import { TimelineBar } from "../timeline";
+import { DefaultButton } from "../buttons";
+import Modal from "../modal";
 
 export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -81,16 +81,14 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   return (
     <>
       <DefaultButton onClick={makeClip}>
-        <Icon name="clapperboard" />
-        <span className="max-lg:hidden">
-          <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
-        </span>
+        <Icon name="scissor" />
+        <FormattedMessage defaultMessage="Clip" />
       </DefaultButton>
       {open && (
         <Modal id="create-clip" onClose={() => setOpen(false)}>
           <div className="flex flex-col">
             <h1>
-              <FormattedMessage defaultMessage="Create Clip" id="PA0ej4" />
+              <FormattedMessage defaultMessage="Clip" />
             </h1>
             {id && tempClipId && <video ref={ref} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
             <TimelineBar

@@ -2,7 +2,7 @@ import { StreamState } from "@/const";
 import { extractStreamInfo } from "@/utils";
 import { TaggedNostrEvent } from "@snort/system";
 import { Suspense } from "react";
-import LiveVideoPlayer from "./live-video-player";
+import LiveVideoPlayer from "./stream/live-video-player";
 
 export default function LiveEvent({ ev }: { ev: TaggedNostrEvent }) {
   const { title, image, status, stream, recording } = extractStreamInfo(ev);

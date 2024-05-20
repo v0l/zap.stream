@@ -7,12 +7,12 @@ interface StateEventTarget extends EventTarget {
   addEventListener<K extends keyof StateEventMap>(
     type: K,
     listener: (ev: StateEventMap[K]) => void,
-    options?: boolean | AddEventListenerOptions
+    options?: boolean | AddEventListenerOptions,
   ): void;
   addEventListener(
     type: string,
     callback: EventListenerOrEventListenerObject | null,
-    options?: EventListenerOptions | boolean
+    options?: EventListenerOptions | boolean,
   ): void;
 }
 

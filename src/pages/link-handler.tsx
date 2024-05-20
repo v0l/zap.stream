@@ -7,11 +7,14 @@ import { StreamPage } from "./stream-page";
 import { VideoPage } from "./video";
 import { EventEmbed as NostrEventElement } from "@/element/event-embed";
 import { FormattedMessage } from "react-intl";
+import { useLayout } from "./layout/context";
+import classNames from "classnames";
 
 export function LinkHandler() {
   const location = useLocation();
   const evPreload = getEventFromLocationState(location.state);
   const link = useStreamLink();
+  const layoutContext = useLayout();
 
   if (!link) return;
 
@@ -23,7 +26,7 @@ export function LinkHandler() {
     );
   } else if (link.kind === EventKind.LiveEvent) {
     return (
-      <div className="h-[calc(100dvh-52px)] w-full">
+      <div className={classNames(layoutContext.showHeader ? "h-[calc(100dvh-44px)]" : "h-[calc(100dvh)]", "w-full")}>
         <StreamPage link={link} evPreload={evPreload} />
       </div>
     );

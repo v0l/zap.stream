@@ -14,7 +14,7 @@ export function useWallet() {
           if (s.wallet && d) {
             s.wallet.data = d;
           }
-        })
+        }),
       );
     }
   }

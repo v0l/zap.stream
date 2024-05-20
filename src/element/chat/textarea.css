@@ -1,7 +1,9 @@
-.rta__textarea {
-  resize: none;
+.rta {
+  display: flex;
 }
-
+.rta__textarea {
+  resize: none !important;
+}
 .rta__list {
   border: none;
 }

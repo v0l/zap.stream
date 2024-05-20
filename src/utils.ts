@@ -75,11 +75,14 @@ export function getEventFromLocationState(state: unknown | undefined | null) {
 
 export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
   return Object.values(
-    vals.reduce((acc, v) => {
-      const k = key(v);
-      acc[k] ??= v;
-      return acc;
-    }, {} as Record<string, T>)
+    vals.reduce(
+      (acc, v) => {
+        const k = key(v);
+        acc[k] ??= v;
+        return acc;
+      },
+      {} as Record<string, T>,
+    ),
   );
 }
 
@@ -195,7 +198,7 @@ export function extractGameTag(tags: Array<string>) {
 export function trackEvent(
   event: string,
   props?: Record<string, string | boolean>,
-  e?: { destination?: { url: string } }
+  e?: { destination?: { url: string } },
 ) {
   if (!import.meta.env.DEV) {
     fetch("https://pa.v0l.io/api/event", {
@@ -215,10 +218,13 @@ export function trackEvent(
 }
 
 export function groupBy<T>(val: Array<T>, selector: (a: T) => string | number): Record<string, Array<T>> {
-  return val.reduce((acc, v) => {
-    const key = selector(v);
-    acc[key] ??= [];
-    acc[key].push(v);
-    return acc;
-  }, {} as Record<string, Array<T>>);
+  return val.reduce(
+    (acc, v) => {
+      const key = selector(v);
+      acc[key] ??= [];
+      acc[key].push(v);
+      return acc;
+    },
+    {} as Record<string, Array<T>>,
+  );
 }

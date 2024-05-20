@@ -10,13 +10,12 @@ export function SearchBar() {
   const [search, setSearch] = useState(term ?? "");
 
   return (
-    <div className="pr-4 h-fit flex items-center rounded-full px-3 py-1 lg:border lg:border-layer-2">
+    <div className="pr-4 h-fit flex items-center rounded-full px-3 py-1 border border-layer-2 max-xl:min-w-0">
       <input
         type="text"
-        className="reset max-lg:hidden bg-transparent"
+        className="reset bg-transparent"
         placeholder={formatMessage({
           defaultMessage: "Search",
-          id: "xmcVZ0",
         })}
         value={search}
         onChange={e => setSearch(e.target.value)}

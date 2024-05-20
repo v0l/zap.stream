@@ -23,9 +23,9 @@ self.addEventListener("install", event => {
         cacheNames.map(cacheName => {
           console.debug("Deleting cache: ", cacheName);
           return caches.delete(cacheName);
-        })
+        }),
       );
-    })
+    }),
   );
   // always skip waiting
   self.skipWaiting();
@@ -56,7 +56,7 @@ self.addEventListener("notificationclick", event => {
         if (client.url === url() && "focus" in client) return client.focus();
       }
       if (self.clients.openWindow) return self.clients.openWindow(url());
-    })()
+    })(),
   );
 });
 
@@ -75,7 +75,7 @@ self.addEventListener("push", async e => {
     console.debug(ret);
     await self.registration.showNotification(
       `${data.name ?? hexToBech32("npub", data.pubkey).slice(0, 12)} went live`,
-      ret
+      ret,
     );
   }
 });

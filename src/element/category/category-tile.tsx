@@ -30,13 +30,7 @@ export function CategoryTile({
         {showDetail && (
           <div className="flex flex-col gap-4">
             <h1>{game?.name}</h1>
-            {game?.genres && (
-              <div className="flex gap-2">
-                {game?.genres?.map(a => (
-                  <Pill>{a}</Pill>
-                ))}
-              </div>
-            )}
+            {game?.genres && <div className="flex gap-2">{game?.genres?.map(a => <Pill>{a}</Pill>)}</div>}
             {extraDetail}
           </div>
         )}

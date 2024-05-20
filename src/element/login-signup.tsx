@@ -137,7 +137,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             formatMessage({
               defaultMessage: "Hmm, your lightning address looks wrong",
               id: "4l69eO",
-            })
+            }),
           );
         }
       }

@@ -20,7 +20,7 @@ export default function CategoryLink({
       key={id}
       className={classNames(
         "text-lg font-semibold rounded-xl border border-layer-2 border-2 hover:bg-layer-2",
-        className
+        className,
       )}>
       <div className="flex items-center gap-2 px-2 py-1 whitespace-nowrap">
         <Icon name={icon} size={24} />

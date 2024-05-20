@@ -13,7 +13,7 @@ export function StatePill({ state, ...props }: StatePillProps) {
       className={classNames(
         "uppercase font-white",
         state === StreamState.Live ? "bg-primary" : "bg-layer-1",
-        props.className
+        props.className,
       )}>
       {state}
     </Pill>

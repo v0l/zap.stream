@@ -35,7 +35,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
         rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).replyToLink([thisLink]);
       }
     },
-    true
+    true,
   );
   const reactions = useEventReactions(thisLink ?? link, data);
 
@@ -43,11 +43,14 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
     return Object.entries(
       data
         .filter(a => a.kind === LIVE_STREAM_CHAT)
-        .reduce((acc, v) => {
-          acc[v.pubkey] ??= [];
-          acc[v.pubkey].push(v);
-          return acc;
-        }, {} as Record<string, Array<NostrEvent>>)
+        .reduce(
+          (acc, v) => {
+            acc[v.pubkey] ??= [];
+            acc[v.pubkey].push(v);
+            return acc;
+          },
+          {} as Record<string, Array<NostrEvent>>,
+        ),
     )
       .map(([k, v]) => ({
         pubkey: k,
@@ -58,12 +61,15 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
 
   const zapsSummary = useMemo(() => {
     return Object.entries(
-      reactions.zaps.reduce((acc, v) => {
-        if (!v.sender) return acc;
-        acc[v.sender] ??= [];
-        acc[v.sender].push(v);
-        return acc;
-      }, {} as Record<string, Array<ParsedZap>>)
+      reactions.zaps.reduce(
+        (acc, v) => {
+          if (!v.sender) return acc;
+          acc[v.sender] ??= [];
+          acc[v.sender].push(v);
+          return acc;
+        },
+        {} as Record<string, Array<ParsedZap>>,
+      ),
     )
       .map(([k, v]) => ({
         pubkey: k,
@@ -94,42 +100,45 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
     const ret = data
       .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
       .filter(a => a.created_at >= startTime && a.created_at < endTime)
-      .reduce((acc, v) => {
-        const time = Math.floor(v.created_at - (v.created_at % windowSize));
-        if (time < min) {
-          min = time;
-        }
-        if (time > max) {
-          max = time;
-        }
-        const key = time.toString();
-        acc[key] ??= {
-          time,
-          zaps: 0,
-          messages: 0,
-          reactions: 0,
-          clips: 0,
-          raids: 0,
-          shares: 0,
-        };
+      .reduce(
+        (acc, v) => {
+          const time = Math.floor(v.created_at - (v.created_at % windowSize));
+          if (time < min) {
+            min = time;
+          }
+          if (time > max) {
+            max = time;
+          }
+          const key = time.toString();
+          acc[key] ??= {
+            time,
+            zaps: 0,
+            messages: 0,
+            reactions: 0,
+            clips: 0,
+            raids: 0,
+            shares: 0,
+          };
 
-        if (v.kind === LIVE_STREAM_CHAT) {
-          acc[key].messages++;
-        } else if (v.kind === EventKind.ZapReceipt) {
-          acc[key].zaps++;
-        } else if (v.kind === EventKind.Reaction) {
-          acc[key].reactions++;
-        } else if (v.kind === EventKind.TextNote) {
-          acc[key].shares++;
-        } else if (v.kind === LIVE_STREAM_CLIP) {
-          acc[key].clips++;
-        } else if (v.kind === LIVE_STREAM_RAID) {
-          acc[key].raids++;
-        } else {
-          console.debug("Uncounted stat", v);
-        }
-        return acc;
-      }, {} as Record<string, StatSlot>);
+          if (v.kind === LIVE_STREAM_CHAT) {
+            acc[key].messages++;
+          } else if (v.kind === EventKind.ZapReceipt) {
+            acc[key].zaps++;
+          } else if (v.kind === EventKind.Reaction) {
+            acc[key].reactions++;
+          } else if (v.kind === EventKind.TextNote) {
+            acc[key].shares++;
+          } else if (v.kind === LIVE_STREAM_CLIP) {
+            acc[key].clips++;
+          } else if (v.kind === LIVE_STREAM_RAID) {
+            acc[key].raids++;
+          } else {
+            console.debug("Uncounted stat", v);
+          }
+          return acc;
+        },
+        {} as Record<string, StatSlot>,
+      );
 
     // fill empty time slots
     for (let x = min; x < max; x += windowSize) {

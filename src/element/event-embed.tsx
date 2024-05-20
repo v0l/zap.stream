@@ -7,10 +7,10 @@ import { EmojiPack } from "./emoji-pack";
 import { Badge } from "./badge";
 import { EMOJI_PACK, GOAL, LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { useEventFeed } from "@snort/system-react";
-import LiveStreamClip from "./clip";
+import LiveStreamClip from "./stream/clip";
 import { ExternalLink } from "./external-link";
 import { extractStreamInfo } from "@/utils";
-import LiveVideoPlayer from "./live-video-player";
+import LiveVideoPlayer from "./stream/live-video-player";
 
 interface EventProps {
   link: NostrLink;

@@ -22,7 +22,6 @@ import { StreamSummaryPage } from "@/pages/summary";
 import { EmbededPage } from "./pages/embed";
 import { WasmOptimizer, WasmPath, wasmInit } from "./wasm";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
-import MockPage from "./pages/mock";
 import { syncClock } from "./time-sync";
 import SettingsPage from "./pages/settings";
 import AccountSettingsTab from "./pages/settings/account";
@@ -45,7 +44,7 @@ import { UploadPage } from "./pages/upload";
 
 const hasWasm = "WebAssembly" in globalThis;
 const workerRelay = new WorkerRelayInterface(
-  import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite()
+  import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite(),
 );
 const System = new NostrSystem({
   optimizer: hasWasm ? WasmOptimizer : undefined,
@@ -88,10 +87,6 @@ const router = createBrowserRouter([
       return null;
     },
     children: [
-      {
-        path: "/mock",
-        element: <MockPage />,
-      },
       {
         path: "/",
         element: <RootPage />,
@@ -227,5 +222,5 @@ root.render(
         </LayoutContextProvider>
       </IntlProvider>
     </SnortContext.Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

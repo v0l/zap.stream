@@ -23,7 +23,7 @@ import { Goal } from "@/element/goal";
 import { TopZappers } from "@/element/top-zappers";
 import { useProfileClips } from "@/hooks/clips";
 import VideoGrid from "@/element/video-grid";
-import { ClipTile } from "@/element/clip-tile";
+import { ClipTile } from "@/element/stream/clip-tile";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 

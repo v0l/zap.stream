@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { NostrPrefix, encodeTLV, parseNostrLink } from "@snort/system";
 import { unwrap } from "@snort/shared";
 
-import { LiveChat } from "@/element/live-chat";
+import { LiveChat } from "@/element/chat/live-chat";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { findTag } from "@/utils";
 import { useZapGoal } from "@/hooks/goals";
@@ -21,7 +21,6 @@ export function ChatPopout() {
         ev={ev}
         link={lnk}
         canWrite={chat}
-        showHeader={false}
         showScrollbar={false}
         goal={goal}
         className="h-inherit"

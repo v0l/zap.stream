@@ -41,7 +41,7 @@ export function AddForwardInputs({
       };
 
       const ingestsEurope = urls.ingests.filter(
-        a => a.name.toLowerCase().startsWith("europe:") && a.availability === 1
+        a => a.name.toLowerCase().startsWith("europe:") && a.availability === 1,
       );
       const random = ingestsEurope.at(ingestsEurope.length * Math.random());
       return unwrap(random).url_template.replace("{stream_key}", target);
@@ -71,7 +71,7 @@ export function AddForwardInputs({
           formatMessage({
             defaultMessage: "Stream url must start with rtmp://",
             id: "7+bCC1",
-          })
+          }),
         );
         return;
       }
@@ -90,7 +90,7 @@ export function AddForwardInputs({
           formatMessage({
             defaultMessage: "Not a valid URL",
             id: "1q4BO/",
-          })
+          }),
         );
         return;
       }
@@ -100,7 +100,7 @@ export function AddForwardInputs({
           formatMessage({
             defaultMessage: "Stream Key is required",
             id: "50+/JW",
-          })
+          }),
         );
         return;
       }
@@ -110,7 +110,7 @@ export function AddForwardInputs({
         formatMessage({
           defaultMessage: "Name is required",
           id: "Gvxoji",
-        })
+        }),
       );
       return;
     }
@@ -122,7 +122,7 @@ export function AddForwardInputs({
           formatMessage({
             defaultMessage: "Could not create stream URL",
             id: "E9APoR",
-          })
+          }),
         );
       await provider.addForward(name, t);
     } catch (e) {

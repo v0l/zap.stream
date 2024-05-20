@@ -33,5 +33,5 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
         )}
       </div>
     );
-  }
+  },
 );

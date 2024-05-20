@@ -40,7 +40,7 @@ export function VideoTile({
             "blur transition": contentWarning,
             "hover:blur-none": isGrownUp,
           },
-          "h-full"
+          "h-full",
         )}
         state={ev}>
         <div className="relative mb-2 aspect-video">

@@ -58,7 +58,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
           setInvalidLud16Message(
             formatMessage({
               defaultMessage: "Invalid lightning address",
-            })
+            }),
           );
         }
       } else {
@@ -76,7 +76,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
             setNip05AddressValid(true);
           } else {
             setInvalidNip05AddressMessage(
-              formatMessage({ defaultMessage: "Nostr address does not belong to you", id: "01iNut" })
+              formatMessage({ defaultMessage: "Nostr address does not belong to you", id: "01iNut" }),
             );
           }
         } else {
@@ -84,7 +84,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
           setInvalidNip05AddressMessage(
             formatMessage({
               defaultMessage: "Invalid nostr address",
-            })
+            }),
           );
         }
       } catch (e) {
@@ -92,7 +92,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
         setInvalidNip05AddressMessage(
           formatMessage({
             defaultMessage: "Invalid nostr address",
-          })
+          }),
         );
       }
     }
@@ -106,7 +106,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
         setInvalidNip05AddressMessage(
           formatMessage({
             defaultMessage: "Invalid nostr address",
-          })
+          }),
         );
       } else if (Nip05AddressElements.length === 2) {
         nip05NostrAddressVerification(Nip05AddressElements.pop(), Nip05AddressElements.pop());
@@ -192,7 +192,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
         setInvalidUsernameMessage(
           formatMessage({
             defaultMessage: "Username is too long",
-          })
+          }),
         );
       } else {
         setUsernameValid(true);
@@ -205,7 +205,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
         setInvalidAboutMessage(
           formatMessage({
             defaultMessage: "About too long",
-          })
+          }),
         );
       } else {
         setAboutValid(true);

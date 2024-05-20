@@ -12,7 +12,7 @@ import Pill from "./pill";
 import { CategoryZaps } from "./category/zaps";
 import { StreamState } from "@/const";
 import { useRecentClips } from "@/hooks/clips";
-import { ClipTile } from "./clip-tile";
+import { ClipTile } from "./stream/clip-tile";
 
 interface VideoGridSortedProps {
   evs: Array<TaggedNostrEvent>;
@@ -38,7 +38,7 @@ export default function VideoGridSorted({
     (ev: NostrEvent) => {
       return tags.find(t => t.at(1) === getHost(ev));
     },
-    [tags]
+    [tags],
   );
   const { live, planned, ended } = useSortedStreams(evs, showAll ? 0 : undefined);
   const hashtags = getTagValues(tags, "t");
@@ -138,7 +138,7 @@ function PopularCategories({ items }: { items: Array<TaggedNostrEvent> }) {
           zaps: number;
           streams: number;
         }
-      >
+      >,
     );
 
     return Object.values(grouped)

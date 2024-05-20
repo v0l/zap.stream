@@ -15,7 +15,7 @@ export function RootPage() {
           ))}
         </div>
       </div>
-      <VideoGridSorted evs={streams} showEnded={false} showPopular={true} showRecentClips={true} />
+      <VideoGridSorted evs={streams} showEnded={false} showPopular={true} showRecentClips={false} />
     </div>
   );
 }

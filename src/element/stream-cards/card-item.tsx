@@ -42,7 +42,7 @@ export function Card({ canEdit, ev, cards }: CardProps) {
         };
       },
     }),
-    [canEdit, identifier]
+    [canEdit, identifier],
   );
 
   function findTagByIdentifier(d: string) {
@@ -93,7 +93,7 @@ export function Card({ canEdit, ev, cards }: CardProps) {
         }
       },
     }),
-    [canEdit, tags, identifier]
+    [canEdit, tags, identifier],
   );
 
   const card = (

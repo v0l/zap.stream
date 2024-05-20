@@ -21,6 +21,6 @@ export function useZaps(link?: NostrLink, leaveOpen = false) {
         .sort((a, b) => (b.created_at > a.created_at ? 1 : -1))
         .map(ev => parseZap(ev))
         .filter(z => z && z.valid) ?? [],
-    [zaps.length]
+    [zaps.length],
   );
 }

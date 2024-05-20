@@ -82,11 +82,13 @@ export default function Category() {
 
   const results = useRequestBuilder(sub);
   return (
-    <div>
-      <div className="flex gap-4 overflow-x-scroll scrollbar-hidden">
-        {AllCategories.map(a => (
-          <CategoryLink key={a.id} id={a.id} name={a.name} icon={a.icon} />
-        ))}
+    <div className="px-2 p-4">
+      <div className="px-2 min-w-0">
+        <div className="flex gap-4 overflow-x-scroll scrollbar-hidden">
+          {AllCategories.map(a => (
+            <CategoryLink key={a.id} id={a.id} name={a.name} icon={a.icon} />
+          ))}
+        </div>
       </div>
       {id && (
         <div className="flex gap-4 py-8">

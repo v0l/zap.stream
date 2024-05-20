@@ -1,5 +1,5 @@
 import { StreamState } from "@/const";
-import LiveVideoPlayer from "@/element/live-video-player";
+import LiveVideoPlayer from "@/element/stream/live-video-player";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useStreamLink } from "@/hooks/stream-link";
 import { extractStreamInfo, trackEvent } from "@/utils";

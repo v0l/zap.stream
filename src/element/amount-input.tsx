@@ -8,7 +8,7 @@ export default function AmountInput({ onChange }: { onChange: (n: number) => voi
 
   const satsValue = useCallback(
     () => (type === "usd" ? Math.round(value * 1e-6 * rates.ask) / 100 : value),
-    [value, type]
+    [value, type],
   );
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { SnortContext } from "@snort/system-react";
 
 import { Icon } from "./icon";
-import { Textarea } from "./textarea";
+import { Textarea } from "./chat/textarea";
 import { getHost } from "@/utils";
 import { useLogin } from "@/hooks/login";
 import { DefaultButton } from "./buttons";
@@ -27,7 +27,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
     },
     {
       link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`,
-    }
+    },
   );
   const defaultHostMsg = formatMessage(
     {
@@ -37,7 +37,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
     {
       name: `nostr:${new NostrLink(NostrPrefix.PublicKey, host ?? ev.pubkey).encode()}`,
       link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`,
-    }
+    },
   );
   const [message, setMessage] = useState(login?.pubkey === host ? defaultMyMsg : defaultHostMsg);
 
@@ -61,6 +61,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
         menuClassName="ctx-menu"
         menuButton={
           <DefaultButton>
+            <Icon name="share" />
             <FormattedMessage defaultMessage="Share" />
           </DefaultButton>
         }>
@@ -75,7 +76,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
           onClick={() => {
             window.open(
               `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&via=zap_stream`,
-              "_blank"
+              "_blank",
             );
           }}>
           <Icon name="twitter" size={24} />

@@ -1,14 +1,14 @@
-import "./textarea.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
+import "./textarea.css";
 
 import { hexToBech32 } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
-import { CachedMetadata, NostrPrefix, UserProfileCache } from "@snort/system";
+import { CachedMetadata, NostrPrefix } from "@snort/system";
 
-import { Emoji } from "./emoji";
-import { Avatar } from "./avatar";
+import { Emoji } from "../emoji";
+import { Avatar } from "../avatar";
 import type { EmojiTag } from "@/types";
 
 interface EmojiItemProps {
@@ -41,12 +41,18 @@ type TextareaProps = { emojis: EmojiTag[] } & React.TextareaHTMLAttributes<HTMLT
 
 export function Textarea({ emojis, ...props }: TextareaProps) {
   const system = useContext(SnortContext);
+  const [ref, setRef] = useState<HTMLTextAreaElement | null>(null);
   const userDataProvider = async (token: string) => {
     const cache = system.profileLoader.cache;
-    if (cache instanceof UserProfileCache) {
-      return await cache.search(token);
-    }
+    return await cache.search(token);
   };
+
+  useEffect(() => {
+    if (ref) {
+      ref.style.height = "";
+      ref.style.height = `${Math.min(ref.scrollHeight, 200)}px`;
+    }
+  }, [ref, props.value]);
 
   const emojiDataProvider = (token: string) => {
     const results = emojis
@@ -82,6 +88,7 @@ export function Textarea({ emojis, ...props }: TextareaProps) {
       autoFocus={false}
       trigger={trigger}
       {...props}
+      innerRef={r => setRef(r)}
     />
   );
 }

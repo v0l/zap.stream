@@ -1,12 +1,12 @@
-import { LiveChat } from "@/element/live-chat";
-import LiveVideoPlayer from "@/element/live-video-player";
+import { LiveChat } from "@/element/chat/live-chat";
+import LiveVideoPlayer from "@/element/stream/live-video-player";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { extractStreamInfo } from "@/utils";
 import { EventExt, NostrEvent, NostrLink } from "@snort/system";
 import { SnortContext, useReactions } from "@snort/system-react";
 import { Suspense, lazy, useContext, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
-import { StreamTimer } from "@/element/stream-time";
+import { StreamTimer } from "@/element/stream/stream-time";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { DashboardRaidButton } from "./button-raid";
 import { DashboardZapColumn } from "./column-zaps";
@@ -71,7 +71,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
         rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).replyToLink([streamLink]);
       }
     },
-    true
+    true,
   );
 
   if (!streamLink && !location.search.includes("setupComplete=true")) return <DashboardIntro />;

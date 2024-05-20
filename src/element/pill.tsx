@@ -8,7 +8,7 @@ export default function Pill({ children, selected, className, ...props }: HTMLPr
       className={classNames(
         className,
         { "bg-layer-3 font-bold": selected },
-        "px-2 py-1 font-semibold rounded-lg bg-layer-2 cursor-pointer text-sm"
+        "px-2 py-1 font-semibold rounded-lg bg-layer-2 cursor-pointer text-sm",
       )}>
       {children}
     </span>

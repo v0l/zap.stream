@@ -1,16 +1,20 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 interface LayoutContextType {
   leftNav: boolean;
+  leftNavExpand: boolean;
+  showHeader: boolean;
   theme: string;
   update: (fn: (c: LayoutContextType) => LayoutContextType) => void;
 }
 const defaultLayoutContext: LayoutContextType = {
   leftNav: true,
+  leftNavExpand: false,
+  showHeader: true,
   theme: "",
   update: c => c,
 };
-export const LayoutContext = createContext<LayoutContextType>(defaultLayoutContext);
+const LayoutContext = createContext<LayoutContextType>(defaultLayoutContext);
 
 export function LayoutContextProvider({ children }: { children: ReactNode }) {
   const [value, setValue] = useState<LayoutContextType>(defaultLayoutContext);
@@ -25,4 +29,8 @@ export function LayoutContextProvider({ children }: { children: ReactNode }) {
       {children}
     </LayoutContext.Provider>
   );
+}
+
+export function useLayout() {
+  return useContext(LayoutContext);
 }

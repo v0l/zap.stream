@@ -6,6 +6,7 @@ import { SnortContext } from "@snort/system-react";
 import { useLogin } from "@/hooks/login";
 import { Login } from "@/login";
 import { DefaultButton } from "./buttons";
+import { Icon } from "./icon";
 
 export function LoggedInFollowButton({
   tag,
@@ -62,9 +63,12 @@ export function LoggedInFollowButton({
   return (
     <DefaultButton disabled={timestamp ? timestamp === 0 : true} onClick={isFollowing ? unfollow : follow}>
       {isFollowing ? (
-        <FormattedMessage defaultMessage="Unfollow" id="izWS4J" />
+        <FormattedMessage defaultMessage="Unfollow" />
       ) : (
-        <FormattedMessage defaultMessage="Follow" id="ieGrWo" />
+        <>
+          <Icon name="plus" size={20} />
+          <FormattedMessage defaultMessage="Follow" />
+        </>
       )}
     </DefaultButton>
   );

@@ -9,7 +9,7 @@ import type { Badge } from "@/types";
 export function useBadges(
   pubkey: string,
   since: number,
-  leaveOpen = true
+  leaveOpen = true,
 ): { badges: Badge[]; awards: TaggedNostrEvent[] } {
   const rb = useMemo(() => {
     if (!pubkey) return null;
@@ -54,7 +54,7 @@ export function useBadges(
         acceptedEvents
           .filter(pb => awardees.has(pb.pubkey))
           .filter(pb => pb.tags.find(t => t.at(0) === "a" && t.at(1) === address))
-          .map(pb => pb.pubkey)
+          .map(pb => pb.pubkey),
       );
       const thumb = findTag(e, "thumb");
       const image = findTag(e, "image");

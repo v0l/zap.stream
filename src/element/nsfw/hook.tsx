@@ -4,7 +4,7 @@ import { NSFWStore } from "./store";
 export function useContentWarning() {
   const v = useSyncExternalStore(
     c => NSFWStore.hook(c),
-    () => NSFWStore.snapshot()
+    () => NSFWStore.snapshot(),
   );
   return v;
 }

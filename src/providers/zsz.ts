@@ -16,7 +16,11 @@ import { appendDedupe } from "@snort/shared";
 export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
 
-  constructor(readonly name: string, readonly url: string, pub?: EventPublisher) {
+  constructor(
+    readonly name: string,
+    readonly url: string,
+    pub?: EventPublisher,
+  ) {
     if (!url.endsWith("/")) {
       this.url = `${url}/`;
     }

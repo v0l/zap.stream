@@ -4,20 +4,20 @@ import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "re
 import { useHover, useIntersectionObserver, useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 
-const EmojiPicker = lazy(() => import("./emoji-picker"));
-import { Icon } from "./icon";
-import { Emoji as EmojiComponent } from "./emoji";
-import { Profile } from "./profile";
-import { Text } from "./text";
-import { useMute } from "./mute-button";
-import { SendZapsDialog } from "./send-zap";
-import { CollapsibleEvent } from "./collapsible";
+const EmojiPicker = lazy(() => import("../emoji-picker"));
+import { Icon } from "../icon";
+import { Emoji as EmojiComponent } from "../emoji";
+import { Profile } from "../profile";
+import { Text } from "../text";
+import { useMute } from "../mute-button";
+import { SendZapsDialog } from "../send-zap";
+import { CollapsibleEvent } from "../collapsible";
 
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import type { Badge, Emoji, EmojiPack } from "@/types";
-import { IconButton } from "./buttons";
-import Pill from "./pill";
+import { IconButton } from "../buttons";
+import Pill from "../pill";
 import classNames from "classnames";
 
 function emojifyReaction(reaction: string) {

@@ -5,13 +5,13 @@ import { useEventFeed, useEventReactions, useReactions, useUserProfile } from "@
 import { unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
-import { Icon } from "./icon";
-import Spinner from "./spinner";
-import { Text } from "./text";
-import { Profile } from "./profile";
+import { Icon } from "../icon";
+import Spinner from "../spinner";
+import { Text } from "../text";
+import { Profile } from "../profile";
 import { ChatMessage } from "./chat-message";
-import { Goal } from "./goal";
-import { Badge } from "./badge";
+import { Goal } from "../goal";
+import { Badge } from "../badge";
 import { WriteMessage } from "./write-message";
 import useEmoji, { packId } from "@/hooks/emoji";
 import { useMutedPubkeys } from "@/hooks/lists";
@@ -20,9 +20,11 @@ import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
-import { TopZappers } from "./top-zappers";
+import { TopZappers } from "../top-zappers";
 import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import { useStream } from "../stream/stream-state";
+import { useLayout } from "@/pages/layout/context";
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? "";
@@ -48,6 +50,7 @@ export function LiveChat({
   goal,
   canWrite,
   showTopZappers,
+  adjustLayout,
   showGoal,
   showScrollbar,
   height,
@@ -59,6 +62,7 @@ export function LiveChat({
   goal?: NostrEvent;
   canWrite?: boolean;
   showTopZappers?: boolean;
+  adjustLayout?: boolean;
   showGoal?: boolean;
   showScrollbar?: boolean;
   height?: number;
@@ -75,7 +79,7 @@ export function LiveChat({
         rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(200);
       }
     },
-    true
+    true,
   );
   const login = useLogin();
   const started = useMemo(() => {
@@ -92,6 +96,8 @@ export function LiveChat({
   const allEmojiPacks = useMemo(() => {
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
+  const streamContext = useStream();
+  const layoutContext = useLayout();
 
   const reactions = useEventReactions(link, feed);
   const events = useMemo(() => {
@@ -108,6 +114,35 @@ export function LiveChat({
       .filter(a => a.created_at >= started)
       .sort((a, b) => b.created_at - a.created_at);
   }, [feed, awards]);
+
+  useEffect(() => {
+    const resetLayout = () => {
+      if (streamContext.showDetails || !adjustLayout) {
+        streamContext.update(c => {
+          c.showDetails = !adjustLayout;
+          return { ...c };
+        });
+      }
+      if (!layoutContext.showHeader) {
+        layoutContext.update(c => {
+          c.showHeader = true;
+          return { ...c };
+        });
+      }
+    };
+
+    if (adjustLayout) {
+      layoutContext.update(c => {
+        c.showHeader = false;
+        return { ...c };
+      });
+      return () => {
+        resetLayout();
+      };
+    } else {
+      resetLayout();
+    }
+  }, [adjustLayout]);
 
   const filteredEvents = useMemo(() => {
     return events.filter(e => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey));
@@ -126,7 +161,32 @@ export function LiveChat({
       <div
         className={classNames("flex flex-col-reverse grow gap-2 overflow-y-auto", {
           "scrollbar-hidden": !(showScrollbar ?? true),
-        })}>
+        })}
+        onScroll={e => {
+          if (adjustLayout) {
+            const t = e.target as HTMLDivElement;
+            const atEnd = t.scrollTop >= 1;
+            if (atEnd) {
+              streamContext.update(c => {
+                c.showDetails = false;
+                return { ...c };
+              });
+              layoutContext.update(c => {
+                c.showHeader = false;
+                return { ...c };
+              });
+            } else {
+              streamContext.update(c => {
+                c.showDetails = true;
+                return { ...c };
+              });
+              layoutContext.update(c => {
+                c.showHeader = true;
+                return { ...c };
+              });
+            }
+          }
+        }}>
         {filteredEvents.map(a => {
           switch (a.kind) {
             case -1:
@@ -165,9 +225,10 @@ export function LiveChat({
           return null;
         })}
         {feed.length === 0 && <Spinner />}
+        <div className="pt-[50dvh]"></div>
       </div>
       {(canWrite ?? true) && (
-        <div className="flex gap-2 border-t pt-2 border-layer-1">
+        <div className="flex gap-2 border-t py-2 border-layer-1">
           {login ? (
             <WriteMessage emojiPacks={allEmojiPacks} link={link} />
           ) : (

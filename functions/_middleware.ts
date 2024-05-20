@@ -7,7 +7,7 @@ export const onRequest: PagesFunction<Env> = async context => {
 
   const prefixes = ["npub1", "nprofile1", "naddr1", "nevent1", "note1"];
   const isEntityPath = prefixes.some(
-    a => u.pathname.startsWith(`/${a}`) || u.pathname.startsWith(`/e/${a}`) || u.pathname.startsWith(`/p/${a}`)
+    a => u.pathname.startsWith(`/${a}`) || u.pathname.startsWith(`/e/${a}`) || u.pathname.startsWith(`/p/${a}`),
   );
   const nostrAddress = u.pathname.match(/^\/([a-zA-Z0-9_]+)$/i);
   const next = await context.next();
@@ -19,7 +19,7 @@ export const onRequest: PagesFunction<Env> = async context => {
         id = `${id}@${HOST}`;
       }
       const fetchApi = `https://nostr.api.v0l.io/api/v1/opengraph/${id}?canonical=${encodeURIComponent(
-        `https://${HOST}/%s`
+        `https://${HOST}/%s`,
       )}`;
       console.log("Fetching tags from: ", fetchApi);
       const reqBuf = await next.arrayBuffer();
