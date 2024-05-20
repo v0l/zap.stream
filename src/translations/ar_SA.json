@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "إضافة"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "مثال على الإعدادات في OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "الغارة"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} إنشاء مقطع"
   },
-  "BGxpTN": {
-    "defaultMessage": "دردشة البث"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "أفضل الدردشات"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "عنوان البرق"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "الاسم مطلوب"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "احفظ هذا واحتفظ به في مكان آمن! إذا فقدت هذا المفتاح، فلن تتمكن من الوصول إلى حسابك مرة أخرى. نعم، الأمر بهذه الجدية!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "لقد قمنا بتزويدك بمحفظة برق حتى تتمكن من الحصول على أموالك من قبل المشاهدين على الفور!"
   },
-  "PA0ej4": {
-    "defaultMessage": "إنشاء مقطع"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "إعادة توجيه الدفق"
-  },
-  "W8nHSd": {
-    "defaultMessage": "الأسئلة الشائعة"
   },
   "W9355R": {
     "defaultMessage": "إلغاء الكتم"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "أداة الدردشة"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "اتبع"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "البث على Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "تحرير"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "أفضل الصواعق"
   },
   "x82IOl": {
     "defaultMessage": "كتم الصوت"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "لبدء البث على zap.stream، اتبع الخطوات التالية:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "على سبيل المثال. nsec1xyz"

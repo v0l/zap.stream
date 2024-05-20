@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "添加"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} 創建了一個剪輯"
   },
-  "BGxpTN": {
-    "defaultMessage": "直播流聊天室"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "最高聊天"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "閃電地址"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "名稱必填"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "請將它安全保存！如果你丟失了此密鑰，你將無法再次訪問你的帳戶。對，很嚴肅！"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "我們已經為你設置了一個閃電錢包，因此你立即可以開始收取觀眾的付款！"
   },
-  "PA0ej4": {
-    "defaultMessage": "創建剪輯"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "直播流轉發"
-  },
-  "W8nHSd": {
-    "defaultMessage": "常見問答"
   },
   "W9355R": {
     "defaultMessage": "解除静音"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "聊天小部件"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "關注"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "在 Nostr 上廣播"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "編輯"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "最高打閃用戶"
   },
   "x82IOl": {
     "defaultMessage": "靜音"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "例如 nsec1xyz"

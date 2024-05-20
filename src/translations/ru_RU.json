@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Добавить"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Пример настроек в OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Рейд"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} создал клип"
   },
-  "BGxpTN": {
-    "defaultMessage": "Чат стрима"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Лучшие чаты"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Адрес молнии"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Имя обязательно"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Сохраните этот ключ и храните его в безопасности! Если вы его потеряете, вы не сможете снова войти в свою учетную запись. Да, все настолько серьезно!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Мы подключили вас с помощью лайтнинг-кошелька, чтобы вы уже сейчас могли получать средства от зрителей!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Создать клип"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Переадресация потоков"
-  },
-  "W8nHSd": {
-    "defaultMessage": "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ"
   },
   "W9355R": {
     "defaultMessage": "Включить уведомления"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Виджет чата"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Подписаться"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Транслировать на Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Редактировать"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Топ поддержавших"
   },
   "x82IOl": {
     "defaultMessage": "Заглушить"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Чтобы начать потоковое вещание на zap.stream, выполните следующие действия:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "например, nsec1xyz"

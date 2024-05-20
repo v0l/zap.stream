@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Lägg till"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Exempel på inställningar i OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Överfall"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} skapade ett klipp"
   },
-  "BGxpTN": {
-    "defaultMessage": "Stream Chat"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "De bästa chattarna"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Adress till blixten"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Namn krävs"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Spara detta och håll det säkert! Om du förlorar denna nyckel kommer du inte att kunna komma åt ditt konto någonsin igen. Japp, det är så allvarligt!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Vi fixade en lightning plånbok till dig så att du kan få betalt av tittarna direkt!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Skapa klipp"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Vidarebefordran av strömmar"
-  },
-  "W8nHSd": {
-    "defaultMessage": "VANLIGA FRÅGOR"
   },
   "W9355R": {
     "defaultMessage": "Avtysta"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chatt widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Följ"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Sänd ut på Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Redigera"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Topp zappers"
   },
   "x82IOl": {
     "defaultMessage": "Tysta"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Följ dessa steg för att börja streama på zap.stream:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "t.ex nsec1xyz"

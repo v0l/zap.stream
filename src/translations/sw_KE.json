@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Ongeza"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Mifano ya Mipangilio katika OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Uvamizi"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} ameunda clip"
   },
-  "BGxpTN": {
-    "defaultMessage": "Mkondo wa Mazungumzo"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Wachati Bora"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Anwani ya Lightning"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Jina ni la lazima"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Hifadhi hii na uhifadhi salama! Ukikipoteza, hautaweza kamwe kufikia akaunti yako. Ndiyo, ni jambo kubwa sana!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Tumekupa mkoba wa Lightning, ili uweze kulipwa moja kwa moja na watazamaji!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Unda Clip"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Mwongozo wa Mtiririko"
-  },
-  "W8nHSd": {
-    "defaultMessage": "Maswali Yanayoulizwa Sana"
   },
   "W9355R": {
     "defaultMessage": "Suzu Sauti"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Wijeti ya Mazungumzo"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Fuata"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Tangaza kwenye Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Hariri"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Mzapishaji Mkuu"
   },
   "x82IOl": {
     "defaultMessage": "Weka kimya"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Ili kuanza kutiririsha kwenye zap.stream, fuata hatua hizi:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "k.m. nsec1xyz"

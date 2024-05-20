@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "เพิ่ม"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} ชั่วโมง"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "ตัวอย่างการตั้งค่าใน OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "เข้าชม"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} ได้สร้างคลิป"
   },
-  "BGxpTN": {
-    "defaultMessage": "ห้องสนทนา"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "โคตรปากแจ๋ว"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "บัญชี Lightning"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "ต้องระบุชื่อ"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "โปรดจำไว้ว่า! บันทึกรหัสกุญแจลับนี้ไว้ให้ดี ไม่งั้นคุณจะไม่สามารถเข้าสู่บัญชีนี้ได้อีก หรือหากใครได้ไปเขาก็จะใช้บัญชีของคุณได้"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "เราได้เพิ่มกระเป๋า Lightning ให้คุณสามารถรับ sats จากผู้เข้าชมได้"
   },
-  "PA0ej4": {
-    "defaultMessage": "สร้างคลิป"
-  },
   "PHE60k": {
     "defaultMessage": "เว้นว่างไว้หากคุณไม่ต้องการกำหนดเป้าหมาย"
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "ส่งต่อการถ่ายทอดสด"
-  },
-  "W8nHSd": {
-    "defaultMessage": "คำถามที่พบบ่อย"
   },
   "W9355R": {
     "defaultMessage": "เปิดการมองเห็น"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "เครื่องมือแชท"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "ติดตาม"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "แชร์ด้วย Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "แก้ไข"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "ข้อมูล"
-  },
-  "wzWWzV": {
-    "defaultMessage": "สุดยอดมือ Zap"
   },
   "x82IOl": {
     "defaultMessage": "ปิดการมองเห็น"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "หากต้องการเริ่มการสตรีมบน zap.stream,ให้ทำตามขั้นตอนเหล่านี้:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "ตัวอย่าง: nsec1xyzy"

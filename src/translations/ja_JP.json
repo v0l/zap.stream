@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "追加"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "OBSでの設定例（Apple M1 Mac）"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "襲撃"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} クリップを作成"
   },
-  "BGxpTN": {
-    "defaultMessage": "チャット配信"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "トップ・チャッター"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "ライトニングアドレス"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "名前は必須"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "これを保存し、安全に保管してください！このキーを紛失すると、二度とアカウントにアクセスできなくなります。そう、それほど深刻なのだ！"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
   },
-  "PA0ej4": {
-    "defaultMessage": "クリップ作成"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "ストリーム転送"
-  },
-  "W8nHSd": {
-    "defaultMessage": "よくあるご質問"
   },
   "W9355R": {
     "defaultMessage": "ミュート解除"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "チャットウィジェット"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "フォロー"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Nostr で配信"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "編集"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "トップザッパー"
   },
   "x82IOl": {
     "defaultMessage": "ミュート"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "zap.streamでストリーミングを開始するには、以下の手順に従ってください："
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "例：nsec1xyz"

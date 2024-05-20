@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Добави"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Примерни настройки в OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} създаде клип"
   },
-  "BGxpTN": {
-    "defaultMessage": "Стрийм Чат"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Топ чатъри"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Адрес за мълнии"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Изисква се име"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Запаметете това и пазете в безопасност! ако изгубите този ключ, никога повече няма да имате достъп до акаунта си. Да, толкова е сериозно!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Свързахме ви със светкавичен портфейл, за да можете да получите плащане от зрителите веднага!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Създаване на клип"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Препращане на потоци"
-  },
-  "W8nHSd": {
-    "defaultMessage": "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ"
   },
   "W9355R": {
     "defaultMessage": "Премахни заглушаването"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Чат джаджа"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Последване"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Излъчване във Ностър"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Редактирай"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Топ запери"
   },
   "x82IOl": {
     "defaultMessage": "Заглуши"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "За да започнете стрийминг в zap.stream, следвайте следните стъпки:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "напр. nsec1xyz"

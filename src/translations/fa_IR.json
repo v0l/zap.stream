@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "افزودن"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "گسیل"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} یک کلیپ ساخته است"
   },
-  "BGxpTN": {
-    "defaultMessage": "گپ پخش زنده"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "گفتگو کنندگان برتر"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Lightning Address"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "نام الزامی است"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "این را ذخیره کرده و امن نگه دارید! اگر این کلید را گم کنید، هرگز دیگر نمی توانید به حساب کاربری خود دسترسی داشته باشید. بله، این مسئله خیلی جدی است!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "شما را به یک کیف پول لایتنینگ وصل کردیم تا بتوانید بی درنگ از ببینندگان خود ساتوشی بگیرید!"
   },
-  "PA0ej4": {
-    "defaultMessage": "ساخت کلیپ"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "فرافرستادن پخش زنده"
-  },
-  "W8nHSd": {
-    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "صداردار کردن"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "ویجت گپ"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "دنبال کردن"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "پخش در ناستر"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "ویرایش"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "بزرگترین زپ ها"
   },
   "x82IOl": {
     "defaultMessage": "بيصدا"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

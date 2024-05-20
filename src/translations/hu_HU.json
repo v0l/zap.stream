@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Hozzáad"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Példa beállítások az OBS-ben (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} készített egy klipet"
   },
-  "BGxpTN": {
-    "defaultMessage": "Stream Chat"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Top csevegők"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Villám cím"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "A név kötelező"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Mentsd le és őrizd meg! Ha ezt a kulcsot elveszíted, a fiókodhoz soha többé nem fogsz tudni hozzáférni. Igen, ez ennyire komoly!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Egy LN tárcával összekötöttünk, hogy a nézők támogatásait azonnal megkaphasd!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Clip létrehozása"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Stream továbbítása"
-  },
-  "W8nHSd": {
-    "defaultMessage": "GYIK"
   },
   "W9355R": {
     "defaultMessage": "Némítás visszavonása"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Követem"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Közvetítés a Nostr-án"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Módosítás"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Top zapperek"
   },
   "x82IOl": {
     "defaultMessage": "Némítás"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "A zap.stream streamelés elindításához kövesse az alábbi lépéseket:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "pl. nsec1xyz"

@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Tilføj"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Eksempel på indstillinger i OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Razzia"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} oprettet et klip"
   },
-  "BGxpTN": {
-    "defaultMessage": "Stream Chat"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "De bedste chattere"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Lynets adresse"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Navn er påkrævet"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Gem denne og opbevar den sikkert! Hvis du mister denne nøgle, vil du aldrig kunne få adgang til din konto igen. Jep, så alvorligt er det!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Vi har udstyret dig med en lightning wallet, så du kan blive betalt af seerne med det samme!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Opret klip"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Videresendelse af strøm"
-  },
-  "W8nHSd": {
-    "defaultMessage": "OFTE STILLEDE SPØRGSMÅL"
   },
   "W9355R": {
     "defaultMessage": "Slå lyden fra"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chat-widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Følg efter"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Udsendt på Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Rediger"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "De bedste zappere"
   },
   "x82IOl": {
     "defaultMessage": "Lydløs"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Følg disse trin for at starte streaming på zap.stream:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "f.eks. nsec1xyz"

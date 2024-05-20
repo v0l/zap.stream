@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Hinzufügen"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} Stunden"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Beispiel-Einstellungen in OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} hat einen Clip erstellt"
   },
-  "BGxpTN": {
-    "defaultMessage": "Stream-Chat"
-  },
   "Bd1yEX": {
     "defaultMessage": "Neues Stream-Ziel"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Top-Chatter"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Lightning-Adresse"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Name ist erforderlich"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Speichere das und bewahre es sicher auf! Wenn du diesen Schlüssel verlierst, kannst du nie mehr auf dein Konto zugreifen. Ja, es ist folgenreich!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Clip erstellen"
-  },
   "PHE60k": {
     "defaultMessage": "Leer lassen, wenn du keine Ziele festlegen möchtest."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Stream-Weiterleitung"
-  },
-  "W8nHSd": {
-    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Entstummen"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chat-Widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Folgen"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Auf Nostr verbreiten"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Bearbeiten"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Top Zapper"
   },
   "x82IOl": {
     "defaultMessage": "Stummschalten"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Um mit dem Streaming auf zap.stream zu beginnen, folge diesen Schritten:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "z.B. nsec1xyz"

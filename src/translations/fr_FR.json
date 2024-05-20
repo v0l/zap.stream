@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Ajouter"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Exemple de réglages dans OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} a créé un clip"
   },
-  "BGxpTN": {
-    "defaultMessage": "Chat du Stream"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Adresse de la foudre"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Le nom est obligatoire"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Sauvegardez ceci et gardez-le en sécurité ! Si vous perdez cette clé, vous ne pourrez plus accéder à votre compte. Oui, c'est si grave !"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Nous vous avons branché avec un portefeuille Lightning afin que vous puissiez être payé par les spectateurs dès maintenant!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Créer un clip"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Transfert de flux"
-  },
-  "W8nHSd": {
-    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Retirer sourdine"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Widget Chat"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Suivre"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Diffuser sur Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Modifier"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Top Zappeurs"
   },
   "x82IOl": {
     "defaultMessage": "Muet"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Pour commencer à diffuser en continu sur zap.stream, suivez les étapes suivantes :"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

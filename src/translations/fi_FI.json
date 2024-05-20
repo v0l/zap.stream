@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Lisää"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Esimerkkiasetukset OBS:ssä (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Rynnäkkö"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} loi leikkeen"
   },
-  "BGxpTN": {
-    "defaultMessage": "Stream-keskustelu"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Eniten Keskusteluja"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Salama-osoite"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Nimi on pakollinen"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Tallenna tämä ja pidä se tallessa! Jos menetät tämän avaimen, et pääse koskaan enää tilillesi. Kyllä, se on niin vakavaa!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "Sait lightning-lompakon, jotta voit saada heti maksuja katsojilta!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Luo leike"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Lähetyksen edelleenlähetys"
-  },
-  "W8nHSd": {
-    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Poista mykistys"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Keskusteluwidgetti"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Seuraa"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Lähetä Nostrissa"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Muokkaa"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Parhaat Zapparit"
   },
   "x82IOl": {
     "defaultMessage": "Mykistä"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Voit aloittaa suoratoiston zap.streamissa noudattamalla seuraavia ohjeita:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "esim. nsec1xyz"

@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "যুক্ত করুন"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} created a clip"
   },
-  "BGxpTN": {
-    "defaultMessage": "চ্যাট স্ট্রিম করুন"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Top Chatters"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Lightning Address"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Name is required"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "এটি সংরক্ষণ করুন এবং নিরাপদে রাখুন! আপনি যদি এই চাবিটি হারিয়ে ফেলেন, তাহলে আপনি আর কখনো আপনার অ্যাকাউন্টে প্রবেশ করতে পারবেন না৷ হ্যাঁ, এটা অত্যন্ত গুরুত্বপূর্ণ!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "আমরা আপনাকে একটি বিজলি ওয়ালেটের ব্যবস্থা করে দিয়েছি যাতে আপনি দর্শকদের কাছ থেকে তৎক্ষণাৎ পারিশ্রমিক নিতে পারেন!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Create Clip"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Stream Forwarding"
-  },
-  "W8nHSd": {
-    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "আনমিউট করুন"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "চ্যাট উইজেট"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "অনুসরণ করুন"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "নস্টারে সম্প্রচার করুন"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "সম্পাদনা"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "শীর্ষ জ্যাপ প্রদানকারী"
   },
   "x82IOl": {
     "defaultMessage": "নিঃশব্দ করুন"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "To start streaming on zap.stream, follow these steps:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "যেমন: nsec1xyz"

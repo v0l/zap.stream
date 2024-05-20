@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Toevoegen"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "Voorbeeldinstellingen in OBS (Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "Inval"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} een clip gemaakt"
   },
-  "BGxpTN": {
-    "defaultMessage": "Stream Chat"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "Top chatters"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "Bliksemadres"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "Naam is vereist"
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "Bewaar deze en bewaar hem goed! Als je deze sleutel verliest, heb je nooit meer toegang tot je account. Ja, zo serieus is het!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "We hebben een bliksemportemonnee voor je gemaakt, zodat je meteen door kijkers kunt worden betaald!"
   },
-  "PA0ej4": {
-    "defaultMessage": "Clip maken"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "Stream doorsturen"
-  },
-  "W8nHSd": {
-    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Niet langer negeren"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "Volgen"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Uitzending op Nostr"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "Bewerk"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "Top Zappers"
   },
   "x82IOl": {
     "defaultMessage": "Mute"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "Volg deze stappen om te beginnen met streamen op zap.stream:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "bijv. nsec1xyz"

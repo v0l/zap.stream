@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "추가"
   },
+  "2lVQYF": {
+    "defaultMessage": "...more"
+  },
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
@@ -91,6 +94,9 @@
   },
   "4RhY4O": {
     "defaultMessage": "OBS의 설정 예시(Apple M1 Mac)"
+  },
+  "4XfMux": {
+    "defaultMessage": "Videos"
   },
   "4iBdw1": {
     "defaultMessage": "레이드"
@@ -197,9 +203,6 @@
   "BD0vyn": {
     "defaultMessage": "{name} 클립 생성"
   },
-  "BGxpTN": {
-    "defaultMessage": "스트림 채팅"
-  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -263,6 +266,9 @@
   "GGaJMU": {
     "defaultMessage": "인기 채팅자"
   },
+  "GSuQPh": {
+    "defaultMessage": "Unknown event link"
+  },
   "GSye7T": {
     "defaultMessage": "라이트닝 주소"
   },
@@ -274,6 +280,9 @@
   },
   "Gvxoji": {
     "defaultMessage": "이름은 필수 입력 사항입니다."
+  },
+  "GwbTAz": {
+    "defaultMessage": "Streams"
   },
   "H/bNs9": {
     "defaultMessage": "이 키를 저장하여 안전하게 보관하세요! 이 키를 분실하면 다시는 계정에 액세스할 수 없습니다. 네, 그만큼 심각합니다!"
@@ -386,9 +395,6 @@
   "Oxqtyf": {
     "defaultMessage": "시청자로부터 바로 수익을 받을 수 있도록 라이트닝 월렛을 연결해 드렸습니다!"
   },
-  "PA0ej4": {
-    "defaultMessage": "클립 만들기"
-  },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
   },
@@ -484,9 +490,6 @@
   },
   "W7DNWx": {
     "defaultMessage": "스트림 포워딩"
-  },
-  "W8nHSd": {
-    "defaultMessage": "자주 묻는 질문"
   },
   "W9355R": {
     "defaultMessage": "음소거 해제"
@@ -634,6 +637,9 @@
   },
   "hpl4BP": {
     "defaultMessage": "채팅 위젯"
+  },
+  "hzSNj4": {
+    "defaultMessage": "Dashboard"
   },
   "ieGrWo": {
     "defaultMessage": "팔로우"
@@ -804,6 +810,9 @@
   "wCIL7o": {
     "defaultMessage": "Nostr에서 방송"
   },
+  "wCgTu5": {
+    "defaultMessage": "Comments"
+  },
   "wEQDC6": {
     "defaultMessage": "편집"
   },
@@ -818,9 +827,6 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
-  },
-  "wzWWzV": {
-    "defaultMessage": "최고의 재퍼"
   },
   "x82IOl": {
     "defaultMessage": "음소거"
@@ -839,6 +845,9 @@
   },
   "yR0V+W": {
     "defaultMessage": "zap.stream에서 스트리밍을 시작하려면 다음 단계를 따르세요:"
+  },
+  "yj8NrY": {
+    "defaultMessage": "Clip"
   },
   "yzKwBQ": {
     "defaultMessage": "예: nsec1xyz"
