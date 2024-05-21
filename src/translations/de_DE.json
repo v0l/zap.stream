@@ -66,7 +66,7 @@
     "defaultMessage": "Hinzufügen"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "... mehr"
   },
   "2ukA4d": {
     "defaultMessage": "{n} Stunden"
@@ -267,7 +267,7 @@
     "defaultMessage": "Top-Chatter"
   },
   "GSuQPh": {
-    "defaultMessage": "Unknown event link"
+    "defaultMessage": "Unbekannter Event-Link"
   },
   "GSye7T": {
     "defaultMessage": "Lightning-Adresse"
@@ -811,7 +811,7 @@
     "defaultMessage": "Auf Nostr verbreiten"
   },
   "wCgTu5": {
-    "defaultMessage": "Comments"
+    "defaultMessage": "Kommentare"
   },
   "wEQDC6": {
     "defaultMessage": "Bearbeiten"
