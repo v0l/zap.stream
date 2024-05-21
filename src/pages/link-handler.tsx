@@ -24,7 +24,7 @@ export function LinkHandler() {
         <NostrEventElement link={link} />
       </div>
     );
-  } else if (link.kind === EventKind.LiveEvent) {
+  } else if (link.kind === EventKind.LiveEvent || link.type === NostrPrefix.PublicKey) {
     return (
       <div className={classNames(layoutContext.showHeader ? "h-[calc(100dvh-44px)]" : "h-[calc(100dvh)]", "w-full")}>
         <StreamPage link={link} evPreload={evPreload} />
