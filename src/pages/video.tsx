@@ -46,8 +46,8 @@ export function VideoPage({ link, evPreload }: { link: NostrLink; evPreload?: Ta
 
   return (
     <div
-      className={classNames("lg:p-4 grow lg:grid lg:gap-2 lg:grid-cols-[auto_450px]", {
-        "max-w-[60dvw] mx-auto": !widePlayer,
+      className={classNames("xl:p-4 grow xl:grid xl:gap-2 xl:grid-cols-[auto_450px]", {
+        "xl:w-[1600px] xl:max-w-[1600px] mx-auto": !widePlayer,
       })}>
       <div
         className={classNames("min-w-0 w-full max-h-[80dvh] aspect-video mx-auto bg-black", {

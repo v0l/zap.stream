@@ -145,6 +145,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "ends", v => (ret.ends = v));
     matchTag(t, "service", v => (ret.service = v));
     matchTag(t, "duration", v => (ret.duration = Number(v)));
+    matchTag(t, "published_at", v => (ret.ends = v));
   }
   const { regularTags, prefixedTags } = sortStreamTags(ev?.tags ?? []);
   ret.tags = regularTags;

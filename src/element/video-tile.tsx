@@ -16,6 +16,7 @@ import { useUserProfile } from "@snort/system-react";
 import { VideoDuration } from "./video/duration";
 import useImgProxy from "@/hooks/img-proxy";
 import PillOpaque from "./pill-opaque";
+import { RelativeTime } from "./relative-time";
 
 export function VideoTile({
   ev,
@@ -32,7 +33,7 @@ export function VideoTile({
   style: "list" | "grid";
   className?: string;
 }) {
-  const { title, image, status, participants, contentWarning, duration, recording } = extractStreamInfo(ev);
+  const { title, image, status, participants, contentWarning, duration, recording, ends } = extractStreamInfo(ev);
   const host = getHost(ev);
   const hostProfile = useUserProfile(host);
   const isGrownUp = useContentWarning();
@@ -94,7 +95,17 @@ export function VideoTile({
           <span className="font-medium" title={title}>
             {(title?.length ?? 0) > 50 ? `${title?.slice(0, 47)}...` : title}
           </span>
-          {showAuthor && <span className="text-layer-4">{getName(host, hostProfile)}</span>}
+          {showAuthor && (
+            <span className="text-layer-4">
+              {getName(host, hostProfile)}
+              {ends && (
+                <>
+                  {" · "}
+                  <RelativeTime from={Number(ends) * 1000} suffix={true} />
+                </>
+              )}
+            </span>
+          )}
         </div>
       </div>
     </div>
