@@ -2678,10 +2678,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-wasm@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@snort/system-wasm@npm:1.0.2"
-  checksum: 10c0/0cd754f8fceefc37d064423f46d57cb925faee9060b602eeef7d93cc92bc534d78e02b5b15531d96ee91dfa40d64c4cac82054597e9f59668fcf5c08fc871d5c
+"@snort/system-wasm@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@snort/system-wasm@npm:1.0.4"
+  checksum: 10c0/d6721c68f8c4123c1ad7a7ea4a842010388a388ec48db39cb6583c2e869e0596db8f022680066875c89daa57f297e801731a4bc262434407e93e14bb73e378bf
   languageName: node
   linkType: hard
 
@@ -7656,7 +7656,7 @@ __metadata:
     "@snort/shared": "npm:^1.0.15"
     "@snort/system": "npm:^1.3.2"
     "@snort/system-react": "npm:^1.3.2"
-    "@snort/system-wasm": "npm:^1.0.2"
+    "@snort/system-wasm": "npm:^1.0.4"
     "@snort/wallet": "npm:^0.1.3"
     "@snort/worker-relay": "npm:^1.0.10"
     "@sqlite.org/sqlite-wasm": "npm:^3.45.1-build1"
