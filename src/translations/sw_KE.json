@@ -62,10 +62,6 @@
   "1qsXCO": {
     "defaultMessage": "k.m. jina@pochi.com"
   },
-  "1y8vnu": {
-    "defaultMessage": "{m}s",
-    "description": "Number of second(s) relative to now"
-  },
   "2/2yg+": {
     "defaultMessage": "Ongeza"
   },
@@ -177,10 +173,6 @@
   "9a9+ww": {
     "defaultMessage": "Kichwa"
   },
-  "9bAnRw": {
-    "defaultMessage": "{m}d",
-    "description": "Number of day(s) relative to now"
-  },
   "9pMqYs": {
     "defaultMessage": "Anwani ya Nostr"
   },
@@ -258,6 +250,10 @@
   },
   "FIDK5Y": {
     "defaultMessage": "Wakati Wote Mkuu wa Zapper"
+  },
+  "FXepR9": {
+    "defaultMessage": "{m}mo {ago}",
+    "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
     "defaultMessage": "Unaweza kubadilisha na kuweka anwani yako mwenyewe baadaye."
@@ -400,8 +396,16 @@
   "OkXMLE": {
     "defaultMessage": "Kiwango cha Juu cha Bitrate ya Sauti"
   },
+  "OumUwz": {
+    "defaultMessage": "{m}s {ago}",
+    "description": "Number of second(s) relative to now"
+  },
   "Oxqtyf": {
     "defaultMessage": "Tumekupa mkoba wa Lightning, ili uweze kulipwa moja kwa moja na watazamaji!"
+  },
+  "PDA8V2": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
@@ -469,15 +473,15 @@
   "TDUfVk": {
     "defaultMessage": "Started"
   },
-  "TNFpMZ": {
-    "defaultMessage": "{m}h",
-    "description": "Number of hour(s) relative to now"
-  },
   "TP/cMX": {
     "defaultMessage": "Imemalizika"
   },
   "TwyMau": {
     "defaultMessage": "Akaunti"
+  },
+  "UCDS65": {
+    "defaultMessage": "ago",
+    "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
     "defaultMessage": "Karibu kwenye zap.stream!"
@@ -518,10 +522,6 @@
   },
   "X2PZ7D": {
     "defaultMessage": "Tengeneza Lengo"
-  },
-  "XD/ATb": {
-    "defaultMessage": "{m}mo",
-    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -571,6 +571,10 @@
   },
   "Zse7yG": {
     "defaultMessage": "Mpokeaji wa Raid"
+  },
+  "aB/rH0": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
     "defaultMessage": "Endelea"
@@ -681,10 +685,6 @@
   "jgOqxt": {
     "defaultMessage": "Vidude"
   },
-  "jhTFev": {
-    "defaultMessage": "{m}w",
-    "description": "Number of week(s) relative to now"
-  },
   "jkAQj5": {
     "defaultMessage": "Mtiririko Umeisha"
   },
@@ -760,10 +760,6 @@
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
-  "qRV9H5": {
-    "defaultMessage": "{m}h",
-    "description": "Number of minute(s) relative to now"
-  },
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
   },
@@ -778,6 +774,10 @@
   },
   "rgsbu9": {
     "defaultMessage": "Watazamaji Sasa"
+  },
+  "s+ORFl": {
+    "defaultMessage": "{m}d {ago}",
+    "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
     "defaultMessage": "Kiungo cha Picha"
@@ -869,6 +869,10 @@
   },
   "y867Vs": {
     "defaultMessage": "Sauti"
+  },
+  "y8ogtp": {
+    "defaultMessage": "{m}w {ago}",
+    "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
     "defaultMessage": "Vipande"

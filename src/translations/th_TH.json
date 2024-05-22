@@ -62,10 +62,6 @@
   "1qsXCO": {
     "defaultMessage": "เช่น name@wallet.com"
   },
-  "1y8vnu": {
-    "defaultMessage": "{m}s",
-    "description": "Number of second(s) relative to now"
-  },
   "2/2yg+": {
     "defaultMessage": "เพิ่ม"
   },
@@ -177,10 +173,6 @@
   "9a9+ww": {
     "defaultMessage": "หัวข้อ"
   },
-  "9bAnRw": {
-    "defaultMessage": "{m}d",
-    "description": "Number of day(s) relative to now"
-  },
   "9pMqYs": {
     "defaultMessage": "Nostr address"
   },
@@ -258,6 +250,10 @@
   },
   "FIDK5Y": {
     "defaultMessage": "นัก Zap ดีเด่น"
+  },
+  "FXepR9": {
+    "defaultMessage": "{m}mo {ago}",
+    "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
     "defaultMessage": "คุณสามารถเปลี่ยนเป็นที่อยู่ของคุณได้ภายหลัง"
@@ -400,8 +396,16 @@
   "OkXMLE": {
     "defaultMessage": "บิตเรตสูงสุด"
   },
+  "OumUwz": {
+    "defaultMessage": "{m}s {ago}",
+    "description": "Number of second(s) relative to now"
+  },
   "Oxqtyf": {
     "defaultMessage": "เราได้เพิ่มกระเป๋า Lightning ให้คุณสามารถรับ sats จากผู้เข้าชมได้"
+  },
+  "PDA8V2": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
     "defaultMessage": "เว้นว่างไว้หากคุณไม่ต้องการกำหนดเป้าหมาย"
@@ -469,15 +473,15 @@
   "TDUfVk": {
     "defaultMessage": "เริ่มไปแล้ว"
   },
-  "TNFpMZ": {
-    "defaultMessage": "{m}h",
-    "description": "Number of hour(s) relative to now"
-  },
   "TP/cMX": {
     "defaultMessage": "จบแล้ว"
   },
   "TwyMau": {
     "defaultMessage": "บัญชี"
+  },
+  "UCDS65": {
+    "defaultMessage": "ago",
+    "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
     "defaultMessage": "ยินดีต้อนรับสู่ zap.stream จ้า"
@@ -518,10 +522,6 @@
   },
   "X2PZ7D": {
     "defaultMessage": "สร้างเป้าหมาย"
-  },
-  "XD/ATb": {
-    "defaultMessage": "{m}mo",
-    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -571,6 +571,10 @@
   },
   "Zse7yG": {
     "defaultMessage": "เป้าหมายการบุกชม"
+  },
+  "aB/rH0": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
     "defaultMessage": "ดำเนินการต่อ"
@@ -681,10 +685,6 @@
   "jgOqxt": {
     "defaultMessage": "เครื่องมือถ่ายทอดสด"
   },
-  "jhTFev": {
-    "defaultMessage": "{m}w",
-    "description": "Number of week(s) relative to now"
-  },
   "jkAQj5": {
     "defaultMessage": "จบการถ่ายทอดแล้ว"
   },
@@ -760,10 +760,6 @@
   "q9ryv4": {
     "defaultMessage": "ลิงก์ภาพหน้าปก (ถ้ามี)"
   },
-  "qRV9H5": {
-    "defaultMessage": "{m}h",
-    "description": "Number of minute(s) relative to now"
-  },
   "qx6bv2": {
     "defaultMessage": "เป้าหมายการสตรีม (ถ้ามี)"
   },
@@ -778,6 +774,10 @@
   },
   "rgsbu9": {
     "defaultMessage": "ผู้ชมตอนนี้"
+  },
+  "s+ORFl": {
+    "defaultMessage": "{m}d {ago}",
+    "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
     "defaultMessage": "ลิงค์รูปภาพ"
@@ -869,6 +869,10 @@
   },
   "y867Vs": {
     "defaultMessage": "ระดับเสียง"
+  },
+  "y8ogtp": {
+    "defaultMessage": "{m}w {ago}",
+    "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
     "defaultMessage": "คลิป"

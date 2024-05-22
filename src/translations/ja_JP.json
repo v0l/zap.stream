@@ -62,10 +62,6 @@
   "1qsXCO": {
     "defaultMessage": "例： name@wallet.com"
   },
-  "1y8vnu": {
-    "defaultMessage": "{m}s",
-    "description": "Number of second(s) relative to now"
-  },
   "2/2yg+": {
     "defaultMessage": "追加"
   },
@@ -177,10 +173,6 @@
   "9a9+ww": {
     "defaultMessage": "タイトル"
   },
-  "9bAnRw": {
-    "defaultMessage": "{m}d",
-    "description": "Number of day(s) relative to now"
-  },
   "9pMqYs": {
     "defaultMessage": "住所"
   },
@@ -258,6 +250,10 @@
   },
   "FIDK5Y": {
     "defaultMessage": "歴代トップ・ザッパー"
+  },
+  "FXepR9": {
+    "defaultMessage": "{m}mo {ago}",
+    "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
     "defaultMessage": "後でいつでも自分の住所に置き換えることができる。"
@@ -400,8 +396,16 @@
   "OkXMLE": {
     "defaultMessage": "最大オーディオ・ビットレート"
   },
+  "OumUwz": {
+    "defaultMessage": "{m}s {ago}",
+    "description": "Number of second(s) relative to now"
+  },
   "Oxqtyf": {
     "defaultMessage": "私たちはあなたにライトニング・ウォレットを提供し、視聴者からすぐに支払いを受けることができるようにしました！"
+  },
+  "PDA8V2": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
@@ -469,15 +473,15 @@
   "TDUfVk": {
     "defaultMessage": "Started"
   },
-  "TNFpMZ": {
-    "defaultMessage": "{m}h",
-    "description": "Number of hour(s) relative to now"
-  },
   "TP/cMX": {
     "defaultMessage": "終了しました"
   },
   "TwyMau": {
     "defaultMessage": "アカウント"
+  },
+  "UCDS65": {
+    "defaultMessage": "ago",
+    "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
     "defaultMessage": "Welcome to zap.stream!"
@@ -518,10 +522,6 @@
   },
   "X2PZ7D": {
     "defaultMessage": "目標を設定"
-  },
-  "XD/ATb": {
-    "defaultMessage": "{m}mo",
-    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -571,6 +571,10 @@
   },
   "Zse7yG": {
     "defaultMessage": "襲撃目標"
+  },
+  "aB/rH0": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
     "defaultMessage": "続ける"
@@ -681,10 +685,6 @@
   "jgOqxt": {
     "defaultMessage": "ウィジェット"
   },
-  "jhTFev": {
-    "defaultMessage": "{m}w",
-    "description": "Number of week(s) relative to now"
-  },
   "jkAQj5": {
     "defaultMessage": "ストリーム 終了"
   },
@@ -760,10 +760,6 @@
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
-  "qRV9H5": {
-    "defaultMessage": "{m}h",
-    "description": "Number of minute(s) relative to now"
-  },
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
   },
@@ -778,6 +774,10 @@
   },
   "rgsbu9": {
     "defaultMessage": "現在の視聴者数"
+  },
+  "s+ORFl": {
+    "defaultMessage": "{m}d {ago}",
+    "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
     "defaultMessage": "画像リンク"
@@ -869,6 +869,10 @@
   },
   "y867Vs": {
     "defaultMessage": "ボリューム"
+  },
+  "y8ogtp": {
+    "defaultMessage": "{m}w {ago}",
+    "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
     "defaultMessage": "クリップス"

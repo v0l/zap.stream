@@ -62,10 +62,6 @@
   "1qsXCO": {
     "defaultMessage": "예: name@wallet.com"
   },
-  "1y8vnu": {
-    "defaultMessage": "{m}s",
-    "description": "Number of second(s) relative to now"
-  },
   "2/2yg+": {
     "defaultMessage": "추가"
   },
@@ -177,10 +173,6 @@
   "9a9+ww": {
     "defaultMessage": "제목"
   },
-  "9bAnRw": {
-    "defaultMessage": "{m}d",
-    "description": "Number of day(s) relative to now"
-  },
   "9pMqYs": {
     "defaultMessage": "노스트르 주소"
   },
@@ -258,6 +250,10 @@
   },
   "FIDK5Y": {
     "defaultMessage": "역대 최고 재퍼"
+  },
+  "FXepR9": {
+    "defaultMessage": "{m}mo {ago}",
+    "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
     "defaultMessage": "나중에 언제든지 자신의 주소로 바꿀 수 있습니다."
@@ -400,8 +396,16 @@
   "OkXMLE": {
     "defaultMessage": "최대 오디오 비트레이트"
   },
+  "OumUwz": {
+    "defaultMessage": "{m}s {ago}",
+    "description": "Number of second(s) relative to now"
+  },
   "Oxqtyf": {
     "defaultMessage": "시청자로부터 바로 수익을 받을 수 있도록 라이트닝 월렛을 연결해 드렸습니다!"
+  },
+  "PDA8V2": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
@@ -469,15 +473,15 @@
   "TDUfVk": {
     "defaultMessage": "Started"
   },
-  "TNFpMZ": {
-    "defaultMessage": "{m}h",
-    "description": "Number of hour(s) relative to now"
-  },
   "TP/cMX": {
     "defaultMessage": "종료"
   },
   "TwyMau": {
     "defaultMessage": "계정"
+  },
+  "UCDS65": {
+    "defaultMessage": "ago",
+    "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
     "defaultMessage": "Welcome to zap.stream!"
@@ -518,10 +522,6 @@
   },
   "X2PZ7D": {
     "defaultMessage": "목표 만들기"
-  },
-  "XD/ATb": {
-    "defaultMessage": "{m}mo",
-    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -571,6 +571,10 @@
   },
   "Zse7yG": {
     "defaultMessage": "레이드 대상"
+  },
+  "aB/rH0": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
     "defaultMessage": "계속하기"
@@ -681,10 +685,6 @@
   "jgOqxt": {
     "defaultMessage": "위젯"
   },
-  "jhTFev": {
-    "defaultMessage": "{m}w",
-    "description": "Number of week(s) relative to now"
-  },
   "jkAQj5": {
     "defaultMessage": "스트림 종료"
   },
@@ -760,10 +760,6 @@
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
-  "qRV9H5": {
-    "defaultMessage": "{m}h",
-    "description": "Number of minute(s) relative to now"
-  },
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
   },
@@ -778,6 +774,10 @@
   },
   "rgsbu9": {
     "defaultMessage": "현재 시청자"
+  },
+  "s+ORFl": {
+    "defaultMessage": "{m}d {ago}",
+    "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
     "defaultMessage": "이미지 링크"
@@ -869,6 +869,10 @@
   },
   "y867Vs": {
     "defaultMessage": "볼륨"
+  },
+  "y8ogtp": {
+    "defaultMessage": "{m}w {ago}",
+    "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
     "defaultMessage": "클립"

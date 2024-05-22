@@ -62,10 +62,6 @@
   "1qsXCO": {
     "defaultMessage": "z.B. name@wallet.com"
   },
-  "1y8vnu": {
-    "defaultMessage": "{m}s",
-    "description": "Number of second(s) relative to now"
-  },
   "2/2yg+": {
     "defaultMessage": "Hinzufügen"
   },
@@ -177,10 +173,6 @@
   "9a9+ww": {
     "defaultMessage": "Titel"
   },
-  "9bAnRw": {
-    "defaultMessage": "{m}d",
-    "description": "Number of day(s) relative to now"
-  },
   "9pMqYs": {
     "defaultMessage": "Nostr-Adresse"
   },
@@ -258,6 +250,10 @@
   },
   "FIDK5Y": {
     "defaultMessage": "All-Time Top-Zapper"
+  },
+  "FXepR9": {
+    "defaultMessage": "{m}mo {ago}",
+    "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
     "defaultMessage": "Du kannst es später jederzeit durch deine eigene Adresse ersetzen."
@@ -400,8 +396,16 @@
   "OkXMLE": {
     "defaultMessage": "Maximale Audio-Bitrate"
   },
+  "OumUwz": {
+    "defaultMessage": "{m}s {ago}",
+    "description": "Number of second(s) relative to now"
+  },
   "Oxqtyf": {
     "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
+  },
+  "PDA8V2": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
     "defaultMessage": "Leer lassen, wenn du keine Ziele festlegen möchtest."
@@ -469,15 +473,15 @@
   "TDUfVk": {
     "defaultMessage": "Gestartet"
   },
-  "TNFpMZ": {
-    "defaultMessage": "{m}h",
-    "description": "Number of hour(s) relative to now"
-  },
   "TP/cMX": {
     "defaultMessage": "Beendet"
   },
   "TwyMau": {
     "defaultMessage": "Konto"
+  },
+  "UCDS65": {
+    "defaultMessage": "ago",
+    "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
     "defaultMessage": "Willkommen bei zap.stream!"
@@ -518,10 +522,6 @@
   },
   "X2PZ7D": {
     "defaultMessage": "Ziel erstellen"
-  },
-  "XD/ATb": {
-    "defaultMessage": "{m}mo",
-    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Rechnung konnte nicht angefordert werden"
@@ -571,6 +571,10 @@
   },
   "Zse7yG": {
     "defaultMessage": "Raid-Empfänger"
+  },
+  "aB/rH0": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
     "defaultMessage": "Weiter"
@@ -681,10 +685,6 @@
   "jgOqxt": {
     "defaultMessage": "Widgets"
   },
-  "jhTFev": {
-    "defaultMessage": "{m}w",
-    "description": "Number of week(s) relative to now"
-  },
   "jkAQj5": {
     "defaultMessage": "Stream beendet"
   },
@@ -760,10 +760,6 @@
   "q9ryv4": {
     "defaultMessage": "URL des Titelbildes (optional)"
   },
-  "qRV9H5": {
-    "defaultMessage": "{m}h",
-    "description": "Number of minute(s) relative to now"
-  },
   "qx6bv2": {
     "defaultMessage": "Stream-Ziel (optional)"
   },
@@ -778,6 +774,10 @@
   },
   "rgsbu9": {
     "defaultMessage": "Aktuelle Zuschauer"
+  },
+  "s+ORFl": {
+    "defaultMessage": "{m}d {ago}",
+    "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
     "defaultMessage": "Bild-Link"
@@ -869,6 +869,10 @@
   },
   "y867Vs": {
     "defaultMessage": "Lautstärke"
+  },
+  "y8ogtp": {
+    "defaultMessage": "{m}w {ago}",
+    "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
     "defaultMessage": "Clips"

@@ -62,10 +62,6 @@
   "1qsXCO": {
     "defaultMessage": "例如 name@wallet.com"
   },
-  "1y8vnu": {
-    "defaultMessage": "{m}s",
-    "description": "Number of second(s) relative to now"
-  },
   "2/2yg+": {
     "defaultMessage": "添加"
   },
@@ -177,10 +173,6 @@
   "9a9+ww": {
     "defaultMessage": "標題"
   },
-  "9bAnRw": {
-    "defaultMessage": "{m}d",
-    "description": "Number of day(s) relative to now"
-  },
   "9pMqYs": {
     "defaultMessage": "Nostr 地址"
   },
@@ -258,6 +250,10 @@
   },
   "FIDK5Y": {
     "defaultMessage": "All Time Top Zappers"
+  },
+  "FXepR9": {
+    "defaultMessage": "{m}mo {ago}",
+    "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
     "defaultMessage": "你始終可以用你自己的地址替換它。"
@@ -400,8 +396,16 @@
   "OkXMLE": {
     "defaultMessage": "Max Audio Bitrate"
   },
+  "OumUwz": {
+    "defaultMessage": "{m}s {ago}",
+    "description": "Number of second(s) relative to now"
+  },
   "Oxqtyf": {
     "defaultMessage": "我們已經為你設置了一個閃電錢包，因此你立即可以開始收取觀眾的付款！"
+  },
+  "PDA8V2": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
@@ -469,15 +473,15 @@
   "TDUfVk": {
     "defaultMessage": "Started"
   },
-  "TNFpMZ": {
-    "defaultMessage": "{m}h",
-    "description": "Number of hour(s) relative to now"
-  },
   "TP/cMX": {
     "defaultMessage": "已結束"
   },
   "TwyMau": {
     "defaultMessage": "帳戶"
+  },
+  "UCDS65": {
+    "defaultMessage": "ago",
+    "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
     "defaultMessage": "歡迎使用 zap.stream！"
@@ -518,10 +522,6 @@
   },
   "X2PZ7D": {
     "defaultMessage": "創建目標"
-  },
-  "XD/ATb": {
-    "defaultMessage": "{m}mo",
-    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -571,6 +571,10 @@
   },
   "Zse7yG": {
     "defaultMessage": "Raid target"
+  },
+  "aB/rH0": {
+    "defaultMessage": "{m}h {ago}",
+    "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
     "defaultMessage": "繼續"
@@ -681,10 +685,6 @@
   "jgOqxt": {
     "defaultMessage": "小工具"
   },
-  "jhTFev": {
-    "defaultMessage": "{m}w",
-    "description": "Number of week(s) relative to now"
-  },
   "jkAQj5": {
     "defaultMessage": "直播已結束"
   },
@@ -760,10 +760,6 @@
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
-  "qRV9H5": {
-    "defaultMessage": "{m}h",
-    "description": "Number of minute(s) relative to now"
-  },
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
   },
@@ -778,6 +774,10 @@
   },
   "rgsbu9": {
     "defaultMessage": "目前觀看用戶"
+  },
+  "s+ORFl": {
+    "defaultMessage": "{m}d {ago}",
+    "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
     "defaultMessage": "圖像鏈接"
@@ -869,6 +869,10 @@
   },
   "y867Vs": {
     "defaultMessage": "音量"
+  },
+  "y8ogtp": {
+    "defaultMessage": "{m}w {ago}",
+    "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
     "defaultMessage": "Clips"
