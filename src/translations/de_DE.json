@@ -252,7 +252,7 @@
     "defaultMessage": "All-Time Top-Zapper"
   },
   "FXepR9": {
-    "defaultMessage": "{m}mo {ago}",
+    "defaultMessage": "{m} Mt. {ago}",
     "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
@@ -397,14 +397,14 @@
     "defaultMessage": "Maximale Audio-Bitrate"
   },
   "OumUwz": {
-    "defaultMessage": "{m}s {ago}",
+    "defaultMessage": "{m} Sek. {ago}",
     "description": "Number of second(s) relative to now"
   },
   "Oxqtyf": {
     "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
   },
   "PDA8V2": {
-    "defaultMessage": "{m}h {ago}",
+    "defaultMessage": "{m} Std. {ago}",
     "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
@@ -480,7 +480,7 @@
     "defaultMessage": "Konto"
   },
   "UCDS65": {
-    "defaultMessage": "ago",
+    "defaultMessage": "her",
     "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
@@ -515,7 +515,7 @@
     "description": "Config value column header"
   },
   "Wp4l7+": {
-    "defaultMessage": "More Videos"
+    "defaultMessage": "Weitere Videos"
   },
   "WsjXrZ": {
     "defaultMessage": "Klicke auf Anmelden"
@@ -573,7 +573,7 @@
     "defaultMessage": "Raid-Empfänger"
   },
   "aB/rH0": {
-    "defaultMessage": "{m}h {ago}",
+    "defaultMessage": "{m} Std. {ago}",
     "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
@@ -707,7 +707,7 @@
     "defaultMessage": "Geplant"
   },
   "lXbG97": {
-    "defaultMessage": "Most Zapped Streamers"
+    "defaultMessage": "Meistgezappte Streamer"
   },
   "lZpRMR": {
     "defaultMessage": "Hier markieren, wenn dieser Stream Nacktheit oder pornografische Inhalte enthält."
@@ -779,7 +779,7 @@
     "defaultMessage": "Aktuelle Zuschauer"
   },
   "s+ORFl": {
-    "defaultMessage": "{m}d {ago}",
+    "defaultMessage": "{m} Tg. {ago}",
     "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
@@ -829,7 +829,7 @@
     "defaultMessage": "Stream"
   },
   "uksRSi": {
-    "defaultMessage": "Latest Videos"
+    "defaultMessage": "Neueste Videos"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
@@ -874,7 +874,7 @@
     "defaultMessage": "Lautstärke"
   },
   "y8ogtp": {
-    "defaultMessage": "{m}w {ago}",
+    "defaultMessage": "{m} Wo. {ago}",
     "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
