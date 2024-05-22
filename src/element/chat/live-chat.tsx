@@ -150,6 +150,22 @@ export function LiveChat({
 
   return (
     <div className={classNames("flex flex-col gap-1", className)} style={height ? { height: `${height}px` } : {}}>
+      {adjustLayout && (
+        <div
+          className="min-h-2 my-1"
+          onClick={() => {
+            streamContext.update(c => {
+              c.showDetails = !c.showDetails;
+              return { ...c };
+            });
+            layoutContext.update(c => {
+              c.showHeader = !c.showHeader;
+              return { ...c };
+            });
+          }}>
+          <div className="h-2 bg-layer-2 rounded-full w-10 mx-auto"></div>
+        </div>
+      )}
       {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
         <div>
           <div className="flex gap-1 overflow-x-auto scrollbar-hidden">
@@ -161,32 +177,7 @@ export function LiveChat({
       <div
         className={classNames("flex flex-col-reverse grow gap-2 overflow-y-auto", {
           "scrollbar-hidden": !(showScrollbar ?? true),
-        })}
-        onScroll={e => {
-          if (adjustLayout) {
-            const t = e.target as HTMLDivElement;
-            const atEnd = t.scrollTop >= 1;
-            if (atEnd) {
-              streamContext.update(c => {
-                c.showDetails = false;
-                return { ...c };
-              });
-              layoutContext.update(c => {
-                c.showHeader = false;
-                return { ...c };
-              });
-            } else {
-              streamContext.update(c => {
-                c.showDetails = true;
-                return { ...c };
-              });
-              layoutContext.update(c => {
-                c.showHeader = true;
-                return { ...c };
-              });
-            }
-          }
-        }}>
+        })}>
         {filteredEvents.map(a => {
           switch (a.kind) {
             case -1:

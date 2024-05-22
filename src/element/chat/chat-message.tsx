@@ -1,7 +1,7 @@
 import { SnortContext, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
 import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
-import { useHover, useIntersectionObserver, useOnClickOutside } from "usehooks-ts";
+import { useHover, useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 
 const EmojiPicker = lazy(() => import("../emoji-picker"));
@@ -43,9 +43,6 @@ export function ChatMessage({
 }) {
   const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useIntersectionObserver({
-    freezeOnceVisible: true,
-  });
   const emojiRef = useRef(null);
   const link = NostrLink.fromEvent(ev);
   const isHovering = useHover(ref);
@@ -53,7 +50,7 @@ export function ChatMessage({
   const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
-  const profile = useUserProfile(inView?.isIntersecting ? ev.pubkey : undefined);
+  const profile = useUserProfile(ev.pubkey);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const related = useReactions("reactions", [link], undefined, true);
@@ -163,7 +160,7 @@ export function ChatMessage({
             })}
           </div>
         )}
-        {ref.current && (
+        {ref.current && isHovering && (
           <div
             className="fixed rounded-lg p-2 bg-layer-1 border border-layer-2 flex gap-1 z-10"
             style={{

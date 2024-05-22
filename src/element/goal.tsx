@@ -39,16 +39,16 @@ export function Goal({ ev, confetti }: { ev: NostrEvent; confetti?: boolean }) {
   const goalContent = (
     <div className="flex flex-col cursor-pointer">
       {ev.content.length > 0 && <p>{ev.content}</p>}
-      <div className="relative h-10">
-        <div className="absolute bg-layer-2 h-3 rounded-full my-4 w-full"></div>
+      <div className="relative h-7">
+        <div className="absolute bg-layer-2 h-3 rounded-full my-2 w-full"></div>
         <div
-          className="absolute bg-zap h-3 rounded-full text-xs font-medium my-4 leading-3 pl-1"
+          className="absolute bg-zap h-3 rounded-full text-xs font-medium my-2 leading-3 pl-1"
           style={{
             width: `${progress}%`,
           }}>
           {soFar > 0 ? formatSats(soFar) : ""}
         </div>
-        <div className="absolute text-right text-xs right-1 font-medium my-4 leading-3">
+        <div className="absolute text-right text-xs right-1 font-medium my-2 leading-3">
           <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
         </div>
       </div>
