@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { IconButton } from "./buttons";
 
@@ -11,35 +11,8 @@ export interface ModalProps {
   onClick?: (e: React.MouseEvent) => void;
   children: ReactNode;
   showClose?: boolean;
+  ready?: boolean;
 }
-
-let scrollbarWidth: number | null = null;
-
-const getScrollbarWidth = () => {
-  if (scrollbarWidth !== null) {
-    return scrollbarWidth;
-  }
-
-  const outer = document.createElement("div");
-  outer.style.visibility = "hidden";
-  outer.style.width = "100px";
-
-  document.body.appendChild(outer);
-
-  const widthNoScroll = outer.offsetWidth;
-  outer.style.overflow = "scroll";
-
-  const inner = document.createElement("div");
-  inner.style.width = "100%";
-  outer.appendChild(inner);
-
-  const widthWithScroll = inner.offsetWidth;
-
-  outer.parentNode?.removeChild(outer);
-
-  scrollbarWidth = widthNoScroll - widthWithScroll;
-  return scrollbarWidth;
-};
 
 export default function Modal(props: ModalProps) {
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -50,13 +23,10 @@ export default function Modal(props: ModalProps) {
 
   useEffect(() => {
     document.body.classList.add("scroll-lock");
-    document.body.style.paddingRight = `${getScrollbarWidth()}px`;
-
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.body.classList.remove("scroll-lock");
-      document.body.style.paddingRight = "";
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
@@ -76,7 +46,13 @@ export default function Modal(props: ModalProps) {
         e.stopPropagation();
       }}>
       <div
-        className={props.bodyClassName ?? "relative bg-layer-1 p-8 rounded-3xl my-auto lg:w-[500px] max-lg:w-full"}
+        className={
+          props.bodyClassName ??
+          classNames(
+            "relative bg-layer-1 p-8 transition max-xl:translate-y-[50vh] max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto lg:w-[500px] max-lg:w-full",
+            { "max-xl:translate-y-0": props.ready ?? true },
+          )
+        }
         onMouseDown={e => e.stopPropagation()}
         onClick={e => {
           e.stopPropagation();

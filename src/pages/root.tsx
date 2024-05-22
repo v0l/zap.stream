@@ -8,8 +8,8 @@ export function RootPage() {
 
   return (
     <div className="flex flex-col gap-6 p-4">
-      <div className="min-w-0 w-[calc(100dvw-2rem)]">
-        <div className="flex gap-4 overflow-x-scroll scrollbar-hidden">
+      <div className="min-w-0 w-[calc(100dvw-2rem)] overflow-x-scroll scrollbar-hidden">
+        <div className="flex gap-4 ">
           {AllCategories.filter(a => a.priority === 0).map(a => (
             <CategoryLink key={a.id} name={a.name} id={a.id} icon={a.icon} />
           ))}

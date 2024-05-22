@@ -18,7 +18,21 @@ export function useCategoryZaps(gameId: string) {
   const zapEvents = useRequestBuilder(rbZaps);
 
   const zaps = useMemo(() => {
-    return zapEvents.map(a => parseZap(a));
+    const parsed = zapEvents.map(a => parseZap(a));
+    return {
+      parsed: parsed,
+      all: zapEvents,
+      topPubkeys: parsed.reduce(
+        (acc, v) => {
+          if (v.receiver) {
+            acc[v.receiver] ??= 0;
+            acc[v.receiver] += v.amount;
+          }
+          return acc;
+        },
+        {} as Record<string, number>,
+      ),
+    };
   }, [zapEvents]);
 
   return zaps;

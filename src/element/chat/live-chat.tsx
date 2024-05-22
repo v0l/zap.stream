@@ -159,7 +159,7 @@ export function LiveChat({
               return { ...c };
             });
             layoutContext.update(c => {
-              c.showHeader = !c.showHeader;
+              c.showHeader = !streamContext.showDetails;
               return { ...c };
             });
           }}>

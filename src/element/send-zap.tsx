@@ -35,10 +35,11 @@ export interface SendZapsProps {
   eTag?: string;
   targetName?: string;
   onFinish: () => void;
+  onTargetReady?: () => void;
   button?: ReactNode;
 }
 
-export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: SendZapsProps) {
+export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTargetReady }: SendZapsProps) {
   const satsAmounts = [
     21, 69, 121, 420, 1_000, 2_100, 4_200, 10_000, 21_000, 42_000, 69_000, 100_000, 210_000, 500_000, 1_000_000,
   ];
@@ -63,9 +64,14 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
   useEffect(() => {
     if (!svc) {
       if (typeof lnurl === "string") {
-        loadService(lnurl).catch(console.warn);
+        loadService(lnurl)
+          .then(() => {
+            onTargetReady?.();
+          })
+          .catch(console.warn);
       } else {
         setSvc(lnurl);
+        onTargetReady?.();
       }
     }
   }, [lnurl]);
@@ -207,6 +213,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish }: Se
 
 export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   const [open, setOpen] = useState(false);
+  const [ready, setReady] = useState(false);
   return (
     <>
       {props.button ? (
@@ -218,8 +225,8 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
         </PrimaryButton>
       )}
       {open && (
-        <Modal id="send-zaps" onClose={() => setOpen(false)}>
-          <SendZaps {...props} onFinish={() => setOpen(false)} />
+        <Modal id="send-zaps" onClose={() => setOpen(false)} ready={ready}>
+          <SendZaps {...props} onFinish={() => setOpen(false)} onTargetReady={() => setReady(true)} />
         </Modal>
       )}
     </>
@@ -230,19 +237,21 @@ export function ZapEvent({ ev, children }: { children: ReactNode; ev: TaggedNost
   const host = getHost(ev);
   const profile = useUserProfile(host);
   const [open, setOpen] = useState(false);
+  const [ready, setReady] = useState(false);
   const target = profile?.lud16 ?? profile?.lud06;
 
   return (
     <>
       <div onClick={() => setOpen(true)}>{children}</div>
       {open && (
-        <Modal id="send-zaps" onClose={() => setOpen(false)}>
+        <Modal id="send-zaps" onClose={() => setOpen(false)} ready={ready}>
           <SendZaps
             lnurl={target ?? ""}
             eTag={ev.id}
             pubkey={host}
             targetName={getName(host, profile)}
             onFinish={() => setOpen(false)}
+            onTargetReady={() => setReady(true)}
           />
         </Modal>
       )}

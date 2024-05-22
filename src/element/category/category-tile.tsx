@@ -20,13 +20,13 @@ export function CategoryTile({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-8">
-        {game?.cover && (
-          <img src={game?.cover} className="max-lg:w-full sm:h-full lg:h-[200px] xl:h-[250px] aspect-[3/4]" />
-        )}
-        {!game?.cover && game?.className && (
-          <div className={classNames("w-full aspect-[3/4] xl:h-[250px]", game.className)} />
-        )}
+      <div className="flex gap-8 max-lg:flex-col">
+        <div className="max-lg:h-[140px] lg:h-[200px] xl:h-[250px]">
+          {game?.cover && <img src={game?.cover} className="object-fit aspect-[3/4] h-full rounded-xl" />}
+          {!game?.cover && game?.className && (
+            <div className={classNames("aspect-[3/4] h-full rounded-xl", game.className)} />
+          )}
+        </div>
         {showDetail && (
           <div className="flex flex-col gap-4">
             <h1>{game?.name}</h1>

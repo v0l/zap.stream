@@ -34,7 +34,7 @@ export function VideoPage({ link, evPreload }: { link: NostrLink; evPreload?: Ta
   const ev = useCurrentStreamFeed(link, true, evPreload);
   const host = getHost(ev);
   const [widePlayer, setWidePlayer] = useState(localStorage.getItem("wide-player") === "true");
-  const { title, summary, image, contentWarning, recording } = extractStreamInfo(ev);
+  const { title, summary, image, recording } = extractStreamInfo(ev);
   const profile = useUserProfile(host);
   const { proxy } = useImgProxy();
   const zapTarget = profile?.lud16 ?? profile?.lud06;

@@ -61,7 +61,7 @@ export function VideoTile({
           {hasImg ? (
             <img
               loading="lazy"
-              className="w-full h-inherit object-fit"
+              className="w-full h-inherit object-cover"
               src={proxy(image ?? recording ?? "")}
               onError={() => {
                 setHasImage(false);

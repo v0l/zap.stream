@@ -6,7 +6,7 @@ import { formatSatsCompact } from "@/number";
 export function CategoryZaps({ gameId }: { gameId: string }) {
   const zaps = useCategoryZaps(gameId);
 
-  const total = zaps.reduce((acc, v) => (acc += v.amount), 0);
+  const total = zaps.parsed.reduce((acc, v) => (acc += v.amount), 0);
 
   return (
     <Pill className="flex gap-2 items-center">
