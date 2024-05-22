@@ -62,6 +62,10 @@
   "1qsXCO": {
     "defaultMessage": "eg. name@wallet.com"
   },
+  "1y8vnu": {
+    "defaultMessage": "{m}s",
+    "description": "Number of second(s) relative to now"
+  },
   "2/2yg+": {
     "defaultMessage": "Add"
   },
@@ -172,6 +176,10 @@
   },
   "9a9+ww": {
     "defaultMessage": "Title"
+  },
+  "9bAnRw": {
+    "defaultMessage": "{m}d",
+    "description": "Number of day(s) relative to now"
   },
   "9pMqYs": {
     "defaultMessage": "Nostr Address"
@@ -461,6 +469,10 @@
   "TDUfVk": {
     "defaultMessage": "Started"
   },
+  "TNFpMZ": {
+    "defaultMessage": "{m}h",
+    "description": "Number of hour(s) relative to now"
+  },
   "TP/cMX": {
     "defaultMessage": "Ended"
   },
@@ -498,11 +510,18 @@
     "defaultMessage": "Value",
     "description": "Config value column header"
   },
+  "Wp4l7+": {
+    "defaultMessage": "More Videos"
+  },
   "WsjXrZ": {
     "defaultMessage": "Click on Log In"
   },
   "X2PZ7D": {
     "defaultMessage": "Create Goal"
+  },
+  "XD/ATb": {
+    "defaultMessage": "{m}mo",
+    "description": "Number of month(s) relative to now"
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -662,6 +681,10 @@
   "jgOqxt": {
     "defaultMessage": "Widgets"
   },
+  "jhTFev": {
+    "defaultMessage": "{m}w",
+    "description": "Number of week(s) relative to now"
+  },
   "jkAQj5": {
     "defaultMessage": "Stream Ended"
   },
@@ -737,6 +760,10 @@
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
+  "qRV9H5": {
+    "defaultMessage": "{m}h",
+    "description": "Number of minute(s) relative to now"
+  },
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
   },
@@ -797,6 +824,9 @@
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
+  },
+  "uksRSi": {
+    "defaultMessage": "Latest Videos"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"

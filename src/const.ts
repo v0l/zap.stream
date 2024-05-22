@@ -13,8 +13,11 @@ export const MUTED = 10_000 as EventKind;
 
 export const VIDEO_KIND = 34_235 as EventKind;
 
-export const DAY = 60 * 60 * 24;
+export const MINUTE = 60;
+export const HOUR = 60 * MINUTE;
+export const DAY = 24 * HOUR;
 export const WEEK = 7 * DAY;
+export const MONTH = 30 * DAY;
 
 export enum StreamState {
   Live = "live",

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { findTag } from "@/utils";
+import { HOUR, MINUTE } from "@/const";
 
 export function StreamTimer({ ev }: { ev?: NostrEvent }) {
   const [time, setTime] = useState("");
@@ -9,12 +10,10 @@ export function StreamTimer({ ev }: { ev?: NostrEvent }) {
   function updateTime() {
     const starts = Number(findTag(ev, "starts") ?? unixNow());
     const diff = unixNow() - starts;
-    const min = 60;
-    const hour = min * 60;
 
-    const hours = Math.floor(diff / hour);
-    const mins = Math.floor((diff % hour) / min);
-    const secs = Math.floor(diff % min);
+    const hours = Math.floor(diff / HOUR);
+    const mins = Math.floor((diff % HOUR) / MINUTE);
+    const secs = Math.floor(diff % MINUTE);
     setTime(
       `${hours.toFixed(0).padStart(2, "0")}:${mins.toFixed(0).padStart(2, "0")}:${secs.toFixed(0).padStart(2, "0")}`,
     );

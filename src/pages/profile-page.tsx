@@ -24,6 +24,7 @@ import { TopZappers } from "@/element/top-zappers";
 import { useProfileClips } from "@/hooks/clips";
 import VideoGrid from "@/element/video-grid";
 import { ClipTile } from "@/element/stream/clip-tile";
+import useImgProxy from "@/hooks/img-proxy";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 
@@ -32,17 +33,18 @@ export function ProfilePage() {
   const link = parseNostrLink(unwrap(params.npub));
   const { streams, zaps } = useProfile(link, true);
   const profile = useUserProfile(link.id);
+  const { proxy } = useImgProxy();
 
   const pastStreams = useMemo(() => {
     return streams.filter(ev => findTag(ev, "status") === StreamState.Ended);
   }, [streams]);
 
   return (
-    <div className="flex flex-col gap-3 xl:px-4">
+    <div className="flex flex-col gap-3 xl:px-4 w-full">
       <img
         className="rounded-xl object-cover h-[360px]"
         alt={profile?.name || link.id}
-        src={profile?.banner ? profile?.banner : defaultBanner}
+        src={profile?.banner ? proxy(profile?.banner) : defaultBanner}
       />
       <ProfileHeader link={link} profile={profile} streams={streams} />
       <div className="grid lg:grid-cols-2 gap-4 py-2">
@@ -145,7 +147,7 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
     <VideoGrid>
       {streams.map(ev => (
         <div key={ev.id} className="flex flex-col gap-1">
-          <VideoTile ev={ev} showAuthor={false} showStatus={false} />
+          <VideoTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
           <span className="text-neutral-500">
             <FormattedMessage
               defaultMessage="Streamed on {date}"

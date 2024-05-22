@@ -73,7 +73,7 @@ export default function VideoGridSorted({
           {live
             .filter(e => !mutedHosts.has(getHost(e)))
             .map(e => (
-              <VideoTile ev={e} key={e.id} />
+              <VideoTile ev={e} key={e.id} style="grid" />
             ))}
         </VideoGrid>
       )}
@@ -104,7 +104,7 @@ function GridSection({ header, items }: { header: ReactNode; items: Array<Tagged
       </div>
       <VideoGrid>
         {items.map(e => (
-          <VideoTile ev={e} key={e.id} />
+          <VideoTile ev={e} key={e.id} style="grid" />
         ))}
       </VideoGrid>
     </>

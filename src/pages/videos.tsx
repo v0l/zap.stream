@@ -4,6 +4,7 @@ import { VideoTile } from "@/element/video-tile";
 import { findTag } from "@/utils";
 import { RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
+import { FormattedMessage } from "react-intl";
 
 export function VideosPage() {
   const rb = new RequestBuilder("videos");
@@ -19,9 +20,13 @@ export function VideosPage() {
 
   return (
     <div className="p-4">
+      <h2>
+        <FormattedMessage defaultMessage="Latest Videos" />
+      </h2>
+      <br />
       <VideoGrid>
         {sorted.map(a => (
-          <VideoTile ev={a} key={a.id} showStatus={false} />
+          <VideoTile ev={a} key={a.id} showStatus={false} style="grid" />
         ))}
       </VideoGrid>
     </div>
