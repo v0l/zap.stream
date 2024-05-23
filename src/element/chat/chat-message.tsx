@@ -140,7 +140,7 @@ export function ChatMessage({
           }
           pubkey={ev.pubkey}
         />{" "}
-        <span title={dayjs(ev.created_at * 1000).format('MMM D, h:mm A')}>
+        <span title={dayjs(ev.created_at * 1000).format("MMM D, h:mm A")}>
           <Text tags={ev.tags} content={ev.content} eventComponent={CollapsibleEvent} className="inline" />
         </span>
         {(hasReactions || hasZaps) && (
