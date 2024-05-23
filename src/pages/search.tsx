@@ -1,3 +1,4 @@
+import { VIDEO_KIND } from "@/const";
 import { Icon } from "@/element/icon";
 import VideoGridSorted from "@/element/video-grid-sorted";
 import { EventKind, RequestBuilder } from "@snort/system";
@@ -22,7 +23,14 @@ export default function SearchPage() {
   const sub = useMemo(() => {
     if (!term) return;
     const rb = new RequestBuilder(`search:${term}`);
-    rb.withFilter().relay(SearchRelays).kinds([EventKind.LiveEvent]).search(term).limit(50);
+    rb.withOptions({
+      skipDiff: true
+    })
+    rb.withFilter()
+      .relay(SearchRelays)
+      .kinds([EventKind.LiveEvent, VIDEO_KIND])
+      .search(term)
+      .limit(50);
     return rb;
   }, [term]);
 
