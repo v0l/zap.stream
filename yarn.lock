@@ -2341,6 +2341,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nostr-dev-kit/ndk@npm:^2.8.2":
+  version: 2.8.2
+  resolution: "@nostr-dev-kit/ndk@npm:2.8.2"
+  dependencies:
+    "@noble/curves": "npm:^1.4.0"
+    "@noble/hashes": "npm:^1.3.1"
+    "@noble/secp256k1": "npm:^2.0.0"
+    "@scure/base": "npm:^1.1.1"
+    debug: "npm:^4.3.4"
+    light-bolt11-decoder: "npm:^3.0.0"
+    node-fetch: "npm:^3.3.1"
+    nostr-tools: "npm:^1.15.0"
+    tseep: "npm:^1.1.1"
+    typescript-lru-cache: "npm:^2.0.0"
+    utf8-buffer: "npm:^1.0.0"
+    websocket-polyfill: "npm:^0.0.3"
+  checksum: 10c0/7fe18fa503852ea03b3b5e212167bfc1fa4010d194ae35dcfd6693b5dafadd3299b730d46c49102da07ad0810924d7ccfb44370d3a73e47b380b5c20e1e1a4b2
+  languageName: node
+  linkType: hard
+
 "@npmcli/fs@npm:^3.1.0":
   version: 3.1.0
   resolution: "@npmcli/fs@npm:3.1.0"
@@ -2667,14 +2687,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "@snort/system-react@npm:1.3.2"
+"@snort/system-react@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@snort/system-react@npm:1.3.3"
   dependencies:
     "@snort/shared": "npm:^1.0.15"
-    "@snort/system": "npm:^1.3.2"
+    "@snort/system": "npm:^1.3.3"
     react: "npm:^18.2.0"
-  checksum: 10c0/faba93eb6c718cca75e0906371389d4c7c891699282c2c5725d48295bc21cc5888b1e9e76ddfec393fc32726f452d25cffae210126fef29cc3db0bd42d31b7eb
+  checksum: 10c0/c99d27e3367a31e278c4b293b11b00b8aefd4600dc081d2c422606572ba170d2f0256bff6e55523f8884906e54a3699149154a7feb7119410a484975c6c815c4
   languageName: node
   linkType: hard
 
@@ -2706,6 +2726,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@snort/system@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@snort/system@npm:1.3.3"
+  dependencies:
+    "@noble/curves": "npm:^1.4.0"
+    "@noble/hashes": "npm:^1.4.0"
+    "@nostr-dev-kit/ndk": "npm:^2.8.2"
+    "@scure/base": "npm:^1.1.6"
+    "@snort/shared": "npm:^1.0.15"
+    "@stablelib/xchacha20": "npm:^1.0.1"
+    debug: "npm:^4.3.4"
+    eventemitter3: "npm:^5.0.1"
+    isomorphic-ws: "npm:^5.0.0"
+    lokijs: "npm:^1.5.12"
+    lru-cache: "npm:^10.2.0"
+    uuid: "npm:^9.0.0"
+    ws: "npm:^8.14.0"
+  checksum: 10c0/a153ec74f0c12a6f739d1c1fd4cc78e3ca8d5a8a8c61f876a87e875ed3e330339d6e155fa52f36830aab2da0e8bfc210fe55da1f77e960b14a70e3aebd01ab7f
+  languageName: node
+  linkType: hard
+
 "@snort/wallet@npm:^0.1.3":
   version: 0.1.3
   resolution: "@snort/wallet@npm:0.1.3"
@@ -2721,14 +2762,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/worker-relay@npm:^1.0.10":
-  version: 1.0.10
-  resolution: "@snort/worker-relay@npm:1.0.10"
+"@snort/worker-relay@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@snort/worker-relay@npm:1.1.0"
   dependencies:
-    "@sqlite.org/sqlite-wasm": "npm:^3.45.1-build1"
+    "@sqlite.org/sqlite-wasm": "npm:^3.45.3-build3"
     eventemitter3: "npm:^5.0.1"
     uuid: "npm:^9.0.1"
-  checksum: 10c0/7595163359bc09096f8e8e12f7ed903ac50d96d8fcc0064d6bd72180faf17abd368464fb3622306e0c4c1b05ec0c0e93fd1f1162e2594c313c7e4a9c547f6d9f
+  checksum: 10c0/db301eb3f3d2cedd629e6fb469849ece0aa9029e1a8074802b2cc5346cc4cac2c12758257b3430eb9b030e94c86d49b1a484b84c95ad8291e173ae6d4a518295
   languageName: node
   linkType: hard
 
@@ -2738,6 +2779,15 @@ __metadata:
   bin:
     sqlite-wasm: bin/index.js
   checksum: 10c0/bb774ea390a18087837408b43ab5355dda0867c92092e15591d2bdcdfbfeab90bd6d11413ff98b2d82db48bd565a8a212fe375b53fa1116e45c8dbe912cc374a
+  languageName: node
+  linkType: hard
+
+"@sqlite.org/sqlite-wasm@npm:^3.45.3-build3":
+  version: 3.45.3-build3
+  resolution: "@sqlite.org/sqlite-wasm@npm:3.45.3-build3"
+  bin:
+    sqlite-wasm: bin/index.js
+  checksum: 10c0/363f777b8ed71369d6cdc5363e17c31aff6427827863af278049756ac1b81f94d145c4afd79c9e8ec03765c7aba10b5af83a1aa892c0b312cea9a2fc819d9d38
   languageName: node
   linkType: hard
 
@@ -7661,11 +7711,11 @@ __metadata:
     "@noble/hashes": "npm:^1.4.0"
     "@scure/base": "npm:^1.1.6"
     "@snort/shared": "npm:^1.0.15"
-    "@snort/system": "npm:^1.3.2"
-    "@snort/system-react": "npm:^1.3.2"
+    "@snort/system": "npm:^1.3.3"
+    "@snort/system-react": "npm:^1.3.3"
     "@snort/system-wasm": "npm:^1.0.4"
     "@snort/wallet": "npm:^0.1.3"
-    "@snort/worker-relay": "npm:^1.0.10"
+    "@snort/worker-relay": "npm:^1.1.0"
     "@sqlite.org/sqlite-wasm": "npm:^3.45.1-build1"
     "@szhsin/react-menu": "npm:^4.1.0"
     "@testing-library/dom": "npm:^9.3.1"

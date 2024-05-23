@@ -11,7 +11,6 @@ export const SearchRelays = [
   "wss://relay.nostr.band",
   "wss://search.nos.today",
   "wss://relay.noswhere.com",
-  "wss://saltivka.org",
 ];
 
 export default function SearchPage() {
@@ -25,7 +24,7 @@ export default function SearchPage() {
     const rb = new RequestBuilder(`search:${term}`);
     rb.withOptions({
       skipDiff: true
-    })
+    });
     rb.withFilter()
       .relay(SearchRelays)
       .kinds([EventKind.LiveEvent, VIDEO_KIND])
@@ -70,7 +69,7 @@ export default function SearchPage() {
               }}
             />
           </h2>
-          <VideoGridSorted evs={results} showAll={true} />
+          <VideoGridSorted evs={results} showAll={true} showVideos={true} />
         </>
       )}
     </div>

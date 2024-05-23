@@ -10,7 +10,7 @@ import { CategoryTile } from "./category/category-tile";
 import { Link } from "react-router-dom";
 import Pill from "./pill";
 import { CategoryZaps } from "./category/zaps";
-import { StreamState } from "@/const";
+import { StreamState, VIDEO_KIND } from "@/const";
 import { useRecentClips } from "@/hooks/clips";
 import { ClipTile } from "./stream/clip-tile";
 
@@ -21,6 +21,7 @@ interface VideoGridSortedProps {
   showPlanned?: boolean;
   showPopular?: boolean;
   showRecentClips?: boolean;
+  showVideos?: boolean;
 }
 
 export default function VideoGridSorted({
@@ -30,6 +31,7 @@ export default function VideoGridSorted({
   showPlanned,
   showPopular,
   showRecentClips,
+  showVideos,
 }: VideoGridSortedProps) {
   const login = useLogin();
   const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
@@ -81,6 +83,7 @@ export default function VideoGridSorted({
         <GridSection header={`#${t.tag}`} items={t.live} />
       ))}
       {showPopular && <PopularCategories items={evs} />}
+      {showVideos && <GridSection header={<FormattedMessage defaultMessage="Videos" />} items={evs.filter(a => a.kind === VIDEO_KIND)} />}
       {showRecentClips && <RecentClips />}
       {hasFollowingLive && liveNow.length > 0 && (
         <GridSection header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />} items={liveNow} />

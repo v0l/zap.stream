@@ -41,6 +41,7 @@ import { LayoutContextProvider } from "./pages/layout/context";
 import { VideosPage } from "./pages/videos";
 import { LinkHandler } from "./pages/link-handler";
 import { UploadPage } from "./pages/upload";
+import { DebugPage } from "./pages/debug";
 
 const hasWasm = "WebAssembly" in globalThis;
 const workerRelay = new WorkerRelayInterface(
@@ -72,6 +73,7 @@ async function doInit() {
       databasePath: "relay.db",
       insertBatchSize: 100,
     });
+    await workerRelay.debug("*");
   } catch (e) {
     console.error(e);
   }
@@ -87,6 +89,10 @@ const router = createBrowserRouter([
       return null;
     },
     children: [
+      {
+        path: "/debug",
+        element: <DebugPage />
+      },
       {
         path: "/",
         element: <RootPage />,
