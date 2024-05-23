@@ -56,7 +56,11 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           return <blockquote key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</blockquote>;
         }
         case "link": {
-          return <HyperText link={t.href} key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</HyperText>;
+          return (
+            <HyperText link={t.href} key={key}>
+              {t.tokens ? t.tokens.map(renderToken) : t.raw}
+            </HyperText>
+          );
         }
         case "list": {
           if (t.ordered) {
@@ -80,7 +84,9 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
               <thead>
                 <tr>
                   {(t.header as Tokens.TableCell[]).map((v, h_key) => (
-                    <th className="border" key={h_key}>{v.tokens ? v.tokens.map(renderToken) : v.text}</th>
+                    <th className="border" key={h_key}>
+                      {v.tokens ? v.tokens.map(renderToken) : v.text}
+                    </th>
                   ))}
                 </tr>
               </thead>
@@ -88,7 +94,9 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
                 {(t.rows as Tokens.TableCell[][]).map((v, r_key) => (
                   <tr key={r_key}>
                     {v.map((d, d_key) => (
-                      <td className="border px-2 py-1" key={d_key}>{d.tokens ? d.tokens.map(renderToken) : d.text}</td>
+                      <td className="border px-2 py-1" key={d_key}>
+                        {d.tokens ? d.tokens.map(renderToken) : d.text}
+                      </td>
                     ))}
                   </tr>
                 ))}

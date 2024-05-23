@@ -36,25 +36,41 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
               link.type === NostrPrefix.Address ||
               link.type === NostrPrefix.Note
             ) {
-              return <Fragment key={key}>
-                {eventComponent?.({ link })} </Fragment> ?? <EventEmbed link={link} key={key} />;
+              return (
+                <Fragment key={key}>{eventComponent?.({ link })} </Fragment> ?? <EventEmbed link={link} key={key} />
+              );
             } else {
               return <Mention pubkey={link.id} key={key} />;
             }
           }
         }
-        return <HyperText link={f.content} key={key}>{f.content}</HyperText>;
+        return (
+          <HyperText link={f.content} key={key}>
+            {f.content}
+          </HyperText>
+        );
       }
       case "mention":
         return <Mention pubkey={f.content} key={key} />;
       case "hashtag":
-        return <Link to={`/t/${f.content}`} key={key}>#{f.content}</Link>;
+        return (
+          <Link to={`/t/${f.content}`} key={key}>
+            #{f.content}
+          </Link>
+        );
       default: {
         if (f.content.startsWith("lnurlp:")) {
           // LUD-17: https://github.com/lnurl/luds/blob/luds/17.md
           const url = new URL(f.content);
           url.protocol = "https:";
-          return <SendZapsDialog pubkey={undefined} lnurl={url.toString()} button={<Link to={""}>{f.content}</Link>} key={key} />;
+          return (
+            <SendZapsDialog
+              pubkey={undefined}
+              lnurl={url.toString()}
+              button={<Link to={""}>{f.content}</Link>}
+              key={key}
+            />
+          );
         }
         return f.content;
       }
