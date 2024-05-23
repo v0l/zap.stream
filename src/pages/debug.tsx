@@ -39,9 +39,7 @@ export function DebugPage() {
       <h3>Cache Query</h3>
       <textarea value={filter} onChange={e => setFilter(e.target.value)} placeholder="nostr filter" />
       <Layer1Button onClick={() => search()}>Query</Layer1Button>
-      <WarningButton onClick={() => removeEvents()} >
-        Delete
-      </WarningButton>
+      <WarningButton onClick={() => removeEvents()}>Delete</WarningButton>
 
       <h3>Manual Insert</h3>
       <textarea value={event} onChange={e => setEvent(e.target.value)} placeholder="nostr event" />

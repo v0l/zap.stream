@@ -7,11 +7,7 @@ import { useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const SearchRelays = [
-  "wss://relay.nostr.band",
-  "wss://search.nos.today",
-  "wss://relay.noswhere.com",
-];
+export const SearchRelays = ["wss://relay.nostr.band", "wss://search.nos.today", "wss://relay.noswhere.com"];
 
 export default function SearchPage() {
   const { term } = useParams();
@@ -23,13 +19,9 @@ export default function SearchPage() {
     if (!term) return;
     const rb = new RequestBuilder(`search:${term}`);
     rb.withOptions({
-      skipDiff: true
+      skipDiff: true,
     });
-    rb.withFilter()
-      .relay(SearchRelays)
-      .kinds([EventKind.LiveEvent, VIDEO_KIND])
-      .search(term)
-      .limit(50);
+    rb.withFilter().relay(SearchRelays).kinds([EventKind.LiveEvent, VIDEO_KIND]).search(term).limit(50);
     return rb;
   }, [term]);
 

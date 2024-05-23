@@ -91,8 +91,9 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
             </h3>
             <div className="uppercase font-semibold flex items-center gap-2">
               <div
-                className={`w-3 h-3 rounded-full ${status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
-                  }`}></div>
+                className={`w-3 h-3 rounded-full ${
+                  status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
+                }`}></div>
               {status === StreamState.Live ? (
                 <FormattedMessage defaultMessage="Started" />
               ) : (
@@ -215,9 +216,14 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
         <>
           <DashboardZapColumn ev={streamEvent!} link={streamLink} feed={feed} />
           <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col min-h-0">
-            <Layer1Button onClick={() => {
-              window.open(`${window.location.protocol}//${window.location.host}/chat/${link.encode()}?chat=true`, "", "popup=true,width=400,height=800")
-            }}>
+            <Layer1Button
+              onClick={() => {
+                window.open(
+                  `${window.location.protocol}//${window.location.host}/chat/${link.encode()}?chat=true`,
+                  "",
+                  "popup=true,width=400,height=800",
+                );
+              }}>
               <Icon name="link" size={24} />
               <FormattedMessage defaultMessage="Chat Popout" />
             </Layer1Button>

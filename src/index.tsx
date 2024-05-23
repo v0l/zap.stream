@@ -91,7 +91,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/debug",
-        element: <DebugPage />
+        element: <DebugPage />,
       },
       {
         path: "/",

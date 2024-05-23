@@ -83,7 +83,12 @@ export default function VideoGridSorted({
         <GridSection header={`#${t.tag}`} items={t.live} />
       ))}
       {showPopular && <PopularCategories items={evs} />}
-      {showVideos && <GridSection header={<FormattedMessage defaultMessage="Videos" />} items={evs.filter(a => a.kind === VIDEO_KIND)} />}
+      {showVideos && (
+        <GridSection
+          header={<FormattedMessage defaultMessage="Videos" />}
+          items={evs.filter(a => a.kind === VIDEO_KIND)}
+        />
+      )}
       {showRecentClips && <RecentClips />}
       {hasFollowingLive && liveNow.length > 0 && (
         <GridSection header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />} items={liveNow} />
