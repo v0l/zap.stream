@@ -21,12 +21,13 @@ import StreamKey from "@/element/provider/nostr/stream-key";
 import { DefaultProvider, NostrStreamProvider, StreamProviderInfo } from "@/providers";
 import { ExternalLink } from "@/element/external-link";
 import BalanceTimeEstimate from "@/element/balance-time-estimate";
-import { WarningButton } from "@/element/buttons";
+import { Layer1Button, WarningButton } from "@/element/buttons";
 import { useLogin } from "@/hooks/login";
 import AccountTopup from "@/element/provider/nostr/topup";
 import classNames from "classnames";
 import ManualStream from "./manual-stream";
 import { unixNow } from "@snort/shared";
+import { Icon } from "@/element/icon";
 const StreamSummary = lazy(() => import("@/element/summary-chart"));
 
 export function DashboardForLink({ link }: { link: NostrLink }) {
@@ -90,9 +91,8 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
             </h3>
             <div className="uppercase font-semibold flex items-center gap-2">
               <div
-                className={`w-3 h-3 rounded-full ${
-                  status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
-                }`}></div>
+                className={`w-3 h-3 rounded-full ${status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
+                  }`}></div>
               {status === StreamState.Live ? (
                 <FormattedMessage defaultMessage="Started" />
               ) : (
@@ -214,7 +214,15 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
       {streamLink && status === StreamState.Live && (
         <>
           <DashboardZapColumn ev={streamEvent!} link={streamLink} feed={feed} />
-          <LiveChat link={streamLink} ev={streamEvent} className="min-h-0 border border-layer-2 rounded-xl px-4 py-3" />
+          <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col">
+            <Layer1Button onClick={() => {
+              window.open(`${window.location.protocol}//${window.location.host}/chat/${link.encode()}?chat=true`, "", "popup=true,width=400,height=800")
+            }}>
+              <Icon name="link" size={24} />
+              <FormattedMessage defaultMessage="Chat Popout" />
+            </Layer1Button>
+            <LiveChat link={streamLink} ev={streamEvent} className="grow min-h-0" />
+          </div>
         </>
       )}
       {streamLink && status === StreamState.Ended && (
