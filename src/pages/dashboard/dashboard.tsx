@@ -214,7 +214,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
       {streamLink && status === StreamState.Live && (
         <>
           <DashboardZapColumn ev={streamEvent!} link={streamLink} feed={feed} />
-          <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col">
+          <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col min-h-0">
             <Layer1Button onClick={() => {
               window.open(`${window.location.protocol}//${window.location.host}/chat/${link.encode()}?chat=true`, "", "popup=true,width=400,height=800")
             }}>

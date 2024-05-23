@@ -216,7 +216,6 @@ export function LiveChat({
           return null;
         })}
         {feed.length === 0 && <Spinner />}
-        <div className="pt-[50dvh]"></div>
       </div>
       {(canWrite ?? true) && (
         <div className="flex gap-2 border-t py-2 border-layer-1">
