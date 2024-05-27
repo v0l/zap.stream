@@ -42,6 +42,7 @@ import { VideosPage } from "./pages/videos";
 import { LinkHandler } from "./pages/link-handler";
 import { UploadPage } from "./pages/upload";
 import { DebugPage } from "./pages/debug";
+import { ShortsPage } from "./pages/shorts";
 
 const hasWasm = "WebAssembly" in globalThis;
 const workerRelay = new WorkerRelayInterface(
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
       {
         path: "/videos",
         element: <VideosPage />,
+      },
+      {
+        path: "/shorts",
+        element: <ShortsPage />,
       },
       {
         path: "/upload",

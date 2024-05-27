@@ -5,6 +5,7 @@ import { LIVE_STREAM, StreamState } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
 import { hexToBech32 } from "@snort/shared";
+import { StreamInfo } from "./element/stream/stream-info";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -113,7 +114,6 @@ export interface StreamInfo {
   host?: string;
   gameId?: string;
   gameInfo?: GameInfo;
-  duration?: number;
 }
 
 const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
@@ -144,8 +144,6 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "starts", v => (ret.starts = v));
     matchTag(t, "ends", v => (ret.ends = v));
     matchTag(t, "service", v => (ret.service = v));
-    matchTag(t, "duration", v => (ret.duration = Number(v)));
-    matchTag(t, "published_at", v => (ret.ends = v));
   }
   const { regularTags, prefixedTags } = sortStreamTags(ev?.tags ?? []);
   ret.tags = regularTags;
@@ -154,10 +152,6 @@ export function extractStreamInfo(ev?: NostrEvent) {
   ret.gameId = gameId;
   ret.gameInfo = gameInfo;
 
-  // video patch
-  if (ev?.kind === 34_235) {
-    ret.status = StreamState.VOD;
-  }
   return ret;
 }
 

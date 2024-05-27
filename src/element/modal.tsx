@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { IconButton } from "./buttons";
 
@@ -49,8 +49,9 @@ export default function Modal(props: ModalProps) {
         className={
           props.bodyClassName ??
           classNames(
-            "relative bg-layer-1 p-8 transition max-xl:translate-y-[50vh] max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto lg:w-[500px] max-lg:w-full",
+            "relative bg-layer-1 p-8 transition max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto lg:w-[500px] max-lg:w-full",
             { "max-xl:translate-y-0": props.ready ?? true },
+            { "max-xl:translate-y-[50vh]": !(props.ready ?? true) },
           )
         }
         onMouseDown={e => e.stopPropagation()}

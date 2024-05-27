@@ -3132,6 +3132,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^9":
+  version: 9.0.8
+  resolution: "@types/uuid@npm:9.0.8"
+  checksum: 10c0/b411b93054cb1d4361919579ef3508a1f12bf15b5fdd97337d3d351bece6c921b52b6daeef89b62340fd73fd60da407878432a1af777f40648cbe53a01723489
+  languageName: node
+  linkType: hard
+
 "@types/webscopeio__react-textarea-autocomplete@npm:^4.7.5":
   version: 4.7.5
   resolution: "@types/webscopeio__react-textarea-autocomplete@npm:4.7.5"
@@ -7723,6 +7730,7 @@ __metadata:
     "@types/react": "npm:^18.3.2"
     "@types/react-dom": "npm:^18.3.0"
     "@types/react-helmet": "npm:^6.1.11"
+    "@types/uuid": "npm:^9"
     "@types/webscopeio__react-textarea-autocomplete": "npm:^4.7.5"
     "@typescript-eslint/eslint-plugin": "npm:^7.9.0"
     "@typescript-eslint/parser": "npm:^7.9.0"
@@ -7764,6 +7772,7 @@ __metadata:
     tailwindcss: "npm:^3.4.3"
     typescript: "npm:^5.4.5"
     usehooks-ts: "npm:^3.1.0"
+    uuid: "npm:^9.0.1"
     vite: "npm:^5.2.11"
     vite-plugin-pwa: "npm:^0.20.0"
     vite-plugin-version-mark: "npm:^0.0.13"

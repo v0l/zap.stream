@@ -1,22 +1,22 @@
-import { Link } from "react-router-dom";
-import { getName } from "./profile";
 import { NostrEvent, NostrLink } from "@snort/system";
 import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
+import { getName } from "./profile";
 
-import { StatePill } from "./state-pill";
-import { extractStreamInfo, getHost, profileLink } from "@/utils";
-import { formatSats } from "@/number";
 import { StreamState } from "@/const";
+import useImgProxy from "@/hooks/img-proxy";
+import { formatSats } from "@/number";
+import { extractStreamInfo, getHost, profileLink } from "@/utils";
+import { useUserProfile } from "@snort/system-react";
 import classNames from "classnames";
-import Logo from "./logo";
-import { useContentWarning } from "./nsfw";
 import { useState } from "react";
 import { Avatar } from "./avatar";
-import { useUserProfile } from "@snort/system-react";
-import { VideoDuration } from "./video/duration";
-import useImgProxy from "@/hooks/img-proxy";
+import Logo from "./logo";
+import { useContentWarning } from "./nsfw";
 import PillOpaque from "./pill-opaque";
 import { RelativeTime } from "./relative-time";
+import { StatePill } from "./state-pill";
+import { VideoDuration } from "./video/duration";
 
 export function VideoTile({
   ev,
@@ -91,7 +91,7 @@ export function VideoTile({
             <Avatar pubkey={host} user={hostProfile} />
           </Link>
         )}
-        <div className="flex flex-col">
+        <div className="flex flex-col break-words min-w-0">
           <span className="font-medium" title={title}>
             {(title?.length ?? 0) > 50 ? `${title?.slice(0, 47)}...` : title}
           </span>

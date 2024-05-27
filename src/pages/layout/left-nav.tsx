@@ -22,6 +22,13 @@ export function LeftNav() {
           </span>
         )}
       </NavLinkIcon>
+      <NavLinkIcon name="film" route="/shorts" className="flex gap-2 items-center">
+        {layout.leftNavExpand && (
+          <span className="pr-3">
+            <FormattedMessage defaultMessage="Shorts" />
+          </span>
+        )}
+      </NavLinkIcon>
       <NavLinkIcon name="grid" route="/category" className="flex gap-2 items-center">
         {layout.leftNavExpand && (
           <span className="pr-3">

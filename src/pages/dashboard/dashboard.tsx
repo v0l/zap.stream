@@ -215,7 +215,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
       {streamLink && status === StreamState.Live && (
         <>
           <DashboardZapColumn ev={streamEvent!} link={streamLink} feed={feed} />
-          <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col min-h-0">
+          <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col gap-2 min-h-0">
             <Layer1Button
               onClick={() => {
                 window.open(

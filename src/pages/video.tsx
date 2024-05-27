@@ -6,81 +6,57 @@ import { ShareMenu } from "@/element/share-menu";
 import { StreamSummary } from "@/element/stream/summary";
 import VideoComments from "@/element/video/comments";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import useImgProxy from "@/hooks/img-proxy";
-import { getHost, extractStreamInfo, findTag } from "@/utils";
+import { getHost, findTag } from "@/utils";
 import { NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder, useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
-import {
-  MediaController,
-  MediaControlBar,
-  MediaTimeRange,
-  MediaTimeDisplay,
-  MediaVolumeRange,
-  MediaPlayButton,
-  MediaMuteButton,
-  MediaFullscreenButton,
-  MediaPipButton,
-  MediaPlaybackRateButton,
-} from "media-chrome/react";
-import { MediaPlayerSizeButtonReact } from "@/element/video/video-size-button";
-import { useEffect, useMemo, useState } from "react";
+
+import { useMemo } from "react";
 import classNames from "classnames";
-import { useMediaQuery } from "usehooks-ts";
 import { VideoTile } from "@/element/video-tile";
 import { VIDEO_KIND } from "@/const";
+import { VideoInfo } from "@/service/video/info";
+import { VideoPlayerContextProvider, useVideoPlayerContext } from "@/element/video/context";
+import VideoPlayer from "@/element/video/player";
 
 export function VideoPage({ link, evPreload }: { link: NostrLink; evPreload?: TaggedNostrEvent }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
-  const host = getHost(ev);
-  const [widePlayer, setWidePlayer] = useState(localStorage.getItem("wide-player") === "true");
-  const { title, summary, image, recording } = extractStreamInfo(ev);
-  const profile = useUserProfile(host);
-  const { proxy } = useImgProxy();
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
 
-  useEffect(() => {
-    localStorage.setItem("wide-player", String(widePlayer));
-  }, [widePlayer]);
+  if (!ev) return;
+  const video = VideoInfo.parse(ev);
+
+  return (
+    <VideoPlayerContextProvider info={video}>
+      <VideoPageInner ev={ev} />
+    </VideoPlayerContextProvider>
+  );
+}
+
+function VideoPageInner({ ev }: { ev: TaggedNostrEvent }) {
+  const host = getHost(ev);
+  const ctx = useVideoPlayerContext();
+  const link = NostrLink.fromEvent(ev);
+
+  const profile = useUserProfile(host);
+  const zapTarget = profile?.lud16 ?? profile?.lud06;
 
   return (
     <div
       className={classNames("xl:p-4 grow xl:grid xl:gap-2 xl:grid-cols-[auto_450px]", {
-        "xl:w-[1600px] xl:max-w-[1600px] mx-auto": !widePlayer,
+        "xl:w-[1600px] xl:max-w-[1600px] mx-auto": !ctx.widePlayer,
       })}>
       <div
         className={classNames("min-w-0 w-full max-h-[80dvh] aspect-video mx-auto bg-black", {
-          "col-span-2": widePlayer,
+          "col-span-2": ctx.widePlayer,
         })}>
-        <MediaController className="min-w-0 w-full" mediaStreamType="on-demand">
-          <video
-            className="max-h-[80dvh] aspect-video"
-            slot="media"
-            src={recording}
-            autoPlay={true}
-            controls={false}
-            poster={proxy(image ?? recording ?? "")}
-          />
-          <MediaControlBar>
-            <MediaPlayButton />
-            <MediaPlaybackRateButton />
-            <MediaTimeRange />
-            <MediaTimeDisplay showDuration></MediaTimeDisplay>
-            <MediaMuteButton />
-            <MediaVolumeRange />
-            <MediaPipButton />
-            <MediaFullscreenButton />
-            {isDesktop && <MediaPlayerSizeButtonReact onClick={() => setWidePlayer(w => !w)} />}
-          </MediaControlBar>
-        </MediaController>
+        <VideoPlayer />
       </div>
       {/* VIDEO INFO & COMMENTS */}
       <div
         className={classNames("row-start-2 col-start-1 max-xl:px-4 flex flex-col gap-4", {
-          "mx-auto w-[40dvw]": widePlayer,
+          "mx-auto w-[40dvw]": ctx.widePlayer,
         })}>
-        <div className="font-medium text-xl">{title}</div>
+        <div className="font-medium text-xl">{ctx.video?.title}</div>
         <div className="flex justify-between">
           {/* PROFILE SECTION */}
           <div className="flex gap-2 items-center">
@@ -104,7 +80,7 @@ export function VideoPage({ link, evPreload }: { link: NostrLink; evPreload?: Ta
             )}
           </div>
         </div>
-        {summary && <StreamSummary text={summary} />}
+        {ctx.video?.summary && <StreamSummary text={ctx.video.summary} />}
         <h3>
           <FormattedMessage defaultMessage="Comments" />
         </h3>
@@ -115,8 +91,8 @@ export function VideoPage({ link, evPreload }: { link: NostrLink; evPreload?: Ta
       </div>
       <div
         className={classNames("p-2 col-start-2", {
-          "row-start-1 row-span-3": !widePlayer,
-          "row-start-2": widePlayer,
+          "row-start-1 row-span-3": !ctx.widePlayer,
+          "row-start-2": ctx.widePlayer,
         })}>
         <UpNext pubkey={host} exclude={[link]} />
       </div>
