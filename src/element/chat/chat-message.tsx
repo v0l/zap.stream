@@ -11,7 +11,7 @@ import { Emoji as EmojiComponent } from "../emoji";
 import { Profile } from "../profile";
 import { Text } from "../text";
 import { useMute } from "../mute-button";
-import { SendZapsDialog } from "../send-zap";
+import { SendZaps, SendZapsDialog } from "../send-zap";
 import { CollapsibleEvent } from "../collapsible";
 
 import { useLogin } from "@/hooks/login";
@@ -20,6 +20,7 @@ import type { Badge, Emoji, EmojiPack } from "@/types";
 import { IconButton } from "../buttons";
 import Pill from "../pill";
 import classNames from "classnames";
+import Modal from "../modal";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -50,6 +51,7 @@ export function ChatMessage({
   const { mute } = useMute(ev.pubkey);
   const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [zapping, setZapping] = useState(false);
   const login = useLogin();
   const profile = useUserProfile(ev.pubkey);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
@@ -172,17 +174,12 @@ export function ChatMessage({
               opacity: showZapDialog || isHovering ? 1 : 0,
               pointerEvents: showZapDialog || isHovering ? "auto" : "none",
             }}>
-            {zapTarget && (
-              <SendZapsDialog
-                lnurl={zapTarget}
-                eTag={ev.id}
-                pubkey={ev.pubkey}
-                button={
-                  <IconButton iconName="zap" iconSize={14} className="p-2 rounded-full bg-layer-2 aspect-square" />
-                }
-                targetName={profile?.name || ev.pubkey}
-              />
-            )}
+            {zapTarget && <IconButton
+              iconName="zap"
+              iconSize={14}
+              className="p-2 rounded-full bg-layer-2 aspect-square"
+              onClick={() => setZapping(true)}
+            />}
             <IconButton
               onClick={pickEmoji}
               iconName="face"
@@ -199,6 +196,15 @@ export function ChatMessage({
             )}
           </div>
         )}
+        {zapping && zapTarget && <Modal id="send-zaps" onClose={() => setZapping(false)}>
+          <SendZaps
+            lnurl={zapTarget}
+            eTag={ev.id}
+            pubkey={ev.pubkey}
+            targetName={profile?.name || ev.pubkey}
+            onFinish={() => setZapping(false)}
+          />
+        </Modal>}
       </div>
       {showEmojiPicker && (
         <Suspense>
