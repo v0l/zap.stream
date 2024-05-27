@@ -153,7 +153,7 @@ const router = createBrowserRouter([
         element: <StreamSummaryPage />,
       },
       {
-        path: "/dashboard",
+        path: "/dashboard/:id?",
         element: (
           <Suspense>
             <DashboardPage />

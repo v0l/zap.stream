@@ -39,11 +39,16 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
   const [info, setInfo] = useState<StreamProviderInfo>();
   const isMyManual = streamEvent?.pubkey === login?.pubkey;
   const system = useContext(SnortContext);
+  const [recording, setRecording] = useState(Boolean(localStorage.getItem("default-recording") ?? "true"));
+
+  useEffect(() => {
+    localStorage.setItem("default-recording", String(recording));
+  }, [recording]);
 
   const provider = useMemo(() => (service ? new NostrStreamProvider("", service) : DefaultProvider), [service]);
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == "Good");
-  }, [info]);
+    return info?.endpoints.find(a => a.name == (recording ? "Best" : "Good"));
+  }, [info, recording]);
 
   useEffect(() => {
     if (!isMyManual) {
@@ -195,6 +200,10 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
                     }}
                   />
                 </p>
+                <div className="flex gap-4 items-center">
+                  <input type="checkbox" checked={recording} onChange={e => setRecording(e.target.checked)} />
+                  <FormattedMessage defaultMessage="Enable Recording" />
+                </div>
                 {defaultEndpoint && <StreamKey ep={defaultEndpoint} />}
                 <ManualStream />
               </div>
