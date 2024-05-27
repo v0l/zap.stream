@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 
 import { Icon } from "@/element/icon";
 import { SendZapsDialog } from "@/element/send-zap";
-import { VideoTile } from "@/element/video-tile";
+import { StreamTile } from "@/element/stream/stream-tile";
 import { FollowButton } from "@/element/follow-button";
 import { MuteButton } from "@/element/mute-button";
 import { useProfile } from "@/hooks/profile";
@@ -147,7 +147,7 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
     <VideoGrid>
       {streams.map(ev => (
         <div key={ev.id} className="flex flex-col gap-1">
-          <VideoTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
+          <StreamTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
           <span className="text-neutral-500">
             <FormattedMessage
               defaultMessage="Streamed on {date}"

@@ -106,7 +106,7 @@ export class VideoInfo {
    */
   bestPoster(): MediaPayload | undefined {
     const best = this.media
-      .filter(a => a.dimensions && (a.image?.length ?? 0) > 0)
+      .filter(a => (a.image?.length ?? 0) > 0)
       .sort((a, b) => {
         const aSize = a.dimensions![0] * a.dimensions![1];
         const bSize = b.dimensions![0] * b.dimensions![1];

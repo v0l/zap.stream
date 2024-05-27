@@ -5,7 +5,7 @@ import { NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { ReactNode, useCallback, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import VideoGrid from "./video-grid";
-import { VideoTile } from "./video-tile";
+import { StreamTile } from "./stream/stream-tile";
 import { CategoryTile } from "./category/category-tile";
 import { Link } from "react-router-dom";
 import Pill from "./pill";
@@ -75,7 +75,7 @@ export default function VideoGridSorted({
           {live
             .filter(e => !mutedHosts.has(getHost(e)))
             .map(e => (
-              <VideoTile ev={e} key={e.id} style="grid" />
+              <StreamTile ev={e} key={e.id} style="grid" />
             ))}
         </VideoGrid>
       )}
@@ -112,7 +112,7 @@ function GridSection({ header, items }: { header: ReactNode; items: Array<Tagged
       </div>
       <VideoGrid>
         {items.map(e => (
-          <VideoTile ev={e} key={e.id} style="grid" />
+          <StreamTile ev={e} key={e.id} style="grid" />
         ))}
       </VideoGrid>
     </>

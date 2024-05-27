@@ -1,10 +1,10 @@
 import { VIDEO_KIND } from "@/const";
 import VideoGrid from "@/element/video-grid";
-import { VideoTile } from "@/element/video-tile";
 import { findTag } from "@/utils";
 import { RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
+import { VideoTile } from "@/element/video/video-tile";
 
 export function VideosPage() {
   const rb = new RequestBuilder("videos");
@@ -26,7 +26,7 @@ export function VideosPage() {
       <br />
       <VideoGrid>
         {sorted.map(a => (
-          <VideoTile ev={a} key={a.id} showStatus={false} style="grid" />
+          <VideoTile ev={a} key={a.id} style="grid" />
         ))}
       </VideoGrid>
     </div>

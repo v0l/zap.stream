@@ -17,6 +17,7 @@ export default function useGameInfo(gameId?: string, gameInfo?: GameInfo) {
             name: ix.name,
             genres: ix.tags,
             className: ix.className,
+            cover: ix.cover,
           });
         }
       } else {

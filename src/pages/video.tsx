@@ -13,7 +13,7 @@ import { FormattedMessage } from "react-intl";
 
 import { useMemo } from "react";
 import classNames from "classnames";
-import { VideoTile } from "@/element/video-tile";
+import { StreamTile } from "@/element/stream/stream-tile";
 import { VIDEO_KIND } from "@/const";
 import { VideoInfo } from "@/service/video/info";
 import { VideoPlayerContextProvider, useVideoPlayerContext } from "@/element/video/context";
@@ -125,7 +125,7 @@ function UpNext({ pubkey, exclude }: { pubkey: string; exclude: Array<NostrLink>
         <FormattedMessage defaultMessage="More Videos" />
       </h3>
       {sorted.map(a => (
-        <VideoTile ev={a} key={a.id} showStatus={false} style="list" className="h-[100px]" showAvatar={false} />
+        <StreamTile ev={a} key={a.id} showStatus={false} style="list" className="h-[100px]" showAvatar={false} />
       ))}
     </div>
   );

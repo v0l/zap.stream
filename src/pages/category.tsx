@@ -8,6 +8,12 @@ import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 
+import IRLImage from "@/images/irl.jpeg";
+import GamingImage from "@/images/gaming.jpeg";
+import MusicImage from "@/images/music.jpeg";
+import TalkImage from "@/images/talk.jpeg";
+import ArtImage from "@/images/art.jpeg";
+
 export const AllCategories = [
   {
     id: "irl",
@@ -16,6 +22,7 @@ export const AllCategories = [
     tags: ["irl"],
     priority: 0,
     className: "bg-category-gradient-1",
+    cover: IRLImage,
   },
   {
     id: "gaming",
@@ -24,6 +31,7 @@ export const AllCategories = [
     tags: ["gaming"],
     priority: 0,
     className: "bg-category-gradient-2",
+    cover: GamingImage,
   },
   {
     id: "music",
@@ -32,6 +40,7 @@ export const AllCategories = [
     tags: ["music", "radio"],
     priority: 0,
     className: "bg-category-gradient-3",
+    cover: MusicImage,
   },
   {
     id: "talk",
@@ -40,6 +49,7 @@ export const AllCategories = [
     tags: ["talk"],
     priority: 0,
     className: "bg-category-gradient-4",
+    cover: TalkImage,
   },
   {
     id: "art",
@@ -48,6 +58,7 @@ export const AllCategories = [
     tags: ["art"],
     priority: 0,
     className: "bg-category-gradient-5",
+    cover: ArtImage,
   },
   {
     id: "gambling",
@@ -86,7 +97,7 @@ export default function Category() {
       <div className="min-w-0 w-[calc(100dvw-2rem)] overflow-x-scroll scrollbar-hidden">
         <div className="flex gap-4">
           {AllCategories.map(a => (
-            <CategoryLink key={a.id} id={a.id} name={a.name} icon={a.icon} />
+            <CategoryLink key={a.id} id={`internal:${a.id}`} name={a.name} icon={a.icon} />
           ))}
         </div>
       </div>

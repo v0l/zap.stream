@@ -1,7 +1,7 @@
 import { NostrEvent, NostrLink } from "@snort/system";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { getName } from "./profile";
+import { getName } from "../profile";
 
 import { StreamState } from "@/const";
 import useImgProxy from "@/hooks/img-proxy";
@@ -10,15 +10,14 @@ import { extractStreamInfo, getHost, profileLink } from "@/utils";
 import { useUserProfile } from "@snort/system-react";
 import classNames from "classnames";
 import { useState } from "react";
-import { Avatar } from "./avatar";
-import Logo from "./logo";
-import { useContentWarning } from "./nsfw";
-import PillOpaque from "./pill-opaque";
-import { RelativeTime } from "./relative-time";
-import { StatePill } from "./state-pill";
-import { VideoDuration } from "./video/duration";
+import { Avatar } from "../avatar";
+import Logo from "../logo";
+import { useContentWarning } from "../nsfw";
+import PillOpaque from "../pill-opaque";
+import { RelativeTime } from "../relative-time";
+import { StatePill } from "../state-pill";
 
-export function VideoTile({
+export function StreamTile({
   ev,
   showAuthor = true,
   showStatus = true,
@@ -33,7 +32,7 @@ export function VideoTile({
   style: "list" | "grid";
   className?: string;
 }) {
-  const { title, image, status, participants, contentWarning, duration, recording, ends } = extractStreamInfo(ev);
+  const { title, image, status, participants, contentWarning, recording, ends } = extractStreamInfo(ev);
   const host = getHost(ev);
   const hostProfile = useUserProfile(host);
   const isGrownUp = useContentWarning();
@@ -68,18 +67,13 @@ export function VideoTile({
               }}
             />
           ) : (
-            <Logo className="text-white aspect-video" />
+            <Logo className="text-white aspect-video h-inherit mx-auto text-layer-3" width={60} />
           )}
           <span className="flex flex-col justify-between absolute top-0 h-full right-2 items-end py-2">
             {showStatus && <StatePill state={status as StreamState} />}
             {participants && (
               <PillOpaque>
                 <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
-              </PillOpaque>
-            )}
-            {duration && (
-              <PillOpaque>
-                <VideoDuration value={duration} />
               </PillOpaque>
             )}
           </span>
