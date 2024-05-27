@@ -1,4 +1,4 @@
-import { VIDEO_KIND } from "@/const";
+import { SHORTS_KIND, VIDEO_KIND } from "@/const";
 import { useStreamLink } from "@/hooks/stream-link";
 import { getEventFromLocationState } from "@/utils";
 import { NostrPrefix, EventKind } from "@snort/system";
@@ -9,6 +9,7 @@ import { EventEmbed as NostrEventElement } from "@/element/event-embed";
 import { FormattedMessage } from "react-intl";
 import { useLayout } from "./layout/context";
 import classNames from "classnames";
+import { ShortPage } from "./short";
 
 export function LinkHandler() {
   const location = useLocation();
@@ -32,6 +33,8 @@ export function LinkHandler() {
     );
   } else if (link.kind === VIDEO_KIND) {
     return <VideoPage link={link} evPreload={evPreload} />;
+  } else if (link.kind === SHORTS_KIND) {
+    return <ShortPage link={link} evPreload={evPreload} />;
   } else {
     return (
       <>

@@ -6,8 +6,19 @@ import { useLogin } from "@/hooks/login";
 import AsyncButton from "./async-button";
 import { useContext } from "react";
 import { ZapEvent } from "./send-zap";
+import classNames from "classnames";
 
-export default function EventReactions({ ev, replyKind }: { ev: TaggedNostrEvent; replyKind?: EventKind }) {
+export default function EventReactions({
+  ev,
+  replyKind,
+  vertical,
+  className,
+}: {
+  ev: TaggedNostrEvent;
+  replyKind?: EventKind;
+  vertical?: boolean;
+  className?: string;
+}) {
   const link = NostrLink.fromEvent(ev)!;
   const login = useLogin();
   const system = useContext(SnortContext);
@@ -36,49 +47,61 @@ export default function EventReactions({ ev, replyKind }: { ev: TaggedNostrEvent
 
   const pub = login?.publisher();
   const totalZaps = grouped.zaps.reduce((acc, v) => acc + v.amount, 0);
-  const iconClass = "flex gap-2 items-center tabular-nums cursor-pointer select-none hover:text-primary transition";
+  const iconClass = classNames(
+    "flex gap-1 items-center tabular-nums cursor-pointer select-none hover:text-primary transition",
+    {
+      "flex-col": vertical,
+    },
+  );
   return (
-    <div className="flex flex-wrap gap-4 mt-2 items-center text-neutral-500">
+    <div
+      className={classNames(className, "grid items-center text-neutral-500", {
+        "flex-col gap-8": vertical,
+        "gap-4": !vertical,
+      })}>
       {replyKind && (
         <AsyncButton
-          className={iconClass}
           onClick={async () => {
             if (pub) {
               const evReact = await pub.react(ev);
               await system.BroadcastEvent(evReact);
             }
           }}>
-          <Icon name="message-circle" />
-          {grouped.replies.length > 0 ? grouped.replies.length : undefined}
+          <div className={iconClass}>
+            <Icon name="message-circle" />
+            {grouped.replies.length > 0 ? grouped.replies.length : <>&nbsp;</>}
+          </div>
         </AsyncButton>
       )}
       <ZapEvent ev={ev}>
         <div className={iconClass}>
           {reactedIcon("zap", "zap-filled", "text-zap", grouped.zaps, EventKind.ZapReceipt)}
-          {totalZaps > 0 ? formatSats(totalZaps) : undefined}
+          {totalZaps > 0 ? formatSats(totalZaps) : <>&nbsp;</>}
         </div>
       </ZapEvent>
       <AsyncButton
-        className={iconClass}
         onClick={async () => {
           if (pub) {
             const evReact = await pub.react(ev);
             await system.BroadcastEvent(evReact);
           }
         }}>
-        {reactedIcon("heart", "heart-solid", "text-red-500", grouped.reactions.positive, EventKind.Reaction)}
-        {grouped.reactions.positive.length > 0 ? grouped.reactions.positive.length : undefined}
+        <div className={iconClass}>
+          {reactedIcon("heart", "heart-solid", "text-red-500", grouped.reactions.positive, EventKind.Reaction)}
+          {grouped.reactions.positive.length > 0 ? grouped.reactions.positive.length : <>&nbsp;</>}
+        </div>
       </AsyncButton>
       <AsyncButton
-        className={iconClass}
         onClick={async () => {
           if (pub) {
             const evReact = await pub.repost(ev);
             await system.BroadcastEvent(evReact);
           }
         }}>
-        <Icon name="repost" />
-        {grouped.reposts.length > 0 ? grouped.reposts.length : undefined}
+        <div className={iconClass}>
+          <Icon name="repost" />
+          {grouped.reposts.length > 0 ? grouped.reposts.length : <>&nbsp;</>}
+        </div>
       </AsyncButton>
     </div>
   );

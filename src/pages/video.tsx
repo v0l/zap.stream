@@ -1,32 +1,23 @@
-import { WriteMessage } from "@/element/chat/write-message";
-import { FollowButton } from "@/element/follow-button";
-import { Profile, getName } from "@/element/profile";
-import { SendZapsDialog } from "@/element/send-zap";
-import { ShareMenu } from "@/element/share-menu";
-import { StreamSummary } from "@/element/stream/summary";
-import VideoComments from "@/element/video/comments";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { getHost, findTag } from "@/utils";
 import { NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
-import { useRequestBuilder, useUserProfile } from "@snort/system-react";
+import { useRequestBuilder } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 
 import { useMemo } from "react";
 import classNames from "classnames";
 import { StreamTile } from "@/element/stream/stream-tile";
 import { VIDEO_KIND } from "@/const";
-import { VideoInfo } from "@/service/video/info";
 import { VideoPlayerContextProvider, useVideoPlayerContext } from "@/element/video/context";
 import VideoPlayer from "@/element/video/player";
+import { VideoInfo } from "@/element/video-info";
 
 export function VideoPage({ link, evPreload }: { link: NostrLink; evPreload?: TaggedNostrEvent }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
 
   if (!ev) return;
-  const video = VideoInfo.parse(ev);
-
   return (
-    <VideoPlayerContextProvider info={video}>
+    <VideoPlayerContextProvider event={ev}>
       <VideoPageInner ev={ev} />
     </VideoPlayerContextProvider>
   );
@@ -36,9 +27,6 @@ function VideoPageInner({ ev }: { ev: TaggedNostrEvent }) {
   const host = getHost(ev);
   const ctx = useVideoPlayerContext();
   const link = NostrLink.fromEvent(ev);
-
-  const profile = useUserProfile(host);
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
 
   return (
     <div
@@ -52,43 +40,7 @@ function VideoPageInner({ ev }: { ev: TaggedNostrEvent }) {
         <VideoPlayer />
       </div>
       {/* VIDEO INFO & COMMENTS */}
-      <div
-        className={classNames("row-start-2 col-start-1 max-xl:px-4 flex flex-col gap-4", {
-          "mx-auto w-[40dvw]": ctx.widePlayer,
-        })}>
-        <div className="font-medium text-xl">{ctx.video?.title}</div>
-        <div className="flex justify-between">
-          {/* PROFILE SECTION */}
-          <div className="flex gap-2 items-center">
-            <Profile pubkey={host} />
-            <FollowButton pubkey={host} />
-          </div>
-          {/* ACTIONS */}
-          <div className="flex gap-2">
-            {ev && (
-              <>
-                <ShareMenu ev={ev} />
-                {zapTarget && (
-                  <SendZapsDialog
-                    lnurl={zapTarget}
-                    pubkey={host}
-                    aTag={link.tagKey}
-                    targetName={getName(ev.pubkey, profile)}
-                  />
-                )}
-              </>
-            )}
-          </div>
-        </div>
-        {ctx.video?.summary && <StreamSummary text={ctx.video.summary} />}
-        <h3>
-          <FormattedMessage defaultMessage="Comments" />
-        </h3>
-        <div>
-          <WriteMessage link={link} emojiPacks={[]} kind={1} />
-        </div>
-        <VideoComments link={link} />
-      </div>
+      <VideoInfo showComments={true} />
       <div
         className={classNames("p-2 col-start-2", {
           "row-start-1 row-span-3": !ctx.widePlayer,

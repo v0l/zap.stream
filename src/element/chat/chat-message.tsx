@@ -11,7 +11,7 @@ import { Emoji as EmojiComponent } from "../emoji";
 import { Profile } from "../profile";
 import { Text } from "../text";
 import { useMute } from "../mute-button";
-import { SendZaps, SendZapsDialog } from "../send-zap";
+import { SendZaps } from "../send-zap";
 import { CollapsibleEvent } from "../collapsible";
 
 import { useLogin } from "@/hooks/login";
@@ -174,12 +174,14 @@ export function ChatMessage({
               opacity: showZapDialog || isHovering ? 1 : 0,
               pointerEvents: showZapDialog || isHovering ? "auto" : "none",
             }}>
-            {zapTarget && <IconButton
-              iconName="zap"
-              iconSize={14}
-              className="p-2 rounded-full bg-layer-2 aspect-square"
-              onClick={() => setZapping(true)}
-            />}
+            {zapTarget && (
+              <IconButton
+                iconName="zap"
+                iconSize={14}
+                className="p-2 rounded-full bg-layer-2 aspect-square"
+                onClick={() => setZapping(true)}
+              />
+            )}
             <IconButton
               onClick={pickEmoji}
               iconName="face"
@@ -196,15 +198,17 @@ export function ChatMessage({
             )}
           </div>
         )}
-        {zapping && zapTarget && <Modal id="send-zaps" onClose={() => setZapping(false)}>
-          <SendZaps
-            lnurl={zapTarget}
-            eTag={ev.id}
-            pubkey={ev.pubkey}
-            targetName={profile?.name || ev.pubkey}
-            onFinish={() => setZapping(false)}
-          />
-        </Modal>}
+        {zapping && zapTarget && (
+          <Modal id="send-zaps" onClose={() => setZapping(false)}>
+            <SendZaps
+              lnurl={zapTarget}
+              eTag={ev.id}
+              pubkey={ev.pubkey}
+              targetName={profile?.name || ev.pubkey}
+              onFinish={() => setZapping(false)}
+            />
+          </Modal>
+        )}
       </div>
       {showEmojiPicker && (
         <Suspense>

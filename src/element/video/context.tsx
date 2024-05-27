@@ -1,8 +1,10 @@
 import { VideoInfo } from "@/service/video/info";
+import { TaggedNostrEvent } from "@snort/system";
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 interface VideoPlayerContext {
-  video?: VideoInfo;
+  video: VideoInfo;
+  event: TaggedNostrEvent;
   widePlayer: boolean;
   update: (fn: (c: VideoPlayerContext) => VideoPlayerContext) => void;
 }
@@ -10,15 +12,17 @@ interface VideoPlayerContext {
 const VPContext = createContext<VideoPlayerContext>({
   widePlayer: false,
   update: () => {},
-});
+} as unknown as VideoPlayerContext);
 
 export function useVideoPlayerContext() {
   return useContext(VPContext);
 }
 
-export function VideoPlayerContextProvider({ info, children }: { info: VideoInfo; children?: ReactNode }) {
+export function VideoPlayerContextProvider({ event, children }: { event: TaggedNostrEvent; children?: ReactNode }) {
+  const info = VideoInfo.parse(event);
   const [state, setState] = useState<VideoPlayerContext>({
     video: info,
+    event,
     widePlayer: localStorage.getItem("wide-player") === "true",
     update: (fn: (c: VideoPlayerContext) => VideoPlayerContext) => {
       setState(fn);
