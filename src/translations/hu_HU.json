@@ -393,6 +393,9 @@
   "My6HwN": {
     "defaultMessage": "Ok, biztonságos"
   },
+  "NTpJIm": {
+    "defaultMessage": "Enable Recording"
+  },
   "NnHu0L": {
     "defaultMessage": "Please upload at least 1 video"
   },
@@ -881,6 +884,9 @@
   },
   "uksRSi": {
     "defaultMessage": "Latest Videos"
+  },
+  "vP4dFa": {
+    "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
