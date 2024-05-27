@@ -78,13 +78,16 @@
     "defaultMessage": "Zuschauer"
   },
   "3HwrQo": {
-    "defaultMessage": "Zap!"
+    "defaultMessage": "Zappen!"
   },
   "3adEeb": {
     "defaultMessage": "{n} Zuschauer"
   },
   "3df560": {
     "defaultMessage": "Mit privatem Schlüssel anmelden"
+  },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
   },
   "3yk8fB": {
     "defaultMessage": "Wallet"
@@ -170,6 +173,9 @@
   "9WRlF4": {
     "defaultMessage": "Senden"
   },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
+  },
   "9a9+ww": {
     "defaultMessage": "Titel"
   },
@@ -249,7 +255,7 @@
     "defaultMessage": "Was sind Sats?"
   },
   "FIDK5Y": {
-    "defaultMessage": "All-Time Top-Zapper"
+    "defaultMessage": "Allzeit Top-Zapper"
   },
   "FXepR9": {
     "defaultMessage": "{m} Mt. {ago}",
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "Speichere das und bewahre es sicher auf! Wenn du diesen Schlüssel verlierst, kannst du nie mehr auf dein Konto zugreifen. Ja, es ist folgenreich!"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "Kategorie auswählen"
   },
@@ -316,7 +325,7 @@
     "defaultMessage": "Gaming"
   },
   "IJDKz3": {
-    "defaultMessage": "Zap Betrag in {currency}"
+    "defaultMessage": "Zap-Betrag in {currency}"
   },
   "INlWvJ": {
     "defaultMessage": "ODER"
@@ -347,6 +356,9 @@
   },
   "K7AkdL": {
     "defaultMessage": "Anzeigen"
+  },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
   },
   "KkIL3s": {
     "defaultMessage": "Nein, ich bin unter 18 Jahre alt"
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "Ok, er ist gesichert"
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "Ja, ich bin über 18 Jahre alt"
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "Zaps"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "Auszahlung"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "Erscheinungsbild"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "Stream-Titel"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "Ich habe die {terms} von {provider} gelesen und bin damit einverstanden."
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "Stream-Weiterleitung"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "Entstummen"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "Clip-Titel"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "Diese Methode ist unsicher. Wir empfehlen die Verwendung von {nostrlink}"
@@ -616,7 +646,7 @@
     "defaultMessage": "Anzeigename"
   },
   "dVD/AR": {
-    "defaultMessage": "Top Zapper"
+    "defaultMessage": "Top-Zapper"
   },
   "dkUMIH": {
     "defaultMessage": "Clip von {name}"
@@ -632,7 +662,7 @@
     "defaultMessage": "Oh, und du hast {n} sats kostenloses Streaming auf uns! 💜"
   },
   "fBI91o": {
-    "defaultMessage": "Zap"
+    "defaultMessage": "Zappen"
   },
   "feZ/kG": {
     "defaultMessage": "Mit privatem Schlüssel anmelden (unsicher)"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "Was kostet das Streamen?"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "Profil"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "{name} raiden"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "Clip veröffentlichen"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "z.B. über mich"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "Benutzername ist zu lang"
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "Geplant"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Meistgezappte Streamer"
@@ -746,7 +788,7 @@
     "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
-    "defaultMessage": "Zap {name}"
+    "defaultMessage": "{name} zappen"
   },
   "oZrFyI": {
     "defaultMessage": "Stream-Typ sollte HLS sein"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "Aktuelle Zuschauer"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m} Tg. {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "Klicke auf die Schaltfläche \"Stream\" in der oberen rechten Ecke"
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "Eingehender Zap"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "Beginne zu tippen"
@@ -884,7 +935,7 @@
     "defaultMessage": "Um mit dem Streaming auf zap.stream zu beginnen, folge diesen Schritten:"
   },
   "yj8NrY": {
-    "defaultMessage": "Clip"
+    "defaultMessage": "Clippen"
   },
   "yzKwBQ": {
     "defaultMessage": "z.B. nsec1xyz"

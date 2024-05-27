@@ -86,6 +86,9 @@
   "3df560": {
     "defaultMessage": "Войти с приватным ключом"
   },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
+  },
   "3yk8fB": {
     "defaultMessage": "Wallet"
   },
@@ -169,6 +172,9 @@
   },
   "9WRlF4": {
     "defaultMessage": "Отправить"
+  },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
   },
   "9a9+ww": {
     "defaultMessage": "Название"
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "Сохраните этот ключ и храните его в безопасности! Если вы его потеряете, вы не сможете снова войти в свою учетную запись. Да, все настолько серьезно!"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "Choose a category"
   },
@@ -348,6 +357,9 @@
   "K7AkdL": {
     "defaultMessage": "Показать"
   },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
+  },
   "KkIL3s": {
     "defaultMessage": "Нет, я моложе 18 лет"
   },
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "Ок, безопасно"
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "Да, я старше 18 лет"
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "Запы"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "Withdraw"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "Тема"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "Stream Title"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "Я прочитал и согласен с {provider} {terms}."
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "Переадресация потоков"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "Включить уведомления"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "Название клипа"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "Этот метод небезопасен. Мы рекомендуем использовать {nostrlink}"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "Сколько стоит потоковое вещание?"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "Профиль"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Рейд {name}"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "Опубликовать клип"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "например, обо мне"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "Имя пользователя слишком длинное"
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "Запланировано"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "Текущие зрители"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "Нажмите кнопку \"Поток\" в правом верхнем углу"
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "Входящий Зап"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} сат"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "Начните печатать"

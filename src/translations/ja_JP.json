@@ -86,6 +86,9 @@
   "3df560": {
     "defaultMessage": "秘密鍵でログイン"
   },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
+  },
   "3yk8fB": {
     "defaultMessage": "Wallet"
   },
@@ -169,6 +172,9 @@
   },
   "9WRlF4": {
     "defaultMessage": "送信"
+  },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
   },
   "9a9+ww": {
     "defaultMessage": "タイトル"
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "これを保存し、安全に保管してください！このキーを紛失すると、二度とアカウントにアクセスできなくなります。そう、それほど深刻なのだ！"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "Choose a category"
   },
@@ -348,6 +357,9 @@
   "K7AkdL": {
     "defaultMessage": "表示"
   },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
+  },
   "KkIL3s": {
     "defaultMessage": "いいえ、私は18歳以下です"
   },
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "はい、大丈夫です"
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "はい、18歳以上です"
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "ザップ"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "Withdraw"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "テーマ"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "Stream Title"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "{provider} の {terms} を読み、同意します。"
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "ストリーム転送"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "ミュート解除"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "クリップのタイトル"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "この方法は安全ではありません。 {nostrlink}。"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "ストリーミングの料金は？"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "プロフィール"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "襲撃 {name}"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "パブリッシュ・クリップ"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "例：自己紹介"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "ユーザー名が長すぎる"
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "予定あり"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "現在の視聴者数"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "右上の \"Stream \"ボタンをクリックする。"
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "着金中のザップ"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "入力を開始"

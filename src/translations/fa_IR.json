@@ -86,6 +86,9 @@
   "3df560": {
     "defaultMessage": "ورود با کلید خصوصی"
   },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
+  },
   "3yk8fB": {
     "defaultMessage": "Wallet"
   },
@@ -169,6 +172,9 @@
   },
   "9WRlF4": {
     "defaultMessage": "ارسال"
+  },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
   },
   "9a9+ww": {
     "defaultMessage": "عنوان"
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "این را ذخیره کرده و امن نگه دارید! اگر این کلید را گم کنید، هرگز دیگر نمی توانید به حساب کاربری خود دسترسی داشته باشید. بله، این مسئله خیلی جدی است!"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "Choose a category"
   },
@@ -348,6 +357,9 @@
   "K7AkdL": {
     "defaultMessage": "نمایش"
   },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
+  },
   "KkIL3s": {
     "defaultMessage": "نه، من زیر ۱۸ سال هستم"
   },
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "باشه، امن است"
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "بله، من بالای ۱۸ سال هستم"
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "زپ"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "Withdraw"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "پوسته"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "Stream Title"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "من {terms} {provider} را خوانده و با آن موافقم."
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "فرافرستادن پخش زنده"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "صداردار کردن"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "Clip title"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "این روش ناامن است. توصیه می کنیم از یک {nostrlink} استفاده کنید"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "What does it cost to stream?"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "نمایه"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "گسیل {name}"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "انتشار کلیپ"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "مثلا درباره من"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "Username is too long"
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "برنامه ریزی شده"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "بیننندگان فعلی"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "Click the “Stream” button in the top right corner"
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "زپ ورودی"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} ساتوشی"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "بنویسید"

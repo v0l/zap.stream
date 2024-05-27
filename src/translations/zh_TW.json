@@ -86,6 +86,9 @@
   "3df560": {
     "defaultMessage": "使用私鑰登錄"
   },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
+  },
   "3yk8fB": {
     "defaultMessage": "Wallet"
   },
@@ -169,6 +172,9 @@
   },
   "9WRlF4": {
     "defaultMessage": "發送"
+  },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
   },
   "9a9+ww": {
     "defaultMessage": "標題"
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "請將它安全保存！如果你丟失了此密鑰，你將無法再次訪問你的帳戶。對，很嚴肅！"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "Choose a category"
   },
@@ -348,6 +357,9 @@
   "K7AkdL": {
     "defaultMessage": "顯示"
   },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
+  },
   "KkIL3s": {
     "defaultMessage": "不，我未滿18歲"
   },
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "好，是安全的"
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "是的，我已滿18歲"
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "打閃"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "Withdraw"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "主題"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "Stream Title"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "我已閱讀並同意{provider}的{terms}。"
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "直播流轉發"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "解除静音"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "剪輯標題"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "這個方式不安全。我們建議使用{nostrlink}"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "What does it cost to stream?"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "個人檔案"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "Raiding {name}"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "發布剪輯"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "例如：關於我"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "用戶名太長"
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "已計畫"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "目前觀看用戶"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "Click the “Stream” button in the top right corner"
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "傳入打閃"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} 聰"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "開始輸入"

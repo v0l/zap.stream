@@ -86,6 +86,9 @@
   "3df560": {
     "defaultMessage": "เข้าสู่ระบบด้วย nsec"
   },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
+  },
   "3yk8fB": {
     "defaultMessage": "กระเป๋า"
   },
@@ -169,6 +172,9 @@
   },
   "9WRlF4": {
     "defaultMessage": "ส่ง"
+  },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
   },
   "9a9+ww": {
     "defaultMessage": "หัวข้อ"
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "โปรดจำไว้ว่า! บันทึกรหัสกุญแจลับนี้ไว้ให้ดี ไม่งั้นคุณจะไม่สามารถเข้าสู่บัญชีนี้ได้อีก หรือหากใครได้ไปเขาก็จะใช้บัญชีของคุณได้"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "เลือกหมวดหมู่"
   },
@@ -348,6 +357,9 @@
   "K7AkdL": {
     "defaultMessage": "แสดง"
   },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
+  },
   "KkIL3s": {
     "defaultMessage": "ฉันอายุต่ำกว่า 18 ปี"
   },
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "ฉันจัดเก็บรหัสไว้ดีแล้ว"
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "ฉันอายุมากกว่า 18 ปี"
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "Zaps"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "ถอนเงิน"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "ธีม"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "ชื่อสตรีม"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "ฉันได้อ่าน {terms} เรียบร้อยและ เห็นด้วยกับ {provider} ในข้อกำหนดและเงื่อนไขการใช้เว็บไซต์หรือการใช้แอปพลิเคชัน"
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "ส่งต่อการถ่ายทอดสด"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "เปิดการมองเห็น"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "พาดหัวคลิป"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "วิธีนี้แลจะไม่ปลอดภัยเท่าไหร่ แนะนำให้ใช้ {nostrlink}"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "การสตรีมมีค่าใช้จ่ายเท่าไร?"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "โปรไฟล์"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "กำลังชม {name}"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "เผยแแพร่คลิป"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "เช่น เกี่ยวกับฉัน"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "ชื่อผู้ใช้ยาวเกินไป"
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "วางกำหนดการแล้ว"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "ผู้ชมตอนนี้"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "คลิกปุ่ม \"สตรีม\" ที่มุมขวาบน"
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "ขอบคุณ"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "เริ่มพิมพ์ข้อความ"

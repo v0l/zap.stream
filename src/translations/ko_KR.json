@@ -86,6 +86,9 @@
   "3df560": {
     "defaultMessage": "개인 키로 로그인"
   },
+  "3kbIhS": {
+    "defaultMessage": "Untitled"
+  },
   "3yk8fB": {
     "defaultMessage": "Wallet"
   },
@@ -169,6 +172,9 @@
   },
   "9WRlF4": {
     "defaultMessage": "보내기"
+  },
+  "9ZoFpI": {
+    "defaultMessage": "Delete file"
   },
   "9a9+ww": {
     "defaultMessage": "제목"
@@ -291,6 +297,9 @@
   "H/bNs9": {
     "defaultMessage": "이 키를 저장하여 안전하게 보관하세요! 이 키를 분실하면 다시는 계정에 액세스할 수 없습니다. 네, 그만큼 심각합니다!"
   },
+  "H1fdc9": {
+    "defaultMessage": "Please add a thumbnail"
+  },
   "H4hJvF": {
     "defaultMessage": "Choose a category"
   },
@@ -348,6 +357,9 @@
   "K7AkdL": {
     "defaultMessage": "표시"
   },
+  "KH2ayq": {
+    "defaultMessage": "Upload Video"
+  },
   "KkIL3s": {
     "defaultMessage": "아니요, 저는 18세 미만입니다."
   },
@@ -381,8 +393,14 @@
   "My6HwN": {
     "defaultMessage": "좋아요, 안전합니다."
   },
+  "NnHu0L": {
+    "defaultMessage": "Please upload at least 1 video"
+  },
   "O2Cy6m": {
     "defaultMessage": "예, 18세 이상입니다."
+  },
+  "O7AeYh": {
+    "defaultMessage": "Description.."
   },
   "OEW7yJ": {
     "defaultMessage": "Zaps"
@@ -416,6 +434,9 @@
   "PXAur5": {
     "defaultMessage": "Withdraw"
   },
+  "Pc+tM3": {
+    "defaultMessage": "Generate"
+  },
   "Pe0ogR": {
     "defaultMessage": "테마"
   },
@@ -448,6 +469,9 @@
   },
   "R72je0": {
     "defaultMessage": "Stream Title"
+  },
+  "RGYBjE": {
+    "defaultMessage": "Thumbnail"
   },
   "RJOmzk": {
     "defaultMessage": "본인은 {provider}의 {terms}을 읽었으며 이에 동의합니다."
@@ -507,6 +531,9 @@
   "W7DNWx": {
     "defaultMessage": "스트림 포워딩"
   },
+  "W7IRLs": {
+    "defaultMessage": "Your title is too short"
+  },
   "W9355R": {
     "defaultMessage": "음소거 해제"
   },
@@ -550,6 +577,9 @@
   },
   "YwzT/0": {
     "defaultMessage": "클립 제목"
+  },
+  "YyXVHf": {
+    "defaultMessage": "Clear Draft"
   },
   "Z8ZOEY": {
     "defaultMessage": "이 방법은 안전하지 않습니다. {nostrlink}"
@@ -670,6 +700,9 @@
   "ieKb+k": {
     "defaultMessage": "스트리밍 비용은 얼마인가요?"
   },
+  "ipTKP3": {
+    "defaultMessage": "Chat Popout"
+  },
   "itPgxd": {
     "defaultMessage": "프로필"
   },
@@ -678,6 +711,9 @@
   },
   "j/jueq": {
     "defaultMessage": "레이드 {name}"
+  },
+  "jDDeA0": {
+    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
   },
   "jJLRgo": {
     "defaultMessage": "클립 게시"
@@ -697,6 +733,9 @@
   "k21gTS": {
     "defaultMessage": "예: 내 정보"
   },
+  "kAEQyV": {
+    "defaultMessage": "OK"
+  },
   "kc5EOy": {
     "defaultMessage": "사용자 이름이 너무 깁니다."
   },
@@ -705,6 +744,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "계획된"
+  },
+  "lBm7CY": {
+    "defaultMessage": "Upload to:"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -778,6 +820,9 @@
   "rgsbu9": {
     "defaultMessage": "현재 시청자"
   },
+  "rleUgy": {
+    "defaultMessage": "Uploading.."
+  },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
     "description": "Number of day(s) relative to now"
@@ -793,6 +838,9 @@
   },
   "sj6WAe": {
     "defaultMessage": "오른쪽 상단의 '스트림' 버튼을 클릭합니다."
+  },
+  "syEQFE": {
+    "defaultMessage": "Publish"
   },
   "tG1ST3": {
     "defaultMessage": "수신 Zap"
@@ -833,6 +881,9 @@
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
+  },
+  "w+2Vw7": {
+    "defaultMessage": "Shorts"
   },
   "w0Xm2F": {
     "defaultMessage": "입력 시작"
