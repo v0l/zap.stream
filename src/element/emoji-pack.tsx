@@ -1,43 +1,24 @@
 import "./emoji-pack.css";
-import { type NostrEvent } from "@snort/system";
+import { EventKind, NostrLink, type NostrEvent } from "@snort/system";
 import { FormattedMessage } from "react-intl";
-import { useContext } from "react";
-import { SnortContext } from "@snort/system-react";
 
 import { useLogin } from "@/hooks/login";
-import { toEmojiPack } from "@/hooks/emoji";
-import { findTag } from "@/utils";
-import { USER_EMOJIS } from "@/const";
-import { Login } from "@/login";
-import type { EmojiPack as EmojiPackType } from "@/types";
+import useEmoji from "@/hooks/emoji";
 import { DefaultButton, WarningButton } from "./buttons";
 
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
-  const system = useContext(SnortContext);
   const login = useLogin();
-  const name = findTag(ev, "d");
-  const isUsed = login?.emojis.find(e => e.author === ev.pubkey && e.name === name);
+  const link = NostrLink.fromEvent(ev);
+  const name = link.id;
+  const emojis = useEmoji(login?.pubkey);
+  const isUsed = emojis.find(e => e.author === link.author && e.name === link.id);
   const emoji = ev.tags.filter(e => e.at(0) === "emoji");
 
   async function toggleEmojiPack() {
-    let newPacks = [] as EmojiPackType[];
     if (isUsed) {
-      newPacks = login?.emojis.filter(e => e.author !== ev.pubkey && e.name !== name) ?? [];
+      await login?.state?.removeFromList(EventKind.EmojisList, link, true);
     } else {
-      newPacks = [...(login?.emojis ?? []), toEmojiPack(ev)];
-    }
-    const pub = login?.publisher();
-    if (pub) {
-      const ev = await pub.generic(eb => {
-        eb.kind(USER_EMOJIS).content("");
-        for (const e of newPacks) {
-          eb.tag(["a", e.address]);
-        }
-        return eb;
-      });
-      console.debug(ev);
-      await system.BroadcastEvent(ev);
-      Login.setEmojis(newPacks);
+      await login?.state?.addToList(EventKind.EmojisList, link, true);
     }
   }
 

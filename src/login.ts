@@ -1,41 +1,24 @@
 import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore, unwrap } from "@snort/shared";
-import { EventPublisher, Nip7Signer, PrivateKeySigner } from "@snort/system";
-import type { EmojiPack, Tags } from "@/types";
+import { EventPublisher, Nip7Signer, PrivateKeySigner, UserState, UserStateObject } from "@snort/system";
 
 export enum LoginType {
   Nip7 = "nip7",
   PrivateKey = "private-key",
 }
 
-interface ReplaceableTags {
-  tags: Tags;
-  content?: string;
-  timestamp: number;
-}
-
 export interface LoginSession {
   type: LoginType;
   pubkey: string;
   privateKey?: string;
-  follows: ReplaceableTags;
-  muted: ReplaceableTags;
-  cards: ReplaceableTags;
-  emojis: Array<EmojiPack>;
+  state?: UserState<never>;
   color?: string;
   wallet?: {
     type: number;
     data: string;
   };
 }
-
-const initialState = {
-  follows: { tags: [], timestamp: 0 },
-  muted: { tags: [], timestamp: 0 },
-  cards: { tags: [], timestamp: 0 },
-  emojis: [],
-};
 
 const SESSION_KEY = "session";
 
@@ -46,9 +29,40 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     super();
     const json = window.localStorage.getItem(SESSION_KEY);
     if (json) {
-      this.#session = { ...initialState, ...JSON.parse(json) };
+      this.#session = JSON.parse(json);
       if (this.#session) {
+        let save = false;
+        this.#session.state = new UserState(
+          this.#session?.pubkey,
+          undefined,
+          this.#session.state as UserStateObject<never> | undefined,
+        );
+
+        this.#session.state.on("change", () => {
+          this.#save();
+        });
+        //reset
         this.#session.type ??= LoginType.Nip7;
+        if ("cards" in this.#session) {
+          delete this.#session.cards;
+          save = true;
+        }
+        if ("emojis" in this.#session) {
+          delete this.#session.emojis;
+          save = true;
+        }
+        if ("follows" in this.#session) {
+          delete this.#session.follows;
+          save = true;
+        }
+        if ("muted" in this.#session) {
+          delete this.#session.muted;
+          save = true;
+        }
+
+        if (save) {
+          this.#save();
+        }
       }
     }
   }
@@ -57,7 +71,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     this.#session = {
       type,
       pubkey: pk,
-      ...initialState,
     };
     this.#save();
   }
@@ -67,7 +80,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       type: LoginType.PrivateKey,
       pubkey: bytesToHex(schnorr.getPublicKey(key)),
       privateKey: key,
-      ...initialState,
     };
     this.#save();
   }
@@ -79,44 +91,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
 
   takeSnapshot() {
     return this.#session ? { ...this.#session } : undefined;
-  }
-
-  setFollows(follows: Tags, content: string, ts: number) {
-    if (!this.#session) return;
-    if (this.#session.follows.timestamp >= ts) {
-      return;
-    }
-    this.#session.follows.tags = follows;
-    this.#session.follows.content = content;
-    this.#session.follows.timestamp = ts;
-    this.#save();
-  }
-
-  setEmojis(emojis: Array<EmojiPack>) {
-    if (!this.#session) return;
-    this.#session.emojis = emojis;
-    this.#save();
-  }
-
-  setMuted(muted: Tags, content: string, ts: number) {
-    if (!this.#session) return;
-    if (this.#session.muted.timestamp >= ts) {
-      return;
-    }
-    this.#session.muted.tags = muted;
-    this.#session.muted.content = content;
-    this.#session.muted.timestamp = ts;
-    this.#save();
-  }
-
-  setCards(cards: Tags, ts: number) {
-    if (!this.#session) return;
-    if (this.#session.cards.timestamp >= ts) {
-      return;
-    }
-    this.#session.cards.tags = cards;
-    this.#session.cards.timestamp = ts;
-    this.#save();
   }
 
   setColor(color: string) {
@@ -133,7 +107,11 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
 
   #save() {
     if (this.#session) {
-      window.localStorage.setItem(SESSION_KEY, JSON.stringify(this.#session));
+      const ses = { ...this.#session } as Record<string, unknown>;
+      if (this.#session.state instanceof UserState) {
+        ses.state = this.#session.state.serialize();
+      }
+      window.localStorage.setItem(SESSION_KEY, JSON.stringify(ses));
     } else {
       window.localStorage.removeItem(SESSION_KEY);
     }

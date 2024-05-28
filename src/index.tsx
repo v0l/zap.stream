@@ -119,7 +119,7 @@ const router = createBrowserRouter([
         element: <TagPage />,
       },
       {
-        path: "/p/:npub",
+        path: "/p/:id",
         element: <ProfilePage />,
       },
       {

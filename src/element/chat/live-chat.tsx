@@ -2,7 +2,7 @@ import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
 import { EventKind, NostrEvent, NostrLink, NostrPrefix, ParsedZap, TaggedNostrEvent } from "@snort/system";
 import { useEventFeed, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
-import { unixNow, unwrap } from "@snort/shared";
+import { removeUndefined, unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
 import { Icon } from "../icon";
@@ -87,11 +87,9 @@ export function LiveChat({
     return starts ? Number(starts) : unixNow() - WEEK;
   }, [ev]);
   const { badges, awards } = useBadges(host, started);
-  const mutedPubkeys = useMemo(() => {
-    return new Set(getTagValues(login?.muted.tags ?? [], "p"));
-  }, [login]);
+
   const hostMutedPubkeys = useMutedPubkeys(host, true);
-  const userEmojiPacks = login?.emojis ?? [];
+  const userEmojiPacks = useEmoji(login?.pubkey);
   const channelEmojiPacks = useEmoji(host);
   const allEmojiPacks = useMemo(() => {
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
@@ -110,7 +108,7 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
-    return [...feed, ...awards, ...extra]
+    return removeUndefined([...feed, ...awards, ...extra])
       .filter(a => a.created_at >= started)
       .sort((a, b) => b.created_at - a.created_at);
   }, [feed, awards]);
@@ -145,8 +143,14 @@ export function LiveChat({
   }, [adjustLayout]);
 
   const filteredEvents = useMemo(() => {
-    return events.filter(e => !mutedPubkeys.has(e.pubkey) && !hostMutedPubkeys.has(e.pubkey));
-  }, [events, mutedPubkeys, hostMutedPubkeys]);
+    return events.filter(e => {
+      if (!e.pubkey) return true; // injected content
+      const author = NostrLink.publicKey(e.pubkey);
+      return (
+        !(login?.state?.muted.some(a => a.equals(author)) ?? true) && !hostMutedPubkeys.some(a => a.equals(author))
+      );
+    });
+  }, [events, login?.state?.version, hostMutedPubkeys]);
 
   return (
     <div className={classNames("flex flex-col gap-1", className)} style={height ? { height: `${height}px` } : {}}>

@@ -1,9 +1,8 @@
 import "./profile-page.css";
 import { useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, parseNostrLink } from "@snort/system";
+import { useNavigate } from "react-router-dom";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
-import { unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
 
 import { Icon } from "@/element/icon";
@@ -25,20 +24,21 @@ import { useProfileClips } from "@/hooks/clips";
 import VideoGrid from "@/element/video-grid";
 import { ClipTile } from "@/element/stream/clip-tile";
 import useImgProxy from "@/hooks/img-proxy";
+import { useStreamLink } from "@/hooks/stream-link";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 
 export function ProfilePage() {
-  const params = useParams();
-  const link = parseNostrLink(unwrap(params.npub));
+  const link = useStreamLink();
   const { streams, zaps } = useProfile(link, true);
-  const profile = useUserProfile(link.id);
+  const profile = useUserProfile(link?.id);
   const { proxy } = useImgProxy();
 
   const pastStreams = useMemo(() => {
     return streams.filter(ev => findTag(ev, "status") === StreamState.Ended);
   }, [streams]);
 
+  if (!link) return;
   return (
     <div className="flex flex-col gap-3 xl:px-4 w-full">
       <img

@@ -20,6 +20,9 @@ const AsyncButton = forwardRef<HTMLButtonElement, AsyncButtonProps>((props: Asyn
         if (props.onClick) {
           await props.onClick(e);
         }
+      } catch (e) {
+        console.error(e);
+        throw e;
       } finally {
         setLoading(false);
       }

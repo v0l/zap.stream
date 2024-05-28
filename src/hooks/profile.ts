@@ -4,8 +4,9 @@ import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM } from "@/const";
 import { useZaps } from "./zaps";
 
-export function useProfile(link: NostrLink, leaveOpen = false) {
+export function useProfile(link?: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
+    if (!link) return;
     const b = new RequestBuilder(`profile:${link.id.slice(0, 12)}`);
     b.withOptions({
       leaveOpen,

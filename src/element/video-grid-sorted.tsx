@@ -1,8 +1,8 @@
 import { useLogin } from "@/hooks/login";
 import { useSortedStreams } from "@/hooks/useLiveStreams";
 import { getTagValues, getHost, extractStreamInfo } from "@/utils";
-import { NostrEvent, TaggedNostrEvent } from "@snort/system";
-import { ReactNode, useCallback, useMemo } from "react";
+import { NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
+import { ReactNode, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import VideoGrid from "./video-grid";
 import { StreamTile } from "./stream/stream-tile";
@@ -34,33 +34,27 @@ export default function VideoGridSorted({
   showVideos,
 }: VideoGridSortedProps) {
   const login = useLogin();
-  const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
-  const tags = login?.follows.tags ?? [];
-  const followsHost = useCallback(
-    (ev: NostrEvent) => {
-      return tags.find(t => t.at(1) === getHost(ev));
-    },
-    [tags],
-  );
-  const { live, planned, ended } = useSortedStreams(evs, showAll ? 0 : undefined);
-  const hashtags = getTagValues(tags, "t");
+  const mutedHosts = login?.state?.muted ?? [];
+  const follows = login?.state?.follows ?? [];
+  const followsHost = (ev: NostrEvent) => follows?.includes(getHost(ev));
+
+  const filteredStreams = evs.filter(a => !mutedHosts.includes(NostrLink.publicKey(getHost(a))));
+  const { live, planned, ended } = useSortedStreams(filteredStreams, showAll ? 0 : undefined);
+  const hashtags: Array<string> = [];
   const following = live.filter(followsHost);
   const liveNow = live.filter(e => !following.includes(e));
   const hasFollowingLive = following.length > 0;
 
-  const plannedEvents = planned.filter(e => !mutedHosts.has(getHost(e))).filter(followsHost);
-  const endedEvents = ended.filter(e => !mutedHosts.has(getHost(e)));
+  const plannedEvents = planned.filter(followsHost);
 
   const liveByHashtag = useMemo(() => {
     return hashtags
       .map(t => ({
         tag: t,
-        live: live
-          .filter(e => !mutedHosts.has(getHost(e)))
-          .filter(e => {
-            const evTags = getTagValues(e.tags, "t");
-            return evTags.includes(t);
-          }),
+        live: live.filter(e => {
+          const evTags = getTagValues(e.tags, "t");
+          return evTags.includes(t);
+        }),
       }))
       .filter(t => t.live.length > 0);
   }, [live, hashtags]);
@@ -72,11 +66,9 @@ export default function VideoGridSorted({
       )}
       {!hasFollowingLive && (
         <VideoGrid>
-          {live
-            .filter(e => !mutedHosts.has(getHost(e)))
-            .map(e => (
-              <StreamTile ev={e} key={e.id} style="grid" />
-            ))}
+          {live.map(e => (
+            <StreamTile ev={e} key={e.id} style="grid" />
+          ))}
         </VideoGrid>
       )}
       {liveByHashtag.map(t => (
@@ -96,8 +88,8 @@ export default function VideoGridSorted({
       {plannedEvents.length > 0 && (showPlanned ?? true) && (
         <GridSection header={<FormattedMessage defaultMessage="Planned" id="kp0NPF" />} items={plannedEvents} />
       )}
-      {endedEvents.length > 0 && (showEnded ?? true) && (
-        <GridSection header={<FormattedMessage defaultMessage="Ended" id="TP/cMX" />} items={endedEvents} />
+      {ended.length > 0 && (showEnded ?? true) && (
+        <GridSection header={<FormattedMessage defaultMessage="Ended" id="TP/cMX" />} items={ended} />
       )}
     </div>
   );

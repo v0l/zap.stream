@@ -3,16 +3,21 @@ import { FormattedMessage } from "react-intl";
 import { Toggle } from "../toggle";
 import { useUserCards } from "@/hooks/cards";
 import { AddCard } from "./add-card";
-import { Tags } from "@/types";
 import { Card } from "./card-item";
+import { ToNostrEventTag } from "@snort/system";
+import { Tag } from "@/types";
 
 interface StreamCardEditorProps {
   pubkey: string;
-  tags: Tags;
+  tags: Array<ToNostrEventTag>;
 }
 
 export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
-  const cards = useUserCards(pubkey, tags, true);
+  const cards = useUserCards(
+    pubkey,
+    tags.map(a => a.toEventTag() as Tag),
+    true,
+  );
   const [isEditing, setIsEditing] = useState(false);
   return (
     <>

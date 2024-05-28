@@ -5,7 +5,7 @@ import { Goal } from "./goal";
 import { Note } from "./note";
 import { EmojiPack } from "./emoji-pack";
 import { Badge } from "./badge";
-import { EMOJI_PACK, GOAL, LIVE_STREAM_CLIP, StreamState } from "@/const";
+import { GOAL, LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { useEventFeed } from "@snort/system-react";
 import LiveStreamClip from "./stream/clip";
 import { ExternalLink } from "./external-link";
@@ -21,7 +21,7 @@ export function EventIcon({ kind }: { kind?: EventKind }) {
   switch (kind) {
     case GOAL:
       return <Icon name="piggybank" />;
-    case EMOJI_PACK:
+    case EventKind.EmojiSet:
       return <Icon name="face-content" />;
     case EventKind.Badge:
       return <Icon name="badge" />;
@@ -35,7 +35,7 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
     case GOAL: {
       return <Goal ev={ev} />;
     }
-    case EMOJI_PACK: {
+    case EventKind.EmojiSet: {
       return <EmojiPack ev={ev} />;
     }
     case EventKind.Badge: {

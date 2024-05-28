@@ -1,9 +1,8 @@
 import { useMemo } from "react";
 
-import { NostrEvent, RequestBuilder } from "@snort/system";
+import { EventKind, NostrEvent, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { findTag, uniqBy } from "@/utils";
-import { EMOJI_PACK, USER_EMOJIS } from "@/const";
 import type { EmojiPack, EmojiTag, Tags } from "@/types";
 
 function cleanShortcode(shortcode?: string) {
@@ -29,7 +28,7 @@ export function packId(pack: EmojiPack): string {
 export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   const related = useMemo(() => {
     if (userEmoji) {
-      return userEmoji?.filter(t => t.at(0) === "a" && t.at(1)?.startsWith(`${EMOJI_PACK}:`));
+      return userEmoji?.filter(t => t.at(0) === "a" && t.at(1)?.startsWith(`${EventKind.EmojiSet}:`));
     }
     return [];
   }, [userEmoji]);
@@ -48,9 +47,9 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
 
     const rb = new RequestBuilder(`emoji-related:${pubkey}`);
 
-    rb.withFilter().kinds([EMOJI_PACK]).authors(authors).tag("d", identifiers);
+    rb.withFilter().kinds([EventKind.EmojiSet]).authors(authors).tag("d", identifiers);
 
-    rb.withFilter().kinds([EMOJI_PACK]).authors([pubkey]);
+    rb.withFilter().kinds([EventKind.EmojiSet]).authors([pubkey]);
 
     return rb;
   }, [pubkey, related]);
@@ -73,8 +72,7 @@ export default function useEmoji(pubkey?: string) {
   const sub = useMemo(() => {
     if (!pubkey) return null;
     const rb = new RequestBuilder(`emoji:${pubkey}`);
-
-    rb.withFilter().authors([pubkey]).kinds([USER_EMOJIS]);
+    rb.withFilter().authors([pubkey]).kinds([EventKind.EmojisList]);
 
     return rb;
   }, [pubkey]);

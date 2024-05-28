@@ -6,6 +6,7 @@ import { useCards } from "@/hooks/cards";
 import { StreamCardEditor } from "./stream-card-editor";
 import { Card } from "./card-item";
 import classNames from "classnames";
+import { USER_CARDS } from "@/const";
 
 export interface CardType {
   identifier: string;
@@ -40,13 +41,10 @@ export function ReadOnlyStreamCards({ host, className }: StreamCardsProps) {
 export function StreamCards({ host }: StreamCardsProps) {
   const login = useLogin();
   const canEdit = login?.pubkey === host;
+  const cards = login?.state?.getList(USER_CARDS);
   return (
     <DndProvider backend={HTML5Backend}>
-      {canEdit ? (
-        <StreamCardEditor tags={login.cards.tags} pubkey={login.pubkey} />
-      ) : (
-        <ReadOnlyStreamCards host={host} />
-      )}
+      {canEdit ? <StreamCardEditor tags={cards ?? []} pubkey={login.pubkey} /> : <ReadOnlyStreamCards host={host} />}
     </DndProvider>
   );
 }

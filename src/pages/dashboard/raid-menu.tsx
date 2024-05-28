@@ -1,5 +1,5 @@
 import { useStreamsFeed } from "@/hooks/live-streams";
-import { getHost, getTagValues } from "@/utils";
+import { getHost } from "@/utils";
 import { dedupe, unwrap } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
 import { Profile } from "../../element/profile";
@@ -19,12 +19,14 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
   const [raiding, setRaiding] = useState("");
   const [msg, setMsg] = useState("");
 
-  const mutedHosts = new Set(getTagValues(login?.muted.tags ?? [], "p"));
-  const livePubkeys = dedupe(live.map(a => getHost(a))).filter(a => !mutedHosts.has(a));
+  const livePubkeys = dedupe(live.map(a => getHost(a))).filter(
+    a => !login?.state?.muted.some(b => b.equals(NostrLink.publicKey(a))),
+  );
 
   async function raid() {
-    if (login) {
-      const ev = await login.publisher().generic(eb => {
+    const pub = login?.publisher();
+    if (pub) {
+      const ev = await pub.generic(eb => {
         return eb
           .kind(LIVE_STREAM_RAID)
           .tag(unwrap(link.toEventTag("root")))
