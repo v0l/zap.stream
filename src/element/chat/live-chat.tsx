@@ -152,7 +152,7 @@ export function LiveChat({
     <div className={classNames("flex flex-col gap-1", className)} style={height ? { height: `${height}px` } : {}}>
       {adjustLayout && (
         <div
-          className="min-h-2 my-1"
+          className="min-h-2 my-2"
           onClick={() => {
             streamContext.update(c => {
               c.showDetails = !c.showDetails;
@@ -163,7 +163,7 @@ export function LiveChat({
               return { ...c };
             });
           }}>
-          <div className="h-2 bg-layer-2 rounded-full w-10 mx-auto"></div>
+          <div className="h-2 bg-layer-3 rounded-full w-10 mx-auto"></div>
         </div>
       )}
       {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
