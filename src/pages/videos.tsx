@@ -15,7 +15,6 @@ export function VideosPage() {
 
   const videos = useRequestBuilder(rb);
 
-  console.debug(login?.state?.muted);
   const sorted = videos
     .filter(a => {
       const host = getHost(a);

@@ -14,6 +14,7 @@ import { RelativeTime } from "../relative-time";
 import { VideoInfo } from "@/service/video/info";
 import { VideoDuration } from "./duration";
 import { getName } from "../profile";
+import { useDeadLink } from "@/hooks/dead-link";
 
 export function VideoTile({
   ev,
@@ -34,10 +35,13 @@ export function VideoTile({
   const isGrownUp = useContentWarning();
   const { proxy } = useImgProxy();
 
+  const liveMedia = useDeadLink(ev);
   const link = NostrLink.fromEvent(ev);
   const poster = video.bestPoster();
   const bestVideo = video.bestVideo();
   const [hasImg, setHasImage] = useState(true);
+  if (!liveMedia) return;
+  console.debug(liveMedia)
   return (
     <div
       className={classNames("flex gap-2", className, {
