@@ -32,13 +32,8 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       this.#session = JSON.parse(json);
       if (this.#session) {
         let save = false;
-        this.#session.state = new UserState(
-          this.#session?.pubkey,
-          undefined,
-          this.#session.state as UserStateObject<never> | undefined,
-        );
-
-        this.#session.state.on("change", () => {
+        this.#session.state = this.#makeState();
+        this.#session.state?.on("change", () => {
           this.#save();
         });
         //reset
@@ -67,11 +62,18 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     }
   }
 
+  #makeState() {
+    if (this.#session) {
+      return new UserState(this.#session.pubkey, undefined, this.#session.state as UserStateObject<never> | undefined);
+    }
+  }
+
   loginWithPubkey(pk: string, type = LoginType.Nip7) {
     this.#session = {
       type,
       pubkey: pk,
     };
+    this.#session.state = this.#makeState();
     this.#save();
   }
 
@@ -81,6 +83,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       pubkey: bytesToHex(schnorr.getPublicKey(key)),
       privateKey: key,
     };
+    this.#session.state = this.#makeState();
     this.#save();
   }
 

@@ -41,7 +41,6 @@ export function VideoTile({
   const bestVideo = video.bestVideo();
   const [hasImg, setHasImage] = useState(true);
   if (!liveMedia) return;
-  console.debug(liveMedia)
   return (
     <div
       className={classNames("flex gap-2", className, {

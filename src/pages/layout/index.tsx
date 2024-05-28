@@ -23,7 +23,7 @@ export function LayoutPage() {
       login.state.checkIsStandardList(USER_CARDS);
       login.state.init(login.signer(), system);
     }
-  }, []);
+  }, [login]);
 
   useEffect(() => {
     trackEvent("pageview");
