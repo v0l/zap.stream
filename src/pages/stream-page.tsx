@@ -81,7 +81,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
               stream={status === StreamState.Live ? stream : recording}
               poster={image}
               status={status}
-              className="max-xl:max-h-[30vh] xl:w-full mx-auto"
+              className="max-xl:max-h-[30vh] xl:w-full xl:max-h-[85dvh] mx-auto"
             />
           </Suspense>
           <div className="lg:px-5 max-lg:px-2">

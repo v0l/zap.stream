@@ -4,7 +4,7 @@ import { formatSats } from "@/number";
 import { getHost, extractStreamInfo, findTag } from "@/utils";
 import { TaggedNostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { WarningButton } from "../buttons";
