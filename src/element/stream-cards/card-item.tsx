@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { removeUndefined } from "@snort/shared";
+import { removeUndefined, unwrap } from "@snort/shared";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { CardItem } from ".";
@@ -20,20 +20,18 @@ interface CardProps {
 export function Card({ canEdit, ev, cards }: CardProps) {
   const system = useContext(SnortContext);
   const login = useLogin();
-  const identifier = findTag(ev, "d") ?? "";
-  const title = findTag(ev, "title") || findTag(ev, "subject");
-  const image = findTag(ev, "image");
-  const link = findTag(ev, "r");
-  const content = ev.content;
-  const evCard = { title, image, link, content, identifier };
+  const evCard = {
+    title: findTag(ev, "title") || findTag(ev, "subject"),
+    image: findTag(ev, "image"),
+    link: findTag(ev, "r"),
+    content: ev.content,
+    identifier: unwrap(findTag(ev, "d")),
+  };
   const tags = removeUndefined(cards.map(a => NostrLink.fromEvent(a).toEventTag()));
   const [style, dragRef] = useDrag(
     () => ({
       type: "card",
-      item: { identifier } as CardItem,
-      canDrag: () => {
-        return Boolean(canEdit);
-      },
+      item: { id: evCard.identifier },
       collect: monitor => {
         const isDragging = monitor.isDragging();
         return {
@@ -42,7 +40,7 @@ export function Card({ canEdit, ev, cards }: CardProps) {
         };
       },
     }),
-    [canEdit, identifier],
+    [canEdit, evCard],
   );
 
   function findTagByIdentifier(d: string) {
@@ -51,7 +49,7 @@ export function Card({ canEdit, ev, cards }: CardProps) {
 
   const [dropStyle, dropRef] = useDrop(
     () => ({
-      accept: ["card"],
+      accept: "card",
       canDrop: () => {
         return Boolean(canEdit);
       },
@@ -62,13 +60,14 @@ export function Card({ canEdit, ev, cards }: CardProps) {
           animation: isOvering ? "shake 0.1s 3" : "",
         };
       },
+      hover: console.debug,
       async drop(item) {
         const typed = item as CardItem;
-        if (identifier === typed.identifier) {
+        if (evCard.identifier === typed.identifier) {
           return;
         }
         const newItem = findTagByIdentifier(typed.identifier);
-        const oldItem = findTagByIdentifier(identifier);
+        const oldItem = findTagByIdentifier(evCard.identifier);
         const newTags = tags.map(t => {
           if (t === oldItem) {
             return newItem;
@@ -93,12 +92,10 @@ export function Card({ canEdit, ev, cards }: CardProps) {
         }
       },
     }),
-    [canEdit, tags, identifier],
+    [canEdit, tags, evCard],
   );
 
-  const card = (
-    <CardPreview ref={dropRef} title={title} link={link} image={image} content={content} style={dropStyle} />
-  );
+  const card = <CardPreview ref={dropRef} {...evCard} style={dropStyle} />;
   if (canEdit) {
     return (
       <div ref={dragRef} style={style}>
