@@ -51,11 +51,16 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
     <>
       <div className="flex gap-2 max-xl:flex-col">
         <div className="grow flex flex-col gap-2">
-          <div className="text-3xl font-semibold">{title}</div>
+          <div className="max-xl:text-lg xl:text-3xl font-semibold">{title}</div>
           <div className="flex max-xl:flex-col xl:justify-between max-xl:gap-2">
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center flex-wrap">
               <Profile pubkey={host ?? ""} avatarSize={40} />
               <FollowButton pubkey={host} hideWhenFollowing={true} />
+              <div className="flex grow justify-end xl:hidden text-nowrap">
+                <Pill>
+                  <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(viewers) }} />
+                </Pill>
+              </div>
             </div>
             <div className="flex gap-2">
               {ev && (
