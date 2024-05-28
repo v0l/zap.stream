@@ -11,6 +11,7 @@ import LiveStreamClip from "./stream/clip";
 import { ExternalLink } from "./external-link";
 import { extractStreamInfo } from "@/utils";
 import LiveVideoPlayer from "./stream/live-video-player";
+import { HTMLProps } from "react";
 
 interface EventProps {
   link: NostrLink;
@@ -64,9 +65,9 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
   }
 }
 
-export function EventEmbed({ link }: EventProps) {
+export function EventEmbed({ link, ...props }: EventProps & HTMLProps<HTMLDivElement>) {
   const event = useEventFeed(link);
   if (event) {
-    return <NostrEvent ev={event} />;
+    return <NostrEvent ev={event} {...props} />;
   }
 }

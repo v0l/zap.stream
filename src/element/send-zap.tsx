@@ -37,7 +37,6 @@ export interface SendZapsProps {
   onFinish: () => void;
   onTargetReady?: () => void;
   button?: ReactNode;
-  key?: string;
 }
 
 export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTargetReady }: SendZapsProps) {
@@ -216,7 +215,7 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   const [open, setOpen] = useState(false);
   const [ready, setReady] = useState(false);
   return (
-    <Fragment key={props.key}>
+    <Fragment>
       {props.button ? (
         <div onClick={() => setOpen(true)}>{props.button}</div>
       ) : (

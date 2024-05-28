@@ -60,7 +60,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
         {emoji.map(e => {
           const [, name, image] = e;
           return (
-            <div className="emoji-definition">
+            <div className="emoji-definition" key={name}>
               <img alt={name} className="custom-emoji" src={image} />
               <span className="emoji-name">{name}</span>
             </div>

@@ -14,85 +14,86 @@ interface MarkdownProps {
 }
 
 const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps, ref) => {
-  function renderToken(t: Token, key: number): ReactNode {
+  let ctr = 0;
+  function renderToken(t: Token): ReactNode {
     try {
       switch (t.type) {
         case "paragraph": {
-          return <p key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</p>;
+          return <div key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</div>;
         }
         case "image": {
-          return <img key={key} src={t.href} />;
+          return <img key={ctr++} src={t.href} />;
         }
         case "heading": {
           switch (t.depth) {
             case 1:
-              return <h1 key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h1>;
+              return <h1 key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h1>;
             case 2:
-              return <h2 key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h2>;
+              return <h2 key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h2>;
             case 3:
-              return <h3 key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h3>;
+              return <h3 key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h3>;
             case 4:
-              return <h4 key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h4>;
+              return <h4 key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h4>;
             case 5:
-              return <h5 key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h5>;
+              return <h5 key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h5>;
             case 6:
-              return <h6 key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h6>;
+              return <h6 key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</h6>;
           }
           throw new Error("Invalid heading");
         }
         case "codespan": {
-          return <code key={key}>{t.raw}</code>;
+          return <code key={ctr++}>{t.raw}</code>;
         }
         case "code": {
-          return <pre key={key}>{t.raw}</pre>;
+          return <pre key={ctr++}>{t.raw}</pre>;
         }
         case "br": {
-          return <br key={key} />;
+          return <br key={ctr++} />;
         }
         case "hr": {
-          return <hr key={key} />;
+          return <hr key={ctr++} />;
         }
         case "blockquote": {
-          return <blockquote key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</blockquote>;
+          return <blockquote key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</blockquote>;
         }
         case "link": {
           return (
-            <HyperText link={t.href} key={key}>
+            <HyperText link={t.href} key={ctr++}>
               {t.tokens ? t.tokens.map(renderToken) : t.raw}
             </HyperText>
           );
         }
         case "list": {
           if (t.ordered) {
-            return <ol key={key}>{t.items.map(renderToken)}</ol>;
+            return <ol key={ctr++}>{t.items.map(renderToken)}</ol>;
           } else {
-            return <ul key={key}>{t.items.map(renderToken)}</ul>;
+            return <ul key={ctr++}>{t.items.map(renderToken)}</ul>;
           }
         }
         case "list_item": {
-          return <li key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</li>;
+          return <li key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</li>;
         }
         case "em": {
-          return <em key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</em>;
+          return <em key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</em>;
         }
         case "del": {
-          return <s key={key}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</s>;
+          return <s key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</s>;
         }
         case "table": {
           return (
-            <table className="table-auto border-collapse" key={key}>
+            <table className="table-auto border-collapse" key={ctr++}>
               <thead>
                 <tr>
-                  {(t.header as Tokens.TableCell[]).map((v, h_key) => (
-                    <th className="border" key={h_key}>
+                  {(t.header as Tokens.TableCell[]).map(v => (
+                    <th className="border" key={ctr++}>
                       {v.tokens ? v.tokens.map(renderToken) : v.text}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {(t.rows as Tokens.TableCell[][]).map((v, r_key) => (
-                  <tr key={r_key}>
+                {(t.rows as Tokens.TableCell[][]).map(v => (
+                  <tr key={ctr++}>
                     {v.map((d, d_key) => (
                       <td className="border px-2 py-1" key={d_key}>
                         {d.tokens ? d.tokens.map(renderToken) : d.text}
@@ -111,7 +112,7 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           if (props.plainText ?? false) {
             return t.raw;
           }
-          return <Text content={t.raw} tags={[]} key={key} />;
+          return <Text content={t.raw} tags={[]} key={ctr++} />;
         }
       }
     } catch (e) {
