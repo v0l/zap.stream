@@ -147,7 +147,7 @@ export function LiveChat({
       if (!e.pubkey) return true; // injected content
       const author = NostrLink.publicKey(e.pubkey);
       return (
-        !(login?.state?.muted.some(a => a.equals(author)) ?? true) && !hostMutedPubkeys.some(a => a.equals(author))
+        !(login?.state?.muted.some(a => a.equals(author)) ?? false) && !hostMutedPubkeys.some(a => a.equals(author))
       );
     });
   }, [events, login?.state?.version, hostMutedPubkeys]);
