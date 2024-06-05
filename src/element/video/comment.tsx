@@ -25,7 +25,7 @@ export default function VideoComment({ ev }: { ev: TaggedNostrEvent }) {
           </div>
         </div>
         <Text content={ev.content} tags={ev.tags} />
-        <EventReactions ev={ev} replyKind={1} />
+        <EventReactions ev={ev} />
       </div>
     </div>
   );

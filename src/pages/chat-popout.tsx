@@ -16,7 +16,7 @@ export function ChatPopout() {
   const lnk = parseNostrLink(encodeTLV(NostrPrefix.Address, findTag(ev, "d") ?? "", undefined, ev?.kind, ev?.pubkey));
   const chat = Boolean(new URL(window.location.href).searchParams.get("chat"));
   return (
-    <div className="h-[calc(100dvh-1rem)] w-screen px-2 my-2">
+    <div className="h-[calc(100vh-1rem)] w-screen px-2 my-2">
       <LiveChat
         ev={ev}
         link={lnk}

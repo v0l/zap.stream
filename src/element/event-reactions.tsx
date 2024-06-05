@@ -55,17 +55,13 @@ export default function EventReactions({
   );
   return (
     <div
-      className={classNames(className, "grid items-center text-neutral-500", {
-        "flex-col gap-8": vertical,
-        "gap-4": !vertical,
+      className={classNames(className, "flex gap-8 items-center text-neutral-500", {
+        "flex-col": vertical,
       })}>
       {replyKind && (
         <AsyncButton
           onClick={async () => {
-            if (pub) {
-              const evReact = await pub.react(ev);
-              await system.BroadcastEvent(evReact);
-            }
+
           }}>
           <div className={iconClass}>
             <Icon name="message-circle" />
