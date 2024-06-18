@@ -9,7 +9,7 @@
     "defaultMessage": "现在直播"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "连接"
   },
   "+y6JUK": {
     "defaultMessage": "突袭"
@@ -18,7 +18,7 @@
     "defaultMessage": "金额"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "余额： {n} 聪"
   },
   "/EvlqN": {
     "defaultMessage": "nostr 签名扩展"
@@ -54,7 +54,7 @@
     "defaultMessage": "标签"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "已停止"
   },
   "1q4BO/": {
     "defaultMessage": "不是有效的 URL"
@@ -66,13 +66,13 @@
     "defaultMessage": "添加"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "...更多"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "{n} 小时"
   },
   "2wdFaB": {
-    "defaultMessage": "End Stream"
+    "defaultMessage": "结束直播"
   },
   "37mth/": {
     "defaultMessage": "观众"
@@ -87,10 +87,10 @@
     "defaultMessage": "使用私钥登录"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "无标题"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "钱包"
   },
   "47FYwb": {
     "defaultMessage": "取消"
@@ -99,7 +99,7 @@
     "defaultMessage": "OBS 中的设置示例（Apple M1 Mac）"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "视频"
   },
   "4iBdw1": {
     "defaultMessage": "突袭"
@@ -126,7 +126,7 @@
     "defaultMessage": "开始时间"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "定价"
   },
   "5kx+2v": {
     "defaultMessage": "服务器 URL"
@@ -174,7 +174,7 @@
     "defaultMessage": "发送"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "删除文件"
   },
   "9a9+ww": {
     "defaultMessage": "标题"
@@ -192,7 +192,7 @@
     "defaultMessage": "{name}的说明"
   },
   "AYIR/J": {
-    "defaultMessage": "Remove Image"
+    "defaultMessage": "移除图像"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW 内容"
@@ -216,7 +216,7 @@
     "defaultMessage": "私钥"
   },
   "BzQPM+": {
-    "defaultMessage": "Destination"
+    "defaultMessage": "目的地"
   },
   "C81/uG": {
     "defaultMessage": "登出"
@@ -258,7 +258,7 @@
     "defaultMessage": "历史上最受欢迎的 Zappers"
   },
   "FXepR9": {
-    "defaultMessage": "{m}mo {ago}",
+    "defaultMessage": "{m}月 {ago}",
     "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
@@ -271,13 +271,13 @@
     "defaultMessage": "移除"
   },
   "G857ni": {
-    "defaultMessage": "LNURL or invoice"
+    "defaultMessage": "LNURL 或发票"
   },
   "GGaJMU": {
     "defaultMessage": "热门聊天室"
   },
   "GSuQPh": {
-    "defaultMessage": "Unknown event link"
+    "defaultMessage": "未知事件链接"
   },
   "GSye7T": {
     "defaultMessage": "闪电地址"
@@ -298,10 +298,10 @@
     "defaultMessage": "请将它安全保存！如果你丢失了此密钥，你将无法无法再次访问你的帐户。对，很严肃！"
   },
   "H1fdc9": {
-    "defaultMessage": "Please add a thumbnail"
+    "defaultMessage": "请添加缩略图"
   },
   "H4hJvF": {
-    "defaultMessage": "Choose a category"
+    "defaultMessage": "选择一个分类"
   },
   "H5+NAX": {
     "defaultMessage": "余额"
@@ -358,7 +358,7 @@
     "defaultMessage": "显示"
   },
   "KH2ayq": {
-    "defaultMessage": "Upload Video"
+    "defaultMessage": "上传视频"
   },
   "KkIL3s": {
     "defaultMessage": "不，我未满18岁"
@@ -367,7 +367,7 @@
     "defaultMessage": "如果你已经有一个账户，可以使用 nostr 扩展登录。如果你已经使用了 nostr 扩展，你将自动登录。如果没有设置 nostr 扩展，可以使用 nos2x 或 Alby。"
   },
   "KxfKnW": {
-    "defaultMessage": "Withdraw funds"
+    "defaultMessage": "提取资金"
   },
   "LEmxc8": {
     "defaultMessage": "斩获目标"
@@ -385,7 +385,7 @@
     "defaultMessage": "直播流密钥"
   },
   "LxSJOb": {
-    "defaultMessage": "Go to Dashboard"
+    "defaultMessage": "前往仪表板"
   },
   "MTHO1W": {
     "defaultMessage": "开始突袭"
@@ -397,13 +397,13 @@
     "defaultMessage": "Enable Recording"
   },
   "NnHu0L": {
-    "defaultMessage": "Please upload at least 1 video"
+    "defaultMessage": "请上传至少 1 个视频"
   },
   "O2Cy6m": {
     "defaultMessage": "是的，我已满18岁"
   },
   "O7AeYh": {
-    "defaultMessage": "Description.."
+    "defaultMessage": "描述..."
   },
   "OEW7yJ": {
     "defaultMessage": "打闪"
@@ -418,7 +418,7 @@
     "defaultMessage": "最大音频比特率"
   },
   "OumUwz": {
-    "defaultMessage": "{m}s {ago}",
+    "defaultMessage": "{m}秒 {ago}",
     "description": "Number of second(s) relative to now"
   },
   "Oxqtyf": {
@@ -429,16 +429,16 @@
     "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
-    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+    "defaultMessage": "如果你不想设置任何目标，请留空。"
   },
   "PUymyQ": {
     "defaultMessage": "请访问 {name} stream on zap.stream！ {link}"
   },
   "PXAur5": {
-    "defaultMessage": "Withdraw"
+    "defaultMessage": "提款"
   },
   "Pc+tM3": {
-    "defaultMessage": "Generate"
+    "defaultMessage": "生成"
   },
   "Pe0ogR": {
     "defaultMessage": "主题"
@@ -447,7 +447,7 @@
     "defaultMessage": "大约{estimate}"
   },
   "Q8Qw5B": {
-    "defaultMessage": "Description"
+    "defaultMessage": "描述"
   },
   "QNvtaq": {
     "defaultMessage": "在 X 上分享"
@@ -471,10 +471,10 @@
     "defaultMessage": "您可以选择使用我们的内部主机或您自己的主机（如 Cloudflare）。"
   },
   "R72je0": {
-    "defaultMessage": "Stream Title"
+    "defaultMessage": "直播标题"
   },
   "RGYBjE": {
-    "defaultMessage": "Thumbnail"
+    "defaultMessage": "缩略图"
   },
   "RJOmzk": {
     "defaultMessage": "我已阅读并同意{provider}的{terms}。"
@@ -498,7 +498,7 @@
     "defaultMessage": "音频编解码器"
   },
   "TDUfVk": {
-    "defaultMessage": "Started"
+    "defaultMessage": "已开始"
   },
   "TP/cMX": {
     "defaultMessage": "已结束"
@@ -507,7 +507,7 @@
     "defaultMessage": "帐户"
   },
   "UCDS65": {
-    "defaultMessage": "ago",
+    "defaultMessage": "前",
     "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
@@ -535,7 +535,7 @@
     "defaultMessage": "直播流转发"
   },
   "W7IRLs": {
-    "defaultMessage": "Your title is too short"
+    "defaultMessage": "你的标题太短了"
   },
   "W9355R": {
     "defaultMessage": "解除静音"
@@ -545,7 +545,7 @@
     "description": "Config value column header"
   },
   "Wp4l7+": {
-    "defaultMessage": "More Videos"
+    "defaultMessage": "更多视频"
   },
   "WsjXrZ": {
     "defaultMessage": "点击登录"
@@ -554,7 +554,7 @@
     "defaultMessage": "创建目标"
   },
   "XIvYvF": {
-    "defaultMessage": "Failed to get invoice"
+    "defaultMessage": "获取发票失败"
   },
   "XMGfiA": {
     "defaultMessage": "最新剪辑"
@@ -582,7 +582,7 @@
     "defaultMessage": "剪辑标题"
   },
   "YyXVHf": {
-    "defaultMessage": "Clear Draft"
+    "defaultMessage": "清空草稿"
   },
   "Z8ZOEY": {
     "defaultMessage": "这个方式不安全。我们建议使用{nostrlink}"
@@ -631,7 +631,7 @@
     "defaultMessage": "类别"
   },
   "cg1VJ2": {
-    "defaultMessage": "Connect Wallet"
+    "defaultMessage": "连接钱包"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
@@ -674,7 +674,7 @@
     "defaultMessage": "关于"
   },
   "gQxxlw": {
-    "defaultMessage": "Goal Name"
+    "defaultMessage": "目标名称"
   },
   "gt65Gg": {
     "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
@@ -695,7 +695,7 @@
     "defaultMessage": "聊天小部件"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "仪表板"
   },
   "ieGrWo": {
     "defaultMessage": "关注"
@@ -704,7 +704,7 @@
     "defaultMessage": "流媒体的成本是多少？"
   },
   "ipTKP3": {
-    "defaultMessage": "Chat Popout"
+    "defaultMessage": "聊天弹出窗口"
   },
   "itPgxd": {
     "defaultMessage": "个人档案"
@@ -716,7 +716,7 @@
     "defaultMessage": "突袭 {name}"
   },
   "jDDeA0": {
-    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
+    "defaultMessage": "你的标题很长，请确保少于 {n} 字符。"
   },
   "jJLRgo": {
     "defaultMessage": "剪辑片段"
@@ -752,7 +752,7 @@
     "defaultMessage": "已计划"
   },
   "lBm7CY": {
-    "defaultMessage": "Upload to:"
+    "defaultMessage": "上传至："
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -803,13 +803,13 @@
     "defaultMessage": "上传"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "热门"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> 打闪了 <s>{amount}</s> 聪"
   },
   "q9ryv4": {
-    "defaultMessage": "Cover image URL (optional)"
+    "defaultMessage": "封面图片 URL（可选）"
   },
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
@@ -827,7 +827,7 @@
     "defaultMessage": "当前观看用户"
   },
   "rleUgy": {
-    "defaultMessage": "Uploading.."
+    "defaultMessage": "正在上传.."
   },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
@@ -846,7 +846,7 @@
     "defaultMessage": "点击右上角的 \"流 \"按钮"
   },
   "syEQFE": {
-    "defaultMessage": "Publish"
+    "defaultMessage": "发布"
   },
   "tG1ST3": {
     "defaultMessage": "传入打闪"
@@ -883,7 +883,7 @@
     "defaultMessage": "直播流"
   },
   "uksRSi": {
-    "defaultMessage": "Latest Videos"
+    "defaultMessage": "最新视频"
   },
   "vP4dFa": {
     "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
@@ -904,7 +904,7 @@
     "defaultMessage": "在 Nostr 上广播"
   },
   "wCgTu5": {
-    "defaultMessage": "Comments"
+    "defaultMessage": "评论"
   },
   "wEQDC6": {
     "defaultMessage": "编辑"
@@ -919,7 +919,7 @@
     "defaultMessage": "无效的 nostr 地址"
   },
   "we4Lby": {
-    "defaultMessage": "Info"
+    "defaultMessage": "信息"
   },
   "x82IOl": {
     "defaultMessage": "静音"
@@ -944,7 +944,7 @@
     "defaultMessage": "要在 zap.stream 上开始串流，请按照以下步骤操作："
   },
   "yj8NrY": {
-    "defaultMessage": "Clip"
+    "defaultMessage": "剪辑"
   },
   "yzKwBQ": {
     "defaultMessage": "例如 nsec1xyz"
@@ -956,7 +956,7 @@
     "defaultMessage": "谈话"
   },
   "zSYDJP": {
-    "defaultMessage": "I have my own stream host"
+    "defaultMessage": "我有自己的流媒体主机"
   },
   "zVDHAu": {
     "defaultMessage": "打闪提示"

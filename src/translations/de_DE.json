@@ -258,7 +258,7 @@
     "defaultMessage": "Allzeit Top-Zapper"
   },
   "FXepR9": {
-    "defaultMessage": "{m} Mt. {ago}",
+    "defaultMessage": "{ago} {m} Mt.",
     "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
@@ -418,14 +418,14 @@
     "defaultMessage": "Maximale Audio-Bitrate"
   },
   "OumUwz": {
-    "defaultMessage": "{m} Sek. {ago}",
+    "defaultMessage": "{ago} {m} Sek.",
     "description": "Number of second(s) relative to now"
   },
   "Oxqtyf": {
     "defaultMessage": "Wir haben dich mit einer Lightning-Wallet ausgestattet, sodass du sofort von Zuschauern bezahlt werden kannst!"
   },
   "PDA8V2": {
-    "defaultMessage": "{m} Std. {ago}",
+    "defaultMessage": "{ago} {m} Std.",
     "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
@@ -507,7 +507,7 @@
     "defaultMessage": "Konto"
   },
   "UCDS65": {
-    "defaultMessage": "her",
+    "defaultMessage": "vor",
     "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
@@ -606,7 +606,7 @@
     "defaultMessage": "Raid-Empfänger"
   },
   "aB/rH0": {
-    "defaultMessage": "{m} Std. {ago}",
+    "defaultMessage": "{ago} {m} Std.",
     "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
@@ -830,7 +830,7 @@
     "defaultMessage": "Hochladen..."
   },
   "s+ORFl": {
-    "defaultMessage": "{m} Tg. {ago}",
+    "defaultMessage": "{ago} {m} Tg.",
     "description": "Number of day(s) relative to now"
   },
   "s5ksS7": {
@@ -934,7 +934,7 @@
     "defaultMessage": "Lautstärke"
   },
   "y8ogtp": {
-    "defaultMessage": "{m} Wo. {ago}",
+    "defaultMessage": "{ago} {m} Wo.",
     "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {

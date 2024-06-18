@@ -9,7 +9,7 @@
     "defaultMessage": "直播中"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "連接"
   },
   "+y6JUK": {
     "defaultMessage": "Raids"
@@ -18,13 +18,13 @@
     "defaultMessage": "金額"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "餘額：{n} 聰"
   },
   "/EvlqN": {
     "defaultMessage": "nostr 簽名擴充功能"
   },
   "/JkXBo": {
-    "defaultMessage": "Clip from {title}"
+    "defaultMessage": "剪輯自 {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "總額：{amount} 聰"
@@ -33,7 +33,7 @@
     "defaultMessage": "Stream Forwarding (optional)"
   },
   "/w4RM6": {
-    "defaultMessage": "IRL"
+    "defaultMessage": "現實生活"
   },
   "01iNut": {
     "defaultMessage": "Nostr 地址不屬於你"
@@ -54,7 +54,7 @@
     "defaultMessage": "標籤"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "已停止"
   },
   "1q4BO/": {
     "defaultMessage": "URL 無效"
@@ -66,13 +66,13 @@
     "defaultMessage": "添加"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "...更多"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "{n}小時"
   },
   "2wdFaB": {
-    "defaultMessage": "End Stream"
+    "defaultMessage": "結束直播"
   },
   "37mth/": {
     "defaultMessage": "觀眾"
@@ -87,10 +87,10 @@
     "defaultMessage": "使用私鑰登錄"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "無標題"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "錢包"
   },
   "47FYwb": {
     "defaultMessage": "取消"
@@ -99,7 +99,7 @@
     "defaultMessage": "Example settings in OBS (Apple M1 Mac)"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "視頻"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -126,7 +126,7 @@
     "defaultMessage": "開始時間"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "定價"
   },
   "5kx+2v": {
     "defaultMessage": "伺服器 URL"
@@ -174,7 +174,7 @@
     "defaultMessage": "發送"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "刪除檔案"
   },
   "9a9+ww": {
     "defaultMessage": "標題"
@@ -192,7 +192,7 @@
     "defaultMessage": "{name} 的筆記"
   },
   "AYIR/J": {
-    "defaultMessage": "Remove Image"
+    "defaultMessage": "移除圖像"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW 内容"
@@ -216,7 +216,7 @@
     "defaultMessage": "私鑰"
   },
   "BzQPM+": {
-    "defaultMessage": "Destination"
+    "defaultMessage": "目的地"
   },
   "C81/uG": {
     "defaultMessage": "登出"
@@ -258,7 +258,7 @@
     "defaultMessage": "All Time Top Zappers"
   },
   "FXepR9": {
-    "defaultMessage": "{m}mo {ago}",
+    "defaultMessage": "{m}月 {ago}",
     "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
@@ -271,13 +271,13 @@
     "defaultMessage": "移除"
   },
   "G857ni": {
-    "defaultMessage": "LNURL or invoice"
+    "defaultMessage": "LNURL 或發票"
   },
   "GGaJMU": {
     "defaultMessage": "最高聊天"
   },
   "GSuQPh": {
-    "defaultMessage": "Unknown event link"
+    "defaultMessage": "未知事件鏈接"
   },
   "GSye7T": {
     "defaultMessage": "閃電地址"
@@ -301,7 +301,7 @@
     "defaultMessage": "Please add a thumbnail"
   },
   "H4hJvF": {
-    "defaultMessage": "Choose a category"
+    "defaultMessage": "選擇類別"
   },
   "H5+NAX": {
     "defaultMessage": "餘額"
@@ -316,7 +316,7 @@
     "defaultMessage": "Come check out my stream on zap.stream! {link}"
   },
   "Ht231k": {
-    "defaultMessage": "Forwarding"
+    "defaultMessage": "轉發"
   },
   "I1kjHI": {
     "defaultMessage": "支持{markdown}"
@@ -334,7 +334,7 @@
     "defaultMessage": "Last Stream Summary"
   },
   "IqcyS0": {
-    "defaultMessage": "What is a nostr extension?"
+    "defaultMessage": "Nostr 擴展是什麼？"
   },
   "J/+m9y": {
     "defaultMessage": "直播時長 {duration} 分鐘"
@@ -358,7 +358,7 @@
     "defaultMessage": "顯示"
   },
   "KH2ayq": {
-    "defaultMessage": "Upload Video"
+    "defaultMessage": "上傳視頻"
   },
   "KkIL3s": {
     "defaultMessage": "不，我未滿18歲"
@@ -367,7 +367,7 @@
     "defaultMessage": "If you already have an account, you can use a nostr extension to log in. If you already use a nostr extension, you will be automatically logged in. If you don't have a nostr extension set up, you can use nos2x or Alby."
   },
   "KxfKnW": {
-    "defaultMessage": "Withdraw funds"
+    "defaultMessage": "取出資金"
   },
   "LEmxc8": {
     "defaultMessage": "打閃目標"
@@ -582,7 +582,7 @@
     "defaultMessage": "剪輯標題"
   },
   "YyXVHf": {
-    "defaultMessage": "Clear Draft"
+    "defaultMessage": "清除草稿"
   },
   "Z8ZOEY": {
     "defaultMessage": "這個方式不安全。我們建議使用{nostrlink}"
@@ -600,13 +600,13 @@
     "defaultMessage": "你可以稍後更改它"
   },
   "ZsYhvh": {
-    "defaultMessage": "Zaps are lightning payments, which are published on nostr as receipts."
+    "defaultMessage": "打閃是閃電付款，在 Nostr 上發佈作爲收據。"
   },
   "Zse7yG": {
     "defaultMessage": "Raid target"
   },
   "aB/rH0": {
-    "defaultMessage": "{m}h {ago}",
+    "defaultMessage": "{m}小時{ago}",
     "description": "Number of minute(s) relative to now"
   },
   "acrOoz": {
@@ -631,7 +631,7 @@
     "defaultMessage": "類別"
   },
   "cg1VJ2": {
-    "defaultMessage": "Connect Wallet"
+    "defaultMessage": "連接錢包"
   },
   "cntHHJ": {
     "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
@@ -652,7 +652,7 @@
     "defaultMessage": "最高打閃用戶"
   },
   "dkUMIH": {
-    "defaultMessage": "Clip by {name}"
+    "defaultMessage": "{name} 的剪輯"
   },
   "e011kf": {
     "defaultMessage": "常見問答",
@@ -803,7 +803,7 @@
     "defaultMessage": "上傳"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "熱門"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> 打閃了 <s>{amount}</s> 聰"
@@ -827,7 +827,7 @@
     "defaultMessage": "目前觀看用戶"
   },
   "rleUgy": {
-    "defaultMessage": "Uploading.."
+    "defaultMessage": "正在上傳.."
   },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
@@ -846,7 +846,7 @@
     "defaultMessage": "Click the “Stream” button in the top right corner"
   },
   "syEQFE": {
-    "defaultMessage": "Publish"
+    "defaultMessage": "發佈"
   },
   "tG1ST3": {
     "defaultMessage": "傳入打閃"
@@ -877,13 +877,13 @@
     "defaultMessage": "創建帳户"
   },
   "uTonxS": {
-    "defaultMessage": "Avatar upload fialed"
+    "defaultMessage": "頭像上傳失敗"
   },
   "uYw2LD": {
     "defaultMessage": "直播"
   },
   "uksRSi": {
-    "defaultMessage": "Latest Videos"
+    "defaultMessage": "最新视频"
   },
   "vP4dFa": {
     "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
@@ -892,7 +892,7 @@
     "defaultMessage": "{amount} 聰"
   },
   "w+2Vw7": {
-    "defaultMessage": "Shorts"
+    "defaultMessage": "短視頻"
   },
   "w0Xm2F": {
     "defaultMessage": "開始輸入"
@@ -904,7 +904,7 @@
     "defaultMessage": "在 Nostr 上廣播"
   },
   "wCgTu5": {
-    "defaultMessage": "Comments"
+    "defaultMessage": "評論"
   },
   "wEQDC6": {
     "defaultMessage": "編輯"
@@ -919,7 +919,7 @@
     "defaultMessage": "Nostr 地址無效"
   },
   "we4Lby": {
-    "defaultMessage": "Info"
+    "defaultMessage": "關於"
   },
   "x82IOl": {
     "defaultMessage": "靜音"
@@ -934,7 +934,7 @@
     "defaultMessage": "音量"
   },
   "y8ogtp": {
-    "defaultMessage": "{m}w {ago}",
+    "defaultMessage": "{m}周{ago}",
     "description": "Number of week(s) relative to now"
   },
   "yLxIgl": {
