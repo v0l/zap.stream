@@ -1,7 +1,7 @@
 import { bytesToHex } from "@noble/curves/abstract/utils";
 import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore, unwrap } from "@snort/shared";
-import { EventPublisher, Nip7Signer, PrivateKeySigner, UserState, UserStateObject } from "@snort/system";
+import { EventKind, EventPublisher, Nip7Signer, PrivateKeySigner, UserState, UserStateObject } from "@snort/system";
 
 export enum LoginType {
   Nip7 = "nip7",
@@ -64,7 +64,13 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
 
   #makeState() {
     if (this.#session) {
-      return new UserState(this.#session.pubkey, undefined, this.#session.state as UserStateObject<never> | undefined);
+      const ret = new UserState(
+        this.#session.pubkey,
+        undefined,
+        this.#session.state as UserStateObject<never> | undefined,
+      );
+      ret.checkIsStandardList(EventKind.StorageServerList);
+      return ret;
     }
   }
 

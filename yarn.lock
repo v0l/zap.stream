@@ -2321,26 +2321,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nostr-dev-kit/ndk@npm:^2.7.1":
-  version: 2.8.1
-  resolution: "@nostr-dev-kit/ndk@npm:2.8.1"
-  dependencies:
-    "@noble/curves": "npm:^1.4.0"
-    "@noble/hashes": "npm:^1.3.1"
-    "@noble/secp256k1": "npm:^2.0.0"
-    "@scure/base": "npm:^1.1.1"
-    debug: "npm:^4.3.4"
-    light-bolt11-decoder: "npm:^3.0.0"
-    node-fetch: "npm:^3.3.1"
-    nostr-tools: "npm:^1.15.0"
-    tseep: "npm:^1.1.1"
-    typescript-lru-cache: "npm:^2.0.0"
-    utf8-buffer: "npm:^1.0.0"
-    websocket-polyfill: "npm:^0.0.3"
-  checksum: 10c0/8ca6bf325d9cb395bdcd270fd3c79a86b363a69e13e13a7016732fdde2a2c7bdd74650317bb8760098b0c42423e0084cdf299e72e74ea0641fcb80b863a46ab7
-  languageName: node
-  linkType: hard
-
 "@nostr-dev-kit/ndk@npm:^2.8.2":
   version: 2.8.2
   resolution: "@nostr-dev-kit/ndk@npm:2.8.2"
@@ -2673,7 +2653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/shared@npm:^1.0.14, @snort/shared@npm:^1.0.15":
+"@snort/shared@npm:^1.0.15":
   version: 1.0.15
   resolution: "@snort/shared@npm:1.0.15"
   dependencies:
@@ -2687,14 +2667,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^1.3.5":
-  version: 1.3.5
-  resolution: "@snort/system-react@npm:1.3.5"
+"@snort/system-react@npm:^1.3.6":
+  version: 1.3.6
+  resolution: "@snort/system-react@npm:1.3.6"
   dependencies:
     "@snort/shared": "npm:^1.0.15"
-    "@snort/system": "npm:^1.3.5"
+    "@snort/system": "npm:^1.3.6"
     react: "npm:^18.2.0"
-  checksum: 10c0/5e03db4a0034bbf672238f2091e86974ba21ecdb6e8562d869a7141b8b8f447802a2c8c3ef10824b81ad6288ae69d39505fb4572965bebba856990edec37dfb2
+  checksum: 10c0/97d11898cbf9dd2744ce340fbac1f9c5546980e10e52e7573c3b064700fd22570301923eb74f664ccd9b42fb2bc58d5adee7f59e8567821e2d0b939cefa876d4
   languageName: node
   linkType: hard
 
@@ -2705,30 +2685,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "@snort/system@npm:1.3.2"
-  dependencies:
-    "@noble/curves": "npm:^1.2.0"
-    "@noble/hashes": "npm:^1.3.2"
-    "@nostr-dev-kit/ndk": "npm:^2.7.1"
-    "@scure/base": "npm:^1.1.2"
-    "@snort/shared": "npm:^1.0.15"
-    "@stablelib/xchacha20": "npm:^1.0.1"
-    debug: "npm:^4.3.4"
-    eventemitter3: "npm:^5.0.1"
-    isomorphic-ws: "npm:^5.0.0"
-    lokijs: "npm:^1.5.12"
-    lru-cache: "npm:^10.2.0"
-    uuid: "npm:^9.0.0"
-    ws: "npm:^8.14.0"
-  checksum: 10c0/882d82755e316b4fc00012986a644ca74ddb598aed94665212ba816588c6d56fadb637f844612d2bffdebb2e98c703320e83c9e7c7160d0c03ad8f17890e8ec1
-  languageName: node
-  linkType: hard
-
-"@snort/system@npm:^1.3.5":
-  version: 1.3.5
-  resolution: "@snort/system@npm:1.3.5"
+"@snort/system@npm:^1.3.6":
+  version: 1.3.6
+  resolution: "@snort/system@npm:1.3.6"
   dependencies:
     "@noble/curves": "npm:^1.4.0"
     "@noble/hashes": "npm:^1.4.0"
@@ -2743,22 +2702,22 @@ __metadata:
     lru-cache: "npm:^10.2.0"
     uuid: "npm:^9.0.0"
     ws: "npm:^8.14.0"
-  checksum: 10c0/cc48ad0f9e9d857061fb9f04b1d753bc9d284b9f89ec8a766c3afe3a0af33b4f7219dc9d068365ecdc38fde4cc91b9476dbfa3883eb1c9f317b6fbf5b3e681ad
+  checksum: 10c0/b3beefdda23c4838cb68a9464d7c14e8dd102369e0a97558fdd6e92160ee276f1df53735f0b9dad2bc7d7fe03d23008bc3ab0011638f7a3808ecd92bf2b52bb2
   languageName: node
   linkType: hard
 
-"@snort/wallet@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "@snort/wallet@npm:0.1.3"
+"@snort/wallet@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "@snort/wallet@npm:0.1.4"
   dependencies:
     "@cashu/cashu-ts": "npm:^1.0.0-rc.3"
     "@lightninglabs/lnc-web": "npm:^0.3.1-alpha"
     "@scure/base": "npm:^1.1.6"
-    "@snort/shared": "npm:^1.0.14"
-    "@snort/system": "npm:^1.3.2"
+    "@snort/shared": "npm:^1.0.15"
+    "@snort/system": "npm:^1.3.6"
     debug: "npm:^4.3.4"
     eventemitter3: "npm:^5.0.1"
-  checksum: 10c0/539388afb3fc02d3f4110505bc99590ac7a3cac12db000f0d212953c8e9a8507c7ace38526cef9599c0e0879d90cc3c3db52e8391c58e4874948c831a4a3282c
+  checksum: 10c0/6ad647434c774d01a4d49bcfd5db01b9ff889d54ae76be24485d4fca49eb2b63139b8b503b13ca6161324e2a90bc105fefeb69b039134ac9ef50820c722116ce
   languageName: node
   linkType: hard
 
@@ -7678,10 +7637,10 @@ __metadata:
     "@noble/hashes": "npm:^1.4.0"
     "@scure/base": "npm:^1.1.6"
     "@snort/shared": "npm:^1.0.15"
-    "@snort/system": "npm:^1.3.5"
-    "@snort/system-react": "npm:^1.3.5"
+    "@snort/system": "npm:^1.3.6"
+    "@snort/system-react": "npm:^1.3.6"
     "@snort/system-wasm": "npm:^1.0.4"
-    "@snort/wallet": "npm:^0.1.3"
+    "@snort/wallet": "npm:^0.1.4"
     "@snort/worker-relay": "npm:^1.1.0"
     "@sqlite.org/sqlite-wasm": "npm:^3.45.1-build1"
     "@szhsin/react-menu": "npm:^4.1.0"

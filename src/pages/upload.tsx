@@ -5,6 +5,7 @@ import { Profile } from "@/element/profile";
 import Spinner from "@/element/spinner";
 import useImgProxy from "@/hooks/img-proxy";
 import { useLogin } from "@/hooks/login";
+import { useMediaServerList } from "@/hooks/media-servers";
 import { Nip94Tags, UploadResult, nip94TagsToIMeta } from "@/service/upload";
 import { Nip96Uploader } from "@/service/upload/nip96";
 import { openFile } from "@/utils";
@@ -177,14 +178,14 @@ export function UploadPage() {
   );
   const navigate = useNavigate();
 
-  const servers = [
-    "https://media.zap.stream",
-    "https://cdn.satellite.earth",
-    "https://files.v0l.io",
-    "https://nostrcheck.me",
-    "https://void.cat",
-    "https://nostr.build",
-  ];
+  const servers = useMediaServerList()?.at(0) ?? {
+    tags: [
+      //["server", "https://media.zap.stream"],
+      ["server", "https://files.v0l.io"],
+      ["server", "https://nostrcheck.me"],
+      ["server", "https://nostr.build"],
+    ],
+  };
 
   function canPublish() {
     return error.length == 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined);
@@ -242,7 +243,7 @@ export function UploadPage() {
     if (f) {
       const pub = login?.publisher();
       if (pub) {
-        selectedServers.forEach(b => manager.uploadTo(b, new File([f], "thumb.jpg"), pub, "thumb"));
+        selectedServers.forEach(b => manager.uploadTo(b, f, pub, "thumb"));
       }
     }
   }
@@ -317,9 +318,16 @@ export function UploadPage() {
             <FormattedMessage defaultMessage="Upload to:" />
           </p>
           <select multiple={true} onChange={e => setSelectedServers([...e.target.selectedOptions].map(a => a.value))}>
-            {servers.map(a => (
-              <option selected={selectedServers.includes(a)}>{a}</option>
-            ))}
+            {servers?.tags.map(a => {
+              const url = a[1];
+              if (url && a[0] === "server") {
+                return (
+                  <option selected={selectedServers.includes(url)} key={url}>
+                    {url}
+                  </option>
+                );
+              }
+            })}
           </select>
         </div>
         <div

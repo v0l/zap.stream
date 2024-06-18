@@ -59,10 +59,7 @@ export default function EventReactions({
         "flex-col": vertical,
       })}>
       {replyKind && (
-        <AsyncButton
-          onClick={async () => {
-
-          }}>
+        <AsyncButton onClick={async () => {}}>
           <div className={iconClass}>
             <Icon name="message-circle" />
             {grouped.replies.length > 0 ? grouped.replies.length : <>&nbsp;</>}
