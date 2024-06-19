@@ -318,11 +318,17 @@
   "Ht231k": {
     "defaultMessage": "Forwarding"
   },
+  "HvUhXt": {
+    "defaultMessage": "Uploading to {n} servers"
+  },
   "I1kjHI": {
     "defaultMessage": "支持 {markdown}"
   },
   "I2AKfn": {
     "defaultMessage": "游戏"
+  },
+  "IDqXmC": {
+    "defaultMessage": "Media Server List"
   },
   "IJDKz3": {
     "defaultMessage": "打闪金额{currency}"
@@ -410,6 +416,9 @@
   },
   "OKhRC6": {
     "defaultMessage": "分享"
+  },
+  "OadZli": {
+    "defaultMessage": "Manage Servers"
   },
   "ObZZEz": {
     "defaultMessage": "暂无片段"
@@ -697,6 +706,9 @@
   "hzSNj4": {
     "defaultMessage": "仪表板"
   },
+  "iKlloU": {
+    "defaultMessage": "Suggested Servers"
+  },
   "ieGrWo": {
     "defaultMessage": "关注"
   },
@@ -751,9 +763,6 @@
   "kp0NPF": {
     "defaultMessage": "已计划"
   },
-  "lBm7CY": {
-    "defaultMessage": "上传至："
-  },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
   },
@@ -801,6 +810,9 @@
   },
   "p4N05H": {
     "defaultMessage": "上传"
+  },
+  "pOeEMx": {
+    "defaultMessage": "Add server"
   },
   "pxF+t0": {
     "defaultMessage": "热门"

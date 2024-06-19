@@ -318,11 +318,17 @@
   "Ht231k": {
     "defaultMessage": "Forwarding"
   },
+  "HvUhXt": {
+    "defaultMessage": "Uploading to {n} servers"
+  },
   "I1kjHI": {
     "defaultMessage": "{markdown} をサポート"
   },
   "I2AKfn": {
     "defaultMessage": "ゲーミング"
+  },
+  "IDqXmC": {
+    "defaultMessage": "Media Server List"
   },
   "IJDKz3": {
     "defaultMessage": "ザップ金額 ({currency})"
@@ -410,6 +416,9 @@
   },
   "OKhRC6": {
     "defaultMessage": "共有"
+  },
+  "OadZli": {
+    "defaultMessage": "Manage Servers"
   },
   "ObZZEz": {
     "defaultMessage": "クリップはまだない"
@@ -697,6 +706,9 @@
   "hzSNj4": {
     "defaultMessage": "Dashboard"
   },
+  "iKlloU": {
+    "defaultMessage": "Suggested Servers"
+  },
   "ieGrWo": {
     "defaultMessage": "フォロー"
   },
@@ -751,9 +763,6 @@
   "kp0NPF": {
     "defaultMessage": "予定あり"
   },
-  "lBm7CY": {
-    "defaultMessage": "Upload to:"
-  },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
   },
@@ -801,6 +810,9 @@
   },
   "p4N05H": {
     "defaultMessage": "Upload"
+  },
+  "pOeEMx": {
+    "defaultMessage": "Add server"
   },
   "pxF+t0": {
     "defaultMessage": "Popular"

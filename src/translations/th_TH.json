@@ -318,11 +318,17 @@
   "Ht231k": {
     "defaultMessage": "การเผยแพร่"
   },
+  "HvUhXt": {
+    "defaultMessage": "Uploading to {n} servers"
+  },
   "I1kjHI": {
     "defaultMessage": "สนับสนุน {markdown}"
   },
   "I2AKfn": {
     "defaultMessage": "เกม"
+  },
+  "IDqXmC": {
+    "defaultMessage": "Media Server List"
   },
   "IJDKz3": {
     "defaultMessage": "Zap ด้วย {currency} จำนวน"
@@ -410,6 +416,9 @@
   },
   "OKhRC6": {
     "defaultMessage": "แชร์"
+  },
+  "OadZli": {
+    "defaultMessage": "Manage Servers"
   },
   "ObZZEz": {
     "defaultMessage": "ยังไม่มีคลิป."
@@ -697,6 +706,9 @@
   "hzSNj4": {
     "defaultMessage": "Dashboard"
   },
+  "iKlloU": {
+    "defaultMessage": "Suggested Servers"
+  },
   "ieGrWo": {
     "defaultMessage": "ติดตาม"
   },
@@ -751,9 +763,6 @@
   "kp0NPF": {
     "defaultMessage": "วางกำหนดการแล้ว"
   },
-  "lBm7CY": {
-    "defaultMessage": "Upload to:"
-  },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
   },
@@ -801,6 +810,9 @@
   },
   "p4N05H": {
     "defaultMessage": "อัพโหลด"
+  },
+  "pOeEMx": {
+    "defaultMessage": "Add server"
   },
   "pxF+t0": {
     "defaultMessage": "เป็นที่นิยม"
