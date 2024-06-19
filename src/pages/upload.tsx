@@ -1,8 +1,10 @@
 import { VIDEO_KIND } from "@/const";
-import { DefaultButton, IconButton, PrimaryButton, WarningButton } from "@/element/buttons";
+import { DefaultButton, IconButton, Layer3Button, PrimaryButton, WarningButton } from "@/element/buttons";
 import { Icon } from "@/element/icon";
+import Modal from "@/element/modal";
 import { Profile } from "@/element/profile";
 import Spinner from "@/element/spinner";
+import { ServerList } from "@/element/upload/server-list";
 import useImgProxy from "@/hooks/img-proxy";
 import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
@@ -166,26 +168,18 @@ export function UploadPage() {
   const { formatMessage } = useIntl();
   const login = useLogin();
   const system = useContext(SnortContext);
-  const [selectedServers, setSelectedServers] = useState<Array<string>>([]);
   const [error, setError] = useState<Array<string>>([]);
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [thumb, setThumb] = useState("");
+  const [editServers, setEditServers] = useState(false);
   const { proxy } = useImgProxy();
   const uploads = useSyncExternalStore(
     c => manager.hook(c),
     () => manager.snapshot(),
   );
   const navigate = useNavigate();
-
-  const servers = useMediaServerList()?.at(0) ?? {
-    tags: [
-      //["server", "https://media.zap.stream"],
-      ["server", "https://files.v0l.io"],
-      ["server", "https://nostrcheck.me"],
-      ["server", "https://nostr.build"],
-    ],
-  };
+  const servers = useMediaServerList();
 
   function canPublish() {
     return error.length == 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined);
@@ -215,7 +209,7 @@ export function UploadPage() {
     const pub = login?.publisher();
     const f = await openFile();
     if (f && pub) {
-      selectedServers.forEach(b => manager.uploadTo(b, f, pub, "video"));
+      servers.servers.forEach(b => manager.uploadTo(b, f, pub, "video"));
     }
   }
 
@@ -233,7 +227,7 @@ export function UploadPage() {
       const data = await rsp.blob();
       const pub = login?.publisher();
       if (pub) {
-        selectedServers.forEach(b => manager.uploadTo(b, new File([data], "thumb.jpg"), pub, "thumb"));
+        servers.servers.forEach(b => manager.uploadTo(b, new File([data], "thumb.jpg"), pub, "thumb"));
       }
     }
   }
@@ -243,7 +237,7 @@ export function UploadPage() {
     if (f) {
       const pub = login?.publisher();
       if (pub) {
-        selectedServers.forEach(b => manager.uploadTo(b, f, pub, "thumb"));
+        servers.servers.forEach(b => manager.uploadTo(b, f, pub, "thumb"));
       }
     }
   }
@@ -313,22 +307,11 @@ export function UploadPage() {
   return (
     <div className="max-xl:w-full xl:w-[1200px] xl:mx-auto grid gap-6 xl:grid-cols-[auto_350px] max-xl:px-4">
       <div className="flex flex-col gap-6">
-        <div>
-          <p>
-            <FormattedMessage defaultMessage="Upload to:" />
-          </p>
-          <select multiple={true} onChange={e => setSelectedServers([...e.target.selectedOptions].map(a => a.value))}>
-            {servers?.tags.map(a => {
-              const url = a[1];
-              if (url && a[0] === "server") {
-                return (
-                  <option selected={selectedServers.includes(url)} key={url}>
-                    {url}
-                  </option>
-                );
-              }
-            })}
-          </select>
+        <div className="flex justify-between items-center bg-layer-2 rounded-xl px-3 py-2">
+          <FormattedMessage defaultMessage="Uploading to {n} servers" values={{ n: servers.servers.length }} />
+          <Layer3Button onClick={() => setEditServers(true)}>
+            <FormattedMessage defaultMessage="Manage Servers" />
+          </Layer3Button>
         </div>
         <div
           onClick={() => uploadFile()}
@@ -419,6 +402,11 @@ export function UploadPage() {
       <pre className="text-xs font-mono overflow-wrap text-pretty">
         {JSON.stringify(manager.makeIMeta(), undefined, 2)}
       </pre>
+      {editServers && (
+        <Modal id="server-list" onClose={() => setEditServers(false)}>
+          <ServerList />
+        </Modal>
+      )}
     </div>
   );
 }
