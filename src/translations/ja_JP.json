@@ -405,6 +405,9 @@
   "NnHu0L": {
     "defaultMessage": "Please upload at least 1 video"
   },
+  "Ntjkqd": {
+    "defaultMessage": "or"
+  },
   "O2Cy6m": {
     "defaultMessage": "はい、18歳以上です"
   },
@@ -451,6 +454,9 @@
   },
   "Pe0ogR": {
     "defaultMessage": "テーマ"
+  },
+  "PySFxG": {
+    "defaultMessage": "Choose file."
   },
   "Q3au2v": {
     "defaultMessage": "{estimate} について"
@@ -553,6 +559,9 @@
     "defaultMessage": "価値",
     "description": "Config value column header"
   },
+  "WcZM+B": {
+    "defaultMessage": "File List"
+  },
   "Wp4l7+": {
     "defaultMessage": "More Videos"
   },
@@ -632,6 +641,9 @@
   },
   "bfvyfs": {
     "defaultMessage": "アノン"
+  },
+  "c3LlRO": {
+    "defaultMessage": "{n}KiB"
   },
   "cPIKU2": {
     "defaultMessage": "フォロー中"
@@ -754,6 +766,9 @@
   "kGjqZ4": {
     "defaultMessage": "Latest Shorts"
   },
+  "kQAf2d": {
+    "defaultMessage": "Select"
+  },
   "kc5EOy": {
     "defaultMessage": "ユーザー名が長すぎる"
   },
@@ -789,6 +804,9 @@
   },
   "n19IQE": {
     "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
+  "n8k1SG": {
+    "defaultMessage": "{n}MiB"
   },
   "nBCvvJ": {
     "defaultMessage": "アカウントチャージ"

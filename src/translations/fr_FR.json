@@ -405,6 +405,9 @@
   "NnHu0L": {
     "defaultMessage": "Please upload at least 1 video"
   },
+  "Ntjkqd": {
+    "defaultMessage": "or"
+  },
   "O2Cy6m": {
     "defaultMessage": "Oui, j'ai plus de 18 ans"
   },
@@ -451,6 +454,9 @@
   },
   "Pe0ogR": {
     "defaultMessage": "Thème"
+  },
+  "PySFxG": {
+    "defaultMessage": "Choose file."
   },
   "Q3au2v": {
     "defaultMessage": "À propos de {estimate}"
@@ -553,6 +559,9 @@
     "defaultMessage": "Valeur",
     "description": "Config value column header"
   },
+  "WcZM+B": {
+    "defaultMessage": "File List"
+  },
   "Wp4l7+": {
     "defaultMessage": "More Videos"
   },
@@ -632,6 +641,9 @@
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
+  },
+  "c3LlRO": {
+    "defaultMessage": "{n}KiB"
   },
   "cPIKU2": {
     "defaultMessage": "Abonnements"
@@ -754,6 +766,9 @@
   "kGjqZ4": {
     "defaultMessage": "Latest Shorts"
   },
+  "kQAf2d": {
+    "defaultMessage": "Select"
+  },
   "kc5EOy": {
     "defaultMessage": "Le nom d'utilisateur est trop long"
   },
@@ -789,6 +804,9 @@
   },
   "n19IQE": {
     "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
+  "n8k1SG": {
+    "defaultMessage": "{n}MiB"
   },
   "nBCvvJ": {
     "defaultMessage": "Recharger"

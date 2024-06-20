@@ -405,6 +405,9 @@
   "NnHu0L": {
     "defaultMessage": "Please upload at least 1 video"
   },
+  "Ntjkqd": {
+    "defaultMessage": "or"
+  },
   "O2Cy6m": {
     "defaultMessage": "是的，我已滿18歲"
   },
@@ -451,6 +454,9 @@
   },
   "Pe0ogR": {
     "defaultMessage": "主題"
+  },
+  "PySFxG": {
+    "defaultMessage": "Choose file."
   },
   "Q3au2v": {
     "defaultMessage": "大約{estimate}"
@@ -553,6 +559,9 @@
     "defaultMessage": "價值",
     "description": "Config value column header"
   },
+  "WcZM+B": {
+    "defaultMessage": "File List"
+  },
   "Wp4l7+": {
     "defaultMessage": "More Videos"
   },
@@ -632,6 +641,9 @@
   },
   "bfvyfs": {
     "defaultMessage": "匿名"
+  },
+  "c3LlRO": {
+    "defaultMessage": "{n}KiB"
   },
   "cPIKU2": {
     "defaultMessage": "已關注"
@@ -754,6 +766,9 @@
   "kGjqZ4": {
     "defaultMessage": "Latest Shorts"
   },
+  "kQAf2d": {
+    "defaultMessage": "Select"
+  },
   "kc5EOy": {
     "defaultMessage": "用戶名太長"
   },
@@ -789,6 +804,9 @@
   },
   "n19IQE": {
     "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+  },
+  "n8k1SG": {
+    "defaultMessage": "{n}MiB"
   },
   "nBCvvJ": {
     "defaultMessage": "充值"
