@@ -1,10 +1,12 @@
 import { base64 } from "@scure/base";
 import { throwIfOffline } from "@snort/shared";
-import { EventKind, EventPublisher } from "@snort/system";
+import { EventKind, EventPublisher, NostrEvent } from "@snort/system";
 
 import { FileExtensionRegex, UploadResult, readNip94Tags } from ".";
 
-export class Nip96Uploader {
+export class Nip96Server {
+  #info?: Nip96Info;
+
   constructor(
     readonly url: string,
     readonly publisher: EventPublisher,
@@ -20,39 +22,26 @@ export class Nip96Uploader {
     const u = new URL(this.url);
 
     const rsp = await fetch(`${u.protocol}//${u.host}/.well-known/nostr/nip96.json`);
-    return (await rsp.json()) as Nip96Info;
+    this.#info = (await rsp.json()) as Nip96Info;
+    return this.#info;
+  }
+
+  async listFiles(page = 0, count = 50) {
+    const rsp = await this.#req(`?page=${page}&count=${count}`, "GET");
+    if (rsp.ok) {
+      return (await rsp.json()) as Nip96FileList;
+    }
   }
 
   async upload(file: File | Blob, filename: string): Promise<UploadResult> {
-    throwIfOffline();
-    const auth = async (url: string, method: string) => {
-      const auth = await this.publisher.generic(eb => {
-        return eb.kind(EventKind.HttpAuthentication).tag(["u", url]).tag(["method", method]);
-      });
-      return `Nostr ${base64.encode(new TextEncoder().encode(JSON.stringify(auth)))}`;
-    };
-
-    const info = await this.loadInfo();
     const fd = new FormData();
     fd.append("size", file.size.toString());
     fd.append("caption", filename);
     fd.append("media_type", file.type);
     fd.append("file", file);
 
-    let u = info.api_url;
-    if (u.startsWith("/")) {
-      u = `${this.url}${u.slice(1)}`;
-    }
-    const rsp = await fetch(u, {
-      body: fd,
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        authorization: await auth(u, "POST"),
-      },
-    });
+    const rsp = await this.#req("", "POST", fd);
     if (rsp.ok) {
-      throwIfOffline();
       const data = (await rsp.json()) as Nip96Result;
       if (data.status === "success") {
         const meta = readNip94Tags(data.nip94_event.tags);
@@ -72,8 +61,13 @@ export class Nip96Uploader {
               meta.url += ".webp";
               break;
             }
-            default: {
+            case "image/jpeg":
+            case "image/jpg": {
               meta.url += ".jpg";
+              break;
+            }
+            case "video/mp4": {
+              meta.url += ".mp4";
               break;
             }
           }
@@ -100,6 +94,31 @@ export class Nip96Uploader {
       }
     }
   }
+
+  async #req(path: string, method: "GET" | "POST" | "DELETE", body?: BodyInit) {
+    throwIfOffline();
+    const auth = async (url: string, method: string) => {
+      const auth = await this.publisher.generic(eb => {
+        return eb.kind(EventKind.HttpAuthentication).tag(["u", url]).tag(["method", method]);
+      });
+      return `Nostr ${base64.encode(new TextEncoder().encode(JSON.stringify(auth)))}`;
+    };
+
+    const info = this.#info ?? (await this.loadInfo());
+    let u = info.api_url;
+    if (u.startsWith("/")) {
+      u = `${this.url}${u.slice(1)}`;
+    }
+    u += path;
+    return await fetch(u, {
+      method,
+      body,
+      headers: {
+        accept: "application/json",
+        authorization: await auth(u, method),
+      },
+    });
+  }
 }
 
 export interface Nip96Info {
@@ -111,8 +130,12 @@ export interface Nip96Result {
   status: string;
   message: string;
   processing_url?: string;
-  nip94_event: {
-    tags: Array<Array<string>>;
-    content: string;
-  };
+  nip94_event: NostrEvent;
+}
+
+export interface Nip96FileList {
+  count: number;
+  total: number;
+  page: number;
+  files: Array<NostrEvent>;
 }

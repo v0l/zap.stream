@@ -4,12 +4,13 @@ import { Icon } from "@/element/icon";
 import Modal from "@/element/modal";
 import { Profile } from "@/element/profile";
 import Spinner from "@/element/spinner";
+import { MediaServerFileList } from "@/element/upload/file-list";
 import { ServerList } from "@/element/upload/server-list";
 import useImgProxy from "@/hooks/img-proxy";
 import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
 import { Nip94Tags, UploadResult, nip94TagsToIMeta } from "@/service/upload";
-import { Nip96Uploader } from "@/service/upload/nip96";
+import { Nip96Server } from "@/service/upload/nip96";
 import { openFile } from "@/utils";
 import { ExternalStore, removeUndefined, unixNow, unwrap } from "@snort/shared";
 import { EventPublisher, NostrLink } from "@snort/system";
@@ -33,7 +34,7 @@ interface UploadDraft {
 }
 
 class UploadManager extends ExternalStore<Array<UploadStatus>> {
-  #uploaders: Map<string, Nip96Uploader> = new Map();
+  #uploaders: Map<string, Nip96Server> = new Map();
   #uploads: Map<string, UploadStatus> = new Map();
   #id: string;
 
@@ -71,7 +72,7 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
   async uploadTo(server: string, file: File, pub: EventPublisher, type: UploadStatus["type"]) {
     let uploader = this.#uploaders.get(server);
     if (!uploader) {
-      uploader = new Nip96Uploader(server, pub);
+      uploader = new Nip96Server(server, pub);
       this.#uploaders.set(server, uploader);
     }
 
@@ -173,6 +174,7 @@ export function UploadPage() {
   const [summary, setSummary] = useState("");
   const [thumb, setThumb] = useState("");
   const [editServers, setEditServers] = useState(false);
+  const [mediaPicker, setMediaPicker] = useState(false);
   const { proxy } = useImgProxy();
   const uploads = useSyncExternalStore(
     c => manager.hook(c),
@@ -298,10 +300,16 @@ export function UploadPage() {
 
   const uploadButton = () => {
     return (
-      <div className="flex items-center gap-4 bg-layer-3 rounded-lg p-4">
-        <Icon name="upload" />
-        <FormattedMessage defaultMessage="Upload Video" />
-      </div>
+      <>
+        <div className="flex items-center gap-4 bg-layer-3 rounded-lg p-4" onClick={() => uploadFile()}>
+          <Icon name="upload" />
+          <FormattedMessage defaultMessage="Upload Video" />
+        </div>
+        <FormattedMessage defaultMessage="or" />
+        <div className="flex items-center gap-4 bg-layer-3 rounded-lg p-4" onClick={() => setMediaPicker(true)}>
+          <FormattedMessage defaultMessage="Choose file." />
+        </div>
+      </>
     );
   };
   return (
@@ -313,9 +321,7 @@ export function UploadPage() {
             <FormattedMessage defaultMessage="Manage Servers" />
           </Layer3Button>
         </div>
-        <div
-          onClick={() => uploadFile()}
-          className="relative bg-layer-2 rounded-xl w-full aspect-video cursor-pointer overflow-hidden">
+        <div className="relative bg-layer-2 rounded-xl w-full aspect-video cursor-pointer overflow-hidden">
           {videos > 0 && (
             <video
               className="w-full h-full absolute"
@@ -324,7 +330,7 @@ export function UploadPage() {
             />
           )}
           {videos === 0 && (
-            <div className="absolute w-full h-full flex items-center justify-center">{uploadButton()}</div>
+            <div className="absolute w-full h-full flex items-center gap-4 justify-center">{uploadButton()}</div>
           )}
         </div>
         <div className="flex flex-col gap-4">
@@ -405,6 +411,15 @@ export function UploadPage() {
       {editServers && (
         <Modal id="server-list" onClose={() => setEditServers(false)}>
           <ServerList />
+        </Modal>
+      )}
+      {mediaPicker && (
+        <Modal id="media-picker" onClose={() => setMediaPicker(false)} largeModal={true}>
+          <MediaServerFileList
+            onPicked={files => {
+              setMediaPicker(false);
+            }}
+          />
         </Modal>
       )}
     </div>

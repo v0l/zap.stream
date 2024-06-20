@@ -12,6 +12,7 @@ export interface ModalProps {
   children: ReactNode;
   showClose?: boolean;
   ready?: boolean;
+  largeModal?: boolean;
 }
 
 export default function Modal(props: ModalProps) {
@@ -49,9 +50,13 @@ export default function Modal(props: ModalProps) {
         className={
           props.bodyClassName ??
           classNames(
-            "relative bg-layer-1 p-8 transition max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto lg:w-[500px] max-lg:w-full",
-            { "max-xl:translate-y-0": props.ready ?? true },
-            { "max-xl:translate-y-[50vh]": !(props.ready ?? true) },
+            "relative bg-layer-1 p-8 transition max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto max-lg:w-full",
+            {
+              "max-xl:translate-y-0": props.ready ?? true,
+              "max-xl:translate-y-[50vh]": !(props.ready ?? true),
+              "lg:w-[500px]": !(props.largeModal ?? false),
+              "lg:w-[80vw]": props.largeModal ?? false,
+            },
           )
         }
         onMouseDown={e => e.stopPropagation()}
