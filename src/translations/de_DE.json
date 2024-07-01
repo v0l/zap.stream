@@ -406,7 +406,7 @@
     "defaultMessage": "Bitte lade mindestens 1 Video hoch"
   },
   "Ntjkqd": {
-    "defaultMessage": "or"
+    "defaultMessage": "oder"
   },
   "O2Cy6m": {
     "defaultMessage": "Ja, ich bin über 18 Jahre alt"
@@ -456,7 +456,7 @@
     "defaultMessage": "Erscheinungsbild"
   },
   "PySFxG": {
-    "defaultMessage": "Choose file."
+    "defaultMessage": "Datei auswählen"
   },
   "Q3au2v": {
     "defaultMessage": "Ungefähr {estimate}"
@@ -560,7 +560,7 @@
     "description": "Config value column header"
   },
   "WcZM+B": {
-    "defaultMessage": "File List"
+    "defaultMessage": "Dateiliste"
   },
   "Wp4l7+": {
     "defaultMessage": "Weitere Videos"
@@ -643,7 +643,7 @@
     "defaultMessage": "Anon"
   },
   "c3LlRO": {
-    "defaultMessage": "{n}KiB"
+    "defaultMessage": "{n} KiB"
   },
   "cPIKU2": {
     "defaultMessage": "Folge ich"
@@ -767,7 +767,7 @@
     "defaultMessage": "Neueste Shorts"
   },
   "kQAf2d": {
-    "defaultMessage": "Select"
+    "defaultMessage": "Auswählen"
   },
   "kc5EOy": {
     "defaultMessage": "Benutzername ist zu lang"
@@ -806,7 +806,7 @@
     "defaultMessage": "Empfohlene Größe: 1920x1080 (16:9)"
   },
   "n8k1SG": {
-    "defaultMessage": "{n}MiB"
+    "defaultMessage": "{n} MiB"
   },
   "nBCvvJ": {
     "defaultMessage": "Aufladen"
