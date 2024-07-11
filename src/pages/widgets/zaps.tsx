@@ -48,7 +48,8 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
   useEffect(() => {
     if (!zap) return;
 
-    if (mutedPubkeys.has(zap?.sender ?? "")) {
+    const senderLink = NostrLink.publicKey(zap?.sender ?? "");
+    if (mutedPubkeys.some(a => a.equals(senderLink))) {
       return;
     }
 
