@@ -52,7 +52,8 @@
     "start": "vite",
     "build": "vite build",
     "intl-extract": "formatjs extract 'src/**/*.ts*' --ignore='**/*.d.ts' --out-file src/lang.json --flatten true",
-    "intl-compile": "formatjs compile src/lang.json --out-file src/translations/en.json"
+    "intl-compile": "formatjs compile src/lang.json --out-file src/translations/en.json",
+    "pre:commit": "yarn intl-extract && yarn intl-compile && yarn prettier --write ."
   },
   "eslintConfig": {
     "extends": [

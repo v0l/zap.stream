@@ -6,7 +6,6 @@ import { SnortContext } from "@snort/system-react";
 import { CardItem } from ".";
 import { USER_CARDS } from "@/const";
 import { useLogin } from "@/hooks/login";
-import { Login } from "@/login";
 import { Tags } from "@/types";
 import { findTag } from "@/utils";
 import { EditCard } from "./edit-card";
@@ -88,7 +87,6 @@ export function Card({ canEdit, ev, cards }: CardProps) {
           });
           console.debug(userCardsEv);
           await system.BroadcastEvent(userCardsEv);
-          Login.setCards(newTags, userCardsEv.created_at);
         }
       },
     }),

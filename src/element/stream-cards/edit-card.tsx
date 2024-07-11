@@ -1,6 +1,5 @@
 import { CARD, USER_CARDS } from "@/const";
 import { useLogin } from "@/hooks/login";
-import { Login } from "@/login";
 import { removeUndefined } from "@snort/shared";
 import { TaggedNostrEvent, NostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
@@ -60,7 +59,6 @@ export function EditCard({ card, cards }: EditCardProps) {
 
       console.debug(userCardsEv);
       await system.BroadcastEvent(userCardsEv);
-      Login.setCards(newTags, userCardsEv.created_at);
       setOpen(false);
     }
   }
