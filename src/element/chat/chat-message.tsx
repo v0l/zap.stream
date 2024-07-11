@@ -56,7 +56,7 @@ export function ChatMessage({
   const profile = useUserProfile(ev.pubkey);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const related = useReactions("reactions", [link], undefined, true);
+  const related = useReactions("reactions", [link], undefined, false);
   const { zaps, reactions } = useEventReactions(link, related);
   const emojiNames = emojiPacks.map(p => p.emojis).flat();
 
