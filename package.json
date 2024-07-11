@@ -16,7 +16,6 @@
     "@sqlite.org/sqlite-wasm": "^3.45.1-build1",
     "@szhsin/react-menu": "^4.1.0",
     "@types/webscopeio__react-textarea-autocomplete": "^4.7.5",
-    "@void-cat/api": "^1.0.12",
     "@webscopeio/react-textarea-autocomplete": "^4.9.2",
     "buffer": "^6.0.3",
     "classnames": "^2.5.1",

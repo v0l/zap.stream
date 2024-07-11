@@ -3,11 +3,12 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { DefaultProvider, StreamProviderForward } from "@/providers";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AddForwardInputs } from "@/element/provider/nostr/fowards";
 
 export default function DashboardIntroStep3() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [forwards, setForwards] = useState<Array<StreamProviderForward>>([]);
 
   async function loadInfo() {
@@ -21,7 +22,7 @@ export default function DashboardIntroStep3() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="mx-auto flex flex-col items-center">
       <StepHeader />
       <div className="flex flex-col gap-4 w-[30rem]">
         <h2 className="text-center">
@@ -50,7 +51,9 @@ export default function DashboardIntroStep3() {
         <AddForwardInputs provider={DefaultProvider} onAdd={loadInfo} />
         <DefaultButton
           onClick={async () => {
-            navigate("/dashboard/step-4");
+            navigate("/dashboard/step-4", {
+              state: location.state,
+            });
           }}>
           <FormattedMessage defaultMessage="Continue" />
         </DefaultButton>

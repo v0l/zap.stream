@@ -11,21 +11,20 @@ import LoginWallet2x from "../login-wallet@2x.jpg";
 
 import { useContext, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
-import { EventPublisher, UserMetadata } from "@snort/system";
+import { EventPublisher, PrivateKeySigner, UserMetadata } from "@snort/system";
 import { schnorr } from "@noble/curves/secp256k1";
 import { bytesToHex } from "@noble/curves/abstract/utils";
 import { LNURL, bech32ToHex, getPublicKey, hexToBech32 } from "@snort/shared";
-import { VoidApi } from "@void-cat/api";
 import { SnortContext } from "@snort/system-react";
 
 import { Login, LoginType } from "@/login";
 import { Icon } from "./icon";
 import Copy from "./copy";
-import { openFile } from "@/utils";
 import { DefaultProvider, StreamProviderInfo } from "@/providers";
 import { NostrStreamProvider } from "@/providers/zsz";
 import { DefaultButton, Layer1Button } from "./buttons";
 import { ExternalLink } from "./external-link";
+import { FileUploader } from "./file-uploader";
 
 enum Stage {
   Login = 0,
@@ -46,6 +45,7 @@ export function LoginSignup({ close }: { close: () => void }) {
   const [key, setNewKey] = useState("");
   const { formatMessage } = useIntl();
   const hasNostrExtension = "nostr" in window && window.nostr;
+  const signer = key ? new PrivateKeySigner(key) : undefined;
 
   function doLoginNsec() {
     try {
@@ -87,34 +87,6 @@ export function LoginSignup({ close }: { close: () => void }) {
   function loginWithKey() {
     Login.loginWithPrivateKey(key);
     close();
-  }
-
-  async function uploadAvatar() {
-    const defaultError = formatMessage({
-      defaultMessage: "Avatar upload fialed",
-      id: "uTonxS",
-    });
-
-    try {
-      const file = await openFile();
-      if (file) {
-        const VoidCatHost = "https://void.cat";
-        const api = new VoidApi(VoidCatHost);
-        const uploader = api.getUploader(file);
-        const result = await uploader.upload({
-          "V-Strip-Metadata": "true",
-        });
-        console.debug(result);
-        if (result.ok) {
-          const resultUrl = result.file?.metadata?.url ?? `${VoidCatHost}/d/${result.file?.id}`;
-          setAvatar(resultUrl);
-        } else {
-          setError(result.errorMessage ?? defaultError);
-        }
-      }
-    } catch {
-      setError(defaultError);
-    }
   }
 
   async function setupProfile() {
@@ -248,13 +220,17 @@ export function LoginSignup({ close }: { close: () => void }) {
             <h2>
               <FormattedMessage defaultMessage="Setup Profile" />
             </h2>
-            <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden">
+            <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden bg-layer-3">
               {avatar && <img className="absolute object-fit w-full h-full" src={avatar} />}
-              <div
-                className="absolute flex items-center justify-center w-full h-full hover:opacity-100 opacity-0 transition bg-layer-2/50 cursor-pointer"
-                onClick={uploadAvatar}>
-                <Icon name="camera-plus" />
-              </div>
+              {signer && (
+                <FileUploader
+                  publisher={new EventPublisher(signer, signer.getPubKey())}
+                  onResult={e => setAvatar(e ?? "")}
+                  onError={e => setError(e.toString())}
+                  className="absolute flex items-center justify-center w-full h-full hover:opacity-30 opacity-0 transition bg-black cursor-pointer">
+                  <Icon name="camera-plus" />
+                </FileUploader>
+              )}
             </div>
             <input
               type="text"

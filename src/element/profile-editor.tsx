@@ -4,9 +4,9 @@ import { LNURL, fetchNip05Pubkey } from "@snort/shared";
 import { mapEventToProfile } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { useLogin } from "@/hooks/login";
-import { debounce, openFile } from "@/utils";
+import { debounce } from "@/utils";
 import { PrimaryButton } from "./buttons";
-import { VoidApi } from "@void-cat/api";
+import { FileUploader } from "./file-uploader";
 
 const MaxUsernameLength = 100;
 const MaxAboutLength = 500;
@@ -116,35 +116,6 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
     });
   }, [formatMessage, login?.pubkey, nip05]);
 
-  async function uploadAvatar() {
-    const defaultError = formatMessage({
-      defaultMessage: "Avatar upload fialed",
-      id: "uTonxS",
-    });
-
-    setError(undefined);
-    try {
-      const file = await openFile();
-      if (file) {
-        const VoidCatHost = "https://void.cat";
-        const api = new VoidApi(VoidCatHost);
-        const uploader = api.getUploader(file);
-        const result = await uploader.upload({
-          "V-Strip-Metadata": "true",
-        });
-        console.debug(result);
-        if (result.ok) {
-          const resultUrl = result.file?.metadata?.url ?? `${VoidCatHost}/d/${result.file?.id}`;
-          setPicture(resultUrl);
-        } else {
-          setError(new Error(result.errorMessage ?? defaultError));
-        }
-      }
-    } catch {
-      setError(new Error(defaultError));
-    }
-  }
-
   async function saveProfile() {
     // copy user object and delete internal fields
     const userCopy = {
@@ -225,11 +196,12 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
       <div className="flex flex-col gap-4">
         <div className="mx-auto relative flex items-center justify-center w-40 h-40 aspect-square rounded-full overflow-hidden">
           <img className="absolute w-full h-full object-cover" src={picture} />
-          <div
-            className="flex items-center justify-center absolute w-full h-full opacity-0 hover:opacity-80 bg-foreground cursor-pointer"
-            onClick={() => uploadAvatar()}>
+          <FileUploader
+            onResult={e => setPicture(e ?? "")}
+            onError={e => setError(e instanceof Error ? e : new Error(e))}
+            className="flex items-center justify-center absolute w-full h-full opacity-0 hover:opacity-80 bg-foreground cursor-pointer">
             <FormattedMessage defaultMessage="Edit" />
-          </div>
+          </FileUploader>
         </div>
         <div className="flex flex-col w-full gap-2">
           <h4>

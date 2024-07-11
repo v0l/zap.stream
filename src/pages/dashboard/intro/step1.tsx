@@ -12,6 +12,7 @@ export default function DashboardIntroStep1() {
   const [title, setTitle] = useState<string>();
   const [summary, setDescription] = useState<string>();
   const [image, setImage] = useState<string>();
+  const [error, setError] = useState<string>();
 
   useEffect(() => {
     DefaultProvider.info().then(i => {
@@ -48,8 +49,9 @@ export default function DashboardIntroStep1() {
             onChange={e => setImage(e.target.value)}
             placeholder={formatMessage({ defaultMessage: "Cover image URL (optional)" })}
           />
-          <FileUploader onResult={setImage} />
+          <FileUploader onResult={setImage} onError={e => setError(e.toString())} />
         </div>
+        {error && <b className="text-warning">{error}</b>}
         <small className="text-layer-4">
           <FormattedMessage defaultMessage="Recommended size: 1920x1080 (16:9)" />
         </small>

@@ -47,6 +47,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [goalAmount, setGoalMount] = useState(0);
   const [game, setGame] = useState<GameInfo>();
   const [gameId, setGameId] = useState<string>();
+  const [error, setError] = useState("");
   const login = useLogin();
   const { formatMessage } = useIntl();
   const system = useContext(SnortContext);
@@ -180,8 +181,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           {image && <img src={image} className="mb-2 aspect-video object-cover rounded-xl" />}
           <div className="flex gap-2">
             <input type="text" placeholder="https://" value={image} onChange={e => setImage(e.target.value)} />
-            <FileUploader onResult={v => setImage(v ?? "")} />
+            <FileUploader onResult={v => setImage(v ?? "")} onError={e => setError(e.toString())} />
           </div>
+          {error && <b className="text-warning">{error}</b>}
         </StreamInput>
       )}
       {(options?.canSetStream ?? true) && (

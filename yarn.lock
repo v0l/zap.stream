@@ -3245,15 +3245,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@void-cat/api@npm:^1.0.12":
-  version: 1.0.12
-  resolution: "@void-cat/api@npm:1.0.12"
-  dependencies:
-    sjcl: "npm:^1.0.8"
-  checksum: 10c0/37d67e077a1ece0509a669d2ebd5a1edc26773b25417287ce333e0f854ae1c073ea3ca4e311c137faf2b9c0985a0ae630e52cbdd6f431cfe1691d42d2ebe0acc
-  languageName: node
-  linkType: hard
-
 "@webbtc/webln-types@npm:^3.0.0":
   version: 3.0.0
   resolution: "@webbtc/webln-types@npm:3.0.0"
@@ -7502,13 +7493,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sjcl@npm:^1.0.8":
-  version: 1.0.8
-  resolution: "sjcl@npm:1.0.8"
-  checksum: 10c0/deac03b931a26b710a521fc9dd5a10b124fb63970b7f5e22a91460ac46b14dd4ccfc2edbee4d553b8d586da332d9013a9ff40f5adfdb58050b73ebcd90235cba
-  languageName: node
-  linkType: hard
-
 "slash@npm:^3.0.0":
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
@@ -7652,7 +7636,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^7.9.0"
     "@typescript-eslint/parser": "npm:^7.9.0"
     "@vitejs/plugin-react": "npm:^4.2.1"
-    "@void-cat/api": "npm:^1.0.12"
     "@webbtc/webln-types": "npm:^3.0.0"
     "@webscopeio/react-textarea-autocomplete": "npm:^4.9.2"
     autoprefixer: "npm:^10.4.19"

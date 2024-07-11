@@ -26,7 +26,7 @@ export default function DashboardIntroFinal() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="mx-auto flex flex-col items-center">
       <StepHeader />
       <div className="flex flex-col gap-4 w-[30rem]">
         <h2 className="text-center">

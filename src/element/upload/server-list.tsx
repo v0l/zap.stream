@@ -1,4 +1,4 @@
-import { useMediaServerList } from "@/hooks/media-servers";
+import { DefaultMediaServers, useMediaServerList } from "@/hooks/media-servers";
 import { IconButton, PrimaryButton } from "../buttons";
 import { FormattedMessage } from "react-intl";
 import { useState } from "react";
@@ -6,13 +6,6 @@ import { sanitizeRelayUrl } from "@snort/shared";
 
 export function ServerList() {
   const [newServer, setNewServer] = useState("");
-
-  const defaultServers = [
-    //"https://media.zap.stream",
-    "https://nostr.build/",
-    "https://nostrcheck.me/",
-    "https://files.v0l.io/",
-  ];
   const servers = useMediaServerList();
 
   async function tryAddServer(s: string) {
@@ -51,7 +44,7 @@ export function ServerList() {
       <h4>
         <FormattedMessage defaultMessage="Suggested Servers" />
       </h4>
-      {defaultServers
+      {DefaultMediaServers.map(a => a.value[1])
         .filter(a => !servers.servers.includes(a))
         .map(a => (
           <div className="flex items-center justify-between py-2 px-3 bg-layer-2 rounded-xl" key={a}>

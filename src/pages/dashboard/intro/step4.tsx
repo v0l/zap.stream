@@ -3,7 +3,7 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { DefaultProvider } from "@/providers";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { GoalSelector } from "@/element/stream-editor/goal-selector";
 import AmountInput from "@/element/amount-input";
 import { useLogin } from "@/hooks/login";
@@ -12,6 +12,7 @@ import { SnortContext } from "@snort/system-react";
 
 export default function DashboardIntroStep4() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [goalName, setGoalName] = useState("");
   const [goalAmount, setGoalMount] = useState(0);
   const [goal, setGoal] = useState<string>();
@@ -30,7 +31,7 @@ export default function DashboardIntroStep4() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="mx-auto flex flex-col items-center">
       <StepHeader />
       <div className="flex flex-col gap-4 w-[30rem]">
         <h2 className="text-center">
@@ -67,15 +68,27 @@ export default function DashboardIntroStep4() {
                   .content(goalName);
               });
               await system.BroadcastEvent(goalEvent);
-              await DefaultProvider.updateStream({
+              const newState = {
+                ...location.state,
                 goal: goalEvent.id,
+              };
+              await DefaultProvider.updateStream(newState);
+              navigate("/dashboard/final", {
+                state: newState,
               });
-              navigate("/dashboard/final");
             } else if (goal) {
-              await DefaultProvider.updateStream({
+              const newState = {
+                ...location.state,
                 goal,
+              };
+              await DefaultProvider.updateStream(newState);
+              navigate("/dashboard/final", {
+                state: newState,
               });
-              navigate("/dashboard/final");
+            } else {
+              navigate("/dashboard/final", {
+                state: location.state,
+              });
             }
           }}>
           <FormattedMessage defaultMessage="Continue" />
