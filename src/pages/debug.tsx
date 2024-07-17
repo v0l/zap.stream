@@ -1,4 +1,3 @@
-import AsyncButton from "@/element/async-button";
 import { Layer1Button, WarningButton } from "@/element/buttons";
 import { NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { SnortContext } from "@snort/system-react";

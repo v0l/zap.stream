@@ -416,7 +416,7 @@ export function UploadPage() {
       {mediaPicker && (
         <Modal id="media-picker" onClose={() => setMediaPicker(false)} largeModal={true}>
           <MediaServerFileList
-            onPicked={files => {
+            onPicked={() => {
               setMediaPicker(false);
             }}
           />

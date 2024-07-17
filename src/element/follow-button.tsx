@@ -1,4 +1,4 @@
-import { NostrHashtagLink, NostrLink, NostrPrefix } from "@snort/system";
+import { NostrLink, NostrPrefix } from "@snort/system";
 import { FormattedMessage } from "react-intl";
 
 import { useLogin } from "@/hooks/login";
@@ -33,13 +33,6 @@ export function LoggedInFollowButton({ link, hideWhenFollowing }: { link: NostrL
       )}
     </DefaultButton>
   );
-}
-
-export function FollowTagButton({ tag, hideWhenFollowing }: { tag: string; hideWhenFollowing?: boolean }) {
-  //const login = useLogin();
-  //const link = new NostrHashtagLink(tag);
-  return;
-  //return login?.pubkey ? <LoggedInFollowButton link={link} hideWhenFollowing={hideWhenFollowing} /> : null;
 }
 
 export function FollowButton({ pubkey, hideWhenFollowing }: { pubkey: string; hideWhenFollowing?: boolean }) {
