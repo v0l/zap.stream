@@ -81,5 +81,5 @@ export default function Modal(props: ModalProps) {
       </div>
     </div>,
     document.body,
-  );
+  ) as JSX.Element;
 }
