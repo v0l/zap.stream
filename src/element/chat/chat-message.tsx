@@ -1,7 +1,7 @@
 import { SnortContext, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
 import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
 import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
-import { useHover, useOnClickOutside } from "usehooks-ts";
+import { useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 import dayjs from "dayjs";
 
@@ -17,10 +17,10 @@ import { CollapsibleEvent } from "../collapsible";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import type { Badge, Emoji, EmojiPack } from "@/types";
-import { IconButton } from "../buttons";
 import Pill from "../pill";
 import classNames from "classnames";
 import Modal from "../modal";
+import { ChatMenu } from "./chat-menu";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -46,17 +46,24 @@ export function ChatMessage({
   const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
   const emojiRef = useRef(null);
-  const link = NostrLink.fromEvent(ev);
-  const isHovering = useHover(ref);
+  const link = useMemo(() => NostrLink.fromEvent(ev), [ev.id]);
   const { mute } = useMute(ev.pubkey);
-  const [showZapDialog, setShowZapDialog] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [zapping, setZapping] = useState(false);
   const login = useLogin();
   const profile = useUserProfile(ev.pubkey);
   const shouldShowMuteButton = ev.pubkey !== streamer && ev.pubkey !== login?.pubkey;
   const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const related = useReactions("reactions", [link], undefined, false);
+  const related = useReactions(
+    "reactions",
+    link,
+    rb => {
+      rb.withOptions({
+        replaceable: true,
+      });
+    },
+    true,
+  );
   const { zaps, reactions } = useEventReactions(link, related);
   const emojiNames = emojiPacks.map(p => p.emojis).flat();
 
@@ -72,7 +79,7 @@ export function ChatMessage({
   const awardedBadges = badges.filter(b => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey));
 
   useOnClickOutside(ref, () => {
-    setShowZapDialog(false);
+    setZapping(false);
   });
 
   useOnClickOutside(emojiRef, () => {
@@ -85,7 +92,7 @@ export function ChatMessage({
 
   async function onEmojiSelect(emoji: Emoji) {
     setShowEmojiPicker(false);
-    setShowZapDialog(false);
+    setZapping(false);
     let reply = null;
     try {
       const pub = login?.publisher();
@@ -113,9 +120,6 @@ export function ChatMessage({
     }
   }
 
-  const topOffset = ref.current?.getBoundingClientRect().top;
-  const leftOffset = ref.current?.getBoundingClientRect().left;
-
   function pickEmoji(e: React.MouseEvent) {
     e.stopPropagation();
     setShowEmojiPicker(!showEmojiPicker);
@@ -125,6 +129,9 @@ export function ChatMessage({
     e.stopPropagation();
     mute();
   }
+
+  const topOffset = ref?.current?.getBoundingClientRect().top;
+  const leftOffset = ref?.current?.getBoundingClientRect().left;
 
   return (
     <>
@@ -165,39 +172,14 @@ export function ChatMessage({
             })}
           </div>
         )}
-        {ref.current && isHovering && (
-          <div
-            className="fixed rounded-lg p-2 bg-layer-1 border border-layer-2 flex gap-1 z-10"
-            style={{
-              top: topOffset ? topOffset + 24 : 0,
-              left: leftOffset ? leftOffset : 0,
-              opacity: showZapDialog || isHovering ? 1 : 0,
-              pointerEvents: showZapDialog || isHovering ? "auto" : "none",
-            }}>
-            {zapTarget && (
-              <IconButton
-                iconName="zap"
-                iconSize={14}
-                className="p-2 rounded-full bg-layer-2 aspect-square"
-                onClick={() => setZapping(true)}
-              />
-            )}
-            <IconButton
-              onClick={pickEmoji}
-              iconName="face"
-              iconSize={14}
-              className="p-2 rounded-full bg-layer-2 aspect-square"
-            />
-            {shouldShowMuteButton && (
-              <IconButton
-                onClick={muteUser}
-                iconName="user-x"
-                iconSize={14}
-                className="p-2 rounded-full bg-layer-2 aspect-square"
-              />
-            )}
-          </div>
-        )}
+        <ChatMenu
+          ref={ref}
+          zapTarget={zapTarget}
+          onPickEmoji={pickEmoji}
+          onMuteUser={muteUser}
+          onZapping={() => setZapping(true)}
+          showMuteButton={shouldShowMuteButton}
+        />
         {zapping && zapTarget && (
           <Modal id="send-zaps" onClose={() => setZapping(false)}>
             <SendZaps
