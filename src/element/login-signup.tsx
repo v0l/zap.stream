@@ -14,7 +14,7 @@ import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { EventPublisher, PrivateKeySigner, UserMetadata } from "@snort/system";
 import { schnorr } from "@noble/curves/secp256k1";
 import { bytesToHex } from "@noble/curves/abstract/utils";
-import { LNURL, bech32ToHex, getPublicKey, hexToBech32 } from "@snort/shared";
+import { LNURL, bech32ToHex, getPublicKey, hexToBech32, isHex } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
 
 import { Login, LoginType } from "@/login";
@@ -45,7 +45,6 @@ export function LoginSignup({ close }: { close: () => void }) {
   const [key, setNewKey] = useState("");
   const { formatMessage } = useIntl();
   const hasNostrExtension = "nostr" in window && window.nostr;
-  const signer = key ? new PrivateKeySigner(key) : undefined;
 
   function doLoginNsec() {
     try {
@@ -132,6 +131,20 @@ export function LoginSignup({ close }: { close: () => void }) {
         setError(e as string);
       }
     }
+  }
+
+  function imageUploadSection() {
+    const signer = key && key.length === 64 && isHex(key) ? new PrivateKeySigner(key) : undefined;
+    if (!signer) return;
+    return (
+      <FileUploader
+        publisher={new EventPublisher(signer, signer.getPubKey())}
+        onResult={e => setAvatar(e ?? "")}
+        onError={e => setError(e.toString())}
+        className="absolute flex items-center justify-center w-full h-full hover:opacity-30 opacity-0 transition bg-black cursor-pointer">
+        <Icon name="camera-plus" />
+      </FileUploader>
+    );
   }
 
   switch (stage) {
@@ -222,15 +235,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             </h2>
             <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden bg-layer-3">
               {avatar && <img className="absolute object-fit w-full h-full" src={avatar} />}
-              {signer && (
-                <FileUploader
-                  publisher={new EventPublisher(signer, signer.getPubKey())}
-                  onResult={e => setAvatar(e ?? "")}
-                  onError={e => setError(e.toString())}
-                  className="absolute flex items-center justify-center w-full h-full hover:opacity-30 opacity-0 transition bg-black cursor-pointer">
-                  <Icon name="camera-plus" />
-                </FileUploader>
-              )}
+              {imageUploadSection()}
             </div>
             <input
               type="text"
