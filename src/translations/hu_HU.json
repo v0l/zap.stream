@@ -18,7 +18,7 @@
     "defaultMessage": "Mennyiség"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "Egyensúly: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "nostr signer kiterjesztés"
@@ -30,7 +30,7 @@
     "defaultMessage": "Összesen: {amount} sats"
   },
   "/aFYQ5": {
-    "defaultMessage": "Stream Forwarding (optional)"
+    "defaultMessage": "Pataktovábbítás (opcionális)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -54,7 +54,7 @@
     "defaultMessage": "Címkék"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "Megállt"
   },
   "1q4BO/": {
     "defaultMessage": "Nem érvényes URL"
@@ -66,10 +66,10 @@
     "defaultMessage": "Hozzáad"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "...tovább"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "{n} órák"
   },
   "2wdFaB": {
     "defaultMessage": "End Stream"
@@ -87,10 +87,10 @@
     "defaultMessage": "Bejelentkezés privát kulccsal"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "Cím nélkül"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "Pénztárca"
   },
   "47FYwb": {
     "defaultMessage": "Mégse"
@@ -99,7 +99,7 @@
     "defaultMessage": "Példa beállítások az OBS-ben (Apple M1 Mac)"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "Videók"
   },
   "4iBdw1": {
     "defaultMessage": "Raid"
@@ -114,7 +114,7 @@
     "defaultMessage": "Stream Key szükséges"
   },
   "58DXVG": {
-    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+    "defaultMessage": "A kezdéshez szerezd meg a stream kulcsot a platformon, ahová továbbítani szeretnéd."
   },
   "5JcXdV": {
     "defaultMessage": "Fiók Létrehozása"
@@ -126,7 +126,7 @@
     "defaultMessage": "Kezdés ideje"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "Árképzés"
   },
   "5kx+2v": {
     "defaultMessage": "Kiszolgáló URL-címe"
@@ -150,7 +150,7 @@
     "defaultMessage": "A folyam url-jének rtmp://-vel kell kezdődnie"
   },
   "74PejI": {
-    "defaultMessage": "Top Viewers"
+    "defaultMessage": "Legjobb nézők"
   },
   "79lLl+": {
     "defaultMessage": "Zene"
@@ -159,7 +159,7 @@
     "defaultMessage": "Offline"
   },
   "89UZph": {
-    "defaultMessage": "Configure your streaming software"
+    "defaultMessage": "A streaming szoftver konfigurálása"
   },
   "8YT6ja": {
     "defaultMessage": "Szöveg beszúrása a beszédfelolvasáshoz"
@@ -174,7 +174,7 @@
     "defaultMessage": "Küldés"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "Fájl törlése"
   },
   "9a9+ww": {
     "defaultMessage": "Cím"
@@ -192,7 +192,7 @@
     "defaultMessage": "A {name}feljegyzése."
   },
   "AYIR/J": {
-    "defaultMessage": "Remove Image"
+    "defaultMessage": "Kép eltávolítása"
   },
   "Atr2p4": {
     "defaultMessage": "Kifogásolható tartalom"
@@ -210,13 +210,13 @@
     "defaultMessage": "{name} készített egy klipet"
   },
   "Bd1yEX": {
-    "defaultMessage": "New Stream Goal"
+    "defaultMessage": "Új patak cél"
   },
   "Bep/gA": {
     "defaultMessage": "Privát kulcs"
   },
   "BzQPM+": {
-    "defaultMessage": "Destination"
+    "defaultMessage": "Úti cél"
   },
   "C81/uG": {
     "defaultMessage": "Kijelentkezés"
@@ -228,7 +228,7 @@
     "defaultMessage": "{n} sats"
   },
   "CsS/fy": {
-    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
+    "defaultMessage": "{estimate} fennmaradó ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "Beállítások"
@@ -242,8 +242,11 @@
   "Dn82AL": {
     "defaultMessage": "Élő"
   },
+  "DqmiAe": {
+    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
   "E7n6zr": {
-    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
+    "defaultMessage": "Jelenlegi áramlási költség: {amount} szombat/{unit} (kb. {usd}/nap egy {x}órás áramláshoz)."
   },
   "E9APoR": {
     "defaultMessage": "Nem sikerült létrehozni a stream URL-t"
@@ -271,13 +274,13 @@
     "defaultMessage": "Eltávolítás"
   },
   "G857ni": {
-    "defaultMessage": "LNURL or invoice"
+    "defaultMessage": "LNURL vagy számla"
   },
   "GGaJMU": {
     "defaultMessage": "Top csevegők"
   },
   "GSuQPh": {
-    "defaultMessage": "Unknown event link"
+    "defaultMessage": "Ismeretlen eseménykapcsolat"
   },
   "GSye7T": {
     "defaultMessage": "Villám cím"
@@ -292,16 +295,16 @@
     "defaultMessage": "A név kötelező"
   },
   "GwbTAz": {
-    "defaultMessage": "Streams"
+    "defaultMessage": "Patakok"
   },
   "H/bNs9": {
     "defaultMessage": "Mentsd le és őrizd meg! Ha ezt a kulcsot elveszíted, a fiókodhoz soha többé nem fogsz tudni hozzáférni. Igen, ez ennyire komoly!"
   },
   "H1fdc9": {
-    "defaultMessage": "Please add a thumbnail"
+    "defaultMessage": "Kérjük, adjon hozzá egy miniatűr képet"
   },
   "H4hJvF": {
-    "defaultMessage": "Choose a category"
+    "defaultMessage": "Válasszon kategóriát"
   },
   "H5+NAX": {
     "defaultMessage": "Egyenleg"
@@ -310,16 +313,16 @@
     "defaultMessage": "Név"
   },
   "HDgXO/": {
-    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+    "defaultMessage": "A zap.stream egy nyílt forráskódú platform, amely a nostr protokollon alapul. Nincsenek óriásvállalatok vagy óriási alapok, amelyek ingyenes streaminget biztosítanának."
   },
   "HsgeUk": {
     "defaultMessage": "Gyere és nézd meg a streamemet a zap.stream-en! {link}"
   },
   "Ht231k": {
-    "defaultMessage": "Forwarding"
+    "defaultMessage": "Továbbítás"
   },
   "HvUhXt": {
-    "defaultMessage": "Uploading to {n} servers"
+    "defaultMessage": "Feltöltés a {n} szerverekre"
   },
   "I1kjHI": {
     "defaultMessage": "Támogatott {markdown}"
@@ -328,7 +331,7 @@
     "defaultMessage": "Játék"
   },
   "IDqXmC": {
-    "defaultMessage": "Media Server List"
+    "defaultMessage": "Médiakiszolgáló lista"
   },
   "IJDKz3": {
     "defaultMessage": "Zap értéke {currency}"
@@ -337,7 +340,7 @@
     "defaultMessage": "VAGY"
   },
   "IPXhUW": {
-    "defaultMessage": "Last Stream Summary"
+    "defaultMessage": "Last Stream Összefoglaló"
   },
   "IqcyS0": {
     "defaultMessage": "Mi az a nostr kiterjesztés?"
@@ -364,7 +367,7 @@
     "defaultMessage": "Megjelenít"
   },
   "KH2ayq": {
-    "defaultMessage": "Upload Video"
+    "defaultMessage": "Videó feltöltése"
   },
   "KkIL3s": {
     "defaultMessage": "Nem, 18 év alatti vagyok"
@@ -373,7 +376,7 @@
     "defaultMessage": "Ha már rendelkezik fiókkal, akkor a nostr kiterjesztés segítségével bejelentkezhet. Ha már használ nostr-bővítményt, automatikusan bejelentkezik. Ha nincs nostr-bővítménye, akkor használhatja a nos2x vagy az Alby alkalmazást."
   },
   "KxfKnW": {
-    "defaultMessage": "Withdraw funds"
+    "defaultMessage": "Pénzeszközök felvétele"
   },
   "LEmxc8": {
     "defaultMessage": "Zap célok"
@@ -382,16 +385,16 @@
     "defaultMessage": "A zap.stream akár 2 órányi tárhelyet is ingyenesen biztosít magas minőségben, és akár 8 órányi \"forrás\" minőségben. Ezt követően lehetőséged van percenként 5 vagy 10 szat/perc streamelésre, a választott minőségtől függően. Ha nem a zap.streamet használja tárhelyként, az árak az Ön által választott streamingszolgáltatótól függnek."
   },
   "Le+99Z": {
-    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+    "defaultMessage": "A Streamers egy kis díjat fizet a működési költségeink fedezésére. Az új streamelőknek a {amount} sats (kb. {time_estimate} streaming) kreditet adunk a kezdéshez!"
   },
   "Lg2ye2": {
-    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+    "defaultMessage": "A ZapStream egy újfajta streaming platform, amely lehetővé teszi, hogy bitcoint (sats) keress abban a pillanatban, amikor elkezded a streaminget! A nézők tetszőleges összegű borravalót adhatnak a streamelőknek. A borravaló azonnal a bitcoin (lightning) pénztárcádba kerül. a zap.stream soha nem nyúl a bevételedhez!"
   },
   "LknBsU": {
     "defaultMessage": "Stream kulcs"
   },
   "LxSJOb": {
-    "defaultMessage": "Go to Dashboard"
+    "defaultMessage": "Menjen az irányítópultra"
   },
   "MTHO1W": {
     "defaultMessage": "Start Raid"
@@ -400,19 +403,19 @@
     "defaultMessage": "Ok, biztonságos"
   },
   "NTpJIm": {
-    "defaultMessage": "Enable Recording"
+    "defaultMessage": "Felvétel engedélyezése"
   },
   "NnHu0L": {
-    "defaultMessage": "Please upload at least 1 video"
+    "defaultMessage": "Kérjük, töltsön fel legalább 1 videót"
   },
   "Ntjkqd": {
-    "defaultMessage": "or"
+    "defaultMessage": "vagy"
   },
   "O2Cy6m": {
     "defaultMessage": "Igen, 18 éves elmúltam"
   },
   "O7AeYh": {
-    "defaultMessage": "Description.."
+    "defaultMessage": "Leírás.."
   },
   "OEW7yJ": {
     "defaultMessage": "Zap-ek"
@@ -421,7 +424,7 @@
     "defaultMessage": "Megosztás"
   },
   "OadZli": {
-    "defaultMessage": "Manage Servers"
+    "defaultMessage": "Kiszolgálók kezelése"
   },
   "ObZZEz": {
     "defaultMessage": "Még nincsenek klipek"
@@ -441,28 +444,28 @@
     "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
-    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+    "defaultMessage": "Hagyja üresen, ha nem kíván célokat beállítani."
   },
   "PUymyQ": {
     "defaultMessage": "Gyere és nézd meg a {name} stream-et a zap.stream-en! {link}"
   },
   "PXAur5": {
-    "defaultMessage": "Withdraw"
+    "defaultMessage": "Visszavonás"
   },
   "Pc+tM3": {
-    "defaultMessage": "Generate"
+    "defaultMessage": "Generálja"
   },
   "Pe0ogR": {
     "defaultMessage": "Téma"
   },
   "PySFxG": {
-    "defaultMessage": "Choose file."
+    "defaultMessage": "Válassza ki a fájlt."
   },
   "Q3au2v": {
     "defaultMessage": "Kb. {estimate}"
   },
   "Q8Qw5B": {
-    "defaultMessage": "Description"
+    "defaultMessage": "Leírás"
   },
   "QNvtaq": {
     "defaultMessage": "Megosztás az X-en"
@@ -486,7 +489,7 @@
     "defaultMessage": "Itt néhány lehetőséged van, a mi házon belüli tárhelyünk vagy a sajátod (például Cloudflare) használata."
   },
   "R72je0": {
-    "defaultMessage": "Stream Title"
+    "defaultMessage": "Patak címe"
   },
   "RGYBjE": {
     "defaultMessage": "Thumbnail"
@@ -513,7 +516,7 @@
     "defaultMessage": "Audio codec"
   },
   "TDUfVk": {
-    "defaultMessage": "Started"
+    "defaultMessage": "Elindult"
   },
   "TP/cMX": {
     "defaultMessage": "Befejezve"
@@ -522,7 +525,7 @@
     "defaultMessage": "Fiók"
   },
   "UCDS65": {
-    "defaultMessage": "ago",
+    "defaultMessage": "ezelőtt",
     "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
@@ -550,7 +553,7 @@
     "defaultMessage": "Stream továbbítása"
   },
   "W7IRLs": {
-    "defaultMessage": "Your title is too short"
+    "defaultMessage": "A cím túl rövid"
   },
   "W9355R": {
     "defaultMessage": "Némítás visszavonása"
@@ -560,10 +563,10 @@
     "description": "Config value column header"
   },
   "WcZM+B": {
-    "defaultMessage": "File List"
+    "defaultMessage": "Fájllista"
   },
   "Wp4l7+": {
-    "defaultMessage": "More Videos"
+    "defaultMessage": "További videók"
   },
   "WsjXrZ": {
     "defaultMessage": "Kattintson a Bejelentkezés gombra"
@@ -572,7 +575,7 @@
     "defaultMessage": "Cél kitűzése"
   },
   "XIvYvF": {
-    "defaultMessage": "Failed to get invoice"
+    "defaultMessage": "Nem sikerült számlát kapni"
   },
   "XMGfiA": {
     "defaultMessage": "Legutóbbi klipek"
@@ -581,7 +584,7 @@
     "defaultMessage": "Reakciók"
   },
   "Xq2sb0": {
-    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+    "defaultMessage": "Az élő közvetítéshez másold be a szerver URL-címét és a stream kulcsot a streaming szoftver beállításaiba, majd nyomd meg a 'Start Streaming' gombot. Mi az <a>OBS-t</a> ajánljuk."
   },
   "Y0DXJb": {
     "defaultMessage": "Felvétel URL"
@@ -594,13 +597,13 @@
     "defaultMessage": "{n}p"
   },
   "YjhNaf": {
-    "defaultMessage": "Create Stream"
+    "defaultMessage": "Áramlat létrehozása"
   },
   "YwzT/0": {
     "defaultMessage": "Klip címe"
   },
   "YyXVHf": {
-    "defaultMessage": "Clear Draft"
+    "defaultMessage": "Tiszta tervezet"
   },
   "Z8ZOEY": {
     "defaultMessage": "Ez a módszer nem biztonságos. Javasoljuk a {nostrlink}"
@@ -655,7 +658,7 @@
     "defaultMessage": "Connect Wallet"
   },
   "cntHHJ": {
-    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+    "defaultMessage": "Ez lehetővé teszi, hogy streamjét más platformokra továbbítsa, hogy szélesebb közönséget érjen el."
   },
   "cvAsEh": {
     "defaultMessage": "{date} közvetítve"
@@ -695,10 +698,10 @@
     "defaultMessage": "A  oldalról"
   },
   "gQxxlw": {
-    "defaultMessage": "Goal Name"
+    "defaultMessage": "Cél neve"
   },
   "gt65Gg": {
-    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
+    "defaultMessage": "A stream célok arra ösztönzik a nézőket, hogy adományokkal támogassák a streamelőket."
   },
   "gzsn7k": {
     "defaultMessage": "{n} üzenetek"
@@ -716,10 +719,10 @@
     "defaultMessage": "Chat Widget"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Műszerfal"
   },
   "iKlloU": {
-    "defaultMessage": "Suggested Servers"
+    "defaultMessage": "Javasolt szerverek"
   },
   "ieGrWo": {
     "defaultMessage": "Követem"
@@ -728,7 +731,7 @@
     "defaultMessage": "Mennyibe kerül a streamelés?"
   },
   "ipTKP3": {
-    "defaultMessage": "Chat Popout"
+    "defaultMessage": "Chat felugró ablak"
   },
   "itPgxd": {
     "defaultMessage": "Profil"
@@ -740,7 +743,7 @@
     "defaultMessage": "Raiding {name}"
   },
   "jDDeA0": {
-    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
+    "defaultMessage": "A cím nagyon hosszú, kérjük, hogy legyen kevesebb, mint {n} karakter."
   },
   "jJLRgo": {
     "defaultMessage": "Clip közzététele"
@@ -764,22 +767,22 @@
     "defaultMessage": "OK"
   },
   "kGjqZ4": {
-    "defaultMessage": "Latest Shorts"
+    "defaultMessage": "Legújabb rövidfilmek"
   },
   "kQAf2d": {
-    "defaultMessage": "Select"
+    "defaultMessage": "Válassza ki a  címet."
   },
   "kc5EOy": {
     "defaultMessage": "A felhasználónév túl hosszú"
   },
   "khJ51Q": {
-    "defaultMessage": "Stream Earnings"
+    "defaultMessage": "Stream bevétel"
   },
   "kp0NPF": {
     "defaultMessage": "Tervezett"
   },
   "lXbG97": {
-    "defaultMessage": "Most Zapped Streamers"
+    "defaultMessage": "A legtöbb Zapped Streamers"
   },
   "lZpRMR": {
     "defaultMessage": "Ellenőrizd itt, hogy ez az adatfolyam tartalmaz-e meztelenséget vagy pornográf tartalmat."
@@ -803,7 +806,7 @@
     "defaultMessage": "A tartalom rövid leírása"
   },
   "n19IQE": {
-    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+    "defaultMessage": "Ajánlott méret: 1920x1080 (16:9)"
   },
   "n8k1SG": {
     "defaultMessage": "{n}MiB"
@@ -830,25 +833,25 @@
     "defaultMessage": "Feltöltés"
   },
   "pOeEMx": {
-    "defaultMessage": "Add server"
+    "defaultMessage": "Kiszolgáló hozzáadása"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "Népszerű"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "q9ryv4": {
-    "defaultMessage": "Cover image URL (optional)"
+    "defaultMessage": "Borítókép URL címe (nem kötelező)"
   },
   "qx6bv2": {
-    "defaultMessage": "Stream Goal (optional)"
+    "defaultMessage": "Patak cél (opcionális)"
   },
   "r2Jjms": {
     "defaultMessage": "Bejelentkezés"
   },
   "rJqhFR": {
-    "defaultMessage": "Stream Setup"
+    "defaultMessage": "Patak beállítása"
   },
   "rWBFZA": {
     "defaultMessage": "Nyíltan szexuális tartalmú anyagok lesznek!"
@@ -857,7 +860,7 @@
     "defaultMessage": "Jelenleg Nézik"
   },
   "rleUgy": {
-    "defaultMessage": "Uploading.."
+    "defaultMessage": "Feltöltés.."
   },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
@@ -876,7 +879,7 @@
     "defaultMessage": "Kattintson a \"Stream\" gombra a jobb felső sarokban."
   },
   "syEQFE": {
-    "defaultMessage": "Publish"
+    "defaultMessage": "Közzététel"
   },
   "tG1ST3": {
     "defaultMessage": "Bejövő Zap"
@@ -910,16 +913,16 @@
     "defaultMessage": "Közvetítés"
   },
   "uksRSi": {
-    "defaultMessage": "Latest Videos"
+    "defaultMessage": "Legújabb videók"
   },
   "vP4dFa": {
-    "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
+    "defaultMessage": "Látogasson el a {link} oldalra, hogy szerezzen néhány édes zap.stream terméket!"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
   "w+2Vw7": {
-    "defaultMessage": "Shorts"
+    "defaultMessage": "Rövidnadrág"
   },
   "w0Xm2F": {
     "defaultMessage": "Kezdj el gépelni"
@@ -931,7 +934,7 @@
     "defaultMessage": "Közvetítés a Nostr-án"
   },
   "wCgTu5": {
-    "defaultMessage": "Comments"
+    "defaultMessage": "Megjegyzések"
   },
   "wEQDC6": {
     "defaultMessage": "Módosítás"
@@ -983,7 +986,7 @@
     "defaultMessage": "Beszélgetés"
   },
   "zSYDJP": {
-    "defaultMessage": "I have my own stream host"
+    "defaultMessage": "Van saját stream hostom"
   },
   "zVDHAu": {
     "defaultMessage": "Zap Riadó"

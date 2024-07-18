@@ -242,6 +242,9 @@
   "Dn82AL": {
     "defaultMessage": "ถ่ายทอดสด"
   },
+  "DqmiAe": {
+    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
   "E7n6zr": {
     "defaultMessage": "ค่าใช้จ่าย: {amount} sats/{unit} (ประมาณ {usd}/วัน สำหรับการถ่ายทอดสด {x} ชั่วโมง)"
   },

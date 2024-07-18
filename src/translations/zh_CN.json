@@ -30,7 +30,7 @@
     "defaultMessage": "总计： {amount} sats"
   },
   "/aFYQ5": {
-    "defaultMessage": "Stream Forwarding (optional)"
+    "defaultMessage": "数据流转发（可选）"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -114,7 +114,7 @@
     "defaultMessage": "需要直播流密钥"
   },
   "58DXVG": {
-    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+    "defaultMessage": "要开始使用，请从您希望转发的平台获取流密钥。"
   },
   "5JcXdV": {
     "defaultMessage": "创建帐户"
@@ -150,7 +150,7 @@
     "defaultMessage": "直播流 URL 必须以 rtmp:// 开头"
   },
   "74PejI": {
-    "defaultMessage": "Top Viewers"
+    "defaultMessage": "热门观众"
   },
   "79lLl+": {
     "defaultMessage": "音乐"
@@ -159,7 +159,7 @@
     "defaultMessage": "离线"
   },
   "89UZph": {
-    "defaultMessage": "Configure your streaming software"
+    "defaultMessage": "配置流媒体软件"
   },
   "8YT6ja": {
     "defaultMessage": "输入要转为语音的文本"
@@ -210,7 +210,7 @@
     "defaultMessage": "{name} 创建了一个剪辑"
   },
   "Bd1yEX": {
-    "defaultMessage": "New Stream Goal"
+    "defaultMessage": "新溪流目标"
   },
   "Bep/gA": {
     "defaultMessage": "私钥"
@@ -228,7 +228,7 @@
     "defaultMessage": "{n} 聪"
   },
   "CsS/fy": {
-    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
+    "defaultMessage": "{estimate} 剩余 ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "设置"
@@ -242,8 +242,11 @@
   "Dn82AL": {
     "defaultMessage": "在线"
   },
+  "DqmiAe": {
+    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
   "E7n6zr": {
-    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
+    "defaultMessage": "目前的流量成本： {amount} 周六/{unit} （ {x}小时流量约 {usd}/天）。"
   },
   "E9APoR": {
     "defaultMessage": "无法创建流 URL"
@@ -292,7 +295,7 @@
     "defaultMessage": "必须填写姓名"
   },
   "GwbTAz": {
-    "defaultMessage": "Streams"
+    "defaultMessage": "溪流"
   },
   "H/bNs9": {
     "defaultMessage": "请将它安全保存！如果你丢失了此密钥，你将无法无法再次访问你的帐户。对，很严肃！"
@@ -310,16 +313,16 @@
     "defaultMessage": "名称"
   },
   "HDgXO/": {
-    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+    "defaultMessage": "zap.stream 是一个由 nostr 协议支持的开源平台。没有巨型公司或巨型基金可以提供免费流媒体服务。"
   },
   "HsgeUk": {
     "defaultMessage": "来 zap.stream 上看看我的视频流吧！ {link}"
   },
   "Ht231k": {
-    "defaultMessage": "Forwarding"
+    "defaultMessage": "转发"
   },
   "HvUhXt": {
-    "defaultMessage": "Uploading to {n} servers"
+    "defaultMessage": "上传至 {n} 服务器"
   },
   "I1kjHI": {
     "defaultMessage": "支持 {markdown}"
@@ -328,7 +331,7 @@
     "defaultMessage": "游戏"
   },
   "IDqXmC": {
-    "defaultMessage": "Media Server List"
+    "defaultMessage": "媒体服务器列表"
   },
   "IJDKz3": {
     "defaultMessage": "打闪金额{currency}"
@@ -337,7 +340,7 @@
     "defaultMessage": "或"
   },
   "IPXhUW": {
-    "defaultMessage": "Last Stream Summary"
+    "defaultMessage": "末流摘要"
   },
   "IqcyS0": {
     "defaultMessage": "什么是 nostr 扩展名？"
@@ -382,10 +385,10 @@
     "defaultMessage": "zap.stream 最多可免费提供 2 小时的高质量托管和最多 8 小时的 \"源 \"质量托管。之后，您可以根据您选择的质量，选择每分钟 5 sats 或每分钟 10 sats 的流媒体。如果您不使用 zap.stream 托管，价格将取决于您选择的流媒体提供商。"
   },
   "Le+99Z": {
-    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+    "defaultMessage": "串流者只需支付少量费用，以支付我们的运营成本。我们为新的串流者提供 {amount} sats（约合 {time_estimate} 串流）的信用额度，供其开始使用！"
   },
   "Lg2ye2": {
-    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+    "defaultMessage": "ZapStream 是一种新型流媒体平台，让您在开始流媒体播放时就能赚取比特币（Sats）！观众可以选择给流媒体任何金额的小费。小费会立即存入您的比特币（闪电）钱包。Zap.stream 绝不会动用您的收入！"
   },
   "LknBsU": {
     "defaultMessage": "直播流密钥"
@@ -400,7 +403,7 @@
     "defaultMessage": "好，是安全的"
   },
   "NTpJIm": {
-    "defaultMessage": "Enable Recording"
+    "defaultMessage": "启用录音"
   },
   "NnHu0L": {
     "defaultMessage": "请上传至少 1 个视频"
@@ -421,7 +424,7 @@
     "defaultMessage": "分享"
   },
   "OadZli": {
-    "defaultMessage": "Manage Servers"
+    "defaultMessage": "管理服务器"
   },
   "ObZZEz": {
     "defaultMessage": "暂无片段"
@@ -456,7 +459,7 @@
     "defaultMessage": "主题"
   },
   "PySFxG": {
-    "defaultMessage": "Choose file."
+    "defaultMessage": "选择文件。"
   },
   "Q3au2v": {
     "defaultMessage": "大约{estimate}"
@@ -560,7 +563,7 @@
     "description": "Config value column header"
   },
   "WcZM+B": {
-    "defaultMessage": "File List"
+    "defaultMessage": "文件列表"
   },
   "Wp4l7+": {
     "defaultMessage": "更多视频"
@@ -581,7 +584,7 @@
     "defaultMessage": "反应"
   },
   "Xq2sb0": {
-    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+    "defaultMessage": "要进行直播，请将下面的服务器 URL 和流媒体密钥复制并粘贴到流媒体软件设置中，然后按 \"开始流媒体\"。我们推荐使用<a>OBS</a>。"
   },
   "Y0DXJb": {
     "defaultMessage": "录影 URL"
@@ -594,7 +597,7 @@
     "defaultMessage": "{n}p"
   },
   "YjhNaf": {
-    "defaultMessage": "Create Stream"
+    "defaultMessage": "创建流"
   },
   "YwzT/0": {
     "defaultMessage": "剪辑标题"
@@ -655,7 +658,7 @@
     "defaultMessage": "连接钱包"
   },
   "cntHHJ": {
-    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+    "defaultMessage": "这样，您就可以将您的信息流转发到其他平台，让更多人看到您的信息。"
   },
   "cvAsEh": {
     "defaultMessage": "已于{date}直播"
@@ -698,7 +701,7 @@
     "defaultMessage": "目标名称"
   },
   "gt65Gg": {
-    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
+    "defaultMessage": "流目标鼓励观众通过捐款支持流媒体。"
   },
   "gzsn7k": {
     "defaultMessage": "{n} 信息"
@@ -764,7 +767,7 @@
     "defaultMessage": "OK"
   },
   "kGjqZ4": {
-    "defaultMessage": "Latest Shorts"
+    "defaultMessage": "最新短裤"
   },
   "kQAf2d": {
     "defaultMessage": "选择"
@@ -773,13 +776,13 @@
     "defaultMessage": "用户名太长"
   },
   "khJ51Q": {
-    "defaultMessage": "Stream Earnings"
+    "defaultMessage": "收入流"
   },
   "kp0NPF": {
     "defaultMessage": "已计划"
   },
   "lXbG97": {
-    "defaultMessage": "Most Zapped Streamers"
+    "defaultMessage": "最多的溪流"
   },
   "lZpRMR": {
     "defaultMessage": "如果该流含有裸体或色情内容，请选择此选项。"
@@ -803,10 +806,10 @@
     "defaultMessage": "内容的简短描述"
   },
   "n19IQE": {
-    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+    "defaultMessage": "建议尺寸：1920x1080（16:9）"
   },
   "n8k1SG": {
-    "defaultMessage": "{n}MiB"
+    "defaultMessage": "{n}米字节"
   },
   "nBCvvJ": {
     "defaultMessage": "充值"
@@ -830,7 +833,7 @@
     "defaultMessage": "上传"
   },
   "pOeEMx": {
-    "defaultMessage": "Add server"
+    "defaultMessage": "添加服务器"
   },
   "pxF+t0": {
     "defaultMessage": "热门"
@@ -842,13 +845,13 @@
     "defaultMessage": "封面图片 URL（可选）"
   },
   "qx6bv2": {
-    "defaultMessage": "Stream Goal (optional)"
+    "defaultMessage": "溪流目标（可选）"
   },
   "r2Jjms": {
     "defaultMessage": "登录"
   },
   "rJqhFR": {
-    "defaultMessage": "Stream Setup"
+    "defaultMessage": "数据流设置"
   },
   "rWBFZA": {
     "defaultMessage": "前方有色情内容！"
@@ -913,13 +916,13 @@
     "defaultMessage": "最新视频"
   },
   "vP4dFa": {
-    "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
+    "defaultMessage": "请访问 {link} ，获取 Zap.stream 的精美商品！"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} 聪"
   },
   "w+2Vw7": {
-    "defaultMessage": "Shorts"
+    "defaultMessage": "短裤"
   },
   "w0Xm2F": {
     "defaultMessage": "开始键入"

@@ -9,7 +9,7 @@
     "defaultMessage": "Nu live"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Maak verbinding met"
   },
   "+y6JUK": {
     "defaultMessage": "Invallen"
@@ -18,19 +18,19 @@
     "defaultMessage": "Aantal"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "Saldo: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "nostr ondertekenaar uitbreiding"
   },
   "/JkXBo": {
-    "defaultMessage": "Clip from {title}"
+    "defaultMessage": "Clip van {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Totaal: {amount} sats"
   },
   "/aFYQ5": {
-    "defaultMessage": "Stream Forwarding (optional)"
+    "defaultMessage": "Stream doorsturen (optioneel)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -54,7 +54,7 @@
     "defaultMessage": "Labels"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "Gestopt"
   },
   "1q4BO/": {
     "defaultMessage": "Geen geldige URL"
@@ -66,13 +66,13 @@
     "defaultMessage": "Toevoegen"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "...meer"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "{n} uren"
   },
   "2wdFaB": {
-    "defaultMessage": "End Stream"
+    "defaultMessage": "Eindstroom"
   },
   "37mth/": {
     "defaultMessage": "Kijkers"
@@ -87,10 +87,10 @@
     "defaultMessage": "Inloggen met privésleutel"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "Zonder titel"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "Portemonnee"
   },
   "47FYwb": {
     "defaultMessage": "Annuleer"
@@ -99,7 +99,7 @@
     "defaultMessage": "Voorbeeldinstellingen in OBS (Apple M1 Mac)"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "Video's"
   },
   "4iBdw1": {
     "defaultMessage": "Inval"
@@ -114,19 +114,19 @@
     "defaultMessage": "Stream Key is vereist"
   },
   "58DXVG": {
-    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+    "defaultMessage": "Om te beginnen, pak je je streamsleutel van het platform waarnaar je wilt doorsturen."
   },
   "5JcXdV": {
     "defaultMessage": "Account aanmaken"
   },
   "5LXWMX": {
-    "defaultMessage": "New Goal"
+    "defaultMessage": "Nieuw doel"
   },
   "5QYdPU": {
     "defaultMessage": "Start Tijd"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "Prijzen"
   },
   "5kx+2v": {
     "defaultMessage": "Url van server"
@@ -150,7 +150,7 @@
     "defaultMessage": "Stream url moet beginnen met rtmp://"
   },
   "74PejI": {
-    "defaultMessage": "Top Viewers"
+    "defaultMessage": "Top kijkers"
   },
   "79lLl+": {
     "defaultMessage": "Muziek"
@@ -159,7 +159,7 @@
     "defaultMessage": "Offline"
   },
   "89UZph": {
-    "defaultMessage": "Configure your streaming software"
+    "defaultMessage": "Configureer je streamingsoftware"
   },
   "8YT6ja": {
     "defaultMessage": "Tekst invoegen om te spreken"
@@ -174,7 +174,7 @@
     "defaultMessage": "Verzenden"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "Bestand verwijderen"
   },
   "9a9+ww": {
     "defaultMessage": "Titel"
@@ -192,7 +192,7 @@
     "defaultMessage": "Opmerking door {name}"
   },
   "AYIR/J": {
-    "defaultMessage": "Remove Image"
+    "defaultMessage": "Afbeelding verwijderen"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW-inhoud"
@@ -201,7 +201,7 @@
     "defaultMessage": "Geen kijkergegevens beschikbaar"
   },
   "Axo/o5": {
-    "defaultMessage": "Science & Technology"
+    "defaultMessage": "Wetenschap & Technologie"
   },
   "AyGauy": {
     "defaultMessage": "Inloggen"
@@ -210,13 +210,13 @@
     "defaultMessage": "{name} een clip gemaakt"
   },
   "Bd1yEX": {
-    "defaultMessage": "New Stream Goal"
+    "defaultMessage": "Nieuw streefdoel"
   },
   "Bep/gA": {
     "defaultMessage": "Privé sleutel"
   },
   "BzQPM+": {
-    "defaultMessage": "Destination"
+    "defaultMessage": "Bestemming"
   },
   "C81/uG": {
     "defaultMessage": "Uitloggen"
@@ -228,7 +228,7 @@
     "defaultMessage": "{n} sats"
   },
   "CsS/fy": {
-    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
+    "defaultMessage": "{estimate} overblijvend ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "Instellingen"
@@ -242,8 +242,11 @@
   "Dn82AL": {
     "defaultMessage": "Live"
   },
+  "DqmiAe": {
+    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
   "E7n6zr": {
-    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
+    "defaultMessage": "Huidige streamkosten: {amount} sats/{unit} (ongeveer {usd}/dag voor een stream van {x}uur)"
   },
   "E9APoR": {
     "defaultMessage": "Kan stream-URL niet maken"
@@ -271,13 +274,13 @@
     "defaultMessage": "Verwijderen"
   },
   "G857ni": {
-    "defaultMessage": "LNURL or invoice"
+    "defaultMessage": "LNURL of factuur"
   },
   "GGaJMU": {
     "defaultMessage": "Top chatters"
   },
   "GSuQPh": {
-    "defaultMessage": "Unknown event link"
+    "defaultMessage": "Onbekende gebeurtenislink"
   },
   "GSye7T": {
     "defaultMessage": "Bliksemadres"
@@ -292,16 +295,16 @@
     "defaultMessage": "Naam is vereist"
   },
   "GwbTAz": {
-    "defaultMessage": "Streams"
+    "defaultMessage": "Stromen"
   },
   "H/bNs9": {
     "defaultMessage": "Bewaar deze en bewaar hem goed! Als je deze sleutel verliest, heb je nooit meer toegang tot je account. Ja, zo serieus is het!"
   },
   "H1fdc9": {
-    "defaultMessage": "Please add a thumbnail"
+    "defaultMessage": "Voeg een miniatuur toe"
   },
   "H4hJvF": {
-    "defaultMessage": "Choose a category"
+    "defaultMessage": "Kies een categorie"
   },
   "H5+NAX": {
     "defaultMessage": "Saldo"
@@ -310,16 +313,16 @@
     "defaultMessage": "Naam"
   },
   "HDgXO/": {
-    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+    "defaultMessage": "zap.stream is een open source platform aangedreven door het nostr-protocol. Er zijn geen gigantische bedrijven of gigantische fondsen beschikbaar om gratis streaming aan te bieden."
   },
   "HsgeUk": {
     "defaultMessage": "Kom mijn stream bekijken op zap.stream! {link}"
   },
   "Ht231k": {
-    "defaultMessage": "Forwarding"
+    "defaultMessage": "Doorsturen"
   },
   "HvUhXt": {
-    "defaultMessage": "Uploading to {n} servers"
+    "defaultMessage": "Uploaden naar {n} servers"
   },
   "I1kjHI": {
     "defaultMessage": "Ondersteunt {markdown}"
@@ -328,7 +331,7 @@
     "defaultMessage": "Gamen"
   },
   "IDqXmC": {
-    "defaultMessage": "Media Server List"
+    "defaultMessage": "Mediaserverlijst"
   },
   "IJDKz3": {
     "defaultMessage": "Zap hoeveelheid in {currency}"
@@ -337,7 +340,7 @@
     "defaultMessage": "OF"
   },
   "IPXhUW": {
-    "defaultMessage": "Last Stream Summary"
+    "defaultMessage": "Samenvatting laatste stroom"
   },
   "IqcyS0": {
     "defaultMessage": "Wat is een nostr-extensie?"
@@ -349,7 +352,7 @@
     "defaultMessage": "Gebruikersnaam"
   },
   "JO0kq9": {
-    "defaultMessage": "Edit Stream Info"
+    "defaultMessage": "Stream-info bewerken"
   },
   "JkLHGw": {
     "defaultMessage": "Website"
@@ -364,7 +367,7 @@
     "defaultMessage": "Weergeven"
   },
   "KH2ayq": {
-    "defaultMessage": "Upload Video"
+    "defaultMessage": "Video uploaden"
   },
   "KkIL3s": {
     "defaultMessage": "Nee, ik ben jonger dan 18"
@@ -373,7 +376,7 @@
     "defaultMessage": "Als je al een account hebt, kun je een nostr-extensie gebruiken om in te loggen. Als je al een nostr-extensie gebruikt, word je automatisch ingelogd. Als je geen nostr-extensie hebt ingesteld, kun je nos2x of Alby gebruiken."
   },
   "KxfKnW": {
-    "defaultMessage": "Withdraw funds"
+    "defaultMessage": "Geld opnemen"
   },
   "LEmxc8": {
     "defaultMessage": "Zap Doelen"
@@ -382,16 +385,16 @@
     "defaultMessage": "zap.stream is gratis tot 2 uur hosting op hoge kwaliteit en tot 8 uur \"bron\"-kwaliteit. Daarna heb je een optie om te streamen voor 5 sats per minuut of 10 sats per minuut, afhankelijk van de gekozen kwaliteit. Als je zap.stream niet gebruikt om te hosten, hangt de prijs af van de streamingprovider van je keuze."
   },
   "Le+99Z": {
-    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+    "defaultMessage": "Streamers betalen een kleine vergoeding om onze bedrijfskosten te dekken. We geven nieuwe streamers een tegoed van {amount} sats (ongeveer {time_estimate} streaming) om te beginnen!"
   },
   "Lg2ye2": {
-    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+    "defaultMessage": "ZapStream is een nieuw soort streamingplatform waarmee je bitcoin (sats) kunt verdienen op het moment dat je begint met streamen! Kijkers kunnen streamers elk bedrag fooien. De fooien worden direct in je bitcoin (lightning) portemonnee gestort. zap.stream raakt je verdiensten nooit aan!"
   },
   "LknBsU": {
     "defaultMessage": "Stream Sleutel"
   },
   "LxSJOb": {
-    "defaultMessage": "Go to Dashboard"
+    "defaultMessage": "Ga naar het dashboard"
   },
   "MTHO1W": {
     "defaultMessage": "Start overval"
@@ -400,19 +403,19 @@
     "defaultMessage": "Oké, het is veilig"
   },
   "NTpJIm": {
-    "defaultMessage": "Enable Recording"
+    "defaultMessage": "Opname inschakelen"
   },
   "NnHu0L": {
-    "defaultMessage": "Please upload at least 1 video"
+    "defaultMessage": "Upload ten minste 1 video"
   },
   "Ntjkqd": {
-    "defaultMessage": "or"
+    "defaultMessage": "of"
   },
   "O2Cy6m": {
     "defaultMessage": "Ja, ik ben ouder dan 18"
   },
   "O7AeYh": {
-    "defaultMessage": "Description.."
+    "defaultMessage": "Beschrijving..."
   },
   "OEW7yJ": {
     "defaultMessage": "Zaps"
@@ -421,7 +424,7 @@
     "defaultMessage": "Deel"
   },
   "OadZli": {
-    "defaultMessage": "Manage Servers"
+    "defaultMessage": "Servers beheren"
   },
   "ObZZEz": {
     "defaultMessage": "Nog geen clips"
@@ -441,28 +444,28 @@
     "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
-    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+    "defaultMessage": "Laat leeg als u geen doelen wilt instellen."
   },
   "PUymyQ": {
     "defaultMessage": "Kom kijken naar {name} stream op zap.stream! {link}"
   },
   "PXAur5": {
-    "defaultMessage": "Withdraw"
+    "defaultMessage": "Intrekken"
   },
   "Pc+tM3": {
-    "defaultMessage": "Generate"
+    "defaultMessage": "genereren"
   },
   "Pe0ogR": {
     "defaultMessage": "Thema"
   },
   "PySFxG": {
-    "defaultMessage": "Choose file."
+    "defaultMessage": "Kies bestand."
   },
   "Q3au2v": {
     "defaultMessage": "Over {estimate}"
   },
   "Q8Qw5B": {
-    "defaultMessage": "Description"
+    "defaultMessage": "Beschrijving"
   },
   "QNvtaq": {
     "defaultMessage": "Delen op X"
@@ -486,10 +489,10 @@
     "defaultMessage": "Hier heb je een paar opties, met onze interne hosting of je eigen hosting (zoals Cloudflare)."
   },
   "R72je0": {
-    "defaultMessage": "Stream Title"
+    "defaultMessage": "Stream Titel"
   },
   "RGYBjE": {
-    "defaultMessage": "Thumbnail"
+    "defaultMessage": "Miniaturen"
   },
   "RJOmzk": {
     "defaultMessage": "Ik heb {provider}'s {terms} gelezen en ga hiermee akkoord."
@@ -513,7 +516,7 @@
     "defaultMessage": "Audio-codec"
   },
   "TDUfVk": {
-    "defaultMessage": "Started"
+    "defaultMessage": "Begonnen met"
   },
   "TP/cMX": {
     "defaultMessage": "Beëindigd"
@@ -522,11 +525,11 @@
     "defaultMessage": "Account"
   },
   "UCDS65": {
-    "defaultMessage": "ago",
+    "defaultMessage": "geleden",
     "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
-    "defaultMessage": "Welcome to zap.stream!"
+    "defaultMessage": "Welkom bij zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Kaart Toevoegen"
@@ -550,7 +553,7 @@
     "defaultMessage": "Stream doorsturen"
   },
   "W7IRLs": {
-    "defaultMessage": "Your title is too short"
+    "defaultMessage": "Je titel is te kort"
   },
   "W9355R": {
     "defaultMessage": "Niet langer negeren"
@@ -560,10 +563,10 @@
     "description": "Config value column header"
   },
   "WcZM+B": {
-    "defaultMessage": "File List"
+    "defaultMessage": "Bestandenlijst"
   },
   "Wp4l7+": {
-    "defaultMessage": "More Videos"
+    "defaultMessage": "Meer video's"
   },
   "WsjXrZ": {
     "defaultMessage": "Klik op Aanmelden"
@@ -572,7 +575,7 @@
     "defaultMessage": "Doel aanmaken"
   },
   "XIvYvF": {
-    "defaultMessage": "Failed to get invoice"
+    "defaultMessage": "Geen factuur ontvangen"
   },
   "XMGfiA": {
     "defaultMessage": "Recente clips"
@@ -581,7 +584,7 @@
     "defaultMessage": "Reacties"
   },
   "Xq2sb0": {
-    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+    "defaultMessage": "Om live te gaan kopieer en plak je de Server URL en Stream Key hieronder in de instellingen van je streaming software en druk je op 'Start Streaming'. Wij raden <a>OBS</a> aan."
   },
   "Y0DXJb": {
     "defaultMessage": "URL opname"
@@ -594,13 +597,13 @@
     "defaultMessage": "{n}p"
   },
   "YjhNaf": {
-    "defaultMessage": "Create Stream"
+    "defaultMessage": "Stream maken"
   },
   "YwzT/0": {
     "defaultMessage": "Clip titel"
   },
   "YyXVHf": {
-    "defaultMessage": "Clear Draft"
+    "defaultMessage": "Duidelijk ontwerp"
   },
   "Z8ZOEY": {
     "defaultMessage": "Deze methode is onveilig. We raden aan een {nostrlink}te gebruiken."
@@ -649,13 +652,13 @@
     "defaultMessage": "Volgend"
   },
   "ccXLVi": {
-    "defaultMessage": "Category"
+    "defaultMessage": "Categorie"
   },
   "cg1VJ2": {
-    "defaultMessage": "Connect Wallet"
+    "defaultMessage": "Portemonnee aansluiten"
   },
   "cntHHJ": {
-    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+    "defaultMessage": "Hierdoor kun je je stream doorsturen naar andere platformen om een breder publiek te bereiken."
   },
   "cvAsEh": {
     "defaultMessage": "Gestreamd op {date}"
@@ -695,10 +698,10 @@
     "defaultMessage": "Over"
   },
   "gQxxlw": {
-    "defaultMessage": "Goal Name"
+    "defaultMessage": "Doel Naam"
   },
   "gt65Gg": {
-    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
+    "defaultMessage": "Streamdoelen moedigen kijkers aan om streamers te steunen via donaties."
   },
   "gzsn7k": {
     "defaultMessage": "{n} berichten"
@@ -719,7 +722,7 @@
     "defaultMessage": "Dashboard"
   },
   "iKlloU": {
-    "defaultMessage": "Suggested Servers"
+    "defaultMessage": "Voorgestelde Servers"
   },
   "ieGrWo": {
     "defaultMessage": "Volgen"
@@ -728,7 +731,7 @@
     "defaultMessage": "Wat kost streamen?"
   },
   "ipTKP3": {
-    "defaultMessage": "Chat Popout"
+    "defaultMessage": "Popout chat"
   },
   "itPgxd": {
     "defaultMessage": "Profiel"
@@ -740,7 +743,7 @@
     "defaultMessage": "Plundering {name}"
   },
   "jDDeA0": {
-    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
+    "defaultMessage": "Je titel is erg lang, zorg ervoor dat het minder dan {n} karakters is."
   },
   "jJLRgo": {
     "defaultMessage": "Clip publiceren"
@@ -764,22 +767,22 @@
     "defaultMessage": "OK"
   },
   "kGjqZ4": {
-    "defaultMessage": "Latest Shorts"
+    "defaultMessage": "Nieuwste shorts"
   },
   "kQAf2d": {
-    "defaultMessage": "Select"
+    "defaultMessage": "Selecteer"
   },
   "kc5EOy": {
     "defaultMessage": "Gebruikersnaam is te lang"
   },
   "khJ51Q": {
-    "defaultMessage": "Stream Earnings"
+    "defaultMessage": "Stream Inkomsten"
   },
   "kp0NPF": {
     "defaultMessage": "Gepland"
   },
   "lXbG97": {
-    "defaultMessage": "Most Zapped Streamers"
+    "defaultMessage": "Meeste Zapped Streamers"
   },
   "lZpRMR": {
     "defaultMessage": "Controleer hier of deze stream naaktheid of pornografische inhoud bevat."
@@ -803,7 +806,7 @@
     "defaultMessage": "Een korte beschrijving van de inhoud"
   },
   "n19IQE": {
-    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+    "defaultMessage": "Aanbevolen formaat: 1920x1080 (16:9)"
   },
   "n8k1SG": {
     "defaultMessage": "{n}MiB"
@@ -827,28 +830,28 @@
     "defaultMessage": "Stream type moet HLS zijn"
   },
   "p4N05H": {
-    "defaultMessage": "Upload"
+    "defaultMessage": "uploaden"
   },
   "pOeEMx": {
-    "defaultMessage": "Add server"
+    "defaultMessage": "Server toevoegen"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "Populair"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> gezapt <s>{amount}</s> sats"
   },
   "q9ryv4": {
-    "defaultMessage": "Cover image URL (optional)"
+    "defaultMessage": "URL omslagafbeelding (optioneel)"
   },
   "qx6bv2": {
-    "defaultMessage": "Stream Goal (optional)"
+    "defaultMessage": "Stream Doel (optioneel)"
   },
   "r2Jjms": {
     "defaultMessage": "Aanmelden"
   },
   "rJqhFR": {
-    "defaultMessage": "Stream Setup"
+    "defaultMessage": "Stream instellen"
   },
   "rWBFZA": {
     "defaultMessage": "Pas op. Seksueel expliciet materiaal!"
@@ -857,7 +860,7 @@
     "defaultMessage": "Huidige kijkers"
   },
   "rleUgy": {
-    "defaultMessage": "Uploading.."
+    "defaultMessage": "Uploaden."
   },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
@@ -876,7 +879,7 @@
     "defaultMessage": "Klik op de knop \"Stream\" in de rechterbovenhoek"
   },
   "syEQFE": {
-    "defaultMessage": "Publish"
+    "defaultMessage": "Publiceer"
   },
   "tG1ST3": {
     "defaultMessage": "Inkomende Zap"
@@ -910,28 +913,28 @@
     "defaultMessage": "Stream"
   },
   "uksRSi": {
-    "defaultMessage": "Latest Videos"
+    "defaultMessage": "Nieuwste video's"
   },
   "vP4dFa": {
-    "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
+    "defaultMessage": "Ga naar {link} en koop wat leuke zap.stream merch!"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"
   },
   "w+2Vw7": {
-    "defaultMessage": "Shorts"
+    "defaultMessage": "Korte broek"
   },
   "w0Xm2F": {
     "defaultMessage": "Begin met typen"
   },
   "w3btjR": {
-    "defaultMessage": "Gambling"
+    "defaultMessage": "Gokken"
   },
   "wCIL7o": {
     "defaultMessage": "Uitzending op Nostr"
   },
   "wCgTu5": {
-    "defaultMessage": "Comments"
+    "defaultMessage": "Reacties"
   },
   "wEQDC6": {
     "defaultMessage": "Bewerk"
@@ -983,7 +986,7 @@
     "defaultMessage": "Praat"
   },
   "zSYDJP": {
-    "defaultMessage": "I have my own stream host"
+    "defaultMessage": "Ik heb mijn eigen streamhost"
   },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"

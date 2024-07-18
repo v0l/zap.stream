@@ -9,7 +9,7 @@
     "defaultMessage": "Живите сейчас"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Подключайтесь"
   },
   "+y6JUK": {
     "defaultMessage": "Рейды"
@@ -18,19 +18,19 @@
     "defaultMessage": "Количество"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "Равновесие: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Расширение для подписи nostr"
   },
   "/JkXBo": {
-    "defaultMessage": "Clip from {title}"
+    "defaultMessage": "Клип с сайта {title}"
   },
   "/Jp9pC": {
     "defaultMessage": "Всего: {amount} sats"
   },
   "/aFYQ5": {
-    "defaultMessage": "Stream Forwarding (optional)"
+    "defaultMessage": "Переадресация потоков (опционально)"
   },
   "/w4RM6": {
     "defaultMessage": "IRL"
@@ -54,7 +54,7 @@
     "defaultMessage": "Теги"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "Остановлено"
   },
   "1q4BO/": {
     "defaultMessage": "Недействительный URL"
@@ -66,13 +66,13 @@
     "defaultMessage": "Добавить"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "...подробнее"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "{n} часы"
   },
   "2wdFaB": {
-    "defaultMessage": "End Stream"
+    "defaultMessage": "Конечный поток"
   },
   "37mth/": {
     "defaultMessage": "Зрители"
@@ -87,10 +87,10 @@
     "defaultMessage": "Войти с приватным ключом"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "Без названия"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "Кошелек"
   },
   "47FYwb": {
     "defaultMessage": "Отменить"
@@ -99,7 +99,7 @@
     "defaultMessage": "Пример настроек в OBS (Apple M1 Mac)"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "Видео"
   },
   "4iBdw1": {
     "defaultMessage": "Рейд"
@@ -114,19 +114,19 @@
     "defaultMessage": "Требуется ключ потока"
   },
   "58DXVG": {
-    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+    "defaultMessage": "Чтобы начать работу, возьмите ключ потока с платформы, на которую вы хотите переслать данные."
   },
   "5JcXdV": {
     "defaultMessage": "Создать аккаунт"
   },
   "5LXWMX": {
-    "defaultMessage": "New Goal"
+    "defaultMessage": "Новая цель"
   },
   "5QYdPU": {
     "defaultMessage": "Время начала"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "Ценообразование"
   },
   "5kx+2v": {
     "defaultMessage": "URL сервера"
@@ -150,7 +150,7 @@
     "defaultMessage": "url потока должен начинаться с rtmp://"
   },
   "74PejI": {
-    "defaultMessage": "Top Viewers"
+    "defaultMessage": "Лучшие зрители"
   },
   "79lLl+": {
     "defaultMessage": "Музыка"
@@ -159,7 +159,7 @@
     "defaultMessage": "Offline"
   },
   "89UZph": {
-    "defaultMessage": "Configure your streaming software"
+    "defaultMessage": "Настройте программное обеспечение для потокового вещания"
   },
   "8YT6ja": {
     "defaultMessage": "Вставка текста для выступления"
@@ -174,7 +174,7 @@
     "defaultMessage": "Отправить"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "Удалить файл"
   },
   "9a9+ww": {
     "defaultMessage": "Название"
@@ -192,7 +192,7 @@
     "defaultMessage": "Заметка на сайте {name}"
   },
   "AYIR/J": {
-    "defaultMessage": "Remove Image"
+    "defaultMessage": "Удалить изображение"
   },
   "Atr2p4": {
     "defaultMessage": "NSFW контент"
@@ -201,7 +201,7 @@
     "defaultMessage": "Данные по просмотру отсутствуют"
   },
   "Axo/o5": {
-    "defaultMessage": "Science & Technology"
+    "defaultMessage": "Наука и техника"
   },
   "AyGauy": {
     "defaultMessage": "Логин"
@@ -210,13 +210,13 @@
     "defaultMessage": "{name} создал клип"
   },
   "Bd1yEX": {
-    "defaultMessage": "New Stream Goal"
+    "defaultMessage": "Цель нового потока"
   },
   "Bep/gA": {
     "defaultMessage": "Приватный ключ"
   },
   "BzQPM+": {
-    "defaultMessage": "Destination"
+    "defaultMessage": "Пункт назначения"
   },
   "C81/uG": {
     "defaultMessage": "Выйти"
@@ -228,7 +228,7 @@
     "defaultMessage": "{n} sats"
   },
   "CsS/fy": {
-    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
+    "defaultMessage": "{estimate} остаток ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "Настройки"
@@ -242,8 +242,11 @@
   "Dn82AL": {
     "defaultMessage": "Прямой эфир"
   },
+  "DqmiAe": {
+    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
   "E7n6zr": {
-    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
+    "defaultMessage": "Текущая стоимость потока: {amount} сат/{unit} (около {usd}/день для {x}часового потока)."
   },
   "E9APoR": {
     "defaultMessage": "Не удалось создать URL-адрес потока"
@@ -258,7 +261,7 @@
     "defaultMessage": "Самые лучшие загрузчики за все время"
   },
   "FXepR9": {
-    "defaultMessage": "{m}mo {ago}",
+    "defaultMessage": "{m}мо {ago}",
     "description": "Number of month(s) relative to now"
   },
   "FjDlus": {
@@ -271,13 +274,13 @@
     "defaultMessage": "Удалить"
   },
   "G857ni": {
-    "defaultMessage": "LNURL or invoice"
+    "defaultMessage": "LNURL или счет-фактура"
   },
   "GGaJMU": {
     "defaultMessage": "Лучшие чаты"
   },
   "GSuQPh": {
-    "defaultMessage": "Unknown event link"
+    "defaultMessage": "Ссылка на неизвестное событие"
   },
   "GSye7T": {
     "defaultMessage": "Адрес молнии"
@@ -292,16 +295,16 @@
     "defaultMessage": "Имя обязательно"
   },
   "GwbTAz": {
-    "defaultMessage": "Streams"
+    "defaultMessage": "Потоки"
   },
   "H/bNs9": {
     "defaultMessage": "Сохраните этот ключ и храните его в безопасности! Если вы его потеряете, вы не сможете снова войти в свою учетную запись. Да, все настолько серьезно!"
   },
   "H1fdc9": {
-    "defaultMessage": "Please add a thumbnail"
+    "defaultMessage": "Пожалуйста, добавьте миниатюру"
   },
   "H4hJvF": {
-    "defaultMessage": "Choose a category"
+    "defaultMessage": "Выберите категорию"
   },
   "H5+NAX": {
     "defaultMessage": "Баланс"
@@ -310,16 +313,16 @@
     "defaultMessage": "Название"
   },
   "HDgXO/": {
-    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
+    "defaultMessage": "zap.stream - это платформа с открытым исходным кодом, работающая на основе протокола nostr. Здесь нет ни гигантских корпораций, ни гигантских фондов для обеспечения бесплатного потокового вещания."
   },
   "HsgeUk": {
     "defaultMessage": "Загляните в мой поток на zap.stream! {link}"
   },
   "Ht231k": {
-    "defaultMessage": "Forwarding"
+    "defaultMessage": "Переадресация"
   },
   "HvUhXt": {
-    "defaultMessage": "Uploading to {n} servers"
+    "defaultMessage": "Загрузка на серверы {n}"
   },
   "I1kjHI": {
     "defaultMessage": "Поддерживает {markdown}"
@@ -328,7 +331,7 @@
     "defaultMessage": "Игровые"
   },
   "IDqXmC": {
-    "defaultMessage": "Media Server List"
+    "defaultMessage": "Список медиасерверов"
   },
   "IJDKz3": {
     "defaultMessage": "Сумма запа в {currency}"
@@ -337,7 +340,7 @@
     "defaultMessage": "ИЛИ"
   },
   "IPXhUW": {
-    "defaultMessage": "Last Stream Summary"
+    "defaultMessage": "Сводка по последнему потоку"
   },
   "IqcyS0": {
     "defaultMessage": "Что такое расширение ноздрей?"
@@ -349,7 +352,7 @@
     "defaultMessage": "Имя пользователя"
   },
   "JO0kq9": {
-    "defaultMessage": "Edit Stream Info"
+    "defaultMessage": "Редактировать информацию о потоке"
   },
   "JkLHGw": {
     "defaultMessage": "Сайт"
@@ -364,7 +367,7 @@
     "defaultMessage": "Показать"
   },
   "KH2ayq": {
-    "defaultMessage": "Upload Video"
+    "defaultMessage": "Загрузить видео"
   },
   "KkIL3s": {
     "defaultMessage": "Нет, я моложе 18 лет"
@@ -373,7 +376,7 @@
     "defaultMessage": "Если у вас уже есть аккаунт, вы можете использовать расширение nostr для входа в систему. Если вы уже используете расширение nostr, вы автоматически войдете в систему. Если у вас не настроено расширение nostr, вы можете использовать nos2x или Alby."
   },
   "KxfKnW": {
-    "defaultMessage": "Withdraw funds"
+    "defaultMessage": "Вывести средства"
   },
   "LEmxc8": {
     "defaultMessage": "Цели"
@@ -382,16 +385,16 @@
     "defaultMessage": "zap.stream предоставляет бесплатно до 2 часов хостинга в высоком качестве и до 8 часов в качестве \"исходника\". После этого у вас есть возможность транслировать 5 сатов в минуту или 10 сатов в минуту в зависимости от выбранного вами качества. Если вы не используете zap.stream для хостинга, цены будут зависеть от выбранного вами провайдера потокового вещания."
   },
   "Le+99Z": {
-    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
+    "defaultMessage": "Стримеры платят небольшую плату, чтобы покрыть наши текущие расходы. Новым стримерам мы даем кредит в размере {amount} сатов (около {time_estimate} стриминга), чтобы начать!"
   },
   "Lg2ye2": {
-    "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
+    "defaultMessage": "ZapStream - это новый вид стриминговой платформы, которая позволяет зарабатывать биткоины (саты) в тот момент, когда вы начинаете стримить! Зрители могут давать стримерам чаевые в любом количестве. Чаевые мгновенно перечисляются на ваш биткоин-кошелек (lightning). zap.stream никогда не прикоснется к вашим доходам!"
   },
   "LknBsU": {
     "defaultMessage": "Ключ стрима"
   },
   "LxSJOb": {
-    "defaultMessage": "Go to Dashboard"
+    "defaultMessage": "Перейти к панели управления"
   },
   "MTHO1W": {
     "defaultMessage": "Стартовый рейд"
@@ -400,19 +403,19 @@
     "defaultMessage": "Ок, безопасно"
   },
   "NTpJIm": {
-    "defaultMessage": "Enable Recording"
+    "defaultMessage": "Включить запись"
   },
   "NnHu0L": {
-    "defaultMessage": "Please upload at least 1 video"
+    "defaultMessage": "Пожалуйста, загрузите хотя бы 1 видео"
   },
   "Ntjkqd": {
-    "defaultMessage": "or"
+    "defaultMessage": "или"
   },
   "O2Cy6m": {
     "defaultMessage": "Да, я старше 18 лет"
   },
   "O7AeYh": {
-    "defaultMessage": "Description.."
+    "defaultMessage": "Описание..."
   },
   "OEW7yJ": {
     "defaultMessage": "Запы"
@@ -421,7 +424,7 @@
     "defaultMessage": "Поделиться"
   },
   "OadZli": {
-    "defaultMessage": "Manage Servers"
+    "defaultMessage": "Управление серверами"
   },
   "ObZZEz": {
     "defaultMessage": "Клипов пока нет"
@@ -430,7 +433,7 @@
     "defaultMessage": "Максимальный битрейт аудио"
   },
   "OumUwz": {
-    "defaultMessage": "{m}s {ago}",
+    "defaultMessage": "{m} {ago}",
     "description": "Number of second(s) relative to now"
   },
   "Oxqtyf": {
@@ -441,28 +444,28 @@
     "description": "Number of hour(s) relative to now"
   },
   "PHE60k": {
-    "defaultMessage": "Leave blank if you do not wish to set up any goals."
+    "defaultMessage": "Оставьте пустым, если вы не хотите устанавливать никаких целей."
   },
   "PUymyQ": {
     "defaultMessage": "Загляните на {name} stream на zap.stream! {link}"
   },
   "PXAur5": {
-    "defaultMessage": "Withdraw"
+    "defaultMessage": "Вывести"
   },
   "Pc+tM3": {
-    "defaultMessage": "Generate"
+    "defaultMessage": "Создать"
   },
   "Pe0ogR": {
     "defaultMessage": "Тема"
   },
   "PySFxG": {
-    "defaultMessage": "Choose file."
+    "defaultMessage": "Выберите файл."
   },
   "Q3au2v": {
     "defaultMessage": "Примерно {estimate}"
   },
   "Q8Qw5B": {
-    "defaultMessage": "Description"
+    "defaultMessage": "Описание"
   },
   "QNvtaq": {
     "defaultMessage": "Поделиться на X"
@@ -486,10 +489,10 @@
     "defaultMessage": "Здесь у вас есть несколько вариантов: использовать наш собственный хостинг или свой собственный (например, Cloudflare)."
   },
   "R72je0": {
-    "defaultMessage": "Stream Title"
+    "defaultMessage": "Название потока"
   },
   "RGYBjE": {
-    "defaultMessage": "Thumbnail"
+    "defaultMessage": "Миниатюра"
   },
   "RJOmzk": {
     "defaultMessage": "Я прочитал и согласен с {provider} {terms}."
@@ -513,7 +516,7 @@
     "defaultMessage": "Аудиокодек"
   },
   "TDUfVk": {
-    "defaultMessage": "Started"
+    "defaultMessage": "Начало"
   },
   "TP/cMX": {
     "defaultMessage": "Завершено"
@@ -522,11 +525,11 @@
     "defaultMessage": "Аккаунт"
   },
   "UCDS65": {
-    "defaultMessage": "ago",
+    "defaultMessage": "назад",
     "description": "Relative time, ie. 1s ago"
   },
   "UGFYV8": {
-    "defaultMessage": "Welcome to zap.stream!"
+    "defaultMessage": "Добро пожаловать на сайт zap.stream!"
   },
   "UJBFYK": {
     "defaultMessage": "Добавить карточку"
@@ -550,7 +553,7 @@
     "defaultMessage": "Переадресация потоков"
   },
   "W7IRLs": {
-    "defaultMessage": "Your title is too short"
+    "defaultMessage": "Ваш заголовок слишком короткий"
   },
   "W9355R": {
     "defaultMessage": "Включить уведомления"
@@ -560,10 +563,10 @@
     "description": "Config value column header"
   },
   "WcZM+B": {
-    "defaultMessage": "File List"
+    "defaultMessage": "Список файлов"
   },
   "Wp4l7+": {
-    "defaultMessage": "More Videos"
+    "defaultMessage": "Другие видео"
   },
   "WsjXrZ": {
     "defaultMessage": "Нажмите на кнопку Войти"
@@ -572,7 +575,7 @@
     "defaultMessage": "Установить цель"
   },
   "XIvYvF": {
-    "defaultMessage": "Failed to get invoice"
+    "defaultMessage": "Не удалось получить счет-фактуру"
   },
   "XMGfiA": {
     "defaultMessage": "Последние клипы"
@@ -581,7 +584,7 @@
     "defaultMessage": "Отклики"
   },
   "Xq2sb0": {
-    "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+    "defaultMessage": "Чтобы начать прямой эфир, скопируйте и вставьте URL-адрес вашего сервера и ключ потока в настройки вашего программного обеспечения для стриминга и нажмите \"Начать стриминг\". Мы рекомендуем <a>OBS</a>."
   },
   "Y0DXJb": {
     "defaultMessage": "URL-адрес записи"
@@ -594,13 +597,13 @@
     "defaultMessage": "{n}p"
   },
   "YjhNaf": {
-    "defaultMessage": "Create Stream"
+    "defaultMessage": "Создать поток"
   },
   "YwzT/0": {
     "defaultMessage": "Название клипа"
   },
   "YyXVHf": {
-    "defaultMessage": "Clear Draft"
+    "defaultMessage": "Чистый проект"
   },
   "Z8ZOEY": {
     "defaultMessage": "Этот метод небезопасен. Мы рекомендуем использовать {nostrlink}"
@@ -643,19 +646,19 @@
     "defaultMessage": "Анон"
   },
   "c3LlRO": {
-    "defaultMessage": "{n}KiB"
+    "defaultMessage": "{n}КиБ"
   },
   "cPIKU2": {
     "defaultMessage": "Подписки"
   },
   "ccXLVi": {
-    "defaultMessage": "Category"
+    "defaultMessage": "Категория"
   },
   "cg1VJ2": {
-    "defaultMessage": "Connect Wallet"
+    "defaultMessage": "Подключить кошелек"
   },
   "cntHHJ": {
-    "defaultMessage": "This allows you to forward your stream to other platforms to reach a wider audience."
+    "defaultMessage": "Это позволит вам перенаправить свой поток на другие платформы, чтобы охватить более широкую аудиторию."
   },
   "cvAsEh": {
     "defaultMessage": "Трансляция проведена {date}"
@@ -695,10 +698,10 @@
     "defaultMessage": "О сайте"
   },
   "gQxxlw": {
-    "defaultMessage": "Goal Name"
+    "defaultMessage": "Название цели"
   },
   "gt65Gg": {
-    "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
+    "defaultMessage": "Цели стримов побуждают зрителей поддерживать стримеров с помощью пожертвований."
   },
   "gzsn7k": {
     "defaultMessage": "{n} сообщения"
@@ -716,10 +719,10 @@
     "defaultMessage": "Виджет чата"
   },
   "hzSNj4": {
-    "defaultMessage": "Dashboard"
+    "defaultMessage": "Приборная панель"
   },
   "iKlloU": {
-    "defaultMessage": "Suggested Servers"
+    "defaultMessage": "Предлагаемые сервиторы"
   },
   "ieGrWo": {
     "defaultMessage": "Подписаться"
@@ -728,7 +731,7 @@
     "defaultMessage": "Сколько стоит потоковое вещание?"
   },
   "ipTKP3": {
-    "defaultMessage": "Chat Popout"
+    "defaultMessage": "Всплывающее окно чата"
   },
   "itPgxd": {
     "defaultMessage": "Профиль"
@@ -740,7 +743,7 @@
     "defaultMessage": "Рейд {name}"
   },
   "jDDeA0": {
-    "defaultMessage": "Your title is very long, please make sure its less than {n} chars."
+    "defaultMessage": "Ваш заголовок очень длинный, пожалуйста, убедитесь, что он не превышает {n} символов."
   },
   "jJLRgo": {
     "defaultMessage": "Опубликовать клип"
@@ -764,22 +767,22 @@
     "defaultMessage": "OK"
   },
   "kGjqZ4": {
-    "defaultMessage": "Latest Shorts"
+    "defaultMessage": "Последние шорты"
   },
   "kQAf2d": {
-    "defaultMessage": "Select"
+    "defaultMessage": "Выберите"
   },
   "kc5EOy": {
     "defaultMessage": "Имя пользователя слишком длинное"
   },
   "khJ51Q": {
-    "defaultMessage": "Stream Earnings"
+    "defaultMessage": "Потоковый заработок"
   },
   "kp0NPF": {
     "defaultMessage": "Запланировано"
   },
   "lXbG97": {
-    "defaultMessage": "Most Zapped Streamers"
+    "defaultMessage": "Самые прыткие стримеры"
   },
   "lZpRMR": {
     "defaultMessage": "Поставьте галочку, если в этом стриме содержится нагота или порнографический контент."
@@ -803,7 +806,7 @@
     "defaultMessage": "Краткое описание контента"
   },
   "n19IQE": {
-    "defaultMessage": "Recommended size: 1920x1080 (16:9)"
+    "defaultMessage": "Рекомендуемый размер: 1920x1080 (16:9)"
   },
   "n8k1SG": {
     "defaultMessage": "{n}MiB"
@@ -827,28 +830,28 @@
     "defaultMessage": "Тип потока должен быть HLS"
   },
   "p4N05H": {
-    "defaultMessage": "Upload"
+    "defaultMessage": "Загрузить"
   },
   "pOeEMx": {
-    "defaultMessage": "Add server"
+    "defaultMessage": "Добавить сервер"
   },
   "pxF+t0": {
-    "defaultMessage": "Popular"
+    "defaultMessage": "Популярные"
   },
   "q+zTWM": {
     "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
   },
   "q9ryv4": {
-    "defaultMessage": "Cover image URL (optional)"
+    "defaultMessage": "URL-адрес изображения обложки (необязательно)"
   },
   "qx6bv2": {
-    "defaultMessage": "Stream Goal (optional)"
+    "defaultMessage": "Цель потока (необязательно)"
   },
   "r2Jjms": {
     "defaultMessage": "Войти"
   },
   "rJqhFR": {
-    "defaultMessage": "Stream Setup"
+    "defaultMessage": "Настройка потока"
   },
   "rWBFZA": {
     "defaultMessage": "Сексуально откровенный материал!"
@@ -857,7 +860,7 @@
     "defaultMessage": "Текущие зрители"
   },
   "rleUgy": {
-    "defaultMessage": "Uploading.."
+    "defaultMessage": "Загрузка..."
   },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",
@@ -876,7 +879,7 @@
     "defaultMessage": "Нажмите кнопку \"Поток\" в правом верхнем углу"
   },
   "syEQFE": {
-    "defaultMessage": "Publish"
+    "defaultMessage": "Опубликовать"
   },
   "tG1ST3": {
     "defaultMessage": "Входящий Зап"
@@ -910,28 +913,28 @@
     "defaultMessage": "Стрим"
   },
   "uksRSi": {
-    "defaultMessage": "Latest Videos"
+    "defaultMessage": "Последние видео"
   },
   "vP4dFa": {
-    "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
+    "defaultMessage": "Посетите сайт {link} , чтобы получить отличные товары от zap.stream!"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} сат"
   },
   "w+2Vw7": {
-    "defaultMessage": "Shorts"
+    "defaultMessage": "Шорты"
   },
   "w0Xm2F": {
     "defaultMessage": "Начните печатать"
   },
   "w3btjR": {
-    "defaultMessage": "Gambling"
+    "defaultMessage": "Азартные игры"
   },
   "wCIL7o": {
     "defaultMessage": "Транслировать на Nostr"
   },
   "wCgTu5": {
-    "defaultMessage": "Comments"
+    "defaultMessage": "Комментарии"
   },
   "wEQDC6": {
     "defaultMessage": "Редактировать"
@@ -946,7 +949,7 @@
     "defaultMessage": "Неверный ностровый адрес"
   },
   "we4Lby": {
-    "defaultMessage": "Info"
+    "defaultMessage": "Информация"
   },
   "x82IOl": {
     "defaultMessage": "Заглушить"
@@ -971,7 +974,7 @@
     "defaultMessage": "Чтобы начать потоковое вещание на zap.stream, выполните следующие действия:"
   },
   "yj8NrY": {
-    "defaultMessage": "Clip"
+    "defaultMessage": "Клипса"
   },
   "yzKwBQ": {
     "defaultMessage": "например, nsec1xyz"
@@ -983,7 +986,7 @@
     "defaultMessage": "Поговорите"
   },
   "zSYDJP": {
-    "defaultMessage": "I have my own stream host"
+    "defaultMessage": "У меня есть свой собственный потоковый хост."
   },
   "zVDHAu": {
     "defaultMessage": "Оповещение о запе"

@@ -242,6 +242,9 @@
   "Dn82AL": {
     "defaultMessage": "Live"
   },
+  "DqmiAe": {
+    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
   "E7n6zr": {
     "defaultMessage": "Aktuelle Streamkosten: {amount} Sats/{unit} (ca. {usd}/Tag für einen {x} Std. Stream)"
   },
