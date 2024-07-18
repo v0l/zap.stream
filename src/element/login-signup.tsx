@@ -25,6 +25,7 @@ import { NostrStreamProvider } from "@/providers/zsz";
 import { DefaultButton, Layer1Button } from "./buttons";
 import { ExternalLink } from "./external-link";
 import { FileUploader } from "./file-uploader";
+import { Link } from "react-router-dom";
 
 enum Stage {
   Login = 0,
@@ -164,13 +165,40 @@ export function LoginSignup({ close }: { close: () => void }) {
             <div className="border-t border-b my-4 py-2 border-layer-3 text-center">
               <FormattedMessage defaultMessage="OR" id="INlWvJ" />
             </div>
-            {hasNostrExtension && (
-              <>
-                <DefaultButton onClick={loginNip7}>
-                  <FormattedMessage defaultMessage="Nostr Extension" id="ebmhes" />
-                </DefaultButton>
-              </>
-            )}
+            <div>
+              <DefaultButton onClick={loginNip7} className="w-full">
+                <FormattedMessage defaultMessage="Nostr Extension" id="ebmhes" />
+              </DefaultButton>
+              {!hasNostrExtension && (
+                <>
+                  <small className="cursor-pointer">
+                    <FormattedMessage
+                      defaultMessage="Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+                      values={{
+                        nos2x: (
+                          <Link
+                            className="underline"
+                            target="_blank"
+                            to="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp">
+                            Nos2X
+                          </Link>
+                        ),
+                        nostore: (
+                          <Link className="underline" target="_blank" to="">
+                            Nostore
+                          </Link>
+                        ),
+                        alby: (
+                          <Link className="underline" target="_blank" to="">
+                            Alby
+                          </Link>
+                        ),
+                      }}
+                    />
+                  </small>
+                </>
+              )}
+            </div>
             <DefaultButton onClick={() => setStage(Stage.LoginInput)}>
               <FormattedMessage defaultMessage="Login with Private Key (insecure)" id="feZ/kG" />
             </DefaultButton>
