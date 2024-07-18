@@ -2730,15 +2730,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sqlite.org/sqlite-wasm@npm:^3.45.1-build1":
-  version: 3.45.1-build1
-  resolution: "@sqlite.org/sqlite-wasm@npm:3.45.1-build1"
-  bin:
-    sqlite-wasm: bin/index.js
-  checksum: 10c0/bb774ea390a18087837408b43ab5355dda0867c92092e15591d2bdcdfbfeab90bd6d11413ff98b2d82db48bd565a8a212fe375b53fa1116e45c8dbe912cc374a
-  languageName: node
-  linkType: hard
-
 "@sqlite.org/sqlite-wasm@npm:^3.45.3-build3":
   version: 3.45.3-build3
   resolution: "@sqlite.org/sqlite-wasm@npm:3.45.3-build3"
@@ -3972,6 +3963,13 @@ __metadata:
   version: 1.0.1
   resolution: "custom-event@npm:1.0.1"
   checksum: 10c0/86cd8497328b1e17dcda894c8df34a73b7a99f915123940d39b33c709482b2d3a2e689cd5e79e4775eb4167227689f57a2ae2f99a3f0bc9c54c0ac1b06853bd5
+  languageName: node
+  linkType: hard
+
+"custom-media-element@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "custom-media-element@npm:1.3.2"
+  checksum: 10c0/49b1efa65ecb3dbf2c49f66132496c50bc44fd73dcdb5529bdc601e9642eba1d02400ad18c28d640c1fe0d671cee3613ae26f50575a1c7702a14f656a69e9d10
   languageName: node
   linkType: hard
 
@@ -5217,10 +5215,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hls.js@npm:^1.5.8":
-  version: 1.5.8
-  resolution: "hls.js@npm:1.5.8"
-  checksum: 10c0/feb36dd1c7c6759d78c3b1597e681ded497eba71e883c4bc8b49232f1169cbcf7d6c3214e0a40ef824da47a4262b6ea30d181cb543d0f8912f6588ea08be68e8
+"hls-video-element@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "hls-video-element@npm:1.2.7"
+  dependencies:
+    custom-media-element: "npm:^1.3.2"
+    hls.js: "npm:^1.5.11"
+    media-tracks: "npm:^0.3.3"
+  checksum: 10c0/ed1a9839c2119d084fdd89eeb313b7733649e153638735ced985a40ecf79cd5505363982b7583277d98604d5c824e75f7b2f8f161924375905c0cce12087f8de
+  languageName: node
+  linkType: hard
+
+"hls.js@npm:^1.5.11":
+  version: 1.5.13
+  resolution: "hls.js@npm:1.5.13"
+  checksum: 10c0/58f5b9dda5c0faca72059be51f88180a8cff49bf1011f50c9d6f30cdb21b44ab9f9493f18443bf6861ee68f262adb0e43bbba8dea668108816adff738e2a3f7e
   languageName: node
   linkType: hard
 
@@ -6042,10 +6051,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"media-chrome@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "media-chrome@npm:3.2.2"
-  checksum: 10c0/d3e36629aaf67eae12837be06a874ba1d56c5b6094c26baa8b76b4e420618564447491fd05b28e593306d2025ffd171db6598bab308255dcd69024e9b70c33b6
+"media-chrome@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "media-chrome@npm:3.2.4"
+  checksum: 10c0/60596bfc8661c5b99c62107774b3227966aab976dbe5ab4cc960512a7cac3dc002ad3f6e8bffa8fc6d7e44603d3dc1df91cbae080516ad781138740b13b97d51
+  languageName: node
+  linkType: hard
+
+"media-tracks@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "media-tracks@npm:0.3.3"
+  checksum: 10c0/ecd57e628222b6e0611f21813a291a47b30c96aa1c9d7e13546932b59e8bb206651961a36360cc5584bf76bf890ce01be3bb0c045facf76ab8b1cfacecf9808b
   languageName: node
   linkType: hard
 
@@ -6981,24 +6997,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-use-gesture@npm:^9.1.3":
-  version: 9.1.3
-  resolution: "react-use-gesture@npm:9.1.3"
-  peerDependencies:
-    react: ">= 16.8.0"
-  checksum: 10c0/36e8991811c9bf97018cda24b84d9010143fbb8c43eec1089580ef69450f4004a60969b662b489f5416a5c45c516a5d718f20ae46b3fbf0c49f7e34320021246
-  languageName: node
-  linkType: hard
-
-"react-use-pip@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "react-use-pip@npm:1.5.0"
-  peerDependencies:
-    react: ^16.9.0 || ^17 || ^18
-  checksum: 10c0/448a6d176eada90cafdcc2465dd9c974ba46e80c033168b3ecef87a064dd5f2976a8758f039e8b5c3f4abf15f844ad4096a2db6b1b0465f8a76988bee28aefdc
-  languageName: node
-  linkType: hard
-
 "react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -7624,7 +7622,6 @@ __metadata:
     "@snort/system-wasm": "npm:^1.0.4"
     "@snort/wallet": "npm:^0.1.7"
     "@snort/worker-relay": "npm:^1.1.0"
-    "@sqlite.org/sqlite-wasm": "npm:^3.45.1-build1"
     "@szhsin/react-menu": "npm:^4.1.0"
     "@testing-library/dom": "npm:^9.3.1"
     "@types/node": "npm:^20.12.12"
@@ -7646,9 +7643,9 @@ __metadata:
     emoji-mart: "npm:^5.6.0"
     eslint: "npm:^8.56.0"
     flag-icons: "npm:^7.2.1"
-    hls.js: "npm:^1.5.8"
+    hls-video-element: "npm:^1.2.7"
     marked: "npm:^12.0.2"
-    media-chrome: "npm:^3.2.2"
+    media-chrome: "npm:^3.2.4"
     postcss: "npm:^8.4.38"
     prettier: "npm:^3.2.5"
     prop-types: "npm:^15.8.1"
@@ -7663,8 +7660,6 @@ __metadata:
     react-intl: "npm:^6.6.8"
     react-router-dom: "npm:^6.23.1"
     react-tag-input-component: "npm:^2.0.2"
-    react-use-gesture: "npm:^9.1.3"
-    react-use-pip: "npm:^1.5.0"
     recharts: "npm:^2.12.7"
     rollup-plugin-visualizer: "npm:^5.12.0"
     tailwindcss: "npm:^3.4.3"
