@@ -23,9 +23,9 @@ export default function DashboardIntroStep1() {
   }, []);
 
   return (
-    <div className="mx-auto flex flex-col items-center">
+    <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
       <StepHeader />
-      <div className="flex flex-col gap-4 w-[30rem]">
+      <div className="flex flex-col gap-4 w-full">
         <h2 className="text-center">
           <FormattedMessage defaultMessage="Create Stream" />
         </h2>

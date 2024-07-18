@@ -31,7 +31,7 @@ export default function DashboardIntro() {
   if (!defaultEndpoint) return;
 
   return (
-    <div className="flex flex-col gap-4 mx-auto w-1/3 bg-layer-1 rounded-xl border border-layer-2 p-6">
+    <div className="flex flex-col gap-4 mx-auto xl:w-1/3 lg:w-1/2 bg-layer-1 rounded-xl border border-layer-2 p-6">
       <h1>
         <FormattedMessage defaultMessage="Welcome to zap.stream!" />
       </h1>
@@ -71,7 +71,7 @@ export default function DashboardIntro() {
       </p>
       {!info?.tosAccepted && (
         <div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 cursor-pointer select-none" onClick={() => setTos(v => !v)}>
             <input type="checkbox" checked={tos} onChange={e => setTos(e.target.checked)} />
             <p>
               <FormattedMessage
@@ -81,7 +81,10 @@ export default function DashboardIntro() {
                   terms: (
                     <span
                       className="text-primary"
-                      onClick={() => window.open(info?.tosLink, "popup", "width=400,height=800")}>
+                      onClick={e => {
+                        e.stopPropagation();
+                        window.open(info?.tosLink, "popup", "width=400,height=800");
+                      }}>
                       <FormattedMessage defaultMessage="terms and conditions" />
                     </span>
                   ),

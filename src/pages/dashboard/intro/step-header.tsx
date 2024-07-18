@@ -6,7 +6,7 @@ export default function StepHeader() {
   const onStep = Number(location.pathname.split("/").slice(-1)[0].split("-")[1]);
 
   return (
-    <div className="flex mb-[10vh] justify-between lg:w-[35rem] max-lg:w-full max-lg:px-6">
+    <div className="flex mb-[10vh] justify-between w-full max-lg:px-6">
       <Link to="/dashboard/step-1" className={onStep < 1 ? "opacity-20" : undefined}>
         <FormattedMessage defaultMessage="Info" />
       </Link>
