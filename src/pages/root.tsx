@@ -11,7 +11,7 @@ export function RootPage() {
   const { proxy } = useImgProxy();
   const shirtSize = 120;
   return (
-    <div className="flex flex-col gap-6 p-4">
+    <div className="flex flex-col gap-6 p-4 min-w-0">
       <div className="flex max-md:flex-col gap-2 items-center bg-layer-2 p-4 text-lg font-medium text-pretty">
         <img
           width={shirtSize}
