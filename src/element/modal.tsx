@@ -52,7 +52,7 @@ export default function Modal(props: ModalProps) {
           classNames(
             "relative bg-layer-1 p-8 transition max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto max-lg:w-full",
             {
-              "max-xl:translate-y-0": props.ready ?? true,
+              "max-xl:-translate-y-[calc(100vh-100dvh)]": props.ready ?? true,
               "max-xl:translate-y-[50vh]": !(props.ready ?? true),
               "lg:w-[500px]": !(props.largeModal ?? false),
               "lg:w-[80vw]": props.largeModal ?? false,
