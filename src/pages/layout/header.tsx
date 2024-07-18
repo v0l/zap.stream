@@ -142,7 +142,7 @@ export function HeaderNav() {
         {layoutState.leftNav && (
           <NavLinkIcon
             name="hamburger"
-            className="!opacity-100 max-xl:hidden"
+            className="!opacity-100"
             onClick={() => {
               layoutState.update(c => {
                 c.leftNavExpand = !c.leftNavExpand;

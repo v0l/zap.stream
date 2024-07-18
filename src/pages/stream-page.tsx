@@ -1,6 +1,6 @@
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { Helmet } from "react-helmet";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 const LiveVideoPlayer = lazy(() => import("@/element/stream/live-video-player"));
@@ -12,7 +12,6 @@ import { ContentWarningOverlay, useContentWarning } from "@/element/nsfw";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { StreamState } from "@/const";
 import { StreamInfo } from "@/element/stream/stream-info";
-import { useLayout } from "./layout/context";
 import { StreamContextProvider } from "@/element/stream/stream-state";
 
 export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; link: NostrLink }) {
@@ -33,25 +32,6 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
   const goal = useZapGoal(goalTag);
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const isGrownUp = useContentWarning();
-  const layout = useLayout();
-
-  useEffect(() => {
-    if (layout.leftNav) {
-      layout.update(c => {
-        c.leftNav = false;
-        return { ...c };
-      });
-    }
-  }, [layout]);
-
-  useEffect(() => {
-    return () => {
-      layout.update(c => {
-        c.leftNav = true;
-        return { ...c };
-      });
-    };
-  }, []);
 
   if (contentWarning && !isGrownUp) {
     return <ContentWarningOverlay />;
