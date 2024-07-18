@@ -593,9 +593,6 @@
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
   },
-  "YagVIe": {
-    "defaultMessage": "{n}p"
-  },
   "YjhNaf": {
     "defaultMessage": "创建流"
   },
@@ -819,9 +816,6 @@
   },
   "nwA8Os": {
     "defaultMessage": "添加卡片"
-  },
-  "o8pHw3": {
-    "defaultMessage": "自动"
   },
   "oHPB8Q": {
     "defaultMessage": "打闪 {name}"

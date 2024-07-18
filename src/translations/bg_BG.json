@@ -593,9 +593,6 @@
     "defaultMessage": "@ {курс}",
     "description": "Showing zap amount in USD @ rate"
   },
-  "YagVIe": {
-    "defaultMessage": "{n}p"
-  },
   "YjhNaf": {
     "defaultMessage": "Създаване на поток"
   },
@@ -819,9 +816,6 @@
   },
   "nwA8Os": {
     "defaultMessage": "Добавяне на карта"
-  },
-  "o8pHw3": {
-    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "Зап {име}"

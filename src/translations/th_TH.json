@@ -593,9 +593,6 @@
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
   },
-  "YagVIe": {
-    "defaultMessage": "{n}p"
-  },
   "YjhNaf": {
     "defaultMessage": "เริ่มถ่ายทอดสด"
   },
@@ -819,9 +816,6 @@
   },
   "nwA8Os": {
     "defaultMessage": "เพิ่มการ์ด"
-  },
-  "o8pHw3": {
-    "defaultMessage": "อัตโนมัติ"
   },
   "oHPB8Q": {
     "defaultMessage": "ส่ง Zap ให้ {name}"

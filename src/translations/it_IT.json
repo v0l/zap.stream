@@ -593,9 +593,6 @@
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
   },
-  "YagVIe": {
-    "defaultMessage": "{n}p"
-  },
   "YjhNaf": {
     "defaultMessage": "Crea flusso"
   },
@@ -819,9 +816,6 @@
   },
   "nwA8Os": {
     "defaultMessage": "Aggiungi scheda"
-  },
-  "o8pHw3": {
-    "defaultMessage": "AUTO"
   },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
