@@ -24,6 +24,7 @@ export function DashboardSettingsButton({ ev }: { ev?: TaggedNostrEvent }) {
               showEndpoints={true}
               showForwards={true}
               showEditor={false}
+              showBalanceHistory={false}
             />
           </div>
         </Modal>

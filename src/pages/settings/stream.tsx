@@ -17,6 +17,7 @@ export function StreamSettingsTab() {
           showEndpoints={true}
           showEditor={false}
           showForwards={true}
+          showBalanceHistory={true}
         />
       </div>
     </>

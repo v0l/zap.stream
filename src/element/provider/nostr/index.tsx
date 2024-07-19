@@ -14,18 +14,21 @@ import { AddForwardInputs } from "./fowards";
 import StreamKey from "./stream-key";
 import AccountTopup from "./topup";
 import AccountWithdrawl from "./withdraw";
+import BalanceHistory from "./history";
 
 export default function NostrProviderDialog({
   provider,
   showEndpoints,
   showEditor,
   showForwards,
+  showBalanceHistory,
   ...others
 }: {
   provider: NostrStreamProvider;
   showEndpoints: boolean;
   showEditor: boolean;
   showForwards: boolean;
+  showBalanceHistory: boolean;
 } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
@@ -257,11 +260,27 @@ export default function NostrProviderDialog({
     );
   }
 
+  function balanceHist() {
+    if (!info || !showBalanceHistory) return;
+
+    return (
+      <div className="flex flex-col gap-4">
+        <h3>
+          <FormattedMessage defaultMessage="Balance History" />
+        </h3>
+        <div className="flex flex-col gap-1">
+          <BalanceHistory provider={provider}/>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       {showEndpoints && streamEndpoints()}
       {streamEditor()}
       {forwardInputs()}
+      {balanceHist()}
     </>
   );
 }

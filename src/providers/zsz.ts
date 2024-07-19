@@ -92,7 +92,7 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async withdraw(invoice: string) {
-    return await this.#getJson<{ fee: number; preimage: string }>("POST", `withdraw?invoice=${invoice}`);
+    return await this.#getJson<{ fee: number; preimage: string, error?: string }>("POST", `withdraw?invoice=${invoice}`);
   }
 
   async acceptTos(): Promise<void> {
@@ -142,6 +142,10 @@ export class NostrStreamProvider implements StreamProvider {
 
   getTempClipUrl(id: string, clipId: string) {
     return `${this.url}clip/${id}/${clipId}`;
+  }
+
+  async history(page = 0, pageSize = 100) {
+    return await this.#getJson<BalanceHistoryResult>("GET", `history?page=${page}&pageSize=${pageSize}`);
   }
 
   async #getJson<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<T> {
@@ -204,4 +208,15 @@ interface IngestEndpoint {
 
 interface TopUpResponse {
   pr: string;
+}
+
+export interface BalanceHistoryResult {
+  items: Array<{
+    created: number,
+    type: number,
+    amount: number,
+    desc?: string
+  }>
+  page: number,
+  pageSize: number
 }
