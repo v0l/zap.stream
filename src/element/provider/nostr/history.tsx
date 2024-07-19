@@ -1,6 +1,9 @@
 import { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz";
+import { eventLink } from "@/utils";
+import { NostrEvent } from "@snort/system";
 import { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedNumber } from "react-intl";
+import { Link } from "react-router-dom";
 
 export default function BalanceHistory({ provider }: { provider?: NostrStreamProvider }) {
   const [page] = useState(0);
@@ -22,16 +25,30 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
       <div>
         <FormattedMessage defaultMessage="Amount" />
       </div>
-      {rows?.items.map(a => (
-        <>
-          <div>{new Date(a.created * 1000).toLocaleString()}</div>
-          <div>{a.desc}</div>
-          <div>
-            {a.type === 0 ? "+" : "-"}
-            {a.amount}
-          </div>
-        </>
-      ))}
+      {rows?.items.map(a => {
+        let ev: NostrEvent | undefined;
+        if (a.desc && a.desc.startsWith("{")) {
+          ev = JSON.parse(a.desc) as NostrEvent;
+        }
+        return (
+          <>
+            <div>{new Date(a.created * 1000).toLocaleString()}</div>
+            <div>
+              {ev ? (
+                <Link to={`/${eventLink(ev)}`} className="text-primary">
+                  <FormattedMessage defaultMessage="Past Stream" />
+                </Link>
+              ) : (
+                a.desc
+              )}
+            </div>
+            <div>
+              {a.type === 0 ? "+" : "-"}
+              <FormattedNumber value={a.amount} />
+            </div>
+          </>
+        );
+      })}
     </div>
   );
 }
