@@ -57,6 +57,8 @@ export default function AccountWithdrawl({
       if (res.preimage) {
         setTopup(false);
         onFinish();
+      } else if (res.error) {
+        setError(res.error);
       }
     } catch (e) {
       if (e instanceof Error) {
