@@ -20,7 +20,7 @@ export default function SettingsPage() {
   const naviage = useNavigate();
 
   return (
-    <div className="rounded-2xl p-3 md:w-[700px] mx-auto w-full">
+    <div className="rounded-2xl p-3 md:w-[800px] mx-auto w-full">
       <div className="flex flex-col gap-2">
         <h1>
           <FormattedMessage defaultMessage="Settings" />
