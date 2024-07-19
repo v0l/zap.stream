@@ -42,7 +42,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
                 a.desc
               )}
             </div>
-            <div>
+            <div className={a.type === 0 ? "text-green-400" : "text-red-400"}>
               {a.type === 0 ? "+" : "-"}
               <FormattedNumber value={a.amount} />
             </div>
