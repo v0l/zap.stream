@@ -269,7 +269,7 @@ export default function NostrProviderDialog({
           <FormattedMessage defaultMessage="Balance History" />
         </h3>
         <div className="flex flex-col gap-1">
-          <BalanceHistory provider={provider}/>
+          <BalanceHistory provider={provider} />
         </div>
       </div>
     );

@@ -92,7 +92,10 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async withdraw(invoice: string) {
-    return await this.#getJson<{ fee: number; preimage: string, error?: string }>("POST", `withdraw?invoice=${invoice}`);
+    return await this.#getJson<{ fee: number; preimage: string; error?: string }>(
+      "POST",
+      `withdraw?invoice=${invoice}`,
+    );
   }
 
   async acceptTos(): Promise<void> {
@@ -212,11 +215,11 @@ interface TopUpResponse {
 
 export interface BalanceHistoryResult {
   items: Array<{
-    created: number,
-    type: number,
-    amount: number,
-    desc?: string
-  }>
-  page: number,
-  pageSize: number
+    created: number;
+    type: number;
+    amount: number;
+    desc?: string;
+  }>;
+  page: number;
+  pageSize: number;
 }
