@@ -90,13 +90,13 @@ interface NewStreamDialogProps {
   btnClassName?: string;
 }
 
-export function NewStreamDialog(props: NewStreamDialogProps & StreamEditorProps) {
+export function NewStreamDialog({ text, btnClassName, ...props }: NewStreamDialogProps & StreamEditorProps) {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <DefaultButton className={props.btnClassName} onClick={() => setOpen(true)}>
-        {props.text && props.text}
-        {!props.text && (
+      <DefaultButton className={btnClassName} onClick={() => setOpen(true)}>
+        {text && text}
+        {!text && (
           <>
             <span className="max-xl:hidden">
               <FormattedMessage defaultMessage="Stream" id="uYw2LD" />

@@ -9,7 +9,7 @@ export interface ModalProps {
   bodyClassName?: string;
   onClose?: (e: React.MouseEvent | KeyboardEvent) => void;
   onClick?: (e: React.MouseEvent) => void;
-  children: ReactNode;
+  children?: ReactNode;
   showClose?: boolean;
   ready?: boolean;
   largeModal?: boolean;

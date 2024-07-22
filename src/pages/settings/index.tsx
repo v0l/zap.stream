@@ -11,10 +11,6 @@ const Tabs = [
     name: <FormattedMessage defaultMessage="Profile" />,
     path: "profile",
   },
-  {
-    name: <FormattedMessage defaultMessage="Stream" />,
-    path: "stream",
-  },
 ];
 export default function SettingsPage() {
   const naviage = useNavigate();

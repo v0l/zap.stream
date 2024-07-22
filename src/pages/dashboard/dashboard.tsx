@@ -28,6 +28,8 @@ import classNames from "classnames";
 import ManualStream from "./manual-stream";
 import { unixNow } from "@snort/shared";
 import { Icon } from "@/element/icon";
+import ForwardingModal from "./forwarding";
+import BalanceHistoryModal from "./balance-history";
 const StreamSummary = lazy(() => import("@/element/summary-chart"));
 
 export function DashboardForLink({ link }: { link: NostrLink }) {
@@ -217,6 +219,17 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
             </h3>
             <div className="h-[calc(100%-4rem)] overflow-y-auto">
               <DashboardChatList feed={feed} />
+            </div>
+          </DashboardCard>
+        )}
+        {(!streamLink || status === StreamState.Ended) && (
+          <DashboardCard className="flex flex-col gap-4">
+            <h3>
+              <FormattedMessage defaultMessage="Account Setup" />
+            </h3>
+            <div className="flex gap-2">
+              <BalanceHistoryModal provider={provider} />
+              <ForwardingModal provider={provider} />
             </div>
           </DashboardCard>
         )}

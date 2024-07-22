@@ -135,10 +135,6 @@ const router = createBrowserRouter([
             element: <AccountSettingsTab />,
           },
           {
-            path: "stream",
-            element: <StreamSettingsTab />,
-          },
-          {
             path: "profile",
             element: <ProfileSettings />,
           },
