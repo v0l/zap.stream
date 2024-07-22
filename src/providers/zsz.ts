@@ -147,7 +147,7 @@ export class NostrStreamProvider implements StreamProvider {
     return `${this.url}clip/${id}/${clipId}`;
   }
 
-  async history(page = 0, pageSize = 100) {
+  async history(page = 0, pageSize = 20) {
     return await this.#getJson<BalanceHistoryResult>("GET", `history?page=${page}&pageSize=${pageSize}`);
   }
 
