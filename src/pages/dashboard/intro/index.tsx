@@ -16,8 +16,7 @@ export default function DashboardIntro() {
   const exampleHours = 4;
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == "Best")
-      ?? info?.endpoints[0];
+    return info?.endpoints.find(a => a.name == "Best") ?? info?.endpoints[0];
   }, [info]);
   const rate = useRates("BTCUSD");
   const exampleCost = rate.ask * (exampleHours * (defaultEndpoint?.rate ?? 0) * 60) * 1e-8;

@@ -9,7 +9,7 @@
     "defaultMessage": "ถ่ายทอดสดตอนนี้"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "เชื่อมต่อ"
   },
   "+y6JUK": {
     "defaultMessage": "เข้าชม"
@@ -66,7 +66,7 @@
     "defaultMessage": "เพิ่ม"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "..ดูเพิ่มเติม"
   },
   "2ukA4d": {
     "defaultMessage": "{n} ชั่วโมง"
@@ -87,7 +87,7 @@
     "defaultMessage": "เข้าสู่ระบบด้วย nsec"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "ไม่มีหัวเรื่อง"
   },
   "3yk8fB": {
     "defaultMessage": "กระเป๋า"
@@ -99,7 +99,7 @@
     "defaultMessage": "ตัวอย่างการตั้งค่าใน OBS (Apple M1 Mac)"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "วิดีโอ"
   },
   "4iBdw1": {
     "defaultMessage": "เข้าชม"
@@ -120,7 +120,7 @@
     "defaultMessage": "สร้างบัญชี"
   },
   "5L4ati": {
-    "defaultMessage": "Zap from"
+    "defaultMessage": "Zap จาก"
   },
   "5LXWMX": {
     "defaultMessage": "เป้าหมายใหม่"
@@ -144,7 +144,7 @@
     "defaultMessage": "เข้าชม {name}"
   },
   "6PK5Jy": {
-    "defaultMessage": "Past Stream"
+    "defaultMessage": "การถ่ายทอดสดที่ผ่านมา"
   },
   "6Z2pvJ": {
     "defaultMessage": "เริ่มถ่ายทอดสด"
@@ -156,7 +156,7 @@
     "defaultMessage": "Stream url ต้องขึ้นต้นด้วย rtmp://"
   },
   "74PejI": {
-    "defaultMessage": "Top Viewers"
+    "defaultMessage": "ผู้ชมมากที่สุด"
   },
   "79lLl+": {
     "defaultMessage": "ดนตรี"
@@ -180,7 +180,7 @@
     "defaultMessage": "ส่ง"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "ลบไฟล์"
   },
   "9a9+ww": {
     "defaultMessage": "หัวข้อ"
@@ -195,7 +195,7 @@
     "defaultMessage": "ผลลัพธ์การค้นหา"
   },
   "A7K3S+": {
-    "defaultMessage": "Account Setup"
+    "defaultMessage": "ตั้งค่าบัญชี"
   },
   "ALdW69": {
     "defaultMessage": "เขียนโดย {ชื่อ}"
@@ -219,13 +219,13 @@
     "defaultMessage": "{name} ได้สร้างคลิป"
   },
   "Bd1yEX": {
-    "defaultMessage": "New Stream Goal"
+    "defaultMessage": "เพิ่มเป้าหมายการถ่ายทอดสด"
   },
   "Bep/gA": {
     "defaultMessage": "Private key"
   },
   "BzQPM+": {
-    "defaultMessage": "Destination"
+    "defaultMessage": "จุดหมาย"
   },
   "C81/uG": {
     "defaultMessage": "ออกจากระบบ"
@@ -237,7 +237,7 @@
     "defaultMessage": "{n} sats"
   },
   "CsS/fy": {
-    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
+    "defaultMessage": "เวลาคงเหลือ {estimate} ({balance} sats @ {rate} sats / {unit})"
   },
   "D3idYv": {
     "defaultMessage": "การตั้งค่า"
@@ -252,7 +252,7 @@
     "defaultMessage": "ถ่ายทอดสด"
   },
   "DqmiAe": {
-    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+    "defaultMessage": "ไม่มี Nostr Extension ใช่ไหม? ลองใช้ {nos2x}, {nostore} หรือ {alby}"
   },
   "E7n6zr": {
     "defaultMessage": "ค่าใช้จ่าย: {amount} sats/{unit} (ประมาณ {usd}/วัน สำหรับการถ่ายทอดสด {x} ชั่วโมง)"

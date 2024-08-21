@@ -12,8 +12,7 @@ export default function DashboardIntroFinal() {
   const [info, setInfo] = useState<StreamProviderInfo>();
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == "Best")
-      ?? info?.endpoints[0];
+    return info?.endpoints.find(a => a.name == "Best") ?? info?.endpoints[0];
   }, [info]);
 
   async function loadInfo() {

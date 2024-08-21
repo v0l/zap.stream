@@ -120,7 +120,7 @@
     "defaultMessage": "Konto erstellen"
   },
   "5L4ati": {
-    "defaultMessage": "Zap from"
+    "defaultMessage": "Zap von"
   },
   "5LXWMX": {
     "defaultMessage": "Neues Ziel"
@@ -144,7 +144,7 @@
     "defaultMessage": "Raid von {name}"
   },
   "6PK5Jy": {
-    "defaultMessage": "Past Stream"
+    "defaultMessage": "Vergangener Stream"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream-Anbieter"
@@ -195,7 +195,7 @@
     "defaultMessage": "Suchergebnisse: {term}"
   },
   "A7K3S+": {
-    "defaultMessage": "Account Setup"
+    "defaultMessage": "Kontoeinrichtung"
   },
   "ALdW69": {
     "defaultMessage": "Note von {name}"
@@ -252,7 +252,7 @@
     "defaultMessage": "Live"
   },
   "DqmiAe": {
-    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+    "defaultMessage": "Du hast keine Nostr-Erweiterung? Probiere {nos2x}, {nostore} oder {alby}"
   },
   "E7n6zr": {
     "defaultMessage": "Aktuelle Streamkosten: {amount} Sats/{unit} (ca. {usd}/Tag für einen {x} Std. Stream)"
@@ -649,7 +649,7 @@
     "defaultMessage": "Empfohlene Stream-Einstellungen"
   },
   "bdH+0f": {
-    "defaultMessage": "Balance History"
+    "defaultMessage": "Guthabenentwicklung"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -919,7 +919,7 @@
     "defaultMessage": "Stream"
   },
   "ug01Mk": {
-    "defaultMessage": "Time"
+    "defaultMessage": "Zeit"
   },
   "uksRSi": {
     "defaultMessage": "Neueste Videos"
