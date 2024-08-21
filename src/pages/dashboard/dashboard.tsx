@@ -49,7 +49,8 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
 
   const provider = useMemo(() => (service ? new NostrStreamProvider("", service) : DefaultProvider), [service]);
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == (recording ? "Best" : "Good"));
+    return info?.endpoints.find(a => a.name == (recording ? "Best" : "Good"))
+      ?? info?.endpoints[0];
   }, [info, recording]);
 
   useEffect(() => {
@@ -98,9 +99,8 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
             </h3>
             <div className="uppercase font-semibold flex items-center gap-2">
               <div
-                className={`w-3 h-3 rounded-full ${
-                  status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
-                }`}></div>
+                className={`w-3 h-3 rounded-full ${status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
+                  }`}></div>
               {status === StreamState.Live ? (
                 <FormattedMessage defaultMessage="Started" />
               ) : (
