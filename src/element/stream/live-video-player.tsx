@@ -32,7 +32,7 @@ type VideoPlayerProps = {
 export default function LiveVideoPlayer({ title, stream, status, poster, ...props }: VideoPlayerProps) {
   return (
     <MediaController
-      className={classNames(props.className, "h-inherit aspect-video")}
+      className={classNames(props.className, "h-inherit aspect-video w-full")}
       style={
         {
           "--media-secondary-color": "var(--primary)",
