@@ -9,7 +9,7 @@
     "defaultMessage": "Sasa moja kwa moja"
   },
   "+vVZ/G": {
-    "defaultMessage": "Connect"
+    "defaultMessage": "Unganisha"
   },
   "+y6JUK": {
     "defaultMessage": "Uvamizi"
@@ -18,7 +18,7 @@
     "defaultMessage": "Kiasi"
   },
   "/563b0": {
-    "defaultMessage": "Balance: {n} sats"
+    "defaultMessage": "Baki: {n} sats"
   },
   "/EvlqN": {
     "defaultMessage": "Kiongeza cha Saini ya Nostr"
@@ -30,7 +30,7 @@
     "defaultMessage": "Jumla: {amount} Sats"
   },
   "/aFYQ5": {
-    "defaultMessage": "Stream Forwarding (optional)"
+    "defaultMessage": "Usambazaji wa Mtiririko (si lazima)"
   },
   "/w4RM6": {
     "defaultMessage": "Katika Maisha Halisi"
@@ -54,7 +54,7 @@
     "defaultMessage": "Vidokezo"
   },
   "1LBny5": {
-    "defaultMessage": "Stopped"
+    "defaultMessage": "Imesimamishwa"
   },
   "1q4BO/": {
     "defaultMessage": "URL Isiyo Halali"
@@ -66,13 +66,13 @@
     "defaultMessage": "Ongeza"
   },
   "2lVQYF": {
-    "defaultMessage": "...more"
+    "defaultMessage": "...mengi"
   },
   "2ukA4d": {
-    "defaultMessage": "{n} hours"
+    "defaultMessage": "masaa {n}"
   },
   "2wdFaB": {
-    "defaultMessage": "End Stream"
+    "defaultMessage": "Maliza Kutiririsha"
   },
   "37mth/": {
     "defaultMessage": "Watazamaji"
@@ -87,10 +87,10 @@
     "defaultMessage": "Ingia kwa kutumia Ufunguo Binafsi"
   },
   "3kbIhS": {
-    "defaultMessage": "Untitled"
+    "defaultMessage": "Haina jina"
   },
   "3yk8fB": {
-    "defaultMessage": "Wallet"
+    "defaultMessage": "Pochi"
   },
   "47FYwb": {
     "defaultMessage": "Ghairi"
@@ -99,7 +99,7 @@
     "defaultMessage": "Mifano ya Mipangilio katika OBS (Apple M1 Mac)"
   },
   "4XfMux": {
-    "defaultMessage": "Videos"
+    "defaultMessage": "Video"
   },
   "4iBdw1": {
     "defaultMessage": "Uvamizi"
@@ -114,13 +114,13 @@
     "defaultMessage": "Ufunguo wa Mtiririko unahitajika"
   },
   "58DXVG": {
-    "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
+    "defaultMessage": "Ili kuanza, nyakua ufunguo wako wa mtiririko kutoka kwa jukwaa ambalo ungependa kusambaza."
   },
   "5JcXdV": {
     "defaultMessage": "Unda Akaunti"
   },
   "5L4ati": {
-    "defaultMessage": "Zap from"
+    "defaultMessage": "Zap kutoka"
   },
   "5LXWMX": {
     "defaultMessage": "Lengo Jipya"
@@ -129,7 +129,7 @@
     "defaultMessage": "Wakati wa Kuanza"
   },
   "5Wwopw": {
-    "defaultMessage": "Pricing"
+    "defaultMessage": "Bei"
   },
   "5kx+2v": {
     "defaultMessage": "URL ya Seva"
@@ -144,7 +144,7 @@
     "defaultMessage": "Uvamizi kutoka kwa {name}"
   },
   "6PK5Jy": {
-    "defaultMessage": "Past Stream"
+    "defaultMessage": "Mtiririko Uliopita"
   },
   "6Z2pvJ": {
     "defaultMessage": "Watoa Huduma wa Mtiririko"
@@ -156,7 +156,7 @@
     "defaultMessage": "URL ya Mtiririko lazima ianze na rtmp://"
   },
   "74PejI": {
-    "defaultMessage": "Top Viewers"
+    "defaultMessage": "Watazamaji Maarufu"
   },
   "79lLl+": {
     "defaultMessage": "Muziki"
@@ -165,7 +165,7 @@
     "defaultMessage": "Nje ya Mtandao"
   },
   "89UZph": {
-    "defaultMessage": "Configure your streaming software"
+    "defaultMessage": "Sanidi programu yako ya utiririshaji"
   },
   "8YT6ja": {
     "defaultMessage": "Weka Matini ya Kuzungumza"
@@ -180,7 +180,7 @@
     "defaultMessage": "Tuma"
   },
   "9ZoFpI": {
-    "defaultMessage": "Delete file"
+    "defaultMessage": "Futa faili"
   },
   "9a9+ww": {
     "defaultMessage": "Kichwa"
@@ -195,7 +195,7 @@
     "defaultMessage": "Matokeo ya Utafutaji: {term}"
   },
   "A7K3S+": {
-    "defaultMessage": "Account Setup"
+    "defaultMessage": "Kuweka Akaunti"
   },
   "ALdW69": {
     "defaultMessage": "Angalizo la {name}"

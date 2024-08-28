@@ -1,10 +1,5 @@
 import { base64 } from "@scure/base";
-import {
-  StreamProvider,
-  StreamProviderEndpoint,
-  StreamProviderInfo,
-  StreamProviders,
-} from ".";
+import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo, StreamProviders } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login } from "@/login";
 import { getPublisher } from "@/login";
@@ -75,7 +70,7 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async updateStream(props: {
-    id: string,
+    id: string;
     title?: string;
     summary?: string;
     image?: string;
