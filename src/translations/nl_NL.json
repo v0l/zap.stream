@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Uw reactie voor {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Wat zijn sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Deel"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Servers beheren"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Beëindigd"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Account"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reacties"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Om live te gaan kopieer en plak je de Server URL en Stream Key hieronder in de instellingen van je streaming software en druk je op 'Start Streaming'. Wij raden <a>OBS</a> aan."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Mute"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Hoe krijg ik meer sats?"

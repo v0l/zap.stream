@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "給 {name} 的留言"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "什么是 Sats？"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "分享"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "管理服务器"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "已结束"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "帐户"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "反应"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "要进行直播，请将下面的服务器 URL 和流媒体密钥复制并粘贴到流媒体软件设置中，然后按 \"开始流媒体\"。我们推荐使用<a>OBS</a>。"
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "静音"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "我怎样才能获得更多 Sats？"

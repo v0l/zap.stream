@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Votre commentaire pour {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Qu'est-ce que l'ESAT ?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Partager"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Gérer les serveurs"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Terminé"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Compte"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Réactions"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Pour passer en direct, copiez et collez l'URL de votre serveur et la clé de streaming ci-dessous dans les paramètres de votre logiciel de streaming et appuyez sur \"Start Streaming\". Nous recommandons <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Muet"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Comment obtenir plus de résultats ?"

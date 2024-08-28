@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Seu comentário para {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "O que é o sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Compartilhar"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Gerenciar servidores"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Encerrado"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Conta"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reações"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Para entrar no ar, copie e cole o URL do servidor e a chave de transmissão abaixo nas configurações do software de transmissão e pressione \"Start Streaming\" (Iniciar transmissão). Recomendamos o <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Silenciar"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Como faço para obter mais sats?"

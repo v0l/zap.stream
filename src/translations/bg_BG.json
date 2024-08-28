@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Твоят коментар за {име}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Какво представляват сателитите?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Сподели"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Управление на сървъри"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Приключено"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Акаунт"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Реакции"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "За да стартирате на живо, копирайте и поставете URL адреса на сървъра и ключа за стрийминг по-долу в настройките на софтуера за стрийминг и натиснете \"Стартирай стрийминг\". Ние препоръчваме <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Заглуши"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Как да получа повече точки?"

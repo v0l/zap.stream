@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Din kommentar til {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Hvad er sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Del"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Administrer servere"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Afsluttet"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Konto"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reaktioner"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "For at gå live skal du kopiere og indsætte din server-URL og stream-nøgle nedenfor i indstillingerne for din streamingsoftware og trykke på \"Start streaming\". Vi anbefaler <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Lydløs"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Hvordan får jeg flere sats?"

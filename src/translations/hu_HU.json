@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Megjegyzésed neki: {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Mi az a sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Megosztás"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Kiszolgálók kezelése"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Befejezve"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Fiók"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reakciók"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Az élő közvetítéshez másold be a szerver URL-címét és a stream kulcsot a streaming szoftver beállításaiba, majd nyomd meg a 'Start Streaming' gombot. Mi az <a>OBS-t</a> ajánljuk."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Némítás"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Hogyan kaphatok több sats-ot?"

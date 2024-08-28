@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Ваш комментарий к {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Что такое саты?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Поделиться"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Управление серверами"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Завершено"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Аккаунт"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Отклики"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Чтобы начать прямой эфир, скопируйте и вставьте URL-адрес вашего сервера и ключ потока в настройки вашего программного обеспечения для стриминга и нажмите \"Начать стриминг\". Мы рекомендуем <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Заглушить"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Как получить больше баллов?"

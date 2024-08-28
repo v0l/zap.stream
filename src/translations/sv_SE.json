@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Din kommentar till {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Vad är sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Dela"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Hantera servrar"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Avslutade"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Konto"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reaktioner"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "För att gå live kopierar och klistrar du in din server-URL och Stream Key nedan i inställningarna för din streamingprogramvara och trycker på \"Starta streaming\". Vi rekommenderar <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Tysta"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Hur får jag fler sats?"

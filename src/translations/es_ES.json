@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Tu comentario para {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "¿Qué es la saturación?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Compartir"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Gestionar servidores"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Finalizado"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Cuenta"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reacciones"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Para emitir en directo, copie y pegue la URL del servidor y la clave de emisión en la configuración del software de emisión y pulse \"Iniciar emisión\". Recomendamos <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Silenciar"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "¿Cómo consigo más saturación?"

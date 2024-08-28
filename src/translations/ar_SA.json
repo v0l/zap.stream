@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "تعليقك على {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "ما هي ساتس؟"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "شارك"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "إدارة الخوادم"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "انتهى"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "الحساب"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "ردود الفعل"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "لبدء البث المباشر، انسخ والصق عنوان URL الخاص بالخادم ومفتاح البث أدناه في إعدادات برنامج البث واضغط على \"بدء البث\". نوصي باستخدام <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "كتم الصوت"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "كيف يمكنني الحصول على المزيد من الإشعاعات؟"

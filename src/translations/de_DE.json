@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Dein Kommentar für {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Was sind Sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Teilen"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Server verwalten"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Beendet"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Konto"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reaktionen"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Um live zu gehen, füge die unten stehende Server-URL und den Stream-Schlüssel in die Einstellungen deiner Streaming-Software ein und klick auf „Stream starten“. Wir empfehlen <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Stummschalten"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Wie bekomme ich mehr Sats?"

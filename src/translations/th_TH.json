@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "ฝากข้อความถึง {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "ซาโตชิ (sats) คืออะไร?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "แชร์"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Manage Servers"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "จบแล้ว"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "บัญชี"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "ปฏิกิริยา"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "หากต้องการถ่ายทอดสด คัดลอกที่อยู่ของเซิร์ฟเวอร์และรหัสสตรีมด้านล่าง ไปตั้งค่าในโปรแกรมการถ่ายทอดสด (แนะนำให้ใช้โปรแกรม <a>OBS</a>.) จากนั้นกดปุ่มเริ่มการสตรีม"
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "ปิดการมองเห็น"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "ฉันจะได้รับ sats มากขึ้นได้อย่างไร?"

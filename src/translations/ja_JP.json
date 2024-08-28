@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "{name} へのコメント"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "サッツとは？"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "共有"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "サーバーの管理"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "終了しました"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "アカウント"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "反応"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "ライブを開始するには、以下のサーバーURLとストリーム・キーをコピーしてストリーミング・ソフトウェアの設定に貼り付け、「ストリーミング開始」を押してください。<a>OBSを</a>お勧めします。"
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "ミュート"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "サッツを増やすには？"

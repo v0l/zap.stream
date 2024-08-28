@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Kommenttisi kohteelle {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "Mitä satsit ovat?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Jaa"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Hallitse palvelimia"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Päättynyt"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Tili"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reaktiot"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "Jos haluat siirtyä suoratoistoon, kopioi ja liitä palvelimen URL-osoite ja Stream Key alla oleviin suoratoisto-ohjelmistosi asetuksiin ja paina 'Start Streaming'. Suosittelemme <a>OBS:ää</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Mykistä"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "Miten saan lisää satsia?"

@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "{name}에 대한 귀하의 코멘트"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "수능이란 무엇인가요?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "공유"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "서버 관리"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "종료"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "계정"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "반응"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "생방송을 시작하려면 아래의 서버 URL과 스트림 키를 복사하여 스트리밍 소프트웨어 설정에 붙여넣고 '스트리밍 시작'을 누릅니다. <a>OBS를</a> 추천합니다."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "음소거"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "수능 점수를 더 높이려면 어떻게 해야 하나요?"
