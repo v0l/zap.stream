@@ -15,6 +15,7 @@ export default function DashboardIntroStep1() {
   const [error, setError] = useState<string>();
 
   useEffect(() => {
+    //TODO: remove "streamInfo" using account info
     DefaultProvider.info().then(i => {
       setTitle(i.streamInfo?.title ?? "");
       setDescription(i.streamInfo?.summary ?? "");

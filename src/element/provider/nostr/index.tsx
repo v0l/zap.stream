@@ -1,4 +1,3 @@
-import { NostrEvent } from "@snort/system";
 import { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
@@ -212,18 +211,7 @@ export default function NostrProviderDialog({
           provider.updateStreamInfo(system, ex);
           others.onFinish?.(ex);
         }}
-        ev={
-          {
-            tags: [
-              ["title", info.streamInfo?.title ?? ""],
-              ["summary", info.streamInfo?.summary ?? ""],
-              ["image", info.streamInfo?.image ?? ""],
-              ...(info.streamInfo?.goal ? [["goal", info.streamInfo.goal]] : []),
-              ...(info.streamInfo?.content_warning ? [["content-warning", info.streamInfo?.content_warning]] : []),
-              ...(info.streamInfo?.tags?.map(a => ["t", a]) ?? []),
-            ],
-          } as NostrEvent
-        }
+        ev={others.ev}
         options={{
           canSetStream: false,
           canSetStatus: false,

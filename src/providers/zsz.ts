@@ -3,7 +3,6 @@ import {
   StreamProvider,
   StreamProviderEndpoint,
   StreamProviderInfo,
-  StreamProviderStreamInfo,
   StreamProviders,
 } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
@@ -38,7 +37,6 @@ export class NostrStreamProvider implements StreamProvider {
       name: this.name,
       state: StreamState.Planned,
       viewers: 0,
-      streamInfo: rsp.event,
       balance: rsp.balance,
       tosAccepted: rsp.tos?.accepted,
       tosLink: rsp.tos?.link,
@@ -64,8 +62,9 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async updateStreamInfo(_: SystemInterface, ev: NostrEvent): Promise<void> {
-    const { title, summary, image, tags, contentWarning, goal, gameId } = extractStreamInfo(ev);
+    const { title, summary, image, tags, contentWarning, goal, gameId, id } = extractStreamInfo(ev);
     await this.#getJson("PATCH", "event", {
+      id,
       title,
       summary,
       image,
@@ -76,6 +75,7 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async updateStream(props: {
+    id: string,
     title?: string;
     summary?: string;
     image?: string;
@@ -184,7 +184,6 @@ export class NostrStreamProvider implements StreamProvider {
 
 interface AccountResponse {
   balance: number;
-  event?: StreamProviderStreamInfo;
   endpoints: Array<IngestEndpoint>;
   tos?: {
     accepted: boolean;
