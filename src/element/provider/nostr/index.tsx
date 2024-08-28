@@ -14,6 +14,7 @@ import StreamKey from "./stream-key";
 import AccountTopup from "./topup";
 import AccountWithdrawl from "./withdraw";
 import BalanceHistory from "./history";
+import StreamKeyList from "./stream-keys";
 
 export default function NostrProviderDialog({
   provider,
@@ -21,6 +22,7 @@ export default function NostrProviderDialog({
   showEditor,
   showForwards,
   showBalanceHistory,
+  showStreamKeys,
   ...others
 }: {
   provider: NostrStreamProvider;
@@ -28,6 +30,7 @@ export default function NostrProviderDialog({
   showEditor: boolean;
   showForwards: boolean;
   showBalanceHistory: boolean;
+  showStreamKeys: boolean;
 } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
@@ -263,12 +266,18 @@ export default function NostrProviderDialog({
     );
   }
 
+  function streamKeys() {
+    if (!info || !showStreamKeys) return;
+    return <StreamKeyList provider={provider} />;
+  }
+
   return (
     <>
       {showEndpoints && streamEndpoints()}
       {streamEditor()}
       {forwardInputs()}
       {balanceHist()}
+      {streamKeys()}
     </>
   );
 }

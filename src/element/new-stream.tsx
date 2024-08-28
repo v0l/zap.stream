@@ -57,6 +57,7 @@ export function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> 
             showEditor={true}
             showForwards={false}
             showBalanceHistory={false}
+            showStreamKeys={false}
           />
         );
       }

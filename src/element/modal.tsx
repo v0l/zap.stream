@@ -54,7 +54,7 @@ export default function Modal(props: ModalProps) {
             {
               "max-xl:-translate-y-[calc(100vh-100dvh)]": props.ready ?? true,
               "max-xl:translate-y-[50vh]": !(props.ready ?? true),
-              "lg:w-[500px]": !(props.largeModal ?? false),
+              "lg:w-[50vw]": !(props.largeModal ?? false),
               "lg:w-[80vw]": props.largeModal ?? false,
             },
           )

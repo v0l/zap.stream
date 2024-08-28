@@ -263,6 +263,9 @@
   "ESyhzp": {
     "defaultMessage": "Your comment for {name}"
   },
+  "EcglP9": {
+    "defaultMessage": "Key"
+  },
   "FAUhZf": {
     "defaultMessage": "What are sats?"
   },
@@ -432,6 +435,9 @@
   "OKhRC6": {
     "defaultMessage": "Share"
   },
+  "ORGv1Q": {
+    "defaultMessage": "Created"
+  },
   "OadZli": {
     "defaultMessage": "Manage Servers"
   },
@@ -530,6 +536,9 @@
   "TP/cMX": {
     "defaultMessage": "Ended"
   },
+  "TcDwEB": {
+    "defaultMessage": "Stream Keys"
+  },
   "TwyMau": {
     "defaultMessage": "Account"
   },
@@ -591,6 +600,9 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reactions"
+  },
+  "XmQZr5": {
+    "defaultMessage": "No keys"
   },
   "Xq2sb0": {
     "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
@@ -962,6 +974,9 @@
   },
   "x82IOl": {
     "defaultMessage": "Mute"
+  },
+  "xhQMeQ": {
+    "defaultMessage": "Expires"
   },
   "xi3sgh": {
     "defaultMessage": "How do i get more sats?"

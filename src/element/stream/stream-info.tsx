@@ -1,13 +1,13 @@
 import { StreamState } from "@/const";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
-import { getHost, extractStreamInfo, findTag } from "@/utils";
-import { TaggedNostrEvent } from "@snort/system";
+import { getHost, extractStreamInfo, findTag, eventLink } from "@/utils";
+import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { useContext } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
-import { WarningButton } from "../buttons";
+import { Link, useNavigate } from "react-router-dom";
+import { Layer2Button, WarningButton } from "../buttons";
 import { ClipButton } from "./clip-button";
 import { FollowButton } from "../follow-button";
 import GameInfoCard from "../game-info";
@@ -33,7 +33,7 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
   const streamContext = useStream();
 
   const { status, participants, title, summary, service, gameId, gameInfo } = extractStreamInfo(ev);
-  const isMine = ev?.pubkey === login?.pubkey;
+  const isMine = ev?.pubkey === login?.pubkey || host === login?.pubkey;
 
   async function deleteStream() {
     const pub = login?.publisher();
@@ -99,12 +99,19 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
             {ev && <Tags ev={ev} />}
           </div>
           {summary && <StreamSummary text={summary} />}
-          {isMine && (
-            <div className="flex gap-4">
-              {ev && <NewStreamDialog text={<FormattedMessage defaultMessage="Edit" />} ev={ev} />}
-              <WarningButton onClick={deleteStream}>
-                <FormattedMessage defaultMessage="Delete" />
-              </WarningButton>
+          {ev && isMine && (
+            <div className="flex gap-2">
+              <NewStreamDialog text={<FormattedMessage defaultMessage="Edit" />} ev={ev} />
+              <Link to={`/dashboard/${NostrLink.fromEvent(ev).encode()}`}>
+                <Layer2Button>
+                  <FormattedMessage defaultMessage="Dashboard" />
+                </Layer2Button>
+              </Link>
+              {ev?.pubkey === login?.pubkey && (
+                <WarningButton onClick={deleteStream}>
+                  <FormattedMessage defaultMessage="Delete" />
+                </WarningButton>
+              )}
             </div>
           )}
         </div>

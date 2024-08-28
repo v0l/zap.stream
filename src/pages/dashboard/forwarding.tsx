@@ -20,6 +20,7 @@ export default function ForwardingModal({ provider }: { provider: NostrStreamPro
             showEditor={false}
             showEndpoints={false}
             showForwards={true}
+            showStreamKeys={false}
           />
         </Modal>
       )}

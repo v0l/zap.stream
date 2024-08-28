@@ -146,6 +146,17 @@ export class NostrStreamProvider implements StreamProvider {
     return await this.#getJson<BalanceHistoryResult>("GET", `history?page=${page}&pageSize=${pageSize}`);
   }
 
+  async streamKeys(page = 0, pageSize = 20) {
+    return await this.#getJson<StreamKeysResult>("GET", `keys?page=${page}&pageSize=${pageSize}`);
+  }
+
+  async createStreamKey(expires?: undefined) {
+    return await this.#getJson<{ key: string; event: NostrEvent }>("POST", "keys", {
+      event: { title: "New stream key, who dis" },
+      expires,
+    });
+  }
+
   async #getJson<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<T> {
     const pub = (() => {
       if (this.#publisher) {
@@ -213,6 +224,18 @@ export interface BalanceHistoryResult {
     type: number;
     amount: number;
     desc?: string;
+  }>;
+  page: number;
+  pageSize: number;
+}
+
+export interface StreamKeysResult {
+  items: Array<{
+    id: string;
+    created: number;
+    key: string;
+    expires?: number;
+    stream?: NostrEvent;
   }>;
   page: number;
   pageSize: number;

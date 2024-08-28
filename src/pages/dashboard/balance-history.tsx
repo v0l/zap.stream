@@ -20,6 +20,7 @@ export default function BalanceHistoryModal({ provider }: { provider: NostrStrea
             showEditor={false}
             showEndpoints={true}
             showForwards={false}
+            showStreamKeys={false}
           />
         </Modal>
       )}
