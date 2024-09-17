@@ -1,14 +1,13 @@
 import { StreamState } from "@/const";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
-import { getHost, extractStreamInfo, findTag, eventLink } from "@/utils";
+import { getHost, extractStreamInfo, findTag } from "@/utils";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router-dom";
 import { Layer2Button, WarningButton } from "../buttons";
-import { ClipButton } from "./clip-button";
 import { FollowButton } from "../follow-button";
 import GameInfoCard from "../game-info";
 import { NewStreamDialog } from "../new-stream";
@@ -65,7 +64,6 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
             <div className="flex gap-2">
               {ev && (
                 <>
-                  <ClipButton ev={ev} />
                   <ShareMenu ev={ev} />
                   {service && <NotificationsButton host={host} service={service} />}
                   {zapTarget && (

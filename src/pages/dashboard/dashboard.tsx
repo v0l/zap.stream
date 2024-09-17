@@ -148,6 +148,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
                 <DashboardRaidButton link={streamLink} />
                 <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
                 <DashboardSettingsButton ev={streamEvent} />
+                <BalanceHistoryModal provider={provider} />
               </div>
             </>
           )}

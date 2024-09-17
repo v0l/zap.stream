@@ -16,7 +16,6 @@ export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOp
   }, [userCards]);
 
   const subRelated = useMemo(() => {
-    if (!pubkey) return null;
     const splitted = related.map(t => t[1].split(":"));
     const authors = splitted
       .map(s => s.at(1))
@@ -28,7 +27,10 @@ export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOp
       .map(s => s as string);
 
     const rb = new RequestBuilder(`cards:${pubkey}`);
-    rb.withOptions({ leaveOpen }).withFilter().kinds([CARD]).authors(authors).tag("d", identifiers);
+
+    if (pubkey) {
+      rb.withOptions({ leaveOpen }).withFilter().kinds([CARD]).authors(authors).tag("d", identifiers);
+    }
 
     return rb;
   }, [pubkey, related]);
@@ -51,14 +53,16 @@ export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOp
 
 export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[] {
   const sub = useMemo(() => {
-    if (!pubkey) return null;
-    const b = new RequestBuilder(`user-cards:${pubkey?.slice(0, 12)}`);
-    b.withOptions({
-      leaveOpen,
-    })
-      .withFilter()
-      .authors([pubkey])
-      .kinds([USER_CARDS]);
+    const b = new RequestBuilder(`user-cards:${pubkey}`);
+
+    if (pubkey) {
+      b.withOptions({
+        leaveOpen,
+      })
+        .withFilter()
+        .authors([pubkey])
+        .kinds([USER_CARDS]);
+    }
     return b;
   }, [pubkey, leaveOpen]);
 
@@ -73,7 +77,6 @@ export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[]
   }, [userCards]);
 
   const subRelated = useMemo(() => {
-    if (!pubkey) return null;
     const splitted = related.map(t => t[1].split(":"));
     const authors = splitted
       .map(s => s.at(1))
@@ -85,7 +88,10 @@ export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[]
       .map(s => s as string);
 
     const rb = new RequestBuilder(`cards:${pubkey}`);
-    rb.withOptions({ leaveOpen }).withFilter().kinds([CARD]).authors(authors).tag("d", identifiers);
+
+    if (pubkey) {
+      rb.withOptions({ leaveOpen }).withFilter().kinds([CARD]).authors(authors).tag("d", identifiers);
+    }
 
     return rb;
   }, [pubkey, related]);

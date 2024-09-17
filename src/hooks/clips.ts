@@ -5,9 +5,11 @@ import { useMemo } from "react";
 
 export function useProfileClips(link?: NostrLink, limit?: number) {
   const sub = useMemo(() => {
-    if (!link) return;
-    const rb = new RequestBuilder(`clips:${link.id.slice(0, 12)}`);
-    rb.withFilter().kinds([LIVE_STREAM_CLIP]).tag("p", [link.id]).limit(limit);
+    const rb = new RequestBuilder(`clips:${link?.id}`);
+
+    if (link) {
+      rb.withFilter().kinds([LIVE_STREAM_CLIP]).tag("p", [link.id]).limit(limit);
+    }
     return rb;
   }, [link]);
 

@@ -4,13 +4,12 @@ import { useRequestBuilder } from "@snort/system-react";
 
 export function useZaps(link?: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
+    const b = new RequestBuilder(`zaps:${link?.id}`);
     if (link) {
-      const b = new RequestBuilder(`zaps:${link.id}`);
       b.withOptions({ leaveOpen });
       b.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([link]);
-      return b;
     }
-    return null;
+    return b;
   }, [link, leaveOpen]);
 
   const zaps = useRequestBuilder(sub);

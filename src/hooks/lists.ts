@@ -5,10 +5,12 @@ import { useRequestBuilder } from "@snort/system-react";
 
 export function useMutedPubkeys(host?: string, leaveOpen = false) {
   const mutedSub = useMemo(() => {
-    if (!host) return null;
     const rb = new RequestBuilder(`muted:${host}`);
     rb.withOptions({ leaveOpen });
-    rb.withFilter().kinds([EventKind.MuteList]).authors([host]);
+
+    if (host) {
+      rb.withFilter().kinds([EventKind.MuteList]).authors([host]);
+    }
     return rb;
   }, [host]);
 

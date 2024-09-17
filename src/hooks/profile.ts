@@ -6,17 +6,18 @@ import { useZaps } from "./zaps";
 
 export function useProfile(link?: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
-    if (!link) return;
-    const b = new RequestBuilder(`profile:${link.id.slice(0, 12)}`);
-    b.withOptions({
-      leaveOpen,
-    })
-      .withFilter()
-      .kinds([LIVE_STREAM])
-      .authors([link.id]);
+    const b = new RequestBuilder(`profile:${link?.id}`);
 
-    b.withFilter().kinds([LIVE_STREAM]).tag("p", [link.id]);
+    if (link) {
+      b.withOptions({
+        leaveOpen,
+      })
+        .withFilter()
+        .kinds([LIVE_STREAM])
+        .authors([link.id]);
 
+      b.withFilter().kinds([LIVE_STREAM]).tag("p", [link.id]);
+    }
     return b;
   }, [link, leaveOpen]);
 

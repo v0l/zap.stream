@@ -16,12 +16,10 @@ export default function SearchPage() {
   const [search, setSearch] = useState(term ?? "");
 
   const sub = useMemo(() => {
-    if (!term) return;
     const rb = new RequestBuilder(`search:${term}`);
-    rb.withOptions({
-      skipDiff: true,
-    });
-    rb.withFilter().relay(SearchRelays).kinds([EventKind.LiveEvent, VIDEO_KIND]).search(term).limit(50);
+    if (term) {
+      rb.withFilter().relay(SearchRelays).kinds([EventKind.LiveEvent, VIDEO_KIND]).search(term).limit(50);
+    }
     return rb;
   }, [term]);
 

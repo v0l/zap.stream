@@ -5,9 +5,10 @@ import { GOAL } from "@/const";
 
 export function useZapGoal(id?: string) {
   const sub = useMemo(() => {
-    if (!id) return null;
-    const b = new RequestBuilder(`goal:${id.slice(0, 12)}`);
-    b.withFilter().kinds([GOAL]).ids([id]);
+    const b = new RequestBuilder(`goal:${id}`);
+    if (id) {
+      b.withFilter().kinds([GOAL]).ids([id]);
+    }
     return b;
   }, [id]);
 
@@ -17,10 +18,12 @@ export function useZapGoal(id?: string) {
 
 export function useGoals(pubkey?: string, leaveOpen?: boolean, limit?: number) {
   const sub = useMemo(() => {
-    if (!pubkey) return null;
-    const b = new RequestBuilder(`goals:${pubkey.slice(0, 12)}`);
+    const b = new RequestBuilder(`goals:${pubkey}`);
     b.withOptions({ leaveOpen });
-    b.withFilter().kinds([GOAL]).authors([pubkey]).limit(limit);
+
+    if (pubkey) {
+      b.withFilter().kinds([GOAL]).authors([pubkey]).limit(limit);
+    }
     return b;
   }, [pubkey, leaveOpen, limit]);
 

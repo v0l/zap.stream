@@ -7,13 +7,15 @@ type StatusTag = "general" | "music";
 
 export function useStatus(tag: StatusTag, author?: string, leaveOpen = true) {
   const sub = useMemo(() => {
-    if (!author) return null;
-    const b = new RequestBuilder(`status:${tag}:${author.slice(0, 8)}`);
+    const b = new RequestBuilder(`status:${tag}:${author}`);
     b.withOptions({ leaveOpen });
-    b.withFilter()
-      .kinds([30315 as EventKind])
-      .tag("d", [tag])
-      .authors([author]);
+
+    if (author) {
+      b.withFilter()
+        .kinds([30315 as EventKind])
+        .tag("d", [tag])
+        .authors([author]);
+    }
     return b;
   }, [author]);
 

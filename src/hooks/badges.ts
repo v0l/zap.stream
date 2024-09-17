@@ -12,10 +12,11 @@ export function useBadges(
   leaveOpen = true,
 ): { badges: Badge[]; awards: TaggedNostrEvent[] } {
   const rb = useMemo(() => {
-    if (!pubkey) return null;
-    const rb = new RequestBuilder(`badges:${pubkey.slice(0, 12)}`);
+    const rb = new RequestBuilder(`badges:${pubkey}`);
     rb.withOptions({ leaveOpen });
-    rb.withFilter().authors([pubkey]).kinds([EventKind.Badge, EventKind.BadgeAward]);
+    if (pubkey) {
+      rb.withFilter().authors([pubkey]).kinds([EventKind.Badge, EventKind.BadgeAward]);
+    }
     return rb;
   }, [pubkey, since]);
 
@@ -35,9 +36,10 @@ export function useBadges(
   }, [badgeEvents]);
 
   const acceptedSub = useMemo(() => {
-    if (rawBadges.length === 0) return null;
-    const rb = new RequestBuilder(`accepted-badges:${pubkey.slice(0, 12)}`);
-    rb.withFilter().kinds([EventKind.ProfileBadges]).tag("d", ["profile_badges"]).tag("a", rawBadges.map(toAddress));
+    const rb = new RequestBuilder(`accepted-badges:${pubkey}`);
+    if (rawBadges.length > 0) {
+      rb.withFilter().kinds([EventKind.ProfileBadges]).tag("d", ["profile_badges"]).tag("a", rawBadges.map(toAddress));
+    }
     return rb;
   }, [rawBadges]);
 

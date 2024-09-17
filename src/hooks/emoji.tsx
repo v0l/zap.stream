@@ -34,7 +34,6 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   }, [userEmoji]);
 
   const subRelated = useMemo(() => {
-    if (!pubkey) return null;
     const splitted = related.map(t => t[1].split(":"));
     const authors = splitted
       .map(s => s.at(1))
@@ -47,9 +46,10 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
 
     const rb = new RequestBuilder(`emoji-related:${pubkey}`);
 
-    rb.withFilter().kinds([EventKind.EmojiSet]).authors(authors).tag("d", identifiers);
-
-    rb.withFilter().kinds([EventKind.EmojiSet]).authors([pubkey]);
+    if (pubkey) {
+      rb.withFilter().kinds([EventKind.EmojiSet]).authors(authors).tag("d", identifiers);
+      rb.withFilter().kinds([EventKind.EmojiSet]).authors([pubkey]);
+    }
 
     return rb;
   }, [pubkey, related]);
@@ -70,10 +70,11 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
 
 export default function useEmoji(pubkey?: string) {
   const sub = useMemo(() => {
-    if (!pubkey) return null;
     const rb = new RequestBuilder(`emoji:${pubkey}`);
-    rb.withFilter().authors([pubkey]).kinds([EventKind.EmojisList]);
 
+    if (pubkey) {
+      rb.withFilter().authors([pubkey]).kinds([EventKind.EmojisList]);
+    }
     return rb;
   }, [pubkey]);
 

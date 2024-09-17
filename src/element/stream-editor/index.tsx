@@ -172,7 +172,8 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             rows={5}
             placeholder={formatMessage({ defaultMessage: "A description of the stream" })}
             value={summary}
-            onChange={e => setSummary(e.target.value)} />
+            onChange={e => setSummary(e.target.value)}
+          />
         </StreamInput>
       )}
       {(options?.canSetImage ?? true) && (

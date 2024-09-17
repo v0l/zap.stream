@@ -12,8 +12,8 @@ export function useCategoryZaps(gameId: string) {
     const rb = new RequestBuilder(`cat-zaps:zaps:${gameId}`);
     if (links.length > 0) {
       rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink(links);
-      return rb;
     }
+    return rb;
   }, [links]);
   const zapEvents = useRequestBuilder(rbZaps);
 

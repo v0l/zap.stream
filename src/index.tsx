@@ -25,7 +25,6 @@ const DashboardPage = lazy(() => import("./pages/dashboard"));
 import { syncClock } from "./time-sync";
 import SettingsPage from "./pages/settings";
 import AccountSettingsTab from "./pages/settings/account";
-import { StreamSettingsTab } from "./pages/settings/stream";
 import SearchPage from "./pages/search";
 import ProfileSettings from "./pages/settings/profile";
 import CategoryPage from "./pages/category";
@@ -50,7 +49,6 @@ const workerRelay = new WorkerRelayInterface(
 );
 const System = new NostrSystem({
   optimizer: hasWasm ? WasmOptimizer : undefined,
-  automaticOutboxModel: false,
   cachingRelay: workerRelay,
 });
 System.on("event", (_, ev) => {
@@ -74,7 +72,6 @@ async function doInit() {
       databasePath: "relay.db",
       insertBatchSize: 100,
     });
-    await workerRelay.debug("*");
   } catch (e) {
     console.error(e);
   }
