@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Note de {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Supprimer l'image"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Intervalle entre les images clés"
-  },
-  "mtNGwh": {
-    "defaultMessage": "Une courte description du contenu"
   },
   "n19IQE": {
     "defaultMessage": "Taille recommandée : 1920x1080 (16:9)"

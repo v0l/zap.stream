@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "{name}。"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "画像を削除"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "キーフレーム間隔"
-  },
-  "mtNGwh": {
-    "defaultMessage": "コンテンツの簡単な説明"
   },
   "n19IQE": {
     "defaultMessage": "推奨サイズ：1920x1080（16:9）"

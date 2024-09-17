@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Заметка на сайте {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Удалить изображение"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Интервал между ключевыми кадрами"
-  },
-  "mtNGwh": {
-    "defaultMessage": "Краткое описание контента"
   },
   "n19IQE": {
     "defaultMessage": "Рекомендуемый размер: 1920x1080 (16:9)"

@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Note by {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Remove Image"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Keyframe Interval"
-  },
-  "mtNGwh": {
-    "defaultMessage": "شرح مختصری از محتوا"
   },
   "n19IQE": {
     "defaultMessage": "Recommended size: 1920x1080 (16:9)"

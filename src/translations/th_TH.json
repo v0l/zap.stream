@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "เขียนโดย {ชื่อ}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "ลบรูปภาพ"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "ช่วงเวลาคีย์เฟรม"
-  },
-  "mtNGwh": {
-    "defaultMessage": "เพิ่มคำอธิบายเกี่ยวกับถ่ายทอดสดนี้"
   },
   "n19IQE": {
     "defaultMessage": "ขนาดหน้าจอแนะนำ: 1920x1080 (16:9)"

@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Note fra {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Fjern billede"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Keyframe-interval"
-  },
-  "mtNGwh": {
-    "defaultMessage": "En kort beskrivelse af indholdet"
   },
   "n19IQE": {
     "defaultMessage": "Anbefalet størrelse: 1920x1080 (16:9)"

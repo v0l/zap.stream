@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "참고: {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "이미지 제거"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "키프레임 간격"
-  },
-  "mtNGwh": {
-    "defaultMessage": "콘텐츠에 대한 간단한 설명"
   },
   "n19IQE": {
     "defaultMessage": "권장 크기: 1920x1080(16:9)"

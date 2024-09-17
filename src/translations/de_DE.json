@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Note von {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Bild entfernen"
   },
@@ -264,7 +267,7 @@
     "defaultMessage": "Dein Kommentar für {name}"
   },
   "EcglP9": {
-    "defaultMessage": "Key"
+    "defaultMessage": "Schlüssel"
   },
   "FAUhZf": {
     "defaultMessage": "Was sind Sats?"
@@ -436,7 +439,7 @@
     "defaultMessage": "Teilen"
   },
   "ORGv1Q": {
-    "defaultMessage": "Created"
+    "defaultMessage": "Erstellt"
   },
   "OadZli": {
     "defaultMessage": "Server verwalten"
@@ -537,7 +540,7 @@
     "defaultMessage": "Beendet"
   },
   "TcDwEB": {
-    "defaultMessage": "Stream Keys"
+    "defaultMessage": "Streamschlüssel"
   },
   "TwyMau": {
     "defaultMessage": "Konto"
@@ -602,7 +605,7 @@
     "defaultMessage": "Reaktionen"
   },
   "XmQZr5": {
-    "defaultMessage": "No keys"
+    "defaultMessage": "Keine Schlüssel"
   },
   "Xq2sb0": {
     "defaultMessage": "Um live zu gehen, füge die unten stehende Server-URL und den Stream-Schlüssel in die Einstellungen deiner Streaming-Software ein und klick auf „Stream starten“. Wir empfehlen <a>OBS</a>."
@@ -823,9 +826,6 @@
   "msjwph": {
     "defaultMessage": "Keyframe-Intervall"
   },
-  "mtNGwh": {
-    "defaultMessage": "Eine kurze Beschreibung des Inhalts"
-  },
   "n19IQE": {
     "defaultMessage": "Empfohlene Größe: 1920x1080 (16:9)"
   },
@@ -976,7 +976,7 @@
     "defaultMessage": "Stummschalten"
   },
   "xhQMeQ": {
-    "defaultMessage": "Expires"
+    "defaultMessage": "Läuft aus"
   },
   "xi3sgh": {
     "defaultMessage": "Wie bekomme ich mehr Sats?"

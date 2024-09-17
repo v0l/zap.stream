@@ -120,7 +120,7 @@
     "defaultMessage": "创建帐户"
   },
   "5L4ati": {
-    "defaultMessage": "Zap from"
+    "defaultMessage": "打闪来自"
   },
   "5LXWMX": {
     "defaultMessage": "新目标"
@@ -144,7 +144,7 @@
     "defaultMessage": "来自 {name}的突袭"
   },
   "6PK5Jy": {
-    "defaultMessage": "Past Stream"
+    "defaultMessage": "过去的直播"
   },
   "6Z2pvJ": {
     "defaultMessage": "直播流來源"
@@ -195,10 +195,13 @@
     "defaultMessage": "搜索结果： {term}"
   },
   "A7K3S+": {
-    "defaultMessage": "Account Setup"
+    "defaultMessage": "账户设置"
   },
   "ALdW69": {
     "defaultMessage": "{name}的说明"
+  },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
   },
   "AYIR/J": {
     "defaultMessage": "移除图像"
@@ -252,7 +255,7 @@
     "defaultMessage": "在线"
   },
   "DqmiAe": {
-    "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+    "defaultMessage": "没有 nostr 扩展？请尝试 {nos2x}, {nostore} 或 {alby}"
   },
   "E7n6zr": {
     "defaultMessage": "目前的流量成本： {amount} 周六/{unit} （ {x}小时流量约 {usd}/天）。"
@@ -264,7 +267,7 @@
     "defaultMessage": "給 {name} 的留言"
   },
   "EcglP9": {
-    "defaultMessage": "Key"
+    "defaultMessage": "密钥"
   },
   "FAUhZf": {
     "defaultMessage": "什么是 Sats？"
@@ -436,7 +439,7 @@
     "defaultMessage": "分享"
   },
   "ORGv1Q": {
-    "defaultMessage": "Created"
+    "defaultMessage": "已创建"
   },
   "OadZli": {
     "defaultMessage": "管理服务器"
@@ -537,7 +540,7 @@
     "defaultMessage": "已结束"
   },
   "TcDwEB": {
-    "defaultMessage": "Stream Keys"
+    "defaultMessage": "直播流密钥"
   },
   "TwyMau": {
     "defaultMessage": "帐户"
@@ -602,7 +605,7 @@
     "defaultMessage": "反应"
   },
   "XmQZr5": {
-    "defaultMessage": "No keys"
+    "defaultMessage": "没有密钥"
   },
   "Xq2sb0": {
     "defaultMessage": "要进行直播，请将下面的服务器 URL 和流媒体密钥复制并粘贴到流媒体软件设置中，然后按 \"开始流媒体\"。我们推荐使用<a>OBS</a>。"
@@ -661,7 +664,7 @@
     "defaultMessage": "推荐的流媒体设置"
   },
   "bdH+0f": {
-    "defaultMessage": "Balance History"
+    "defaultMessage": "余额历史"
   },
   "bfvyfs": {
     "defaultMessage": "匿名"
@@ -823,9 +826,6 @@
   "msjwph": {
     "defaultMessage": "关键帧间隔"
   },
-  "mtNGwh": {
-    "defaultMessage": "内容的简短描述"
-  },
   "n19IQE": {
     "defaultMessage": "建议尺寸：1920x1080（16:9）"
   },
@@ -931,7 +931,7 @@
     "defaultMessage": "直播流"
   },
   "ug01Mk": {
-    "defaultMessage": "Time"
+    "defaultMessage": "时间"
   },
   "uksRSi": {
     "defaultMessage": "最新视频"
@@ -976,7 +976,7 @@
     "defaultMessage": "静音"
   },
   "xhQMeQ": {
-    "defaultMessage": "Expires"
+    "defaultMessage": "有效期"
   },
   "xi3sgh": {
     "defaultMessage": "我怎样才能获得更多 Sats？"

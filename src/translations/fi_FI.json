@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Muistio {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Poista kuva"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Näppäinkehyksen väli"
-  },
-  "mtNGwh": {
-    "defaultMessage": "Lyhyt kuvaus sisällöstä"
   },
   "n19IQE": {
     "defaultMessage": "Suositeltava koko: 1920x1080 (16:9)"

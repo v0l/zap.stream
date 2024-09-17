@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "Opmerking door {name}"
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Afbeelding verwijderen"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Interval toetsframes"
-  },
-  "mtNGwh": {
-    "defaultMessage": "Een korte beschrijving van de inhoud"
   },
   "n19IQE": {
     "defaultMessage": "Aanbevolen formaat: 1920x1080 (16:9)"

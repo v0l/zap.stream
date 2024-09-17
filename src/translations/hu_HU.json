@@ -200,6 +200,9 @@
   "ALdW69": {
     "defaultMessage": "A {name}feljegyzése."
   },
+  "ASKb16": {
+    "defaultMessage": "A description of the stream"
+  },
   "AYIR/J": {
     "defaultMessage": "Kép eltávolítása"
   },
@@ -822,9 +825,6 @@
   },
   "msjwph": {
     "defaultMessage": "Kulcskocka intervallum"
-  },
-  "mtNGwh": {
-    "defaultMessage": "A tartalom rövid leírása"
   },
   "n19IQE": {
     "defaultMessage": "Ajánlott méret: 1920x1080 (16:9)"
