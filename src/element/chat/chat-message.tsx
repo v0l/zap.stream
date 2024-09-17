@@ -16,11 +16,13 @@ import { CollapsibleEvent } from "../collapsible";
 
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
-import type { Badge, Emoji, EmojiPack } from "@/types";
+import type { Emoji, EmojiPack } from "@/types";
 import Pill from "../pill";
 import classNames from "classnames";
 import Modal from "../modal";
 import { ChatMenu } from "./chat-menu";
+import { BadgeAward } from "@/hooks/badges";
+import AwardedChatBadge from "./chat-badge";
 
 function emojifyReaction(reaction: string) {
   if (reaction === "+") {
@@ -41,7 +43,7 @@ export function ChatMessage({
   ev: TaggedNostrEvent;
   streamer: string;
   emojiPacks: EmojiPack[];
-  badges: Badge[];
+  badges: BadgeAward[];
 }) {
   const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -76,7 +78,7 @@ export function ChatMessage({
     return zaps.filter(a => a.event?.id === ev.id).reduce((acc, z) => acc + z.amount, 0);
   }, [zaps, ev]);
   const hasZaps = totalZaps > 0;
-  const awardedBadges = badges.filter(b => b.awardees.has(ev.pubkey) && b.accepted.has(ev.pubkey));
+  const awardedBadges = badges.filter(b => b.awardees.has(ev.pubkey));
 
   useOnClickOutside(ref, () => {
     setZapping(false);
@@ -142,9 +144,7 @@ export function ChatMessage({
             ev.pubkey === streamer ? (
               <Icon name="signal" size={16} />
             ) : (
-              awardedBadges.map(badge => {
-                return <img key={badge.name} className="h-4" src={badge.thumb || badge.image} alt={badge.name} />;
-              })
+              awardedBadges.map(a => <AwardedChatBadge ev={a.event} pubkey={ev.pubkey} />)
             )
           }
           pubkey={ev.pubkey}

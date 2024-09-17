@@ -4,7 +4,7 @@ import { Icon } from "./icon";
 import { Goal } from "./goal";
 import { Note } from "./note";
 import { EmojiPack } from "./emoji-pack";
-import { Badge } from "./badge";
+import { BadgeInfo } from "./badge";
 import { GOAL, LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { useEventFeed } from "@snort/system-react";
 import LiveStreamClip from "./stream/clip";
@@ -39,7 +39,7 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
       return <EmojiPack ev={ev} />;
     }
     case EventKind.Badge: {
-      return <Badge ev={ev} />;
+      return <BadgeInfo ev={ev} />;
     }
     case EventKind.TextNote: {
       return <Note ev={ev} />;

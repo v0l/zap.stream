@@ -2,7 +2,7 @@ import "./badge.css";
 import type { NostrEvent } from "@snort/system";
 import { findTag } from "@/utils";
 
-export function Badge({ ev }: { ev: NostrEvent }) {
+export function BadgeInfo({ ev }: { ev: NostrEvent }) {
   const name = findTag(ev, "name") || findTag(ev, "d");
   const description = findTag(ev, "description") ?? "";
   const thumb = findTag(ev, "thumb");

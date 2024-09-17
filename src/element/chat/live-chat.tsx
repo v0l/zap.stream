@@ -11,11 +11,11 @@ import { Text } from "../text";
 import { Profile } from "../profile";
 import { ChatMessage } from "./chat-message";
 import { Goal } from "../goal";
-import { Badge } from "../badge";
+import { BadgeInfo } from "../badge";
 import { WriteMessage } from "./write-message";
 import useEmoji, { packId } from "@/hooks/emoji";
 import { useMutedPubkeys } from "@/hooks/lists";
-import { useBadges } from "@/hooks/badges";
+import { useBadgeAwards } from "@/hooks/badges";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
@@ -33,7 +33,7 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
   const event = useEventFeed(new NostrLink(NostrPrefix.Address, d, Number(k), pubkey));
   return (
     <div className="badge-award">
-      {event && <Badge ev={event} />}
+      {event && <BadgeInfo ev={event} />}
       <p>awarded to</p>
       <div className="badge-awardees">
         {awardees.map(pk => (
@@ -86,7 +86,7 @@ export function LiveChat({
     const starts = findTag(ev, "starts");
     return starts ? Number(starts) : unixNow() - WEEK;
   }, [ev]);
-  const { badges, awards } = useBadges(host, started);
+  const { awards } = useBadgeAwards(host);
 
   const hostMutedPubkeys = useMutedPubkeys(host, true);
   const userEmojiPacks = useEmoji(login?.pubkey);
@@ -108,7 +108,7 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
-    return removeUndefined([...feed, ...awards, ...extra])
+    return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
       .filter(a => a.created_at >= started)
       .sort((a, b) => b.created_at - a.created_at);
   }, [feed, awards]);
@@ -202,7 +202,7 @@ export function LiveChat({
               return <BadgeAward ev={a} key={a.id} />;
             }
             case LIVE_STREAM_CHAT: {
-              return <ChatMessage badges={badges} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
+              return <ChatMessage badges={awards} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
             }
             case LIVE_STREAM_RAID: {
               return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;
