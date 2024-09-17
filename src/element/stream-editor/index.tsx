@@ -71,7 +71,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     } else if (gameId) {
       new GameDatabase().getGame(gameId).then(setGame);
     }
-  }, [ev?.id]);
+  }, []);
 
   const validate = useCallback(() => {
     if (title.length < 2) {

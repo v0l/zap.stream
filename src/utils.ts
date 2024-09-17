@@ -101,6 +101,7 @@ export interface StreamInfo {
   title?: string;
   summary?: string;
   image?: string;
+  thumbnail?: string;
   status?: StreamState;
   stream?: string;
   recording?: string;
@@ -132,6 +133,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "title", v => (ret.title = v));
     matchTag(t, "summary", v => (ret.summary = v));
     matchTag(t, "image", v => (ret.image = v));
+    matchTag(t, "thumbnail", v => (ret.thumbnail = v));
     matchTag(t, "status", v => (ret.status = v as StreamState));
     if (t[0] === "streaming" && t[1].startsWith("http")) {
       matchTag(t, "streaming", v => (ret.stream = v));
