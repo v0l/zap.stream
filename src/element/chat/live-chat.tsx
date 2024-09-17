@@ -109,7 +109,7 @@ export function LiveChat({
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
     return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
-      .filter(a => a.created_at >= started)
+      .filter(a => a.created_at >= started && (!ends || a.created_at <= Number(ends)))
       .sort((a, b) => b.created_at - a.created_at);
   }, [feed, awards]);
 
