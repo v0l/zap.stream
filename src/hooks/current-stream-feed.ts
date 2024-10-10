@@ -31,9 +31,9 @@ export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPrelo
   const q = useRequestBuilder(sub);
 
   return useMemo(() => {
-    const hosting = [...q, ...(evPreload ? [evPreload] : [])].filter(
-      a => getHost(a) === author || a.pubkey === author
-    ).sort((a, b) => (b.created_at > a.created_at ? 1 : -1));
+    const hosting = [...q, ...(evPreload ? [evPreload] : [])]
+      .filter(a => getHost(a) === author || a.pubkey === author)
+      .sort((a, b) => (b.created_at > a.created_at ? 1 : -1));
     return hosting.at(0);
   }, [q]);
 }

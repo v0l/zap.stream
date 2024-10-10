@@ -189,31 +189,35 @@ export default function NostrProviderDialog({
 
   function currentBalance() {
     if (!info) return;
-    return <div>
-      <p>
-        <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
-      </p>
-      <div className="flex gap-2">
-        <div className="bg-layer-2 rounded-xl w-full flex items-center px-3">
-          <FormattedMessage
-            defaultMessage="{amount} sats"
-            id="vrTOHJ"
-            values={{ amount: info.balance?.toLocaleString() }}
-          />
+    return (
+      <div>
+        <p>
+          <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
+        </p>
+        <div className="flex gap-2">
+          <div className="bg-layer-2 rounded-xl w-full flex items-center px-3">
+            <FormattedMessage
+              defaultMessage="{amount} sats"
+              id="vrTOHJ"
+              values={{ amount: info.balance?.toLocaleString() }}
+            />
+          </div>
+          <AccountTopup provider={provider} onFinish={loadInfo} />
+          <AccountWithdrawl provider={provider} onFinish={loadInfo} />
         </div>
-        <AccountTopup provider={provider} onFinish={loadInfo} />
-        <AccountWithdrawl provider={provider} onFinish={loadInfo} />
       </div>
-    </div>
+    );
   }
 
   function balanceTimeEstimate() {
     if (!info) return;
-    return <div>
-      <small>
-        <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
-      </small>
-    </div>
+    return (
+      <div>
+        <small>
+          <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
+        </small>
+      </div>
+    );
   }
 
   function streamEditor() {
@@ -288,7 +292,7 @@ export default function NostrProviderDialog({
   return (
     <>
       {showEndpoints && streamEndpoints()}
-      {showBalance&& currentBalance()}
+      {showBalance && currentBalance()}
       {showEstimate && balanceTimeEstimate()}
       {streamEditor()}
       {forwardInputs()}

@@ -171,9 +171,11 @@ export class NostrStreamProvider implements StreamProvider {
 
     const u = `${this.url}${path}`;
     const token = await pub.generic(eb => {
-      return eb.kind(EventKind.HttpAuthentication)
+      return eb
+        .kind(EventKind.HttpAuthentication)
         .content("")
-        .tag(["u", u]).tag(["method", method])
+        .tag(["u", u])
+        .tag(["method", method])
         .createdAt(unixNow() + Math.floor(TimeSync / 1000));
     });
     const rsp = await fetch(u, {
