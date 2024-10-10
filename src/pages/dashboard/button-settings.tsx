@@ -22,6 +22,8 @@ export function DashboardSettingsButton({ ev }: { ev?: TaggedNostrEvent }) {
               provider={provider}
               ev={ev}
               showEndpoints={true}
+              showBalance={true}
+              showEstimate={true}
               showForwards={true}
               showEditor={false}
               showBalanceHistory={false}

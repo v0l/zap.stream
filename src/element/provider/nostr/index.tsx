@@ -20,6 +20,8 @@ export default function NostrProviderDialog({
   provider,
   showEndpoints,
   showEditor,
+  showBalance,
+  showEstimate,
   showForwards,
   showBalanceHistory,
   showStreamKeys,
@@ -27,6 +29,8 @@ export default function NostrProviderDialog({
 }: {
   provider: NostrStreamProvider;
   showEndpoints: boolean;
+  showBalance?: boolean;
+  showEstimate?: boolean;
   showEditor: boolean;
   showForwards: boolean;
   showBalanceHistory: boolean;
@@ -174,25 +178,6 @@ export default function NostrProviderDialog({
         )}
         {ep && <StreamKey ep={ep} />}
         <div>
-          <p>
-            <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
-          </p>
-          <div className="flex gap-2">
-            <div className="bg-layer-2 rounded-xl w-full flex items-center px-3">
-              <FormattedMessage
-                defaultMessage="{amount} sats"
-                id="vrTOHJ"
-                values={{ amount: info.balance?.toLocaleString() }}
-              />
-            </div>
-            <AccountTopup provider={provider} onFinish={loadInfo} />
-            <AccountWithdrawl provider={provider} onFinish={loadInfo} />
-          </div>
-          <small>
-            <FormattedMessage defaultMessage="About {estimate}" id="Q3au2v" values={{ estimate: calcEstimate() }} />
-          </small>
-        </div>
-        <div>
           <p className="pb-2">
             <FormattedMessage defaultMessage="Features" id="ZXp0z1" />
           </p>
@@ -200,6 +185,35 @@ export default function NostrProviderDialog({
         </div>
       </>
     );
+  }
+
+  function currentBalance() {
+    if (!info) return;
+    return <div>
+      <p>
+        <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
+      </p>
+      <div className="flex gap-2">
+        <div className="bg-layer-2 rounded-xl w-full flex items-center px-3">
+          <FormattedMessage
+            defaultMessage="{amount} sats"
+            id="vrTOHJ"
+            values={{ amount: info.balance?.toLocaleString() }}
+          />
+        </div>
+        <AccountTopup provider={provider} onFinish={loadInfo} />
+        <AccountWithdrawl provider={provider} onFinish={loadInfo} />
+      </div>
+    </div>
+  }
+
+  function balanceTimeEstimate() {
+    if (!info) return;
+    return <div>
+      <small>
+        <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
+      </small>
+    </div>
   }
 
   function streamEditor() {
@@ -274,6 +288,8 @@ export default function NostrProviderDialog({
   return (
     <>
       {showEndpoints && streamEndpoints()}
+      {showBalance&& currentBalance()}
+      {showEstimate && balanceTimeEstimate()}
       {streamEditor()}
       {forwardInputs()}
       {balanceHist()}

@@ -17,8 +17,9 @@ export default function BalanceHistoryModal({ provider }: { provider: NostrStrea
           <NostrProviderDialog
             provider={provider}
             showBalanceHistory={true}
+            showBalance={true}
             showEditor={false}
-            showEndpoints={true}
+            showEndpoints={false}
             showForwards={false}
             showStreamKeys={false}
           />
