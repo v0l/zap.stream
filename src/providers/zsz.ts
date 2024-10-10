@@ -5,7 +5,8 @@ import { Login } from "@/login";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
 import { StreamState } from "@/const";
-import { appendDedupe } from "@snort/shared";
+import { appendDedupe, unixNow } from "@snort/shared";
+import { TimeSync } from "@/time-sync";
 
 export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
@@ -170,7 +171,10 @@ export class NostrStreamProvider implements StreamProvider {
 
     const u = `${this.url}${path}`;
     const token = await pub.generic(eb => {
-      return eb.kind(EventKind.HttpAuthentication).content("").tag(["u", u]).tag(["method", method]);
+      return eb.kind(EventKind.HttpAuthentication)
+        .content("")
+        .tag(["u", u]).tag(["method", method])
+        .createdAt(unixNow() + Math.floor(TimeSync / 1000));
     });
     const rsp = await fetch(u, {
       method,

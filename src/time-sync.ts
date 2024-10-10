@@ -9,8 +9,8 @@ export async function syncClock() {
     });
     const nowAtServer = (await req.json()).time as number;
     const now = unixNowMs();
-    TimeSync = now - nowAtServer;
-    console.debug("Time clock sync", TimeSync);
+    TimeSync = nowAtServer - now;
+    console.debug(`Time clock sync ${TimeSync}ms`);
   } catch {
     // ignore
   }
