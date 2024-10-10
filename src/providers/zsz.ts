@@ -31,8 +31,6 @@ export class NostrStreamProvider implements StreamProvider {
     return {
       type: StreamProviders.NostrType,
       name: this.name,
-      state: StreamState.Planned,
-      viewers: 0,
       balance: rsp.balance,
       tosAccepted: rsp.tos?.accepted,
       tosLink: rsp.tos?.link,
@@ -47,7 +45,7 @@ export class NostrStreamProvider implements StreamProvider {
         } as StreamProviderEndpoint;
       }),
       forwards: rsp.forwards,
-    } as StreamProviderInfo;
+    };
   }
 
   createConfig() {

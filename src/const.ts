@@ -32,5 +32,5 @@ export const defaultRelays = {
   "wss://nostr.wine": { read: true, write: true },
 };
 
-export const DefaultProviderUrl = "https://api.zap.stream/api/nostr/";
-//export const DefaultProviderUrl = "http://localhost:5295/api/nostr/";
+export const DefaultProviderUrl = "https://api.zap.stream/api/nostr";
+//export const DefaultProviderUrl = "http://localhost:5295/api/nostr";

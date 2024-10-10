@@ -13,7 +13,7 @@ export class ManualProvider implements StreamProvider {
   info(): Promise<StreamProviderInfo> {
     return Promise.resolve({
       name: this.name,
-    } as StreamProviderInfo);
+    });
   }
 
   createConfig() {

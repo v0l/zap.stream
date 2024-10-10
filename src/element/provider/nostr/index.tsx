@@ -159,7 +159,7 @@ export default function NostrProviderDialog({
   }
 
   function streamEndpoints() {
-    if (!info) return;
+    if (!info?.endpoints) return;
     return (
       <>
         {info.endpoints.length > 1 && (

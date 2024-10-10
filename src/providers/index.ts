@@ -3,7 +3,7 @@ import { ExternalStore } from "@snort/shared";
 import { NostrStreamProvider } from "./zsz";
 import { ManualProvider } from "./manual";
 import { OwncastProvider } from "./owncast";
-import { DefaultProviderUrl, StreamState } from "@/const";
+import { DefaultProviderUrl } from "@/const";
 
 export { NostrStreamProvider } from "./zsz";
 
@@ -47,13 +47,10 @@ export enum StreamProviders {
 export interface StreamProviderInfo {
   name: string;
   summary?: string;
-  version?: string;
-  state: StreamState;
-  viewers?: number;
   publishedEvent?: NostrEvent;
   streamInfo?: StreamProviderStreamInfo;
   balance?: number;
-  endpoints: Array<StreamProviderEndpoint>;
+  endpoints?: Array<StreamProviderEndpoint>;
   tosAccepted?: boolean;
   tosLink?: string;
   forwards?: Array<StreamProviderForward>;
