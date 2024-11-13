@@ -145,13 +145,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     }
   }
 
-  function toDateTimeString(n: number) {
-    return new Date(n * 1000).toISOString().substring(0, -1);
-  }
-
-  function fromDateTimeString(s: string) {
-    return Math.floor(new Date(s).getTime() / 1000);
-  }
+  const startsDate = new Date(parseInt(start ?? "0") * 1000);
 
   return (
     <>
@@ -209,8 +203,10 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             <StreamInput label={<FormattedMessage defaultMessage="Start Time" />}>
               <input
                 type="datetime-local"
-                value={toDateTimeString(Number(start ?? "0"))}
-                onChange={e => setStart(fromDateTimeString(e.target.value).toString())}
+                value={`${startsDate.getFullYear().toString().padStart(4, "0")}-${startsDate.getMonth().toString().padStart(2, "0")}-${startsDate.getDate().toString().padStart(2, "0")}T${startsDate.getHours().toString().padStart(2, "0")}:${startsDate.getMinutes().toString().padStart(2, "0")}`}
+                onChange={e => {
+                  setStart((e.target.valueAsNumber / 1000).toString());
+                }}
               />
             </StreamInput>
           )}

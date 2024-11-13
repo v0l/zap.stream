@@ -49,7 +49,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
 
   const provider = useMemo(() => (service ? new NostrStreamProvider("", service) : DefaultProvider), [service]);
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == (recording ? "Best" : "Good")) ?? info?.endpoints[0];
+    return info?.endpoints?.find(a => a.name == (recording ? "Best" : "Good")) ?? info?.endpoints?.at(0);
   }, [info, recording]);
 
   useEffect(() => {
@@ -84,28 +84,44 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
 
   if (!streamLink && !location.search.includes("setupComplete=true")) return <DashboardIntro />;
 
+  function headingText() {
+    switch (status) {
+      case StreamState.Live:
+        return <FormattedMessage defaultMessage="Started" />;
+      case StreamState.Ended:
+        return <FormattedMessage defaultMessage="Stopped" />;
+      case StreamState.Planned:
+        return <FormattedMessage defaultMessage="Planned" />;
+    }
+  }
+
+  function headingDotStyle() {
+    switch (status) {
+      case StreamState.Live:
+        return "animate-pulse bg-green-500";
+      case StreamState.Ended:
+        return "bg-red-500";
+      case StreamState.Planned:
+        return "bg-yellow-500";
+    }
+  }
+
   return (
     <div
       className={classNames("grid gap-2 h-[calc(100dvh-52px)] w-full", {
         "grid-cols-3": status === StreamState.Live,
         "grid-cols-[20%_80%]": status === StreamState.Ended,
+        "grid-cols-[40%_60%]": status === StreamState.Planned,
       })}>
       <div className="min-h-0 h-full grid grid-rows-[min-content_auto] gap-2">
         <DashboardCard className="flex flex-col gap-4">
           <div className="flex justify-between items-center">
             <h3>
-              <FormattedMessage defaultMessage="Stream" id="uYw2LD" />
+              <FormattedMessage defaultMessage="Stream" />
             </h3>
             <div className="uppercase font-semibold flex items-center gap-2">
-              <div
-                className={`w-3 h-3 rounded-full ${
-                  status === StreamState.Live ? "animate-pulse bg-green-500" : "bg-red-500"
-                }`}></div>
-              {status === StreamState.Live ? (
-                <FormattedMessage defaultMessage="Started" />
-              ) : (
-                <FormattedMessage defaultMessage="Stopped" />
-              )}
+              <div className={`w-3 h-3 rounded-full ${headingDotStyle()}`}></div>
+              {headingText()}
             </div>
           </div>
           {streamLink && status === StreamState.Live && !isMyManual && (
@@ -152,7 +168,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
               </div>
             </>
           )}
-          {streamLink && isMyManual && status === StreamState.Live && (
+          {streamLink && isMyManual && (status === StreamState.Live || status === StreamState.Planned) && (
             <>
               <LiveVideoPlayer stream={stream} status={status} poster={image} muted={true} className="w-full" />
               <div className="grid gap-2 grid-cols-3">
@@ -223,7 +239,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
             </div>
           </DashboardCard>
         )}
-        {(!streamLink || status === StreamState.Ended) && (
+        {(!streamLink || status !== StreamState.Live) && (
           <DashboardCard className="flex flex-col gap-4">
             <h3>
               <FormattedMessage defaultMessage="Account Setup" />
@@ -266,6 +282,7 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
           </DashboardCard>
         </>
       )}
+      {streamLink && status === StreamState.Planned && <DashboardCard className="overflow-y-auto"></DashboardCard>}
     </div>
   );
 }

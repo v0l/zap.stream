@@ -1,10 +1,9 @@
 import { base64 } from "@scure/base";
-import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo, StreamProviders } from ".";
+import { StreamProvider, StreamProviderEndpoint, StreamProviders } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login } from "@/login";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
-import { StreamState } from "@/const";
 import { appendDedupe, unixNow } from "@snort/shared";
 import { TimeSync } from "@/time-sync";
 
