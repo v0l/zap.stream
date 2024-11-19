@@ -35,10 +35,12 @@ type VideoPlayerProps = {
 export default function LiveVideoPlayer({ title, stream, status, poster, link, ...props }: VideoPlayerProps) {
   function innerPlayer() {
     if (stream === "nip94") {
-      return <Nip94Player link={link} />
+      return <Nip94Player link={link} />;
     }
-    {/* @ts-ignore Web Componenet */ }
-    return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />
+    {
+      /* @ts-ignore Web Componenet */
+    }
+    return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
   }
   return (
     <MediaController

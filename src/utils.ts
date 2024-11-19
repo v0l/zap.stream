@@ -115,7 +115,7 @@ export interface StreamInfo {
   host?: string;
   gameId?: string;
   gameInfo?: GameInfo;
-  streams: Array<string>
+  streams: Array<string>;
 }
 
 const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;

@@ -56,7 +56,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
         </Helmet>
         <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
           <Suspense>
-            {ev?.kind === LIVE_STREAM &&
+            {ev?.kind === LIVE_STREAM && (
               <LiveVideoPlayer
                 title={title}
                 stream={status === StreamState.Live ? stream : recording}
@@ -64,7 +64,8 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
                 status={status}
                 link={evLink}
                 className="max-xl:max-h-[30vh] xl:w-full xl:max-h-[85dvh] mx-auto"
-              />}
+              />
+            )}
           </Suspense>
           <div className="lg:px-5 max-lg:px-2">
             <StreamInfo ev={ev as TaggedNostrEvent} goal={goal} />

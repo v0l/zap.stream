@@ -36,9 +36,7 @@ export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number)
   const live = feedSorted
     .filter(a => {
       try {
-        return (
-          findTag(a, "status") === StreamState.Live && canPlayEvent(a)
-        );
+        return findTag(a, "status") === StreamState.Live && canPlayEvent(a);
       } catch {
         return false;
       }
