@@ -115,6 +115,7 @@ export interface StreamInfo {
   host?: string;
   gameId?: string;
   gameInfo?: GameInfo;
+  streams: Array<string>
 }
 
 const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
@@ -135,8 +136,9 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "image", v => (ret.image = v));
     matchTag(t, "thumbnail", v => (ret.thumbnail = v));
     matchTag(t, "status", v => (ret.status = v as StreamState));
-    if (t[0] === "streaming" && t[1].startsWith("http")) {
-      matchTag(t, "streaming", v => (ret.stream = v));
+    if (t[0] === "streaming") {
+      ret.streams ??= [];
+      ret.streams.push(t[1]);
     }
     matchTag(t, "recording", v => (ret.recording = v));
     matchTag(t, "url", v => (ret.recording = v));
@@ -154,6 +156,14 @@ export function extractStreamInfo(ev?: NostrEvent) {
   ret.gameId = gameId;
   ret.gameInfo = gameInfo;
 
+  if (ret.streams) {
+    const isN94 = ret.streams.includes("nip94");
+    if (isN94) {
+      ret.stream = "nip94";
+    } else {
+      ret.stream = ret.streams.find(a => a.includes(".m3u8"));
+    }
+  }
   return ret;
 }
 

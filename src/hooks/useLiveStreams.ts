@@ -1,4 +1,4 @@
-import { DAY, StreamState } from "@/const";
+import { DAY, LIVE_STREAM, StreamState } from "@/const";
 import { findTag, getHost } from "@/utils";
 import { unixNow } from "@snort/shared";
 import { NostrEvent, TaggedNostrEvent } from "@snort/system";
@@ -24,12 +24,20 @@ export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number)
     return [];
   }, [feed]);
 
+  function canPlayEvent(ev: NostrEvent) {
+    if (ev.kind === LIVE_STREAM) {
+      const isHls = ev.tags.some(a => a[0] === "streaming" && a[1].includes(".m3u8"));
+      const isN94 = ev.tags.some(a => a[0] === "streaming" && a[1] == "nip94");
+      return isHls || isN94;
+    }
+    return false;
+  }
+
   const live = feedSorted
     .filter(a => {
       try {
         return (
-          findTag(a, "status") === StreamState.Live &&
-          a.tags.some(a => a[0] === "streaming" && new URL(a[1]).pathname.includes(".m3u8"))
+          findTag(a, "status") === StreamState.Live && canPlayEvent(a)
         );
       } catch {
         return false;

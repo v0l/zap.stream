@@ -10,7 +10,7 @@ import { useZapGoal } from "@/hooks/goals";
 import { StreamCards } from "@/element/stream-cards";
 import { ContentWarningOverlay, useContentWarning } from "@/element/nsfw";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import { StreamState } from "@/const";
+import { LIVE_STREAM, StreamState } from "@/const";
 import { StreamInfo } from "@/element/stream/stream-info";
 import { StreamContextProvider } from "@/element/stream/stream-state";
 
@@ -46,23 +46,25 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
     <StreamContextProvider link={link}>
       <div className="xl:grid xl:grid-cols-[auto_450px] 2xl:xl:grid-cols-[auto_500px] max-xl:flex max-xl:flex-col xl:gap-4 max-xl:gap-1 h-full">
         <Helmet>
-          <title>{`${title} - zap.stream`}</title>
+          <title>{`${title ?? "Untitled"} - zap.stream`}</title>
           <meta name="description" content={descriptionContent} />
           <meta property="og:url" content={`https://${window.location.host}/${link.encode()}`} />
           <meta property="og:type" content="video" />
-          <meta property="og:title" content={title} />
+          <meta property="og:title" content={title ?? "Untitled"} />
           <meta property="og:description" content={descriptionContent} />
           <meta property="og:image" content={image ?? ""} />
         </Helmet>
         <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
           <Suspense>
-            <LiveVideoPlayer
-              title={title}
-              stream={status === StreamState.Live ? stream : recording}
-              poster={image}
-              status={status}
-              className="max-xl:max-h-[30vh] xl:w-full xl:max-h-[85dvh] mx-auto"
-            />
+            {ev?.kind === LIVE_STREAM &&
+              <LiveVideoPlayer
+                title={title}
+                stream={status === StreamState.Live ? stream : recording}
+                poster={image}
+                status={status}
+                link={evLink}
+                className="max-xl:max-h-[30vh] xl:w-full xl:max-h-[85dvh] mx-auto"
+              />}
           </Suspense>
           <div className="lg:px-5 max-lg:px-2">
             <StreamInfo ev={ev as TaggedNostrEvent} goal={goal} />

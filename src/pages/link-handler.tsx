@@ -1,7 +1,7 @@
-import { SHORTS_KIND, VIDEO_KIND } from "@/const";
+import { LIVE_STREAM, SHORTS_KIND, VIDEO_KIND } from "@/const";
 import { useStreamLink } from "@/hooks/stream-link";
 import { getEventFromLocationState } from "@/utils";
-import { NostrPrefix, EventKind } from "@snort/system";
+import { NostrPrefix } from "@snort/system";
 import { useLocation } from "react-router-dom";
 import { StreamPage } from "./stream-page";
 import { VideoPage } from "./video";
@@ -25,7 +25,7 @@ export function LinkHandler() {
         <NostrEventElement link={link} />
       </div>
     );
-  } else if (link.kind === EventKind.LiveEvent || link.type === NostrPrefix.PublicKey) {
+  } else if (link.kind === LIVE_STREAM || link.type === NostrPrefix.PublicKey) {
     return (
       <div className={classNames(layoutContext.showHeader ? "h-[calc(100dvh-44px)]" : "h-[calc(100dvh)]", "w-full")}>
         <StreamPage link={link} evPreload={evPreload} />

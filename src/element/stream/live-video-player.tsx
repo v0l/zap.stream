@@ -20,6 +20,8 @@ import {
 } from "media-chrome/react";
 import "hls-video-element";
 import { StreamState } from "@/const";
+import Nip94Player from "./n94-player";
+import { NostrLink } from "@snort/system";
 
 type VideoPlayerProps = {
   title?: string;
@@ -27,9 +29,17 @@ type VideoPlayerProps = {
   stream?: string;
   poster?: string;
   muted?: boolean;
+  link: NostrLink;
 } & HTMLProps<HTMLVideoElement>;
 
-export default function LiveVideoPlayer({ title, stream, status, poster, ...props }: VideoPlayerProps) {
+export default function LiveVideoPlayer({ title, stream, status, poster, link, ...props }: VideoPlayerProps) {
+  function innerPlayer() {
+    if (stream === "nip94") {
+      return <Nip94Player link={link} />
+    }
+    {/* @ts-ignore Web Componenet */ }
+    return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />
+  }
   return (
     <MediaController
       className={classNames(props.className, "h-inherit aspect-video w-full")}
@@ -42,8 +52,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, ...prop
       <div slot="top-chrome" className="py-1 text-center w-full text-2xl bg-primary">
         {title}
       </div>
-      {/* @ts-ignore Web Componenet */}
-      <hls-video {...props} slot="media" src={stream} playsInline={true} />
+      {innerPlayer()}
       <MediaRenditionMenu hidden anchor="auto" />
       {poster && <MediaPosterImage slot="poster" src={poster} />}
       <MediaControlBar>
