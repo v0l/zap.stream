@@ -2,7 +2,7 @@ import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
 import { EventKind, NostrEvent, NostrLink, NostrPrefix, ParsedZap, TaggedNostrEvent } from "@snort/system";
 import { useEventFeed, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
-import { removeUndefined, unixNow, unwrap } from "@snort/shared";
+import { dedupe, removeUndefined, sanitizeRelayUrl, unixNow, unwrap } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
 import { Icon } from "../icon";
@@ -69,14 +69,17 @@ export function LiveChat({
   className?: string;
   autoRaid?: boolean;
 }) {
+  const relays = dedupe(removeUndefined(ev?.tags.filter(a => a[0] === "relays").map(a => sanitizeRelayUrl(a[1])) ?? []));
   const host = getHost(ev);
   const feed = useReactions(
     `live:${link?.id}:${link?.author}:reactions`,
     goal ? [link, NostrLink.fromEvent(goal)] : [link],
     rb => {
       if (link) {
-        const aTag = `${link.kind}:${link.author}:${link.id}`;
-        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).tag("a", [aTag]).limit(200);
+        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
+          .replyToLink([link])
+          .relay(relays)
+          .limit(200);
       }
     },
     true,
@@ -227,7 +230,7 @@ export function LiveChat({
             <WriteMessage
               emojiPacks={allEmojiPacks}
               link={link}
-              relays={ev?.tags.filter(a => a[0] === "relays").map(a => a[1])}
+              relays={relays}
             />
           ) : (
             <p>
