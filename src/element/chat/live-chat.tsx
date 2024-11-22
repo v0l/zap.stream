@@ -224,7 +224,11 @@ export function LiveChat({
       {(canWrite ?? true) && (
         <div className="flex gap-2 border-t py-2 border-layer-1">
           {login ? (
-            <WriteMessage emojiPacks={allEmojiPacks} link={link} />
+            <WriteMessage
+              emojiPacks={allEmojiPacks}
+              link={link}
+              relays={ev?.tags.filter(a => a[0] === "relays").map(a => a[1])}
+            />
           ) : (
             <p>
               <FormattedMessage defaultMessage="Please login to write messages!" id="RXQdxR" />

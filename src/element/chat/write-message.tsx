@@ -16,10 +16,12 @@ export function WriteMessage({
   link,
   emojiPacks,
   kind,
+  relays,
 }: {
   link: NostrLink;
   emojiPacks: EmojiPack[];
   kind?: EventKind;
+  relays?: Array<string>;
 }) {
   const system = useContext(SnortContext);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -61,6 +63,9 @@ export function WriteMessage({
       if (reply) {
         console.debug(reply);
         system.BroadcastEvent(reply);
+        for (const r of relays ?? []) {
+          system.WriteOnceToRelay(r, reply);
+        }
       }
       setChat("");
     }

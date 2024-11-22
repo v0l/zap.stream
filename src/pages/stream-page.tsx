@@ -56,7 +56,7 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
         </Helmet>
         <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
           <Suspense>
-            {ev?.kind === LIVE_STREAM && (
+            {ev?.kind === LIVE_STREAM && evLink && (
               <LiveVideoPlayer
                 title={title}
                 stream={status === StreamState.Live ? stream : recording}
