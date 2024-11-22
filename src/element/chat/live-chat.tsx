@@ -69,14 +69,17 @@ export function LiveChat({
   className?: string;
   autoRaid?: boolean;
 }) {
-  const relays = dedupe(removeUndefined(ev?.tags.filter(a => a[0] === "relays").map(a => sanitizeRelayUrl(a[1])) ?? []));
+  const relays = dedupe(
+    removeUndefined(ev?.tags.filter(a => a[0] === "relays").map(a => sanitizeRelayUrl(a[1])) ?? []),
+  );
   const host = getHost(ev);
   const feed = useReactions(
     `live:${link?.id}:${link?.author}:reactions`,
     goal ? [link, NostrLink.fromEvent(goal)] : [link],
     rb => {
       if (link) {
-        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
+        rb.withFilter()
+          .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
           .replyToLink([link])
           .relay(relays)
           .limit(200);
@@ -227,11 +230,7 @@ export function LiveChat({
       {(canWrite ?? true) && (
         <div className="flex gap-2 border-t py-2 border-layer-1">
           {login ? (
-            <WriteMessage
-              emojiPacks={allEmojiPacks}
-              link={link}
-              relays={relays}
-            />
+            <WriteMessage emojiPacks={allEmojiPacks} link={link} relays={relays} />
           ) : (
             <p>
               <FormattedMessage defaultMessage="Please login to write messages!" id="RXQdxR" />

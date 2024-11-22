@@ -47,7 +47,7 @@ const hasWasm = "WebAssembly" in globalThis;
 const workerRelay = new WorkerRelayInterface(
   import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite(),
 );
-EventBuilder.ClientTag = ["client", "zap.stream", __ZAP_STREAM_VERSION__]
+EventBuilder.ClientTag = ["client", "zap.stream", __ZAP_STREAM_VERSION__];
 const System = new NostrSystem({
   optimizer: hasWasm ? WasmOptimizer : undefined,
   cachingRelay: workerRelay,
