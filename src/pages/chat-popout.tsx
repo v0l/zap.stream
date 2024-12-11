@@ -16,15 +16,17 @@ export function ChatPopout() {
   const chat = Boolean(new URL(window.location.href).searchParams.get("chat"));
   return (
     <div className="h-[calc(100vh-1rem)] w-screen px-2 my-2">
-      {ev && <LiveChat
-        ev={ev}
-        link={NostrLink.fromEvent(ev)}
-        canWrite={chat}
-        showScrollbar={false}
-        goal={goal}
-        className="h-inherit"
-        autoRaid={false}
-      />}
+      {ev && (
+        <LiveChat
+          ev={ev}
+          link={NostrLink.fromEvent(ev)}
+          canWrite={chat}
+          showScrollbar={false}
+          goal={goal}
+          className="h-inherit"
+          autoRaid={false}
+        />
+      )}
     </div>
   );
 }
