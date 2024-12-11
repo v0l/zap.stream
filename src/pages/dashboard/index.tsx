@@ -1,7 +1,9 @@
 import { useLogin } from "@/hooks/login";
 import { NostrLink, NostrPrefix, parseNostrLink } from "@snort/system";
-import { DashboardForLink } from "./dashboard";
+import { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
+
+const DashboardForLink = lazy(() => import("./dashboard"));
 
 export default function DashboardPage() {
   const login = useLogin();
@@ -9,5 +11,9 @@ export default function DashboardPage() {
   if (!login) return;
   const link = id ? parseNostrLink(id) : new NostrLink(NostrPrefix.PublicKey, login.pubkey);
 
-  return <DashboardForLink link={link} />;
+  return (
+    <Suspense>
+      <DashboardForLink link={link} />
+    </Suspense>
+  );
 }

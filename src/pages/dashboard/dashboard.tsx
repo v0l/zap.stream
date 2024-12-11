@@ -16,12 +16,12 @@ import { DashboardCard } from "./card";
 import { NewStreamDialog } from "@/element/new-stream";
 import { DashboardSettingsButton } from "./button-settings";
 import DashboardIntro from "./intro";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import StreamKey from "@/element/provider/nostr/stream-key";
 import { DefaultProvider, NostrStreamProvider, StreamProviderInfo } from "@/providers";
 import { ExternalLink } from "@/element/external-link";
 import BalanceTimeEstimate from "@/element/balance-time-estimate";
-import { Layer1Button, WarningButton } from "@/element/buttons";
+import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons";
 import { useLogin } from "@/hooks/login";
 import AccountTopup from "@/element/provider/nostr/topup";
 import classNames from "classnames";
@@ -30,15 +30,19 @@ import { unixNow } from "@snort/shared";
 import { Icon } from "@/element/icon";
 import ForwardingModal from "./forwarding";
 import BalanceHistoryModal from "./balance-history";
+import Modal from "@/element/modal";
+import { AcceptTos } from "./tos";
 const StreamSummary = lazy(() => import("@/element/summary-chart"));
 
-export function DashboardForLink({ link }: { link: NostrLink }) {
+export default function DashboardForLink({ link }: { link: NostrLink }) {
+  const navigate = useNavigate();
   const streamEvent = useCurrentStreamFeed(link, true);
   const location = useLocation();
   const login = useLogin();
   const streamLink = streamEvent ? NostrLink.fromEvent(streamEvent) : undefined;
   const { stream, status, image, participants, service } = extractStreamInfo(streamEvent);
   const [info, setInfo] = useState<StreamProviderInfo>();
+  const [tos, setTos] = useState(info?.tosAccepted ?? false);
   const isMyManual = streamEvent?.pubkey === login?.pubkey;
   const system = useContext(SnortContext);
   const [recording, setRecording] = useState(Boolean(localStorage.getItem("default-recording") ?? "true"));
@@ -126,7 +130,14 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
           </div>
           {streamLink && status === StreamState.Live && !isMyManual && (
             <>
-              <LiveVideoPlayer stream={stream} status={status} poster={image} muted={true} className="w-full" />
+              <LiveVideoPlayer
+                stream={stream}
+                link={streamLink}
+                status={status}
+                poster={image}
+                muted={true}
+                className="w-full"
+              />
               <div className="flex gap-4">
                 <DashboardStatsCard
                   name={<FormattedMessage defaultMessage="Stream Time" />}
@@ -170,7 +181,14 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
           )}
           {streamLink && isMyManual && (status === StreamState.Live || status === StreamState.Planned) && (
             <>
-              <LiveVideoPlayer stream={stream} status={status} poster={image} muted={true} className="w-full" />
+              <LiveVideoPlayer
+                link={streamLink}
+                stream={stream}
+                status={status}
+                poster={image}
+                muted={true}
+                className="w-full"
+              />
               <div className="grid gap-2 grid-cols-3">
                 <DashboardRaidButton link={streamLink} />
                 <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
@@ -283,6 +301,29 @@ export function DashboardForLink({ link }: { link: NostrLink }) {
         </>
       )}
       {streamLink && status === StreamState.Planned && <DashboardCard className="overflow-y-auto"></DashboardCard>}
+      {info && !info.tosAccepted && (
+        <Modal id="tos-dashboard">
+          <div className="flex flex-col gap-4">
+            <h2>Please accept TOS before continuing</h2>
+            <AcceptTos provider={info?.name} tosLink={info?.tosLink} tos={tos} setTos={setTos} />
+            <div className="flex items-center justify-between">
+              <Layer2Button
+                disabled={!tos}
+                onClick={async () => {
+                  if (tos) {
+                    await provider.acceptTos();
+                    provider.info().then(setInfo);
+                  }
+                }}>
+                <FormattedMessage defaultMessage="Save" />
+              </Layer2Button>
+              <WarningButton onClick={() => navigate("/")}>
+                <FormattedMessage defaultMessage="No Thanks!" />
+              </WarningButton>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { CSSProperties, HTMLProps } from "react";
+import { CSSProperties, HTMLProps, Suspense, lazy } from "react";
 import classNames from "classnames";
 import {
   MediaControlBar,
@@ -20,8 +20,8 @@ import {
 } from "media-chrome/react";
 import "hls-video-element";
 import { StreamState } from "@/const";
-import Nip94Player from "./n94-player";
 import { NostrLink } from "@snort/system";
+const Nip94Player = lazy(() => import("./n94-player"));
 
 type VideoPlayerProps = {
   title?: string;
@@ -35,12 +35,15 @@ type VideoPlayerProps = {
 export default function LiveVideoPlayer({ title, stream, status, poster, link, ...props }: VideoPlayerProps) {
   function innerPlayer() {
     if (stream === "nip94") {
-      return <Nip94Player link={link} />;
-    }
-    {
+      return (
+        <Suspense>
+          <Nip94Player link={link} />
+        </Suspense>
+      );
+    } else {
       /* @ts-ignore Web Componenet */
+      return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
     }
-    return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
   }
   return (
     <MediaController

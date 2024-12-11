@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import ZapGlow from "../zap-glow";
+import { AcceptTos } from "../tos";
 
 export default function DashboardIntro() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function DashboardIntro() {
   const exampleHours = 4;
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == "Best") ?? info?.endpoints[0];
+    return info?.endpoints?.find(a => a.name == "Best") ?? info?.endpoints?.at(0);
   }, [info]);
   const rate = useRates("BTCUSD");
   const exampleCost = rate.ask * (exampleHours * (defaultEndpoint?.rate ?? 0) * 60) * 1e-8;
@@ -69,31 +70,7 @@ export default function DashboardIntro() {
           }}
         />
       </p>
-      {!info?.tosAccepted && (
-        <div>
-          <div className="flex gap-2 cursor-pointer select-none" onClick={() => setTos(v => !v)}>
-            <input type="checkbox" checked={tos} onChange={e => setTos(e.target.checked)} />
-            <p>
-              <FormattedMessage
-                defaultMessage="I have read and agree with {provider}'s {terms}."
-                values={{
-                  provider: info?.name,
-                  terms: (
-                    <span
-                      className="text-primary"
-                      onClick={e => {
-                        e.stopPropagation();
-                        window.open(info?.tosLink, "popup", "width=400,height=800");
-                      }}>
-                      <FormattedMessage defaultMessage="terms and conditions" />
-                    </span>
-                  ),
-                }}
-              />
-            </p>
-          </div>
-        </div>
-      )}
+      {!info?.tosAccepted && <AcceptTos provider={info?.name} tosLink={info?.tosLink} tos={tos} setTos={setTos} />}
       <DefaultButton
         disabled={!tos}
         onClick={async () => {
