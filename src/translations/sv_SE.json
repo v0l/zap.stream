@@ -730,6 +730,9 @@
   "gzsn7k": {
     "defaultMessage": "{n} meddelanden"
   },
+  "h6NRY6": {
+    "defaultMessage": "No Thanks!"
+  },
   "h9mX2/": {
     "defaultMessage": "Om du använder vår egen zap.stream-hosting (billigast och enklast) kopierar du din stream-URL och Stream Key till dina OBS-inställningar så är du redo att köra."
   },

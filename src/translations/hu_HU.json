@@ -730,6 +730,9 @@
   "gzsn7k": {
     "defaultMessage": "{n} üzenetek"
   },
+  "h6NRY6": {
+    "defaultMessage": "No Thanks!"
+  },
   "h9mX2/": {
     "defaultMessage": "Ha a házon belüli zap.stream tárhelyet használja (ez a legolcsóbb és legegyszerűbb), másolja be a stream URL-jét és a Stream Key-t az OBS beállításaiba, és máris készen áll."
   },

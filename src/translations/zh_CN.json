@@ -730,6 +730,9 @@
   "gzsn7k": {
     "defaultMessage": "{n} 信息"
   },
+  "h6NRY6": {
+    "defaultMessage": "No Thanks!"
+  },
   "h9mX2/": {
     "defaultMessage": "如果您使用我们内部的 zap.stream 托管（最便宜、最简单），请将您的流 URL 和流密钥复制到您的 OBS 设置中，然后就可以使用了。"
   },

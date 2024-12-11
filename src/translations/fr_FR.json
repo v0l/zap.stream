@@ -730,6 +730,9 @@
   "gzsn7k": {
     "defaultMessage": "{n} messages"
   },
+  "h6NRY6": {
+    "defaultMessage": "No Thanks!"
+  },
   "h9mX2/": {
     "defaultMessage": "Si vous utilisez notre hébergement interne zap.stream (le moins cher et le plus simple), copiez l'URL et la clé de votre flux dans vos paramètres OBS et vous devriez être prêt."
   },
