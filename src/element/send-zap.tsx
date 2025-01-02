@@ -46,6 +46,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
   const usdAmounts = [0.05, 0.5, 2, 5, 10, 50, 100, 200];
   const [isFiat, setIsFiat] = useState(false);
   const [svc, setSvc] = useState<LNURLLike>();
+  const [customAmount, setCustomAmount] = useState(false);
   const [amount, setAmount] = useState(satsAmounts[0]);
   const [comment, setComment] = useState("");
   const [invoice, setInvoice] = useState("");
@@ -158,12 +159,17 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
             )}
           </small>
           <div className="grid grid-cols-5 gap-2 text-center">
-            {(isFiat ? usdAmounts : satsAmounts).map(a => (
-              <Pill key={a} selected={a === amount} onClick={() => setAmount(a)}>
-                {isFiat ? `$${a.toLocaleString()}` : formatSats(a)}
-              </Pill>
-            ))}
+            {!customAmount &&
+              (isFiat ? usdAmounts : satsAmounts).map(a => (
+                <Pill key={a} selected={a === amount} onClick={() => setAmount(a)}>
+                  {isFiat ? `$${a.toLocaleString()}` : formatSats(a)}
+                </Pill>
+              ))}
+            <Pill onClick={() => setCustomAmount(s => !s)} selected={customAmount}>
+              <FormattedMessage defaultMessage="Custom" />
+            </Pill>
           </div>
+          {customAmount && <input type="number" value={amount} onChange={e => setAmount(e.target.valueAsNumber)} />}
         </div>
         {svc && (svc.maxCommentLength > 0 || svc.canZap) && (
           <div className="flex flex-col gap-2">
