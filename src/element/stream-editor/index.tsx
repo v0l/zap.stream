@@ -203,7 +203,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
             <StreamInput label={<FormattedMessage defaultMessage="Start Time" />}>
               <input
                 type="datetime-local"
-                value={`${startsDate.getFullYear().toString().padStart(4, "0")}-${startsDate.getMonth().toString().padStart(2, "0")}-${startsDate.getDate().toString().padStart(2, "0")}T${startsDate.getHours().toString().padStart(2, "0")}:${startsDate.getMinutes().toString().padStart(2, "0")}`}
+                value={`${startsDate.getFullYear().toString().padStart(4, "0")}-${(startsDate.getMonth() + 1).toString().padStart(2, "0")}-${startsDate.getDate().toString().padStart(2, "0")}T${startsDate.getHours().toString().padStart(2, "0")}:${startsDate.getMinutes().toString().padStart(2, "0")}`}
                 onChange={e => {
                   setStart((e.target.valueAsNumber / 1000).toString());
                 }}
