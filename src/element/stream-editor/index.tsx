@@ -145,7 +145,8 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     }
   }
 
-  const startsDate = new Date(parseInt(start ?? "0") * 1000);
+  const startsTimestamp = parseInt(start ?? (new Date() / 1000));
+  const startsDate = new Date(startsTimestamp * 1000);
 
   return (
     <>
