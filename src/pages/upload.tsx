@@ -1,4 +1,4 @@
-import { VIDEO_KIND } from "@/const";
+import { SHORTS_KIND, VIDEO_KIND } from "@/const";
 import { DefaultButton, IconButton, Layer3Button, PrimaryButton, WarningButton } from "@/element/buttons";
 import { Icon } from "@/element/icon";
 import Modal from "@/element/modal";
@@ -9,11 +9,11 @@ import { ServerList } from "@/element/upload/server-list";
 import useImgProxy from "@/hooks/img-proxy";
 import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
-import { Nip94Tags, UploadResult, nip94TagsToIMeta } from "@/service/upload";
+import { Nip94Tags, UploadResult, nip94TagsToIMeta, readNip94Tags } from "@/service/upload";
 import { Nip96Server } from "@/service/upload/nip96";
 import { openFile } from "@/utils";
-import { ExternalStore, removeUndefined, unixNow, unwrap } from "@snort/shared";
-import { EventPublisher, NostrLink } from "@snort/system";
+import { ExternalStore, removeUndefined, unwrap } from "@snort/shared";
+import { EventBuilder, EventPublisher, NostrEvent, NostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -67,6 +67,23 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     if (this.#uploads.delete(uploadKey)) {
       this.notifyChange();
     }
+  }
+
+  addUpload(server: string, file: NostrEvent, meta: Nip94Tags, type: UploadStatus["type"]) {
+    const name = file.content ?? meta.summary ?? meta.alt ?? "";
+    const uploadKey = `${name}:${server}:${type}`;
+    this.#uploads.set(uploadKey, {
+      type,
+      name,
+      size: meta.size ?? 0,
+      server,
+      result: {
+        url: meta.url,
+        header: file,
+        metadata: meta,
+      },
+    });
+    this.notifyChange();
   }
 
   async uploadTo(server: string, file: File, pub: EventPublisher, type: UploadStatus["type"]) {
@@ -131,6 +148,27 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
   }
 
   /**
+   * Gets the [min, max] duration from all variants
+   */
+  duration() {
+    const uploads = this.snapshot();
+    return uploads.reduce(
+      (acc, v) => {
+        if (v.result?.metadata?.duration) {
+          if (acc[1] < v.result.metadata.duration) {
+            acc[1] = v.result.metadata.duration;
+          }
+          if (acc[0] > v.result.metadata.duration) {
+            acc[0] = v.result.metadata.duration;
+          }
+        }
+        return acc;
+      },
+      [1_000_000, 0],
+    );
+  }
+
+  /**
    * Create the `imeta` tag for this upload
    */
   makeIMeta() {
@@ -187,21 +225,24 @@ export function UploadPage() {
     return error.length == 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined);
   }
 
+  function makeEvent() {
+    const duration = manager.duration();
+    const eb = new EventBuilder()
+      .pubKey(login?.pubkey ?? "00".repeat(31))
+      .kind(duration[1] <= 60 ? SHORTS_KIND : VIDEO_KIND)
+      .tag(["title", title])
+      .content(summary);
+
+    const imeta = manager.makeIMeta();
+    imeta.forEach(a => eb.tag(a));
+
+    return eb;
+  }
+
   async function publish() {
     const pub = login?.publisher();
     if (!pub) return;
-    const ev = await pub.generic(eb => {
-      eb.kind(VIDEO_KIND);
-      eb.tag(["d", manager.id]);
-      eb.tag(["title", title]);
-      eb.tag(["published_at", unixNow().toString()]);
-      eb.content(summary);
-
-      const imeta = manager.makeIMeta();
-      imeta.forEach(a => eb.tag(a));
-
-      return eb;
-    });
+    const ev = await makeEvent().buildAndSign(pub.signer);
     console.debug(ev);
     await system.BroadcastEvent(ev);
     navigate(`/${NostrLink.fromEvent(ev).encode()}`);
@@ -229,7 +270,16 @@ export function UploadPage() {
       const data = await rsp.blob();
       const pub = login?.publisher();
       if (pub) {
-        servers.servers.forEach(b => manager.uploadTo(b, new File([data], "thumb.jpg"), pub, "thumb"));
+        servers.servers.forEach(b =>
+          manager.uploadTo(
+            b,
+            new File([data], "thumb.jpg", {
+              type: "image/jpeg",
+            }),
+            pub,
+            "thumb",
+          ),
+        );
       }
     }
   }
@@ -291,6 +341,17 @@ export function UploadPage() {
         }),
       );
     }
+    const d = manager.duration();
+    if (d[0] === 0 || d[1] === 0) {
+      err.push(formatMessage({ defaultMessage: "No duration provided, please try another upload server." }));
+    }
+    if (Math.abs(d[0] - d[1]) >= 0.5) {
+      err.push(
+        formatMessage({
+          defaultMessage: "Video durations vary too much, are you sure each variant is the same video?",
+        }),
+      );
+    }
     setError(err);
   }
 
@@ -312,6 +373,7 @@ export function UploadPage() {
       </>
     );
   };
+
   return (
     <div className="max-xl:w-full xl:w-[1200px] xl:mx-auto grid gap-6 xl:grid-cols-[auto_350px] max-xl:px-4">
       <div className="flex flex-col gap-6">
@@ -359,8 +421,11 @@ export function UploadPage() {
           ))}
         </div>
         {videos > 0 && (
-          <div onClick={() => uploadFile()} className="cursor-pointer">
-            {uploadButton()}
+          <div className="flex flex-col gap-2">
+            <div className="text-xl">
+              <FormattedMessage defaultMessage="Add more content" />
+            </div>
+            <div className="flex gap-4 items-center">{uploadButton()}</div>
           </div>
         )}
         {uploads.length > 0 && (
@@ -377,7 +442,7 @@ export function UploadPage() {
             <FormattedMessage defaultMessage="Thumbnail" />
           </div>
           <div className="border border-layer-3 border-dashed border-2 rounded-xl aspect-video overflow-hidden">
-            {thumb && <img src={proxy(thumb)} className="w-full h-full" />}
+            {thumb && <img src={proxy(thumb)} className="w-full h-full object-contain" />}
           </div>
           <div className="flex gap-4">
             <DefaultButton onClick={() => uploadThumb()}>
@@ -405,9 +470,13 @@ export function UploadPage() {
           </WarningButton>
         </div>
       </div>
-      <pre className="text-xs font-mono overflow-wrap text-pretty">
-        {JSON.stringify(manager.makeIMeta(), undefined, 2)}
-      </pre>
+
+      <div>
+        <FormattedMessage defaultMessage="Raw Data:" />
+        <pre className="text-xs font-mono overflow-wrap text-pretty">
+          {JSON.stringify(makeEvent().build(), undefined, 2)}
+        </pre>
+      </div>
       {editServers && (
         <Modal id="server-list" onClose={() => setEditServers(false)}>
           <ServerList />
@@ -416,7 +485,19 @@ export function UploadPage() {
       {mediaPicker && (
         <Modal id="media-picker" onClose={() => setMediaPicker(false)} largeModal={true}>
           <MediaServerFileList
-            onPicked={() => {
+            onPicked={files => {
+              files.forEach(f => {
+                const meta = readNip94Tags(f.tags);
+                if (meta.url) {
+                  const url = new URL(meta.url);
+                  manager.addUpload(
+                    `${url.protocol}//${url.host}/`,
+                    f,
+                    meta,
+                    meta.mimeType?.startsWith("image/") ?? false ? "thumb" : "video",
+                  );
+                }
+              });
               setMediaPicker(false);
             }}
           />

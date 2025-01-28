@@ -2,7 +2,6 @@ import { NostrEvent } from "@snort/system";
 import { GameInfo } from "../game-database";
 import { Nip94Tags, readNip94Tags, readNip94TagsFromIMeta } from "../upload";
 import { getHost, sortStreamTags, extractGameTag, findTag } from "@/utils";
-import { unwrap } from "@snort/shared";
 
 export interface MediaPayload {
   url: string;
@@ -19,8 +18,11 @@ export class VideoInfo {
   goal?: string;
   gameId?: string;
   gameInfo?: GameInfo;
-  duration?: number;
   publishedAt?: number;
+
+  get duration() {
+    return this.media.find(m => m.duration)?.duration;
+  }
 
   constructor(
     readonly host: string,
@@ -31,28 +33,13 @@ export class VideoInfo {
 
   static parse(ev: NostrEvent) {
     const { regularTags, prefixedTags } = sortStreamTags(ev.tags);
-    const ret = new VideoInfo(getHost(ev), unwrap(findTag(ev, "d")), regularTags, VideoInfo.#parseMediaTags(ev.tags));
+    const ret = new VideoInfo(getHost(ev), findTag(ev, "d") ?? ev.id, regularTags, VideoInfo.#parseMediaTags(ev.tags));
 
-    const matchInto = <K extends keyof VideoInfo>(
-      tag: Array<string>,
-      key: string,
-      into: K,
-      fn?: (v: string) => never,
-    ) => {
-      if (tag[0] === key) {
-        ret[into] = fn ? fn(tag[1]) : (tag[1] as never);
-      }
-    };
-
-    for (const t of ev.tags) {
-      matchInto(t, "d", "id");
-      matchInto(t, "title", "title");
-      matchInto(t, "summary", "summary");
-      matchInto(t, "content-warning", "contentWarning");
-      matchInto(t, "goal", "goal");
-      matchInto(t, "duration", "duration");
-      matchInto(t, "published_at", "publishedAt");
-    }
+    ret.title = findTag(ev, "title");
+    ret.summary = findTag(ev, "summary") ?? ev.content;
+    ret.contentWarning = findTag(ev, "content-warning");
+    ret.goal = findTag(ev, "goal");
+    ret.publishedAt = Number(findTag(ev, "published_at") ?? ev.created_at);
 
     const { gameInfo, gameId } = extractGameTag(prefixedTags);
     ret.gameId = gameId;

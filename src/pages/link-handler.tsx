@@ -1,4 +1,4 @@
-import { LIVE_STREAM, SHORTS_KIND, VIDEO_KIND } from "@/const";
+import { LIVE_STREAM, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, VIDEO_KIND } from "@/const";
 import { useStreamLink } from "@/hooks/stream-link";
 import { getEventFromLocationState } from "@/utils";
 import { NostrPrefix } from "@snort/system";
@@ -20,20 +20,16 @@ export function LinkHandler() {
   if (!link) return;
 
   if (link.type === NostrPrefix.Event) {
-    return (
-      <div className="rounded-2xl px-4 py-3 md:w-[700px] mx-auto w-full">
-        <NostrEventElement link={link} />
-      </div>
-    );
+    return <NostrEventElement link={link} />;
   } else if (link.kind === LIVE_STREAM || link.type === NostrPrefix.PublicKey) {
     return (
       <div className={classNames(layoutContext.showHeader ? "h-[calc(100dvh-44px)]" : "h-[calc(100dvh)]", "w-full")}>
         <StreamPage link={link} evPreload={evPreload} />
       </div>
     );
-  } else if (link.kind === VIDEO_KIND) {
+  } else if (link.kind === VIDEO_KIND || link.kind === OLD_VIDEO_KIND) {
     return <VideoPage link={link} evPreload={evPreload} />;
-  } else if (link.kind === SHORTS_KIND) {
+  } else if (link.kind === SHORTS_KIND || link.kind === OLD_SHORTS_KIND) {
     return <ShortPage link={link} evPreload={evPreload} />;
   } else {
     return (

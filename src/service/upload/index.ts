@@ -16,6 +16,8 @@ export interface Nip94Tags {
   summary?: string;
   alt?: string;
   fallback?: Array<string>;
+  duration?: number;
+  bitrate?: number;
 }
 
 export interface UploadResult {
@@ -103,6 +105,14 @@ export function readNip94Tags(tags: Array<Array<string>>) {
         res.fallback.push(v);
         break;
       }
+      case "duration": {
+        res.duration = Number(v);
+        break;
+      }
+      case "bitrate": {
+        res.bitrate = Number(v);
+        break;
+      }
     }
   }
   return res;
@@ -126,6 +136,8 @@ export function nip94TagsToIMeta(meta: Nip94Tags) {
   ifPush("thumb", meta.thumb);
   ifPush("summary", meta.summary);
   ifPush("alt", meta.alt);
+  ifPush("duration", meta.duration);
+  ifPush("bitrate", meta.bitrate);
   if (meta.image) {
     meta.image.forEach(a => ifPush("image", a));
   }

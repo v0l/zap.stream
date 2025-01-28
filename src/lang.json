@@ -221,6 +221,9 @@
   "BD0vyn": {
     "defaultMessage": "{name} created a clip"
   },
+  "BHNL+v": {
+    "defaultMessage": "Raw Data:"
+  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -641,6 +644,9 @@
   "ZcgtZo": {
     "defaultMessage": "We've put together a list of easy-to-use exchanges that will allow you to buy a small amount of bitcoin (sats) and to transfer them to your wallet of choice."
   },
+  "Zfr//4": {
+    "defaultMessage": "No duration provided, please try another upload server."
+  },
   "ZmqxZs": {
     "defaultMessage": "You can change this later"
   },
@@ -704,6 +710,9 @@
   },
   "dkUMIH": {
     "defaultMessage": "Clip by {name}"
+  },
+  "dqGkI+": {
+    "defaultMessage": "Video durations vary too much, are you sure each variant is the same video?"
   },
   "e011kf": {
     "defaultMessage": "FAQ",
@@ -944,6 +953,9 @@
   },
   "vP4dFa": {
     "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
+  },
+  "vaZKTn": {
+    "defaultMessage": "Add more content"
   },
   "vrTOHJ": {
     "defaultMessage": "{amount} sats"

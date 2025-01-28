@@ -4,12 +4,7 @@ import { removeUndefined, sanitizeRelayUrl } from "@snort/shared";
 import { Nip96Server } from "@/service/upload/nip96";
 import { useMemo } from "react";
 
-export const DefaultMediaServers = [
-  //"https://media.zap.stream",
-  new UnknownTag(["server", "https://nostr.build/"]),
-  new UnknownTag(["server", "https://nostrcheck.me/"]),
-  new UnknownTag(["server", "https://files.v0l.io/"]),
-];
+export const DefaultMediaServers = [new UnknownTag(["server", "https://nostr.download/"])];
 
 export function useMediaServerList() {
   const login = useLogin();

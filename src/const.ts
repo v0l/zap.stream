@@ -8,8 +8,10 @@ export const GOAL = 9041 as EventKind;
 export const USER_CARDS = 17_777 as EventKind;
 export const CARD = 37_777 as EventKind;
 
-export const VIDEO_KIND = 34_235 as EventKind;
-export const SHORTS_KIND = 34_236 as EventKind;
+export const VIDEO_KIND = 21 as EventKind;
+export const SHORTS_KIND = 22 as EventKind;
+export const OLD_VIDEO_KIND = 34_235 as EventKind;
+export const OLD_SHORTS_KIND = 34_236 as EventKind;
 
 export const MINUTE = 60;
 export const HOUR = 60 * MINUTE;

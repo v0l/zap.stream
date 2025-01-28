@@ -5,13 +5,15 @@ import { Goal } from "./goal";
 import { Note } from "./note";
 import { EmojiPack } from "./emoji-pack";
 import { BadgeInfo } from "./badge";
-import { GOAL, LIVE_STREAM_CLIP, StreamState } from "@/const";
+import { GOAL, LIVE_STREAM_CLIP, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, StreamState, VIDEO_KIND } from "@/const";
 import { useEventFeed } from "@snort/system-react";
 import LiveStreamClip from "./stream/clip";
 import { ExternalLink } from "./external-link";
 import { extractStreamInfo } from "@/utils";
 import LiveVideoPlayer from "./stream/live-video-player";
-import { HTMLProps } from "react";
+import { HTMLProps, ReactNode } from "react";
+import { ShortPage } from "@/pages/short";
+import { VideoPage } from "@/pages/video";
 
 interface EventProps {
   link: NostrLink;
@@ -31,36 +33,49 @@ export function EventIcon({ kind }: { kind?: EventKind }) {
 }
 
 export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
+  const link = NostrLink.fromEvent(ev);
+  function modalPage(inner: ReactNode) {
+    return <div className="rounded-2xl px-4 py-3 md:w-[700px] mx-auto w-full">{inner}</div>;
+  }
+
   switch (ev.kind) {
     case GOAL: {
-      return <Goal ev={ev} />;
+      return modalPage(<Goal ev={ev} />);
     }
     case EventKind.EmojiSet: {
-      return <EmojiPack ev={ev} />;
+      return modalPage(<EmojiPack ev={ev} />);
     }
     case EventKind.Badge: {
-      return <BadgeInfo ev={ev} />;
+      return modalPage(<BadgeInfo ev={ev} />);
     }
     case EventKind.TextNote: {
-      return <Note ev={ev} />;
+      return modalPage(<Note ev={ev} />);
     }
     case LIVE_STREAM_CLIP: {
-      return <LiveStreamClip ev={ev} />;
+      return modalPage(<LiveStreamClip ev={ev} />);
+    }
+    case OLD_SHORTS_KIND:
+    case SHORTS_KIND: {
+      return <ShortPage link={link} evPreload={ev} />;
+    }
+    case OLD_VIDEO_KIND:
+    case VIDEO_KIND: {
+      return <VideoPage link={link} evPreload={ev} />;
     }
     case EventKind.LiveEvent: {
       const info = extractStreamInfo(ev);
-      return (
+      return modalPage(
         <LiveVideoPlayer
+          link={link}
           title={info.title}
           status={info.status}
           stream={info.status === StreamState.Live ? info.stream : info.recording}
           poster={info.image}
-        />
+        />,
       );
     }
     default: {
-      const link = NostrLink.fromEvent(ev);
-      return <ExternalLink href={`https://snort.social/${link.encode()}`}>{link.encode()}</ExternalLink>;
+      return modalPage(<ExternalLink href={`https://snort.social/${link.encode()}`}>{link.encode()}</ExternalLink>);
     }
   }
 }
