@@ -114,7 +114,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
     <div
       className={classNames("grid gap-2 h-[calc(100dvh-52px)] w-full", {
         "grid-cols-3": status === StreamState.Live,
-        "grid-cols-[20%_80%]": status === StreamState.Ended,
+        "grid-cols-[20%_80%]": status === StreamState.Ended || status === undefined,
         "grid-cols-[40%_60%]": status === StreamState.Planned,
       })}>
       <div className="min-h-0 h-full grid grid-rows-[min-content_auto] gap-2">
