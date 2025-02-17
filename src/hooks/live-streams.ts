@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { LIVE_STREAM } from "@/const";
+import { LIVE_STREAM, WHITELIST } from "@/const";
 
 export function useStreamsFeed(tag?: string) {
   const liveStreamKinds = [LIVE_STREAM];
@@ -10,23 +10,23 @@ export function useStreamsFeed(tag?: string) {
     rb.withOptions({
       leaveOpen: true,
     });
-    if (import.meta.env.VITE_SINGLE_PUBLISHER) {
+    if (WHITELIST) {
       if (tag) {
         rb.withFilter()
           .kinds(liveStreamKinds)
           .tag("t", [tag])
-          .authors([import.meta.env.VITE_SINGLE_PUBLISHER]);
+          .authors(WHITELIST);
         rb.withFilter()
           .kinds(liveStreamKinds)
           .tag("t", [tag])
-          .tag("p", [import.meta.env.VITE_SINGLE_PUBLISHER]);
+          .tag("p", WHITELIST);
       } else {
         rb.withFilter()
           .kinds(liveStreamKinds)
-          .authors([import.meta.env.VITE_SINGLE_PUBLISHER]);
+          .authors(WHITELIST);
         rb.withFilter()
           .kinds(liveStreamKinds)
-          .tag("p", [import.meta.env.VITE_SINGLE_PUBLISHER]);
+          .tag("p", WHITELIST);
       }
     } else {
       if (tag) {

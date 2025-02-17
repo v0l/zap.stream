@@ -16,6 +16,7 @@ import { Profile } from "@/element/profile";
 import { SearchBar } from "./search";
 import { NavLinkIcon } from "./nav-icon";
 import { useLayout } from "./context";
+import { WHITELIST } from "@/const";
 
 export function HeaderNav() {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ export function HeaderNav() {
 
     return (
       <div className="flex gap-2 items-center pr-4 py-1">
-        {(!import.meta.env.VITE_SINGLE_PUBLISHER || import.meta.env.VITE_SINGLE_PUBLISHER === login.pubkey) && (
+        {(!WHITELIST || WHITELIST.includes(login.pubkey)) && (
           <Menu
             menuClassName="ctx-menu"
             menuButton={
