@@ -87,11 +87,15 @@ export function VideoTile({
         )}
         <div className="flex flex-col break-words min-w-0">
           <span className="font-medium" title={video.title}>
-            {(video.title?.length ?? 0) > 50 ? `${video.title?.slice(0, 47)}...` : video.title}
+            <Link to={`/${link.encode()}`} state={ev}>
+              {(video.title?.length ?? 0) > 50 ? `${video.title?.slice(0, 47)}...` : video.title}
+            </Link>
           </span>
           {showAuthor && (
             <span className="text-layer-4">
-              {getName(host, hostProfile)}
+              <Link to={profileLink(hostProfile, host)} className="hover:underline">
+                {getName(host, hostProfile)}
+              </Link>
               {video.publishedAt && (
                 <>
                   {" · "}

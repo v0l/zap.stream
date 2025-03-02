@@ -87,11 +87,15 @@ export function StreamTile({
         )}
         <div className="flex flex-col break-words min-w-0">
           <span className="font-medium" title={title}>
-            {(title?.length ?? 0) > 50 ? `${title?.slice(0, 47)}...` : title}
+            <Link to={`/${link.encode()}`} state={ev}>
+              {(title?.length ?? 0) > 50 ? `${title?.slice(0, 47)}...` : title}
+            </Link>
           </span>
           {showAuthor && (
             <span className="text-layer-4">
-              {getName(host, hostProfile)}
+              <Link to={profileLink(hostProfile, host)} className="hover:underline">
+                {getName(host, hostProfile)}
+              </Link>
               {ends && (
                 <>
                   {" · "}

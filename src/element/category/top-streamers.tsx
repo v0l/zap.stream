@@ -40,9 +40,14 @@ function TopStreamer({ pubkey, amount }: { pubkey: string; amount: number }) {
       <Link to={profileLink(profile, pubkey)}>
         <Avatar pubkey={pubkey} user={profile} size={56} />
       </Link>
+
       <div className="flex flex-col">
         <div className="text-zap text-xl font-medium">{formatSatsCompact(amount)}</div>
-        <div className="whitespace-nowrap">{getName(pubkey, profile)}</div>
+        <div className="whitespace-nowrap">
+          <Link to={profileLink(profile, pubkey)} className="hover:underline">
+            {getName(pubkey, profile)}
+          </Link>
+        </div>
       </div>
     </div>
   );
