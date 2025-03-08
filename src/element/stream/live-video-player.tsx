@@ -40,9 +40,13 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
           <Nip94Player link={link} />
         </Suspense>
       );
-    } else {
+    } else if (stream && stream.toLowerCase().endsWith('.m3u8')) {
+      // hls video
       /* @ts-ignore Web Componenet */
       return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
+    } else {
+      // other video formats (e.g. mp4)
+      return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
     }
   }
   return (
