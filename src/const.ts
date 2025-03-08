@@ -1,4 +1,3 @@
-import { isHex } from "@snort/shared";
 import { EventKind, parseNostrLink } from "@snort/system";
 
 export const LIVE_STREAM = 30_311 as EventKind;
@@ -43,10 +42,10 @@ function loadWhitelist() {
     const list = import.meta.env.VITE_SINGLE_PUBLISHER as string | undefined;
     if (list) {
       return list.split(",").map(a => {
-        if (isHex(a)) {
-          return a;
-        } else {
+        if (a.startsWith('npub')) {
           return parseNostrLink(a).id;
+        } else {
+          return a;
         }
       });
     }
