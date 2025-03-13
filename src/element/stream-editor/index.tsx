@@ -155,7 +155,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         <StreamInput label={<FormattedMessage defaultMessage="Title" />}>
           <input
             type="text"
-            placeholder={formatMessage({ defaultMessage: "What are we steaming today?" })}
+            placeholder={formatMessage({ defaultMessage: "What are we streaming today?" })}
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
