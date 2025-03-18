@@ -37,7 +37,7 @@ export const onRequest: PagesFunction<Env> = async context => {
     }
   }
 
-  const response = await fetch(`https://api.zap.stream/.well-known/lnurlp/${pubkey}`);
+  const response = await fetch(`https://zapstream.pages.dev/.well-known/lnurlp/${pubkey}`);
   const results = await response.text();
   const responseHeaders = Object.fromEntries(response.headers.entries());
   return new Response(results, {

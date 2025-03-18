@@ -4,7 +4,7 @@ export let TimeSync = 0;
 
 export async function syncClock() {
   try {
-    const req = await fetch("https://api.zap.stream/api/time", {
+    const req = await fetch("https://zapstream.pages.dev/api/time", {
       signal: AbortSignal.timeout(1000),
     });
     const nowAtServer = (await req.json()).time as number;

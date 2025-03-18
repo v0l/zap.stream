@@ -1,5 +1,5 @@
 export default class GameDatabase {
-  readonly url = "https://api.zap.stream/api/v1";
+  readonly url = "https://zapstream.pages.dev/api/v1";
 
   async searchGames(search: string, limit = 10) {
     const rsp = await fetch(`${this.url}/games/search?q=${encodeURIComponent(search)}&limit=${limit}`);
