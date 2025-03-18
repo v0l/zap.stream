@@ -30,7 +30,7 @@ export default function FaqPage() {
         </li>
         <ol className="leading-6 list-inside list-decimal ml-6">
           <li>
-            <FormattedMessage defaultMessage="For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup." />
+            <FormattedMessage defaultMessage="For manual hosting all you need is the HLS URL for the Stream URL field. You should be able to find this in your hosting setup." />
           </li>
           <li>
             <FormattedMessage defaultMessage="If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go." />
