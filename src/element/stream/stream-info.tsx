@@ -45,7 +45,7 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
   }
 
   if (!streamContext.showDetails) return;
-  const viewers = Number(participants ?? "0");
+
   return (
     <>
       <div className="flex gap-2 max-xl:flex-col">
@@ -55,11 +55,13 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
             <div className="flex gap-4 items-center flex-wrap">
               <Profile pubkey={host ?? ""} avatarSize={40} />
               <FollowButton pubkey={host} hideWhenFollowing={true} />
-              <div className="flex grow justify-end xl:hidden text-nowrap">
-                <Pill>
-                  <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(viewers) }} />
-                </Pill>
-              </div>
+              {participants !== undefined && (
+                <div className="flex grow justify-end xl:hidden text-nowrap">
+                  <Pill>
+                    <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
+                  </Pill>
+                </div>
+              )}
             </div>
             <div className="flex gap-2">
               {ev && (
@@ -81,9 +83,11 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
           </div>
           <div className="flex gap-2 flex-wrap max-xl:hidden">
             <StatePill state={status as StreamState} />
-            <Pill>
-              <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(viewers) }} />
-            </Pill>
+            {participants !== undefined && (
+              <Pill>
+                <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
+              </Pill>
+            )}
             {status === StreamState.Live && (
               <Pill>
                 <StreamTimer ev={ev} />
