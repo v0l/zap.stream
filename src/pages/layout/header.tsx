@@ -102,6 +102,10 @@ export function HeaderNav() {
             <Icon name="widget" size={24} />
             <FormattedMessage defaultMessage="Widgets" />
           </MenuItem>
+          <MenuItem onClick={() => navigate("/faq")}>
+            <Icon name="link" size={24} />
+            <FormattedMessage defaultMessage="FAQ" />
+          </MenuItem>
           <MenuItem onClick={() => window.open("https://discord.gg/Wtg6NVDdbT")}>
             <Icon name="link" size={24} />
             Discord
