@@ -2,17 +2,17 @@ import { useStreamsFeed } from "@/hooks/live-streams";
 import CategoryLink from "@/element/category/category-link";
 import VideoGridSorted from "@/element/video-grid-sorted";
 import { AllCategories } from "./category";
-import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
-import useImgProxy from "@/hooks/img-proxy";
+//import { FormattedMessage } from "react-intl";
+//import { Link } from "react-router-dom";
+//import useImgProxy from "@/hooks/img-proxy";
 
 export function RootPage() {
   const streams = useStreamsFeed();
-  const { proxy } = useImgProxy();
-  const shirtSize = 120;
+  //const { proxy } = useImgProxy();
+  //const shirtSize = 120;
   return (
     <div className="flex flex-col gap-6 p-4 min-w-0">
-      <div className="flex max-md:flex-col gap-2 items-center bg-layer-2 p-4 text-lg font-medium text-pretty">
+      {/*<div className="flex max-md:flex-col gap-2 items-center bg-layer-2 p-4 text-lg font-medium text-pretty">
         <img
           width={shirtSize}
           className="rounded-xl"
@@ -32,7 +32,7 @@ export function RootPage() {
             ),
           }}
         />
-      </div>
+      </div>*/}
       <div className="min-w-0 overflow-x-scroll scrollbar-hidden">
         <div className="flex gap-4 ">
           {AllCategories.filter(a => a.priority === 0).map(a => (
