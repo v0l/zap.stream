@@ -35,7 +35,7 @@ export function EventIcon({ kind }: { kind?: EventKind }) {
 export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
   const link = NostrLink.fromEvent(ev);
   function modalPage(inner: ReactNode) {
-    return <div className="rounded-2xl px-4 py-3 md:w-[700px] mx-auto w-full">{inner}</div>;
+    return <div className="rounded-2xl px-4 py-3">{inner}</div>;
   }
 
   switch (ev.kind) {
@@ -83,6 +83,8 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
 export function EventEmbed({ link, ...props }: EventProps & HTMLProps<HTMLDivElement>) {
   const event = useEventFeed(link);
   if (event) {
-    return <NostrEvent ev={event} {...props} />;
+    return <div className="md:w-[700px] mx-auto w-full">
+      <NostrEvent ev={event} {...props} />
+    </div>;
   }
 }
