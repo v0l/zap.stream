@@ -40,7 +40,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
           <Nip94Player link={link} />
         </Suspense>
       );
-    } else if (stream && stream.toLowerCase().endsWith('.m3u8')) {
+    } else if (stream && stream.toLowerCase().endsWith(".m3u8")) {
       // hls video
       /* @ts-ignore Web Componenet */
       return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;

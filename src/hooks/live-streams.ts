@@ -12,21 +12,11 @@ export function useStreamsFeed(tag?: string) {
     });
     if (WHITELIST) {
       if (tag) {
-        rb.withFilter()
-          .kinds(liveStreamKinds)
-          .tag("t", [tag])
-          .authors(WHITELIST);
-        rb.withFilter()
-          .kinds(liveStreamKinds)
-          .tag("t", [tag])
-          .tag("p", WHITELIST);
+        rb.withFilter().kinds(liveStreamKinds).tag("t", [tag]).authors(WHITELIST);
+        rb.withFilter().kinds(liveStreamKinds).tag("t", [tag]).tag("p", WHITELIST);
       } else {
-        rb.withFilter()
-          .kinds(liveStreamKinds)
-          .authors(WHITELIST);
-        rb.withFilter()
-          .kinds(liveStreamKinds)
-          .tag("p", WHITELIST);
+        rb.withFilter().kinds(liveStreamKinds).authors(WHITELIST);
+        rb.withFilter().kinds(liveStreamKinds).tag("p", WHITELIST);
       }
     } else {
       if (tag) {

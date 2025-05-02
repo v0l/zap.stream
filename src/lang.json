@@ -170,9 +170,6 @@
   "8YT6ja": {
     "defaultMessage": "Insert text to speak"
   },
-  "8aAwpp": {
-    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be ale to find this in your hosting setup."
-  },
   "8xVdjn": {
     "defaultMessage": "Video Codec"
   },
@@ -235,6 +232,9 @@
   },
   "C81/uG": {
     "defaultMessage": "Logout"
+  },
+  "CFReLV": {
+    "defaultMessage": "For manual hosting all you need is the HLS URL for the Stream URL field. You should be able to find this in your hosting setup."
   },
   "CTgA2G": {
     "defaultMessage": "Create a new account if you don't have one already."
@@ -491,9 +491,6 @@
   "QNvtaq": {
     "defaultMessage": "Share on X"
   },
-  "QRHNuF": {
-    "defaultMessage": "What are we streaming today?"
-  },
   "QRRCp0": {
     "defaultMessage": "Stream URL"
   },
@@ -581,6 +578,9 @@
   },
   "W7IRLs": {
     "defaultMessage": "Your title is too short"
+  },
+  "W8nHSd": {
+    "defaultMessage": "FAQ"
   },
   "W9355R": {
     "defaultMessage": "Unmute"
@@ -732,6 +732,9 @@
   },
   "g5pX+a": {
     "defaultMessage": "About"
+  },
+  "gJFhNJ": {
+    "defaultMessage": "What are we streaming today?"
   },
   "gQxxlw": {
     "defaultMessage": "Goal Name"
@@ -950,9 +953,6 @@
   },
   "uksRSi": {
     "defaultMessage": "Latest Videos"
-  },
-  "vP4dFa": {
-    "defaultMessage": "Visit {link} to get some sweet zap.stream merch!"
   },
   "vaZKTn": {
     "defaultMessage": "Add more content"

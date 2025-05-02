@@ -83,8 +83,10 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
 export function EventEmbed({ link, ...props }: EventProps & HTMLProps<HTMLDivElement>) {
   const event = useEventFeed(link);
   if (event) {
-    return <div className="md:w-[700px] mx-auto w-full">
-      <NostrEvent ev={event} {...props} />
-    </div>;
+    return (
+      <div className="md:w-[700px] mx-auto w-full">
+        <NostrEvent ev={event} {...props} />
+      </div>
+    );
   }
 }

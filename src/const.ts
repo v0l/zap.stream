@@ -42,7 +42,7 @@ function loadWhitelist() {
     const list = import.meta.env.VITE_SINGLE_PUBLISHER as string | undefined;
     if (list) {
       return list.split(",").map(a => {
-        if (a.startsWith('npub')) {
+        if (a.startsWith("npub")) {
           return parseNostrLink(a).id;
         } else {
           return a;
