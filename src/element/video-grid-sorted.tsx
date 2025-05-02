@@ -74,7 +74,6 @@ export default function VideoGridSorted({
       {liveByHashtag.map(t => (
         <GridSection header={`#${t.tag}`} items={t.live} />
       ))}
-      {showPopular && <PopularCategories items={evs} />}
       {showVideos && (
         <GridSection
           header={<FormattedMessage defaultMessage="Videos" />}
@@ -85,6 +84,7 @@ export default function VideoGridSorted({
       {hasFollowingLive && liveNow.length > 0 && (
         <GridSection header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />} items={liveNow} />
       )}
+      {showPopular && <PopularCategories items={evs} />}
       {plannedEvents.length > 0 && (showPlanned ?? true) && (
         <GridSection header={<FormattedMessage defaultMessage="Planned" id="kp0NPF" />} items={plannedEvents} />
       )}
