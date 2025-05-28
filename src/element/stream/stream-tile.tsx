@@ -3,19 +3,43 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { getName } from "../profile";
 
-import { StreamState } from "@/const";
+import { NIP5_DOMAIN, StreamState } from "@/const";
 import useImgProxy from "@/hooks/img-proxy";
 import { formatSats } from "@/number";
 import { extractStreamInfo, getHost, profileLink } from "@/utils";
 import { useUserProfile } from "@snort/system-react";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar } from "../avatar";
 import Logo from "../logo";
 import { useContentWarning } from "../nsfw";
 import PillOpaque from "../pill-opaque";
 import { RelativeTime } from "../relative-time";
 import { StatePill } from "../state-pill";
+import { NostrJson } from "@snort/shared";
+
+const nameCache = new Map<string, NostrJson>();
+async function fetchNostrAddresByPubkey(pubkey: string, domain: string, timeout = 2_000): Promise<NostrJson | undefined> {
+  if (!pubkey || !domain) {
+    return undefined;
+  }
+  const cacheKey = `${pubkey}@${domain}`;
+  if (nameCache.has(cacheKey)) {
+    return nameCache.get(cacheKey);
+  }
+  try {
+    const res = await fetch(`https://${domain}/.well-known/nostr.json?pubkey=${pubkey}`, {
+      signal: AbortSignal.timeout(timeout),
+    });
+    const ret = (await res.json()) as NostrJson;
+    nameCache.set(cacheKey, ret);
+
+    return ret;
+  } catch {
+    // ignored
+  }
+  return undefined;
+}
 
 export function StreamTile({
   ev,
@@ -34,11 +58,22 @@ export function StreamTile({
 }) {
   const { title, image, status, participants, contentWarning, recording, ends } = extractStreamInfo(ev);
   const host = getHost(ev);
+  const link = NostrLink.fromEvent(ev);
   const hostProfile = useUserProfile(host);
   const isGrownUp = useContentWarning();
   const { proxy } = useImgProxy();
+  const [videoLink, setVideoLink] = useState(`/${link.encode()}`)
 
-  const link = NostrLink.fromEvent(ev);
+  useEffect(() => {
+    fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then((h) => {
+      if (h) {
+        const names = Object.entries(h.names);
+        if (names.length > 0) {
+          setVideoLink(`/${names[0][0]}`);
+        }
+      }
+    });
+  }, [videoLink]);
   const [hasImg, setHasImage] = useState((image?.length ?? 0) > 0 || (recording?.length ?? 0) > 0);
   return (
     <div
@@ -47,7 +82,7 @@ export function StreamTile({
         "flex-row": style === "list",
       })}>
       <Link
-        to={`/${link.encode()}`}
+        to={videoLink}
         className={classNames(
           {
             "blur transition": contentWarning,

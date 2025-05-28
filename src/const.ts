@@ -54,3 +54,5 @@ function loadWhitelist() {
 }
 
 export const WHITELIST: Array<string> | undefined = loadWhitelist();
+
+export const NIP5_DOMAIN: string = import.meta.env.VITE_NIP5_DOMAIN || "zap.stream";
