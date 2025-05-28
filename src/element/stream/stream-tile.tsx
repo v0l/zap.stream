@@ -65,15 +65,19 @@ export function StreamTile({
   const [videoLink, setVideoLink] = useState(`/${link.encode()}`)
 
   useEffect(() => {
-    fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then((h) => {
-      if (h) {
-        const names = Object.entries(h.names);
-        if (names.length > 0) {
-          setVideoLink(`/${names[0][0]}`);
+    if (status === StreamState.Live) {
+      fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then((h) => {
+        if (h) {
+          const names = Object.entries(h.names);
+          if (names.length > 0) {
+            setVideoLink(`/${names[0][0]}`);
+          }
         }
-      }
-    });
-  }, [videoLink]);
+
+      });
+    }
+  }, [status, videoLink]);
+
   const [hasImg, setHasImage] = useState((image?.length ?? 0) > 0 || (recording?.length ?? 0) > 0);
   return (
     <div
