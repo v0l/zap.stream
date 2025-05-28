@@ -14,7 +14,7 @@ import { ShortPage } from "./short";
 export function LinkHandler() {
   const location = useLocation();
   const evPreload = getEventFromLocationState(location.state);
-  const link = useStreamLink();
+  const link = useStreamLink(evPreload);
   const layoutContext = useLayout();
 
   if (!link) return;
