@@ -9,6 +9,7 @@ export function useStreamLink(evPreload?: NostrEvent) {
   const [link, setLink] = useState<NostrLink | undefined>(evPreload ? NostrLink.fromEvent(evPreload) : undefined);
 
   useEffect(() => {
+    if (evPreload !== undefined) return;
     if (params.id) {
       const parsedLink = tryParseNostrLink(params.id);
       if (parsedLink) {
@@ -22,6 +23,6 @@ export function useStreamLink(evPreload?: NostrEvent) {
         });
       }
     }
-  }, [params.id]);
+  }, [params.id, evPreload]);
   return link;
 }
