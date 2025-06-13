@@ -7,6 +7,7 @@ import { DashboardCard } from "./card";
 import { DashboardHighlightZap } from "./zap-highlight";
 import ZapGlow from "./zap-glow";
 import { ShareMenu } from "@/element/share-menu";
+import { useRates } from "@/hooks/rates";
 
 export function DashboardZapColumn({
   ev,
@@ -24,6 +25,8 @@ export function DashboardZapColumn({
   );
   const latestZap = sortedZaps.at(0);
   const zapSum = sortedZaps.reduce((acc, v) => acc + v.amount, 0);
+  const rate = useRates("BTCUSD");
+  const usdValue = rate.ask ? zapSum * 1e-8 * rate.ask : 0;
 
   return (
     <div className="flex flex-col gap-2">
@@ -48,6 +51,11 @@ export function DashboardZapColumn({
               ),
             }}
           />
+          {rate.ask && (
+            <div className="text-layer-5 text-sm">
+              <FormattedNumber value={usdValue} style="currency" currency="USD" />
+            </div>
+          )}
         </div>
       </DashboardCard>
       <DashboardCard className="flex flex-col gap-4 grow">
