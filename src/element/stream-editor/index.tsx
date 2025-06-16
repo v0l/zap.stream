@@ -77,7 +77,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
     if (title.length < 2) {
       return false;
     }
-    if (stream.length < 5 || !stream.match(/^https?:\/\/.*\.m3u8?$/i)) {
+    if ((options?.canSetStream ?? true) && (stream.length < 5 || !stream.match(/^https?:\/\/.*\.m3u8?$/i))) {
       return false;
     }
     if (image.length > 0 && !image.match(/^https?:\/\//i)) {
@@ -206,7 +206,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
                 type="datetime-local"
                 value={`${startsDate.getFullYear().toString().padStart(4, "0")}-${(startsDate.getMonth() + 1).toString().padStart(2, "0")}-${startsDate.getDate().toString().padStart(2, "0")}T${startsDate.getHours().toString().padStart(2, "0")}:${startsDate.getMinutes().toString().padStart(2, "0")}`}
                 onChange={e => {
-                  setStart((new Date(e.target.value) / 1000).toString());
+                  setStart((new Date(e.target.value).getTime() / 1000).toString());
                 }}
               />
             </StreamInput>

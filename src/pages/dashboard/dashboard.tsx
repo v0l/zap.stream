@@ -7,7 +7,7 @@ import { SnortContext, useReactions } from "@snort/system-react";
 import { Suspense, lazy, useContext, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { StreamTimer } from "@/element/stream/stream-time";
-import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP, StreamState } from "@/const";
+import { LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP, StreamState, LIVE_STREAM } from "@/const";
 import { DashboardRaidButton } from "./button-raid";
 import { DashboardZapColumn } from "./column-zaps";
 import { DashboardChatList } from "./chat-list";
@@ -110,6 +110,23 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
     }
   }
 
+  const streamToEdit = streamEvent ?? (info?.streamInfo && !isMyManual ? {
+    id: "",
+    pubkey: "",
+    created_at: 0,
+    sig: "",
+    content: "",
+    kind: LIVE_STREAM,
+    tags: [
+      ["d", ""],
+      ["title", info.streamInfo.title ?? ""],
+      ["summary", info.streamInfo?.summary ?? ""],
+      ["picture", info.streamInfo.image ?? ""],
+      ["service", provider.url],
+      ...(info.streamInfo.tags?.map((t) => ["t", t]) ?? [])
+    ]
+  } : undefined);
+
   return (
     <div
       className={classNames("grid gap-2 h-[calc(100dvh-52px)] w-full", {
@@ -173,7 +190,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
               )}
               <div className="grid gap-2 grid-cols-3">
                 <DashboardRaidButton link={streamLink} />
-                <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
+                <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
                 <DashboardSettingsButton ev={streamEvent} />
                 <BalanceHistoryModal provider={provider} />
               </div>
@@ -191,7 +208,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
               />
               <div className="grid gap-2 grid-cols-3">
                 <DashboardRaidButton link={streamLink} />
-                <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
+                <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
                 <WarningButton
                   onClick={async () => {
                     //todo: clean this up
@@ -224,7 +241,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
               <div className="bg-layer-1 rounded-xl aspect-video flex items-center justify-center uppercase text-warning font-semibold">
                 <FormattedMessage defaultMessage="Offline" />
               </div>
-              <NewStreamDialog ev={streamEvent} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
+              <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
               <div className="flex flex-col gap-4">
                 <h3>
                   <FormattedMessage defaultMessage="Stream Setup" />

@@ -1,5 +1,5 @@
 import { base64 } from "@scure/base";
-import { StreamProvider, StreamProviderEndpoint, StreamProviders } from ".";
+import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo, StreamProviderStreamInfo, StreamProviders } from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login } from "@/login";
 import { getPublisher } from "@/login";
@@ -44,7 +44,8 @@ export class NostrStreamProvider implements StreamProvider {
         } as StreamProviderEndpoint;
       }),
       forwards: rsp.forwards,
-    };
+      streamInfo: rsp.details
+    } as StreamProviderInfo;
   }
 
   createConfig() {
@@ -56,7 +57,7 @@ export class NostrStreamProvider implements StreamProvider {
 
   async updateStreamInfo(_: SystemInterface, ev: NostrEvent): Promise<void> {
     const { title, summary, image, tags, contentWarning, goal, gameId, id } = extractStreamInfo(ev);
-    await this.#getJson("PATCH", "event", {
+    const props = {
       id,
       title,
       summary,
@@ -64,7 +65,8 @@ export class NostrStreamProvider implements StreamProvider {
       tags: appendDedupe(tags, gameId ? [gameId] : undefined),
       content_warning: contentWarning,
       goal,
-    });
+    };
+    await this.updateStream(props);
   }
 
   async updateStream(props: {
@@ -77,6 +79,12 @@ export class NostrStreamProvider implements StreamProvider {
     goal?: string;
   }): Promise<void> {
     await this.#getJson("PATCH", "event", props);
+
+    // also update the default stream event details
+    if (props.id) {
+      delete props["id"];
+      await this.#getJson("PATCH", "event", props);
+    }
   }
 
   async topup(amount: number): Promise<string> {
@@ -199,6 +207,7 @@ interface AccountResponse {
     link: string;
   };
   forwards: Array<ForwardDest>;
+  details?: StreamProviderStreamInfo
 }
 
 interface ForwardDest {
