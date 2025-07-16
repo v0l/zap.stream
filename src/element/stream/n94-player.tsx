@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { EventKind, NostrLink, QueryLike, RequestBuilder, SystemInterface, parseNostrLink } from "@snort/system";
-import { useContext, useEffect, useRef } from "react";
+import { HTMLProps, useContext, useEffect, useRef } from "react";
 import mpegts from "mpegts.js";
 import { SnortContext } from "@snort/system-react";
 import { findTag } from "@/utils";
@@ -10,6 +10,7 @@ interface MediaSegment {
   sha256: string;
   url: string;
   duration: number;
+  variant: string;
   loaded: boolean;
 }
 
@@ -26,6 +27,7 @@ class Nip94Loader implements mpegts.BaseLoader {
   #mediaChunks: Map<string, MediaSegment> = new Map();
   #status: LoaderStatus = LoaderStatus.kIdle;
   #bytes = 0;
+  #variant: string = "";
 
   constructor(_seekHandler: mpegts.SeekHandler, config: mpegts.Config) {
     if ("system" in config) {
@@ -58,7 +60,7 @@ class Nip94Loader implements mpegts.BaseLoader {
   }
 
   isWorking(): boolean {
-    throw new Error("Method not implemented.");
+    return this.#status === LoaderStatus.kBuffering;
   }
 
   type = "nip94";
@@ -69,7 +71,7 @@ class Nip94Loader implements mpegts.BaseLoader {
     return this.needStashBuffer;
   }
 
-  open(dataSource: mpegts.MediaSegment, range: mpegts.Range) {
+  open(dataSource: mpegts.MediaSegment) {
     const link = parseNostrLink(dataSource.url);
     if (!link) {
       throw new Error("Datasource.url is invalid");
@@ -78,8 +80,9 @@ class Nip94Loader implements mpegts.BaseLoader {
     const rb = new RequestBuilder(`n94-stream-${link.encode()}`);
     rb.withOptions({
       leaveOpen: true,
+      skipCache: true
     });
-    rb.withFilter().replyToLink([link]).kinds([EventKind.FileHeader]);
+    rb.withFilter().replyToLink([link]).kinds([EventKind.FileHeader]).limit(10);
 
     this.#status = LoaderStatus.kConnecting;
     this.#query = this.#system.Query(rb);
@@ -89,6 +92,7 @@ class Nip94Loader implements mpegts.BaseLoader {
           created: ev.created_at,
           url: findTag(ev, "url")!,
           sha256: findTag(ev, "x")!,
+          variant: findTag(ev, "d")!,
         } as MediaSegment;
         this.#addSegment(seg);
       }
@@ -104,6 +108,9 @@ class Nip94Loader implements mpegts.BaseLoader {
     if (!this.#mediaChunks.has(seg.sha256)) {
       this.#mediaChunks.set(seg.sha256, seg);
     }
+    if (!this.#variant) {
+      this.#variant = seg.variant;
+    }
   }
 
   async #loadNext() {
@@ -113,25 +120,38 @@ class Nip94Loader implements mpegts.BaseLoader {
     if (this.#status !== LoaderStatus.kBuffering) {
       return;
     }
-    const orderedLoad = [...this.#mediaChunks.values()].sort((a, b) => a.created - b.created).filter(a => !a.loaded);
+    const orderedLoad = [...this.#mediaChunks.values()].sort((a, b) => a.created - b.created).filter(a => !a.loaded && a.variant === this.#variant);
     for (const s of orderedLoad) {
-      const result = await fetch(s.url);
-      const buf = await result.arrayBuffer();
+      try {
+        const result = await fetch(s.url);
+        // skip 404
+        if (result.status === 404) {
+          s.loaded = true;
+          continue;
+        }
+        const buf = await result.arrayBuffer();
 
-      this.onDataArrival(buf, this.#bytes, buf.byteLength);
-      console.debug("pushing bytes", this.#bytes, buf.byteLength);
-      this.#bytes += buf.byteLength;
+        this.onDataArrival(buf, this.#bytes, buf.byteLength);
+        console.debug("pushing bytes", this.#bytes, buf.byteLength);
+        this.#bytes += buf.byteLength;
 
-      this.#mediaChunks.set(s.sha256, {
-        ...s,
-        loaded: true,
-      });
+        this.#mediaChunks.set(s.sha256, {
+          ...s,
+          loaded: true,
+        });
+      } catch (e) {
+        console.warn("Failed to load chunk ", s, e);
+      }
     }
     this.#status = LoaderStatus.kIdle;
   }
 }
 
-export default function Nip94Player({ link }: { link: NostrLink }) {
+type N94PlayerProps = {
+  link: NostrLink
+} & Omit<HTMLProps<HTMLVideoElement>, "ref">
+
+export default function Nip94Player({ link, ...props }: N94PlayerProps) {
   const ref = useRef(null);
   const system = useContext(SnortContext);
 
@@ -161,5 +181,5 @@ export default function Nip94Player({ link }: { link: NostrLink }) {
     }
   }, [ref]);
 
-  return <video slot="media" ref={ref}></video>;
+  return <video {...props} slot="media" ref={ref} playsInline={true} autoPlay={true}></video>;
 }

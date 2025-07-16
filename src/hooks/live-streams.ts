@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { LIVE_STREAM, WHITELIST } from "@/const";
+import { LIVE_STREAM, N94_LIVE_STREAM, WHITELIST } from "@/const";
 
 export function useStreamsFeed(tag?: string) {
-  const liveStreamKinds = [LIVE_STREAM];
+  const liveStreamKinds = [LIVE_STREAM, N94_LIVE_STREAM];
   const rb = useMemo(() => {
     const rb = new RequestBuilder(tag ? `streams:${tag}` : "streams");
     rb.withOptions({

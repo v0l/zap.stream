@@ -28,16 +28,15 @@ type VideoPlayerProps = {
   status?: StreamState;
   stream?: string;
   poster?: string;
-  muted?: boolean;
   link: NostrLink;
 } & HTMLProps<HTMLVideoElement>;
 
 export default function LiveVideoPlayer({ title, stream, status, poster, link, ...props }: VideoPlayerProps) {
   function innerPlayer() {
-    if (stream === "nip94") {
+    if (stream === "n94") {
       return (
         <Suspense>
-          <Nip94Player link={link} />
+          <Nip94Player {...props} link={link} />
         </Suspense>
       );
     } else if (stream && stream.toLowerCase().endsWith(".m3u8")) {

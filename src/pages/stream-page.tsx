@@ -10,7 +10,7 @@ import { useZapGoal } from "@/hooks/goals";
 import { StreamCards } from "@/element/stream-cards";
 import { ContentWarningOverlay, useContentWarning } from "@/element/nsfw";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import { LIVE_STREAM, StreamState } from "@/const";
+import { LIVE_STREAM, N94_LIVE_STREAM, StreamState } from "@/const";
 import { StreamInfo } from "@/element/stream/stream-info";
 import { StreamContextProvider } from "@/element/stream/stream-state";
 
@@ -60,6 +60,16 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
               <LiveVideoPlayer
                 title={title}
                 stream={status === StreamState.Live ? stream : recording}
+                poster={image}
+                status={status}
+                link={evLink}
+                className="max-xl:max-h-[30vh] xl:w-full xl:max-h-[85dvh] mx-auto"
+              />
+            )}
+            {ev?.kind === N94_LIVE_STREAM && evLink && (
+              <LiveVideoPlayer
+                title={title}
+                stream={stream}
                 poster={image}
                 status={status}
                 link={evLink}

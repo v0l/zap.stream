@@ -5,7 +5,7 @@ import { Goal } from "./goal";
 import { Note } from "./note";
 import { EmojiPack } from "./emoji-pack";
 import { BadgeInfo } from "./badge";
-import { GOAL, LIVE_STREAM_CLIP, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, StreamState, VIDEO_KIND } from "@/const";
+import { GOAL, LIVE_STREAM_CLIP, N94_LIVE_STREAM, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, StreamState, VIDEO_KIND } from "@/const";
 import { useEventFeed } from "@snort/system-react";
 import LiveStreamClip from "./stream/clip";
 import { ExternalLink } from "./external-link";
@@ -62,6 +62,7 @@ export function NostrEvent({ ev }: { ev: TaggedNostrEvent }) {
     case VIDEO_KIND: {
       return <VideoPage link={link} evPreload={ev} />;
     }
+    case N94_LIVE_STREAM:
     case EventKind.LiveEvent: {
       const info = extractStreamInfo(ev);
       return modalPage(

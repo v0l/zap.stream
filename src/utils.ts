@@ -1,7 +1,7 @@
 import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
-import { LIVE_STREAM, StreamState } from "@/const";
+import { LIVE_STREAM, N94_LIVE_STREAM, StreamState } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
 import { hexToBech32 } from "@snort/shared";
@@ -156,13 +156,10 @@ export function extractStreamInfo(ev?: NostrEvent) {
   ret.gameId = gameId;
   ret.gameInfo = gameInfo;
 
-  if (ret.streams) {
-    const isN94 = ret.streams.includes("nip94");
-    if (isN94) {
-      ret.stream = "nip94";
-    } else {
-      ret.stream = ret.streams.find(a => a.includes(".m3u8"));
-    }
+  if (ev?.kind === N94_LIVE_STREAM) {
+    ret.stream = "n94";
+  } else if (ret.streams) {
+    ret.stream = ret.streams.find(a => a.includes(".m3u8"));
   }
   return ret;
 }
