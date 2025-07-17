@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { getName } from "../profile";
 
-import { NIP5_DOMAIN, StreamState } from "@/const";
+import { N94_LIVE_STREAM, NIP5_DOMAIN, StreamState } from "@/const";
 import useImgProxy from "@/hooks/img-proxy";
 import { formatSats } from "@/number";
 import { extractStreamInfo, getHost, profileLink } from "@/utils";
@@ -65,7 +65,7 @@ export function StreamTile({
   const [videoLink, setVideoLink] = useState(`/${link.encode()}`)
 
   useEffect(() => {
-    if (status === StreamState.Live) {
+    if (status === StreamState.Live || ev.kind === N94_LIVE_STREAM) {
       fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then((h) => {
         if (h) {
           const names = Object.entries(h.names);
