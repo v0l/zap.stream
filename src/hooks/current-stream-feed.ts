@@ -2,7 +2,7 @@ import { NostrLink, NostrPrefix, RequestBuilder, TaggedNostrEvent } from "@snort
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
 
-import { LIVE_STREAM } from "@/const";
+import { LIVE_STREAM, N94_LIVE_STREAM } from "@/const";
 
 export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPreload?: TaggedNostrEvent) {
   const sub = useMemo(() => {
@@ -11,8 +11,8 @@ export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPrelo
       leaveOpen,
     });
     if (link.type === NostrPrefix.PublicKey || link.type === NostrPrefix.Profile) {
-      b.withFilter().authors([link.id]).kinds([LIVE_STREAM]);
-      b.withFilter().tag("p", [link.id]).kinds([LIVE_STREAM]);
+      b.withFilter().authors([link.id]).kinds([LIVE_STREAM, N94_LIVE_STREAM]);
+      b.withFilter().tag("p", [link.id]).kinds([LIVE_STREAM, N94_LIVE_STREAM]);
     } else {
       b.withFilter().link(link);
     }
