@@ -1,4 +1,4 @@
-import { LIVE_STREAM, N94_LIVE_STREAM, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, VIDEO_KIND } from "@/const";
+import { LIVE_STREAM_KINDS, N94_LIVE_STREAM, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, VIDEO_KIND } from "@/const";
 import { useStreamLink } from "@/hooks/stream-link";
 import { getEventFromLocationState } from "@/utils";
 import { NostrPrefix } from "@snort/system";
@@ -21,7 +21,7 @@ export function LinkHandler() {
 
   if (link.type === NostrPrefix.Event && link.kind !== N94_LIVE_STREAM) {
     return <NostrEventElement link={link} />;
-  } else if (link.kind === LIVE_STREAM || link.type === NostrPrefix.PublicKey || link.kind === N94_LIVE_STREAM) {
+  } else if ((link.kind && LIVE_STREAM_KINDS.includes(link.kind)) || link.type === NostrPrefix.PublicKey) {
     return (
       <div className={classNames(layoutContext.showHeader ? "h-[calc(100dvh-44px)]" : "h-[calc(100dvh)]", "w-full")}>
         <StreamPage link={link} evPreload={evPreload} />

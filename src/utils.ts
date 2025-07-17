@@ -1,7 +1,7 @@
 import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
-import { LIVE_STREAM, N94_LIVE_STREAM, StreamState } from "@/const";
+import { LIVE_STREAM_KINDS, N94_LIVE_STREAM, StreamState } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
 import { hexToBech32 } from "@snort/shared";
@@ -69,7 +69,7 @@ export function getTagValues(tags: Tags, tag: string): Array<string> {
 }
 
 export function getEventFromLocationState(state: unknown | undefined | null) {
-  return state && typeof state === "object" && "kind" in state && state.kind === LIVE_STREAM
+  return state && typeof state === "object" && "kind" in state && LIVE_STREAM_KINDS.includes(state.kind as number)
     ? (state as TaggedNostrEvent)
     : undefined;
 }

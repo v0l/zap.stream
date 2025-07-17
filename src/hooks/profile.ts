@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { NostrLink, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
-import { LIVE_STREAM } from "@/const";
+import { LIVE_STREAM_KINDS } from "@/const";
 import { useZaps } from "./zaps";
 
 export function useProfile(link?: NostrLink, leaveOpen = false) {
@@ -13,10 +13,10 @@ export function useProfile(link?: NostrLink, leaveOpen = false) {
         leaveOpen,
       })
         .withFilter()
-        .kinds([LIVE_STREAM])
+        .kinds(LIVE_STREAM_KINDS)
         .authors([link.id]);
 
-      b.withFilter().kinds([LIVE_STREAM]).tag("p", [link.id]);
+      b.withFilter().kinds(LIVE_STREAM_KINDS).tag("p", [link.id]);
     }
     return b;
   }, [link, leaveOpen]);

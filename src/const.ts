@@ -2,6 +2,7 @@ import { EventKind, parseNostrLink } from "@snort/system";
 
 export const LIVE_STREAM = 30_311 as EventKind;
 export const N94_LIVE_STREAM = 1053 as EventKind;
+export const LIVE_STREAM_KINDS = [LIVE_STREAM, N94_LIVE_STREAM];
 export const LIVE_STREAM_CHAT = 1_311 as EventKind;
 export const LIVE_STREAM_RAID = 1_312 as EventKind;
 export const LIVE_STREAM_CLIP = 1_313 as EventKind;
