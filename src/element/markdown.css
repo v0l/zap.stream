@@ -26,7 +26,8 @@
 
 .markdown iframe,
 .markdown video {
-  width: -webkit-fill-available;
+  width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 9;
 }
 
@@ -37,4 +38,9 @@
 .markdown h5,
 .markdown h6 {
   margin: 0.5em 0;
+}
+
+.markdown {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
