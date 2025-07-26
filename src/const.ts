@@ -26,6 +26,7 @@ export enum StreamState {
   Ended = "ended",
   Planned = "planned",
   VOD = "vod",
+  Deleted = "deleted",
 }
 
 export const defaultRelays = {

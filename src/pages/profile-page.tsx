@@ -1,9 +1,10 @@
 import "./profile-page.css";
-import { useMemo } from "react";
+import { useMemo, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, EventExt } from "@snort/system";
+import { useUserProfile, SnortContext } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
+import { unixNow } from "@snort/shared";
 
 import { Icon } from "@/element/icon";
 import { SendZapsDialog } from "@/element/send-zap";
@@ -16,7 +17,7 @@ import { findTag } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
 import { StreamState } from "@/const";
-import { DefaultButton } from "@/element/buttons";
+import { DefaultButton, WarningButton } from "@/element/buttons";
 import { useGoals } from "@/hooks/goals";
 import { Goal } from "@/element/goal";
 import { TopZappers } from "@/element/top-zappers";
@@ -26,17 +27,25 @@ import { ClipTile } from "@/element/stream/clip-tile";
 import useImgProxy from "@/hooks/img-proxy";
 import { useStreamLink } from "@/hooks/stream-link";
 
+import { useLogin } from "@/hooks/login";
+
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
 
 export function ProfilePage() {
   const link = useStreamLink();
+  const login = useLogin();
   const { streams, zaps } = useProfile(link, true);
   const profile = useUserProfile(link?.id);
   const { proxy } = useImgProxy();
+  const isOwner = login?.pubkey === link?.id;
 
   const pastStreams = useMemo(() => {
-    return streams.filter(ev => findTag(ev, "status") === StreamState.Ended);
-  }, [streams]);
+    return streams.filter(ev => {
+      const status = findTag(ev, "status");
+      const isDeleted = findTag(ev, "deleted") === "1";
+      return status === StreamState.Ended && (isOwner || !isDeleted);
+    });
+  }, [streams, isOwner]);
 
   if (!link) return;
   return (
@@ -74,7 +83,7 @@ export function ProfilePage() {
       <h1>
         <FormattedMessage defaultMessage="Past Streams" id="UfSot5" />
       </h1>
-      <ProfileStreamList streams={pastStreams} />
+      <ProfileStreamList streams={pastStreams} isOwner={isOwner} />
     </div>
   );
 }
@@ -139,26 +148,73 @@ function ProfileHeader({
   );
 }
 
-function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
+function ProfileStreamList({ streams, isOwner }: { streams: Array<TaggedNostrEvent>; isOwner: boolean }) {
+  const system = useContext(SnortContext);
+  const login = useLogin();
+
+  const deleteStream = async (ev: TaggedNostrEvent) => {
+    const pub = login?.signer();
+    if (!pub) return;
+
+    // Create a copy of the event and add the deleted tag
+    const copy = { ...ev } as NostrEvent;
+    
+    // Remove existing deleted tag if present
+    copy.tags = copy.tags.filter(tag => tag[0] !== "deleted");
+    
+    // Add the deleted tag
+    copy.tags.push(["deleted", "1"]);
+    
+    copy.created_at = unixNow();
+    copy.id = EventExt.createId(copy);
+    
+    const evPub = await pub.sign(copy);
+    if (evPub) {
+      await system.BroadcastEvent(evPub);
+    }
+  };
+
   if (streams.length === 0) {
     return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />;
   }
+  
   return (
     <VideoGrid>
-      {streams.map(ev => (
-        <div key={ev.id} className="flex flex-col gap-1">
-          <StreamTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
-          <span className="text-neutral-500">
-            <FormattedMessage
-              defaultMessage="Streamed on {date}"
-              id="cvAsEh"
-              values={{
-                date: new Date(ev.created_at * 1000).toLocaleDateString(),
-              }}
-            />
-          </span>
-        </div>
-      ))}
+      {streams.map(ev => {
+        const isDeleted = findTag(ev, "deleted") === "1";
+        return (
+          <div key={ev.id} className="flex flex-col gap-1">
+            <div className="relative">
+              <StreamTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
+              {isDeleted && (
+                <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-semibold">
+                    <FormattedMessage defaultMessage="Deleted" />
+                  </span>
+                </div>
+              )}
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-neutral-500">
+                <FormattedMessage
+                  defaultMessage="Streamed on {date}"
+                  id="cvAsEh"
+                  values={{
+                    date: new Date(ev.created_at * 1000).toLocaleDateString(),
+                  }}
+                />
+              </span>
+              {isOwner && !isDeleted && (
+                <WarningButton
+                  onClick={() => deleteStream(ev)}
+                  className="text-xs px-2 py-1">
+                  <FormattedMessage defaultMessage="Delete" />
+                </WarningButton>
+              )}
+            </div>
+          </div>
+        );
+      })}
     </VideoGrid>
   );
 }
