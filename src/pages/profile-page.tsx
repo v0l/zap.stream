@@ -1,8 +1,8 @@
 import "./profile-page.css";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, RequestBuilder } from "@snort/system";
+import { useUserProfile, useRequestBuilder } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 
 import { Icon } from "@/element/icon";
@@ -15,7 +15,7 @@ import { Text } from "@/element/text";
 import { findTag } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
-import { StreamState } from "@/const";
+import { StreamState, VIDEO_KIND, OLD_VIDEO_KIND } from "@/const";
 import { DefaultButton } from "@/element/buttons";
 import { useGoals } from "@/hooks/goals";
 import { Goal } from "@/element/goal";
@@ -23,6 +23,7 @@ import { TopZappers } from "@/element/top-zappers";
 import { useProfileClips } from "@/hooks/clips";
 import VideoGrid from "@/element/video-grid";
 import { ClipTile } from "@/element/stream/clip-tile";
+import { VideoTile } from "@/element/video/video-tile";
 import useImgProxy from "@/hooks/img-proxy";
 import { useStreamLink } from "@/hooks/stream-link";
 
@@ -71,6 +72,10 @@ export function ProfilePage() {
       <div className="flex gap-4">
         <ProfileClips link={link} />
       </div>
+      <h1>
+        <FormattedMessage defaultMessage="Videos" id="vOKOOj" />
+      </h1>
+      <ProfileVideoList link={link} />
       <h1>
         <FormattedMessage defaultMessage="Past Streams" id="UfSot5" />
       </h1>
@@ -158,6 +163,33 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
             />
           </span>
         </div>
+      ))}
+    </VideoGrid>
+  );
+}
+
+function ProfileVideoList({ link }: { link: NostrLink }) {
+  const rb = new RequestBuilder(`videos:${link.id}`);
+  rb.withFilter().kinds([VIDEO_KIND, OLD_VIDEO_KIND]).authors([link.id]);
+
+  const videos = useRequestBuilder(rb);
+
+  const sortedVideos = useMemo(() => {
+    return videos.sort((a, b) => {
+      const pubA = findTag(a, "published_at") ?? a.created_at;
+      const pubB = findTag(b, "published_at") ?? b.created_at;
+      return Number(pubA) > Number(pubB) ? -1 : 1;
+    });
+  }, [videos]);
+
+  if (sortedVideos.length === 0) {
+    return <FormattedMessage defaultMessage="No videos yet" id="JCIgkj" />;
+  }
+
+  return (
+    <VideoGrid>
+      {sortedVideos.map(ev => (
+        <VideoTile ev={ev} key={ev.id} showAuthor={false} style="grid" />
       ))}
     </VideoGrid>
   );
