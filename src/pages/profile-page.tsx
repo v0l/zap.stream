@@ -1,10 +1,9 @@
 import "./profile-page.css";
-import { useMemo, useContext } from "react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, EventExt } from "@snort/system";
-import { useUserProfile, SnortContext } from "@snort/system-react";
+import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
+import { useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
-import { unixNow } from "@snort/shared";
 
 import { Icon } from "@/element/icon";
 import { SendZapsDialog } from "@/element/send-zap";
@@ -26,6 +25,7 @@ import VideoGrid from "@/element/video-grid";
 import { ClipTile } from "@/element/stream/clip-tile";
 import useImgProxy from "@/hooks/img-proxy";
 import { useStreamLink } from "@/hooks/stream-link";
+import StreamService from "@/service/stream-service";
 
 import { useLogin } from "@/hooks/login";
 
@@ -149,28 +149,23 @@ function ProfileHeader({
 }
 
 function ProfileStreamList({ streams, isOwner }: { streams: Array<TaggedNostrEvent>; isOwner: boolean }) {
-  const system = useContext(SnortContext);
   const login = useLogin();
+  const publisher = login?.publisher();
+  const streamService = new StreamService(publisher);
 
   const deleteStream = async (ev: TaggedNostrEvent) => {
-    const pub = login?.signer();
-    if (!pub) return;
+    if (!login?.pubkey) return;
+    
+    const streamId = findTag(ev, "d");
+    if (!streamId) return;
 
-    // Create a copy of the event and add the deleted tag
-    const copy = { ...ev } as NostrEvent;
-    
-    // Remove existing deleted tag if present
-    copy.tags = copy.tags.filter(tag => tag[0] !== "deleted");
-    
-    // Add the deleted tag
-    copy.tags.push(["deleted", "1"]);
-    
-    copy.created_at = unixNow();
-    copy.id = EventExt.createId(copy);
-    
-    const evPub = await pub.sign(copy);
-    if (evPub) {
-      await system.BroadcastEvent(evPub);
+    const success = await streamService.deleteStream(streamId);
+    if (success) {
+      // Refresh the page or update state as needed
+      window.location.reload();
+    } else {
+      // Handle error - could show a toast notification
+      console.error("Failed to delete stream");
     }
   };
 
