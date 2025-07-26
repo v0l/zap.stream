@@ -17,7 +17,7 @@ import useEmoji, { packId } from "@/hooks/emoji";
 import { useMutedPubkeys } from "@/hooks/lists";
 import { useBadgeAwards } from "@/hooks/badges";
 import { useLogin } from "@/hooks/login";
-import { formatSats } from "@/number";
+import { formatZapAmount } from "@/number";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "../top-zappers";
@@ -267,7 +267,7 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
                 }}
               />
             ),
-            amount: <span className="zap-amount">{formatSats(zap.amount)}</span>,
+            amount: <span className="zap-amount">{formatZapAmount(zap.amount)}</span>,
           }}
         />
       </div>

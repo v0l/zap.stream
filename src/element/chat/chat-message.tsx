@@ -15,7 +15,7 @@ import { SendZaps } from "../send-zap";
 import { CollapsibleEvent } from "../collapsible";
 
 import { useLogin } from "@/hooks/login";
-import { formatSats } from "@/number";
+import { formatZapAmount } from "@/number";
 import type { Emoji, EmojiPack } from "@/types";
 import Pill from "../pill";
 import classNames from "classnames";
@@ -157,7 +157,7 @@ export function ChatMessage({
             {hasZaps && (
               <Pill className="flex gap-1 items-center">
                 <Icon name="zap-filled" size={12} className="text-zap" />
-                <span className="text-xs">{formatSats(totalZaps)}</span>
+                <span className="text-xs">{formatZapAmount(totalZaps)}</span>
               </Pill>
             )}
             {dedupe(filteredReactions.map(v => emojifyReaction(v.content))).map(e => {
