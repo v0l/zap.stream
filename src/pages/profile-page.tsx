@@ -72,10 +72,7 @@ export function ProfilePage() {
       <div className="flex gap-4">
         <ProfileClips link={link} />
       </div>
-      <h1>
-        <FormattedMessage defaultMessage="Videos" id="vOKOOj" />
-      </h1>
-      <ProfileVideoList link={link} />
+      <ProfileVideosSection link={link} />
       <h1>
         <FormattedMessage defaultMessage="Past Streams" id="UfSot5" />
       </h1>
@@ -168,7 +165,7 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
   );
 }
 
-function ProfileVideoList({ link }: { link: NostrLink }) {
+function ProfileVideosSection({ link }: { link: NostrLink }) {
   const rb = new RequestBuilder(`videos:${link.id}`);
   rb.withFilter().kinds([VIDEO_KIND, OLD_VIDEO_KIND]).authors([link.id]);
 
@@ -183,15 +180,20 @@ function ProfileVideoList({ link }: { link: NostrLink }) {
   }, [videos]);
 
   if (sortedVideos.length === 0) {
-    return <FormattedMessage defaultMessage="No videos yet" id="JCIgkj" />;
+    return null;
   }
 
   return (
-    <VideoGrid>
-      {sortedVideos.map(ev => (
-        <VideoTile ev={ev} key={ev.id} showAuthor={false} style="grid" />
-      ))}
-    </VideoGrid>
+    <>
+      <h1>
+        <FormattedMessage defaultMessage="Videos" id="vOKOOj" />
+      </h1>
+      <VideoGrid>
+        {sortedVideos.map(ev => (
+          <VideoTile ev={ev} key={ev.id} showAuthor={false} style="grid" />
+        ))}
+      </VideoGrid>
+    </>
   );
 }
 
