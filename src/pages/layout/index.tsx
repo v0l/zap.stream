@@ -22,7 +22,9 @@ export function LayoutPage() {
       login.state.checkIsStandardList(EventKind.EmojisList);
       login.state.checkIsStandardList(USER_CARDS);
       login.state.init(login.signer(), system);
-      system.config.socialGraphInstance.setRoot(login.pubkey);
+      if (login.pubkey) {
+        system.config.socialGraphInstance.setRoot(login.pubkey);
+      }
     }
   }, [login]);
 
