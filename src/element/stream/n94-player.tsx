@@ -80,7 +80,7 @@ class Nip94Loader implements mpegts.BaseLoader {
     const rb = new RequestBuilder(`n94-stream-${link.encode()}`);
     rb.withOptions({
       leaveOpen: true,
-      skipCache: true
+      skipCache: true,
     });
     rb.withFilter().replyToLink([link]).kinds([EventKind.FileHeader]).limit(10);
 
@@ -120,7 +120,9 @@ class Nip94Loader implements mpegts.BaseLoader {
     if (this.#status !== LoaderStatus.kBuffering) {
       return;
     }
-    const orderedLoad = [...this.#mediaChunks.values()].sort((a, b) => a.created - b.created).filter(a => !a.loaded && a.variant === this.#variant);
+    const orderedLoad = [...this.#mediaChunks.values()]
+      .sort((a, b) => a.created - b.created)
+      .filter(a => !a.loaded && a.variant === this.#variant);
     for (const s of orderedLoad) {
       try {
         const result = await fetch(s.url);
@@ -148,8 +150,8 @@ class Nip94Loader implements mpegts.BaseLoader {
 }
 
 type N94PlayerProps = {
-  link: NostrLink
-} & Omit<HTMLProps<HTMLVideoElement>, "ref">
+  link: NostrLink;
+} & Omit<HTMLProps<HTMLVideoElement>, "ref">;
 
 export default function Nip94Player({ link, ...props }: N94PlayerProps) {
   const ref = useRef(null);

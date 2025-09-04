@@ -1,14 +1,12 @@
 [
-    {
-        "relation": [
-            "delegate_permission/common.handle_all_urls"
-        ],
-        "target": {
-            "namespace": "android_app",
-            "package_name": "io.nostrlabs.zap_stream_flutter",
-            "sha256_cert_fingerprints": [
-                "6F:87:59:1F:55:29:82:75:F5:C0:D4:22:34:D5:68:DA:79:03:06:31:16:63:A8:28:04:27:D8:34:0A:8F:95:8A"
-            ]
-        }
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.nostrlabs.zap_stream_flutter",
+      "sha256_cert_fingerprints": [
+        "6F:87:59:1F:55:29:82:75:F5:C0:D4:22:34:D5:68:DA:79:03:06:31:16:63:A8:28:04:27:D8:34:0A:8F:95:8A"
+      ]
     }
+  }
 ]

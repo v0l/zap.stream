@@ -1,7 +1,7 @@
 import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
-import { LIVE_STREAM_KINDS, N94_LIVE_STREAM, StreamState } from "@/const";
+import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, StreamState } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
 import { hexToBech32 } from "@snort/shared";
@@ -118,6 +118,22 @@ export interface StreamInfo {
   streams: Array<string>;
 }
 
+export function canPlayUrl(url: string) {
+  try {
+    const u = new URL(url);
+    return u.pathname.includes(".m3u8") && u.hostname !== "localhost" && u.hostname !== "127.0.0.1";
+  } catch {
+    return false;
+  }
+}
+
+export function canPlayEvent(ev: NostrEvent) {
+  if (ev.kind === LIVE_STREAM) {
+    return ev.tags.some(a => (a[0] === "streaming" || a[0] === "recording") && canPlayUrl(a[1]));
+  }
+  return ev.kind === N94_LIVE_STREAM;
+}
+
 const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
 export function extractStreamInfo(ev?: NostrEvent) {
   const ret = {
@@ -138,7 +154,9 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "status", v => (ret.status = v as StreamState));
     if (t[0] === "streaming") {
       ret.streams ??= [];
-      ret.streams.push(t[1]);
+      if (canPlayUrl(t[1])) {
+        ret.streams.push(t[1]);
+      }
     }
     matchTag(t, "recording", v => (ret.recording = v));
     matchTag(t, "url", v => (ret.recording = v));

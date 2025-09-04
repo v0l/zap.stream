@@ -110,22 +110,26 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
     }
   }
 
-  const streamToEdit = streamEvent ?? (info?.streamInfo && !isMyManual ? {
-    id: "",
-    pubkey: "",
-    created_at: 0,
-    sig: "",
-    content: "",
-    kind: LIVE_STREAM,
-    tags: [
-      ["d", ""],
-      ["title", info.streamInfo.title ?? ""],
-      ["summary", info.streamInfo?.summary ?? ""],
-      ["picture", info.streamInfo.image ?? ""],
-      ["service", provider.url],
-      ...(info.streamInfo.tags?.map((t) => ["t", t]) ?? [])
-    ]
-  } : undefined);
+  const streamToEdit =
+    streamEvent ??
+    (info?.streamInfo && !isMyManual
+      ? {
+          id: "",
+          pubkey: "",
+          created_at: 0,
+          sig: "",
+          content: "",
+          kind: LIVE_STREAM,
+          tags: [
+            ["d", ""],
+            ["title", info.streamInfo.title ?? ""],
+            ["summary", info.streamInfo?.summary ?? ""],
+            ["picture", info.streamInfo.image ?? ""],
+            ["service", provider.url],
+            ...(info.streamInfo.tags?.map(t => ["t", t]) ?? []),
+          ],
+        }
+      : undefined);
 
   return (
     <div

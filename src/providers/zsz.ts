@@ -1,5 +1,11 @@
 import { base64 } from "@scure/base";
-import { StreamProvider, StreamProviderEndpoint, StreamProviderInfo, StreamProviderStreamInfo, StreamProviders } from ".";
+import {
+  StreamProvider,
+  StreamProviderEndpoint,
+  StreamProviderInfo,
+  StreamProviderStreamInfo,
+  StreamProviders,
+} from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login } from "@/login";
 import { getPublisher } from "@/login";
@@ -44,7 +50,7 @@ export class NostrStreamProvider implements StreamProvider {
         } as StreamProviderEndpoint;
       }),
       forwards: rsp.forwards,
-      streamInfo: rsp.details
+      streamInfo: rsp.details,
     } as StreamProviderInfo;
   }
 
@@ -207,7 +213,7 @@ interface AccountResponse {
     link: string;
   };
   forwards: Array<ForwardDest>;
-  details?: StreamProviderStreamInfo
+  details?: StreamProviderStreamInfo;
 }
 
 interface ForwardDest {

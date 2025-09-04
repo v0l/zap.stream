@@ -19,7 +19,11 @@ import { StatePill } from "../state-pill";
 import { NostrJson } from "@snort/shared";
 
 const nameCache = new Map<string, NostrJson>();
-async function fetchNostrAddresByPubkey(pubkey: string, domain: string, timeout = 2_000): Promise<NostrJson | undefined> {
+async function fetchNostrAddresByPubkey(
+  pubkey: string,
+  domain: string,
+  timeout = 2_000,
+): Promise<NostrJson | undefined> {
   if (!pubkey || !domain) {
     return undefined;
   }
@@ -62,18 +66,17 @@ export function StreamTile({
   const hostProfile = useUserProfile(host);
   const isGrownUp = useContentWarning();
   const { proxy } = useImgProxy();
-  const [videoLink, setVideoLink] = useState(`/${link.encode()}`)
+  const [videoLink, setVideoLink] = useState(`/${link.encode()}`);
 
   useEffect(() => {
     if (status === StreamState.Live || ev.kind === N94_LIVE_STREAM) {
-      fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then((h) => {
+      fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then(h => {
         if (h) {
           const names = Object.entries(h.names);
           if (names.length > 0) {
             setVideoLink(`/${names[0][0]}`);
           }
         }
-
       });
     }
   }, [status, videoLink]);
