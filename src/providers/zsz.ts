@@ -159,7 +159,10 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async streamKeys(page = 0, pageSize = 20) {
-    return await this.#getJson<StreamKeysResult | Array<StreamKeyItem>>("GET", `keys?page=${page}&pageSize=${pageSize}`);
+    return await this.#getJson<StreamKeysResult | Array<StreamKeyItem>>(
+      "GET",
+      `keys?page=${page}&pageSize=${pageSize}`,
+    );
   }
 
   async createStreamKey(expires?: undefined) {

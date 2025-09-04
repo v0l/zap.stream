@@ -60,7 +60,7 @@ export function StreamTile({
   style: "list" | "grid";
   className?: string;
 }) {
-  const { title, image, status, participants, contentWarning, recording, ends } = extractStreamInfo(ev);
+  const { title, image, thumbnail, status, participants, contentWarning, recording, ends } = extractStreamInfo(ev);
   const host = getHost(ev);
   const link = NostrLink.fromEvent(ev);
   const hostProfile = useUserProfile(host);
@@ -81,7 +81,9 @@ export function StreamTile({
     }
   }, [status, videoLink]);
 
-  const [hasImg, setHasImage] = useState((image?.length ?? 0) > 0 || (recording?.length ?? 0) > 0);
+  const [hasImg, setHasImage] = useState(
+    (image?.length ?? 0) > 0 || (thumbnail?.length ?? 0) > 0 || (recording?.length ?? 0) > 0,
+  );
   return (
     <div
       className={classNames("flex gap-2", className, {
@@ -103,7 +105,7 @@ export function StreamTile({
             <img
               loading="lazy"
               className="w-full h-inherit object-cover"
-              src={proxy(image ?? recording ?? "")}
+              src={proxy(image ?? thumbnail ?? recording ?? "")}
               onError={() => {
                 setHasImage(false);
               }}

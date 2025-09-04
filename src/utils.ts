@@ -35,7 +35,7 @@ export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
 export function getHost(ev?: NostrEvent) {
   // only accept host tag from zap.stream
   const isZapStream = ev?.pubkey === ZAP_STREAM_PUBKEY;
-  return ev?.tags.find(a => (a[0] === "p" && a[3] === "host") && isZapStream)?.[1] ?? ev?.pubkey ?? "";
+  return ev?.tags.find(a => a[0] === "p" && a[3] === "host" && isZapStream)?.[1] ?? ev?.pubkey ?? "";
 }
 
 export function profileLink(meta: CachedMetadata | undefined, pubkey: string) {
@@ -152,7 +152,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "title", v => (ret.title = v));
     matchTag(t, "summary", v => (ret.summary = v));
     matchTag(t, "image", v => (ret.image = v));
-    matchTag(t, "thumbnail", v => (ret.thumbnail = v));
+    matchTag(t, "thumb", v => (ret.thumbnail = v));
     matchTag(t, "status", v => (ret.status = v as StreamState));
     if (t[0] === "streaming") {
       ret.streams ??= [];
