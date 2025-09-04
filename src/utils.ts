@@ -1,7 +1,7 @@
 import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
-import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, StreamState } from "@/const";
+import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, StreamState, ZAP_STREAM_PUBKEY } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
 import { hexToBech32 } from "@snort/shared";
@@ -33,7 +33,9 @@ export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
 }
 
 export function getHost(ev?: NostrEvent) {
-  return ev?.tags.find(a => a[0] === "p" && a[3] === "host")?.[1] ?? ev?.pubkey ?? "";
+  // only accept host tag from zap.stream
+  const isZapStream = ev?.pubkey === ZAP_STREAM_PUBKEY;
+  return ev?.tags.find(a => (a[0] === "p" && a[3] === "host") && isZapStream)?.[1] ?? ev?.pubkey ?? "";
 }
 
 export function profileLink(meta: CachedMetadata | undefined, pubkey: string) {
