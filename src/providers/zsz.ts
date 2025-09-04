@@ -159,7 +159,7 @@ export class NostrStreamProvider implements StreamProvider {
   }
 
   async streamKeys(page = 0, pageSize = 20) {
-    return await this.#getJson<StreamKeysResult>("GET", `keys?page=${page}&pageSize=${pageSize}`);
+    return await this.#getJson<StreamKeysResult | Array<StreamKeyItem>>("GET", `keys?page=${page}&pageSize=${pageSize}`);
   }
 
   async createStreamKey(expires?: undefined) {
@@ -247,14 +247,16 @@ export interface BalanceHistoryResult {
   pageSize: number;
 }
 
+export interface StreamKeyItem {
+  id: string;
+  created: number;
+  key: string;
+  expires?: number;
+  stream?: NostrEvent;
+}
+
 export interface StreamKeysResult {
-  items: Array<{
-    id: string;
-    created: number;
-    key: string;
-    expires?: number;
-    stream?: NostrEvent;
-  }>;
+  items: Array<StreamKeyItem>;
   page: number;
   pageSize: number;
 }

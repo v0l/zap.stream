@@ -283,9 +283,10 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
             <h3>
               <FormattedMessage defaultMessage="Account Setup" />
             </h3>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               <BalanceHistoryModal provider={provider} />
               <ForwardingModal provider={provider} />
+              <DashboardSettingsButton ev={streamEvent} />
             </div>
           </DashboardCard>
         )}

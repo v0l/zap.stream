@@ -109,7 +109,7 @@ export default function NostrProviderDialog({
     const [tag, ...others] = cap.split(":");
     if (tag === "variant") {
       const [height] = others;
-      return height === "source" ? "source" : `${height.slice(0, -1)}p`;
+      return height === "source" ? "source" : `${height.includes("h") ? height.slice(0, -1) : height}p`;
     }
     if (tag === "output") {
       return others[0];

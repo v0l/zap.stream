@@ -14,7 +14,7 @@ export default function StreamKeyList({ provider }: { provider: NostrStreamProvi
 
   async function loadKeys() {
     const k = await provider.streamKeys();
-    setKeys(k);
+    setKeys(Array.isArray(k) ? { items: k, page: 0, pageSize: 1000 } : k);
   }
 
   useEffect(() => {
