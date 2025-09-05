@@ -45,17 +45,22 @@ import { ShortsPage } from "./pages/shorts";
 import { DownloadAppPage } from "./pages/download";
 
 const hasWasm = "WebAssembly" in globalThis;
+const disableWasmForPaths = ["/chat", "/alert", "/embed"];
+const useWasm = disableWasmForPaths.every(a => !window.location.pathname.startsWith(a)) && hasWasm;
 const workerRelay = new WorkerRelayInterface(
   import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite(),
 );
+console.debug("Using wasm: ", useWasm);
 EventBuilder.ClientTag = ["client", "zap.stream", __ZAP_STREAM_VERSION__];
 const System = new NostrSystem({
-  optimizer: hasWasm ? WasmOptimizer : undefined,
-  cachingRelay: workerRelay,
+  optimizer: useWasm ? WasmOptimizer : undefined,
+  cachingRelay: useWasm ? workerRelay : undefined,
 });
-System.on("event", (_, ev) => {
-  workerRelay.event(ev);
-});
+if (useWasm) {
+  System.on("event", (_, ev) => {
+    workerRelay.event(ev);
+  });
+}
 
 Object.entries(defaultRelays).forEach(params => {
   const [relay, settings] = params;
@@ -66,16 +71,16 @@ let hasInit = false;
 async function doInit() {
   if (hasInit) return;
   hasInit = true;
-  if (hasWasm) {
+  if (useWasm) {
     await wasmInit(WasmPath);
-  }
-  try {
-    await workerRelay.init({
-      databasePath: "relay.db",
-      insertBatchSize: 100,
-    });
-  } catch (e) {
-    console.error(e);
+    try {
+      await workerRelay.init({
+        databasePath: "relay.db",
+        insertBatchSize: 100,
+      });
+    } catch (e) {
+      console.error(e);
+    }
   }
   await System.Init();
   syncClock();
