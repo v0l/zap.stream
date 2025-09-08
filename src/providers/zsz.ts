@@ -15,6 +15,10 @@ import { TimeSync } from "@/time-sync";
 
 export class NostrStreamProvider implements StreamProvider {
   #publisher?: EventPublisher;
+  #wsConnection?: WebSocket;
+  #metricsCallbacks = new Map<string, (metrics: MetricsMessage) => void>();
+  #pendingStreams = new Set<string>();
+  #isAuthenticated = false;
 
   constructor(
     readonly name: string,
@@ -172,6 +176,154 @@ export class NostrStreamProvider implements StreamProvider {
     });
   }
 
+  async connectWebSocket(): Promise<void> {
+    if (this.#wsConnection && this.#wsConnection.readyState === WebSocket.OPEN) {
+      return; // Already connected
+    }
+
+    const wsUrl = this.url.replace(/^https?:/, 'wss:').replace(/\/$/, '') + '/ws';
+    this.#wsConnection = new WebSocket(wsUrl);
+
+    this.#wsConnection.onopen = async () => {
+      console.log('Provider WebSocket connected');
+
+      // Send NIP-98 authentication using existing auth flow
+      try {
+        const pub = this.#getPublisher();
+        if (pub) {
+          const token = await pub.generic(eb => {
+            return eb
+              .kind(EventKind.HttpAuthentication)
+              .content("")
+              .tag(["u", wsUrl])
+              .tag(["method", "GET"])
+              .createdAt(unixNow() + Math.floor(TimeSync / 1000));
+          });
+
+          const authMessage = {
+            type: 'Auth',
+            data: { token: base64.encode(new TextEncoder().encode(JSON.stringify(token))) }
+          };
+          this.#wsConnection?.send(JSON.stringify(authMessage));
+        }
+      } catch (error) {
+        console.error('Failed to authenticate WebSocket:', error);
+      }
+    };
+
+    this.#wsConnection.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+
+        // Handle different message types based on admin API
+        switch (data.type) {
+          case 'AuthResponse':
+            console.log('WebSocket authenticated, subscribing to streams');
+            this.#isAuthenticated = true;
+            // After successful auth, subscribe to any pending streams
+            this.#subscribeToPendingStreams();
+            // Notify callbacks about auth success
+            this.#metricsCallbacks.forEach((callback) => {
+              callback(data);
+            });
+            break;
+          case 'StreamMetrics':
+            // Notify all registered callbacks
+            this.#metricsCallbacks.forEach((callback) => {
+              callback(data);
+            });
+            break;
+          case 'Error':
+            console.error('WebSocket error:', data.error);
+            break;
+          default:
+            // Handle any other message types
+            this.#metricsCallbacks.forEach((callback) => {
+              callback(data);
+            });
+        }
+      } catch (error) {
+        console.error('Failed to parse WebSocket message:', error);
+      }
+    };
+
+    this.#wsConnection.onclose = (event) => {
+      console.log('Provider WebSocket disconnected');
+      // Auto-reconnect after 5 seconds if not a manual close
+      if (event.code !== 1000) {
+        setTimeout(() => {
+          this.connectWebSocket();
+        }, 5000);
+      }
+    };
+
+    this.#wsConnection.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+  }
+
+  subscribeToMetrics(streamId: string, callback: (metrics: MetricsMessage) => void): void {
+    const subscriptionKey = `metrics_${streamId}`;
+    this.#metricsCallbacks.set(subscriptionKey, callback);
+
+    // Connect if not already connected
+    this.connectWebSocket().then(() => {
+      // If authenticated, subscribe immediately, otherwise queue for later
+      if (this.#isAuthenticated && this.#wsConnection && this.#wsConnection.readyState === WebSocket.OPEN) {
+        this.#sendSubscription(streamId);
+      } else {
+        this.#pendingStreams.add(streamId);
+      }
+    });
+  }
+
+  unsubscribeFromMetrics(streamId: string): void {
+    const subscriptionKey = `metrics_${streamId}`;
+    this.#metricsCallbacks.delete(subscriptionKey);
+
+    // If no more callbacks, we could close the connection
+    if (this.#metricsCallbacks.size === 0 && this.#wsConnection) {
+      this.#wsConnection.close();
+    }
+  }
+
+  closeWebSocket(): void {
+    if (this.#wsConnection) {
+      this.#wsConnection.close();
+      this.#wsConnection = undefined;
+    }
+    this.#metricsCallbacks.clear();
+    this.#pendingStreams.clear();
+    this.#isAuthenticated = false;
+  }
+
+  #subscribeToPendingStreams(): void {
+    this.#pendingStreams.forEach(streamId => {
+      this.#sendSubscription(streamId);
+    });
+    this.#pendingStreams.clear();
+  }
+
+  #sendSubscription(streamId: string): void {
+    if (this.#wsConnection && this.#wsConnection.readyState === WebSocket.OPEN) {
+      this.#wsConnection.send(JSON.stringify({
+        type: 'SubscribeStream',
+        data: {
+          stream_id: streamId
+        }
+      }));
+    }
+  }
+
+  #getPublisher(): EventPublisher | undefined {
+    if (this.#publisher) {
+      return this.#publisher;
+    } else {
+      const login = Login.snapshot();
+      return login && getPublisher(login);
+    }
+  }
+
   async #getJson<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<T> {
     const pub = (() => {
       if (this.#publisher) {
@@ -262,4 +414,33 @@ export interface StreamKeysResult {
   items: Array<StreamKeyItem>;
   page: number;
   pageSize: number;
+}
+
+export interface MetricsMessage {
+  type: 'StreamMetrics' | 'AuthResponse' | 'Error' | string;
+  data?: {
+    stream_id?: string;
+    pubkey?: string;
+    user_id?: number;
+    started_at?: string;
+    last_segment_time?: string;
+    node_name?: string;
+    viewers?: number;
+    average_fps?: number;
+    target_fps?: number;
+    frame_count?: number;
+    endpoint_name?: string;
+    input_resolution?: string;
+    ip_address?: string;
+    ingress_name?: string;
+    endpoint_stats?: {
+      [key: string]: {
+        name: string;
+        bitrate: number;
+      };
+    };
+    // Other possible metrics
+    [key: string]: unknown;
+  };
+  error?: string;
 }

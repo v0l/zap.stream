@@ -18,7 +18,8 @@ import { DashboardSettingsButton } from "./button-settings";
 import DashboardIntro from "./intro";
 import { useLocation, useNavigate } from "react-router-dom";
 import StreamKey from "@/element/provider/nostr/stream-key";
-import { DefaultProvider, NostrStreamProvider, StreamProviderInfo } from "@/providers";
+import { DefaultProvider, StreamProviderInfo } from "@/providers";
+import { NostrStreamProvider } from "@/providers/zsz";
 import { ExternalLink } from "@/element/external-link";
 import BalanceTimeEstimate from "@/element/balance-time-estimate";
 import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons";
@@ -32,6 +33,7 @@ import ForwardingModal from "./forwarding";
 import BalanceHistoryModal from "./balance-history";
 import Modal from "@/element/modal";
 import { AcceptTos } from "./tos";
+import { CompactMetricsDisplay } from "./realtime-metrics";
 const StreamSummary = lazy(() => import("@/element/summary-chart"));
 
 export default function DashboardForLink({ link }: { link: NostrLink }) {
@@ -144,10 +146,14 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
             <h3>
               <FormattedMessage defaultMessage="Stream" />
             </h3>
-            <div className="uppercase font-semibold flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full ${headingDotStyle()}`}></div>
-              {headingText()}
-            </div>
+            {(status === StreamState.Live && service) ? (
+              <CompactMetricsDisplay streamId={streamLink?.id} provider={provider instanceof NostrStreamProvider ? provider : undefined} />
+            ) : (
+              <div className="uppercase font-semibold flex items-center gap-2">
+                <div className={`w-3 h-3 rounded-full ${headingDotStyle()}`}></div>
+                {headingText()}
+              </div>
+            )}
           </div>
           {streamLink && status === StreamState.Live && !isMyManual && (
             <>
@@ -269,26 +275,26 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
           )}
         </DashboardCard>
         {streamLink && status === StreamState.Live && (
-          <DashboardCard className="flex flex-col gap-4">
-            <h3>
-              <FormattedMessage defaultMessage="Chat Users" />
-            </h3>
-            <div className="h-[calc(100%-4rem)] overflow-y-auto">
-              <DashboardChatList feed={feed} />
-            </div>
-          </DashboardCard>
+            <DashboardCard className="flex flex-col gap-4">
+              <h3>
+                <FormattedMessage defaultMessage="Chat Users" />
+              </h3>
+              <div className="h-[calc(100%-4rem)] overflow-y-auto">
+                <DashboardChatList feed={feed} />
+              </div>
+            </DashboardCard>
         )}
         {(!streamLink || status !== StreamState.Live) && (
-          <DashboardCard className="flex flex-col gap-4">
-            <h3>
-              <FormattedMessage defaultMessage="Account Setup" />
-            </h3>
-            <div className="flex gap-2 flex-wrap">
-              <BalanceHistoryModal provider={provider} />
-              <ForwardingModal provider={provider} />
-              <DashboardSettingsButton ev={streamEvent} />
-            </div>
-          </DashboardCard>
+            <DashboardCard className="flex flex-col gap-4">
+              <h3>
+                <FormattedMessage defaultMessage="Account Setup" />
+              </h3>
+              <div className="flex gap-2 flex-wrap">
+                <BalanceHistoryModal provider={provider} />
+                <ForwardingModal provider={provider} />
+                <DashboardSettingsButton ev={streamEvent} />
+              </div>
+            </DashboardCard>
         )}
       </div>
       {streamLink && status === StreamState.Live && (
