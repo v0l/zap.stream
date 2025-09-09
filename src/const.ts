@@ -35,6 +35,8 @@ export const defaultRelays = {
   "wss://nos.lol": { read: true, write: true },
   "wss://relay.damus.io": { read: true, write: true },
   "wss://nostr.wine": { read: true, write: true },
+  "wss://relay.primal.net": { read: true, write: true },
+  "wss://relay.fountain.fm": { read: true, write: true },
 };
 
 export const DefaultProviderUrl = "https://api-core.zap.stream/api/v1";
