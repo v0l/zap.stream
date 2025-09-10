@@ -38,7 +38,10 @@ export default function VideoGridSorted({
   const follows = login?.state?.follows ?? [];
   const followsHost = (ev: NostrEvent) => follows?.includes(getHost(ev));
 
-  const filteredStreams = evs.filter(a => !mutedHosts.includes(NostrLink.publicKey(getHost(a))));
+  const filteredStreams = evs.filter(a => {
+    const hostLink = NostrLink.publicKey(getHost(a));
+    return !mutedHosts.some(b => b.equals(hostLink));
+  });
   const { live, planned, ended } = useSortedStreams(filteredStreams, showAll ? 0 : undefined);
   const hashtags: Array<string> = [];
   const following = live.filter(followsHost);
