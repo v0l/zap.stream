@@ -29,11 +29,10 @@ export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPrelo
           const host = getHost(a);
           return host === link.id;
         } else {
-          link.matchesEvent(a);
+          return link.matchesEvent(a);
         }
       })
       .sort((a, b) => (b.created_at > a.created_at ? 1 : -1));
-    console.debug(hosting);
     return hosting.at(0);
   }, [q]);
 }
