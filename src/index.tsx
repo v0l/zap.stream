@@ -46,17 +46,17 @@ import { DownloadAppPage } from "./pages/download";
 
 const hasWasm = "WebAssembly" in globalThis;
 const disableWasmForPaths = ["/chat", "/alert", "/embed"];
-const useWasm = disableWasmForPaths.every(a => !window.location.pathname.startsWith(a)) && hasWasm;
+const useWorkerRelay = disableWasmForPaths.every(a => !window.location.pathname.startsWith(a)) && hasWasm;
 const workerRelay = new WorkerRelayInterface(
   import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite(),
 );
-console.debug("Using wasm: ", useWasm);
+console.debug(`WASM config: has=${hasWasm}, use_worker_relay=${useWorkerRelay}`);
 EventBuilder.ClientTag = ["client", "zap.stream", __ZAP_STREAM_VERSION__];
 const System = new NostrSystem({
-  optimizer: useWasm ? WasmOptimizer : undefined,
-  cachingRelay: useWasm ? workerRelay : undefined,
+  optimizer: hasWasm ? WasmOptimizer : undefined, // use optimizer always when WASM is available
+  cachingRelay: useWorkerRelay ? workerRelay : undefined,
 });
-if (useWasm) {
+if (useWorkerRelay) {
   System.on("event", (_, ev) => {
     workerRelay.event(ev);
   });
@@ -71,8 +71,10 @@ let hasInit = false;
 async function doInit() {
   if (hasInit) return;
   hasInit = true;
-  if (useWasm) {
+  if (hasWasm) {
     await wasmInit(WasmPath);
+  }
+  if (useWorkerRelay) {
     try {
       await workerRelay.init({
         databasePath: "relay.db",
