@@ -34,7 +34,7 @@ export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
 
 export function getHost(ev?: NostrEvent) {
   const isHostTagAllowed = ev?.pubkey && P_TAG_HOST_WHITELIST.includes(ev?.pubkey);
-  return ev?.tags.find(a => a[0] === "p" && a[3].toLowerCase() === "host" && isHostTagAllowed)?.[1] ?? ev?.pubkey ?? "";
+  return ev?.tags.find(a => a[0] === "p" && a.length > 3 && a[3].toLowerCase() === "host" && isHostTagAllowed)?.[1] ?? ev?.pubkey ?? "";
 }
 
 export function profileLink(meta: CachedMetadata | undefined, pubkey: string) {
