@@ -61,3 +61,9 @@ function loadWhitelist() {
 export const WHITELIST: Array<string> | undefined = loadWhitelist();
 
 export const NIP5_DOMAIN: string = import.meta.env.VITE_NIP5_DOMAIN || "zap.stream";
+
+// Pubkeys allowed to use "host" tag
+export const P_TAG_HOST_WHITELIST = [
+  ZAP_STREAM_PUBKEY,
+  "81ee947168db2f909895dbd4f71534f4040035575f58156e9a3802d1dd467e1d" //primalstream
+];
