@@ -18,8 +18,8 @@ import { DashboardSettingsButton } from "./button-settings";
 import DashboardIntro from "./intro";
 import { useLocation, useNavigate } from "react-router-dom";
 import StreamKey from "@/element/provider/nostr/stream-key";
-import { DefaultProvider, StreamProviderInfo } from "@/providers";
-import { NostrStreamProvider } from "@/providers/zsz";
+import { useStreamProvider } from "@/hooks/stream-provider";
+import { AccountResponse, NostrStreamProvider } from "@/providers/zsz";
 import { ExternalLink } from "@/element/external-link";
 import BalanceTimeEstimate from "@/element/balance-time-estimate";
 import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons";
@@ -34,6 +34,7 @@ import BalanceHistoryModal from "./balance-history";
 import Modal from "@/element/modal";
 import { AcceptTos } from "./tos";
 import { CompactMetricsDisplay } from "./realtime-metrics";
+import { ProviderSelectorButton } from "./provider-selector";
 const StreamSummary = lazy(() => import("@/element/summary-chart"));
 
 export default function DashboardForLink({ link }: { link: NostrLink }) {
@@ -43,17 +44,22 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
   const login = useLogin();
   const streamLink = streamEvent ? NostrLink.fromEvent(streamEvent) : undefined;
   const { stream, status, image, participants, service } = extractStreamInfo(streamEvent);
-  const [info, setInfo] = useState<StreamProviderInfo>();
-  const [tos, setTos] = useState(info?.tosAccepted ?? false);
+  const [info, setInfo] = useState<AccountResponse>();
+  const [tos, setTos] = useState(info?.tos?.accepted ?? false);
   const isMyManual = streamEvent?.pubkey === login?.pubkey;
   const system = useContext(SnortContext);
   const [recording, setRecording] = useState(Boolean(localStorage.getItem("default-recording") ?? "true"));
+  const { provider: streamProvider } = useStreamProvider();
 
   useEffect(() => {
     localStorage.setItem("default-recording", String(recording));
   }, [recording]);
 
-  const provider = useMemo(() => (service ? new NostrStreamProvider("", service) : DefaultProvider), [service]);
+  const provider = useMemo(
+    () => (status === StreamState.Live && service ? new NostrStreamProvider("", service) : streamProvider),
+    [service, status, streamProvider],
+  );
+
   const defaultEndpoint = useMemo(() => {
     return info?.endpoints?.find(a => a.name == (recording ? "Best" : "Good")) ?? info?.endpoints?.at(0);
   }, [info, recording]);
@@ -68,7 +74,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
         clearInterval(t);
       };
     }
-  }, [isMyManual, provider]);
+  }, [isMyManual, provider.url]);
 
   const [maxParticipants, setMaxParticipants] = useState(0);
   useEffect(() => {
@@ -114,7 +120,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
 
   const streamToEdit =
     streamEvent ??
-    (info?.streamInfo && !isMyManual
+    (info?.details && !isMyManual
       ? {
           id: "",
           pubkey: "",
@@ -124,11 +130,11 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
           kind: LIVE_STREAM,
           tags: [
             ["d", ""],
-            ["title", info.streamInfo.title ?? ""],
-            ["summary", info.streamInfo?.summary ?? ""],
-            ["picture", info.streamInfo.image ?? ""],
+            ["title", info.details.title ?? ""],
+            ["summary", info.details?.summary ?? ""],
+            ["picture", info.details.image ?? ""],
             ["service", provider.url],
-            ...(info.streamInfo.tags?.map(t => ["t", t]) ?? []),
+            ...(info.details.tags?.map(t => ["t", t]) ?? []),
           ],
         }
       : undefined);
@@ -146,8 +152,11 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
             <h3>
               <FormattedMessage defaultMessage="Stream" />
             </h3>
-            {(status === StreamState.Live && service) ? (
-              <CompactMetricsDisplay streamId={streamLink?.id} provider={provider instanceof NostrStreamProvider ? provider : undefined} />
+            {status === StreamState.Live && service ? (
+              <CompactMetricsDisplay
+                streamId={streamLink?.id}
+                provider={provider instanceof NostrStreamProvider ? provider : undefined}
+              />
             ) : (
               <div className="uppercase font-semibold flex items-center gap-2">
                 <div className={`w-3 h-3 rounded-full ${headingDotStyle()}`}></div>
@@ -185,8 +194,8 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
                           </span>
                         ),
                         balance: <FormattedNumber value={info?.balance ?? 0} />,
-                        rate: defaultEndpoint.rate ?? 0,
-                        unit: defaultEndpoint.unit ?? "min",
+                        rate: defaultEndpoint.cost.rate ?? 0,
+                        unit: defaultEndpoint.cost.unit ?? "min",
                       }}
                     />
                   </div>
@@ -203,6 +212,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
                 <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
                 <DashboardSettingsButton ev={streamEvent} />
                 <BalanceHistoryModal provider={provider} />
+                <ProviderSelectorButton />
               </div>
             </>
           )}
@@ -275,26 +285,27 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
           )}
         </DashboardCard>
         {streamLink && status === StreamState.Live && (
-            <DashboardCard className="flex flex-col gap-4">
-              <h3>
-                <FormattedMessage defaultMessage="Chat Users" />
-              </h3>
-              <div className="h-[calc(100%-4rem)] overflow-y-auto">
-                <DashboardChatList feed={feed} />
-              </div>
-            </DashboardCard>
+          <DashboardCard className="flex flex-col gap-4">
+            <h3>
+              <FormattedMessage defaultMessage="Chat Users" />
+            </h3>
+            <div className="h-[calc(100%-4rem)] overflow-y-auto">
+              <DashboardChatList feed={feed} />
+            </div>
+          </DashboardCard>
         )}
         {(!streamLink || status !== StreamState.Live) && (
-            <DashboardCard className="flex flex-col gap-4">
-              <h3>
-                <FormattedMessage defaultMessage="Account Setup" />
-              </h3>
-              <div className="flex gap-2 flex-wrap">
-                <BalanceHistoryModal provider={provider} />
-                <ForwardingModal provider={provider} />
-                <DashboardSettingsButton ev={streamEvent} />
-              </div>
-            </DashboardCard>
+          <DashboardCard className="flex flex-col gap-4">
+            <h3>
+              <FormattedMessage defaultMessage="Account Setup" />
+            </h3>
+            <div className="flex gap-2 flex-wrap">
+              <BalanceHistoryModal provider={provider} />
+              <ForwardingModal provider={provider} />
+              <DashboardSettingsButton ev={streamEvent} />
+              <ProviderSelectorButton />
+            </div>
+          </DashboardCard>
         )}
       </div>
       {streamLink && status === StreamState.Live && (
@@ -329,11 +340,11 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
         </>
       )}
       {streamLink && status === StreamState.Planned && <DashboardCard className="overflow-y-auto"></DashboardCard>}
-      {info && !info.tosAccepted && (
+      {info && !info.tos?.accepted && (
         <Modal id="tos-dashboard">
           <div className="flex flex-col gap-4">
             <h2>Please accept TOS before continuing</h2>
-            <AcceptTos provider={info?.name} tosLink={info?.tosLink} tos={tos} setTos={setTos} />
+            <AcceptTos provider={provider.name} tosLink={info?.tos?.link} tos={tos} setTos={setTos} />
             <div className="flex items-center justify-between">
               <Layer2Button
                 disabled={!tos}

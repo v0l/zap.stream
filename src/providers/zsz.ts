@@ -1,11 +1,4 @@
 import { base64 } from "@scure/base";
-import {
-  StreamProvider,
-  StreamProviderEndpoint,
-  StreamProviderInfo,
-  StreamProviderStreamInfo,
-  StreamProviders,
-} from ".";
 import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
 import { Login } from "@/login";
 import { getPublisher } from "@/login";
@@ -13,7 +6,7 @@ import { extractStreamInfo } from "@/utils";
 import { appendDedupe, unixNow } from "@snort/shared";
 import { TimeSync } from "@/time-sync";
 
-export class NostrStreamProvider implements StreamProvider {
+export class NostrStreamProvider {
   #publisher?: EventPublisher;
   #wsConnection?: WebSocket;
   #metricsCallbacks = new Map<string, (metrics: MetricsMessage) => void>();
@@ -31,39 +24,9 @@ export class NostrStreamProvider implements StreamProvider {
     this.#publisher = pub;
   }
 
-  get type() {
-    return StreamProviders.NostrType;
-  }
-
   async info() {
     const rsp = await this.#getJson<AccountResponse>("GET", "account");
-    return {
-      type: StreamProviders.NostrType,
-      name: this.name,
-      balance: rsp.balance,
-      tosAccepted: rsp.tos?.accepted,
-      tosLink: rsp.tos?.link,
-      endpoints: rsp.endpoints.map(a => {
-        return {
-          name: a.name,
-          url: a.url,
-          key: a.key,
-          rate: a.cost.rate,
-          unit: a.cost.unit,
-          capabilities: a.capabilities,
-        } as StreamProviderEndpoint;
-      }),
-      forwards: rsp.forwards,
-      streamInfo: rsp.details,
-      hasNwc: rsp.has_nwc,
-    } as StreamProviderInfo;
-  }
-
-  createConfig() {
-    return {
-      type: StreamProviders.NostrType,
-      url: this.url,
-    };
+    return rsp;
   }
 
   async updateStreamInfo(_: SystemInterface, ev: NostrEvent): Promise<void> {
@@ -80,15 +43,7 @@ export class NostrStreamProvider implements StreamProvider {
     await this.updateStream(props);
   }
 
-  async updateStream(props: {
-    id: string;
-    title?: string;
-    summary?: string;
-    image?: string;
-    tags?: Array<string>;
-    content_warning?: string;
-    goal?: string;
-  }): Promise<void> {
+  async updateStream(props: StreamDetails): Promise<void> {
     await this.#getJson("PATCH", "event", props);
 
     // also update the default stream event details
@@ -194,11 +149,11 @@ export class NostrStreamProvider implements StreamProvider {
       return; // Already connected
     }
 
-    const wsUrl = this.url.replace(/^https?:/, 'wss:').replace(/\/$/, '') + '/ws';
+    const wsUrl = this.url.replace(/^https?:/, "wss:").replace(/\/$/, "") + "/ws";
     this.#wsConnection = new WebSocket(wsUrl);
 
     this.#wsConnection.onopen = async () => {
-      console.log('Provider WebSocket connected');
+      console.log("Provider WebSocket connected");
 
       // Send NIP-98 authentication using existing auth flow
       try {
@@ -214,54 +169,54 @@ export class NostrStreamProvider implements StreamProvider {
           });
 
           const authMessage = {
-            type: 'Auth',
-            data: { token: base64.encode(new TextEncoder().encode(JSON.stringify(token))) }
+            type: "Auth",
+            data: { token: base64.encode(new TextEncoder().encode(JSON.stringify(token))) },
           };
           this.#wsConnection?.send(JSON.stringify(authMessage));
         }
       } catch (error) {
-        console.error('Failed to authenticate WebSocket:', error);
+        console.error("Failed to authenticate WebSocket:", error);
       }
     };
 
-    this.#wsConnection.onmessage = (event) => {
+    this.#wsConnection.onmessage = event => {
       try {
         const data = JSON.parse(event.data);
 
         // Handle different message types based on admin API
         switch (data.type) {
-          case 'AuthResponse':
-            console.log('WebSocket authenticated, subscribing to streams');
+          case "AuthResponse":
+            console.log("WebSocket authenticated, subscribing to streams");
             this.#isAuthenticated = true;
             // After successful auth, subscribe to any pending streams
             this.#subscribeToPendingStreams();
             // Notify callbacks about auth success
-            this.#metricsCallbacks.forEach((callback) => {
+            this.#metricsCallbacks.forEach(callback => {
               callback(data);
             });
             break;
-          case 'StreamMetrics':
+          case "StreamMetrics":
             // Notify all registered callbacks
-            this.#metricsCallbacks.forEach((callback) => {
+            this.#metricsCallbacks.forEach(callback => {
               callback(data);
             });
             break;
-          case 'Error':
-            console.error('WebSocket error:', data.error);
+          case "Error":
+            console.error("WebSocket error:", data.error);
             break;
           default:
             // Handle any other message types
-            this.#metricsCallbacks.forEach((callback) => {
+            this.#metricsCallbacks.forEach(callback => {
               callback(data);
             });
         }
       } catch (error) {
-        console.error('Failed to parse WebSocket message:', error);
+        console.error("Failed to parse WebSocket message:", error);
       }
     };
 
-    this.#wsConnection.onclose = (event) => {
-      console.log('Provider WebSocket disconnected');
+    this.#wsConnection.onclose = event => {
+      console.log("Provider WebSocket disconnected");
       // Auto-reconnect after 5 seconds if not a manual close
       if (event.code !== 1000) {
         setTimeout(() => {
@@ -270,8 +225,8 @@ export class NostrStreamProvider implements StreamProvider {
       }
     };
 
-    this.#wsConnection.onerror = (error) => {
-      console.error('WebSocket error:', error);
+    this.#wsConnection.onerror = error => {
+      console.error("WebSocket error:", error);
     };
   }
 
@@ -319,12 +274,14 @@ export class NostrStreamProvider implements StreamProvider {
 
   #sendSubscription(streamId: string): void {
     if (this.#wsConnection && this.#wsConnection.readyState === WebSocket.OPEN) {
-      this.#wsConnection.send(JSON.stringify({
-        type: 'SubscribeStream',
-        data: {
-          stream_id: streamId
-        }
-      }));
+      this.#wsConnection.send(
+        JSON.stringify({
+          type: "SubscribeStream",
+          data: {
+            stream_id: streamId,
+          },
+        }),
+      );
     }
   }
 
@@ -373,7 +330,17 @@ export class NostrStreamProvider implements StreamProvider {
   }
 }
 
-interface AccountResponse {
+export interface StreamDetails {
+  id?: string;
+  title?: string;
+  summary?: string;
+  image?: string;
+  tags?: Array<string>;
+  content_warning?: string;
+  goal?: string;
+}
+
+export interface AccountResponse {
   balance: number;
   endpoints: Array<IngestEndpoint>;
   tos?: {
@@ -381,16 +348,16 @@ interface AccountResponse {
     link: string;
   };
   forwards: Array<ForwardDest>;
-  details?: StreamProviderStreamInfo;
+  details?: StreamDetails;
   has_nwc?: boolean;
 }
 
-interface ForwardDest {
+export interface ForwardDest {
   id: string;
   name: string;
 }
 
-interface IngestEndpoint {
+export interface IngestEndpoint {
   name: string;
   url: string;
   key: string;
@@ -401,7 +368,7 @@ interface IngestEndpoint {
   capabilities: Array<string>;
 }
 
-interface TopUpResponse {
+export interface TopUpResponse {
   pr: string;
 }
 
@@ -431,7 +398,7 @@ export interface StreamKeysResult {
 }
 
 export interface MetricsMessage {
-  type: 'StreamMetrics' | 'AuthResponse' | 'Error' | string;
+  type: "StreamMetrics" | "AuthResponse" | "Error" | string;
   data?: {
     stream_id?: string;
     pubkey?: string;

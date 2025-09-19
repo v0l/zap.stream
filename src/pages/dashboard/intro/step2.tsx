@@ -1,7 +1,7 @@
 import { FormattedMessage } from "react-intl";
 import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
-import { DefaultProvider } from "@/providers";
+import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CategoryInput from "@/element/stream-editor/category-input";
@@ -15,16 +15,17 @@ export default function DashboardIntroStep2() {
   const [game, setGame] = useState<GameInfo>();
   const [gameId, setGameId] = useState<string>();
   const [tags, setTags] = useState<Array<string>>([]);
+  const { provider: streamProvider } = useStreamProvider();
 
   useEffect(() => {
-    DefaultProvider.info().then(i => {
-      const { regularTags, prefixedTags } = sortStreamTags(i.streamInfo?.tags ?? []);
+    streamProvider.info().then(i => {
+      const { regularTags, prefixedTags } = sortStreamTags(i.details?.tags ?? []);
       const { gameInfo, gameId } = extractGameTag(prefixedTags);
       setGame(gameInfo);
       setGameId(gameId);
       setTags(regularTags);
     });
-  }, []);
+  }, [streamProvider]);
 
   return (
     <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
@@ -47,7 +48,7 @@ export default function DashboardIntroStep2() {
               ...location.state,
               tags: appendDedupe(tags, gameId ? [gameId] : undefined),
             };
-            await DefaultProvider.updateStream(newState);
+            await streamProvider.updateStream(newState);
             navigate("/dashboard/step-3", {
               state: newState,
             });

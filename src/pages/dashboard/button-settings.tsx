@@ -3,13 +3,12 @@ import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
-import { getCurrentStreamProvider } from "@/hooks/stream-provider";
 import NostrProviderDialog from "@/element/provider/nostr";
-import { NostrStreamProvider } from "@/providers";
+import { useStreamProvider } from "@/hooks/stream-provider";
 
 export function DashboardSettingsButton({ ev }: { ev?: TaggedNostrEvent }) {
   const [show, setShow] = useState(false);
-  const provider = getCurrentStreamProvider(ev) as NostrStreamProvider;
+  const { provider } = useStreamProvider();
   return (
     <>
       <DefaultButton onClick={() => setShow(true)}>

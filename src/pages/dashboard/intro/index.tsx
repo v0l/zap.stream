@@ -2,32 +2,34 @@ import BalanceTimeEstimate from "@/element/balance-time-estimate";
 import { DefaultButton } from "@/element/buttons";
 import { Icon } from "@/element/icon";
 import { useRates } from "@/hooks/rates";
-import { DefaultProvider, StreamProviderInfo } from "@/providers";
+import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import ZapGlow from "../zap-glow";
 import { AcceptTos } from "../tos";
+import { AccountResponse } from "@/providers";
 
 export default function DashboardIntro() {
   const navigate = useNavigate();
-  const [info, setInfo] = useState<StreamProviderInfo>();
+  const [info, setInfo] = useState<AccountResponse>();
   const [tos, setTos] = useState<boolean>(false);
   const defaultSatsBalance = 1000;
   const exampleHours = 4;
+  const { provider: streamProvider } = useStreamProvider();
 
   const defaultEndpoint = useMemo(() => {
     return info?.endpoints?.find(a => a.name == "Best") ?? info?.endpoints?.at(0);
   }, [info]);
   const rate = useRates("BTCUSD");
-  const exampleCost = rate.ask * (exampleHours * (defaultEndpoint?.rate ?? 0) * 60) * 1e-8;
+  const exampleCost = rate.ask * (exampleHours * (defaultEndpoint?.cost.rate ?? 0) * 60) * 1e-8;
 
   useEffect(() => {
-    DefaultProvider.info().then(i => {
+    streamProvider.info().then(i => {
       setInfo(i);
-      setTos(Boolean(i.tosAccepted));
+      setTos(Boolean(i.tos?.accepted));
     });
-  }, []);
+  }, [streamProvider]);
 
   if (!defaultEndpoint) return;
 
@@ -63,19 +65,21 @@ export default function DashboardIntro() {
         <FormattedMessage
           defaultMessage="Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
           values={{
-            amount: defaultEndpoint.rate,
-            unit: defaultEndpoint.unit,
+            amount: defaultEndpoint.cost.rate,
+            unit: defaultEndpoint.cost.unit,
             x: exampleHours,
             usd: <FormattedNumber value={exampleCost} style="currency" currency="USD" />,
           }}
         />
       </p>
-      {!info?.tosAccepted && <AcceptTos provider={info?.name} tosLink={info?.tosLink} tos={tos} setTos={setTos} />}
+      {!info?.tos?.accepted && (
+        <AcceptTos provider={streamProvider.name} tosLink={info?.tos?.link} tos={tos} setTos={setTos} />
+      )}
       <DefaultButton
         disabled={!tos}
         onClick={async () => {
-          if (!info?.tosAccepted) {
-            await DefaultProvider.acceptTos();
+          if (!info?.tos?.accepted) {
+            await streamProvider.acceptTos();
           }
           navigate("/dashboard/step-1");
         }}>

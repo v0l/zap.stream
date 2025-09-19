@@ -1,7 +1,7 @@
 import { FormattedMessage, useIntl } from "react-intl";
 import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
-import { DefaultProvider } from "@/providers";
+import { useStreamProvider } from "@/hooks/stream-provider";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { GoalSelector } from "@/element/stream-editor/goal-selector";
@@ -19,10 +19,11 @@ export default function DashboardIntroStep4() {
   const { formatMessage } = useIntl();
   const login = useLogin();
   const system = useContext(SnortContext);
+  const { provider: streamProvider } = useStreamProvider();
 
   async function loadInfo() {
-    DefaultProvider.info().then(i => {
-      setGoal(i.streamInfo?.goal);
+    streamProvider.info().then(i => {
+      setGoal(i.details?.goal);
     });
   }
 
@@ -72,7 +73,7 @@ export default function DashboardIntroStep4() {
                 ...location.state,
                 goal: goalEvent.id,
               };
-              await DefaultProvider.updateStream(newState);
+              await streamProvider.updateStream(newState);
               navigate("/dashboard/final", {
                 state: newState,
               });
@@ -81,7 +82,7 @@ export default function DashboardIntroStep4() {
                 ...location.state,
                 goal,
               };
-              await DefaultProvider.updateStream(newState);
+              await streamProvider.updateStream(newState);
               navigate("/dashboard/final", {
                 state: newState,
               });

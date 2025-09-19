@@ -1,22 +1,24 @@
 import { FormattedMessage } from "react-intl";
 import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
-import { DefaultProvider, StreamProviderInfo } from "@/providers";
+import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StreamKey from "@/element/provider/nostr/stream-key";
 import { ExternalLink } from "@/element/external-link";
+import { AccountResponse } from "@/providers";
 
 export default function DashboardIntroFinal() {
   const navigate = useNavigate();
-  const [info, setInfo] = useState<StreamProviderInfo>();
+  const [info, setInfo] = useState<AccountResponse>();
+  const { provider: streamProvider } = useStreamProvider();
 
   const defaultEndpoint = useMemo(() => {
     return info?.endpoints.find(a => a.name == "Best") ?? info?.endpoints[0];
   }, [info]);
 
   async function loadInfo() {
-    DefaultProvider.info().then(i => {
+    streamProvider.info().then(i => {
       setInfo(i);
     });
   }

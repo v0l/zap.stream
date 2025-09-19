@@ -2,20 +2,20 @@ import { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
 
-import { NostrStreamProvider, StreamProviderEndpoint, StreamProviderInfo } from "@/providers";
+import { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers";
 import { SendZaps } from "@/element/send-zap";
 import { StreamEditor, StreamEditorProps } from "@/element/stream-editor";
 import Spinner from "@/element/spinner";
 import { useRates } from "@/hooks/rates";
 import { DefaultButton } from "@/element/buttons";
-import Pill from "@/element/pill";
 import { AddForwardInputs } from "./fowards";
-import StreamKey from "./stream-key";
 import AccountTopup from "./topup";
 import AccountWithdrawl from "./withdraw";
 import BalanceHistory from "./history";
 import StreamKeyList from "./stream-keys";
 import NwcConfig from "./nwc-config";
+import { sortEndpoints } from "./util";
+import { StreamEndpoints } from "./endpoints";
 
 export default function NostrProviderDialog({
   provider,
@@ -41,20 +41,16 @@ export default function NostrProviderDialog({
 } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
-  const [info, setInfo] = useState<StreamProviderInfo>();
-  const [ep, setEndpoint] = useState<StreamProviderEndpoint>();
+  const [info, setInfo] = useState<AccountResponse>();
+  const [ep, setEndpoint] = useState<IngestEndpoint>();
   const [hrs, setHrs] = useState(25);
   const [tos, setTos] = useState(false);
   const rate = useRates("BTCUSD");
 
-  function sortEndpoints(arr: Array<StreamProviderEndpoint>) {
-    return arr.sort((a, b) => ((a.rate ?? 0) > (b.rate ?? 0) ? -1 : 1));
-  }
-
   async function loadInfo() {
     const info = await provider.info();
     setInfo(info);
-    setTos(info.tosAccepted ?? true);
+    setTos(info.tos?.accepted ?? true);
     setEndpoint(sortEndpoints(info.endpoints)[0]);
   }
   useEffect(() => {
@@ -88,14 +84,14 @@ export default function NostrProviderDialog({
   }
 
   function calcEstimate() {
-    if (!ep?.rate || !ep?.unit || !info?.balance || !info.balance) return;
+    if (!ep?.cost.rate || !ep?.cost.unit || !info?.balance || !info.balance) return;
 
-    const raw = Math.max(0, info.balance / ep.rate);
-    if (ep.unit === "min" && raw > 60) {
-      const pm = hrs * 60 * ep.rate;
+    const raw = Math.max(0, info.balance / ep.cost.rate);
+    if (ep.cost.unit === "min" && raw > 60) {
+      const pm = hrs * 60 * ep.cost.rate;
       return (
         <>
-          {`${(raw / 60).toFixed(0)} hour @ ${ep.rate} sats/${ep.unit}`}
+          {`${(raw / 60).toFixed(0)} hour @ ${ep.cost.rate} sats/${ep.cost.unit}`}
           &nbsp; or <br />
           {`${pm.toLocaleString()} sats/month ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo) streaming ${hrs} hrs/month`}
           <div className="bg-layer-2 rounded-xl flex items-center px-2">
@@ -105,19 +101,7 @@ export default function NostrProviderDialog({
         </>
       );
     }
-    return `${raw.toFixed(0)} ${ep.unit} @ ${ep.rate} sats/${ep.unit}`;
-  }
-
-  function parseCapability(cap: string) {
-    const [tag, ...others] = cap.split(":");
-    if (tag === "variant") {
-      const [height] = others;
-      return height === "source" ? "source" : `${height.includes("h") ? height.slice(0, -1) : height}p`;
-    }
-    if (tag === "output") {
-      return others[0];
-    }
-    return cap;
+    return `${raw.toFixed(0)} ${ep.cost.unit} @ ${ep.cost.rate} sats/${ep.cost.unit}`;
   }
 
   async function acceptTos() {
@@ -125,7 +109,6 @@ export default function NostrProviderDialog({
     const i = await provider.info();
     setInfo(i);
   }
-
 
   function tosInput() {
     if (!info) return;
@@ -140,11 +123,11 @@ export default function NostrProviderDialog({
                 defaultMessage="I have read and agree with {provider}'s {terms}."
                 id="RJOmzk"
                 values={{
-                  provider: info.name,
+                  provider: provider.name,
                   terms: (
                     <span
                       className="tos-link"
-                      onClick={() => window.open(info.tosLink, "popup", "width=400,height=800")}>
+                      onClick={() => window.open(info.tos?.link, "popup", "width=400,height=800")}>
                       <FormattedMessage defaultMessage="terms and conditions" id="thsiMl" />
                     </span>
                   ),
@@ -157,35 +140,6 @@ export default function NostrProviderDialog({
           <DefaultButton disabled={!tos} onClick={acceptTos}>
             <FormattedMessage defaultMessage="Continue" id="acrOoz" />
           </DefaultButton>
-        </div>
-      </>
-    );
-  }
-
-  function streamEndpoints() {
-    if (!info?.endpoints) return;
-    return (
-      <>
-        {info.endpoints.length > 1 && (
-          <div>
-            <p>
-              <FormattedMessage defaultMessage="Endpoint" id="ljmS5P" />
-            </p>
-            <div className="flex gap-2">
-              {sortEndpoints(info.endpoints).map(a => (
-                <Pill selected={ep?.name === a.name} onClick={() => setEndpoint(a)}>
-                  {a.name}
-                </Pill>
-              ))}
-            </div>
-          </div>
-        )}
-        {ep && <StreamKey ep={ep} />}
-        <div>
-          <p className="pb-2">
-            <FormattedMessage defaultMessage="Features" id="ZXp0z1" />
-          </p>
-          <div className="flex gap-2">{ep?.capabilities?.map(a => <Pill>{parseCapability(a)}</Pill>)}</div>
         </div>
       </>
     );
@@ -226,7 +180,7 @@ export default function NostrProviderDialog({
 
   function streamEditor() {
     if (!info || !showEditor) return;
-    if (info.tosAccepted === false) {
+    if (info.tos?.accepted === false) {
       return tosInput();
     }
 
@@ -294,13 +248,13 @@ export default function NostrProviderDialog({
   }
 
   function nwcConfig() {
-    if (!info || !showNwc || info.hasNwc === undefined) return;
-    return <NwcConfig provider={provider} hasNwc={info.hasNwc} onConfigured={loadInfo} />;
+    if (!info || !showNwc || info.has_nwc === undefined) return;
+    return <NwcConfig provider={provider} hasNwc={info.has_nwc} onConfigured={loadInfo} />;
   }
 
   return (
     <>
-      {showEndpoints && streamEndpoints()}
+      {showEndpoints && <StreamEndpoints currentEndpoint={ep} info={info} setEndpoint={setEndpoint} />}
       {showBalance && currentBalance()}
       {showEstimate && balanceTimeEstimate()}
       {streamEditor()}

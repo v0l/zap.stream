@@ -1,18 +1,20 @@
 import { FormattedMessage } from "react-intl";
 import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
-import { DefaultProvider, StreamProviderForward } from "@/providers";
+import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AddForwardInputs } from "@/element/provider/nostr/fowards";
+import { ForwardDest } from "@/providers";
 
 export default function DashboardIntroStep3() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [forwards, setForwards] = useState<Array<StreamProviderForward>>([]);
+  const [forwards, setForwards] = useState<Array<ForwardDest>>([]);
+  const { provider: streamProvider } = useStreamProvider();
 
   async function loadInfo() {
-    DefaultProvider.info().then(i => {
+    streamProvider.info().then(i => {
       setForwards(i.forwards ?? []);
     });
   }
@@ -40,7 +42,7 @@ export default function DashboardIntroStep3() {
               <div className="bg-layer-2 rounded-xl px-3 flex items-center">{a.name}</div>
               <DefaultButton
                 onClick={async () => {
-                  await DefaultProvider.removeForward(a.id);
+                  await streamProvider.removeForward(a.id);
                   await loadInfo();
                 }}>
                 <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
@@ -48,7 +50,7 @@ export default function DashboardIntroStep3() {
             </>
           ))}
         </div>
-        <AddForwardInputs provider={DefaultProvider} onAdd={loadInfo} />
+        <AddForwardInputs provider={streamProvider} onAdd={loadInfo} />
         <DefaultButton
           onClick={async () => {
             navigate("/dashboard/step-4", {

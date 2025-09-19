@@ -56,32 +56,20 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
     return (
       <div className="flex flex-col gap-3">
         <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-3">
-          <FormattedMessage
-            defaultMessage="✅ NWC is configured and ready for automated topups"
-            id="nwc-configured"
-          />
+          <FormattedMessage defaultMessage="✅ NWC is configured and ready for automated topups" id="nwc-configured" />
         </div>
 
         <DefaultButton
           onClick={removeNwc}
           disabled={status === "removing"}
-          className="bg-red-500 hover:bg-red-600 disabled:bg-red-500/50"
-        >
+          className="bg-red-500 hover:bg-red-600 disabled:bg-red-500/50">
           {status === "removing" && (
             <>
               <Spinner />
-              <FormattedMessage
-                defaultMessage="Removing NWC..."
-                id="nwc-removing-button"
-              />
+              <FormattedMessage defaultMessage="Removing NWC..." id="nwc-removing-button" />
             </>
           )}
-          {status !== "removing" && (
-            <FormattedMessage
-              defaultMessage="Remove NWC"
-              id="nwc-remove-button"
-            />
-          )}
+          {status !== "removing" && <FormattedMessage defaultMessage="Remove NWC" id="nwc-remove-button" />}
         </DefaultButton>
       </div>
     );
@@ -117,25 +105,14 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
           )}
         </div>
 
-        <DefaultButton
-          onClick={configureNwc}
-          disabled={!isValidNwcUri || status === "configuring"}
-        >
+        <DefaultButton onClick={configureNwc} disabled={!isValidNwcUri || status === "configuring"}>
           {status === "configuring" && (
             <>
               <Spinner />
-              <FormattedMessage
-                defaultMessage="Configuring..."
-                id="nwc-configure-button"
-              />
+              <FormattedMessage defaultMessage="Configuring..." id="nwc-configure-button" />
             </>
           )}
-          {status !== "configuring" && (
-            <FormattedMessage
-              defaultMessage="Enable NWC"
-              id="nwc-configure-button"
-            />
-          )}
+          {status !== "configuring" && <FormattedMessage defaultMessage="Enable NWC" id="nwc-configure-button" />}
         </DefaultButton>
       </div>
     );
@@ -152,26 +129,16 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
       {status === "success" && (
         <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-3">
           {hasNwc ? (
-            <FormattedMessage
-              defaultMessage="NWC removed successfully!"
-              id="nwc-removed-success"
-            />
+            <FormattedMessage defaultMessage="NWC removed successfully!" id="nwc-removed-success" />
           ) : (
-            <FormattedMessage
-              defaultMessage="NWC configured successfully!"
-              id="nwc-configured-success"
-            />
+            <FormattedMessage defaultMessage="NWC configured successfully!" id="nwc-configured-success" />
           )}
         </div>
       )}
 
       {status === "error" && error && (
         <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-3">
-          <FormattedMessage
-            defaultMessage="Error: {error}"
-            id="nwc-error"
-            values={{ error }}
-          />
+          <FormattedMessage defaultMessage="Error: {error}" id="nwc-error" values={{ error }} />
         </div>
       )}
 

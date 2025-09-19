@@ -20,12 +20,12 @@ import { SnortContext } from "@snort/system-react";
 import { Login, LoginType } from "@/login";
 import { Icon } from "./icon";
 import Copy from "./copy";
-import { DefaultProvider, StreamProviderInfo } from "@/providers";
-import { NostrStreamProvider } from "@/providers/zsz";
+import { AccountResponse, NostrStreamProvider } from "@/providers/zsz";
 import { DefaultButton, Layer1Button } from "./buttons";
 import { ExternalLink } from "./external-link";
 import { FileUploader } from "./file-uploader";
 import { Link } from "react-router-dom";
+import { useStreamProvider } from "@/hooks/stream-provider";
 
 enum Stage {
   Login = 0,
@@ -41,11 +41,12 @@ export function LoginSignup({ close }: { close: () => void }) {
   const [stage, setStage] = useState(Stage.Login);
   const [username, setUsername] = useState("");
   const [lnAddress, setLnAddress] = useState("");
-  const [providerInfo, setProviderInfo] = useState<StreamProviderInfo>();
+  const [providerInfo, setProviderInfo] = useState<AccountResponse>();
   const [avatar, setAvatar] = useState("");
   const [key, setNewKey] = useState("");
   const { formatMessage } = useIntl();
   const hasNostrExtension = "nostr" in window && window.nostr;
+  const { config } = useStreamProvider();
 
   function doLoginNsec() {
     try {
@@ -90,7 +91,7 @@ export function LoginSignup({ close }: { close: () => void }) {
   }
 
   async function setupProfile() {
-    const px = new NostrStreamProvider(DefaultProvider.name, DefaultProvider.url, EventPublisher.privateKey(key));
+    const px = new NostrStreamProvider(config.name, config.url, EventPublisher.privateKey(key));
     const info = await px.info();
     setProviderInfo(info);
 

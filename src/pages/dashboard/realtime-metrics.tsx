@@ -17,39 +17,41 @@ interface MetricsData {
 
 export function CompactMetricsDisplay({ streamId, provider }: { streamId?: string; provider?: NostrStreamProvider }) {
   const [metrics, setMetrics] = useState<MetricsData>({ connected: false });
-  const [connectionStatus, setConnectionStatus] = useState<'connecting' | 'connected' | 'disconnected' | 'error'>('disconnected');
+  const [connectionStatus, setConnectionStatus] = useState<"connecting" | "connected" | "disconnected" | "error">(
+    "disconnected",
+  );
 
   const getStreamHealth = (avgFps?: number, targetFps?: number) => {
-    if (!avgFps || !targetFps) return { status: 'unknown', color: 'bg-gray-500', text: 'Unknown' };
-    
+    if (!avgFps || !targetFps) return { status: "unknown", color: "bg-gray-500", text: "Unknown" };
+
     const fpsRatio = avgFps / targetFps;
-    
+
     if (fpsRatio >= 0.95) {
-      return { status: 'excellent', color: 'bg-green-500', text: 'Excellent' };
+      return { status: "excellent", color: "bg-green-500", text: "Excellent" };
     } else if (fpsRatio >= 0.85) {
-      return { status: 'good', color: 'bg-green-400', text: 'Good' };
+      return { status: "good", color: "bg-green-400", text: "Good" };
     } else if (fpsRatio >= 0.75) {
-      return { status: 'fair', color: 'bg-yellow-500', text: 'Fair' };
-    } else if (fpsRatio >= 0.60) {
-      return { status: 'poor', color: 'bg-orange-500', text: 'Poor' };
+      return { status: "fair", color: "bg-yellow-500", text: "Fair" };
+    } else if (fpsRatio >= 0.6) {
+      return { status: "poor", color: "bg-orange-500", text: "Poor" };
     } else {
-      return { status: 'critical', color: 'bg-red-500', text: 'Critical' };
+      return { status: "critical", color: "bg-red-500", text: "Critical" };
     }
   };
 
   useEffect(() => {
     if (!streamId || !provider) return;
 
-    setConnectionStatus('connecting');
+    setConnectionStatus("connecting");
 
     const handleMetrics = (data: MetricsMessage) => {
-      if (data.type === 'AuthResponse') {
-        setConnectionStatus('connected');
-      } else if (data.type === 'StreamMetrics') {
+      if (data.type === "AuthResponse") {
+        setConnectionStatus("connected");
+      } else if (data.type === "StreamMetrics") {
         // Extract bitrate from endpoint_stats (RTMP, etc.)
         const endpointStats = data.data?.endpoint_stats;
         const bitrate = endpointStats ? Object.values(endpointStats)[0]?.bitrate : undefined;
-        
+
         setMetrics(prev => ({
           ...prev,
           streamMetrics: {
@@ -61,7 +63,7 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
             bitrate: bitrate,
           },
           connected: true,
-          lastUpdate: new Date()
+          lastUpdate: new Date(),
         }));
       }
     };
@@ -74,7 +76,7 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
     };
   }, [streamId, provider]);
 
-  if (connectionStatus !== 'connected' || !metrics.streamMetrics?.fps && !metrics.streamMetrics?.bitrate) {
+  if (connectionStatus !== "connected" || (!metrics.streamMetrics?.fps && !metrics.streamMetrics?.bitrate)) {
     return (
       <div className="uppercase font-semibold flex items-center gap-2">
         <div className="w-3 h-3 rounded-full animate-pulse bg-green-500"></div>
@@ -92,14 +94,15 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
         {health.text}
       </div>
       {metrics.streamMetrics.fps && (
-        <span>{metrics.streamMetrics.fps.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} FPS</span>
+        <span>
+          {metrics.streamMetrics.fps.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{" "}
+          FPS
+        </span>
       )}
       {metrics.streamMetrics.bitrate && (
         <span>{Math.round(metrics.streamMetrics.bitrate / 1000).toLocaleString()} kbps</span>
       )}
-      {!metrics.streamMetrics.fps && !metrics.streamMetrics.bitrate && (
-        <FormattedMessage defaultMessage="Started" />
-      )}
+      {!metrics.streamMetrics.fps && !metrics.streamMetrics.bitrate && <FormattedMessage defaultMessage="Started" />}
     </div>
   );
 }
