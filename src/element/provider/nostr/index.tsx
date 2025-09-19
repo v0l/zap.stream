@@ -294,7 +294,7 @@ export default function NostrProviderDialog({
   }
 
   function nwcConfig() {
-    if (!info || !showNwc) return;
+    if (!info || !showNwc || info.hasNwc === undefined) return;
     return <NwcConfig provider={provider} hasNwc={info.hasNwc} onConfigured={loadInfo} />;
   }
 

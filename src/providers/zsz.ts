@@ -382,7 +382,7 @@ interface AccountResponse {
   };
   forwards: Array<ForwardDest>;
   details?: StreamProviderStreamInfo;
-  has_nwc: boolean;
+  has_nwc?: boolean;
 }
 
 interface ForwardDest {
