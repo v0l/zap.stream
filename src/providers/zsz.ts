@@ -55,6 +55,7 @@ export class NostrStreamProvider implements StreamProvider {
       }),
       forwards: rsp.forwards,
       streamInfo: rsp.details,
+      hasNwc: rsp.has_nwc,
     } as StreamProviderInfo;
   }
 
@@ -112,6 +113,18 @@ export class NostrStreamProvider implements StreamProvider {
   async acceptTos(): Promise<void> {
     await this.#getJson("PATCH", "account", {
       accept_tos: true,
+    });
+  }
+
+  async configureNwc(nwcUri: string): Promise<void> {
+    await this.#getJson("PATCH", "account", {
+      nwc: nwcUri,
+    });
+  }
+
+  async removeNwc(): Promise<void> {
+    await this.#getJson("PATCH", "account", {
+      remove_nwc: true,
     });
   }
 
@@ -369,6 +382,7 @@ interface AccountResponse {
   };
   forwards: Array<ForwardDest>;
   details?: StreamProviderStreamInfo;
+  has_nwc: boolean;
 }
 
 interface ForwardDest {

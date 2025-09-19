@@ -28,6 +28,7 @@ export function DashboardSettingsButton({ ev }: { ev?: TaggedNostrEvent }) {
               showEditor={false}
               showBalanceHistory={false}
               showStreamKeys={true}
+              showNwc={true}
             />
           </div>
         </Modal>

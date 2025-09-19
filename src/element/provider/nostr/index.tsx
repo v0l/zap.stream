@@ -15,6 +15,7 @@ import AccountTopup from "./topup";
 import AccountWithdrawl from "./withdraw";
 import BalanceHistory from "./history";
 import StreamKeyList from "./stream-keys";
+import NwcConfig from "./nwc-config";
 
 export default function NostrProviderDialog({
   provider,
@@ -25,6 +26,7 @@ export default function NostrProviderDialog({
   showForwards,
   showBalanceHistory,
   showStreamKeys,
+  showNwc,
   ...others
 }: {
   provider: NostrStreamProvider;
@@ -35,6 +37,7 @@ export default function NostrProviderDialog({
   showForwards: boolean;
   showBalanceHistory: boolean;
   showStreamKeys: boolean;
+  showNwc?: boolean;
 } & StreamEditorProps) {
   const system = useContext(SnortContext);
   const [topup, setTopup] = useState(false);
@@ -122,6 +125,7 @@ export default function NostrProviderDialog({
     const i = await provider.info();
     setInfo(i);
   }
+
 
   function tosInput() {
     if (!info) return;
@@ -289,12 +293,18 @@ export default function NostrProviderDialog({
     return <StreamKeyList provider={provider} />;
   }
 
+  function nwcConfig() {
+    if (!info || !showNwc) return;
+    return <NwcConfig provider={provider} hasNwc={info.hasNwc} onConfigured={loadInfo} />;
+  }
+
   return (
     <>
       {showEndpoints && streamEndpoints()}
       {showBalance && currentBalance()}
       {showEstimate && balanceTimeEstimate()}
       {streamEditor()}
+      {nwcConfig()}
       {forwardInputs()}
       {balanceHist()}
       {streamKeys()}

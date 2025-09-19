@@ -35,6 +35,16 @@ export interface StreamProvider {
    * Accept TOS of the streaming provider
    */
   acceptTos(): Promise<void>;
+
+  /**
+   * Configure NWC (Nostr Wallet Connect) for automated withdrawals
+   */
+  configureNwc?(nwcUri: string): Promise<void>;
+
+  /**
+   * Remove NWC (Nostr Wallet Connect) configuration
+   */
+  removeNwc?(): Promise<void>;
 }
 
 export enum StreamProviders {
@@ -54,6 +64,7 @@ export interface StreamProviderInfo {
   tosAccepted?: boolean;
   tosLink?: string;
   forwards?: Array<StreamProviderForward>;
+  hasNwc?: boolean;
 }
 
 export interface StreamProviderForward {
