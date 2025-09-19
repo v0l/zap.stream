@@ -168,7 +168,7 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
                       <FormattedNumber value={providerDisplay.info.balance || 0} /> sats
                     </div>
                     {providerDisplay.info.has_nwc !== undefined && <div>
-                      <Pill title={formatMessage({ defaultMessage: "Auto-topup with NWC" })} className="bg-green-800">NWC</Pill>
+                      <Pill title={formatMessage({ defaultMessage: "Auto-topup with NWC" })} className="!bg-green-800">NWC</Pill>
                     </div>}
                   </div>
                 </div>
