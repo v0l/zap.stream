@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { FormattedMessage, FormattedNumber } from "react-intl";
+import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { NostrStreamProvider, AccountResponse } from "@/providers";
 import { DefaultButton, Layer1Button } from "@/element/buttons";
 import { Icon } from "@/element/icon";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import Modal from "@/element/modal";
 import CapabilityPill from "@/element/capability-pill";
+import Pill from "@/element/pill";
 
 interface ProviderConfig {
   name: string;
@@ -23,7 +24,7 @@ const AVAILABLE_PROVIDERS: ProviderConfig[] = [
   {
     name: "zap.stream (UK)",
     url: "https://api-uk.zap.stream/api/v1",
-    description: "Backup streaming server in UK",
+    description: "Alternative streaming server in UK",
   },
 ];
 
@@ -41,6 +42,7 @@ interface ProviderSelectorProps {
 export function ProviderSelector({ onClose }: ProviderSelectorProps) {
   const [providers, setProviders] = useState<ProviderInfoDisplay[]>([]);
   const { config: currentConfig, updateStreamProvider } = useStreamProvider();
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     // Initialize providers and start fetching info
@@ -64,10 +66,10 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
           prev.map((p, i) =>
             i === index
               ? {
-                  ...p,
-                  loading: false,
-                  error: error instanceof Error ? error.message : "Failed to fetch provider info",
-                }
+                ...p,
+                loading: false,
+                error: error instanceof Error ? error.message : "Failed to fetch provider info",
+              }
               : p,
           ),
         );
@@ -119,9 +121,8 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
         {providers.map((providerDisplay, index) => (
           <div
             key={index}
-            className={`bg-layer-1 rounded-xl border p-4 ${
-              isCurrentProvider(providerDisplay.provider) ? "border-primary" : "border-layer-2"
-            }`}>
+            className={`bg-layer-1 rounded-xl border p-4 ${isCurrentProvider(providerDisplay.provider) ? "border-primary" : "border-layer-2"
+              }`}>
             <div className="flex items-start justify-between mb-3">
               <div>
                 <div className="flex items-center gap-2">
@@ -162,8 +163,13 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
                   <div className="text-layer-4 mb-1">
                     <FormattedMessage defaultMessage="Balance" />
                   </div>
-                  <div className="font-mono">
-                    <FormattedNumber value={providerDisplay.info.balance || 0} /> sats
+                  <div className="flex flex-col gap-2">
+                    <div className="font-mono">
+                      <FormattedNumber value={providerDisplay.info.balance || 0} /> sats
+                    </div>
+                    {providerDisplay.info.has_nwc !== undefined && <div>
+                      <Pill title={formatMessage({ defaultMessage: "Auto-topup with NWC" })} className="bg-green-800">NWC</Pill>
+                    </div>}
                   </div>
                 </div>
 
