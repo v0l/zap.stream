@@ -57,7 +57,7 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
       <div className="flex flex-col gap-3">
         <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-3">
           <FormattedMessage
-            defaultMessage="✅ NWC is configured and ready for automated withdrawals"
+            defaultMessage="✅ NWC is configured and ready for automated topups"
             id="nwc-configured"
           />
         </div>
