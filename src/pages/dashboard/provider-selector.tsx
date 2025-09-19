@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { NostrStreamProvider, AccountResponse } from "@/providers";
-import { DefaultButton, Layer1Button } from "@/element/buttons";
+import { DefaultButton, Layer2Button } from "@/element/buttons";
 import { Icon } from "@/element/icon";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import Modal from "@/element/modal";
@@ -217,9 +217,9 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
       </div>
 
       <div className="flex justify-end pt-4 border-t border-layer-2">
-        <Layer1Button onClick={onClose}>
+        <Layer2Button onClick={onClose}>
           <FormattedMessage defaultMessage="Close" />
-        </Layer1Button>
+        </Layer2Button>
       </div>
     </div>
   );
