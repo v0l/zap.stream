@@ -1,17 +1,21 @@
-import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { NostrStreamProvider } from "@/providers";
 import { useLogin } from "./login";
 import { ExternalStore } from "@snort/shared";
 import { EventPublisher } from "@snort/system";
+import { ZAP_STREAM_PUBKEY } from "@/const";
 
-interface StreamProviderConfig {
+export interface StreamProviderConfig {
   name: string;
   url: string;
+  description?: string;
+  pubkey: string;
 }
 
 const DEFAULT_CONFIG: StreamProviderConfig = {
   name: "zap.stream",
   url: "https://api-core.zap.stream/api/v1",
+  pubkey: ZAP_STREAM_PUBKEY,
 };
 
 const STORAGE_KEY = "stream-provider";

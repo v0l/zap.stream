@@ -2519,10 +2519,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-wasm@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@snort/system-wasm@npm:1.0.5"
-  checksum: 10c0/c043264ed4d198a77cb01a6036b73e949b092be536f028071cda5f08fca0eb6cb511148c864f436c4953ee15609f71e544c9b97cd1e7da63cbec1e9c4550cd29
+"@snort/system-wasm@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "@snort/system-wasm@npm:1.0.6"
+  checksum: 10c0/b9b92d66e1051d374812319957bed7ab97b4782135a21d4eef7cbc6a36abe1e02b0f25c1e8f810f1350fc54bc98a7ee52c2ed4d7c937246471a51523391a9554
   languageName: node
   linkType: hard
 
@@ -2560,14 +2560,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/worker-relay@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "@snort/worker-relay@npm:1.4.1"
+"@snort/worker-relay@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@snort/worker-relay@npm:1.5.0"
   dependencies:
     "@sqlite.org/sqlite-wasm": "npm:^3.50.1-build1"
     eventemitter3: "npm:^5.0.1"
     uuid: "npm:^9.0.1"
-  checksum: 10c0/30c83457a1ffe0f1b4c0ddb838c774d8e29f32a3ade3e60612c3aaa15ed8bdf63c378bcbb642d87d10a8487d7228f71a0ebf27fead8465ae50afb5cc97416964
+  checksum: 10c0/8383ec877b351f65830604a7dbb3af58ced8e386be022dd3d43c96ed70bcd8b933af33df456690cf6bb06765c645c60fdbada902b5ec53e26f6c6e29c2a83e06
   languageName: node
   linkType: hard
 
@@ -7313,9 +7313,9 @@ __metadata:
     "@snort/shared": "npm:^1.0.17"
     "@snort/system": "npm:^1.6.8"
     "@snort/system-react": "npm:^1.6.8"
-    "@snort/system-wasm": "npm:^1.0.5"
+    "@snort/system-wasm": "npm:^1.0.6"
     "@snort/wallet": "npm:^0.2.11"
-    "@snort/worker-relay": "npm:^1.4.1"
+    "@snort/worker-relay": "npm:^1.5.0"
     "@szhsin/react-menu": "npm:^4.1.0"
     "@testing-library/dom": "npm:^9.3.1"
     "@types/node": "npm:^20.12.12"
