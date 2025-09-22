@@ -74,7 +74,7 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
     return () => {
       provider.unsubscribeFromMetrics(streamId);
     };
-  }, [streamId, provider]);
+  }, [streamId, provider?.url]);
 
   if (connectionStatus !== "connected" || (!metrics.streamMetrics?.fps && !metrics.streamMetrics?.bitrate)) {
     return (
