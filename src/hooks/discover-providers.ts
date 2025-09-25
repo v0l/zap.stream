@@ -34,15 +34,15 @@ export function useDiscoverProviders(): StreamProviderConfig[] {
       try {
         const userMetadata: UserMetadata = JSON.parse(event.content);
         const evLink = NostrLink.fromEvent(event);
-        const reccomendsThis = recommendations.filter(e => evLink.isReplyToThis(e));
+        const recommendsThis = recommendations.filter(e => evLink.isReplyToThis(e));
         let defaultScore = P_TAG_HOST_WHITELIST.indexOf(event.pubkey);
         if (defaultScore === -1) {
           defaultScore = 1000;
         }
         const score =
-          reccomendsThis.length === 0
+          recommendsThis.length === 0
             ? defaultScore
-            : reccomendsThis.reduce((acc, v) => acc + wot.followDistance(v.pubkey), 0);
+            : recommendsThis.reduce((acc, v) => acc + wot.followDistance(v.pubkey), 0);
 
         // Only website is required
         if (userMetadata.website) {
@@ -52,7 +52,7 @@ export function useDiscoverProviders(): StreamProviderConfig[] {
             description: userMetadata.about,
             pubkey: event.pubkey,
             event: event,
-            reccomendations: reccomendsThis,
+            recommendations: recommendsThis,
             score,
           });
         }

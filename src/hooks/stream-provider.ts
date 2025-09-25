@@ -11,7 +11,7 @@ export interface StreamProviderConfig {
   description?: string;
   pubkey: string;
   event?: NostrEvent;
-  reccomendations: Array<NostrEvent>;
+  recommendations: Array<NostrEvent>;
   // A score by WoT distance, lower is better
   score: number;
 }
@@ -20,7 +20,7 @@ const DEFAULT_CONFIG: StreamProviderConfig = {
   name: "zap.stream",
   url: "https://api-core.zap.stream/api/v1",
   pubkey: ZAP_STREAM_PUBKEY,
-  reccomendations: [],
+  recommendations: [],
   score: 0,
 };
 

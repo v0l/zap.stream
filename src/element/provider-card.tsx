@@ -33,7 +33,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   const system = useContext(SnortContext);
 
   // Check if current user has already recommended this provider
-  const hasRecommended = config.reccomendations.some(event => event.pubkey === login?.pubkey);
+  const hasRecommended = config.recommendations.some(event => event.pubkey === login?.pubkey);
 
   const openRecommendModal = () => {
     setRecommendContent(`I recommend ${config.name} as a streaming provider`);
@@ -221,14 +221,14 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
         </div>
       )}
 
-      {showRecommendations && config.reccomendations.length > 0 && (
+      {showRecommendations && config.recommendations.length > 0 && (
         <div className="border-t border-layer-2 pt-4 mt-4">
           <div className="text-layer-4 mb-3 font-semibold text-sm">
             <FormattedMessage defaultMessage="Recommended by:" />
           </div>
           <div className="flex flex-wrap gap-2">
             {wot
-              .sortEvents(config.reccomendations)
+              .sortEvents(config.recommendations)
               .slice(0, 8)
               .map(event => (
                 <Profile
@@ -241,8 +241,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
                   className="flex-shrink-0"
                 />
               ))}
-            {config.reccomendations.length > 4 && (
-              <span className="text-layer-4 self-center text-xs">+{config.reccomendations.length - 4}</span>
+            {config.recommendations.length > 4 && (
+              <span className="text-layer-4 self-center text-xs">+{config.recommendations.length - 4}</span>
             )}
           </div>
         </div>
