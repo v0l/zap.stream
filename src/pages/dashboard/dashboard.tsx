@@ -136,21 +136,21 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
     streamEvent ??
     (info?.details && !isMyManual
       ? {
-          id: "",
-          pubkey: "",
-          created_at: 0,
-          sig: "",
-          content: "",
-          kind: LIVE_STREAM,
-          tags: [
-            ["d", ""],
-            ["title", info.details.title ?? ""],
-            ["summary", info.details?.summary ?? ""],
-            ["picture", info.details.image ?? ""],
-            ["service", provider.url],
-            ...(info.details.tags?.map(t => ["t", t]) ?? []),
-          ],
-        }
+        id: "",
+        pubkey: "",
+        created_at: 0,
+        sig: "",
+        content: "",
+        kind: LIVE_STREAM,
+        tags: [
+          ["d", ""],
+          ["title", info.details.title ?? ""],
+          ["summary", info.details?.summary ?? ""],
+          ["picture", info.details.image ?? ""],
+          ["service", provider.url],
+          ...(info.details.tags?.map(t => ["t", t]) ?? []),
+        ],
+      }
       : undefined);
 
   return (
@@ -230,7 +230,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
               <div className="grid gap-2 grid-cols-3">
                 <DashboardRaidButton link={streamLink} />
                 <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
-                <DashboardSettingsButton ev={streamEvent} />
+                <DashboardSettingsButton ev={streamEvent} provider={provider} />
                 <BalanceHistoryModal provider={provider} />
                 <ProviderSelectorButton />
               </div>
@@ -322,7 +322,7 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
             <div className="flex gap-2 flex-wrap">
               <BalanceHistoryModal provider={provider} />
               <ForwardingModal provider={provider} />
-              <DashboardSettingsButton ev={streamEvent} />
+              <DashboardSettingsButton ev={streamEvent} provider={provider} />
               <ProviderSelectorButton />
             </div>
           </DashboardCard>
