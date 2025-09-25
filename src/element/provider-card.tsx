@@ -27,6 +27,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   const [isRecommending, setIsRecommending] = useState(false);
   const [showRecommendModal, setShowRecommendModal] = useState(false);
   const [recommendContent, setRecommendContent] = useState("");
+  const [pingTime, setPingTime] = useState<number | null>(null);
+  const [pingError, setPingError] = useState(false);
   const { formatMessage } = useIntl();
   const login = useLogin();
   const wot = useWoT();
@@ -38,6 +40,26 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   const openRecommendModal = () => {
     setRecommendContent(`I recommend ${config.name} as a streaming provider`);
     setShowRecommendModal(true);
+  };
+
+  const measurePing = async () => {
+    try {
+      const startTime = performance.now();
+      const response = await fetch(`${config.url}/time`, {
+        method: "GET",
+        signal: AbortSignal.timeout(5000), // 5 second timeout
+      });
+      const endTime = performance.now();
+
+      if (response.ok) {
+        setPingTime(Math.round(endTime - startTime));
+        setPingError(false);
+      } else {
+        setPingError(true);
+      }
+    } catch (err) {
+      setPingError(true);
+    }
   };
 
   const handleRecommend = async () => {
@@ -81,10 +103,13 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   useEffect(() => {
     const p = new NostrStreamProvider(config.name, config.url, login?.publisher());
     setLoading(true);
+
     p.info()
       .then(i => {
         setAccount(i);
         setLoading(false);
+        // Measure ping after account info is loaded
+        measurePing();
       })
       .catch(e => {
         if (e instanceof Error) {
@@ -130,7 +155,22 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-layer-5 text-sm">{new URL(config.url).host}</span>
+          <div className="flex items-center gap-3 text-sm">
+            <span className="text-layer-5">{new URL(config.url).host}</span>
+            {pingTime !== null && !pingError && (
+              <span
+                className={`text-xs px-2 py-1 rounded-full ${
+                  pingTime < 100
+                    ? "bg-green-800 text-green-100"
+                    : pingTime < 300
+                      ? "bg-yellow-800 text-yellow-100"
+                      : "bg-red-800 text-red-100"
+                }`}>
+                {pingTime}ms
+              </span>
+            )}
+            {pingError && <span className="text-xs px-2 py-1 rounded-full bg-red-800 text-red-100">timeout</span>}
+          </div>
           <div className="flex gap-2">
             {!active && !loading && !error && (
               <DefaultButton onClick={() => onSelect()}>
