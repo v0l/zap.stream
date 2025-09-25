@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 import { NostrStreamProvider } from "@/providers";
 import { useLogin } from "./login";
 import { ExternalStore } from "@snort/shared";
@@ -65,7 +65,7 @@ export function useStreamProvider() {
     () => Storage.snapshot(),
   );
 
-  return {
+  return useMemo(() => ({
     provider: new NostrStreamProvider(config.name, config.url, login?.publisher()),
     config,
     updateStreamProvider: (cfg: StreamProviderConfig) => {
@@ -74,5 +74,5 @@ export function useStreamProvider() {
     resetToDefault: () => {
       Storage.setProvider(DEFAULT_CONFIG);
     },
-  };
+  }), [config]);
 }
