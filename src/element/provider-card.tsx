@@ -265,6 +265,12 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
         <div className="border-t border-layer-2 pt-4 mt-4">
           <div className="text-layer-4 mb-3 font-semibold text-sm">
             <FormattedMessage defaultMessage="Recommended by:" />
+            &nbsp;
+            {config.score > 0 && (
+              <>
+                (WoT: <FormattedNumber value={config.score} maximumFractionDigits={1} />)
+              </>
+            )}
           </div>
           <div className="flex flex-wrap gap-2">
             {wot

@@ -42,7 +42,11 @@ export function useDiscoverProviders(): StreamProviderConfig[] {
         const score =
           recommendsThis.length === 0
             ? defaultScore
-            : recommendsThis.reduce((acc, v) => acc + wot.followDistance(v.pubkey), 0);
+            : recommendsThis.reduce((acc, v) => {
+                const dist = wot.followDistance(v.pubkey);
+                // the user doesnt follow the person, use WoT distance 5
+                return acc + (dist === 1000 ? 5 : dist);
+              }, 0) / recommendsThis.length; // average distance
 
         // Only website is required
         if (userMetadata.website) {

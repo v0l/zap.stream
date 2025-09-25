@@ -131,9 +131,6 @@
   "5QYdPU": {
     "defaultMessage": "Start Time"
   },
-  "5Wwopw": {
-    "defaultMessage": "Pricing"
-  },
   "5kx+2v": {
     "defaultMessage": "Server Url"
   },
@@ -266,9 +263,6 @@
   "DqmiAe": {
     "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
   },
-  "E7n6zr": {
-    "defaultMessage": "Current stream cost: {amount} sats/{unit} (about {usd}/day for a {x}hr stream)"
-  },
   "E9APoR": {
     "defaultMessage": "Could not create stream URL"
   },
@@ -339,9 +333,6 @@
   "HAlOn1": {
     "defaultMessage": "Name"
   },
-  "HDgXO/": {
-    "defaultMessage": "zap.stream is an open source platform powered by the nostr protocol. There are no giant corporations or giant funds available to provide free streaming."
-  },
   "HsgeUk": {
     "defaultMessage": "Come check out my stream on zap.stream! {link}"
   },
@@ -410,9 +401,6 @@
   },
   "LUvSJB": {
     "defaultMessage": "zap.stream is free up to 2 hours of hosting at high quality and up to 8 hours of “source” quality. After that you have an option to stream for 5 sats per minute or 10 sats per minute depending on your chosen quality. If you do not use zap.stream to host, pricing will depend on your chosen streaming provider."
-  },
-  "Le+99Z": {
-    "defaultMessage": "Streamers pay a small fee to cover our running costs. We give new streamers a credit of {amount} sats (about {time_estimate} of streaming) to get started!"
   },
   "Lg2ye2": {
     "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
@@ -484,6 +472,12 @@
   "PDA8V2": {
     "defaultMessage": "{m}h {ago}",
     "description": "Number of hour(s) relative to now"
+  },
+  "PDtJJ/": {
+    "defaultMessage": "{rate} sats/{unit}"
+  },
+  "PEg2ZC": {
+    "defaultMessage": "Provider Endpoint Costs"
   },
   "PHE60k": {
     "defaultMessage": "Leave blank if you do not wish to set up any goals."
@@ -713,6 +707,9 @@
   },
   "c3LlRO": {
     "defaultMessage": "{n}KiB"
+  },
+  "cJQoaU": {
+    "defaultMessage": "~{cost}/day for {hours}hr stream"
   },
   "cPIKU2": {
     "defaultMessage": "Following"
@@ -1012,6 +1009,9 @@
   },
   "syEQFE": {
     "defaultMessage": "Publish"
+  },
+  "t79aXM": {
+    "defaultMessage": "Your current provider offers different streaming endpoints with varying costs and capabilities."
   },
   "tG1ST3": {
     "defaultMessage": "Incoming Zap"
