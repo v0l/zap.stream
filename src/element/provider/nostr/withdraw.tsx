@@ -16,7 +16,29 @@ export default function AccountWithdrawl({
   const [addr, setAddress] = useState("");
   const [error, setError] = useState("");
   const [amount, setAmount] = useState<number>();
+  const [withdrawalSupported, setWithdrawalSupported] = useState<boolean | null>(null);
   const { formatMessage } = useIntl();
+
+  // Check if withdrawal is supported by making a HEAD request
+  useEffect(() => {
+    const checkWithdrawalSupport = async () => {
+      try {
+        const withdrawUrl = `${provider.url}withdraw`;
+        const response = await fetch(withdrawUrl, {
+          method: "HEAD",
+        });
+
+        // If we get 200, 400, 401, 405, or 403, the endpoint exists
+        // If we get 404, the endpoint doesn't exist (not supported)
+        setWithdrawalSupported(response.status !== 404);
+      } catch (error) {
+        // On network error, assume it's supported to avoid breaking existing functionality
+        setWithdrawalSupported(false);
+      }
+    };
+
+    checkWithdrawalSupport();
+  }, [provider.url]);
 
   useEffect(() => {
     if (addr.startsWith("lnbc") && amount !== undefined) {
@@ -65,6 +87,11 @@ export default function AccountWithdrawl({
         setError(e.message);
       }
     }
+  }
+
+  // Don't render if withdrawal is not supported
+  if (!withdrawalSupported) {
+    return null;
   }
 
   return (
