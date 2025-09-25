@@ -420,8 +420,6 @@ export interface MetricsMessage {
         bitrate: number;
       };
     };
-    // Other possible metrics
-    [key: string]: unknown;
   };
   error?: string;
 }

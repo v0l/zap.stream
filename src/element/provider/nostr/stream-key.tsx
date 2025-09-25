@@ -1,8 +1,8 @@
 import Copy from "@/element/copy";
-import { StreamProviderEndpoint } from "@/providers";
+import { IngestEndpoint } from "@/providers";
 import { FormattedMessage } from "react-intl";
 
-export default function StreamKey({ ep }: { ep: StreamProviderEndpoint }) {
+export default function StreamKey({ ep }: { ep: IngestEndpoint }) {
   return (
     <div className="flex flex-col gap-2">
       <div>

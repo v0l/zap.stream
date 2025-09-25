@@ -19,7 +19,7 @@ import DashboardIntro from "./intro";
 import { useLocation, useNavigate } from "react-router-dom";
 import StreamKey from "@/element/provider/nostr/stream-key";
 import { useStreamProvider } from "@/hooks/stream-provider";
-import { AccountResponse, NostrStreamProvider } from "@/providers/zsz";
+import { AccountResponse, MetricsMessage, NostrStreamProvider } from "@/providers/zsz";
 import { ExternalLink } from "@/element/external-link";
 import BalanceTimeEstimate from "@/element/balance-time-estimate";
 import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons";
@@ -43,13 +43,14 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
   const location = useLocation();
   const login = useLogin();
   const streamLink = streamEvent ? NostrLink.fromEvent(streamEvent) : undefined;
-  const { stream, status, image, participants, service } = extractStreamInfo(streamEvent);
+  const { stream, status, image, participants: evParticipants, service, id } = extractStreamInfo(streamEvent);
   const [info, setInfo] = useState<AccountResponse>();
   const [tos, setTos] = useState(info?.tos?.accepted ?? false);
   const isMyManual = streamEvent?.pubkey === login?.pubkey;
   const system = useContext(SnortContext);
   const [recording, setRecording] = useState(Boolean(localStorage.getItem("default-recording") ?? "true"));
   const { provider: streamProvider } = useStreamProvider();
+  const [metrics, setMetrics] = useState<MetricsMessage>();
 
   useEffect(() => {
     localStorage.setItem("default-recording", String(recording));
@@ -61,8 +62,9 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
   );
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints?.find(a => a.name == (recording ? "Best" : "Good")) ?? info?.endpoints?.at(0);
-  }, [info, recording]);
+    const metricsEndpint = metrics?.data?.endpoint_name ?? (recording ? "Best" : "Good");
+    return info?.endpoints?.find(a => a.name == metricsEndpint) ?? info?.endpoints?.at(0);
+  }, [info, recording, metrics]);
 
   useEffect(() => {
     if (!isMyManual) {
@@ -76,6 +78,18 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
     }
   }, [isMyManual, provider.url]);
 
+  useEffect(() => {
+    if (id) {
+      provider.subscribeToMetrics(id, m => {
+        if (m.type === "StreamMetrics") {
+          setMetrics(m);
+        }
+      });
+      return () => provider.unsubscribeFromMetrics(id);
+    }
+  }, [id, provider]);
+
+  const participants = metrics?.data?.viewers ? metrics?.data?.viewers : Number(evParticipants);
   const [maxParticipants, setMaxParticipants] = useState(0);
   useEffect(() => {
     if (participants) {
@@ -152,11 +166,8 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
             <h3>
               <FormattedMessage defaultMessage="Stream" />
             </h3>
-            {status === StreamState.Live && service ? (
-              <CompactMetricsDisplay
-                streamId={streamLink?.id}
-                provider={provider instanceof NostrStreamProvider ? provider : undefined}
-              />
+            {status === StreamState.Live && service && metrics ? (
+              <CompactMetricsDisplay metrics={metrics} />
             ) : (
               <div className="uppercase font-semibold flex items-center gap-2">
                 <div className={`w-3 h-3 rounded-full ${headingDotStyle()}`}></div>
@@ -177,11 +188,20 @@ export default function DashboardForLink({ link }: { link: NostrLink }) {
               <div className="flex gap-4">
                 <DashboardStatsCard
                   name={<FormattedMessage defaultMessage="Stream Time" />}
-                  value={<StreamTimer ev={streamEvent} />}
+                  value={
+                    <StreamTimer
+                      ev={
+                        metrics?.data?.started_at
+                          ? ({ tags: [["starts", new Date(metrics.data?.started_at).getTime() / 1000]] } as NostrEvent)
+                          : streamEvent
+                      }
+                    />
+                  }
                 />
                 <DashboardStatsCard name={<FormattedMessage defaultMessage="Viewers" />} value={participants} />
                 <DashboardStatsCard name={<FormattedMessage defaultMessage="Top Viewers" />} value={maxParticipants} />
               </div>
+
               {defaultEndpoint && (
                 <div className="bg-layer-1 rounded-xl px-4 py-3 flex justify-between items-center text-layer-5">
                   <div>

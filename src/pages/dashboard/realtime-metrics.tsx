@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NostrStreamProvider, MetricsMessage } from "@/providers/zsz";
+import { MetricsMessage } from "@/providers/zsz";
 
-interface MetricsData {
-  streamMetrics?: {
-    viewers?: number;
-    fps?: number;
-    targetFps?: number;
-    frameCount?: number;
-    resolution?: string;
-    bitrate?: number;
+export function CompactMetricsDisplay({ metrics }: { metrics: MetricsMessage }) {
+  const getBitrate = (): number | undefined => {
+    const endpointStats = metrics.data?.endpoint_stats;
+    return endpointStats ? Object.values(endpointStats)[0]?.bitrate : undefined;
   };
-  connected: boolean;
-  lastUpdate?: Date;
-}
-
-export function CompactMetricsDisplay({ streamId, provider }: { streamId?: string; provider?: NostrStreamProvider }) {
-  const [metrics, setMetrics] = useState<MetricsData>({ connected: false });
-  const [connectionStatus, setConnectionStatus] = useState<"connecting" | "connected" | "disconnected" | "error">(
-    "disconnected",
-  );
 
   const getStreamHealth = (avgFps?: number, targetFps?: number) => {
     if (!avgFps || !targetFps) return { status: "unknown", color: "bg-gray-500", text: "Unknown" };
@@ -39,44 +25,7 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
     }
   };
 
-  useEffect(() => {
-    if (!streamId || !provider) return;
-
-    setConnectionStatus("connecting");
-
-    const handleMetrics = (data: MetricsMessage) => {
-      if (data.type === "AuthResponse") {
-        setConnectionStatus("connected");
-      } else if (data.type === "StreamMetrics") {
-        // Extract bitrate from endpoint_stats (RTMP, etc.)
-        const endpointStats = data.data?.endpoint_stats;
-        const bitrate = endpointStats ? Object.values(endpointStats)[0]?.bitrate : undefined;
-
-        setMetrics(prev => ({
-          ...prev,
-          streamMetrics: {
-            viewers: data.data?.viewers,
-            fps: data.data?.average_fps,
-            targetFps: data.data?.target_fps,
-            frameCount: data.data?.frame_count,
-            resolution: data.data?.input_resolution,
-            bitrate: bitrate,
-          },
-          connected: true,
-          lastUpdate: new Date(),
-        }));
-      }
-    };
-
-    // Subscribe to metrics via provider
-    provider.subscribeToMetrics(streamId, handleMetrics);
-
-    return () => {
-      provider.unsubscribeFromMetrics(streamId);
-    };
-  }, [streamId, provider?.url]);
-
-  if (connectionStatus !== "connected" || (!metrics.streamMetrics?.fps && !metrics.streamMetrics?.bitrate)) {
+  if (!metrics.data) {
     return (
       <div className="uppercase font-semibold flex items-center gap-2">
         <div className="w-3 h-3 rounded-full animate-pulse bg-green-500"></div>
@@ -85,7 +34,8 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
     );
   }
 
-  const health = getStreamHealth(metrics.streamMetrics.fps, metrics.streamMetrics.targetFps);
+  const health = getStreamHealth(metrics.data.average_fps, metrics.data.target_fps);
+  const bitrate = getBitrate();
 
   return (
     <div className="uppercase font-semibold flex items-center gap-3">
@@ -93,16 +43,14 @@ export function CompactMetricsDisplay({ streamId, provider }: { streamId?: strin
         <div className="w-1.5 h-1.5 rounded-full bg-white opacity-80 animate-pulse"></div>
         {health.text}
       </div>
-      {metrics.streamMetrics.fps && (
+      {metrics.data.average_fps && (
         <span>
-          {metrics.streamMetrics.fps.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{" "}
+          {metrics.data.average_fps.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{" "}
           FPS
         </span>
       )}
-      {metrics.streamMetrics.bitrate && (
-        <span>{Math.round(metrics.streamMetrics.bitrate / 1000).toLocaleString()} kbps</span>
-      )}
-      {!metrics.streamMetrics.fps && !metrics.streamMetrics.bitrate && <FormattedMessage defaultMessage="Started" />}
+      {bitrate && <span>{Math.round(bitrate / 1000).toLocaleString()} kbps</span>}
+      {!metrics.data.average_fps && !bitrate && <FormattedMessage defaultMessage="Started" />}
     </div>
   );
 }
