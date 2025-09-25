@@ -1,0 +1,1 @@
+- [React Intl] Messages must be statically evaluate-able for extraction.

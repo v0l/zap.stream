@@ -35,6 +35,7 @@ export function Profile({
   options,
   linkToProfile,
   avatarSize,
+  title,
   gap,
   profile,
 }: {
@@ -43,6 +44,7 @@ export function Profile({
   className?: string;
   avatarClassname?: string;
   options?: ProfileOptions;
+  title?: string;
   linkToProfile?: boolean;
   avatarSize?: number;
   gap?: number;
@@ -63,11 +65,11 @@ export function Profile({
 
   const cls = classNames("flex items-center align-bottom font-medium", `gap-${gap ?? 2}`, className);
   return isAnon || linkToProfile === false ? (
-    <div className={cls} ref={ref}>
+    <div className={cls} ref={ref} title={title}>
       {content}
     </div>
   ) : (
-    <Link to={profileLink(pLoaded, pubkey)} className={cls} ref={ref}>
+    <Link to={profileLink(pLoaded, pubkey)} className={cls} ref={ref} title={title}>
       {content}
     </Link>
   );

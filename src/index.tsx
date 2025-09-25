@@ -43,6 +43,9 @@ import { UploadPage } from "./pages/upload";
 import { DebugPage } from "./pages/debug";
 import { ShortsPage } from "./pages/shorts";
 import { DownloadAppPage } from "./pages/download";
+import ProvidersPage from "./pages/providers";
+import { TosPage } from "./pages/tos";
+import { Login } from "./login";
 
 const hasWasm = "WebAssembly" in globalThis;
 const disableWasmForPaths = ["/chat", "/alert", "/embed"];
@@ -52,9 +55,10 @@ const workerRelay = new WorkerRelayInterface(
 );
 console.debug(`WASM config: has=${hasWasm}, use_worker_relay=${useWorkerRelay}`);
 EventBuilder.ClientTag = ["client", "zap.stream", __ZAP_STREAM_VERSION__];
-const System = new NostrSystem({
+export const System = new NostrSystem({
   optimizer: hasWasm ? WasmOptimizer : undefined, // use optimizer always when WASM is available
   cachingRelay: useWorkerRelay ? workerRelay : undefined,
+  buildFollowGraph: true,
 });
 if (useWorkerRelay) {
   System.on("event", (_, ev) => {
@@ -86,6 +90,11 @@ async function doInit() {
   }
   await System.Init();
   syncClock();
+
+  const pubkey = Login.snapshot()?.pubkey;
+  if (pubkey) {
+    System.config.socialGraphInstance.setRoot(pubkey);
+  }
 }
 
 const router = createBrowserRouter([
@@ -197,6 +206,14 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FaqPage />,
+      },
+      {
+        path: "/providers",
+        element: <ProvidersPage />,
+      },
+      {
+        path: "/tos",
+        element: <TosPage />,
       },
       {
         path: "*",

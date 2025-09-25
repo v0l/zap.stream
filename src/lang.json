@@ -65,6 +65,9 @@
   "2/2yg+": {
     "defaultMessage": "Add"
   },
+  "29gmtd": {
+    "defaultMessage": "Error: {error}"
+  },
   "2lVQYF": {
     "defaultMessage": "...more"
   },
@@ -145,6 +148,9 @@
   },
   "6PK5Jy": {
     "defaultMessage": "Past Stream"
+  },
+  "6Y4jcg": {
+    "defaultMessage": "Download the zap.stream app"
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
@@ -268,6 +274,9 @@
   },
   "ESyhzp": {
     "defaultMessage": "Your comment for {name}"
+  },
+  "EW5L+2": {
+    "defaultMessage": "Select Provider"
   },
   "EcglP9": {
     "defaultMessage": "Key"
@@ -414,8 +423,17 @@
   "LxSJOb": {
     "defaultMessage": "Go to Dashboard"
   },
+  "ME2dFN": {
+    "defaultMessage": "Your recommendation:"
+  },
   "MTHO1W": {
     "defaultMessage": "Start Raid"
+  },
+  "MV19ST": {
+    "defaultMessage": "Share why you recommend this provider..."
+  },
+  "MVov7M": {
+    "defaultMessage": "Loading provider information..."
   },
   "My6HwN": {
     "defaultMessage": "Ok, it's safe"
@@ -453,6 +471,9 @@
   "OkXMLE": {
     "defaultMessage": "Max Audio Bitrate"
   },
+  "OnllN2": {
+    "defaultMessage": "Choose your preferred streaming provider. Each provider may have different pricing, features, and terms of service."
+  },
   "OumUwz": {
     "defaultMessage": "{m}s {ago}",
     "description": "Number of second(s) relative to now"
@@ -478,6 +499,9 @@
   },
   "Pe0ogR": {
     "defaultMessage": "Theme"
+  },
+  "PesLat": {
+    "defaultMessage": "Publishing..."
   },
   "PySFxG": {
     "defaultMessage": "Choose file."
@@ -601,6 +625,9 @@
   "X2PZ7D": {
     "defaultMessage": "Create Goal"
   },
+  "XFievo": {
+    "defaultMessage": "Capabilities"
+  },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
   },
@@ -656,9 +683,15 @@
   "Zse7yG": {
     "defaultMessage": "Raid target"
   },
+  "a9rL24": {
+    "defaultMessage": "Recommended by:"
+  },
   "aB/rH0": {
     "defaultMessage": "{m}h {ago}",
     "description": "Number of minute(s) relative to now"
+  },
+  "aFyFm0": {
+    "defaultMessage": "Accepted"
   },
   "acrOoz": {
     "defaultMessage": "Continue"
@@ -727,6 +760,9 @@
   "fBI91o": {
     "defaultMessage": "Zap"
   },
+  "fF376U": {
+    "defaultMessage": "Current"
+  },
   "feZ/kG": {
     "defaultMessage": "Login with Private Key (insecure)"
   },
@@ -739,17 +775,26 @@
   "gQxxlw": {
     "defaultMessage": "Goal Name"
   },
+  "gmJvLx": {
+    "defaultMessage": "Auto-topup with NWC"
+  },
   "gt65Gg": {
     "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
   "gzsn7k": {
     "defaultMessage": "{n} messages"
   },
+  "h5aBa1": {
+    "defaultMessage": "Write a recommendation for {providerName}. This will be published publicly on Nostr."
+  },
   "h6NRY6": {
     "defaultMessage": "No Thanks!"
   },
   "h9mX2/": {
     "defaultMessage": "If you use our in-house zap.stream hosting (cheapest and easiest), copy your stream URL and Stream Key to your OBS settings and you should be good to go."
+  },
+  "hL2XvL": {
+    "defaultMessage": "Not Accepted"
   },
   "hMzcSq": {
     "defaultMessage": "Messages"
@@ -765,6 +810,9 @@
   },
   "iKlloU": {
     "defaultMessage": "Suggested Servers"
+  },
+  "ibcWy5": {
+    "defaultMessage": "TOS Status"
   },
   "ieGrWo": {
     "defaultMessage": "Follow"
@@ -805,6 +853,9 @@
   "k21gTS": {
     "defaultMessage": "e.g. about me"
   },
+  "k66uFN": {
+    "defaultMessage": "Select Stream Provider"
+  },
   "kAEQyV": {
     "defaultMessage": "OK"
   },
@@ -844,6 +895,9 @@
   "msjwph": {
     "defaultMessage": "Keyframe Interval"
   },
+  "n0cU4E": {
+    "defaultMessage": "Recommend"
+  },
   "n19IQE": {
     "defaultMessage": "Recommended size: 1920x1080 (16:9)"
   },
@@ -859,8 +913,44 @@
   "nwA8Os": {
     "defaultMessage": "Add card"
   },
+  "nwc-configure-button": {
+    "defaultMessage": "Enable NWC"
+  },
+  "nwc-configured": {
+    "defaultMessage": "✅ NWC is configured and ready for automated topups"
+  },
+  "nwc-configured-success": {
+    "defaultMessage": "NWC configured successfully!"
+  },
+  "nwc-description": {
+    "defaultMessage": "Configure Nostr Wallet Connect for automated topups."
+  },
+  "nwc-error": {
+    "defaultMessage": "Error: {error}"
+  },
+  "nwc-invalid-format": {
+    "defaultMessage": "NWC URI must start with 'nostr+walletconnect://'"
+  },
+  "nwc-permissions-note": {
+    "defaultMessage": "NWC requires 'pay_invoice' permissions. The server will validate your connection before saving."
+  },
+  "nwc-remove-button": {
+    "defaultMessage": "Remove NWC"
+  },
+  "nwc-removed-success": {
+    "defaultMessage": "NWC removed successfully!"
+  },
+  "nwc-removing-button": {
+    "defaultMessage": "Removing NWC..."
+  },
+  "nwc-title": {
+    "defaultMessage": "Nostr Wallet Connect (NWC)"
+  },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
+  },
+  "oOk0jd": {
+    "defaultMessage": "View all providers"
   },
   "oZrFyI": {
     "defaultMessage": "Stream type should be HLS"
@@ -891,6 +981,12 @@
   },
   "rWBFZA": {
     "defaultMessage": "Sexually explicit material ahead!"
+  },
+  "rbrahO": {
+    "defaultMessage": "Close"
+  },
+  "rckmWi": {
+    "defaultMessage": "Recommend Provider"
   },
   "rgsbu9": {
     "defaultMessage": "Current Viewers"
@@ -954,6 +1050,9 @@
   "uksRSi": {
     "defaultMessage": "Latest Videos"
   },
+  "vOKOOj": {
+    "defaultMessage": "Videos"
+  },
   "vaZKTn": {
     "defaultMessage": "Add more content"
   },
@@ -986,6 +1085,9 @@
   },
   "wTwfnv": {
     "defaultMessage": "Invalid nostr address"
+  },
+  "wc9wE6": {
+    "defaultMessage": "Price Range"
   },
   "we4Lby": {
     "defaultMessage": "Info"

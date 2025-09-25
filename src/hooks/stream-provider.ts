@@ -2,7 +2,7 @@ import { useSyncExternalStore } from "react";
 import { NostrStreamProvider } from "@/providers";
 import { useLogin } from "./login";
 import { ExternalStore } from "@snort/shared";
-import { EventPublisher } from "@snort/system";
+import { EventPublisher, NostrEvent } from "@snort/system";
 import { ZAP_STREAM_PUBKEY } from "@/const";
 
 export interface StreamProviderConfig {
@@ -10,12 +10,18 @@ export interface StreamProviderConfig {
   url: string;
   description?: string;
   pubkey: string;
+  event?: NostrEvent;
+  reccomendations: Array<NostrEvent>;
+  // A score by WoT distance, lower is better
+  score: number;
 }
 
 const DEFAULT_CONFIG: StreamProviderConfig = {
   name: "zap.stream",
   url: "https://api-core.zap.stream/api/v1",
   pubkey: ZAP_STREAM_PUBKEY,
+  reccomendations: [],
+  score: 0,
 };
 
 const STORAGE_KEY = "stream-provider";
