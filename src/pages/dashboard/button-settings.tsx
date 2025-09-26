@@ -6,7 +6,7 @@ import Modal from "@/element/modal";
 import NostrProviderDialog from "@/element/provider/nostr";
 import { NostrStreamProvider } from "@/providers";
 
-export function DashboardSettingsButton({ ev, provider }: { ev?: TaggedNostrEvent, provider: NostrStreamProvider }) {
+export function DashboardSettingsButton({ ev, provider }: { ev?: TaggedNostrEvent; provider: NostrStreamProvider }) {
   const [show, setShow] = useState(false);
   return (
     <>

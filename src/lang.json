@@ -497,6 +497,9 @@
   "PesLat": {
     "defaultMessage": "Publishing..."
   },
+  "PiEqWT": {
+    "defaultMessage": "Stream Provider"
+  },
   "PySFxG": {
     "defaultMessage": "Choose file."
   },

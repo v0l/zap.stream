@@ -5,7 +5,7 @@ import { getHost, extractStreamInfo, findTag } from "@/utils";
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { useContext } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Link, useNavigate } from "react-router-dom";
 import { Layer2Button, WarningButton } from "../buttons";
 import { FollowButton } from "../follow-button";
@@ -21,6 +21,7 @@ import { StreamTimer } from "./stream-time";
 import { Tags } from "../tags";
 import { useStream } from "./stream-state";
 import { StreamSummary } from "./summary";
+import { Icon } from "../icon";
 
 export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
   const system = useContext(SnortContext);
@@ -30,6 +31,7 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
   const profile = useUserProfile(host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const streamContext = useStream();
+  const { formatMessage } = useIntl();
 
   const { status, participants, title, summary, service, gameId, gameInfo } = extractStreamInfo(ev);
   const isMine = ev?.pubkey === login?.pubkey || host === login?.pubkey;
@@ -91,6 +93,12 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
             {status === StreamState.Live && (
               <Pill>
                 <StreamTimer ev={ev} />
+              </Pill>
+            )}
+            {ev?.pubkey && ev?.pubkey !== host && (
+              <Pill className="flex gap-2 items-center" title={formatMessage({ defaultMessage: "Stream Provider" })}>
+                <Icon name="signal" className="text-primary" />
+                <Profile pubkey={ev.pubkey} avatarSize={20} />
               </Pill>
             )}
             {gameId && gameInfo && (
