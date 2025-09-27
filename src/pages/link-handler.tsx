@@ -19,7 +19,8 @@ export function LinkHandler() {
 
   if (!link) return;
 
-  if (link.type === NostrPrefix.Event && link.kind !== N94_LIVE_STREAM) {
+  const nonGenericEvents = [N94_LIVE_STREAM, VIDEO_KIND, OLD_VIDEO_KIND, SHORTS_KIND, OLD_SHORTS_KIND]
+  if (link.type === NostrPrefix.Event && nonGenericEvents.every((k) => link.kind !== k)) {
     return <NostrEventElement link={link} />;
   } else if ((link.kind && LIVE_STREAM_KINDS.includes(link.kind)) || link.type === NostrPrefix.PublicKey) {
     return (
