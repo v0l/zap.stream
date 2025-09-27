@@ -2508,14 +2508,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^1.6.8":
-  version: 1.6.8
-  resolution: "@snort/system-react@npm:1.6.8"
+"@snort/system-react@npm:^1.6.9":
+  version: 1.6.9
+  resolution: "@snort/system-react@npm:1.6.9"
   dependencies:
     "@snort/shared": "npm:^1.0.17"
-    "@snort/system": "npm:^1.6.8"
+    "@snort/system": "npm:^1.6.9"
     react: "npm:^18.2.0"
-  checksum: 10c0/7979f8efff617e4f07da4a77f090155a8067caeadd462f647f7c536a090c97114f085f37c6949f7fe8fa8cc7580d74699ecf9b999de9469af83f2f51acf72ea4
+  checksum: 10c0/8c825ae1715e0e67201624c0787b2bceb5148927b737f5dc0e9e808d20ec2a511bf2dc73276fa6c574dc297ac9605e0c4e74eb7fc063d43804f726868dc194b4
   languageName: node
   linkType: hard
 
@@ -2526,9 +2526,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^1.6.8":
-  version: 1.6.8
-  resolution: "@snort/system@npm:1.6.8"
+"@snort/system@npm:^1.6.9":
+  version: 1.6.9
+  resolution: "@snort/system@npm:1.6.9"
   dependencies:
     "@noble/ciphers": "npm:^0.6.0"
     "@noble/curves": "npm:^1.4.0"
@@ -2543,20 +2543,20 @@ __metadata:
     nostr-social-graph: "npm:^1.0.25"
     uuid: "npm:^9.0.0"
     ws: "npm:^8.14.0"
-  checksum: 10c0/dcfe30db9f8ab0b33b9c8d9e51a99ff27e0fbd52409fd6db8851872cbe96a1518271696a25d7d7bc681171d7eca23aa122981cfdd2ca42149e389eb54b5928b0
+  checksum: 10c0/cfa48eb62437dca661da7706c9e0aa99b212c35cdb96c75895518e15d48d866af96671b1e2010845d7b1b4c32cd0ae1cbd536080f04decd10a634d431a2a65af
   languageName: node
   linkType: hard
 
-"@snort/wallet@npm:^0.2.11":
-  version: 0.2.11
-  resolution: "@snort/wallet@npm:0.2.11"
+"@snort/wallet@npm:^0.2.12":
+  version: 0.2.12
+  resolution: "@snort/wallet@npm:0.2.12"
   dependencies:
     "@scure/base": "npm:^1.1.6"
     "@snort/shared": "npm:^1.0.17"
-    "@snort/system": "npm:^1.6.8"
+    "@snort/system": "npm:^1.6.9"
     debug: "npm:^4.3.4"
     eventemitter3: "npm:^5.0.1"
-  checksum: 10c0/e9212e7b618e19f3b0e572d27ff53fd07924909d4bcdc3d08c3e84bf288798a94c5d582cbc12ae7d0406710c6e239be9debbef7543651faef46c7a22e04b3e34
+  checksum: 10c0/4b0b943827733b0f5fd3273a996a3103721253fef4403f5c98f29dde86bad351b68721311615b5c30dadcca34cb2e0ee1bf2e80ede35cc9e84aaac4df1043d1b
   languageName: node
   linkType: hard
 
@@ -7311,10 +7311,10 @@ __metadata:
     "@noble/hashes": "npm:^1.4.0"
     "@scure/base": "npm:^1.1.6"
     "@snort/shared": "npm:^1.0.17"
-    "@snort/system": "npm:^1.6.8"
-    "@snort/system-react": "npm:^1.6.8"
+    "@snort/system": "npm:^1.6.9"
+    "@snort/system-react": "npm:^1.6.9"
     "@snort/system-wasm": "npm:^1.0.6"
-    "@snort/wallet": "npm:^0.2.11"
+    "@snort/wallet": "npm:^0.2.12"
     "@snort/worker-relay": "npm:^1.5.0"
     "@szhsin/react-menu": "npm:^4.1.0"
     "@testing-library/dom": "npm:^9.3.1"

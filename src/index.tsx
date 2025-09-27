@@ -59,6 +59,7 @@ export const System = new NostrSystem({
   optimizer: hasWasm ? WasmOptimizer : undefined, // use optimizer always when WASM is available
   cachingRelay: useWorkerRelay ? workerRelay : undefined,
   buildFollowGraph: true,
+  disableSyncModule: true,
 });
 if (useWorkerRelay) {
   System.on("event", (_, ev) => {
