@@ -93,7 +93,7 @@ export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
 }
 
 export function getPlaceholder(id: string) {
-  return `https://nostr-api.v0l.io/api/v1/avatar/robots/${id}.webp`;
+  return `https://nostr-rs-api.v0l.io/avatar/robots/${id}.webp`;
 }
 
 export function debounce(time: number, fn: () => void): () => void {
