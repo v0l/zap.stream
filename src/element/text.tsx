@@ -28,7 +28,13 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
     switch (f.type) {
       case "custom_emoji":
         return <Emoji name={f.content} url={f.content} key={ctr++} />;
-      case "media":
+      case "media": {
+        return (
+          <HyperText link={f.content} key={ctr++}>
+            {f.content}
+          </HyperText>
+        );
+      }
       case "link": {
         if (f.content.startsWith("nostr:")) {
           const link = tryParseNostrLink(f.content);
@@ -40,7 +46,7 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
             ) {
               return eventComponent?.({ link }) ?? <EventEmbed link={link} key={ctr++} />;
             } else {
-              return <Mention pubkey={link.id} key={ctr++} />;
+              return <Mention link={link} key={ctr++} />;
             }
           }
         }
@@ -50,8 +56,14 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
           </HyperText>
         );
       }
-      case "mention":
-        return <Mention pubkey={f.content} key={ctr++} />;
+      case "mention": {
+        const link = tryParseNostrLink(f.content);
+        if (link) {
+          return <Mention link={link} key={ctr++} />;
+        } else {
+          return f.content;
+        }
+      }
       case "hashtag":
         return (
           <Link to={`/t/${f.content}`} key={ctr++}>

@@ -1,9 +1,7 @@
 import "./send-zap.css";
 import { Fragment, type ReactNode, useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
-import { EventPublisher, NostrEvent, TaggedNostrEvent } from "@snort/system";
-import { secp256k1 } from "@noble/curves/secp256k1";
-import { bytesToHex } from "@noble/curves/abstract/utils";
+import { EventPublisher, NostrEvent, PrivateKeySigner, TaggedNostrEvent } from "@snort/system";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 
 import { formatSats } from "../number";
@@ -82,7 +80,8 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     let pub = login?.publisher();
     let isAnon = false;
     if (!pub) {
-      pub = EventPublisher.privateKey(bytesToHex(secp256k1.utils.randomPrivateKey()));
+      const signer = PrivateKeySigner.random();
+      pub = new EventPublisher(signer, signer.getPubKey());
       isAnon = true;
     }
 

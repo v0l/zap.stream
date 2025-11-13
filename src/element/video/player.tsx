@@ -27,17 +27,21 @@ export default function VideoPlayer({
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const ctx = useVideoPlayerContext();
 
+  const ar = ctx.video?.bestAspectRatio() ?? 10 / 16;
   const { proxy } = useImgProxy();
   return (
     <MediaController className="min-w-0 w-full" mediaStreamType="on-demand">
       <video
         className="max-h-[80dvh]"
+        style={{
+          aspectRatio: ar,
+        }}
         slot="media"
         autoPlay={true}
         controls={false}
         loop={loop}
         poster={proxy(ctx.video?.bestPoster()?.url ?? "")}>
-        {ctx.video?.sources().map(a => <source src={a.url} type={a.mimeType} />)}
+        {ctx.video?.sources().map(a => <source key={a.url} src={a.url} type={a.mimeType} />)}
       </video>
       <MediaControlBar>
         <MediaPlayButton />

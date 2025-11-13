@@ -37,6 +37,7 @@ export const defaultRelays = {
   "wss://nostr.wine": { read: true, write: true },
   "wss://relay.primal.net": { read: true, write: true },
   "wss://relay.fountain.fm": { read: true, write: true },
+  "wss://relay.divine.video/": { read: true, write: true },
 };
 
 function loadWhitelist() {

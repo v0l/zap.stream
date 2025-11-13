@@ -2188,28 +2188,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/curves@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@noble/curves@npm:1.4.0"
-  dependencies:
-    "@noble/hashes": "npm:1.4.0"
-  checksum: 10c0/31fbc370df91bcc5a920ca3f2ce69c8cf26dc94775a36124ed8a5a3faf0453badafd2ee4337061ffea1b43c623a90ee8b286a5a81604aaf9563bdad7ff795d18
-  languageName: node
-  linkType: hard
-
 "@noble/curves@npm:^2.0.1":
   version: 2.0.1
   resolution: "@noble/curves@npm:2.0.1"
   dependencies:
     "@noble/hashes": "npm:2.0.1"
   checksum: 10c0/e0b329eb9229e862d3b7203e0444bd479e9ecf2d5990181908dad416aab69106717ca696fc7b12ad0eb19d710f58c454646b27ce517a4298ab9abc89a9bdb6ee
-  languageName: node
-  linkType: hard
-
-"@noble/hashes@npm:1.4.0, @noble/hashes@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@noble/hashes@npm:1.4.0"
-  checksum: 10c0/8c3f005ee72e7b8f9cff756dfae1241485187254e3f743873e22073d63906863df5d4f13d441b7530ea614b7a093f0d889309f28b59850f33b66cb26a779a4a5
   languageName: node
   linkType: hard
 
@@ -2517,9 +2501,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/shared@npm:^2.0.0-pre.1":
-  version: 2.0.0-pre.1
-  resolution: "@snort/shared@npm:2.0.0-pre.1"
+"@snort/shared@npm:^2.0.0-pre.3":
+  version: 2.0.0-pre.3
+  resolution: "@snort/shared@npm:2.0.0-pre.3"
   dependencies:
     "@noble/curves": "npm:^2.0.1"
     "@noble/hashes": "npm:^2.0.1"
@@ -2527,19 +2511,19 @@ __metadata:
     debug: "npm:^4.4.3"
     eventemitter3: "npm:^5.0.1"
     light-bolt11-decoder: "npm:^3.2.0"
-  checksum: 10c0/ee51b9de5a6963d55708e5c3f53127044bac2162141cd72e4fd17498a123d6a67e1ab72280e286c90408ab57c1776e3787e3a3ba03a75d6d1f919ae8bbccde59
+  checksum: 10c0/f72356a01919bb9e581b5251e6addc4e82c401b0a4e5d38a2aa97cca1fd21a70efe277053c8122e1fd6e2e05500b45050d7c6fac08fb971a9e55c5d36a8a7f89
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^2.0.0-pre.6":
-  version: 2.0.0-pre.6
-  resolution: "@snort/system-react@npm:2.0.0-pre.6"
+"@snort/system-react@npm:^2.0.0-pre.8":
+  version: 2.0.0-pre.8
+  resolution: "@snort/system-react@npm:2.0.0-pre.8"
   dependencies:
-    "@snort/shared": "npm:^2.0.0-pre.1"
-    "@snort/system": "npm:^2.0.0-pre.6"
+    "@snort/shared": "npm:^2.0.0-pre.3"
+    "@snort/system": "npm:^2.0.0-pre.8"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
-  checksum: 10c0/fd5af37f785184270399eead355fefee0c69470c9cde4dbc2a0cfb9f1e2376b0d7551b4b393cb63eb0519970bee99522e1879a50f82586d35068afbd48e7e148
+  checksum: 10c0/f0e80614335d30a8d341cda79a53e3cfd6128a97adab3b8580deb8b47dbfe6759b347529961ad0469c213d9b849e7bd71761991fa166f737afa0266e045d3b0f
   languageName: node
   linkType: hard
 
@@ -2550,36 +2534,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system@npm:^2.0.0-pre.1":
-  version: 2.0.0-pre.1
-  resolution: "@snort/system@npm:2.0.0-pre.1"
+"@snort/system@npm:^2.0.0-pre.8":
+  version: 2.0.0-pre.8
+  resolution: "@snort/system@npm:2.0.0-pre.8"
   dependencies:
     "@noble/ciphers": "npm:^2.0.1"
     "@noble/curves": "npm:^2.0.1"
     "@noble/hashes": "npm:^2.0.1"
     "@scure/base": "npm:^2.0.0"
-    "@snort/shared": "npm:^2.0.0-pre.1"
-    "@stablelib/xchacha20": "npm:^2.0.1"
-    debug: "npm:^4.4.3"
-    eventemitter3: "npm:^5.0.1"
-    isomorphic-ws: "npm:^5.0.0"
-    nostr-social-graph: "git+https://github.com/v0l/nostr-social-graph.git#248c5dfdf2eaa11b82019315c566ee0b1ec5e5be"
-    typescript-lru-cache: "npm:^2.0.0"
-    uuid: "npm:^13.0.0"
-    ws: "npm:^8.18.3"
-  checksum: 10c0/6390186393e8291f7e9478c398b1fee38fa0dc329982523b12af20d55f7811b541c28aae82db778179366fc628526957b0b35df2f95e3bb99edeb9216a265721
-  languageName: node
-  linkType: hard
-
-"@snort/system@npm:^2.0.0-pre.6":
-  version: 2.0.0-pre.6
-  resolution: "@snort/system@npm:2.0.0-pre.6"
-  dependencies:
-    "@noble/ciphers": "npm:^2.0.1"
-    "@noble/curves": "npm:^2.0.1"
-    "@noble/hashes": "npm:^2.0.1"
-    "@scure/base": "npm:^2.0.0"
-    "@snort/shared": "npm:^2.0.0-pre.1"
+    "@snort/shared": "npm:^2.0.0-pre.3"
     "@stablelib/xchacha20": "npm:^2.0.1"
     debug: "npm:^4.4.3"
     eventemitter3: "npm:^5.0.1"
@@ -2588,20 +2551,20 @@ __metadata:
     typescript-lru-cache: "npm:^2.0.0"
     uuid: "npm:^13.0.0"
     ws: "npm:^8.18.3"
-  checksum: 10c0/832ddae3822e3f5c5bc8563b1ef4257f731abfa9c71942ff3c802441db1e0b5ff014d04322e5f1817baf77994f787bcc0bb0c1edbd1d0469b5737a90b299f652
+  checksum: 10c0/7c29158b4980eceaddc81416577671d0f5adc8e14c38e965b58b7c0c6ef6f12cb74af1dbc76d142c3533ed3f31344516e2f14bb43841a475b49a3463159c97b5
   languageName: node
   linkType: hard
 
-"@snort/wallet@npm:^2.0.0-pre.1":
-  version: 2.0.0-pre.1
-  resolution: "@snort/wallet@npm:2.0.0-pre.1"
+"@snort/wallet@npm:^2.0.0-pre.8":
+  version: 2.0.0-pre.8
+  resolution: "@snort/wallet@npm:2.0.0-pre.8"
   dependencies:
     "@scure/base": "npm:^2.0.0"
-    "@snort/shared": "npm:^2.0.0-pre.1"
-    "@snort/system": "npm:^2.0.0-pre.1"
+    "@snort/shared": "npm:^2.0.0-pre.3"
+    "@snort/system": "npm:^2.0.0-pre.8"
     debug: "npm:^4.4.3"
     eventemitter3: "npm:^5.0.1"
-  checksum: 10c0/cadba5f5123c417d59adc2a71bf791d27772f794477ca8a6fbc1d1a380680c1ccf4bac7b6f4d2ca3726f4b97e4d00ed1af901f083b1e3b63f19369b68ab1ab7d
+  checksum: 10c0/ba68392445b4301d6ebc24837e24f84878043fde46fb291ed484c2a5e987b26bbe96460c3397ea0f8856c6cf850ffba5a93ddb97f1817b5e0d9e8a1871a378e8
   languageName: node
   linkType: hard
 
@@ -6115,16 +6078,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nostr-social-graph@git+https://github.com/v0l/nostr-social-graph.git#248c5dfdf2eaa11b82019315c566ee0b1ec5e5be":
-  version: 1.0.33
-  resolution: "nostr-social-graph@https://github.com/v0l/nostr-social-graph.git#commit=248c5dfdf2eaa11b82019315c566ee0b1ec5e5be"
-  dependencies:
-    "@types/cors": "npm:^2.8.17"
-    cors: "npm:^2.8.5"
-  checksum: 10c0/588b62428043e79db60bafa90bca316d10b01e69ae7abcb5c1fd515ded82562fbcd1e30fc8e7d43ff9ddc7c4720930931ea258f7b3133c66f34d4c63a4613a61
-  languageName: node
-  linkType: hard
-
 "nostr-social-graph@npm:^1.0.33":
   version: 1.0.33
   resolution: "nostr-social-graph@npm:1.0.33"
@@ -7380,14 +7333,12 @@ __metadata:
     "@emoji-mart/data": "npm:^1.2.1"
     "@emoji-mart/react": "npm:^1.1.1"
     "@formatjs/cli": "npm:^6.1.3"
-    "@noble/curves": "npm:^1.4.0"
-    "@noble/hashes": "npm:^1.4.0"
     "@scure/base": "npm:^1.1.6"
-    "@snort/shared": "npm:^2.0.0-pre.1"
-    "@snort/system": "npm:^2.0.0-pre.6"
-    "@snort/system-react": "npm:^2.0.0-pre.6"
+    "@snort/shared": "npm:^2.0.0-pre.3"
+    "@snort/system": "npm:^2.0.0-pre.8"
+    "@snort/system-react": "npm:^2.0.0-pre.8"
     "@snort/system-wasm": "npm:^1.0.6"
-    "@snort/wallet": "npm:^2.0.0-pre.1"
+    "@snort/wallet": "npm:^2.0.0-pre.8"
     "@snort/worker-relay": "npm:^2.0.0-pre.1"
     "@szhsin/react-menu": "npm:^4.1.0"
     "@testing-library/dom": "npm:^9.3.1"

@@ -4,7 +4,7 @@ import type { Tags } from "@/types";
 import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, P_TAG_HOST_WHITELIST, StreamState } from "@/const";
 import { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
-import { hexToBech32 } from "@snort/shared";
+import { NostrPrefix } from "@snort/shared";
 import { StreamInfo } from "./element/stream/stream-info";
 
 export function toAddress(e: NostrEvent): string {
@@ -43,12 +43,16 @@ export function getHost(ev: NostrEvent) {
   return ret;
 }
 
-export function profileLink(meta: CachedMetadata | undefined, pubkey: string) {
+export function profileLink(meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
   if (meta && meta.nip05 && meta.nip05.endsWith("@zap.stream")) {
     const [name] = meta.nip05.split("@");
     return `/p/${name}`;
   }
-  return `/p/${hexToBech32("npub", pubkey)}`;
+  if (pubkey instanceof NostrLink) {
+    return `/p/${pubkey.encode(NostrPrefix.Profile)}`;
+  } else {
+    return `/p/${NostrLink.publicKey(pubkey).encode(NostrPrefix.Profile)}`;
+  }
 }
 
 export function openFile(): Promise<File | undefined> {

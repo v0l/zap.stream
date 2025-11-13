@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import { useUserProfile } from "@snort/system-react";
 import { profileLink } from "@/utils";
-import { hexToBech32 } from "@snort/shared";
+import { NostrPrefix } from "@snort/shared";
+import { NostrLink } from "@snort/system";
 
-interface MentionProps {
-  pubkey: string;
-  relays?: string[];
-}
-
-export function Mention({ pubkey }: MentionProps) {
-  const user = useUserProfile(pubkey);
-  return (
-    <Link to={profileLink(user, pubkey)} className="text-primary">
-      {user?.name || hexToBech32("npub", pubkey).slice(0, 12)}
-    </Link>
-  );
+export function Mention({ link }: { link: NostrLink }) {
+  const encoded = link.encode();
+  if (link.type === NostrPrefix.PublicKey || link.type === NostrPrefix.Profile) {
+    const user = useUserProfile(link.id);
+    return (
+      <Link to={profileLink(user, link)} className="text-primary">
+        {user?.name || encoded.slice(0, 12)}
+      </Link>
+    );
+  } else {
+    return <Link to={`/${encoded}`}>{encoded.slice(0, 12)}</Link>;
+  }
 }

@@ -1,5 +1,3 @@
-import { bytesToHex } from "@noble/curves/abstract/utils";
-import { schnorr } from "@noble/curves/secp256k1";
 import { ExternalStore, unwrap } from "@snort/shared";
 import { EventKind, EventPublisher, Nip7Signer, PrivateKeySigner, UserState, UserStateObject } from "@snort/system";
 
@@ -85,10 +83,11 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
   }
 
   loginWithPrivateKey(key: string) {
+    const signer = new PrivateKeySigner(key);
     this.#session = {
       type: LoginType.PrivateKey,
-      pubkey: bytesToHex(schnorr.getPublicKey(key)),
-      privateKey: key,
+      pubkey: signer.getPubKey(),
+      privateKey: signer.privateKey,
     };
     this.#session.state = this.#makeState();
     this.#save();

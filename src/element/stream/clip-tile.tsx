@@ -1,5 +1,5 @@
 import { findTag, profileLink } from "@/utils";
-import { NostrEvent, NostrLink } from "@snort/system";
+import { NostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";

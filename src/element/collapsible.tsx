@@ -2,7 +2,7 @@ import "./collapsible.css";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import type { NostrLink } from "@snort/system";
+import { NostrLink } from "@snort/system";
 import { Mention } from "./mention";
 import { EventIcon, NostrEvent } from "./event-embed";
 import { ExternalLink } from "./external-link";
@@ -42,9 +42,8 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
           <EventIcon kind={event?.kind} />
           <FormattedMessage
             defaultMessage="Note by {name}"
-            id="ALdW69"
             values={{
-              name: <Mention pubkey={author ?? ""} />,
+              name: author ? <Mention link={NostrLink.publicKey(author)} /> : <></>,
             }}
           />
         </div>

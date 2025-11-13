@@ -39,6 +39,9 @@ export interface UploadResult {
  * Read NIP-94 tags from `imeta` tag
  */
 export function readNip94TagsFromIMeta(tag: Array<string>) {
+  if (tag.length < 2) {
+    throw new Error("Invalid tag, must have more than 1 string");
+  }
   const asTags = tag.slice(1).map(a => a.split(" ", 2));
   return readNip94Tags(asTags);
 }
@@ -49,10 +52,17 @@ export function readNip94TagsFromIMeta(tag: Array<string>) {
 export function readNip94Tags(tags: Array<Array<string>>) {
   const res: Nip94Tags = {};
   for (const tx of tags) {
-    const [k, v] = tx;
+    const [k, v] = tx as [string, string | undefined];
+    if (v === undefined) continue;
     switch (k) {
       case "url": {
-        res.url = v;
+        // if URL already set, treat next url as fallback
+        if (res.url) {
+          res.fallback ??= [];
+          res.fallback.push(v);
+        } else {
+          res.url = v;
+        }
         break;
       }
       case "m": {

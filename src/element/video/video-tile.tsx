@@ -71,7 +71,7 @@ export function VideoTile({
             <Logo className="text-white aspect-video h-inherit mx-auto text-layer-3" width={60} />
           )}
           <span className="flex flex-col justify-between absolute top-0 h-full right-2 items-end py-2">
-            {video.duration && (
+            {video.duration !== undefined && (
               <PillOpaque>
                 <VideoDuration value={video.duration} />
               </PillOpaque>

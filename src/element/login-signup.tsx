@@ -12,8 +12,6 @@ import LoginWallet2x from "../login-wallet@2x.jpg";
 import { useContext, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { EventPublisher, PrivateKeySigner, UserMetadata } from "@snort/system";
-import { schnorr } from "@noble/curves/secp256k1";
-import { bytesToHex } from "@noble/curves/abstract/utils";
 import { LNURL, bech32ToHex, getPublicKey, hexToBech32, isHex } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
 
@@ -79,9 +77,9 @@ export function LoginSignup({ close }: { close: () => void }) {
   }
 
   function createAccount() {
-    const newKey = bytesToHex(schnorr.utils.randomPrivateKey());
-    setNewKey(newKey);
-    setLnAddress(`${getPublicKey(newKey)}@${window.location.host}`);
+    const signer = PrivateKeySigner.random();
+    setNewKey(signer.privateKey);
+    setLnAddress(`${getPublicKey(signer.getPubKey())}@${window.location.host}`);
     setStage(Stage.Details);
   }
 

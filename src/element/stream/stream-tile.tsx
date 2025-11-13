@@ -111,7 +111,7 @@ export function StreamTile({
               }}
             />
           ) : (
-            <Logo className="text-white aspect-video h-inherit mx-auto text-layer-3" width={60} />
+            <Logo className="aspect-video h-inherit mx-auto text-layer-3" width={60} />
           )}
           <span className="flex flex-col justify-between absolute top-0 h-full right-2 items-end py-2">
             {showStatus && <StatePill state={status as StreamState} />}

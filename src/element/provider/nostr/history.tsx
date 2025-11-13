@@ -1,7 +1,7 @@
 import { Mention } from "@/element/mention";
 import { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz";
 import { eventLink } from "@/utils";
-import { EventKind, NostrEvent } from "@snort/system";
+import { EventKind, NostrEvent, NostrLink } from "@snort/system";
 import { useEffect, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { Link } from "react-router-dom";
@@ -27,7 +27,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
         <div className="flex flex-col">
           <div className="flex items-center gap-1">
             <FormattedMessage defaultMessage="Zap from" />
-            <Mention pubkey={ev.pubkey} />
+            <Mention link={NostrLink.publicKey(ev.pubkey, "relays" in ev ? (ev.relays as Array<string>) : undefined)} />
           </div>
           {ev.content ? <q className="text-sm block">{ev.content}</q> : ""}
         </div>
