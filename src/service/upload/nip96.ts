@@ -1,8 +1,8 @@
 import { base64 } from "@scure/base";
 import { throwIfOffline } from "@snort/shared";
-import { EventKind, EventPublisher, NostrEvent } from "@snort/system";
+import { EventKind, EventPublisher, NostrEvent, readNip94Tags } from "@snort/system";
 
-import { FileExtensionRegex, UploadResult, readNip94Tags } from ".";
+import { FileExtensionRegex, UploadResult } from ".";
 
 export class Nip96Server {
   #info?: Nip96Info;

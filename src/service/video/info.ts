@@ -1,6 +1,5 @@
-import { NostrEvent } from "@snort/system";
+import { Nip94Tags, NostrEvent, readNip94Tags, readNip94TagsFromIMeta } from "@snort/system";
 import { GameInfo } from "../game-database";
-import { Nip94Tags, readNip94Tags, readNip94TagsFromIMeta } from "../upload";
 import { getHost, sortStreamTags, extractGameTag, findTag } from "@/utils";
 
 export interface MediaPayload {
@@ -30,7 +29,7 @@ export class VideoInfo {
     readonly id: string,
     readonly tags: Array<string>,
     readonly media: Array<Nip94Tags>,
-  ) {}
+  ) { }
 
   static parse(ev: NostrEvent) {
     const { regularTags, prefixedTags } = sortStreamTags(ev.tags);
