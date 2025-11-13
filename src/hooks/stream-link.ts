@@ -1,6 +1,6 @@
 import { NIP5_DOMAIN } from "@/const";
-import { fetchNip05Pubkey } from "@snort/shared";
-import { NostrEvent, NostrLink, NostrPrefix, tryParseNostrLink } from "@snort/system";
+import { NostrPrefix, fetchNip05Pubkey } from "@snort/shared";
+import { NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 

@@ -1,6 +1,7 @@
-import { NostrPrefix, tryParseNostrLink } from "@snort/system";
+import { tryParseNostrLink } from "@snort/system";
 import { Mention } from "./mention";
 import { ExternalLink } from "./external-link";
+import { NostrPrefix } from "@snort/shared";
 
 export function NostrLink({ link }: { link: string }) {
   const nav = tryParseNostrLink(link);

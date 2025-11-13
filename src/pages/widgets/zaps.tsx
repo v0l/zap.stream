@@ -35,7 +35,7 @@ function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
 export function ZapAlerts({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true);
   const currentLink = currentEvent ? NostrLink.fromEvent(currentEvent) : undefined;
-  const host = getHost(currentEvent);
+  const host = currentEvent ? getHost(currentEvent) : undefined;
   const zaps = useZaps(currentLink, true);
   const zap = useZapQueue(zaps);
   const mutedPubkeys = useMutedPubkeys(host, true);

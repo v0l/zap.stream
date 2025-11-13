@@ -1,5 +1,5 @@
 import { Menu, MenuItem } from "@szhsin/react-menu";
-import { NostrEvent, NostrLink, NostrPrefix } from "@snort/system";
+import { LinkScope, Nip10, NostrEvent, NostrLink } from "@snort/system";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useContext, useState } from "react";
 import { SnortContext } from "@snort/system-react";
@@ -10,6 +10,7 @@ import { getHost } from "@/utils";
 import { useLogin } from "@/hooks/login";
 import { DefaultButton } from "./buttons";
 import Modal from "./modal";
+import { NostrPrefix } from "@snort/shared";
 
 type ShareOn = "nostr" | "twitter";
 
@@ -45,7 +46,8 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
     const pub = login?.publisher();
     if (pub) {
       const evn = await pub.note(message, eb => {
-        return eb.tag(NostrLink.fromEvent(ev).toEventTag("mention")!);
+        const link = NostrLink.fromEvent(ev);
+        return eb.tag(Nip10.linkToTag(link, LinkScope.Mention));
       });
       console.debug(evn);
       await system.BroadcastEvent(evn);

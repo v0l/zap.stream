@@ -363,6 +363,9 @@
   "IqcyS0": {
     "defaultMessage": "What is a nostr extension?"
   },
+  "J+dIsA": {
+    "defaultMessage": "Subscriptions"
+  },
   "J/+m9y": {
     "defaultMessage": "Stream Duration {duration} mins"
   },
@@ -1131,6 +1134,9 @@
   },
   "zEYkgY": {
     "defaultMessage": "Talk"
+  },
+  "zQvVDJ": {
+    "defaultMessage": "All"
   },
   "zSYDJP": {
     "defaultMessage": "I have my own stream host"

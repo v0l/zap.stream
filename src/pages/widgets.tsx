@@ -2,7 +2,7 @@
 import "./widgets.css";
 import { useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { NostrLink, NostrPrefix } from "@snort/system";
+import { NostrLink } from "@snort/system";
 
 import Copy from "@/element/copy";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
@@ -12,7 +12,7 @@ import { ZapAlertItem } from "./widgets/zaps";
 import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
-import { hexToBech32 } from "@snort/shared";
+import { NostrPrefix, hexToBech32 } from "@snort/shared";
 import { DefaultButton } from "@/element/buttons";
 import { groupBy } from "@/utils";
 

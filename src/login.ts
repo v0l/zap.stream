@@ -70,6 +70,7 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
         this.#session.state as UserStateObject<never> | undefined,
       );
       ret.checkIsStandardList(EventKind.StorageServerList);
+      ret.checkIsStandardList(EventKind.MuteList);
       return ret;
     }
   }

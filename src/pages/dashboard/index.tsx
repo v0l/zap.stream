@@ -1,5 +1,6 @@
 import { useLogin } from "@/hooks/login";
-import { NostrLink, NostrPrefix, parseNostrLink } from "@snort/system";
+import { NostrPrefix } from "@snort/shared";
+import { NostrLink, parseNostrLink } from "@snort/system";
 import { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
 

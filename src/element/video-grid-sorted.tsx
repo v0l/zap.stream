@@ -9,7 +9,6 @@ import { StreamTile } from "./stream/stream-tile";
 import { CategoryTile } from "./category/category-tile";
 import { Link } from "react-router-dom";
 import Pill from "./pill";
-import { CategoryZaps } from "./category/zaps";
 import { StreamState, VIDEO_KIND } from "@/const";
 import { useRecentClips } from "@/hooks/clips";
 import { ClipTile } from "./stream/clip-tile";
@@ -62,6 +61,7 @@ export default function VideoGridSorted({
       .filter(t => t.live.length > 0);
   }, [live, hashtags]);
 
+  const videos = evs.filter(a => a.kind === VIDEO_KIND);
   return (
     <div className="flex flex-col gap-6">
       {hasFollowingLive && (
@@ -77,11 +77,8 @@ export default function VideoGridSorted({
       {liveByHashtag.map(t => (
         <GridSection header={`#${t.tag}`} items={t.live} />
       ))}
-      {showVideos && (
-        <GridSection
-          header={<FormattedMessage defaultMessage="Videos" />}
-          items={evs.filter(a => a.kind === VIDEO_KIND)}
-        />
+      {showVideos && videos.length > 0 && (
+        <GridSection header={<FormattedMessage defaultMessage="Videos" />} items={videos} />
       )}
       {showRecentClips && <RecentClips />}
       {hasFollowingLive && liveNow.length > 0 && (
@@ -165,7 +162,6 @@ function PopularCategories({ items }: { items: Array<TaggedNostrEvent> }) {
             className="xl:w-[180px] lg:w-[170px] max-lg:w-[calc(33.3%-0.75rem)]">
             <CategoryTile gameId={a.gameId} showFooterTitle={true}>
               <div className="flex gap-2 flex-wrap">
-                <CategoryZaps gameId={a.gameId} />
                 {a.viewers > 0 && (
                   <Pill>
                     <FormattedMessage

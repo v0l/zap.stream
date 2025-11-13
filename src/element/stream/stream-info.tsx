@@ -27,7 +27,7 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
   const system = useContext(SnortContext);
   const login = useLogin();
   const navigate = useNavigate();
-  const host = getHost(ev);
+  const host = ev ? getHost(ev) : undefined;
   const profile = useUserProfile(host);
   const zapTarget = profile?.lud16 ?? profile?.lud06;
   const streamContext = useStream();
@@ -53,36 +53,38 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
       <div className="flex gap-2 max-xl:flex-col">
         <div className="grow flex flex-col gap-2">
           <div className="max-xl:text-lg xl:text-3xl font-semibold">{title}</div>
-          <div className="flex max-xl:flex-col xl:justify-between max-xl:gap-2">
-            <div className="flex gap-4 items-center flex-wrap">
-              <Profile pubkey={host ?? ""} avatarSize={40} />
-              <FollowButton pubkey={host} hideWhenFollowing={true} />
-              {participants !== undefined && (
-                <div className="flex grow justify-end xl:hidden text-nowrap">
-                  <Pill>
-                    <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
-                  </Pill>
-                </div>
-              )}
+          {host && (
+            <div className="flex max-xl:flex-col xl:justify-between max-xl:gap-2">
+              <div className="flex gap-4 items-center flex-wrap">
+                <Profile pubkey={host} avatarSize={40} />
+                <FollowButton pubkey={host} hideWhenFollowing={true} />
+                {participants !== undefined && (
+                  <div className="flex grow justify-end xl:hidden text-nowrap">
+                    <Pill>
+                      <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
+                    </Pill>
+                  </div>
+                )}
+              </div>
+              <div className="flex gap-2">
+                {ev && (
+                  <>
+                    <ShareMenu ev={ev} />
+                    {service && <NotificationsButton host={host} service={service} />}
+                    {zapTarget && (
+                      <SendZapsDialog
+                        lnurl={zapTarget}
+                        pubkey={host}
+                        aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
+                        eTag={goal?.id}
+                        targetName={getName(ev.pubkey, profile)}
+                      />
+                    )}
+                  </>
+                )}
+              </div>
             </div>
-            <div className="flex gap-2">
-              {ev && (
-                <>
-                  <ShareMenu ev={ev} />
-                  {service && <NotificationsButton host={host} service={service} />}
-                  {zapTarget && (
-                    <SendZapsDialog
-                      lnurl={zapTarget}
-                      pubkey={host}
-                      aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
-                      eTag={goal?.id}
-                      targetName={getName(ev.pubkey, profile)}
-                    />
-                  )}
-                </>
-              )}
-            </div>
-          </div>
+          )}
           <div className="flex gap-2 flex-wrap max-xl:hidden">
             <StatePill state={status as StreamState} />
             {participants !== undefined && (

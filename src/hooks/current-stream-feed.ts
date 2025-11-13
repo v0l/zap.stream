@@ -1,9 +1,10 @@
-import { NostrLink, NostrPrefix, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
 
 import { LIVE_STREAM_KINDS } from "@/const";
 import { getHost } from "@/utils";
+import { NostrPrefix } from "@snort/shared";
 
 export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPreload?: TaggedNostrEvent) {
   const sub = useMemo(() => {

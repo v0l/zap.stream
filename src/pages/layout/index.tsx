@@ -1,14 +1,14 @@
 import "./layout.css";
 
-import { CSSProperties, useContext, useEffect } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import { useLogin } from "@/hooks/login";
 import { trackEvent } from "@/utils";
 import { HeaderNav } from "./header";
 import { LeftNav } from "./left-nav";
-import { SnortContext } from "@snort/system-react";
+import { SnortContext, TraceTimelineOverlay } from "@snort/system-react";
 import { EventKind } from "@snort/system";
 import { USER_CARDS } from "@/const";
 
@@ -16,6 +16,24 @@ export function LayoutPage() {
   const location = useLocation();
   const login = useLogin();
   const system = useContext(SnortContext);
+  const [trace, setTrace] = useState(false);
+
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      const target = e.target;
+      const skipTarget = ["INPUT", "TEXTAREA"];
+      if (skipTarget.includes((target as HTMLElement)?.nodeName)) {
+        return;
+      }
+      if (e.key === "t") {
+        setTrace(t => !t);
+      }
+    };
+    window.addEventListener("keydown", h);
+    return () => {
+      window.removeEventListener("keydown", h);
+    };
+  }, []);
 
   useEffect(() => {
     if (login?.state) {
@@ -47,6 +65,7 @@ export function LayoutPage() {
         <LeftNav />
         <Outlet />
       </div>
+      <TraceTimelineOverlay isOpen={trace} onClose={() => setTrace(false)} />
     </div>
   );
 }

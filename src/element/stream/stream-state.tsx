@@ -1,4 +1,5 @@
-import { NostrLink, NostrPrefix } from "@snort/system";
+import { NostrPrefix } from "@snort/shared";
+import { NostrLink } from "@snort/system";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 interface StreamState {

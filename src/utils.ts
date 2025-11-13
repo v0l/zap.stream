@@ -32,17 +32,19 @@ export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
   return NostrLink.fromEvent(ev).encode();
 }
 
-export function getHost(ev?: NostrEvent) {
-  const isHostTagAllowed = ev?.pubkey && P_TAG_HOST_WHITELIST.includes(ev?.pubkey);
-  return (
-    ev?.tags.find(a => a[0] === "p" && a.length > 3 && a[3].toLowerCase() === "host" && isHostTagAllowed)?.[1] ??
-    ev?.pubkey ??
-    ""
-  );
+export function getHost(ev: NostrEvent) {
+  const isHostTagAllowed = ev.pubkey && P_TAG_HOST_WHITELIST.includes(ev.pubkey);
+  const ret =
+    ev.tags.find(a => a[0] === "p" && a.length > 3 && a[3].toLowerCase() === "host" && isHostTagAllowed)?.[1] ??
+    ev.pubkey;
+  if (!ret) {
+    throw new Error("Invalid host");
+  }
+  return ret;
 }
 
 export function profileLink(meta: CachedMetadata | undefined, pubkey: string) {
-  if (meta && meta.nip05 && meta.nip05.endsWith("@zap.stream") && meta.isNostrAddressValid) {
+  if (meta && meta.nip05 && meta.nip05.endsWith("@zap.stream")) {
     const [name] = meta.nip05.split("@");
     return `/p/${name}`;
   }
@@ -142,8 +144,11 @@ export function canPlayEvent(ev: NostrEvent) {
 const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i;
 export function extractStreamInfo(ev?: NostrEvent) {
   const ret = {
-    host: getHost(ev),
+    tags: [],
+    streams: [],
   } as StreamInfo;
+  if (!ev) return ret;
+  ret.host = getHost(ev);
   const matchTag = (tag: Array<string>, k: string, into: (v: string) => void) => {
     if (tag[0] === k) {
       into(tag[1]);

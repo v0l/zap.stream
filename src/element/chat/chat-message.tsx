@@ -41,7 +41,7 @@ export function ChatMessage({
   badges,
 }: {
   ev: TaggedNostrEvent;
-  streamer: string;
+  streamer: string | undefined;
   emojiPacks: EmojiPack[];
   badges: BadgeAward[];
 }) {

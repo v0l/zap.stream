@@ -1,11 +1,11 @@
 import { useStreamsFeed } from "@/hooks/live-streams";
 import { getHost } from "@/utils";
-import { dedupe, unwrap } from "@snort/shared";
+import { dedupe } from "@snort/shared";
 import { FormattedMessage } from "react-intl";
 import { Profile } from "../../element/profile";
 import { useLogin } from "@/hooks/login";
 import { useContext, useState } from "react";
-import { NostrLink, parseNostrLink } from "@snort/system";
+import { LinkScope, Nip10, NostrLink, parseNostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { LIVE_STREAM_RAID } from "@/const";
 import { DefaultButton } from "../../element/buttons";
@@ -29,8 +29,8 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
       const ev = await pub.generic(eb => {
         return eb
           .kind(LIVE_STREAM_RAID)
-          .tag(unwrap(link.toEventTag("root")))
-          .tag(unwrap(parseNostrLink(raiding).toEventTag("mention")))
+          .tag(Nip10.linkToTag(link, LinkScope.Root))
+          .tag(Nip10.linkToTag(parseNostrLink(raiding), LinkScope.Mention))
           .content(msg);
       });
 

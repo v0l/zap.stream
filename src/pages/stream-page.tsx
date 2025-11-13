@@ -1,5 +1,5 @@
 import { NostrLink, TaggedNostrEvent } from "@snort/system";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Suspense, lazy } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -16,7 +16,6 @@ import { StreamContextProvider } from "@/element/stream/stream-state";
 
 export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; link: NostrLink }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);
-  const host = getHost(ev);
   const evLink = ev ? NostrLink.fromEvent(ev) : undefined;
   const {
     title,
@@ -77,10 +76,12 @@ export function StreamPage({ link, evPreload }: { evPreload?: TaggedNostrEvent; 
               />
             )}
           </Suspense>
-          <div className="lg:px-5 max-lg:px-2">
-            <StreamInfo ev={ev as TaggedNostrEvent} goal={goal} />
-            {isDesktop && <StreamCards host={host} />}
-          </div>
+          {ev && (
+            <div className="lg:px-5 max-lg:px-2">
+              <StreamInfo ev={ev} goal={goal} />
+              {isDesktop && <StreamCards host={getHost(ev)} />}
+            </div>
+          )}
         </div>
         <LiveChat
           link={evLink ?? link}

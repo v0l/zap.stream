@@ -1,9 +1,10 @@
-import { NostrLink, NostrPrefix } from "@snort/system";
+import { NostrLink } from "@snort/system";
 import { FormattedMessage } from "react-intl";
 
 import { useLogin } from "@/hooks/login";
 import { DefaultButton } from "./buttons";
 import { Icon } from "./icon";
+import { NostrPrefix } from "@snort/shared";
 
 export function LoggedInFollowButton({ link, hideWhenFollowing }: { link: NostrLink; hideWhenFollowing?: boolean }) {
   const login = useLogin();
@@ -13,11 +14,13 @@ export function LoggedInFollowButton({ link, hideWhenFollowing }: { link: NostrL
   const isFollowing = follows.includes(link.id);
 
   async function unfollow() {
-    await login?.state?.unfollow(link, true);
+    login?.state?.unfollow(link);
+    await login?.state?.saveContacts();
   }
 
   async function follow() {
-    await login?.state?.follow(link, true);
+    login?.state?.follow(link);
+    await login?.state?.saveContacts();
   }
 
   if (isFollowing && hideWhenFollowing) return;

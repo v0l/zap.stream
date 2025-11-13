@@ -46,6 +46,7 @@ import { DownloadAppPage } from "./pages/download";
 import ProvidersPage from "./pages/providers";
 import { TosPage } from "./pages/tos";
 import { Login } from "./login";
+import { HelmetProvider } from "react-helmet-async";
 
 const hasWasm = "WebAssembly" in globalThis;
 const disableWasmForPaths = ["/chat", "/alert", "/embed"];
@@ -61,12 +62,6 @@ export const System = new NostrSystem({
   buildFollowGraph: true,
   disableSyncModule: true,
 });
-if (useWorkerRelay) {
-  System.on("event", (_, ev) => {
-    workerRelay.event(ev);
-  });
-}
-
 Object.entries(defaultRelays).forEach(params => {
   const [relay, settings] = params;
   System.ConnectToRelay(relay, settings);
@@ -85,16 +80,21 @@ async function doInit() {
         databasePath: "relay.db",
         insertBatchSize: 100,
       });
+      await workerRelay.configureSearchIndex({
+        1311: [],
+        30311: ["title", "summary"],
+      });
     } catch (e) {
       console.error(e);
     }
   }
-  await System.Init();
+  const login = Login.snapshot();
+  const follows = login?.state?.follows;
+  await System.Init(follows);
   syncClock();
 
-  const pubkey = Login.snapshot()?.pubkey;
-  if (pubkey) {
-    System.config.socialGraphInstance.setRoot(pubkey);
+  if (login?.pubkey) {
+    System.config.socialGraphInstance.setRoot(login.pubkey);
   }
 }
 
@@ -250,12 +250,14 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement);
 root.render(
   <React.StrictMode>
-    <SnortContext.Provider value={System}>
-      <IntlProvider>
-        <LayoutContextProvider>
-          <RouterProvider router={router} />
-        </LayoutContextProvider>
-      </IntlProvider>
-    </SnortContext.Provider>
+    <HelmetProvider>
+      <SnortContext.Provider value={System}>
+        <IntlProvider>
+          <LayoutContextProvider>
+            <RouterProvider router={router} />
+          </LayoutContextProvider>
+        </IntlProvider>
+      </SnortContext.Provider>
+    </HelmetProvider>
   </React.StrictMode>,
 );

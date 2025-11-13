@@ -3,9 +3,9 @@ import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textar
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import "./textarea.css";
 
-import { hexToBech32 } from "@snort/shared";
+import { hexToBech32, NostrPrefix } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
-import { CachedMetadata, NostrPrefix } from "@snort/system";
+import { CachedMetadata } from "@snort/system";
 
 import { Emoji } from "../emoji";
 import { Avatar } from "../avatar";

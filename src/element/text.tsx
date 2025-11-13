@@ -1,4 +1,4 @@
-import { NostrLink, NostrPrefix, ParsedFragment, transformText, tryParseNostrLink } from "@snort/system";
+import { NostrLink, ParsedFragment, transformText, tryParseNostrLink } from "@snort/system";
 import { FunctionComponent, useMemo } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import { Mention } from "./mention";
 import { HyperText } from "./hypertext";
 import { EventEmbed } from "./event-embed";
 import { SendZapsDialog } from "./send-zap";
+import { NostrPrefix } from "@snort/shared";
 
 export type EventComponent = FunctionComponent<{ link: NostrLink }>;
 

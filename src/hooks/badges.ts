@@ -8,7 +8,7 @@ export interface BadgeAward {
   awardees: Set<string>;
 }
 
-export function useBadgeAwards(pubkey: string, leaveOpen = true) {
+export function useBadgeAwards(pubkey?: string, leaveOpen = true) {
   const subBadgeAwards = useMemo(() => {
     const rb = new RequestBuilder(`badges:${pubkey}`);
     rb.withOptions({ leaveOpen });

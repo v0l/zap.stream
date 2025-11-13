@@ -1,8 +1,8 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrEvent, NostrLink, NostrPrefix, ParsedZap, TaggedNostrEvent } from "@snort/system";
+import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
 import { useEventFeed, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
-import { dedupe, removeUndefined, sanitizeRelayUrl, unixNow, unwrap } from "@snort/shared";
+import { dedupe, removeUndefined, sanitizeRelayUrl, unixNow, unwrap, NostrPrefix } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
 import { Icon } from "../icon";
@@ -72,7 +72,7 @@ export function LiveChat({
   const relays = dedupe(
     removeUndefined(ev?.tags.filter(a => a[0] === "relays").map(a => sanitizeRelayUrl(a[1])) ?? []),
   );
-  const host = getHost(ev);
+  const host = ev ? getHost(ev) : undefined;
   const feed = useReactions(
     `live:${link?.id}:${link?.author}:reactions`,
     goal ? [link, NostrLink.fromEvent(goal)] : [link],
@@ -283,7 +283,7 @@ export function ChatRaid({ link, ev, autoRaid }: { link: NostrLink; ev: TaggedNo
   const isRaiding = link.toEventTag()?.at(1) === from?.at(1);
   const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from));
   const otherEvent = useEventFeed(otherLink);
-  const otherProfile = useUserProfile(getHost(otherEvent));
+  const otherProfile = useUserProfile(otherEvent ? getHost(otherEvent) : undefined);
 
   useEffect(() => {
     const raidDiff = Math.abs(unixNow() - ev.created_at);
