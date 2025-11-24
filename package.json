@@ -7,7 +7,7 @@
     "@scure/base": "^1.1.6",
     "@snort/shared": "^2.0.0-pre.3",
     "@snort/system": "^2.0.0-pre.8",
-    "@snort/system-react": "^2.0.0-pre.8",
+    "@snort/system-react": "^2.0.0-pre.9",
     "@snort/system-wasm": "^1.0.6",
     "@snort/wallet": "^2.0.0-pre.8",
     "@snort/worker-relay": "^2.0.0-pre.1",

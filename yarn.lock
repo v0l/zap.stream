@@ -2515,15 +2515,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^2.0.0-pre.8":
-  version: 2.0.0-pre.8
-  resolution: "@snort/system-react@npm:2.0.0-pre.8"
+"@snort/system-react@npm:^2.0.0-pre.9":
+  version: 2.0.0-pre.9
+  resolution: "@snort/system-react@npm:2.0.0-pre.9"
   dependencies:
     "@snort/shared": "npm:^2.0.0-pre.3"
     "@snort/system": "npm:^2.0.0-pre.8"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
-  checksum: 10c0/f0e80614335d30a8d341cda79a53e3cfd6128a97adab3b8580deb8b47dbfe6759b347529961ad0469c213d9b849e7bd71761991fa166f737afa0266e045d3b0f
+  checksum: 10c0/d2a2bbf2d2e01faed5c04d75d0f0c7cc28e34c61a105ea596a2064824ec9524915237107538d3f2313eab51c764c6226cc2d250492a6ee551ec15d64925da8c3
   languageName: node
   linkType: hard
 
@@ -7336,7 +7336,7 @@ __metadata:
     "@scure/base": "npm:^1.1.6"
     "@snort/shared": "npm:^2.0.0-pre.3"
     "@snort/system": "npm:^2.0.0-pre.8"
-    "@snort/system-react": "npm:^2.0.0-pre.8"
+    "@snort/system-react": "npm:^2.0.0-pre.9"
     "@snort/system-wasm": "npm:^1.0.6"
     "@snort/wallet": "npm:^2.0.0-pre.8"
     "@snort/worker-relay": "npm:^2.0.0-pre.1"
