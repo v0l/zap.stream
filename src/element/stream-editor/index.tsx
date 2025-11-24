@@ -53,6 +53,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const system = useContext(SnortContext);
 
   useEffect(() => {
+    if (!ev) return;
     const { gameInfo, gameId, title, summary, image, stream, status, starts, tags, contentWarning, goal, recording } =
       extractStreamInfo(ev);
     setTitle(title ?? "");

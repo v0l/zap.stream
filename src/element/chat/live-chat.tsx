@@ -1,8 +1,8 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
 import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
-import { useEventFeed, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
-import { dedupe, removeUndefined, sanitizeRelayUrl, unixNow, unwrap, NostrPrefix } from "@snort/shared";
+import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react";
+import { removeUndefined, unixNow, unwrap, NostrPrefix } from "@snort/shared";
 import { useEffect, useMemo } from "react";
 
 import { Icon } from "../icon";
@@ -45,9 +45,6 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
 }
 
 export function LiveChat({
-  link,
-  ev,
-  goal,
   canWrite,
   showTopZappers,
   adjustLayout,
@@ -57,9 +54,6 @@ export function LiveChat({
   className,
   autoRaid,
 }: {
-  link: NostrLink;
-  ev?: NostrEvent;
-  goal?: NostrEvent;
   canWrite?: boolean;
   showTopZappers?: boolean;
   adjustLayout?: boolean;
@@ -69,29 +63,22 @@ export function LiveChat({
   className?: string;
   autoRaid?: boolean;
 }) {
-  const relays = dedupe(
-    removeUndefined(ev?.tags.filter(a => a[0] === "relays").map(a => sanitizeRelayUrl(a[1])) ?? []),
-  );
-  const host = ev ? getHost(ev) : undefined;
-  const feed = useReactions(
-    `live:${link?.id}:${link?.author}:reactions`,
-    goal ? [link, NostrLink.fromEvent(goal)] : [link],
-    rb => {
-      if (link) {
-        rb.withFilter()
-          .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
-          .replyToLink([link])
-          .relay(relays)
-          .limit(200);
-      }
-    },
-    true,
-  );
+  const streamContext = useStream();
   const login = useLogin();
+  const layoutContext = useLayout();
+
+  // Use data from context
+  const link = streamContext.link!;
+  const feed = streamContext.feed;
+  const goal = streamContext.goal;
+  const event = streamContext.event;
+  const relays = streamContext.relays;
+
+  const host = event ? getHost(event) : undefined;
   const started = useMemo(() => {
-    const starts = findTag(ev, "starts");
+    const starts = findTag(event, "starts");
     return starts ? Number(starts) : unixNow() - WEEK;
-  }, [ev]);
+  }, [event]);
   const { awards } = useBadgeAwards(host);
 
   const hostMutedPubkeys = useMutedPubkeys(host, true);
@@ -100,17 +87,15 @@ export function LiveChat({
   const allEmojiPacks = useMemo(() => {
     return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
   }, [userEmojiPacks, channelEmojiPacks]);
-  const streamContext = useStream();
-  const layoutContext = useLayout();
 
   const reactions = useEventReactions(link, feed);
   const events = useMemo(() => {
     const extra = [];
-    const starts = findTag(ev, "starts");
+    const starts = findTag(event, "starts");
     if (starts) {
       extra.push({ kind: -1, created_at: Number(starts) } as TaggedNostrEvent);
     }
-    const ends = findTag(ev, "ends");
+    const ends = findTag(event, "ends");
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }

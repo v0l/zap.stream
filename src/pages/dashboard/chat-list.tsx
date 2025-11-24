@@ -1,12 +1,13 @@
 import { MuteButton } from "@/element/mute-button";
 import { Profile } from "@/element/profile";
 import { dedupe } from "@snort/shared";
-import { TaggedNostrEvent } from "@snort/system";
 import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { DefaultButton } from "@/element/buttons";
+import { useStream } from "@/element/stream/stream-state";
 
-export function DashboardChatList({ feed }: { feed: Array<TaggedNostrEvent> }) {
+export function DashboardChatList() {
+  const { feed } = useStream();
   const pubkeys = useMemo(() => {
     return dedupe(feed.map(a => a.pubkey));
   }, [feed]);

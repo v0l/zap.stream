@@ -1,6 +1,4 @@
 import { ChatZap } from "@/element/chat/live-chat";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
-import { useEventReactions } from "@snort/system-react";
 import { useMemo } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { DashboardCard } from "./card";
@@ -8,17 +6,10 @@ import { DashboardHighlightZap } from "./zap-highlight";
 import ZapGlow from "./zap-glow";
 import { ShareMenu } from "@/element/share-menu";
 import { useRates } from "@/hooks/rates";
+import { useStream } from "@/element/stream/stream-state";
 
-export function DashboardZapColumn({
-  ev,
-  link,
-  feed,
-}: {
-  ev: TaggedNostrEvent;
-  link: NostrLink;
-  feed: Array<TaggedNostrEvent>;
-}) {
-  const reactions = useEventReactions(link, feed);
+export function DashboardZapColumn() {
+  const { event, reactions } = useStream();
   const sortedZaps = useMemo(
     () => reactions.zaps.sort((a, b) => (b.created_at > a.created_at ? 1 : -1)),
     [reactions.zaps],
@@ -38,7 +29,7 @@ export function DashboardZapColumn({
               <FormattedMessage defaultMessage="Stream Earnings" />
             </h3>
           </div>
-          <ShareMenu ev={ev} />
+          {event && <ShareMenu ev={event} />}
         </div>
         <div>
           <FormattedMessage

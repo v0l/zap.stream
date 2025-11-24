@@ -13,7 +13,15 @@ import { UploadResult } from "@/service/upload";
 import { Nip96Server } from "@/service/upload/nip96";
 import { openFile } from "@/utils";
 import { ExternalStore, removeUndefined, unwrap } from "@snort/shared";
-import { EventBuilder, EventPublisher, Nip94Tags, NostrEvent, NostrLink, nip94TagsToIMeta, readNip94Tags } from "@snort/system";
+import {
+  EventBuilder,
+  EventPublisher,
+  Nip94Tags,
+  NostrEvent,
+  NostrLink,
+  nip94TagsToIMeta,
+  readNip94Tags,
+} from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import { FormattedMessage, useIntl } from "react-intl";

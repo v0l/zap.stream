@@ -29,7 +29,7 @@ export class VideoInfo {
     readonly id: string,
     readonly tags: Array<string>,
     readonly media: Array<Nip94Tags>,
-  ) { }
+  ) {}
 
   static parse(ev: NostrEvent) {
     const { regularTags, prefixedTags } = sortStreamTags(ev.tags);
