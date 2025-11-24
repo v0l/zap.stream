@@ -68,5 +68,11 @@ export function useDiscoverProviders(): StreamProviderConfig[] {
     return providerConfigs;
   }, [events, recommendations]);
 
-  return providers.sort((a, b) => (a.score > b.score ? 1 : -1));
+  return providers.sort((a, b) => {
+    if (a.score !== b.score) {
+      return a.score > b.score ? 1 : -1;
+    }
+    // Secondary sort by name for stable ordering when scores are equal
+    return a.name.localeCompare(b.name);
+  });
 }
