@@ -1,4 +1,4 @@
-import { NostrLink } from "@snort/system";
+import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
@@ -7,7 +7,12 @@ import { findTag, getHost } from "@/utils";
 
 export function Music({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true);
-  const host = getHost(currentEvent);
+  if (!currentEvent) return;
+  return <MusicWidget ev={currentEvent} />;
+}
+
+function MusicWidget({ ev }: { ev: TaggedNostrEvent }) {
+  const host = getHost(ev);
   const nowPlaying = useStatus("music", host, true);
   const cover = nowPlaying && findTag(nowPlaying, "cover");
   const expiry = nowPlaying && findTag(nowPlaying, "expiration");

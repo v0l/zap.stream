@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import "./widgets.css";
-import { useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { NostrLink } from "@snort/system";
 
@@ -43,8 +41,8 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
     return voices.find(v => v.voiceURI === voice);
   }, [voice]);
 
-  const isTextToSpeechSupported = "speechSynthesis" in window;
-  const isTextToSpeechEnabled = voices.length > 0 && textToSpeech;
+  const isTextToSpeechSupported = "speechSynthesis" in window && voices.length > 0;
+  const isTextToSpeechEnabled = isTextToSpeechSupported && textToSpeech;
 
   const query = useMemo(() => {
     const params = toTextToSpeechParams({
@@ -65,7 +63,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
   return (
     <>
       <h3>
-        <FormattedMessage defaultMessage="Zap Alert" id="zVDHAu" />
+        <FormattedMessage defaultMessage="Zap Alert" />
       </h3>
       <Copy text={`${baseUrl}/alert/${npub}/zaps${query}`} />
       <ZapAlertItem
@@ -82,85 +80,85 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
           created_at: 0,
         }}
       />
-      <div className="text-to-speech-settings">
-        <div
-          className="paper"
-          onClick={() => setTextToSpeech(!textToSpeech)}
-          style={{ cursor: isTextToSpeechSupported ? "pointer" : "not-allowed" }}>
-          <input
-            disabled={!isTextToSpeechSupported}
-            type="checkbox"
-            checked={textToSpeech}
-            onChange={ev => setTextToSpeech(ev.target.checked)}
-          />
-          <FormattedMessage defaultMessage="Enable text to speech" id="heyxZL" />
+      {isTextToSpeechSupported && (
+        <div>
+          <div className="flex items-center gap-2 select-none" onClick={() => setTextToSpeech(!textToSpeech)}>
+            <input
+              type="checkbox"
+              checked={textToSpeech}
+              onChange={ev => {
+                setTextToSpeech(ev.target.checked);
+              }}
+            />
+            <FormattedMessage defaultMessage="Enable text to speech" />
+          </div>
+          {isTextToSpeechEnabled && (
+            <>
+              <div className="flex items-center gap-2">
+                <label htmlFor="minimum-sats">
+                  <FormattedMessage defaultMessage="Minimum amount for text to speech" />
+                </label>
+                <input
+                  id="minimum-sats"
+                  type="number"
+                  min="1"
+                  value={minSatsForTextToSpeech}
+                  onChange={ev => setMinSatsForTextToSpeech(ev.target.value)}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <label htmlFor="volume">
+                  <FormattedMessage defaultMessage="Volume" />
+                </label>
+                <input
+                  id="volume"
+                  type="number"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={volume}
+                  onChange={ev => setVolume(Number(ev.target.value))}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <label htmlFor="voice-selector">
+                  <FormattedMessage defaultMessage="Voice" />
+                </label>
+                <select id="voice-selector" onChange={ev => setVoice(ev.target.value)}>
+                  <option value="">
+                    <FormattedMessage defaultMessage="Select voice..." />
+                  </option>
+                  {languages.map(l => (
+                    <optgroup label={formatDisplayName(l, { type: "language" })}>
+                      {groupedVoices[l].map(v => (
+                        <option value={v.voiceURI}>{v.name}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+              {voice && (
+                <>
+                  <div className="flex items-center gap-2">
+                    <label htmlFor="zap-alert-text">
+                      <FormattedMessage defaultMessage="Zap message" />
+                    </label>
+                    <textarea
+                      id="zap-alert-text"
+                      placeholder={formatMessage({ defaultMessage: "Insert text to speak" })}
+                      value={testText}
+                      onChange={ev => setTestText(ev.target.value)}
+                    />
+                  </div>
+                  <DefaultButton disabled={testText.length === 0} onClick={testVoice}>
+                    <FormattedMessage defaultMessage="Test voice" />
+                  </DefaultButton>
+                </>
+              )}
+            </>
+          )}
         </div>
-        {isTextToSpeechEnabled && (
-          <>
-            <div className="paper labeled-input">
-              <label htmlFor="minimum-sats">
-                <FormattedMessage defaultMessage="Minimum amount for text to speech" id="6pr6hJ" />
-              </label>
-              <input
-                id="minimum-sats"
-                type="number"
-                min="1"
-                value={minSatsForTextToSpeech}
-                onChange={ev => setMinSatsForTextToSpeech(ev.target.value)}
-              />
-            </div>
-            <div className="paper labeled-input">
-              <label htmlFor="volume">
-                <FormattedMessage defaultMessage="Volume" id="y867Vs" />
-              </label>
-              <input
-                id="volume"
-                type="number"
-                min="0"
-                max="1"
-                step="0.1"
-                value={volume}
-                onChange={ev => setVolume(Number(ev.target.value))}
-              />
-            </div>
-            <div className="paper labeled-input">
-              <label htmlFor="voice-selector">
-                <FormattedMessage defaultMessage="Voice" id="mnJYBQ" />
-              </label>
-              <select id="voice-selector" onChange={ev => setVoice(ev.target.value)}>
-                <option value="">
-                  <FormattedMessage defaultMessage="Select voice..." id="wMKVFz" />
-                </option>
-                {languages.map(l => (
-                  <optgroup label={formatDisplayName(l, { type: "language" })}>
-                    {groupedVoices[l].map(v => (
-                      <option value={v.voiceURI}>{v.name}</option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </div>
-            {voice && (
-              <>
-                <div className="paper labeled-input">
-                  <label htmlFor="zap-alert-text">
-                    <FormattedMessage defaultMessage="Zap message" id="sInm1h" />
-                  </label>
-                  <textarea
-                    id="zap-alert-text"
-                    placeholder={formatMessage({ defaultMessage: "Insert text to speak", id: "8YT6ja" })}
-                    value={testText}
-                    onChange={ev => setTestText(ev.target.value)}
-                  />
-                </div>
-                <DefaultButton disabled={testText.length === 0} onClick={testVoice}>
-                  <FormattedMessage defaultMessage="Test voice" id="d5zWyh" />
-                </DefaultButton>
-              </>
-            )}
-          </>
-        )}
-      </div>
+      )}
     </>
   );
 }
@@ -174,38 +172,41 @@ export function WidgetsPage() {
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
 
+  function WidgetBox({ children }: { children?: ReactNode }) {
+    return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40">{children}</div>;
+  }
   return (
-    <div className="widgets gap-2">
-      <div className="flex flex-col gap-2">
+    <div className="grid grid-cols-4 gap-2">
+      <WidgetBox>
         <h3>
           <FormattedMessage defaultMessage="Chat Widget" id="hpl4BP" />
         </h3>
         <Copy text={`${baseUrl}/chat/${npub}`} />
-      </div>
-      <div className="flex flex-col gap-2">
+      </WidgetBox>
+      <WidgetBox>
         <ZapAlertConfiguration npub={npub} baseUrl={baseUrl} />
-      </div>
-      <div className="flex flex-col gap-2">
+      </WidgetBox>
+      <WidgetBox>
         <h3>
           <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/top-zappers`} />
         {currentLink && <TopZappersWidget link={currentLink} />}
-      </div>
-      <div className="flex flex-col gap-2">
+      </WidgetBox>
+      <WidgetBox>
         <h3>
           <FormattedMessage defaultMessage="Current Viewers" id="rgsbu9" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/views`} />
         {currentLink && <Views link={currentLink} />}
-      </div>
-      <div className="flex flex-col gap-2">
+      </WidgetBox>
+      <WidgetBox>
         <h3>
           <FormattedMessage defaultMessage="Music" id="79lLl+" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/music`} />
         {currentLink && <Music link={currentLink} />}
-      </div>
+      </WidgetBox>
     </div>
   );
 }

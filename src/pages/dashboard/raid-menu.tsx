@@ -67,17 +67,13 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         <p className="text-layer-4 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Raid target" id="Zse7yG" />
         </p>
-        <div className="paper">
-          <input type="text" placeholder="naddr.." value={raiding} onChange={e => setRaiding(e.target.value)} />
-        </div>
+        <input type="text" placeholder="naddr.." value={raiding} onChange={e => setRaiding(e.target.value)} />
       </div>
       <div className="flex flex-col gap-1">
         <p className="text-layer-4 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Raid Message" id="RS6smY" />
         </p>
-        <div className="paper">
-          <input type="text" value={msg} onChange={e => setMsg(e.target.value)} />
-        </div>
+        <input type="text" value={msg} onChange={e => setMsg(e.target.value)} />
       </div>
       <DefaultButton onClick={raid}>
         <FormattedMessage defaultMessage="Raid!" id="aqjZxs" />
