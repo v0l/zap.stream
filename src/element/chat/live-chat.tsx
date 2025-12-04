@@ -240,10 +240,14 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
       <div className="flex gap-1 items-center">
         <Icon name="zap-filled" className="text-zap" />
         <FormattedMessage
-          defaultMessage="<s>{person}</s> zapped <s>{amount}</s> sats"
-          id="q+zTWM"
+          defaultMessage="<s>{person}</s> zapped <a>{amount}</a>"
           values={{
             s: c => <span className="text-zap">{c}</span>,
+            a: c => <span className="text-zap">
+              <span className="text-sm">₿</span>
+              {" "}
+              {c}
+            </span>,
             person: (
               <Profile
                 pubkey={zap.anonZap ? "anon" : zap.sender ?? ""}
