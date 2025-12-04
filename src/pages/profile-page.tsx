@@ -1,4 +1,3 @@
-import "./profile-page.css";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, RequestBuilder } from "@snort/system";
@@ -27,8 +26,6 @@ import { VideoTile } from "@/element/video/video-tile";
 import useImgProxy from "@/hooks/img-proxy";
 import { useStreamLink } from "@/hooks/stream-link";
 
-const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
-
 export function ProfilePage() {
   const link = useStreamLink();
   const { streams, zaps } = useProfile(link, true);
@@ -42,11 +39,9 @@ export function ProfilePage() {
   if (!link) return;
   return (
     <div className="flex flex-col gap-3 xl:px-4 w-full">
-      <img
-        className="rounded-xl object-cover h-[360px]"
-        alt={profile?.name || link.id}
-        src={profile?.banner ? proxy(profile?.banner) : defaultBanner}
-      />
+      {profile?.banner && (
+        <img className="rounded-xl object-cover h-[360px]" alt={profile?.name || link.id} src={proxy(profile.banner)} />
+      )}
       <ProfileHeader link={link} profile={profile} streams={streams} />
       <div className="grid lg:grid-cols-2 gap-4 py-2">
         <div>
@@ -108,7 +103,7 @@ function ProfileHeader({
     <div className="flex max-sm:flex-col gap-3 justify-between">
       <div className="flex items-center gap-3">
         <div className="relative flex flex-col items-center">
-          <Avatar user={profile} pubkey={link.id} size={88} className="border border-4" />
+          <Avatar user={profile} pubkey={link.id} size={88} className="border-4" />
           {isLive && <StatePill state={StreamState.Live} onClick={goToLive} className="absolute bottom-0 -mb-2" />}
         </div>
         <div className="flex flex-col gap-1">
@@ -123,7 +118,7 @@ function ProfileHeader({
       <div className="flex gap-2 items-center">
         {zapTarget && (
           <SendZapsDialog
-            aTag={liveEvent ? `${liveEvent.kind}:${liveEvent.pubkey}:${findTag(liveEvent, "d")}` : undefined}
+            aTag={liveEvent ? NostrLink.fromEvent(liveEvent).tagKey : undefined}
             lnurl={zapTarget}
             button={
               <DefaultButton>
@@ -143,7 +138,7 @@ function ProfileHeader({
 
 function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
   if (streams.length === 0) {
-    return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />;
+    return <FormattedMessage defaultMessage="No streams yet" />;
   }
   return (
     <VideoGrid>
@@ -153,7 +148,6 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
           <span className="text-neutral-500">
             <FormattedMessage
               defaultMessage="Streamed on {date}"
-              id="cvAsEh"
               values={{
                 date: new Date(ev.created_at * 1000).toLocaleDateString(),
               }}
@@ -186,7 +180,7 @@ function ProfileVideosSection({ link }: { link: NostrLink }) {
   return (
     <>
       <h1>
-        <FormattedMessage defaultMessage="Videos" id="vOKOOj" />
+        <FormattedMessage defaultMessage="Videos" />
       </h1>
       <VideoGrid>
         {sortedVideos.map(ev => (
@@ -201,7 +195,7 @@ function ProfileZapGoals({ link }: { link: NostrLink }) {
   const limit = 5;
   const goals = useGoals(link.id, false, limit);
   if (goals.length === 0) {
-    return <FormattedMessage defaultMessage="No goals yet" id="ZaNcK4" />;
+    return <FormattedMessage defaultMessage="No goals yet" />;
   }
   return goals
     .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
@@ -216,7 +210,7 @@ function ProfileZapGoals({ link }: { link: NostrLink }) {
 function ProfileClips({ link }: { link: NostrLink }) {
   const clips = useProfileClips(link, 10);
   if (clips.length === 0) {
-    return <FormattedMessage defaultMessage="No clips yet" id="ObZZEz" />;
+    return <FormattedMessage defaultMessage="No clips yet" />;
   }
   return clips.map(a => <ClipTile ev={a} key={a.id} />);
 }
