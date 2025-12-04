@@ -65,13 +65,13 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
         }
         case "list": {
           if (t.ordered) {
-            return <ol key={ctr++}>{t.items.map(renderToken)}</ol>;
+            return <ol className="list-decimal ml-4">{(t.items as Token[]).map(renderToken)}</ol>;
           } else {
-            return <ul key={ctr++}>{t.items.map(renderToken)}</ul>;
+            return <ul className="list-disc">{(t.items as Token[]).map(renderToken)}</ul>;
           }
         }
         case "list_item": {
-          return <li key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</li>;
+          return <li>{t.tokens ? t.tokens.map(renderToken) : t.raw}</li>;
         }
         case "em": {
           return <em key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</em>;
