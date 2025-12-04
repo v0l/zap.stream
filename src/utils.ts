@@ -148,7 +148,6 @@ export function extractStreamInfo(ev?: NostrEvent) {
     matchTag(t, "starts", v => (ret.starts = v));
     matchTag(t, "ends", v => (ret.ends = v));
     matchTag(t, "service", v => (ret.service = v));
-    matchTag(t, "deleted", v => (ret.status = v === "1" ? StreamState.Deleted : ret.status));
   }
   const { regularTags, prefixedTags } = sortStreamTags(ev?.tags ?? []);
   ret.tags = regularTags;

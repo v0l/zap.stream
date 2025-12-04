@@ -5,7 +5,7 @@ import { EventKind, NostrEvent, NostrLink, NostrPrefix, RequestBuilder, TaggedNo
 import { SnortContext, useRequestBuilder } from "@snort/system-react";
 import { useContext, useMemo } from "react";
 
-export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number, showDeleted?: boolean) {
+export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number) {
   function sortCreatedAt(a: NostrEvent, b: NostrEvent) {
     return b.created_at > a.created_at ? 1 : -1;
   }
@@ -29,11 +29,10 @@ export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number,
       return feed
         .filter(a => a.created_at > (oldest ?? unixNow() - 7 * DAY))
         .filter(a => canPlayEvent(a))
-        .filter(a => !WHITELIST || WHITELIST.includes(getHost(a)))
-        .filter(a => showDeleted || findTag(a, "deleted") !== "1");
+        .filter(a => !WHITELIST || WHITELIST.includes(getHost(a)));
     }
     return [];
-  }, [feed, oldest, showDeleted]);
+  }, [feed]);
 
   const live = feedSorted
     .filter(a => {
@@ -66,8 +65,7 @@ export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number,
     .filter(a => {
       const hasEnded = findTag(a, "status") === StreamState.Ended;
       const recording = findTag(a, "recording") ?? "";
-      const isDeleted = findTag(a, "deleted") === "1";
-      return hasEnded && recording?.length > 0 && (showDeleted || !isDeleted);
+      return hasEnded && recording?.length > 0;
     })
     .sort(sortCreatedAt);
   return { live, planned, ended };

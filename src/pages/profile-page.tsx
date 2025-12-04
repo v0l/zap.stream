@@ -1,8 +1,8 @@
 import "./profile-page.css";
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
+import { CachedMetadata, EventKind, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
+import { SnortContext, useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 
 import { Icon } from "@/element/icon";
@@ -15,7 +15,7 @@ import { Text } from "@/element/text";
 import { findTag } from "@/utils";
 import { StatePill } from "@/element/state-pill";
 import { Avatar } from "@/element/avatar";
-import { StreamState } from "@/const";
+import { N94_LIVE_STREAM, StreamState } from "@/const";
 import { DefaultButton, WarningButton } from "@/element/buttons";
 import { useGoals } from "@/hooks/goals";
 import { Goal } from "@/element/goal";
@@ -26,7 +26,6 @@ import { ClipTile } from "@/element/stream/clip-tile";
 import useImgProxy from "@/hooks/img-proxy";
 import { useStreamLink } from "@/hooks/stream-link";
 import StreamService from "@/service/stream-service";
-
 import { useLogin } from "@/hooks/login";
 
 const defaultBanner = "https://void.cat/d/Hn1AdN5UKmceuDkgDW847q.webp";
@@ -40,12 +39,8 @@ export function ProfilePage() {
   const isOwner = login?.pubkey === link?.id;
 
   const pastStreams = useMemo(() => {
-    return streams.filter(ev => {
-      const status = findTag(ev, "status");
-      const isDeleted = findTag(ev, "deleted") === "1";
-      return status === StreamState.Ended && (isOwner || !isDeleted);
-    });
-  }, [streams, isOwner]);
+    return streams.filter(ev => findTag(ev, "status") === StreamState.Ended);
+  }, [streams]);
 
   if (!link) return;
   return (
@@ -150,66 +145,70 @@ function ProfileHeader({
 
 function ProfileStreamList({ streams, isOwner }: { streams: Array<TaggedNostrEvent>; isOwner: boolean }) {
   const login = useLogin();
-  const publisher = login?.publisher();
-  const streamService = new StreamService(publisher);
+  const system = useContext(SnortContext);
 
   const deleteStream = async (ev: TaggedNostrEvent) => {
     if (!login?.pubkey) return;
-    
-    const streamId = findTag(ev, "d");
-    if (!streamId) return;
 
-    const success = await streamService.deleteStream(streamId);
-    if (success) {
-      // Refresh the page or update state as needed
+    const publisher = login.publisher();
+    if (!publisher) return;
+
+    const service = findTag(ev, "service");
+    const streamId = findTag(ev, "d");
+    const isManualStream = ev.kind === N94_LIVE_STREAM || !service;
+
+    if (isManualStream) {
+      // For manual streams (N94 or without service), create a nostr deletion event
+      const deletionEvent = await publisher.generic(eb => {
+        eb.kind(EventKind.Deletion);
+        if (ev.kind >= 30000 && ev.kind < 40000 && streamId) {
+          // Addressable event - use "a" tag
+          return eb.tag(["a", `${ev.kind}:${ev.pubkey}:${streamId}`]);
+        } else {
+          // Regular event - use "e" tag
+          return eb.tag(["e", ev.id]);
+        }
+      });
+      await system.BroadcastEvent(deletionEvent);
       window.location.reload();
-    } else {
-      // Handle error - could show a toast notification
-      console.error("Failed to delete stream");
+    } else if (streamId) {
+      // For zap.stream API streams, use the stream service
+      const streamService = new StreamService(publisher);
+      const success = await streamService.deleteStream(streamId);
+      if (success) {
+        window.location.reload();
+      } else {
+        console.error("Failed to delete stream via API");
+      }
     }
   };
 
   if (streams.length === 0) {
     return <FormattedMessage defaultMessage="No streams yet" id="0rVLjV" />;
   }
-  
   return (
     <VideoGrid>
-      {streams.map(ev => {
-        const isDeleted = findTag(ev, "deleted") === "1";
-        return (
-          <div key={ev.id} className="flex flex-col gap-1">
-            <div className="relative">
-              <StreamTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
-              {isDeleted && (
-                <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-semibold">
-                    <FormattedMessage defaultMessage="Deleted" />
-                  </span>
-                </div>
-              )}
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-500">
-                <FormattedMessage
-                  defaultMessage="Streamed on {date}"
-                  id="cvAsEh"
-                  values={{
-                    date: new Date(ev.created_at * 1000).toLocaleDateString(),
-                  }}
-                />
-              </span>
-              {isOwner && !isDeleted && (
-                <WarningButton
-                  onClick={() => deleteStream(ev)}
-                  className="text-xs px-2 py-1">
-                  <FormattedMessage defaultMessage="Delete" />
-                </WarningButton>
-              )}
-            </div>
+      {streams.map(ev => (
+        <div key={ev.id} className="flex flex-col gap-1">
+          <StreamTile ev={ev} showAuthor={false} showStatus={false} style="grid" />
+          <div className="flex justify-between items-center">
+            <span className="text-neutral-500">
+              <FormattedMessage
+                defaultMessage="Streamed on {date}"
+                id="cvAsEh"
+                values={{
+                  date: new Date(ev.created_at * 1000).toLocaleDateString(),
+                }}
+              />
+            </span>
+            {isOwner && (
+              <WarningButton onClick={() => deleteStream(ev)} className="text-xs px-2 py-1">
+                <FormattedMessage defaultMessage="Delete" />
+              </WarningButton>
+            )}
           </div>
-        );
-      })}
+        </div>
+      ))}
     </VideoGrid>
   );
 }

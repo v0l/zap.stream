@@ -1,32 +1,32 @@
-import { NostrPublisher } from "@snort/system";
+import { base64 } from "@scure/base";
+import { EventKind, EventPublisher } from "@snort/system";
+import { unixNow } from "@snort/shared";
+import { TimeSync } from "@/time-sync";
 
 export default class StreamService {
   readonly url = "https://api.zap.stream/api/v1";
-  private publisher?: NostrPublisher;
+  private publisher?: EventPublisher;
 
-  constructor(publisher?: NostrPublisher) {
+  constructor(publisher?: EventPublisher) {
     this.publisher = publisher;
   }
 
   async deleteStream(streamId: string): Promise<boolean> {
+    if (!this.publisher) {
+      console.error("No publisher available for authentication");
+      return false;
+    }
+
     try {
-      const headers: Record<string, string> = {
-        "Content-Type": "application/json",
-      };
+      const fullUrl = `${this.url}/stream/${streamId}`;
+      const auth = await this.getAuthHeader(fullUrl, "DELETE");
 
-      // Add authentication if available
-      if (this.publisher) {
-        // This would need to be implemented based on how the API expects authentication
-        // For now, assuming it might use a signed request or bearer token
-        const auth = await this.getAuthHeader();
-        if (auth) {
-          headers["Authorization"] = auth;
-        }
-      }
-
-      const rsp = await fetch(`${this.url}/streams/${streamId}`, {
+      const rsp = await fetch(fullUrl, {
         method: "DELETE",
-        headers,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: auth,
+        },
       });
       return rsp.ok;
     } catch (error) {
@@ -35,9 +35,18 @@ export default class StreamService {
     }
   }
 
-  private async getAuthHeader(): Promise<string | null> {
-    // This would implement the authentication logic required by the API
-    // For now, returning null as we don't know the exact auth mechanism
-    return null;
+  private async getAuthHeader(url: string, method: string): Promise<string> {
+    if (!this.publisher) {
+      throw new Error("No publisher available");
+    }
+    const auth = await this.publisher.generic(eb => {
+      return eb
+        .kind(EventKind.HttpAuthentication)
+        .content("")
+        .tag(["u", url])
+        .tag(["method", method])
+        .createdAt(unixNow() + Math.floor(TimeSync / 1000));
+    });
+    return `Nostr ${base64.encode(new TextEncoder().encode(JSON.stringify(auth)))}`;
   }
 }
