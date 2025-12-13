@@ -173,42 +173,57 @@ export function LiveChat({
         className={classNames("flex flex-col-reverse grow gap-2 overflow-y-auto", {
           "scrollbar-hidden": !(showScrollbar ?? true),
         })}>
-        {filteredEvents.map(a => {
-          switch (a.kind) {
-            case -1:
-            case -2: {
-              return (
-                <b
-                  className="border px-3 py-2 text-center border-layer-2 rounded-xl bg-primary uppercase"
-                  key={`${a.kind}-${a.created_at}`}>
-                  {a.kind === -1 ? (
-                    <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />
-                  ) : (
-                    <FormattedMessage defaultMessage="Stream Ended" id="jkAQj5" />
-                  )}
-                </b>
-              );
-            }
-            case EventKind.BadgeAward: {
-              return <BadgeAward ev={a} key={a.id} />;
-            }
-            case LIVE_STREAM_CHAT: {
-              return <ChatMessage badges={awards} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
-            }
-            case LIVE_STREAM_RAID: {
-              return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;
-            }
-            case LIVE_STREAM_CLIP: {
-              return <ChatClip ev={a} key={a.id} />;
-            }
-            case EventKind.ZapReceipt: {
-              const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
-              if (zap) {
-                return <ChatZap zap={zap} key={a.id} />;
+        {filteredEvents.map((a, i) => {
+          const currentDate = new Date(a.created_at * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+          const prevDate = i > 0 ? new Date(filteredEvents[i - 1].created_at * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : null;
+          const showDateSeparator = prevDate && currentDate !== prevDate;
+
+          const mapper = () => {
+            switch (a.kind) {
+              case -1:
+              case -2: {
+                return (
+                  <b
+                    className="border px-3 py-2 text-center border-layer-2 rounded-xl bg-primary uppercase"
+                    key={`${a.kind}-${a.created_at}`}>
+                    {a.kind === -1 ? (
+                      <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />
+                    ) : (
+                      <FormattedMessage defaultMessage="Stream Ended" id="jkAQj5" />
+                    )}
+                  </b>
+                );
+              }
+              case EventKind.BadgeAward: {
+                return <BadgeAward ev={a} key={a.id} />;
+              }
+              case LIVE_STREAM_CHAT: {
+                return <ChatMessage badges={awards} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
+              }
+              case LIVE_STREAM_RAID: {
+                return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;
+              }
+              case LIVE_STREAM_CLIP: {
+                return <ChatClip ev={a} key={a.id} />;
+              }
+              case EventKind.ZapReceipt: {
+                const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
+                if (zap) {
+                  return <ChatZap zap={zap} key={a.id} />;
+                }
               }
             }
           }
-          return null;
+
+          const mapped = mapper();
+          if (!mapped) return;
+          return <>
+            {showDateSeparator && (
+              <div className="text-center text-xs text-gray-500">{prevDate}</div>
+            )}
+
+            {mapped}
+          </>
         })}
         {feed.length === 0 && <Spinner />}
       </div>
