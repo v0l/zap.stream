@@ -4,6 +4,7 @@
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",
+    "@kixelated/hang": "^0.7.0",
     "@scure/base": "^1.1.6",
     "@snort/shared": "^2.0.0-pre.3",
     "@snort/system": "^2.0.0-pre.8",
@@ -101,5 +102,13 @@
     "printWidth": 120,
     "bracketSameLine": true,
     "arrowParens": "avoid"
+  },
+  "resolutions": {
+    "@kixelated/hang": "portal:/home/kieran/git/moq/js/hang",
+    "@kixelated/hang-ui": "portal:/home/kieran/git/moq/js/hang-ui",
+    "@kixelated/moq": "portal:/home/kieran/git/moq/js/moq",
+    "@kixelated/moq-clock": "portal:/home/kieran/git/moq/js/moq-clock",
+    "@kixelated/moq-token": "portal:/home/kieran/git/moq/js/moq-token",
+    "@kixelated/signals": "portal:/home/kieran/git/moq/js/signals"
   }
 }

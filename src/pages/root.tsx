@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export function RootPage() {
   const streams = useStreamsFeed();
   return (
-    <div className="flex flex-col gap-6 p-4 min-w-0">
+    <div className="flex flex-col gap-6 p-4 min-w-0 grow">
       <Link to="/app" className="flex gap-2 items-center px-4 py-2 rounded-xl bg-layer-2">
         <Icon name="link" />
         Get the new zap.stream app!

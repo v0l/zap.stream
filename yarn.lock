@@ -2181,6 +2181,80 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@kixelated/hang@portal:/home/kieran/git/moq/js/hang::locator=stream_ui%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@kixelated/hang@portal:/home/kieran/git/moq/js/hang::locator=stream_ui%40workspace%3A."
+  dependencies:
+    "@kixelated/libavjs-webcodecs-polyfill": "npm:^0.5.5"
+    "@kixelated/moq": "workspace:^"
+    "@kixelated/signals": "workspace:^"
+    "@libav.js/variant-opus-af": "npm:^6.8.8"
+    async-mutex: "npm:^0.5.0"
+    comlink: "npm:^4.4.2"
+    zod: "npm:^4.1.5"
+  languageName: node
+  linkType: soft
+
+"@kixelated/libavjs-webcodecs-polyfill@npm:^0.5.5":
+  version: 0.5.5
+  resolution: "@kixelated/libavjs-webcodecs-polyfill@npm:0.5.5"
+  dependencies:
+    "@libav.js/types": "npm:^6.7.7"
+    "@ungap/global-this": "npm:^0.4.4"
+  checksum: 10c0/36d180b4dc409cc7fac47088facb354e4b2352a0e8556251eb865a2a87a7dd92b544091272ddc4dceefc308cacc444c1b5c731d93766bd1d8d032e6d0f965e12
+  languageName: node
+  linkType: hard
+
+"@kixelated/moq@portal:/home/kieran/git/moq/js/moq::locator=stream_ui%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@kixelated/moq@portal:/home/kieran/git/moq/js/moq::locator=stream_ui%40workspace%3A."
+  dependencies:
+    "@kixelated/signals": "workspace:*"
+    "@kixelated/web-transport-ws": "npm:^0.1.2"
+    async-mutex: "npm:^0.5.0"
+  peerDependencies:
+    zod: ^4.1.0
+  languageName: node
+  linkType: soft
+
+"@kixelated/signals@portal:/home/kieran/git/moq/js/signals::locator=stream_ui%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@kixelated/signals@portal:/home/kieran/git/moq/js/signals::locator=stream_ui%40workspace%3A."
+  dependencies:
+    dequal: "npm:^2.0.3"
+  peerDependencies:
+    "@types/react": ^19.1.8
+    react: ^19.0.0
+    solid-js: ^1.9.7
+  peerDependenciesMeta:
+    react:
+      optional: true
+    solid-js:
+      optional: true
+  languageName: node
+  linkType: soft
+
+"@kixelated/web-transport-ws@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@kixelated/web-transport-ws@npm:0.1.2"
+  checksum: 10c0/09c894dabdd7cf9a2cb79e1e88248eb53bf84b7c2287d5c4279da1416053e756f14ab24cdc87640ca3eb8c4265307c278cfc94432f90e301fd2cefe43a084655
+  languageName: node
+  linkType: hard
+
+"@libav.js/types@npm:^6.7.7":
+  version: 6.8.8
+  resolution: "@libav.js/types@npm:6.8.8"
+  checksum: 10c0/55691b7090ee3cbf7e0ed7343e6eed04888c426b735b0631e5bfd7f597c3d3540c53c7bb4c57396953220e3691ba2c94c24fe1ddac46a78b524c6345f5a16c09
+  languageName: node
+  linkType: hard
+
+"@libav.js/variant-opus-af@npm:^6.8.8":
+  version: 6.8.8
+  resolution: "@libav.js/variant-opus-af@npm:6.8.8"
+  checksum: 10c0/733e6c4c0b31d288235bf543fdcf8f85505f0d2d4e90d153418737d6dd8b312f392d4c2532296a5db0c9eff1415c6b39a475c0353c312d267e342e72583a1342
+  languageName: node
+  linkType: hard
+
 "@noble/ciphers@npm:^2.0.1":
   version: 2.0.1
   resolution: "@noble/ciphers@npm:2.0.1"
@@ -3072,6 +3146,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ungap/global-this@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "@ungap/global-this@npm:0.4.4"
+  checksum: 10c0/c3367a0aa972309284d6d41898d205ab253feb06b9b5ddff1b69bd210440ab052e5b18923976ed9ba7bda9b90b02e8560f7a5e243a712575652c40eb3bb31595
+  languageName: node
+  linkType: hard
+
 "@ungap/structured-clone@npm:^1.2.0":
   version: 1.2.0
   resolution: "@ungap/structured-clone@npm:1.2.0"
@@ -3332,6 +3413,15 @@ __metadata:
     is-array-buffer: "npm:^3.0.2"
     is-shared-array-buffer: "npm:^1.0.2"
   checksum: 10c0/db460cb4a96c3c9e27a2a7eed5d0ab1fcfccae9fc8cd1b4883cbb03cd29060b373e0723e78b5c786fdec2025a0ab12eb840c72b2f26016bac906b91bc4e9e4db
+  languageName: node
+  linkType: hard
+
+"async-mutex@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "async-mutex@npm:0.5.0"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 10c0/9096e6ad6b674c894d8ddd5aa4c512b09bb05931b8746ebd634952b05685608b2b0820ed5c406e6569919ff5fe237ab3c491e6f2887d6da6b6ba906db3ee9c32
   languageName: node
   linkType: hard
 
@@ -3715,6 +3805,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"comlink@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "comlink@npm:4.4.2"
+  checksum: 10c0/38aa1f455cf08e94aaa8fc494fd203cc0ef02ece6c21404b7931ce17567e8a72deacddab98aa5650cfd78332ff24c34610586f6fb27fd19dc77e753ed1980deb
+  languageName: node
+  linkType: hard
+
 "commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
@@ -4016,6 +4113,13 @@ __metadata:
   version: 1.0.0
   resolution: "delegates@npm:1.0.0"
   checksum: 10c0/ba05874b91148e1db4bf254750c042bf2215febd23a6d3cda2e64896aef79745fbd4b9996488bd3cafb39ce19dbce0fd6e3b6665275638befffe1c9b312b91b5
+  languageName: node
+  linkType: hard
+
+"dequal@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "dequal@npm:2.0.3"
+  checksum: 10c0/f98860cdf58b64991ae10205137c0e97d384c3a4edc7f807603887b7c4b850af1224a33d88012009f150861cbee4fa2d322c4cc04b9313bee312e47f6ecaa888
   languageName: node
   linkType: hard
 
@@ -7333,6 +7437,7 @@ __metadata:
     "@emoji-mart/data": "npm:^1.2.1"
     "@emoji-mart/react": "npm:^1.1.1"
     "@formatjs/cli": "npm:^6.1.3"
+    "@kixelated/hang": "npm:^0.7.0"
     "@scure/base": "npm:^1.1.6"
     "@snort/shared": "npm:^2.0.0-pre.3"
     "@snort/system": "npm:^2.0.0-pre.8"
@@ -8508,5 +8613,12 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10c0/dceb44c28578b31641e13695d200d34ec4ab3966a5729814d5445b194933c096b7ced71494ce53a0e8820685d1d010df8b2422e5bf2cdea7e469d97ffbea306f
+  languageName: node
+  linkType: hard
+
+"zod@npm:^4.1.5":
+  version: 4.1.13
+  resolution: "zod@npm:4.1.13"
+  checksum: 10c0/d7e74e82dba81a91ffc3239cd85bc034abe193a28f7087a94ab258a3e48e9a7ca4141920cac979a0d781495b48fc547777394149f26be04c3dc642f58bbc3941
   languageName: node
   linkType: hard

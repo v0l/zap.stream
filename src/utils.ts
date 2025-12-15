@@ -130,10 +130,13 @@ export interface StreamInfo {
 }
 
 export function canPlayUrl(url: string) {
+  const isLocalhost = url.includes("localhost") || url.includes("127.0.0.1");
+  if(isLocalhost && window.location.hostname !== "localhost") return false;
+
   try {
     const u = new URL(url);
-    return u.pathname.includes(".m3u8") && u.hostname !== "localhost" && u.hostname !== "127.0.0.1";
-  } catch {
+    return u.pathname.includes(".m3u8") || u.protocol == "moq:" ;
+  } catch(e) {
     return false;
   }
 }
@@ -191,7 +194,7 @@ export function extractStreamInfo(ev?: NostrEvent) {
   if (ev?.kind === N94_LIVE_STREAM) {
     ret.stream = "n94";
   } else if (ret.streams) {
-    ret.stream = ret.streams.find(a => a.includes(".m3u8"));
+    ret.stream = ret.streams.find(a => a.includes(".m3u8")) || ret.streams.at(0);
   }
   return ret;
 }

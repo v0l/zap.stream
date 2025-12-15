@@ -221,7 +221,6 @@ export function LiveChat({
             {showDateSeparator && (
               <div className="text-center text-xs text-gray-500">{prevDate}</div>
             )}
-
             {mapped}
           </>
         })}

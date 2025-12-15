@@ -22,8 +22,10 @@ import "hls-video-element";
 import { StreamState } from "@/const";
 import { NostrLink } from "@snort/system";
 const Nip94Player = lazy(() => import("./n94-player"));
+const MoqPlayer = lazy(() => import("./moq-player"));
 
 type VideoPlayerProps = {
+  id?: string;
   title?: string;
   status?: StreamState;
   stream?: string;
@@ -43,6 +45,10 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       // hls video
       /* @ts-ignore Web Componenet */
       return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
+    } else if (stream && stream.startsWith("moq://")) {
+      return <Suspense>
+        <MoqPlayer stream={stream} id={props.id} />
+      </Suspense>
     } else {
       // other video formats (e.g. mp4)
       return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
