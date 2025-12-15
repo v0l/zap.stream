@@ -7,6 +7,7 @@
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",
     "@kixelated/hang": "^0.7.0",
+    "@noble/hashes": "^2.0.1",
     "@scure/base": "^2.0.0",
     "@snort/shared": "^2.0.0-pre.3",
     "@snort/system": "^2.0.0-pre.8",

@@ -7734,6 +7734,7 @@ __metadata:
     "@emoji-mart/react": "npm:^1.1.1"
     "@formatjs/cli": "npm:^6.7.4"
     "@kixelated/hang": "npm:^0.7.0"
+    "@noble/hashes": "npm:^2.0.1"
     "@scure/base": "npm:^2.0.0"
     "@snort/shared": "npm:^2.0.0-pre.3"
     "@snort/system": "npm:^2.0.0-pre.8"

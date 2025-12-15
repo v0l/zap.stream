@@ -3,20 +3,22 @@ import { Layer2Button } from "./buttons";
 import { openFile } from "@/utils";
 import { Icon } from "./icon";
 import { useMediaServerList } from "@/hooks/media-servers";
-import { Nip96Server } from "@/service/upload/nip96";
+import { Blossom } from "@/service/upload";
 import { useLogin } from "@/hooks/login";
 import type { ReactNode } from "react";
 import type { EventPublisher } from "@snort/system";
 
 interface FileUploaderProps {
   onResult(url: string | undefined): void;
-  onError(e: string | Error): void;
+  onError(e: Error): void;
   children?: ReactNode;
   className?: string;
   publisher?: EventPublisher;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
-export function FileUploader({ onResult, onError, children, className, publisher }: FileUploaderProps) {
+export function FileUploader({ onResult, onError, children, className, publisher, imageWidth, imageHeight }: FileUploaderProps) {
   const servers = useMediaServerList();
   const pub = publisher ?? useLogin()?.publisher?.();
 
@@ -25,13 +27,10 @@ export function FileUploader({ onResult, onError, children, className, publisher
     const file = await openFile();
     if (file && pub) {
       try {
-        const server = new Nip96Server(servers.servers[0], pub);
-        const upload = await server.upload(file, file.name);
+        const server = new Blossom(servers.servers[0], pub);
+        const upload = (imageWidth || imageHeight ? await server.uploadImage(file, imageWidth, imageHeight) : await server.upload(file));
         if (upload.url) {
           onResult(upload.url);
-        }
-        if (upload.error) {
-          onError(upload.error);
         }
       } catch (error) {
         if (error instanceof Error) {

@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { NostrStreamProvider } from "@/providers";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
-import { NostrLink, type TaggedNostrEvent } from "@snort/system";
+import { LinkScope, NostrLink, type TaggedNostrEvent } from "@snort/system";
 
 import { LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { extractStreamInfo } from "@/utils";
@@ -65,9 +65,11 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
 
     const newClip = await provider.createClip(id, tempClipId, clipLength * start, clipLength * length);
     const ee = await publisher.generic(eb => {
+      const link = NostrLink.fromEvent(ev);
+      link.scope = LinkScope.Root;
       return eb
         .kind(LIVE_STREAM_CLIP)
-        .tag(unwrap(NostrLink.fromEvent(ev).toEventTag("root")))
+        .tag(unwrap(link.toEventTag()))
         .tag(["p", host ?? ev.pubkey])
         .tag(["r", newClip.url])
         .tag(["title", title])

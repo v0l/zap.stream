@@ -19,6 +19,7 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
   const [image, setImage] = useState<string | undefined>(card?.image);
   const [content, setContent] = useState(card?.content ?? "");
   const [link, setLink] = useState(card?.link ?? "");
+  const [error, setError] = useState<string>();
   const { formatMessage } = useIntl();
 
   return (
@@ -47,7 +48,7 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
           </WarningButton>
         </>
       )}
-      <FileUploader defaultImage={image} onResult={setImage} />
+      <FileUploader onResult={setImage} onError={(e) => setError(e.message)} />
       {image && (
         <>
           {/* IMAGE LINK */}

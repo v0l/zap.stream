@@ -199,7 +199,10 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
           <FileUploader
             onResult={e => setPicture(e ?? "")}
             onError={e => setError(e instanceof Error ? e : new Error(e))}
-            className="flex items-center justify-center absolute w-full h-full opacity-0 hover:opacity-80 bg-foreground cursor-pointer">
+            className="flex items-center justify-center absolute w-full h-full opacity-0 hover:opacity-80 bg-foreground cursor-pointer"
+            imageWidth={512}
+            imageHeight={512}
+          >
             <FormattedMessage defaultMessage="Edit" />
           </FileUploader>
         </div>

@@ -1,15 +1,14 @@
 import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
-import { Nip96Server } from "@/service/upload/nip96";
-import { findTag } from "@/utils";
-import type { NostrEvent } from "@snort/system";
+import { type BlobDescriptor, Blossom } from "@/service/upload";
 import { useEffect, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { PrimaryButton } from "../buttons";
+import { dedupeBy } from "@snort/shared";
 
-export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<NostrEvent>) => void }) {
+export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<BlobDescriptor>) => void }) {
   const login = useLogin();
-  const [fileList, setFilesList] = useState<Array<NostrEvent>>([]);
+  const [fileList, setFilesList] = useState<Array<BlobDescriptor>>([]);
   const [pickedFiles, setPickedFiles] = useState<Array<string>>([]);
   const servers = useMediaServerList();
 
@@ -19,20 +18,18 @@ export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<Nost
     if (!pub) return;
     for (const s of servers.servers) {
       try {
-        const sx = new Nip96Server(s, pub);
-        const files = await sx.listFiles();
-        if (files?.files) {
-          res.push(...files.files);
-        }
+        const sx = new Blossom(s, pub);
+        const files = await sx.list(pub.pubKey);
+        res.push(...files);
       } catch (e) {
         console.error(e);
       }
     }
-    setFilesList(res);
+    setFilesList(dedupeBy(res, r => r.sha256));
   }
 
-  function toggleFile(ev: NostrEvent) {
-    const hash = findTag(ev, "x");
+  function toggleFile(b: BlobDescriptor) {
+    const hash = b.sha256;
     if (!hash) return;
     setPickedFiles(a => {
       if (a.includes(hash)) {
@@ -54,22 +51,22 @@ export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<Nost
       </h3>
       <div className="grid grid-cols-5 gap-4">
         {fileList.map(a => (
-          <Nip96File file={a} onClick={() => toggleFile(a)} checked={pickedFiles.includes(findTag(a, "x") ?? "")} />
+          <BlossomFile file={a} onClick={() => toggleFile(a)} checked={pickedFiles.includes(a.sha256)} />
         ))}
       </div>
       <PrimaryButton
         disabled={pickedFiles.length === 0}
-        onClick={() => onPicked(fileList.filter(a => pickedFiles.includes(findTag(a, "x") ?? "")))}>
+        onClick={() => onPicked(fileList.filter(a => pickedFiles.includes(a.sha256)))}>
         <FormattedMessage defaultMessage="Select" />
       </PrimaryButton>
     </div>
   );
 }
 
-function Nip96File({ file, checked, onClick }: { file: NostrEvent; checked: boolean; onClick: () => void }) {
-  const mime = findTag(file, "m");
-  const url = findTag(file, "url");
-  const size = findTag(file, "size");
+function BlossomFile({ file, checked, onClick }: { file: BlobDescriptor; checked: boolean; onClick: () => void }) {
+  const mime = file.type;
+  const url = file.url;
+  const size = file.size;
   return (
     <div onClick={() => onClick()}>
       <div
@@ -97,11 +94,10 @@ function Nip96File({ file, checked, onClick }: { file: NostrEvent; checked: bool
               />
             )}
           </div>
-          <div>{new Date(file.created_at * 1000).toLocaleString()}</div>
+          {file.uploaded && <div>{new Date(file.uploaded * 1000).toLocaleString()}</div>}
         </div>
         <input type="checkbox" className="left-2 top-2 absolute" checked={checked} />
       </div>
-      <small>{file.content}</small>
     </div>
   );
 }

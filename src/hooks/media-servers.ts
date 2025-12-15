@@ -1,15 +1,16 @@
 import { EventKind, UnknownTag } from "@snort/system";
 import { useLogin } from "./login";
 import { removeUndefined, sanitizeRelayUrl } from "@snort/shared";
-import { Nip96Server } from "@/service/upload/nip96";
 import { useMemo } from "react";
 
-export const DefaultMediaServers = [new UnknownTag(["server", "https://nostr.download/"])];
+const ServerTag = "server";
+
+export const DefaultMediaServers = [new UnknownTag([ServerTag, "https://nostr.download/"])];
 
 export function useMediaServerList() {
   const login = useLogin();
 
-  let servers = login?.state?.getList(EventKind.StorageServerList) ?? [];
+  let servers = login?.state?.getList(EventKind.BlossomServerList) ?? [];
   if (servers.length === 0) {
     servers = DefaultMediaServers;
   }
@@ -17,7 +18,7 @@ export function useMediaServerList() {
   return useMemo(
     () => ({
       servers: removeUndefined(servers.map(a => a.toEventTag()))
-        .filter(a => a[0] === "server")
+        .filter(a => a[0] === ServerTag)
         .map(a => a[1]),
       addServer: async (s: string) => {
         const pub = login?.publisher();
@@ -25,14 +26,12 @@ export function useMediaServerList() {
 
         const u = sanitizeRelayUrl(s);
         if (!u) return;
-        const server = new Nip96Server(u, pub);
-        await server.loadInfo();
-        await login?.state?.addToList(EventKind.StorageServerList, new UnknownTag(["server", u]), true);
+        login?.state?.addToList(EventKind.BlossomServerList, new UnknownTag([ServerTag, u]), true);
       },
       removeServer: async (s: string) => {
         const u = sanitizeRelayUrl(s);
         if (!u) return;
-        await login?.state?.removeFromList(EventKind.StorageServerList, new UnknownTag(["server", u]), true);
+        login?.state?.removeFromList(EventKind.BlossomServerList, new UnknownTag([ServerTag, u]), true);
       },
     }),
     [servers],

@@ -9,15 +9,13 @@ import { ServerList } from "@/element/upload/server-list";
 import useImgProxy from "@/hooks/img-proxy";
 import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
-import type { UploadResult } from "@/service/upload";
-import { Nip96Server } from "@/service/upload/nip96";
+import { Blossom, type BlobDescriptor } from "@/service/upload";
 import { openFile } from "@/utils";
 import { ExternalStore, removeUndefined, unwrap } from "@snort/shared";
 import {
   EventBuilder,
   type EventPublisher,
   type Nip94Tags,
-  type NostrEvent,
   NostrLink,
   nip94TagsToIMeta,
   readNip94Tags,
@@ -33,7 +31,9 @@ interface UploadStatus {
   name: string;
   size: number;
   server: string;
-  result?: UploadResult;
+  result?: BlobDescriptor;
+  metadata?: Nip94Tags
+  error?: string
 }
 
 interface UploadDraft {
@@ -42,7 +42,7 @@ interface UploadDraft {
 }
 
 class UploadManager extends ExternalStore<Array<UploadStatus>> {
-  #uploaders: Map<string, Nip96Server> = new Map();
+  #uploaders: Map<string, Blossom> = new Map();
   #uploads: Map<string, UploadStatus> = new Map();
   #id: string;
 
@@ -70,26 +70,23 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     return this.#id;
   }
 
-  removeUpload(server: string, name: string, type: UploadStatus["type"]) {
-    const uploadKey = `${name}:${server}:${type}`;
+  removeUpload(server: string, size: number, type: UploadStatus["type"]) {
+    const uploadKey = `${size}:${server}:${type}`;
     if (this.#uploads.delete(uploadKey)) {
       this.notifyChange();
     }
   }
 
-  addUpload(server: string, file: NostrEvent, meta: Nip94Tags, type: UploadStatus["type"]) {
-    const name = file.content ?? meta.summary ?? meta.alt ?? "";
-    const uploadKey = `${name}:${server}:${type}`;
+  addUpload(server: string, file: BlobDescriptor, meta: Nip94Tags, type: UploadStatus["type"]) {
+    const name = meta.summary ?? meta.alt ?? "";
+    const uploadKey = `${file.size}:${server}:${type}`;
     this.#uploads.set(uploadKey, {
       type,
       name,
-      size: meta.size ?? 0,
+      size: meta.size ?? file.size,
       server,
-      result: {
-        url: meta.url,
-        header: file,
-        metadata: meta,
-      },
+      result: file,
+      metadata: meta
     });
     this.notifyChange();
   }
@@ -97,11 +94,11 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
   async uploadTo(server: string, file: File, pub: EventPublisher, type: UploadStatus["type"]) {
     let uploader = this.#uploaders.get(server);
     if (!uploader) {
-      uploader = new Nip96Server(server, pub);
+      uploader = new Blossom(server, pub);
       this.#uploaders.set(server, uploader);
     }
 
-    const uploadKey = `${file.name}:${server}:${type}`;
+    const uploadKey = `${file.size}:${server}:${type}`;
     if (this.#uploads.has(uploadKey)) {
       return;
     }
@@ -115,8 +112,7 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     this.#uploads.set(uploadKey, status);
     this.notifyChange();
     try {
-      await uploader.loadInfo();
-      uploader.upload(file, file.name).then(res => {
+      uploader.upload(file).then(res => {
         this.#uploads.set(uploadKey, {
           ...status,
           result: res,
@@ -127,9 +123,9 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
       if (e instanceof Error) {
         this.#uploads.set(uploadKey, {
           ...status,
-          result: {
-            error: e.message,
-          },
+          result: undefined,
+          metadata: undefined,
+          error: e.message
         });
         this.notifyChange();
       }
@@ -143,10 +139,11 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     const uploads = this.snapshot();
     const resGroup = uploads.reduce(
       (acc, v) => {
-        const dim = v.result?.metadata?.dimensions?.join("x");
+        const dim = v.metadata?.dimensions;
         if (dim) {
-          acc[dim] ??= [];
-          acc[dim].push(v);
+          const r = `${dim[0]}x${dim[1]}`;
+          acc[r] ??= [];
+          acc[r].push(v);
         }
         return acc;
       },
@@ -162,12 +159,12 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     const uploads = this.snapshot();
     return uploads.reduce(
       (acc, v) => {
-        if (v.result?.metadata?.duration) {
-          if (acc[1] < v.result.metadata.duration) {
-            acc[1] = v.result.metadata.duration;
+        if (v.metadata?.duration) {
+          if (acc[1] < v.metadata.duration) {
+            acc[1] = v.metadata.duration;
           }
-          if (acc[0] > v.result.metadata.duration) {
-            acc[0] = v.result.metadata.duration;
+          if (acc[0] > v.metadata.duration) {
+            acc[0] = v.metadata.duration;
           }
         }
         return acc;
@@ -188,7 +185,7 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
         const res = firstUpload.result;
         const images = vGroup.filter(a => a.type === "thumb" && a.result?.url).map(a => unwrap(a.result?.url));
         const metaTag: Nip94Tags = {
-          ...res.metadata,
+          ...firstUpload.metadata,
           image: images,
           fallback: removeUndefined(uploadsSuccess.filter(a => a.result?.url !== res.url).map(a => a.result?.url)),
         };
@@ -449,7 +446,7 @@ export function UploadPage() {
           <div className="text-xl font-semibold">
             <FormattedMessage defaultMessage="Thumbnail" />
           </div>
-          <div className="border border-layer-3 border-dashed border-2 rounded-xl aspect-video overflow-hidden">
+          <div className="border-layer-3 border-dashed border-2 rounded-xl aspect-video overflow-hidden">
             {thumb && <img src={proxy(thumb)} className="w-full h-full object-contain" />}
           </div>
           <div className="flex gap-4">
@@ -495,9 +492,9 @@ export function UploadPage() {
           <MediaServerFileList
             onPicked={files => {
               files.forEach(f => {
-                const meta = readNip94Tags(f.tags);
-                if (meta.url) {
-                  const url = new URL(meta.url);
+                if (f.url) {
+                  const meta = readNip94Tags(f.nip94 ?? []);
+                  const url = new URL(f.url);
                   manager.addUpload(
                     `${url.protocol}//${url.host}/`,
                     f,
@@ -530,7 +527,7 @@ function UploadProgress({ status }: { status: UploadStatus }) {
               defaultMessage: "Delete file",
             })}
             onClick={() => {
-              manager.removeUpload(status.server, status.name, status.type);
+              manager.removeUpload(status.server, status.size, status.type);
             }}
           />
         </div>
@@ -541,16 +538,16 @@ function UploadProgress({ status }: { status: UploadStatus }) {
           <FormattedMessage defaultMessage="Uploading.." />
         </div>
       )}
-      {status.result && !status.result.error && (
+      {status.result && !status.error && (
         <div className="flex gap-4">
           <FormattedMessage defaultMessage="OK" />
           <div className="flex gap-2 text-layer-4">
-            <div>{status.result.metadata?.dimensions?.join("x")}</div>
-            <div>{status.result.metadata?.mimeType}</div>
+            <div>{status.metadata?.dimensions?.join("x")}</div>
+            <div>{status.metadata?.mimeType}</div>
           </div>
         </div>
       )}
-      {status.result?.error && <b className="text-warning">{status.result.error}</b>}
+      {status.error && <b className="text-warning">{status.error}</b>}
     </div>
   );
 }

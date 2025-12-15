@@ -141,7 +141,10 @@ export function LoginSignup({ close }: { close: () => void }) {
         publisher={new EventPublisher(signer, signer.getPubKey())}
         onResult={e => setAvatar(e ?? "")}
         onError={e => setError(e.toString())}
-        className="absolute flex items-center justify-center w-full h-full hover:opacity-30 opacity-0 transition bg-black cursor-pointer">
+        className="absolute flex items-center justify-center w-full h-full hover:opacity-30 opacity-0 transition bg-black cursor-pointer"
+        imageWidth={512}
+        imageHeight={512}
+      >
         <Icon name="camera-plus" />
       </FileUploader>
     );
@@ -170,30 +173,30 @@ export function LoginSignup({ close }: { close: () => void }) {
               </DefaultButton>
               {!hasNostrExtension && (
                 <small className="cursor-pointer">
-                    <FormattedMessage
-                      defaultMessage="Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
-                      values={{
-                        nos2x: (
-                          <Link
-                            className="underline"
-                            target="_blank"
-                            to="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp">
-                            Nos2X
-                          </Link>
-                        ),
-                        nostore: (
-                          <Link className="underline" target="_blank" to="">
-                            Nostore
-                          </Link>
-                        ),
-                        alby: (
-                          <Link className="underline" target="_blank" to="">
-                            Alby
-                          </Link>
-                        ),
-                      }}
-                    />
-                  </small>
+                  <FormattedMessage
+                    defaultMessage="Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+                    values={{
+                      nos2x: (
+                        <Link
+                          className="underline"
+                          target="_blank"
+                          to="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp">
+                          Nos2X
+                        </Link>
+                      ),
+                      nostore: (
+                        <Link className="underline" target="_blank" to="">
+                          Nostore
+                        </Link>
+                      ),
+                      alby: (
+                        <Link className="underline" target="_blank" to="">
+                          Alby
+                        </Link>
+                      ),
+                    }}
+                  />
+                </small>
               )}
             </div>
             <DefaultButton onClick={() => setStage(Stage.LoginInput)}>
@@ -259,7 +262,7 @@ export function LoginSignup({ close }: { close: () => void }) {
               <FormattedMessage defaultMessage="Setup Profile" />
             </h2>
             <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden bg-layer-3">
-              {avatar && <img className="absolute object-fit w-full h-full" src={avatar} />}
+              {avatar && <img className="absolute object-cover object-center w-full h-full" src={avatar} />}
               {imageUploadSection()}
             </div>
             <input
