@@ -15,6 +15,7 @@ import {
   MediaPosterImage,
   MediaTimeDisplay,
   MediaPlaybackRateButton,
+  MediaAirplayButton,
 } from "media-chrome/react";
 import {
   MediaRenditionMenu,
@@ -56,6 +57,9 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
     }
   }
+
+  const hasAirPlay = "WebKitPlaybackTargetAvailabilityEvent" in window;
+  const hasCast = "chrome" in globalThis && "cast" in globalThis as any["chrome"];
   return (
     <MediaController
       className={classNames(props.className, "h-inherit aspect-video w-full")}
@@ -76,12 +80,13 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
         {status === StreamState.Live && <MediaLiveButton />}
         {status === StreamState.Ended && <MediaPlaybackRateButton />}
         <MediaTimeRange />
-        {status === StreamState.Ended && <MediaTimeDisplay showduration={true} />}
+        {status === StreamState.Ended && <MediaTimeDisplay showDuration />}
         <MediaMuteButton />
         <MediaVolumeRange />
         {status === StreamState.Live && <MediaRenditionMenuButton />}
         <MediaPipButton />
-        <MediaCastButton />
+        {hasAirPlay && <MediaAirplayButton />}
+        {hasCast && <MediaCastButton />}
         <MediaFullscreenButton />
       </MediaControlBar>
     </MediaController>
