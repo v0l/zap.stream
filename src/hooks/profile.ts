@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { NostrLink, RequestBuilder } from "@snort/system";
+import { type NostrLink, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { LIVE_STREAM_KINDS } from "@/const";
 import { useZaps } from "./zaps";

@@ -4,8 +4,8 @@ import { Toggle } from "../toggle";
 import { useUserCards } from "@/hooks/cards";
 import { AddCard } from "./add-card";
 import { Card } from "./card-item";
-import { ToNostrEventTag } from "@snort/system";
-import { Tag } from "@/types";
+import type { ToNostrEventTag } from "@snort/system";
+import type { Tag } from "@/types";
 
 interface StreamCardEditorProps {
   pubkey: string;

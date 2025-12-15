@@ -1,4 +1,4 @@
-import { HTMLProps, useRef, useEffect } from "react";
+import { type HTMLProps, useRef, useEffect } from "react";
 
 type TimelineProps = {
   length: number;

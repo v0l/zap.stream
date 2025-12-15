@@ -1,7 +1,7 @@
 import { Icon } from "@/element/icon";
 import classNames from "classnames";
-import { ReactNode } from "react";
-import { Link, LinkProps, useLocation } from "react-router-dom";
+import type { ReactNode } from "react";
+import { Link, type LinkProps, useLocation } from "react-router";
 
 export function NavLinkIcon({
   name,

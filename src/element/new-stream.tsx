@@ -1,9 +1,9 @@
-import { ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { Icon } from "./icon";
 import { useStreamProvider } from "@/hooks/stream-provider";
-import { StreamEditorProps } from "./stream-editor";
+import type { StreamEditorProps } from "./stream-editor";
 import NostrProviderDialog from "@/element/provider/nostr";
 import { DefaultButton } from "./buttons";
 import Modal from "./modal";
@@ -12,8 +12,7 @@ export function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> 
   const { provider: currentProvider } = useStreamProvider();
 
   return (
-    <>
-      <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
         <NostrProviderDialog
           provider={currentProvider}
           onFinish={onFinish}
@@ -25,7 +24,6 @@ export function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> 
           showStreamKeys={false}
         />
       </div>
-    </>
   );
 }
 

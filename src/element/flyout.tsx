@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { IconButton } from "./buttons";
 import { createPortal } from "react-dom";
 import classNames from "classnames";
@@ -27,7 +27,7 @@ export default function Flyout({
     <div
       className={classNames("absolute z-20 top-0 overflow-hidden", {
         "pointer-events-none": !show,
-        "right-0": side == "right",
+        "right-0": side === "right",
         "left-0": side === "left",
       })}>
       <div className="bg-layer-2/90 h-[100dvh] px-3 py-4" style={styles}>

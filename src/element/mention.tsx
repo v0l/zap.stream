@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useUserProfile } from "@snort/system-react";
 import { profileLink } from "@/utils";
 import { NostrPrefix } from "@snort/shared";
-import { NostrLink } from "@snort/system";
+import type { NostrLink } from "@snort/system";
 
 export function Mention({ link }: { link: NostrLink }) {
   const encoded = link.encode();

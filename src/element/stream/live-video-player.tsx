@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { CSSProperties, HTMLProps, Suspense, lazy } from "react";
+import { type CSSProperties, type HTMLProps, Suspense, lazy } from "react";
 import classNames from "classnames";
 import {
   MediaControlBar,
@@ -12,15 +12,17 @@ import {
   MediaVolumeRange,
   MediaCastButton,
   MediaLiveButton,
-  MediaRenditionMenu,
-  MediaRenditionMenuButton,
   MediaPosterImage,
   MediaTimeDisplay,
   MediaPlaybackRateButton,
 } from "media-chrome/react";
+import {
+  MediaRenditionMenu,
+  MediaRenditionMenuButton,
+} from "media-chrome/react/menu"
 import "hls-video-element";
 import { StreamState } from "@/const";
-import { NostrLink } from "@snort/system";
+import type { NostrLink } from "@snort/system";
 const Nip94Player = lazy(() => import("./n94-player"));
 const MoqPlayer = lazy(() => import("./moq-player"));
 
@@ -41,11 +43,11 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
           <Nip94Player {...props} link={link} />
         </Suspense>
       );
-    } else if (stream && stream.toLowerCase().endsWith(".m3u8")) {
+    } else if (stream?.toLowerCase().endsWith(".m3u8")) {
       // hls video
-      /* @ts-ignore Web Componenet */
+      /* @ts-expect-error Web Componenet */
       return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
-    } else if (stream && stream.startsWith("moq://")) {
+    } else if (stream?.startsWith("moq://")) {
       return <Suspense>
         <MoqPlayer stream={stream} id={props.id} />
       </Suspense>

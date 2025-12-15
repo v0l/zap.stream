@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
+import { Link } from "react-router";
 import { Icon } from "../icon";
 import classNames from "classnames";
 

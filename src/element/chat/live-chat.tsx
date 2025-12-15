@@ -1,6 +1,6 @@
 import "./live-chat.css";
 import { FormattedMessage } from "react-intl";
-import { EventKind, NostrEvent, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
+import { EventKind, type NostrEvent, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system";
 import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react";
 import { removeUndefined, unixNow, unwrap, NostrPrefix } from "@snort/shared";
 import { useEffect, useMemo } from "react";
@@ -21,7 +21,7 @@ import { formatZapAmount } from "@/number";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
 import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
 import { TopZappers } from "../top-zappers";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import classNames from "classnames";
 import { useStream } from "../stream/stream-state";
 import { useLayout } from "@/pages/layout/context";

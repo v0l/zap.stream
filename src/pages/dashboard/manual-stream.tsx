@@ -4,7 +4,7 @@ import { NostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { useContext, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function ManualStream() {
   const [open, setOpen] = useState(false);

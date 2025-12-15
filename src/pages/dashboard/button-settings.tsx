@@ -1,10 +1,10 @@
-import { TaggedNostrEvent } from "@snort/system";
+import type { TaggedNostrEvent } from "@snort/system";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 import NostrProviderDialog from "@/element/provider/nostr";
-import { NostrStreamProvider } from "@/providers";
+import type { NostrStreamProvider } from "@/providers";
 
 export function DashboardSettingsButton({ ev, provider }: { ev?: TaggedNostrEvent; provider: NostrStreamProvider }) {
   const [show, setShow] = useState(false);

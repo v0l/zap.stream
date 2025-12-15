@@ -3,7 +3,7 @@ import { VideoInfo } from "@/element/video-info";
 import { VideoPlayerContextProvider } from "@/element/video/context";
 import VideoPlayer from "@/element/video/player";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import type { NostrLink, TaggedNostrEvent } from "@snort/system";
 
 export function ShortPage({ link, evPreload }: { link: NostrLink; evPreload?: TaggedNostrEvent }) {
   const ev = useCurrentStreamFeed(link, true, evPreload);

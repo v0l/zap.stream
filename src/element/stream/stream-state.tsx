@@ -1,11 +1,11 @@
 import { NostrPrefix, dedupe, removeUndefined, sanitizeRelayUrl } from "@snort/shared";
-import { EventKind, NostrEvent, NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { EventKind, type NostrEvent, NostrLink, RequestBuilder, type TaggedNostrEvent } from "@snort/system";
 import { useEventReactions, useRequestBuilder } from "@snort/system-react";
-import { ReactNode, createContext, useContext, useMemo, useState } from "react";
+import { type ReactNode, createContext, useContext, useMemo, useState } from "react";
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID } from "@/const";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useZapGoal } from "@/hooks/goals";
-import { StreamInfo, extractStreamInfo } from "@/utils";
+import { type StreamInfo, extractStreamInfo } from "@/utils";
 
 interface StreamState {
   link?: NostrLink;

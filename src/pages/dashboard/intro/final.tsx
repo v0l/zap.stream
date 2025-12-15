@@ -3,10 +3,10 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import StreamKey from "@/element/provider/nostr/stream-key";
 import { ExternalLink } from "@/element/external-link";
-import { AccountResponse } from "@/providers";
+import type { AccountResponse } from "@/providers";
 
 export default function DashboardIntroFinal() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function DashboardIntroFinal() {
   const { provider: streamProvider } = useStreamProvider();
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name == "Best") ?? info?.endpoints[0];
+    return info?.endpoints.find(a => a.name === "Best") ?? info?.endpoints[0];
   }, [info]);
 
   async function loadInfo() {

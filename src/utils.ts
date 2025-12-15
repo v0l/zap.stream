@@ -1,11 +1,10 @@
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
+import { type CachedMetadata, type NostrEvent, NostrLink, type TaggedNostrEvent } from "@snort/system";
 
 import type { Tags } from "@/types";
-import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, P_TAG_HOST_WHITELIST, StreamState } from "@/const";
-import { GameInfo } from "./service/game-database";
+import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, P_TAG_HOST_WHITELIST, type StreamState } from "@/const";
+import type { GameInfo } from "./service/game-database";
 import { AllCategories } from "./pages/category";
 import { NostrPrefix } from "@snort/shared";
-import { StreamInfo } from "./element/stream/stream-info";
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -25,7 +24,7 @@ export function findTag(e: NostrEvent | undefined, tag: string) {
   const maybeTag = e?.tags.find(evTag => {
     return evTag[0] === tag;
   });
-  return maybeTag && maybeTag[1];
+  return maybeTag?.[1];
 }
 
 export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
@@ -44,7 +43,7 @@ export function getHost(ev: NostrEvent) {
 }
 
 export function profileLink(meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
-  if (meta && meta.nip05 && meta.nip05.endsWith("@zap.stream")) {
+  if (meta?.nip05?.endsWith("@zap.stream")) {
     const [name] = meta.nip05.split("@");
     return `/p/${name}`;
   }
@@ -135,8 +134,8 @@ export function canPlayUrl(url: string) {
 
   try {
     const u = new URL(url);
-    return u.pathname.includes(".m3u8") || u.protocol == "moq:" ;
-  } catch(e) {
+    return u.pathname.includes(".m3u8") || u.protocol === "moq:" ;
+  } catch(_e) {
     return false;
   }
 }
@@ -208,7 +207,7 @@ export function sortStreamTags(tags: Array<string | Array<string>>) {
 }
 
 export function extractGameTag(tags: Array<string>) {
-  let gameInfo: GameInfo | undefined = undefined;
+  let gameInfo: GameInfo | undefined ;
   const gameId = tags.find(a => a.match(gameTagFormat));
   if (gameId?.startsWith("internal:")) {
     const internal = AllCategories.find(a => gameId === `internal:${a.id}`);

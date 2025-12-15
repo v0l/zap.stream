@@ -1,4 +1,4 @@
-import { Nip94Tags, NostrEvent } from "@snort/system";
+import type { Nip94Tags, NostrEvent } from "@snort/system";
 
 export const FileExtensionRegex = /\.([\w]{1,7})$/i;
 

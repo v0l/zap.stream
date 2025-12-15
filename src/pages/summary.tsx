@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 import { useStreamLink } from "@/hooks/stream-link";
 import { getEventFromLocationState } from "@/utils";

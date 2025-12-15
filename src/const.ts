@@ -1,4 +1,4 @@
-import { EventKind, parseNostrLink } from "@snort/system";
+import { type EventKind, parseNostrLink } from "@snort/system";
 
 export const ZAP_STREAM_PUBKEY = "cf45a6ba1363ad7ed213a078e710d24115ae721c9b47bd1ebf4458eaefb4c2a5";
 export const LIVE_STREAM = 30_311 as EventKind;

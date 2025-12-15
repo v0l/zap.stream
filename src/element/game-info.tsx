@@ -1,7 +1,7 @@
 import useGameInfo from "@/hooks/game-info";
-import { GameInfo } from "@/service/game-database";
+import type { GameInfo } from "@/service/game-database";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 interface GameInfoCardProps {
   gameId?: string;

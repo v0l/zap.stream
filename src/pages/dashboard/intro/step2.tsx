@@ -3,9 +3,9 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import CategoryInput from "@/element/stream-editor/category-input";
-import { GameInfo } from "@/service/game-database";
+import type { GameInfo } from "@/service/game-database";
 import { extractGameTag, sortStreamTags } from "@/utils";
 import { appendDedupe } from "@snort/shared";
 

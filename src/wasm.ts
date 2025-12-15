@@ -7,7 +7,7 @@ import {
   schnorr_verify_event,
 } from "@snort/system-wasm";
 import WasmPath from "@snort/system-wasm/pkg/system_wasm_bg.wasm";
-import { ReqFilter, FlatReqFilter, Optimizer } from "@snort/system";
+import type { ReqFilter, FlatReqFilter, Optimizer } from "@snort/system";
 
 export const WasmOptimizer = {
   expandFilter: (f: ReqFilter) => {

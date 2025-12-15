@@ -1,7 +1,7 @@
 import { DAY, N94_LIVE_STREAM, StreamState, WHITELIST } from "@/const";
 import { canPlayEvent, findTag, getHost } from "@/utils";
 import { unixNow, NostrPrefix } from "@snort/shared";
-import { EventKind, NostrEvent, NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { EventKind, type NostrEvent, NostrLink, RequestBuilder, type TaggedNostrEvent } from "@snort/system";
 import { SnortContext, useRequestBuilder } from "@snort/system-react";
 import { useContext, useMemo } from "react";
 

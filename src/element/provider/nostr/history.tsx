@@ -1,10 +1,10 @@
 import { Mention } from "@/element/mention";
-import { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz";
+import type { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz";
 import { eventLink } from "@/utils";
-import { EventKind, NostrEvent, NostrLink } from "@snort/system";
+import { EventKind, type NostrEvent, NostrLink } from "@snort/system";
 import { useEffect, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function BalanceHistory({ provider }: { provider?: NostrStreamProvider }) {
   const [page] = useState(0);
@@ -53,7 +53,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
       <tbody>
         {rows?.items.map(a => {
           let ev: NostrEvent | undefined;
-          if (a.desc && a.desc.startsWith("{")) {
+          if (a.desc?.startsWith("{")) {
             ev = JSON.parse(a.desc) as NostrEvent;
           }
           return (

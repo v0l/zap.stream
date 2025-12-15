@@ -1,4 +1,4 @@
-import { NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { type NostrLink, RequestBuilder, type TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
 

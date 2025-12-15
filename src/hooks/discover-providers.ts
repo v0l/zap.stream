@@ -1,7 +1,7 @@
-import { EventKind, NostrLink, RequestBuilder, UserMetadata } from "@snort/system";
+import { EventKind, NostrLink, RequestBuilder, type UserMetadata } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
-import { StreamProviderConfig } from "./stream-provider";
+import type { StreamProviderConfig } from "./stream-provider";
 import useWoT from "./wot";
 import { P_TAG_HOST_WHITELIST } from "@/const";
 

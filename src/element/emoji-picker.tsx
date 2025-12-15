@@ -1,7 +1,7 @@
-import data, { Emoji } from "@emoji-mart/data";
+import data, { type Emoji } from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import { RefObject, forwardRef } from "react";
-import { EmojiPack } from "@/types";
+import { type RefObject, forwardRef } from "react";
+import type { EmojiPack } from "@/types";
 
 interface EmojiPickerProps {
   topOffset: number;
@@ -30,8 +30,7 @@ const EmojiPicker = forwardRef<HTMLDivElement | null, EmojiPickerProps>(
       };
     });
     return (
-      <>
-        <div
+      <div
           style={{
             position: "fixed",
             top: topOffset - height - 10,
@@ -57,7 +56,6 @@ const EmojiPicker = forwardRef<HTMLDivElement | null, EmojiPickerProps>(
             maxFrequentRows={0}
           />
         </div>
-      </>
     );
   },
 );

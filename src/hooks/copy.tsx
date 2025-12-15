@@ -9,7 +9,7 @@ export const useCopy = (timeout = 2000) => {
       await navigator.clipboard.writeText(text);
       setCopied(true);
       setError(false);
-    } catch (error) {
+    } catch (_error) {
       setError(true);
     }
 

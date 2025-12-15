@@ -1,6 +1,6 @@
 import { VideoInfo } from "@/service/video/info";
-import { TaggedNostrEvent } from "@snort/system";
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import type { TaggedNostrEvent } from "@snort/system";
+import { type ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 interface VideoPlayerContext {
   video: VideoInfo;

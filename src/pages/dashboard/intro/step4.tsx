@@ -3,7 +3,7 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import { GoalSelector } from "@/element/stream-editor/goal-selector";
 import AmountInput from "@/element/amount-input";
 import { useLogin } from "@/hooks/login";

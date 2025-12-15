@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { removeUndefined, unwrap } from "@snort/shared";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
-import { CardItem } from ".";
+import type { CardItem } from ".";
 import { USER_CARDS } from "@/const";
 import { useLogin } from "@/hooks/login";
-import { Tags } from "@/types";
+import type { Tags } from "@/types";
 import { findTag } from "@/utils";
 import { EditCard } from "./edit-card";
 import { CardPreview } from "./preview";

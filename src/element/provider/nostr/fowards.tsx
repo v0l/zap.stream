@@ -1,5 +1,5 @@
 import { DefaultButton } from "@/element/buttons";
-import { NostrStreamProvider } from "@/providers";
+import type { NostrStreamProvider } from "@/providers";
 import { unwrap } from "@snort/shared";
 import { useState } from "react";
 import { useIntl, FormattedMessage } from "react-intl";

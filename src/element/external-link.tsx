@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Icon } from "./icon";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 interface ExternalLinkProps {
   href: string;

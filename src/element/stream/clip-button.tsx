@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { NostrStreamProvider } from "@/providers";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 
 import { LIVE_STREAM_CLIP, StreamState } from "@/const";
 import { extractStreamInfo } from "@/utils";

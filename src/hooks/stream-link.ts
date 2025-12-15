@@ -1,8 +1,8 @@
 import { NIP5_DOMAIN } from "@/const";
 import { NostrPrefix, fetchNip05Pubkey } from "@snort/shared";
-import { NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system";
+import { type NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 export function useStreamLink(evPreload?: NostrEvent) {
   const params = useParams();

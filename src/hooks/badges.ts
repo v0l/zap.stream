@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { EventKind, NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { EventKind, NostrLink, RequestBuilder, type TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 export interface BadgeAward {

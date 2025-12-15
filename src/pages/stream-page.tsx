@@ -1,5 +1,5 @@
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
-import { Helmet } from "react-helmet-async";
+import type { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { Helmet } from "@dr.pogodin/react-helmet";
 import { Suspense, lazy } from "react";
 import { useMediaQuery } from "usehooks-ts";
 

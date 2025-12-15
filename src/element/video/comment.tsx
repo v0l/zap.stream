@@ -1,10 +1,10 @@
-import { TaggedNostrEvent } from "@snort/system";
+import type { TaggedNostrEvent } from "@snort/system";
 import { Profile, getName } from "../profile";
 import { Text } from "@/element/text";
 import { useUserProfile } from "@snort/system-react";
 import EventReactions from "../event-reactions";
 import { RelativeTime } from "../relative-time";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { profileLink } from "@/utils";
 
 export default function VideoComment({ ev }: { ev: TaggedNostrEvent }) {

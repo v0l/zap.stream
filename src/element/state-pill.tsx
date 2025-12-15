@@ -1,4 +1,4 @@
-import { HTMLProps } from "react";
+import type { HTMLProps } from "react";
 import "./state-pill.css";
 import classNames from "classnames";
 import { StreamState } from "@/const";

@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
-import { AccountResponse, NostrStreamProvider } from "@/providers";
+import { type AccountResponse, NostrStreamProvider } from "@/providers";
 import { DefaultButton, Layer2Button } from "@/element/buttons";
 import { Icon } from "@/element/icon";
-import { StreamProviderConfig } from "@/hooks/stream-provider";
+import type { StreamProviderConfig } from "@/hooks/stream-provider";
 import CapabilityPill from "@/element/capability-pill";
 import Pill from "@/element/pill";
 import { useLogin } from "@/hooks/login";
@@ -57,7 +57,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
       } else {
         setPingError(true);
       }
-    } catch (err) {
+    } catch (_err) {
       setPingError(true);
     }
   };
@@ -89,7 +89,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   const getPriceRange = (endpoints?: Array<{ cost?: { rate?: number; unit?: string } }>) => {
     if (!endpoints || endpoints.length === 0) return "N/A";
 
-    const rates = endpoints.filter(ep => ep.cost?.rate !== undefined).map(ep => ep.cost!.rate ?? 0);
+    const rates = endpoints.filter(ep => ep.cost?.rate !== undefined).map(ep => ep.cost?.rate ?? 0);
 
     if (rates.length === 0) return "N/A";
 

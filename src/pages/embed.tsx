@@ -3,9 +3,9 @@ import LiveVideoPlayer from "@/element/stream/live-video-player";
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { useStreamLink } from "@/hooks/stream-link";
 import { extractStreamInfo, trackEvent } from "@/utils";
-import { NostrLink } from "@snort/system";
+import type { NostrLink } from "@snort/system";
 import { Suspense, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 export function EmbededPage() {
   const link = useStreamLink();

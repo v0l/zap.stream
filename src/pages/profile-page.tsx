@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { CachedMetadata, NostrEvent, NostrLink, TaggedNostrEvent, RequestBuilder } from "@snort/system";
+import { useNavigate } from "react-router";
+import { type CachedMetadata, type NostrEvent, NostrLink, type TaggedNostrEvent, RequestBuilder } from "@snort/system";
 import { useUserProfile, useRequestBuilder } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 

@@ -43,7 +43,7 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
           <FormattedMessage
             defaultMessage="Note by {name}"
             values={{
-              name: author ? <Mention link={NostrLink.publicKey(author)} /> : <></>,
+              name: author ? <Mention link={NostrLink.publicKey(author)} /> : undefined,
             }}
           />
         </div>

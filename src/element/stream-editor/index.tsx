@@ -1,6 +1,6 @@
 import "./index.css";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { EventKind, NostrEvent } from "@snort/system";
+import { EventKind, type NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { FormattedMessage, useIntl } from "react-intl";
 import { SnortContext } from "@snort/system-react";
@@ -12,7 +12,7 @@ import { DefaultButton } from "@/element/buttons";
 import Pill from "@/element/pill";
 import { StreamInput } from "./input";
 import { GoalSelector } from "./goal-selector";
-import GameDatabase, { GameInfo } from "@/service/game-database";
+import GameDatabase, { type GameInfo } from "@/service/game-database";
 import CategoryInput from "./category-input";
 import { FileUploader } from "@/element/file-uploader";
 import AmountInput from "@/element/amount-input";
@@ -142,11 +142,11 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         return eb;
       });
       console.debug(evNew);
-      onFinish && onFinish(evNew);
+      onFinish?.(evNew);
     }
   }
 
-  const startsTimestamp = Number(start ?? new Date().getTime() / 1000);
+  const startsTimestamp = Number(start ?? Date.now()/ 1000);
   const startsDate = new Date(startsTimestamp * 1000);
 
   return (

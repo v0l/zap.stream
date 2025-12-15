@@ -1,7 +1,7 @@
 import "./send-zap.css";
 import { Fragment, type ReactNode, useEffect, useState } from "react";
 import { LNURL } from "@snort/shared";
-import { EventPublisher, NostrEvent, PrivateKeySigner, TaggedNostrEvent } from "@snort/system";
+import { EventPublisher, type NostrEvent, PrivateKeySigner, type TaggedNostrEvent } from "@snort/system";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 
 import { formatSats } from "../number";
@@ -108,7 +108,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
       try {
         await wallet.payInvoice(invoice.pr);
         onFinish();
-      } catch (error) {
+      } catch (_error) {
         setInvoice(invoice.pr);
       }
     } else {

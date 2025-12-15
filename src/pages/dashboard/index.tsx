@@ -3,7 +3,7 @@ import { useLogin } from "@/hooks/login";
 import { NostrPrefix } from "@snort/shared";
 import { NostrLink, parseNostrLink } from "@snort/system";
 import { Suspense, lazy, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { FormattedMessage } from "react-intl";
 
 const DashboardForLink = lazy(() => import("./dashboard"));

@@ -1,14 +1,14 @@
 import { CARD, USER_CARDS } from "@/const";
 import { useLogin } from "@/hooks/login";
 import { removeUndefined } from "@snort/shared";
-import { TaggedNostrEvent, NostrLink } from "@snort/system";
+import { type TaggedNostrEvent, NostrLink } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { useContext, useState } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import { DefaultButton } from "../buttons";
 import Modal from "../modal";
 import { CardDialog } from "./new-card";
-import { CardType } from ".";
+import type { CardType } from ".";
 
 interface EditCardProps {
   card: CardType;

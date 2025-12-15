@@ -1,13 +1,13 @@
 import { useLogin } from "@/hooks/login";
 import { useSortedStreams } from "@/hooks/useLiveStreams";
 import { getTagValues, getHost, extractStreamInfo } from "@/utils";
-import { NostrEvent, NostrLink, TaggedNostrEvent } from "@snort/system";
-import { ReactNode, useMemo } from "react";
+import { type NostrEvent, NostrLink, type TaggedNostrEvent } from "@snort/system";
+import { type ReactNode, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import VideoGrid from "./video-grid";
 import { StreamTile } from "./stream/stream-tile";
 import { CategoryTile } from "./category/category-tile";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import Pill from "./pill";
 import { StreamState, VIDEO_KIND } from "@/const";
 import { useRecentClips } from "@/hooks/clips";

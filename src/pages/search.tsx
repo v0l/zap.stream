@@ -5,7 +5,7 @@ import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 
 export const SearchRelays = ["wss://relay.nostr.band", "wss://search.nos.today", "wss://relay.noswhere.com"];
 

@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import React, { ReactNode, useEffect } from "react";
+import type React from "react";
+import { type ReactNode, useEffect } from "react"
 import { createPortal } from "react-dom";
 import { IconButton } from "./buttons";
 

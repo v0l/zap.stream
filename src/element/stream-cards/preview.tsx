@@ -1,6 +1,6 @@
 import { forwardRef, lazy, Suspense } from "react";
 import { ExternalLink } from "../external-link";
-import { NewCard } from ".";
+import type { NewCard } from ".";
 import classNames from "classnames";
 const Markdown = lazy(() => import("../markdown"));
 

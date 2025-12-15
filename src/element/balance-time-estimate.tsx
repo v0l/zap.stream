@@ -1,4 +1,4 @@
-import { IngestEndpoint } from "@/providers";
+import type { IngestEndpoint } from "@/providers";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 
 export default function BalanceTimeEstimate({ balance, endpoint }: { balance: number; endpoint: IngestEndpoint }) {

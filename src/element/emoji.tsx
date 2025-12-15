@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { EmojiTag } from "@/types";
+import type { EmojiTag } from "@/types";
 
 export type EmojiProps = {
   name: string;

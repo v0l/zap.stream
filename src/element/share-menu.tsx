@@ -1,5 +1,5 @@
 import { Menu, MenuItem } from "@szhsin/react-menu";
-import { LinkScope, Nip10, NostrEvent, NostrLink } from "@snort/system";
+import { LinkScope, Nip10, type NostrEvent, NostrLink } from "@snort/system";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useContext, useState } from "react";
 import { SnortContext } from "@snort/system-react";

@@ -1,4 +1,4 @@
-import { EventKind, TaggedNostrEvent, NostrLink } from "@snort/system";
+import { EventKind, type TaggedNostrEvent, NostrLink } from "@snort/system";
 
 import { Icon } from "./icon";
 import { Goal } from "./goal";
@@ -20,7 +20,7 @@ import LiveStreamClip from "./stream/clip";
 import { ExternalLink } from "./external-link";
 import { extractStreamInfo } from "@/utils";
 import LiveVideoPlayer from "./stream/live-video-player";
-import { HTMLProps, ReactNode } from "react";
+import type { HTMLProps, ReactNode } from "react";
 import { ShortPage } from "@/pages/short";
 import { VideoPage } from "@/pages/video";
 

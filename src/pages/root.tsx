@@ -3,7 +3,7 @@ import CategoryLink from "@/element/category/category-link";
 import VideoGridSorted from "@/element/video-grid-sorted";
 import { AllCategories } from "./category";
 import { Icon } from "@/element/icon";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export function RootPage() {
   const streams = useStreamsFeed();

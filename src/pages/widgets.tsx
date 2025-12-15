@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { NostrLink } from "@snort/system";
 

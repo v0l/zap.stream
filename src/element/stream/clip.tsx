@@ -1,10 +1,10 @@
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 import { Profile } from "../profile";
 import { FormattedMessage } from "react-intl";
 import { extractStreamInfo, findTag } from "@/utils";
 import { useEventFeed } from "@snort/system-react";
 import EventReactions from "../event-reactions";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function LiveStreamClip({ ev }: { ev: TaggedNostrEvent }) {
   const src = findTag(ev, "r");

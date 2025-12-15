@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LNWallet, WalletKind, loadWallet } from "@snort/wallet";
+import { type LNWallet, WalletKind, loadWallet } from "@snort/wallet";
 import { useLogin } from "./login";
 
 export function useWallet() {

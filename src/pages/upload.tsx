@@ -9,15 +9,15 @@ import { ServerList } from "@/element/upload/server-list";
 import useImgProxy from "@/hooks/img-proxy";
 import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
-import { UploadResult } from "@/service/upload";
+import type { UploadResult } from "@/service/upload";
 import { Nip96Server } from "@/service/upload/nip96";
 import { openFile } from "@/utils";
 import { ExternalStore, removeUndefined, unwrap } from "@snort/shared";
 import {
   EventBuilder,
-  EventPublisher,
-  Nip94Tags,
-  NostrEvent,
+  type EventPublisher,
+  type Nip94Tags,
+  type NostrEvent,
   NostrLink,
   nip94TagsToIMeta,
   readNip94Tags,
@@ -25,7 +25,7 @@ import {
 import { SnortContext } from "@snort/system-react";
 import { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { v4 as uuid } from "uuid";
 
 interface UploadStatus {
@@ -230,7 +230,7 @@ export function UploadPage() {
   const servers = useMediaServerList();
 
   function canPublish() {
-    return error.length == 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined);
+    return error.length === 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined);
   }
 
   function makeEvent() {
@@ -269,7 +269,7 @@ export function UploadPage() {
     const vid = uploads.find(a => a.result?.url);
     if (!vid) return;
 
-    const rsp = await fetch(proxy(vid!.result!.url!), {
+    const rsp = await fetch(proxy(vid?.result?.url!), {
       headers: {
         accept: "image/jpg",
       },
@@ -550,7 +550,7 @@ function UploadProgress({ status }: { status: UploadStatus }) {
           </div>
         </div>
       )}
-      {status.result && status.result.error && <b className="text-warning">{status.result.error}</b>}
+      {status.result?.error && <b className="text-warning">{status.result.error}</b>}
     </div>
   );
 }

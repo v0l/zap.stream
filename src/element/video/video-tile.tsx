@@ -1,6 +1,6 @@
-import { NostrEvent, NostrLink } from "@snort/system";
+import { type NostrEvent, NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import classNames from "classnames";
 import { useState } from "react";
 

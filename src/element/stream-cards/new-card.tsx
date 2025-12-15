@@ -3,7 +3,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { ExternalLink } from "../external-link";
 import { FileUploader } from "../file-uploader";
 import { DefaultButton, WarningButton } from "../buttons";
-import { CardType, NewCard } from ".";
+import type { CardType, NewCard } from ".";
 
 interface CardDialogProps {
   header?: string;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NostrStreamProvider } from "@/providers";
+import type { NostrStreamProvider } from "@/providers";
 import { DefaultButton } from "@/element/buttons";
 import Spinner from "@/element/spinner";
 

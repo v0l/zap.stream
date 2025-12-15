@@ -1,6 +1,7 @@
 import { SnortContext, useEventReactions, useReactions, useUserProfile } from "@snort/system-react";
-import { EventKind, NostrLink, TaggedNostrEvent } from "@snort/system";
-import React, { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
+import { EventKind, NostrLink, type TaggedNostrEvent } from "@snort/system";
+import type React from "react";
+import { Suspense, lazy, useContext, useMemo, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { dedupe } from "@snort/shared";
 import dayjs from "dayjs";
@@ -21,7 +22,7 @@ import Pill from "../pill";
 import classNames from "classnames";
 import Modal from "../modal";
 import { ChatMenu } from "./chat-menu";
-import { BadgeAward } from "@/hooks/badges";
+import type { BadgeAward } from "@/hooks/badges";
 import AwardedChatBadge from "./chat-badge";
 
 function emojifyReaction(reaction: string) {
@@ -67,7 +68,7 @@ export function ChatMessage({
     true,
   );
   const { zaps, reactions } = useEventReactions(link, related);
-  const emojiNames = emojiPacks.map(p => p.emojis).flat();
+  const emojiNames = emojiPacks.flatMap(p => p.emojis);
 
   const filteredReactions = useMemo(() => {
     return reactions.all.filter(a => link.isReplyToThis(a));

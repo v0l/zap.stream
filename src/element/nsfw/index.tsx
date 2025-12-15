@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import { Layer1Button, WarningButton } from "@/element/buttons";
 import Logo from "@/element/logo";

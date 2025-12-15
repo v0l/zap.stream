@@ -1,13 +1,13 @@
-import { StreamState } from "@/const";
+import type { StreamState } from "@/const";
 import { Layer2Button } from "@/element/buttons";
 import Copy from "@/element/copy";
 import { StatePill } from "@/element/state-pill";
-import { NostrStreamProvider } from "@/providers";
-import { StreamKeysResult } from "@/providers/zsz";
+import type { NostrStreamProvider } from "@/providers";
+import type { StreamKeysResult } from "@/providers/zsz";
 import { eventLink, extractStreamInfo } from "@/utils";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export default function StreamKeyList({ provider }: { provider: NostrStreamProvider }) {
   const [keys, setKeys] = useState<StreamKeysResult>();

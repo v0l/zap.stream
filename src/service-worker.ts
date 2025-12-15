@@ -5,7 +5,7 @@ declare const self: ServiceWorkerGlobalScope & {
 
 import { hexToBech32 } from "@snort/shared";
 import { clientsClaim } from "workbox-core";
-import { PrecacheEntry, precacheAndRoute } from "workbox-precaching";
+import { type PrecacheEntry, precacheAndRoute } from "workbox-precaching";
 
 precacheAndRoute(self.__WB_MANIFEST);
 clientsClaim();
@@ -31,7 +31,7 @@ self.addEventListener("install", event => {
   self.skipWaiting();
 });
 
-const enum NotificationType {
+enum NotificationType {
   StreamStarted = 1,
 }
 
@@ -66,10 +66,10 @@ self.addEventListener("push", async e => {
   if (!data) return;
 
   const icon = data.avatar ?? `${location.protocol}//${location.hostname}/logo_256.png`;
-  if (data?.type == NotificationType.StreamStarted) {
+  if (data?.type === NotificationType.StreamStarted) {
     const ret = {
       icon,
-      timestamp: new Date().getTime(),
+      timestamp: Date.now(),
       data: JSON.stringify(data),
     };
     console.debug(ret);

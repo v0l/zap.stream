@@ -1,5 +1,6 @@
-import { EventKind, NostrLink } from "@snort/system";
-import React, { Suspense, lazy, useContext, useRef, useState } from "react";
+import type { EventKind, NostrLink } from "@snort/system";
+import type React from "react";
+import { Suspense, lazy, useContext, useRef, useState } from "react";
 import { SnortContext } from "@snort/system-react";
 import { unixNowMs, unwrap } from "@snort/shared";
 
@@ -29,7 +30,7 @@ export function WriteMessage({
   const [chat, setChat] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const login = useLogin();
-  const emojis = emojiPacks.map(pack => pack.emojis).flat();
+  const emojis = emojiPacks.flatMap(pack => pack.emojis);
   const names = emojis.map(t => t.at(1));
 
   const topOffset = ref.current?.getBoundingClientRect().top;
@@ -93,8 +94,7 @@ export function WriteMessage({
   }
 
   return (
-    <>
-      <div className="grow flex bg-layer-2 px-3 py-2 rounded-xl items-center" ref={ref}>
+    <div className="grow flex bg-layer-2 px-3 py-2 rounded-xl items-center" ref={ref}>
         <Textarea
           className="!p-0 !rounded-none"
           emojis={emojis}
@@ -122,6 +122,5 @@ export function WriteMessage({
           </Suspense>
         )}
       </div>
-    </>
   );
 }

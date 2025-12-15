@@ -1,6 +1,6 @@
 import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
-import { NostrStreamProvider } from "@/providers";
+import type { NostrStreamProvider } from "@/providers";
 import { LNURL } from "@snort/shared";
 import { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -31,7 +31,7 @@ export default function AccountWithdrawl({
         // If we get 200, 400, 401, 405, or 403, the endpoint exists
         // If we get 404, the endpoint doesn't exist (not supported)
         setWithdrawalSupported(response.status !== 404);
-      } catch (error) {
+      } catch (_error) {
         // On network error, assume it's supported to avoid breaking existing functionality
         setWithdrawalSupported(false);
       }
@@ -119,14 +119,12 @@ export default function AccountWithdrawl({
               />
             </div>
             {amount !== undefined && (
-              <>
-                <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1">
                   <small className="text-neutral-300">
                     <FormattedMessage defaultMessage="Amount" />
                   </small>
                   <input type="number" value={amount} onChange={e => setAmount(e.target.valueAsNumber)} />
                 </div>
-              </>
             )}
             <DefaultButton disabled={addr.length < 3} onClick={withdraw}>
               <FormattedMessage defaultMessage="Withdraw" />

@@ -1,5 +1,5 @@
 import { LIVE_STREAM_CLIP } from "@/const";
-import { NostrLink, RequestBuilder } from "@snort/system";
+import { type NostrLink, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
 

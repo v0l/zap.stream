@@ -1,8 +1,8 @@
 import "./layout.css";
 
-import { CSSProperties, useContext, useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { type CSSProperties, useContext, useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router";
+import { Helmet } from "@dr.pogodin/react-helmet";
 
 import { useLogin } from "@/hooks/login";
 import { trackEvent } from "@/utils";

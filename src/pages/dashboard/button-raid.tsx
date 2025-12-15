@@ -1,4 +1,4 @@
-import { NostrLink } from "@snort/system";
+import type { NostrLink } from "@snort/system";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { DashboardRaidMenu } from "./raid-menu";

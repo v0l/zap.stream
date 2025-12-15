@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { HTMLProps, ReactNode } from "react";
+import type { HTMLProps, ReactNode } from "react";
 
 export function DashboardStatsCard({
   name,

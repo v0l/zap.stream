@@ -1,5 +1,5 @@
 import { Profile } from "@/element/profile";
-import { ParsedZap } from "@snort/system";
+import type { ParsedZap } from "@snort/system";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { Text } from "@/element/text";
 

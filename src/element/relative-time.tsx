@@ -2,7 +2,7 @@ import { DAY, HOUR, MINUTE, MONTH, WEEK } from "@/const";
 import { FormattedMessage } from "react-intl";
 
 export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean }) {
-  const diff = (new Date().getTime() - from) / 1000;
+  const diff = (Date.now()- from) / 1000;
   const s = <FormattedMessage defaultMessage="ago" description="Relative time, ie. 1s ago" />;
   if (diff > MONTH) {
     return (

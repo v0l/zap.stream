@@ -1,6 +1,6 @@
 import { LiveChat } from "@/element/chat/live-chat";
 import LiveVideoPlayer from "@/element/stream/live-video-player";
-import { EventExt, NostrEvent } from "@snort/system";
+import { EventExt, type NostrEvent } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { Suspense, lazy, useContext, useEffect, useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -13,10 +13,10 @@ import { DashboardCard } from "./card";
 import { NewStreamDialog } from "@/element/new-stream";
 import { DashboardSettingsButton } from "./button-settings";
 import DashboardIntro from "./intro";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import StreamKey from "@/element/provider/nostr/stream-key";
 import { useStreamProvider } from "@/hooks/stream-provider";
-import { AccountResponse, NostrStreamProvider } from "@/providers/zsz";
+import { type AccountResponse, NostrStreamProvider } from "@/providers/zsz";
 import { ExternalLink } from "@/element/external-link";
 import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons";
 import { useLogin } from "@/hooks/login";
@@ -60,7 +60,7 @@ export default function DashboardForLink() {
 
   const defaultEndpoint = useMemo(() => {
     const metricsEndpint = recording ? "Best" : "Good";
-    return info?.endpoints?.find(a => a.name == metricsEndpint) ?? info?.endpoints?.at(0);
+    return info?.endpoints?.find(a => a.name === metricsEndpint) ?? info?.endpoints?.at(0);
   }, [info, recording]);
 
   useEffect(() => {
@@ -259,8 +259,7 @@ export default function DashboardForLink() {
         </>
       )}
       {eventLink && streamInfo?.status === StreamState.Ended && (
-        <>
-          <DashboardCard className="overflow-y-auto">
+        <DashboardCard className="overflow-y-auto">
             <h1>
               <FormattedMessage defaultMessage="Last Stream Summary" />
             </h1>
@@ -268,7 +267,6 @@ export default function DashboardForLink() {
               <StreamSummary link={eventLink} />
             </Suspense>
           </DashboardCard>
-        </>
       )}
       {eventLink && streamInfo?.status === StreamState.Planned && (
         <DashboardCard className="overflow-y-auto"></DashboardCard>

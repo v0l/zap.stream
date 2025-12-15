@@ -1,8 +1,8 @@
 import { findTag, profileLink } from "@/utils";
-import { NostrEvent } from "@snort/system";
+import type { NostrEvent } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { getName } from "../profile";
 
 export function ClipTile({ ev }: { ev: NostrEvent }) {

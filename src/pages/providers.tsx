@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider";
+import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider";
 import { useDiscoverProviders } from "@/hooks/discover-providers";
 import { ProviderCard } from "@/element/provider-card";
 

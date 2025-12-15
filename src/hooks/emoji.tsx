@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { EventKind, NostrEvent, RequestBuilder } from "@snort/system";
+import { EventKind, type NostrEvent, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { findTag, uniqBy } from "@/utils";
 import type { EmojiPack, EmojiTag, Tags } from "@/types";

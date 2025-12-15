@@ -11,18 +11,18 @@ import LoginWallet2x from "../login-wallet@2x.jpg";
 
 import { useContext, useState } from "react";
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
-import { EventPublisher, PrivateKeySigner, UserMetadata } from "@snort/system";
+import { EventPublisher, PrivateKeySigner, type UserMetadata } from "@snort/system";
 import { LNURL, bech32ToHex, getPublicKey, hexToBech32, isHex } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
 
 import { Login, LoginType } from "@/login";
 import { Icon } from "./icon";
 import Copy from "./copy";
-import { AccountResponse, NostrStreamProvider } from "@/providers/zsz";
+import { type AccountResponse, NostrStreamProvider } from "@/providers/zsz";
 import { DefaultButton, Layer1Button } from "./buttons";
 import { ExternalLink } from "./external-link";
 import { FileUploader } from "./file-uploader";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useStreamProvider } from "@/hooks/stream-provider";
 
 enum Stage {
@@ -169,8 +169,7 @@ export function LoginSignup({ close }: { close: () => void }) {
                 <FormattedMessage defaultMessage="Nostr Extension" id="ebmhes" />
               </DefaultButton>
               {!hasNostrExtension && (
-                <>
-                  <small className="cursor-pointer">
+                <small className="cursor-pointer">
                     <FormattedMessage
                       defaultMessage="Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
                       values={{
@@ -195,7 +194,6 @@ export function LoginSignup({ close }: { close: () => void }) {
                       }}
                     />
                   </small>
-                </>
               )}
             </div>
             <DefaultButton onClick={() => setStage(Stage.LoginInput)}>

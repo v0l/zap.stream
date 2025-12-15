@@ -1,7 +1,7 @@
 import { OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, VIDEO_KIND } from "@/const";
-import { MediaPayload, VideoInfo } from "@/service/video/info";
+import { type MediaPayload, VideoInfo } from "@/service/video/info";
 import { findTag } from "@/utils";
-import { NostrEvent, TaggedNostrEvent } from "@snort/system";
+import type { NostrEvent, TaggedNostrEvent } from "@snort/system";
 import { useEffect, useState } from "react";
 
 const saveDeadLink = (link: string, val: boolean) => localStorage.setItem(`dead-link:${link}`, String(val));
@@ -58,7 +58,7 @@ export function useDeadLink(ev: TaggedNostrEvent | NostrEvent) {
 
   useEffect(() => {
     const links =
-      ev.kind === VIDEO_KIND || ev.kind === SHORTS_KIND || ev.kind == OLD_SHORTS_KIND || ev.kind == OLD_VIDEO_KIND
+      ev.kind === VIDEO_KIND || ev.kind === SHORTS_KIND || ev.kind === OLD_SHORTS_KIND || ev.kind === OLD_VIDEO_KIND
         ? VideoInfo.parse(ev)?.sources()
         : [
             {

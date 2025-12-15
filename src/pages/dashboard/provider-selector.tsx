@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { DefaultButton, Layer2Button } from "@/element/buttons";
 import { Icon } from "@/element/icon";
-import { StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider";
+import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider";
 import Modal from "@/element/modal";
 import { useDiscoverProviders } from "@/hooks/discover-providers";
 import { ProviderCard } from "@/element/provider-card";

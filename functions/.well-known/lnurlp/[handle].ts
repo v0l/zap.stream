@@ -1,4 +1,4 @@
-interface Env {}
+type Env = {}
 
 interface NostrJson {
   names: Record<string, string>;
@@ -6,7 +6,7 @@ interface NostrJson {
   nip46?: Record<string, Array<string>>;
 }
 
-async function fetchNip05Pubkey(name: string, timeout = 2_000): Promise<string | undefined> {
+async function fetchNip05Pubkey(name: string, _timeout = 2_000): Promise<string | undefined> {
   if (!name) {
     return undefined;
   }

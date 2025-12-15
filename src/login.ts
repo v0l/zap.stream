@@ -1,5 +1,5 @@
 import { ExternalStore, unwrap } from "@snort/shared";
-import { EventKind, EventPublisher, Nip7Signer, PrivateKeySigner, UserState, UserStateObject } from "@snort/system";
+import { EventKind, EventPublisher, Nip7Signer, PrivateKeySigner, UserState, type UserStateObject } from "@snort/system";
 
 export enum LoginType {
   Nip7 = "nip7",

@@ -1,5 +1,5 @@
 import { formatSats } from "@/number";
-import { EventKind, NostrLink, ParsedZap, TaggedNostrEvent } from "@snort/system";
+import { EventKind, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system";
 import { useReactions, useEventReactions, SnortContext } from "@snort/system-react";
 import { Icon } from "./icon";
 import { useLogin } from "@/hooks/login";

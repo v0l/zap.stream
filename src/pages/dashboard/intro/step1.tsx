@@ -3,7 +3,7 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { FileUploader } from "@/element/file-uploader";
 
 export default function DashboardIntroStep1() {

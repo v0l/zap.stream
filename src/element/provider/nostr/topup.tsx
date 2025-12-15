@@ -1,7 +1,7 @@
 import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 import { SendZaps } from "@/element/send-zap";
-import { NostrStreamProvider } from "@/providers";
+import type { NostrStreamProvider } from "@/providers";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 

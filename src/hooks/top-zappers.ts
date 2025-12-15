@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ParsedZap } from "@snort/system";
+import type { ParsedZap } from "@snort/system";
 
 function totalZapped(pubkey: string, zaps: ParsedZap[]) {
   return zaps.filter(z => (z.anonZap ? pubkey === "anon" : z.sender === pubkey)).reduce((acc, z) => acc + z.amount, 0);

@@ -6,7 +6,7 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { EventBuilder, NostrSystem } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router";
 
 import { RootPage } from "@/pages/root";
 import { TagPage } from "@/pages/tag";
@@ -46,7 +46,7 @@ import { DownloadAppPage } from "./pages/download";
 import ProvidersPage from "./pages/providers";
 import { TosPage } from "./pages/tos";
 import { Login } from "./login";
-import { HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "@dr.pogodin/react-helmet";
 
 const hasWasm = "WebAssembly" in globalThis;
 const disableWasmForPaths = ["/chat", "/alert", "/embed"];
@@ -251,13 +251,13 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivEleme
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <SnortContext.Provider value={System}>
+      <SnortContext value={System}>
         <IntlProvider>
           <LayoutContextProvider>
             <RouterProvider router={router} />
           </LayoutContextProvider>
         </IntlProvider>
-      </SnortContext.Provider>
+      </SnortContext>
     </HelmetProvider>
   </React.StrictMode>,
 );

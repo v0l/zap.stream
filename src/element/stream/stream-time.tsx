@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NostrEvent } from "@snort/system";
+import type { NostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 import { findTag } from "@/utils";
 import { HOUR, MINUTE } from "@/const";

@@ -8,7 +8,7 @@ import { Login } from "@/login";
 import { profileLink } from "@/utils";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { useLang } from "@/hooks/lang";
 import { useLogin } from "@/hooks/login";
 import { useState } from "react";

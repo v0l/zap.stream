@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SnortContext } from "@snort/system-react";
 
-import { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers";
+import type { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers";
 import { SendZaps } from "@/element/send-zap";
-import { StreamEditor, StreamEditorProps } from "@/element/stream-editor";
+import { StreamEditor, type StreamEditorProps } from "@/element/stream-editor";
 import Spinner from "@/element/spinner";
 import { useRates } from "@/hooks/rates";
 import { DefaultButton } from "@/element/buttons";

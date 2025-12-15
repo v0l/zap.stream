@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 
 export default function StepHeader() {
   const location = useLocation();

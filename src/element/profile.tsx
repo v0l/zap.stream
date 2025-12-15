@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useUserProfile } from "@snort/system-react";
-import { CachedMetadata, UserMetadata } from "@snort/system";
+import type { CachedMetadata, UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
 import { useInView } from "react-intersection-observer";
 import { Avatar } from "./avatar";

@@ -1,5 +1,5 @@
 import { AllCategories } from "@/pages/category";
-import GameDatabase, { GameInfo } from "@/service/game-database";
+import GameDatabase, { type GameInfo } from "@/service/game-database";
 import { useEffect, useState } from "react";
 
 export default function useGameInfo(gameId?: string, gameInfo?: GameInfo) {

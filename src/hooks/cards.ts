@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { RequestBuilder, type TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 import { CARD, USER_CARDS } from "@/const";

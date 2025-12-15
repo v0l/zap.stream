@@ -5,10 +5,10 @@ import { useRates } from "@/hooks/rates";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import ZapGlow from "../zap-glow";
 import { AcceptTos } from "../tos";
-import { AccountResponse } from "@/providers";
+import type { AccountResponse } from "@/providers";
 import { ProviderSelectorButton } from "../provider-selector";
 
 export default function DashboardIntro() {
@@ -19,7 +19,7 @@ export default function DashboardIntro() {
   const { provider: streamProvider } = useStreamProvider();
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints?.find(a => a.name == "Best") ?? info?.endpoints?.at(0);
+    return info?.endpoints?.find(a => a.name === "Best") ?? info?.endpoints?.at(0);
   }, [info]);
   const rate = useRates("BTCUSD");
 

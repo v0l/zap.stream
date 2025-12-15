@@ -3,14 +3,14 @@ import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { formatSats } from "@/number";
 import { extractStreamInfo } from "@/utils";
 import { unixNow } from "@snort/shared";
-import { NostrLink, NostrEvent, ParsedZap, EventKind, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type NostrEvent, type ParsedZap, EventKind, type TaggedNostrEvent } from "@snort/system";
 import { useEventReactions, useReactions } from "@snort/system-react";
 import { useMemo } from "react";
 import { FormattedMessage, FormattedNumber, FormattedDate } from "react-intl";
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip } from "recharts";
 import { Profile } from "./profile";
 import { StatePill } from "./state-pill";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Icon } from "./icon";
 import EventReactions from "./event-reactions";
 

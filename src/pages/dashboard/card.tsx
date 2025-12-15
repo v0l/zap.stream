@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 export function DashboardCard(props: HTMLProps<HTMLDivElement>) {
   return (

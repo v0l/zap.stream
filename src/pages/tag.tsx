@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useStreamsFeed } from "@/hooks/live-streams";
 import VideoGridSorted from "@/element/video-grid-sorted";
 

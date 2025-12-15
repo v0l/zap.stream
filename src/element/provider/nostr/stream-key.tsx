@@ -1,5 +1,5 @@
 import Copy from "@/element/copy";
-import { IngestEndpoint } from "@/providers";
+import type { IngestEndpoint } from "@/providers";
 import { FormattedMessage } from "react-intl";
 
 export default function StreamKey({ ep }: { ep: IngestEndpoint }) {

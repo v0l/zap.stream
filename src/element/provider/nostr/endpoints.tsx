@@ -1,4 +1,4 @@
-import { AccountResponse, IngestEndpoint } from "@/providers";
+import type { AccountResponse, IngestEndpoint } from "@/providers";
 import { FormattedMessage } from "react-intl";
 import { sortEndpoints } from "./util";
 import Pill from "@/element/pill";

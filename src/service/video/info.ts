@@ -1,5 +1,5 @@
-import { Nip94Tags, NostrEvent, readNip94Tags, readNip94TagsFromIMeta } from "@snort/system";
-import { GameInfo } from "../game-database";
+import { type Nip94Tags, type NostrEvent, readNip94Tags, readNip94TagsFromIMeta } from "@snort/system";
+import type { GameInfo } from "../game-database";
 import { getHost, sortStreamTags, extractGameTag, findTag } from "@/utils";
 
 export interface MediaPayload {
@@ -48,7 +48,7 @@ export class VideoInfo {
     // HACK: if duration is not set via imeta, try to use duration tag
     if (!ret.duration) {
       const durTag = Number(findTag(ev, "duration"));
-      if (!isNaN(durTag) && durTag > 0) {
+      if (!Number.isNaN(durTag) && durTag > 0) {
         ret.durationTag = durTag;
       }
     }
@@ -111,7 +111,7 @@ export class VideoInfo {
     if (first) {
       return {
         url: first,
-        alternatives: best?.image?.filter(a => a != first) ?? [],
+        alternatives: best?.image?.filter(a => a !== first) ?? [],
       };
     }
   }

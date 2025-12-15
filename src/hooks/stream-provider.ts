@@ -2,7 +2,7 @@ import { useMemo, useSyncExternalStore } from "react";
 import { NostrStreamProvider } from "@/providers";
 import { useLogin } from "./login";
 import { ExternalStore } from "@snort/shared";
-import { EventPublisher, NostrEvent } from "@snort/system";
+import type { EventPublisher, NostrEvent } from "@snort/system";
 import { ZAP_STREAM_PUBKEY } from "@/const";
 
 export interface StreamProviderConfig {

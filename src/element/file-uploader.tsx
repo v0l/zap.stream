@@ -5,8 +5,8 @@ import { Icon } from "./icon";
 import { useMediaServerList } from "@/hooks/media-servers";
 import { Nip96Server } from "@/service/upload/nip96";
 import { useLogin } from "@/hooks/login";
-import { ReactNode } from "react";
-import { EventPublisher } from "@snort/system";
+import type { ReactNode } from "react";
+import type { EventPublisher } from "@snort/system";
 
 interface FileUploaderProps {
   onResult(url: string | undefined): void;

@@ -10,7 +10,7 @@ interface MoqState {
 }
 
 export default function MoqPlayer({ stream, id }: { stream: string, id?: string }) {
-    const [moq, setMoq] = useState<MoqState>();
+    const [_moq, setMoq] = useState<MoqState>();
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {

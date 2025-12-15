@@ -3,9 +3,9 @@ import StepHeader from "./step-header";
 import { DefaultButton } from "@/element/buttons";
 import { useStreamProvider } from "@/hooks/stream-provider";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import { AddForwardInputs } from "@/element/provider/nostr/fowards";
-import { ForwardDest } from "@/providers";
+import type { ForwardDest } from "@/providers";
 
 export default function DashboardIntroStep3() {
   const navigate = useNavigate();

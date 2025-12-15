@@ -2,7 +2,7 @@ import { useLogin } from "@/hooks/login";
 import { useMediaServerList } from "@/hooks/media-servers";
 import { Nip96Server } from "@/service/upload/nip96";
 import { findTag } from "@/utils";
-import { NostrEvent } from "@snort/system";
+import type { NostrEvent } from "@snort/system";
 import { useEffect, useState } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import { PrimaryButton } from "../buttons";
@@ -36,7 +36,7 @@ export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<Nost
     if (!hash) return;
     setPickedFiles(a => {
       if (a.includes(hash)) {
-        return a.filter(a => a != hash);
+        return a.filter(a => a !== hash);
       } else {
         return [...a, hash];
       }

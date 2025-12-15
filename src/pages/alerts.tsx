@@ -1,5 +1,5 @@
 import "./alerts.css";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 import Spinner from "@/element/spinner";
 import { useStreamLink } from "@/hooks/stream-link";

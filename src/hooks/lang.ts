@@ -29,5 +29,5 @@ export function useLang() {
 }
 
 export const getLocale = () => {
-  return (navigator.languages && navigator.languages[0]) ?? navigator.language ?? DefaultLocale;
+  return (navigator.languages?.[0]) ?? navigator.language ?? DefaultLocale;
 };

@@ -1,7 +1,7 @@
-import { HTMLProps, useState } from "react";
+import { type HTMLProps, useState } from "react";
 import classNames from "classnames";
 import { getPlaceholder } from "@/utils";
-import { UserMetadata } from "@snort/system";
+import type { UserMetadata } from "@snort/system";
 import useImgProxy from "@/hooks/img-proxy";
 
 type AvatarProps = HTMLProps<HTMLImageElement> & { size?: number; pubkey: string; user?: UserMetadata };

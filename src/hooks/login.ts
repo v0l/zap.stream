@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-import { getPublisher, getSigner, Login, LoginSession } from "@/login";
+import { getPublisher, getSigner, Login, type LoginSession } from "@/login";
 
 export function useLogin() {
   const session = useSyncExternalStore(

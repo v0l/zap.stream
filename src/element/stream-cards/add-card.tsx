@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { removeUndefined, unwrap } from "@snort/shared";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 import { SnortContext } from "@snort/system-react";
 import { Icon } from "../icon";
 import { useLogin } from "@/hooks/login";
 import { CARD, USER_CARDS } from "@/const";
 import Modal from "../modal";
-import { NewCard } from ".";
+import type { NewCard } from ".";
 import { CardDialog } from "./new-card";
 
 interface AddCardProps {

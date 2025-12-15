@@ -1,6 +1,6 @@
-import { NostrEvent, NostrLink } from "@snort/system";
+import { type NostrEvent, NostrLink } from "@snort/system";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { getName } from "../profile";
 
 import { N94_LIVE_STREAM, NIP5_DOMAIN, StreamState } from "@/const";
@@ -16,7 +16,7 @@ import { useContentWarning } from "../nsfw";
 import PillOpaque from "../pill-opaque";
 import { RelativeTime } from "../relative-time";
 import { StatePill } from "../state-pill";
-import { NostrJson } from "@snort/shared";
+import type { NostrJson } from "@snort/shared";
 
 const nameCache = new Map<string, NostrJson>();
 async function fetchNostrAddresByPubkey(

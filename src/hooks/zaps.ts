@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { EventKind, NostrLink, RequestBuilder, parseZap } from "@snort/system";
+import { EventKind, type NostrLink, RequestBuilder, parseZap } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 export function useZaps(link?: NostrLink, leaveOpen = false) {
@@ -19,7 +19,7 @@ export function useZaps(link?: NostrLink, leaveOpen = false) {
       [...(zaps ?? [])]
         .sort((a, b) => (b.created_at > a.created_at ? 1 : -1))
         .map(ev => parseZap(ev))
-        .filter(z => z && z.valid) ?? [],
+        .filter(z => z?.valid) ?? [],
     [zaps.length],
   );
 }

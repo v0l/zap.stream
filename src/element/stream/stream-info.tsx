@@ -2,11 +2,11 @@ import { StreamState } from "@/const";
 import { useLogin } from "@/hooks/login";
 import { formatSats } from "@/number";
 import { getHost, extractStreamInfo, findTag } from "@/utils";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 import { SnortContext, useUserProfile } from "@snort/system-react";
 import { useContext } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { Layer2Button, WarningButton } from "../buttons";
 import { FollowButton } from "../follow-button";
 import GameInfoCard from "../game-info";
@@ -49,8 +49,7 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
   if (!streamContext.showDetails) return;
 
   return (
-    <>
-      <div className="flex gap-2 max-xl:flex-col">
+    <div className="flex gap-2 max-xl:flex-col">
         <div className="grow flex flex-col gap-2">
           <div className="max-xl:text-lg xl:text-3xl font-semibold">{title}</div>
           {host && (
@@ -128,6 +127,5 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
           )}
         </div>
       </div>
-    </>
   );
 }

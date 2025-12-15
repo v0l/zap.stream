@@ -1,9 +1,9 @@
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 
 import { Profile } from "./profile";
 import EventReactions from "./event-reactions";
 import { Text } from "@/element/text";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Icon } from "./icon";
 
 export function Note({ ev }: { ev: TaggedNostrEvent }) {

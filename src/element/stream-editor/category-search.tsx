@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 import { ControlledMenu, MenuItem } from "@szhsin/react-menu";
 import { debounce } from "@/utils";
 import { AllCategories } from "@/pages/category";
-import GameDatabase, { GameInfo } from "@/service/game-database";
+import GameDatabase, { type GameInfo } from "@/service/game-database";
 import GameInfoCard from "@/element/game-info";
 
 export function SearchCategory({ onSelect }: { onSelect?: (game: GameInfo) => void }) {

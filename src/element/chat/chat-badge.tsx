@@ -1,6 +1,6 @@
 import { useProfileBadges } from "@/hooks/badges";
 import { findTag } from "@/utils";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 import { useEventFeed } from "@snort/system-react";
 
 export default function AwardedChatBadge({ ev, pubkey }: { ev: TaggedNostrEvent; pubkey: string }) {

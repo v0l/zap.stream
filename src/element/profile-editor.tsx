@@ -53,7 +53,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
           await new LNURL(lud16).load();
           setLud16Valid(true);
           setInvalidLud16Message("");
-        } catch (e) {
+        } catch (_e) {
           setLud16Valid(false);
           setInvalidLud16Message(
             formatMessage({
@@ -87,7 +87,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
             }),
           );
         }
-      } catch (e) {
+      } catch (_e) {
         setNip05AddressValid(false);
         setInvalidNip05AddressMessage(
           formatMessage({
@@ -128,13 +128,13 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
       nip05,
       lud16,
     } as Record<string, string | number | undefined | boolean>;
-    delete userCopy["loaded"];
-    delete userCopy["created"];
-    delete userCopy["pubkey"];
-    delete userCopy["npub"];
-    delete userCopy["deleted"];
-    delete userCopy["zapService"];
-    delete userCopy["isNostrAddressValid"];
+    delete userCopy.loaded;
+    delete userCopy.created;
+    delete userCopy.pubkey;
+    delete userCopy.npub;
+    delete userCopy.deleted;
+    delete userCopy.zapService;
+    delete userCopy.isNostrAddressValid;
     console.debug(userCopy);
 
     const publisher = login?.publisher();

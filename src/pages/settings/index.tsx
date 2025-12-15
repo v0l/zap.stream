@@ -1,6 +1,6 @@
 import { Layer1Button } from "@/element/buttons";
 import { FormattedMessage } from "react-intl";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router";
 
 const Tabs = [
   {

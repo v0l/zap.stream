@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { MetricsMessage } from "@/providers/zsz";
+import type { MetricsMessage } from "@/providers/zsz";
 
 export function CompactMetricsDisplay({ metrics }: { metrics: MetricsMessage }) {
   const getBitrate = (): number | undefined => {

@@ -1,7 +1,7 @@
 import { Icon } from "@/element/icon";
 import { useState } from "react";
 import { useIntl } from "react-intl";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 
 export function SearchBar() {
   const { term } = useParams();

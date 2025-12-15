@@ -2,7 +2,7 @@ import { DefaultButton } from "@/element/buttons";
 import Modal from "@/element/modal";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NostrStreamProvider } from "@/providers";
+import type { NostrStreamProvider } from "@/providers";
 import NostrProviderDialog from "@/element/provider/nostr";
 
 export default function BalanceHistoryModal({ provider }: { provider: NostrStreamProvider }) {

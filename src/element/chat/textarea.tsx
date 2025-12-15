@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import ReactTextareaAutocomplete, { TriggerType } from "@webscopeio/react-textarea-autocomplete";
+import ReactTextareaAutocomplete, { type TriggerType } from "@webscopeio/react-textarea-autocomplete";
 import "@webscopeio/react-textarea-autocomplete/style.css";
 import "./textarea.css";
 
 import { hexToBech32, NostrPrefix } from "@snort/shared";
 import { SnortContext } from "@snort/system-react";
-import { CachedMetadata } from "@snort/system";
+import type { CachedMetadata } from "@snort/system";
 
 import { Emoji } from "../emoji";
 import { Avatar } from "../avatar";

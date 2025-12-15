@@ -1,7 +1,7 @@
 import { LIVE_STREAM_KINDS, N94_LIVE_STREAM, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, VIDEO_KIND } from "@/const";
 import { useStreamLink } from "@/hooks/stream-link";
 import { getEventFromLocationState } from "@/utils";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { StreamPage } from "./stream-page";
 import { VideoPage } from "./video";
 import { EventEmbed as NostrEventElement } from "@/element/event-embed";
@@ -34,11 +34,9 @@ export function LinkHandler() {
     return <ShortPage link={link} evPreload={evPreload} />;
   } else {
     return (
-      <>
-        <h3>
+      <h3>
           <FormattedMessage defaultMessage="Unknown event link" />
         </h3>
-      </>
     );
   }
 }

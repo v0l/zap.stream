@@ -6,7 +6,7 @@ import { useUserProfile } from "@snort/system-react";
 import { Icon } from "../icon";
 import { FormattedMessage } from "react-intl";
 import { profileLink } from "@/utils";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export function CategoryTopZapsStreamer({ gameId }: { gameId: string }) {
   const zaps = useCategoryZaps(gameId);

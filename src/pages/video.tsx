@@ -1,6 +1,6 @@
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
 import { getHost, findTag } from "@/utils";
-import { NostrLink, RequestBuilder, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, RequestBuilder, type TaggedNostrEvent } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { FormattedMessage } from "react-intl";
 

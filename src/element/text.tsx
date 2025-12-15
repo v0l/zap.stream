@@ -1,6 +1,6 @@
-import { NostrLink, ParsedFragment, transformText, tryParseNostrLink } from "@snort/system";
-import { FunctionComponent, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { type NostrLink, type ParsedFragment, transformText, tryParseNostrLink } from "@snort/system";
+import { type FunctionComponent, useMemo } from "react";
+import { Link } from "react-router";
 
 import { Emoji } from "./emoji";
 import { Mention } from "./mention";

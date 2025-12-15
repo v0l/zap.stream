@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { EventKind, NostrLink, QueryLike, RequestBuilder, SystemInterface, parseNostrLink } from "@snort/system";
-import { HTMLProps, useContext, useEffect, useRef } from "react";
+import { EventKind, type NostrLink, type QueryLike, RequestBuilder, type SystemInterface, parseNostrLink } from "@snort/system";
+import { type HTMLProps, useContext, useEffect, useRef } from "react";
 import mpegts from "mpegts.js";
 import { SnortContext } from "@snort/system-react";
 import { findTag } from "@/utils";

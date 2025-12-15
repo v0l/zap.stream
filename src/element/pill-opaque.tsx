@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 export default function PillOpaque({ children, selected, className, ...props }: HTMLProps<HTMLDivElement>) {
   return (

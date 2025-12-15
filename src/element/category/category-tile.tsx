@@ -1,6 +1,6 @@
 import useGameInfo from "@/hooks/game-info";
 import Pill from "../pill";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import classNames from "classnames";
 
 export function CategoryTile({

@@ -3,8 +3,8 @@ import { NewStreamDialog } from "@/element/new-stream";
 import AccountTopup from "@/element/provider/nostr/topup";
 import LiveVideoPlayer from "@/element/stream/live-video-player";
 import { StreamTimer } from "@/element/stream/stream-time";
-import { AccountResponse, MetricsMessage, NostrStreamProvider } from "@/providers";
-import { NostrEvent } from "@snort/system";
+import type { AccountResponse, MetricsMessage, NostrStreamProvider } from "@/providers";
+import type { NostrEvent } from "@snort/system";
 import { useState, useEffect, useMemo } from "react";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import BalanceHistoryModal from "./balance-history";
@@ -28,7 +28,7 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
 
   const defaultEndpoint = useMemo(() => {
     const metricsEndpint = metrics?.data?.endpoint_name ?? "Best";
-    return info?.endpoints?.find(a => a.name == metricsEndpint) ?? info?.endpoints?.at(0);
+    return info?.endpoints?.find(a => a.name === metricsEndpint) ?? info?.endpoints?.at(0);
   }, [info, metrics]);
 
   useEffect(() => {

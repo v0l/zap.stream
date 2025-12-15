@@ -1,4 +1,4 @@
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import type { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { unixNow } from "@snort/shared";
 
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";

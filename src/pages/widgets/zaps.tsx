@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { hexToBech32 } from "@snort/shared";
-import { NostrLink, ParsedZap } from "@snort/system";
+import { NostrLink, type ParsedZap } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
@@ -78,8 +78,7 @@ export function ZapAlertItem({ item }: { item: ParsedZap }) {
   if (!profile) return;
 
   return (
-    <>
-      <div className="zap-alert">
+    <div className="zap-alert">
         <div className="zap-alert-title">
           <FormattedMessage defaultMessage="Incoming Zap" id="tG1ST3" />
         </div>
@@ -103,6 +102,5 @@ export function ZapAlertItem({ item }: { item: ParsedZap }) {
           </p>
         )}
       </div>
-    </>
   );
 }

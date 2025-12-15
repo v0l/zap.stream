@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import AsyncButton, { AsyncButtonProps } from "./async-button";
+import AsyncButton, { type AsyncButtonProps } from "./async-button";
 import { Icon } from "./icon";
 import classNames from "classnames";
 

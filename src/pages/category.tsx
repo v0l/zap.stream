@@ -6,7 +6,7 @@ import { EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 import IRLImage from "@/images/irl.jpeg";
 import GamingImage from "@/images/gaming.jpeg";

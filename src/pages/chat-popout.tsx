@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { parseNostrLink } from "@snort/system";
 import { unwrap } from "@snort/shared";
 

@@ -1,6 +1,6 @@
 import { StreamState } from "@/const";
 import { extractStreamInfo } from "@/utils";
-import { NostrLink, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system";
 import { Suspense } from "react";
 import LiveVideoPlayer from "./stream/live-video-player";
 

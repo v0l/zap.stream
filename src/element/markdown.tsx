@@ -1,7 +1,7 @@
 import "./markdown.css";
 
-import { ReactNode, forwardRef, useMemo } from "react";
-import { Token, Tokens, marked } from "marked";
+import { type ReactNode, forwardRef, useMemo } from "react";
+import { type Token, type Tokens, marked } from "marked";
 import { HyperText } from "./hypertext";
 import { Text } from "./text";
 

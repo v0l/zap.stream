@@ -1,5 +1,5 @@
 import { base64 } from "@scure/base";
-import { EventKind, EventPublisher, NostrEvent, SystemInterface } from "@snort/system";
+import { EventKind, type EventPublisher, type NostrEvent, type SystemInterface } from "@snort/system";
 import { Login } from "@/login";
 import { getPublisher } from "@/login";
 import { extractStreamInfo } from "@/utils";
@@ -48,7 +48,7 @@ export class NostrStreamProvider {
 
     // also update the default stream event details
     if (props.id) {
-      delete props["id"];
+      delete props.id;
       await this.#getJson("PATCH", "event", props);
     }
   }
@@ -149,7 +149,7 @@ export class NostrStreamProvider {
       return; // Already connected
     }
 
-    const wsUrl = this.url.replace(/^https?:/, "wss:").replace(/\/$/, "") + "/ws";
+    const wsUrl = `${this.url.replace(/^https?:/, "wss:").replace(/\/$/, "")}/ws`;
     this.#wsConnection = new WebSocket(wsUrl);
 
     this.#wsConnection.onopen = async () => {

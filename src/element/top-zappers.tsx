@@ -1,4 +1,4 @@
-import { ParsedZap } from "@snort/system";
+import type { ParsedZap } from "@snort/system";
 import useTopZappers from "@/hooks/top-zappers";
 import { ZapperRow } from "./zapper-row";
 

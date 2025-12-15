@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { EventKind, RequestBuilder } from "@snort/system";
+import { type EventKind, RequestBuilder } from "@snort/system";
 import { useRequestBuilder } from "@snort/system-react";
 
 type StatusTag = "general" | "music";

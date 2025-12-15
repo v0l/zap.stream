@@ -1,4 +1,4 @@
-import { GameInfo } from "@/service/game-database";
+import type { GameInfo } from "@/service/game-database";
 import { FormattedMessage } from "react-intl";
 import { IconButton } from "../buttons";
 import GameInfoCard from "../game-info";
