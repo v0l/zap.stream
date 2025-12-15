@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { type CSSProperties, type HTMLProps, Suspense, lazy } from "react";
+import { type CSSProperties, type HTMLProps, Suspense, lazy, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import {
   MediaControlBar,
@@ -15,7 +15,6 @@ import {
   MediaPosterImage,
   MediaTimeDisplay,
   MediaPlaybackRateButton,
-  MediaAirplayButton,
 } from "media-chrome/react";
 import {
   MediaRenditionMenu,
@@ -37,6 +36,17 @@ type VideoPlayerProps = {
 } & HTMLProps<HTMLVideoElement>;
 
 export default function LiveVideoPlayer({ title, stream, status, poster, link, ...props }: VideoPlayerProps) {
+  const playerRef = useRef<HTMLVideoElement | null>(null);
+  const [canCast, setCanCast] = useState(false);
+
+  useEffect(() => {
+    if (playerRef.current && "remote" in playerRef.current) {
+      playerRef.current.remote.watchAvailability(a => {
+        console.debug("Cast support: ", a);
+        setCanCast(a);
+      });
+    }
+  }, [playerRef]);
   function innerPlayer() {
     if (stream === "n94") {
       return (
@@ -47,19 +57,17 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
     } else if (stream?.toLowerCase().endsWith(".m3u8")) {
       // hls video
       /* @ts-expect-error Web Componenet */
-      return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
+      return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} ref={playerRef} />;
     } else if (stream?.startsWith("moq://")) {
       return <Suspense>
         <MoqPlayer stream={stream} id={props.id} />
       </Suspense>
     } else {
       // other video formats (e.g. mp4)
-      return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} />;
+      return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} ref={playerRef} />;
     }
   }
 
-  const hasAirPlay = "WebKitPlaybackTargetAvailabilityEvent" in window;
-  const hasCast = "chrome" in globalThis && "cast" in globalThis as any["chrome"];
   return (
     <MediaController
       className={classNames(props.className, "h-inherit aspect-video w-full")}
@@ -85,8 +93,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
         <MediaVolumeRange />
         {status === StreamState.Live && <MediaRenditionMenuButton />}
         <MediaPipButton />
-        {hasAirPlay && <MediaAirplayButton />}
-        {hasCast && <MediaCastButton />}
+        {canCast && <MediaCastButton />}
         <MediaFullscreenButton />
       </MediaControlBar>
     </MediaController>
