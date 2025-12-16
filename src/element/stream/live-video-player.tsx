@@ -57,7 +57,10 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
     } else if (stream?.toLowerCase().endsWith(".m3u8")) {
       // hls video
       /* @ts-expect-error Web Componenet */
-      return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} ref={playerRef} />;
+      return <hls-video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} ref={playerRef} config={{
+        lowLatencyMode: true,
+        debug: true
+      }} />;
     } else if (stream?.startsWith("moq://")) {
       return <Suspense>
         <MoqPlayer stream={stream} id={props.id} />

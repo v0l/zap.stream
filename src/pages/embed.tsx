@@ -30,6 +30,7 @@ function EmbededPagePlayer({ link }: { link: NostrLink }) {
         <LiveVideoPlayer
           title={title}
           stream={status === StreamState.Live ? stream : recording}
+          link={link}
           poster={image}
           status={status}
           className="h-[100vh]"
