@@ -35,5 +35,6 @@ export interface GameInfo {
   name: string | JSX.Element;
   cover?: string;
   genres: Array<string>;
+  summary?: string;
   className?: string;
 }
