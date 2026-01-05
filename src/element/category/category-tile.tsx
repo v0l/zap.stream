@@ -22,7 +22,7 @@ export function CategoryTile({
     <div className="flex flex-col gap-2">
       <div className="flex gap-8 max-lg:flex-col">
         <div className="max-lg:h-[140px] lg:h-[200px] xl:h-[250px] aspect-[3/4]">
-          {game?.cover && <img src={game?.cover} className="object-fit w-full h-full rounded-xl" />}
+          {game?.cover && <img src={game?.cover.url} className="object-fit w-full h-full rounded-xl" />}
           {!game?.cover && game?.className && (
             <div className={classNames("aspect-[3/4] h-full rounded-xl", game.className)} />
           )}
@@ -30,7 +30,7 @@ export function CategoryTile({
         {showDetail && (
           <div className="flex flex-col gap-4">
             <h1>{game?.name}</h1>
-            {game?.genres && <div className="flex gap-2">{game?.genres?.map(a => <Pill>{a}</Pill>)}</div>}
+            {game?.genres && <div className="flex gap-2">{game?.genres?.map(a => <Pill key={a.id}>{a.name}</Pill>)}</div>}
             {extraDetail}
           </div>
         )}

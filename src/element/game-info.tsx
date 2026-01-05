@@ -21,7 +21,7 @@ export default function GameInfoCard({ gameId, gameInfo, imageSize, showImage, l
     <div className="flex gap-2 items-center">
       {(showImage ?? true) && (
         <img
-          src={game.cover}
+          src={game.cover?.url}
           style={{ height: imageSize ?? 20 }}
           className={classNames("object-contain", game.className)}
           alt="Game cover"
@@ -32,7 +32,7 @@ export default function GameInfoCard({ gameId, gameInfo, imageSize, showImage, l
         {(showDetail ?? false) && <>
           {game.summary && <div className="text-layer-4 text-sm">{game.summary}</div>}
           <div className="flex gap-2 text-sm">
-            {game.genres.map(a => <Pill key={a}>{a}</Pill>)}
+            {game.genres.map(a => <Pill key={a.id}>{a.name}</Pill>)}
           </div>
         </>}
       </div>

@@ -900,9 +900,6 @@
   "pxF+t0": {
     "defaultMessage": "Popular"
   },
-  "q+zTWM": {
-    "defaultMessage": "<s>{person}</s> zapped <s>{amount}</s> sats"
-  },
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
@@ -969,6 +966,9 @@
   },
   "u6uD94": {
     "defaultMessage": "Create an Account"
+  },
+  "uGywK9": {
+    "defaultMessage": "<s>{person}</s> zapped <a>{amount}</a>"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
