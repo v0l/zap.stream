@@ -24,6 +24,7 @@ import { ExternalLink } from "./external-link";
 import { FileUploader } from "./file-uploader";
 import { Link } from "react-router";
 import { useStreamProvider } from "@/hooks/stream-provider";
+import { gtag } from "@/gtm";
 
 enum Stage {
   Login = 0,
@@ -85,6 +86,10 @@ export function LoginSignup({ close }: { close: () => void }) {
 
   function loginWithKey() {
     Login.loginWithPrivateKey(key);
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17854661671/Rr6ECM36090bEKeI4sFC'
+    });
+
     close();
   }
 

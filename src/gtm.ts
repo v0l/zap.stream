@@ -1,9 +1,8 @@
-export { };
 declare global {
     interface Window { dataLayer?: Array<unknown>; }
 }
 
-function gtag(...args: unknown[]) {
+export function gtag(...args: unknown[]) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(args);
 }
