@@ -32,6 +32,12 @@ export function useTwitchChat(token?: string) {
             });
         }
     }, [token]);
+    useEffect(() => {
+        const thisApi = twitch.current;
+        return () => {
+            thisApi?.disconnect();
+        };
+    }, [twitch]);
     return {
         chatLog,
         badges,

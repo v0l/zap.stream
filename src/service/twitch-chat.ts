@@ -165,6 +165,26 @@ export class TwitchChat extends EventEmitter<TwitchChatEvents> {
     this.subscriptions.set(subInfo.id, subInfo);
   }
 
+  async unsubscribeAll() {
+    for (const sub of [...this.subscriptions.keys()]) {
+      await this.deleteSubscription(sub);
+      this.subscriptions.delete(sub);
+    }
+  }
+
+  async deleteSubscription(id: string) {
+    if (!this.bearer) {
+      throw new Error("Cant delete sub without bearer token");
+    }
+    await fetch(`https://api.twitch.tv/helix/eventsub/subscriptions?id=${id}`, {
+      method: "DELETE",
+      headers: {
+        "Client-Id": this.clientId,
+        "authorization": `Bearer ${this.bearer}`
+      }
+    });
+  }
+
   async getChannelBadges(channel_id: string) {
     if (!this.bearer) {
       throw new Error("Cant subscribe without bearer token");
@@ -196,7 +216,8 @@ export class TwitchChat extends EventEmitter<TwitchChatEvents> {
   }
 
   /** Gracefully close the connection. */
-  disconnect(): void {
+  async disconnect() {
+    await this.unsubscribeAll();
     this.ws?.close();
   }
 }
