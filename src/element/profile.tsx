@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { useUserProfile } from "@snort/system-react";
 import type { CachedMetadata, UserMetadata } from "@snort/system";
 import { hexToBech32 } from "@snort/shared";
-import { useInView } from "react-intersection-observer";
 import { Avatar } from "./avatar";
 import classNames from "classnames";
 import { profileLink } from "@/utils";
@@ -50,8 +49,7 @@ export function Profile({
   gap?: number;
   profile?: CachedMetadata;
 }) {
-  const { inView, ref } = useInView({ triggerOnce: true });
-  const pLoaded = useUserProfile(inView && !profile ? pubkey : undefined) ?? profile;
+  const pLoaded = useUserProfile(!profile ? pubkey : undefined) ?? profile;
   const showAvatar = options?.showAvatar ?? true;
   const showName = options?.showName ?? true;
   const isAnon = pubkey === "anon";
@@ -65,11 +63,11 @@ export function Profile({
 
   const cls = classNames("flex items-center align-bottom font-medium", `gap-${gap ?? 2}`, className);
   return isAnon || linkToProfile === false ? (
-    <div className={cls} ref={ref} title={title}>
+    <div className={cls} title={title}>
       {content}
     </div>
   ) : (
-    <Link to={profileLink(pLoaded, pubkey)} className={cls} ref={ref} title={title}>
+    <Link to={profileLink(pLoaded, pubkey)} className={cls} title={title}>
       {content}
     </Link>
   );
