@@ -11,8 +11,11 @@ import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
 import { NostrPrefix, hexToBech32 } from "@snort/shared";
-import { DefaultButton } from "@/element/buttons";
+import { DefaultButton, Layer1Button } from "@/element/buttons";
 import { groupBy } from "@/utils";
+import { TwitchChat } from "@/service/twitch-chat";
+import { TwitchApiClientId } from "@/const";
+import { v4 as uuid } from "uuid";
 
 interface ZapAlertConfigurationProps {
   npub: string;
@@ -175,34 +178,51 @@ export function WidgetsPage() {
   function WidgetBox({ children }: { children?: ReactNode }) {
     return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40">{children}</div>;
   }
+
+  const authToken = window.location.hash.startsWith("#access_token=") ? window.location.hash.substring(1) : undefined;
+  const params = new URLSearchParams(authToken);
+  if (params.has("state")) {
+    const expectState = window.localStorage.getItem("twitch-csrf");
+    if (expectState !== params.get("state")) {
+      throw new Error("CSRF ERROR");
+    }
+  }
   return (
     <div className="grid grid-cols-4 gap-2">
       <WidgetBox>
         <h3>
-          <FormattedMessage defaultMessage="Chat Widget" id="hpl4BP" />
+          <FormattedMessage defaultMessage="Chat Widget" />
         </h3>
-        <Copy text={`${baseUrl}/chat/${npub}`} />
+        <Copy text={`${baseUrl}/chat/${npub}${authToken ? `?twitch_token=${params.get("access_token")}` : ""}`} />
+        {!authToken && <Layer1Button onClick={() => {
+          const state = uuid();
+          window.localStorage.setItem("twitch-csrf", state);
+          const url = TwitchChat.getAuthUrl(TwitchApiClientId, window.location.href, ["user:read:chat"], state);
+          window.location.href = url;
+        }}>
+          Login with Twitch
+        </Layer1Button>}
       </WidgetBox>
       <WidgetBox>
         <ZapAlertConfiguration npub={npub} baseUrl={baseUrl} />
       </WidgetBox>
       <WidgetBox>
         <h3>
-          <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
+          <FormattedMessage defaultMessage="Top Zappers" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/top-zappers`} />
         {currentLink && <TopZappersWidget link={currentLink} />}
       </WidgetBox>
       <WidgetBox>
         <h3>
-          <FormattedMessage defaultMessage="Current Viewers" id="rgsbu9" />
+          <FormattedMessage defaultMessage="Current Viewers" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/views`} />
         {currentLink && <Views link={currentLink} />}
       </WidgetBox>
       <WidgetBox>
         <h3>
-          <FormattedMessage defaultMessage="Music" id="79lLl+" />
+          <FormattedMessage defaultMessage="Music" />
         </h3>
         <Copy text={`${baseUrl}/alert/${npub}/music`} />
         {currentLink && <Music link={currentLink} />}

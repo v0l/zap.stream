@@ -25,6 +25,8 @@ import { Link, useNavigate } from "react-router";
 import classNames from "classnames";
 import { useStream } from "../stream/stream-state";
 import { useLayout } from "@/pages/layout/context";
+import { useTwitchChat } from "@/hooks/twitch-chat";
+import { TwitchChatMessage } from "./twitch";
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? "";
@@ -53,6 +55,7 @@ export function LiveChat({
   height,
   className,
   autoRaid,
+  twitchToken
 }: {
   canWrite?: boolean;
   showTopZappers?: boolean;
@@ -62,6 +65,7 @@ export function LiveChat({
   height?: number;
   className?: string;
   autoRaid?: boolean;
+  twitchToken?: string;
 }) {
   const streamContext = useStream();
   const login = useLogin();
@@ -81,6 +85,7 @@ export function LiveChat({
   }, [event]);
   const { awards } = useBadgeAwards(host);
 
+  const { chatLog: twitchChat, badges: twitchBadges } = useTwitchChat(twitchToken);
   const hostMutedPubkeys = useMutedPubkeys(host, true);
   const userEmojiPacks = useEmoji(login?.pubkey);
   const channelEmojiPacks = useEmoji(host);
@@ -99,10 +104,18 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
+    for (const tc of twitchChat) {
+      extra.push({
+        kind: -3,
+        id: tc.meta.message_id,
+        created_at: Math.floor(new Date(tc.meta.message_timestamp).getTime() / 1000),
+        chat: tc
+      } as unknown as TaggedNostrEvent)
+    }
     return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
       .filter(a => a.created_at >= started && (!ends || a.created_at <= Number(ends)))
       .sort((a, b) => b.created_at - a.created_at);
-  }, [feed, awards]);
+  }, [feed, awards, twitchChat]);
 
   useEffect(() => {
     const resetLayout = () => {
@@ -193,6 +206,9 @@ export function LiveChat({
                     )}
                   </b>
                 );
+              }
+              case -3: {
+                return <TwitchChatMessage ev={a} key={a.id} badges={twitchBadges} />;
               }
               case EventKind.BadgeAward: {
                 return <BadgeAward ev={a} key={a.id} />;
