@@ -172,11 +172,12 @@ export function WidgetsPage() {
   const current = useCurrentStreamFeed(profileLink);
   const currentLink = current ? NostrLink.fromEvent(current) : undefined;
   const npub = hexToBech32("npub", login?.pubkey);
+  const [badges, setBadges] = useState(true);
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
 
   function WidgetBox({ children }: { children?: ReactNode }) {
-    return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40">{children}</div>;
+    return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-wrap">{children}</div>;
   }
 
   const authToken = window.location.hash.startsWith("#access_token=") ? window.location.hash.substring(1) : undefined;
@@ -187,13 +188,20 @@ export function WidgetsPage() {
       throw new Error("CSRF ERROR");
     }
   }
+
+  const chatParams = new URLSearchParams();
+  chatParams.set("badges", String(badges));
+  if (authToken) {
+    chatParams.set("twitch_token", params.get("access_token") ?? "");
+  }
+
   return (
     <div className="grid grid-cols-4 gap-2">
       <WidgetBox>
         <h3>
           <FormattedMessage defaultMessage="Chat Widget" />
         </h3>
-        <Copy text={`${baseUrl}/chat/${npub}${authToken ? `?twitch_token=${params.get("access_token")}` : ""}`} />
+        <Copy text={`${baseUrl}/chat/${npub}#${chatParams}`} />
         {!authToken && <Layer1Button onClick={() => {
           const state = uuid();
           window.localStorage.setItem("twitch-csrf", state);
@@ -202,6 +210,15 @@ export function WidgetsPage() {
         }}>
           Login with Twitch
         </Layer1Button>}
+        {authToken && <>
+          <div className="text-green-400">
+            <FormattedMessage defaultMessage="Twitch connected! Widget link ready." />
+          </div>
+        </>}
+        <div className="flex items-center gap-2">
+          <input type="checkbox" checked={badges} onChange={e => setBadges(e.target.checked)} />
+          <FormattedMessage defaultMessage="Show Badges" />
+        </div>
       </WidgetBox>
       <WidgetBox>
         <ZapAlertConfiguration npub={npub} baseUrl={baseUrl} />

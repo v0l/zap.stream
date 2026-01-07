@@ -55,7 +55,8 @@ export function LiveChat({
   height,
   className,
   autoRaid,
-  twitchToken
+  twitchToken,
+  showBadges
 }: {
   canWrite?: boolean;
   showTopZappers?: boolean;
@@ -66,6 +67,7 @@ export function LiveChat({
   className?: string;
   autoRaid?: boolean;
   twitchToken?: string;
+  showBadges?: boolean;
 }) {
   const streamContext = useStream();
   const login = useLogin();
@@ -85,7 +87,7 @@ export function LiveChat({
   }, [event]);
   const { awards } = useBadgeAwards(host);
 
-  const { chatLog: twitchChat, badges: twitchBadges } = useTwitchChat(twitchToken);
+  const { chatLog: twitchChat, badges: twitchBadges, connected_at: twitchConnectedAt, login: twitchLogin } = useTwitchChat(twitchToken);
   const hostMutedPubkeys = useMutedPubkeys(host, true);
   const userEmojiPacks = useEmoji(login?.pubkey);
   const channelEmojiPacks = useEmoji(host);
@@ -112,10 +114,13 @@ export function LiveChat({
         chat: tc
       } as unknown as TaggedNostrEvent)
     }
+    if (twitchConnectedAt) {
+      extra.push({ kind: -4, created_at: twitchConnectedAt } as TaggedNostrEvent);
+    }
     return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
       .filter(a => a.created_at >= started && (!ends || a.created_at <= Number(ends)))
       .sort((a, b) => b.created_at - a.created_at);
-  }, [feed, awards, twitchChat]);
+  }, [feed, awards, twitchChat, twitchConnectedAt]);
 
   useEffect(() => {
     const resetLayout = () => {
@@ -200,21 +205,31 @@ export function LiveChat({
                     className="border px-3 py-2 text-center border-layer-2 rounded-xl bg-primary uppercase"
                     key={`${a.kind}-${a.created_at}`}>
                     {a.kind === -1 ? (
-                      <FormattedMessage defaultMessage="Stream Started" id="5tM0VD" />
+                      <FormattedMessage defaultMessage="Stream Started" />
                     ) : (
-                      <FormattedMessage defaultMessage="Stream Ended" id="jkAQj5" />
+                      <FormattedMessage defaultMessage="Stream Ended" />
                     )}
                   </b>
                 );
               }
               case -3: {
-                return <TwitchChatMessage ev={a} key={a.id} badges={twitchBadges} />;
+                return <TwitchChatMessage ev={a} key={a.id} badges={(showBadges ?? true) ? twitchBadges : []} />;
+              }
+              case -4: {
+                if (twitchLogin) {
+                  return <div className="text-center text-xs text-gray-500">
+                    <FormattedMessage defaultMessage="Twitch chat {channel} connected" values={{
+                      channel: `'${twitchLogin}'`
+                    }} />
+                  </div>
+                }
+                break;
               }
               case EventKind.BadgeAward: {
                 return <BadgeAward ev={a} key={a.id} />;
               }
               case LIVE_STREAM_CHAT: {
-                return <ChatMessage badges={awards} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
+                return <ChatMessage badges={(showBadges ?? true) ? awards : []} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
               }
               case LIVE_STREAM_RAID: {
                 return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;

@@ -18,6 +18,17 @@ export class TwitchChat extends EventEmitter<TwitchChatEvents> {
     this.bearer = bearer;
   }
 
+  get connected_at() {
+    const ct = this.session?.connected_at;
+    if (ct) {
+      return Math.floor(new Date(ct).getTime() / 1000);
+    }
+  }
+
+  get login() {
+    return this.token?.login;
+  }
+
   static getAuthUrl(clientId: string, redirect_uri: string, scopes: Array<string>, state?: string) {
     const params = [
       "response_type=token",

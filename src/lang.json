@@ -98,6 +98,9 @@
   "47FYwb": {
     "defaultMessage": "Cancel"
   },
+  "4EqGTN": {
+    "defaultMessage": "Twitch connected! Widget link ready."
+  },
   "4XfMux": {
     "defaultMessage": "Videos"
   },
@@ -683,6 +686,9 @@
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
   },
+  "dhLRlh": {
+    "defaultMessage": "Twitch chat {channel} connected"
+  },
   "dkUMIH": {
     "defaultMessage": "Clip by {name}"
   },
@@ -939,6 +945,9 @@
   },
   "sInm1h": {
     "defaultMessage": "Zap message"
+  },
+  "sKDn4e": {
+    "defaultMessage": "Show Badges"
   },
   "syEQFE": {
     "defaultMessage": "Publish"

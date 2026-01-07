@@ -34,6 +34,8 @@ export function useTwitchChat(token?: string) {
     }, [token]);
     return {
         chatLog,
-        badges
+        badges,
+        connected_at: twitch.current?.connected_at,
+        login: twitch.current?.login
     };
 }
