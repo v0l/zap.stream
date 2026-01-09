@@ -11,11 +11,10 @@ import { TopZappersWidget } from "./widgets/top-zappers";
 import { Views } from "./widgets/views";
 import { Music } from "./widgets/music";
 import { NostrPrefix, hexToBech32 } from "@snort/shared";
-import { DefaultButton, Layer1Button } from "@/element/buttons";
+import { DefaultButton } from "@/element/buttons";
 import { groupBy } from "@/utils";
-import { TwitchChat } from "@/service/twitch-chat";
-import { TwitchApiClientId } from "@/const";
-import { v4 as uuid } from "uuid";
+import { ConnectLegacyStream } from "@/element/legacy";
+import { ChatApis } from "@/service/chat/types";
 
 interface ZapAlertConfigurationProps {
   npub: string;
@@ -180,41 +179,31 @@ export function WidgetsPage() {
     return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-wrap">{children}</div>;
   }
 
-  const authToken = window.location.hash.startsWith("#access_token=") ? window.location.hash.substring(1) : undefined;
-  const params = new URLSearchParams(authToken);
-  if (params.has("state")) {
-    const expectState = window.localStorage.getItem("twitch-csrf");
-    if (expectState !== params.get("state")) {
-      throw new Error("CSRF ERROR");
-    }
-  }
-
   const chatParams = new URLSearchParams();
   chatParams.set("badges", String(badges));
-  if (authToken) {
-    chatParams.set("twitch_token", params.get("access_token") ?? "");
+  for (const [k, v] of Object.entries(ChatApis)) {
+    const params = v.getWidgetParams();
+    if (params) {
+      chatParams.set(k, params);
+    }
   }
 
   return (
     <div className="grid grid-cols-4 gap-2">
       <WidgetBox>
         <h3>
+          <FormattedMessage defaultMessage="Link accounts" />
+        </h3>
+        <ConnectLegacyStream />
+      </WidgetBox>
+      <WidgetBox>
+        <h3>
           <FormattedMessage defaultMessage="Chat Widget" />
         </h3>
         <Copy text={`${baseUrl}/chat/${npub}#${chatParams}`} />
-        {!authToken && <Layer1Button onClick={() => {
-          const state = uuid();
-          window.localStorage.setItem("twitch-csrf", state);
-          const url = TwitchChat.getAuthUrl(TwitchApiClientId, window.location.href, ["user:read:chat"], state);
-          window.location.href = url;
-        }}>
-          Login with Twitch
-        </Layer1Button>}
-        {authToken && <>
-          <div className="text-green-400">
-            <FormattedMessage defaultMessage="Twitch connected! Widget link ready." />
-          </div>
-        </>}
+        <div className="text-red-400 font-bold">
+          <FormattedMessage defaultMessage="Do not share this link with anybody as it contains sensitive info." />
+        </div>
         <div className="flex items-center gap-2">
           <input type="checkbox" checked={badges} onChange={e => setBadges(e.target.checked)} />
           <FormattedMessage defaultMessage="Show Badges" />

@@ -1879,6 +1879,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bufbuild/protobuf@npm:^2.10.2":
+  version: 2.10.2
+  resolution: "@bufbuild/protobuf@npm:2.10.2"
+  checksum: 10c0/970c4020bfc4769baa13eb5b2622d6e59962bfff54dbf8b5fc7499e8dc0b6ec1ee80be85148eb545f70d7e5b058bd178a5dc5c0b7409a96a510114fb3bfbb631
+  languageName: node
+  linkType: hard
+
 "@cloudflare/workers-types@npm:^4.20251213.0":
   version: 4.20251213.0
   resolution: "@cloudflare/workers-types@npm:4.20251213.0"
@@ -2241,6 +2248,17 @@ __metadata:
     ts-jest:
       optional: true
   checksum: 10c0/990cf49cdc318e37825ec26b1b24d7368e89c5d03184867a4accd8b35d6d6d99a20a8abe6366c9870e56da9e04f4672990ca428686306c9ad8204b401c7d19f8
+  languageName: node
+  linkType: hard
+
+"@improbable-eng/grpc-web@npm:^0.15.0":
+  version: 0.15.0
+  resolution: "@improbable-eng/grpc-web@npm:0.15.0"
+  dependencies:
+    browser-headers: "npm:^0.4.1"
+  peerDependencies:
+    google-protobuf: ^3.14.0
+  checksum: 10c0/98949a73bf98a54e5df02a3a13e3dadad83a610a35ed57600e566a842777e02bec71de413e42a7728267a38c5ccf30af67fe516486e68546c2701e95d2446f5c
   languageName: node
   linkType: hard
 
@@ -3902,6 +3920,13 @@ __metadata:
   dependencies:
     fill-range: "npm:^7.1.1"
   checksum: 10c0/7c6dfd30c338d2997ba77500539227b9d1f85e388a5f43220865201e407e076783d0881f2d297b9f80951b4c957fcf0b51c1d2d24227631643c3f7c284b0aa04
+  languageName: node
+  linkType: hard
+
+"browser-headers@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "browser-headers@npm:0.4.1"
+  checksum: 10c0/3b08864bb955b295ab3dd6ab775c7798096c2e85486571803b4070ec484de83ccceebe531a8b00d5daf4463fada5e7ca18cd1a71cc1ee0dfdbab705332318cef
   languageName: node
   linkType: hard
 
@@ -7483,6 +7508,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rxjs@npm:^7.8.2":
+  version: 7.8.2
+  resolution: "rxjs@npm:7.8.2"
+  dependencies:
+    tslib: "npm:^2.1.0"
+  checksum: 10c0/1fcd33d2066ada98ba8f21fcbbcaee9f0b271de1d38dc7f4e256bfbc6ffcdde68c8bfb69093de7eeb46f24b1fb820620bf0223706cff26b4ab99a7ff7b2e2c45
+  languageName: node
+  linkType: hard
+
 "safe-array-concat@npm:^1.0.0":
   version: 1.0.0
   resolution: "safe-array-concat@npm:1.0.0"
@@ -7728,11 +7762,13 @@ __metadata:
   resolution: "stream_ui@workspace:."
   dependencies:
     "@biomejs/biome": "npm:2.3.8"
+    "@bufbuild/protobuf": "npm:^2.10.2"
     "@cloudflare/workers-types": "npm:^4.20251213.0"
     "@dr.pogodin/react-helmet": "npm:^3.0.5"
     "@emoji-mart/data": "npm:^1.2.1"
     "@emoji-mart/react": "npm:^1.1.1"
     "@formatjs/cli": "npm:^6.7.4"
+    "@improbable-eng/grpc-web": "npm:^0.15.0"
     "@kixelated/hang": "npm:^0.7.0"
     "@noble/hashes": "npm:^2.0.1"
     "@scure/base": "npm:^2.0.0"
@@ -7756,6 +7792,7 @@ __metadata:
     "@webscopeio/react-textarea-autocomplete": "npm:^4.9.2"
     autoprefixer: "npm:^10.4.23"
     babel-plugin-formatjs: "npm:^10.5.41"
+    browser-headers: "npm:^0.4.1"
     buffer: "npm:^6.0.3"
     classnames: "npm:^2.5.1"
     dayjs: "npm:^1.11.19"
@@ -7781,6 +7818,7 @@ __metadata:
     react-tag-input-component: "npm:^2.0.2"
     recharts: "npm:^3.6.0"
     rollup-plugin-visualizer: "npm:^6.0.5"
+    rxjs: "npm:^7.8.2"
     tailwindcss: "npm:^3.4.19"
     typescript: "npm:^5.9.3"
     usehooks-ts: "npm:^3.1.1"
@@ -8124,17 +8162,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.1.0, tslib@npm:^2.8.0":
+  version: 2.8.1
+  resolution: "tslib@npm:2.8.1"
+  checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^2.4.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 10c0/e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.8.0":
-  version: 2.8.1
-  resolution: "tslib@npm:2.8.1"
-  checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
   languageName: node
   linkType: hard
 

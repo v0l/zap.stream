@@ -1,10 +1,7 @@
 import EventEmitter from "eventemitter3";
+import type { ChatInfo, ExternalChatFeed, ExternalChatEvents } from "./types";
 
-export interface TwitchChatEvents {
-  chat: (meta: SubscriptionMetadata, event: ChatNotificationEvent) => void
-}
-
-export class TwitchChat extends EventEmitter<TwitchChatEvents> {
+export class TwitchChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
   private clientId: string;
   private bearer?: string;
   token?: TokenValidationResponse;
@@ -18,6 +15,19 @@ export class TwitchChat extends EventEmitter<TwitchChatEvents> {
     this.bearer = bearer;
   }
 
+  async connectFeed() {
+    await this.connectSocket();
+    await this.subscribeMyChat();
+  }
+
+  getInfo(): ChatInfo {
+    return {
+      connected: this.connected_at || 0,
+      name: this.login ?? "",
+      provider_name: "Twitch"
+    }
+  }
+
   get connected_at() {
     const ct = this.session?.connected_at;
     if (ct) {
@@ -29,20 +39,7 @@ export class TwitchChat extends EventEmitter<TwitchChatEvents> {
     return this.token?.login;
   }
 
-  static getAuthUrl(clientId: string, redirect_uri: string, scopes: Array<string>, state?: string) {
-    const params = [
-      "response_type=token",
-      `client_id=${encodeURIComponent(clientId)}`,
-      `redirect_uri=${encodeURIComponent(redirect_uri)}`,
-      `scope=${encodeURIComponent(scopes.join(" "))}`
-    ];
-    if (state) {
-      params.push(`state=${encodeURIComponent(state)}`);
-    }
-    return `https://id.twitch.tv/oauth2/authorize?${params.join("&")}`;
-  }
-
-  async connect() {
+  async connectSocket() {
     // first validate the token
     const tkn = await this.validateToken();
     this.token = tkn;
@@ -102,7 +99,13 @@ export class TwitchChat extends EventEmitter<TwitchChatEvents> {
   private onNotification(notification: NotificationMessage) {
     switch (notification.metadata.subscription_type) {
       case SubscriptionType.ChannelChatMessage: {
-        this.emit("chat", notification.metadata, notification.payload.event as ChatNotificationEvent);
+        const chatEvent = notification.payload.event as ChatNotificationEvent;
+        this.emit("chat", {
+          feed: "twitch",
+          created_at: Math.floor(new Date(notification.metadata.message_timestamp).getTime() / 1000),
+          id: chatEvent.message_id,
+          internal: chatEvent
+        });
         break;
       }
     }
@@ -307,10 +310,17 @@ export enum ChatMessageType {
 }
 
 export interface ChatNotificationEvent {
+  message_id: string;
   chatter_user_name: string;
   message: {
     text: string;
-    fragments: Array<object>,
+    fragments: Array<{
+      type: "text" | "cheermote" | "emote" | "mention",
+      text: string;
+      cheermote?: object;
+      emote?: object;
+      mention?: object;
+    }>,
   }
   message_type: ChatMessageType,
   color?: string,

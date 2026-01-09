@@ -25,8 +25,10 @@ import { Link, useNavigate } from "react-router";
 import classNames from "classnames";
 import { useStream } from "../stream/stream-state";
 import { useLayout } from "@/pages/layout/context";
-import { useTwitchChat } from "@/hooks/twitch-chat";
 import { TwitchChatMessage } from "./twitch";
+import { useLegacyChatFeed } from "@/hooks/legacy-chat";
+import type { ExternalChatEvent } from "@/service/chat/types";
+import { YoutubeChatMessage } from "./youtube";
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? "";
@@ -55,7 +57,6 @@ export function LiveChat({
   height,
   className,
   autoRaid,
-  twitchToken,
   showBadges
 }: {
   canWrite?: boolean;
@@ -66,7 +67,6 @@ export function LiveChat({
   height?: number;
   className?: string;
   autoRaid?: boolean;
-  twitchToken?: string;
   showBadges?: boolean;
 }) {
   const streamContext = useStream();
@@ -87,7 +87,6 @@ export function LiveChat({
   }, [event]);
   const { awards } = useBadgeAwards(host);
 
-  const { chatLog: twitchChat, badges: twitchBadges, connected_at: twitchConnectedAt, login: twitchLogin } = useTwitchChat(twitchToken);
   const hostMutedPubkeys = useMutedPubkeys(host, true);
   const userEmojiPacks = useEmoji(login?.pubkey);
   const channelEmojiPacks = useEmoji(host);
@@ -96,6 +95,7 @@ export function LiveChat({
   }, [userEmojiPacks, channelEmojiPacks]);
 
   const reactions = useEventReactions(link, feed);
+  const legacyChat = useLegacyChatFeed();
   const events = useMemo(() => {
     const extra = [];
     const starts = findTag(event, "starts");
@@ -106,21 +106,30 @@ export function LiveChat({
     if (ends) {
       extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
     }
-    for (const tc of twitchChat) {
+    for (const tc of legacyChat.events) {
       extra.push({
         kind: -3,
-        id: tc.meta.message_id,
-        created_at: Math.floor(new Date(tc.meta.message_timestamp).getTime() / 1000),
+        id: tc.id,
+        created_at: tc.created_at,
         chat: tc
       } as unknown as TaggedNostrEvent)
     }
-    if (twitchConnectedAt) {
-      extra.push({ kind: -4, created_at: twitchConnectedAt } as TaggedNostrEvent);
+    const twInfo = legacyChat.twitch?.getInfo();
+    if (twInfo?.connected) {
+      extra.push({ kind: -4, created_at: twInfo.connected, pubkey: twInfo.name, sig: twInfo.provider_name } as TaggedNostrEvent);
+    }
+    const ytInfo = legacyChat.youtube?.getInfo();
+    if (ytInfo?.connected) {
+      extra.push({ kind: -4, created_at: ytInfo.connected, pubkey: ytInfo.name, sig: ytInfo.provider_name } as TaggedNostrEvent);
+    }
+    const kkInfo = legacyChat.kick?.getInfo();
+    if (kkInfo?.connected) {
+      extra.push({ kind: -4, created_at: kkInfo.connected, pubkey: kkInfo.name, sig: kkInfo.provider_name } as TaggedNostrEvent);
     }
     return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
       .filter(a => a.created_at >= started && (!ends || a.created_at <= Number(ends)))
       .sort((a, b) => b.created_at - a.created_at);
-  }, [feed, awards, twitchChat, twitchConnectedAt]);
+  }, [feed, awards, legacyChat]);
 
   useEffect(() => {
     const resetLayout = () => {
@@ -213,16 +222,27 @@ export function LiveChat({
                 );
               }
               case -3: {
-                return <TwitchChatMessage ev={a} key={a.id} badges={(showBadges ?? true) ? twitchBadges : []} />;
+                const externalChat = "chat" in a ? a.chat as ExternalChatEvent : undefined;
+                switch (externalChat?.feed) {
+                  case "twitch": {
+                    return <TwitchChatMessage ev={externalChat} key={a.id} created_at={a.created_at} />;
+                  }
+                  case "youtube": {
+                    return <YoutubeChatMessage ev={externalChat} key={a.id} />;
+                  }
+                  default: {
+                    return <div>{JSON.stringify(externalChat)}</div>
+                  }
+                }
+                break;
               }
               case -4: {
-                if (twitchLogin) {
-                  return <div className="text-center text-xs text-gray-500">
-                    <FormattedMessage defaultMessage="Twitch chat {channel} connected" values={{
-                      channel: `'${twitchLogin}'`
-                    }} />
-                  </div>
-                }
+                return <div className="text-center text-xs text-gray-500">
+                  <FormattedMessage defaultMessage="{provider} chat {channel} connected!" values={{
+                    channel: `'${a.pubkey}'`,
+                    provider: a.sig,
+                  }} />
+                </div>
                 break;
               }
               case EventKind.BadgeAward: {

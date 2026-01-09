@@ -98,9 +98,6 @@
   "47FYwb": {
     "defaultMessage": "Cancel"
   },
-  "4EqGTN": {
-    "defaultMessage": "Twitch connected! Widget link ready."
-  },
   "4XfMux": {
     "defaultMessage": "Videos"
   },
@@ -154,6 +151,9 @@
   },
   "6pr6hJ": {
     "defaultMessage": "Minimum amount for text to speech"
+  },
+  "6tNcGm": {
+    "defaultMessage": "{provider} connected!"
   },
   "7+bCC1": {
     "defaultMessage": "Stream url must start with rtmp://"
@@ -613,6 +613,9 @@
   "Z8ZOEY": {
     "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
   },
+  "ZDsjr1": {
+    "defaultMessage": "{platform} channel name.."
+  },
   "ZXp0z1": {
     "defaultMessage": "Features"
   },
@@ -686,9 +689,6 @@
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
   },
-  "dhLRlh": {
-    "defaultMessage": "Twitch chat {channel} connected"
-  },
   "dkUMIH": {
     "defaultMessage": "Clip by {name}"
   },
@@ -701,6 +701,9 @@
   },
   "ebmhes": {
     "defaultMessage": "Nostr Extension"
+  },
+  "edoPyO": {
+    "defaultMessage": "Link accounts"
   },
   "f6biFA": {
     "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
@@ -804,6 +807,9 @@
   "kGjqZ4": {
     "defaultMessage": "Latest Shorts"
   },
+  "kJ0xNG": {
+    "defaultMessage": "Do not share this link with anybody as it contains sensitive info."
+  },
   "kQAf2d": {
     "defaultMessage": "Select"
   },
@@ -815,6 +821,9 @@
   },
   "kp0NPF": {
     "defaultMessage": "Planned"
+  },
+  "krCxp0": {
+    "defaultMessage": "{provider} chat {channel} connected!"
   },
   "lXbG97": {
     "defaultMessage": "Most Zapped Streamers"
@@ -1060,5 +1069,8 @@
   },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"
+  },
+  "zyHFaA": {
+    "defaultMessage": "Login with {provider}"
   }
 }

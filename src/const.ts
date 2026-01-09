@@ -70,3 +70,6 @@ export const P_TAG_HOST_WHITELIST = [
 
 /// API client ID for twitch chat integration
 export const TwitchApiClientId = "kirqzkkd71zdtlciwhcf2fgwvvcr8x";
+
+/// API client ID for Youtube chat integration
+export const YoutubeApiClientId = "858937139946-detts37kt2162911qjaomce02k38dqk1.apps.googleusercontent.com";
