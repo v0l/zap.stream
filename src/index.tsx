@@ -210,7 +210,7 @@ const router = createBrowserRouter([
         element: <MarkdownPage dTag="faq-en" title={<FormattedMessage defaultMessage="FAQ" description="Title: FAQ page" />} />,
       },
       {
-        path: "/privacy-youtube-wdiget",
+        path: "/privacy-youtube-widget",
         element: <MarkdownPage dTag="pp-yt-widget" title={<FormattedMessage defaultMessage="Privacy Policy" description="Title: Privacy Policy" />} />,
       },
       {
