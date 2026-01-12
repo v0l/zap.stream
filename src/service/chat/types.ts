@@ -82,12 +82,12 @@ export type ExternalChatFeed = {
      * Connect to the chat feed
      */
     connectFeed(): Promise<void>;
-    
+
     /**
      * Get the generic chat info from the external feed
      */
     getInfo(): ChatInfo;
-    
+
     /**
      * Disconnect from the chat feed and cleanup resources
      */
@@ -98,20 +98,28 @@ export type ExternalChatFeed = {
      */
     getBadges(): Promise<Array<ExternalChatBadge>>;
 
+    /**
+     * Get the current number of viewers 
+     */
+    currentViewers(): Promise<number | undefined>;
+
 } & EventEmitter<ExternalChatEvents>;
+
+export type FeedType = "twitch" | "youtube" | "kick";
 
 export interface ExternalChatEvents {
     chat(ev: ExternalChatEvent): void;
 }
 
 export interface ExternalChatBadge {
+    feed: FeedType;
     id: string;
     title?: string;
     url: string;
 }
 
 export interface ExternalChatEvent {
-    feed: "twitch" | "youtube" | "kick",
+    feed: FeedType,
     created_at: number;
     id: string;
     internal: unknown;

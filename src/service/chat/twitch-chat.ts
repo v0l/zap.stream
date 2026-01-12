@@ -15,6 +15,10 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
     this.bearer = bearer;
   }
 
+  currentViewers(): Promise<number | undefined> {
+    throw new Error("Method not implemented.");
+  }
+
   async getBadges(): Promise<Array<ExternalChatBadge>> {
     const badgeTasks = [
       this.getGlobalBadges()
@@ -24,6 +28,7 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
     }
     return (await Promise.all(badgeTasks)).flat().flatMap(b => {
       return b.versions.map(x => ({
+        feed: "twitch",
         id: `${b.set_id}_${x.id}`,
         url: x.image_url_2x
       }));

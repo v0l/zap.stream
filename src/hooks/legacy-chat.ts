@@ -1,4 +1,4 @@
-import { ChatApis, type ExternalChatFeed, type ExternalChatEvent, ExternalChatBadge } from "@/service/chat/types";
+import { ChatApis, type ExternalChatFeed, type ExternalChatEvent, type ExternalChatBadge } from "@/service/chat/types";
 import { useEffect, useRef, useState } from "react";
 
 export function useLegacyChatFeed(props: { enable?: boolean } | undefined) {

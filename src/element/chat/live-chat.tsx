@@ -29,6 +29,7 @@ import { TwitchChatMessage } from "./twitch";
 import { useLegacyChatFeed } from "@/hooks/legacy-chat";
 import type { ExternalChatEvent } from "@/service/chat/types";
 import { YoutubeChatMessage } from "./youtube";
+import { KickChatMessage } from "./kick";
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? "";
@@ -229,6 +230,9 @@ export function LiveChat({
                   }
                   case "youtube": {
                     return <YoutubeChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />;
+                  }
+                  case "kick": {
+                    return <KickChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />;
                   }
                   default: {
                     return <div>{JSON.stringify(externalChat)}</div>

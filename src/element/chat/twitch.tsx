@@ -15,7 +15,7 @@ export function TwitchChatMessage({ ev, created_at, badges }: { ev: ExternalChat
                     if (b.set_id === "broadcaster" && b.id === "1") {
                         return <Icon name="signal" size={16} className="text-primary" />
                     }
-                    const badge = badges.find(x => x.id === `${b.set_id}_${b.id}`);
+                    const badge = badges.find(x => x.id === `${b.set_id}_${b.id}` && x.feed === "twitch");
                     if (badge) {
                         return <img src={badge.url} height={16} width={16} title={badge.title} />
                     }

@@ -16,6 +16,10 @@ export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements Ext
         this.clientId = clientId;
         this.token = token;
     }
+    
+    currentViewers(): Promise<number | undefined> {
+        throw new Error("Method not implemented.");
+    }
 
     async getBadges(): Promise<Array<ExternalChatBadge>> {
         // TODO: add member badges
