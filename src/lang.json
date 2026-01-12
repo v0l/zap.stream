@@ -897,6 +897,10 @@
   "nwc-title": {
     "defaultMessage": "Nostr Wallet Connect (NWC)"
   },
+  "nz/Sq9": {
+    "defaultMessage": "Privacy Policy",
+    "description": "Title: Privacy Policy"
+  },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
   },
@@ -941,6 +945,9 @@
   },
   "rleUgy": {
     "defaultMessage": "Uploading.."
+  },
+  "rtdSZd": {
+    "defaultMessage": "Expired!"
   },
   "s+ORFl": {
     "defaultMessage": "{m}d {ago}",

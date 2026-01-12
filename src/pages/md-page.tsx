@@ -3,7 +3,7 @@ import Markdown from "@/element/markdown";
 import { NostrPrefix } from "@snort/shared";
 import { EventKind, NostrLink } from "@snort/system";
 import { useEventFeed } from "@snort/system-react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default function MarkdownPage({ dTag, title }: { dTag: string, title: ReactNode }) {
   const faqLink = new NostrLink(NostrPrefix.Address, dTag, EventKind.LongFormTextNote, ZAP_STREAM_PUBKEY);
