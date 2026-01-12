@@ -30,7 +30,7 @@ import ProfileSettings from "./pages/settings/profile";
 import CategoryPage from "./pages/category";
 import { WorkerRelayInterface } from "@snort/worker-relay";
 import WorkerVite from "@snort/worker-relay/src/worker?worker";
-import FaqPage from "./pages/faq";
+import MarkdownPage from "./pages/md-page";
 import DashboardIntroStep1 from "./pages/dashboard/intro/step1";
 import DashboardIntroStep2 from "./pages/dashboard/intro/step2";
 import DashboardIntroStep3 from "./pages/dashboard/intro/step3";
@@ -47,6 +47,7 @@ import ProvidersPage from "./pages/providers";
 import { TosPage } from "./pages/tos";
 import { Login } from "./login";
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
+import { FormattedMessage } from "react-intl";
 
 const hasWasm = "WebAssembly" in globalThis;
 const disableWasmForPaths = ["/chat", "/alert", "/embed"];
@@ -206,7 +207,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <FaqPage />,
+        element: <MarkdownPage dTag="faq-en" title={<FormattedMessage defaultMessage="FAQ" description="Title: FAQ page" />} />,
+      },
+      {
+        path: "/privacy-youtube-wdiget",
+        element: <MarkdownPage dTag="pp-yt-widget" title={<FormattedMessage defaultMessage="Privacy Policy" description="Title: Privacy Policy" />} />,
       },
       {
         path: "/providers",

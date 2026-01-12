@@ -2,6 +2,7 @@ import { IconButton, Layer1Button } from "./buttons";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChatApis } from "@/service/chat/types";
 import { useState } from "react";
+import { unixNow } from "@snort/shared";
 
 export function ConnectLegacyStream() {
     const [_, setTick] = useState(0);
@@ -12,7 +13,8 @@ export function ConnectLegacyStream() {
     if (hash !== "" && auth_flow) {
         const provider = ChatApis[auth_flow as "twitch" | "youtube" | "kick"];
         if (provider) {
-            provider.handleAuthCallback(hash.substring(1));
+            const now = unixNow();
+            provider.handleAuthCallback(`${hash.substring(1)}&created=${now}`);
             window.location.hash = "";
         }
     }
@@ -22,7 +24,14 @@ export function ConnectLegacyStream() {
         {Object.entries(ChatApis).map(([k, v]) => {
             if (v.isAuthed()) {
                 return <div className="flex justify-between">
-                    <div className="text-green-400"><FormattedMessage defaultMessage="{provider} connected!" values={{ provider: v.name }} /></div>
+                    <div className="flex gap-2">
+                        <span className="text-green-400">
+                            <FormattedMessage defaultMessage="{provider} connected!" values={{ provider: v.name }} />
+                        </span>
+                        {(v.expireTime() && v.expireTime()! < unixNow()) && <span className="text-red-400">
+                            <FormattedMessage defaultMessage="Expired!" />
+                        </span>}
+                    </div>
                     <IconButton iconName="x" iconSize={16} className="text-red-500" onClick={() => {
                         v.disconnect();
                         setTick(v => v + 1);

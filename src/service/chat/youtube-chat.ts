@@ -1,20 +1,20 @@
 import EventEmitter from "eventemitter3";
 import { LiveChatMessageListRequest, LiveChatMessageSnippet_TypeWrapper_Type, GrpcWebImpl, type V3DataLiveChatMessageService, V3DataLiveChatMessageServiceClientImpl } from "./stream_list";
-import type { ChatInfo, ExternalChatFeed, ExternalChatEvents } from "./types";
+import type { ChatInfo, ExternalChatFeed, ExternalChatEvents, OAuthToken } from "./types";
 import { BrowserHeaders } from "browser-headers";
 import { grpc } from "@improbable-eng/grpc-web";
 import { unixNow } from "@snort/shared";
 
 export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
     private clientId: string;
-    private bearer?: string;
+    private token: OAuthToken;
     private connectedTime: number = 0;
     private myChannel: ChannelResource | undefined;
 
-    constructor(clientId: string, bearer?: string) {
+    constructor(clientId: string, token: OAuthToken) {
         super();
         this.clientId = clientId;
-        this.bearer = bearer;
+        this.token = token;
     }
 
     connectFeed(): Promise<void> {
@@ -89,9 +89,6 @@ export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements Ext
     }
 
     private async getApiResponse<T>(path: string, params: Array<Array<string> | [string, string]>) {
-        if (!this.bearer) {
-            throw new Error("Cant load without bearer token");
-        }
         const u = new URL(`https://www.googleapis.com/youtube/v3/${path}`);
         u.searchParams.set("access_token", "oauth2-token");
         for (const [k, v] of params) {
@@ -101,7 +98,7 @@ export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements Ext
         const req = await fetch(u, {
             headers: {
                 accept: "application/json",
-                authorization: `Bearer ${this.bearer}`
+                authorization: `Bearer ${this.token.access_token}`
             }
         });
         const json = await req.json() as PageResult<T>;
@@ -110,17 +107,13 @@ export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements Ext
     }
 
     subscribeChat(chatId: string) {
-        if (!this.bearer) {
-            throw new Error("Cant subscribe without bearer token");
-        }
-
         // must use gRPC-WEB proxy
         const rpc = new GrpcWebImpl("https://ytproxy.zap.stream", {
             streamingTransport: grpc.WebsocketTransport()
         })
         const client = new V3DataLiveChatMessageServiceClientImpl(rpc);
         const headers = new BrowserHeaders();
-        headers.append("Authorization", `Bearer ${this.bearer}`);
+        headers.append("Authorization", `Bearer ${this.token.access_token}`);
         const stream = client.StreamList(LiveChatMessageListRequest.fromPartial({
             part: ["snippet", "authorDetails"],
             liveChatId: chatId

@@ -47,11 +47,14 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
         case "code": {
           return <pre key={ctr++}>{t.raw}</pre>;
         }
+        case "strong": {
+          return <strong>{t.tokens ? t.tokens.map(renderToken) : t.raw}</strong>
+        }
         case "br": {
           return <br key={ctr++} />;
         }
         case "hr": {
-          return <hr key={ctr++} />;
+          return <hr key={ctr++} className="bg-layer-2"/>;
         }
         case "blockquote": {
           return <blockquote key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</blockquote>;

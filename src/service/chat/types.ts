@@ -27,6 +27,11 @@ export interface ChatProvider {
     getFeed(): ExternalChatFeed;
 
     /**
+     * Get the expiry time of the access
+     */
+    expireTime(): number | undefined;
+
+    /**
      * Is the account already authed
      */
     isAuthed(): boolean;
@@ -110,6 +115,15 @@ abstract class OAuthChatProvider implements ChatProvider {
 
     abstract getFeed(): ExternalChatFeed;
 
+    expireTime() {
+        const token = getAuthToken<OAuthToken>(this.url);
+        const expire = Number(token?.expires_in);
+        const created = Number(token?.created);
+        if (Number.isSafeInteger(expire) && Number.isSafeInteger(created)) {
+            return created + expire;
+        }
+    }
+
     getAuthUrl(redirect_uri: string) {
         return getAuthUrl(this.url, this.clientId, redirect_uri, this.scopes);
     }
@@ -146,6 +160,10 @@ abstract class NoAuthChatProvider implements ChatProvider {
 
     constructor(readonly name: string, readonly id: string) {
         this.authType = "none";
+    }
+
+    expireTime(): number | undefined {
+        return undefined;
     }
 
     abstract getFeed(): ExternalChatFeed;
@@ -192,7 +210,10 @@ class TwitchChatProvider extends OAuthChatProvider {
 class YoutubeChatProvider extends OAuthChatProvider {
     getFeed() {
         const token = getAuthToken<OAuthToken>(YoutubeAuthUrl);
-        const api = new YoutubeChat(YoutubeApiClientId, token?.access_token);
+        if (!token) {
+            throw new Error("Cant connect to feed without auth token");
+        }
+        const api = new YoutubeChat(YoutubeApiClientId, token);
         return api;
     }
 }
@@ -216,16 +237,20 @@ export const ChatApis = {
 
 
 function getAuthUrl(base: string, clientId: string, redirect_uri: string, scopes: Array<string>) {
-    const params = [
-        "response_type=token",
-        `client_id=${encodeURIComponent(clientId)}`,
-        `redirect_uri=${encodeURIComponent(redirect_uri)}`,
-        `scope=${encodeURIComponent(scopes.join(" "))}`
-    ];
+    const u = new URL(base);
+
     const state = uuid();
     window.localStorage.setItem(`auth:state:${base}`, state);
-    params.push(`state=${encodeURIComponent(state)}`);
-    return `${base}?${params.join("&")}`;
+
+    u.searchParams.set("response_type", "token");
+    u.searchParams.set("client_id", clientId);
+    u.searchParams.set("redirect_uri", redirect_uri);
+    u.searchParams.set("scope", scopes.join(" "));
+    u.searchParams.set("include_granted_scopes", "true");
+    u.searchParams.set("prompt", "consent");
+    u.searchParams.set("state", state);
+
+    return u.toString();
 }
 
 function saveAuthToken(base: string, token: string) {
