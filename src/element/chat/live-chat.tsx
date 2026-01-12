@@ -95,7 +95,7 @@ export function LiveChat({
   }, [userEmojiPacks, channelEmojiPacks]);
 
   const reactions = useEventReactions(link, feed);
-  const legacyChat = useLegacyChatFeed();
+  const legacyChat = useLegacyChatFeed({ enable: host === login?.pubkey });
   const events = useMemo(() => {
     const extra = [];
     const starts = findTag(event, "starts");
