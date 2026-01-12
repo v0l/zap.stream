@@ -82,18 +82,32 @@ export type ExternalChatFeed = {
      * Connect to the chat feed
      */
     connectFeed(): Promise<void>;
+    
     /**
      * Get the generic chat info from the external feed
      */
     getInfo(): ChatInfo;
+    
     /**
      * Disconnect from the chat feed and cleanup resources
      */
     disconnect(): Promise<void>;
+
+    /**
+     * Load badge information
+     */
+    getBadges(): Promise<Array<ExternalChatBadge>>;
+
 } & EventEmitter<ExternalChatEvents>;
 
 export interface ExternalChatEvents {
     chat(ev: ExternalChatEvent): void;
+}
+
+export interface ExternalChatBadge {
+    id: string;
+    title?: string;
+    url: string;
 }
 
 export interface ExternalChatEvent {

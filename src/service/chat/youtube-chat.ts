@@ -1,6 +1,6 @@
 import EventEmitter from "eventemitter3";
-import { LiveChatMessageListRequest, LiveChatMessageSnippet_TypeWrapper_Type, GrpcWebImpl, type V3DataLiveChatMessageService, V3DataLiveChatMessageServiceClientImpl } from "./stream_list";
-import type { ChatInfo, ExternalChatFeed, ExternalChatEvents, OAuthToken } from "./types";
+import { LiveChatMessageListRequest, LiveChatMessageSnippet_TypeWrapper_Type, GrpcWebImpl, V3DataLiveChatMessageServiceClientImpl } from "./stream_list";
+import type { ChatInfo, ExternalChatFeed, ExternalChatEvents, OAuthToken, ExternalChatBadge } from "./types";
 import { BrowserHeaders } from "browser-headers";
 import { grpc } from "@improbable-eng/grpc-web";
 import { unixNow } from "@snort/shared";
@@ -15,6 +15,11 @@ export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements Ext
         super();
         this.clientId = clientId;
         this.token = token;
+    }
+
+    async getBadges(): Promise<Array<ExternalChatBadge>> {
+        // TODO: add member badges
+        return [];
     }
 
     connectFeed(): Promise<void> {

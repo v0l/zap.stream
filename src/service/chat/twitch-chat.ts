@@ -1,5 +1,5 @@
 import EventEmitter from "eventemitter3";
-import type { ChatInfo, ExternalChatFeed, ExternalChatEvents } from "./types";
+import type { ChatInfo, ExternalChatFeed, ExternalChatEvents, ExternalChatBadge } from "./types";
 
 export class TwitchChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
   private clientId: string;
@@ -13,6 +13,21 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
     super();
     this.clientId = clientId;
     this.bearer = bearer;
+  }
+
+  async getBadges(): Promise<Array<ExternalChatBadge>> {
+    const badgeTasks = [
+      this.getGlobalBadges()
+    ];
+    if (this.token?.user_id) {
+      badgeTasks.push(this.getChannelBadges(this.token.user_id));
+    }
+    return (await Promise.all(badgeTasks)).flat().flatMap(b => {
+      return b.versions.map(x => ({
+        id: `${b.set_id}_${x.id}`,
+        url: x.image_url_2x
+      }));
+    });
   }
 
   async connectFeed() {

@@ -225,10 +225,10 @@ export function LiveChat({
                 const externalChat = "chat" in a ? a.chat as ExternalChatEvent : undefined;
                 switch (externalChat?.feed) {
                   case "twitch": {
-                    return <TwitchChatMessage ev={externalChat} key={a.id} created_at={a.created_at} />;
+                    return <TwitchChatMessage ev={externalChat} key={a.id} created_at={a.created_at} badges={legacyChat.badges} />;
                   }
                   case "youtube": {
-                    return <YoutubeChatMessage ev={externalChat} key={a.id} />;
+                    return <YoutubeChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />;
                   }
                   default: {
                     return <div>{JSON.stringify(externalChat)}</div>

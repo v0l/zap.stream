@@ -1,11 +1,11 @@
 import type { LiveChatMessage } from "@/service/chat/stream_list";
-import type { ExternalChatEvent } from "@/service/chat/types";
+import type { ExternalChatBadge, ExternalChatEvent } from "@/service/chat/types";
 import { Text } from "@/element/text";
 import dayjs from "dayjs";
 import YoutubeIcon from "@/youtube.png";
 import { Icon } from "../icon";
 
-export function YoutubeChatMessage({ ev }: { ev: ExternalChatEvent }) {
+export function YoutubeChatMessage({ ev }: { ev: ExternalChatEvent, badges: Array<ExternalChatBadge> }) {
     const chat = ev.internal as LiveChatMessage;
 
     return <div className="leading-6 overflow-wrap">
