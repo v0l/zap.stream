@@ -1,7 +1,9 @@
 import EventEmitter from "eventemitter3";
 import type { ExternalChatEvents, ExternalChatFeed, ChatInfo, ExternalChatBadge } from "./types";
+import { unixNow } from "@snort/shared";
 
 export class KickChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
+    private connectedAt: number = 0;
 
     constructor(readonly channel_name: string) {
         super();
@@ -34,7 +36,7 @@ export class KickChat extends EventEmitter<ExternalChatEvents> implements Extern
 
     getInfo(): ChatInfo {
         return {
-            connected: 0,
+            connected: this.connectedAt,
             name: this.channel_name,
             provider_name: "Kick"
         }
@@ -63,6 +65,7 @@ export class KickChat extends EventEmitter<ExternalChatEvents> implements Extern
             };
             ws.onerror = reject;
         });
+        this.connectedAt = unixNow();
         ws.onmessage = (e) => {
             this.onMessage(e);
         }
