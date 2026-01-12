@@ -31,7 +31,7 @@ function StreamPageContent() {
       <Helmet>
         <title>{`${info?.title ?? "Untitled"} - zap.stream`}</title>
         <meta name="description" content={descriptionContent} />
-        <meta property="og:url" content={`https://${window.location.host}/${link.encode()}`} />
+        {link && <meta property="og:url" content={`https://${window.location.host}/${link.encode()}`} />}
         <meta property="og:type" content="video" />
         <meta property="og:title" content={info?.title ?? "Untitled"} />
         <meta property="og:description" content={descriptionContent} />
