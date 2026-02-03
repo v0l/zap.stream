@@ -26,15 +26,14 @@ export default class GameDatabase {
     }
     const rsp = await fetch(`${this.url}/games/${igId}`);
     if (rsp.ok) {
-      const gameInfo = (await rsp.json()) as Array<GameInfo> | undefined;
-      const info = gameInfo?.[0];
-      if (info) {
-        if (info.cover) {
-          info.cover.url = `https://images.igdb.com/igdb/image/upload/t_cover_big/${info.cover.image_id}.jpg`
+      const gameInfo = (await rsp.json()) as GameInfo | undefined;
+      if (gameInfo) {
+        if (gameInfo.cover) {
+          gameInfo.cover.url = `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.jpg`
         }
-        window.sessionStorage.setItem(cacheKey, JSON.stringify(info));
+        window.sessionStorage.setItem(cacheKey, JSON.stringify(gameInfo));
       }
-      return info;
+      return gameInfo;
     }
   }
 }
