@@ -2885,15 +2885,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snort/system-react@npm:^2.0.0-pre.11":
-  version: 2.0.0-pre.11
-  resolution: "@snort/system-react@npm:2.0.0-pre.11"
+"@snort/system-react@npm:2.0.0-pre.12":
+  version: 2.0.0-pre.12
+  resolution: "@snort/system-react@npm:2.0.0-pre.12"
   dependencies:
     "@snort/shared": "npm:^2.0.0-pre.3"
-    "@snort/system": "npm:^2.0.0-pre.8"
+    "@snort/system": "npm:^2.0.0-pre.9"
     react: "npm:^19.2.3"
     react-dom: "npm:^19.2.3"
-  checksum: 10c0/8d12c4a2f283ee1e7097e9f083301f6d1e300ab85ab0c5093208065ccd31825ded4b3f3d6f6d08adf181be42339bc8ae0d48dfbd9f89d80100f1981fc59b2d07
+  checksum: 10c0/a975b0c54b0789109770f1ffd2d7394c78cb2f72ed58e07fe3ea9a7c089f50ede7a2bffdb89aaa10c5880cb0bdcf7da21414506fbe731959a0c98a15c79646e4
   languageName: node
   linkType: hard
 
@@ -2901,6 +2901,25 @@ __metadata:
   version: 1.0.6
   resolution: "@snort/system-wasm@npm:1.0.6"
   checksum: 10c0/b9b92d66e1051d374812319957bed7ab97b4782135a21d4eef7cbc6a36abe1e02b0f25c1e8f810f1350fc54bc98a7ee52c2ed4d7c937246471a51523391a9554
+  languageName: node
+  linkType: hard
+
+"@snort/system@npm:2.0.0-pre.9, @snort/system@npm:^2.0.0-pre.9":
+  version: 2.0.0-pre.9
+  resolution: "@snort/system@npm:2.0.0-pre.9"
+  dependencies:
+    "@noble/ciphers": "npm:^2.0.1"
+    "@noble/curves": "npm:^2.0.1"
+    "@noble/hashes": "npm:^2.0.1"
+    "@scure/base": "npm:^2.0.0"
+    "@snort/shared": "npm:^2.0.0-pre.3"
+    debug: "npm:^4.4.3"
+    eventemitter3: "npm:^5.0.1"
+    isomorphic-ws: "npm:^5.0.0"
+    nostr-social-graph: "npm:^1.0.33"
+    typescript-lru-cache: "npm:^2.0.0"
+    ws: "npm:^8.18.3"
+  checksum: 10c0/784a0b293af42ec2f28ae547c055c01551af80fabff59669d22437859f60f479ba2fce7c75fefec97211cfeeda5cf964e398142787dc1a4b3cfe46762634f32a
   languageName: node
   linkType: hard
 
@@ -7773,8 +7792,8 @@ __metadata:
     "@noble/hashes": "npm:^2.0.1"
     "@scure/base": "npm:^2.0.0"
     "@snort/shared": "npm:^2.0.0-pre.3"
-    "@snort/system": "npm:^2.0.0-pre.8"
-    "@snort/system-react": "npm:^2.0.0-pre.11"
+    "@snort/system": "npm:2.0.0-pre.9"
+    "@snort/system-react": "npm:2.0.0-pre.12"
     "@snort/system-wasm": "npm:^1.0.6"
     "@snort/wallet": "npm:^2.0.0-pre.8"
     "@snort/worker-relay": "npm:^2.0.0-pre.1"
