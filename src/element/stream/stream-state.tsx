@@ -83,6 +83,26 @@ export function StreamContextProvider({
         .replyToLink([eventLink])
         .relay(relays)
       rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([eventLink]).relay(relays)
+    } else if (link.type === NostrPrefix.PublicKey || link.type === NostrPrefix.Profile) {
+      rb.withFilter()
+        .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
+        .authors([link.id])
+        .limit(200)
+        .relay(relays)
+      rb.withFilter().kinds([EventKind.ZapReceipt]).authors([link.id]).relay(relays)
+    } else if (link.type === NostrPrefix.Address || link.type === NostrPrefix.Event) {
+      const authorTag = link.tags.find(t => t[0] === 'p')
+      if (authorTag) {
+        rb.withFilter()
+          .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
+          .authors([authorTag[1]])
+          .limit(200)
+          .relay(relays)
+        rb.withFilter().kinds([EventKind.ZapReceipt]).authors([authorTag[1]]).relay(relays)
+      } else {
+        rb.withFilter().kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).limit(200).relay(relays)
+        rb.withFilter().kinds([EventKind.ZapReceipt]).limit(200).relay(relays)
+      }
     }
     if (goalLink) {
       rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([goalLink]).relay(relays)
