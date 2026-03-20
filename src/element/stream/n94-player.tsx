@@ -154,34 +154,45 @@ type N94PlayerProps = {
 } & Omit<HTMLProps<HTMLVideoElement>, "ref">;
 
 export default function Nip94Player({ link, ...props }: N94PlayerProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLVideoElement | null>(null);
   const system = useContext(SnortContext);
 
   useEffect(() => {
-    if (ref.current) {
-      const player = ref.current as HTMLVideoElement & {
-        __streamer?: mpegts.Player;
-      };
+    const videoElement = ref.current;
 
-      if (!player.__streamer) {
-        player.__streamer = new mpegts.MSEPlayer(
-          {
-            type: "mse",
-            isLive: true,
-            url: link.encode(),
-          },
-          {
-            system,
-            customLoader: Nip94Loader,
-          } as unknown as mpegts.Config,
-        );
+    if (!videoElement) return;
 
-        player.__streamer.attachMediaElement(player);
-        player.__streamer.load();
-        player.__streamer.play();
-      }
+    // Destroy any existing player before creating a new one
+    if ((videoElement as any).__streamer) {
+      (videoElement as any).__streamer.destroy();
     }
-  }, [ref]);
+
+    // Create new player
+    const player = new mpegts.MSEPlayer(
+      {
+        type: "mse",
+        isLive: true,
+        url: link.encode(),
+      },
+      {
+        system,
+        customLoader: Nip94Loader,
+      } as unknown as mpegts.Config,
+    );
+
+    (videoElement as any).__streamer = player;
+    player.attachMediaElement(videoElement);
+    player.load();
+    player.play();
+
+    // Cleanup function to destroy the mpegts player when component unmounts
+    return () => {
+      if (player) {
+        player.destroy();
+        (videoElement as any).__streamer = undefined;
+      }
+    };
+  }, [link]);
 
   return <video {...props} slot="media" ref={ref} playsInline={true} autoPlay={true}></video>;
 }

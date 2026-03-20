@@ -4369,10 +4369,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"custom-media-element@npm:^1.4.5":
-  version: 1.4.5
-  resolution: "custom-media-element@npm:1.4.5"
-  checksum: 10c0/450885d514f6aa319fb3d20938eb47b835a7419a7421b1c91fb36e73f3432e3b21c365db1d10aac185f9b3cf3c8f3b8e3bcfa0e02be8d503e324ee73649f6890
+"custom-media-element@npm:^1.4.6":
+  version: 1.4.6
+  resolution: "custom-media-element@npm:1.4.6"
+  checksum: 10c0/e47644f9f8f4f1ffdc0186d67d42b5472b9538f72d55a74283f820a5c411095849d029804263909b49b6bd79c7cc36399da827b45a733ed1f01b6ac5812cc045
   languageName: node
   linkType: hard
 
@@ -5453,14 +5453,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hls-video-element@npm:^1.5.10":
-  version: 1.5.10
-  resolution: "hls-video-element@npm:1.5.10"
+"hls-video-element@npm:^1.5.11":
+  version: 1.5.11
+  resolution: "hls-video-element@npm:1.5.11"
   dependencies:
-    custom-media-element: "npm:^1.4.5"
+    custom-media-element: "npm:^1.4.6"
     hls.js: "npm:^1.6.5"
-    media-tracks: "npm:^0.3.4"
-  checksum: 10c0/50ca32ae22d0bd7a54ae1662e669db1e6b3621cbbdebbc30d882930c19efee3075f8b406863e06cbec21bd9a7ae04bc66d7537c880174d90c57a218f12838cbe
+    media-tracks: "npm:^0.3.5"
+  checksum: 10c0/c9a0bae28e22dde450f4bf1dff3eca6c2ddfe1bac8543e51738f336241051bfad0b05fd8568b5e89c9ce0b62eacdaf6fbc58f29fcc567a216b4bdccce7ef0cf1
   languageName: node
   linkType: hard
 
@@ -6328,10 +6328,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"media-tracks@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "media-tracks@npm:0.3.4"
-  checksum: 10c0/5d42013c1dfe885c3c4642edf35273df62412fdd36e19bf9741e09e33cde8134ad80ff742e99868cf53dc226ae9a938b09d61237e0205c9a8d2763fd564bc07f
+"media-tracks@npm:^0.3.5":
+  version: 0.3.5
+  resolution: "media-tracks@npm:0.3.5"
+  checksum: 10c0/a34402cb63dbf1c7d839595d0daf53b8df2a357f5fc71a365fe8427fd9013c09a3a957a6ad29a2bec177667f507ed7955eed71f7d12ced56e1f9edc8e178e93b
   languageName: node
   linkType: hard
 
@@ -7818,7 +7818,7 @@ __metadata:
     emoji-mart: "npm:^5.6.0"
     eventemitter3: "npm:^5.0.1"
     flag-icons: "npm:^7.5.0"
-    hls-video-element: "npm:^1.5.10"
+    hls-video-element: "npm:^1.5.11"
     marked: "npm:^17.0.1"
     media-chrome: "npm:^4.17.1"
     mpegts.js: "npm:^1.8.0"

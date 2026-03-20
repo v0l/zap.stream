@@ -27,7 +27,7 @@
     "emoji-mart": "^5.6.0",
     "eventemitter3": "^5.0.1",
     "flag-icons": "^7.5.0",
-    "hls-video-element": "^1.5.10",
+    "hls-video-element": "^1.5.11",
     "marked": "^17.0.1",
     "media-chrome": "^4.17.1",
     "mpegts.js": "^1.8.0",

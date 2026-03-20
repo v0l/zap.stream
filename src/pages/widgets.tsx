@@ -1,64 +1,64 @@
-import { type ReactNode, useMemo, useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { NostrLink } from "@snort/system";
+import { type ReactNode, useMemo, useState, memo } from 'react'
+import { FormattedMessage, useIntl } from 'react-intl'
+import { NostrLink } from '@snort/system'
 
-import Copy from "@/element/copy";
-import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import { getVoices, speak, toTextToSpeechParams } from "@/text2speech";
-import { useLogin } from "@/hooks/login";
-import { ZapAlertItem } from "./widgets/zaps";
-import { TopZappersWidget } from "./widgets/top-zappers";
-import { Views } from "./widgets/views";
-import { Music } from "./widgets/music";
-import { NostrPrefix, hexToBech32 } from "@snort/shared";
-import { DefaultButton } from "@/element/buttons";
-import { groupBy } from "@/utils";
-import { ConnectLegacyStream } from "@/element/legacy";
-import { ChatApis } from "@/service/chat/types";
+import Copy from '@/element/copy'
+import { useCurrentStreamFeed } from '@/hooks/current-stream-feed'
+import { getVoices, speak, toTextToSpeechParams } from '@/text2speech'
+import { useLogin } from '@/hooks/login'
+import { ZapAlertItem } from './widgets/zaps'
+import { TopZappersWidget } from './widgets/top-zappers'
+import { Views } from './widgets/views'
+import { Music } from './widgets/music'
+import { NostrPrefix, hexToBech32 } from '@snort/shared'
+import { DefaultButton } from '@/element/buttons'
+import { groupBy } from '@/utils'
+import { ConnectLegacyStream } from '@/element/legacy'
+import { ChatApis } from '@/service/chat/types'
 
 interface ZapAlertConfigurationProps {
-  npub: string;
-  baseUrl: string;
+  npub: string
+  baseUrl: string
 }
 
 function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
-  const login = useLogin();
-  const { formatMessage, formatDisplayName } = useIntl();
+  const login = useLogin()
+  const { formatMessage, formatDisplayName } = useIntl()
 
-  const [testText, setTestText] = useState("");
-  const [textToSpeech, setTextToSpeech] = useState<boolean>(false);
-  const [voice, setVoice] = useState<string | null>(null);
-  const [minSatsForTextToSpeech, setMinSatsForTextToSpeech] = useState<string>("21");
-  const [volume, setVolume] = useState<number>(1);
+  const [testText, setTestText] = useState('')
+  const [textToSpeech, setTextToSpeech] = useState<boolean>(false)
+  const [voice, setVoice] = useState<string | null>(null)
+  const [minSatsForTextToSpeech, setMinSatsForTextToSpeech] = useState<string>('21')
+  const [volume, setVolume] = useState<number>(1)
 
   // Google propietary voices are not available on OBS browser
-  const voices = getVoices().filter(v => !v.name.includes("Google"));
+  const voices = getVoices().filter(v => !v.name.includes('Google'))
   const groupedVoices = useMemo(() => {
-    return groupBy(voices, v => v.lang);
-  }, [voices]);
+    return groupBy(voices, v => v.lang)
+  }, [voices])
   const languages = useMemo(() => {
-    return Object.keys(groupedVoices).sort();
-  }, [groupedVoices]);
+    return Object.keys(groupedVoices).sort()
+  }, [groupedVoices])
   const selectedVoice = useMemo(() => {
-    return voices.find(v => v.voiceURI === voice);
-  }, [voice]);
+    return voices.find(v => v.voiceURI === voice)
+  }, [voice])
 
-  const isTextToSpeechSupported = "speechSynthesis" in window && voices.length > 0;
-  const isTextToSpeechEnabled = isTextToSpeechSupported && textToSpeech;
+  const isTextToSpeechSupported = 'speechSynthesis' in window && voices.length > 0
+  const isTextToSpeechEnabled = isTextToSpeechSupported && textToSpeech
 
   const query = useMemo(() => {
     const params = toTextToSpeechParams({
       voiceURI: voice,
       minSats: voice ? Number(minSatsForTextToSpeech) : null,
       volume,
-    });
-    const queryParams = params.toString();
-    return queryParams.length > 0 ? `?${queryParams}` : "";
-  }, [voice, volume, minSatsForTextToSpeech]);
+    })
+    const queryParams = params.toString()
+    return queryParams.length > 0 ? `?${queryParams}` : ''
+  }, [voice, volume, minSatsForTextToSpeech])
 
   function testVoice() {
     if (selectedVoice) {
-      speak(selectedVoice, testText, volume);
+      speak(selectedVoice, testText, volume)
     }
   }
 
@@ -70,10 +70,10 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
       <Copy text={`${baseUrl}/alert/${npub}/zaps${query}`} />
       <ZapAlertItem
         item={{
-          id: "",
+          id: '',
           valid: true,
           content: testText,
-          zapService: "",
+          zapService: '',
           anonZap: false,
           errors: [],
           sender: login?.pubkey,
@@ -84,16 +84,27 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
       />
       {isTextToSpeechSupported && (
         <div>
-          <div className="flex items-center gap-2 select-none" onClick={() => setTextToSpeech(!textToSpeech)}>
+          <button
+            type="button"
+            className="flex items-center gap-2 select-none"
+            onClick={() => setTextToSpeech(!textToSpeech)}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                setTextToSpeech(!textToSpeech)
+              }
+            }}
+          >
             <input
               type="checkbox"
               checked={textToSpeech}
               onChange={ev => {
-                setTextToSpeech(ev.target.checked);
+                setTextToSpeech(ev.target.checked)
               }}
+              className="hidden"
             />
             <FormattedMessage defaultMessage="Enable text to speech" />
-          </div>
+          </button>
           {isTextToSpeechEnabled && (
             <>
               <div className="flex items-center gap-2">
@@ -131,9 +142,9 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
                     <FormattedMessage defaultMessage="Select voice..." />
                   </option>
                   {languages.map(l => (
-                    <optgroup label={formatDisplayName(l, { type: "language" })}>
+                    <optgroup key={l} label={formatDisplayName(l, { type: 'language' })}>
                       {groupedVoices[l].map(v => (
-                        <option value={v.voiceURI}>{v.name}</option>
+                        <option key={v.voiceURI} value={v.voiceURI}>{v.name}</option>
                       ))}
                     </optgroup>
                   ))}
@@ -147,7 +158,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
                     </label>
                     <textarea
                       id="zap-alert-text"
-                      placeholder={formatMessage({ defaultMessage: "Insert text to speak" })}
+                      placeholder={formatMessage({ defaultMessage: 'Insert text to speak' })}
                       value={testText}
                       onChange={ev => setTestText(ev.target.value)}
                     />
@@ -162,31 +173,36 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export function WidgetsPage() {
-  const login = useLogin();
-  const profileLink = new NostrLink(NostrPrefix.PublicKey, login?.pubkey ?? "");
-  const current = useCurrentStreamFeed(profileLink);
-  const currentLink = current ? NostrLink.fromEvent(current) : undefined;
-  const npub = hexToBech32("npub", login?.pubkey);
-  const [badges, setBadges] = useState(true);
+export const WidgetsPage = memo(function WidgetsPage() {
+  const login = useLogin()
+  const profileLink = new NostrLink(NostrPrefix.PublicKey, login?.pubkey ?? '')
+  const current = useCurrentStreamFeed(profileLink)
+  const currentLink = current ? NostrLink.fromEvent(current) : undefined
+  const npub = hexToBech32('npub', login?.pubkey)
+  const [badges, setBadges] = useState(true)
 
-  const baseUrl = `${window.location.protocol}//${window.location.host}`;
+  const baseUrl = `${window.location.protocol}//${window.location.host}`
 
-  function WidgetBox({ children }: { children?: ReactNode }) {
-    return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-wrap">{children}</div>;
-  }
-
-  const chatParams = new URLSearchParams();
-  chatParams.set("badges", String(badges));
-  for (const [k, v] of Object.entries(ChatApis)) {
-    const params = v.getWidgetParams();
-    if (params) {
-      chatParams.set(k, params);
+  const WidgetBox = useMemo(() => {
+    return function WidgetBox({ children }: { children?: ReactNode }) {
+      return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-hidden">{children}</div>
     }
-  }
+  }, [])
+
+  const chatParams = useMemo(() => {
+    const params = new URLSearchParams()
+    params.set('badges', String(badges))
+    for (const [k, v] of Object.entries(ChatApis)) {
+      const paramsObj = v.getWidgetParams()
+      if (paramsObj) {
+        params.set(k, paramsObj)
+      }
+    }
+    return params
+  }, [badges])
 
   return (
     <div className="grid grid-cols-4 gap-2">
@@ -234,5 +250,5 @@ export function WidgetsPage() {
         {currentLink && <Music link={currentLink} />}
       </WidgetBox>
     </div>
-  );
-}
+  )
+})
