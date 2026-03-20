@@ -1,25 +1,26 @@
-import { formatSats } from "@/number";
-import { Icon } from "./icon";
-import { Profile } from "./profile";
-import { FormattedMessage } from "react-intl";
-import classNames from "classnames";
+import { formatSats } from '@/number'
+import { Icon } from './icon'
+import { Profile } from './profile'
+import { FormattedMessage } from 'react-intl'
+import classNames from 'classnames'
+import { memo } from 'react'
 
-export function ZapperRow({
+export const ZapperRow = memo(function ZapperRow({
   pubkey,
   total,
   showName,
   avatarSize,
   className,
 }: {
-  pubkey: string;
-  total: number;
-  showName?: boolean;
-  avatarSize?: number;
-  className?: string;
+  pubkey: string
+  total: number
+  showName?: boolean
+  avatarSize?: number
+  className?: string
 }) {
   return (
-    <div className={classNames(className, "flex gap-1 justify-between items-center")}>
-      {pubkey === "anon" ? (
+    <div className={classNames(className, 'flex gap-1 justify-between items-center')}>
+      {pubkey === 'anon' ? (
         <span style={{ height: avatarSize }}>
           <FormattedMessage defaultMessage="Anon" id="bfvyfs" />
         </span>
@@ -31,5 +32,5 @@ export function ZapperRow({
         <span>{formatSats(total)}</span>
       </div>
     </div>
-  );
-}
+  )
+})

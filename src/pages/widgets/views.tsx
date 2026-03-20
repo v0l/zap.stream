@@ -1,14 +1,15 @@
-import type { NostrLink } from "@snort/system";
-import { FormattedMessage } from "react-intl";
+import type { NostrLink } from '@snort/system'
+import { FormattedMessage } from 'react-intl'
+import { memo } from 'react'
 
-import { useCurrentStreamFeed } from "@/hooks/current-stream-feed";
-import { findTag } from "@/utils";
+import { useCurrentStreamFeed } from '@/hooks/current-stream-feed'
+import { findTag } from '@/utils'
 
-export function Views({ link }: { link: NostrLink }) {
-  const current = useCurrentStreamFeed(link, true);
+export const Views = memo(function Views({ link }: { link: NostrLink }) {
+  const current = useCurrentStreamFeed(link, true)
 
-  const viewers = findTag(current, "current_participants");
-  const n = Number(viewers);
+  const viewers = findTag(current, 'current_participants')
+  const n = Number(viewers)
   return (
     <div className="views">
       {Number.isNaN(n) ? (
@@ -17,5 +18,5 @@ export function Views({ link }: { link: NostrLink }) {
         <FormattedMessage defaultMessage="{n} viewers" id="3adEeb" values={{ n }} />
       )}
     </div>
-  );
-}
+  )
+})
