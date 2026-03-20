@@ -6,8 +6,17 @@ export const useCast = () => {
   const [currentSession, setCurrentSession] = useState<any>(null)
 
   useEffect(() => {
+    console.log('useCast effect running')
+    console.log('window.chrome:', window.chrome)
+    console.log('"chrome" in window:', 'chrome' in window)
+    if ('chrome' in window) {
+      console.log('window.chrome.cast:', window.chrome.cast)
+      console.log('"cast" in window.chrome:', 'cast' in window.chrome)
+    }
+
     // Check if Google Cast API is available
     if ('chrome' in window && 'cast' in window.chrome) {
+      console.log('Cast API detected')
       setIsAvailable(true)
 
       // Initialize Cast framework
@@ -16,6 +25,7 @@ export const useCast = () => {
 
       // Initialize the Cast API
       const initializeCastApi = () => {
+        console.log('Initializing Cast API')
         const applicationId = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
         const apiConfig = new chrome.cast.ApiConfig(
           new chrome.cast.SessionRequest(applicationId),
@@ -54,11 +64,26 @@ export const useCast = () => {
       // Load the Cast API
       const castScript = document.createElement('script')
       castScript.src = 'https://www.gstatic.com/cv/js/sender/v1/cast_sender.js'
-      castScript.onload = initializeCastApi
+      castScript.onload = () => {
+        console.log('Cast script loaded')
+        initializeCastApi()
+      }
+      castScript.onerror = error => {
+        console.error('Failed to load cast script:', error)
+      }
       document.head.appendChild(castScript)
+    } else {
+      console.log('Cast API not available')
+      // For development, let's simulate availability
+      // In production, you would remove this
+      if (window.location.hostname === 'localhost') {
+        console.log('Simulating Cast API availability for localhost')
+        setIsAvailable(true)
+      }
     }
 
     return () => {
+      console.log('Cleaning up useCast effect')
       // Cleanup: end Cast session if connected
       if (currentSession) {
         try {
@@ -79,6 +104,7 @@ export const useCast = () => {
 
   const castMedia = useCallback(
     (mediaUrl: string, title: string) => {
+      console.log('castMedia called with:', { mediaUrl, title, isConnected, hasSession: !!currentSession })
       if (!isConnected || !currentSession) {
         console.warn('Cannot cast media: not connected to a Cast device')
         return false
@@ -110,6 +136,7 @@ export const useCast = () => {
   )
 
   const stopCasting = useCallback(() => {
+    console.log('stopCasting called')
     if (currentSession) {
       try {
         currentSession.endSession(
