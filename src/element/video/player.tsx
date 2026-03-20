@@ -87,9 +87,3 @@ export default function VideoPlayer({
     </MediaController>
   )
 }
-;/>
-)}
-      </MediaControlBar>
-    </MediaController>
-  )
-}
