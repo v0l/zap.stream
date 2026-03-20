@@ -7,15 +7,10 @@ export const useCast = () => {
 
   useEffect(() => {
     console.log('useCast effect running')
-    console.log('window.chrome:', window.chrome)
-    console.log('"chrome" in window:', 'chrome' in window)
-    if ('chrome' in window) {
-      console.log('window.chrome.cast:', window.chrome.cast)
-      console.log('"cast" in window.chrome:', 'cast' in window.chrome)
-    }
+    const hasCastApi = 'chrome' in window && 'cast' in window.chrome
+    const isLocalhost = window.location.hostname === 'localhost'
 
-    // Check if Google Cast API is available
-    if ('chrome' in window && 'cast' in window.chrome) {
+    if (hasCastApi) {
       console.log('Cast API detected')
       setIsAvailable(true)
 
@@ -72,14 +67,93 @@ export const useCast = () => {
         console.error('Failed to load cast script:', error)
       }
       document.head.appendChild(castScript)
-    } else {
-      console.log('Cast API not available')
-      // For development, let's simulate availability
-      // In production, you would remove this
-      if (window.location.hostname === 'localhost') {
-        console.log('Simulating Cast API availability for localhost')
-        setIsAvailable(true)
+    } else if (isLocalhost) {
+      console.log('Setting up mock Cast API for localhost')
+      setIsAvailable(true)
+
+      // Mock the chrome.cast.media namespace if it doesn't exist
+      if (!window.chrome.cast) {
+        window.chrome.cast = {}
       }
+
+      // Create mock classes that behave like the real ones
+      const mockMediaInfo = function (contentUrl) {
+        this.contentUrl = contentUrl
+        this.metadata = null
+      }
+
+      const mockGenericMediaMetadata = () => {
+        // empty
+      }
+
+      const mockLoadRequest = function (mediaInfo) {
+        this.mediaInfo = mediaInfo
+        this.onSuccess = null
+        this.onError = null
+      }
+
+      window.chrome.cast.media = {
+        MediaInfo: mockMediaInfo,
+        GenericMediaMetadata: mockGenericMediaMetadata,
+        LoadRequest: mockLoadRequest,
+        DEFAULT_MEDIA_RECEIVER_APP_ID: 'CC1AD845',
+      }
+
+      // Create a mock session that properly handles callbacks
+      const mockSession = {
+        sessionId: 'mock-session-id',
+        loadMedia: request => {
+          console.log('Mock cast: loadMedia called with:', request)
+          // Simulate async success by calling the onSuccess callback after a short delay
+          if (request.onSuccess) {
+            setTimeout(() => {
+              request.onSuccess()
+            }, 100)
+          }
+          // If there's an error, call onError
+          if (request.onError) {
+            setTimeout(() => {
+              request.onError({ code: 'ERROR', description: 'Mock error' })
+            }, 100)
+          }
+        },
+        endSession: (onSuccess, onError) => {
+          console.log('Mock cast: endSession called')
+          setCurrentSession(null)
+          setIsConnected(false)
+          // Call the success callback after a short delay
+          if (onSuccess) {
+            setTimeout(() => {
+              onSuccess()
+            }, 100)
+          }
+          // If there's an error, call onError
+          if (onError) {
+            setTimeout(() => {
+              onError({ code: 'ERROR', description: 'Mock error' })
+            }, 100)
+          }
+        },
+        addUpdateListener: listener => {
+          console.log('Mock cast: addUpdateListener called')
+          // Store the listener
+          mockSession.listener = listener
+          // Call it immediately to simulate being connected with a valid session
+          listener({ sessionId: 'mock-session-id', isIdle: false })
+          // Also store a way to simulate disconnection
+          mockSession.simulateDisconnection = () => {
+            if (mockSession.listener) {
+              mockSession.listener(null)
+            }
+          }
+        },
+      }
+
+      // Set up the mock session
+      setCurrentSession(mockSession)
+      setIsConnected(true)
+    } else {
+      console.log('Cast API not available and not localhost')
     }
 
     return () => {
@@ -100,7 +174,7 @@ export const useCast = () => {
         }
       }
     }
-  }, [currentSession])
+  }, [])
 
   const castMedia = useCallback(
     (mediaUrl: string, title: string) => {
