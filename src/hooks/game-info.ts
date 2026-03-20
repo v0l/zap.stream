@@ -22,8 +22,6 @@ export default function useGameInfo(gameId?: string, gameInfo?: GameInfo) {
         }
       } else if (prefix === 'igdb') {
         new GameDatabase().getGame(id).then(setGame)
-      } else {
-        new GameDatabase().getGame(gameId).then(setGame)
       }
     }
   }, [gameInfo, gameId])
