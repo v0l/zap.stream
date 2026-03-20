@@ -9,26 +9,33 @@ import {
   MediaFullscreenButton,
   MediaPipButton,
   MediaPlaybackRateButton,
-} from "media-chrome/react";
-import { MediaPlayerSizeButtonReact } from "@/element/video/video-size-button";
-import useImgProxy from "@/hooks/img-proxy";
-import { useMediaQuery } from "usehooks-ts";
-import { useVideoPlayerContext } from "./context";
+} from 'media-chrome/react'
+import { MediaPlayerSizeButtonReact } from '@/element/video/video-size-button'
+import useImgProxy from '@/hooks/img-proxy'
+import { useMediaQuery } from 'usehooks-ts'
+import { useVideoPlayerContext } from './context'
+import { useCast } from '@/hooks/useCast'
 
 export default function VideoPlayer({
   showPip,
   showWideMode,
   loop,
 }: {
-  showPip?: boolean;
-  showWideMode?: boolean;
-  loop?: boolean;
+  showPip?: boolean
+  showWideMode?: boolean
+  loop?: boolean
 }) {
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
-  const ctx = useVideoPlayerContext();
+  const isDesktop = useMediaQuery('(min-width: 1280px)')
+  const ctx = useVideoPlayerContext()
+  const { isAvailable, isConnected, castMedia, stopCasting } = useCast()
 
-  const ar = ctx.video?.bestAspectRatio() ?? 10 / 16;
-  const { proxy } = useImgProxy();
+  const ar = ctx.video?.bestAspectRatio() ?? 10 / 16
+  const { proxy } = useImgProxy()
+
+  // Get current media URL and title for casting
+  const mediaUrl = ctx.video?.sources()[0]?.url ?? ''
+  const mediaTitle = ctx.video?.title ?? 'zap.stream'
+
   return (
     <MediaController className="min-w-0 w-full" mediaStreamType="on-demand">
       <video
@@ -40,8 +47,11 @@ export default function VideoPlayer({
         autoPlay={true}
         controls={false}
         loop={loop}
-        poster={proxy(ctx.video?.bestPoster()?.url ?? "")}>
-        {ctx.video?.sources().map(a => <source key={a.url} src={a.url} type={a.mimeType} />)}
+        poster={proxy(ctx.video?.bestPoster()?.url ?? '')}
+      >
+        {ctx.video?.sources().map(a => (
+          <source key={a.url} src={a.url} type={a.mimeType} />
+        ))}
       </video>
       <MediaControlBar>
         <MediaPlayButton />
@@ -62,7 +72,24 @@ export default function VideoPlayer({
             }
           />
         )}
+        {/* Cast button */}
+        {isAvailable && (
+          <button
+            className="cast-button"
+            onClick={isConnected ? stopCasting : () => castMedia(mediaUrl, mediaTitle)}
+            aria-label={isConnected ? 'Stop casting' : 'Cast to device'}
+            title={isConnected ? 'Stop casting' : 'Cast to device'}
+          >
+            {isConnected ? '📺' : '📻'}
+          </button>
+        )}
       </MediaControlBar>
     </MediaController>
-  );
+  )
+}
+;/>
+)}
+      </MediaControlBar>
+    </MediaController>
+  )
 }
