@@ -1,18 +1,18 @@
-import { useMemo } from "react";
-import { EventKind, type NostrLink, RequestBuilder, parseZap } from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
+import { useMemo } from "react"
+import { EventKind, type NostrLink, RequestBuilder, parseZap } from "@snort/system"
+import { useRequestBuilder } from "@snort/system-react"
 
 export function useZaps(link?: NostrLink, leaveOpen = false) {
   const sub = useMemo(() => {
-    const b = new RequestBuilder(`zaps:${link?.id}`);
+    const b = new RequestBuilder(`zaps:${link?.id}`)
     if (link) {
-      b.withOptions({ leaveOpen });
-      b.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([link]);
+      b.withOptions({ leaveOpen })
+      b.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([link])
     }
-    return b;
-  }, [link, leaveOpen]);
+    return b
+  }, [link, leaveOpen])
 
-  const zaps = useRequestBuilder(sub);
+  const zaps = useRequestBuilder(sub)
 
   return useMemo(
     () =>
@@ -21,5 +21,5 @@ export function useZaps(link?: NostrLink, leaveOpen = false) {
         .map(ev => parseZap(ev))
         .filter(z => z?.valid) ?? [],
     [zaps.length],
-  );
+  )
 }

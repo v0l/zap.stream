@@ -1,10 +1,10 @@
-import { useParams } from "react-router";
-import { useStreamsFeed } from "@/hooks/live-streams";
-import VideoGridSorted from "@/element/video-grid-sorted";
+import { useParams } from "react-router"
+import { useStreamsFeed } from "@/hooks/live-streams"
+import VideoGridSorted from "@/element/video-grid-sorted"
 
 export function TagPage() {
-  const { tag } = useParams();
-  const streams = useStreamsFeed(tag);
+  const { tag } = useParams()
+  const streams = useStreamsFeed(tag)
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -12,5 +12,5 @@ export function TagPage() {
       </div>
       <VideoGridSorted evs={streams} />
     </div>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import { StreamState } from "@/const";
-import { extractStreamInfo } from "@/utils";
-import { NostrLink, type TaggedNostrEvent } from "@snort/system";
-import { Suspense } from "react";
-import LiveVideoPlayer from "./stream/live-video-player";
+import { StreamState } from "@/const"
+import { extractStreamInfo } from "@/utils"
+import { NostrLink, type TaggedNostrEvent } from "@snort/system"
+import { Suspense } from "react"
+import LiveVideoPlayer from "./stream/live-video-player"
 
 export default function LiveEvent({ ev }: { ev: TaggedNostrEvent }) {
-  const { id, title, image, status, stream, recording } = extractStreamInfo(ev);
+  const { id, title, image, status, stream, recording } = extractStreamInfo(ev)
 
   return (
     <Suspense>
@@ -18,5 +18,5 @@ export default function LiveEvent({ ev }: { ev: TaggedNostrEvent }) {
         link={NostrLink.fromEvent(ev)}
       />
     </Suspense>
-  );
+  )
 }

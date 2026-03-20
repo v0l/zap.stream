@@ -1,11 +1,11 @@
-import type { ReactNode } from "react";
-import { ExternalLink } from "./external-link";
+import type { ReactNode } from "react"
+import { ExternalLink } from "./external-link"
 
 //const FileExtensionRegex = /\.([\w]+)$/i;
 
 interface HyperTextProps {
-  link: string;
-  children?: ReactNode;
+  link: string
+  children?: ReactNode
 }
 
 export function HyperText({ link, children }: HyperTextProps) {
@@ -46,5 +46,5 @@ export function HyperText({ link, children }: HyperTextProps) {
     console.error(error);
     // Ignore the error.
   }*/
-  return <ExternalLink href={link}>{children}</ExternalLink>;
+  return <ExternalLink href={link}>{children}</ExternalLink>
 }

@@ -1,9 +1,9 @@
-import { DAY, HOUR, MINUTE, MONTH, WEEK } from "@/const";
-import { FormattedMessage } from "react-intl";
+import { DAY, HOUR, MINUTE, MONTH, WEEK } from "@/const"
+import { FormattedMessage } from "react-intl"
 
 export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean }) {
-  const diff = (Date.now()- from) / 1000;
-  const s = <FormattedMessage defaultMessage="ago" description="Relative time, ie. 1s ago" />;
+  const diff = (Date.now() - from) / 1000
+  const s = <FormattedMessage defaultMessage="ago" description="Relative time, ie. 1s ago" />
   if (diff > MONTH) {
     return (
       <FormattedMessage
@@ -11,7 +11,7 @@ export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean 
         description="Number of month(s) relative to now"
         values={{ m: Math.floor(diff / MONTH).toFixed(0), ago: suffix ? s : undefined }}
       />
-    );
+    )
   } else if (diff > WEEK) {
     return (
       <FormattedMessage
@@ -19,7 +19,7 @@ export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean 
         description="Number of week(s) relative to now"
         values={{ m: Math.floor(diff / WEEK).toFixed(0), ago: suffix ? s : undefined }}
       />
-    );
+    )
   } else if (diff > DAY) {
     return (
       <FormattedMessage
@@ -27,7 +27,7 @@ export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean 
         description="Number of day(s) relative to now"
         values={{ m: Math.floor(diff / DAY).toFixed(0), ago: suffix ? s : undefined }}
       />
-    );
+    )
   } else if (diff > HOUR) {
     return (
       <FormattedMessage
@@ -35,7 +35,7 @@ export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean 
         description="Number of hour(s) relative to now"
         values={{ m: Math.floor(diff / HOUR).toFixed(0), ago: suffix ? s : undefined }}
       />
-    );
+    )
   } else if (diff > MINUTE) {
     return (
       <FormattedMessage
@@ -43,7 +43,7 @@ export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean 
         description="Number of minute(s) relative to now"
         values={{ m: Math.floor(diff / MINUTE).toFixed(0), ago: suffix ? s : undefined }}
       />
-    );
+    )
   } else {
     return (
       <FormattedMessage
@@ -51,6 +51,6 @@ export function RelativeTime({ from, suffix }: { from: number; suffix?: boolean 
         description="Number of second(s) relative to now"
         values={{ m: Math.floor(diff).toFixed(0), ago: suffix ? s : undefined }}
       />
-    );
+    )
   }
 }

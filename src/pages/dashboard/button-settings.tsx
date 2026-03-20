@@ -1,13 +1,13 @@
-import type { TaggedNostrEvent } from "@snort/system";
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { DefaultButton } from "@/element/buttons";
-import Modal from "@/element/modal";
-import NostrProviderDialog from "@/element/provider/nostr";
-import type { NostrStreamProvider } from "@/providers";
+import type { TaggedNostrEvent } from "@snort/system"
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { DefaultButton } from "@/element/buttons"
+import Modal from "@/element/modal"
+import NostrProviderDialog from "@/element/provider/nostr"
+import type { NostrStreamProvider } from "@/providers"
 
 export function DashboardSettingsButton({ ev, provider }: { ev?: TaggedNostrEvent; provider: NostrStreamProvider }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   return (
     <>
       <DefaultButton onClick={() => setShow(true)}>
@@ -32,5 +32,5 @@ export function DashboardSettingsButton({ ev, provider }: { ev?: TaggedNostrEven
         </Modal>
       )}
     </>
-  );
+  )
 }

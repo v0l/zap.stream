@@ -1,20 +1,20 @@
-import { type NostrEvent, NostrLink } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
-import { Link } from "react-router";
-import classNames from "classnames";
-import { useState } from "react";
+import { type NostrEvent, NostrLink } from "@snort/system"
+import { useUserProfile } from "@snort/system-react"
+import { Link } from "react-router"
+import classNames from "classnames"
+import { useState } from "react"
 
-import useImgProxy from "@/hooks/img-proxy";
-import { getHost, profileLink } from "@/utils";
-import { Avatar } from "../avatar";
-import Logo from "../logo";
-import { useContentWarning } from "../nsfw";
-import PillOpaque from "../pill-opaque";
-import { RelativeTime } from "../relative-time";
-import { VideoInfo } from "@/service/video/info";
-import { VideoDuration } from "./duration";
-import { getName } from "../profile";
-import { useDeadLink } from "@/hooks/dead-link";
+import useImgProxy from "@/hooks/img-proxy"
+import { getHost, profileLink } from "@/utils"
+import { Avatar } from "../avatar"
+import Logo from "../logo"
+import { useContentWarning } from "../nsfw"
+import PillOpaque from "../pill-opaque"
+import { RelativeTime } from "../relative-time"
+import { VideoInfo } from "@/service/video/info"
+import { VideoDuration } from "./duration"
+import { getName } from "../profile"
+import { useDeadLink } from "@/hooks/dead-link"
 
 export function VideoTile({
   ev,
@@ -23,30 +23,31 @@ export function VideoTile({
   style,
   className,
 }: {
-  ev: NostrEvent;
-  showAuthor?: boolean;
-  showAvatar?: boolean;
-  style: "list" | "grid";
-  className?: string;
+  ev: NostrEvent
+  showAuthor?: boolean
+  showAvatar?: boolean
+  style: "list" | "grid"
+  className?: string
 }) {
-  const video = VideoInfo.parse(ev);
-  const host = getHost(ev);
-  const hostProfile = useUserProfile(host);
-  const isGrownUp = useContentWarning();
-  const { proxy } = useImgProxy();
+  const video = VideoInfo.parse(ev)
+  const host = getHost(ev)
+  const hostProfile = useUserProfile(host)
+  const isGrownUp = useContentWarning()
+  const { proxy } = useImgProxy()
 
-  const liveMedia = useDeadLink(ev);
-  const link = NostrLink.fromEvent(ev);
-  const poster = video.bestPoster();
-  const bestVideo = video.bestVideo();
-  const [hasImg, setHasImage] = useState(true);
-  if (!liveMedia) return;
+  const liveMedia = useDeadLink(ev)
+  const link = NostrLink.fromEvent(ev)
+  const poster = video.bestPoster()
+  const bestVideo = video.bestVideo()
+  const [hasImg, setHasImage] = useState(true)
+  if (!liveMedia) return
   return (
     <div
       className={classNames("flex gap-2", className, {
         "flex-col": style === "grid",
         "flex-row": style === "list",
-      })}>
+      })}
+    >
       <Link
         to={`/${link.encode()}`}
         className={classNames(
@@ -56,7 +57,8 @@ export function VideoTile({
           },
           "h-full",
         )}
-        state={ev}>
+        state={ev}
+      >
         <div className="h-inherit relative aspect-video bg-layer-1 rounded-xl overflow-hidden">
           {hasImg ? (
             <img
@@ -64,7 +66,7 @@ export function VideoTile({
               className="w-full h-inherit object-cover"
               src={proxy(poster?.url ?? bestVideo?.url ?? "")}
               onError={() => {
-                setHasImage(false);
+                setHasImage(false)
               }}
             />
           ) : (
@@ -107,5 +109,5 @@ export function VideoTile({
         </div>
       </div>
     </div>
-  );
+  )
 }

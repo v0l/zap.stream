@@ -1,4 +1,4 @@
-import type { HTMLProps } from "react";
+import type { HTMLProps } from "react"
 
 export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGElement>) {
   return (
@@ -9,7 +9,8 @@ export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGE
       width={size}
       height={props.height ?? size}
       className={className}
-      onClick={props.onClick}>
+      onClick={props.onClick}
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -27,5 +28,5 @@ export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGE
         }}
       />
     </svg>
-  );
+  )
 }

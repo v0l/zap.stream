@@ -1,11 +1,11 @@
-import { NostrPrefix, dedupe, removeUndefined, sanitizeRelayUrl } from '@snort/shared'
-import { EventKind, type NostrEvent, NostrLink, RequestBuilder, type TaggedNostrEvent } from '@snort/system'
-import { useEventReactions, useRequestBuilder } from '@snort/system-react'
-import { type ReactNode, createContext, useContext, useMemo, useState } from 'react'
-import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID } from '@/const'
-import { useCurrentStreamFeed } from '@/hooks/current-stream-feed'
-import { useZapGoal } from '@/hooks/goals'
-import { type StreamInfo, extractStreamInfo } from '@/utils'
+import { NostrPrefix, dedupe, removeUndefined, sanitizeRelayUrl } from "@snort/shared"
+import { EventKind, type NostrEvent, NostrLink, RequestBuilder, type TaggedNostrEvent } from "@snort/system"
+import { useEventReactions, useRequestBuilder } from "@snort/system-react"
+import { type ReactNode, createContext, useContext, useMemo, useState } from "react"
+import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID } from "@/const"
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
+import { useZapGoal } from "@/hooks/goals"
+import { type StreamInfo, extractStreamInfo } from "@/utils"
 
 interface StreamState {
   link?: NostrLink
@@ -57,7 +57,7 @@ export function StreamContextProvider({
 
   // Extract relays from stream event
   const relays = useMemo(() => {
-    return dedupe(removeUndefined(event?.tags.filter(a => a[0] === 'relays').map(a => sanitizeRelayUrl(a[1])) ?? []))
+    return dedupe(removeUndefined(event?.tags.filter(a => a[0] === "relays").map(a => sanitizeRelayUrl(a[1])) ?? []))
   }, [event?.id])
 
   const eventLink = useMemo(
@@ -91,7 +91,7 @@ export function StreamContextProvider({
         .relay(relays)
       rb.withFilter().kinds([EventKind.ZapReceipt]).authors([link.id]).relay(relays)
     } else if (link.type === NostrPrefix.Address || link.type === NostrPrefix.Event) {
-      const authorTag = link.tags.find(t => t[0] === 'p')
+      const authorTag = link.tags.find(t => t[0] === "p")
       if (authorTag) {
         rb.withFilter()
           .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
@@ -139,7 +139,7 @@ export function StreamContextProvider({
 export function useStream() {
   const ctx = useContext(StreamContext)
   if (!ctx) {
-    throw new Error('Context doesnt exist!')
+    throw new Error("Context doesnt exist!")
   }
   return ctx
 }

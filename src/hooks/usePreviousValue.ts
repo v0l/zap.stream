@@ -1,20 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react"
 
 /**
  * On each render returns the previous value of the given variable/constant.
  */
 const usePreviousValue = <TValue>(value?: TValue): TValue | undefined => {
-  const prevValue = useRef<TValue>();
+  const prevValue = useRef<TValue>()
 
   useEffect(() => {
-    prevValue.current = value;
+    prevValue.current = value
 
     return () => {
-      prevValue.current = undefined;
-    };
-  });
+      prevValue.current = undefined
+    }
+  })
 
-  return prevValue.current;
-};
+  return prevValue.current
+}
 
-export default usePreviousValue;
+export default usePreviousValue

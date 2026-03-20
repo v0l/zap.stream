@@ -1,14 +1,14 @@
-import type { ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import type { ReactNode } from "react"
+import { FormattedMessage } from "react-intl"
 
-import type { NostrEvent } from "@snort/system";
-import { extractStreamInfo } from "@/utils";
-import { StreamState } from "@/const";
-import Pill from "./pill";
-import { Link } from "react-router";
+import type { NostrEvent } from "@snort/system"
+import { extractStreamInfo } from "@/utils"
+import { StreamState } from "@/const"
+import Pill from "./pill"
+import { Link } from "react-router"
 
 export function Tags({ children, max, ev }: { children?: ReactNode; max?: number; ev: NostrEvent }) {
-  const { status, tags } = extractStreamInfo(ev);
+  const { status, tags } = extractStreamInfo(ev)
   return (
     <>
       {children}
@@ -21,5 +21,5 @@ export function Tags({ children, max, ev }: { children?: ReactNode; max?: number
         </Link>
       ))}
     </>
-  );
+  )
 }

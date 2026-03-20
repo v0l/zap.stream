@@ -1,17 +1,17 @@
-import { SHORTS_KIND, VIDEO_KIND } from "@/const";
-import { DefaultButton, IconButton, Layer3Button, PrimaryButton, WarningButton } from "@/element/buttons";
-import { Icon } from "@/element/icon";
-import Modal from "@/element/modal";
-import { Profile } from "@/element/profile";
-import Spinner from "@/element/spinner";
-import { MediaServerFileList } from "@/element/upload/file-list";
-import { ServerList } from "@/element/upload/server-list";
-import useImgProxy from "@/hooks/img-proxy";
-import { useLogin } from "@/hooks/login";
-import { useMediaServerList } from "@/hooks/media-servers";
-import { Blossom, type BlobDescriptor } from "@/service/upload";
-import { openFile } from "@/utils";
-import { ExternalStore, removeUndefined, unwrap } from "@snort/shared";
+import { SHORTS_KIND, VIDEO_KIND } from "@/const"
+import { DefaultButton, IconButton, Layer3Button, PrimaryButton, WarningButton } from "@/element/buttons"
+import { Icon } from "@/element/icon"
+import Modal from "@/element/modal"
+import { Profile } from "@/element/profile"
+import Spinner from "@/element/spinner"
+import { MediaServerFileList } from "@/element/upload/file-list"
+import { ServerList } from "@/element/upload/server-list"
+import useImgProxy from "@/hooks/img-proxy"
+import { useLogin } from "@/hooks/login"
+import { useMediaServerList } from "@/hooks/media-servers"
+import { Blossom, type BlobDescriptor } from "@/service/upload"
+import { openFile } from "@/utils"
+import { ExternalStore, removeUndefined, unwrap } from "@snort/shared"
 import {
   EventBuilder,
   type EventPublisher,
@@ -19,41 +19,41 @@ import {
   NostrLink,
   nip94TagsToIMeta,
   readNip94Tags,
-} from "@snort/system";
-import { SnortContext } from "@snort/system-react";
-import { useContext, useEffect, useState, useSyncExternalStore } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate } from "react-router";
-import { v4 as uuid } from "uuid";
+} from "@snort/system"
+import { SnortContext } from "@snort/system-react"
+import { useContext, useEffect, useState, useSyncExternalStore } from "react"
+import { FormattedMessage, useIntl } from "react-intl"
+import { useNavigate } from "react-router"
+import { v4 as uuid } from "uuid"
 
 interface UploadStatus {
-  type: "video" | "thumb";
-  name: string;
-  size: number;
-  server: string;
-  result?: BlobDescriptor;
+  type: "video" | "thumb"
+  name: string
+  size: number
+  server: string
+  result?: BlobDescriptor
   metadata?: Nip94Tags
   error?: string
 }
 
 interface UploadDraft {
-  id: string;
-  uploads: Array<UploadStatus>;
+  id: string
+  uploads: Array<UploadStatus>
 }
 
 class UploadManager extends ExternalStore<Array<UploadStatus>> {
-  #uploaders: Map<string, Blossom> = new Map();
-  #uploads: Map<string, UploadStatus> = new Map();
-  #id: string;
+  #uploaders: Map<string, Blossom> = new Map()
+  #uploads: Map<string, UploadStatus> = new Map()
+  #id: string
 
   constructor() {
-    super();
-    this.#id = uuid();
-    const draft = localStorage.getItem("upload-draft");
+    super()
+    this.#id = uuid()
+    const draft = localStorage.getItem("upload-draft")
     if (draft) {
-      const saved = JSON.parse(draft) as UploadDraft;
-      this.#uploads = new Map(saved.uploads.map(a => [`${a.name}:${a.server}:${a.type}`, a]));
-      this.#id = saved.id;
+      const saved = JSON.parse(draft) as UploadDraft
+      this.#uploads = new Map(saved.uploads.map(a => [`${a.name}:${a.server}:${a.type}`, a]))
+      this.#id = saved.id
     }
     this.on("change", () =>
       localStorage.setItem(
@@ -63,44 +63,44 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
           uploads: this.snapshot(),
         }),
       ),
-    );
+    )
   }
 
   get id() {
-    return this.#id;
+    return this.#id
   }
 
   removeUpload(server: string, size: number, type: UploadStatus["type"]) {
-    const uploadKey = `${size}:${server}:${type}`;
+    const uploadKey = `${size}:${server}:${type}`
     if (this.#uploads.delete(uploadKey)) {
-      this.notifyChange();
+      this.notifyChange()
     }
   }
 
   addUpload(server: string, file: BlobDescriptor, meta: Nip94Tags, type: UploadStatus["type"]) {
-    const name = meta.summary ?? meta.alt ?? "";
-    const uploadKey = `${file.size}:${server}:${type}`;
+    const name = meta.summary ?? meta.alt ?? ""
+    const uploadKey = `${file.size}:${server}:${type}`
     this.#uploads.set(uploadKey, {
       type,
       name,
       size: meta.size ?? file.size,
       server,
       result: file,
-      metadata: meta
-    });
-    this.notifyChange();
+      metadata: meta,
+    })
+    this.notifyChange()
   }
 
   async uploadTo(server: string, file: File, pub: EventPublisher, type: UploadStatus["type"]) {
-    let uploader = this.#uploaders.get(server);
+    let uploader = this.#uploaders.get(server)
     if (!uploader) {
-      uploader = new Blossom(server, pub);
-      this.#uploaders.set(server, uploader);
+      uploader = new Blossom(server, pub)
+      this.#uploaders.set(server, uploader)
     }
 
-    const uploadKey = `${file.size}:${server}:${type}`;
+    const uploadKey = `${file.size}:${server}:${type}`
     if (this.#uploads.has(uploadKey)) {
-      return;
+      return
     }
 
     const status = {
@@ -108,26 +108,26 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
       name: file.name,
       size: file.size,
       server: server,
-    };
-    this.#uploads.set(uploadKey, status);
-    this.notifyChange();
+    }
+    this.#uploads.set(uploadKey, status)
+    this.notifyChange()
     try {
       uploader.upload(file).then(res => {
         this.#uploads.set(uploadKey, {
           ...status,
           result: res,
-        });
-        this.notifyChange();
-      });
+        })
+        this.notifyChange()
+      })
     } catch (e) {
       if (e instanceof Error) {
         this.#uploads.set(uploadKey, {
           ...status,
           result: undefined,
           metadata: undefined,
-          error: e.message
-        });
-        this.notifyChange();
+          error: e.message,
+        })
+        this.notifyChange()
       }
     }
   }
@@ -136,144 +136,144 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
    * Get the grouped videos/images by resolution
    */
   resolutions() {
-    const uploads = this.snapshot();
+    const uploads = this.snapshot()
     const resGroup = uploads.reduce(
       (acc, v) => {
-        const dim = v.metadata?.dimensions;
+        const dim = v.metadata?.dimensions
         if (dim) {
-          const r = `${dim[0]}x${dim[1]}`;
-          acc[r] ??= [];
-          acc[r].push(v);
+          const r = `${dim[0]}x${dim[1]}`
+          acc[r] ??= []
+          acc[r].push(v)
         }
-        return acc;
+        return acc
       },
       {} as Record<string, Array<UploadStatus>>,
-    );
-    return resGroup;
+    )
+    return resGroup
   }
 
   /**
    * Gets the [min, max] duration from all variants
    */
   duration() {
-    const uploads = this.snapshot();
+    const uploads = this.snapshot()
     return uploads.reduce(
       (acc, v) => {
         if (v.metadata?.duration) {
           if (acc[1] < v.metadata.duration) {
-            acc[1] = v.metadata.duration;
+            acc[1] = v.metadata.duration
           }
           if (acc[0] > v.metadata.duration) {
-            acc[0] = v.metadata.duration;
+            acc[0] = v.metadata.duration
           }
         }
-        return acc;
+        return acc
       },
       [1_000_000, 0],
-    );
+    )
   }
 
   /**
    * Create the `imeta` tag for this upload
    */
   makeIMeta() {
-    const tags: Array<Array<string>> = [];
+    const tags: Array<Array<string>> = []
     for (const vGroup of Object.values(this.resolutions())) {
-      const uploadsSuccess = vGroup.filter(a => a.result?.url && a.type === "video");
-      const firstUpload = uploadsSuccess.at(0);
+      const uploadsSuccess = vGroup.filter(a => a.result?.url && a.type === "video")
+      const firstUpload = uploadsSuccess.at(0)
       if (firstUpload?.result) {
-        const res = firstUpload.result;
-        const images = vGroup.filter(a => a.type === "thumb" && a.result?.url).map(a => unwrap(a.result?.url));
+        const res = firstUpload.result
+        const images = vGroup.filter(a => a.type === "thumb" && a.result?.url).map(a => unwrap(a.result?.url))
         const metaTag: Nip94Tags = {
           ...firstUpload.metadata,
           image: images,
           fallback: removeUndefined(uploadsSuccess.filter(a => a.result?.url !== res.url).map(a => a.result?.url)),
-        };
-        tags.push(nip94TagsToIMeta(metaTag));
+        }
+        tags.push(nip94TagsToIMeta(metaTag))
       }
     }
-    return tags;
+    return tags
   }
 
   clear() {
-    this.#id = uuid();
-    this.#uploads = new Map();
-    this.notifyChange();
+    this.#id = uuid()
+    this.#uploads = new Map()
+    this.notifyChange()
   }
 
   takeSnapshot(): Array<UploadStatus> {
-    return [...this.#uploads.values()];
+    return [...this.#uploads.values()]
   }
 }
 
-const manager = new UploadManager();
+const manager = new UploadManager()
 
 export function UploadPage() {
-  const { formatMessage } = useIntl();
-  const login = useLogin();
-  const system = useContext(SnortContext);
-  const [error, setError] = useState<Array<string>>([]);
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
-  const [thumb, setThumb] = useState("");
-  const [editServers, setEditServers] = useState(false);
-  const [mediaPicker, setMediaPicker] = useState(false);
-  const { proxy } = useImgProxy();
+  const { formatMessage } = useIntl()
+  const login = useLogin()
+  const system = useContext(SnortContext)
+  const [error, setError] = useState<Array<string>>([])
+  const [title, setTitle] = useState("")
+  const [summary, setSummary] = useState("")
+  const [thumb, setThumb] = useState("")
+  const [editServers, setEditServers] = useState(false)
+  const [mediaPicker, setMediaPicker] = useState(false)
+  const { proxy } = useImgProxy()
   const uploads = useSyncExternalStore(
     c => manager.hook(c),
     () => manager.snapshot(),
-  );
-  const navigate = useNavigate();
-  const servers = useMediaServerList();
+  )
+  const navigate = useNavigate()
+  const servers = useMediaServerList()
 
   function canPublish() {
-    return error.length === 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined);
+    return error.length === 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined)
   }
 
   function makeEvent() {
-    const duration = manager.duration();
+    const duration = manager.duration()
     const eb = new EventBuilder()
       .pubKey(login?.pubkey ?? "00".repeat(31))
       .kind(duration[1] <= 60 ? SHORTS_KIND : VIDEO_KIND)
       .tag(["title", title])
-      .content(summary);
+      .content(summary)
 
-    const imeta = manager.makeIMeta();
-    imeta.forEach(a => eb.tag(a));
+    const imeta = manager.makeIMeta()
+    imeta.forEach(a => eb.tag(a))
 
-    return eb;
+    return eb
   }
 
   async function publish() {
-    const pub = login?.publisher();
-    if (!pub) return;
-    const ev = await makeEvent().buildAndSign(pub.signer);
-    console.debug(ev);
-    await system.BroadcastEvent(ev);
-    navigate(`/${NostrLink.fromEvent(ev).encode()}`);
+    const pub = login?.publisher()
+    if (!pub) return
+    const ev = await makeEvent().buildAndSign(pub.signer)
+    console.debug(ev)
+    await system.BroadcastEvent(ev)
+    navigate(`/${NostrLink.fromEvent(ev).encode()}`)
   }
 
   async function uploadFile() {
-    const pub = login?.publisher();
-    const f = await openFile();
+    const pub = login?.publisher()
+    const f = await openFile()
     if (f && pub) {
-      servers.servers.forEach(b => manager.uploadTo(b, f, pub, "video"));
+      servers.servers.forEach(b => manager.uploadTo(b, f, pub, "video"))
     }
   }
 
   // use imgproxy to generate video thumbnail
   async function generateThumb() {
-    const vid = uploads.find(a => a.result?.url);
-    if (!vid) return;
+    const vid = uploads.find(a => a.result?.url)
+    if (!vid) return
 
     const rsp = await fetch(proxy(vid?.result?.url!), {
       headers: {
         accept: "image/jpg",
       },
-    });
+    })
     if (rsp.ok) {
-      const data = await rsp.blob();
-      const pub = login?.publisher();
+      const data = await rsp.blob()
+      const pub = login?.publisher()
       if (pub) {
         servers.servers.forEach(b =>
           manager.uploadTo(
@@ -284,35 +284,35 @@ export function UploadPage() {
             pub,
             "thumb",
           ),
-        );
+        )
       }
     }
   }
 
   async function uploadThumb() {
-    const f = await openFile();
+    const f = await openFile()
     if (f) {
-      const pub = login?.publisher();
+      const pub = login?.publisher()
       if (pub) {
-        servers.servers.forEach(b => manager.uploadTo(b, f, pub, "thumb"));
+        servers.servers.forEach(b => manager.uploadTo(b, f, pub, "thumb"))
       }
     }
   }
 
   useEffect(() => {
-    const thumb = uploads.find(a => a.type === "thumb" && a.result?.url);
+    const thumb = uploads.find(a => a.type === "thumb" && a.result?.url)
     if (thumb?.result?.url) {
-      setThumb(thumb.result?.url);
+      setThumb(thumb.result?.url)
     } else {
-      setThumb("");
+      setThumb("")
     }
-  }, [uploads]);
+  }, [uploads])
 
-  const videos = uploads.filter(a => a.type === "video").length;
-  const thumbs = uploads.filter(a => a.type === "thumb").length;
+  const videos = uploads.filter(a => a.type === "video").length
+  const thumbs = uploads.filter(a => a.type === "thumb").length
   function validate() {
-    const maxTitle = 50;
-    const err = [];
+    const maxTitle = 50
+    const err = []
     if (title.length > maxTitle) {
       err.push(
         formatMessage(
@@ -323,46 +323,46 @@ export function UploadPage() {
             n: maxTitle,
           },
         ),
-      );
+      )
     }
     if (title.length < 5) {
       err.push(
         formatMessage({
           defaultMessage: "Your title is too short",
         }),
-      );
+      )
     }
     if (videos === 0) {
       err.push(
         formatMessage({
           defaultMessage: "Please upload at least 1 video",
         }),
-      );
+      )
     }
     if (thumbs === 0) {
       err.push(
         formatMessage({
           defaultMessage: "Please add a thumbnail",
         }),
-      );
+      )
     }
-    const d = manager.duration();
+    const d = manager.duration()
     if (d[0] === 0 || d[1] === 0) {
-      err.push(formatMessage({ defaultMessage: "No duration provided, please try another upload server." }));
+      err.push(formatMessage({ defaultMessage: "No duration provided, please try another upload server." }))
     }
     if (Math.abs(d[0] - d[1]) >= 0.5) {
       err.push(
         formatMessage({
           defaultMessage: "Video durations vary too much, are you sure each variant is the same video?",
         }),
-      );
+      )
     }
-    setError(err);
+    setError(err)
   }
 
   useEffect(() => {
-    validate();
-  }, [title, summary, uploads, thumb]);
+    validate()
+  }, [title, summary, uploads, thumb])
 
   const uploadButton = () => {
     return (
@@ -376,8 +376,8 @@ export function UploadPage() {
           <FormattedMessage defaultMessage="Choose file." />
         </div>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <div className="max-xl:w-full xl:w-[1200px] xl:mx-auto grid gap-6 xl:grid-cols-[auto_350px] max-xl:px-4">
@@ -466,11 +466,12 @@ export function UploadPage() {
           </PrimaryButton>
           <WarningButton
             onClick={() => {
-              manager.clear();
-              setThumb("");
-              setSummary("");
-              setTitle("");
-            }}>
+              manager.clear()
+              setThumb("")
+              setSummary("")
+              setTitle("")
+            }}
+          >
             <FormattedMessage defaultMessage="Clear Draft" />
           </WarningButton>
         </div>
@@ -493,27 +494,27 @@ export function UploadPage() {
             onPicked={files => {
               files.forEach(f => {
                 if (f.url) {
-                  const meta = readNip94Tags(f.nip94 ?? []);
-                  const url = new URL(f.url);
+                  const meta = readNip94Tags(f.nip94 ?? [])
+                  const url = new URL(f.url)
                   manager.addUpload(
                     `${url.protocol}//${url.host}/`,
                     f,
                     meta,
-                    meta.mimeType?.startsWith("image/") ?? false ? "thumb" : "video",
-                  );
+                    (meta.mimeType?.startsWith("image/") ?? false) ? "thumb" : "video",
+                  )
                 }
-              });
-              setMediaPicker(false);
+              })
+              setMediaPicker(false)
             }}
           />
         </Modal>
       )}
     </div>
-  );
+  )
 }
 
 function UploadProgress({ status }: { status: UploadStatus }) {
-  const { formatMessage } = useIntl();
+  const { formatMessage } = useIntl()
   return (
     <div className="rounded-xl bg-layer-2 px-3 py-2 flex flex-col gap-1">
       <div className="flex justify-between items-center">
@@ -527,7 +528,7 @@ function UploadProgress({ status }: { status: UploadStatus }) {
               defaultMessage: "Delete file",
             })}
             onClick={() => {
-              manager.removeUpload(status.server, status.size, status.type);
+              manager.removeUpload(status.server, status.size, status.type)
             }}
           />
         </div>
@@ -549,5 +550,5 @@ function UploadProgress({ status }: { status: UploadStatus }) {
       )}
       {status.error && <b className="text-warning">{status.error}</b>}
     </div>
-  );
+  )
 }

@@ -1,52 +1,52 @@
-import { StreamState } from "@/const";
-import { useLogin } from "@/hooks/login";
-import { formatSats } from "@/number";
-import { getHost, extractStreamInfo, findTag } from "@/utils";
-import { NostrLink, type TaggedNostrEvent } from "@snort/system";
-import { SnortContext, useUserProfile } from "@snort/system-react";
-import { useContext } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { Link, useNavigate } from "react-router";
-import { Layer2Button, WarningButton } from "../buttons";
-import { FollowButton } from "../follow-button";
-import GameInfoCard from "../game-info";
-import { NewStreamDialog } from "../new-stream";
-import { NotificationsButton } from "./notifications-button";
-import Pill from "../pill";
-import { Profile, getName } from "../profile";
-import { SendZapsDialog } from "../send-zap";
-import { ShareMenu } from "../share-menu";
-import { StatePill } from "../state-pill";
-import { StreamTimer } from "./stream-time";
-import { Tags } from "../tags";
-import { useStream } from "./stream-state";
-import { StreamSummary } from "./summary";
-import { Icon } from "../icon";
+import { StreamState } from "@/const"
+import { useLogin } from "@/hooks/login"
+import { formatSats } from "@/number"
+import { getHost, extractStreamInfo, findTag } from "@/utils"
+import { NostrLink, type TaggedNostrEvent } from "@snort/system"
+import { SnortContext, useUserProfile } from "@snort/system-react"
+import { useContext } from "react"
+import { FormattedMessage, useIntl } from "react-intl"
+import { Link, useNavigate } from "react-router"
+import { Layer2Button, WarningButton } from "../buttons"
+import { FollowButton } from "../follow-button"
+import GameInfoCard from "../game-info"
+import { NewStreamDialog } from "../new-stream"
+import { NotificationsButton } from "./notifications-button"
+import Pill from "../pill"
+import { Profile, getName } from "../profile"
+import { SendZapsDialog } from "../send-zap"
+import { ShareMenu } from "../share-menu"
+import { StatePill } from "../state-pill"
+import { StreamTimer } from "./stream-time"
+import { Tags } from "../tags"
+import { useStream } from "./stream-state"
+import { StreamSummary } from "./summary"
+import { Icon } from "../icon"
 
 export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedNostrEvent }) {
-  const system = useContext(SnortContext);
-  const login = useLogin();
-  const navigate = useNavigate();
-  const host = ev ? getHost(ev) : undefined;
-  const profile = useUserProfile(host);
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const streamContext = useStream();
-  const { formatMessage } = useIntl();
+  const system = useContext(SnortContext)
+  const login = useLogin()
+  const navigate = useNavigate()
+  const host = ev ? getHost(ev) : undefined
+  const profile = useUserProfile(host)
+  const zapTarget = profile?.lud16 ?? profile?.lud06
+  const streamContext = useStream()
+  const { formatMessage } = useIntl()
 
-  const { status, participants, title, summary, service, gameId, gameInfo } = extractStreamInfo(ev);
-  const isMine = ev?.pubkey === login?.pubkey || host === login?.pubkey;
+  const { status, participants, title, summary, service, gameId, gameInfo } = extractStreamInfo(ev)
+  const isMine = ev?.pubkey === login?.pubkey || host === login?.pubkey
 
   async function deleteStream() {
-    const pub = login?.publisher();
+    const pub = login?.publisher()
     if (pub && ev) {
-      const evDelete = await pub.delete(ev.id);
-      console.debug(evDelete);
-      await system.BroadcastEvent(evDelete);
-      navigate("/");
+      const evDelete = await pub.delete(ev.id)
+      console.debug(evDelete)
+      await system.BroadcastEvent(evDelete)
+      navigate("/")
     }
   }
 
-  if (!streamContext.showDetails) return;
+  if (!streamContext.showDetails) return
 
   return (
     <div className="flex gap-2 max-xl:flex-col">
@@ -106,7 +106,14 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
         </div>
         {gameId && (
           <div className="bg-layer-1 p-2 rounded-lg">
-            <GameInfoCard gameId={gameId} gameInfo={gameInfo} showImage={true} link={true} imageSize={50} showDetail={true} />
+            <GameInfoCard
+              gameId={gameId}
+              gameInfo={gameInfo}
+              showImage={true}
+              link={true}
+              imageSize={50}
+              showDetail={true}
+            />
           </div>
         )}
         {summary && <StreamSummary text={summary} />}
@@ -127,5 +134,5 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -1,21 +1,21 @@
-import Pill from "./pill";
+import Pill from "./pill"
 
 interface CapabilityPillProps {
-  capability: string;
-  selected?: boolean;
-  onClick?: () => void;
+  capability: string
+  selected?: boolean
+  onClick?: () => void
 }
 
 function parseCapability(cap: string): string {
-  const [tag, ...others] = cap.split(":");
+  const [tag, ...others] = cap.split(":")
   if (tag === "variant") {
-    const [height] = others;
-    return height === "source" ? "source" : `${height.includes("h") ? height.slice(0, -1) : height}p`;
+    const [height] = others
+    return height === "source" ? "source" : `${height.includes("h") ? height.slice(0, -1) : height}p`
   }
   if (tag === "output") {
-    return others[0];
+    return others[0]
   }
-  return cap;
+  return cap
 }
 
 export default function CapabilityPill({ capability, selected, onClick }: CapabilityPillProps) {
@@ -23,7 +23,7 @@ export default function CapabilityPill({ capability, selected, onClick }: Capabi
     <Pill selected={selected} onClick={onClick}>
       {parseCapability(capability)}
     </Pill>
-  );
+  )
 }
 
-export { parseCapability };
+export { parseCapability }

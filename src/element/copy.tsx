@@ -1,17 +1,17 @@
-import "./copy.css";
-import { useCopy } from "@/hooks/copy";
-import { Icon } from "./icon";
+import "./copy.css"
+import { useCopy } from "@/hooks/copy"
+import { Icon } from "./icon"
 
 export interface CopyProps {
-  text: string;
-  maxSize?: number;
-  hideText?: boolean;
-  className?: string;
+  text: string
+  maxSize?: number
+  hideText?: boolean
+  className?: string
 }
 export default function Copy({ text, maxSize = 32, className, hideText }: CopyProps) {
-  const { copy, copied } = useCopy();
-  const sliceLength = maxSize / 2;
-  const trimmed = text.length > maxSize ? `${text.slice(0, sliceLength)}...${text.slice(-sliceLength)}` : text;
+  const { copy, copied } = useCopy()
+  const sliceLength = maxSize / 2
+  const trimmed = text.length > maxSize ? `${text.slice(0, sliceLength)}...${text.slice(-sliceLength)}` : text
 
   return (
     <div className={`copy${className ? ` ${className}` : ""}`} onClick={() => copy(text)}>
@@ -20,5 +20,5 @@ export default function Copy({ text, maxSize = 32, className, hideText }: CopyPr
         {copied ? <Icon name="check" size={14} /> : <Icon name="copy" size={14} />}
       </span>
     </div>
-  );
+  )
 }

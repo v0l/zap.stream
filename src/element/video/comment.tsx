@@ -1,14 +1,14 @@
-import type { TaggedNostrEvent } from "@snort/system";
-import { Profile, getName } from "../profile";
-import { Text } from "@/element/text";
-import { useUserProfile } from "@snort/system-react";
-import EventReactions from "../event-reactions";
-import { RelativeTime } from "../relative-time";
-import { Link } from "react-router";
-import { profileLink } from "@/utils";
+import type { TaggedNostrEvent } from "@snort/system"
+import { Profile, getName } from "../profile"
+import { Text } from "@/element/text"
+import { useUserProfile } from "@snort/system-react"
+import EventReactions from "../event-reactions"
+import { RelativeTime } from "../relative-time"
+import { Link } from "react-router"
+import { profileLink } from "@/utils"
 
 export default function VideoComment({ ev }: { ev: TaggedNostrEvent }) {
-  const profile = useUserProfile(ev.pubkey);
+  const profile = useUserProfile(ev.pubkey)
   return (
     <div className="grid gap-4 grid-cols-[min-content_auto]">
       <Profile
@@ -34,5 +34,5 @@ export default function VideoComment({ ev }: { ev: TaggedNostrEvent }) {
         <EventReactions ev={ev} />
       </div>
     </div>
-  );
+  )
 }

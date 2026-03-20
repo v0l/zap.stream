@@ -1,21 +1,21 @@
-import { useContext, useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { SnortContext } from "@snort/system-react";
+import { useContext, useEffect, useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { SnortContext } from "@snort/system-react"
 
-import type { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers";
-import { SendZaps } from "@/element/send-zap";
-import { StreamEditor, type StreamEditorProps } from "@/element/stream-editor";
-import Spinner from "@/element/spinner";
-import { useRates } from "@/hooks/rates";
-import { DefaultButton } from "@/element/buttons";
-import { AddForwardInputs } from "./fowards";
-import AccountTopup from "./topup";
-import AccountWithdrawl from "./withdraw";
-import BalanceHistory from "./history";
-import StreamKeyList from "./stream-keys";
-import NwcConfig from "./nwc-config";
-import { sortEndpoints } from "./util";
-import { StreamEndpoints } from "./endpoints";
+import type { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers"
+import { SendZaps } from "@/element/send-zap"
+import { StreamEditor, type StreamEditorProps } from "@/element/stream-editor"
+import Spinner from "@/element/spinner"
+import { useRates } from "@/hooks/rates"
+import { DefaultButton } from "@/element/buttons"
+import { AddForwardInputs } from "./fowards"
+import AccountTopup from "./topup"
+import AccountWithdrawl from "./withdraw"
+import BalanceHistory from "./history"
+import StreamKeyList from "./stream-keys"
+import NwcConfig from "./nwc-config"
+import { sortEndpoints } from "./util"
+import { StreamEndpoints } from "./endpoints"
 
 export default function NostrProviderDialog({
   provider,
@@ -29,36 +29,36 @@ export default function NostrProviderDialog({
   showNwc,
   ...others
 }: {
-  provider: NostrStreamProvider;
-  showEndpoints: boolean;
-  showBalance?: boolean;
-  showEstimate?: boolean;
-  showEditor: boolean;
-  showForwards: boolean;
-  showBalanceHistory: boolean;
-  showStreamKeys: boolean;
-  showNwc?: boolean;
+  provider: NostrStreamProvider
+  showEndpoints: boolean
+  showBalance?: boolean
+  showEstimate?: boolean
+  showEditor: boolean
+  showForwards: boolean
+  showBalanceHistory: boolean
+  showStreamKeys: boolean
+  showNwc?: boolean
 } & StreamEditorProps) {
-  const system = useContext(SnortContext);
-  const [topup, setTopup] = useState(false);
-  const [info, setInfo] = useState<AccountResponse>();
-  const [ep, setEndpoint] = useState<IngestEndpoint>();
-  const [hrs, setHrs] = useState(25);
-  const [tos, setTos] = useState(false);
-  const rate = useRates("BTCUSD");
+  const system = useContext(SnortContext)
+  const [topup, setTopup] = useState(false)
+  const [info, setInfo] = useState<AccountResponse>()
+  const [ep, setEndpoint] = useState<IngestEndpoint>()
+  const [hrs, setHrs] = useState(25)
+  const [tos, setTos] = useState(false)
+  const rate = useRates("BTCUSD")
 
   async function loadInfo() {
-    const info = await provider.info();
-    setInfo(info);
-    setTos(info.tos?.accepted ?? true);
-    setEndpoint(sortEndpoints(info.endpoints)[0]);
+    const info = await provider.info()
+    setInfo(info)
+    setTos(info.tos?.accepted ?? true)
+    setEndpoint(sortEndpoints(info.endpoints)[0])
   }
   useEffect(() => {
-    loadInfo();
-  }, [provider]);
+    loadInfo()
+  }, [provider])
 
   if (!info) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (topup) {
@@ -69,26 +69,26 @@ export default function NostrProviderDialog({
           canZap: false,
           maxCommentLength: 0,
           getInvoice: async amount => {
-            const pr = await provider.topup(amount);
-            return { pr };
+            const pr = await provider.topup(amount)
+            return { pr }
           },
         }}
         onFinish={() => {
           provider.info().then(v => {
-            setInfo(v);
-            setTopup(false);
-          });
+            setInfo(v)
+            setTopup(false)
+          })
         }}
       />
-    );
+    )
   }
 
   function calcEstimate() {
-    if (!ep?.cost.rate || !ep?.cost.unit || !info?.balance || !info.balance) return;
+    if (!ep?.cost.rate || !ep?.cost.unit || !info?.balance || !info.balance) return
 
-    const raw = Math.max(0, info.balance / ep.cost.rate);
+    const raw = Math.max(0, info.balance / ep.cost.rate)
     if (ep.cost.unit === "min" && raw > 60) {
-      const pm = hrs * 60 * ep.cost.rate;
+      const pm = hrs * 60 * ep.cost.rate
       return (
         <>
           {`${(raw / 60).toFixed(0)} hour @ ${ep.cost.rate} sats/${ep.cost.unit}`}
@@ -99,19 +99,19 @@ export default function NostrProviderDialog({
             <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
           </div>
         </>
-      );
+      )
     }
-    return `${raw.toFixed(0)} ${ep.cost.unit} @ ${ep.cost.rate} sats/${ep.cost.unit}`;
+    return `${raw.toFixed(0)} ${ep.cost.unit} @ ${ep.cost.rate} sats/${ep.cost.unit}`
   }
 
   async function acceptTos() {
-    await provider.acceptTos();
-    const i = await provider.info();
-    setInfo(i);
+    await provider.acceptTos()
+    const i = await provider.info()
+    setInfo(i)
   }
 
   function tosInput() {
-    if (!info) return;
+    if (!info) return
 
     return (
       <>
@@ -127,7 +127,8 @@ export default function NostrProviderDialog({
                   terms: (
                     <span
                       className="tos-link"
-                      onClick={() => window.open(info.tos?.link, "popup", "width=400,height=800")}>
+                      onClick={() => window.open(info.tos?.link, "popup", "width=400,height=800")}
+                    >
                       <FormattedMessage defaultMessage="terms and conditions" id="thsiMl" />
                     </span>
                   ),
@@ -142,11 +143,11 @@ export default function NostrProviderDialog({
           </DefaultButton>
         </div>
       </>
-    );
+    )
   }
 
   function currentBalance() {
-    if (!info) return;
+    if (!info) return
     return (
       <div>
         <p>
@@ -164,31 +165,31 @@ export default function NostrProviderDialog({
           <AccountWithdrawl provider={provider} onFinish={loadInfo} />
         </div>
       </div>
-    );
+    )
   }
 
   function balanceTimeEstimate() {
-    if (!info) return;
+    if (!info) return
     return (
       <div>
         <small>
           <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
         </small>
       </div>
-    );
+    )
   }
 
   function streamEditor() {
-    if (!info || !showEditor) return;
+    if (!info || !showEditor) return
     if (info.tos?.accepted === false) {
-      return tosInput();
+      return tosInput()
     }
 
     return (
       <StreamEditor
         onFinish={ex => {
-          provider.updateStreamInfo(system, ex);
-          others.onFinish?.(ex);
+          provider.updateStreamInfo(system, ex)
+          others.onFinish?.(ex)
         }}
         ev={others.ev}
         options={{
@@ -196,11 +197,11 @@ export default function NostrProviderDialog({
           canSetStatus: false,
         }}
       />
-    );
+    )
   }
 
   function forwardInputs() {
-    if (!info || !showForwards) return;
+    if (!info || !showForwards) return
 
     return (
       <div className="flex flex-col gap-4">
@@ -214,9 +215,10 @@ export default function NostrProviderDialog({
               <div className="bg-layer-2 rounded-xl px-3 flex items-center">{a.name}</div>
               <DefaultButton
                 onClick={async () => {
-                  await provider.removeForward(a.id);
-                  await loadInfo();
-                }}>
+                  await provider.removeForward(a.id)
+                  await loadInfo()
+                }}
+              >
                 <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
               </DefaultButton>
             </>
@@ -224,11 +226,11 @@ export default function NostrProviderDialog({
         </div>
         <AddForwardInputs provider={provider} onAdd={loadInfo} />
       </div>
-    );
+    )
   }
 
   function balanceHist() {
-    if (!info || !showBalanceHistory) return;
+    if (!info || !showBalanceHistory) return
 
     return (
       <div className="flex flex-col gap-4">
@@ -239,17 +241,17 @@ export default function NostrProviderDialog({
           <BalanceHistory provider={provider} />
         </div>
       </div>
-    );
+    )
   }
 
   function streamKeys() {
-    if (!info || !showStreamKeys) return;
-    return <StreamKeyList provider={provider} />;
+    if (!info || !showStreamKeys) return
+    return <StreamKeyList provider={provider} />
   }
 
   function nwcConfig() {
-    if (!info || !showNwc || info.has_nwc === undefined) return;
-    return <NwcConfig provider={provider} hasNwc={info.has_nwc} onConfigured={loadInfo} />;
+    if (!info || !showNwc || info.has_nwc === undefined) return
+    return <NwcConfig provider={provider} hasNwc={info.has_nwc} onConfigured={loadInfo} />
   }
 
   return (
@@ -263,5 +265,5 @@ export default function NostrProviderDialog({
       {balanceHist()}
       {streamKeys()}
     </>
-  );
+  )
 }

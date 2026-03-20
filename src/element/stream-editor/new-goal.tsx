@@ -1,41 +1,41 @@
-import { FormattedMessage } from "react-intl";
-import { useContext, useState } from "react";
-import { SnortContext } from "@snort/system-react";
+import { FormattedMessage } from "react-intl"
+import { useContext, useState } from "react"
+import { SnortContext } from "@snort/system-react"
 
-import { Icon } from "../icon";
-import { GOAL } from "@/const";
-import { useLogin } from "@/hooks/login";
-import { defaultRelays } from "@/const";
-import { DefaultButton } from "../buttons";
-import Modal from "../modal";
-import { StreamInput } from "./input";
+import { Icon } from "../icon"
+import { GOAL } from "@/const"
+import { useLogin } from "@/hooks/login"
+import { defaultRelays } from "@/const"
+import { DefaultButton } from "../buttons"
+import Modal from "../modal"
+import { StreamInput } from "./input"
 
 export function NewGoalDialog() {
-  const system = useContext(SnortContext);
-  const [open, setOpen] = useState(false);
-  const login = useLogin();
+  const system = useContext(SnortContext)
+  const [open, setOpen] = useState(false)
+  const login = useLogin()
 
-  const [goalAmount, setGoalAmount] = useState("");
-  const [goalName, setGoalName] = useState("");
+  const [goalAmount, setGoalAmount] = useState("")
+  const [goalName, setGoalName] = useState("")
 
   async function publishGoal() {
-    const pub = login?.publisher();
+    const pub = login?.publisher()
     if (pub) {
       const evNew = await pub.generic(eb => {
         eb.kind(GOAL)
           .tag(["amount", String(Number(goalAmount) * 1000)])
           .tag(["relays", ...Object.keys(defaultRelays)])
-          .content(goalName);
-        return eb;
-      });
-      console.debug(evNew);
-      await system.BroadcastEvent(evNew);
-      setOpen(false);
-      setGoalName("");
-      setGoalAmount("");
+          .content(goalName)
+        return eb
+      })
+      console.debug(evNew)
+      await system.BroadcastEvent(evNew)
+      setOpen(false)
+      setGoalName("")
+      setGoalAmount("")
     }
   }
-  const isValid = goalName.length && Number(goalAmount) > 0;
+  const isValid = goalName.length && Number(goalAmount) > 0
 
   return (
     <>
@@ -79,5 +79,5 @@ export function NewGoalDialog() {
         </Modal>
       )}
     </>
-  );
+  )
 }

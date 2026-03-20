@@ -1,12 +1,12 @@
-import { DefaultButton } from "@/element/buttons";
-import Modal from "@/element/modal";
-import { SendZaps } from "@/element/send-zap";
-import type { NostrStreamProvider } from "@/providers";
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { DefaultButton } from "@/element/buttons"
+import Modal from "@/element/modal"
+import { SendZaps } from "@/element/send-zap"
+import type { NostrStreamProvider } from "@/providers"
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
 
 export default function AccountTopup({ provider, onFinish }: { provider: NostrStreamProvider; onFinish: () => void }) {
-  const [topup, setTopup] = useState(false);
+  const [topup, setTopup] = useState(false)
   return (
     <>
       <DefaultButton onClick={() => setTopup(true)}>
@@ -20,8 +20,8 @@ export default function AccountTopup({ provider, onFinish }: { provider: NostrSt
               canZap: false,
               maxCommentLength: 0,
               getInvoice: async amount => {
-                const pr = await provider.topup(amount);
-                return { pr };
+                const pr = await provider.topup(amount)
+                return { pr }
               },
             }}
             onFinish={onFinish}
@@ -29,5 +29,5 @@ export default function AccountTopup({ provider, onFinish }: { provider: NostrSt
         </Modal>
       )}
     </>
-  );
+  )
 }

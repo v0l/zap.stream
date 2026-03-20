@@ -1,9 +1,9 @@
-import "./spinner.css";
+import "./spinner.css"
 
 export interface IconProps {
-  className?: string;
-  width?: number;
-  height?: number;
+  className?: string
+  width?: number
+  height?: number
 }
 
 const Spinner = (props: IconProps) => (
@@ -12,6 +12,6 @@ const Spinner = (props: IconProps) => (
       <circle cx="10" cy="10" r="7.5" fill="none" strokeWidth="3"></circle>
     </g>
   </svg>
-);
+)
 
-export default Spinner;
+export default Spinner

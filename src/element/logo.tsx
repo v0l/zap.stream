@@ -1,4 +1,4 @@
-import type { HTMLProps } from "react";
+import type { HTMLProps } from "react"
 
 export default function Logo(props: HTMLProps<SVGSVGElement>) {
   return (
@@ -8,5 +8,5 @@ export default function Logo(props: HTMLProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }

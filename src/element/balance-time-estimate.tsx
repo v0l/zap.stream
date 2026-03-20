@@ -1,8 +1,8 @@
-import type { IngestEndpoint } from "@/providers";
-import { FormattedMessage, FormattedNumber } from "react-intl";
+import type { IngestEndpoint } from "@/providers"
+import { FormattedMessage, FormattedNumber } from "react-intl"
 
 export default function BalanceTimeEstimate({ balance, endpoint }: { balance: number; endpoint: IngestEndpoint }) {
-  const rate = (endpoint.cost.unit === "min" ? (endpoint.cost.rate ?? 0) * 60 : endpoint.cost.rate) ?? 0;
+  const rate = (endpoint.cost.unit === "min" ? (endpoint.cost.rate ?? 0) * 60 : endpoint.cost.rate) ?? 0
 
   return (
     <FormattedMessage
@@ -11,5 +11,5 @@ export default function BalanceTimeEstimate({ balance, endpoint }: { balance: nu
         n: <FormattedNumber value={balance / rate} maximumFractionDigits={1} />,
       }}
     />
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import useGameInfo from "@/hooks/game-info";
-import Pill from "../pill";
-import type { ReactNode } from "react";
-import classNames from "classnames";
+import useGameInfo from "@/hooks/game-info"
+import Pill from "../pill"
+import type { ReactNode } from "react"
+import classNames from "classnames"
 
 export function CategoryTile({
   gameId,
@@ -10,13 +10,13 @@ export function CategoryTile({
   showFooterTitle,
   extraDetail,
 }: {
-  gameId: string;
-  showDetail?: boolean;
-  showFooterTitle?: boolean;
-  children?: ReactNode;
-  extraDetail?: ReactNode;
+  gameId: string
+  showDetail?: boolean
+  showFooterTitle?: boolean
+  children?: ReactNode
+  extraDetail?: ReactNode
 }) {
-  const game = useGameInfo(gameId);
+  const game = useGameInfo(gameId)
 
   return (
     <div className="flex flex-col gap-2">
@@ -30,7 +30,13 @@ export function CategoryTile({
         {showDetail && (
           <div className="flex flex-col gap-4">
             <h1>{game?.name}</h1>
-            {game?.genres && <div className="flex gap-2">{game?.genres?.map(a => <Pill key={a.id}>{a.name}</Pill>)}</div>}
+            {game?.genres && (
+              <div className="flex gap-2">
+                {game?.genres?.map(a => (
+                  <Pill key={a.id}>{a.name}</Pill>
+                ))}
+              </div>
+            )}
             {extraDetail}
           </div>
         )}
@@ -38,5 +44,5 @@ export function CategoryTile({
       {showFooterTitle && <p>{game?.name}</p>}
       {children}
     </div>
-  );
+  )
 }

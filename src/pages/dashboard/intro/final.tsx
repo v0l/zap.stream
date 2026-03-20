@@ -1,31 +1,31 @@
-import { FormattedMessage } from "react-intl";
-import StepHeader from "./step-header";
-import { DefaultButton } from "@/element/buttons";
-import { useStreamProvider } from "@/hooks/stream-provider";
-import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router";
-import StreamKey from "@/element/provider/nostr/stream-key";
-import { ExternalLink } from "@/element/external-link";
-import type { AccountResponse } from "@/providers";
+import { FormattedMessage } from "react-intl"
+import StepHeader from "./step-header"
+import { DefaultButton } from "@/element/buttons"
+import { useStreamProvider } from "@/hooks/stream-provider"
+import { useEffect, useMemo, useState } from "react"
+import { useNavigate } from "react-router"
+import StreamKey from "@/element/provider/nostr/stream-key"
+import { ExternalLink } from "@/element/external-link"
+import type { AccountResponse } from "@/providers"
 
 export default function DashboardIntroFinal() {
-  const navigate = useNavigate();
-  const [info, setInfo] = useState<AccountResponse>();
-  const { provider: streamProvider } = useStreamProvider();
+  const navigate = useNavigate()
+  const [info, setInfo] = useState<AccountResponse>()
+  const { provider: streamProvider } = useStreamProvider()
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name === "Best") ?? info?.endpoints[0];
-  }, [info]);
+    return info?.endpoints.find(a => a.name === "Best") ?? info?.endpoints[0]
+  }, [info])
 
   async function loadInfo() {
     streamProvider.info().then(i => {
-      setInfo(i);
-    });
+      setInfo(i)
+    })
   }
 
   useEffect(() => {
-    loadInfo();
-  }, []);
+    loadInfo()
+  }, [])
 
   return (
     <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
@@ -45,11 +45,12 @@ export default function DashboardIntroFinal() {
         {defaultEndpoint && <StreamKey ep={defaultEndpoint} />}
         <DefaultButton
           onClick={async () => {
-            navigate("/dashboard?setupComplete=true");
-          }}>
+            navigate("/dashboard?setupComplete=true")
+          }}
+        >
           <FormattedMessage defaultMessage="Go to Dashboard" />
         </DefaultButton>
       </div>
     </div>
-  );
+  )
 }

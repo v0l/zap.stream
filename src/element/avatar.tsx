@@ -1,14 +1,14 @@
-import { type HTMLProps, useState } from "react";
-import classNames from "classnames";
-import { getPlaceholder } from "@/utils";
-import type { UserMetadata } from "@snort/system";
-import useImgProxy from "@/hooks/img-proxy";
+import { type HTMLProps, useState } from "react"
+import classNames from "classnames"
+import { getPlaceholder } from "@/utils"
+import type { UserMetadata } from "@snort/system"
+import useImgProxy from "@/hooks/img-proxy"
 
-type AvatarProps = HTMLProps<HTMLImageElement> & { size?: number; pubkey: string; user?: UserMetadata };
+type AvatarProps = HTMLProps<HTMLImageElement> & { size?: number; pubkey: string; user?: UserMetadata }
 export function Avatar({ pubkey, size, user, ...props }: AvatarProps) {
-  const [failed, setFailed] = useState(false);
-  const { proxy } = useImgProxy();
-  const src = user?.picture && !failed ? proxy(user.picture, size ?? 40) : getPlaceholder(pubkey);
+  const [failed, setFailed] = useState(false)
+  const { proxy } = useImgProxy()
+  const src = user?.picture && !failed ? proxy(user.picture, size ?? 40) : getPlaceholder(pubkey)
   return (
     <img
       {...props}
@@ -22,5 +22,5 @@ export function Avatar({ pubkey, size, user, ...props }: AvatarProps) {
         height: `${size ?? 40}px`,
       }}
     />
-  );
+  )
 }

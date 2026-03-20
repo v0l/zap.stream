@@ -1,41 +1,41 @@
-import { useStreamsFeed } from "@/hooks/live-streams";
-import { getHost } from "@/utils";
-import { dedupe } from "@snort/shared";
-import { FormattedMessage } from "react-intl";
-import { Profile } from "../../element/profile";
-import { useLogin } from "@/hooks/login";
-import { useContext, useState } from "react";
-import { LinkScope, Nip10, NostrLink, parseNostrLink } from "@snort/system";
-import { SnortContext } from "@snort/system-react";
-import { LIVE_STREAM_RAID } from "@/const";
-import { DefaultButton } from "../../element/buttons";
-import { useSortedStreams } from "@/hooks/useLiveStreams";
+import { useStreamsFeed } from "@/hooks/live-streams"
+import { getHost } from "@/utils"
+import { dedupe } from "@snort/shared"
+import { FormattedMessage } from "react-intl"
+import { Profile } from "../../element/profile"
+import { useLogin } from "@/hooks/login"
+import { useContext, useState } from "react"
+import { LinkScope, Nip10, NostrLink, parseNostrLink } from "@snort/system"
+import { SnortContext } from "@snort/system-react"
+import { LIVE_STREAM_RAID } from "@/const"
+import { DefaultButton } from "../../element/buttons"
+import { useSortedStreams } from "@/hooks/useLiveStreams"
 
 export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose: () => void }) {
-  const system = useContext(SnortContext);
-  const login = useLogin();
-  const streams = useStreamsFeed();
-  const { live } = useSortedStreams(streams);
-  const [raiding, setRaiding] = useState("");
-  const [msg, setMsg] = useState("");
+  const system = useContext(SnortContext)
+  const login = useLogin()
+  const streams = useStreamsFeed()
+  const { live } = useSortedStreams(streams)
+  const [raiding, setRaiding] = useState("")
+  const [msg, setMsg] = useState("")
 
   const livePubkeys = dedupe(live.map(a => getHost(a))).filter(
     a => !login?.state?.muted.some(b => b.equals(NostrLink.publicKey(a))),
-  );
+  )
 
   async function raid() {
-    const pub = login?.publisher();
+    const pub = login?.publisher()
     if (pub) {
       const ev = await pub.generic(eb => {
         return eb
           .kind(LIVE_STREAM_RAID)
           .tag(Nip10.linkToTag(link, LinkScope.Root))
           .tag(Nip10.linkToTag(parseNostrLink(raiding), LinkScope.Mention))
-          .content(msg);
-      });
+          .content(msg)
+      })
 
-      await system.BroadcastEvent(ev);
-      onClose();
+      await system.BroadcastEvent(ev)
+      onClose()
     }
   }
 
@@ -53,11 +53,12 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
             <div
               className="border border-layer-1 rounded-full px-4 py-2 bg-layer-2 pointer"
               onClick={() => {
-                const liveEvent = live.find(b => getHost(b) === a);
+                const liveEvent = live.find(b => getHost(b) === a)
                 if (liveEvent) {
-                  setRaiding(NostrLink.fromEvent(liveEvent).encode());
+                  setRaiding(NostrLink.fromEvent(liveEvent).encode())
                 }
-              }}>
+              }}
+            >
               <Profile pubkey={a} options={{ showAvatar: false }} linkToProfile={false} />
             </div>
           ))}
@@ -79,5 +80,5 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
         <FormattedMessage defaultMessage="Raid!" id="aqjZxs" />
       </DefaultButton>
     </div>
-  );
+  )
 }

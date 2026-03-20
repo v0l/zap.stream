@@ -1,8 +1,8 @@
-import react from "@vitejs/plugin-react";
-import { VitePWA } from "vite-plugin-pwa";
-import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react"
+import { VitePWA } from "vite-plugin-pwa"
+import { defineConfig } from "vite"
 //import { visualizer } from "rollup-plugin-visualizer";
-import { vitePluginVersionMark } from "vite-plugin-version-mark";
+import { vitePluginVersionMark } from "vite-plugin-version-mark"
 
 export default defineConfig({
   plugins: [
@@ -50,4 +50,4 @@ export default defineConfig({
   define: {
     global: {},
   },
-});
+})

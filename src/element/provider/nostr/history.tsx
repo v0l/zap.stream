@@ -1,19 +1,19 @@
-import { Mention } from "@/element/mention";
-import type { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz";
-import { eventLink } from "@/utils";
-import { EventKind, type NostrEvent, NostrLink } from "@snort/system";
-import { useEffect, useState } from "react";
-import { FormattedMessage, FormattedNumber } from "react-intl";
-import { Link } from "react-router";
+import { Mention } from "@/element/mention"
+import type { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz"
+import { eventLink } from "@/utils"
+import { EventKind, type NostrEvent, NostrLink } from "@snort/system"
+import { useEffect, useState } from "react"
+import { FormattedMessage, FormattedNumber } from "react-intl"
+import { Link } from "react-router"
 
 export default function BalanceHistory({ provider }: { provider?: NostrStreamProvider }) {
-  const [page] = useState(0);
-  const [rows, setRows] = useState<BalanceHistoryResult>();
+  const [page] = useState(0)
+  const [rows, setRows] = useState<BalanceHistoryResult>()
 
   useEffect(() => {
-    if (!provider) return;
-    provider.history(page).then(setRows);
-  }, []);
+    if (!provider) return
+    provider.history(page).then(setRows)
+  }, [])
 
   function eventDescription(ev: NostrEvent) {
     if (ev.kind === EventKind.LiveEvent) {
@@ -21,7 +21,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
         <Link to={`/${eventLink(ev)}`} className="text-primary">
           <FormattedMessage defaultMessage="Past Stream" />
         </Link>
-      );
+      )
     } else if (ev.kind === EventKind.ZapRequest) {
       return (
         <div className="flex flex-col">
@@ -31,7 +31,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
           </div>
           {ev.content ? <q className="text-sm block">{ev.content}</q> : ""}
         </div>
-      );
+      )
     }
   }
 
@@ -52,9 +52,9 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
       </thead>
       <tbody>
         {rows?.items.map(a => {
-          let ev: NostrEvent | undefined;
+          let ev: NostrEvent | undefined
           if (a.desc?.startsWith("{")) {
-            ev = JSON.parse(a.desc) as NostrEvent;
+            ev = JSON.parse(a.desc) as NostrEvent
           }
           return (
             <tr>
@@ -65,9 +65,9 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
                 <FormattedNumber value={a.amount} />
               </td>
             </tr>
-          );
+          )
         })}
       </tbody>
     </table>
-  );
+  )
 }

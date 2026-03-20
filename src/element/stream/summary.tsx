@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { Text } from "../text";
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Text } from "../text"
 
 export function StreamSummary({ text }: { text: string }) {
-  const [expand, setExpand] = useState(false);
+  const [expand, setExpand] = useState(false)
 
   const line3 = [...text].reduce(
     (acc, v, i) => {
       if (v === "\n" && acc[0] < 3) {
-        acc[0] += 1;
-        acc[1] = i;
+        acc[0] += 1
+        acc[1] = i
       }
-      return acc;
+      return acc
     },
     [0, 0],
-  )[1];
+  )[1]
 
-  const cutOff = Math.min(100, line3 > 0 ? line3 : text.length);
-  const shouldExpand = text.length > cutOff;
+  const cutOff = Math.min(100, line3 > 0 ? line3 : text.length)
+  const shouldExpand = text.length > cutOff
   return (
     <div className="whitespace-pre text-pretty">
       {shouldExpand && !expand ? text.slice(0, cutOff) : <Text content={text} tags={[]} />}
@@ -26,8 +26,9 @@ export function StreamSummary({ text }: { text: string }) {
           <span
             className="text-primary text-bold cursor-pointer"
             onClick={() => {
-              setExpand(x => !x);
-            }}>
+              setExpand(x => !x)
+            }}
+          >
             &nbsp;
             {!expand && <FormattedMessage defaultMessage="...more" />}
           </span>
@@ -35,13 +36,14 @@ export function StreamSummary({ text }: { text: string }) {
             <div
               className="text-primary text-bold cursor-pointer"
               onClick={() => {
-                setExpand(x => !x);
-              }}>
+                setExpand(x => !x)
+              }}
+            >
               <FormattedMessage defaultMessage="Hide" />
             </div>
           )}
         </>
       )}
     </div>
-  );
+  )
 }

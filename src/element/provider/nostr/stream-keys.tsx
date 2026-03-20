@@ -1,25 +1,25 @@
-import type { StreamState } from "@/const";
-import { Layer2Button } from "@/element/buttons";
-import Copy from "@/element/copy";
-import { StatePill } from "@/element/state-pill";
-import type { NostrStreamProvider } from "@/providers";
-import type { StreamKeysResult } from "@/providers/zsz";
-import { eventLink, extractStreamInfo } from "@/utils";
-import { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { Link } from "react-router";
+import type { StreamState } from "@/const"
+import { Layer2Button } from "@/element/buttons"
+import Copy from "@/element/copy"
+import { StatePill } from "@/element/state-pill"
+import type { NostrStreamProvider } from "@/providers"
+import type { StreamKeysResult } from "@/providers/zsz"
+import { eventLink, extractStreamInfo } from "@/utils"
+import { useEffect, useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Link } from "react-router"
 
 export default function StreamKeyList({ provider }: { provider: NostrStreamProvider }) {
-  const [keys, setKeys] = useState<StreamKeysResult>();
+  const [keys, setKeys] = useState<StreamKeysResult>()
 
   async function loadKeys() {
-    const k = await provider.streamKeys();
-    setKeys(Array.isArray(k) ? { items: k, page: 0, pageSize: 1000 } : k);
+    const k = await provider.streamKeys()
+    setKeys(Array.isArray(k) ? { items: k, page: 0, pageSize: 1000 } : k)
   }
 
   useEffect(() => {
-    loadKeys();
-  }, []);
+    loadKeys()
+  }, [])
 
   return (
     <div className="flex flex-col gap-2">
@@ -66,11 +66,12 @@ export default function StreamKeyList({ provider }: { provider: NostrStreamProvi
       {keys?.items.length === 0 && <FormattedMessage defaultMessage="No keys" />}
       <Layer2Button
         onClick={async () => {
-          await provider.createStreamKey();
-          loadKeys();
-        }}>
+          await provider.createStreamKey()
+          loadKeys()
+        }}
+      >
         <FormattedMessage defaultMessage="Add" />
       </Layer2Button>
     </div>
-  );
+  )
 }

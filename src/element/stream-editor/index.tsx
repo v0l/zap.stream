@@ -1,153 +1,153 @@
-import "./index.css";
-import { useCallback, useContext, useEffect, useState } from "react";
-import { EventKind, type NostrEvent } from "@snort/system";
-import { unixNow } from "@snort/shared";
-import { FormattedMessage, useIntl } from "react-intl";
-import { SnortContext } from "@snort/system-react";
+import "./index.css"
+import { useCallback, useContext, useEffect, useState } from "react"
+import { EventKind, type NostrEvent } from "@snort/system"
+import { unixNow } from "@snort/shared"
+import { FormattedMessage, useIntl } from "react-intl"
+import { SnortContext } from "@snort/system-react"
 
-import { extractStreamInfo, findTag } from "@/utils";
-import { useLogin } from "@/hooks/login";
-import { GOAL, StreamState, defaultRelays } from "@/const";
-import { DefaultButton } from "@/element/buttons";
-import Pill from "@/element/pill";
-import { StreamInput } from "./input";
-import { GoalSelector } from "./goal-selector";
-import GameDatabase, { type GameInfo } from "@/service/game-database";
-import CategoryInput from "./category-input";
-import { FileUploader } from "@/element/file-uploader";
-import AmountInput from "@/element/amount-input";
+import { extractStreamInfo, findTag } from "@/utils"
+import { useLogin } from "@/hooks/login"
+import { GOAL, StreamState, defaultRelays } from "@/const"
+import { DefaultButton } from "@/element/buttons"
+import Pill from "@/element/pill"
+import { StreamInput } from "./input"
+import { GoalSelector } from "./goal-selector"
+import GameDatabase, { type GameInfo } from "@/service/game-database"
+import CategoryInput from "./category-input"
+import { FileUploader } from "@/element/file-uploader"
+import AmountInput from "@/element/amount-input"
 
 export interface StreamEditorProps {
-  ev?: NostrEvent;
-  onFinish?: (ev: NostrEvent) => void;
+  ev?: NostrEvent
+  onFinish?: (ev: NostrEvent) => void
   options?: {
-    canSetTitle?: boolean;
-    canSetSummary?: boolean;
-    canSetImage?: boolean;
-    canSetStatus?: boolean;
-    canSetStream?: boolean;
-    canSetTags?: boolean;
-    canSetContentWarning?: boolean;
-  };
+    canSetTitle?: boolean
+    canSetSummary?: boolean
+    canSetImage?: boolean
+    canSetStatus?: boolean
+    canSetStream?: boolean
+    canSetTags?: boolean
+    canSetContentWarning?: boolean
+  }
 }
 
 export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
-  const [image, setImage] = useState("");
-  const [stream, setStream] = useState("");
-  const [recording, setRecording] = useState("");
-  const [status, setStatus] = useState("");
-  const [start, setStart] = useState<string>();
-  const [tags, setTags] = useState<string[]>([]);
-  const [contentWarning, setContentWarning] = useState(false);
-  const [isValid, setIsValid] = useState(false);
-  const [goal, setGoal] = useState<string>();
-  const [goalName, setGoalName] = useState("");
-  const [goalAmount, setGoalMount] = useState(0);
-  const [game, setGame] = useState<GameInfo>();
-  const [gameId, setGameId] = useState<string>();
-  const [error, setError] = useState("");
-  const login = useLogin();
-  const { formatMessage } = useIntl();
-  const system = useContext(SnortContext);
+  const [title, setTitle] = useState("")
+  const [summary, setSummary] = useState("")
+  const [image, setImage] = useState("")
+  const [stream, setStream] = useState("")
+  const [recording, setRecording] = useState("")
+  const [status, setStatus] = useState("")
+  const [start, setStart] = useState<string>()
+  const [tags, setTags] = useState<string[]>([])
+  const [contentWarning, setContentWarning] = useState(false)
+  const [isValid, setIsValid] = useState(false)
+  const [goal, setGoal] = useState<string>()
+  const [goalName, setGoalName] = useState("")
+  const [goalAmount, setGoalMount] = useState(0)
+  const [game, setGame] = useState<GameInfo>()
+  const [gameId, setGameId] = useState<string>()
+  const [error, setError] = useState("")
+  const login = useLogin()
+  const { formatMessage } = useIntl()
+  const system = useContext(SnortContext)
 
   useEffect(() => {
-    if (!ev) return;
+    if (!ev) return
     const { gameInfo, gameId, title, summary, image, stream, status, starts, tags, contentWarning, goal, recording } =
-      extractStreamInfo(ev);
-    setTitle(title ?? "");
-    setSummary(summary ?? "");
-    setImage(image ?? "");
-    setStream(stream ?? "");
-    setStatus(status ?? StreamState.Live);
-    setRecording(recording ?? "");
-    setStart(starts);
-    setTags(tags ?? []);
-    setContentWarning(contentWarning !== undefined);
-    setGoal(goal);
-    setGameId(gameId);
+      extractStreamInfo(ev)
+    setTitle(title ?? "")
+    setSummary(summary ?? "")
+    setImage(image ?? "")
+    setStream(stream ?? "")
+    setStatus(status ?? StreamState.Live)
+    setRecording(recording ?? "")
+    setStart(starts)
+    setTags(tags ?? [])
+    setContentWarning(contentWarning !== undefined)
+    setGoal(goal)
+    setGameId(gameId)
     if (gameInfo) {
-      setGame(gameInfo);
+      setGame(gameInfo)
     } else if (gameId) {
-      new GameDatabase().getGame(gameId).then(setGame);
+      new GameDatabase().getGame(gameId).then(setGame)
     }
-  }, []);
+  }, [])
 
   const validate = useCallback(() => {
     if (title.length < 2) {
-      return false;
+      return false
     }
     if ((options?.canSetStream ?? true) && (stream.length < 5 || !stream.match(/^https?:\/\/.*\.m3u8?$/i))) {
-      return false;
+      return false
     }
     if (image.length > 0 && !image.match(/^https?:\/\//i)) {
-      return false;
+      return false
     }
-    return true;
-  }, [title, image, stream]);
+    return true
+  }, [title, image, stream])
 
   useEffect(() => {
-    setIsValid(ev !== undefined || validate());
-  }, [validate, title, summary, image, stream]);
+    setIsValid(ev !== undefined || validate())
+  }, [validate, title, summary, image, stream])
 
   async function publishStream() {
-    const pub = login?.publisher();
+    const pub = login?.publisher()
     if (pub) {
-      let thisGoal = goal;
+      let thisGoal = goal
       if (!goal && goalName && goalAmount) {
         const goalEvent = await pub.generic(eb => {
           return eb
             .kind(GOAL)
             .tag(["amount", String(goalAmount * 1000)])
             .tag(["relays", ...Object.keys(defaultRelays)])
-            .content(goalName);
-        });
-        await system.BroadcastEvent(goalEvent);
-        thisGoal = goalEvent.id;
+            .content(goalName)
+        })
+        await system.BroadcastEvent(goalEvent)
+        thisGoal = goalEvent.id
       }
       const evNew = await pub.generic(eb => {
-        const now = unixNow();
-        const dTag = findTag(ev, "d") ?? now.toString();
-        const starts = start ?? now.toString();
-        const ends = findTag(ev, "ends") ?? now.toString();
+        const now = unixNow()
+        const dTag = findTag(ev, "d") ?? now.toString()
+        const starts = start ?? now.toString()
+        const ends = findTag(ev, "ends") ?? now.toString()
         eb.kind(EventKind.LiveEvent)
           .tag(["d", dTag])
           .tag(["title", title])
           .tag(["summary", summary])
           .tag(["image", image])
           .tag(["status", status])
-          .tag(["starts", starts]);
+          .tag(["starts", starts])
         if (status === StreamState.Live) {
-          eb.tag(["streaming", stream]);
+          eb.tag(["streaming", stream])
         }
         if (status === StreamState.Ended) {
-          eb.tag(["ends", ends]);
+          eb.tag(["ends", ends])
           if (recording) {
-            eb.tag(["recording", recording]);
+            eb.tag(["recording", recording])
           }
         }
         for (const tx of tags) {
-          eb.tag(["t", tx.trim()]);
+          eb.tag(["t", tx.trim()])
         }
         if (contentWarning) {
-          eb.tag(["content-warning", "nsfw"]);
+          eb.tag(["content-warning", "nsfw"])
         }
         if (thisGoal && thisGoal.length > 0) {
-          eb.tag(["goal", thisGoal]);
+          eb.tag(["goal", thisGoal])
         }
         if (gameId) {
-          eb.tag(["t", gameId]);
+          eb.tag(["t", gameId])
         }
-        return eb;
-      });
-      console.debug(evNew);
-      onFinish?.(evNew);
+        return eb
+      })
+      console.debug(evNew)
+      onFinish?.(evNew)
     }
   }
 
-  const startsTimestamp = Number(start ?? Date.now()/ 1000);
-  const startsDate = new Date(startsTimestamp * 1000);
+  const startsTimestamp = Number(start ?? Date.now() / 1000)
+  const startsDate = new Date(startsTimestamp * 1000)
 
   return (
     <>
@@ -207,7 +207,7 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
                 type="datetime-local"
                 value={`${startsDate.getFullYear().toString().padStart(4, "0")}-${(startsDate.getMonth() + 1).toString().padStart(2, "0")}-${startsDate.getDate().toString().padStart(2, "0")}T${startsDate.getHours().toString().padStart(2, "0")}:${startsDate.getMinutes().toString().padStart(2, "0")}`}
                 onChange={e => {
-                  setStart((new Date(e.target.value).getTime() / 1000).toString());
+                  setStart((new Date(e.target.value).getTime() / 1000).toString())
                 }}
               />
             </StreamInput>
@@ -271,5 +271,5 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </DefaultButton>
       </div>
     </>
-  );
+  )
 }

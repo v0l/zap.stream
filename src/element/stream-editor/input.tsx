@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
 
 export function StreamInput({ label, children }: { label: ReactNode; children?: ReactNode }) {
   return (
@@ -6,5 +6,5 @@ export function StreamInput({ label, children }: { label: ReactNode; children?: 
       <div className="mb-1 text-layer-4 text-sm font-medium">{label}</div>
       <div>{children}</div>
     </div>
-  );
+  )
 }

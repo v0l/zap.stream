@@ -1,140 +1,142 @@
-import "./send-zap.css";
-import { Fragment, type ReactNode, useEffect, useState } from "react";
-import { LNURL } from "@snort/shared";
-import { EventPublisher, type NostrEvent, PrivateKeySigner, type TaggedNostrEvent } from "@snort/system";
-import { FormattedMessage, FormattedNumber } from "react-intl";
+import "./send-zap.css"
+import { Fragment, type ReactNode, useEffect, useState } from "react"
+import { LNURL } from "@snort/shared"
+import { EventPublisher, type NostrEvent, PrivateKeySigner, type TaggedNostrEvent } from "@snort/system"
+import { FormattedMessage, FormattedNumber } from "react-intl"
 
-import { formatSats } from "../number";
-import { Icon } from "./icon";
-import QrCode from "./qr-code";
-import { useLogin } from "@/hooks/login";
-import Copy from "./copy";
-import { defaultRelays } from "@/const";
-import { useRates } from "@/hooks/rates";
-import { DefaultButton, PrimaryButton } from "./buttons";
-import Modal from "./modal";
-import Pill from "./pill";
-import { useUserProfile } from "@snort/system-react";
-import { getHost } from "@/utils";
-import { getName } from "./profile";
-import { useWallet } from "@/hooks/wallet";
+import { formatSats } from "../number"
+import { Icon } from "./icon"
+import QrCode from "./qr-code"
+import { useLogin } from "@/hooks/login"
+import Copy from "./copy"
+import { defaultRelays } from "@/const"
+import { useRates } from "@/hooks/rates"
+import { DefaultButton, PrimaryButton } from "./buttons"
+import Modal from "./modal"
+import Pill from "./pill"
+import { useUserProfile } from "@snort/system-react"
+import { getHost } from "@/utils"
+import { getName } from "./profile"
+import { useWallet } from "@/hooks/wallet"
 
 export interface LNURLLike {
-  get name(): string;
-  get maxCommentLength(): number;
-  get canZap(): boolean;
-  getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>;
+  get name(): string
+  get maxCommentLength(): number
+  get canZap(): boolean
+  getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
 }
 
 export interface SendZapsProps {
-  lnurl: string | LNURLLike;
-  pubkey?: string;
-  aTag?: string;
-  eTag?: string;
-  targetName?: string;
-  onFinish: () => void;
-  onTargetReady?: () => void;
-  button?: ReactNode;
+  lnurl: string | LNURLLike
+  pubkey?: string
+  aTag?: string
+  eTag?: string
+  targetName?: string
+  onFinish: () => void
+  onTargetReady?: () => void
+  button?: ReactNode
 }
 
 export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTargetReady }: SendZapsProps) {
   const satsAmounts = [
     21, 69, 121, 420, 1_000, 2_100, 4_200, 10_000, 21_000, 42_000, 69_000, 100_000, 210_000, 500_000, 1_000_000,
-  ];
-  const usdAmounts = [0.05, 0.5, 2, 5, 10, 50, 100, 200];
-  const [isFiat, setIsFiat] = useState(false);
-  const [svc, setSvc] = useState<LNURLLike>();
-  const [customAmount, setCustomAmount] = useState(false);
-  const [amount, setAmount] = useState(satsAmounts[0]);
-  const [comment, setComment] = useState("");
-  const [invoice, setInvoice] = useState("");
-  const login = useLogin();
-  const wallet = useWallet();
-  const rate = useRates("BTCUSD");
-  const relays = Object.keys(defaultRelays);
-  const name = targetName ?? svc?.name;
+  ]
+  const usdAmounts = [0.05, 0.5, 2, 5, 10, 50, 100, 200]
+  const [isFiat, setIsFiat] = useState(false)
+  const [svc, setSvc] = useState<LNURLLike>()
+  const [customAmount, setCustomAmount] = useState(false)
+  const [amount, setAmount] = useState(satsAmounts[0])
+  const [comment, setComment] = useState("")
+  const [invoice, setInvoice] = useState("")
+  const login = useLogin()
+  const wallet = useWallet()
+  const rate = useRates("BTCUSD")
+  const relays = Object.keys(defaultRelays)
+  const name = targetName ?? svc?.name
   async function loadService(lnurl: string) {
-    const s = new LNURL(lnurl);
-    await s.load();
-    setSvc(s);
+    const s = new LNURL(lnurl)
+    await s.load()
+    setSvc(s)
   }
-  const usdRate = rate.time ? rate.ask : 26_000;
+  const usdRate = rate.time ? rate.ask : 26_000
 
   useEffect(() => {
     if (!svc) {
       if (typeof lnurl === "string") {
         loadService(lnurl)
           .then(() => {
-            onTargetReady?.();
+            onTargetReady?.()
           })
-          .catch(console.warn);
+          .catch(console.warn)
       } else {
-        setSvc(lnurl);
-        onTargetReady?.();
+        setSvc(lnurl)
+        onTargetReady?.()
       }
     }
-  }, [lnurl]);
+  }, [lnurl])
 
   async function send() {
-    if (!svc) return;
-    let pub = login?.publisher();
-    let isAnon = false;
+    if (!svc) return
+    let pub = login?.publisher()
+    let isAnon = false
     if (!pub) {
-      const signer = PrivateKeySigner.random();
-      pub = new EventPublisher(signer, signer.getPubKey());
-      isAnon = true;
+      const signer = PrivateKeySigner.random()
+      pub = new EventPublisher(signer, signer.getPubKey())
+      isAnon = true
     }
 
-    const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount;
-    let zap: NostrEvent | undefined;
+    const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount
+    let zap: NostrEvent | undefined
     if (pubkey) {
       zap = await pub.zap(amountInSats * 1000, pubkey, relays, undefined, comment, eb => {
         if (aTag) {
-          eb.tag(["a", aTag]);
+          eb.tag(["a", aTag])
         }
         if (eTag) {
-          eb.tag(["e", eTag]);
+          eb.tag(["e", eTag])
         }
         if (isAnon) {
-          eb.tag(["anon", ""]);
+          eb.tag(["anon", ""])
         }
-        return eb;
-      });
+        return eb
+      })
     }
-    const invoice = await svc.getInvoice(amountInSats, comment, zap);
-    if (!invoice.pr) return;
+    const invoice = await svc.getInvoice(amountInSats, comment, zap)
+    if (!invoice.pr) return
 
     if (wallet) {
       try {
-        await wallet.payInvoice(invoice.pr);
-        onFinish();
+        await wallet.payInvoice(invoice.pr)
+        onFinish()
       } catch (_error) {
-        setInvoice(invoice.pr);
+        setInvoice(invoice.pr)
       }
     } else {
-      setInvoice(invoice.pr);
+      setInvoice(invoice.pr)
     }
   }
 
   function input() {
-    if (invoice) return;
+    if (invoice) return
     return (
       <>
         <div className="flex gap-2">
           <Pill
             selected={!isFiat}
             onClick={() => {
-              setIsFiat(false);
-              setAmount(satsAmounts[0]);
-            }}>
+              setIsFiat(false)
+              setAmount(satsAmounts[0])
+            }}
+          >
             SATS
           </Pill>
           <Pill
             selected={isFiat}
             onClick={() => {
-              setIsFiat(true);
-              setAmount(usdAmounts[0]);
-            }}>
+              setIsFiat(true)
+              setAmount(usdAmounts[0])
+            }}
+          >
             USD
           </Pill>
         </div>
@@ -184,13 +186,13 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
           <FormattedMessage defaultMessage="Zap!" />
         </DefaultButton>
       </>
-    );
+    )
   }
 
   function payInvoice() {
-    if (!invoice) return;
+    if (!invoice) return
 
-    const link = `lightning:${invoice}`;
+    const link = `lightning:${invoice}`
     return (
       <>
         <QrCode data={link} link={link} className="mx-auto" />
@@ -201,7 +203,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
           <FormattedMessage defaultMessage="Back" id="cyR7Kh" />
         </DefaultButton>
       </>
-    );
+    )
   }
 
   return (
@@ -213,12 +215,12 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
       {input()}
       {payInvoice()}
     </div>
-  );
+  )
 }
 
 export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
-  const [open, setOpen] = useState(false);
-  const [ready, setReady] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [ready, setReady] = useState(false)
   return (
     <Fragment>
       {props.button ? (
@@ -235,15 +237,15 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
         </Modal>
       )}
     </Fragment>
-  );
+  )
 }
 
 export function ZapEvent({ ev, children }: { children: ReactNode; ev: TaggedNostrEvent }) {
-  const host = getHost(ev);
-  const profile = useUserProfile(host);
-  const [open, setOpen] = useState(false);
-  const [ready, setReady] = useState(false);
-  const target = profile?.lud16 ?? profile?.lud06;
+  const host = getHost(ev)
+  const profile = useUserProfile(host)
+  const [open, setOpen] = useState(false)
+  const [ready, setReady] = useState(false)
+  const target = profile?.lud16 ?? profile?.lud06
 
   return (
     <>
@@ -261,5 +263,5 @@ export function ZapEvent({ ev, children }: { children: ReactNode; ev: TaggedNost
         </Modal>
       )}
     </>
-  );
+  )
 }

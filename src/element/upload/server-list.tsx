@@ -1,19 +1,19 @@
-import { DefaultMediaServers, useMediaServerList } from "@/hooks/media-servers";
-import { IconButton, PrimaryButton } from "../buttons";
-import { FormattedMessage } from "react-intl";
-import { useState } from "react";
-import { sanitizeRelayUrl } from "@snort/shared";
+import { DefaultMediaServers, useMediaServerList } from "@/hooks/media-servers"
+import { IconButton, PrimaryButton } from "../buttons"
+import { FormattedMessage } from "react-intl"
+import { useState } from "react"
+import { sanitizeRelayUrl } from "@snort/shared"
 
 export function ServerList() {
-  const [newServer, setNewServer] = useState("");
-  const servers = useMediaServerList();
+  const [newServer, setNewServer] = useState("")
+  const servers = useMediaServerList()
 
   async function tryAddServer(s: string) {
-    await servers.addServer(s);
+    await servers.addServer(s)
   }
 
   async function tryRemoveServer(s: string) {
-    await servers.removeServer(s);
+    await servers.removeServer(s)
   }
 
   return (
@@ -55,5 +55,5 @@ export function ServerList() {
           </div>
         ))}
     </div>
-  );
+  )
 }

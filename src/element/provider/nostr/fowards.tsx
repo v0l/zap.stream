@@ -1,8 +1,8 @@
-import { DefaultButton } from "@/element/buttons";
-import type { NostrStreamProvider } from "@/providers";
-import { unwrap } from "@snort/shared";
-import { useState } from "react";
-import { useIntl, FormattedMessage } from "react-intl";
+import { DefaultButton } from "@/element/buttons"
+import type { NostrStreamProvider } from "@/providers"
+import { unwrap } from "@snort/shared"
+import { useState } from "react"
+import { useIntl, FormattedMessage } from "react-intl"
 
 enum ForwardService {
   Custom = "custom",
@@ -17,50 +17,48 @@ export function AddForwardInputs({
   provider,
   onAdd,
 }: {
-  provider: NostrStreamProvider;
-  onAdd: (name: string, target: string) => void;
+  provider: NostrStreamProvider
+  onAdd: (name: string, target: string) => void
 }) {
-  const [name, setName] = useState("");
-  const [target, setTarget] = useState("");
-  const [svc, setService] = useState(ForwardService.Twitch);
-  const [error, setError] = useState("");
-  const { formatMessage } = useIntl();
+  const [name, setName] = useState("")
+  const [target, setTarget] = useState("")
+  const [svc, setService] = useState(ForwardService.Twitch)
+  const [error, setError] = useState("")
+  const { formatMessage } = useIntl()
 
   async function getTargetFull() {
     if (svc === ForwardService.Custom) {
-      return target;
+      return target
     }
 
     if (svc === ForwardService.Twitch) {
       const urls = (await (await fetch("https://ingest.twitch.tv/ingests")).json()) as {
         ingests: Array<{
-          availability: number;
-          name: string;
-          url_template: string;
-        }>;
-      };
+          availability: number
+          name: string
+          url_template: string
+        }>
+      }
 
-      const ingestsEurope = urls.ingests.filter(
-        a => a.name.toLowerCase().startsWith("europe:") && a.availability === 1,
-      );
-      const random = ingestsEurope.at(ingestsEurope.length * Math.random());
-      return unwrap(random).url_template.replace("{stream_key}", target);
+      const ingestsEurope = urls.ingests.filter(a => a.name.toLowerCase().startsWith("europe:") && a.availability === 1)
+      const random = ingestsEurope.at(ingestsEurope.length * Math.random())
+      return unwrap(random).url_template.replace("{stream_key}", target)
     }
 
     if (svc === ForwardService.Youtube) {
-      return `rtmp://a.rtmp.youtube.com:1935/live2/${target}`;
+      return `rtmp://a.rtmp.youtube.com:1935/live2/${target}`
     }
 
     if (svc === ForwardService.Facebook) {
-      return `rtmps://live-api-s.facebook.com:443/rtmp/${target}`;
+      return `rtmps://live-api-s.facebook.com:443/rtmp/${target}`
     }
 
     if (svc === ForwardService.Trovo) {
-      return `rtmp://livepush.trovo.live:1935/live/${target}`;
+      return `rtmp://livepush.trovo.live:1935/live/${target}`
     }
 
     if (svc === ForwardService.Kick) {
-      return `rtmps://fa723fc1b171.global-contribute.live-video.net:443/app/${target}`;
+      return `rtmps://fa723fc1b171.global-contribute.live-video.net:443/app/${target}`
     }
   }
 
@@ -72,18 +70,18 @@ export function AddForwardInputs({
             defaultMessage: "Stream url must start with rtmp://",
             id: "7+bCC1",
           }),
-        );
-        return;
+        )
+        return
       }
       try {
         // stupid URL parser doesnt work for non-http protocols
-        const u = new URL(target.replace("rtmp://", "http://"));
-        console.debug(u);
+        const u = new URL(target.replace("rtmp://", "http://"))
+        console.debug(u)
         if (u.host.length < 1) {
-          throw new Error();
+          throw new Error()
         }
         if (u.pathname === "/") {
-          throw new Error();
+          throw new Error()
         }
       } catch {
         setError(
@@ -91,8 +89,8 @@ export function AddForwardInputs({
             defaultMessage: "Not a valid URL",
             id: "1q4BO/",
           }),
-        );
-        return;
+        )
+        return
       }
     } else {
       if (target.length < 2) {
@@ -101,8 +99,8 @@ export function AddForwardInputs({
             defaultMessage: "Stream Key is required",
             id: "50+/JW",
           }),
-        );
-        return;
+        )
+        return
       }
     }
     if (name.length < 2) {
@@ -111,26 +109,26 @@ export function AddForwardInputs({
           defaultMessage: "Name is required",
           id: "Gvxoji",
         }),
-      );
-      return;
+      )
+      return
     }
 
     try {
-      const t = await getTargetFull();
+      const t = await getTargetFull()
       if (!t)
         throw new Error(
           formatMessage({
             defaultMessage: "Could not create stream URL",
             id: "E9APoR",
           }),
-        );
-      await provider.addForward(name, t);
+        )
+      await provider.addForward(name, t)
     } catch (e) {
-      setError((e as Error).message);
+      setError((e as Error).message)
     }
-    setName("");
-    setTarget("");
-    onAdd(name, target);
+    setName("")
+    setTarget("")
+    onAdd(name, target)
   }
 
   return (
@@ -165,5 +163,5 @@ export function AddForwardInputs({
       </DefaultButton>
       {error && <b className="warning">{error}</b>}
     </div>
-  );
+  )
 }

@@ -1,30 +1,30 @@
-import { BorderButton, IconButton } from "@/element/buttons";
-import { Icon } from "@/element/icon";
-import { LoginSignup } from "@/element/login-signup";
-import Logo from "@/element/logo";
-import Modal from "@/element/modal";
-import { AllLocales } from "@/intl";
-import { Login } from "@/login";
-import { profileLink } from "@/utils";
-import { Menu, MenuItem } from "@szhsin/react-menu";
-import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router";
-import { useLang } from "@/hooks/lang";
-import { useLogin } from "@/hooks/login";
-import { useState } from "react";
-import { Profile } from "@/element/profile";
-import { SearchBar } from "./search";
-import { NavLinkIcon } from "./nav-icon";
-import { useLayout } from "./context";
-import { WHITELIST } from "@/const";
+import { BorderButton, IconButton } from "@/element/buttons"
+import { Icon } from "@/element/icon"
+import { LoginSignup } from "@/element/login-signup"
+import Logo from "@/element/logo"
+import Modal from "@/element/modal"
+import { AllLocales } from "@/intl"
+import { Login } from "@/login"
+import { profileLink } from "@/utils"
+import { Menu, MenuItem } from "@szhsin/react-menu"
+import { FormattedMessage } from "react-intl"
+import { Link, useNavigate } from "react-router"
+import { useLang } from "@/hooks/lang"
+import { useLogin } from "@/hooks/login"
+import { useState } from "react"
+import { Profile } from "@/element/profile"
+import { SearchBar } from "./search"
+import { NavLinkIcon } from "./nav-icon"
+import { useLayout } from "./context"
+import { WHITELIST } from "@/const"
 
 export function HeaderNav() {
-  const navigate = useNavigate();
-  const login = useLogin();
-  const [showLogin, setShowLogin] = useState(false);
-  const { lang, setLang } = useLang();
-  const country = lang.split(/[-_]/i)[1]?.toLowerCase();
-  const layoutState = useLayout();
+  const navigate = useNavigate()
+  const login = useLogin()
+  const [showLogin, setShowLogin] = useState(false)
+  const { lang, setLang } = useLang()
+  const country = lang.split(/[-_]/i)[1]?.toLowerCase()
+  const layoutState = useLayout()
 
   function langSelector() {
     return (
@@ -39,7 +39,8 @@ export function HeaderNav() {
           </div>
         }
         align="end"
-        gap={5}>
+        gap={5}
+      >
         {AllLocales.sort().map(l => (
           <MenuItem className="capitalize" onClick={() => setLang(l)} key={l}>
             {new Intl.DisplayNames([l], {
@@ -48,11 +49,11 @@ export function HeaderNav() {
           </MenuItem>
         ))}
       </Menu>
-    );
+    )
   }
 
   function loggedIn() {
-    if (!login) return;
+    if (!login) return
 
     return (
       <div className="flex gap-2 items-center pr-4 py-1">
@@ -63,7 +64,8 @@ export function HeaderNav() {
               <IconButton iconName="plus-circle" iconSize={20} className="px-3 py-2 hover:bg-layer-1 rounded-xl" />
             }
             align="end"
-            gap={5}>
+            gap={5}
+          >
             <MenuItem onClick={() => navigate("/upload")}>
               <Icon name="upload" size={24} />
               <FormattedMessage defaultMessage="Upload" />
@@ -89,7 +91,8 @@ export function HeaderNav() {
             </div>
           }
           align="end"
-          gap={5}>
+          gap={5}
+        >
           <MenuItem onClick={() => navigate(profileLink(undefined, login.pubkey))}>
             <Icon name="user" size={24} />
             <FormattedMessage defaultMessage="Profile" />
@@ -116,11 +119,11 @@ export function HeaderNav() {
           </MenuItem>
         </Menu>
       </div>
-    );
+    )
   }
 
   function loggedOut() {
-    if (login) return;
+    if (login) return
     return (
       <div className="pr-4">
         <BorderButton onClick={() => setShowLogin(true)}>
@@ -132,15 +135,16 @@ export function HeaderNav() {
             id="login"
             onClose={() => setShowLogin(false)}
             bodyClassName="relative bg-layer-1 rounded-3xl overflow-hidden my-auto lg:w-[500px] max-lg:w-full"
-            showClose={false}>
+            showClose={false}
+          >
             <LoginSignup close={() => setShowLogin(false)} />
           </Modal>
         )}
       </div>
-    );
+    )
   }
 
-  if (!layoutState.showHeader) return;
+  if (!layoutState.showHeader) return
   return (
     <div className="flex justify-between items-center gap-4">
       <div className="flex gap-4 items-center m-2">
@@ -150,9 +154,9 @@ export function HeaderNav() {
             className="!opacity-100"
             onClick={() => {
               layoutState.update(c => {
-                c.leftNavExpand = !c.leftNavExpand;
-                return { ...c };
-              });
+                c.leftNavExpand = !c.leftNavExpand
+                return { ...c }
+              })
             }}
           />
         )}
@@ -167,5 +171,5 @@ export function HeaderNav() {
         {loggedOut()}
       </div>
     </div>
-  );
+  )
 }

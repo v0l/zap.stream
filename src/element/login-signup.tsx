@@ -1,30 +1,30 @@
-import LoginHeader from "../login-start.jpg";
-import LoginHeader2x from "../login-start@2x.jpg";
-import LoginVault from "../login-vault.jpg";
-import LoginVault2x from "../login-vault@2x.jpg";
-import LoginProfile from "../login-profile.jpg";
-import LoginProfile2x from "../login-profile@2x.jpg";
-import LoginKey from "../login-key.jpg";
-import LoginKey2x from "../login-key@2x.jpg";
-import LoginWallet from "../login-wallet.jpg";
-import LoginWallet2x from "../login-wallet@2x.jpg";
+import LoginHeader from "../login-start.jpg"
+import LoginHeader2x from "../login-start@2x.jpg"
+import LoginVault from "../login-vault.jpg"
+import LoginVault2x from "../login-vault@2x.jpg"
+import LoginProfile from "../login-profile.jpg"
+import LoginProfile2x from "../login-profile@2x.jpg"
+import LoginKey from "../login-key.jpg"
+import LoginKey2x from "../login-key@2x.jpg"
+import LoginWallet from "../login-wallet.jpg"
+import LoginWallet2x from "../login-wallet@2x.jpg"
 
-import { useContext, useState } from "react";
-import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
-import { EventPublisher, PrivateKeySigner, type UserMetadata } from "@snort/system";
-import { LNURL, bech32ToHex, getPublicKey, hexToBech32, isHex } from "@snort/shared";
-import { SnortContext } from "@snort/system-react";
+import { useContext, useState } from "react"
+import { FormattedMessage, FormattedNumber, useIntl } from "react-intl"
+import { EventPublisher, PrivateKeySigner, type UserMetadata } from "@snort/system"
+import { LNURL, bech32ToHex, getPublicKey, hexToBech32, isHex } from "@snort/shared"
+import { SnortContext } from "@snort/system-react"
 
-import { Login, LoginType } from "@/login";
-import { Icon } from "./icon";
-import Copy from "./copy";
-import { type AccountResponse, NostrStreamProvider } from "@/providers/zsz";
-import { DefaultButton, Layer1Button } from "./buttons";
-import { ExternalLink } from "./external-link";
-import { FileUploader } from "./file-uploader";
-import { Link } from "react-router";
-import { useStreamProvider } from "@/hooks/stream-provider";
-import { gtag } from "@/gtm";
+import { Login, LoginType } from "@/login"
+import { Icon } from "./icon"
+import Copy from "./copy"
+import { type AccountResponse, NostrStreamProvider } from "@/providers/zsz"
+import { DefaultButton, Layer1Button } from "./buttons"
+import { ExternalLink } from "./external-link"
+import { FileUploader } from "./file-uploader"
+import { Link } from "react-router"
+import { useStreamProvider } from "@/hooks/stream-provider"
+import { gtag } from "@/gtm"
 
 enum Stage {
   Login = 0,
@@ -35,78 +35,78 @@ enum Stage {
 }
 
 export function LoginSignup({ close }: { close: () => void }) {
-  const system = useContext(SnortContext);
-  const [error, setError] = useState("");
-  const [stage, setStage] = useState(Stage.Login);
-  const [username, setUsername] = useState("");
-  const [lnAddress, setLnAddress] = useState("");
-  const [providerInfo, setProviderInfo] = useState<AccountResponse>();
-  const [avatar, setAvatar] = useState("");
-  const [key, setNewKey] = useState("");
-  const { formatMessage } = useIntl();
-  const hasNostrExtension = "nostr" in window && window.nostr;
-  const { config } = useStreamProvider();
+  const system = useContext(SnortContext)
+  const [error, setError] = useState("")
+  const [stage, setStage] = useState(Stage.Login)
+  const [username, setUsername] = useState("")
+  const [lnAddress, setLnAddress] = useState("")
+  const [providerInfo, setProviderInfo] = useState<AccountResponse>()
+  const [avatar, setAvatar] = useState("")
+  const [key, setNewKey] = useState("")
+  const { formatMessage } = useIntl()
+  const hasNostrExtension = "nostr" in window && window.nostr
+  const { config } = useStreamProvider()
 
   function doLoginNsec() {
     try {
-      const hexKey = key.startsWith("nsec") ? bech32ToHex(key) : key;
-      Login.loginWithPrivateKey(hexKey);
-      close();
+      const hexKey = key.startsWith("nsec") ? bech32ToHex(key) : key
+      Login.loginWithPrivateKey(hexKey)
+      close()
     } catch (e) {
-      console.error(e);
+      console.error(e)
       if (e instanceof Error) {
-        setError(e.message);
+        setError(e.message)
       } else {
-        setError(e as string);
+        setError(e as string)
       }
     }
   }
 
   async function loginNip7() {
     try {
-      const nip7 = await EventPublisher.nip7();
+      const nip7 = await EventPublisher.nip7()
       if (nip7) {
-        Login.loginWithPubkey(nip7.pubKey, LoginType.Nip7);
+        Login.loginWithPubkey(nip7.pubKey, LoginType.Nip7)
       }
     } catch (e) {
       if (e instanceof Error) {
-        setError(e.message);
+        setError(e.message)
       } else {
-        setError(e as string);
+        setError(e as string)
       }
     }
   }
 
   function createAccount() {
-    const signer = PrivateKeySigner.random();
-    setNewKey(signer.privateKey);
-    setLnAddress(`${getPublicKey(signer.getPubKey())}@${window.location.host}`);
-    setStage(Stage.Details);
+    const signer = PrivateKeySigner.random()
+    setNewKey(signer.privateKey)
+    setLnAddress(`${getPublicKey(signer.getPubKey())}@${window.location.host}`)
+    setStage(Stage.Details)
   }
 
   function loginWithKey() {
-    Login.loginWithPrivateKey(key);
-    gtag('event', 'conversion', {
-      'send_to': 'AW-17854661671/Rr6ECM36090bEKeI4sFC'
-    });
+    Login.loginWithPrivateKey(key)
+    gtag("event", "conversion", {
+      send_to: "AW-17854661671/Rr6ECM36090bEKeI4sFC",
+    })
 
-    close();
+    close()
   }
 
   async function setupProfile() {
-    const px = new NostrStreamProvider(config.name, config.url, EventPublisher.privateKey(key));
-    const info = await px.info();
-    setProviderInfo(info);
+    const px = new NostrStreamProvider(config.name, config.url, EventPublisher.privateKey(key))
+    const info = await px.info()
+    setProviderInfo(info)
 
-    setStage(Stage.LnAddress);
+    setStage(Stage.LnAddress)
   }
 
   async function saveProfile() {
     try {
       // validate LN addreess
       try {
-        const lnurl = new LNURL(lnAddress);
-        await lnurl.load();
+        const lnurl = new LNURL(lnAddress)
+        await lnurl.load()
       } catch {
         if (!lnAddress.includes("localhost") && import.meta.env.DEV) {
           throw new Error(
@@ -114,33 +114,33 @@ export function LoginSignup({ close }: { close: () => void }) {
               defaultMessage: "Hmm, your lightning address looks wrong",
               id: "4l69eO",
             }),
-          );
+          )
         }
       }
-      const pub = EventPublisher.privateKey(key);
+      const pub = EventPublisher.privateKey(key)
       const profile = {
         name: username,
         picture: avatar,
         lud16: lnAddress,
-      } as UserMetadata;
+      } as UserMetadata
 
-      const ev = await pub.metadata(profile);
-      console.debug(ev);
-      system.BroadcastEvent(ev);
+      const ev = await pub.metadata(profile)
+      console.debug(ev)
+      system.BroadcastEvent(ev)
 
-      setStage(Stage.SaveKey);
+      setStage(Stage.SaveKey)
     } catch (e) {
       if (e instanceof Error) {
-        setError(e.message);
+        setError(e.message)
       } else {
-        setError(e as string);
+        setError(e as string)
       }
     }
   }
 
   function imageUploadSection() {
-    const signer = key && key.length === 64 && isHex(key) ? new PrivateKeySigner(key) : undefined;
-    if (!signer) return;
+    const signer = key && key.length === 64 && isHex(key) ? new PrivateKeySigner(key) : undefined
+    if (!signer) return
     return (
       <FileUploader
         publisher={new EventPublisher(signer, signer.getPubKey())}
@@ -152,7 +152,7 @@ export function LoginSignup({ close }: { close: () => void }) {
       >
         <Icon name="camera-plus" />
       </FileUploader>
-    );
+    )
   }
 
   switch (stage) {
@@ -185,7 +185,8 @@ export function LoginSignup({ close }: { close: () => void }) {
                         <Link
                           className="underline"
                           target="_blank"
-                          to="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp">
+                          to="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp"
+                        >
                           Nos2X
                         </Link>
                       ),
@@ -210,7 +211,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             {error && <b className="error">{error}</b>}
           </div>
         </>
-      );
+      )
     }
     case Stage.LoginInput: {
       return (
@@ -243,9 +244,10 @@ export function LoginSignup({ close }: { close: () => void }) {
               <div className="flex gap-1">
                 <Layer1Button
                   onClick={() => {
-                    setNewKey("");
-                    setStage(Stage.Login);
-                  }}>
+                    setNewKey("")
+                    setStage(Stage.Login)
+                  }}
+                >
                   <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
                 </Layer1Button>
                 <DefaultButton onClick={doLoginNsec}>
@@ -256,7 +258,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             {error && <b className="error">{error}</b>}
           </div>
         </>
-      );
+      )
     }
     case Stage.Details: {
       return (
@@ -287,7 +289,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             {error && <b className="error">{error}</b>}
           </div>
         </>
-      );
+      )
     }
     case Stage.LnAddress: {
       return (
@@ -325,7 +327,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             </DefaultButton>
           </div>
         </>
-      );
+      )
     }
     case Stage.SaveKey: {
       return (
@@ -349,7 +351,7 @@ export function LoginSignup({ close }: { close: () => void }) {
             </DefaultButton>
           </div>
         </>
-      );
+      )
     }
   }
 }

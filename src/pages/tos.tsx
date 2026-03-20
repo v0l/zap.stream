@@ -52,5 +52,5 @@ export function TosPage() {
       <p>By using zap.stream, you agree to abide by these Terms of Service.</p>
       <p>Enjoy your streaming experience!</p>
     </div>
-  );
+  )
 }

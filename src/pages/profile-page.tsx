@@ -1,42 +1,42 @@
-import { useMemo } from "react";
-import { useNavigate } from "react-router";
-import { type CachedMetadata, type NostrEvent, NostrLink, type TaggedNostrEvent, RequestBuilder } from "@snort/system";
-import { useUserProfile, useRequestBuilder } from "@snort/system-react";
-import { FormattedMessage } from "react-intl";
+import { useMemo } from "react"
+import { useNavigate } from "react-router"
+import { type CachedMetadata, type NostrEvent, NostrLink, type TaggedNostrEvent, RequestBuilder } from "@snort/system"
+import { useUserProfile, useRequestBuilder } from "@snort/system-react"
+import { FormattedMessage } from "react-intl"
 
-import { Icon } from "@/element/icon";
-import { SendZapsDialog } from "@/element/send-zap";
-import { StreamTile } from "@/element/stream/stream-tile";
-import { FollowButton } from "@/element/follow-button";
-import { MuteButton } from "@/element/mute-button";
-import { useProfile } from "@/hooks/profile";
-import { Text } from "@/element/text";
-import { findTag } from "@/utils";
-import { StatePill } from "@/element/state-pill";
-import { Avatar } from "@/element/avatar";
-import { StreamState, VIDEO_KIND, OLD_VIDEO_KIND } from "@/const";
-import { DefaultButton } from "@/element/buttons";
-import { useGoals } from "@/hooks/goals";
-import { Goal } from "@/element/goal";
-import { TopZappers } from "@/element/top-zappers";
-import { useProfileClips } from "@/hooks/clips";
-import VideoGrid from "@/element/video-grid";
-import { ClipTile } from "@/element/stream/clip-tile";
-import { VideoTile } from "@/element/video/video-tile";
-import useImgProxy from "@/hooks/img-proxy";
-import { useStreamLink } from "@/hooks/stream-link";
+import { Icon } from "@/element/icon"
+import { SendZapsDialog } from "@/element/send-zap"
+import { StreamTile } from "@/element/stream/stream-tile"
+import { FollowButton } from "@/element/follow-button"
+import { MuteButton } from "@/element/mute-button"
+import { useProfile } from "@/hooks/profile"
+import { Text } from "@/element/text"
+import { findTag } from "@/utils"
+import { StatePill } from "@/element/state-pill"
+import { Avatar } from "@/element/avatar"
+import { StreamState, VIDEO_KIND, OLD_VIDEO_KIND } from "@/const"
+import { DefaultButton } from "@/element/buttons"
+import { useGoals } from "@/hooks/goals"
+import { Goal } from "@/element/goal"
+import { TopZappers } from "@/element/top-zappers"
+import { useProfileClips } from "@/hooks/clips"
+import VideoGrid from "@/element/video-grid"
+import { ClipTile } from "@/element/stream/clip-tile"
+import { VideoTile } from "@/element/video/video-tile"
+import useImgProxy from "@/hooks/img-proxy"
+import { useStreamLink } from "@/hooks/stream-link"
 
 export function ProfilePage() {
-  const link = useStreamLink();
-  const { streams, zaps } = useProfile(link, true);
-  const profile = useUserProfile(link?.id);
-  const { proxy } = useImgProxy();
+  const link = useStreamLink()
+  const { streams, zaps } = useProfile(link, true)
+  const profile = useUserProfile(link?.id)
+  const { proxy } = useImgProxy()
 
   const pastStreams = useMemo(() => {
-    return streams.filter(ev => findTag(ev, "status") === StreamState.Ended);
-  }, [streams]);
+    return streams.filter(ev => findTag(ev, "status") === StreamState.Ended)
+  }, [streams])
 
-  if (!link) return;
+  if (!link) return
   return (
     <div className="flex flex-col gap-3 xl:px-4 w-full">
       {profile?.banner && (
@@ -73,7 +73,7 @@ export function ProfilePage() {
       </h1>
       <ProfileStreamList streams={pastStreams} />
     </div>
-  );
+  )
 }
 
 function ProfileHeader({
@@ -81,21 +81,21 @@ function ProfileHeader({
   link,
   streams,
 }: {
-  profile?: CachedMetadata;
-  link: NostrLink;
-  streams: Array<NostrEvent>;
+  profile?: CachedMetadata
+  link: NostrLink
+  streams: Array<NostrEvent>
 }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const liveEvent = useMemo(() => {
-    return streams.find(ev => findTag(ev, "status") === StreamState.Live);
-  }, [streams]);
-  const zapTarget = profile?.lud16 ?? profile?.lud06;
-  const isLive = Boolean(liveEvent);
+    return streams.find(ev => findTag(ev, "status") === StreamState.Live)
+  }, [streams])
+  const zapTarget = profile?.lud16 ?? profile?.lud06
+  const isLive = Boolean(liveEvent)
 
   function goToLive() {
     if (liveEvent) {
-      const evLink = NostrLink.fromEvent(liveEvent);
-      navigate(`/${evLink.encode()}`);
+      const evLink = NostrLink.fromEvent(liveEvent)
+      navigate(`/${evLink.encode()}`)
     }
   }
 
@@ -133,12 +133,12 @@ function ProfileHeader({
         <MuteButton pubkey={link.id} />
       </div>
     </div>
-  );
+  )
 }
 
 function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
   if (streams.length === 0) {
-    return <FormattedMessage defaultMessage="No streams yet" />;
+    return <FormattedMessage defaultMessage="No streams yet" />
   }
   return (
     <VideoGrid>
@@ -156,25 +156,25 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
         </div>
       ))}
     </VideoGrid>
-  );
+  )
 }
 
 function ProfileVideosSection({ link }: { link: NostrLink }) {
-  const rb = new RequestBuilder(`videos:${link.id}`);
-  rb.withFilter().kinds([VIDEO_KIND, OLD_VIDEO_KIND]).authors([link.id]);
+  const rb = new RequestBuilder(`videos:${link.id}`)
+  rb.withFilter().kinds([VIDEO_KIND, OLD_VIDEO_KIND]).authors([link.id])
 
-  const videos = useRequestBuilder(rb);
+  const videos = useRequestBuilder(rb)
 
   const sortedVideos = useMemo(() => {
     return videos.sort((a, b) => {
-      const pubA = findTag(a, "published_at") ?? a.created_at;
-      const pubB = findTag(b, "published_at") ?? b.created_at;
-      return Number(pubA) > Number(pubB) ? -1 : 1;
-    });
-  }, [videos]);
+      const pubA = findTag(a, "published_at") ?? a.created_at
+      const pubB = findTag(b, "published_at") ?? b.created_at
+      return Number(pubA) > Number(pubB) ? -1 : 1
+    })
+  }, [videos])
 
   if (sortedVideos.length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -188,14 +188,14 @@ function ProfileVideosSection({ link }: { link: NostrLink }) {
         ))}
       </VideoGrid>
     </>
-  );
+  )
 }
 
 function ProfileZapGoals({ link }: { link: NostrLink }) {
-  const limit = 5;
-  const goals = useGoals(link.id, false, limit);
+  const limit = 5
+  const goals = useGoals(link.id, false, limit)
   if (goals.length === 0) {
-    return <FormattedMessage defaultMessage="No goals yet" />;
+    return <FormattedMessage defaultMessage="No goals yet" />
   }
   return goals
     .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
@@ -204,13 +204,13 @@ function ProfileZapGoals({ link }: { link: NostrLink }) {
       <div key={a.id} className="bg-layer-1 rounded-xl px-4 py-3">
         <Goal ev={a} confetti={false} />
       </div>
-    ));
+    ))
 }
 
 function ProfileClips({ link }: { link: NostrLink }) {
-  const clips = useProfileClips(link, 10);
+  const clips = useProfileClips(link, 10)
   if (clips.length === 0) {
-    return <FormattedMessage defaultMessage="No clips yet" />;
+    return <FormattedMessage defaultMessage="No clips yet" />
   }
-  return clips.map(a => <ClipTile ev={a} key={a.id} />);
+  return clips.map(a => <ClipTile ev={a} key={a.id} />)
 }

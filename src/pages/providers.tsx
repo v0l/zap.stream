@@ -1,15 +1,15 @@
-import { FormattedMessage } from "react-intl";
-import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider";
-import { useDiscoverProviders } from "@/hooks/discover-providers";
-import { ProviderCard } from "@/element/provider-card";
+import { FormattedMessage } from "react-intl"
+import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider"
+import { useDiscoverProviders } from "@/hooks/discover-providers"
+import { ProviderCard } from "@/element/provider-card"
 
 export default function ProvidersPage() {
-  const { config: currentConfig, updateStreamProvider } = useStreamProvider();
-  const providers = useDiscoverProviders();
+  const { config: currentConfig, updateStreamProvider } = useStreamProvider()
+  const providers = useDiscoverProviders()
 
   const isCurrentProvider = (providerConfig: StreamProviderConfig) => {
-    return currentConfig.name === providerConfig.name && currentConfig.url === providerConfig.url;
-  };
+    return currentConfig.name === providerConfig.name && currentConfig.url === providerConfig.url
+  }
 
   return (
     <div className="p-6">
@@ -34,5 +34,5 @@ export default function ProvidersPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }

@@ -1,27 +1,27 @@
-import { FormattedMessage, useIntl } from "react-intl";
-import StepHeader from "./step-header";
-import { DefaultButton } from "@/element/buttons";
-import { useStreamProvider } from "@/hooks/stream-provider";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { FileUploader } from "@/element/file-uploader";
+import { FormattedMessage, useIntl } from "react-intl"
+import StepHeader from "./step-header"
+import { DefaultButton } from "@/element/buttons"
+import { useStreamProvider } from "@/hooks/stream-provider"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
+import { FileUploader } from "@/element/file-uploader"
 
 export default function DashboardIntroStep1() {
-  const navigate = useNavigate();
-  const { formatMessage } = useIntl();
-  const [title, setTitle] = useState<string>();
-  const [summary, setDescription] = useState<string>();
-  const [image, setImage] = useState<string>();
-  const [error, setError] = useState<string>();
-  const { provider: streamProvider } = useStreamProvider();
+  const navigate = useNavigate()
+  const { formatMessage } = useIntl()
+  const [title, setTitle] = useState<string>()
+  const [summary, setDescription] = useState<string>()
+  const [image, setImage] = useState<string>()
+  const [error, setError] = useState<string>()
+  const { provider: streamProvider } = useStreamProvider()
 
   useEffect(() => {
     streamProvider.info().then(i => {
-      setTitle(i.details?.title ?? "");
-      setDescription(i.details?.summary ?? "");
-      setImage(i.details?.image ?? "");
-    });
-  }, [streamProvider]);
+      setTitle(i.details?.title ?? "")
+      setDescription(i.details?.summary ?? "")
+      setImage(i.details?.image ?? "")
+    })
+  }, [streamProvider])
 
   return (
     <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
@@ -62,15 +62,16 @@ export default function DashboardIntroStep1() {
               title,
               summary,
               image,
-            };
-            await streamProvider.updateStream(newState);
+            }
+            await streamProvider.updateStream(newState)
             navigate("/dashboard/step-2", {
               state: newState,
-            });
-          }}>
+            })
+          }}
+        >
           <FormattedMessage defaultMessage="Continue" />
         </DefaultButton>
       </div>
     </div>
-  );
+  )
 }

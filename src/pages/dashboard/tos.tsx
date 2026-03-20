@@ -1,4 +1,4 @@
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl"
 
 export function AcceptTos({
   provider,
@@ -6,10 +6,10 @@ export function AcceptTos({
   tos,
   setTos,
 }: {
-  provider?: string;
-  tosLink?: string;
-  tos: boolean;
-  setTos: (f: (r: boolean) => boolean) => void;
+  provider?: string
+  tosLink?: string
+  tos: boolean
+  setTos: (f: (r: boolean) => boolean) => void
 }) {
   return (
     <div>
@@ -24,9 +24,10 @@ export function AcceptTos({
                 <span
                   className="text-primary"
                   onClick={e => {
-                    e.stopPropagation();
-                    window.open(tosLink, "popup", "width=400,height=800");
-                  }}>
+                    e.stopPropagation()
+                    window.open(tosLink, "popup", "width=400,height=800")
+                  }}
+                >
                   <FormattedMessage defaultMessage="terms and conditions" />
                 </span>
               ),
@@ -35,5 +36,5 @@ export function AcceptTos({
         </p>
       </div>
     </div>
-  );
+  )
 }

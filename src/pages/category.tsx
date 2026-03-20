@@ -1,18 +1,18 @@
-import CategoryLink from "@/element/category/category-link";
-import { CategoryTile } from "@/element/category/category-tile";
-import { CategoryTopZapsStreamer } from "@/element/category/top-streamers";
-import VideoGridSorted from "@/element/video-grid-sorted";
-import { EventKind, RequestBuilder } from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
-import { useMemo } from "react";
-import { FormattedMessage } from "react-intl";
-import { useParams } from "react-router";
+import CategoryLink from "@/element/category/category-link"
+import { CategoryTile } from "@/element/category/category-tile"
+import { CategoryTopZapsStreamer } from "@/element/category/top-streamers"
+import VideoGridSorted from "@/element/video-grid-sorted"
+import { EventKind, RequestBuilder } from "@snort/system"
+import { useRequestBuilder } from "@snort/system-react"
+import { useMemo } from "react"
+import { FormattedMessage } from "react-intl"
+import { useParams } from "react-router"
 
-import IRLImage from "@/images/irl.jpeg";
-import GamingImage from "@/images/gaming.jpeg";
-import MusicImage from "@/images/music.jpeg";
-import TalkImage from "@/images/talk.jpeg";
-import ArtImage from "@/images/art.jpeg";
+import IRLImage from "@/images/irl.jpeg"
+import GamingImage from "@/images/gaming.jpeg"
+import MusicImage from "@/images/music.jpeg"
+import TalkImage from "@/images/talk.jpeg"
+import ArtImage from "@/images/art.jpeg"
 
 export const AllCategories = [
   {
@@ -76,22 +76,22 @@ export const AllCategories = [
     priority: 1,
     className: "bg-category-gradient-7",
   },
-];
+]
 
 export default function Category() {
-  const params = useParams();
-  const id = params.id ?? AllCategories[0].id;
+  const params = useParams()
+  const id = params.id ?? AllCategories[0].id
 
   const sub = useMemo(() => {
-    const cat = AllCategories.find(a => a.id === id);
-    const rb = new RequestBuilder(`category:${id}`);
+    const cat = AllCategories.find(a => a.id === id)
+    const rb = new RequestBuilder(`category:${id}`)
     rb.withFilter()
       .kinds([EventKind.LiveEvent])
-      .tag("t", cat?.tags ?? [id]);
-    return rb;
-  }, [id]);
+      .tag("t", cat?.tags ?? [id])
+    return rb
+  }, [id])
 
-  const results = useRequestBuilder(sub);
+  const results = useRequestBuilder(sub)
   return (
     <div className="px-2 py-4">
       <div className="min-w-0 w-[calc(100dvw-2rem)] overflow-x-scroll scrollbar-hidden">
@@ -108,5 +108,5 @@ export default function Category() {
       )}
       <VideoGridSorted evs={results} showAll={true} />
     </div>
-  );
+  )
 }

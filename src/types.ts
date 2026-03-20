@@ -1,26 +1,26 @@
 export interface RelaySettings {
-  read: boolean;
-  write: boolean;
+  read: boolean
+  write: boolean
 }
 
 export interface Relays {
-  [key: string]: RelaySettings;
+  [key: string]: RelaySettings
 }
 
-export type Tag = string[];
+export type Tag = string[]
 
-export type Tags = Tag[];
+export type Tags = Tag[]
 
-export type EmojiTag = ["emoji", string, string];
+export type EmojiTag = ["emoji", string, string]
 
 export interface Emoji {
-  native?: string;
-  id?: string;
+  native?: string
+  id?: string
 }
 
 export interface EmojiPack {
-  address: string;
-  name: string;
-  author: string;
-  emojis: EmojiTag[];
+  address: string
+  name: string
+  author: string
+  emojis: EmojiTag[]
 }

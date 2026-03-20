@@ -1,65 +1,65 @@
-import BalanceTimeEstimate from "@/element/balance-time-estimate";
-import { NewStreamDialog } from "@/element/new-stream";
-import AccountTopup from "@/element/provider/nostr/topup";
-import LiveVideoPlayer from "@/element/stream/live-video-player";
-import { StreamTimer } from "@/element/stream/stream-time";
-import type { AccountResponse, MetricsMessage, NostrStreamProvider } from "@/providers";
-import type { NostrEvent } from "@snort/system";
-import { useState, useEffect, useMemo } from "react";
-import { FormattedMessage, FormattedNumber } from "react-intl";
-import BalanceHistoryModal from "./balance-history";
-import { DashboardRaidButton } from "./button-raid";
-import { DashboardSettingsButton } from "./button-settings";
-import { ProviderSelectorButton } from "./provider-selector";
-import { DashboardStatsCard } from "./stats-card";
-import { useStream } from "@/element/stream/stream-state";
-import { useLogin } from "@/hooks/login";
-import { LIVE_STREAM } from "@/const";
-import { CompactMetricsDisplay } from "./realtime-metrics";
+import BalanceTimeEstimate from "@/element/balance-time-estimate"
+import { NewStreamDialog } from "@/element/new-stream"
+import AccountTopup from "@/element/provider/nostr/topup"
+import LiveVideoPlayer from "@/element/stream/live-video-player"
+import { StreamTimer } from "@/element/stream/stream-time"
+import type { AccountResponse, MetricsMessage, NostrStreamProvider } from "@/providers"
+import type { NostrEvent } from "@snort/system"
+import { useState, useEffect, useMemo } from "react"
+import { FormattedMessage, FormattedNumber } from "react-intl"
+import BalanceHistoryModal from "./balance-history"
+import { DashboardRaidButton } from "./button-raid"
+import { DashboardSettingsButton } from "./button-settings"
+import { ProviderSelectorButton } from "./provider-selector"
+import { DashboardStatsCard } from "./stats-card"
+import { useStream } from "@/element/stream/stream-state"
+import { useLogin } from "@/hooks/login"
+import { LIVE_STREAM } from "@/const"
+import { CompactMetricsDisplay } from "./realtime-metrics"
 
 export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamProvider }) {
-  const { link, event, info: streamInfo } = useStream();
-  const login = useLogin();
-  const isMyManual = event?.pubkey === login?.pubkey;
-  const [info, setInfo] = useState<AccountResponse>();
-  const [maxParticipants, setMaxParticipants] = useState(0);
-  const [metrics, setMetrics] = useState<MetricsMessage>();
-  const id = streamInfo?.id;
+  const { link, event, info: streamInfo } = useStream()
+  const login = useLogin()
+  const isMyManual = event?.pubkey === login?.pubkey
+  const [info, setInfo] = useState<AccountResponse>()
+  const [maxParticipants, setMaxParticipants] = useState(0)
+  const [metrics, setMetrics] = useState<MetricsMessage>()
+  const id = streamInfo?.id
 
   const defaultEndpoint = useMemo(() => {
-    const metricsEndpint = metrics?.data?.endpoint_name ?? "Best";
-    return info?.endpoints?.find(a => a.name === metricsEndpint) ?? info?.endpoints?.at(0);
-  }, [info, metrics]);
+    const metricsEndpint = metrics?.data?.endpoint_name ?? "Best"
+    return info?.endpoints?.find(a => a.name === metricsEndpint) ?? info?.endpoints?.at(0)
+  }, [info, metrics])
 
   useEffect(() => {
     if (!isMyManual) {
-      provider.info().then(setInfo);
+      provider.info().then(setInfo)
       const t = setInterval(() => {
-        provider.info().then(setInfo);
-      }, 1000 * 60);
+        provider.info().then(setInfo)
+      }, 1000 * 60)
       return () => {
-        clearInterval(t);
-      };
+        clearInterval(t)
+      }
     }
-  }, [isMyManual, provider.url]);
+  }, [isMyManual, provider.url])
 
   useEffect(() => {
     if (id) {
       provider.subscribeToMetrics(id, m => {
         if (m.type === "StreamMetrics") {
-          setMetrics(m);
+          setMetrics(m)
         }
-      });
-      return () => provider.unsubscribeFromMetrics(id);
+      })
+      return () => provider.unsubscribeFromMetrics(id)
     }
-  }, [id, provider]);
+  }, [id, provider])
 
-  const participants = metrics?.data?.viewers ? metrics?.data?.viewers : Number(streamInfo?.participants);
+  const participants = metrics?.data?.viewers ? metrics?.data?.viewers : Number(streamInfo?.participants)
   useEffect(() => {
     if (participants) {
-      setMaxParticipants(v => (v < Number(participants) ? Number(participants) : v));
+      setMaxParticipants(v => (v < Number(participants) ? Number(participants) : v))
     }
-  }, [participants]);
+  }, [participants])
 
   const streamToEdit =
     event ??
@@ -80,9 +80,9 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
             ...(info.details.tags?.map(t => ["t", t]) ?? []),
           ],
         }
-      : undefined);
+      : undefined)
 
-  if (!link) return;
+  if (!link) return
   return (
     <>
       <div className="flex justify-between items-center">
@@ -136,7 +136,7 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
           <AccountTopup
             provider={provider}
             onFinish={() => {
-              provider.info().then(setInfo);
+              provider.info().then(setInfo)
             }}
           />
         </div>
@@ -149,5 +149,5 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
         <ProviderSelectorButton />
       </div>
     </>
-  );
+  )
 }

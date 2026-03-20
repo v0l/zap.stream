@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { Toggle } from "../toggle";
-import { useUserCards } from "@/hooks/cards";
-import { AddCard } from "./add-card";
-import { Card } from "./card-item";
-import type { ToNostrEventTag } from "@snort/system";
-import type { Tag } from "@/types";
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Toggle } from "../toggle"
+import { useUserCards } from "@/hooks/cards"
+import { AddCard } from "./add-card"
+import { Card } from "./card-item"
+import type { ToNostrEventTag } from "@snort/system"
+import type { Tag } from "@/types"
 
 interface StreamCardEditorProps {
-  pubkey: string;
-  tags: Array<ToNostrEventTag>;
+  pubkey: string
+  tags: Array<ToNostrEventTag>
 }
 
 export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
@@ -17,8 +17,8 @@ export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
     pubkey,
     tags.map(a => a.toEventTag() as Tag),
     true,
-  );
-  const [isEditing, setIsEditing] = useState(false);
+  )
+  const [isEditing, setIsEditing] = useState(false)
   return (
     <>
       <div className="text-xl flex items-center gap-2">
@@ -33,5 +33,5 @@ export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
         {isEditing && <AddCard cards={cards} />}
       </div>
     </>
-  );
+  )
 }

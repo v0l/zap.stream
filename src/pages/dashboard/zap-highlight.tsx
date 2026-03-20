@@ -1,7 +1,7 @@
-import { Profile } from "@/element/profile";
-import type { ParsedZap } from "@snort/system";
-import { FormattedMessage, FormattedNumber } from "react-intl";
-import { Text } from "@/element/text";
+import { Profile } from "@/element/profile"
+import type { ParsedZap } from "@snort/system"
+import { FormattedMessage, FormattedNumber } from "react-intl"
+import { Text } from "@/element/text"
 
 export function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
   return (
@@ -29,5 +29,5 @@ export function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
         </div>
       )}
     </div>
-  );
+  )
 }

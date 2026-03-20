@@ -1,6 +1,6 @@
-import { Layer1Button } from "@/element/buttons";
-import { FormattedMessage } from "react-intl";
-import { Outlet, useNavigate } from "react-router";
+import { Layer1Button } from "@/element/buttons"
+import { FormattedMessage } from "react-intl"
+import { Outlet, useNavigate } from "react-router"
 
 const Tabs = [
   {
@@ -11,9 +11,9 @@ const Tabs = [
     name: <FormattedMessage defaultMessage="Profile" />,
     path: "profile",
   },
-];
+]
 export default function SettingsPage() {
-  const naviage = useNavigate();
+  const naviage = useNavigate()
 
   return (
     <div className="rounded-2xl p-3 md:w-[800px] mx-auto w-full">
@@ -33,5 +33,5 @@ export default function SettingsPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

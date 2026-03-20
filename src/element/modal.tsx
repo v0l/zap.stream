@@ -1,42 +1,42 @@
-import classNames from "classnames";
-import type React from "react";
+import classNames from "classnames"
+import type React from "react"
 import { type ReactNode, useEffect } from "react"
-import { createPortal } from "react-dom";
-import { IconButton } from "./buttons";
+import { createPortal } from "react-dom"
+import { IconButton } from "./buttons"
 
 export interface ModalProps {
-  id: string;
-  className?: string;
-  bodyClassName?: string;
-  onClose?: (e: React.MouseEvent | KeyboardEvent) => void;
-  onClick?: (e: React.MouseEvent) => void;
-  children?: ReactNode;
-  showClose?: boolean;
-  ready?: boolean;
-  largeModal?: boolean;
+  id: string
+  className?: string
+  bodyClassName?: string
+  onClose?: (e: React.MouseEvent | KeyboardEvent) => void
+  onClick?: (e: React.MouseEvent) => void
+  children?: ReactNode
+  showClose?: boolean
+  ready?: boolean
+  largeModal?: boolean
 }
 
 export default function Modal(props: ModalProps) {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape" && props.onClose) {
-      props.onClose(e);
+      props.onClose(e)
     }
-  };
+  }
 
   useEffect(() => {
-    document.body.classList.add("scroll-lock");
-    document.addEventListener("keydown", handleKeyDown);
+    document.body.classList.add("scroll-lock")
+    document.addEventListener("keydown", handleKeyDown)
 
     return () => {
-      document.body.classList.remove("scroll-lock");
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+      document.body.classList.remove("scroll-lock")
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
 
   const handleBackdropClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    props.onClose?.(e);
-  };
+    e.stopPropagation()
+    props.onClose?.(e)
+  }
 
   return createPortal(
     <div
@@ -45,8 +45,9 @@ export default function Modal(props: ModalProps) {
       )}
       onMouseDown={handleBackdropClick}
       onClick={e => {
-        e.stopPropagation();
-      }}>
+        e.stopPropagation()
+      }}
+    >
       <div
         className={
           props.bodyClassName ??
@@ -62,16 +63,17 @@ export default function Modal(props: ModalProps) {
         }
         onMouseDown={e => e.stopPropagation()}
         onClick={e => {
-          e.stopPropagation();
-          props.onClick?.(e);
-        }}>
+          e.stopPropagation()
+          props.onClick?.(e)
+        }}
+      >
         {(props.showClose ?? true) && (
           <div className="absolute right-4 top-4">
             <IconButton
               iconName="x"
               onClick={e => {
-                e.stopPropagation();
-                props.onClose?.(e);
+                e.stopPropagation()
+                props.onClose?.(e)
               }}
               className="rounded-full aspect-square bg-layer-2 p-3"
               iconSize={10}
@@ -82,5 +84,5 @@ export default function Modal(props: ModalProps) {
       </div>
     </div>,
     document.body,
-  );
+  )
 }

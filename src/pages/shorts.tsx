@@ -1,45 +1,45 @@
-import { OLD_SHORTS_KIND, SHORTS_KIND } from "@/const";
-import VideoGrid from "@/element/video-grid";
-import { VideoTile } from "@/element/video/video-tile";
-import { findTag, getHost } from "@/utils";
-import { NostrLink, RequestBuilder } from "@snort/system";
-import { useRequestBuilder } from "@snort/system-react";
-import { useMemo, useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { useLogin } from "@/hooks/login";
-import { Layer1Button } from "@/element/buttons";
+import { OLD_SHORTS_KIND, SHORTS_KIND } from "@/const"
+import VideoGrid from "@/element/video-grid"
+import { VideoTile } from "@/element/video/video-tile"
+import { findTag, getHost } from "@/utils"
+import { NostrLink, RequestBuilder } from "@snort/system"
+import { useRequestBuilder } from "@snort/system-react"
+import { useMemo, useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { useLogin } from "@/hooks/login"
+import { Layer1Button } from "@/element/buttons"
 
 export function ShortsPage() {
-  const login = useLogin();
-  const [tab, setTab] = useState<"all" | "subscriptions">("subscriptions");
+  const login = useLogin()
+  const [tab, setTab] = useState<"all" | "subscriptions">("subscriptions")
 
   const rb = useMemo(() => {
-    const rb = new RequestBuilder("shorts");
-    rb.withFilter().kinds([SHORTS_KIND, OLD_SHORTS_KIND]).limit(100);
-    return rb;
-  }, []);
+    const rb = new RequestBuilder("shorts")
+    rb.withFilter().kinds([SHORTS_KIND, OLD_SHORTS_KIND]).limit(100)
+    return rb
+  }, [])
 
-  const videos = useRequestBuilder(rb);
+  const videos = useRequestBuilder(rb)
 
   const sorted = videos
     .filter(a => {
-      const host = getHost(a);
-      const link = NostrLink.publicKey(host);
-      return (login?.state?.muted.length ?? 0) === 0 || !login?.state?.muted.some(a => a.equals(link));
+      const host = getHost(a)
+      const link = NostrLink.publicKey(host)
+      return (login?.state?.muted.length ?? 0) === 0 || !login?.state?.muted.some(a => a.equals(link))
     })
     .sort((a, b) => {
-      const pubA = findTag(a, "published_at") ?? a.created_at;
-      const pubB = findTag(b, "published_at") ?? b.created_at;
-      return Number(pubA) > Number(pubB) ? -1 : 1;
-    });
+      const pubA = findTag(a, "published_at") ?? a.created_at
+      const pubB = findTag(b, "published_at") ?? b.created_at
+      return Number(pubA) > Number(pubB) ? -1 : 1
+    })
 
   const subscriptionVideos = sorted.filter(a => {
-    const host = getHost(a);
-    const follows = login?.state?.follows ?? [];
-    return follows.includes(host);
-  });
+    const host = getHost(a)
+    const follows = login?.state?.follows ?? []
+    return follows.includes(host)
+  })
 
-  const displayVideos = tab === "subscriptions" ? subscriptionVideos : sorted;
+  const displayVideos = tab === "subscriptions" ? subscriptionVideos : sorted
 
   return (
     <div className="p-4">
@@ -61,5 +61,5 @@ export function ShortsPage() {
         ))}
       </VideoGrid>
     </div>
-  );
+  )
 }

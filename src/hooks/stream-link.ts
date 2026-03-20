@@ -1,28 +1,28 @@
-import { NIP5_DOMAIN } from "@/const";
-import { NostrPrefix, fetchNip05Pubkey } from "@snort/shared";
-import { type NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { NIP5_DOMAIN } from "@/const"
+import { NostrPrefix, fetchNip05Pubkey } from "@snort/shared"
+import { type NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router"
 
 export function useStreamLink(evPreload?: NostrEvent) {
-  const params = useParams();
-  const [link, setLink] = useState<NostrLink | undefined>(evPreload ? NostrLink.fromEvent(evPreload) : undefined);
+  const params = useParams()
+  const [link, setLink] = useState<NostrLink | undefined>(evPreload ? NostrLink.fromEvent(evPreload) : undefined)
 
   useEffect(() => {
-    if (evPreload !== undefined) return;
+    if (evPreload !== undefined) return
     if (params.id) {
-      const parsedLink = tryParseNostrLink(params.id);
+      const parsedLink = tryParseNostrLink(params.id)
       if (parsedLink) {
-        setLink(parsedLink);
+        setLink(parsedLink)
       } else {
-        const [handle, domain] = (params.id.includes("@") ? params.id : `${params.id}@${NIP5_DOMAIN}`).split("@");
+        const [handle, domain] = (params.id.includes("@") ? params.id : `${params.id}@${NIP5_DOMAIN}`).split("@")
         fetchNip05Pubkey(handle, domain).then(d => {
           if (d) {
-            setLink(new NostrLink(NostrPrefix.PublicKey, d));
+            setLink(new NostrLink(NostrPrefix.PublicKey, d))
           }
-        });
+        })
       }
     }
-  }, [params.id, evPreload]);
-  return link;
+  }, [params.id, evPreload])
+  return link
 }

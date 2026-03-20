@@ -1,56 +1,56 @@
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import type { NostrStreamProvider } from "@/providers";
-import { DefaultButton } from "@/element/buttons";
-import Spinner from "@/element/spinner";
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import type { NostrStreamProvider } from "@/providers"
+import { DefaultButton } from "@/element/buttons"
+import Spinner from "@/element/spinner"
 
 interface NwcConfigProps {
-  provider: NostrStreamProvider;
-  hasNwc?: boolean;
-  onConfigured?: () => void;
+  provider: NostrStreamProvider
+  hasNwc?: boolean
+  onConfigured?: () => void
 }
 
 export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigProps) {
-  const [nwcUri, setNwcUri] = useState("");
-  const [status, setStatus] = useState<"idle" | "configuring" | "success" | "error" | "removing">("idle");
-  const [error, setError] = useState<string>();
+  const [nwcUri, setNwcUri] = useState("")
+  const [status, setStatus] = useState<"idle" | "configuring" | "success" | "error" | "removing">("idle")
+  const [error, setError] = useState<string>()
 
   async function configureNwc() {
-    if (!nwcUri.trim() || !provider.configureNwc) return;
+    if (!nwcUri.trim() || !provider.configureNwc) return
 
-    setStatus("configuring");
-    setError(undefined);
+    setStatus("configuring")
+    setError(undefined)
 
     try {
-      await provider.configureNwc(nwcUri.trim());
-      setStatus("success");
-      setNwcUri("");
-      onConfigured?.();
+      await provider.configureNwc(nwcUri.trim())
+      setStatus("success")
+      setNwcUri("")
+      onConfigured?.()
     } catch (err) {
-      console.error("Failed to configure NWC:", err);
-      setError(err instanceof Error ? err.message : "Failed to configure NWC");
-      setStatus("error");
+      console.error("Failed to configure NWC:", err)
+      setError(err instanceof Error ? err.message : "Failed to configure NWC")
+      setStatus("error")
     }
   }
 
   async function removeNwc() {
-    if (!provider.removeNwc) return;
+    if (!provider.removeNwc) return
 
-    setStatus("removing");
-    setError(undefined);
+    setStatus("removing")
+    setError(undefined)
 
     try {
-      await provider.removeNwc();
-      setStatus("success");
-      onConfigured?.();
+      await provider.removeNwc()
+      setStatus("success")
+      onConfigured?.()
     } catch (err) {
-      console.error("Failed to remove NWC:", err);
-      setError(err instanceof Error ? err.message : "Failed to remove NWC");
-      setStatus("error");
+      console.error("Failed to remove NWC:", err)
+      setError(err instanceof Error ? err.message : "Failed to remove NWC")
+      setStatus("error")
     }
   }
 
-  const isValidNwcUri = nwcUri.trim().startsWith("nostr+walletconnect://");
+  const isValidNwcUri = nwcUri.trim().startsWith("nostr+walletconnect://")
 
   function renderConfiguredState() {
     return (
@@ -62,7 +62,8 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
         <DefaultButton
           onClick={removeNwc}
           disabled={status === "removing"}
-          className="bg-red-500 hover:bg-red-600 disabled:bg-red-500/50">
+          className="bg-red-500 hover:bg-red-600 disabled:bg-red-500/50"
+        >
           {status === "removing" && (
             <>
               <Spinner />
@@ -72,7 +73,7 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
           {status !== "removing" && <FormattedMessage defaultMessage="Remove NWC" id="nwc-remove-button" />}
         </DefaultButton>
       </div>
-    );
+    )
   }
 
   function renderConfigurationState() {
@@ -115,7 +116,7 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
           {status !== "configuring" && <FormattedMessage defaultMessage="Enable NWC" id="nwc-configure-button" />}
         </DefaultButton>
       </div>
-    );
+    )
   }
 
   return (
@@ -149,5 +150,5 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
         />
       </div>
     </div>
-  );
+  )
 }

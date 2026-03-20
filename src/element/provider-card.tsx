@@ -1,123 +1,123 @@
-import { useContext, useEffect, useState } from "react";
-import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
-import { type AccountResponse, NostrStreamProvider } from "@/providers";
-import { DefaultButton, Layer2Button } from "@/element/buttons";
-import { Icon } from "@/element/icon";
-import type { StreamProviderConfig } from "@/hooks/stream-provider";
-import CapabilityPill from "@/element/capability-pill";
-import Pill from "@/element/pill";
-import { useLogin } from "@/hooks/login";
-import { Profile } from "@/element/profile";
-import { NostrLink, EventKind } from "@snort/system";
-import useWoT from "@/hooks/wot";
-import Modal from "@/element/modal";
-import { SnortContext } from "@snort/system-react";
+import { useContext, useEffect, useState } from "react"
+import { FormattedMessage, FormattedNumber, useIntl } from "react-intl"
+import { type AccountResponse, NostrStreamProvider } from "@/providers"
+import { DefaultButton, Layer2Button } from "@/element/buttons"
+import { Icon } from "@/element/icon"
+import type { StreamProviderConfig } from "@/hooks/stream-provider"
+import CapabilityPill from "@/element/capability-pill"
+import Pill from "@/element/pill"
+import { useLogin } from "@/hooks/login"
+import { Profile } from "@/element/profile"
+import { NostrLink, EventKind } from "@snort/system"
+import useWoT from "@/hooks/wot"
+import Modal from "@/element/modal"
+import { SnortContext } from "@snort/system-react"
 
 interface ProviderCardProps {
-  config: StreamProviderConfig;
-  active: boolean;
-  onSelect: () => void;
-  showRecommendations?: boolean;
+  config: StreamProviderConfig
+  active: boolean
+  onSelect: () => void
+  showRecommendations?: boolean
 }
 
 export function ProviderCard({ config, active, onSelect, showRecommendations = false }: ProviderCardProps) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string>();
-  const [account, setAccount] = useState<AccountResponse>();
-  const [isRecommending, setIsRecommending] = useState(false);
-  const [showRecommendModal, setShowRecommendModal] = useState(false);
-  const [recommendContent, setRecommendContent] = useState("");
-  const [pingTime, setPingTime] = useState<number | null>(null);
-  const [pingError, setPingError] = useState(false);
-  const { formatMessage } = useIntl();
-  const login = useLogin();
-  const wot = useWoT();
-  const system = useContext(SnortContext);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string>()
+  const [account, setAccount] = useState<AccountResponse>()
+  const [isRecommending, setIsRecommending] = useState(false)
+  const [showRecommendModal, setShowRecommendModal] = useState(false)
+  const [recommendContent, setRecommendContent] = useState("")
+  const [pingTime, setPingTime] = useState<number | null>(null)
+  const [pingError, setPingError] = useState(false)
+  const { formatMessage } = useIntl()
+  const login = useLogin()
+  const wot = useWoT()
+  const system = useContext(SnortContext)
 
   // Check if current user has already recommended this provider
-  const hasRecommended = config.recommendations.some(event => event.pubkey === login?.pubkey);
+  const hasRecommended = config.recommendations.some(event => event.pubkey === login?.pubkey)
 
   const openRecommendModal = () => {
-    setRecommendContent(`I recommend ${config.name} as a streaming provider`);
-    setShowRecommendModal(true);
-  };
+    setRecommendContent(`I recommend ${config.name} as a streaming provider`)
+    setShowRecommendModal(true)
+  }
 
   const measurePing = async () => {
     try {
-      const startTime = performance.now();
+      const startTime = performance.now()
       const response = await fetch(`${config.url}/time`, {
         method: "GET",
         signal: AbortSignal.timeout(5000), // 5 second timeout
-      });
-      const endTime = performance.now();
+      })
+      const endTime = performance.now()
 
       if (response.ok) {
-        setPingTime(Math.round(endTime - startTime));
-        setPingError(false);
+        setPingTime(Math.round(endTime - startTime))
+        setPingError(false)
       } else {
-        setPingError(true);
+        setPingError(true)
       }
     } catch (_err) {
-      setPingError(true);
+      setPingError(true)
     }
-  };
+  }
 
   const handleRecommend = async () => {
-    if (!login?.publisher() || !config.event || !recommendContent.trim()) return;
+    if (!login?.publisher() || !config.event || !recommendContent.trim()) return
 
-    setIsRecommending(true);
+    setIsRecommending(true)
     try {
       const ev = await login.publisher()?.generic(eb => {
         return eb
           .kind(31989 as EventKind)
           .content(recommendContent.trim())
           .tag(["d", EventKind.LiveEvent.toString()])
-          .tag(NostrLink.fromEvent(config.event!).toEventTag()!);
-      });
+          .tag(NostrLink.fromEvent(config.event!).toEventTag()!)
+      })
       if (ev) {
-        system.BroadcastEvent(ev);
+        system.BroadcastEvent(ev)
       }
-      setShowRecommendModal(false);
-      setRecommendContent("");
+      setShowRecommendModal(false)
+      setRecommendContent("")
     } catch (err) {
-      console.error("Failed to recommend provider:", err);
+      console.error("Failed to recommend provider:", err)
     } finally {
-      setIsRecommending(false);
+      setIsRecommending(false)
     }
-  };
+  }
 
   const getPriceRange = (endpoints?: Array<{ cost?: { rate?: number; unit?: string } }>) => {
-    if (!endpoints || endpoints.length === 0) return "N/A";
+    if (!endpoints || endpoints.length === 0) return "N/A"
 
-    const rates = endpoints.filter(ep => ep.cost?.rate !== undefined).map(ep => ep.cost?.rate ?? 0);
+    const rates = endpoints.filter(ep => ep.cost?.rate !== undefined).map(ep => ep.cost?.rate ?? 0)
 
-    if (rates.length === 0) return "N/A";
+    if (rates.length === 0) return "N/A"
 
-    const min = Math.min(...rates);
-    const max = Math.max(...rates);
-    const unit = endpoints.find(ep => ep.cost?.unit)?.cost?.unit || "min";
+    const min = Math.min(...rates)
+    const max = Math.max(...rates)
+    const unit = endpoints.find(ep => ep.cost?.unit)?.cost?.unit || "min"
 
-    return min === max ? `${min} sats/${unit}` : `${min}-${max} sats/${unit}`;
-  };
+    return min === max ? `${min} sats/${unit}` : `${min}-${max} sats/${unit}`
+  }
 
   useEffect(() => {
-    const p = new NostrStreamProvider(config.name, config.url, login?.publisher());
-    setLoading(true);
+    const p = new NostrStreamProvider(config.name, config.url, login?.publisher())
+    setLoading(true)
 
     p.info()
       .then(i => {
-        setAccount(i);
-        setLoading(false);
+        setAccount(i)
+        setLoading(false)
         // Measure ping after account info is loaded
-        measurePing();
+        measurePing()
       })
       .catch(e => {
         if (e instanceof Error) {
-          setError(e.message);
+          setError(e.message)
         }
-        setLoading(false);
-      });
-  }, [login?.pubkey]);
+        setLoading(false)
+      })
+  }, [login?.pubkey])
 
   return (
     <div className={`bg-layer-1 rounded-xl border p-4 ${active ? "border-primary" : "border-layer-2"}`}>
@@ -128,7 +128,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
             {login?.pubkey && config.event && !hasRecommended && (
               <DefaultButton
                 onClick={openRecommendModal}
-                className="!bg-transparent !border-primary !text-primary hover:!bg-primary hover:!text-black">
+                className="!bg-transparent !border-primary !text-primary hover:!bg-primary hover:!text-black"
+              >
                 <Icon name="heart" size={16} />
                 <FormattedMessage defaultMessage="Recommend" />
               </DefaultButton>
@@ -165,7 +166,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
                     : pingTime < 300
                       ? "bg-yellow-800 text-yellow-100"
                       : "bg-red-800 text-red-100"
-                }`}>
+                }`}
+              >
                 {pingTime}ms
               </span>
             )}
@@ -222,7 +224,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
                 account.tos?.accepted
                   ? "flex gap-1 items-center text-green-500"
                   : "flex gap-1 items-center text-warning"
-              }>
+              }
+            >
               {account.tos?.accepted ? (
                 <FormattedMessage defaultMessage="Accepted" />
               ) : (
@@ -250,7 +253,9 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
                 ?.flatMap(ep => ep.capabilities || [])
                 .filter((cap, index, arr) => arr.indexOf(cap) === index)
                 .slice(0, 3)
-                .map((capability, index) => <CapabilityPill key={index} capability={capability} />)}
+                .map((capability, index) => (
+                  <CapabilityPill key={index} capability={capability} />
+                ))}
               {account.endpoints?.flatMap(ep => ep.capabilities || []).length > 3 && (
                 <span className="text-layer-4 self-center text-xs">
                   +{account.endpoints?.flatMap(ep => ep.capabilities || []).length - 3} more
@@ -351,5 +356,5 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
         </Modal>
       )}
     </div>
-  );
+  )
 }

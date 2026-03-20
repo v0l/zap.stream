@@ -1,22 +1,22 @@
-import "./collapsible.css";
-import type { ReactNode } from "react";
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { NostrLink } from "@snort/system";
-import { Mention } from "./mention";
-import { EventIcon, NostrEvent } from "./event-embed";
-import { ExternalLink } from "./external-link";
-import { useEventFeed } from "@snort/system-react";
-import Modal from "./modal";
-import { DefaultButton } from "./buttons";
+import "./collapsible.css"
+import type { ReactNode } from "react"
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { NostrLink } from "@snort/system"
+import { Mention } from "./mention"
+import { EventIcon, NostrEvent } from "./event-embed"
+import { ExternalLink } from "./external-link"
+import { useEventFeed } from "@snort/system-react"
+import Modal from "./modal"
+import { DefaultButton } from "./buttons"
 
 interface MediaURLProps {
-  url: URL;
-  children: ReactNode;
+  url: URL
+  children: ReactNode
 }
 
 export function MediaURL({ url, children }: MediaURLProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   return (
     <>
       <span onClick={() => setOpen(true)}>{url.toString()}</span>
@@ -27,13 +27,13 @@ export function MediaURL({ url, children }: MediaURLProps) {
         </Modal>
       )}
     </>
-  );
+  )
 }
 
 export function CollapsibleEvent({ link }: { link: NostrLink }) {
-  const event = useEventFeed(link);
-  const [open, setOpen] = useState(false);
-  const author = event?.pubkey || link.author;
+  const event = useEventFeed(link)
+  const [open, setOpen] = useState(false)
+  const author = event?.pubkey || link.author
 
   return (
     <>
@@ -57,5 +57,5 @@ export function CollapsibleEvent({ link }: { link: NostrLink }) {
       </div>
       {open && event && <NostrEvent ev={event} />}
     </>
-  );
+  )
 }

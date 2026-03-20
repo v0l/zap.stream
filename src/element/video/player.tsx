@@ -9,26 +9,26 @@ import {
   MediaFullscreenButton,
   MediaPipButton,
   MediaPlaybackRateButton,
-} from "media-chrome/react";
-import { MediaPlayerSizeButtonReact } from "@/element/video/video-size-button";
-import useImgProxy from "@/hooks/img-proxy";
-import { useMediaQuery } from "usehooks-ts";
-import { useVideoPlayerContext } from "./context";
+} from "media-chrome/react"
+import { MediaPlayerSizeButtonReact } from "@/element/video/video-size-button"
+import useImgProxy from "@/hooks/img-proxy"
+import { useMediaQuery } from "usehooks-ts"
+import { useVideoPlayerContext } from "./context"
 
 export default function VideoPlayer({
   showPip,
   showWideMode,
   loop,
 }: {
-  showPip?: boolean;
-  showWideMode?: boolean;
-  loop?: boolean;
+  showPip?: boolean
+  showWideMode?: boolean
+  loop?: boolean
 }) {
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
-  const ctx = useVideoPlayerContext();
+  const isDesktop = useMediaQuery("(min-width: 1280px)")
+  const ctx = useVideoPlayerContext()
 
-  const ar = ctx.video?.bestAspectRatio() ?? 10 / 16;
-  const { proxy } = useImgProxy();
+  const ar = ctx.video?.bestAspectRatio() ?? 10 / 16
+  const { proxy } = useImgProxy()
   return (
     <MediaController className="min-w-0 w-full" mediaStreamType="on-demand">
       <video
@@ -40,8 +40,11 @@ export default function VideoPlayer({
         autoPlay={true}
         controls={false}
         loop={loop}
-        poster={proxy(ctx.video?.bestPoster()?.url ?? "")}>
-        {ctx.video?.sources().map(a => <source key={a.url} src={a.url} type={a.mimeType} />)}
+        poster={proxy(ctx.video?.bestPoster()?.url ?? "")}
+      >
+        {ctx.video?.sources().map(a => (
+          <source key={a.url} src={a.url} type={a.mimeType} />
+        ))}
       </video>
       <MediaControlBar>
         <MediaPlayButton />
@@ -64,5 +67,5 @@ export default function VideoPlayer({
         )}
       </MediaControlBar>
     </MediaController>
-  );
+  )
 }

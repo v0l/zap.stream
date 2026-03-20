@@ -1,9 +1,9 @@
-import { FormattedMessage } from "react-intl";
-import { Link, useLocation } from "react-router";
+import { FormattedMessage } from "react-intl"
+import { Link, useLocation } from "react-router"
 
 export default function StepHeader() {
-  const location = useLocation();
-  const onStep = Number(location.pathname.split("/").slice(-1)[0].split("-")[1]);
+  const location = useLocation()
+  const onStep = Number(location.pathname.split("/").slice(-1)[0].split("-")[1])
 
   return (
     <div className="flex mb-[10vh] justify-between w-full max-lg:px-6">
@@ -20,5 +20,5 @@ export default function StepHeader() {
         <FormattedMessage defaultMessage="Goal" />
       </Link>
     </div>
-  );
+  )
 }

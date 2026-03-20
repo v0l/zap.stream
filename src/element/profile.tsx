@@ -1,29 +1,29 @@
-import type { ReactNode } from "react";
-import { Link } from "react-router";
-import { useUserProfile } from "@snort/system-react";
-import type { CachedMetadata, UserMetadata } from "@snort/system";
-import { hexToBech32 } from "@snort/shared";
-import { Avatar } from "./avatar";
-import classNames from "classnames";
-import { profileLink } from "@/utils";
+import type { ReactNode } from "react"
+import { Link } from "react-router"
+import { useUserProfile } from "@snort/system-react"
+import type { CachedMetadata, UserMetadata } from "@snort/system"
+import { hexToBech32 } from "@snort/shared"
+import { Avatar } from "./avatar"
+import classNames from "classnames"
+import { profileLink } from "@/utils"
 
 export interface ProfileOptions {
-  showName?: boolean;
-  showAvatar?: boolean;
-  suffix?: string;
-  overrideName?: string;
+  showName?: boolean
+  showAvatar?: boolean
+  suffix?: string
+  overrideName?: string
 }
 
 export function getName(pk: string, user?: UserMetadata) {
-  const npub = hexToBech32("npub", pk);
-  const shortPubkey = npub.slice(0, 12);
+  const npub = hexToBech32("npub", pk)
+  const shortPubkey = npub.slice(0, 12)
   if ((user?.name?.length ?? 0) > 0) {
-    return user?.name;
+    return user?.name
   }
   if ((user?.display_name?.length ?? 0) > 0) {
-    return user?.display_name;
+    return user?.display_name
   }
-  return shortPubkey;
+  return shortPubkey
 }
 
 export function Profile({
@@ -38,30 +38,30 @@ export function Profile({
   gap,
   profile,
 }: {
-  pubkey: string;
-  icon?: ReactNode;
-  className?: string;
-  avatarClassname?: string;
-  options?: ProfileOptions;
-  title?: string;
-  linkToProfile?: boolean;
-  avatarSize?: number;
-  gap?: number;
-  profile?: CachedMetadata;
+  pubkey: string
+  icon?: ReactNode
+  className?: string
+  avatarClassname?: string
+  options?: ProfileOptions
+  title?: string
+  linkToProfile?: boolean
+  avatarSize?: number
+  gap?: number
+  profile?: CachedMetadata
 }) {
-  const pLoaded = useUserProfile(!profile ? pubkey : undefined) ?? profile;
-  const showAvatar = options?.showAvatar ?? true;
-  const showName = options?.showName ?? true;
-  const isAnon = pubkey === "anon";
+  const pLoaded = useUserProfile(!profile ? pubkey : undefined) ?? profile
+  const showAvatar = options?.showAvatar ?? true
+  const showName = options?.showName ?? true
+  const isAnon = pubkey === "anon"
   const content = (
     <>
       {showAvatar && <Avatar user={pLoaded} pubkey={pubkey} className={avatarClassname} size={avatarSize ?? 24} />}
       {icon}
-      {showName && <span>{isAnon ? options?.overrideName ?? "Anon" : getName(pubkey, pLoaded)}</span>}
+      {showName && <span>{isAnon ? (options?.overrideName ?? "Anon") : getName(pubkey, pLoaded)}</span>}
     </>
-  );
+  )
 
-  const cls = classNames("flex items-center align-bottom font-medium", `gap-${gap ?? 2}`, className);
+  const cls = classNames("flex items-center align-bottom font-medium", `gap-${gap ?? 2}`, className)
   return isAnon || linkToProfile === false ? (
     <div className={cls} title={title}>
       {content}
@@ -70,5 +70,5 @@ export function Profile({
     <Link to={profileLink(pLoaded, pubkey)} className={cls} title={title}>
       {content}
     </Link>
-  );
+  )
 }

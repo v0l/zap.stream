@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import type { HTMLProps, ReactNode } from "react";
+import classNames from "classnames"
+import type { HTMLProps, ReactNode } from "react"
 
 export function DashboardStatsCard({
   name,
@@ -9,9 +9,10 @@ export function DashboardStatsCard({
   return (
     <div
       {...props}
-      className={classNames("flex-1 bg-layer-1 flex flex-col gap-1 px-4 py-2 rounded-xl", props.className)}>
+      className={classNames("flex-1 bg-layer-1 flex flex-col gap-1 px-4 py-2 rounded-xl", props.className)}
+    >
       <div className="text-layer-4 font-medium">{name}</div>
       <div>{value}</div>
     </div>
-  );
+  )
 }

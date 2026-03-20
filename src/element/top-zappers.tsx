@@ -1,6 +1,6 @@
-import type { ParsedZap } from "@snort/system";
-import useTopZappers from "@/hooks/top-zappers";
-import { ZapperRow } from "./zapper-row";
+import type { ParsedZap } from "@snort/system"
+import useTopZappers from "@/hooks/top-zappers"
+import { ZapperRow } from "./zapper-row"
 
 export function TopZappers({
   zaps,
@@ -9,13 +9,13 @@ export function TopZappers({
   showName,
   className,
 }: {
-  zaps: ParsedZap[];
-  limit?: number;
-  avatarSize?: number;
-  showName?: boolean;
-  className?: string;
+  zaps: ParsedZap[]
+  limit?: number
+  avatarSize?: number
+  showName?: boolean
+  className?: string
 }) {
-  const zappers = useTopZappers(zaps);
+  const zappers = useTopZappers(zaps)
   return zappers
     .slice(0, limit ?? 10)
     .map(({ pubkey, total }) => (
@@ -27,5 +27,5 @@ export function TopZappers({
         avatarSize={avatarSize}
         className={className}
       />
-    ));
+    ))
 }

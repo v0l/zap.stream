@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { DefaultButton, Layer2Button } from "@/element/buttons";
-import { Icon } from "@/element/icon";
-import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider";
-import Modal from "@/element/modal";
-import { useDiscoverProviders } from "@/hooks/discover-providers";
-import { ProviderCard } from "@/element/provider-card";
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { DefaultButton, Layer2Button } from "@/element/buttons"
+import { Icon } from "@/element/icon"
+import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider"
+import Modal from "@/element/modal"
+import { useDiscoverProviders } from "@/hooks/discover-providers"
+import { ProviderCard } from "@/element/provider-card"
 
 interface ProviderSelectorProps {
-  onClose: () => void;
+  onClose: () => void
 }
 
 export function ProviderSelector({ onClose }: ProviderSelectorProps) {
-  const { config: currentConfig, updateStreamProvider } = useStreamProvider();
-  const providers = useDiscoverProviders();
+  const { config: currentConfig, updateStreamProvider } = useStreamProvider()
+  const providers = useDiscoverProviders()
 
   const isCurrentProvider = (providerConfig: StreamProviderConfig) => {
-    return currentConfig.name === providerConfig.name && currentConfig.url === providerConfig.url;
-  };
+    return currentConfig.name === providerConfig.name && currentConfig.url === providerConfig.url
+  }
 
   return (
     <div className="flex flex-col gap-4 max-w-4xl">
@@ -58,11 +58,11 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
         </Layer2Button>
       </div>
     </div>
-  );
+  )
 }
 
 export function ProviderSelectorButton() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   return (
     <>
@@ -75,5 +75,5 @@ export function ProviderSelectorButton() {
         </Modal>
       )}
     </>
-  );
+  )
 }

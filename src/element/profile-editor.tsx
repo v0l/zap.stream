@@ -1,120 +1,120 @@
-import { useState, useEffect, useContext } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { LNURL, fetchNip05Pubkey } from "@snort/shared";
-import { mapEventToProfile } from "@snort/system";
-import { SnortContext, useUserProfile } from "@snort/system-react";
-import { useLogin } from "@/hooks/login";
-import { debounce } from "@/utils";
-import { PrimaryButton } from "./buttons";
-import { FileUploader } from "./file-uploader";
+import { useState, useEffect, useContext } from "react"
+import { FormattedMessage, useIntl } from "react-intl"
+import { LNURL, fetchNip05Pubkey } from "@snort/shared"
+import { mapEventToProfile } from "@snort/system"
+import { SnortContext, useUserProfile } from "@snort/system-react"
+import { useLogin } from "@/hooks/login"
+import { debounce } from "@/utils"
+import { PrimaryButton } from "./buttons"
+import { FileUploader } from "./file-uploader"
 
-const MaxUsernameLength = 100;
-const MaxAboutLength = 500;
+const MaxUsernameLength = 100
+const MaxAboutLength = 500
 
 export function ProfileEditor({ onClose }: { onClose: () => void }) {
-  const login = useLogin();
-  const user = useUserProfile(login?.pubkey);
-  const { formatMessage } = useIntl();
-  const system = useContext(SnortContext);
+  const login = useLogin()
+  const user = useUserProfile(login?.pubkey)
+  const { formatMessage } = useIntl()
+  const system = useContext(SnortContext)
 
-  const [error, setError] = useState<Error>();
-  const [name, setName] = useState<string>();
-  const [picture, setPicture] = useState<string>();
-  const [banner, setBanner] = useState<string>();
-  const [about, setAbout] = useState<string>();
-  const [website, setWebsite] = useState<string>();
-  const [nip05, setNip05] = useState<string>();
-  const [lud16, setLud16] = useState<string>();
-  const [nip05AddressValid, setNip05AddressValid] = useState<boolean>();
-  const [invalidNip05AddressMessage, setInvalidNip05AddressMessage] = useState<string>();
-  const [usernameValid, setUsernameValid] = useState<boolean>();
-  const [invalidUsernameMessage, setInvalidUsernameMessage] = useState<string>();
-  const [aboutValid, setAboutValid] = useState<boolean>();
-  const [invalidAboutMessage, setInvalidAboutMessage] = useState<string>();
-  const [lud16Valid, setLud16Valid] = useState<boolean>();
-  const [invalidLud16Message, setInvalidLud16Message] = useState<string>();
+  const [error, setError] = useState<Error>()
+  const [name, setName] = useState<string>()
+  const [picture, setPicture] = useState<string>()
+  const [banner, setBanner] = useState<string>()
+  const [about, setAbout] = useState<string>()
+  const [website, setWebsite] = useState<string>()
+  const [nip05, setNip05] = useState<string>()
+  const [lud16, setLud16] = useState<string>()
+  const [nip05AddressValid, setNip05AddressValid] = useState<boolean>()
+  const [invalidNip05AddressMessage, setInvalidNip05AddressMessage] = useState<string>()
+  const [usernameValid, setUsernameValid] = useState<boolean>()
+  const [invalidUsernameMessage, setInvalidUsernameMessage] = useState<string>()
+  const [aboutValid, setAboutValid] = useState<boolean>()
+  const [invalidAboutMessage, setInvalidAboutMessage] = useState<string>()
+  const [lud16Valid, setLud16Valid] = useState<boolean>()
+  const [invalidLud16Message, setInvalidLud16Message] = useState<string>()
 
   useEffect(() => {
     if (user) {
-      setName(user.name);
-      setPicture(user.picture);
-      setBanner(user.banner);
-      setAbout(user.about);
-      setWebsite(user.website);
-      setNip05(user.nip05);
-      setLud16(user.lud16);
+      setName(user.name)
+      setPicture(user.picture)
+      setBanner(user.banner)
+      setAbout(user.about)
+      setWebsite(user.website)
+      setNip05(user.nip05)
+      setLud16(user.lud16)
     }
-  }, [user]);
+  }, [user])
 
   useEffect(() => {
     return debounce(500, async () => {
       if (lud16) {
         try {
-          await new LNURL(lud16).load();
-          setLud16Valid(true);
-          setInvalidLud16Message("");
+          await new LNURL(lud16).load()
+          setLud16Valid(true)
+          setInvalidLud16Message("")
         } catch (_e) {
-          setLud16Valid(false);
+          setLud16Valid(false)
           setInvalidLud16Message(
             formatMessage({
               defaultMessage: "Invalid lightning address",
             }),
-          );
+          )
         }
       } else {
-        setInvalidLud16Message("");
+        setInvalidLud16Message("")
       }
-    });
-  }, [formatMessage, lud16]);
+    })
+  }, [formatMessage, lud16])
 
   useEffect(() => {
     async function nip05NostrAddressVerification(nip05Domain: string | undefined, nip05Name: string | undefined) {
       try {
-        const result = await fetchNip05Pubkey(nip05Name!, nip05Domain!);
+        const result = await fetchNip05Pubkey(nip05Name!, nip05Domain!)
         if (result) {
           if (result === login?.pubkey) {
-            setNip05AddressValid(true);
+            setNip05AddressValid(true)
           } else {
             setInvalidNip05AddressMessage(
               formatMessage({ defaultMessage: "Nostr address does not belong to you", id: "01iNut" }),
-            );
+            )
           }
         } else {
-          setNip05AddressValid(false);
+          setNip05AddressValid(false)
           setInvalidNip05AddressMessage(
             formatMessage({
               defaultMessage: "Invalid nostr address",
             }),
-          );
+          )
         }
       } catch (_e) {
-        setNip05AddressValid(false);
+        setNip05AddressValid(false)
         setInvalidNip05AddressMessage(
           formatMessage({
             defaultMessage: "Invalid nostr address",
           }),
-        );
+        )
       }
     }
     return debounce(500, async () => {
-      const Nip05AddressElements = nip05?.split("@") ?? [];
+      const Nip05AddressElements = nip05?.split("@") ?? []
       if ((nip05?.length ?? 0) === 0) {
-        setNip05AddressValid(false);
-        setInvalidNip05AddressMessage("");
+        setNip05AddressValid(false)
+        setInvalidNip05AddressMessage("")
       } else if (Nip05AddressElements.length < 2) {
-        setNip05AddressValid(false);
+        setNip05AddressValid(false)
         setInvalidNip05AddressMessage(
           formatMessage({
             defaultMessage: "Invalid nostr address",
           }),
-        );
+        )
       } else if (Nip05AddressElements.length === 2) {
-        nip05NostrAddressVerification(Nip05AddressElements.pop(), Nip05AddressElements.pop());
+        nip05NostrAddressVerification(Nip05AddressElements.pop(), Nip05AddressElements.pop())
       } else {
-        setNip05AddressValid(false);
+        setNip05AddressValid(false)
       }
-    });
-  }, [formatMessage, login?.pubkey, nip05]);
+    })
+  }, [formatMessage, login?.pubkey, nip05])
 
   async function saveProfile() {
     // copy user object and delete internal fields
@@ -127,70 +127,70 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
       website,
       nip05,
       lud16,
-    } as Record<string, string | number | undefined | boolean>;
-    delete userCopy.loaded;
-    delete userCopy.created;
-    delete userCopy.pubkey;
-    delete userCopy.npub;
-    delete userCopy.deleted;
-    delete userCopy.zapService;
-    delete userCopy.isNostrAddressValid;
-    console.debug(userCopy);
+    } as Record<string, string | number | undefined | boolean>
+    delete userCopy.loaded
+    delete userCopy.created
+    delete userCopy.pubkey
+    delete userCopy.npub
+    delete userCopy.deleted
+    delete userCopy.zapService
+    delete userCopy.isNostrAddressValid
+    console.debug(userCopy)
 
-    const publisher = login?.publisher();
+    const publisher = login?.publisher()
     if (publisher) {
-      const ev = await publisher.metadata(userCopy);
-      system.BroadcastEvent(ev);
+      const ev = await publisher.metadata(userCopy)
+      system.BroadcastEvent(ev)
 
-      const newProfile = mapEventToProfile(ev);
+      const newProfile = mapEventToProfile(ev)
       if (newProfile) {
-        await system.profileLoader.cache.update(newProfile);
+        await system.profileLoader.cache.update(newProfile)
       }
-      onClose();
+      onClose()
     }
   }
 
   async function onNip05Change(e: React.ChangeEvent<HTMLInputElement>) {
-    const Nip05Address = e.target.value.toLowerCase();
-    setNip05(Nip05Address);
+    const Nip05Address = e.target.value.toLowerCase()
+    setNip05(Nip05Address)
   }
 
   async function onLimitCheck(val: string, field: string) {
     if (field === "username") {
-      setName(val);
+      setName(val)
       if (val?.length >= MaxUsernameLength) {
-        setUsernameValid(false);
+        setUsernameValid(false)
         setInvalidUsernameMessage(
           formatMessage({
             defaultMessage: "Username is too long",
           }),
-        );
+        )
       } else {
-        setUsernameValid(true);
-        setInvalidUsernameMessage("");
+        setUsernameValid(true)
+        setInvalidUsernameMessage("")
       }
     } else if (field === "about") {
-      setAbout(val);
+      setAbout(val)
       if (val?.length >= MaxAboutLength) {
-        setAboutValid(false);
+        setAboutValid(false)
         setInvalidAboutMessage(
           formatMessage({
             defaultMessage: "About too long",
           }),
-        );
+        )
       } else {
-        setAboutValid(true);
-        setInvalidAboutMessage("");
+        setAboutValid(true)
+        setInvalidAboutMessage("")
       }
     }
   }
 
   async function onLud16Change(address: string) {
-    setLud16(address);
+    setLud16(address)
   }
 
   function editor() {
-    if (!login?.pubkey) return;
+    if (!login?.pubkey) return
 
     return (
       <div className="flex flex-col gap-4">
@@ -227,7 +227,8 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
             className="w-full"
             onChange={e => onLimitCheck(e.target.value, "about")}
             value={about}
-            maxLength={MaxAboutLength}></textarea>
+            maxLength={MaxAboutLength}
+          ></textarea>
           <div>{aboutValid === false ? <span className="text-delete">{invalidAboutMessage}</span> : <></>}</div>
         </div>
         <div className="flex flex-col w-full gap-2">
@@ -265,8 +266,8 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
           <FormattedMessage defaultMessage="Save" />
         </PrimaryButton>
       </div>
-    );
+    )
   }
 
-  return editor();
+  return editor()
 }

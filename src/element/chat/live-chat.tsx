@@ -1,41 +1,41 @@
-import "./live-chat.css";
-import { FormattedMessage } from "react-intl";
-import { EventKind, type NostrEvent, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system";
-import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react";
-import { removeUndefined, unixNow, unwrap, NostrPrefix } from "@snort/shared";
-import { useEffect, useMemo } from "react";
+import "./live-chat.css"
+import { FormattedMessage } from "react-intl"
+import { EventKind, type NostrEvent, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system"
+import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react"
+import { removeUndefined, unixNow, unwrap, NostrPrefix } from "@snort/shared"
+import { useEffect, useMemo } from "react"
 
-import { Icon } from "../icon";
-import Spinner from "../spinner";
-import { Text } from "../text";
-import { Profile } from "../profile";
-import { ChatMessage } from "./chat-message";
-import { Goal } from "../goal";
-import { BadgeInfo } from "../badge";
-import { WriteMessage } from "./write-message";
-import useEmoji, { packId } from "@/hooks/emoji";
-import { useMutedPubkeys } from "@/hooks/lists";
-import { useBadgeAwards } from "@/hooks/badges";
-import { useLogin } from "@/hooks/login";
-import { formatZapAmount } from "@/number";
-import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const";
-import { findTag, getHost, getTagValues, uniqBy } from "@/utils";
-import { TopZappers } from "../top-zappers";
-import { Link, useNavigate } from "react-router";
-import classNames from "classnames";
-import { useStream } from "../stream/stream-state";
-import { useLayout } from "@/pages/layout/context";
-import { TwitchChatMessage } from "./twitch";
-import { useLegacyChatFeed } from "@/hooks/legacy-chat";
-import type { ExternalChatEvent } from "@/service/chat/types";
-import { YoutubeChatMessage } from "./youtube";
-import { KickChatMessage } from "./kick";
+import { Icon } from "../icon"
+import Spinner from "../spinner"
+import { Text } from "../text"
+import { Profile } from "../profile"
+import { ChatMessage } from "./chat-message"
+import { Goal } from "../goal"
+import { BadgeInfo } from "../badge"
+import { WriteMessage } from "./write-message"
+import useEmoji, { packId } from "@/hooks/emoji"
+import { useMutedPubkeys } from "@/hooks/lists"
+import { useBadgeAwards } from "@/hooks/badges"
+import { useLogin } from "@/hooks/login"
+import { formatZapAmount } from "@/number"
+import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const"
+import { findTag, getHost, getTagValues, uniqBy } from "@/utils"
+import { TopZappers } from "../top-zappers"
+import { Link, useNavigate } from "react-router"
+import classNames from "classnames"
+import { useStream } from "../stream/stream-state"
+import { useLayout } from "@/pages/layout/context"
+import { TwitchChatMessage } from "./twitch"
+import { useLegacyChatFeed } from "@/hooks/legacy-chat"
+import type { ExternalChatEvent } from "@/service/chat/types"
+import { YoutubeChatMessage } from "./youtube"
+import { KickChatMessage } from "./kick"
 
 function BadgeAward({ ev }: { ev: NostrEvent }) {
-  const badge = findTag(ev, "a") ?? "";
-  const [k, pubkey, d] = badge.split(":");
-  const awardees = getTagValues(ev.tags, "p");
-  const event = useEventFeed(new NostrLink(NostrPrefix.Address, d, Number(k), pubkey));
+  const badge = findTag(ev, "a") ?? ""
+  const [k, pubkey, d] = badge.split(":")
+  const awardees = getTagValues(ev.tags, "p")
+  const event = useEventFeed(new NostrLink(NostrPrefix.Address, d, Number(k), pubkey))
   return (
     <div className="badge-award">
       {event && <BadgeInfo ev={event} />}
@@ -46,7 +46,7 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 export function LiveChat({
@@ -58,118 +58,133 @@ export function LiveChat({
   height,
   className,
   autoRaid,
-  showBadges
+  showBadges,
 }: {
-  canWrite?: boolean;
-  showTopZappers?: boolean;
-  adjustLayout?: boolean;
-  showGoal?: boolean;
-  showScrollbar?: boolean;
-  height?: number;
-  className?: string;
-  autoRaid?: boolean;
-  showBadges?: boolean;
+  canWrite?: boolean
+  showTopZappers?: boolean
+  adjustLayout?: boolean
+  showGoal?: boolean
+  showScrollbar?: boolean
+  height?: number
+  className?: string
+  autoRaid?: boolean
+  showBadges?: boolean
 }) {
-  const streamContext = useStream();
-  const login = useLogin();
-  const layoutContext = useLayout();
+  const streamContext = useStream()
+  const login = useLogin()
+  const layoutContext = useLayout()
 
   // Use data from context
-  const link = streamContext.link!;
-  const feed = streamContext.feed;
-  const goal = streamContext.goal;
-  const event = streamContext.event;
-  const relays = streamContext.relays;
+  const link = streamContext.link!
+  const feed = streamContext.feed
+  const goal = streamContext.goal
+  const event = streamContext.event
+  const relays = streamContext.relays
 
-  const host = event ? getHost(event) : undefined;
+  const host = event ? getHost(event) : undefined
   const started = useMemo(() => {
-    const starts = findTag(event, "starts");
-    return starts ? Number(starts) : unixNow() - WEEK;
-  }, [event]);
-  const { awards } = useBadgeAwards(host);
+    const starts = findTag(event, "starts")
+    return starts ? Number(starts) : unixNow() - WEEK
+  }, [event])
+  const { awards } = useBadgeAwards(host)
 
-  const hostMutedPubkeys = useMutedPubkeys(host, true);
-  const userEmojiPacks = useEmoji(login?.pubkey);
-  const channelEmojiPacks = useEmoji(host);
+  const hostMutedPubkeys = useMutedPubkeys(host, true)
+  const userEmojiPacks = useEmoji(login?.pubkey)
+  const channelEmojiPacks = useEmoji(host)
   const allEmojiPacks = useMemo(() => {
-    return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId);
-  }, [userEmojiPacks, channelEmojiPacks]);
+    return uniqBy(userEmojiPacks.concat(channelEmojiPacks), packId)
+  }, [userEmojiPacks, channelEmojiPacks])
 
-  const reactions = useEventReactions(link, feed);
-  const legacyChat = useLegacyChatFeed({ enable: host === login?.pubkey });
+  const reactions = useEventReactions(link, feed)
+  const legacyChat = useLegacyChatFeed({ enable: host === login?.pubkey })
   const events = useMemo(() => {
-    const extra = [];
-    const starts = findTag(event, "starts");
+    const extra = []
+    const starts = findTag(event, "starts")
     if (starts) {
-      extra.push({ kind: -1, created_at: Number(starts) } as TaggedNostrEvent);
+      extra.push({ kind: -1, created_at: Number(starts) } as TaggedNostrEvent)
     }
-    const ends = findTag(event, "ends");
+    const ends = findTag(event, "ends")
     if (ends) {
-      extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent);
+      extra.push({ kind: -2, created_at: Number(ends) } as TaggedNostrEvent)
     }
     for (const tc of legacyChat.events) {
       extra.push({
         kind: -3,
         id: tc.id,
         created_at: tc.created_at,
-        chat: tc
+        chat: tc,
       } as unknown as TaggedNostrEvent)
     }
-    const twInfo = legacyChat.twitch?.getInfo();
+    const twInfo = legacyChat.twitch?.getInfo()
     if (twInfo?.connected) {
-      extra.push({ kind: -4, created_at: twInfo.connected, pubkey: twInfo.name, sig: twInfo.provider_name } as TaggedNostrEvent);
+      extra.push({
+        kind: -4,
+        created_at: twInfo.connected,
+        pubkey: twInfo.name,
+        sig: twInfo.provider_name,
+      } as TaggedNostrEvent)
     }
-    const ytInfo = legacyChat.youtube?.getInfo();
+    const ytInfo = legacyChat.youtube?.getInfo()
     if (ytInfo?.connected) {
-      extra.push({ kind: -4, created_at: ytInfo.connected, pubkey: ytInfo.name, sig: ytInfo.provider_name } as TaggedNostrEvent);
+      extra.push({
+        kind: -4,
+        created_at: ytInfo.connected,
+        pubkey: ytInfo.name,
+        sig: ytInfo.provider_name,
+      } as TaggedNostrEvent)
     }
-    const kkInfo = legacyChat.kick?.getInfo();
+    const kkInfo = legacyChat.kick?.getInfo()
     if (kkInfo?.connected) {
-      extra.push({ kind: -4, created_at: kkInfo.connected, pubkey: kkInfo.name, sig: kkInfo.provider_name } as TaggedNostrEvent);
+      extra.push({
+        kind: -4,
+        created_at: kkInfo.connected,
+        pubkey: kkInfo.name,
+        sig: kkInfo.provider_name,
+      } as TaggedNostrEvent)
     }
     return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
       .filter(a => a.created_at >= started && (!ends || a.created_at <= Number(ends)))
-      .sort((a, b) => b.created_at - a.created_at);
-  }, [feed, awards, legacyChat]);
+      .sort((a, b) => b.created_at - a.created_at)
+  }, [feed, awards, legacyChat])
 
   useEffect(() => {
     const resetLayout = () => {
       if (streamContext.showDetails || !adjustLayout) {
         streamContext.update(c => {
-          c.showDetails = !adjustLayout;
-          return { ...c };
-        });
+          c.showDetails = !adjustLayout
+          return { ...c }
+        })
       }
       if (!layoutContext.showHeader) {
         layoutContext.update(c => {
-          c.showHeader = true;
-          return { ...c };
-        });
+          c.showHeader = true
+          return { ...c }
+        })
       }
-    };
+    }
 
     if (adjustLayout) {
       layoutContext.update(c => {
-        c.showHeader = false;
-        return { ...c };
-      });
+        c.showHeader = false
+        return { ...c }
+      })
       return () => {
-        resetLayout();
-      };
+        resetLayout()
+      }
     } else {
-      resetLayout();
+      resetLayout()
     }
-  }, [adjustLayout]);
+  }, [adjustLayout])
 
   const filteredEvents = useMemo(() => {
     return events.filter(e => {
-      if (!e.pubkey) return true; // injected content
-      const author = NostrLink.publicKey(e.pubkey);
+      if (!e.pubkey) return true // injected content
+      const author = NostrLink.publicKey(e.pubkey)
       return (
         !(login?.state?.muted.some(a => a.equals(author)) ?? false) && !hostMutedPubkeys.some(a => a.equals(author))
-      );
-    });
-  }, [events, login?.state?.version, hostMutedPubkeys]);
+      )
+    })
+  }, [events, login?.state?.version, hostMutedPubkeys])
 
   return (
     <div className={classNames("flex flex-col gap-1", className)} style={height ? { height: `${height}px` } : {}}>
@@ -178,14 +193,15 @@ export function LiveChat({
           className="min-h-2 my-2"
           onClick={() => {
             streamContext.update(c => {
-              c.showDetails = !c.showDetails;
-              return { ...c };
-            });
+              c.showDetails = !c.showDetails
+              return { ...c }
+            })
             layoutContext.update(c => {
-              c.showHeader = !streamContext.showDetails;
-              return { ...c };
-            });
-          }}>
+              c.showHeader = !streamContext.showDetails
+              return { ...c }
+            })
+          }}
+        >
           <div className="h-2 bg-layer-3 rounded-full w-10 mx-auto"></div>
         </div>
       )}
@@ -200,11 +216,23 @@ export function LiveChat({
       <div
         className={classNames("flex flex-col-reverse grow gap-2 overflow-y-auto", {
           "scrollbar-hidden": !(showScrollbar ?? true),
-        })}>
+        })}
+      >
         {filteredEvents.map((a, i) => {
-          const currentDate = new Date(a.created_at * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-          const prevDate = i > 0 ? new Date(filteredEvents[i - 1].created_at * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : null;
-          const showDateSeparator = prevDate && currentDate !== prevDate;
+          const currentDate = new Date(a.created_at * 1000).toLocaleDateString(undefined, {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+          const prevDate =
+            i > 0
+              ? new Date(filteredEvents[i - 1].created_at * 1000).toLocaleDateString(undefined, {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              : null
+          const showDateSeparator = prevDate && currentDate !== prevDate
 
           const mapper = () => {
             switch (a.kind) {
@@ -213,71 +241,92 @@ export function LiveChat({
                 return (
                   <b
                     className="border px-3 py-2 text-center border-layer-2 rounded-xl bg-primary uppercase"
-                    key={`${a.kind}-${a.created_at}`}>
+                    key={`${a.kind}-${a.created_at}`}
+                  >
                     {a.kind === -1 ? (
                       <FormattedMessage defaultMessage="Stream Started" />
                     ) : (
                       <FormattedMessage defaultMessage="Stream Ended" />
                     )}
                   </b>
-                );
+                )
               }
               case -3: {
-                const externalChat = "chat" in a ? a.chat as ExternalChatEvent : undefined;
+                const externalChat = "chat" in a ? (a.chat as ExternalChatEvent) : undefined
                 switch (externalChat?.feed) {
                   case "twitch": {
-                    return <TwitchChatMessage ev={externalChat} key={a.id} created_at={a.created_at} badges={legacyChat.badges} />;
+                    return (
+                      <TwitchChatMessage
+                        ev={externalChat}
+                        key={a.id}
+                        created_at={a.created_at}
+                        badges={legacyChat.badges}
+                      />
+                    )
                   }
                   case "youtube": {
-                    return <YoutubeChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />;
+                    return <YoutubeChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />
                   }
                   case "kick": {
-                    return <KickChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />;
+                    return <KickChatMessage ev={externalChat} key={a.id} badges={legacyChat.badges} />
                   }
                   default: {
                     return <div>{JSON.stringify(externalChat)}</div>
                   }
                 }
-                break;
+                break
               }
               case -4: {
-                return <div className="text-center text-xs text-gray-500">
-                  <FormattedMessage defaultMessage="{provider} chat {channel} connected!" values={{
-                    channel: `'${a.pubkey}'`,
-                    provider: a.sig,
-                  }} />
-                </div>
-                break;
+                return (
+                  <div className="text-center text-xs text-gray-500">
+                    <FormattedMessage
+                      defaultMessage="{provider} chat {channel} connected!"
+                      values={{
+                        channel: `'${a.pubkey}'`,
+                        provider: a.sig,
+                      }}
+                    />
+                  </div>
+                )
+                break
               }
               case EventKind.BadgeAward: {
-                return <BadgeAward ev={a} key={a.id} />;
+                return <BadgeAward ev={a} key={a.id} />
               }
               case LIVE_STREAM_CHAT: {
-                return <ChatMessage badges={(showBadges ?? true) ? awards : []} emojiPacks={allEmojiPacks} streamer={host} ev={a} key={a.id} />;
+                return (
+                  <ChatMessage
+                    badges={(showBadges ?? true) ? awards : []}
+                    emojiPacks={allEmojiPacks}
+                    streamer={host}
+                    ev={a}
+                    key={a.id}
+                  />
+                )
               }
               case LIVE_STREAM_RAID: {
-                return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />;
+                return <ChatRaid ev={a} link={link} key={a.id} autoRaid={autoRaid} />
               }
               case LIVE_STREAM_CLIP: {
-                return <ChatClip ev={a} key={a.id} />;
+                return <ChatClip ev={a} key={a.id} />
               }
               case EventKind.ZapReceipt: {
-                const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host);
+                const zap = reactions.zaps.find(b => b.id === a.id && b.receiver === host)
                 if (zap) {
-                  return <ChatZap zap={zap} key={a.id} />;
+                  return <ChatZap zap={zap} key={a.id} />
                 }
               }
             }
           }
 
-          const mapped = mapper();
-          if (!mapped) return;
-          return <>
-            {showDateSeparator && (
-              <div className="text-center text-xs text-gray-500">{prevDate}</div>
-            )}
-            {mapped}
-          </>
+          const mapped = mapper()
+          if (!mapped) return
+          return (
+            <>
+              {showDateSeparator && <div className="text-center text-xs text-gray-500">{prevDate}</div>}
+              {mapped}
+            </>
+          )
         })}
         {feed.length === 0 && <Spinner />}
       </div>
@@ -293,16 +342,16 @@ export function LiveChat({
         </div>
       )}
     </div>
-  );
+  )
 }
 
-const BIG_ZAP_THRESHOLD = 50_000;
+const BIG_ZAP_THRESHOLD = 50_000
 
 export function ChatZap({ zap }: { zap: ParsedZap }) {
   if (!zap.valid) {
-    return null;
+    return null
   }
-  const isBig = zap.amount >= BIG_ZAP_THRESHOLD;
+  const isBig = zap.amount >= BIG_ZAP_THRESHOLD
 
   return (
     <div className={`zap-container overflow-wrap ${isBig ? "big-zap" : ""}`}>
@@ -312,14 +361,14 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
           defaultMessage="<s>{person}</s> zapped <a>{amount}</a>"
           values={{
             s: c => <span className="text-zap">{c}</span>,
-            a: c => <span className="text-zap">
-              <span className="text-sm">₿</span>
-              {" "}
-              {c}
-            </span>,
+            a: c => (
+              <span className="text-zap">
+                <span className="text-sm">₿</span> {c}
+              </span>
+            ),
             person: (
               <Profile
-                pubkey={zap.anonZap ? "anon" : zap.sender ?? ""}
+                pubkey={zap.anonZap ? "anon" : (zap.sender ?? "")}
                 options={{
                   showAvatar: !zap.anonZap,
                 }}
@@ -331,30 +380,31 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
       </div>
       {zap.content && <Text content={zap.content} tags={[]} />}
     </div>
-  );
+  )
 }
 
 export function ChatRaid({ link, ev, autoRaid }: { link: NostrLink; ev: TaggedNostrEvent; autoRaid?: boolean }) {
-  const navigate = useNavigate();
-  const from = ev.tags.find(a => a[0] === "a" && a[3] === "root");
-  const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention");
-  const isRaiding = link.toEventTag()?.at(1) === from?.at(1);
-  const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from));
-  const otherEvent = useEventFeed(otherLink);
-  const otherProfile = useUserProfile(otherEvent ? getHost(otherEvent) : undefined);
+  const navigate = useNavigate()
+  const from = ev.tags.find(a => a[0] === "a" && a[3] === "root")
+  const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention")
+  const isRaiding = link.toEventTag()?.at(1) === from?.at(1)
+  const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from))
+  const otherEvent = useEventFeed(otherLink)
+  const otherProfile = useUserProfile(otherEvent ? getHost(otherEvent) : undefined)
 
   useEffect(() => {
-    const raidDiff = Math.abs(unixNow() - ev.created_at);
+    const raidDiff = Math.abs(unixNow() - ev.created_at)
     if (isRaiding === true && raidDiff < 60 && otherLink.id !== link.id && (autoRaid ?? true)) {
-      navigate(`/${otherLink.encode()}`);
+      navigate(`/${otherLink.encode()}`)
     }
-  }, [isRaiding, autoRaid]);
+  }, [isRaiding, autoRaid])
 
   if (isRaiding) {
     return (
       <Link
         to={`/${otherLink.encode()}`}
-        className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
+        className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold"
+      >
         <FormattedMessage
           defaultMessage="Raiding {name}"
           id="j/jueq"
@@ -363,7 +413,7 @@ export function ChatRaid({ link, ev, autoRaid }: { link: NostrLink; ev: TaggedNo
           }}
         />
       </Link>
-    );
+    )
   }
   return (
     <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
@@ -375,13 +425,13 @@ export function ChatRaid({ link, ev, autoRaid }: { link: NostrLink; ev: TaggedNo
         }}
       />
     </div>
-  );
+  )
 }
 
 function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
-  const profile = useUserProfile(ev.pubkey);
-  const rTag = findTag(ev, "r");
-  const title = findTag(ev, "title");
+  const profile = useUserProfile(ev.pubkey)
+  const rTag = findTag(ev, "r")
+  const title = findTag(ev, "title")
   return (
     <div className="px-3 py-2 text-center rounded-xl bg-primary pointer flex flex-col gap-2">
       <div className="font-bold uppercase">
@@ -396,5 +446,5 @@ function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
       <div>{title}</div>
       {rTag && <video src={rTag} controls playsInline={true} muted={true} />}
     </div>
-  );
+  )
 }

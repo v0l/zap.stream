@@ -1,6 +1,6 @@
-import Copy from "@/element/copy";
-import type { IngestEndpoint } from "@/providers";
-import { FormattedMessage } from "react-intl";
+import Copy from "@/element/copy"
+import type { IngestEndpoint } from "@/providers"
+import { FormattedMessage } from "react-intl"
 
 export default function StreamKey({ ep }: { ep: IngestEndpoint }) {
   return (
@@ -24,5 +24,5 @@ export default function StreamKey({ ep }: { ep: IngestEndpoint }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

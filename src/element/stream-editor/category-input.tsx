@@ -1,10 +1,10 @@
-import type { GameInfo } from "@/service/game-database";
-import { FormattedMessage } from "react-intl";
-import { IconButton } from "../buttons";
-import GameInfoCard from "../game-info";
-import { SearchCategory } from "./category-search";
-import { StreamInput } from "./input";
-import { TagsInput } from "react-tag-input-component";
+import type { GameInfo } from "@/service/game-database"
+import { FormattedMessage } from "react-intl"
+import { IconButton } from "../buttons"
+import GameInfoCard from "../game-info"
+import { SearchCategory } from "./category-search"
+import { StreamInput } from "./input"
+import { TagsInput } from "react-tag-input-component"
 
 export default function CategoryInput({
   tags,
@@ -14,12 +14,12 @@ export default function CategoryInput({
   setGame,
   setGameId,
 }: {
-  tags: Array<string>;
-  game: GameInfo | undefined;
-  gameId: string | undefined;
-  setTags: (v: Array<string>) => void;
-  setGame: (g: GameInfo | undefined) => void;
-  setGameId: (id: string | undefined) => void;
+  tags: Array<string>
+  game: GameInfo | undefined
+  gameId: string | undefined
+  setTags: (v: Array<string>) => void
+  setGame: (g: GameInfo | undefined) => void
+  setGameId: (id: string | undefined) => void
 }) {
   return (
     <>
@@ -27,8 +27,8 @@ export default function CategoryInput({
         {!gameId && (
           <SearchCategory
             onSelect={g => {
-              setGame(g);
-              setGameId(g.id);
+              setGame(g)
+              setGameId(g.id)
             }}
           />
         )}
@@ -40,8 +40,8 @@ export default function CategoryInput({
               iconSize={12}
               className="text-layer-4"
               onClick={() => {
-                setGame(undefined);
-                setGameId(undefined);
+                setGame(undefined)
+                setGameId(undefined)
               }}
             />
           </div>
@@ -51,5 +51,5 @@ export default function CategoryInput({
         <TagsInput value={tags} onChange={setTags} placeHolder="Music,DJ,English" separators={["Enter", ","]} />
       </StreamInput>
     </>
-  );
+  )
 }

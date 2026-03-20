@@ -1,18 +1,18 @@
-import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router";
+import { FormattedMessage } from "react-intl"
+import { useNavigate } from "react-router"
 
-import { Layer1Button, WarningButton } from "@/element/buttons";
-import Logo from "@/element/logo";
-import { NSFWStore } from "./store";
-import { useContentWarning } from "./hook.tsx";
+import { Layer1Button, WarningButton } from "@/element/buttons"
+import Logo from "@/element/logo"
+import { NSFWStore } from "./store"
+import { useContentWarning } from "./hook.tsx"
 
 export function ContentWarningOverlay() {
-  const navigate = useNavigate();
-  const is18Plus = useContentWarning();
-  if (is18Plus) return null;
+  const navigate = useNavigate()
+  const is18Plus = useContentWarning()
+  if (is18Plus) return null
 
   function grownUp() {
-    NSFWStore.setValue(true);
+    NSFWStore.setValue(true)
   }
 
   return (
@@ -33,7 +33,7 @@ export function ContentWarningOverlay() {
         </Layer1Button>
       </div>
     </div>
-  );
+  )
 }
 
-export { useContentWarning };
+export { useContentWarning }

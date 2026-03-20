@@ -1,33 +1,33 @@
-import { ExternalStore } from "@snort/shared";
-import { useSyncExternalStore } from "react";
+import { ExternalStore } from "@snort/shared"
+import { useSyncExternalStore } from "react"
 
-export const DefaultLocale = "en-US";
+export const DefaultLocale = "en-US"
 
 class LangStore extends ExternalStore<string> {
   setLang(lang: string) {
-    localStorage.setItem("lang", lang);
-    this.notifyChange();
+    localStorage.setItem("lang", lang)
+    this.notifyChange()
   }
 
   takeSnapshot(): string {
-    return localStorage.getItem("lang") ?? getLocale();
+    return localStorage.getItem("lang") ?? getLocale()
   }
 }
 
-const LangSelector = new LangStore();
+const LangSelector = new LangStore()
 
 export function useLang() {
   const store = useSyncExternalStore(
     c => LangSelector.hook(c),
     () => LangSelector.snapshot(),
-  );
+  )
 
   return {
     lang: store,
     setLang: (l: string) => LangSelector.setLang(l),
-  };
+  }
 }
 
 export const getLocale = () => {
-  return (navigator.languages?.[0]) ?? navigator.language ?? DefaultLocale;
-};
+  return navigator.languages?.[0] ?? navigator.language ?? DefaultLocale
+}

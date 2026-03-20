@@ -1,14 +1,14 @@
-import { findTag, profileLink } from "@/utils";
-import type { NostrEvent } from "@snort/system";
-import { useUserProfile } from "@snort/system-react";
-import { FormattedMessage } from "react-intl";
-import { Link } from "react-router";
-import { getName } from "../profile";
+import { findTag, profileLink } from "@/utils"
+import type { NostrEvent } from "@snort/system"
+import { useUserProfile } from "@snort/system-react"
+import { FormattedMessage } from "react-intl"
+import { Link } from "react-router"
+import { getName } from "../profile"
 
 export function ClipTile({ ev }: { ev: NostrEvent }) {
-  const profile = useUserProfile(ev.pubkey);
-  const r = findTag(ev, "r");
-  const title = findTag(ev, "title");
+  const profile = useUserProfile(ev.pubkey)
+  const r = findTag(ev, "r")
+  const title = findTag(ev, "title")
 
   return (
     <div className="h-full flex flex-col gap-4 bg-layer-1 rounded-xl px-3 py-2">
@@ -27,5 +27,5 @@ export function ClipTile({ ev }: { ev: NostrEvent }) {
       <video src={r} controls />
       {title}
     </div>
-  );
+  )
 }

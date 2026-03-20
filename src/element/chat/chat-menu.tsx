@@ -1,21 +1,21 @@
-import { useHover } from "usehooks-ts";
-import { IconButton } from "../buttons";
-import { forwardRef } from "react";
+import { useHover } from "usehooks-ts"
+import { IconButton } from "../buttons"
+import { forwardRef } from "react"
 
 interface ChatMenuProps {
-  zapTarget?: string;
-  onPickEmoji: (e: React.MouseEvent) => void;
-  onMuteUser: (e: React.MouseEvent) => void;
-  onZapping: (e: React.MouseEvent) => void;
-  showMuteButton?: boolean;
+  zapTarget?: string
+  onPickEmoji: (e: React.MouseEvent) => void
+  onMuteUser: (e: React.MouseEvent) => void
+  onZapping: (e: React.MouseEvent) => void
+  showMuteButton?: boolean
 }
 export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
   ({ zapTarget, onPickEmoji, onMuteUser, onZapping, showMuteButton }, ref) => {
-    if (!ref || !("current" in ref)) return;
-    const topOffset = ref?.current?.getBoundingClientRect().top;
-    const leftOffset = ref?.current?.getBoundingClientRect().left;
+    if (!ref || !("current" in ref)) return
+    const topOffset = ref?.current?.getBoundingClientRect().top
+    const leftOffset = ref?.current?.getBoundingClientRect().left
 
-    const isHovering = useHover(ref);
+    const isHovering = useHover(ref)
     if (ref?.current && isHovering) {
       return (
         <div
@@ -25,7 +25,8 @@ export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
             left: leftOffset ? leftOffset : 0,
             opacity: isHovering ? 1 : 0,
             pointerEvents: isHovering ? "auto" : "none",
-          }}>
+          }}
+        >
           {zapTarget && (
             <IconButton
               iconName="zap"
@@ -49,7 +50,7 @@ export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
             />
           )}
         </div>
-      );
+      )
     }
   },
-);
+)

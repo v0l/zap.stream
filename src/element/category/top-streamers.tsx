@@ -1,15 +1,15 @@
-import { useCategoryZaps } from "@/hooks/category-zaps";
-import { formatSatsCompact } from "@/number";
-import { getName } from "../profile";
-import { Avatar } from "../avatar";
-import { useUserProfile } from "@snort/system-react";
-import { Icon } from "../icon";
-import { FormattedMessage } from "react-intl";
-import { profileLink } from "@/utils";
-import { Link } from "react-router";
+import { useCategoryZaps } from "@/hooks/category-zaps"
+import { formatSatsCompact } from "@/number"
+import { getName } from "../profile"
+import { Avatar } from "../avatar"
+import { useUserProfile } from "@snort/system-react"
+import { Icon } from "../icon"
+import { FormattedMessage } from "react-intl"
+import { profileLink } from "@/utils"
+import { Link } from "react-router"
 
 export function CategoryTopZapsStreamer({ gameId }: { gameId: string }) {
-  const zaps = useCategoryZaps(gameId);
+  const zaps = useCategoryZaps(gameId)
 
   return (
     <div className="flex flex-col gap-6">
@@ -30,11 +30,11 @@ export function CategoryTopZapsStreamer({ gameId }: { gameId: string }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function TopStreamer({ pubkey, amount }: { pubkey: string; amount: number }) {
-  const profile = useUserProfile(pubkey);
+  const profile = useUserProfile(pubkey)
   return (
     <div key={pubkey} className="flex gap-2">
       <Link to={profileLink(profile, pubkey)}>
@@ -50,5 +50,5 @@ function TopStreamer({ pubkey, amount }: { pubkey: string; amount: number }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

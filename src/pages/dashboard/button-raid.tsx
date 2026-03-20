@@ -1,12 +1,12 @@
-import type { NostrLink } from "@snort/system";
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { DashboardRaidMenu } from "./raid-menu";
-import { DefaultButton } from "@/element/buttons";
-import Modal from "@/element/modal";
+import type { NostrLink } from "@snort/system"
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { DashboardRaidMenu } from "./raid-menu"
+import { DefaultButton } from "@/element/buttons"
+import Modal from "@/element/modal"
 
 export function DashboardRaidButton({ link }: { link: NostrLink }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   return (
     <>
       <DefaultButton onClick={() => setShow(true)}>
@@ -18,5 +18,5 @@ export function DashboardRaidButton({ link }: { link: NostrLink }) {
         </Modal>
       )}
     </>
-  );
+  )
 }

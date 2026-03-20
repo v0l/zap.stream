@@ -1,8 +1,8 @@
-import { formatSats } from "@/number";
-import { Icon } from "./icon";
-import { Profile } from "./profile";
-import { FormattedMessage } from "react-intl";
-import classNames from "classnames";
+import { formatSats } from "@/number"
+import { Icon } from "./icon"
+import { Profile } from "./profile"
+import { FormattedMessage } from "react-intl"
+import classNames from "classnames"
 
 export function ZapperRow({
   pubkey,
@@ -11,11 +11,11 @@ export function ZapperRow({
   avatarSize,
   className,
 }: {
-  pubkey: string;
-  total: number;
-  showName?: boolean;
-  avatarSize?: number;
-  className?: string;
+  pubkey: string
+  total: number
+  showName?: boolean
+  avatarSize?: number
+  className?: string
 }) {
   return (
     <div className={classNames(className, "flex gap-1 justify-between items-center")}>
@@ -31,5 +31,5 @@ export function ZapperRow({
         <span>{formatSats(total)}</span>
       </div>
     </div>
-  );
+  )
 }

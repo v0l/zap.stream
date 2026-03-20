@@ -1,25 +1,25 @@
-import { Menu, MenuItem } from "@szhsin/react-menu";
-import { LinkScope, Nip10, type NostrEvent, NostrLink } from "@snort/system";
-import { FormattedMessage, useIntl } from "react-intl";
-import { useContext, useState } from "react";
-import { SnortContext } from "@snort/system-react";
+import { Menu, MenuItem } from "@szhsin/react-menu"
+import { LinkScope, Nip10, type NostrEvent, NostrLink } from "@snort/system"
+import { FormattedMessage, useIntl } from "react-intl"
+import { useContext, useState } from "react"
+import { SnortContext } from "@snort/system-react"
 
-import { Icon } from "./icon";
-import { Textarea } from "./chat/textarea";
-import { getHost } from "@/utils";
-import { useLogin } from "@/hooks/login";
-import { DefaultButton } from "./buttons";
-import Modal from "./modal";
-import { NostrPrefix } from "@snort/shared";
+import { Icon } from "./icon"
+import { Textarea } from "./chat/textarea"
+import { getHost } from "@/utils"
+import { useLogin } from "@/hooks/login"
+import { DefaultButton } from "./buttons"
+import Modal from "./modal"
+import { NostrPrefix } from "@snort/shared"
 
-type ShareOn = "nostr" | "twitter";
+type ShareOn = "nostr" | "twitter"
 
 export function ShareMenu({ ev }: { ev: NostrEvent }) {
-  const system = useContext(SnortContext);
-  const [share, setShare] = useState<ShareOn>();
-  const login = useLogin();
-  const { formatMessage } = useIntl();
-  const host = getHost(ev);
+  const system = useContext(SnortContext)
+  const [share, setShare] = useState<ShareOn>()
+  const login = useLogin()
+  const { formatMessage } = useIntl()
+  const host = getHost(ev)
 
   const defaultMyMsg = formatMessage(
     {
@@ -29,7 +29,7 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
     {
       link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`,
     },
-  );
+  )
   const defaultHostMsg = formatMessage(
     {
       defaultMessage: "Come check out {name} stream on zap.stream!\n\n{link}",
@@ -39,19 +39,19 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
       name: `nostr:${new NostrLink(NostrPrefix.PublicKey, host ?? ev.pubkey).encode()}`,
       link: `https://${window.location.host}/${NostrLink.fromEvent(ev).encode()}`,
     },
-  );
-  const [message, setMessage] = useState(login?.pubkey === host ? defaultMyMsg : defaultHostMsg);
+  )
+  const [message, setMessage] = useState(login?.pubkey === host ? defaultMyMsg : defaultHostMsg)
 
   async function sendMessage() {
-    const pub = login?.publisher();
+    const pub = login?.publisher()
     if (pub) {
       const evn = await pub.note(message, eb => {
-        const link = NostrLink.fromEvent(ev);
-        return eb.tag(Nip10.linkToTag(link, LinkScope.Mention));
-      });
-      console.debug(evn);
-      await system.BroadcastEvent(evn);
-      setShare(undefined);
+        const link = NostrLink.fromEvent(ev)
+        return eb.tag(Nip10.linkToTag(link, LinkScope.Mention))
+      })
+      console.debug(evn)
+      await system.BroadcastEvent(evn)
+      setShare(undefined)
     }
   }
 
@@ -66,21 +66,21 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
             <Icon name="share" />
             <FormattedMessage defaultMessage="Share" />
           </DefaultButton>
-        }>
+        }
+      >
         <MenuItem
           onClick={() => {
-            setShare("nostr");
-          }}>
+            setShare("nostr")
+          }}
+        >
           <Icon name="nostrich" size={24} />
           <FormattedMessage defaultMessage="Broadcast on Nostr" />
         </MenuItem>
         <MenuItem
           onClick={() => {
-            window.open(
-              `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&via=zap_stream`,
-              "_blank",
-            );
-          }}>
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&via=zap_stream`, "_blank")
+          }}
+        >
           <Icon name="twitter" size={24} />
           <FormattedMessage defaultMessage="Share on X" />
         </MenuItem>
@@ -107,5 +107,5 @@ export function ShareMenu({ ev }: { ev: NostrEvent }) {
         </Modal>
       )}
     </>
-  );
+  )
 }

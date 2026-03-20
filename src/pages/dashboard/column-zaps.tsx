@@ -1,23 +1,23 @@
-import { ChatZap } from "@/element/chat/live-chat";
-import { useMemo } from "react";
-import { FormattedMessage, FormattedNumber } from "react-intl";
-import { DashboardCard } from "./card";
-import { DashboardHighlightZap } from "./zap-highlight";
-import ZapGlow from "./zap-glow";
-import { ShareMenu } from "@/element/share-menu";
-import { useRates } from "@/hooks/rates";
-import { useStream } from "@/element/stream/stream-state";
+import { ChatZap } from "@/element/chat/live-chat"
+import { useMemo } from "react"
+import { FormattedMessage, FormattedNumber } from "react-intl"
+import { DashboardCard } from "./card"
+import { DashboardHighlightZap } from "./zap-highlight"
+import ZapGlow from "./zap-glow"
+import { ShareMenu } from "@/element/share-menu"
+import { useRates } from "@/hooks/rates"
+import { useStream } from "@/element/stream/stream-state"
 
 export function DashboardZapColumn() {
-  const { event, reactions } = useStream();
+  const { event, reactions } = useStream()
   const sortedZaps = useMemo(
     () => reactions.zaps.sort((a, b) => (b.created_at > a.created_at ? 1 : -1)),
     [reactions.zaps],
-  );
-  const latestZap = sortedZaps.at(0);
-  const zapSum = sortedZaps.reduce((acc, v) => acc + v.amount, 0);
-  const rate = useRates("BTCUSD");
-  const usdValue = rate.ask ? zapSum * 1e-8 * rate.ask : 0;
+  )
+  const latestZap = sortedZaps.at(0)
+  const zapSum = sortedZaps.reduce((acc, v) => acc + v.amount, 0)
+  const rate = useRates("BTCUSD")
+  const usdValue = rate.ask ? zapSum * 1e-8 * rate.ask : 0
 
   return (
     <div className="flex flex-col gap-2">
@@ -61,5 +61,5 @@ export function DashboardZapColumn() {
         </div>
       </DashboardCard>
     </div>
-  );
+  )
 }

@@ -1,17 +1,17 @@
-import { NostrLink, type TaggedNostrEvent } from "@snort/system";
-import { Profile } from "../profile";
-import { FormattedMessage } from "react-intl";
-import { extractStreamInfo, findTag } from "@/utils";
-import { useEventFeed } from "@snort/system-react";
-import EventReactions from "../event-reactions";
-import { Link } from "react-router";
+import { NostrLink, type TaggedNostrEvent } from "@snort/system"
+import { Profile } from "../profile"
+import { FormattedMessage } from "react-intl"
+import { extractStreamInfo, findTag } from "@/utils"
+import { useEventFeed } from "@snort/system-react"
+import EventReactions from "../event-reactions"
+import { Link } from "react-router"
 
 export default function LiveStreamClip({ ev }: { ev: TaggedNostrEvent }) {
-  const src = findTag(ev, "r");
-  const streamTag = NostrLink.fromTags(ev.tags)?.[0];
+  const src = findTag(ev, "r")
+  const streamTag = NostrLink.fromTags(ev.tags)?.[0]
 
-  const streamEvent = useEventFeed(streamTag);
-  const { title } = extractStreamInfo(streamEvent);
+  const streamEvent = useEventFeed(streamTag)
+  const { title } = extractStreamInfo(streamEvent)
   return (
     <>
       <h1 className="mb-2">
@@ -33,5 +33,5 @@ export default function LiveStreamClip({ ev }: { ev: TaggedNostrEvent }) {
         <EventReactions ev={ev} />
       </div>
     </>
-  );
+  )
 }

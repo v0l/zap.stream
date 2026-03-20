@@ -1,23 +1,23 @@
-import { useLayout } from "./context";
-import { NavLinkIcon } from "./nav-icon";
-import { FormattedMessage } from "react-intl";
-import { useMediaQuery } from "usehooks-ts";
-import Flyout from "@/element/flyout";
+import { useLayout } from "./context"
+import { NavLinkIcon } from "./nav-icon"
+import { FormattedMessage } from "react-intl"
+import { useMediaQuery } from "usehooks-ts"
+import Flyout from "@/element/flyout"
 
 export function LeftNav() {
-  const layout = useLayout();
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
-  const expandLabels = !isDesktop || layout.leftNavExpand;
+  const layout = useLayout()
+  const isDesktop = useMediaQuery("(min-width: 1280px)")
+  const expandLabels = !isDesktop || layout.leftNavExpand
 
   function hideAfterMobileNav() {
-    if (isDesktop) return;
+    if (isDesktop) return
     layout.update(c => {
-      c.leftNavExpand = false;
-      return { ...c };
-    });
+      c.leftNavExpand = false
+      return { ...c }
+    })
   }
 
-  if (layout.leftNav === false) return;
+  if (layout.leftNav === false) return
   function navInner() {
     return (
       <div className="flex flex-col gap-4 p-2">
@@ -32,7 +32,8 @@ export function LeftNav() {
           name="play-circle"
           route="/videos"
           className="flex gap-2 items-center"
-          onClick={hideAfterMobileNav}>
+          onClick={hideAfterMobileNav}
+        >
           {expandLabels && (
             <span className="pr-3">
               <FormattedMessage defaultMessage="Videos" />
@@ -54,11 +55,11 @@ export function LeftNav() {
           )}
         </NavLinkIcon>
       </div>
-    );
+    )
   }
 
   if (isDesktop) {
-    return navInner();
+    return navInner()
   } else {
     return (
       <Flyout
@@ -66,12 +67,13 @@ export function LeftNav() {
         show={layout.leftNavExpand}
         onClose={() => {
           layout.update(c => {
-            c.leftNavExpand = !c.leftNavExpand;
-            return { ...c };
-          });
-        }}>
+            c.leftNavExpand = !c.leftNavExpand
+            return { ...c }
+          })
+        }}
+      >
         {navInner()}
       </Flyout>
-    );
+    )
   }
 }

@@ -1,20 +1,20 @@
-import { StreamState } from "@/const";
-import { Layer1Button, PrimaryButton, WarningButton } from "@/element/buttons";
-import Copy from "@/element/copy";
-import { StatePill } from "@/element/state-pill";
-import { useLogin } from "@/hooks/login";
-import { useWallet } from "@/hooks/wallet";
-import { Login } from "@/login";
-import { formatSats } from "@/number";
-import { hexToBech32 } from "@snort/shared";
-import { NostrConnectWallet, WalletKind } from "@snort/wallet";
-import { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { StreamState } from "@/const"
+import { Layer1Button, PrimaryButton, WarningButton } from "@/element/buttons"
+import Copy from "@/element/copy"
+import { StatePill } from "@/element/state-pill"
+import { useLogin } from "@/hooks/login"
+import { useWallet } from "@/hooks/wallet"
+import { Login } from "@/login"
+import { formatSats } from "@/number"
+import { hexToBech32 } from "@snort/shared"
+import { NostrConnectWallet, WalletKind } from "@snort/wallet"
+import { useEffect, useState } from "react"
+import { FormattedMessage } from "react-intl"
 
 export default function AccountSettingsTab() {
-  const login = useLogin();
-  const [wallet, setWallet] = useState("");
-  const [error, setError] = useState("");
+  const login = useLogin()
+  const [wallet, setWallet] = useState("")
+  const [error, setError] = useState("")
 
   return (
     <>
@@ -51,7 +51,8 @@ export default function AccountSettingsTab() {
             className={`w-4 h-4 pointer${login?.color === a ? " border" : ""}`}
             title={a}
             style={{ backgroundColor: a }}
-            onClick={() => Login.setColor(a)}></div>
+            onClick={() => Login.setColor(a)}
+          ></div>
         ))}
       </div>
       <h1>
@@ -62,8 +63,9 @@ export default function AccountSettingsTab() {
           <WalletBalance />
           <WarningButton
             onClick={() => {
-              login.update(s => (s.wallet = undefined));
-            }}>
+              login.update(s => (s.wallet = undefined))
+            }}
+          >
             <FormattedMessage defaultMessage="Remove" />
           </WarningButton>
         </div>
@@ -83,23 +85,24 @@ export default function AccountSettingsTab() {
             <PrimaryButton
               onClick={async () => {
                 try {
-                  setError("");
-                  const w = new NostrConnectWallet(wallet);
-                  await w.login();
-                  await w.getInfo();
+                  setError("")
+                  const w = new NostrConnectWallet(wallet)
+                  await w.login()
+                  await w.getInfo()
                   login?.update(s => {
                     s.wallet = {
                       type: WalletKind.NWC,
                       data: wallet,
-                    };
-                  });
-                  setWallet("");
+                    }
+                  })
+                  setWallet("")
                 } catch (e) {
                   if (e instanceof Error) {
-                    setError(e.message);
+                    setError(e.message)
                   }
                 }
-              }}>
+              }}
+            >
               <FormattedMessage defaultMessage="Connect" />
             </PrimaryButton>
           </div>
@@ -107,19 +110,19 @@ export default function AccountSettingsTab() {
         </div>
       )}
     </>
-  );
+  )
 }
 
 function WalletBalance() {
-  const wallet = useWallet();
-  const [balance, setBalance] = useState(0);
+  const wallet = useWallet()
+  const [balance, setBalance] = useState(0)
 
   useEffect(() => {
-    setBalance(0);
+    setBalance(0)
     if (wallet) {
-      wallet.getBalance().then(setBalance);
+      wallet.getBalance().then(setBalance)
     }
-  }, [wallet]);
+  }, [wallet])
 
   return (
     <FormattedMessage
@@ -128,5 +131,5 @@ function WalletBalance() {
         n: formatSats(balance),
       }}
     />
-  );
+  )
 }

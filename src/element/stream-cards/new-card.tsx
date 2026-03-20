@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { ExternalLink } from "../external-link";
-import { FileUploader } from "../file-uploader";
-import { DefaultButton, WarningButton } from "../buttons";
-import type { CardType, NewCard } from ".";
+import { useState } from "react"
+import { FormattedMessage, useIntl } from "react-intl"
+import { ExternalLink } from "../external-link"
+import { FileUploader } from "../file-uploader"
+import { DefaultButton, WarningButton } from "../buttons"
+import type { CardType, NewCard } from "."
 
 interface CardDialogProps {
-  header?: string;
-  cta?: string;
-  cancelCta?: string;
-  card?: CardType;
-  onSave(ev: NewCard): void;
-  onCancel(): void;
+  header?: string
+  cta?: string
+  cancelCta?: string
+  card?: CardType
+  onSave(ev: NewCard): void
+  onCancel(): void
 }
 
 export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: CardDialogProps) {
-  const [title, setTitle] = useState(card?.title ?? "");
-  const [image, setImage] = useState<string | undefined>(card?.image);
-  const [content, setContent] = useState(card?.content ?? "");
-  const [link, setLink] = useState(card?.link ?? "");
-  const [error, setError] = useState<string>();
-  const { formatMessage } = useIntl();
+  const [title, setTitle] = useState(card?.title ?? "")
+  const [image, setImage] = useState<string | undefined>(card?.image)
+  const [content, setContent] = useState(card?.content ?? "")
+  const [link, setLink] = useState(card?.link ?? "")
+  const [error, setError] = useState<string>()
+  const { formatMessage } = useIntl()
 
   return (
     <div className="flex flex-col gap-2">
@@ -48,7 +48,7 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
           </WarningButton>
         </>
       )}
-      <FileUploader onResult={setImage} onError={(e) => setError(e.message)} />
+      <FileUploader onResult={setImage} onError={e => setError(e.message)} />
       {image && (
         <>
           {/* IMAGE LINK */}
@@ -94,5 +94,5 @@ export function CardDialog({ header, cta, cancelCta, card, onSave, onCancel }: C
         </DefaultButton>
       </div>
     </div>
-  );
+  )
 }
