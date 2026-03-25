@@ -28,7 +28,9 @@ export default function CategoryInput({
           <SearchCategory
             onSelect={g => {
               setGame(g)
-              setGameId(g.id)
+              // Prefix the game ID with igdb: for proper tag format recognition
+              const formattedId = g.id.startsWith("igdb:") ? g.id : `igdb:${g.id}`
+              setGameId(formattedId)
             }}
           />
         )}
