@@ -53,6 +53,7 @@ export function LayoutPage() {
   const styles = {} as CSSProperties
   if (login?.color) {
     ;(styles as Record<string, string>)["--primary"] = login.color
+    ;(styles as Record<string, string>)["--color-primary"] = login.color
   }
   return (
     <div style={styles}>

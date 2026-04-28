@@ -106,9 +106,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-a {
-  color: unset;
-  text-decoration: unset;
+@layer base {
+  a {
+    color: unset;
+    text-decoration: unset;
+  }
 }
 
 :focus-visible {
