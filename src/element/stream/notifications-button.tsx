@@ -1,5 +1,5 @@
 import { useLogin } from "@/hooks/login"
-import { NostrStreamProvider } from "@/providers"
+import { NostrStreamProvider, adaptPublisher } from "@/providers"
 import { base64 } from "@scure/base"
 import { unwrap } from "@snort/shared"
 import { useEffect, useState } from "react"
@@ -10,7 +10,7 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   const login = useLogin()
   const publisher = login?.publisher()
   const [subscribed, setSubscribed] = useState(false)
-  const api = new NostrStreamProvider("", service, publisher)
+  const api = new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined)
 
   async function isSubscribed() {
     const reg = await navigator.serviceWorker.ready

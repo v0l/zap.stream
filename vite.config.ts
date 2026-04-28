@@ -1,16 +1,19 @@
 import react from "@vitejs/plugin-react"
 import { VitePWA } from "vite-plugin-pwa"
+import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "vite"
 //import { visualizer } from "rollup-plugin-visualizer";
 import { vitePluginVersionMark } from "vite-plugin-version-mark"
+import formatjs from '@formatjs/unplugin/vite'
 
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        configFile: true,
-      },
+    formatjs({
+      idInterpolationPattern: '[sha512:contenthash:base64:6]',
+      ast: true,
     }),
+    tailwindcss(),
+    react(),
     VitePWA({
       strategies: "injectManifest",
       srcDir: "src",
@@ -49,5 +52,8 @@ export default defineConfig({
   },
   define: {
     global: {},
+  },
+  optimizeDeps: {
+    exclude: ["@kixelated/hang"],
   },
 })

@@ -3,7 +3,7 @@ import { Layer2Button } from "@/element/buttons"
 import Copy from "@/element/copy"
 import { StatePill } from "@/element/state-pill"
 import type { NostrStreamProvider } from "@/providers"
-import type { StreamKeysResult } from "@/providers/zsz"
+import type { StreamKeysResult } from "@/providers"
 import { eventLink, extractStreamInfo } from "@/utils"
 import { useEffect, useState } from "react"
 import { FormattedMessage } from "react-intl"
@@ -53,8 +53,8 @@ export default function StreamKeyList({ provider }: { provider: NostrStreamProvi
               </td>
               <td>
                 {a.stream && (
-                  <Link to={`/${eventLink(a.stream)}`}>
-                    <StatePill state={extractStreamInfo(a.stream).status as StreamState} />
+                  <Link to={`/${eventLink(a.stream as any)}`}>
+                    <StatePill state={extractStreamInfo(a.stream as any).status as StreamState} />
                   </Link>
                 )}
               </td>

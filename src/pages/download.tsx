@@ -19,19 +19,19 @@ export function DownloadAppPage() {
       <div className="flex items-center max-md:flex-col md:w-full md:justify-evenly">
         <div className="flex items-center flex-col gap-2">
           <QrCode data={playStoreLink} link={playStoreLink} />
-          <a href={playStoreLink} target="_blank">
+          <a href={playStoreLink} target="_blank" rel="noopener">
             <img src={PlayStore} width={120} />
           </a>
         </div>
         <div className="flex items-center flex-col gap-2">
           <QrCode data={appStoreLink} link={appStoreLink} />
-          <a href={appStoreLink} target="_blank">
+          <a href={appStoreLink} target="_blank" rel="noopener">
             <img src={AppStore} width={120} />
           </a>
         </div>
         <div className="flex items-center flex-col gap-2">
           <QrCode data={obtaniumLink} link={obtaniumLink} />
-          <a href={obtaniumLink} target="_blank">
+          <a href={obtaniumLink} target="_blank" rel="noopener">
             <img src={Obtanium} width={120} />
           </a>
         </div>

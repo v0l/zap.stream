@@ -1,17 +1,17 @@
-import { unixNowMs } from "@snort/shared"
+import { timeSync as _timeSync, TimeSync as _TimeSyncClass } from "@zap.stream/api";
 
-export let TimeSync = 0
+/**
+ * @deprecated Import `timeSync` or `TimeSync` from `@zap.stream/api` instead.
+ *
+ * For backward compatibility, this module re-exports the shared TimeSync
+ * singleton and its offset as a mutable variable.
+ */
+export let TimeSync = 0;
 
+/** Sync the clock with the API server and keep the legacy `TimeSync` variable updated. */
 export async function syncClock() {
-  try {
-    const req = await fetch("https://api-core.zap.stream/api/v1/time", {
-      signal: AbortSignal.timeout(1000),
-    })
-    const nowAtServer = (await req.json()).time as number
-    const now = unixNowMs()
-    TimeSync = nowAtServer - now
-    console.debug(`Time clock sync ${TimeSync}ms`)
-  } catch {
-    // ignore
-  }
+  await _timeSync.syncClock();
+  TimeSync = _timeSync.offset;
 }
+
+export { _TimeSyncClass as TimeSyncClass };

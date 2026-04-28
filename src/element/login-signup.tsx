@@ -18,7 +18,7 @@ import { SnortContext } from "@snort/system-react"
 import { Login, LoginType } from "@/login"
 import { Icon } from "./icon"
 import Copy from "./copy"
-import { type AccountResponse, NostrStreamProvider } from "@/providers/zsz"
+import { type AccountResponse, NostrStreamProvider, adaptPublisher } from "@/providers"
 import { DefaultButton, Layer1Button } from "./buttons"
 import { ExternalLink } from "./external-link"
 import { FileUploader } from "./file-uploader"
@@ -94,7 +94,7 @@ export function LoginSignup({ close }: { close: () => void }) {
   }
 
   async function setupProfile() {
-    const px = new NostrStreamProvider(config.name, config.url, EventPublisher.privateKey(key))
+    const px = new NostrStreamProvider(config.name, config.url, adaptPublisher(EventPublisher.privateKey(key)))
     const info = await px.info()
     setProviderInfo(info)
 

@@ -1,33 +1,44 @@
 import { type EventKind, parseNostrLink } from "@snort/system"
+import {
+  LIVE_STREAM as _LIVE_STREAM,
+  N94_LIVE_STREAM as _N94_LIVE_STREAM,
+  LIVE_STREAM_KINDS as _LIVE_STREAM_KINDS,
+  LIVE_STREAM_CHAT as _LIVE_STREAM_CHAT,
+  LIVE_STREAM_RAID as _LIVE_STREAM_RAID,
+  LIVE_STREAM_CLIP as _LIVE_STREAM_CLIP,
+  GOAL as _GOAL,
+  VIDEO_KIND as _VIDEO_KIND,
+  SHORTS_KIND as _SHORTS_KIND,
+  OLD_VIDEO_KIND as _OLD_VIDEO_KIND,
+  OLD_SHORTS_KIND as _OLD_SHORTS_KIND,
+} from "@zap.stream/api"
+
+// Re-export shared constants (cast to EventKind for @snort/system compatibility)
+export const LIVE_STREAM = _LIVE_STREAM as EventKind
+export const N94_LIVE_STREAM = _N94_LIVE_STREAM as EventKind
+export const LIVE_STREAM_KINDS = _LIVE_STREAM_KINDS as Array<EventKind>
+export const LIVE_STREAM_CHAT = _LIVE_STREAM_CHAT as EventKind
+export const LIVE_STREAM_RAID = _LIVE_STREAM_RAID as EventKind
+export const LIVE_STREAM_CLIP = _LIVE_STREAM_CLIP as EventKind
+export const GOAL = _GOAL as EventKind
+export const VIDEO_KIND = _VIDEO_KIND as EventKind
+export const SHORTS_KIND = _SHORTS_KIND as EventKind
+export const OLD_VIDEO_KIND = _OLD_VIDEO_KIND as EventKind
+export const OLD_SHORTS_KIND = _OLD_SHORTS_KIND as EventKind
+export { StreamState } from "@zap.stream/api"
+
+// ─── App-specific constants (not part of the API library) ─────────────────────
 
 export const ZAP_STREAM_PUBKEY = "cf45a6ba1363ad7ed213a078e710d24115ae721c9b47bd1ebf4458eaefb4c2a5"
-export const LIVE_STREAM = 30_311 as EventKind
-export const N94_LIVE_STREAM = 1053 as EventKind
-export const LIVE_STREAM_KINDS = [LIVE_STREAM, N94_LIVE_STREAM]
-export const LIVE_STREAM_CHAT = 1_311 as EventKind
-export const LIVE_STREAM_RAID = 1_312 as EventKind
-export const LIVE_STREAM_CLIP = 1_313 as EventKind
-export const GOAL = 9041 as EventKind
+
 export const USER_CARDS = 17_777 as EventKind
 export const CARD = 37_777 as EventKind
-
-export const VIDEO_KIND = 21 as EventKind
-export const SHORTS_KIND = 22 as EventKind
-export const OLD_VIDEO_KIND = 34_235 as EventKind
-export const OLD_SHORTS_KIND = 34_236 as EventKind
 
 export const MINUTE = 60
 export const HOUR = 60 * MINUTE
 export const DAY = 24 * HOUR
 export const WEEK = 7 * DAY
 export const MONTH = 30 * DAY
-
-export enum StreamState {
-  Live = "live",
-  Ended = "ended",
-  Planned = "planned",
-  VOD = "vod",
-}
 
 export const defaultRelays = {
   //"ws://localhost:8081": { read: true, write: true },

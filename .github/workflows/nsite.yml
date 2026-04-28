@@ -11,17 +11,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "yarn"
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install Dependencies
-        run: yarn install
+        run: bun install
 
       - name: Build
-        run: yarn build
+        run: bun run build
 
       - name: Redirect 404 to Index for SPA
         run: cp build/index.html build/404.html

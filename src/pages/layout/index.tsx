@@ -61,9 +61,11 @@ export function LayoutPage() {
       </Helmet>
 
       <HeaderNav />
-      <div className="flex">
+      <div className="flex flex-1 overflow-hidden">
         <LeftNav />
-        <Outlet />
+        <main className="flex-1 overflow-y-auto">
+          <Outlet />
+        </main>
       </div>
       <TraceTimelineOverlay isOpen={trace} onClose={() => setTrace(false)} />
     </div>

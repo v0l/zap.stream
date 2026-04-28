@@ -1,0 +1,39 @@
+name: Translations
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: translations-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install
+
+      - name: Upload sources
+        run: npx @crowdin/cli upload sources -b main -T ${{ secrets.CROWDIN_TOKEN }}
+
+      - name: Pull translations
+        run: npx @crowdin/cli pull -b main -T ${{ secrets.CROWDIN_TOKEN }}
+
+      - run: bun biome lint --write .
+
+      - name: Commit and push
+        run: |
+          git config user.email "ci@v0l.io"
+          git config user.name "CI"
+          git add .
+          if output=$(git status --porcelain) && [ -n "$output" ]; then
+            git commit -m "chore: Update translations"
+            git push
+          fi

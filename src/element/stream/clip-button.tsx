@@ -1,6 +1,6 @@
 import { useLogin } from "@/hooks/login"
 import { useContext, useEffect, useRef, useState } from "react"
-import { NostrStreamProvider } from "@/providers"
+import { NostrStreamProvider, adaptPublisher } from "@/providers"
 import { FormattedMessage } from "react-intl"
 import { SnortContext } from "@snort/system-react"
 import { LinkScope, NostrLink, type TaggedNostrEvent } from "@snort/system"
@@ -47,7 +47,7 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   }, [ref.current, clipLength, start, length])
 
   if (!service || status !== StreamState.Live) return
-  const provider = new NostrStreamProvider("", service, publisher)
+  const provider = new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined)
 
   async function makeClip() {
     if (!service || !id || !publisher) return

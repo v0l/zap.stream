@@ -1,6 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-layer-0: #0a0a0a;
+  --color-layer-1: rgb(23 23 23);
+  --color-layer-2: rgb(34 34 34);
+  --color-layer-3: rgb(50 50 50);
+  --color-layer-4: rgb(121 121 121);
+  --color-layer-5: rgb(173 173 173);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-zap: var(--zap);
+  --color-success: rgb(0 127 0);
+  --color-warning: rgb(255 86 63);
+  --animate-ping-once: ping 1s cubic-bezier(0, 0, 0.2, 1);
+  --animate-flash: pulse 0.5s 6 linear;
+  --bg-category-gradient-1: linear-gradient(90deg, #5433FF 0%, #3B77FF 24.5%, #20BDFF 50%, #60DCE6 74%, #A5FECB 100%);
+  --bg-category-gradient-2: linear-gradient(90deg, #9796F0 0%, #C6ADE3 46.5%, #FBC7D4 100%);
+  --bg-category-gradient-3: linear-gradient(90deg, #FFE259 0%, #FFC555 48.5%, #FFA751 100%);
+  --bg-category-gradient-4: linear-gradient(90deg, #1488CC 0%, #1F5EBF 48.5%, #2B32B2 100%);
+  --bg-category-gradient-5: linear-gradient(90deg, #CC2B5E 0%, #A33272 47.5%, #753A88 100%);
+  --bg-category-gradient-6: linear-gradient(90deg, #ED4264 0%, #F5928D 46.5%, #FFEDBC 100%);
+  --bg-category-gradient-7: linear-gradient(90deg, #A8C0FF 0%, #7375CA 50.5%, #3F2B96 100%);
+}
+
+html,
+body {
+  height: 100%;
+}
 
 body {
   margin: 0;
@@ -9,8 +35,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white;
   overscroll-behavior: contain;
-  @apply bg-layer-0;
+  background-color: var(--color-layer-0);
   overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
 }
 
 :root {
@@ -28,11 +58,14 @@ body {
 }
 
 ::-webkit-scrollbar {
-  @apply bg-layer-1 rounded-full w-2;
+  background-color: var(--color-layer-1);
+  border-radius: 9999px;
+  width: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-layer-3 rounded-full;
+  background-color: var(--color-layer-3);
+  border-radius: 9999px;
 }
 
 .btn-border {
@@ -92,7 +125,14 @@ input[type="datetime-local"]:not(.reset),
 input[type="password"]:not(.reset),
 input[type="number"]:not(.reset),
 select:not(.reset) {
-  @apply bg-layer-2 w-full font-medium px-4 py-2 rounded-xl;
+  background-color: var(--color-layer-2);
+  width: 100%;
+  font-weight: 500;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.75rem;
 }
 
 .scroll-lock {
@@ -150,11 +190,13 @@ select:not(.reset) {
 
 table td,
 table th {
-  @apply border border-layer-2 px-2;
+  border: 1px solid var(--color-layer-2);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 table th {
-  @apply bg-layer-1;
+  background-color: var(--color-layer-1);
 }
 
 .zap-glow {

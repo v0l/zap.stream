@@ -16,7 +16,7 @@ import DashboardIntro from "./intro"
 import { useLocation, useNavigate } from "react-router"
 import StreamKey from "@/element/provider/nostr/stream-key"
 import { useStreamProvider } from "@/hooks/stream-provider"
-import { type AccountResponse, NostrStreamProvider } from "@/providers/zsz"
+import { type AccountResponse, NostrStreamProvider, adaptPublisher } from "@/providers"
 import { ExternalLink } from "@/element/external-link"
 import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons"
 import { useLogin } from "@/hooks/login"
@@ -53,7 +53,7 @@ export default function DashboardForLink() {
   const provider = useMemo(
     () =>
       streamInfo?.status === StreamState.Live && streamInfo?.service
-        ? new NostrStreamProvider("", streamInfo?.service)
+        ? new NostrStreamProvider("", streamInfo?.service, login?.publisher?.() ? adaptPublisher(login.publisher()!) : undefined)
         : streamProvider,
     [streamInfo?.service, streamInfo?.status, streamProvider],
   )

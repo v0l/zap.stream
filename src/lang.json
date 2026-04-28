@@ -113,6 +113,9 @@
   "50+/JW": {
     "defaultMessage": "Stream Key is required"
   },
+  "56a8sI": {
+    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
+  },
   "58DXVG": {
     "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
   },
@@ -184,6 +187,9 @@
   },
   "9pMqYs": {
     "defaultMessage": "Nostr Address"
+  },
+  "9qaIWl": {
+    "defaultMessage": "I have read and agree with {provider}''s {terms}."
   },
   "A1zT+z": {
     "defaultMessage": "Search results: {term}"
@@ -976,9 +982,6 @@
   },
   "tM6fNW": {
     "defaultMessage": "Amazing! Continue.."
-  },
-  "tTgdmx": {
-    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
   },
   "thsiMl": {
     "defaultMessage": "terms and conditions"

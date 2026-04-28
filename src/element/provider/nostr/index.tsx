@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { FormattedMessage } from "react-intl"
-import { SnortContext } from "@snort/system-react"
 
 import type { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers"
+import { extractStreamInfo } from "@/utils"
 import { SendZaps } from "@/element/send-zap"
 import { StreamEditor, type StreamEditorProps } from "@/element/stream-editor"
 import Spinner from "@/element/spinner"
@@ -39,7 +39,6 @@ export default function NostrProviderDialog({
   showStreamKeys: boolean
   showNwc?: boolean
 } & StreamEditorProps) {
-  const system = useContext(SnortContext)
   const [topup, setTopup] = useState(false)
   const [info, setInfo] = useState<AccountResponse>()
   const [ep, setEndpoint] = useState<IngestEndpoint>()
@@ -188,7 +187,7 @@ export default function NostrProviderDialog({
     return (
       <StreamEditor
         onFinish={ex => {
-          provider.updateStreamInfo(system, ex)
+          provider.updateStreamFromEvent(ex as any, extractStreamInfo as any)
           others.onFinish?.(ex)
         }}
         ev={others.ev}

@@ -1,5 +1,5 @@
 import { Mention } from "@/element/mention"
-import type { BalanceHistoryResult, NostrStreamProvider } from "@/providers/zsz"
+import type { BalanceHistoryResult, NostrStreamProvider } from "@/providers"
 import { eventLink } from "@/utils"
 import { EventKind, type NostrEvent, NostrLink } from "@snort/system"
 import { useEffect, useState } from "react"

@@ -2,7 +2,7 @@
   position: relative;
   border-radius: 12px;
   border: 1px solid transparent;
-  @apply bg-layer-0;
+  background-color: var(--color-layer-0);
   background-clip: padding-box;
   padding: 8px 12px;
 }

@@ -1,61 +1,25 @@
-export default class GameDatabase {
-  readonly url = "https://api-core.zap.stream/api/v1"
+import { GameDatabase as _GameDatabase } from "@zap.stream/api";
+import type { GameCover, GameGenre } from "@zap.stream/api";
+import type { ReactNode } from "react";
 
-  async searchGames(search: string, limit = 10): Promise<Array<GameInfo>> {
-    const rsp = await fetch(`${this.url}/games/search?q=${encodeURIComponent(search)}&limit=${limit}`)
-    if (rsp.ok) {
-      const games = (await rsp.json()) as Array<GameInfo>
-      return games.map(a => ({
-        ...a,
-        cover: a.cover
-          ? {
-              ...a.cover,
-              url: `https://images.igdb.com/igdb/image/upload/t_cover_big/${a.cover.image_id}.jpg`,
-            }
-          : undefined,
-        genres: [{ id: 0, name: "gaming" }, ...(a.genres ?? [])],
-      }))
-    }
-    return []
-  }
-
-  async getGame(id: string) {
-    const igId = id.startsWith("igdb:") ? id.split(":")[1] : id
-    const cacheKey = `game:${igId}`
-    const cached = window.sessionStorage.getItem(cacheKey)
-    if (cached) {
-      return JSON.parse(cached) as GameInfo
-    }
-    const rsp = await fetch(`${this.url}/games/${igId}`)
-    if (rsp.ok) {
-      const gameInfo = (await rsp.json()) as GameInfo | undefined
-      if (gameInfo) {
-        if (gameInfo.cover) {
-          gameInfo.cover.url = `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.jpg`
-        }
-        window.sessionStorage.setItem(cacheKey, JSON.stringify(gameInfo))
-      }
-      return gameInfo
-    }
-  }
-}
-
+/**
+ * App-extended GameInfo with UI-specific fields.
+ * The base `GameInfo` from `@zap.stream/api` is framework-agnostic (name is string).
+ * This extension allows ReactNode for name (e.g. FormattedMessage) and adds className.
+ */
 export interface GameInfo {
-  id: string
-  name: string | JSX.Element
-  cover?: GameCover
-  genres?: Array<GameGenre>
-  summary?: string
-  className?: string
+  id: string;
+  /** Allow ReactNode for name (e.g. FormattedMessage) */
+  name: string | ReactNode;
+  cover?: GameCover;
+  genres?: Array<GameGenre>;
+  summary?: string;
+  /** CSS class name for game icon styling */
+  className?: string;
 }
 
-export interface GameCover {
-  id: number
-  image_id: string
-  url?: string
-}
+export const GameDatabase = _GameDatabase;
+export type { GameCover, GameGenre } from "@zap.stream/api";
 
-export interface GameGenre {
-  id: number
-  name: string
-}
+/** @deprecated Use named import `{ GameDatabase }` instead */
+export default GameDatabase;

@@ -1,5 +1,5 @@
 import { useMemo, useSyncExternalStore } from "react"
-import { NostrStreamProvider } from "@/providers"
+import { NostrStreamProvider, adaptPublisher } from "@/providers"
 import { useLogin } from "./login"
 import { ExternalStore } from "@snort/shared"
 import type { EventPublisher, NostrEvent } from "@snort/system"
@@ -40,7 +40,8 @@ class ProviderStorage extends ExternalStore<StreamProviderConfig> {
   }
 
   getProvider(pub: EventPublisher | undefined) {
-    return new NostrStreamProvider(this.#currentConfig.name, this.#currentConfig.url, pub)
+    const signer = pub ? adaptPublisher(pub) : undefined
+    return new NostrStreamProvider(this.#currentConfig.name, this.#currentConfig.url, signer)
   }
 
   setProvider(cfg: StreamProviderConfig) {
@@ -66,16 +67,20 @@ export function useStreamProvider() {
   )
 
   return useMemo(
-    () => ({
-      provider: new NostrStreamProvider(config.name, config.url, login?.publisher()),
-      config,
-      updateStreamProvider: (cfg: StreamProviderConfig) => {
-        Storage.setProvider(cfg)
-      },
-      resetToDefault: () => {
-        Storage.setProvider(DEFAULT_CONFIG)
-      },
-    }),
+    () => {
+      const pub = login?.publisher?.()
+      const signer = pub ? adaptPublisher(pub) : undefined
+      return {
+        provider: new NostrStreamProvider(config.name, config.url, signer),
+        config,
+        updateStreamProvider: (cfg: StreamProviderConfig) => {
+          Storage.setProvider(cfg)
+        },
+        resetToDefault: () => {
+          Storage.setProvider(DEFAULT_CONFIG)
+        },
+      }
+    },
     [config],
   )
 }

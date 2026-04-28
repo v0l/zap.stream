@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl"
-import { type AccountResponse, NostrStreamProvider } from "@/providers"
+import { type AccountResponse, NostrStreamProvider, adaptPublisher } from "@/providers"
 import { DefaultButton, Layer2Button } from "@/element/buttons"
 import { Icon } from "@/element/icon"
 import type { StreamProviderConfig } from "@/hooks/stream-provider"
@@ -101,7 +101,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   }
 
   useEffect(() => {
-    const p = new NostrStreamProvider(config.name, config.url, login?.publisher())
+    const p = new NostrStreamProvider(config.name, config.url, login?.publisher() ? adaptPublisher(login.publisher()!) : undefined)
     setLoading(true)
 
     p.info()

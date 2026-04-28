@@ -20,7 +20,7 @@
     "bracketSpacing": true,
     "expand": "auto",
     "useEditorconfig": true,
-    "includes": ["**", "!**/.yarn/", "!**/.vscode/", "!**/node_modules/", "!**/build/", "!**/dist/", "!**/dev-dist/"]
+    "includes": ["**", "!**/.vscode/", "!**/node_modules/", "!**/build/", "!**/dist/", "!**/dev-dist/"]
   },
   "linter": {
     "enabled": true,

@@ -2,7 +2,7 @@ import { type CachedMetadata, type NostrEvent, NostrLink, type TaggedNostrEvent 
 
 import type { Tags } from "@/types"
 import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, P_TAG_HOST_WHITELIST, type StreamState } from "@/const"
-import type { GameInfo } from "./service/game-database"
+import type { GameInfo } from "@/service/game-database"
 import { AllCategories } from "./pages/category"
 import { NostrPrefix } from "@snort/shared"
 
