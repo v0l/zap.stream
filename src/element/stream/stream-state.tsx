@@ -91,7 +91,7 @@ export function StreamContextProvider({
         .relay(relays)
       rb.withFilter().kinds([EventKind.ZapReceipt]).authors([link.id]).relay(relays)
     } else if (link.type === NostrPrefix.Address || link.type === NostrPrefix.Event) {
-      const authorTag = link.tags.find(t => t[0] === "p")
+      const authorTag = event?.tags.find((t: string[]) => t[0] === "p")
       if (authorTag) {
         rb.withFilter()
           .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
@@ -109,7 +109,7 @@ export function StreamContextProvider({
     }
 
     return rb
-  }, [link, eventLink, goalLink, relays])
+  }, [link, event?.id, eventLink, goalLink, relays])
 
   const feed = useRequestBuilder(rb)
   const reactions = useEventReactions(eventLink ?? link, feed)

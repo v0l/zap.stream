@@ -52,7 +52,7 @@ export function WriteMessage({
         eb.kind(kind ?? (LIVE_STREAM_CHAT as EventKind))
           .content(chat)
           .createdAt(Math.floor((unixNowMs() - TimeSync) / 1000))
-          .tag(unwrap(link.toEventTag("root")))
+          .tag(unwrap(link.toEventTag()))
           .processContent()
         for (const e of emoji) {
           if (e) {

@@ -1,5 +1,5 @@
 import { type NostrLink, type ParsedFragment, transformText, tryParseNostrLink } from "@snort/system"
-import { type FunctionComponent, useMemo } from "react"
+import { Fragment, type FunctionComponent, type ReactNode, useMemo } from "react"
 import { Link } from "react-router"
 
 import { Emoji } from "./emoji"
@@ -82,5 +82,13 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
     }
   }
 
-  return <span className={className}>{frags.map(renderFrag)}</span>
+  return (
+    <span className={className}>
+      {frags.map(f => (
+        // renderFrag returns React 19's ReactNode which includes Promise<ReactNode>;
+        // narrow to ReactNode for Fragment children (async nodes aren't produced here)
+        <Fragment key={ctr++}>{renderFrag(f) as ReactNode}</Fragment>
+      ))}
+    </span>
+  )
 }

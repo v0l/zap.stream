@@ -9,12 +9,12 @@ export function useMute(pubkey: string) {
   const link = NostrLink.publicKey(pubkey)
 
   async function unmute() {
-    await login?.state?.unmute(link, true)
+    await login?.state?.unmute(link)
   }
 
   async function mute() {
     try {
-      await login?.state?.mute(link, true)
+      await login?.state?.mute(link)
     } catch (e) {
       console.error(e)
     }

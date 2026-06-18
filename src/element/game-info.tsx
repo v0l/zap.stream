@@ -33,7 +33,7 @@ export default function GameInfoCard({ gameId, gameInfo, imageSize, showImage, l
           <>
             {game.summary && <div className="text-layer-4 text-sm">{game.summary}</div>}
             <div className="flex gap-2 text-sm">
-              {game.genres.map(a => (
+              {game.genres?.map(a => (
                 <Pill key={a.id}>{a.name}</Pill>
               ))}
             </div>

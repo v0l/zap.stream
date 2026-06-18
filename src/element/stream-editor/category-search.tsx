@@ -21,12 +21,14 @@ export function SearchCategory({ onSelect }: { onSelect?: (game: GameInfo) => vo
         return true
       }
       return false
-    }).map(a => ({
-      id: `internal:${a.id}`,
-      name: a.name,
-      genres: a.tags,
-      className: a.className,
-    }))
+    }).map(
+      (a): GameInfo => ({
+        id: `internal:${a.id}`,
+        name: a.name,
+        genres: a.tags.map((t, idx) => ({ id: idx, name: t })),
+        className: a.className,
+      }),
+    )
   }
 
   const db = new GameDatabase()
@@ -57,7 +59,9 @@ export function SearchCategory({ onSelect }: { onSelect?: (game: GameInfo) => vo
         gap={2}
         menuClassName="ctx-menu gap-1"
         state={categoryResults.length > 0 ? "open" : "closed"}
-        anchorRef={ref}
+        // react-menu types anchorRef as non-nullable RefObject<Element>; React 19's
+        // useRef(null) widens to include null, so narrow back to the library's shape.
+        anchorRef={ref as React.RefObject<HTMLInputElement>}
         captureFocus={false}
       >
         {categoryResults.map(a => (

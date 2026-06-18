@@ -6,18 +6,13 @@ const renditionIcon = /*html*/ `<svg viewBox="0 0 24 24" fill="none">
 </svg>
 `
 
-const slotTemplate = document.createElement("template")
-slotTemplate.innerHTML = /*html*/ `
-  <slot name="icon">${renditionIcon}</slot>
-`
-
 class MediaPlayerSizeButton extends MediaChromeButton {
   static get observedAttributes() {
     return [...MediaChromeButton.observedAttributes]
   }
 
-  constructor() {
-    super({ slotTemplate })
+  static getSlotTemplateHTML() {
+    return /*html*/ `<slot name="icon">${renditionIcon}</slot>`
   }
 }
 

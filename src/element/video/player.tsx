@@ -30,7 +30,7 @@ export default function VideoPlayer({
   const ar = ctx.video?.bestAspectRatio() ?? 10 / 16
   const { proxy } = useImgProxy()
   return (
-    <MediaController className="min-w-0 w-full" mediaStreamType="on-demand">
+    <MediaController className="min-w-0 w-full" defaultStreamType="on-demand">
       <video
         className="max-h-[80dvh]"
         style={{

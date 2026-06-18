@@ -1,6 +1,6 @@
 import { useHover } from "usehooks-ts"
 import { IconButton } from "../buttons"
-import { forwardRef } from "react"
+import { type RefObject, forwardRef } from "react"
 
 interface ChatMenuProps {
   zapTarget?: string
@@ -11,7 +11,8 @@ interface ChatMenuProps {
 }
 export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
   ({ zapTarget, onPickEmoji, onMuteUser, onZapping, showMuteButton }, ref) => {
-    const isHovering = useHover(ref && "current" in ref ? ref : { current: null })
+    // usehooks-ts bundles a pre-React-19 RefObject type whose `current` is non-nullable
+    const isHovering = useHover((ref && "current" in ref ? ref : { current: null }) as RefObject<HTMLDivElement>)
     if (!ref || !("current" in ref)) return
     const topOffset = ref?.current?.getBoundingClientRect().top
     const leftOffset = ref?.current?.getBoundingClientRect().left

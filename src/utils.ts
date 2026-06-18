@@ -215,7 +215,7 @@ export function extractGameTag(tags: Array<string>) {
       gameInfo = {
         id: internal?.id,
         name: internal.name,
-        genres: internal.tags,
+        genres: internal.tags.map((t, i) => ({ id: i, name: t })),
         className: internal.className,
       }
     }
@@ -227,7 +227,7 @@ export function extractGameTag(tags: Array<string>) {
       gameInfo = {
         id: anyCat?.id,
         name: anyCat.name,
-        genres: anyCat.tags,
+        genres: anyCat.tags.map((t, i) => ({ id: i, name: t })),
         className: anyCat.className,
       }
     }

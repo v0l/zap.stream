@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { type CSSProperties, type HTMLProps, Suspense, lazy, useEffect, useRef, useState } from "react"
+import { type CSSProperties, type HTMLProps, type Ref, Suspense, lazy, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import {
   MediaControlBar,
@@ -17,7 +17,8 @@ import {
   MediaPlaybackRateButton,
 } from "media-chrome/react"
 import { MediaRenditionMenu, MediaRenditionMenuButton } from "media-chrome/react/menu"
-import "hls-video-element"
+import HlsVideo from "hls-video-element/react"
+import type { HlsVideoElement } from "hls-video-element"
 import { StreamState } from "@/const"
 import type { NostrLink } from "@snort/system"
 const Nip94Player = lazy(() => import("./n94-player"))
@@ -53,15 +54,16 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       )
     } else if (stream?.toLowerCase().endsWith(".m3u8")) {
       // hls video
-      /* @ts-expect-error Web Componenet */
       return (
-        <hls-video
-          {...props}
+        <HlsVideo
+          id={props.id}
+          className={props.className}
           slot="media"
           src={stream}
-          playsInline={true}
-          autoPlay={true}
-          ref={playerRef}
+          playsInline
+          autoplay
+          // HlsVideoElement extends HTMLVideoElement; shared ref type is HTMLVideoElement
+          ref={playerRef as Ref<HlsVideoElement>}
           config={{
             lowLatencyMode: true,
             debug: true,

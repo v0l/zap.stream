@@ -93,10 +93,23 @@ export function Card({ canEdit, ev, cards }: CardProps) {
     [canEdit, tags, evCard],
   )
 
-  const card = <CardPreview ref={dropRef} {...evCard} style={dropStyle} />
+  const card = (
+    <CardPreview
+      ref={node => {
+        dropRef(node)
+      }}
+      {...evCard}
+      style={dropStyle}
+    />
+  )
   if (canEdit) {
     return (
-      <div ref={dragRef} style={style}>
+      <div
+        ref={node => {
+          dragRef(node)
+        }}
+        style={style}
+      >
         {card}
         <EditCard card={evCard} cards={cards} />
       </div>

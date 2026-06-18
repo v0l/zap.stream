@@ -1,7 +1,7 @@
 import { SnortContext, useEventReactions, useReactions, useUserProfile } from "@snort/system-react"
 import { EventKind, NostrLink, type TaggedNostrEvent } from "@snort/system"
 import type React from "react"
-import { Suspense, lazy, useContext, useMemo, useRef, useState } from "react"
+import { type RefObject, Suspense, lazy, useContext, useMemo, useRef, useState } from "react"
 import { useOnClickOutside } from "usehooks-ts"
 import { dedupe } from "@snort/shared"
 import dayjs from "dayjs"
@@ -47,8 +47,8 @@ export function ChatMessage({
   badges: BadgeAward[]
 }) {
   const system = useContext(SnortContext)
-  const ref = useRef<HTMLDivElement | null>(null)
-  const emojiRef = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
+  const emojiRef = useRef<HTMLDivElement>(null)
   const link = useMemo(() => NostrLink.fromEvent(ev), [ev.id])
   const { mute } = useMute(ev.pubkey)
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
@@ -81,11 +81,12 @@ export function ChatMessage({
   const hasZaps = totalZaps > 0
   const awardedBadges = badges.filter(b => b.awardees.has(ev.pubkey))
 
-  useOnClickOutside(ref, () => {
+  // usehooks-ts bundles a pre-React-19 RefObject type whose `current` is non-nullable
+  useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
     setZapping(false)
   })
 
-  useOnClickOutside(emojiRef, () => {
+  useOnClickOutside(emojiRef as RefObject<HTMLDivElement>, () => {
     setShowEmojiPicker(false)
   })
 

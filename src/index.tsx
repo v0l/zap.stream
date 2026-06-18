@@ -79,7 +79,6 @@ async function doInit() {
     try {
       await workerRelay.init({
         databasePath: "relay.db",
-        insertBatchSize: 100,
       })
       await workerRelay.configureSearchIndex({
         1311: [],
