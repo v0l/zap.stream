@@ -42,7 +42,7 @@ export default function DashboardIntroStep1() {
           onChange={e => setDescription(e.target.value)}
           placeholder={formatMessage({ defaultMessage: "Description" })}
         />
-        {image && <img src={image} className="aspect-video rounded-xl object-cover" />}
+        {image && <img src={image} alt="" className="aspect-video rounded-xl object-cover" />}
         <div className="flex gap-2">
           <input
             type="text"

@@ -24,7 +24,9 @@ export function ClipTile({ ev }: { ev: NostrEvent }) {
           }}
         />
       </span>
-      <video src={r} controls />
+      <video src={r} controls>
+        <track kind="captions" />
+      </video>
       {title}
     </div>
   )

@@ -51,7 +51,7 @@ export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<Blob
       </h3>
       <div className="grid grid-cols-5 gap-4">
         {fileList.map(a => (
-          <BlossomFile file={a} onClick={() => toggleFile(a)} checked={pickedFiles.includes(a.sha256)} />
+          <BlossomFile key={a.sha256} file={a} onClick={() => toggleFile(a)} checked={pickedFiles.includes(a.sha256)} />
         ))}
       </div>
       <PrimaryButton
@@ -69,7 +69,7 @@ function BlossomFile({ file, checked, onClick }: { file: BlobDescriptor; checked
   const url = file.url
   const size = file.size
   return (
-    <div onClick={() => onClick()}>
+    <button type="button" className="text-left" onClick={() => onClick()}>
       <div
         className="relative bg-layer-2 rounded-xl overflow-hidden aspect-video cursor-pointer hover:outline outline-layer-3"
         style={{
@@ -100,6 +100,6 @@ function BlossomFile({ file, checked, onClick }: { file: BlobDescriptor; checked
         </div>
         <input type="checkbox" className="left-2 top-2 absolute" checked={checked} />
       </div>
-    </div>
+    </button>
   )
 }

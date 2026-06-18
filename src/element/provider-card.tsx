@@ -101,7 +101,11 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   }
 
   useEffect(() => {
-    const p = new NostrStreamProvider(config.name, config.url, login?.publisher() ? adaptPublisher(login.publisher()!) : undefined)
+    const p = new NostrStreamProvider(
+      config.name,
+      config.url,
+      login?.publisher() ? adaptPublisher(login.publisher()!) : undefined,
+    )
     setLoading(true)
 
     p.info()
@@ -253,8 +257,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
                 ?.flatMap(ep => ep.capabilities || [])
                 .filter((cap, index, arr) => arr.indexOf(cap) === index)
                 .slice(0, 3)
-                .map((capability, index) => (
-                  <CapabilityPill key={index} capability={capability} />
+                .map(capability => (
+                  <CapabilityPill key={capability} capability={capability} />
                 ))}
               {account.endpoints?.flatMap(ep => ep.capabilities || []).length > 3 && (
                 <span className="text-layer-4 self-center text-xs">
@@ -306,7 +310,11 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
               <h2 className="text-lg font-semibold">
                 <FormattedMessage defaultMessage="Recommend Provider" />
               </h2>
-              <button className="text-layer-4 hover:text-white" onClick={() => setShowRecommendModal(false)}>
+              <button
+                type="button"
+                className="text-layer-4 hover:text-white"
+                onClick={() => setShowRecommendModal(false)}
+              >
                 <Icon name="close" size={24} />
               </button>
             </div>

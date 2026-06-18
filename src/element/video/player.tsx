@@ -45,6 +45,7 @@ export default function VideoPlayer({
         {ctx.video?.sources().map(a => (
           <source key={a.url} src={a.url} type={a.mimeType} />
         ))}
+        <track kind="captions" />
       </video>
       <MediaControlBar>
         <MediaPlayButton />

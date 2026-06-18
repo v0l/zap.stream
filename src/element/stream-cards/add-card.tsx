@@ -38,7 +38,9 @@ export function AddCard({ cards }: AddCardProps) {
       })
       const userCardsEv = await pub.generic(eb => {
         eb.kind(USER_CARDS).content("")
-        tags.forEach(a => eb.tag(a))
+        tags.forEach(a => {
+          eb.tag(a)
+        })
         eb.tag(unwrap(NostrLink.fromEvent(ev).toEventTag()))
         return eb
       })
@@ -53,7 +55,8 @@ export function AddCard({ cards }: AddCardProps) {
   }
 
   return (
-    <div
+    <button
+      type="button"
       className="flex flex-col items-center justify-center bg-layer-1 rounded-xl gap-4 p-2 cursor-pointer"
       onClick={() => setOpen(true)}
     >
@@ -63,6 +66,6 @@ export function AddCard({ cards }: AddCardProps) {
           <CardDialog onSave={createCard} onCancel={() => setOpen(false)} />
         </Modal>
       )}
-    </div>
+    </button>
   )
 }

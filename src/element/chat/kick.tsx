@@ -10,14 +10,15 @@ export function KickChatMessage({ ev, badges }: { ev: ExternalChatEvent; badges:
   return (
     <div className="leading-6 overflow-wrap">
       <span className="inline-flex gap-2 items-center mr-1 align-bottom">
-        <img src={KickIcon} width={16} height={16} className="mx-[4px]" />
+        <img src={KickIcon} width={16} height={16} className="mx-[4px]" alt="Kick" />
 
         {chat.sender.identity.badges.map(b => {
           console.debug(b)
           const badge = badges.find(a => a.feed === "kick" && a.id === b.type)
           if (badge) {
-            return <img src={badge.url} height={16} width={16} title={badge.title} />
+            return <img key={b.type} src={badge.url} height={16} width={16} title={badge.title} alt={badge.title} />
           }
+          return null
         })}
         <span
           className="font-medium text-secondary"

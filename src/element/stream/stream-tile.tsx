@@ -106,6 +106,7 @@ export function StreamTile({
           {hasImg ? (
             <img
               loading="lazy"
+              alt={title ?? ""}
               className="w-full h-inherit object-cover"
               src={proxy(image ?? thumbnail ?? recording ?? "")}
               onError={() => {

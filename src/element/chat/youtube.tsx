@@ -11,7 +11,7 @@ export function YoutubeChatMessage({ ev }: { ev: ExternalChatEvent; badges: Arra
   return (
     <div className="leading-6 overflow-wrap">
       <span className="inline-flex gap-2 items-center mr-1 align-bottom">
-        <img src={YoutubeIcon} width={16} height={16} className="mx-[4px]" />
+        <img src={YoutubeIcon} width={16} height={16} className="mx-[4px]" alt="YouTube" />
         {chat.authorDetails?.isChatOwner && <Icon name="signal" size={16} className="text-primary" />}
         {/* {chat.badges.map(b => {
                 if (b.set_id === "broadcaster" && b.id === "1") {

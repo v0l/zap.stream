@@ -13,7 +13,7 @@ export function AcceptTos({
 }) {
   return (
     <div>
-      <div className="flex gap-2 cursor-pointer select-none" onClick={() => setTos(v => !v)}>
+      <label className="flex gap-2 cursor-pointer select-none">
         <input type="checkbox" checked={tos} onChange={e => setTos(() => e.target.checked)} />
         <p>
           <FormattedMessage
@@ -21,7 +21,8 @@ export function AcceptTos({
             values={{
               provider,
               terms: (
-                <span
+                <button
+                  type="button"
                   className="text-primary"
                   onClick={e => {
                     e.stopPropagation()
@@ -29,12 +30,12 @@ export function AcceptTos({
                   }}
                 >
                   <FormattedMessage defaultMessage="terms and conditions" />
-                </span>
+                </button>
               ),
             }}
           />
         </p>
-      </div>
+      </label>
     </div>
   )
 }

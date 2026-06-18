@@ -51,6 +51,7 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
     if (ct) {
       return Math.floor(new Date(ct).getTime() / 1000)
     }
+    return undefined
   }
 
   get login() {

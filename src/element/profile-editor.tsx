@@ -195,7 +195,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
     return (
       <div className="flex flex-col gap-4">
         <div className="mx-auto relative flex items-center justify-center w-40 h-40 aspect-square rounded-full overflow-hidden">
-          <img className="absolute w-full h-full object-cover" src={picture} />
+          <img className="absolute w-full h-full object-cover" src={picture} alt={name} />
           <FileUploader
             onResult={e => setPicture(e ?? "")}
             onError={e => setError(e instanceof Error ? e : new Error(e))}

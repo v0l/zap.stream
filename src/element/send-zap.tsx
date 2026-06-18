@@ -224,7 +224,9 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   return (
     <Fragment>
       {props.button ? (
-        <div onClick={() => setOpen(true)}>{props.button}</div>
+        <button type="button" onClick={() => setOpen(true)}>
+          {props.button}
+        </button>
       ) : (
         <PrimaryButton onClick={() => setOpen(true)}>
           <Icon name="zap-filled" size={16} />
@@ -249,7 +251,9 @@ export function ZapEvent({ ev, children }: { children: ReactNode; ev: TaggedNost
 
   return (
     <>
-      <div onClick={() => setOpen(true)}>{children}</div>
+      <button type="button" onClick={() => setOpen(true)}>
+        {children}
+      </button>
       {open && (
         <Modal id="send-zaps" onClose={() => setOpen(false)} ready={ready}>
           <SendZaps

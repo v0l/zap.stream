@@ -11,11 +11,11 @@ interface ChatMenuProps {
 }
 export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
   ({ zapTarget, onPickEmoji, onMuteUser, onZapping, showMuteButton }, ref) => {
+    const isHovering = useHover(ref && "current" in ref ? ref : { current: null })
     if (!ref || !("current" in ref)) return
     const topOffset = ref?.current?.getBoundingClientRect().top
     const leftOffset = ref?.current?.getBoundingClientRect().left
 
-    const isHovering = useHover(ref)
     if (ref?.current && isHovering) {
       return (
         <div

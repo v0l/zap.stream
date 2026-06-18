@@ -38,19 +38,22 @@ export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number)
 
   // Load deletion requests for live events to clear cache relay
   const system = useContext(SnortContext)
-  if (system.config.cachingRelay) {
-    const rbDeletes = new RequestBuilder("stream-deletes")
-    const links = useMemo(() => live.map(a => NostrLink.fromEvent(a)), [live])
-    const aDeletes = links.filter(a => a.type === NostrPrefix.Address)
-    if (aDeletes.length > 0) {
-      rbDeletes.withFilter().replyToLink(aDeletes).kinds([EventKind.Deletion])
+  const links = useMemo(() => live.map(a => NostrLink.fromEvent(a)), [live])
+  const rbDeletes = useMemo(() => {
+    const rb = new RequestBuilder("stream-deletes")
+    if (system.config.cachingRelay) {
+      const aDeletes = links.filter(a => a.type === NostrPrefix.Address)
+      if (aDeletes.length > 0) {
+        rb.withFilter().replyToLink(aDeletes).kinds([EventKind.Deletion])
+      }
+      const eDeletes = links.filter(a => a.type === NostrPrefix.Event)
+      if (eDeletes.length > 0) {
+        rb.withFilter().replyToLink(eDeletes).kinds([EventKind.Deletion])
+      }
     }
-    const eDeletes = links.filter(a => a.type === NostrPrefix.Event)
-    if (eDeletes.length > 0) {
-      rbDeletes.withFilter().replyToLink(eDeletes).kinds([EventKind.Deletion])
-    }
-    useRequestBuilder(rbDeletes)
-  }
+    return rb
+  }, [links, system.config.cachingRelay])
+  useRequestBuilder(rbDeletes)
 
   const planned = feedSorted.filter(a => findTag(a, "status") === StreamState.Planned).sort(sortStarts)
   const ended = feedSorted

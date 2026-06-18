@@ -159,7 +159,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Login: {
       return (
         <>
-          <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="w-full" />
+          <img src={LoginHeader as string} srcSet={`${LoginHeader2x} 2x`} className="w-full" alt="" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Create an Account" id="u6uD94" />
@@ -216,7 +216,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.LoginInput: {
       return (
         <>
-          <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="w-full" />
+          <img src={LoginVault as string} srcSet={`${LoginVault2x} 2x`} className="w-full" alt="" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Login with private key" />
@@ -263,13 +263,13 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.Details: {
       return (
         <>
-          <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="w-full" />
+          <img src={LoginProfile as string} srcSet={`${LoginProfile2x} 2x`} className="w-full" alt="" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Setup Profile" />
             </h2>
             <div className="relative mx-auto w-[100px] h-[100px] rounded-full overflow-hidden bg-layer-3">
-              {avatar && <img className="absolute object-cover object-center w-full h-full" src={avatar} />}
+              {avatar && <img className="absolute object-cover object-center w-full h-full" src={avatar} alt="" />}
               {imageUploadSection()}
             </div>
             <input
@@ -294,7 +294,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.LnAddress: {
       return (
         <>
-          <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="w-full" />
+          <img src={LoginWallet as string} srcSet={`${LoginWallet2x} 2x`} className="w-full" alt="" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Get paid by viewers" />
@@ -332,7 +332,7 @@ export function LoginSignup({ close }: { close: () => void }) {
     case Stage.SaveKey: {
       return (
         <>
-          <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="w-full" />
+          <img src={LoginKey as string} srcSet={`${LoginKey2x} 2x`} className="w-full" alt="" />
           <div className="flex flex-col gap-2 m-4">
             <h2>
               <FormattedMessage defaultMessage="Save Key" id="04lmFi" />

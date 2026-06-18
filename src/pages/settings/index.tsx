@@ -24,7 +24,9 @@ export default function SettingsPage() {
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
             {Tabs.map(t => (
-              <Layer1Button onClick={() => naviage(t.path)}>{t.name}</Layer1Button>
+              <Layer1Button key={t.path} onClick={() => naviage(t.path)}>
+                {t.name}
+              </Layer1Button>
             ))}
           </div>
           <div className="p-5 bg-layer-1 rounded-3xl flex flex-col gap-3">

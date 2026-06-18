@@ -85,7 +85,9 @@ export class Blossom {
     const rsp = await this.#req(`list/${pk}`, "GET", "list");
     if (rsp.ok) {
       const ret = (await rsp.json()) as Array<BlobDescriptor>;
-      ret.forEach(a => this.#fixTags(a));
+      for (const a of ret) {
+        this.#fixTags(a);
+      }
       return ret;
     } else {
       const text = await rsp.text();
@@ -105,11 +107,12 @@ export class Blossom {
   #fixTags(r: BlobDescriptor) {
     if (!r.nip94) return;
     if (Array.isArray(r.nip94)) return;
-    if (r.nip94 && "tags" in r.nip94) {
-      r.nip94 = r.nip94["tags"];
+    const nip94 = r.nip94 as Record<string, unknown>;
+    if ("tags" in nip94) {
+      r.nip94 = nip94.tags as Array<Array<string>>;
       return;
     }
-    r.nip94 = Object.entries(r.nip94 as Record<string, string>);
+    r.nip94 = Object.entries(nip94 as Record<string, string>);
   }
 
   async #req(

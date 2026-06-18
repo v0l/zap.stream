@@ -13,9 +13,9 @@ export default function ManualStream() {
 
   return (
     <>
-      <div className="text-primary cursor-pointer select-none" onClick={() => setOpen(true)}>
+      <button type="button" className="text-primary cursor-pointer select-none" onClick={() => setOpen(true)}>
         <FormattedMessage defaultMessage="I have my own stream host" />
-      </div>
+      </button>
       {open && (
         <Modal id="new-stream" onClose={() => setOpen(false)}>
           <div className="flex flex-col gap-3">

@@ -11,14 +11,12 @@ import { grpc } from "@improbable-eng/grpc-web"
 import { unixNow } from "@snort/shared"
 
 export class YoutubeChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
-  private clientId: string
   private token: OAuthToken
   private connectedTime: number = 0
   private myChannel: ChannelResource | undefined
 
-  constructor(clientId: string, token: OAuthToken) {
+  constructor(_clientId: string, token: OAuthToken) {
     super()
-    this.clientId = clientId
     this.token = token
   }
 

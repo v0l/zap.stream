@@ -24,7 +24,7 @@ export function StreamEndpoints({
           </p>
           <div className="flex gap-2">
             {sortEndpoints(info.endpoints).map(a => (
-              <Pill selected={currentEndpoint?.name === a.name} onClick={() => setEndpoint(a)}>
+              <Pill key={a.name} selected={currentEndpoint?.name === a.name} onClick={() => setEndpoint(a)}>
                 {a.name}
               </Pill>
             ))}
@@ -38,7 +38,7 @@ export function StreamEndpoints({
         </p>
         <div className="flex gap-2">
           {currentEndpoint?.capabilities?.map(a => (
-            <CapabilityPill capability={a} />
+            <CapabilityPill key={a} capability={a} />
           ))}
         </div>
       </div>

@@ -268,8 +268,6 @@ export function liveChatMessageSnippet_TypeWrapper_TypeFromJSON(object: any): Li
     case 20:
     case "POLL_EVENT":
       return LiveChatMessageSnippet_TypeWrapper_Type.POLL_EVENT
-    case -1:
-    case "UNRECOGNIZED":
     default:
       return LiveChatMessageSnippet_TypeWrapper_Type.UNRECOGNIZED
   }
@@ -311,7 +309,6 @@ export function liveChatMessageSnippet_TypeWrapper_TypeToJSON(object: LiveChatMe
       return "SUPER_STICKER_EVENT"
     case LiveChatMessageSnippet_TypeWrapper_Type.POLL_EVENT:
       return "POLL_EVENT"
-    case LiveChatMessageSnippet_TypeWrapper_Type.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED"
   }
@@ -360,8 +357,6 @@ export function liveChatUserBannedMessageDetails_BanTypeWrapper_BanTypeFromJSON(
     case 2:
     case "TEMPORARY":
       return LiveChatUserBannedMessageDetails_BanTypeWrapper_BanType.TEMPORARY
-    case -1:
-    case "UNRECOGNIZED":
     default:
       return LiveChatUserBannedMessageDetails_BanTypeWrapper_BanType.UNRECOGNIZED
   }
@@ -375,7 +370,6 @@ export function liveChatUserBannedMessageDetails_BanTypeWrapper_BanTypeToJSON(
       return "PERMANENT"
     case LiveChatUserBannedMessageDetails_BanTypeWrapper_BanType.TEMPORARY:
       return "TEMPORARY"
-    case LiveChatUserBannedMessageDetails_BanTypeWrapper_BanType.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED"
   }
@@ -535,8 +529,6 @@ export function liveChatPollDetails_PollStatusWrapper_PollStatusFromJSON(
     case 2:
     case "CLOSED":
       return LiveChatPollDetails_PollStatusWrapper_PollStatus.CLOSED
-    case -1:
-    case "UNRECOGNIZED":
     default:
       return LiveChatPollDetails_PollStatusWrapper_PollStatus.UNRECOGNIZED
   }
@@ -552,7 +544,6 @@ export function liveChatPollDetails_PollStatusWrapper_PollStatusToJSON(
       return "ACTIVE"
     case LiveChatPollDetails_PollStatusWrapper_PollStatus.CLOSED:
       return "CLOSED"
-    case LiveChatPollDetails_PollStatusWrapper_PollStatus.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED"
   }
@@ -3656,7 +3647,7 @@ export class GrpcWebImpl {
         debug: this.options.debug ?? false,
         onEnd: response => {
           if (response.status === grpc.Code.OK) {
-            resolve(response.message!.toObject())
+            resolve(response.message?.toObject())
           } else {
             const err = new GrpcWebError(response.statusMessage, response.status, response.trailers)
             reject(err)

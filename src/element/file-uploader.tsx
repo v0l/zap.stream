@@ -28,7 +28,8 @@ export function FileUploader({
   imageHeight,
 }: FileUploaderProps) {
   const servers = useMediaServerList()
-  const pub = publisher ?? useLogin()?.publisher?.()
+  const login = useLogin()
+  const pub = publisher ?? login?.publisher?.()
 
   async function uploadFile(e: React.MouseEvent) {
     e.stopPropagation()
@@ -55,9 +56,9 @@ export function FileUploader({
 
   if (children) {
     return (
-      <div onClick={uploadFile} className={className}>
+      <button type="button" onClick={uploadFile} className={className}>
         {children}
-      </div>
+      </button>
     )
   }
   return (

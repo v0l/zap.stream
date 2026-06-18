@@ -49,19 +49,24 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
           <FormattedMessage defaultMessage="Live now" id="+sdKx8" />
         </p>
         <div className="flex gap-2 flex-wrap">
-          {livePubkeys.map(a => (
-            <div
-              className="border border-layer-1 rounded-full px-4 py-2 bg-layer-2 pointer"
-              onClick={() => {
-                const liveEvent = live.find(b => getHost(b) === a)
-                if (liveEvent) {
-                  setRaiding(NostrLink.fromEvent(liveEvent).encode())
-                }
-              }}
-            >
-              <Profile pubkey={a} options={{ showAvatar: false }} linkToProfile={false} />
-            </div>
-          ))}
+          {livePubkeys.map(a => {
+            const onRaid = () => {
+              const liveEvent = live.find(b => getHost(b) === a)
+              if (liveEvent) {
+                setRaiding(NostrLink.fromEvent(liveEvent).encode())
+              }
+            }
+            return (
+              <button
+                type="button"
+                key={a}
+                className="border border-layer-1 rounded-full px-4 py-2 bg-layer-2 pointer"
+                onClick={onRaid}
+              >
+                <Profile pubkey={a} options={{ showAvatar: false }} linkToProfile={false} />
+              </button>
+            )
+          })}
         </div>
       </div>
       <div className="flex flex-col gap-1">

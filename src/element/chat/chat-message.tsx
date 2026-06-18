@@ -145,7 +145,7 @@ export function ChatMessage({
             ev.pubkey === streamer ? (
               <Icon name="signal" size={16} />
             ) : (
-              awardedBadges.map(a => <AwardedChatBadge ev={a.event} pubkey={ev.pubkey} />)
+              awardedBadges.map(a => <AwardedChatBadge key={a.event.id} ev={a.event} pubkey={ev.pubkey} />)
             )
           }
           pubkey={ev.pubkey}

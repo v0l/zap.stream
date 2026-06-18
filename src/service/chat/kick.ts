@@ -54,7 +54,7 @@ export class KickChat extends EventEmitter<ExternalChatEvents> implements Extern
       const ws = new WebSocket(
         "wss://ws-us2.pusher.com/app/32cbd69e4b950bf97679?protocol=7&client=js&version=8.4.0&flash=false",
       )
-      ws.onopen = e => {
+      ws.onopen = _e => {
         const req = {
           event: "pusher:subscribe",
           data: {
@@ -111,7 +111,7 @@ export interface ChatRoomInfo {
   emotes_mode: EmotesMode
   advanced_bot_protection: AdvancedBotProtection
   account_age: AccountAge
-  pinned_message: any
+  pinned_message: unknown
   show_quick_emotes: ShowQuickEmotes
   show_banners: ShowBanners
   gifts_enabled: GiftsEnabled
@@ -195,7 +195,7 @@ export interface Sender {
 
 export interface Identity {
   color: string
-  badges: any[]
+  badges: Array<{ type: string }>
 }
 
 export interface VideoResult {
@@ -205,15 +205,15 @@ export interface VideoResult {
   created_at: string
   session_title: string
   is_live: boolean
-  risk_level_id: any
+  risk_level_id: unknown
   start_time: string
   source: string
-  twitch_channel: any
+  twitch_channel: unknown
   duration: number
   language: string
   is_mature: boolean
   viewer_count: number
-  tags: any[]
+  tags: unknown[]
   thumbnail: Thumbnail
   views: number
   video: Video
@@ -229,15 +229,15 @@ export interface Thumbnail {
 export interface Video {
   id: number
   live_stream_id: number
-  slug: any
-  thumb: any
-  s3: any
-  trading_platform_id: any
+  slug: unknown
+  thumb: unknown
+  s3: unknown
+  trading_platform_id: unknown
   created_at: string
   updated_at: string
   uuid: string
   views: number
-  deleted_at: any
+  deleted_at: unknown
   is_pruned: boolean
   is_private: boolean
   status: string
@@ -249,8 +249,8 @@ export interface Category {
   name: string
   slug: string
   tags: string[]
-  description: any
-  deleted_at: any
+  description: unknown
+  deleted_at: unknown
   is_mature: boolean
   is_promoted: boolean
   viewers: number
@@ -269,7 +269,7 @@ export interface Channel {
   slug: string
   is_banned: boolean
   playback_url: string
-  name_updated_at: any
+  name_updated_at: unknown
   vod_enabled: boolean
   subscription_enabled: boolean
   is_affiliate: boolean

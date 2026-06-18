@@ -84,7 +84,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
       />
       {isTextToSpeechSupported && (
         <div>
-          <div className="flex items-center gap-2 select-none" onClick={() => setTextToSpeech(!textToSpeech)}>
+          <label className="flex items-center gap-2 select-none">
             <input
               type="checkbox"
               checked={textToSpeech}
@@ -93,7 +93,7 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
               }}
             />
             <FormattedMessage defaultMessage="Enable text to speech" />
-          </div>
+          </label>
           {isTextToSpeechEnabled && (
             <>
               <div className="flex items-center gap-2">
@@ -131,9 +131,11 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
                     <FormattedMessage defaultMessage="Select voice..." />
                   </option>
                   {languages.map(l => (
-                    <optgroup label={formatDisplayName(l, { type: "language" })}>
+                    <optgroup key={l} label={formatDisplayName(l, { type: "language" })}>
                       {groupedVoices[l].map(v => (
-                        <option value={v.voiceURI}>{v.name}</option>
+                        <option key={v.voiceURI} value={v.voiceURI}>
+                          {v.name}
+                        </option>
                       ))}
                     </optgroup>
                   ))}

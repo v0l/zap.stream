@@ -6,8 +6,8 @@ import type { NostrLink } from "@snort/system"
 
 export function Mention({ link }: { link: NostrLink }) {
   const encoded = link.encode()
+  const user = useUserProfile(link.id)
   if (link.type === NostrPrefix.PublicKey || link.type === NostrPrefix.Profile) {
-    const user = useUserProfile(link.id)
     return (
       <Link to={profileLink(user, link)} className="text-primary">
         {user?.name || encoded.slice(0, 12)}

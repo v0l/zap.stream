@@ -1,4 +1,4 @@
-import type { HTMLProps } from "react"
+import type { HTMLProps, MouseEvent } from "react"
 
 export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGElement>) {
   return (
@@ -10,7 +10,11 @@ export function Toggle({ size, className, checked, ...props }: HTMLProps<SVGSVGE
       height={props.height ?? size}
       className={className}
       onClick={props.onClick}
+      onKeyDown={e => {
+        if (e.key === "Enter" || e.key === " ") props.onClick?.(e as unknown as MouseEvent<SVGSVGElement>)
+      }}
     >
+      <title>Toggle</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

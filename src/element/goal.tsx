@@ -22,19 +22,19 @@ export function Goal({ ev, confetti }: { ev: NostrEvent; confetti?: boolean }) {
     return amount ? Number(amount) / 1000 : null
   }, [ev])
 
-  if (!goalAmount) {
-    return null
-  }
-
   const soFar = useMemo(() => {
     return zaps
       .filter(z => z.receiver === ev.pubkey && z.targetEvents.some(a => a.matchesEvent(ev)))
       .reduce((acc, z) => acc + z.amount, 0)
   }, [zaps])
 
-  const progress = Math.max(0, Math.min(100, (soFar / goalAmount) * 100))
+  const progress = goalAmount ? Math.max(0, Math.min(100, (soFar / goalAmount) * 100)) : 0
   const isFinished = progress >= 100
   const previousValue = usePreviousValue(isFinished)
+
+  if (!goalAmount) {
+    return null
+  }
 
   const goalContent = (
     <div className="flex flex-col cursor-pointer">

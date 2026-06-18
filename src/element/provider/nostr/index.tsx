@@ -124,12 +124,13 @@ export default function NostrProviderDialog({
                 values={{
                   provider: provider.name,
                   terms: (
-                    <span
+                    <button
+                      type="button"
                       className="tos-link"
                       onClick={() => window.open(info.tos?.link, "popup", "width=400,height=800")}
                     >
                       <FormattedMessage defaultMessage="terms and conditions" id="thsiMl" />
-                    </span>
+                    </button>
                   ),
                 }}
               />

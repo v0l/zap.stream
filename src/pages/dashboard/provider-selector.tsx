@@ -25,7 +25,7 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
         <h2>
           <FormattedMessage defaultMessage="Select Stream Provider" />
         </h2>
-        <button className="text-layer-4 hover:text-white" onClick={onClose}>
+        <button type="button" className="text-layer-4 hover:text-white" onClick={onClose}>
           <Icon name="close" size={24} />
         </button>
       </div>

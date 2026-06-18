@@ -62,6 +62,7 @@ export function SearchCategory({ onSelect }: { onSelect?: (game: GameInfo) => vo
       >
         {categoryResults.map(a => (
           <MenuItem
+            key={a.id}
             className="!px-2 !py-0"
             onClick={() => {
               setCategoryResults([])

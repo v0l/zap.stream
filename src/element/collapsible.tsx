@@ -19,7 +19,9 @@ export function MediaURL({ url, children }: MediaURLProps) {
   const [open, setOpen] = useState(false)
   return (
     <>
-      <span onClick={() => setOpen(true)}>{url.toString()}</span>
+      <button type="button" onClick={() => setOpen(true)}>
+        {url.toString()}
+      </button>
       {open && (
         <Modal id="media-preview" onClose={() => setOpen(false)}>
           <ExternalLink href={url.toString()}>{url.toString()}</ExternalLink>

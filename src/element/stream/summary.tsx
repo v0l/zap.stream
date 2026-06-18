@@ -23,7 +23,8 @@ export function StreamSummary({ text }: { text: string }) {
       {shouldExpand && !expand ? text.slice(0, cutOff) : <Text content={text} tags={[]} />}
       {shouldExpand && (
         <>
-          <span
+          <button
+            type="button"
             className="text-primary text-bold cursor-pointer"
             onClick={() => {
               setExpand(x => !x)
@@ -31,16 +32,17 @@ export function StreamSummary({ text }: { text: string }) {
           >
             &nbsp;
             {!expand && <FormattedMessage defaultMessage="...more" />}
-          </span>
+          </button>
           {expand && (
-            <div
+            <button
+              type="button"
               className="text-primary text-bold cursor-pointer"
               onClick={() => {
                 setExpand(x => !x)
               }}
             >
               <FormattedMessage defaultMessage="Hide" />
-            </div>
+            </button>
           )}
         </>
       )}

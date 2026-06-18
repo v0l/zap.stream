@@ -60,7 +60,9 @@
   ],
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build:api": "bun run --filter '@zap.stream/api' build",
+    "build": "bun run build:api && vite build",
+    "prepare": "bun run build:api",
     "intl-extract": "formatjs extract 'src/**/*.ts*' --ignore='**/*.d.ts' --out-file src/lang.json --flatten true",
     "intl-compile": "formatjs compile src/lang.json --out-file src/translations/en.json",
     "pre:commit": "bun run intl-extract && bun run intl-compile && bun biome lint --write ."

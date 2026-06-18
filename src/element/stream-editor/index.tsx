@@ -174,7 +174,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       )}
       {(options?.canSetImage ?? true) && (
         <StreamInput label={<FormattedMessage defaultMessage="Cover Image" />}>
-          {image && <img src={image} className="mb-2 aspect-video object-cover rounded-xl max-h-[200px] mx-auto" />}
+          {image && (
+            <img src={image} alt="" className="mb-2 aspect-video object-cover rounded-xl max-h-[200px] mx-auto" />
+          )}
           <div className="flex gap-2">
             <input type="text" placeholder="https://" value={image} onChange={e => setImage(e.target.value)} />
             <FileUploader onResult={v => setImage(v ?? "")} onError={e => setError(e.toString())} />

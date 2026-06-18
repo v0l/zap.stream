@@ -22,7 +22,7 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           return <div key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</div>
         }
         case "image": {
-          return <img key={ctr++} src={t.href} />
+          return <img key={ctr++} src={t.href} alt="" />
         }
         case "heading": {
           switch (t.depth) {
@@ -97,8 +97,8 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
               <tbody>
                 {(t.rows as Tokens.TableCell[][]).map(v => (
                   <tr key={ctr++}>
-                    {v.map((d, d_key) => (
-                      <td className="border px-2 py-1" key={d_key}>
+                    {v.map(d => (
+                      <td className="border px-2 py-1" key={ctr++}>
                         {d.tokens ? d.tokens.map(renderToken) : d.text}
                       </td>
                     ))}

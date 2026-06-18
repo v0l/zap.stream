@@ -25,7 +25,7 @@ export function ConnectLegacyStream() {
       {Object.entries(ChatApis).map(([k, v]) => {
         if (v.isAuthed()) {
           return (
-            <div className="flex justify-between">
+            <div key={k} className="flex justify-between">
               <div className="flex gap-2">
                 <span className="text-green-400">
                   <FormattedMessage defaultMessage="{provider} connected!" values={{ provider: v.name }} />
@@ -51,6 +51,7 @@ export function ConnectLegacyStream() {
         if (v.authType === "oauth") {
           return (
             <Layer1Button
+              key={k}
               onClick={() => {
                 callbackUrl.searchParams.set("auth_flow", k)
                 const url = v.getAuthUrl(callbackUrl.toString())
@@ -65,6 +66,7 @@ export function ConnectLegacyStream() {
           // require the channel name
           return (
             <InputChannelName
+              key={k}
               platformName={v.name}
               onSave={c => {
                 v.handleAuthCallback(c)

@@ -187,7 +187,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
           <Tooltip
             cursor={{ fill: "rgba(255,255,255,0.5)" }}
             content={({ active, payload }) => {
-              if (active && payload && payload.length) {
+              if (active && payload?.length) {
                 const data = payload[0].payload as StatSlot
                 return (
                   <div className="bg-layer-1 rounded-xl px-4 py-2 flex flex-col gap-2">
@@ -339,7 +339,7 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
             {data
               .filter(a => a.kind === LIVE_STREAM_CLIP)
               .map(a => {
-                const link = NostrLink.fromEvent(a)!
+                const link = NostrLink.fromEvent(a)
                 return (
                   <div className="flex justify-between items-center" key={a.id}>
                     <Profile pubkey={a.pubkey} avatarSize={30} />

@@ -47,12 +47,14 @@ export default function AccountSettingsTab() {
       </div>
       <div className="flex gap-2">
         {["#7F006A", "#E206BF", "#7406E2", "#3F06E2", "#393939", "#ff563f", "#ff8d2b", "#34d2fe"].map(a => (
-          <div
+          <button
+            type="button"
+            key={a}
             className={`w-4 h-4 pointer${login?.color === a ? " border" : ""}`}
             title={a}
             style={{ backgroundColor: a }}
             onClick={() => Login.setColor(a)}
-          ></div>
+          ></button>
         ))}
       </div>
       <h1>

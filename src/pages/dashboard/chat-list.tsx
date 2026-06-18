@@ -13,7 +13,7 @@ export function DashboardChatList() {
   }, [feed])
 
   return pubkeys.map(a => (
-    <div className="flex justify-between items-center px-4 py-2 border-b border-layer-1">
+    <div key={a} className="flex justify-between items-center px-4 py-2 border-b border-layer-1">
       <Profile pubkey={a} avatarSize={32} gap={4} />
       <div className="flex gap-2">
         <MuteButton pubkey={a} />

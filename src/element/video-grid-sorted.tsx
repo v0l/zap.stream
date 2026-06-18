@@ -75,7 +75,7 @@ export default function VideoGridSorted({
         </VideoGrid>
       )}
       {liveByHashtag.map(t => (
-        <GridSection header={`#${t.tag}`} items={t.live} />
+        <GridSection key={t.tag} header={`#${t.tag}`} items={t.live} />
       ))}
       {showVideos && videos.length > 0 && (
         <GridSection header={<FormattedMessage defaultMessage="Videos" />} items={videos} />

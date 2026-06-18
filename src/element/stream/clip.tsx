@@ -29,7 +29,9 @@ export default function LiveStreamClip({ ev }: { ev: TaggedNostrEvent }) {
       <div className="rounded-xl px-4 py-3 flex flex-col gap-2 border border-layer-1">
         {ev.content && <h2>{ev.content}</h2>}
         <Profile pubkey={ev.pubkey} avatarSize={40} />
-        <video src={src} controls />
+        <video src={src} controls>
+          <track kind="captions" />
+        </video>
         <EventReactions ev={ev} />
       </div>
     </>

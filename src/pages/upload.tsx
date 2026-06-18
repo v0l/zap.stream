@@ -239,7 +239,9 @@ export function UploadPage() {
       .content(summary)
 
     const imeta = manager.makeIMeta()
-    imeta.forEach(a => eb.tag(a))
+    imeta.forEach(a => {
+      eb.tag(a)
+    })
 
     return eb
   }
@@ -257,7 +259,9 @@ export function UploadPage() {
     const pub = login?.publisher()
     const f = await openFile()
     if (f && pub) {
-      servers.servers.forEach(b => manager.uploadTo(b, f, pub, "video"))
+      servers.servers.forEach(b => {
+        manager.uploadTo(b, f, pub, "video")
+      })
     }
   }
 
@@ -266,7 +270,10 @@ export function UploadPage() {
     const vid = uploads.find(a => a.result?.url)
     if (!vid) return
 
-    const rsp = await fetch(proxy(vid?.result?.url!), {
+    const url = vid.result?.url
+    if (!url) return
+
+    const rsp = await fetch(proxy(url), {
       headers: {
         accept: "image/jpg",
       },
@@ -275,7 +282,7 @@ export function UploadPage() {
       const data = await rsp.blob()
       const pub = login?.publisher()
       if (pub) {
-        servers.servers.forEach(b =>
+        servers.servers.forEach(b => {
           manager.uploadTo(
             b,
             new File([data], "thumb.jpg", {
@@ -283,8 +290,8 @@ export function UploadPage() {
             }),
             pub,
             "thumb",
-          ),
-        )
+          )
+        })
       }
     }
   }
@@ -294,7 +301,9 @@ export function UploadPage() {
     if (f) {
       const pub = login?.publisher()
       if (pub) {
-        servers.servers.forEach(b => manager.uploadTo(b, f, pub, "thumb"))
+        servers.servers.forEach(b => {
+          manager.uploadTo(b, f, pub, "thumb")
+        })
       }
     }
   }
@@ -367,14 +376,22 @@ export function UploadPage() {
   const uploadButton = () => {
     return (
       <>
-        <div className="flex items-center gap-4 bg-layer-3 rounded-lg p-4" onClick={() => uploadFile()}>
+        <button
+          type="button"
+          className="flex items-center gap-4 bg-layer-3 rounded-lg p-4"
+          onClick={() => uploadFile()}
+        >
           <Icon name="upload" />
           <FormattedMessage defaultMessage="Upload Video" />
-        </div>
+        </button>
         <FormattedMessage defaultMessage="or" />
-        <div className="flex items-center gap-4 bg-layer-3 rounded-lg p-4" onClick={() => setMediaPicker(true)}>
+        <button
+          type="button"
+          className="flex items-center gap-4 bg-layer-3 rounded-lg p-4"
+          onClick={() => setMediaPicker(true)}
+        >
           <FormattedMessage defaultMessage="Choose file." />
-        </div>
+        </button>
       </>
     )
   }
@@ -394,7 +411,9 @@ export function UploadPage() {
               className="w-full h-full absolute"
               controls
               src={uploads.find(a => a.result?.url && a.type === "video")?.result?.url}
-            />
+            >
+              <track kind="captions" />
+            </video>
           )}
           {videos === 0 && (
             <div className="absolute w-full h-full flex items-center gap-4 justify-center">{uploadButton()}</div>
@@ -420,7 +439,7 @@ export function UploadPage() {
         </div>
         <div className="flex flex-col">
           {error.map((a, i) => (
-            <b className="text-warning">
+            <b className="text-warning" key={a}>
               #{i + 1}: {a}
             </b>
           ))}
@@ -436,7 +455,7 @@ export function UploadPage() {
         {uploads.length > 0 && (
           <div className="flex flex-col gap-2 min-w-0 w-full">
             {uploads.map(a => (
-              <UploadProgress status={a} />
+              <UploadProgress status={a} key={`${a.server}:${a.size}:${a.type}`} />
             ))}
           </div>
         )}
@@ -447,7 +466,7 @@ export function UploadPage() {
             <FormattedMessage defaultMessage="Thumbnail" />
           </div>
           <div className="border-layer-3 border-dashed border-2 rounded-xl aspect-video overflow-hidden">
-            {thumb && <img src={proxy(thumb)} className="w-full h-full object-contain" />}
+            {thumb && <img src={proxy(thumb)} alt="thumbnail" className="w-full h-full object-contain" />}
           </div>
           <div className="flex gap-4">
             <DefaultButton onClick={() => uploadThumb()}>

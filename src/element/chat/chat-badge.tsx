@@ -11,5 +11,5 @@ export default function AwardedChatBadge({ ev, pubkey }: { ev: TaggedNostrEvent;
 
   const profileBadges = useProfileBadges(pubkey)
 
-  return badge && profileBadges.isAccepted(badgeLink) && <img src={image} className="h-4" title={name} />
+  return badge && profileBadges.isAccepted(badgeLink) && <img src={image} className="h-4" title={name} alt={name} />
 }

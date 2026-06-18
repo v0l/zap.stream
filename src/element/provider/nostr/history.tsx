@@ -57,7 +57,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
             ev = JSON.parse(a.desc) as NostrEvent
           }
           return (
-            <tr>
+            <tr key={`${a.created}-${a.amount}-${a.type}`}>
               <td>{new Date(a.created * 1000).toLocaleString()}</td>
               <td>{ev ? eventDescription(ev) : a.desc}</td>
               <td className={a.type === 0 ? "text-green-400" : "text-red-400"}>

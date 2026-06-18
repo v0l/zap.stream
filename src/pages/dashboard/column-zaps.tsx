@@ -56,7 +56,7 @@ export function DashboardZapColumn() {
         <div className="flex flex-col gap-2 overflow-y-scroll">
           {latestZap && <DashboardHighlightZap zap={latestZap} />}
           {sortedZaps.slice(1).map(a => (
-            <ChatZap zap={a} />
+            <ChatZap key={a.id} zap={a} />
           ))}
         </div>
       </DashboardCard>

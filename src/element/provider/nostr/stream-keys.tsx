@@ -45,7 +45,7 @@ export default function StreamKeyList({ provider }: { provider: NostrStreamProvi
         </thead>
         <tbody>
           {keys?.items.map(a => (
-            <tr>
+            <tr key={a.id}>
               <td>{new Date(a.created * 1000).toLocaleString()}</td>
               <td>{a.expires && new Date(a.expires * 1000).toLocaleString()}</td>
               <td>

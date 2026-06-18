@@ -63,6 +63,7 @@ export function VideoTile({
           {hasImg ? (
             <img
               loading="lazy"
+              alt=""
               className="w-full h-inherit object-cover"
               src={proxy(poster?.url ?? bestVideo?.url ?? "")}
               onError={() => {

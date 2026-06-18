@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl"
 import { EventKind, type NostrEvent, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system"
 import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react"
 import { removeUndefined, unixNow, unwrap, NostrPrefix } from "@snort/shared"
-import { useEffect, useMemo } from "react"
+import { Fragment, useEffect, useMemo } from "react"
 
 import { Icon } from "../icon"
 import Spinner from "../spinner"
@@ -189,8 +189,9 @@ export function LiveChat({
   return (
     <div className={classNames("flex flex-col gap-1", className)} style={height ? { height: `${height}px` } : {}}>
       {adjustLayout && (
-        <div
-          className="min-h-2 my-2"
+        <button
+          type="button"
+          className="min-h-2 my-2 block w-full"
           onClick={() => {
             streamContext.update(c => {
               c.showDetails = !c.showDetails
@@ -203,7 +204,7 @@ export function LiveChat({
           }}
         >
           <div className="h-2 bg-layer-3 rounded-full w-10 mx-auto"></div>
-        </div>
+        </button>
       )}
       {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
         <div>
@@ -274,7 +275,6 @@ export function LiveChat({
                     return <div>{JSON.stringify(externalChat)}</div>
                   }
                 }
-                break
               }
               case -4: {
                 return (
@@ -288,7 +288,6 @@ export function LiveChat({
                     />
                   </div>
                 )
-                break
               }
               case EventKind.BadgeAward: {
                 return <BadgeAward ev={a} key={a.id} />
@@ -320,12 +319,12 @@ export function LiveChat({
           }
 
           const mapped = mapper()
-          if (!mapped) return
+          if (!mapped) return null
           return (
-            <>
+            <Fragment key={`${a.kind}-${a.id || a.created_at}`}>
               {showDateSeparator && <div className="text-center text-xs text-gray-500">{prevDate}</div>}
               {mapped}
-            </>
+            </Fragment>
           )
         })}
         {feed.length === 0 && <Spinner />}

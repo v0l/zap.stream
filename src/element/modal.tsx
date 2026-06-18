@@ -43,9 +43,17 @@ export default function Modal(props: ModalProps) {
       className={classNames(
         "z-[42] w-screen h-screen top-0 left-0 fixed bg-black/80 flex justify-center overflow-y-auto",
       )}
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
       onMouseDown={handleBackdropClick}
       onClick={e => {
         e.stopPropagation()
+      }}
+      onKeyDown={e => {
+        if (e.key === "Enter" || e.key === " ") {
+          props.onClose?.(e.nativeEvent)
+        }
       }}
     >
       <div
@@ -61,11 +69,14 @@ export default function Modal(props: ModalProps) {
             },
           )
         }
+        role="document"
+        tabIndex={-1}
         onMouseDown={e => e.stopPropagation()}
         onClick={e => {
           e.stopPropagation()
           props.onClick?.(e)
         }}
+        onKeyDown={e => e.stopPropagation()}
       >
         {(props.showClose ?? true) && (
           <div className="absolute right-4 top-4">
