@@ -50,13 +50,12 @@ export default function DashboardForLink() {
     localStorage.setItem("default-recording", String(recording))
   }, [recording])
 
-  const provider = useMemo(
-    () =>
-      streamInfo?.status === StreamState.Live && streamInfo?.service
-        ? new NostrStreamProvider("", streamInfo?.service, login?.publisher?.() ? adaptPublisher(login.publisher()!) : undefined)
-        : streamProvider,
-    [streamInfo?.service, streamInfo?.status, streamProvider],
-  )
+  const provider = useMemo(() => {
+    const publisher = login?.publisher?.()
+    return streamInfo?.status === StreamState.Live && streamInfo?.service
+      ? new NostrStreamProvider("", streamInfo?.service, publisher ? adaptPublisher(publisher) : undefined)
+      : streamProvider
+  }, [streamInfo?.service, streamInfo?.status, streamProvider])
 
   const defaultEndpoint = useMemo(() => {
     const metricsEndpint = recording ? "Best" : "Good"

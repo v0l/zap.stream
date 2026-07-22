@@ -63,7 +63,9 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   }
 
   const handleRecommend = async () => {
-    if (!login?.publisher() || !config.event || !recommendContent.trim()) return
+    const configEvent = config.event
+    const eventTag = configEvent ? NostrLink.fromEvent(configEvent).toEventTag() : undefined
+    if (!login?.publisher() || !eventTag || !recommendContent.trim()) return
 
     setIsRecommending(true)
     try {
@@ -72,7 +74,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
           .kind(31989 as EventKind)
           .content(recommendContent.trim())
           .tag(["d", EventKind.LiveEvent.toString()])
-          .tag(NostrLink.fromEvent(config.event!).toEventTag()!)
+          .tag(eventTag)
       })
       if (ev) {
         system.BroadcastEvent(ev)
@@ -101,11 +103,8 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   }
 
   useEffect(() => {
-    const p = new NostrStreamProvider(
-      config.name,
-      config.url,
-      login?.publisher() ? adaptPublisher(login.publisher()!) : undefined,
-    )
+    const publisher = login?.publisher()
+    const p = new NostrStreamProvider(config.name, config.url, publisher ? adaptPublisher(publisher) : undefined)
     setLoading(true)
 
     p.info()

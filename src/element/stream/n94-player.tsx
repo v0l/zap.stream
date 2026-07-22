@@ -95,11 +95,13 @@ class Nip94Loader implements mpegts.BaseLoader {
     this.#query = this.#system.Query(rb)
     this.#query.on("event", evs => {
       for (const ev of evs) {
+        const url = findTag(ev, "url")
+        if (!url) continue
         const seg = {
           created: ev.created_at,
-          url: findTag(ev, "url")!,
-          sha256: findTag(ev, "x")!,
-          variant: findTag(ev, "d")!,
+          url,
+          sha256: findTag(ev, "x"),
+          variant: findTag(ev, "d"),
         } as MediaSegment
         this.#addSegment(seg)
       }

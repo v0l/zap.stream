@@ -23,4 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 dev-dist/
-.wranger/
+.wrangler/
+packages/*/dist/

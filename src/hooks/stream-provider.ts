@@ -66,21 +66,18 @@ export function useStreamProvider() {
     () => Storage.snapshot(),
   )
 
-  return useMemo(
-    () => {
-      const pub = login?.publisher?.()
-      const signer = pub ? adaptPublisher(pub) : undefined
-      return {
-        provider: new NostrStreamProvider(config.name, config.url, signer),
-        config,
-        updateStreamProvider: (cfg: StreamProviderConfig) => {
-          Storage.setProvider(cfg)
-        },
-        resetToDefault: () => {
-          Storage.setProvider(DEFAULT_CONFIG)
-        },
-      }
-    },
-    [config],
-  )
+  return useMemo(() => {
+    const pub = login?.publisher?.()
+    const signer = pub ? adaptPublisher(pub) : undefined
+    return {
+      provider: new NostrStreamProvider(config.name, config.url, signer),
+      config,
+      updateStreamProvider: (cfg: StreamProviderConfig) => {
+        Storage.setProvider(cfg)
+      },
+      resetToDefault: () => {
+        Storage.setProvider(DEFAULT_CONFIG)
+      },
+    }
+  }, [config])
 }

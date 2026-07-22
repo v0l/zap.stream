@@ -69,8 +69,9 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
 
   useEffect(() => {
     async function nip05NostrAddressVerification(nip05Domain: string | undefined, nip05Name: string | undefined) {
+      if (!nip05Name || !nip05Domain) return
       try {
-        const result = await fetchNip05Pubkey(nip05Name!, nip05Domain!)
+        const result = await fetchNip05Pubkey(nip05Name, nip05Domain)
         if (result) {
           if (result === login?.pubkey) {
             setNip05AddressValid(true)
@@ -217,7 +218,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
             onChange={e => onLimitCheck(e.target.value, "username")}
             maxLength={MaxUsernameLength}
           />
-          <div>{usernameValid === false ? <span className="text-delete">{invalidUsernameMessage}</span> : <></>}</div>
+          <div>{usernameValid === false && <span className="text-delete">{invalidUsernameMessage}</span>}</div>
         </div>
         <div className="flex flex-col w-full gap-2">
           <h4>
@@ -229,7 +230,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
             value={about}
             maxLength={MaxAboutLength}
           ></textarea>
-          <div>{aboutValid === false ? <span className="text-delete">{invalidAboutMessage}</span> : <></>}</div>
+          <div>{aboutValid === false && <span className="text-delete">{invalidAboutMessage}</span>}</div>
         </div>
         <div className="flex flex-col w-full gap-2">
           <h4>
@@ -259,7 +260,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
             value={lud16}
             onChange={e => onLud16Change(e.target.value.toLowerCase())}
           />
-          <div>{lud16Valid === false ? <span className="text-delete">{invalidLud16Message}</span> : <></>}</div>
+          <div>{lud16Valid === false && <span className="text-delete">{invalidLud16Message}</span>}</div>
         </div>
         {error && <b className="text-delete">{error.message}</b>}
         <PrimaryButton onClick={() => saveProfile()}>

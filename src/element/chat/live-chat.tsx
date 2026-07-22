@@ -75,7 +75,7 @@ export function LiveChat({
   const layoutContext = useLayout()
 
   // Use data from context
-  const link = streamContext.link!
+  const link = streamContext.link
   const feed = streamContext.feed
   const goal = streamContext.goal
   const event = streamContext.event

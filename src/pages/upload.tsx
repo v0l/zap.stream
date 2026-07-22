@@ -27,6 +27,7 @@ import { useNavigate } from "react-router"
 import { v4 as uuid } from "uuid"
 
 interface UploadStatus {
+  key: string
   type: "video" | "thumb"
   name: string
   size: number
@@ -34,6 +35,10 @@ interface UploadStatus {
   result?: BlobDescriptor
   metadata?: Nip94Tags
   error?: string
+}
+
+function makeUploadKey(size: number, server: string, type: UploadStatus["type"]) {
+  return `${size}:${server}:${type}`
 }
 
 interface UploadDraft {
@@ -52,7 +57,7 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     const draft = localStorage.getItem("upload-draft")
     if (draft) {
       const saved = JSON.parse(draft) as UploadDraft
-      this.#uploads = new Map(saved.uploads.map(a => [`${a.name}:${a.server}:${a.type}`, a]))
+      this.#uploads = new Map(saved.uploads.map(a => [a.key, a]))
       this.#id = saved.id
     }
     this.on("change", () =>
@@ -70,17 +75,17 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     return this.#id
   }
 
-  removeUpload(server: string, size: number, type: UploadStatus["type"]) {
-    const uploadKey = `${size}:${server}:${type}`
-    if (this.#uploads.delete(uploadKey)) {
+  removeUpload(key: string) {
+    if (this.#uploads.delete(key)) {
       this.notifyChange()
     }
   }
 
   addUpload(server: string, file: BlobDescriptor, meta: Nip94Tags, type: UploadStatus["type"]) {
     const name = meta.summary ?? meta.alt ?? ""
-    const uploadKey = `${file.size}:${server}:${type}`
+    const uploadKey = makeUploadKey(file.size, server, type)
     this.#uploads.set(uploadKey, {
+      key: uploadKey,
       type,
       name,
       size: meta.size ?? file.size,
@@ -98,12 +103,13 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
       this.#uploaders.set(server, uploader)
     }
 
-    const uploadKey = `${file.size}:${server}:${type}`
+    const uploadKey = makeUploadKey(file.size, server, type)
     if (this.#uploads.has(uploadKey)) {
       return
     }
 
     const status = {
+      key: uploadKey,
       type,
       name: file.name,
       size: file.size,
@@ -155,22 +161,14 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
   /**
    * Gets the [min, max] duration from all variants
    */
-  duration() {
-    const uploads = this.snapshot()
-    return uploads.reduce(
-      (acc, v) => {
-        if (v.metadata?.duration) {
-          if (acc[1] < v.metadata.duration) {
-            acc[1] = v.metadata.duration
-          }
-          if (acc[0] > v.metadata.duration) {
-            acc[0] = v.metadata.duration
-          }
-        }
-        return acc
-      },
-      [1_000_000, 0],
-    )
+  duration(): [number, number] | undefined {
+    const durations = this.snapshot()
+      .map(v => v.metadata?.duration)
+      .filter((d): d is number => typeof d === "number")
+    if (durations.length === 0) {
+      return undefined
+    }
+    return [Math.min(...durations), Math.max(...durations)]
   }
 
   /**
@@ -232,9 +230,10 @@ export function UploadPage() {
 
   function makeEvent() {
     const duration = manager.duration()
+    const isShort = duration !== undefined && duration[1] <= 60
     const eb = new EventBuilder()
-      .pubKey(login?.pubkey ?? "00".repeat(31))
-      .kind(duration[1] <= 60 ? SHORTS_KIND : VIDEO_KIND)
+      .pubKey(login?.pubkey ?? "00".repeat(32))
+      .kind(isShort ? SHORTS_KIND : VIDEO_KIND)
       .tag(["title", title])
       .content(summary)
 
@@ -356,10 +355,9 @@ export function UploadPage() {
       )
     }
     const d = manager.duration()
-    if (d[0] === 0 || d[1] === 0) {
+    if (!d || d[0] === 0 || d[1] === 0) {
       err.push(formatMessage({ defaultMessage: "No duration provided, please try another upload server." }))
-    }
-    if (Math.abs(d[0] - d[1]) >= 0.5) {
+    } else if (Math.abs(d[0] - d[1]) >= 0.5) {
       err.push(
         formatMessage({
           defaultMessage: "Video durations vary too much, are you sure each variant is the same video?",
@@ -547,7 +545,7 @@ function UploadProgress({ status }: { status: UploadStatus }) {
               defaultMessage: "Delete file",
             })}
             onClick={() => {
-              manager.removeUpload(status.server, status.size, status.type)
+              manager.removeUpload(status.key)
             }}
           />
         </div>

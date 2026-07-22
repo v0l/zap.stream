@@ -879,6 +879,9 @@
   "nwc-configured-success": {
     "defaultMessage": "NWC configured successfully!"
   },
+  "nwc-configuring-button": {
+    "defaultMessage": "Configuring..."
+  },
   "nwc-description": {
     "defaultMessage": "Configure Nostr Wallet Connect for automated topups."
   },

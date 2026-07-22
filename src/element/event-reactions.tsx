@@ -19,7 +19,7 @@ export default function EventReactions({
   vertical?: boolean
   className?: string
 }) {
-  const link = NostrLink.fromEvent(ev)!
+  const link = NostrLink.fromEvent(ev)
   const login = useLogin()
   const system = useContext(SnortContext)
   const reactions = useReactions(`reactions:${link.id}`, [link])

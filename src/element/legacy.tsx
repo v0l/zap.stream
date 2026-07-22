@@ -30,7 +30,7 @@ export function ConnectLegacyStream() {
                 <span className="text-green-400">
                   <FormattedMessage defaultMessage="{provider} connected!" values={{ provider: v.name }} />
                 </span>
-                {v.expireTime() && v.expireTime()! < unixNow() && (
+                {(v.expireTime() ?? Number.POSITIVE_INFINITY) < unixNow() && (
                   <span className="text-red-400">
                     <FormattedMessage defaultMessage="Expired!" />
                   </span>

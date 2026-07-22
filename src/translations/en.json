@@ -290,6 +290,7 @@
   "nwc-configure-button": "Enable NWC",
   "nwc-configured": "✅ NWC is configured and ready for automated topups",
   "nwc-configured-success": "NWC configured successfully!",
+  "nwc-configuring-button": "Configuring...",
   "nwc-description": "Configure Nostr Wallet Connect for automated topups.",
   "nwc-error": "Error: {error}",
   "nwc-invalid-format": "NWC URI must start with 'nostr+walletconnect://'",

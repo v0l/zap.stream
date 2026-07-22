@@ -110,7 +110,7 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
           {status === "configuring" && (
             <>
               <Spinner />
-              <FormattedMessage defaultMessage="Configuring..." id="nwc-configure-button" />
+              <FormattedMessage defaultMessage="Configuring..." id="nwc-configuring-button" />
             </>
           )}
           {status !== "configuring" && <FormattedMessage defaultMessage="Enable NWC" id="nwc-configure-button" />}

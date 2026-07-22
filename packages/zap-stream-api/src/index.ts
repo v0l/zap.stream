@@ -1,5 +1,5 @@
 // Core types
-export { type NostrEvent, type Signer, unixNow, appendDedupe, throwIfOffline, buildUnsignedEvent } from "./types";
+export { type NostrEvent, type Signer, unixNow, appendDedupe, throwIfOffline, buildUnsignedEvent } from "./types"
 
 // Provider — the main API client
 export {
@@ -16,10 +16,10 @@ export {
   type StreamKeysResult,
   type MetricsMessage,
   type StreamInfo,
-} from "./provider";
+} from "./provider"
 
 // Game database
-export { GameDatabase, type GameInfo, type GameCover, type GameGenre } from "./game-database";
+export { GameDatabase, type GameInfo, type GameCover, type GameGenre } from "./game-database"
 
 // Constants
 export {
@@ -37,7 +37,7 @@ export {
   OLD_SHORTS_KIND,
   StreamState,
   DEFAULT_API_URL,
-} from "./constants";
+} from "./constants"
 
 // Utilities
-export { findTag, sortStreamTags, extractGameId, extractStreamInfo } from "./utils";
+export { findTag, sortStreamTags, extractGameId, extractStreamInfo } from "./utils"

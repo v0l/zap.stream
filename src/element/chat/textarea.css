@@ -10,10 +10,6 @@
 .rta__item:not(:last-child) {
   border: none;
 }
-.rta__entity--selected .emoji-item {
-  text-decoration: none;
-}
-
 .emoji-item,
 .user-item {
   color: white;
@@ -30,6 +26,10 @@
 .user-item:hover {
   color: var(--color-layer-2);
   background: white;
+}
+
+.rta__entity--selected .emoji-item {
+  text-decoration: none;
 }
 
 .user-image {

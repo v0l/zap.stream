@@ -48,7 +48,7 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           return <pre key={ctr++}>{t.raw}</pre>
         }
         case "strong": {
-          return <strong>{t.tokens ? t.tokens.map(renderToken) : t.raw}</strong>
+          return <strong key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</strong>
         }
         case "br": {
           return <br key={ctr++} />
@@ -68,13 +68,21 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
         }
         case "list": {
           if (t.ordered) {
-            return <ol className="list-decimal ml-4">{(t.items as Token[]).map(renderToken)}</ol>
+            return (
+              <ol className="list-decimal ml-4" key={ctr++}>
+                {(t.items as Token[]).map(renderToken)}
+              </ol>
+            )
           } else {
-            return <ul className="list-disc">{(t.items as Token[]).map(renderToken)}</ul>
+            return (
+              <ul className="list-disc" key={ctr++}>
+                {(t.items as Token[]).map(renderToken)}
+              </ul>
+            )
           }
         }
         case "list_item": {
-          return <li>{t.tokens ? t.tokens.map(renderToken) : t.raw}</li>
+          return <li key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</li>
         }
         case "em": {
           return <em key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</em>
@@ -125,7 +133,7 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
 
   const parsed = useMemo(() => {
     return marked.lexer(props.content)
-  }, [props.content, props.tags])
+  }, [props.content])
 
   return (
     <div className="markdown" ref={ref}>

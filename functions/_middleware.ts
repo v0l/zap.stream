@@ -1,4 +1,4 @@
-type Env = {}
+type Env = Record<string, never>
 
 const HOST = "zap.stream"
 

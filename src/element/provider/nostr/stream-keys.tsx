@@ -5,6 +5,7 @@ import { StatePill } from "@/element/state-pill"
 import type { NostrStreamProvider } from "@/providers"
 import type { StreamKeysResult } from "@/providers"
 import { eventLink, extractStreamInfo } from "@/utils"
+import type { NostrEvent } from "@snort/system"
 import { useEffect, useState } from "react"
 import { FormattedMessage } from "react-intl"
 import { Link } from "react-router"
@@ -53,8 +54,8 @@ export default function StreamKeyList({ provider }: { provider: NostrStreamProvi
               </td>
               <td>
                 {a.stream && (
-                  <Link to={`/${eventLink(a.stream as any)}`}>
-                    <StatePill state={extractStreamInfo(a.stream as any).status as StreamState} />
+                  <Link to={`/${eventLink(a.stream as unknown as NostrEvent)}`}>
+                    <StatePill state={extractStreamInfo(a.stream as unknown as NostrEvent).status as StreamState} />
                   </Link>
                 )}
               </td>

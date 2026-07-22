@@ -191,12 +191,16 @@ export function LoginSignup({ close }: { close: () => void }) {
                         </Link>
                       ),
                       nostore: (
-                        <Link className="underline" target="_blank" to="">
+                        <Link
+                          className="underline"
+                          target="_blank"
+                          to="https://apps.apple.com/us/app/nostore/id1666553677"
+                        >
                           Nostore
                         </Link>
                       ),
                       alby: (
-                        <Link className="underline" target="_blank" to="">
+                        <Link className="underline" target="_blank" to="https://getalby.com/">
                           Alby
                         </Link>
                       ),

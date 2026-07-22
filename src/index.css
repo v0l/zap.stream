@@ -14,13 +14,13 @@
   --color-warning: rgb(255 86 63);
   --animate-ping-once: ping 1s cubic-bezier(0, 0, 0.2, 1);
   --animate-flash: pulse 0.5s 6 linear;
-  --bg-category-gradient-1: linear-gradient(90deg, #5433FF 0%, #3B77FF 24.5%, #20BDFF 50%, #60DCE6 74%, #A5FECB 100%);
-  --bg-category-gradient-2: linear-gradient(90deg, #9796F0 0%, #C6ADE3 46.5%, #FBC7D4 100%);
-  --bg-category-gradient-3: linear-gradient(90deg, #FFE259 0%, #FFC555 48.5%, #FFA751 100%);
-  --bg-category-gradient-4: linear-gradient(90deg, #1488CC 0%, #1F5EBF 48.5%, #2B32B2 100%);
-  --bg-category-gradient-5: linear-gradient(90deg, #CC2B5E 0%, #A33272 47.5%, #753A88 100%);
-  --bg-category-gradient-6: linear-gradient(90deg, #ED4264 0%, #F5928D 46.5%, #FFEDBC 100%);
-  --bg-category-gradient-7: linear-gradient(90deg, #A8C0FF 0%, #7375CA 50.5%, #3F2B96 100%);
+  --bg-category-gradient-1: linear-gradient(90deg, #5433ff 0%, #3b77ff 24.5%, #20bdff 50%, #60dce6 74%, #a5fecb 100%);
+  --bg-category-gradient-2: linear-gradient(90deg, #9796f0 0%, #c6ade3 46.5%, #fbc7d4 100%);
+  --bg-category-gradient-3: linear-gradient(90deg, #ffe259 0%, #ffc555 48.5%, #ffa751 100%);
+  --bg-category-gradient-4: linear-gradient(90deg, #1488cc 0%, #1f5ebf 48.5%, #2b32b2 100%);
+  --bg-category-gradient-5: linear-gradient(90deg, #cc2b5e 0%, #a33272 47.5%, #753a88 100%);
+  --bg-category-gradient-6: linear-gradient(90deg, #ed4264 0%, #f5928d 46.5%, #ffedbc 100%);
+  --bg-category-gradient-7: linear-gradient(90deg, #a8c0ff 0%, #7375ca 50.5%, #3f2b96 100%);
 }
 
 html,

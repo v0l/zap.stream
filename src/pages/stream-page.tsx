@@ -1,9 +1,8 @@
 import type { NostrLink, TaggedNostrEvent } from "@snort/system"
 import { Helmet } from "@dr.pogodin/react-helmet"
-import { Suspense, lazy } from "react"
 import { useMediaQuery } from "usehooks-ts"
 
-const LiveVideoPlayer = lazy(() => import("@/element/stream/live-video-player"))
+import LiveVideoPlayer from "@/element/stream/live-video-player"
 import { getHost } from "@/utils"
 import { LiveChat } from "@/element/chat/live-chat"
 import { StreamCards } from "@/element/stream-cards"
@@ -38,32 +37,30 @@ function StreamPageContent() {
         <meta property="og:image" content={info?.image ?? ""} />
       </Helmet>
       <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
-        <Suspense>
-          {event?.kind === LIVE_STREAM && link && (
-            <LiveVideoPlayer
-              key={link.encode()}
-              id={info?.id}
-              title={info?.title}
-              stream={info?.status === StreamState.Live ? info?.stream : info?.recording}
-              poster={info?.image}
-              status={info?.status}
-              link={link}
-              className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
-            />
-          )}
-          {event?.kind === N94_LIVE_STREAM && link && (
-            <LiveVideoPlayer
-              key={link.encode()}
-              id={info?.id}
-              title={info?.title}
-              stream={info?.stream}
-              poster={info?.image}
-              status={info?.status}
-              link={link}
-              className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
-            />
-          )}
-        </Suspense>
+        {event?.kind === LIVE_STREAM && link && (
+          <LiveVideoPlayer
+            key={link.encode()}
+            id={info?.id}
+            title={info?.title}
+            stream={info?.status === StreamState.Live ? info?.stream : info?.recording}
+            poster={info?.image}
+            status={info?.status}
+            link={link}
+            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
+          />
+        )}
+        {event?.kind === N94_LIVE_STREAM && link && (
+          <LiveVideoPlayer
+            key={link.encode()}
+            id={info?.id}
+            title={info?.title}
+            stream={info?.stream}
+            poster={info?.image}
+            status={info?.status}
+            link={link}
+            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
+          />
+        )}
         {event && (
           <div className="lg:px-5 max-lg:px-2">
             <StreamInfo ev={event} goal={goal} />

@@ -13,9 +13,7 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "bun build ./src/index.ts --outdir ./dist --target browser --format esm --sourcemap=linked --packages external && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "clean": "rm -rf dist",
@@ -33,10 +31,5 @@
     "url": "https://github.com/v0l/zap.stream.git",
     "directory": "packages/zap-stream-api"
   },
-  "keywords": [
-    "nostr",
-    "zap-stream",
-    "live-streaming",
-    "api-client"
-  ]
+  "keywords": ["nostr", "zap-stream", "live-streaming", "api-client"]
 }

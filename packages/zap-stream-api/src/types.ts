@@ -2,13 +2,13 @@
  * A Nostr event as defined in NIP-01.
  */
 export interface NostrEvent {
-  id?: string;
-  pubkey: string;
-  created_at: number;
-  kind: number;
-  tags: Array<Array<string>>;
-  content: string;
-  sig?: string;
+  id?: string
+  pubkey: string
+  created_at: number
+  kind: number
+  tags: Array<Array<string>>
+  content: string
+  sig?: string
 }
 
 /**
@@ -23,7 +23,7 @@ export interface NostrEvent {
  */
 export interface Signer {
   /** The public key (hex) associated with this signer. */
-  getPubKey(): string | Promise<string>;
+  getPubKey(): string | Promise<string>
 
   /**
    * Sign an unsigned Nostr event.
@@ -32,26 +32,26 @@ export interface Signer {
    * 2. Sign the id with the private key
    * 3. Return the event with `id` and `sig` populated
    */
-  sign(event: NostrEvent): Promise<NostrEvent>;
+  sign(event: NostrEvent): Promise<NostrEvent>
 }
 
 // ─── Utility functions ───────────────────────────────────────────────────────
 
 /** Current unix timestamp in seconds. */
 export function unixNow(): number {
-  return Math.floor(Date.now() / 1000);
+  return Math.floor(Date.now() / 1000)
 }
 
 /**
  * Concatenate two arrays, deduplicating items.
  */
 export function appendDedupe<T>(a: Array<T>, b?: Array<T>): Array<T> {
-  if (!b || b.length === 0) return a;
-  const set = new Set(a);
+  if (!b || b.length === 0) return a
+  const set = new Set(a)
   for (const item of b) {
-    set.add(item);
+    set.add(item)
   }
-  return Array.from(set);
+  return Array.from(set)
 }
 
 /**
@@ -60,7 +60,7 @@ export function appendDedupe<T>(a: Array<T>, b?: Array<T>): Array<T> {
  */
 export function throwIfOffline(): void {
   if (typeof navigator !== "undefined" && !navigator.onLine) {
-    throw new Error("Offline");
+    throw new Error("Offline")
   }
 }
 
@@ -82,5 +82,5 @@ export function buildUnsignedEvent(
     tags,
     content,
     created_at: createdAt,
-  };
+  }
 }

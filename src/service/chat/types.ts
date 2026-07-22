@@ -206,7 +206,7 @@ abstract class NoAuthChatProvider implements ChatProvider {
   }
 
   isAuthed() {
-    return getAuthToken<any>(this.id) !== undefined
+    return getAuthToken<unknown>(this.id) !== undefined
   }
 
   disconnect() {

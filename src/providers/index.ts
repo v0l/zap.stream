@@ -14,10 +14,10 @@ export {
   type StreamKeysResult,
   type MetricsMessage,
   type StreamInfo,
-} from "@zap.stream/api";
+} from "@zap.stream/api"
 
-import type { EventPublisher } from "@snort/system";
-import type { Signer, NostrEvent as ApiNostrEvent } from "@zap.stream/api";
+import type { EventPublisher } from "@snort/system"
+import type { Signer, NostrEvent as ApiNostrEvent } from "@zap.stream/api"
 
 /**
  * Adapt an `@snort/system` EventPublisher to the `@zap.stream/api` Signer interface.
@@ -27,12 +27,12 @@ export function adaptPublisher(pub: EventPublisher): Signer {
     getPubKey: () => pub.pubKey,
     sign: async (event: ApiNostrEvent) => {
       return await pub.generic(eb => {
-        let builder = eb.kind(event.kind).content(event.content).createdAt(event.created_at);
+        let builder = eb.kind(event.kind).content(event.content).createdAt(event.created_at)
         for (const tag of event.tags) {
-          builder = builder.tag(tag);
+          builder = builder.tag(tag)
         }
-        return builder;
-      });
+        return builder
+      })
     },
-  };
+  }
 }

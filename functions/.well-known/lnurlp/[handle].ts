@@ -1,4 +1,4 @@
-type Env = {}
+type Env = Record<string, never>
 
 interface NostrJson {
   names: Record<string, string>
@@ -6,7 +6,7 @@ interface NostrJson {
   nip46?: Record<string, Array<string>>
 }
 
-async function fetchNip05Pubkey(name: string, _timeout = 2_000): Promise<string | undefined> {
+async function fetchNip05Pubkey(name: string, timeout = 2_000): Promise<string | undefined> {
   if (!name) {
     return undefined
   }
@@ -15,6 +15,7 @@ async function fetchNip05Pubkey(name: string, _timeout = 2_000): Promise<string 
       headers: {
         "X-Proxy-Host": "zap.stream",
       },
+      signal: AbortSignal.timeout(timeout),
     })
     const data: NostrJson = await res.json()
     const match = Object.keys(data.names).find(n => {

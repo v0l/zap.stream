@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { FormattedMessage } from "react-intl"
 
 import type { AccountResponse, IngestEndpoint, NostrStreamProvider } from "@/providers"
+import type { NostrEvent as ApiNostrEvent, StreamInfo } from "@zap.stream/api"
 import { extractStreamInfo } from "@/utils"
 import { SendZaps } from "@/element/send-zap"
 import { StreamEditor, type StreamEditorProps } from "@/element/stream-editor"
@@ -188,7 +189,10 @@ export default function NostrProviderDialog({
     return (
       <StreamEditor
         onFinish={ex => {
-          provider.updateStreamFromEvent(ex as any, extractStreamInfo as any)
+          provider.updateStreamFromEvent(
+            ex as unknown as ApiNostrEvent,
+            extractStreamInfo as unknown as (ev: ApiNostrEvent) => StreamInfo,
+          )
           others.onFinish?.(ex)
         }}
         ev={others.ev}

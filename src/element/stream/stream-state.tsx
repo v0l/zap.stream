@@ -8,7 +8,7 @@ import { useZapGoal } from "@/hooks/goals"
 import { type StreamInfo, extractStreamInfo } from "@/utils"
 
 interface StreamState {
-  link?: NostrLink
+  link: NostrLink
   event?: NostrEvent
   goal?: NostrEvent
   relays: string[]
@@ -116,7 +116,7 @@ export function StreamContextProvider({
 
   const streamState = {
     ...state,
-    link: eventLink,
+    link: eventLink ?? link,
     event,
     goal,
     relays,

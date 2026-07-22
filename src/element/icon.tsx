@@ -28,7 +28,8 @@ export function Icon(props: Props) {
               }
             }
           : undefined
-      }>
+      }
+    >
       <title>{props.name}</title>
       <use href={href} />
     </svg>

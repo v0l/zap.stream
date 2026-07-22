@@ -4,12 +4,12 @@ import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "vite"
 //import { visualizer } from "rollup-plugin-visualizer";
 import { vitePluginVersionMark } from "vite-plugin-version-mark"
-import formatjs from '@formatjs/unplugin/vite'
+import formatjs from "@formatjs/unplugin/vite"
 
 export default defineConfig({
   plugins: [
     formatjs({
-      idInterpolationPattern: '[sha512:contenthash:base64:6]',
+      idInterpolationPattern: "[sha512:contenthash:base64:6]",
       ast: true,
     }),
     tailwindcss(),

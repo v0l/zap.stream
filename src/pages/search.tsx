@@ -7,7 +7,12 @@ import { useMemo, useState } from "react"
 import { FormattedMessage, useIntl } from "react-intl"
 import { useNavigate, useParams } from "react-router"
 
-export const SearchRelays = ["wss://search.nos.today", "wss://relay.noswhere.com", "wss://relay.ditto.pub", "wss://nostr.polyserv.xyz"]
+export const SearchRelays = [
+  "wss://search.nos.today",
+  "wss://relay.noswhere.com",
+  "wss://relay.ditto.pub",
+  "wss://nostr.polyserv.xyz",
+]
 
 export default function SearchPage() {
   const { term } = useParams()
