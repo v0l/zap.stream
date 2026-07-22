@@ -45,6 +45,19 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       })
     }
   }, [playerRef])
+
+  // hls-video-element does not destroy its hls.js instance on unmount,
+  // which leaves the playlist loading in the background after navigating away.
+  // Clearing src triggers its internal #destroy() (recommended by upstream):
+  // https://github.com/muxinc/media-elements/discussions/82
+  useEffect(() => {
+    const el = playerRef.current as HlsVideoElement | null
+    return () => {
+      if (el?.api) {
+        el.src = ""
+      }
+    }
+  }, [stream])
   function innerPlayer() {
     if (stream === "n94") {
       return (
