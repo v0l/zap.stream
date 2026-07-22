@@ -37,7 +37,7 @@ function StreamPageContent() {
         <meta property="og:description" content={descriptionContent} />
         <meta property="og:image" content={info?.image ?? ""} />
       </Helmet>
-      <div className="flex flex-col gap-2 overflow-y-auto scrollbar-hidden min-h-0 flex-1">
+      <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
         <Suspense>
           {event?.kind === LIVE_STREAM && link && (
             <LiveVideoPlayer
@@ -48,7 +48,7 @@ function StreamPageContent() {
               poster={info?.image}
               status={info?.status}
               link={link}
-              className="w-full flex-shrink-0"
+              className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
             />
           )}
           {event?.kind === N94_LIVE_STREAM && link && (
@@ -60,12 +60,12 @@ function StreamPageContent() {
               poster={info?.image}
               status={info?.status}
               link={link}
-              className="w-full flex-shrink-0"
+              className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
             />
           )}
         </Suspense>
         {event && (
-          <div className="lg:px-5 max-lg:px-2 flex-shrink-0">
+          <div className="lg:px-5 max-lg:px-2">
             <StreamInfo ev={event} goal={goal} />
             {isDesktop && <StreamCards host={getHost(event)} />}
           </div>
