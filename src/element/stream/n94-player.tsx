@@ -161,34 +161,35 @@ type N94PlayerProps = {
 } & Omit<HTMLProps<HTMLVideoElement>, "ref">
 
 export default function Nip94Player({ link, ...props }: N94PlayerProps) {
-  const ref = useRef(null)
+  const ref = useRef<HTMLVideoElement | null>(null)
   const system = useContext(SnortContext)
 
   useEffect(() => {
-    if (ref.current) {
-      const player = ref.current as HTMLVideoElement & {
-        __streamer?: mpegts.Player
-      }
+    const videoElement = ref.current
+    if (!videoElement) return
 
-      if (!player.__streamer) {
-        player.__streamer = new mpegts.MSEPlayer(
-          {
-            type: "mse",
-            isLive: true,
-            url: link.encode(),
-          },
-          {
-            system,
-            customLoader: Nip94Loader,
-          } as unknown as mpegts.Config,
-        )
+    const player = new mpegts.MSEPlayer(
+      {
+        type: "mse",
+        isLive: true,
+        url: link.encode(),
+      },
+      {
+        system,
+        customLoader: Nip94Loader,
+      } as unknown as mpegts.Config,
+    )
 
-        player.__streamer.attachMediaElement(player)
-        player.__streamer.load()
-        player.__streamer.play()
-      }
+    player.attachMediaElement(videoElement)
+    player.load()
+    player.play()
+
+    // destroy the mpegts player on unmount / link change so it doesn't
+    // keep streaming in the background
+    return () => {
+      player.destroy()
     }
-  }, [ref])
+  }, [link, system])
 
   return <video {...props} slot="media" ref={ref} playsInline={true} autoPlay={true}></video>
 }

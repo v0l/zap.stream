@@ -14,7 +14,8 @@ import { getHost } from "@/utils"
 
 function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
   const zaps = useMemo(() => {
-    return zapStream.reverse()
+    // copy before reversing to avoid mutating the input array
+    return [...zapStream].reverse()
   }, [zapStream])
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const zap = useMemo(() => {
@@ -23,11 +24,12 @@ function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
 
   useEffect(() => {
     if (zap) {
-      setTimeout(() => {
-        setCurrentIndex(currentIndex + 1)
+      const timeoutId = setTimeout(() => {
+        setCurrentIndex(prev => prev + 1)
       }, zapTime)
+      return () => clearTimeout(timeoutId)
     }
-  }, [zap])
+  }, [zap, zapTime])
 
   return zap
 }

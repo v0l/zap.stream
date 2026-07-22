@@ -41,6 +41,7 @@ function StreamPageContent() {
         <Suspense>
           {event?.kind === LIVE_STREAM && link && (
             <LiveVideoPlayer
+              key={link.encode()}
               id={info?.id}
               title={info?.title}
               stream={info?.status === StreamState.Live ? info?.stream : info?.recording}
@@ -52,6 +53,7 @@ function StreamPageContent() {
           )}
           {event?.kind === N94_LIVE_STREAM && link && (
             <LiveVideoPlayer
+              key={link.encode()}
               id={info?.id}
               title={info?.title}
               stream={info?.stream}
