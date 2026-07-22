@@ -79,7 +79,8 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
           ref={playerRef as Ref<HlsVideoElement>}
           config={{
             lowLatencyMode: true,
-            debug: true,
+            // enable on demand via: localStorage.setItem("hls-debug", "true")
+            debug: localStorage.getItem("hls-debug") === "true",
           }}
         />
       )
