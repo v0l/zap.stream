@@ -1,4 +1,4 @@
-import { BorderButton, IconButton, PrimaryButton } from "@/element/buttons"
+import { BorderButton, IconButton } from "@/element/buttons"
 import { Icon } from "@/element/icon"
 import { LoginSignup } from "@/element/login-signup"
 import Logo from "@/element/logo"
@@ -60,16 +60,16 @@ export function HeaderNav() {
       <div className="flex gap-2 items-center pr-4 py-1">
         {(!WHITELIST || WHITELIST.includes(login.pubkey)) && (
           <>
-            <PrimaryButton
-              className="flex items-center gap-2 max-md:px-3"
+            <BorderButton
+              className="flex items-center gap-2"
               onClick={() => navigate("/dashboard")}
               aria-label={formatMessage({ defaultMessage: "Go Live" })}
             >
-              <Icon name="clapperboard" size={20} />
+              <Icon name="clapperboard" size={18} />
               <span className="max-md:hidden">
                 <FormattedMessage defaultMessage="Go Live" />
               </span>
-            </PrimaryButton>
+            </BorderButton>
             <Menu
               menuClassName="ctx-menu"
               menuButton={
