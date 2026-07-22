@@ -5,30 +5,25 @@ declare const self: ServiceWorkerGlobalScope & {
 
 import { hexToBech32 } from "@snort/shared"
 import { clientsClaim } from "workbox-core"
-import { type PrecacheEntry, precacheAndRoute } from "workbox-precaching"
+import { type PrecacheEntry, cleanupOutdatedCaches, precacheAndRoute } from "workbox-precaching"
 
+// Remove precaches from older workbox versions / naming schemes.
+// NOTE: do NOT manually delete all caches on install - that races with
+// precacheAndRoute() populating the new precache during the same install
+// event and corrupts it. Workbox removes stale entries on activate.
+cleanupOutdatedCaches()
 precacheAndRoute(self.__WB_MANIFEST)
+
+// Activate new service worker immediately and take control of open pages.
+// The client (virtual:pwa-register) reloads pages on controllerchange so
+// old app code never runs against a new precache.
+self.skipWaiting()
 clientsClaim()
 
 self.addEventListener("message", event => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting()
   }
-})
-self.addEventListener("install", event => {
-  // delete all cache on install
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          console.debug("Deleting cache: ", cacheName)
-          return caches.delete(cacheName)
-        }),
-      )
-    }),
-  )
-  // always skip waiting
-  self.skipWaiting()
 })
 
 enum NotificationType {

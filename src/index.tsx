@@ -48,6 +48,19 @@ import { TosPage } from "./pages/tos"
 import { Login } from "./login"
 import { HelmetProvider } from "@dr.pogodin/react-helmet"
 import { FormattedMessage } from "react-intl"
+import { registerSW } from "virtual:pwa-register"
+
+// Register service worker with auto-update: reloads the page when a new
+// version takes control so old app code never runs against a new precache.
+// Also re-check for updates periodically for long-lived stream pages.
+registerSW({
+  immediate: true,
+  onRegisteredSW: (_url, reg) => {
+    if (reg) {
+      setInterval(() => reg.update(), 60 * 60 * 1000)
+    }
+  },
+})
 
 const hasWasm = "WebAssembly" in globalThis
 const disableWasmForPaths = ["/chat", "/alert", "/embed"]
