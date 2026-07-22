@@ -19,9 +19,9 @@ export default function GameInfoCard({ gameId, gameInfo, imageSize, showImage, l
 
   const inner = (
     <div className="flex gap-2 items-center">
-      {(showImage ?? true) && (
+      {(showImage ?? true) && game.cover?.url && (
         <img
-          src={game.cover?.url}
+          src={game.cover.url}
           style={{ height: imageSize ?? 20 }}
           className={classNames("object-contain", game.className)}
           alt="Game cover"

@@ -21,7 +21,12 @@ export default function useGameInfo(gameId?: string, gameInfo?: GameInfo) {
           })
         }
       } else {
-        new GameDatabase().getGame(gameId).then(setGame)
+        new GameDatabase()
+          .getGame(gameId)
+          .then(setGame)
+          .catch(e => {
+            console.warn("Failed to load game info", gameId, e)
+          })
       }
     }
   }, [gameInfo, gameId])
