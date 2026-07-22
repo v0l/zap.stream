@@ -17,7 +17,10 @@ export function NavLinkIcon({
   children?: ReactNode
 }) {
   const location = useLocation()
-  const active = location.pathname === route
+  // Treat the home page as the Streams route, and highlight on nested paths
+  // (e.g. /category/gaming should keep the Categories item active).
+  const path = location.pathname === "/" ? "/streams" : location.pathname
+  const active = route ? path === route || path.startsWith(`${route}/`) : false
   return (
     <Link
       to={route ?? "#"}

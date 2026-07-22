@@ -1,4 +1,4 @@
-import { BorderButton, IconButton } from "@/element/buttons"
+import { BorderButton, IconButton, PrimaryButton } from "@/element/buttons"
 import { Icon } from "@/element/icon"
 import { LoginSignup } from "@/element/login-signup"
 import Logo from "@/element/logo"
@@ -6,8 +6,8 @@ import Modal from "@/element/modal"
 import { AllLocales } from "@/intl"
 import { Login } from "@/login"
 import { profileLink } from "@/utils"
-import { Menu, MenuItem } from "@szhsin/react-menu"
-import { FormattedMessage } from "react-intl"
+import { Menu, MenuItem, MenuDivider } from "@szhsin/react-menu"
+import { FormattedMessage, useIntl } from "react-intl"
 import { Link, useNavigate } from "react-router"
 import { useLang } from "@/hooks/lang"
 import { useLogin } from "@/hooks/login"
@@ -21,6 +21,7 @@ import { WHITELIST } from "@/const"
 export function HeaderNav() {
   const navigate = useNavigate()
   const login = useLogin()
+  const { formatMessage } = useIntl()
   const [showLogin, setShowLogin] = useState(false)
   const { lang, setLang } = useLang()
   const country = lang.split(/[-_]/i)[1]?.toLowerCase()
@@ -58,23 +59,35 @@ export function HeaderNav() {
     return (
       <div className="flex gap-2 items-center pr-4 py-1">
         {(!WHITELIST || WHITELIST.includes(login.pubkey)) && (
-          <Menu
-            menuClassName="ctx-menu"
-            menuButton={
-              <IconButton iconName="plus-circle" iconSize={20} className="px-3 py-2 hover:bg-layer-1 rounded-xl" />
-            }
-            align="end"
-            gap={5}
-          >
-            <MenuItem onClick={() => navigate("/upload")}>
-              <Icon name="upload" size={24} />
-              <FormattedMessage defaultMessage="Upload" />
-            </MenuItem>
-            <MenuItem onClick={() => navigate("/dashboard")}>
-              <Icon name="signal" size={24} />
-              <FormattedMessage defaultMessage="Dashboard" />
-            </MenuItem>
-          </Menu>
+          <>
+            <PrimaryButton
+              className="flex items-center gap-2 max-md:px-3"
+              onClick={() => navigate("/dashboard")}
+              aria-label={formatMessage({ defaultMessage: "Go Live" })}
+            >
+              <Icon name="clapperboard" size={20} />
+              <span className="max-md:hidden">
+                <FormattedMessage defaultMessage="Go Live" />
+              </span>
+            </PrimaryButton>
+            <Menu
+              menuClassName="ctx-menu"
+              menuButton={
+                <IconButton iconName="plus-circle" iconSize={20} className="px-3 py-2 hover:bg-layer-1 rounded-xl" />
+              }
+              align="end"
+              gap={5}
+            >
+              <MenuItem onClick={() => navigate("/upload")}>
+                <Icon name="upload" size={24} />
+                <FormattedMessage defaultMessage="Upload" />
+              </MenuItem>
+              <MenuItem onClick={() => navigate("/widgets")}>
+                <Icon name="widget" size={24} />
+                <FormattedMessage defaultMessage="Widgets" />
+              </MenuItem>
+            </Menu>
+          </>
         )}
         <Menu
           menuClassName="ctx-menu"
@@ -101,18 +114,16 @@ export function HeaderNav() {
             <Icon name="settings" size={24} />
             <FormattedMessage defaultMessage="Settings" />
           </MenuItem>
-          <MenuItem onClick={() => navigate("/widgets")}>
-            <Icon name="widget" size={24} />
-            <FormattedMessage defaultMessage="Widgets" />
-          </MenuItem>
+          <MenuDivider />
           <MenuItem onClick={() => navigate("/faq")}>
-            <Icon name="link" size={24} />
+            <Icon name="message-circle" size={24} />
             <FormattedMessage defaultMessage="FAQ" />
           </MenuItem>
           <MenuItem onClick={() => window.open("https://discord.gg/Wtg6NVDdbT")}>
-            <Icon name="link" size={24} />
+            <Icon name="message-circle" size={24} />
             Discord
           </MenuItem>
+          <MenuDivider />
           <MenuItem onClick={() => Login.logout()}>
             <Icon name="logout" size={24} />
             <FormattedMessage defaultMessage="Logout" />
