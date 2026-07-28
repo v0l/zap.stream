@@ -77,6 +77,7 @@ export const P_TAG_HOST_WHITELIST = [
   "81ee947168db2f909895dbd4f71534f4040035575f58156e9a3802d1dd467e1d", //primalstream
   "f6a25b87f7e7bec9a691e37851b1b57a7b49fa00bb431280303002a3ebca4891", //streamstr (Grinder server)
   "85df822a86599ffbe8143db1e1e1bf2d162fa60fc685c65515963e67cfd7499f", //shosho streaming server
+  "d3495bbc01ac822936ee78943d0db59768278cf834f63d6a356f85823f7121ff", //letsfolive streaming server
 ]
 
 /// API client ID for twitch chat integration
