@@ -14,8 +14,8 @@
         "@noble/hashes": "^2.2.0",
         "@scure/base": "^2.2.0",
         "@snort/shared": "^2.0.1",
-        "@snort/system": "^2.1.6",
-        "@snort/system-react": "^2.1.6",
+        "@snort/system": "^2.1.7",
+        "@snort/system-react": "^2.2.0",
         "@snort/system-wasm": "^2.0.0",
         "@snort/wallet": "^2.0.4",
         "@snort/worker-relay": "^2.0.1",
@@ -529,9 +529,9 @@
 
     "@snort/shared": ["@snort/shared@2.0.1", "", { "dependencies": { "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "@scure/base": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1", "light-bolt11-decoder": "^3.2.0", "uuid": "^13.0.0" } }, "sha512-480z5WV7ZiMEIyKOkh7DSc3ZJ4YW+8GWOq7npwJb6qwuFSQeOYwumGns5qnIqelxkw5zPC6aV2hTJiJwdJ3PQQ=="],
 
-    "@snort/system": ["@snort/system@2.1.6", "", { "dependencies": { "@noble/ciphers": "^2.0.1", "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "@scure/base": "^2.0.0", "@snort/shared": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1", "isomorphic-ws": "^5.0.0", "nostr-social-graph": "^1.0.33", "typescript-lru-cache": "^2.0.0", "ws": "^8.18.3" } }, "sha512-YIKXvGjJB388zddZfW6BBC3tNh8lSDQlztP9J+qn4cDSDYUSrb9kIxpRFhjckxgKTLN0eW5k44/Gy4k8+MZ20Q=="],
+    "@snort/system": ["@snort/system@2.1.7", "", { "dependencies": { "@noble/ciphers": "^2.0.1", "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "@scure/base": "^2.0.0", "@snort/shared": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1", "isomorphic-ws": "^5.0.0", "nostr-social-graph": "^1.0.33", "typescript-lru-cache": "^2.0.0", "ws": "^8.18.3" } }, "sha512-nolB8ispmHez02TWBenM0xFu03EJQ/TRQ7os5pdCUeerQzqcS/8JkeQQ6xoLP0HtryIeiiymmfMyVh8VmR30bw=="],
 
-    "@snort/system-react": ["@snort/system-react@2.1.6", "", { "peerDependencies": { "@snort/shared": "^2.0.0", "@snort/system": "^2.1.5", "react": "^19.2.3", "react-dom": "^19.2.5" } }, "sha512-xkLLcSC6jLCpmf16OQCISq1LyhpKEgdGeY0KWPk/XK50IaDytcqB7wdWd0p9ANtnV4nYlJXEFtb1IpvX+N+VcQ=="],
+    "@snort/system-react": ["@snort/system-react@2.2.0", "", { "peerDependencies": { "@snort/shared": "^2.0.0", "@snort/system": "^2.1.5", "preact": "^10.0.0", "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["preact", "react", "react-dom"] }, "sha512-PBIaBcwXADamxLE3j7moFFCVuL7oL5Si97JKupycrQKeEJ8Tu+FQAlA9PTm1ddyRTbkk5Dlzg26K2zAk19ulAg=="],
 
     "@snort/system-wasm": ["@snort/system-wasm@2.0.0", "", {}, "sha512-70lg/pSkhQyBCluskA+Va5VY2Qcdpcm8AmAdYrgDuMPLdmHBTLQr8/s/AVeDNnQOnbPMzieN7mWjqbQnnG+hGQ=="],
 
