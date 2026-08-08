@@ -119,9 +119,9 @@ export function HeaderNav() {
             <Icon name="message-circle" size={24} />
             <FormattedMessage defaultMessage="FAQ" />
           </MenuItem>
-          <MenuItem onClick={() => window.open("https://discord.gg/Wtg6NVDdbT")}>
+          <MenuItem onClick={() => window.open("https://web.nostrord.com/#/g/relay.zap.stream/acleprush")}>
             <Icon name="message-circle" size={24} />
-            Discord
+            Chat
           </MenuItem>
           <MenuDivider />
           <MenuItem onClick={() => Login.logout()}>
