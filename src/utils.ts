@@ -5,6 +5,7 @@ import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, P_TAG_HOST_WHITELIST, 
 import type { GameInfo } from "@/service/game-database"
 import { AllCategories } from "./pages/category"
 import { NostrPrefix } from "@snort/shared"
+import { parseYouTubeUrl } from "@/youtube"
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -126,63 +127,6 @@ export interface StreamInfo {
   gameId?: string
   gameInfo?: GameInfo
   streams: Array<string>
-}
-
-export interface YouTubeLink {
-  id: string
-  /** Start offset in seconds (from t=/start= params) */
-  start?: number
-}
-
-const YOUTUBE_ID_RE = /^[a-zA-Z0-9_-]{11}$/
-
-function parseYouTubeTime(v?: string | null): number | undefined {
-  if (!v) return undefined
-  const n = Number(v)
-  if (!Number.isNaN(n) && n > 0) return n
-  // e.g. 1h2m3s
-  const m = v.match(/^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/i)
-  if (!m) return undefined
-  const total = Number(m[1] ?? 0) * 3600 + Number(m[2] ?? 0) * 60 + Number(m[3] ?? 0)
-  return total > 0 ? total : undefined
-}
-
-/**
- * Parse a YouTube link (watch, shorts, live, embed, youtu.be, music.youtube.com)
- * into a video id with an optional start offset. Returns undefined for non-YouTube URLs.
- */
-export function parseYouTubeUrl(url: string): YouTubeLink | undefined {
-  try {
-    const u = new URL(url)
-    const host = u.hostname.replace(/^(www|m|music)\./, "")
-    if (host !== "youtube.com" && host !== "youtu.be") return undefined
-
-    let id = ""
-    if (host === "youtu.be") {
-      id = u.pathname.split("/").filter(Boolean)[0] ?? ""
-    } else {
-      const v = u.searchParams.get("v")
-      if (v) {
-        id = v
-      } else {
-        const parts = u.pathname.split("/").filter(Boolean)
-        if (parts.length >= 2 && ["watch", "shorts", "live", "embed", "v"].includes(parts[0])) {
-          id = parts[1]
-        }
-      }
-    }
-    if (!YOUTUBE_ID_RE.test(id)) return undefined
-
-    return { id, start: parseYouTubeTime(u.searchParams.get("t") ?? u.searchParams.get("start")) }
-  } catch {
-    return undefined
-  }
-}
-
-/** Thumbnail for a YouTube link, for use where a video file can't be displayed as an image */
-export function youtubeThumbnailUrl(url: string): string | undefined {
-  const yt = parseYouTubeUrl(url)
-  return yt ? `https://i.ytimg.com/vi/${yt.id}/hqdefault.jpg` : undefined
 }
 
 export function canPlayUrl(url: string) {
