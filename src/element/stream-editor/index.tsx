@@ -217,6 +217,9 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           {status === StreamState.Ended && (
             <StreamInput label={<FormattedMessage defaultMessage="Recording URL" />}>
               <input type="text" value={recording} onChange={e => setRecording(e.target.value)} />
+              <small>
+                <FormattedMessage defaultMessage="HLS, MP4 or YouTube link" />
+              </small>
             </StreamInput>
           )}
         </>

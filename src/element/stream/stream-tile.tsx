@@ -6,7 +6,7 @@ import { getName } from "../profile"
 import { N94_LIVE_STREAM, NIP5_DOMAIN, StreamState } from "@/const"
 import useImgProxy from "@/hooks/img-proxy"
 import { formatSats } from "@/number"
-import { extractStreamInfo, getHost, profileLink } from "@/utils"
+import { extractStreamInfo, getHost, profileLink, youtubeThumbnailUrl } from "@/utils"
 import { useUserProfile } from "@snort/system-react"
 import classNames from "classnames"
 import { useEffect, useState } from "react"
@@ -81,9 +81,9 @@ export function StreamTile({
     }
   }, [status, videoLink])
 
-  const [hasImg, setHasImage] = useState(
-    (image?.length ?? 0) > 0 || (thumbnail?.length ?? 0) > 0 || (recording?.length ?? 0) > 0,
-  )
+  // YouTube links can't be used as an <img> src; use the video thumbnail instead
+  const imgSrc = image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined) ?? recording ?? ""
+  const [hasImg, setHasImage] = useState(imgSrc.length > 0)
   return (
     <div
       className={classNames("flex gap-2", className, {
@@ -108,7 +108,7 @@ export function StreamTile({
               loading="lazy"
               alt={title ?? ""}
               className="w-full h-inherit object-cover"
-              src={proxy(image ?? thumbnail ?? recording ?? "")}
+              src={proxy(imgSrc)}
               onError={() => {
                 setHasImage(false)
               }}

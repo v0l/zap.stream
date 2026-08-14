@@ -20,7 +20,9 @@ import { MediaRenditionMenu, MediaRenditionMenuButton } from "media-chrome/react
 import HlsVideo from "hls-video-element/react"
 import type { HlsVideoElement } from "hls-video-element"
 import { StreamState } from "@/const"
+import { parseYouTubeUrl } from "@/utils"
 import type { NostrLink } from "@snort/system"
+import YouTubePlayer from "./youtube-player"
 const Nip94Player = lazy(() => import("./n94-player"))
 const MoqPlayer = lazy(() => import("./moq-player"))
 
@@ -36,6 +38,7 @@ type VideoPlayerProps = {
 export default function LiveVideoPlayer({ title, stream, status, poster, link, ...props }: VideoPlayerProps) {
   const playerRef = useRef<HTMLVideoElement | null>(null)
   const [canCast, setCanCast] = useState(false)
+  const yt = stream ? parseYouTubeUrl(stream) : undefined
 
   useEffect(() => {
     if (playerRef.current && "remote" in playerRef.current) {
@@ -94,6 +97,19 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       // other video formats (e.g. mp4)
       return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} ref={playerRef} />
     }
+  }
+
+  // YouTube links can't be played by a <video> element or hls.js; embed them
+  // in an iframe instead (its controls are provided by the YouTube player).
+  if (yt) {
+    return (
+      <div className={classNames(props.className, "h-inherit aspect-video w-full")}>
+        <div className="flex flex-col h-full w-full bg-black">
+          <div className="py-1 text-center w-full text-2xl bg-primary">{title}</div>
+          <YouTubePlayer video={yt} title={title} className="flex-1 min-h-0 w-full border-0" />
+        </div>
+      </div>
+    )
   }
 
   return (
