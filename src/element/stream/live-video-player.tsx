@@ -20,7 +20,7 @@ import { MediaRenditionMenu, MediaRenditionMenuButton } from "media-chrome/react
 import HlsVideo from "hls-video-element/react"
 import type { HlsVideoElement } from "hls-video-element"
 import { StreamState } from "@/const"
-import { parseYouTubeUrl } from "@/utils"
+import { parseYouTubeUrl } from "@/youtube"
 import type { NostrLink } from "@snort/system"
 import YouTubePlayer from "./youtube-player"
 const Nip94Player = lazy(() => import("./n94-player"))
@@ -99,14 +99,21 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
     }
   }
 
+  const titleBar = (
+    <div slot="top-chrome" className="py-1 text-center w-full text-2xl bg-primary">
+      {title}
+    </div>
+  )
+
   // YouTube links can't be played by a <video> element or hls.js; embed them
-  // in an iframe instead (its controls are provided by the YouTube player).
+  // in an iframe instead. Media Chrome can't drive a cross-origin iframe, so
+  // the controls (and poster/PiP/cast) come from the YouTube player itself.
   if (yt) {
     return (
       <div className={classNames(props.className, "h-inherit aspect-video w-full")}>
         <div className="flex flex-col h-full w-full bg-black">
-          <div className="py-1 text-center w-full text-2xl bg-primary">{title}</div>
-          <YouTubePlayer video={yt} title={title} className="flex-1 min-h-0 w-full border-0" />
+          {titleBar}
+          <YouTubePlayer id={props.id} video={yt} title={title} className="flex-1 min-h-0 w-full border-0" />
         </div>
       </div>
     )
@@ -122,9 +129,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
         } as CSSProperties
       }
     >
-      <div slot="top-chrome" className="py-1 text-center w-full text-2xl bg-primary">
-        {title}
-      </div>
+      {titleBar}
       {innerPlayer()}
       <MediaRenditionMenu hidden anchor="auto" />
       {poster && <MediaPosterImage slot="poster" src={poster} />}

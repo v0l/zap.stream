@@ -6,7 +6,8 @@ import { getName } from "../profile"
 import { N94_LIVE_STREAM, NIP5_DOMAIN, StreamState } from "@/const"
 import useImgProxy from "@/hooks/img-proxy"
 import { formatSats } from "@/number"
-import { extractStreamInfo, getHost, profileLink, youtubeThumbnailUrl } from "@/utils"
+import { extractStreamInfo, getHost, profileLink } from "@/utils"
+import { youtubeThumbnailUrl } from "@/youtube"
 import { useUserProfile } from "@snort/system-react"
 import classNames from "classnames"
 import { useEffect, useState } from "react"
@@ -83,7 +84,9 @@ export function StreamTile({
 
   // YouTube links can't be used as an <img> src; use the video thumbnail instead
   const imgSrc = image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined) ?? recording ?? ""
-  const [hasImg, setHasImage] = useState(imgSrc.length > 0)
+  // track failures per-src so a late-arriving event (or a changed image) is retried
+  const [failedSrc, setFailedSrc] = useState<string>()
+  const hasImg = imgSrc.length > 0 && failedSrc !== imgSrc
   return (
     <div
       className={classNames("flex gap-2", className, {
@@ -110,7 +113,7 @@ export function StreamTile({
               className="w-full h-inherit object-cover"
               src={proxy(imgSrc)}
               onError={() => {
-                setHasImage(false)
+                setFailedSrc(imgSrc)
               }}
             />
           ) : (

@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["bun", "vite/client"],
 
     /* Linting */
     "strict": true,
