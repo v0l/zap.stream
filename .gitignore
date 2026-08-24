@@ -25,3 +25,5 @@ yarn-error.log*
 dev-dist/
 .wrangler/
 packages/*/dist/
+# playwright mcp
+.playwright-mcp/
