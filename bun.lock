@@ -14,7 +14,7 @@
         "@noble/hashes": "^2.3.0",
         "@scure/base": "^2.3.0",
         "@snort/shared": "^2.0.1",
-        "@snort/system": "^2.1.8",
+        "@snort/system": "^2.1.9",
         "@snort/system-react": "^2.2.0",
         "@snort/system-wasm": "^2.0.0",
         "@snort/wallet": "^2.0.4",
@@ -530,7 +530,7 @@
 
     "@snort/shared": ["@snort/shared@2.0.1", "", { "dependencies": { "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "@scure/base": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1", "light-bolt11-decoder": "^3.2.0", "uuid": "^13.0.0" } }, "sha512-480z5WV7ZiMEIyKOkh7DSc3ZJ4YW+8GWOq7npwJb6qwuFSQeOYwumGns5qnIqelxkw5zPC6aV2hTJiJwdJ3PQQ=="],
 
-    "@snort/system": ["@snort/system@2.1.8", "", { "dependencies": { "@noble/ciphers": "^2.0.1", "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "@scure/base": "^2.0.0", "@snort/shared": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1", "isomorphic-ws": "^5.0.0", "nostr-social-graph": "^1.0.33", "typescript-lru-cache": "^2.0.0", "ws": "^8.18.3" } }, "sha512-RLp/ddhItXCesMpFGg88aApJ9hwj7PM9kidDwd6TIr2PYu2n+nZArWS27ZYR8335EKVvreHL7iiUFE8CSzlvJA=="],
+    "@snort/system": ["@snort/system@2.1.9", "", { "dependencies": { "@noble/ciphers": "^2.0.1", "@noble/curves": "^2.0.1", "@noble/hashes": "^2.0.1", "@scure/base": "^2.0.0", "@snort/shared": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1", "isomorphic-ws": "^5.0.0", "nostr-social-graph": "^1.0.33", "typescript-lru-cache": "^2.0.0", "ws": "^8.18.3" } }, "sha512-PzcAQgf7pYMb2DoMZI63jpv6T42PseqKFbwaJkQZybvNovwkshHx1LI9ZTSDKMK2nXNqEXZY1e4iUj9lOvIPVA=="],
 
     "@snort/system-react": ["@snort/system-react@2.2.0", "", { "peerDependencies": { "@snort/shared": "^2.0.0", "@snort/system": "^2.1.5", "preact": "^10.0.0", "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["preact", "react", "react-dom"] }, "sha512-PBIaBcwXADamxLE3j7moFFCVuL7oL5Si97JKupycrQKeEJ8Tu+FQAlA9PTm1ddyRTbkk5Dlzg26K2zAk19ulAg=="],
 
