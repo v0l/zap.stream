@@ -12,7 +12,7 @@
     "@noble/hashes": "^2.3.0",
     "@scure/base": "^2.3.0",
     "@snort/shared": "^2.0.1",
-    "@snort/system": "^2.1.7",
+    "@snort/system": "^2.1.8",
     "@snort/system-react": "^2.2.0",
     "@snort/system-wasm": "^2.0.0",
     "@snort/wallet": "^2.0.4",
