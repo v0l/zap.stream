@@ -18,7 +18,7 @@
         "@snort/system-react": "^2.2.0",
         "@snort/system-wasm": "^2.0.0",
         "@snort/wallet": "^2.0.4",
-        "@snort/worker-relay": "^2.0.1",
+        "@snort/worker-relay": "^3.0.1",
         "@szhsin/react-menu": "^4.5.2",
         "@types/webscopeio__react-textarea-autocomplete": "^4.7.5",
         "@webscopeio/react-textarea-autocomplete": "^4.9.2",
@@ -538,9 +538,9 @@
 
     "@snort/wallet": ["@snort/wallet@2.0.4", "", { "dependencies": { "@scure/base": "^2.0.0", "debug": "^4.4.3", "eventemitter3": "^5.0.1" }, "peerDependencies": { "@snort/shared": "^2.0.0", "@snort/system": "^2.1.5" } }, "sha512-hJjZ7exrjGMzGkezgBtfX9AUR28BNlp7a75Uh+wkEjeOyvhYcJkomgN8CI/DPqjScqkdM16BFbtrdTbCa+E9Iw=="],
 
-    "@snort/worker-relay": ["@snort/worker-relay@2.0.1", "", { "dependencies": { "@sqlite.org/sqlite-wasm": "^3.50.4-build1", "eventemitter3": "^5.0.1", "uuid": "^13.0.0" } }, "sha512-YRsb/ZmAzKpZM7wEfkAiavF5KRtz2gOWDFRkkbWkmQ88N8IUfJD8YwENd7cYTwOzxz3+N+9So6XluVCcuJ0o+A=="],
+    "@snort/worker-relay": ["@snort/worker-relay@3.0.1", "", { "dependencies": { "@sqlite.org/sqlite-wasm": "3.53.4-build1", "eventemitter3": "^5.0.4", "uuid": "^14.0.2" } }, "sha512-JALByYo43mn5ePUpnmbiH035eN0X2cnZBpe34McG2+YCxkJkL5y3oSRVhvXRnXD9gZmu5BmOQ8Aly3ZWzGDRiA=="],
 
-    "@sqlite.org/sqlite-wasm": ["@sqlite.org/sqlite-wasm@3.50.4-build1", "", { "bin": { "sqlite-wasm": "bin/index.js" } }, "sha512-Qig2Wso7gPkU1PtXwFzndh+CTRzrIFxVGqv6eCetjU7YqxlHItj+GvQYwYTppCRgAPawtRN/4AJcEgB9xDHGug=="],
+    "@sqlite.org/sqlite-wasm": ["@sqlite.org/sqlite-wasm@3.53.4-build1", "", {}, "sha512-U8pvL0patYHMgieD8JxxYJTlh9m1LUX8+BDYb7MiKQzBI89f2qbdmdcG/PvnPaLm9wsBbv4VlVG453ixnxBOnA=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
@@ -1475,8 +1475,6 @@
     "@snort/shared/uuid": ["uuid@13.0.0", "", { "bin": { "uuid": "dist-node/bin/uuid" } }, "sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w=="],
 
     "@snort/wallet/@scure/base": ["@scure/base@2.2.0", "", {}, "sha512-b8XEupJibegiXV+tDUseI8oLQc8ei3d/4Jkb2RpbHh3MfE054ov3uIz2dhFkB3FI8iwYkEh0gGCApkrYggkPNg=="],
-
-    "@snort/worker-relay/uuid": ["uuid@13.0.0", "", { "bin": { "uuid": "dist-node/bin/uuid" } }, "sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w=="],
 
     "@tailwindcss/node/lightningcss": ["lightningcss@1.32.0", "", { "dependencies": { "detect-libc": "^2.0.3" }, "optionalDependencies": { "lightningcss-android-arm64": "1.32.0", "lightningcss-darwin-arm64": "1.32.0", "lightningcss-darwin-x64": "1.32.0", "lightningcss-freebsd-x64": "1.32.0", "lightningcss-linux-arm-gnueabihf": "1.32.0", "lightningcss-linux-arm64-gnu": "1.32.0", "lightningcss-linux-arm64-musl": "1.32.0", "lightningcss-linux-x64-gnu": "1.32.0", "lightningcss-linux-x64-musl": "1.32.0", "lightningcss-win32-arm64-msvc": "1.32.0", "lightningcss-win32-x64-msvc": "1.32.0" } }, "sha512-NXYBzinNrblfraPGyrbPoD19C1h9lfI/1mzgWYvXUTe414Gz/X1FD2XBZSZM7rRTrMA8JL3OtAaGifrIKhQ5yQ=="],
 

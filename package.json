@@ -16,7 +16,7 @@
     "@snort/system-react": "^2.2.0",
     "@snort/system-wasm": "^2.0.0",
     "@snort/wallet": "^2.0.4",
-    "@snort/worker-relay": "^2.0.1",
+    "@snort/worker-relay": "^3.0.1",
     "@szhsin/react-menu": "^4.5.2",
     "@types/webscopeio__react-textarea-autocomplete": "^4.7.5",
     "@webscopeio/react-textarea-autocomplete": "^4.9.2",
