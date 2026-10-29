@@ -13,7 +13,7 @@ import { StreamContextProvider, useStream } from "@/element/stream/stream-state"
 
 function StreamPageContent() {
   const { link, info, event, goal } = useStream()
-  const isDesktop = useMediaQuery("(min-width: 1280px)")
+  const isDesktop = useMediaQuery("(min-width: 1280px)", { initializeWithValue: false })
   const isGrownUp = useContentWarning()
 
   if (info?.contentWarning && !isGrownUp) {

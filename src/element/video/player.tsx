@@ -24,7 +24,7 @@ export default function VideoPlayer({
   showWideMode?: boolean
   loop?: boolean
 }) {
-  const isDesktop = useMediaQuery("(min-width: 1280px)")
+  const isDesktop = useMediaQuery("(min-width: 1280px)", { initializeWithValue: false })
   const ctx = useVideoPlayerContext()
 
   const ar = ctx.video?.bestAspectRatio() ?? 10 / 16

@@ -3,6 +3,7 @@ import type React from "react"
 import { type ReactNode, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { IconButton } from "./buttons"
+import { useHydrated } from "@/hooks/hydrated"
 
 export interface ModalProps {
   id: string
@@ -17,6 +18,7 @@ export interface ModalProps {
 }
 
 export default function Modal(props: ModalProps) {
+  const hydrated = useHydrated()
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape" && props.onClose) {
       props.onClose(e)
@@ -38,7 +40,7 @@ export default function Modal(props: ModalProps) {
     props.onClose?.(e)
   }
 
-  if (typeof document === "undefined") return null
+  if (!hydrated) return null
 
   return createPortal(
     <div

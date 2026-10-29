@@ -4,6 +4,7 @@ import "./fonts/outfit/outfit.css"
 
 import React from "react"
 import ReactDOM from "react-dom/client"
+import { hydrateRoot } from "react-dom/client"
 import { EventBuilder, NostrSystem } from "@snort/system"
 import { SnortContext } from "@snort/system-react"
 import { RouterProvider, createBrowserRouter } from "react-router"
@@ -19,6 +20,8 @@ import { LayoutContextProvider } from "./pages/layout/context"
 import { Login } from "./login"
 import { HelmetProvider } from "@dr.pogodin/react-helmet"
 import { registerSW } from "virtual:pwa-register"
+import { HydrationDone } from "./ssr/hydration-done"
+import { finishHydration, loadHydration, seed, seedProfiles } from "./ssr/client"
 
 // Register service worker with auto-update: reloads the page when a new
 // version takes control so old app code never runs against a new precache.
@@ -46,6 +49,15 @@ export const System = new NostrSystem({
   buildFollowGraph: true,
   disableSyncModule: true,
 })
+const serverRendered = loadHydration()
+const systemQuery = System.Query.bind(System)
+System.Query = rb => {
+  seed(rb)
+  return systemQuery(rb)
+}
+if (serverRendered) {
+  seedProfiles(profile => System.profileLoader.cache.set(profile))
+}
 Object.entries(defaultRelays).forEach(params => {
   const [relay, settings] = params
   System.ConnectToRelay(relay, settings)
@@ -81,23 +93,32 @@ async function doInit() {
   }
 }
 
-const router = createBrowserRouter(
-  makeRoutes(async () => {
-    await doInit()
-    return null
-  }),
-)
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement)
-root.render(
+const routes = makeRoutes(async () => {
+  await doInit()
+  return null
+})
+const router = createBrowserRouter(routes, serverRendered ? { hydrationData: { loaderData: { "0": null }, errors: null } } : undefined)
+if (serverRendered) {
+  void doInit()
+}
+const root = document.getElementById("root") as HTMLDivElement
+const tree = (
   <React.StrictMode>
     <HelmetProvider>
       <SnortContext value={System}>
         <IntlProvider>
           <LayoutContextProvider>
             <RouterProvider router={router} />
+            <HydrationDone />
           </LayoutContextProvider>
         </IntlProvider>
       </SnortContext>
     </HelmetProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+if (serverRendered && root.hasChildNodes()) {
+  hydrateRoot(root, tree)
+} else {
+  finishHydration()
+  ReactDOM.createRoot(root).render(tree)
+}

@@ -6,7 +6,7 @@ import Flyout from "@/element/flyout"
 
 export function LeftNav() {
   const layout = useLayout()
-  const isDesktop = useMediaQuery("(min-width: 1280px)")
+  const isDesktop = useMediaQuery("(min-width: 1280px)", { initializeWithValue: false })
   const expandLabels = !isDesktop || layout.leftNavExpand
 
   function hideAfterMobileNav() {
