@@ -1,0 +1,65 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: docker-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - platform: linux/amd64
+            runner: ubuntu-latest
+          - platform: linux/arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: voidic
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile.ssr
+          platforms: ${{ matrix.platform }}
+          outputs: type=image,name=voidic/zap-stream,push-by-digest=true,name-canonical=true,push=true
+          cache-from: type=gha,scope=${{ matrix.runner }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.runner }}
+      - run: |
+          mkdir -p /tmp/digests
+          digest="${{ steps.build.outputs.digest }}"
+          touch "/tmp/digests/${digest#sha256:}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digests-${{ matrix.runner }}
+          path: /tmp/digests/*
+          if-no-files-found: error
+
+  merge:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: /tmp/digests
+          pattern: digests-*
+          merge-multiple: true
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: voidic
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - working-directory: /tmp/digests
+        run: |
+          docker buildx imagetools create -t voidic/zap-stream:latest \
+            $(printf 'voidic/zap-stream@sha256:%s ' *)
