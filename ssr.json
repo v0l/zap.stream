@@ -1,0 +1,156 @@
+{
+  "site_name": "zap.stream",
+  "description": "Nostr live streaming powered by Bitcoin lightning. Stream freely with Bitcoin payments, no censorship, open source.",
+  "default_image": "/logo.png",
+  "public_url": "https://zap.stream",
+  "relays": [
+    "wss://relay.snort.social",
+    "wss://nos.lol",
+    "wss://relay.damus.io",
+    "wss://nostr.wine",
+    "wss://relay.primal.net",
+    "wss://relay.fountain.fm",
+    "wss://relay.divine.video"
+  ],
+  "kinds": [
+    0,
+    5,
+    7,
+    1311,
+    9735,
+    10002,
+    10063,
+    30311,
+    30313,
+    30315,
+    21,
+    22,
+    34235,
+    34236,
+    1111,
+    30023
+  ],
+  "max_events": 300000,
+  "dist": "/app/dist",
+  "bundle": "/app/dist/ssr/render.js",
+  "backfill": [
+    {
+      "filter": {
+        "kinds": [
+          30311,
+          30313
+        ]
+      },
+      "max": 20000,
+      "priority": true
+    },
+    {
+      "filter": {
+        "kinds": [
+          21,
+          22,
+          34235,
+          34236
+        ]
+      },
+      "max": 20000
+    },
+    {
+      "filter": {
+        "kinds": [
+          9735,
+          1311
+        ]
+      },
+      "max": 20000
+    }
+  ],
+  "static_paths": [
+    "/",
+    "/streams",
+    "/videos",
+    "/shorts",
+    "/category",
+    "/tos",
+    "/faq",
+    "/providers"
+  ],
+  "warm": [
+    "/",
+    "/streams",
+    "/videos"
+  ],
+  "sitemap": [
+    {
+      "name": "streams",
+      "filter": {
+        "kinds": [
+          30311
+        ]
+      },
+      "encoding": "naddr",
+      "prefix": "/",
+      "chunk": 40000,
+      "changefreq": "daily",
+      "priority": "0.7"
+    },
+    {
+      "name": "videos",
+      "filter": {
+        "kinds": [
+          21,
+          22,
+          34235,
+          34236
+        ]
+      },
+      "encoding": "auto",
+      "prefix": "/",
+      "chunk": 40000,
+      "priority": "0.5"
+    }
+  ],
+  "proxy": [
+    {
+      "prefix": "/.well-known/lnurlp/",
+      "upstream": "https://api-core.zap.stream/.well-known/lnurlp/",
+      "resolve_nip05": "https://api.snort.social/.well-known/nostr.json?name={name}",
+      "resolve_headers": {
+        "X-Proxy-Host": "zap.stream"
+      }
+    },
+    {
+      "prefix": "/.well-known/nostr.json",
+      "upstream": "https://api.snort.social",
+      "forward_path": true,
+      "headers": {
+        "X-Proxy-Host": "{host}"
+      }
+    }
+  ],
+  "opengraph": {
+    "twitter_site": "@zap_stream",
+    "player": "https://zap.stream/embed/{nevent}",
+    "nip05_url": "https://api.snort.social/.well-known/nostr.json?name={name}",
+    "nip05_headers": {
+      "X-Proxy-Host": "{host}"
+    },
+    "nip05_domain": "zap.stream",
+    "skip_paths": [
+      "/app",
+      "/streams",
+      "/videos",
+      "/shorts",
+      "/upload",
+      "/settings",
+      "/widgets",
+      "/dashboard",
+      "/search",
+      "/category",
+      "/faq",
+      "/providers",
+      "/tos",
+      "/debug"
+    ]
+  }
+}

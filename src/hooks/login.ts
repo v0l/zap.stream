@@ -6,6 +6,7 @@ export function useLogin() {
   const session = useSyncExternalStore(
     c => Login.hook(c),
     () => Login.snapshot(),
+    () => undefined,
   )
   if (!session) return
   return {

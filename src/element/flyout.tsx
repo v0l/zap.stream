@@ -23,6 +23,8 @@ export default function Flyout({
         : `translate(${show ? "0" : "calc(-1 * var(--flyout-w))"},0)`,
   } as CSSProperties
 
+  if (typeof document === "undefined") return null
+
   return createPortal(
     <div
       className={classNames("absolute z-20 top-0 overflow-hidden", {

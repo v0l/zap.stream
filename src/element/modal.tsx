@@ -38,6 +38,8 @@ export default function Modal(props: ModalProps) {
     props.onClose?.(e)
   }
 
+  if (typeof document === "undefined") return null
+
   return createPortal(
     <div
       className={classNames(

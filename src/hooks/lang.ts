@@ -20,6 +20,7 @@ export function useLang() {
   const store = useSyncExternalStore(
     c => LangSelector.hook(c),
     () => LangSelector.snapshot(),
+    () => DefaultLocale,
   )
 
   return {

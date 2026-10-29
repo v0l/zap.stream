@@ -64,6 +64,7 @@ export function useStreamProvider() {
   const config = useSyncExternalStore(
     c => Storage.hook(c),
     () => Storage.snapshot(),
+    () => Storage.snapshot(),
   )
 
   return useMemo(() => {

@@ -62,6 +62,7 @@
     "test": "bun test src",
     "build:api": "bun run --filter '@zap.stream/api' build",
     "build": "bun run build:api && vite build",
+    "build:ssr": "vite build -c vite.ssr.config.ts",
     "prepare": "bun run build:api",
     "intl-extract": "formatjs extract 'src/**/*.ts*' --ignore='**/*.d.ts' --out-file src/lang.json --flatten true",
     "intl-compile": "formatjs compile src/lang.json --out-file src/translations/en.json",

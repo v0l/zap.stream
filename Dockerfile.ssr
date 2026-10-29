@@ -1,0 +1,14 @@
+FROM oven/bun:alpine AS web
+WORKDIR /app
+COPY package.json bun.lock ./
+COPY packages ./packages
+RUN bun install
+COPY . .
+RUN bun run build && bun run build:ssr
+
+FROM voidic/nostr-ssr:latest
+COPY --from=web /app/build /app/dist/client
+COPY --from=web /app/build/ssr /app/dist/ssr
+RUN rm -rf /app/dist/client/ssr
+COPY ssr.json /app/ssr.json
+ENV CONFIG=/app/ssr.json

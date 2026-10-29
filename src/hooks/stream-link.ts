@@ -4,9 +4,14 @@ import { type NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 
+function initialLink(evPreload?: NostrEvent, id?: string) {
+  if (evPreload) return NostrLink.fromEvent(evPreload)
+  return id ? (tryParseNostrLink(id) ?? undefined) : undefined
+}
+
 export function useStreamLink(evPreload?: NostrEvent) {
   const params = useParams()
-  const [link, setLink] = useState<NostrLink | undefined>(evPreload ? NostrLink.fromEvent(evPreload) : undefined)
+  const [link, setLink] = useState<NostrLink | undefined>(() => initialLink(evPreload, params.id))
 
   useEffect(() => {
     if (evPreload !== undefined) return

@@ -5,6 +5,7 @@ export function useContentWarning() {
   const v = useSyncExternalStore(
     c => NSFWStore.hook(c),
     () => NSFWStore.snapshot(),
+    () => false,
   )
   return v
 }
