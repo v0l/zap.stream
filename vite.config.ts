@@ -54,6 +54,6 @@ export default defineConfig({
     global: {},
   },
   optimizeDeps: {
-    exclude: ["@kixelated/hang"],
+    exclude: ["@moq/watch"],
   },
 })

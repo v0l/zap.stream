@@ -8,7 +8,7 @@
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",
     "@improbable-eng/grpc-web": "^0.15.0",
-    "@kixelated/hang": "^0.7.0",
+    "@moq/watch": "^0.6.6",
     "@noble/hashes": "^2.3.0",
     "@scure/base": "^2.3.0",
     "@snort/shared": "^2.0.1",
