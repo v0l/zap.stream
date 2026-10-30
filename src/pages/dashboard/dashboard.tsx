@@ -28,6 +28,7 @@ import ForwardingModal from "./forwarding"
 import BalanceHistoryModal from "./balance-history"
 import Modal from "@/element/modal"
 import { AcceptTos } from "./tos"
+import { parseRecordingDefault } from "./recording"
 import { ProviderSelectorButton } from "./provider-selector"
 import { DashboardLiveStreamInfo } from "./live-stream-info"
 const StreamSummary = lazy(() => import("@/element/summary-chart"))
@@ -41,7 +42,7 @@ export default function DashboardForLink() {
   const login = useLogin()
   const [info, setInfo] = useState<AccountResponse>()
   const [tos, setTos] = useState(info?.tos?.accepted ?? false)
-  const [recording, setRecording] = useState(Boolean(localStorage.getItem("default-recording") ?? "true"))
+  const [recording, setRecording] = useState(parseRecordingDefault(localStorage.getItem("default-recording")))
   const { provider: streamProvider } = useStreamProvider()
 
   const isMyManual = streamEvent?.pubkey === login?.pubkey
@@ -55,7 +56,7 @@ export default function DashboardForLink() {
     return streamInfo?.status === StreamState.Live && streamInfo?.service
       ? new NostrStreamProvider("", streamInfo?.service, publisher ? adaptPublisher(publisher) : undefined)
       : streamProvider
-  }, [streamInfo?.service, streamInfo?.status, streamProvider])
+  }, [streamInfo?.service, streamInfo?.status, streamProvider, login?.pubkey])
 
   const defaultEndpoint = useMemo(() => {
     const metricsEndpint = recording ? "Best" : "Good"
@@ -64,11 +65,19 @@ export default function DashboardForLink() {
 
   useEffect(() => {
     if (!isMyManual) {
-      provider.info().then(setInfo)
-      const t = setInterval(() => {
-        provider.info().then(setInfo)
-      }, 1000 * 60)
+      let cancelled = false
+      const load = () => {
+        provider
+          .info()
+          .then(i => {
+            if (!cancelled) setInfo(i)
+          })
+          .catch(() => {})
+      }
+      load()
+      const t = setInterval(load, 1000 * 60)
       return () => {
+        cancelled = true
         clearInterval(t)
       }
     }

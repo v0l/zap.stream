@@ -71,6 +71,7 @@ export default function AccountWithdrawl({
         } else {
           setError(invoiceError)
         }
+        return
       }
     }
 
