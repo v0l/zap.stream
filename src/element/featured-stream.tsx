@@ -2,6 +2,7 @@ import { StreamState } from "@/const"
 import { formatSats } from "@/number"
 import { extractStreamInfo, getHost } from "@/utils"
 import { youtubeThumbnailUrl } from "@/youtube"
+import { useStreamHref } from "@/hooks/short-link"
 import { NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system"
 import { useUserProfile } from "@snort/system-react"
 import classNames from "classnames"
@@ -34,7 +35,7 @@ export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps
   const { title, image, thumbnail, recording, participants, gameInfo, stream } = extractStreamInfo(ev)
   const host = getHost(ev)
   const hostProfile = useUserProfile(host)
-  const link = `/${NostrLink.fromEvent(ev).encode()}`
+  const link = useStreamHref(ev, host)
   const imgSrc = image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined)
 
   return (

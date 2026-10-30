@@ -12,7 +12,7 @@ import { Link } from "react-router"
 import { Avatar } from "@/element/avatar"
 import { getName } from "@/element/profile"
 import type { NostrEvent } from "@snort/system"
-import { NostrLink } from "@snort/system"
+import { useStreamHref } from "@/hooks/short-link"
 
 export function LeftNav() {
   const layout = useLayout()
@@ -95,9 +95,10 @@ function FollowingLive({ onNavigate }: { onNavigate: () => void }) {
 function FollowingRow({ ev, onNavigate }: { ev: NostrEvent; onNavigate: () => void }) {
   const host = getHost(ev)
   const profile = useUserProfile(host)
+  const href = useStreamHref(ev, host)
   return (
     <Link
-      to={`/${NostrLink.fromEvent(ev).encode()}`}
+      to={href}
       state={ev}
       onClick={onNavigate}
       className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-layer-2"

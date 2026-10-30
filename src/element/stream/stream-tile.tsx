@@ -1,49 +1,22 @@
-import { type NostrEvent, NostrLink } from "@snort/system"
+import type { NostrEvent } from "@snort/system"
 import { FormattedMessage, useIntl } from "react-intl"
 import { Link } from "react-router"
 import { getName } from "../profile"
 
-import { N94_LIVE_STREAM, NIP5_DOMAIN, StreamState } from "@/const"
+import { StreamState } from "@/const"
+import { useStreamHref } from "@/hooks/short-link"
 import useImgProxy from "@/hooks/img-proxy"
 import { formatSats, formatSatsCompact } from "@/number"
 import { extractStreamInfo, getHost, profileLink } from "@/utils"
 import { youtubeThumbnailUrl } from "@/youtube"
 import { useUserProfile } from "@snort/system-react"
 import classNames from "classnames"
-import { type ReactNode, useEffect, useState } from "react"
+import { type ReactNode, useState } from "react"
 import { Avatar } from "../avatar"
 import Logo from "../logo"
 import { useContentWarning } from "../nsfw"
 import { Icon } from "../icon"
 import { RelativeTime } from "../relative-time"
-import type { NostrJson } from "@snort/shared"
-
-const nameCache = new Map<string, NostrJson>()
-async function fetchNostrAddresByPubkey(
-  pubkey: string,
-  domain: string,
-  timeout = 2_000,
-): Promise<NostrJson | undefined> {
-  if (!pubkey || !domain) {
-    return undefined
-  }
-  const cacheKey = `${pubkey}@${domain}`
-  if (nameCache.has(cacheKey)) {
-    return nameCache.get(cacheKey)
-  }
-  try {
-    const res = await fetch(`https://${domain}/.well-known/nostr.json?pubkey=${pubkey}`, {
-      signal: AbortSignal.timeout(timeout),
-    })
-    const ret = (await res.json()) as NostrJson
-    nameCache.set(cacheKey, ret)
-
-    return ret
-  } catch {
-    // ignored
-  }
-  return undefined
-}
 
 export function StreamTile({
   ev,
@@ -66,25 +39,10 @@ export function StreamTile({
   const { title, image, thumbnail, status, participants, contentWarning, recording, ends, gameInfo } =
     extractStreamInfo(ev)
   const host = getHost(ev)
-  const link = NostrLink.fromEvent(ev)
   const hostProfile = useUserProfile(host)
   const isGrownUp = useContentWarning()
   const { proxy } = useImgProxy()
-  const [videoLink, setVideoLink] = useState(`/${link.encode()}`)
-
-  useEffect(() => {
-    if (status !== StreamState.Live && ev.kind !== N94_LIVE_STREAM) return
-    let active = true
-    fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then(h => {
-      const names = Object.entries(h?.names ?? {})
-      if (active && names.length > 0) {
-        setVideoLink(`/${names[0][0]}`)
-      }
-    })
-    return () => {
-      active = false
-    }
-  }, [status, host, ev.kind])
+  const videoLink = useStreamHref(ev, host)
 
   // YouTube links can't be used as an <img> src; use the video thumbnail instead
   const imgSrc = image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined) ?? recording ?? ""
