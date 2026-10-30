@@ -2,6 +2,7 @@ import { base64 } from "@scure/base"
 import type { Signer, NostrEvent } from "./types"
 import { appendDedupe, unixNow, buildUnsignedEvent } from "./types"
 import { HTTP_AUTH_KIND } from "./constants"
+import { withQuery } from "./query"
 
 /**
  * Time synchronization offset with the zap.stream API server.
@@ -39,6 +40,8 @@ export class TimeSync {
 export const timeSync = new TimeSync()
 
 export class NostrStreamProvider {
+  #closing = false
+  #reconnectTimer: ReturnType<typeof setTimeout> | undefined
   #signer?: Signer
   #wsConnection?: WebSocket
   #metricsCallbacks = new Map<string, (metrics: MetricsMessage) => void>()
@@ -101,12 +104,12 @@ export class NostrStreamProvider {
   }
 
   async topup(amount: number): Promise<string> {
-    const rsp = await this.#getJson<TopUpResponse>("GET", `topup?amount=${amount}`)
+    const rsp = await this.#getJson<TopUpResponse>("GET", withQuery("topup", { amount }))
     return rsp.pr
   }
 
   async withdraw(invoice: string) {
-    return await this.#getJson<{ fee: number; preimage: string; error?: string }>("POST", `withdraw?invoice=${invoice}`)
+    return await this.#getJson<{ fee: number; preimage: string; error?: string }>("POST", withQuery("withdraw", { invoice }))
   }
 
   async acceptTos(): Promise<void> {
@@ -143,7 +146,7 @@ export class NostrStreamProvider {
   }
 
   async createClip(id: string, clipId: string, start: number, length: number) {
-    return await this.#getJson<{ url: string }>("POST", `clip/${id}/${clipId}?start=${start}&length=${length}`)
+    return await this.#getJson<{ url: string }>("POST", withQuery(`clip/${id}/${clipId}`, { start, length }))
   }
 
   async getNotificationsInfo() {
@@ -155,15 +158,15 @@ export class NostrStreamProvider {
   }
 
   async listStreamerSubscriptions(auth: string) {
-    return await this.#getJson<Array<string>>("GET", `notifications?auth=${auth}`)
+    return await this.#getJson<Array<string>>("GET", withQuery("notifications", { auth }))
   }
 
   async addStreamerSubscription(pubkey: string) {
-    return await this.#getJson("PATCH", `notifications?pubkey=${pubkey}`)
+    return await this.#getJson("PATCH", withQuery("notifications", { pubkey }))
   }
 
   async removeStreamerSubscription(pubkey: string) {
-    return await this.#getJson("DELETE", `notifications?pubkey=${pubkey}`)
+    return await this.#getJson("DELETE", withQuery("notifications", { pubkey }))
   }
 
   getTempClipUrl(id: string, clipId: string) {
@@ -171,11 +174,11 @@ export class NostrStreamProvider {
   }
 
   async history(page = 0, pageSize = 20) {
-    return await this.#getJson<BalanceHistoryResult>("GET", `history?page=${page}&pageSize=${pageSize}`)
+    return await this.#getJson<BalanceHistoryResult>("GET", withQuery("history", { page, pageSize }))
   }
 
   async streamKeys(page = 0, pageSize = 20) {
-    return await this.#getJson<StreamKeysResult | Array<StreamKeyItem>>("GET", `keys?page=${page}&pageSize=${pageSize}`)
+    return await this.#getJson<StreamKeysResult | Array<StreamKeyItem>>("GET", withQuery("keys", { page, pageSize }))
   }
 
   async createStreamKey(expires?: undefined) {
@@ -190,6 +193,7 @@ export class NostrStreamProvider {
       return // Already connected
     }
 
+    this.#closing = false
     const wsUrl = `${this.url.replace(/^https?:/, "wss:").replace(/\/$/, "")}/ws`
     this.#wsConnection = new WebSocket(wsUrl)
 
@@ -252,8 +256,8 @@ export class NostrStreamProvider {
     }
 
     this.#wsConnection.onclose = event => {
-      if (event.code !== 1000) {
-        setTimeout(() => {
+      if (event.code !== 1000 && !this.#closing) {
+        this.#reconnectTimer = setTimeout(() => {
           this.connectWebSocket()
         }, 5000)
       }
@@ -282,11 +286,15 @@ export class NostrStreamProvider {
     this.#metricsCallbacks.delete(subscriptionKey)
 
     if (this.#metricsCallbacks.size === 0 && this.#wsConnection) {
+      this.#closing = true
+      clearTimeout(this.#reconnectTimer)
       this.#wsConnection.close()
     }
   }
 
   closeWebSocket(): void {
+    this.#closing = true
+    clearTimeout(this.#reconnectTimer)
     if (this.#wsConnection) {
       this.#wsConnection.close()
       this.#wsConnection = undefined
