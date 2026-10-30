@@ -24,10 +24,18 @@ export default function DashboardIntro() {
   const rate = useRates("BTCUSD")
 
   useEffect(() => {
-    streamProvider.info().then(i => {
-      setInfo(i)
-      setTos(Boolean(i.tos?.accepted))
-    })
+    let cancelled = false
+    streamProvider
+      .info()
+      .then(i => {
+        if (cancelled) return
+        setInfo(i)
+        setTos(Boolean(i.tos?.accepted))
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
   }, [streamProvider])
 
   if (!defaultEndpoint) return
@@ -53,7 +61,7 @@ export default function DashboardIntro() {
       </p>
       <div className="space-y-3">
         {info?.endpoints?.map(endpoint => {
-          const endpointCost = rate.ask * (exampleHours * endpoint.cost.rate * 60) * 1e-8
+          const endpointCost = Number.isFinite(rate.ask) ? rate.ask * (exampleHours * endpoint.cost.rate * 60) * 1e-8 : undefined
           return (
             <div key={endpoint.name} className="border border-layer-2 rounded-lg p-3">
               <div className="flex justify-between items-start">
@@ -69,6 +77,7 @@ export default function DashboardIntro() {
                     />
                   </p>
                   <p className="text-xs text-layer-6">
+                    {endpointCost !== undefined && (
                     <FormattedMessage
                       defaultMessage="~{cost}/day for {hours}hr stream"
                       values={{
@@ -76,6 +85,7 @@ export default function DashboardIntro() {
                         hours: exampleHours,
                       }}
                     />
+                    )}
                   </p>
                   {endpoint.capabilities?.length > 0 && (
                     <div className="mt-2">

@@ -47,17 +47,46 @@ export default function NostrProviderDialog({
   const [tos, setTos] = useState(false)
   const rate = useRates("BTCUSD")
 
-  async function loadInfo() {
-    const info = await provider.info()
-    setInfo(info)
-    setTos(info.tos?.accepted ?? true)
-    setEndpoint(sortEndpoints(info.endpoints)[0])
+  const [loadError, setLoadError] = useState("")
+  const [saveError, setSaveError] = useState("")
+  const [attempt, setAttempt] = useState(0)
+
+  async function loadInfo(isCancelled: () => boolean = () => false) {
+    try {
+      const info = await provider.info()
+      if (isCancelled()) return
+      setLoadError("")
+      setInfo(info)
+      setTos(info.tos?.accepted ?? true)
+      setEndpoint(sortEndpoints(info.endpoints)[0])
+    } catch (e) {
+      if (!isCancelled()) {
+        setLoadError(e instanceof Error ? e.message : String(e))
+      }
+    }
   }
   useEffect(() => {
-    loadInfo()
-  }, [provider])
+    let cancelled = false
+    setInfo(undefined)
+    loadInfo(() => cancelled)
+    return () => {
+      cancelled = true
+    }
+  }, [provider, attempt])
 
   if (!info) {
+    if (loadError) {
+      return (
+        <div className="flex flex-col gap-2">
+          <b className="text-warning">{loadError}</b>
+          <div>
+            <DefaultButton onClick={() => setAttempt(a => a + 1)}>
+              <FormattedMessage defaultMessage="Retry" />
+            </DefaultButton>
+          </div>
+        </div>
+      )
+    }
     return <Spinner />
   }
 
@@ -84,16 +113,16 @@ export default function NostrProviderDialog({
   }
 
   function calcEstimate() {
-    if (!ep?.cost.rate || !ep?.cost.unit || !info?.balance || !info.balance) return
+    if (!ep?.cost.rate || !ep?.cost.unit || !info?.balance) return
 
     const raw = Math.max(0, info.balance / ep.cost.rate)
     if (ep.cost.unit === "min" && raw > 60) {
-      const pm = hrs * 60 * ep.cost.rate
+      const pm = (Number.isFinite(hrs) ? hrs : 0) * 60 * ep.cost.rate
       return (
         <>
           {`${(raw / 60).toFixed(0)} hour @ ${ep.cost.rate} sats/${ep.cost.unit}`}
           &nbsp; or <br />
-          {`${pm.toLocaleString()} sats/month ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo) streaming ${hrs} hrs/month`}
+          {`${pm.toLocaleString()} sats/month${Number.isFinite(rate.ask) ? ` ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo)` : ""} streaming ${hrs} hrs/month`}
           <div className="bg-layer-2 rounded-xl flex items-center px-2">
             Hrs
             <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
@@ -162,8 +191,8 @@ export default function NostrProviderDialog({
               values={{ amount: info.balance?.toLocaleString() }}
             />
           </div>
-          <AccountTopup provider={provider} onFinish={loadInfo} />
-          <AccountWithdrawl provider={provider} onFinish={loadInfo} />
+          <AccountTopup provider={provider} onFinish={() => loadInfo()} />
+          <AccountWithdrawl provider={provider} onFinish={() => loadInfo()} />
         </div>
       </div>
     )
@@ -188,12 +217,17 @@ export default function NostrProviderDialog({
 
     return (
       <StreamEditor
-        onFinish={ex => {
-          provider.updateStreamFromEvent(
-            ex as unknown as ApiNostrEvent,
-            extractStreamInfo as unknown as (ev: ApiNostrEvent) => StreamInfo,
-          )
-          others.onFinish?.(ex)
+        onFinish={async ex => {
+          try {
+            await provider.updateStreamFromEvent(
+              ex as unknown as ApiNostrEvent,
+              extractStreamInfo as unknown as (ev: ApiNostrEvent) => StreamInfo,
+            )
+            setSaveError("")
+            others.onFinish?.(ex)
+          } catch (e) {
+            setSaveError(e instanceof Error ? e.message : String(e))
+          }
         }}
         ev={others.ev}
         options={{
@@ -228,7 +262,7 @@ export default function NostrProviderDialog({
             </>
           ))}
         </div>
-        <AddForwardInputs provider={provider} onAdd={loadInfo} />
+        <AddForwardInputs provider={provider} onAdd={() => loadInfo()} />
       </div>
     )
   }
@@ -255,7 +289,7 @@ export default function NostrProviderDialog({
 
   function nwcConfig() {
     if (!info || !showNwc || info.has_nwc === undefined) return
-    return <NwcConfig provider={provider} hasNwc={info.has_nwc} onConfigured={loadInfo} />
+    return <NwcConfig provider={provider} hasNwc={info.has_nwc} onConfigured={() => loadInfo()} />
   }
 
   return (
@@ -264,6 +298,7 @@ export default function NostrProviderDialog({
       {showBalance && currentBalance()}
       {showEstimate && balanceTimeEstimate()}
       {streamEditor()}
+      {saveError && <b className="text-warning">{saveError}</b>}
       {nwcConfig()}
       {forwardInputs()}
       {balanceHist()}

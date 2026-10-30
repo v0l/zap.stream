@@ -106,20 +106,26 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
     const publisher = login?.publisher()
     const p = new NostrStreamProvider(config.name, config.url, publisher ? adaptPublisher(publisher) : undefined)
     setLoading(true)
+    let cancelled = false
 
     p.info()
       .then(i => {
+        if (cancelled) return
         setAccount(i)
         setLoading(false)
         // Measure ping after account info is loaded
         measurePing()
       })
       .catch(e => {
+        if (cancelled) return
         if (e instanceof Error) {
           setError(e.message)
         }
         setLoading(false)
       })
+    return () => {
+      cancelled = true
+    }
   }, [login?.pubkey])
 
   return (
