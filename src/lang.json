@@ -26,9 +26,6 @@
   "/JkXBo": {
     "defaultMessage": "Clip from {title}"
   },
-  "/Jp9pC": {
-    "defaultMessage": "Total: {amount} sats"
-  },
   "/aFYQ5": {
     "defaultMessage": "Stream Forwarding (optional)"
   },
@@ -41,20 +38,23 @@
   "04lmFi": {
     "defaultMessage": "Save Key"
   },
+  "0RmZgI": {
+    "defaultMessage": "Waiting for stream health"
+  },
   "0VV/sK": {
     "defaultMessage": "Goal"
   },
   "0hNxBy": {
     "defaultMessage": "Starts"
   },
-  "0rVLjV": {
-    "defaultMessage": "No streams yet"
+  "0kFGbm": {
+    "defaultMessage": "No videos yet."
   },
   "1EYCdR": {
     "defaultMessage": "Tags"
   },
-  "1LBny5": {
-    "defaultMessage": "Stopped"
+  "1Qygxt": {
+    "defaultMessage": "No past streams yet."
   },
   "1q4BO/": {
     "defaultMessage": "Not a valid URL"
@@ -74,17 +74,14 @@
   "2ukA4d": {
     "defaultMessage": "{n} hours"
   },
-  "2wdFaB": {
-    "defaultMessage": "End Stream"
-  },
   "37TVdz": {
     "defaultMessage": "Stream notifications"
   },
-  "37mth/": {
-    "defaultMessage": "Viewers"
-  },
   "3HwrQo": {
     "defaultMessage": "Zap!"
+  },
+  "3K2dDR": {
+    "defaultMessage": "Record my stream"
   },
   "3adEeb": {
     "defaultMessage": "{n} viewers"
@@ -94,6 +91,9 @@
   },
   "3kbIhS": {
     "defaultMessage": "Untitled"
+  },
+  "3s6va5": {
+    "defaultMessage": "Chatters"
   },
   "3yk8fB": {
     "defaultMessage": "Wallet"
@@ -122,9 +122,6 @@
   "50+/JW": {
     "defaultMessage": "Stream Key is required"
   },
-  "56a8sI": {
-    "defaultMessage": "{n,selectordinal,one{@ #st min} two{@ #nd min} few{@ #rd min} other{@ #th min}}"
-  },
   "58DXVG": {
     "defaultMessage": "To get started, grab your stream key from the platform you wish to forward to."
   },
@@ -140,8 +137,8 @@
   "5QYdPU": {
     "defaultMessage": "Start Time"
   },
-  "5kx+2v": {
-    "defaultMessage": "Server Url"
+  "5Wmi28": {
+    "defaultMessage": "Paste the server URL and stream key into your streaming software, then start streaming. We recommend <a>OBS</a>."
   },
   "5vMmmR": {
     "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
@@ -170,9 +167,6 @@
   "7+bCC1": {
     "defaultMessage": "Stream url must start with rtmp://"
   },
-  "74PejI": {
-    "defaultMessage": "Top Viewers"
-  },
   "79lLl+": {
     "defaultMessage": "Music"
   },
@@ -194,6 +188,9 @@
   "9a9+ww": {
     "defaultMessage": "Title"
   },
+  "9eN5ZL": {
+    "defaultMessage": "Edit stream info"
+  },
   "9k0zDi": {
     "defaultMessage": "Stream chat"
   },
@@ -205,9 +202,6 @@
   },
   "A1zT+z": {
     "defaultMessage": "Search results: {term}"
-  },
-  "A7K3S+": {
-    "defaultMessage": "Account Setup"
   },
   "ALdW69": {
     "defaultMessage": "Note by {name}"
@@ -248,14 +242,17 @@
   "C81/uG": {
     "defaultMessage": "Logout"
   },
+  "C9POHl": {
+    "defaultMessage": "Server URL"
+  },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
   },
-  "CsS/fy": {
-    "defaultMessage": "{estimate} remaining ({balance} sats @ {rate} sats / {unit})"
-  },
   "D3idYv": {
     "defaultMessage": "Settings"
+  },
+  "D7Lpa7": {
+    "defaultMessage": "Last stream"
   },
   "DZKuuP": {
     "defaultMessage": "Logged in as"
@@ -265,6 +262,9 @@
   },
   "DqmiAe": {
     "defaultMessage": "Dont have a nostr extension? Try {nos2x}, {nostore} or {alby}"
+  },
+  "DrjIvT": {
+    "defaultMessage": "Planned stream"
   },
   "E9APoR": {
     "defaultMessage": "Could not create stream URL"
@@ -281,9 +281,6 @@
   "EcglP9": {
     "defaultMessage": "Key"
   },
-  "FIDK5Y": {
-    "defaultMessage": "All Time Top Zappers"
-  },
   "FXepR9": {
     "defaultMessage": "{m}mo {ago}",
     "description": "Number of month(s) relative to now"
@@ -299,9 +296,6 @@
   },
   "G857ni": {
     "defaultMessage": "LNURL or invoice"
-  },
-  "GGaJMU": {
-    "defaultMessage": "Top Chatters"
   },
   "GSuQPh": {
     "defaultMessage": "Unknown event link"
@@ -339,6 +333,9 @@
   "HC7L1H": {
     "defaultMessage": "Stream ended"
   },
+  "HHQ/8Z": {
+    "defaultMessage": "{n} min in"
+  },
   "HsgeUk": {
     "defaultMessage": "Come check out my stream on zap.stream! {link}"
   },
@@ -357,26 +354,23 @@
   "IDqXmC": {
     "defaultMessage": "Media Server List"
   },
+  "IHq0Pe": {
+    "defaultMessage": "Go live"
+  },
   "IJDKz3": {
     "defaultMessage": "Zap amount in {currency}"
   },
   "INlWvJ": {
     "defaultMessage": "OR"
   },
-  "IPXhUW": {
-    "defaultMessage": "Last Stream Summary"
+  "IuFETn": {
+    "defaultMessage": "Duration"
   },
   "J+dIsA": {
     "defaultMessage": "Subscriptions"
   },
-  "J/+m9y": {
-    "defaultMessage": "Stream Duration {duration} mins"
-  },
   "JCIgkj": {
     "defaultMessage": "Username"
-  },
-  "JO0kq9": {
-    "defaultMessage": "Edit Stream Info"
   },
   "JkLHGw": {
     "defaultMessage": "Website"
@@ -399,14 +393,11 @@
   "KxfKnW": {
     "defaultMessage": "Withdraw funds"
   },
-  "LEmxc8": {
-    "defaultMessage": "Zap Goals"
+  "LfTOMb": {
+    "defaultMessage": "Zaps from viewers will show up here."
   },
   "Lg2ye2": {
     "defaultMessage": "ZapStream is a new kind of streaming platform that allows you to earn bitcoin (sats) the moment you start streaming! Viewers can tip streamers any amount they choose. The tips are instantly deposited to your bitcoin (lightning) wallet. zap.stream never touches your earnings!"
-  },
-  "LknBsU": {
-    "defaultMessage": "Stream Key"
   },
   "LxSJOb": {
     "defaultMessage": "Go to Dashboard"
@@ -426,8 +417,8 @@
   "My6HwN": {
     "defaultMessage": "Ok, it's safe"
   },
-  "NTpJIm": {
-    "defaultMessage": "Enable Recording"
+  "NNtkIT": {
+    "defaultMessage": "Your stream will show up here when it goes live."
   },
   "NnHu0L": {
     "defaultMessage": "Please upload at least 1 video"
@@ -452,9 +443,6 @@
   },
   "OadZli": {
     "defaultMessage": "Manage Servers"
-  },
-  "ObZZEz": {
-    "defaultMessage": "No clips yet"
   },
   "OnllN2": {
     "defaultMessage": "Choose your preferred streaming provider. Each provider may have different pricing, features, and terms of service."
@@ -503,8 +491,17 @@
   "Q3au2v": {
     "defaultMessage": "About {estimate}"
   },
+  "Q4/nm9": {
+    "defaultMessage": "Watching"
+  },
+  "Q7OQv2": {
+    "defaultMessage": "{h}h {m}m"
+  },
   "Q8Qw5B": {
     "defaultMessage": "Description"
+  },
+  "QExaU6": {
+    "defaultMessage": "Accept the terms of service to continue"
   },
   "QNvtaq": {
     "defaultMessage": "Share on X"
@@ -539,8 +536,8 @@
   "RrCui3": {
     "defaultMessage": "Summary"
   },
-  "RtYNX5": {
-    "defaultMessage": "Chat Users"
+  "SCYmnE": {
+    "defaultMessage": "Chat messages"
   },
   "Sjo1P4": {
     "defaultMessage": "Custom"
@@ -570,9 +567,6 @@
   "UJBFYK": {
     "defaultMessage": "Add Card"
   },
-  "UfSot5": {
-    "defaultMessage": "Past Streams"
-  },
   "Uo/DWG": {
     "defaultMessage": "About too long"
   },
@@ -584,6 +578,9 @@
   },
   "VThwOz": {
     "defaultMessage": "sats"
+  },
+  "W+xeab": {
+    "defaultMessage": "{d}d {h}h {m}m"
   },
   "W7DNWx": {
     "defaultMessage": "Stream Forwarding"
@@ -603,6 +600,9 @@
   "Wj1mlg": {
     "defaultMessage": "Mute user"
   },
+  "WlE31m": {
+    "defaultMessage": "End stream"
+  },
   "Wp4l7+": {
     "defaultMessage": "More Videos"
   },
@@ -611,6 +611,9 @@
   },
   "XFievo": {
     "defaultMessage": "Capabilities"
+  },
+  "XG9/xM": {
+    "defaultMessage": "Nobody has chatted yet."
   },
   "XIvYvF": {
     "defaultMessage": "Failed to get invoice"
@@ -633,6 +636,9 @@
   "Y0DXJb": {
     "defaultMessage": "Recording URL"
   },
+  "YBElNe": {
+    "defaultMessage": "Live for"
+  },
   "YPh5Nq": {
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
@@ -652,6 +658,9 @@
   "Z8ZOEY": {
     "defaultMessage": "This method is insecure. We recommend using a {nostrlink}"
   },
+  "Z9UYjq": {
+    "defaultMessage": "No clips yet."
+  },
   "ZDsjr1": {
     "defaultMessage": "{platform} channel name.."
   },
@@ -660,9 +669,6 @@
   },
   "ZXp0z1": {
     "defaultMessage": "Features"
-  },
-  "ZaNcK4": {
-    "defaultMessage": "No goals yet"
   },
   "Zfr//4": {
     "defaultMessage": "No duration provided, please try another upload server."
@@ -683,11 +689,20 @@
   "aFyFm0": {
     "defaultMessage": "Accepted"
   },
+  "aH8A/L": {
+    "defaultMessage": "Show more ({n} left)"
+  },
   "acrOoz": {
     "defaultMessage": "Continue"
   },
+  "amf9oX": {
+    "defaultMessage": "Supporters"
+  },
   "aqjZxs": {
     "defaultMessage": "Raid!"
+  },
+  "azDTwB": {
+    "defaultMessage": "Peak"
   },
   "bD/ZwY": {
     "defaultMessage": "Edit Cards"
@@ -697,6 +712,12 @@
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
+  },
+  "c+JYNI": {
+    "defaultMessage": "No thanks"
+  },
+  "c14tu7": {
+    "defaultMessage": "No zaps yet."
   },
   "c3LlRO": {
     "defaultMessage": "{n}KiB"
@@ -709,6 +730,9 @@
   },
   "ccXLVi": {
     "defaultMessage": "Category"
+  },
+  "cfso65": {
+    "defaultMessage": "{m}m"
   },
   "cg1VJ2": {
     "defaultMessage": "Connect Wallet"
@@ -762,6 +786,9 @@
   "g5pX+a": {
     "defaultMessage": "About"
   },
+  "g7Jq1Y": {
+    "defaultMessage": "Sats received"
+  },
   "gIIEfK": {
     "defaultMessage": "Go Live"
   },
@@ -777,14 +804,14 @@
   "gt65Gg": {
     "defaultMessage": "Stream goals encourage viewers to support streamers via donations."
   },
+  "gwdgY2": {
+    "defaultMessage": "You're live"
+  },
   "gzsn7k": {
     "defaultMessage": "{n} messages"
   },
   "h5aBa1": {
     "defaultMessage": "Write a recommendation for {providerName}. This will be published publicly on Nostr."
-  },
-  "h6NRY6": {
-    "defaultMessage": "No Thanks!"
   },
   "hL2XvL": {
     "defaultMessage": "Not Accepted"
@@ -801,17 +828,20 @@
   "hzSNj4": {
     "defaultMessage": "Dashboard"
   },
+  "iDYPMI": {
+    "defaultMessage": "Zap goals"
+  },
   "iKlloU": {
     "defaultMessage": "Suggested Servers"
+  },
+  "iPB+yD": {
+    "defaultMessage": "Pop out"
   },
   "ibcWy5": {
     "defaultMessage": "TOS Status"
   },
   "ieGrWo": {
     "defaultMessage": "Follow"
-  },
-  "ipTKP3": {
-    "defaultMessage": "Chat Popout"
   },
   "itPgxd": {
     "defaultMessage": "Profile"
@@ -858,9 +888,6 @@
   "kc5EOy": {
     "defaultMessage": "Username is too long"
   },
-  "khJ51Q": {
-    "defaultMessage": "Stream Earnings"
-  },
   "kp0NPF": {
     "defaultMessage": "Planned"
   },
@@ -878,9 +905,6 @@
   },
   "mVA9Km": {
     "defaultMessage": "Please login first."
-  },
-  "miQKuZ": {
-    "defaultMessage": "Stream Time"
   },
   "mnJYBQ": {
     "defaultMessage": "Voice"
@@ -902,6 +926,9 @@
   },
   "nOaArs": {
     "defaultMessage": "Setup Profile"
+  },
+  "nT3ZrB": {
+    "defaultMessage": "left at {rate} sats per {unit}, {balance} sats in your account"
   },
   "nYSZCW": {
     "defaultMessage": "Add emoji"
@@ -949,6 +976,12 @@
     "defaultMessage": "Privacy Policy",
     "description": "Title: Privacy Policy"
   },
+  "oBAFE1": {
+    "defaultMessage": "Your stream stats will show up here after your first stream."
+  },
+  "oBLV0U": {
+    "defaultMessage": "Top chatters"
+  },
   "oHPB8Q": {
     "defaultMessage": "Zap {name}"
   },
@@ -957,6 +990,9 @@
   },
   "oZrFyI": {
     "defaultMessage": "Stream type should be HLS"
+  },
+  "p/LrQi": {
+    "defaultMessage": "Earned this stream"
   },
   "p4N05H": {
     "defaultMessage": "Upload"
@@ -973,11 +1009,11 @@
   "qx6bv2": {
     "defaultMessage": "Stream Goal (optional)"
   },
+  "qzF1/+": {
+    "defaultMessage": "Creator dashboard"
+  },
   "r2Jjms": {
     "defaultMessage": "Log In"
-  },
-  "rJqhFR": {
-    "defaultMessage": "Stream Setup"
   },
   "rWBFZA": {
     "defaultMessage": "Sexually explicit material ahead!"
@@ -1016,6 +1052,9 @@
   "sgT7ox": {
     "defaultMessage": "Watch stream"
   },
+  "sjzLbX": {
+    "defaultMessage": "Accept"
+  },
   "syEQFE": {
     "defaultMessage": "Publish"
   },
@@ -1034,14 +1073,26 @@
   "thsiMl": {
     "defaultMessage": "terms and conditions"
   },
+  "tjRE1o": {
+    "defaultMessage": "Top supporters"
+  },
   "twCRVi": {
     "defaultMessage": "Art"
   },
   "tzMNF3": {
     "defaultMessage": "Status"
   },
+  "u48ROo": {
+    "defaultMessage": "About {estimate} of streaming"
+  },
   "u6uD94": {
     "defaultMessage": "Create an Account"
+  },
+  "uO6tWX": {
+    "defaultMessage": "{n} zaps"
+  },
+  "uOEEgN": {
+    "defaultMessage": "Zapped"
   },
   "uX6eKe": {
     "defaultMessage": "React"
@@ -1079,6 +1130,9 @@
   "wEQDC6": {
     "defaultMessage": "Edit"
   },
+  "wK8C6O": {
+    "defaultMessage": "Past streams"
+  },
   "wMKVFz": {
     "defaultMessage": "Select voice..."
   },
@@ -1090,6 +1144,9 @@
   },
   "we4Lby": {
     "defaultMessage": "Info"
+  },
+  "wzWWzV": {
+    "defaultMessage": "Top zappers"
   },
   "x82IOl": {
     "defaultMessage": "Mute"

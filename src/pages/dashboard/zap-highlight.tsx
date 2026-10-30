@@ -5,15 +5,15 @@ import { Text } from "@/element/text"
 
 export function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
   return (
-    <div className="px-4 py-6 bg-layer-1 flex flex-col gap-4 rounded-xl animate-flash">
-      <div className="flex justify-between items-center text-zap text-2xl font-semibold">
+    <div className="px-4 py-4 bg-primary/10 border border-primary/40 flex flex-col gap-2 rounded-xl">
+      <div className="flex justify-between items-center gap-3 text-xl font-semibold">
         <Profile
           pubkey={zap.sender ?? "anon"}
           options={{
             showAvatar: false,
           }}
         />
-        <span>
+        <span className="text-primary tabular-nums shrink-0">
           <FormattedMessage
             defaultMessage="{n} sats"
             id="CsCUYo"
@@ -24,7 +24,7 @@ export function DashboardHighlightZap({ zap }: { zap: ParsedZap }) {
         </span>
       </div>
       {zap.content && (
-        <div className="text-2xl">
+        <div className="text-lg text-layer-5">
           <Text content={zap.content} tags={[]} />
         </div>
       )}

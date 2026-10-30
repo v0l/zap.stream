@@ -37,21 +37,22 @@ export function Goal({ ev, confetti }: { ev: NostrEvent; confetti?: boolean }) {
   }
 
   const goalContent = (
-    <div className="flex flex-col cursor-pointer">
-      {ev.content.length > 0 && <p>{ev.content}</p>}
-      <div className="relative h-7">
-        <div className="absolute bg-layer-2 h-3 rounded-full my-2 w-full"></div>
-        <div
-          className="absolute bg-zap h-3 rounded-full text-xs font-medium my-2 leading-3 pl-1"
-          style={{
-            width: `${progress}%`,
-          }}
-        >
-          {soFar > 0 ? formatSats(soFar) : ""}
-        </div>
-        <div className="absolute text-right text-xs right-1 font-medium my-2 leading-3">
-          <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
-        </div>
+    <div className="flex flex-col gap-2 cursor-pointer text-left w-full">
+      {ev.content.length > 0 && <p className="font-medium">{ev.content}</p>}
+      <div
+        className="h-2 rounded-full bg-layer-3 overflow-hidden"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(progress)}
+      >
+        <div className="h-full rounded-full bg-zap" style={{ width: `${progress}%` }} />
+      </div>
+      <div className="flex justify-between text-xs text-layer-4 tabular-nums">
+        <span className="text-primary font-semibold">
+          <FormattedMessage defaultMessage="{amount} sats" values={{ amount: formatSats(soFar) }} />
+        </span>
+        <FormattedMessage defaultMessage="Goal: {amount}" id="QceMQZ" values={{ amount: formatSats(goalAmount) }} />
       </div>
       {isFinished && previousValue === false && (confetti ?? true) && (
         <Confetti numberOfPieces={2100} recycle={false} />

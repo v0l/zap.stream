@@ -11,26 +11,23 @@ import { DashboardZapColumn } from "./column-zaps"
 import { DashboardChatList } from "./chat-list"
 import { DashboardCard } from "./card"
 import { NewStreamDialog } from "@/element/new-stream"
-import { DashboardSettingsButton } from "./button-settings"
 import DashboardIntro from "./intro"
 import { useLocation, useNavigate } from "react-router"
 import StreamKey from "@/element/provider/nostr/stream-key"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { type AccountResponse, NostrStreamProvider, adaptPublisher } from "@/providers"
 import { ExternalLink } from "@/element/external-link"
-import { Layer1Button, Layer2Button, WarningButton } from "@/element/buttons"
+import { PrimaryButton, WarningButton } from "@/element/buttons"
 import { useLogin } from "@/hooks/login"
-import classNames from "classnames"
 import ManualStream from "./manual-stream"
 import { unixNow } from "@snort/shared"
 import { Icon } from "@/element/icon"
-import ForwardingModal from "./forwarding"
-import BalanceHistoryModal from "./balance-history"
 import Modal from "@/element/modal"
 import { AcceptTos } from "./tos"
 import { parseRecordingDefault } from "./recording"
-import { ProviderSelectorButton } from "./provider-selector"
 import { DashboardLiveStreamInfo } from "./live-stream-info"
+import { DashboardHeader } from "./header"
+import { DashboardAccountCard } from "./account-card"
 const StreamSummary = lazy(() => import("@/element/summary-chart"))
 
 export default function DashboardForLink() {
@@ -83,28 +80,6 @@ export default function DashboardForLink() {
     }
   }, [isMyManual, provider.url])
 
-  function headingText() {
-    switch (streamInfo?.status) {
-      case StreamState.Live:
-        return <FormattedMessage defaultMessage="Started" />
-      case StreamState.Ended:
-        return <FormattedMessage defaultMessage="Stopped" />
-      case StreamState.Planned:
-        return <FormattedMessage defaultMessage="Planned" />
-    }
-  }
-
-  function headingDotStyle() {
-    switch (streamInfo?.status) {
-      case StreamState.Live:
-        return "animate-pulse bg-green-500"
-      case StreamState.Ended:
-        return "bg-red-500"
-      case StreamState.Planned:
-        return "bg-yellow-500"
-    }
-  }
-
   const streamToEdit =
     streamEvent ??
     (info?.details && !isMyManual
@@ -130,165 +105,179 @@ export default function DashboardForLink() {
     return <DashboardIntro />
   }
 
+  const isLive = streamInfo?.status === StreamState.Live
+  const isPlanned = streamInfo?.status === StreamState.Planned
+  const isOffline = !eventLink || streamInfo?.status === StreamState.Ended || streamInfo?.status === undefined
+
+  async function endManualStream() {
+    const copy = streamEvent ? ({ ...streamEvent } as NostrEvent) : undefined
+    const statusTag = copy?.tags.find(a => a[0] === "status")
+    const endedTag = copy?.tags.find(a => a[0] === "ends")
+    const pub = login?.signer()
+    if (statusTag && copy && pub) {
+      statusTag[1] = StreamState.Ended
+      if (endedTag) {
+        endedTag[1] = String(unixNow())
+      } else {
+        copy.tags.push(["ends", String(unixNow())])
+      }
+      copy.created_at = unixNow()
+      copy.id = EventExt.createId(copy)
+      const evPub = await pub.sign(copy)
+      if (evPub) {
+        await system.BroadcastEvent(evPub)
+      }
+    }
+  }
+
   return (
-    <div
-      className={classNames("grid gap-2 h-[calc(100dvh-var(--header-height))] w-full", {
-        "grid-cols-3": streamInfo?.status === StreamState.Live,
-        "grid-cols-[20%_80%]": streamInfo?.status === StreamState.Ended || streamInfo?.status === undefined,
-        "grid-cols-[40%_60%]": streamInfo?.status === StreamState.Planned,
-      })}
-    >
-      <div className="min-h-0 h-full grid grid-rows-[min-content_auto] gap-2">
-        <DashboardCard className="flex flex-col gap-4">
-          {eventLink && streamInfo?.status !== StreamState.Live && (
-            <div className="flex justify-between items-center">
-              <h3>
-                <FormattedMessage defaultMessage="Stream" />
-              </h3>
-              <div className="uppercase font-semibold flex items-center gap-2">
-                <div className={`w-3 h-3 rounded-full ${headingDotStyle()}`}></div>
-                {headingText()}
-              </div>
-            </div>
-          )}
-          {eventLink && streamInfo?.status === StreamState.Live && !isMyManual && (
-            <DashboardLiveStreamInfo provider={provider} />
-          )}
-          {eventLink &&
-            isMyManual &&
-            (streamInfo?.status === StreamState.Live || streamInfo?.status === StreamState.Planned) && (
-              <>
+    <div className="flex flex-col gap-5 p-4 sm:p-6 min-w-0 xl:h-[calc(100dvh-var(--header-height))]">
+      <DashboardHeader
+        title={isLive || isPlanned ? streamInfo?.title : undefined}
+        status={streamInfo?.status}
+        actions={
+          <>
+            {eventLink && (isLive || isPlanned) && <DashboardRaidButton link={eventLink} />}
+            <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit stream info" />} />
+            {eventLink && isMyManual && (isLive || isPlanned) && (
+              <WarningButton onClick={endManualStream}>
+                <FormattedMessage defaultMessage="End stream" />
+              </WarningButton>
+            )}
+          </>
+        }
+      />
+
+      {isLive && eventLink && (
+        <div className="grid gap-5 min-h-0 flex-1 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_380px]">
+          <div className="flex flex-col gap-5 min-h-0 xl:overflow-y-auto scrollbar-hidden">
+            {isMyManual ? (
+              <DashboardCard flush>
                 <LiveVideoPlayer
                   link={eventLink}
                   stream={streamInfo?.stream}
                   status={streamInfo?.status}
                   poster={streamInfo?.image ?? streamInfo?.thumbnail}
                   muted={true}
-                  className="w-full"
+                  className="w-full rounded-2xl overflow-hidden"
                 />
-                <div className="grid gap-2 grid-cols-3">
-                  <DashboardRaidButton link={eventLink} />
-                  <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
-                  <WarningButton
-                    onClick={async () => {
-                      //todo: clean this up
-                      const copy = streamEvent ? ({ ...streamEvent } as NostrEvent) : undefined
-                      const statusTag = copy?.tags.find(a => a[0] === "status")
-                      const endedTag = copy?.tags.find(a => a[0] === "ends")
-                      const pub = login?.signer()
-                      if (statusTag && copy && pub) {
-                        statusTag[1] = StreamState.Ended
-                        if (endedTag) {
-                          endedTag[1] = String(unixNow())
-                        } else {
-                          copy.tags.push(["ends", String(unixNow())])
-                        }
-                        copy.created_at = unixNow()
-                        copy.id = EventExt.createId(copy)
-                        const evPub = await pub.sign(copy)
-                        if (evPub) {
-                          await system.BroadcastEvent(evPub)
-                        }
-                      }
-                    }}
-                  >
-                    <FormattedMessage defaultMessage="End Stream" />
-                  </WarningButton>
-                </div>
-              </>
+              </DashboardCard>
+            ) : (
+              <DashboardLiveStreamInfo provider={provider} />
             )}
-          {(!eventLink || streamInfo?.status === StreamState.Ended) && (
-            <>
-              <div className="bg-layer-1 rounded-xl aspect-video flex items-center justify-center uppercase text-warning font-semibold">
-                <FormattedMessage defaultMessage="Offline" />
-              </div>
-              <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit Stream Info" />} />
-              <div className="flex flex-col gap-4">
-                <h3>
-                  <FormattedMessage defaultMessage="Stream Setup" />
-                </h3>
-                <p className="text-layer-5">
+            <DashboardCard
+              title={<FormattedMessage defaultMessage="Chatters" />}
+              flush
+              bodyClassName="max-h-[360px] overflow-y-auto"
+            >
+              <DashboardChatList />
+            </DashboardCard>
+          </div>
+          <DashboardZapColumn />
+          <DashboardCard
+            className="h-[70dvh] xl:h-auto xl:min-h-[520px]"
+            flush
+            bodyClassName="flex-1"
+            title={<FormattedMessage defaultMessage="Stream chat" />}
+            headerAction={
+              <button
+                type="button"
+                className="flex items-center gap-1.5 text-sm text-layer-4 hover:text-text cursor-pointer"
+                onClick={() => {
+                  window.open(
+                    `${window.location.protocol}//${window.location.host}/chat/${eventLink.encode()}?chat=true`,
+                    "",
+                    "popup=true,width=400,height=800",
+                  )
+                }}
+              >
+                <Icon name="link" size={16} />
+                <FormattedMessage defaultMessage="Pop out" />
+              </button>
+            }
+          >
+            <LiveChat className="flex-1 min-h-0 px-4 pt-2" showTopZappers={false} />
+          </DashboardCard>
+        </div>
+      )}
+
+      {!isLive && (
+        <div className="grid gap-5 min-h-0 flex-1 xl:grid-cols-[400px_minmax(0,1fr)]">
+          <div className="flex flex-col gap-5 min-h-0 xl:overflow-y-auto scrollbar-hidden">
+            {isPlanned && eventLink && isMyManual && (
+              <DashboardCard flush>
+                <LiveVideoPlayer
+                  link={eventLink}
+                  stream={streamInfo?.stream}
+                  status={streamInfo?.status}
+                  poster={streamInfo?.image ?? streamInfo?.thumbnail}
+                  muted={true}
+                  className="w-full rounded-2xl overflow-hidden"
+                />
+              </DashboardCard>
+            )}
+            {isOffline && (
+              <DashboardCard title={<FormattedMessage defaultMessage="Go live" />}>
+                <p className="text-layer-5 text-[15px]">
                   <FormattedMessage
-                    defaultMessage="To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+                    defaultMessage="Paste the server URL and stream key into your streaming software, then start streaming. We recommend <a>OBS</a>."
                     values={{
                       a: c => <ExternalLink href="https://obsproject.com/">{c}</ExternalLink>,
                     }}
                   />
                 </p>
-                <div className="flex gap-4 items-center">
-                  <input type="checkbox" checked={recording} onChange={e => setRecording(e.target.checked)} />
-                  <FormattedMessage defaultMessage="Enable Recording" />
-                </div>
                 {defaultEndpoint && <StreamKey ep={defaultEndpoint} />}
-                <ManualStream />
-              </div>
-            </>
-          )}
-        </DashboardCard>
-        {eventLink && streamInfo?.status === StreamState.Live && (
-          <DashboardCard className="flex flex-col gap-4">
-            <h3>
-              <FormattedMessage defaultMessage="Chat Users" />
-            </h3>
-            <div className="h-[calc(100%-4rem)] overflow-y-auto">
-              <DashboardChatList />
-            </div>
-          </DashboardCard>
-        )}
-        {(!eventLink || streamInfo?.status !== StreamState.Live) && (
-          <DashboardCard className="flex flex-col gap-4">
-            <h3>
-              <FormattedMessage defaultMessage="Account Setup" />
-            </h3>
-            <div className="flex gap-2 flex-wrap">
-              <BalanceHistoryModal provider={provider} />
-              <ForwardingModal provider={provider} />
-              <DashboardSettingsButton ev={streamEvent} provider={provider} />
-              <ProviderSelectorButton />
-            </div>
-          </DashboardCard>
-        )}
-      </div>
-      {eventLink && streamInfo?.status === StreamState.Live && (
-        <>
-          <DashboardZapColumn />
-          <div className="border border-layer-2 rounded-xl px-4 py-3 flex flex-col gap-2 min-h-0">
-            <Layer1Button
-              onClick={() => {
-                window.open(
-                  `${window.location.protocol}//${window.location.host}/chat/${eventLink.encode()}?chat=true`,
-                  "",
-                  "popup=true,width=400,height=800",
-                )
-              }}
-            >
-              <Icon name="link" size={24} />
-              <FormattedMessage defaultMessage="Chat Popout" />
-            </Layer1Button>
-            <LiveChat className="grow min-h-0" />
+                <label className="flex gap-3 items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 accent-[var(--color-primary)]"
+                    checked={recording}
+                    onChange={e => setRecording(e.target.checked)}
+                  />
+                  <FormattedMessage defaultMessage="Record my stream" />
+                </label>
+                <div className="pt-1 border-t border-layer-3">
+                  <ManualStream />
+                </div>
+              </DashboardCard>
+            )}
+            <DashboardAccountCard provider={provider} info={info} ev={streamEvent} recording={recording} />
           </div>
-        </>
-      )}
-      {eventLink && streamInfo?.status === StreamState.Ended && (
-        <DashboardCard className="overflow-y-auto">
-          <h1>
-            <FormattedMessage defaultMessage="Last Stream Summary" />
-          </h1>
-          <Suspense>
-            <StreamSummary link={eventLink} />
-          </Suspense>
-        </DashboardCard>
-      )}
-      {eventLink && streamInfo?.status === StreamState.Planned && (
-        <DashboardCard className="overflow-y-auto"></DashboardCard>
+          <DashboardCard
+            className="xl:overflow-y-auto self-start max-h-full"
+            title={
+              isPlanned ? (
+                <FormattedMessage defaultMessage="Planned stream" />
+              ) : (
+                <FormattedMessage defaultMessage="Last stream" />
+              )
+            }
+          >
+            {eventLink && streamInfo?.status === StreamState.Ended ? (
+              <Suspense>
+                <StreamSummary link={eventLink} />
+              </Suspense>
+            ) : (
+              <p className="text-layer-4">
+                {isPlanned ? (
+                  <FormattedMessage defaultMessage="Your stream will show up here when it goes live." />
+                ) : (
+                  <FormattedMessage defaultMessage="Your stream stats will show up here after your first stream." />
+                )}
+              </p>
+            )}
+          </DashboardCard>
+        </div>
       )}
       {info && !info.tos?.accepted && (
         <Modal id="tos-dashboard">
           <div className="flex flex-col gap-4">
-            <h2>Please accept TOS before continuing</h2>
+            <h2>
+              <FormattedMessage defaultMessage="Accept the terms of service to continue" />
+            </h2>
             <AcceptTos provider={provider.name} tosLink={info?.tos?.link} tos={tos} setTos={setTos} />
             <div className="flex items-center justify-between">
-              <Layer2Button
+              <PrimaryButton
                 disabled={!tos}
                 onClick={async () => {
                   if (tos) {
@@ -297,10 +286,10 @@ export default function DashboardForLink() {
                   }
                 }}
               >
-                <FormattedMessage defaultMessage="Save" />
-              </Layer2Button>
+                <FormattedMessage defaultMessage="Accept" />
+              </PrimaryButton>
               <WarningButton onClick={() => navigate("/")}>
-                <FormattedMessage defaultMessage="No Thanks!" />
+                <FormattedMessage defaultMessage="No thanks" />
               </WarningButton>
             </div>
           </div>

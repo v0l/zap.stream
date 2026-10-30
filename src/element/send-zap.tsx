@@ -224,7 +224,7 @@ export function SendZapsDialog(props: Omit<SendZapsProps, "onFinish">) {
   return (
     <Fragment>
       {props.button ? (
-        <button type="button" onClick={() => setOpen(true)}>
+        <button type="button" className="w-full" onClick={() => setOpen(true)}>
           {props.button}
         </button>
       ) : (

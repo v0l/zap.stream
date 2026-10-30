@@ -3,7 +3,6 @@ import { Profile } from "@/element/profile"
 import { dedupe } from "@snort/shared"
 import { useMemo } from "react"
 import { FormattedMessage } from "react-intl"
-import { DefaultButton } from "@/element/buttons"
 import { useStream } from "@/element/stream/stream-state"
 
 export function DashboardChatList() {
@@ -12,15 +11,17 @@ export function DashboardChatList() {
     return dedupe(feed.map(a => a.pubkey))
   }, [feed])
 
+  if (pubkeys.length === 0) {
+    return (
+      <p className="px-4 py-4 text-sm text-layer-4">
+        <FormattedMessage defaultMessage="Nobody has chatted yet." />
+      </p>
+    )
+  }
   return pubkeys.map(a => (
-    <div key={a} className="flex justify-between items-center px-4 py-2 border-b border-layer-1">
-      <Profile pubkey={a} avatarSize={32} gap={4} />
-      <div className="flex gap-2">
-        <MuteButton pubkey={a} />
-        <DefaultButton onClick={() => {}} className="font-bold">
-          <FormattedMessage defaultMessage="Zap" id="fBI91o" />
-        </DefaultButton>
-      </div>
+    <div key={a} className="flex justify-between items-center gap-3 px-4 py-2 border-b border-layer-3 last:border-0">
+      <Profile pubkey={a} avatarSize={28} className="min-w-0 truncate" />
+      <MuteButton pubkey={a} />
     </div>
   ))
 }

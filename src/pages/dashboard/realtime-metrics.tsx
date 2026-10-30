@@ -27,8 +27,8 @@ export function CompactMetricsDisplay({ metrics }: { metrics: MetricsMessage }) 
 
   if (!metrics.data) {
     return (
-      <div className="uppercase font-semibold flex items-center gap-2">
-        <div className="w-3 h-3 rounded-full animate-pulse bg-green-500"></div>
+      <div className="text-sm font-semibold flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-green-500"></div>
         <FormattedMessage defaultMessage="Started" />
       </div>
     )
@@ -38,18 +38,18 @@ export function CompactMetricsDisplay({ metrics }: { metrics: MetricsMessage }) 
   const bitrate = getBitrate()
 
   return (
-    <div className="uppercase font-semibold flex items-center gap-3">
-      <div className={`px-2 py-1 rounded-full text-xs font-medium text-white ${health.color} flex items-center gap-1`}>
-        <div className="w-1.5 h-1.5 rounded-full bg-white opacity-80 animate-pulse"></div>
+    <div className="text-sm font-semibold flex items-center gap-3 tabular-nums">
+      <div className="flex items-center gap-1.5">
+        <div className={`w-2 h-2 rounded-full ${health.color}`}></div>
         {health.text}
       </div>
       {metrics.data.average_fps && (
-        <span>
+        <span className="text-layer-4">
           {metrics.data.average_fps.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{" "}
           FPS
         </span>
       )}
-      {bitrate && <span>{Math.round(bitrate / 1000).toLocaleString()} kbps</span>}
+      {bitrate && <span className="text-layer-4">{Math.round(bitrate / 1000).toLocaleString()} kbps</span>}
       {!metrics.data.average_fps && !bitrate && <FormattedMessage defaultMessage="Started" />}
     </div>
   )

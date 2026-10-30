@@ -5,11 +5,11 @@ import { extractStreamInfo } from "@/utils"
 import { unixNow } from "@snort/shared"
 import { NostrLink, type NostrEvent, type ParsedZap, EventKind, type TaggedNostrEvent } from "@snort/system"
 import { useEventReactions, useReactions } from "@snort/system-react"
-import { useMemo } from "react"
+import { type ReactNode, useMemo } from "react"
 import { FormattedMessage, FormattedNumber, FormattedDate } from "react-intl"
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip } from "recharts"
 import { Profile } from "./profile"
-import { StatePill } from "./state-pill"
+import { Duration } from "./duration"
 import { Link } from "react-router"
 import { Icon } from "./icon"
 import EventReactions from "./event-reactions"
@@ -157,211 +157,199 @@ export default function StreamSummary({ link, preload }: { link: NostrLink; prel
 
   return (
     <div className="flex flex-col gap-4">
-      <h2>{title}</h2>
-      {summary && <p>{summary}</p>}
-      <div className="flex gap-1">
-        <StatePill state={status as StreamState} />
-        {streamLength > 0 && (
-          <FormattedMessage
-            defaultMessage="Stream Duration {duration} mins"
-            id="J/+m9y"
-            values={{
-              duration: <FormattedNumber value={streamLength / 60} maximumFractionDigits={2} />,
-            }}
-          />
-        )}
+      <div className="flex flex-col gap-1">
+        <h3 className="text-2xl">{title}</h3>
+        {summary && <p className="text-layer-5">{summary}</p>}
       </div>
-      <h2>
-        <FormattedMessage defaultMessage="Summary" id="RrCui3" />
-      </h2>
-      <ResponsiveContainer height={200}>
-        <BarChart data={Object.values(stats)} margin={{ left: 0, right: 0 }} style={{ userSelect: "none" }}>
-          <XAxis tick={false} />
-          <YAxis />
-          <Bar dataKey="messages" fill="green" stackId="" />
-          <Bar dataKey="zaps" fill="yellow" stackId="" />
-          <Bar dataKey="reactions" fill="red" stackId="" />
-          <Bar dataKey="clips" fill="pink" stackId="" />
-          <Bar dataKey="raids" fill="blue" stackId="" />
-          <Bar dataKey="shares" fill="purple" stackId="" />
-          <Tooltip
-            cursor={{ fill: "rgba(255,255,255,0.5)" }}
-            content={({ active, payload }) => {
-              if (active && payload?.length) {
-                const data = payload[0].payload as StatSlot
-                return (
-                  <div className="bg-layer-1 rounded-xl px-4 py-2 flex flex-col gap-2">
-                    <div>
-                      <FormattedDate value={data.time * 1000} timeStyle="short" dateStyle="short" />
-                    </div>
-                    <div className="flex justify-between">
+      <dl className="flex flex-wrap gap-x-10 gap-y-3">
+        {streamLength > 0 && (
+          <div>
+            <dt className="text-sm text-layer-4">
+              <FormattedMessage defaultMessage="Duration" />
+            </dt>
+            <dd className="font-display text-2xl font-extrabold tabular-nums">
+              <Duration seconds={streamLength} />
+            </dd>
+          </div>
+        )}
+        <div>
+          <dt className="text-sm text-layer-4">
+            <FormattedMessage defaultMessage="Zapped" />
+          </dt>
+          <dd className="font-display text-2xl font-extrabold tabular-nums text-primary">
+            <FormattedNumber value={totalZaps} />
+          </dd>
+        </div>
+        <div>
+          <dt className="text-sm text-layer-4">
+            <FormattedMessage defaultMessage="Chat messages" />
+          </dt>
+          <dd className="font-display text-2xl font-extrabold tabular-nums">
+            <FormattedNumber value={data.filter(a => a.kind === LIVE_STREAM_CHAT).length} />
+          </dd>
+        </div>
+      </dl>
+      {data.length > 0 && (
+        <ResponsiveContainer height={200}>
+          <BarChart data={Object.values(stats)} margin={{ left: 0, right: 0 }} style={{ userSelect: "none" }}>
+            <XAxis tick={false} stroke="#2c2933" />
+            <YAxis stroke="#9a95a3" width={32} allowDecimals={false} />
+            <Bar dataKey="messages" fill="#4d7cff" stackId="" />
+            <Bar dataKey="zaps" fill="#ffb000" stackId="" />
+            <Bar dataKey="reactions" fill="#c13fa8" stackId="" />
+            <Bar dataKey="clips" fill="#2f9a5b" stackId="" />
+            <Bar dataKey="raids" fill="#8fa8ff" stackId="" />
+            <Bar dataKey="shares" fill="#9a95a3" stackId="" />
+            <Tooltip
+              cursor={{ fill: "rgba(255,255,255,0.06)" }}
+              content={({ active, payload }) => {
+                if (active && payload?.length) {
+                  const data = payload[0].payload as StatSlot
+                  return (
+                    <div className="bg-layer-2 border border-layer-3 rounded-xl px-4 py-2 flex flex-col gap-1 text-sm">
                       <div>
-                        <FormattedMessage defaultMessage="Messages" id="hMzcSq" />
+                        <FormattedDate value={data.time * 1000} timeStyle="short" dateStyle="short" />
                       </div>
-                      <div>{data.messages}</div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div>
-                        <FormattedMessage defaultMessage="Reactions" id="XgWvGA" />
+                      <div className="flex justify-between">
+                        <div>
+                          <FormattedMessage defaultMessage="Messages" id="hMzcSq" />
+                        </div>
+                        <div>{data.messages}</div>
                       </div>
-                      <div>{data.reactions}</div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div>
-                        <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
+                      <div className="flex justify-between">
+                        <div>
+                          <FormattedMessage defaultMessage="Reactions" id="XgWvGA" />
+                        </div>
+                        <div>{data.reactions}</div>
                       </div>
-                      <div>{data.zaps}</div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div>
-                        <FormattedMessage defaultMessage="Clips" id="yLxIgl" />
+                      <div className="flex justify-between">
+                        <div>
+                          <FormattedMessage defaultMessage="Zaps" id="OEW7yJ" />
+                        </div>
+                        <div>{data.zaps}</div>
                       </div>
-                      <div>{data.clips}</div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div>
-                        <FormattedMessage defaultMessage="Raids" id="+y6JUK" />
+                      <div className="flex justify-between">
+                        <div>
+                          <FormattedMessage defaultMessage="Clips" id="yLxIgl" />
+                        </div>
+                        <div>{data.clips}</div>
                       </div>
-                      <div>{data.raids}</div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div>
-                        <FormattedMessage defaultMessage="Shares" id="mrwfXX" />
+                      <div className="flex justify-between">
+                        <div>
+                          <FormattedMessage defaultMessage="Raids" id="+y6JUK" />
+                        </div>
+                        <div>{data.raids}</div>
                       </div>
-                      <div>{data.shares}</div>
+                      <div className="flex justify-between">
+                        <div>
+                          <FormattedMessage defaultMessage="Shares" id="mrwfXX" />
+                        </div>
+                        <div>{data.shares}</div>
+                      </div>
                     </div>
-                  </div>
-                )
-              }
-              return null
-            }}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+                  )
+                }
+                return null
+              }}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
 
-      <div className="grid gap-2 grid-cols-3">
-        <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
-          <h3>
-            <FormattedMessage defaultMessage="Top Chatters" id="GGaJMU" />
-          </h3>
-          <div className="flex flex-col gap-2">
+      <div className="grid gap-3 lg:grid-cols-2">
+        {chatSummary.length > 0 && (
+          <SummaryList title={<FormattedMessage defaultMessage="Top chatters" />}>
             {chatSummary.slice(0, 5).map(a => (
-              <div className="flex justify-between items-center" key={a.pubkey}>
-                <Profile pubkey={a.pubkey} avatarSize={30} />
-                <div>
-                  <FormattedMessage
-                    defaultMessage="{n} messages"
-                    id="gzsn7k"
-                    values={{
-                      n: <FormattedNumber value={a.messages.length} />,
-                    }}
-                  />
-                </div>
-              </div>
+              <SummaryRow key={a.pubkey} pubkey={a.pubkey}>
+                <FormattedMessage
+                  defaultMessage="{n} messages"
+                  id="gzsn7k"
+                  values={{
+                    n: <FormattedNumber value={a.messages.length} />,
+                  }}
+                />
+              </SummaryRow>
             ))}
-          </div>
-        </div>
-        <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
-          <div className="flex justify-between items-center">
-            <h3>
-              <FormattedMessage defaultMessage="Top Zappers" id="dVD/AR" />
-            </h3>
-            <span>
-              <FormattedMessage
-                defaultMessage="Total: {amount} sats"
-                id="/Jp9pC"
-                values={{
-                  amount: (
-                    <b>
-                      <FormattedNumber value={totalZaps} />
-                    </b>
-                  ),
-                }}
-              />
-            </span>
-          </div>
-          <div className="flex flex-col gap-2">
+          </SummaryList>
+        )}
+        {zapsSummary.length > 0 && (
+          <SummaryList title={<FormattedMessage defaultMessage="Top zappers" />}>
             {zapsSummary.slice(0, 5).map(a => (
-              <div className="flex justify-between items-center" key={a.pubkey}>
-                <Profile pubkey={a.zaps.some(b => b.anonZap) ? "anon" : a.pubkey} avatarSize={30} />
-                <div>
-                  <FormattedMessage
-                    defaultMessage="{n} sats"
-                    values={{
-                      n: formatSats(a.total),
-                    }}
-                  />
-                </div>
-              </div>
+              <SummaryRow key={a.pubkey} pubkey={a.zaps.some(b => b.anonZap) ? "anon" : a.pubkey}>
+                <span className="text-primary font-semibold">
+                  <FormattedMessage defaultMessage="{n} sats" values={{ n: formatSats(a.total) }} />
+                </span>
+              </SummaryRow>
             ))}
-          </div>
-        </div>
-        <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
-          <h3>
-            <FormattedMessage defaultMessage="Raids" id="+y6JUK" />
-          </h3>
-          <div className="flex flex-col gap-2">
+          </SummaryList>
+        )}
+        {data.some(a => a.kind === LIVE_STREAM_RAID) && (
+          <SummaryList title={<FormattedMessage defaultMessage="Raids" id="+y6JUK" />}>
             {data
               .filter(a => a.kind === LIVE_STREAM_RAID)
-              .map(a => {
-                const mins = a.created_at - startTime
-                return (
-                  <div className="flex justify-between items-center" key={a.id}>
-                    <Profile pubkey={a.pubkey} avatarSize={30} />
-                    <FormattedMessage
-                      defaultMessage="@ {n,selectordinal, one {#st} two {#nd} few {#rd} other {#th}} min"
-                      values={{
-                        n: Math.floor(mins / 60),
-                      }}
-                    />
-                  </div>
-                )
-              })}
-          </div>
-        </div>
-      </div>
-      <div className="grid gap-2 grid-cols-2">
-        <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
-          <h3>
-            <FormattedMessage defaultMessage="Shares" id="mrwfXX" />
-          </h3>
-          {data
-            .filter(a => a.kind === EventKind.TextNote)
-            .map(a => (
-              <SharedNote ev={a} key={a.id} />
-            ))}
-        </div>
-        <div className="bg-layer-1 rounded-xl px-4 py-3 flex-1 flex flex-col gap-2">
-          <h3>
-            <FormattedMessage defaultMessage="Clips" id="yLxIgl" />
-          </h3>
-          <div className="flex flex-col gap-2">
+              .map(a => (
+                <SummaryRow key={a.id} pubkey={a.pubkey}>
+                  <FormattedMessage
+                    defaultMessage="{n} min in"
+                    values={{
+                      n: Math.floor((a.created_at - startTime) / 60),
+                    }}
+                  />
+                </SummaryRow>
+              ))}
+          </SummaryList>
+        )}
+        {data.some(a => a.kind === EventKind.TextNote) && (
+          <SummaryList title={<FormattedMessage defaultMessage="Shares" id="mrwfXX" />}>
+            {data
+              .filter(a => a.kind === EventKind.TextNote)
+              .map(a => (
+                <SharedNote ev={a} key={a.id} />
+              ))}
+          </SummaryList>
+        )}
+        {data.some(a => a.kind === LIVE_STREAM_CLIP) && (
+          <SummaryList title={<FormattedMessage defaultMessage="Clips" id="yLxIgl" />}>
             {data
               .filter(a => a.kind === LIVE_STREAM_CLIP)
-              .map(a => {
-                const link = NostrLink.fromEvent(a)
-                return (
-                  <div className="flex justify-between items-center" key={a.id}>
-                    <Profile pubkey={a.pubkey} avatarSize={30} />
-                    <div className="flex gap-2">
-                      <EventReactions ev={a} />
-                      <Link to={`/${link.encode()}`}>
-                        <Icon name="link" size={26} />
-                      </Link>
-                    </div>
+              .map(a => (
+                <SummaryRow key={a.id} pubkey={a.pubkey}>
+                  <div className="flex gap-2 items-center">
+                    <EventReactions ev={a} />
+                    <Link to={`/${NostrLink.fromEvent(a).encode()}`} aria-label="Open clip">
+                      <Icon name="link" size={20} />
+                    </Link>
                   </div>
-                )
-              })}
-          </div>
-        </div>
+                </SummaryRow>
+              ))}
+          </SummaryList>
+        )}
       </div>
+    </div>
+  )
+}
+
+function SummaryList({ title, children }: { title: ReactNode; children: ReactNode }) {
+  return (
+    <section className="rounded-xl border border-layer-3 bg-layer-0">
+      <h4 className="px-4 py-2.5 border-b border-layer-3 font-sans text-sm font-semibold tracking-normal">{title}</h4>
+      <div className="flex flex-col">{children}</div>
+    </section>
+  )
+}
+
+function SummaryRow({ pubkey, children }: { pubkey: string; children: ReactNode }) {
+  return (
+    <div className="flex justify-between items-center gap-3 px-4 py-2 border-b border-layer-3 last:border-0 text-sm">
+      <Profile pubkey={pubkey} avatarSize={24} className="min-w-0 truncate" />
+      <span className="shrink-0 text-layer-5">{children}</span>
     </div>
   )
 }
 
 function SharedNote({ ev }: { ev: TaggedNostrEvent }) {
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center px-4 py-2 border-b border-layer-3 last:border-0 text-sm">
       <Profile pubkey={ev.pubkey} avatarSize={30} />
       <div className="truncate text-layer-4">{ev.content}</div>
       <EventReactions ev={ev} />
