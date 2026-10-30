@@ -23,6 +23,7 @@ import { StreamState } from "@/const"
 import { parseYouTubeUrl } from "@/youtube"
 import type { NostrLink } from "@snort/system"
 import YouTubePlayer from "./youtube-player"
+import { shouldReleasePlayer } from "./release-player"
 const Nip94Player = lazy(() => import("./n94-player"))
 const MoqPlayer = lazy(() => import("./moq-player"))
 
@@ -62,9 +63,11 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
   useEffect(() => {
     const el = playerRef.current as HlsVideoElement | null
     return () => {
-      if (el?.api) {
-        el.src = ""
-      }
+      queueMicrotask(() => {
+        if (el && shouldReleasePlayer(el)) {
+          el.src = ""
+        }
+      })
     }
   }, [stream])
   function innerPlayer() {
