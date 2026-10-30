@@ -110,6 +110,9 @@
   "4l6vz1": {
     "defaultMessage": "Copy"
   },
+  "4zBR3P": {
+    "defaultMessage": "Zapped in the last 24 hours"
+  },
   "50+/JW": {
     "defaultMessage": "Stream Key is required"
   },
@@ -256,6 +259,9 @@
   },
   "E9APoR": {
     "defaultMessage": "Could not create stream URL"
+  },
+  "EAY/hu": {
+    "defaultMessage": "{n} watching"
   },
   "ESyhzp": {
     "defaultMessage": "Your comment for {name}"
@@ -527,6 +533,9 @@
   "Sjo1P4": {
     "defaultMessage": "Custom"
   },
+  "T+umeO": {
+    "defaultMessage": "{n} sats zapped in the last 24 hours"
+  },
   "TDUfVk": {
     "defaultMessage": "Started"
   },
@@ -560,6 +569,9 @@
   },
   "VKb1MS": {
     "defaultMessage": "Categories"
+  },
+  "VThwOz": {
+    "defaultMessage": "sats"
   },
   "W7DNWx": {
     "defaultMessage": "Stream Forwarding"
@@ -624,6 +636,9 @@
   },
   "ZDsjr1": {
     "defaultMessage": "{platform} channel name.."
+  },
+  "ZHtR8c": {
+    "defaultMessage": "in {category}"
   },
   "ZXp0z1": {
     "defaultMessage": "Features"
@@ -980,6 +995,9 @@
   "sKDn4e": {
     "defaultMessage": "Show Badges"
   },
+  "sgT7ox": {
+    "defaultMessage": "Watch stream"
+  },
   "syEQFE": {
     "defaultMessage": "Publish"
   },
@@ -1073,6 +1091,9 @@
   },
   "yj8NrY": {
     "defaultMessage": "Clip"
+  },
+  "yxk302": {
+    "defaultMessage": "All live"
   },
   "yzKwBQ": {
     "defaultMessage": "eg. nsec1xyz"

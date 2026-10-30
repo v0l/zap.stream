@@ -100,7 +100,10 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
   }
 
   const titleBar = (
-    <div slot="top-chrome" className="py-1 text-center w-full text-2xl bg-primary">
+    <div
+      slot="top-chrome"
+      className="py-2 px-4 w-full text-lg font-semibold bg-gradient-to-b from-layer-0/80 to-transparent"
+    >
       {title}
     </div>
   )
@@ -124,8 +127,9 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       className={classNames(props.className, "h-inherit aspect-video w-full")}
       style={
         {
-          "--media-secondary-color": "var(--primary)",
-          "--media-control-hover-background": "color-mix(in srgb, var(--primary) 80%, transparent)",
+          "--media-secondary-color": "color-mix(in srgb, var(--color-layer-0) 70%, transparent)",
+          "--media-control-hover-background": "var(--color-layer-2)",
+          "--media-range-bar-color": "var(--primary)",
         } as CSSProperties
       }
     >

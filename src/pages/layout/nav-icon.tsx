@@ -25,9 +25,15 @@ export function NavLinkIcon({
     <Link
       to={route ?? "#"}
       onClick={onClick}
-      className={classNames("cursor-pointer hover:bg-neutral-800 rounded-xl", { "opacity-50": !active }, className)}
+      aria-current={active ? "page" : undefined}
+      className={classNames(
+        "flex items-center gap-3 rounded-lg font-medium cursor-pointer hover:bg-layer-2 hover:text-text",
+        children ? "px-2.5 py-2" : "p-2",
+        active ? "bg-layer-2 text-text shadow-[inset_3px_0_0_var(--color-primary)]" : "text-layer-4",
+        className,
+      )}
     >
-      <Icon name={name} size={20} className="m-2" />
+      <Icon name={name} size={20} />
       {children}
     </Link>
   )

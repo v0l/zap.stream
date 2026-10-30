@@ -21,6 +21,7 @@ interface VideoGridSortedProps {
   showPopular?: boolean
   showRecentClips?: boolean
   showVideos?: boolean
+  zapTotals?: Record<string, number>
 }
 
 export default function VideoGridSorted({
@@ -31,6 +32,7 @@ export default function VideoGridSorted({
   showPopular,
   showRecentClips,
   showVideos,
+  zapTotals,
 }: VideoGridSortedProps) {
   const login = useLogin()
   const mutedHosts = login?.state?.muted ?? []
@@ -65,12 +67,16 @@ export default function VideoGridSorted({
   return (
     <div className="flex flex-col gap-6">
       {hasFollowingLive && (
-        <GridSection header={<FormattedMessage defaultMessage="Following" id="cPIKU2" />} items={following} />
+        <GridSection
+          header={<FormattedMessage defaultMessage="Following" id="cPIKU2" />}
+          items={following}
+          zapTotals={zapTotals}
+        />
       )}
       {!hasFollowingLive && (
         <VideoGrid>
           {live.map(e => (
-            <StreamTile ev={e} key={e.id} style="grid" />
+            <StreamTile ev={e} key={e.id} style="grid" zapTotal={zapTotals?.[NostrLink.fromEvent(e).tagKey]} />
           ))}
         </VideoGrid>
       )}
@@ -82,7 +88,11 @@ export default function VideoGridSorted({
       )}
       {showRecentClips && <RecentClips />}
       {hasFollowingLive && liveNow.length > 0 && (
-        <GridSection header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />} items={liveNow} />
+        <GridSection
+          header={<FormattedMessage defaultMessage="Live" id="Dn82AL" />}
+          items={liveNow}
+          zapTotals={zapTotals}
+        />
       )}
       {showPopular && <PopularCategories items={evs} />}
       {plannedEvents.length > 0 && (showPlanned ?? true) && (
@@ -95,16 +105,21 @@ export default function VideoGridSorted({
   )
 }
 
-function GridSection({ header, items }: { header: ReactNode; items: Array<TaggedNostrEvent> }) {
+function GridSection({
+  header,
+  items,
+  zapTotals,
+}: {
+  header: ReactNode
+  items: Array<TaggedNostrEvent>
+  zapTotals?: Record<string, number>
+}) {
   return (
     <>
-      <div className="flex items-center gap-4">
-        <h3 className="whitespace-nowrap">{header}</h3>
-        <span className="h-[1px] bg-layer-1 w-full" />
-      </div>
+      <SectionHeader>{header}</SectionHeader>
       <VideoGrid>
         {items.map(e => (
-          <StreamTile ev={e} key={e.id} style="grid" />
+          <StreamTile ev={e} key={e.id} style="grid" zapTotal={zapTotals?.[NostrLink.fromEvent(e).tagKey]} />
         ))}
       </VideoGrid>
     </>
@@ -148,12 +163,9 @@ function PopularCategories({ items }: { items: Array<TaggedNostrEvent> }) {
 
   return (
     <>
-      <div className="flex items-center gap-4">
-        <h3 className="whitespace-nowrap">
-          <FormattedMessage defaultMessage="Popular" />
-        </h3>
-        <span className="h-[1px] bg-layer-1 w-full" />
-      </div>
+      <SectionHeader>
+        <FormattedMessage defaultMessage="Popular" />
+      </SectionHeader>
       <div className="flex flex-wrap gap-4">
         {categories.map(a => (
           <Link
@@ -187,12 +199,9 @@ function RecentClips() {
 
   return (
     <>
-      <div className="flex items-center gap-4">
-        <h3 className="whitespace-nowrap">
-          <FormattedMessage defaultMessage="Recent Clips" />
-        </h3>
-        <span className="h-[1px] bg-layer-1 w-full" />
-      </div>
+      <SectionHeader>
+        <FormattedMessage defaultMessage="Recent Clips" />
+      </SectionHeader>
       <VideoGrid>
         {clips.slice(0, 5).map(a => (
           <ClipTile ev={a} key={a.id} />
@@ -200,4 +209,8 @@ function RecentClips() {
       </VideoGrid>
     </>
   )
+}
+
+function SectionHeader({ children }: { children: ReactNode }) {
+  return <h2 className="text-[22px] pt-4">{children}</h2>
 }

@@ -10,11 +10,14 @@ export function SearchBar() {
   const [search, setSearch] = useState(term ?? "")
 
   return (
-    <div className="pr-4 h-fit flex items-center rounded-full px-3 py-1 border border-layer-2 max-xl:min-w-0">
+    <div className="flex-1 max-w-[460px] min-w-0 flex items-center gap-2 rounded-xl px-3 py-2 bg-layer-1 border border-layer-3 focus-within:border-layer-4">
       <input
         type="text"
-        className="reset bg-transparent"
+        className="reset bg-transparent flex-1 min-w-0 outline-none"
         placeholder={formatMessage({
+          defaultMessage: "Search",
+        })}
+        aria-label={formatMessage({
           defaultMessage: "Search",
         })}
         value={search}
@@ -27,7 +30,7 @@ export function SearchBar() {
       />
       <Icon
         name="search"
-        className="max-lg:text-black lg:text-layer-4 max-lg:ml-4 max-lg:my-1"
+        className="text-layer-4 cursor-pointer"
         size={16}
         onClick={() => {
           navigate("/search")

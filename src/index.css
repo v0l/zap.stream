@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-layer-0: #0a0a0a;
-  --color-layer-1: rgb(23 23 23);
-  --color-layer-2: rgb(34 34 34);
-  --color-layer-3: rgb(50 50 50);
-  --color-layer-4: rgb(121 121 121);
-  --color-layer-5: rgb(173 173 173);
+  --color-layer-0: #0d0c0f;
+  --color-layer-1: #16141b;
+  --color-layer-2: #201d26;
+  --color-layer-3: #2c2933;
+  --color-layer-4: #9a95a3;
+  --color-layer-5: #c9c4cc;
+  --color-text: #f2eee8;
+  --color-on-primary: #1a1100;
+  --color-signal: #4d7cff;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Instrument Sans", sans-serif;
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-zap: var(--zap);
@@ -30,10 +35,12 @@ body {
 
 body {
   margin: 0;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: white;
+  color: var(--color-text);
   overscroll-behavior: contain;
   background-color: var(--color-layer-0);
   overflow-x: hidden;
@@ -44,14 +51,14 @@ body {
 }
 
 :root {
-  --header-height: 48px;
-  --primary: #f838d9;
-  --secondary: #34d2fe;
-  --zap: #ff8d2b;
+  --header-height: 56px;
+  --primary: #ffb000;
+  --secondary: #8fa8ff;
+  --zap: #ffb000;
   --success: green;
-  --surface: #222;
-  --border: #171717;
-  --border-2: #393939;
+  --surface: #201d26;
+  --border: #16141b;
+  --border-2: #2c2933;
   --gradient-purple: linear-gradient(135deg, #882bff 0%, #f83838 100%);
   --gradient-yellow: linear-gradient(270deg, #adff27 0%, #ffd027 100%);
   --gradient-orange: linear-gradient(270deg, #ff5b27 0%, rgba(255, 182, 39, 0.99) 100%);
@@ -69,37 +76,20 @@ body {
 }
 
 .btn-border {
-  border: 1px solid transparent;
+  border: 1px solid var(--color-layer-3);
   color: inherit;
-  background:
-    linear-gradient(black, black) padding-box,
-    linear-gradient(94.73deg, #2bd9ff 0%, #f838d9 100%) border-box;
-  transition: 0.3s;
+  background: transparent;
+  transition: border-color 0.15s;
 }
 
 .btn-border:hover {
-  background:
-    linear-gradient(black, black) padding-box,
-    linear-gradient(94.73deg, #14b4d8 0%, #ba179f 100%) border-box;
+  border-color: var(--color-layer-4);
 }
 
-h1 {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 28px;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 21px;
-  font-weight: 500;
-}
-
-h4 {
-  font-size: 18px;
+@layer base {
+  .bg-primary {
+    color: var(--color-on-primary);
+  }
 }
 
 code {
@@ -107,6 +97,38 @@ code {
 }
 
 @layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
   a {
     color: unset;
     text-decoration: unset;
@@ -114,7 +136,14 @@ code {
 }
 
 :focus-visible {
-  outline: none;
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: 0;
 }
 
 .h-inherit {
@@ -147,7 +176,8 @@ select:not(.reset) {
   font-weight: 700;
   line-height: 20px;
   border-radius: 12px;
-  background: #434343;
+  border: 1px solid var(--color-layer-3);
+  background: var(--color-layer-2);
   padding: 12px 0px;
   color: white;
   display: flex;
@@ -161,7 +191,7 @@ select:not(.reset) {
 }
 
 .ctx-menu li:hover {
-  background: #505050;
+  background: var(--color-layer-3);
 }
 
 .szh-menu__item--hover {
@@ -175,7 +205,7 @@ select:not(.reset) {
 }
 
 .secondary {
-  color: #909090;
+  color: var(--color-layer-4);
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -206,4 +236,15 @@ table th {
   background: rgba(46, 23, 16, 1);
   box-shadow: 0px 0px 5px 5px rgba(255, 91, 39, 0.22);
   color: rgba(255, 91, 39, 1);
+}
+
+@keyframes zap-land {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
 }

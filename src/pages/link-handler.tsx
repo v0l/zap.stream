@@ -24,7 +24,12 @@ export function LinkHandler() {
     return <NostrEventElement link={link} />
   } else if ((link.kind && LIVE_STREAM_KINDS.includes(link.kind)) || link.type === NostrPrefix.PublicKey) {
     return (
-      <div className={classNames(layoutContext.showHeader ? "h-[calc(100dvh-44px)]" : "h-[calc(100dvh)]", "w-full")}>
+      <div
+        className={classNames(
+          layoutContext.showHeader ? "h-[calc(100dvh-var(--header-height))]" : "h-[calc(100dvh)]",
+          "w-full",
+        )}
+      >
         <StreamPage link={link} evPreload={evPreload} />
       </div>
     )

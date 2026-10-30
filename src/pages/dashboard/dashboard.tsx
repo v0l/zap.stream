@@ -123,7 +123,7 @@ export default function DashboardForLink() {
 
   return (
     <div
-      className={classNames("grid gap-2 h-[calc(100dvh-52px)] w-full", {
+      className={classNames("grid gap-2 h-[calc(100dvh-var(--header-height))] w-full", {
         "grid-cols-3": streamInfo?.status === StreamState.Live,
         "grid-cols-[20%_80%]": streamInfo?.status === StreamState.Ended || streamInfo?.status === undefined,
         "grid-cols-[40%_60%]": streamInfo?.status === StreamState.Planned,

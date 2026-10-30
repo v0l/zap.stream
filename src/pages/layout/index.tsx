@@ -62,9 +62,9 @@ export function LayoutPage() {
       </Helmet>
 
       <HeaderNav />
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-x-clip">
         <LeftNav />
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 min-w-0">
           <Outlet />
         </main>
       </div>

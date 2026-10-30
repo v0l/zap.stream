@@ -93,8 +93,8 @@ export default function Category() {
 
   const results = useRequestBuilder(sub)
   return (
-    <div className="px-2 py-4">
-      <div className="min-w-0 w-[calc(100dvw-2rem)] overflow-x-scroll scrollbar-hidden">
+    <div className="p-4 sm:px-8 sm:py-7 min-w-0">
+      <div className="min-w-0 overflow-x-auto scrollbar-hidden">
         <div className="flex gap-4">
           {AllCategories.map(a => (
             <CategoryLink key={a.id} id={`internal:${a.id}`} name={a.name} icon={a.icon} />

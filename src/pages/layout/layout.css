@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   z-index: 999;
-  background: #0a0a0a;
+  background: var(--color-layer-0);
 }
 
 .age-check {

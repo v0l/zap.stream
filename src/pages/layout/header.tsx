@@ -1,4 +1,4 @@
-import { BorderButton, IconButton } from "@/element/buttons"
+import { BorderButton, IconButton, PrimaryButton } from "@/element/buttons"
 import { Icon } from "@/element/icon"
 import { LoginSignup } from "@/element/login-signup"
 import Logo from "@/element/logo"
@@ -57,11 +57,11 @@ export function HeaderNav() {
     if (!login) return
 
     return (
-      <div className="flex gap-2 items-center pr-4 py-1">
+      <div className="flex gap-2 items-center">
         {(!WHITELIST || WHITELIST.includes(login.pubkey)) && (
           <>
             <BorderButton
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 rounded-xl"
               onClick={() => navigate("/dashboard")}
               aria-label={formatMessage({ defaultMessage: "Go Live" })}
             >
@@ -73,7 +73,7 @@ export function HeaderNav() {
             <Menu
               menuClassName="ctx-menu"
               menuButton={
-                <IconButton iconName="plus-circle" iconSize={20} className="px-3 py-2 hover:bg-layer-1 rounded-xl" />
+                <IconButton iconName="plus-circle" iconSize={20} className="px-3 py-2 hover:bg-layer-2 rounded-xl" />
               }
               align="end"
               gap={5}
@@ -136,11 +136,10 @@ export function HeaderNav() {
   function loggedOut() {
     if (login) return
     return (
-      <div className="pr-4">
-        <BorderButton onClick={() => setShowLogin(true)}>
+      <div>
+        <PrimaryButton className="rounded-xl" onClick={() => setShowLogin(true)}>
           <FormattedMessage defaultMessage="Login" id="AyGauy" />
-          <Icon name="login" />
-        </BorderButton>
+        </PrimaryButton>
         {showLogin && (
           <Modal
             id="login"
@@ -157,12 +156,12 @@ export function HeaderNav() {
 
   if (!layoutState.showHeader) return
   return (
-    <div className="flex justify-between items-center gap-4">
-      <div className="flex gap-4 items-center m-2">
+    <div className="flex justify-between items-center gap-4 px-4 h-[var(--header-height)] border-b border-layer-3 bg-layer-0/90 backdrop-blur sticky top-0 z-10">
+      <div className="flex gap-3 items-center">
         {layoutState.leftNav && (
           <NavLinkIcon
             name="hamburger"
-            className="!opacity-100"
+            className="!text-text xl:hidden"
             onClick={() => {
               layoutState.update(c => {
                 c.leftNavExpand = !c.leftNavExpand
@@ -171,8 +170,11 @@ export function HeaderNav() {
             }}
           />
         )}
-        <Link to="/">
-          <Logo width={33} />
+        <Link to="/" className="flex items-center gap-2 text-primary">
+          <Logo width={30} />
+          <span className="font-display text-xl font-extrabold tracking-tight text-text max-md:hidden">
+            zap<span className="text-primary">.</span>stream
+          </span>
         </Link>
       </div>
       <SearchBar />
