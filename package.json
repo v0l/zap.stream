@@ -40,7 +40,7 @@
     "react-dom": "^19.2.8",
     "react-intl": "^10.1.23",
     "react-is": "^19.2.8",
-    "react-router": "^7.18.2",
+    "react-router": "^8.5.1",
     "react-tag-input-component": "^2.0.2",
     "recharts": "^3.10.1",
     "rxjs": "^7.8.2",
