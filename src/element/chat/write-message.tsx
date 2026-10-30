@@ -12,6 +12,7 @@ import type { Emoji, EmojiPack } from "@/types"
 import { LIVE_STREAM_CHAT } from "@/const"
 import { TimeSync } from "@/time-sync"
 import AsyncButton from "../async-button"
+import { useIntl } from "react-intl"
 
 export function WriteMessage({
   link,
@@ -30,6 +31,7 @@ export function WriteMessage({
   const [chat, setChat] = useState("")
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
   const login = useLogin()
+  const { formatMessage } = useIntl()
   const emojis = emojiPacks.flatMap(pack => pack.emojis)
   const names = emojis.map(t => t.at(1))
 
@@ -94,7 +96,10 @@ export function WriteMessage({
   }
 
   return (
-    <div className="grow flex bg-layer-2 px-3 py-2 rounded-xl items-center" ref={ref}>
+    <div
+      className="grow flex bg-layer-2 border border-layer-3 focus-within:border-layer-4 px-3 py-2 rounded-xl items-center"
+      ref={ref}
+    >
       <Textarea
         className="!p-0 !rounded-none"
         emojis={emojis}
@@ -103,10 +108,18 @@ export function WriteMessage({
         onChange={e => setChat(e.target.value)}
         rows={1}
       />
-      <AsyncButton onClick={pickEmoji} className="px-3 opacity-80">
+      <AsyncButton
+        onClick={pickEmoji}
+        className="px-2 text-layer-4 hover:text-text"
+        aria-label={formatMessage({ defaultMessage: "Add emoji" })}
+      >
         <Icon name="face" />
       </AsyncButton>
-      <AsyncButton onClick={sendChatMessage} className="px-3 opacity-80">
+      <AsyncButton
+        onClick={sendChatMessage}
+        className="px-2 text-primary hover:brightness-110"
+        aria-label={formatMessage({ defaultMessage: "Send message" })}
+      >
         <Icon name="send" />
       </AsyncButton>
       {showEmojiPicker && (

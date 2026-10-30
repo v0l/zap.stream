@@ -16,7 +16,6 @@ import Pill from "../pill"
 import { Profile, getName } from "../profile"
 import { SendZapsDialog } from "../send-zap"
 import { ShareMenu } from "../share-menu"
-import { StatePill } from "../state-pill"
 import { StreamTimer } from "./stream-time"
 import { Tags } from "../tags"
 import { useStream } from "./stream-state"
@@ -46,93 +45,129 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
     }
   }
 
-  if (!streamContext.showDetails) return
-
-  return (
-    <div className="flex gap-2 max-xl:flex-col">
-      <div className="grow flex flex-col gap-2">
-        <div className="max-xl:text-lg xl:text-3xl font-semibold">{title}</div>
-        {host && (
-          <div className="flex max-xl:flex-col xl:justify-between max-xl:gap-2">
-            <div className="flex gap-4 items-center flex-wrap">
-              <Profile pubkey={host} avatarSize={40} />
-              <FollowButton pubkey={host} hideWhenFollowing={true} />
-              {participants !== undefined && (
-                <div className="flex grow justify-end xl:hidden text-nowrap">
-                  <Pill>
-                    <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
-                  </Pill>
-                </div>
-              )}
-            </div>
-            <div className="flex gap-2">
-              {ev && (
-                <>
-                  <ShareMenu ev={ev} />
-                  {service && <NotificationsButton host={host} service={service} />}
-                  {zapTarget && (
-                    <SendZapsDialog
-                      lnurl={zapTarget}
-                      pubkey={host}
-                      aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
-                      eTag={goal?.id}
-                      targetName={getName(ev.pubkey, profile)}
-                    />
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-        )}
-        <div className="flex gap-2 flex-wrap max-xl:hidden">
-          <StatePill state={status as StreamState} />
-          {participants !== undefined && (
-            <Pill>
-              <FormattedMessage defaultMessage="{n} viewers" values={{ n: formatSats(Number(participants)) }} />
-            </Pill>
-          )}
-          {status === StreamState.Live && (
-            <Pill>
-              <StreamTimer ev={ev} />
-            </Pill>
-          )}
-          {ev?.pubkey && ev?.pubkey !== host && (
-            <Pill className="flex gap-2 items-center" title={formatMessage({ defaultMessage: "Stream Provider" })}>
-              <Icon name="signal" className="text-primary" />
-              <Profile pubkey={ev.pubkey} avatarSize={20} />
-            </Pill>
-          )}
-          {ev && <Tags ev={ev} />}
-        </div>
-        {gameId && (
-          <div className="bg-layer-1 p-2 rounded-lg">
-            <GameInfoCard
-              gameId={gameId}
-              gameInfo={gameInfo}
-              showImage={true}
-              link={true}
-              imageSize={50}
-              showDetail={true}
-            />
-          </div>
-        )}
-        {summary && <StreamSummary text={summary} />}
-        {ev && isMine && (
-          <div className="flex gap-2">
-            <NewStreamDialog text={<FormattedMessage defaultMessage="Edit" />} ev={ev} />
-            <Link to={`/dashboard/${NostrLink.fromEvent(ev).encode()}`}>
-              <Layer2Button>
-                <FormattedMessage defaultMessage="Dashboard" />
-              </Layer2Button>
-            </Link>
-            {ev?.pubkey === login?.pubkey && (
-              <WarningButton onClick={deleteStream}>
-                <FormattedMessage defaultMessage="Delete" />
-              </WarningButton>
+  if (!streamContext.showDetails) {
+    if (!host || !ev) return
+    return (
+      <div className="flex items-center gap-3">
+        <Profile pubkey={host} avatarSize={36} options={{ showName: false }} />
+        <div className="flex flex-col min-w-0 flex-1">
+          <span className="font-display font-bold leading-tight truncate">{title}</span>
+          <span className="text-sm text-layer-4 truncate">
+            {getName(host, profile)}
+            {participants !== undefined && (
+              <>
+                {", "}
+                <FormattedMessage defaultMessage="{n} watching" values={{ n: formatSats(Number(participants)) }} />
+              </>
             )}
-          </div>
+          </span>
+        </div>
+        {zapTarget && (
+          <SendZapsDialog
+            lnurl={zapTarget}
+            pubkey={host}
+            aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
+            eTag={goal?.id}
+            targetName={getName(ev.pubkey, profile)}
+          />
         )}
       </div>
+    )
+  }
+
+  const isLive = status === StreamState.Live
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-x-4 gap-y-1 flex-wrap text-sm text-layer-4">
+          {isLive ? (
+            <span className="inline-flex items-center gap-2 font-semibold text-text">
+              <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_0_4px_rgb(255_176_0/0.22)]" />
+              <FormattedMessage defaultMessage="Live now" />
+            </span>
+          ) : (
+            status && <span className="font-semibold text-text capitalize">{status}</span>
+          )}
+          {participants !== undefined && (
+            <span>
+              <FormattedMessage defaultMessage="{n} watching" values={{ n: formatSats(Number(participants)) }} />
+            </span>
+          )}
+          {isLive && <StreamTimer ev={ev} />}
+          {gameInfo?.name && (
+            <Link to={`/category/${gameInfo.id}`} className="hover:text-text">
+              {gameInfo.name}
+            </Link>
+          )}
+        </div>
+        <h1 className="text-[clamp(22px,2.4vw,34px)] leading-tight">{title}</h1>
+      </div>
+      {host && (
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            <Profile pubkey={host} avatarSize={44} className="text-lg font-semibold min-w-0" />
+            <FollowButton pubkey={host} hideWhenFollowing={true} />
+          </div>
+          <div className="flex items-center gap-2">
+            {ev && (
+              <>
+                <ShareMenu ev={ev} />
+                {service && <NotificationsButton host={host} service={service} />}
+                {zapTarget && (
+                  <SendZapsDialog
+                    lnurl={zapTarget}
+                    pubkey={host}
+                    aTag={`${ev.kind}:${ev.pubkey}:${findTag(ev, "d")}`}
+                    eTag={goal?.id}
+                    targetName={getName(ev.pubkey, profile)}
+                  />
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      )}
+      {(summary || (ev && extractStreamInfo(ev).tags.length > 0) || (ev?.pubkey && ev.pubkey !== host)) && (
+        <div className="flex flex-col gap-3 rounded-2xl bg-layer-1 border border-layer-3 p-4">
+          {summary && <StreamSummary text={summary} />}
+          <div className="flex gap-2 flex-wrap items-center">
+            {ev && <Tags ev={ev} />}
+            {ev?.pubkey && ev?.pubkey !== host && (
+              <Pill className="flex gap-2 items-center" title={formatMessage({ defaultMessage: "Stream Provider" })}>
+                <Icon name="signal" className="text-primary" />
+                <Profile pubkey={ev.pubkey} avatarSize={20} />
+              </Pill>
+            )}
+          </div>
+        </div>
+      )}
+      {gameId && (
+        <div className="rounded-2xl bg-layer-1 border border-layer-3 p-3">
+          <GameInfoCard
+            gameId={gameId}
+            gameInfo={gameInfo}
+            showImage={true}
+            link={true}
+            imageSize={50}
+            showDetail={true}
+          />
+        </div>
+      )}
+      {ev && isMine && (
+        <div className="flex gap-2">
+          <NewStreamDialog text={<FormattedMessage defaultMessage="Edit" />} ev={ev} />
+          <Link to={`/dashboard/${NostrLink.fromEvent(ev).encode()}`}>
+            <Layer2Button>
+              <FormattedMessage defaultMessage="Dashboard" />
+            </Layer2Button>
+          </Link>
+          {ev?.pubkey === login?.pubkey && (
+            <WarningButton onClick={deleteStream}>
+              <FormattedMessage defaultMessage="Delete" />
+            </WarningButton>
+          )}
+        </div>
+      )}
     </div>
   )
 }

@@ -139,9 +139,12 @@ export function ChatMessage({
 
   return (
     <>
-      <div className="leading-6 overflow-wrap" ref={ref}>
+      <div className="leading-6 overflow-wrap text-[15px]" ref={ref}>
         <Profile
-          className={classNames("text-secondary inline-flex", { "!text-primary": streamer === ev.pubkey })}
+          className={classNames(
+            "inline-flex font-semibold",
+            streamer === ev.pubkey ? "text-primary" : "text-secondary",
+          )}
           icon={
             ev.pubkey === streamer ? (
               <Icon name="signal" size={16} />

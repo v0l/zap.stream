@@ -26,7 +26,7 @@ function StreamPageContent() {
     ...(info?.tags ?? []),
   ].join(", ")
   return (
-    <div className="xl:grid xl:grid-cols-[auto_450px] 2xl:xl:grid-cols-[auto_500px] max-xl:flex max-xl:flex-col xl:gap-4 max-xl:gap-1 h-full min-h-0">
+    <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_400px] 2xl:grid-cols-[minmax(0,1fr)_440px] max-xl:flex max-xl:flex-col xl:gap-6 xl:p-6 h-full min-h-0">
       <Helmet>
         <title>{`${info?.title ?? "Untitled"} - zap.stream`}</title>
         <meta name="description" content={descriptionContent} />
@@ -36,7 +36,7 @@ function StreamPageContent() {
         <meta property="og:description" content={descriptionContent} />
         <meta property="og:image" content={info?.image ?? ""} />
       </Helmet>
-      <div className="flex flex-col gap-2 xl:overflow-y-auto scrollbar-hidden">
+      <div className="flex flex-col gap-5 xl:overflow-y-auto scrollbar-hidden min-h-0">
         {event?.kind === LIVE_STREAM && link && (
           <LiveVideoPlayer
             key={link.encode()}
@@ -46,7 +46,7 @@ function StreamPageContent() {
             poster={info?.image}
             status={info?.status}
             link={link}
-            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
+            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[72dvh] mx-auto xl:rounded-2xl overflow-hidden bg-black"
           />
         )}
         {event?.kind === N94_LIVE_STREAM && link && (
@@ -58,11 +58,11 @@ function StreamPageContent() {
             poster={info?.image}
             status={info?.status}
             link={link}
-            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[85dvh] mx-auto"
+            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[72dvh] mx-auto xl:rounded-2xl overflow-hidden bg-black"
           />
         )}
         {event && (
-          <div className="lg:px-5 max-lg:px-2">
+          <div className="flex flex-col gap-6 max-xl:px-4 max-xl:py-3">
             <StreamInfo ev={event} goal={goal} />
             {isDesktop && <StreamCards host={getHost(event)} />}
           </div>
@@ -72,7 +72,8 @@ function StreamPageContent() {
         canWrite={info?.status === StreamState.Live || event?.kind === N94_LIVE_STREAM}
         adjustLayout={!isDesktop}
         showGoal={true}
-        className="min-h-0 xl:border xl:border-layer-2 xl:rounded-xl xl:p-3 max-xl:px-2 h-inherit"
+        showHeader={isDesktop}
+        className="min-h-0 xl:border xl:border-layer-3 xl:bg-layer-1 xl:rounded-2xl xl:overflow-hidden max-xl:px-3 h-inherit"
       />
     </div>
   )

@@ -77,6 +77,9 @@
   "2wdFaB": {
     "defaultMessage": "End Stream"
   },
+  "37TVdz": {
+    "defaultMessage": "Stream notifications"
+  },
   "37mth/": {
     "defaultMessage": "Viewers"
   },
@@ -113,6 +116,9 @@
   "4zBR3P": {
     "defaultMessage": "Zapped in the last 24 hours"
   },
+  "5/MYc2": {
+    "defaultMessage": "Stream started"
+  },
   "50+/JW": {
     "defaultMessage": "Stream Key is required"
   },
@@ -136,9 +142,6 @@
   },
   "5kx+2v": {
     "defaultMessage": "Server Url"
-  },
-  "5tM0VD": {
-    "defaultMessage": "Stream Started"
   },
   "5vMmmR": {
     "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
@@ -190,6 +193,9 @@
   },
   "9a9+ww": {
     "defaultMessage": "Title"
+  },
+  "9k0zDi": {
+    "defaultMessage": "Stream chat"
   },
   "9pMqYs": {
     "defaultMessage": "Nostr Address"
@@ -329,6 +335,9 @@
   },
   "HAlOn1": {
     "defaultMessage": "Name"
+  },
+  "HC7L1H": {
+    "defaultMessage": "Stream ended"
   },
   "HsgeUk": {
     "defaultMessage": "Come check out my stream on zap.stream! {link}"
@@ -524,8 +533,8 @@
   "RS6smY": {
     "defaultMessage": "Raid Message"
   },
-  "RXQdxR": {
-    "defaultMessage": "Please login to write messages!"
+  "RlK9XA": {
+    "defaultMessage": "Log in to chat."
   },
   "RrCui3": {
     "defaultMessage": "Summary"
@@ -591,6 +600,9 @@
   "WcZM+B": {
     "defaultMessage": "File List"
   },
+  "Wj1mlg": {
+    "defaultMessage": "Mute user"
+  },
   "Wp4l7+": {
     "defaultMessage": "More Videos"
   },
@@ -614,6 +626,9 @@
   },
   "Xq2sb0": {
     "defaultMessage": "To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
+  },
+  "Xx0WZV": {
+    "defaultMessage": "Send message"
   },
   "Y0DXJb": {
     "defaultMessage": "Recording URL"
@@ -816,9 +831,6 @@
   "jgOqxt": {
     "defaultMessage": "Widgets"
   },
-  "jkAQj5": {
-    "defaultMessage": "Stream Ended"
-  },
   "jr4+vD": {
     "defaultMessage": "Markdown"
   },
@@ -890,6 +902,9 @@
   },
   "nOaArs": {
     "defaultMessage": "Setup Profile"
+  },
+  "nYSZCW": {
+    "defaultMessage": "Add emoji"
   },
   "nwA8Os": {
     "defaultMessage": "Add card"
@@ -1028,8 +1043,8 @@
   "u6uD94": {
     "defaultMessage": "Create an Account"
   },
-  "uGywK9": {
-    "defaultMessage": "<s>{person}</s> zapped <a>{amount}</a>"
+  "uX6eKe": {
+    "defaultMessage": "React"
   },
   "uYw2LD": {
     "defaultMessage": "Stream"

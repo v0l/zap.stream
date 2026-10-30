@@ -26,8 +26,8 @@ export function ZapperRow({
       ) : (
         <Profile pubkey={pubkey} options={{ showName }} avatarSize={avatarSize} />
       )}
-      <div className="flex items-center gap-2">
-        <Icon name="zap-filled" className="text-zap" />
+      <div className="flex items-center gap-1">
+        <Icon name="zap-filled" className="text-zap" size={14} />
         <span>{formatSats(total)}</span>
       </div>
     </div>

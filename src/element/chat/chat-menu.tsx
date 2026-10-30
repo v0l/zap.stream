@@ -1,5 +1,6 @@
 import { useHover } from "usehooks-ts"
 import { IconButton } from "../buttons"
+import { useIntl } from "react-intl"
 import { type RefObject, forwardRef } from "react"
 
 interface ChatMenuProps {
@@ -12,6 +13,7 @@ interface ChatMenuProps {
 export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
   ({ zapTarget, onPickEmoji, onMuteUser, onZapping, showMuteButton }, ref) => {
     // usehooks-ts bundles a pre-React-19 RefObject type whose `current` is non-nullable
+    const { formatMessage } = useIntl()
     const isHovering = useHover((ref && "current" in ref ? ref : { current: null }) as RefObject<HTMLDivElement>)
     if (!ref || !("current" in ref)) return
     const topOffset = ref?.current?.getBoundingClientRect().top
@@ -34,10 +36,12 @@ export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
               iconSize={14}
               className="p-2 rounded-full bg-layer-2 aspect-square"
               onClick={onZapping}
+              aria-label={formatMessage({ defaultMessage: "Zap message" })}
             />
           )}
           <IconButton
             onClick={onPickEmoji}
+            aria-label={formatMessage({ defaultMessage: "React" })}
             iconName="face"
             iconSize={14}
             className="p-2 rounded-full bg-layer-2 aspect-square"
@@ -45,6 +49,7 @@ export const ChatMenu = forwardRef<HTMLDivElement | null, ChatMenuProps>(
           {showMuteButton && (
             <IconButton
               onClick={onMuteUser}
+              aria-label={formatMessage({ defaultMessage: "Mute user" })}
               iconName="user-x"
               iconSize={14}
               className="p-2 rounded-full bg-layer-2 aspect-square"

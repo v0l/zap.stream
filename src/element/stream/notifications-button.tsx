@@ -5,9 +5,11 @@ import { unwrap } from "@snort/shared"
 import { useEffect, useState } from "react"
 import { Icon } from "../icon"
 import { DefaultButton } from "../buttons"
+import { useIntl } from "react-intl"
 
 export function NotificationsButton({ host, service }: { host: string; service: string }) {
   const login = useLogin()
+  const { formatMessage } = useIntl()
   const publisher = login?.publisher()
   const [subscribed, setSubscribed] = useState(false)
   const api = new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined)
@@ -80,7 +82,11 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   }, [])
 
   return (
-    <DefaultButton onClick={subscribed ? unsubscribe : subscribe}>
+    <DefaultButton
+      onClick={subscribed ? unsubscribe : subscribe}
+      aria-pressed={subscribed}
+      aria-label={formatMessage({ defaultMessage: "Stream notifications" })}
+    >
       <Icon name={subscribed ? "bell-off" : "bell-plus"} />
     </DefaultButton>
   )

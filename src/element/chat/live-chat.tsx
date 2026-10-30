@@ -1,4 +1,3 @@
-import "./live-chat.css"
 import { FormattedMessage } from "react-intl"
 import { EventKind, type NostrEvent, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system"
 import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react"
@@ -60,7 +59,9 @@ export function LiveChat({
   className,
   autoRaid,
   showBadges,
+  showHeader,
 }: {
+  showHeader?: boolean
   canWrite?: boolean
   showTopZappers?: boolean
   adjustLayout?: boolean
@@ -207,17 +208,29 @@ export function LiveChat({
           <div className="h-2 bg-layer-3 rounded-full w-10 mx-auto"></div>
         </button>
       )}
+      {showHeader && (
+        <h2 className="font-sans text-[15px] font-semibold tracking-normal px-4 pt-4 pb-1">
+          <FormattedMessage defaultMessage="Stream chat" />
+        </h2>
+      )}
       {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
-        <div>
-          <div className="flex gap-1 overflow-x-auto scrollbar-hidden">
-            <TopZappers zaps={reactions.zaps} className="border border-layer-2 rounded-full py-1 px-2" />
-          </div>
+        <div className={classNames("flex gap-1.5 overflow-x-auto scrollbar-hidden", { "px-4 pb-1": showHeader })}>
+          <TopZappers
+            zaps={reactions.zaps}
+            avatarSize={20}
+            className="shrink-0 rounded-full bg-layer-2 py-1 pl-1 pr-2.5 text-sm font-semibold tabular-nums"
+          />
         </div>
       )}
-      {(showGoal ?? true) && goal && <Goal ev={goal} />}
+      {(showGoal ?? true) && goal && (
+        <div className={classNames({ "px-4": showHeader })}>
+          <Goal ev={goal} />
+        </div>
+      )}
       <div
-        className={classNames("flex flex-col-reverse grow gap-2 overflow-y-auto", {
+        className={classNames("flex flex-col-reverse grow gap-2.5 overflow-y-auto min-h-0", {
           "scrollbar-hidden": !(showScrollbar ?? true),
+          "px-4 py-2 border-t border-layer-3": showHeader,
         })}
       >
         {filteredEvents.map((a, i) => {
@@ -241,16 +254,18 @@ export function LiveChat({
               case -1:
               case -2: {
                 return (
-                  <b
-                    className="border px-3 py-2 text-center border-layer-2 rounded-xl bg-primary uppercase"
+                  <div
+                    className="flex items-center gap-3 text-xs font-semibold text-layer-4 py-1"
                     key={`${a.kind}-${a.created_at}`}
                   >
+                    <span className="h-px flex-1 bg-layer-3" />
                     {a.kind === -1 ? (
-                      <FormattedMessage defaultMessage="Stream Started" />
+                      <FormattedMessage defaultMessage="Stream started" />
                     ) : (
-                      <FormattedMessage defaultMessage="Stream Ended" />
+                      <FormattedMessage defaultMessage="Stream ended" />
                     )}
-                  </b>
+                    <span className="h-px flex-1 bg-layer-3" />
+                  </div>
                 )
               }
               case -3: {
@@ -279,7 +294,7 @@ export function LiveChat({
               }
               case -4: {
                 return (
-                  <div className="text-center text-xs text-gray-500">
+                  <div className="text-center text-xs text-layer-4">
                     <FormattedMessage
                       defaultMessage="{provider} chat {channel} connected!"
                       values={{
@@ -323,7 +338,7 @@ export function LiveChat({
           if (!mapped) return null
           return (
             <Fragment key={`${a.kind}-${a.id || a.created_at}`}>
-              {showDateSeparator && <div className="text-center text-xs text-gray-500">{prevDate}</div>}
+              {showDateSeparator && <div className="text-center text-xs text-layer-4">{prevDate}</div>}
               {mapped}
             </Fragment>
           )
@@ -331,12 +346,12 @@ export function LiveChat({
         {feed.length === 0 && <Spinner />}
       </div>
       {(canWrite ?? true) && (
-        <div className="flex gap-2 border-t py-2 border-layer-1">
+        <div className={classNames("flex gap-2 border-t border-layer-3 py-3", { "px-4": showHeader })}>
           {login ? (
             <WriteMessage emojiPacks={allEmojiPacks} link={link} relays={relays} />
           ) : (
-            <p>
-              <FormattedMessage defaultMessage="Please login to write messages!" id="RXQdxR" />
+            <p className="text-sm text-layer-4">
+              <FormattedMessage defaultMessage="Log in to chat." />
             </p>
           )}
         </div>
@@ -354,31 +369,30 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
   const isBig = zap.amount >= BIG_ZAP_THRESHOLD
 
   return (
-    <div className={`zap-container overflow-wrap ${isBig ? "big-zap" : ""}`}>
-      <div className="flex gap-1 items-center">
-        <Icon name="zap-filled" className="text-zap" />
-        <FormattedMessage
-          defaultMessage="<s>{person}</s> zapped <a>{amount}</a>"
-          values={{
-            s: c => <span className="text-zap">{c}</span>,
-            a: c => (
-              <span className="text-zap">
-                <span className="text-sm">₿</span> {c}
-              </span>
-            ),
-            person: (
-              <Profile
-                pubkey={zap.anonZap ? "anon" : (zap.sender ?? "")}
-                options={{
-                  showAvatar: !zap.anonZap,
-                }}
-              />
-            ),
-            amount: <span className="zap-amount">{formatZapAmount(zap.amount)}</span>,
+    <div
+      className={classNames(
+        "overflow-wrap rounded-xl border px-3 py-2",
+        isBig ? "border-primary bg-primary/15" : "border-primary/30 bg-primary/5",
+      )}
+    >
+      <div className="flex gap-2 items-center justify-between">
+        <Profile
+          pubkey={zap.anonZap ? "anon" : (zap.sender ?? "")}
+          options={{
+            showAvatar: !zap.anonZap,
           }}
+          className="min-w-0 truncate"
         />
+        <span className="flex items-center gap-1 text-primary font-semibold tabular-nums shrink-0">
+          <Icon name="zap-filled" size={14} />
+          <FormattedMessage defaultMessage="{amount} sats" values={{ amount: formatZapAmount(zap.amount) }} />
+        </span>
       </div>
-      {zap.content && <Text content={zap.content} tags={[]} />}
+      {zap.content && (
+        <div className="text-sm text-layer-5 mt-1">
+          <Text content={zap.content} tags={[]} />
+        </div>
+      )}
     </div>
   )
 }
@@ -423,7 +437,7 @@ function ChatRaidInner({
     return (
       <Link
         to={`/${otherLink.encode()}`}
-        className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold"
+        className="px-3 py-2 text-center rounded-xl border border-signal/40 bg-signal/10 font-semibold"
       >
         <FormattedMessage
           defaultMessage="Raiding {name}"
@@ -436,7 +450,7 @@ function ChatRaidInner({
     )
   }
   return (
-    <div className="px-3 py-2 text-center rounded-xl bg-primary uppercase pointer font-bold">
+    <div className="px-3 py-2 text-center rounded-xl border border-signal/40 bg-signal/10 font-semibold">
       <FormattedMessage
         defaultMessage="Raid from {name}"
         id="69hmpj"
@@ -453,8 +467,8 @@ function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
   const rTag = findTag(ev, "r")
   const title = findTag(ev, "title")
   return (
-    <div className="px-3 py-2 text-center rounded-xl bg-primary pointer flex flex-col gap-2">
-      <div className="font-bold uppercase">
+    <div className="px-3 py-2 rounded-xl border border-layer-3 bg-layer-2 flex flex-col gap-2">
+      <div className="font-semibold">
         <FormattedMessage
           defaultMessage="{name} created a clip"
           id="BD0vyn"
