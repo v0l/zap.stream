@@ -182,9 +182,9 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
             </div>
           </div>
         )}
-        <DefaultButton onClick={send}>
+        <PrimaryButton onClick={send}>
           <FormattedMessage defaultMessage="Zap!" />
-        </DefaultButton>
+        </PrimaryButton>
       </>
     )
   }
@@ -208,7 +208,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
 
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="flex gap-2 items-center">
+      <h3 className="flex gap-2 items-center pr-10">
         <FormattedMessage defaultMessage="Zap {name}" id="oHPB8Q" values={{ name }} />
         <Icon name="zap-filled" />
       </h3>

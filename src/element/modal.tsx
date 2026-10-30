@@ -4,9 +4,12 @@ import { type ReactNode, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { IconButton } from "./buttons"
 import { useHydrated } from "@/hooks/hydrated"
+import { useIntl } from "react-intl"
 
 export interface ModalProps {
   id: string
+  title?: ReactNode
+  size?: "sm" | "md" | "lg"
   className?: string
   bodyClassName?: string
   onClose?: (e: React.MouseEvent | KeyboardEvent) => void
@@ -21,27 +24,26 @@ let openModals = 0
 
 export default function Modal(props: ModalProps) {
   const hydrated = useHydrated()
-  const onCloseRef = useRef(props.onClose)
-  onCloseRef.current = props.onClose
+  const { formatMessage } = useIntl()
+  const dialogRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && onCloseRef.current) {
-        onCloseRef.current(e)
-      }
-    }
     openModals++
     document.body.classList.add("scroll-lock")
-    document.addEventListener("keydown", handleKeyDown)
 
     return () => {
       openModals--
       if (openModals === 0) {
         document.body.classList.remove("scroll-lock")
       }
-      document.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
+
+  useEffect(() => {
+    if (hydrated && !dialogRef.current?.contains(document.activeElement)) {
+      dialogRef.current?.focus({ preventScroll: true })
+    }
+  }, [hydrated])
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -50,11 +52,30 @@ export default function Modal(props: ModalProps) {
 
   if (!hydrated) return null
 
+  const close = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    props.onClose?.(e)
+  }
+  const closeOnEscape = (e: React.KeyboardEvent) => {
+    e.stopPropagation()
+    if (e.key === "Escape") props.onClose?.(e.nativeEvent)
+  }
+  const closeButton = (
+    <IconButton
+      iconName="x"
+      onClick={close}
+      className="rounded-full aspect-square bg-layer-2 hover:bg-layer-3 p-2.5"
+      iconSize={10}
+      aria-label={formatMessage({ defaultMessage: "Close" })}
+    />
+  )
+  const showClose = (props.showClose ?? true) && props.onClose !== undefined
+  const size = props.size ?? (props.largeModal ? "lg" : "md")
+
   return createPortal(
     <div
-      className={classNames(
-        "z-[42] w-screen h-screen top-0 left-0 fixed bg-black/80 flex justify-center overflow-y-auto",
-      )}
+      className="z-[42] fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-end sm:items-center sm:p-6"
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       tabIndex={-1}
@@ -62,22 +83,19 @@ export default function Modal(props: ModalProps) {
       onClick={e => {
         e.stopPropagation()
       }}
-      onKeyDown={e => {
-        if (e.key === "Enter" || e.key === " ") {
-          props.onClose?.(e.nativeEvent)
-        }
-      }}
+      onKeyDown={closeOnEscape}
     >
       <div
         className={
           props.bodyClassName ??
           classNames(
-            "relative bg-layer-1 p-8 transition max-xl:rounded-t-3xl xl:rounded-3xl max-xl:mt-auto xl:my-auto max-lg:w-full",
+            "relative flex flex-col w-full bg-layer-1 border border-layer-2 shadow-2xl transition",
+            "max-sm:rounded-t-2xl sm:rounded-2xl max-h-[92dvh] sm:max-h-[min(860px,calc(100dvh-48px))]",
             {
-              "max-xl:-translate-y-[calc(100vh-100dvh)]": props.ready ?? true,
-              "max-xl:translate-y-[50vh]": !(props.ready ?? true),
-              "lg:w-[50vw]": !(props.largeModal ?? false),
-              "lg:w-[80vw]": props.largeModal ?? false,
+              "max-sm:translate-y-full": !(props.ready ?? true),
+              "sm:max-w-[440px]": size === "sm",
+              "sm:max-w-[600px]": size === "md",
+              "sm:max-w-[960px]": size === "lg",
             },
           )
         }
@@ -88,22 +106,31 @@ export default function Modal(props: ModalProps) {
           e.stopPropagation()
           props.onClick?.(e)
         }}
-        onKeyDown={e => e.stopPropagation()}
+        onKeyDown={closeOnEscape}
       >
-        {(props.showClose ?? true) && (
-          <div className="absolute right-4 top-4">
-            <IconButton
-              iconName="x"
-              onClick={e => {
-                e.stopPropagation()
-                props.onClose?.(e)
-              }}
-              className="rounded-full aspect-square bg-layer-2 p-3"
-              iconSize={10}
-            />
-          </div>
+        {props.bodyClassName ? (
+          props.children
+        ) : (
+          <>
+            {props.title ? (
+              <div className="flex items-center gap-4 px-6 pt-5 pb-1 shrink-0">
+                <h3 className="flex-1 min-w-0 truncate">{props.title}</h3>
+                {showClose && closeButton}
+              </div>
+            ) : (
+              showClose && <div className="absolute right-4 top-4 z-10">{closeButton}</div>
+            )}
+            <div
+              className={classNames(
+                "flex flex-col gap-5 px-6 pb-6 overflow-y-auto min-h-0",
+                props.title ? "pt-3" : "pt-6",
+                props.className,
+              )}
+            >
+              {props.children}
+            </div>
+          </>
         )}
-        {props.children}
       </div>
     </div>,
     document.body,

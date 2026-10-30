@@ -1,17 +1,13 @@
 import { useState } from "react"
 import { FormattedMessage } from "react-intl"
-import { DefaultButton, Layer2Button } from "@/element/buttons"
+import { DefaultButton } from "@/element/buttons"
 import { Icon } from "@/element/icon"
 import { type StreamProviderConfig, useStreamProvider } from "@/hooks/stream-provider"
 import Modal from "@/element/modal"
 import { useDiscoverProviders } from "@/hooks/discover-providers"
 import { ProviderCard } from "@/element/provider-card"
 
-interface ProviderSelectorProps {
-  onClose: () => void
-}
-
-export function ProviderSelector({ onClose }: ProviderSelectorProps) {
+export function ProviderSelector() {
   const { config: currentConfig, updateStreamProvider } = useStreamProvider()
   const providers = useDiscoverProviders()
 
@@ -20,17 +16,8 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
   }
 
   return (
-    <div className="flex flex-col gap-4 max-w-4xl">
-      <div className="flex items-center justify-between">
-        <h2>
-          <FormattedMessage defaultMessage="Select Stream Provider" />
-        </h2>
-        <button type="button" className="text-layer-4 hover:text-white" onClick={onClose}>
-          <Icon name="close" size={24} />
-        </button>
-      </div>
-
-      <p className="text-layer-5">
+    <div className="flex flex-col gap-4">
+      <p className="text-layer-5 text-sm">
         <FormattedMessage defaultMessage="Choose your preferred streaming provider. Each provider may have different pricing, features, and terms of service." />
       </p>
 
@@ -45,18 +32,10 @@ export function ProviderSelector({ onClose }: ProviderSelectorProps) {
         ))}
       </div>
 
-      <div className="pt-4 border-t border-layer-2">
-        <a href="/providers" className="text-primary hover:text-primary-dark text-sm flex items-center gap-2">
-          <FormattedMessage defaultMessage="View all providers" />
-          <Icon name="external-link" size={16} />
-        </a>
-      </div>
-
-      <div className="flex justify-end pt-4 border-t border-layer-2">
-        <Layer2Button onClick={onClose}>
-          <FormattedMessage defaultMessage="Close" />
-        </Layer2Button>
-      </div>
+      <a href="/providers" className="text-primary text-sm flex items-center gap-2">
+        <FormattedMessage defaultMessage="View all providers" />
+        <Icon name="external-link" size={16} />
+      </a>
     </div>
   )
 }
@@ -70,8 +49,12 @@ export function ProviderSelectorButton() {
         <FormattedMessage defaultMessage="Select Provider" />
       </DefaultButton>
       {show && (
-        <Modal id="provider-selector" onClose={() => setShow(false)}>
-          <ProviderSelector onClose={() => setShow(false)} />
+        <Modal
+          id="provider-selector"
+          title={<FormattedMessage defaultMessage="Select Stream Provider" />}
+          onClose={() => setShow(false)}
+        >
+          <ProviderSelector />
         </Modal>
       )}
     </>

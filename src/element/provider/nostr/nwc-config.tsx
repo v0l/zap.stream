@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl"
 import type { NostrStreamProvider } from "@/providers"
 import { DefaultButton } from "@/element/buttons"
 import Spinner from "@/element/spinner"
+import { ModalSection } from "@/element/modal-section"
 
 interface NwcConfigProps {
   provider: NostrStreamProvider
@@ -79,7 +80,7 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
   function renderConfigurationState() {
     return (
       <div className="flex flex-col gap-2">
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-layer-5">
           <FormattedMessage
             defaultMessage="Configure Nostr Wallet Connect for automated topups."
             id="nwc-description"
@@ -92,7 +93,6 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
             placeholder="nostr+walletconnect://..."
             value={nwcUri}
             onChange={e => setNwcUri(e.target.value)}
-            className="bg-layer-2 rounded-xl px-3 py-2 w-full"
             disabled={status === "configuring"}
           />
 
@@ -120,11 +120,7 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h3>
-        <FormattedMessage defaultMessage="Nostr Wallet Connect (NWC)" id="nwc-title" />
-      </h3>
-
+    <ModalSection title={<FormattedMessage defaultMessage="Nostr Wallet Connect (NWC)" id="nwc-title" />}>
       {hasNwc ? renderConfiguredState() : renderConfigurationState()}
 
       {status === "success" && (
@@ -143,12 +139,12 @@ export default function NwcConfig({ provider, hasNwc, onConfigured }: NwcConfigP
         </div>
       )}
 
-      <div className="text-xs text-gray-500">
+      <div className="text-xs text-layer-4">
         <FormattedMessage
           defaultMessage="NWC requires 'pay_invoice' permissions. The server will validate your connection before saving."
           id="nwc-permissions-note"
         />
       </div>
-    </div>
+    </ModalSection>
   )
 }

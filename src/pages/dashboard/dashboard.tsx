@@ -17,7 +17,7 @@ import StreamKey from "@/element/provider/nostr/stream-key"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { type AccountResponse, NostrStreamProvider, adaptPublisher } from "@/providers"
 import { ExternalLink } from "@/element/external-link"
-import { PrimaryButton, WarningButton } from "@/element/buttons"
+import { Layer2Button, PrimaryButton, WarningButton } from "@/element/buttons"
 import { useLogin } from "@/hooks/login"
 import ManualStream from "./manual-stream"
 import { unixNow } from "@snort/shared"
@@ -270,13 +270,17 @@ export default function DashboardForLink() {
         </div>
       )}
       {info && !info.tos?.accepted && (
-        <Modal id="tos-dashboard">
-          <div className="flex flex-col gap-4">
-            <h2>
-              <FormattedMessage defaultMessage="Accept the terms of service to continue" />
-            </h2>
+        <Modal
+          id="tos-dashboard"
+          size="sm"
+          title={<FormattedMessage defaultMessage="Accept the terms of service to continue" />}
+        >
+          <div className="flex flex-col gap-5">
             <AcceptTos provider={provider.name} tosLink={info?.tos?.link} tos={tos} setTos={setTos} />
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-end gap-2">
+              <Layer2Button onClick={() => navigate("/")}>
+                <FormattedMessage defaultMessage="No thanks" />
+              </Layer2Button>
               <PrimaryButton
                 disabled={!tos}
                 onClick={async () => {
@@ -288,9 +292,6 @@ export default function DashboardForLink() {
               >
                 <FormattedMessage defaultMessage="Accept" />
               </PrimaryButton>
-              <WarningButton onClick={() => navigate("/")}>
-                <FormattedMessage defaultMessage="No thanks" />
-              </WarningButton>
             </div>
           </div>
         </Modal>

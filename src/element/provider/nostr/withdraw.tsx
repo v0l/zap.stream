@@ -1,4 +1,4 @@
-import { DefaultButton } from "@/element/buttons"
+import { DefaultButton, PrimaryButton } from "@/element/buttons"
 import Modal from "@/element/modal"
 import type { NostrStreamProvider } from "@/providers"
 import { LNURL } from "@snort/shared"
@@ -101,13 +101,15 @@ export default function AccountWithdrawl({
         <FormattedMessage defaultMessage="Withdraw" />
       </DefaultButton>
       {topup && (
-        <Modal id="withdraw" onClose={() => setTopup(false)}>
+        <Modal
+          id="withdraw"
+          size="sm"
+          title={<FormattedMessage defaultMessage="Withdraw funds" />}
+          onClose={() => setTopup(false)}
+        >
           <div className="flex flex-col gap-4">
-            <div className="text-xl">
-              <FormattedMessage defaultMessage="Withdraw funds" />
-            </div>
             <div className="flex flex-col gap-1">
-              <small className="text-neutral-300">
+              <small className="text-layer-4">
                 <FormattedMessage defaultMessage="Destination" />
               </small>
               <input
@@ -121,15 +123,15 @@ export default function AccountWithdrawl({
             </div>
             {amount !== undefined && (
               <div className="flex flex-col gap-1">
-                <small className="text-neutral-300">
+                <small className="text-layer-4">
                   <FormattedMessage defaultMessage="Amount" />
                 </small>
                 <input type="number" value={amount} onChange={e => setAmount(e.target.valueAsNumber)} />
               </div>
             )}
-            <DefaultButton disabled={addr.length < 3} onClick={withdraw}>
+            <PrimaryButton disabled={addr.length < 3} onClick={withdraw}>
               <FormattedMessage defaultMessage="Withdraw" />
-            </DefaultButton>
+            </PrimaryButton>
             {error && <b className="text-warning">{error}</b>}
           </div>
         </Modal>

@@ -17,8 +17,8 @@ export default function ManualStream() {
         <FormattedMessage defaultMessage="I have my own stream host" />
       </button>
       {open && (
-        <Modal id="new-stream" onClose={() => setOpen(false)}>
-          <div className="flex flex-col gap-3">
+        <Modal id="new-stream" title={<FormattedMessage defaultMessage="New Stream" />} onClose={() => setOpen(false)}>
+          <div className="flex flex-col gap-5">
             <StreamEditor
               onFinish={ex => {
                 system.BroadcastEvent(ex)

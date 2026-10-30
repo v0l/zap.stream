@@ -16,13 +16,13 @@ export function StreamEndpoints({
 }) {
   if (!info?.endpoints) return
   return (
-    <>
+    <div className="flex flex-col gap-3">
       {info.endpoints.length > 1 && (
-        <div>
-          <p>
+        <div className="flex flex-col gap-1.5">
+          <span className="text-sm text-layer-4">
             <FormattedMessage defaultMessage="Endpoint" id="ljmS5P" />
-          </p>
-          <div className="flex gap-2">
+          </span>
+          <div className="flex flex-wrap gap-2">
             {sortEndpoints(info.endpoints).map(a => (
               <Pill key={a.name} selected={currentEndpoint?.name === a.name} onClick={() => setEndpoint(a)}>
                 {a.name}
@@ -32,16 +32,18 @@ export function StreamEndpoints({
         </div>
       )}
       {currentEndpoint && <StreamKey ep={currentEndpoint} />}
-      <div>
-        <p className="pb-2">
-          <FormattedMessage defaultMessage="Features" id="ZXp0z1" />
-        </p>
-        <div className="flex gap-2">
-          {currentEndpoint?.capabilities?.map(a => (
-            <CapabilityPill key={a} capability={a} />
-          ))}
+      {(currentEndpoint?.capabilities?.length ?? 0) > 0 && (
+        <div className="flex flex-col gap-1.5">
+          <span className="text-sm text-layer-4">
+            <FormattedMessage defaultMessage="Features" id="ZXp0z1" />
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {currentEndpoint?.capabilities?.map(a => (
+              <CapabilityPill key={a} capability={a} />
+            ))}
+          </div>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   )
 }

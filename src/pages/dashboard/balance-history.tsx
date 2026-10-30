@@ -13,11 +13,12 @@ export default function BalanceHistoryModal({ provider }: { provider: NostrStrea
         <FormattedMessage defaultMessage="Balance" />
       </DefaultButton>
       {show && (
-        <Modal id="raid-menu" onClose={() => setShow(false)} largeModal={true}>
+        <Modal id="balance" title={<FormattedMessage defaultMessage="Balance" />} onClose={() => setShow(false)}>
           <NostrProviderDialog
             provider={provider}
             showBalanceHistory={true}
             showBalance={true}
+            showEstimate={true}
             showEditor={false}
             showEndpoints={false}
             showForwards={false}

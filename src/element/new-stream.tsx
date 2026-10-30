@@ -12,7 +12,7 @@ export function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> 
   const { provider: currentProvider } = useStreamProvider()
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-5">
       <NostrProviderDialog
         provider={currentProvider}
         onFinish={onFinish}
@@ -48,10 +48,18 @@ export function NewStreamDialog({ text, btnClassName, ...props }: NewStreamDialo
         )}
       </DefaultButton>
       {open && (
-        <Modal id="new-stream" onClose={() => setOpen(false)}>
-          <div className="new-stream">
-            <NewStream {...props} onFinish={() => setOpen(false)} />
-          </div>
+        <Modal
+          id="new-stream"
+          title={
+            props.ev ? (
+              <FormattedMessage defaultMessage="Edit Stream" />
+            ) : (
+              <FormattedMessage defaultMessage="New Stream" />
+            )
+          }
+          onClose={() => setOpen(false)}
+        >
+          <NewStream {...props} onFinish={() => setOpen(false)} />
         </Modal>
       )}
     </>

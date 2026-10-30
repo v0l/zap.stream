@@ -8,7 +8,7 @@ import { SnortContext } from "@snort/system-react"
 import { extractStreamInfo, findTag } from "@/utils"
 import { useLogin } from "@/hooks/login"
 import { GOAL, StreamState, defaultRelays } from "@/const"
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import Pill from "@/element/pill"
 import { StreamInput } from "./input"
 import { GoalSelector } from "./goal-selector"
@@ -162,7 +162,6 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
 
   return (
     <>
-      <h3>{ev ? "Edit Stream" : "New Stream"}</h3>
       {(options?.canSetTitle ?? true) && (
         <StreamInput label={<FormattedMessage defaultMessage="Title" />}>
           <input
@@ -281,10 +280,10 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
           </div>
         </div>
       )}
-      <div>
-        <DefaultButton disabled={!isValid || saving} onClick={publishStream}>
+      <div className="flex flex-col gap-2">
+        <PrimaryButton disabled={!isValid || saving} onClick={publishStream}>
           <FormattedMessage defaultMessage="Save" />
-        </DefaultButton>
+        </PrimaryButton>
         {publishError && <b className="text-warning">{publishError}</b>}
       </div>
     </>

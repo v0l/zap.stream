@@ -40,10 +40,7 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2>
-        <FormattedMessage defaultMessage="Start Raid" id="MTHO1W" />
-      </h2>
+    <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-1">
         <p className="text-layer-4 uppercase font-semibold text-sm">
           <FormattedMessage defaultMessage="Live now" id="+sdKx8" />

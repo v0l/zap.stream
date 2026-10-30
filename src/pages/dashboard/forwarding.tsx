@@ -13,7 +13,11 @@ export default function ForwardingModal({ provider }: { provider: NostrStreamPro
         <FormattedMessage defaultMessage="Stream Forwarding" />
       </DefaultButton>
       {show && (
-        <Modal id="raid-menu" onClose={() => setShow(false)}>
+        <Modal
+          id="stream-forwarding"
+          title={<FormattedMessage defaultMessage="Stream Forwarding" />}
+          onClose={() => setShow(false)}
+        >
           <NostrProviderDialog
             provider={provider}
             showBalanceHistory={false}

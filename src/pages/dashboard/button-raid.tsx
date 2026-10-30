@@ -13,7 +13,7 @@ export function DashboardRaidButton({ link }: { link: NostrLink }) {
         <FormattedMessage defaultMessage="Raid" id="4iBdw1" />
       </DefaultButton>
       {show && (
-        <Modal id="raid-menu" onClose={() => setShow(false)}>
+        <Modal id="raid-menu" title={<FormattedMessage defaultMessage="Start Raid" />} onClose={() => setShow(false)}>
           <DashboardRaidMenu link={link} onClose={() => setShow(false)} />
         </Modal>
       )}

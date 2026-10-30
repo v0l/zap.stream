@@ -14,21 +14,21 @@ export function DashboardSettingsButton({ ev, provider }: { ev?: TaggedNostrEven
         <FormattedMessage defaultMessage="Settings" />
       </DefaultButton>
       {show && (
-        <Modal id="dashboard-settings" onClose={() => setShow(false)}>
-          <div className="flex flex-col gap-4">
-            <NostrProviderDialog
-              provider={provider}
-              ev={ev}
-              showEndpoints={true}
-              showBalance={true}
-              showEstimate={true}
-              showForwards={true}
-              showEditor={false}
-              showBalanceHistory={false}
-              showStreamKeys={true}
-              showNwc={true}
-            />
-          </div>
+        <Modal
+          id="dashboard-settings"
+          title={<FormattedMessage defaultMessage="Stream settings" />}
+          onClose={() => setShow(false)}
+        >
+          <NostrProviderDialog
+            provider={provider}
+            ev={ev}
+            showEndpoints={true}
+            showForwards={false}
+            showEditor={false}
+            showBalanceHistory={false}
+            showStreamKeys={true}
+            showNwc={true}
+          />
         </Modal>
       )}
     </>

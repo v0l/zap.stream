@@ -1,4 +1,4 @@
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import type { NostrStreamProvider } from "@/providers"
 import { useState } from "react"
 import { useIntl, FormattedMessage } from "react-intl"
@@ -134,8 +134,8 @@ export function AddForwardInputs({
   }
 
   return (
-    <div className="flex flex-col p-4 gap-2 bg-layer-3 rounded-xl">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-2">
+      <div className="flex max-sm:flex-col gap-2">
         <select value={svc} onChange={e => setService(e.target.value as ForwardService)} className="flex-1">
           <option value="twitch">Twitch</option>
           <option value="youtube">Youtube</option>
@@ -160,10 +160,10 @@ export function AddForwardInputs({
         value={target}
         onChange={e => setTarget(e.target.value)}
       />
-      <DefaultButton onClick={doAdd}>
-        <FormattedMessage defaultMessage="Add" id="2/2yg+" />
-      </DefaultButton>
-      {error && <b className="warning">{error}</b>}
+      <PrimaryButton onClick={doAdd}>
+        <FormattedMessage defaultMessage="Add forward" />
+      </PrimaryButton>
+      {error && <b className="text-warning">{error}</b>}
     </div>
   )
 }

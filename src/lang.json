@@ -158,6 +158,9 @@
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
   },
+  "6dEDP6": {
+    "defaultMessage": "About {amount} {unit} of streaming at {rate} sats/{unit}."
+  },
   "6pr6hJ": {
     "defaultMessage": "Minimum amount for text to speech"
   },
@@ -239,6 +242,9 @@
   "BzQPM+": {
     "defaultMessage": "Destination"
   },
+  "C2e+ht": {
+    "defaultMessage": "Edit Stream"
+  },
   "C81/uG": {
     "defaultMessage": "Logout"
   },
@@ -291,6 +297,9 @@
   "Fodi9+": {
     "defaultMessage": "Get paid by viewers"
   },
+  "FxxVlD": {
+    "defaultMessage": "About {hours} hours of streaming at {rate} sats/{unit}."
+  },
   "G/yZLu": {
     "defaultMessage": "Remove"
   },
@@ -342,6 +351,9 @@
   "Ht231k": {
     "defaultMessage": "Forwarding"
   },
+  "HuIlh0": {
+    "defaultMessage": "Hours per month"
+  },
   "HvUhXt": {
     "defaultMessage": "Uploading to {n} servers"
   },
@@ -371,6 +383,9 @@
   },
   "JCIgkj": {
     "defaultMessage": "Username"
+  },
+  "JWQe4t": {
+    "defaultMessage": "Streaming {hrs} hours a month costs {sats} sats{usd}."
   },
   "JkLHGw": {
     "defaultMessage": "Website"
@@ -488,9 +503,6 @@
   "PySFxG": {
     "defaultMessage": "Choose file."
   },
-  "Q3au2v": {
-    "defaultMessage": "About {estimate}"
-  },
   "Q4/nm9": {
     "defaultMessage": "Watching"
   },
@@ -570,6 +582,9 @@
   "Uo/DWG": {
     "defaultMessage": "About too long"
   },
+  "V7QQf4": {
+    "defaultMessage": "Stream settings"
+  },
   "VA/Z1S": {
     "defaultMessage": "Hide"
   },
@@ -643,6 +658,9 @@
     "defaultMessage": "@ {rate}",
     "description": "Showing zap amount in USD @ rate"
   },
+  "YhrQ4C": {
+    "defaultMessage": "New Stream"
+  },
   "YjhNaf": {
     "defaultMessage": "Create Stream"
   },
@@ -703,6 +721,9 @@
   },
   "azDTwB": {
     "defaultMessage": "Peak"
+  },
+  "b22nXT": {
+    "defaultMessage": "Ingest"
   },
   "bD/ZwY": {
     "defaultMessage": "Edit Cards"
@@ -846,6 +867,9 @@
   "ieGrWo": {
     "defaultMessage": "Follow"
   },
+  "is1bba": {
+    "defaultMessage": "New stream key"
+  },
   "itPgxd": {
     "defaultMessage": "Profile"
   },
@@ -935,6 +959,9 @@
   },
   "nYSZCW": {
     "defaultMessage": "Add emoji"
+  },
+  "ntlIaZ": {
+    "defaultMessage": "Add forward"
   },
   "nwA8Os": {
     "defaultMessage": "Add card"
@@ -1190,6 +1217,9 @@
   },
   "zVDHAu": {
     "defaultMessage": "Zap Alert"
+  },
+  "zmYbCM": {
+    "defaultMessage": "No balance changes yet."
   },
   "zyHFaA": {
     "defaultMessage": "Login with {provider}"

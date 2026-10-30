@@ -8,7 +8,8 @@ import { SendZaps } from "@/element/send-zap"
 import { StreamEditor, type StreamEditorProps } from "@/element/stream-editor"
 import Spinner from "@/element/spinner"
 import { useRates } from "@/hooks/rates"
-import { DefaultButton } from "@/element/buttons"
+import { DefaultButton, Layer2Button } from "@/element/buttons"
+import { ModalSection } from "@/element/modal-section"
 import { AddForwardInputs } from "./fowards"
 import AccountTopup from "./topup"
 import AccountWithdrawl from "./withdraw"
@@ -120,17 +121,38 @@ export default function NostrProviderDialog({
       const pm = (Number.isFinite(hrs) ? hrs : 0) * 60 * ep.cost.rate
       return (
         <>
-          {`${(raw / 60).toFixed(0)} hour @ ${ep.cost.rate} sats/${ep.cost.unit}`}
-          &nbsp; or <br />
-          {`${pm.toLocaleString()} sats/month${Number.isFinite(rate.ask) ? ` ($${(rate.ask * pm * 1e-8).toFixed(2)}/mo)` : ""} streaming ${hrs} hrs/month`}
-          <div className="bg-layer-2 rounded-xl flex items-center px-2">
-            Hrs
-            <input type="number" value={hrs} onChange={e => setHrs(e.target.valueAsNumber)} />
-          </div>
+          <FormattedMessage
+            defaultMessage="About {hours} hours of streaming at {rate} sats/{unit}."
+            values={{ hours: (raw / 60).toFixed(0), rate: ep.cost.rate, unit: ep.cost.unit }}
+          />
+          <br />
+          <FormattedMessage
+            defaultMessage="Streaming {hrs} hours a month costs {sats} sats{usd}."
+            values={{
+              hrs: Number.isFinite(hrs) ? hrs : 0,
+              sats: pm.toLocaleString(),
+              usd: Number.isFinite(rate.ask) ? ` ($${(rate.ask * pm * 1e-8).toFixed(2)})` : "",
+            }}
+          />
+          <br />
+          <label className="mt-2 inline-flex items-center gap-2 rounded-lg bg-layer-2 pl-3 w-fit">
+            <FormattedMessage defaultMessage="Hours per month" />
+            <input
+              type="number"
+              className="reset w-16 bg-transparent py-1.5 pr-3 text-right"
+              value={hrs}
+              onChange={e => setHrs(e.target.valueAsNumber)}
+            />
+          </label>
         </>
       )
     }
-    return `${raw.toFixed(0)} ${ep.cost.unit} @ ${ep.cost.rate} sats/${ep.cost.unit}`
+    return (
+      <FormattedMessage
+        defaultMessage="About {amount} {unit} of streaming at {rate} sats/{unit}."
+        values={{ amount: raw.toFixed(0), rate: ep.cost.rate, unit: ep.cost.unit }}
+      />
+    )
   }
 
   async function acceptTos() {
@@ -179,32 +201,23 @@ export default function NostrProviderDialog({
   function currentBalance() {
     if (!info) return
     return (
-      <div>
-        <p>
-          <FormattedMessage defaultMessage="Balance" id="H5+NAX" />
-        </p>
-        <div className="flex gap-2">
-          <div className="bg-layer-2 rounded-xl w-full flex items-center px-3">
-            <FormattedMessage
-              defaultMessage="{amount} sats"
-              id="vrTOHJ"
-              values={{ amount: info.balance?.toLocaleString() }}
-            />
+      <div className="flex flex-col gap-3 rounded-xl bg-layer-0 border border-layer-2 p-4">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-col">
+            <span className="text-sm text-layer-4">
+              <FormattedMessage defaultMessage="Balance" />
+            </span>
+            <span className="font-display text-3xl font-bold tabular-nums">
+              {info.balance?.toLocaleString() ?? 0}
+              <span className="ml-1.5 text-base font-semibold text-primary">sats</span>
+            </span>
           </div>
-          <AccountTopup provider={provider} onFinish={() => loadInfo()} />
-          <AccountWithdrawl provider={provider} onFinish={() => loadInfo()} />
+          <div className="flex gap-2">
+            <AccountTopup provider={provider} onFinish={() => loadInfo()} />
+            <AccountWithdrawl provider={provider} onFinish={() => loadInfo()} />
+          </div>
         </div>
-      </div>
-    )
-  }
-
-  function balanceTimeEstimate() {
-    if (!info) return
-    return (
-      <div>
-        <small>
-          <FormattedMessage defaultMessage="About {estimate}" values={{ estimate: calcEstimate() }} />
-        </small>
+        {showEstimate && <div className="text-sm text-layer-5 leading-relaxed">{calcEstimate()}</div>}
       </div>
     )
   }
@@ -242,26 +255,24 @@ export default function NostrProviderDialog({
     if (!info || !showForwards) return
 
     return (
-      <div className="flex flex-col gap-4">
-        <h3>
-          <FormattedMessage defaultMessage="Stream Forwarding" id="W7DNWx" />
-        </h3>
-
-        <div className="grid grid-cols-2 gap-2">
-          {info.forwards?.map(a => (
-            <>
-              <div className="bg-layer-2 rounded-xl px-3 flex items-center">{a.name}</div>
-              <DefaultButton
-                onClick={async () => {
-                  await provider.removeForward(a.id)
-                  await loadInfo()
-                }}
-              >
-                <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
-              </DefaultButton>
-            </>
-          ))}
-        </div>
+      <div className="flex flex-col gap-3">
+        {(info.forwards?.length ?? 0) > 0 && (
+          <ul className="flex flex-col divide-y divide-layer-2 rounded-xl border border-layer-2">
+            {info.forwards?.map(a => (
+              <li key={a.id} className="flex items-center justify-between gap-3 px-4 py-2.5">
+                <span className="truncate">{a.name}</span>
+                <Layer2Button
+                  onClick={async () => {
+                    await provider.removeForward(a.id)
+                    await loadInfo()
+                  }}
+                >
+                  <FormattedMessage defaultMessage="Remove" id="G/yZLu" />
+                </Layer2Button>
+              </li>
+            ))}
+          </ul>
+        )}
         <AddForwardInputs provider={provider} onAdd={() => loadInfo()} />
       </div>
     )
@@ -271,14 +282,9 @@ export default function NostrProviderDialog({
     if (!info || !showBalanceHistory) return
 
     return (
-      <div className="flex flex-col gap-4">
-        <h3>
-          <FormattedMessage defaultMessage="Balance History" />
-        </h3>
-        <div className="flex flex-col gap-1">
-          <BalanceHistory provider={provider} />
-        </div>
-      </div>
+      <ModalSection title={<FormattedMessage defaultMessage="Balance History" />}>
+        <BalanceHistory provider={provider} />
+      </ModalSection>
     )
   }
 
@@ -294,15 +300,18 @@ export default function NostrProviderDialog({
 
   return (
     <>
-      {showEndpoints && <StreamEndpoints currentEndpoint={ep} info={info} setEndpoint={setEndpoint} />}
+      {showEndpoints && (
+        <ModalSection title={<FormattedMessage defaultMessage="Ingest" />}>
+          <StreamEndpoints currentEndpoint={ep} info={info} setEndpoint={setEndpoint} />
+        </ModalSection>
+      )}
       {showBalance && currentBalance()}
-      {showEstimate && balanceTimeEstimate()}
       {streamEditor()}
       {saveError && <b className="text-warning">{saveError}</b>}
-      {nwcConfig()}
       {forwardInputs()}
       {balanceHist()}
       {streamKeys()}
+      {nwcConfig()}
     </>
   )
 }

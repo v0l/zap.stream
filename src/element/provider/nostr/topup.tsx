@@ -13,7 +13,7 @@ export default function AccountTopup({ provider, onFinish }: { provider: NostrSt
         <FormattedMessage defaultMessage="Topup" />
       </DefaultButton>
       {topup && (
-        <Modal id="topup" onClose={() => setTopup(false)}>
+        <Modal id="topup" size="sm" onClose={() => setTopup(false)}>
           <SendZaps
             lnurl={{
               name: provider.name,
