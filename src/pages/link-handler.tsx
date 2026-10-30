@@ -30,13 +30,13 @@ export function LinkHandler() {
           "w-full",
         )}
       >
-        <StreamPage link={link} evPreload={evPreload} />
+        <StreamPage key={link.encode()} link={link} evPreload={evPreload} />
       </div>
     )
   } else if (link.kind === VIDEO_KIND || link.kind === OLD_VIDEO_KIND) {
-    return <VideoPage link={link} evPreload={evPreload} />
+    return <VideoPage key={link.encode()} link={link} evPreload={evPreload} />
   } else if (link.kind === SHORTS_KIND || link.kind === OLD_SHORTS_KIND) {
-    return <ShortPage link={link} evPreload={evPreload} />
+    return <ShortPage key={link.encode()} link={link} evPreload={evPreload} />
   } else {
     return (
       <h3>

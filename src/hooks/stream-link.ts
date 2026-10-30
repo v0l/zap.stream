@@ -1,33 +1,34 @@
 import { NIP5_DOMAIN } from "@/const"
 import { NostrPrefix, fetchNip05Pubkey } from "@snort/shared"
 import { type NostrEvent, NostrLink, tryParseNostrLink } from "@snort/system"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router"
 
-function initialLink(evPreload?: NostrEvent, id?: string) {
+export function resolveStreamLink(evPreload?: NostrEvent, id?: string) {
   if (evPreload) return NostrLink.fromEvent(evPreload)
   return id ? (tryParseNostrLink(id) ?? undefined) : undefined
 }
 
 export function useStreamLink(evPreload?: NostrEvent) {
   const params = useParams()
-  const [link, setLink] = useState<NostrLink | undefined>(() => initialLink(evPreload, params.id))
+  const direct = useMemo(() => resolveStreamLink(evPreload, params.id), [evPreload?.id, params.id])
+  const [nip05, setNip05] = useState<{ id: string; link: NostrLink }>()
 
   useEffect(() => {
-    if (evPreload !== undefined) return
-    if (params.id) {
-      const parsedLink = tryParseNostrLink(params.id)
-      if (parsedLink) {
-        setLink(parsedLink)
-      } else {
-        const [handle, domain] = (params.id.includes("@") ? params.id : `${params.id}@${NIP5_DOMAIN}`).split("@")
-        fetchNip05Pubkey(handle, domain).then(d => {
-          if (d) {
-            setLink(new NostrLink(NostrPrefix.PublicKey, d))
-          }
-        })
+    if (direct || !params.id) return
+    const id = params.id
+    let active = true
+    const [handle, domain] = (id.includes("@") ? id : `${id}@${NIP5_DOMAIN}`).split("@")
+    fetchNip05Pubkey(handle, domain).then(pubkey => {
+      if (active && pubkey) {
+        setNip05({ id, link: new NostrLink(NostrPrefix.PublicKey, pubkey) })
       }
+    })
+    return () => {
+      active = false
     }
-  }, [params.id, evPreload])
-  return link
+  }, [direct, params.id])
+
+  if (direct) return direct
+  return nip05 && nip05.id === params.id ? nip05.link : undefined
 }
