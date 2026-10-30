@@ -1,5 +1,5 @@
 import { useLogin } from "@/hooks/login"
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { NostrStreamProvider, adaptPublisher } from "@/providers"
 import { FormattedMessage } from "react-intl"
 import { SnortContext } from "@snort/system-react"
@@ -16,7 +16,7 @@ import Modal from "../modal"
 export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   const system = useContext(SnortContext)
   const { id, service, status, host } = extractStreamInfo(ev)
-  const ref = useRef<HTMLVideoElement | null>(null)
+  const [video, setVideo] = useState<HTMLVideoElement | null>(null)
   const login = useLogin()
   const [open, setOpen] = useState(false)
   const [tempClipId, setTempClipId] = useState<string>()
@@ -25,32 +25,36 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   const [clipLength, setClipLength] = useState(0)
   const [title, setTitle] = useState("")
 
-  const publisher = login?.publisher()
+  const publisher = useMemo(() => login?.publisher(), [login])
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.currentTime = clipLength * start
+    if (video) {
+      video.currentTime = clipLength * start
     }
-  }, [ref.current, clipLength, start, length])
+  }, [video, clipLength, start])
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.ontimeupdate = () => {
-        if (!ref.current) return
-        console.debug(ref.current.currentTime)
-        const end = clipLength * (start + length)
-        if (ref.current.currentTime >= end) {
-          ref.current.pause()
-        }
+    if (!video) return
+    const end = clipLength * (start + length)
+    const onTimeUpdate = () => {
+      if (video.currentTime >= end) {
+        video.pause()
       }
     }
-  }, [ref.current, clipLength, start, length])
+    video.addEventListener("timeupdate", onTimeUpdate)
+    return () => video.removeEventListener("timeupdate", onTimeUpdate)
+  }, [video, clipLength, start, length])
 
-  if (!service || status !== StreamState.Live) return
-  const provider = new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined)
+  const provider = useMemo(
+    () =>
+      service ? new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined) : undefined,
+    [service, publisher],
+  )
+
+  if (!service || !provider || status !== StreamState.Live) return
 
   async function makeClip() {
-    if (!service || !id || !publisher) return
+    if (!provider || !id || !publisher) return
 
     const clip = await provider.prepareClip(id)
     console.debug(clip)
@@ -61,7 +65,7 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
   }
 
   async function saveClip() {
-    if (!service || !id || !publisher || !tempClipId) return
+    if (!provider || !id || !publisher || !tempClipId) return
 
     const newClip = await provider.createClip(id, tempClipId, clipLength * start, clipLength * length)
     const ee = await publisher.generic(eb => {
@@ -92,7 +96,7 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
             <h1>
               <FormattedMessage defaultMessage="Clip" />
             </h1>
-            {id && tempClipId && <video ref={ref} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
+            {id && tempClipId && <video ref={setVideo} src={provider.getTempClipUrl(id, tempClipId)} controls muted />}
             <TimelineBar
               length={length}
               offset={start}
