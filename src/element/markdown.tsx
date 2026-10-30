@@ -42,10 +42,10 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           throw new Error("Invalid heading")
         }
         case "codespan": {
-          return <code key={ctr++}>{t.raw}</code>
+          return <code key={ctr++}>{t.text}</code>
         }
         case "code": {
-          return <pre key={ctr++}>{t.raw}</pre>
+          return <pre key={ctr++}>{t.text}</pre>
         }
         case "strong": {
           return <strong key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</strong>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 import { FormattedMessage, useIntl } from "react-intl"
 import { LNURL, fetchNip05Pubkey } from "@snort/shared"
 import { mapEventToProfile } from "@snort/system"
@@ -34,8 +34,11 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
   const [lud16Valid, setLud16Valid] = useState<boolean>()
   const [invalidLud16Message, setInvalidLud16Message] = useState<string>()
 
+  const seeded = useRef(false)
+
   useEffect(() => {
-    if (user) {
+    if (user && !seeded.current) {
+      seeded.current = true
       setName(user.name)
       setPicture(user.picture)
       setBanner(user.banner)
@@ -76,6 +79,7 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
           if (result === login?.pubkey) {
             setNip05AddressValid(true)
           } else {
+            setNip05AddressValid(false)
             setInvalidNip05AddressMessage(
               formatMessage({ defaultMessage: "Nostr address does not belong to you", id: "01iNut" }),
             )

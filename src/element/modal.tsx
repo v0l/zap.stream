@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import type React from "react"
-import { type ReactNode, useEffect } from "react"
+import { type ReactNode, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { IconButton } from "./buttons"
 import { useHydrated } from "@/hooks/hydrated"
@@ -17,20 +17,28 @@ export interface ModalProps {
   largeModal?: boolean
 }
 
+let openModals = 0
+
 export default function Modal(props: ModalProps) {
   const hydrated = useHydrated()
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape" && props.onClose) {
-      props.onClose(e)
-    }
-  }
+  const onCloseRef = useRef(props.onClose)
+  onCloseRef.current = props.onClose
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && onCloseRef.current) {
+        onCloseRef.current(e)
+      }
+    }
+    openModals++
     document.body.classList.add("scroll-lock")
     document.addEventListener("keydown", handleKeyDown)
 
     return () => {
-      document.body.classList.remove("scroll-lock")
+      openModals--
+      if (openModals === 0) {
+        document.body.classList.remove("scroll-lock")
+      }
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
