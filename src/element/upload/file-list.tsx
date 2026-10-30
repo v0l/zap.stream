@@ -42,7 +42,7 @@ export function MediaServerFileList({ onPicked }: { onPicked: (files: Array<Blob
 
   useEffect(() => {
     listFiles().catch(console.error)
-  }, [servers.servers.length, login?.state?.version])
+  }, [servers.servers.join(","), login?.state?.version])
 
   return (
     <div className="flex flex-col gap-4">
