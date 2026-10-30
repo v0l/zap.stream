@@ -25,6 +25,8 @@ export function packId(pack: EmojiPack): string {
   return `${pack.author}:${pack.name}`
 }
 
+const EMPTY_TAGS: Tags = []
+
 export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
   const related = useMemo(() => {
     if (userEmoji) {
@@ -47,7 +49,9 @@ export function useUserEmojiPacks(pubkey?: string, userEmoji?: Tags) {
     const rb = new RequestBuilder(`emoji-related:${pubkey}`)
 
     if (pubkey) {
-      rb.withFilter().kinds([EventKind.EmojiSet]).authors(authors).tag("d", identifiers)
+      if (authors.length > 0 && identifiers.length > 0) {
+        rb.withFilter().kinds([EventKind.EmojiSet]).authors(authors).tag("d", identifiers)
+      }
       rb.withFilter().kinds([EventKind.EmojiSet]).authors([pubkey])
     }
 
@@ -80,6 +84,6 @@ export default function useEmoji(pubkey?: string) {
 
   const userEmoji = useRequestBuilder(sub)
 
-  const emojis = useUserEmojiPacks(pubkey, userEmoji?.at(0)?.tags ?? [])
+  const emojis = useUserEmojiPacks(pubkey, userEmoji?.at(0)?.tags ?? EMPTY_TAGS)
   return emojis
 }

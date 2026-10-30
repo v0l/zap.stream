@@ -33,11 +33,19 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
 
   useEffect(() => {
     if (!isMyManual) {
-      provider.info().then(setInfo)
-      const t = setInterval(() => {
-        provider.info().then(setInfo)
-      }, 1000 * 60)
+      let cancelled = false
+      const load = () => {
+        provider
+          .info()
+          .then(i => {
+            if (!cancelled) setInfo(i)
+          })
+          .catch(() => {})
+      }
+      load()
+      const t = setInterval(load, 1000 * 60)
       return () => {
+        cancelled = true
         clearInterval(t)
       }
     }

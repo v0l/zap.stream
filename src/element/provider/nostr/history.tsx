@@ -12,8 +12,17 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
 
   useEffect(() => {
     if (!provider) return
-    provider.history(page).then(setRows)
-  }, [])
+    let cancelled = false
+    provider
+      .history(page)
+      .then(r => {
+        if (!cancelled) setRows(r)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [provider, page])
 
   function eventDescription(ev: NostrEvent) {
     if (ev.kind === EventKind.LiveEvent) {
@@ -54,7 +63,11 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
         {rows?.items.map(a => {
           let ev: NostrEvent | undefined
           if (a.desc?.startsWith("{")) {
-            ev = JSON.parse(a.desc) as NostrEvent
+            try {
+              ev = JSON.parse(a.desc) as NostrEvent
+            } catch {
+              ev = undefined
+            }
           }
           return (
             <tr key={`${a.created}-${a.amount}-${a.type}`}>

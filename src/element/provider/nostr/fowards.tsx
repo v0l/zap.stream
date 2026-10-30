@@ -1,6 +1,5 @@
 import { DefaultButton } from "@/element/buttons"
 import type { NostrStreamProvider } from "@/providers"
-import { unwrap } from "@snort/shared"
 import { useState } from "react"
 import { useIntl, FormattedMessage } from "react-intl"
 
@@ -41,8 +40,9 @@ export function AddForwardInputs({
       }
 
       const ingestsEurope = urls.ingests.filter(a => a.name.toLowerCase().startsWith("europe:") && a.availability === 1)
-      const random = ingestsEurope.at(ingestsEurope.length * Math.random())
-      return unwrap(random).url_template.replace("{stream_key}", target)
+      const random = ingestsEurope.at(Math.floor(ingestsEurope.length * Math.random()))
+      if (!random) return
+      return random.url_template.replace("{stream_key}", target)
     }
 
     if (svc === ForwardService.Youtube) {
@@ -125,7 +125,9 @@ export function AddForwardInputs({
       await provider.addForward(name, t)
     } catch (e) {
       setError((e as Error).message)
+      return
     }
+    setError("")
     setName("")
     setTarget("")
     onAdd(name, target)

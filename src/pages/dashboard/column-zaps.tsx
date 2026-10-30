@@ -42,7 +42,7 @@ export function DashboardZapColumn() {
               ),
             }}
           />
-          {rate.ask && (
+          {Number.isFinite(rate.ask) && rate.ask > 0 && (
             <div className="text-layer-5 text-sm">
               <FormattedNumber value={usdValue} style="currency" currency="USD" />
             </div>

@@ -15,11 +15,14 @@ export function useMediaServerList() {
     servers = DefaultMediaServers
   }
 
+  const urls = removeUndefined(servers.map(a => a.toEventTag()))
+    .filter(a => a[0] === ServerTag)
+    .map(a => a[1])
+  const urlKey = urls.join(",")
+
   return useMemo(
     () => ({
-      servers: removeUndefined(servers.map(a => a.toEventTag()))
-        .filter(a => a[0] === ServerTag)
-        .map(a => a[1]),
+      servers: urls,
       addServer: async (s: string) => {
         const pub = login?.publisher()
         if (!pub) return
@@ -34,6 +37,6 @@ export function useMediaServerList() {
         login?.state?.removeFromList(EventKind.BlossomServerList, new UnknownTag([ServerTag, u]), true)
       },
     }),
-    [servers],
+    [urlKey, login?.pubkey],
   )
 }

@@ -34,7 +34,7 @@ export default function AccountSettingsTab() {
           <p>
             <FormattedMessage defaultMessage="Private key" />
           </p>
-          <Layer1Button>
+          <Layer1Button onClick={() => navigator.clipboard.writeText(hexToBech32("nsec", login.privateKey ?? ""))}>
             <FormattedMessage defaultMessage="Copy" />
           </Layer1Button>
         </div>

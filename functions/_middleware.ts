@@ -1,3 +1,5 @@
+import { isNostrAddressPath } from "./route"
+
 type Env = Record<string, never>
 
 const HOST = "zap.stream"
@@ -9,7 +11,7 @@ export const onRequest: PagesFunction<Env> = async context => {
   const isEntityPath = prefixes.some(
     a => u.pathname.startsWith(`/${a}`) || u.pathname.startsWith(`/e/${a}`) || u.pathname.startsWith(`/p/${a}`),
   )
-  const nostrAddress = u.pathname.match(/^\/([a-zA-Z0-9_]+)$/i)
+  const nostrAddress = isNostrAddressPath(u.pathname)
   const next = await context.next()
   if (u.pathname !== "/" && (isEntityPath || nostrAddress)) {
     //console.log("Handeling path: ", u.pathname, isEntityPath, nostrAddress[1]);

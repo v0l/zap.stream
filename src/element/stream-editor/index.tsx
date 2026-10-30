@@ -48,6 +48,8 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
   const [game, setGame] = useState<GameInfo>()
   const [gameId, setGameId] = useState<string>()
   const [error, setError] = useState("")
+  const [saving, setSaving] = useState(false)
+  const [publishError, setPublishError] = useState("")
   const login = useLogin()
   const { formatMessage } = useIntl()
   const system = useContext(SnortContext)
@@ -89,60 +91,69 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
 
   useEffect(() => {
     setIsValid(ev !== undefined || validate())
-  }, [validate, title, summary, image, stream])
+  }, [validate, title, summary, image, stream, options])
 
   async function publishStream() {
+    if (saving) return
     const pub = login?.publisher()
     if (pub) {
-      let thisGoal = goal
-      if (!goal && goalName && goalAmount) {
-        const goalEvent = await pub.generic(eb => {
-          return eb
-            .kind(GOAL)
-            .tag(["amount", String(goalAmount * 1000)])
-            .tag(["relays", ...Object.keys(defaultRelays)])
-            .content(goalName)
-        })
-        await system.BroadcastEvent(goalEvent)
-        thisGoal = goalEvent.id
-      }
-      const evNew = await pub.generic(eb => {
-        const now = unixNow()
-        const dTag = findTag(ev, "d") ?? now.toString()
-        const starts = start ?? now.toString()
-        const ends = findTag(ev, "ends") ?? now.toString()
-        eb.kind(EventKind.LiveEvent)
-          .tag(["d", dTag])
-          .tag(["title", title])
-          .tag(["summary", summary])
-          .tag(["image", image])
-          .tag(["status", status])
-          .tag(["starts", starts])
-        if (status === StreamState.Live) {
-          eb.tag(["streaming", stream])
+      setSaving(true)
+      setPublishError("")
+      try {
+        let thisGoal = goal
+        if (!goal && goalName && goalAmount) {
+          const goalEvent = await pub.generic(eb => {
+            return eb
+              .kind(GOAL)
+              .tag(["amount", String(goalAmount * 1000)])
+              .tag(["relays", ...Object.keys(defaultRelays)])
+              .content(goalName)
+          })
+          await system.BroadcastEvent(goalEvent)
+          thisGoal = goalEvent.id
+          setGoal(goalEvent.id)
         }
-        if (status === StreamState.Ended) {
-          eb.tag(["ends", ends])
-          if (recording) {
-            eb.tag(["recording", recording])
+        const evNew = await pub.generic(eb => {
+          const now = unixNow()
+          const dTag = findTag(ev, "d") ?? now.toString()
+          const starts = start ?? now.toString()
+          const ends = findTag(ev, "ends") ?? now.toString()
+          eb.kind(EventKind.LiveEvent)
+            .tag(["d", dTag])
+            .tag(["title", title])
+            .tag(["summary", summary])
+            .tag(["image", image])
+            .tag(["status", status])
+            .tag(["starts", starts])
+          if (status === StreamState.Live) {
+            eb.tag(["streaming", stream])
           }
-        }
-        for (const tx of tags) {
-          eb.tag(["t", tx.trim()])
-        }
-        if (contentWarning) {
-          eb.tag(["content-warning", "nsfw"])
-        }
-        if (thisGoal && thisGoal.length > 0) {
-          eb.tag(["goal", thisGoal])
-        }
-        if (gameId) {
-          eb.tag(["t", gameId])
-        }
-        return eb
-      })
-      console.debug(evNew)
-      onFinish?.(evNew)
+          if (status === StreamState.Ended) {
+            eb.tag(["ends", ends])
+            if (recording) {
+              eb.tag(["recording", recording])
+            }
+          }
+          for (const tx of tags) {
+            eb.tag(["t", tx.trim()])
+          }
+          if (contentWarning) {
+            eb.tag(["content-warning", "nsfw"])
+          }
+          if (thisGoal && thisGoal.length > 0) {
+            eb.tag(["goal", thisGoal])
+          }
+          if (gameId) {
+            eb.tag(["t", gameId])
+          }
+          return eb
+        })
+        onFinish?.(evNew)
+      } catch (e) {
+        setPublishError(e instanceof Error ? e.message : String(e))
+      } finally {
+        setSaving(false)
+      }
     }
   }
 
@@ -271,9 +282,10 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
         </div>
       )}
       <div>
-        <DefaultButton disabled={!isValid} onClick={publishStream}>
+        <DefaultButton disabled={!isValid || saving} onClick={publishStream}>
           <FormattedMessage defaultMessage="Save" />
         </DefaultButton>
+        {publishError && <b className="text-warning">{publishError}</b>}
       </div>
     </>
   )

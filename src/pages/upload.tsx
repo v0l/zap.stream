@@ -25,6 +25,7 @@ import { useContext, useEffect, useState, useSyncExternalStore } from "react"
 import { FormattedMessage, useIntl } from "react-intl"
 import { useNavigate } from "react-router"
 import { v4 as uuid } from "uuid"
+import { makeUploadKey } from "./upload-key"
 
 interface UploadStatus {
   key: string
@@ -35,10 +36,6 @@ interface UploadStatus {
   result?: BlobDescriptor
   metadata?: Nip94Tags
   error?: string
-}
-
-function makeUploadKey(size: number, server: string, type: UploadStatus["type"]) {
-  return `${size}:${server}:${type}`
 }
 
 interface UploadDraft {
@@ -83,7 +80,7 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
 
   addUpload(server: string, file: BlobDescriptor, meta: Nip94Tags, type: UploadStatus["type"]) {
     const name = meta.summary ?? meta.alt ?? ""
-    const uploadKey = makeUploadKey(file.size, server, type)
+    const uploadKey = makeUploadKey({ id: file.sha256, size: file.size }, server, type)
     this.#uploads.set(uploadKey, {
       key: uploadKey,
       type,
@@ -103,7 +100,7 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
       this.#uploaders.set(server, uploader)
     }
 
-    const uploadKey = makeUploadKey(file.size, server, type)
+    const uploadKey = makeUploadKey({ id: file.name, size: file.size }, server, type)
     if (this.#uploads.has(uploadKey)) {
       return
     }
@@ -118,23 +115,18 @@ class UploadManager extends ExternalStore<Array<UploadStatus>> {
     this.#uploads.set(uploadKey, status)
     this.notifyChange()
     try {
-      uploader.upload(file).then(res => {
-        this.#uploads.set(uploadKey, {
-          ...status,
-          result: res,
-        })
-        this.notifyChange()
+      const res = await uploader.upload(file)
+      this.#uploads.set(uploadKey, {
+        ...status,
+        result: res,
       })
+      this.notifyChange()
     } catch (e) {
-      if (e instanceof Error) {
-        this.#uploads.set(uploadKey, {
-          ...status,
-          result: undefined,
-          metadata: undefined,
-          error: e.message,
-        })
-        this.notifyChange()
-      }
+      this.#uploads.set(uploadKey, {
+        ...status,
+        error: e instanceof Error ? e.message : String(e),
+      })
+      this.notifyChange()
     }
   }
 
@@ -272,11 +264,17 @@ export function UploadPage() {
     const url = vid.result?.url
     if (!url) return
 
-    const rsp = await fetch(proxy(url), {
-      headers: {
-        accept: "image/jpg",
-      },
-    })
+    let rsp: Response
+    try {
+      rsp = await fetch(proxy(url), {
+        headers: {
+          accept: "image/jpg",
+        },
+      })
+    } catch (e) {
+      setError([e instanceof Error ? e.message : String(e)])
+      return
+    }
     if (rsp.ok) {
       const data = await rsp.blob()
       const pub = login?.publisher()
@@ -433,6 +431,8 @@ export function UploadPage() {
             placeholder={formatMessage({
               defaultMessage: "Description..",
             })}
+            value={summary}
+            onChange={e => setSummary(e.target.value)}
           />
         </div>
         <div className="flex flex-col">
@@ -453,7 +453,7 @@ export function UploadPage() {
         {uploads.length > 0 && (
           <div className="flex flex-col gap-2 min-w-0 w-full">
             {uploads.map(a => (
-              <UploadProgress status={a} key={`${a.server}:${a.size}:${a.type}`} />
+              <UploadProgress status={a} key={a.key} />
             ))}
           </div>
         )}
@@ -550,7 +550,7 @@ function UploadProgress({ status }: { status: UploadStatus }) {
           />
         </div>
       </div>
-      {!status.result && (
+      {!status.result && !status.error && (
         <div className="flex items-center gap-2">
           <Spinner />
           <FormattedMessage defaultMessage="Uploading.." />

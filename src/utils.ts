@@ -6,6 +6,7 @@ import type { GameInfo } from "@/service/game-database"
 import { AllCategories } from "./pages/category"
 import { NostrPrefix } from "@snort/shared"
 import { parseYouTubeUrl } from "@/youtube"
+import { isLocalUrl } from "@/url-host"
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -43,11 +44,7 @@ export function getHost(ev: NostrEvent) {
   return ret
 }
 
-export function profileLink(meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
-  if (meta?.nip05?.endsWith("@zap.stream")) {
-    const [name] = meta.nip05.split("@")
-    return `/p/${name}`
-  }
+export function profileLink(_meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
   if (pubkey instanceof NostrLink) {
     return `/p/${pubkey.encode(NostrPrefix.Profile)}`
   } else {
@@ -130,8 +127,7 @@ export interface StreamInfo {
 }
 
 export function canPlayUrl(url: string) {
-  const isLocalhost = url.includes("localhost") || url.includes("127.0.0.1")
-  if (isLocalhost && window.location.hostname !== "localhost") return false
+  if (isLocalUrl(url) && window.location.hostname !== "localhost") return false
 
   try {
     const u = new URL(url)
@@ -254,7 +250,7 @@ export function trackEvent(
         p: props,
         u: e?.destination?.url ?? `${location.protocol}//${location.host}${location.pathname}`,
       }),
-    })
+    }).catch(() => {})
   }
 }
 

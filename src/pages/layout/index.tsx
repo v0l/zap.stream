@@ -21,8 +21,11 @@ export function LayoutPage() {
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       const target = e.target
-      const skipTarget = ["INPUT", "TEXTAREA"]
-      if (skipTarget.includes((target as HTMLElement)?.nodeName)) {
+      const skipTarget = ["INPUT", "TEXTAREA", "SELECT"]
+      if (skipTarget.includes((target as HTMLElement)?.nodeName) || (target as HTMLElement)?.isContentEditable) {
+        return
+      }
+      if (e.ctrlKey || e.metaKey || e.altKey) {
         return
       }
       if (e.key === "t") {

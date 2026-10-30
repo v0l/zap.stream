@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { FormattedMessage } from "react-intl"
 
-import { hexToBech32 } from "@snort/shared"
+import { hexToBech32, unixNow } from "@snort/shared"
 import { NostrLink, type ParsedZap } from "@snort/system"
 import { useUserProfile } from "@snort/system-react"
 
@@ -12,10 +12,22 @@ import { formatSats } from "@/number"
 import { getVoices, speak, useTextToSpeechParams } from "@/text2speech"
 import { getHost } from "@/utils"
 
+function useVoices() {
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => getVoices())
+  useEffect(() => {
+    if (!("speechSynthesis" in window)) return
+    const update = () => setVoices(getVoices())
+    update()
+    speechSynthesis.addEventListener("voiceschanged", update)
+    return () => speechSynthesis.removeEventListener("voiceschanged", update)
+  }, [])
+  return voices
+}
+
 function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
+  const mountedAt = useRef(unixNow())
   const zaps = useMemo(() => {
-    // copy before reversing to avoid mutating the input array
-    return [...zapStream].reverse()
+    return zapStream.filter(a => a.created_at >= mountedAt.current).reverse()
   }, [zapStream])
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const zap = useMemo(() => {
@@ -42,21 +54,28 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
   const zap = useZapQueue(zaps)
   const mutedPubkeys = useMutedPubkeys(host, true)
   const { voiceURI, minSats, volume } = useTextToSpeechParams()
-  const voices = getVoices()
+  const voices = useVoices()
+  const spokenId = useRef<string>(undefined)
   const voice = useMemo(() => {
     return voices.find(v => v.voiceURI === voiceURI)
   }, [voices, voiceURI])
 
   useEffect(() => {
-    if (!zap) return
+    if (!zap || spokenId.current === zap.id) return
 
     const senderLink = NostrLink.publicKey(zap?.sender ?? "")
     if (mutedPubkeys.some(a => a.equals(senderLink))) {
+      spokenId.current = zap.id
       return
     }
 
     const text = zap.content ?? ""
-    if (text.length > 0 && voice) {
+    if (text.length === 0) {
+      spokenId.current = zap.id
+      return
+    }
+    if (voice) {
+      spokenId.current = zap.id
       try {
         if (zap.amount >= minSats) {
           speak(voice, text, volume)
@@ -65,7 +84,7 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
         console.error(e)
       }
     }
-  }, [zap?.id])
+  }, [zap, voice, minSats, volume, mutedPubkeys])
 
   return (
     <div className="flex items-center flex-col gap-2 zap-alerts-widget">

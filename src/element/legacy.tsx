@@ -1,23 +1,23 @@
 import { IconButton, Layer1Button } from "./buttons"
 import { FormattedMessage, useIntl } from "react-intl"
 import { ChatApis } from "@/service/chat/types"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { unixNow } from "@snort/shared"
 
 export function ConnectLegacyStream() {
   const [_, setTick] = useState(0)
   const callbackUrl = new URL(window.location.href)
-  // parse the token from hash frag
-  const hash = window.location.hash
-  const auth_flow = callbackUrl.searchParams.get("auth_flow")
-  if (hash !== "" && auth_flow) {
-    const provider = ChatApis[auth_flow as "twitch" | "youtube" | "kick"]
-    if (provider) {
-      const now = unixNow()
-      provider.handleAuthCallback(`${hash.substring(1)}&created=${now}`)
+
+  useEffect(() => {
+    const hash = window.location.hash
+    const auth_flow = new URL(window.location.href).searchParams.get("auth_flow")
+    if (hash !== "" && auth_flow && Object.hasOwn(ChatApis, auth_flow)) {
+      const provider = ChatApis[auth_flow as "twitch" | "youtube" | "kick"]
+      provider.handleAuthCallback(`${hash.substring(1)}&created=${unixNow()}`)
       window.location.hash = ""
+      setTick(v => v + 1)
     }
-  }
+  }, [])
 
   callbackUrl.hash = ""
   return (

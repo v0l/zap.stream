@@ -80,5 +80,5 @@ export function useStreamProvider() {
         Storage.setProvider(DEFAULT_CONFIG)
       },
     }
-  }, [config])
+  }, [config, login?.pubkey])
 }

@@ -22,7 +22,8 @@ export default function ManualStream() {
             <StreamEditor
               onFinish={ex => {
                 system.BroadcastEvent(ex)
-                if (!ex) {
+                if (ex) {
+                  setOpen(false)
                   navigate(`/${NostrLink.fromEvent(ex).encode()}`, {
                     state: ex,
                   })

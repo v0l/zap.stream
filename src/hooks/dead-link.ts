@@ -4,8 +4,24 @@ import { findTag } from "@/utils"
 import type { NostrEvent, TaggedNostrEvent } from "@snort/system"
 import { useEffect, useState } from "react"
 
-const saveDeadLink = (link: string, val: boolean) => localStorage.setItem(`dead-link:${link}`, String(val))
-const getDeadLink = (link: string) => localStorage.getItem(`dead-link:${link}`)
+const DEAD_LINK_TTL_MS = 10 * 60 * 1000
+
+const saveDeadLink = (link: string, val: boolean) =>
+  localStorage.setItem(`dead-link:${link}`, JSON.stringify({ alive: val, at: Date.now() }))
+
+function getDeadLink(link: string): boolean | null {
+  const raw = localStorage.getItem(`dead-link:${link}`)
+  if (raw === null) return null
+  try {
+    const parsed = JSON.parse(raw) as { alive?: boolean; at?: number } | boolean
+    if (typeof parsed !== "object" || parsed === null) return null
+    if (typeof parsed.alive !== "boolean" || typeof parsed.at !== "number") return null
+    if (!parsed.alive && Date.now() - parsed.at > DEAD_LINK_TTL_MS) return null
+    return parsed.alive
+  } catch {
+    return null
+  }
+}
 
 export function useDeadLink(ev: TaggedNostrEvent | NostrEvent) {
   const [alive, setAlive] = useState<MediaPayload>()
@@ -20,13 +36,19 @@ export function useDeadLink(ev: TaggedNostrEvent | NostrEvent) {
         saveDeadLink(link, false)
         return false
       }
-      const req = await fetch(link, {
-        method: "HEAD",
-      })
-      saveDeadLink(link, req.ok)
-      return req.ok
+      let ok = false
+      try {
+        const req = await fetch(link, {
+          method: "HEAD",
+        })
+        ok = req.ok
+      } catch {
+        ok = false
+      }
+      saveDeadLink(link, ok)
+      return ok
     } else {
-      return existing === "true"
+      return existing
     }
   }
 
@@ -46,9 +68,10 @@ export function useDeadLink(ev: TaggedNostrEvent | NostrEvent) {
     }
   }
 
-  async function getLiveLink(links: Array<MediaPayload>) {
+  async function getLiveLink(links: Array<MediaPayload>, isStale: () => boolean) {
     for (const l of links) {
       const live = await testPayload(l)
+      if (isStale()) return
       if (live) {
         setAlive(live)
         break
@@ -67,7 +90,11 @@ export function useDeadLink(ev: TaggedNostrEvent | NostrEvent) {
             } as MediaPayload,
           ]
 
-    getLiveLink(links).catch(console.error)
+    let ignore = false
+    getLiveLink(links, () => ignore).catch(console.error)
+    return () => {
+      ignore = true
+    }
   }, [ev])
 
   return alive

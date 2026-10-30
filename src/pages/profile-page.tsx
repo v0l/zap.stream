@@ -160,13 +160,16 @@ function ProfileStreamList({ streams }: { streams: Array<TaggedNostrEvent> }) {
 }
 
 function ProfileVideosSection({ link }: { link: NostrLink }) {
-  const rb = new RequestBuilder(`videos:${link.id}`)
-  rb.withFilter().kinds([VIDEO_KIND, OLD_VIDEO_KIND]).authors([link.id])
+  const rb = useMemo(() => {
+    const b = new RequestBuilder(`videos:${link.id}`)
+    b.withFilter().kinds([VIDEO_KIND, OLD_VIDEO_KIND]).authors([link.id])
+    return b
+  }, [link.id])
 
   const videos = useRequestBuilder(rb)
 
   const sortedVideos = useMemo(() => {
-    return videos.sort((a, b) => {
+    return [...videos].sort((a, b) => {
       const pubA = findTag(a, "published_at") ?? a.created_at
       const pubB = findTag(b, "published_at") ?? b.created_at
       return Number(pubA) > Number(pubB) ? -1 : 1
@@ -197,7 +200,7 @@ function ProfileZapGoals({ link }: { link: NostrLink }) {
   if (goals.length === 0) {
     return <FormattedMessage defaultMessage="No goals yet" />
   }
-  return goals
+  return [...goals]
     .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
     .slice(0, limit)
     .map(a => (

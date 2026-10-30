@@ -12,10 +12,15 @@ import { Link } from "react-router"
 
 export default function StreamKeyList({ provider }: { provider: NostrStreamProvider }) {
   const [keys, setKeys] = useState<StreamKeysResult>()
+  const [error, setError] = useState("")
 
   async function loadKeys() {
-    const k = await provider.streamKeys()
-    setKeys(Array.isArray(k) ? { items: k, page: 0, pageSize: 1000 } : k)
+    try {
+      const k = await provider.streamKeys()
+      setKeys(Array.isArray(k) ? { items: k, page: 0, pageSize: 1000 } : k)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e))
+    }
   }
 
   useEffect(() => {
@@ -67,12 +72,18 @@ export default function StreamKeyList({ provider }: { provider: NostrStreamProvi
       {keys?.items.length === 0 && <FormattedMessage defaultMessage="No keys" />}
       <Layer2Button
         onClick={async () => {
-          await provider.createStreamKey()
-          loadKeys()
+          try {
+            setError("")
+            await provider.createStreamKey()
+            await loadKeys()
+          } catch (e) {
+            setError(e instanceof Error ? e.message : String(e))
+          }
         }}
       >
         <FormattedMessage defaultMessage="Add" />
       </Layer2Button>
+      {error && <b className="text-warning">{error}</b>}
     </div>
   )
 }
