@@ -100,55 +100,55 @@ export function StreamEditor({ ev, onFinish, options }: StreamEditorProps) {
       setSaving(true)
       setPublishError("")
       try {
-      let thisGoal = goal
-      if (!goal && goalName && goalAmount) {
-        const goalEvent = await pub.generic(eb => {
-          return eb
-            .kind(GOAL)
-            .tag(["amount", String(goalAmount * 1000)])
-            .tag(["relays", ...Object.keys(defaultRelays)])
-            .content(goalName)
-        })
-        await system.BroadcastEvent(goalEvent)
-        thisGoal = goalEvent.id
-        setGoal(goalEvent.id)
-      }
-      const evNew = await pub.generic(eb => {
-        const now = unixNow()
-        const dTag = findTag(ev, "d") ?? now.toString()
-        const starts = start ?? now.toString()
-        const ends = findTag(ev, "ends") ?? now.toString()
-        eb.kind(EventKind.LiveEvent)
-          .tag(["d", dTag])
-          .tag(["title", title])
-          .tag(["summary", summary])
-          .tag(["image", image])
-          .tag(["status", status])
-          .tag(["starts", starts])
-        if (status === StreamState.Live) {
-          eb.tag(["streaming", stream])
+        let thisGoal = goal
+        if (!goal && goalName && goalAmount) {
+          const goalEvent = await pub.generic(eb => {
+            return eb
+              .kind(GOAL)
+              .tag(["amount", String(goalAmount * 1000)])
+              .tag(["relays", ...Object.keys(defaultRelays)])
+              .content(goalName)
+          })
+          await system.BroadcastEvent(goalEvent)
+          thisGoal = goalEvent.id
+          setGoal(goalEvent.id)
         }
-        if (status === StreamState.Ended) {
-          eb.tag(["ends", ends])
-          if (recording) {
-            eb.tag(["recording", recording])
+        const evNew = await pub.generic(eb => {
+          const now = unixNow()
+          const dTag = findTag(ev, "d") ?? now.toString()
+          const starts = start ?? now.toString()
+          const ends = findTag(ev, "ends") ?? now.toString()
+          eb.kind(EventKind.LiveEvent)
+            .tag(["d", dTag])
+            .tag(["title", title])
+            .tag(["summary", summary])
+            .tag(["image", image])
+            .tag(["status", status])
+            .tag(["starts", starts])
+          if (status === StreamState.Live) {
+            eb.tag(["streaming", stream])
           }
-        }
-        for (const tx of tags) {
-          eb.tag(["t", tx.trim()])
-        }
-        if (contentWarning) {
-          eb.tag(["content-warning", "nsfw"])
-        }
-        if (thisGoal && thisGoal.length > 0) {
-          eb.tag(["goal", thisGoal])
-        }
-        if (gameId) {
-          eb.tag(["t", gameId])
-        }
-        return eb
-      })
-      onFinish?.(evNew)
+          if (status === StreamState.Ended) {
+            eb.tag(["ends", ends])
+            if (recording) {
+              eb.tag(["recording", recording])
+            }
+          }
+          for (const tx of tags) {
+            eb.tag(["t", tx.trim()])
+          }
+          if (contentWarning) {
+            eb.tag(["content-warning", "nsfw"])
+          }
+          if (thisGoal && thisGoal.length > 0) {
+            eb.tag(["goal", thisGoal])
+          }
+          if (gameId) {
+            eb.tag(["t", gameId])
+          }
+          return eb
+        })
+        onFinish?.(evNew)
       } catch (e) {
         setPublishError(e instanceof Error ? e.message : String(e))
       } finally {

@@ -61,7 +61,9 @@ export default function DashboardIntro() {
       </p>
       <div className="space-y-3">
         {info?.endpoints?.map(endpoint => {
-          const endpointCost = Number.isFinite(rate.ask) ? rate.ask * (exampleHours * endpoint.cost.rate * 60) * 1e-8 : undefined
+          const endpointCost = Number.isFinite(rate.ask)
+            ? rate.ask * (exampleHours * endpoint.cost.rate * 60) * 1e-8
+            : undefined
           return (
             <div key={endpoint.name} className="border border-layer-2 rounded-lg p-3">
               <div className="flex justify-between items-start">
@@ -78,13 +80,13 @@ export default function DashboardIntro() {
                   </p>
                   <p className="text-xs text-layer-6">
                     {endpointCost !== undefined && (
-                    <FormattedMessage
-                      defaultMessage="~{cost}/day for {hours}hr stream"
-                      values={{
-                        cost: <FormattedNumber value={endpointCost} style="currency" currency="USD" />,
-                        hours: exampleHours,
-                      }}
-                    />
+                      <FormattedMessage
+                        defaultMessage="~{cost}/day for {hours}hr stream"
+                        values={{
+                          cost: <FormattedNumber value={endpointCost} style="currency" currency="USD" />,
+                          hours: exampleHours,
+                        }}
+                      />
                     )}
                   </p>
                   {endpoint.capabilities?.length > 0 && (

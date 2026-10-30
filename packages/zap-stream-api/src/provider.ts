@@ -109,7 +109,10 @@ export class NostrStreamProvider {
   }
 
   async withdraw(invoice: string) {
-    return await this.#getJson<{ fee: number; preimage: string; error?: string }>("POST", withQuery("withdraw", { invoice }))
+    return await this.#getJson<{ fee: number; preimage: string; error?: string }>(
+      "POST",
+      withQuery("withdraw", { invoice }),
+    )
   }
 
   async acceptTos(): Promise<void> {
