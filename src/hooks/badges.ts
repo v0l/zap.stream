@@ -16,7 +16,7 @@ export function useBadgeAwards(pubkey?: string, leaveOpen = true) {
       rb.withFilter().authors([pubkey]).kinds([EventKind.BadgeAward])
     }
     return rb
-  }, [pubkey])
+  }, [pubkey, leaveOpen])
 
   const awards = useRequestBuilder(subBadgeAwards)
   return {
@@ -31,8 +31,11 @@ export function useBadgeAwards(pubkey?: string, leaveOpen = true) {
 }
 
 export function useProfileBadges(pubkey: string) {
-  const sub = new RequestBuilder(`profile-badges:${pubkey}`)
-  sub.withFilter().kinds([EventKind.ProfileBadges]).authors([pubkey]).tag("d", ["profile_badges"])
+  const sub = useMemo(() => {
+    const rb = new RequestBuilder(`profile-badges:${pubkey}`)
+    rb.withFilter().kinds([EventKind.ProfileBadges]).authors([pubkey]).tag("d", ["profile_badges"])
+    return rb
+  }, [pubkey])
   const data = useRequestBuilder(sub).at(0)
   return {
     event: data,

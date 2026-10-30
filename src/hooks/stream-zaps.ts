@@ -34,6 +34,7 @@ export function useRecentStreamZaps(links: Array<NostrLink>, window = DAY) {
     return rb
   }, [linkKey, since])
   const events = useRequestBuilder(rb)
+  const eventKey = events.map(a => a.id).join(",")
 
   return useMemo(() => {
     const zaps = events
@@ -44,5 +45,5 @@ export function useRecentStreamZaps(links: Array<NostrLink>, window = DAY) {
       zaps,
       totals: sumZapsByStream(zaps, links, since),
     }
-  }, [events.length, linkKey, since])
+  }, [eventKey, linkKey, since])
 }

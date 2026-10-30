@@ -24,17 +24,21 @@ export function useSortedStreams(feed: Array<TaggedNostrEvent>, oldest?: number)
         .filter(a => !WHITELIST || WHITELIST.includes(getHost(a)))
     }
     return []
-  }, [feed])
+  }, [feed, oldest])
 
-  const live = feedSorted
-    .filter(a => {
-      try {
-        return findTag(a, "status") === StreamState.Live || a.kind === N94_LIVE_STREAM
-      } catch {
-        return false
-      }
-    })
-    .sort(sortStarts)
+  const live = useMemo(
+    () =>
+      feedSorted
+        .filter(a => {
+          try {
+            return findTag(a, "status") === StreamState.Live || a.kind === N94_LIVE_STREAM
+          } catch {
+            return false
+          }
+        })
+        .sort(sortStarts),
+    [feedSorted],
+  )
 
   // Load deletion requests for live events to clear cache relay
   const system = useContext(SnortContext)

@@ -28,12 +28,12 @@ export function useUserCards(pubkey: string, userCards: Array<string[]>, leaveOp
 
     const rb = new RequestBuilder(`cards:${pubkey}`)
 
-    if (pubkey) {
+    if (pubkey && authors.length > 0 && identifiers.length > 0) {
       rb.withOptions({ leaveOpen }).withFilter().kinds([CARD]).authors(authors).tag("d", identifiers)
     }
 
     return rb
-  }, [pubkey, related])
+  }, [pubkey, related, leaveOpen])
 
   const data = useRequestBuilder(subRelated)
 
@@ -89,12 +89,12 @@ export function useCards(pubkey?: string, leaveOpen = false): TaggedNostrEvent[]
 
     const rb = new RequestBuilder(`cards:${pubkey}`)
 
-    if (pubkey) {
+    if (pubkey && authors.length > 0 && identifiers.length > 0) {
       rb.withOptions({ leaveOpen }).withFilter().kinds([CARD]).authors(authors).tag("d", identifiers)
     }
 
     return rb
-  }, [pubkey, related])
+  }, [pubkey, related, leaveOpen])
 
   const data = useRequestBuilder(subRelated)
   const cardEvents = data ?? []

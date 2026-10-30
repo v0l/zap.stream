@@ -17,7 +17,7 @@ export function useStatus(tag: StatusTag, author?: string, leaveOpen = true) {
         .authors([author])
     }
     return b
-  }, [author])
+  }, [tag, author, leaveOpen])
 
   const data = useRequestBuilder(sub)
   return data.at(0)

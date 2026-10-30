@@ -3,10 +3,14 @@ import { useRequestBuilder } from "@snort/system-react"
 import { useMemo } from "react"
 
 export function useCategoryZaps(gameId: string) {
-  const rb = new RequestBuilder(`cat-zaps:${gameId}`)
-  rb.withFilter().kinds([EventKind.LiveEvent]).tag("t", [gameId])
+  const rb = useMemo(() => {
+    const b = new RequestBuilder(`cat-zaps:${gameId}`)
+    b.withFilter().kinds([EventKind.LiveEvent]).tag("t", [gameId])
+    return b
+  }, [gameId])
   const evs = useRequestBuilder(rb)
-  const links = evs.map(a => NostrLink.fromEvent(a))
+  const evKey = evs.map(a => a.id).join(",")
+  const links = useMemo(() => evs.map(a => NostrLink.fromEvent(a)), [evKey])
 
   const rbZaps = useMemo(() => {
     const rb = new RequestBuilder(`cat-zaps:zaps:${gameId}`)
@@ -14,7 +18,7 @@ export function useCategoryZaps(gameId: string) {
       rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink(links)
     }
     return rb
-  }, [links])
+  }, [gameId, links])
   const zapEvents = useRequestBuilder(rbZaps)
 
   const zaps = useMemo(() => {

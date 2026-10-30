@@ -12,7 +12,7 @@ export function useMutedPubkeys(host?: string, leaveOpen = false) {
       rb.withFilter().kinds([EventKind.MuteList]).authors([host])
     }
     return rb
-  }, [host])
+  }, [host, leaveOpen])
 
   const muted = useRequestBuilder(mutedSub)
   const mutedPubkeys = useMemo(() => {
