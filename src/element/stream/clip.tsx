@@ -5,11 +5,11 @@ import { extractStreamInfo, findTag } from "@/utils"
 import { useEventFeed } from "@snort/system-react"
 import EventReactions from "../event-reactions"
 import { Link } from "react-router"
+import { useMemo } from "react"
 
 export default function LiveStreamClip({ ev }: { ev: TaggedNostrEvent }) {
   const src = findTag(ev, "r")
-  const streamTag = NostrLink.fromTags(ev.tags)?.[0]
-
+  const streamTag = useMemo(() => NostrLink.fromTags(ev.tags)?.[0], [ev.id])
   const streamEvent = useEventFeed(streamTag)
   const { title } = extractStreamInfo(streamEvent)
   return (

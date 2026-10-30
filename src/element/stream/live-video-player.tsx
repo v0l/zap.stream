@@ -41,13 +41,19 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
   const yt = stream ? parseYouTubeUrl(stream) : undefined
 
   useEffect(() => {
-    if (playerRef.current && "remote" in playerRef.current) {
-      playerRef.current.remote.watchAvailability(a => {
-        console.debug("Cast support: ", a)
-        setCanCast(a)
+    const remote = playerRef.current?.remote
+    if (!remote) return
+    let watchId: number | undefined
+    remote
+      .watchAvailability(setCanCast)
+      .then(id => {
+        watchId = id
       })
+      .catch(() => setCanCast(false))
+    return () => {
+      if (watchId !== undefined) remote.cancelWatchAvailability(watchId).catch(() => {})
     }
-  }, [playerRef])
+  }, [stream])
 
   // hls-video-element does not destroy its hls.js instance on unmount,
   // which leaves the playlist loading in the background after navigating away.

@@ -63,7 +63,7 @@ class Nip94Loader implements mpegts.BaseLoader {
   }
 
   destroy(): void {
-    throw new Error("Method not implemented.")
+    this.abort()
   }
 
   isWorking(): boolean {
@@ -113,6 +113,8 @@ class Nip94Loader implements mpegts.BaseLoader {
     this.#query?.cancel()
   }
 
+  #loading = false
+
   #addSegment(seg: MediaSegment) {
     if (!this.#mediaChunks.has(seg.sha256)) {
       this.#mediaChunks.set(seg.sha256, seg)
@@ -129,10 +131,13 @@ class Nip94Loader implements mpegts.BaseLoader {
     if (this.#status !== LoaderStatus.kBuffering) {
       return
     }
+    if (this.#loading) return
+    this.#loading = true
     const orderedLoad = [...this.#mediaChunks.values()]
       .sort((a, b) => a.created - b.created)
       .filter(a => !a.loaded && a.variant === this.#variant)
     for (const s of orderedLoad) {
+      s.loaded = true
       try {
         const result = await fetch(s.url)
         // skip 404
@@ -151,10 +156,15 @@ class Nip94Loader implements mpegts.BaseLoader {
           loaded: true,
         })
       } catch (e) {
+        s.loaded = false
         console.warn("Failed to load chunk ", s, e)
       }
     }
+    this.#loading = false
     this.#status = LoaderStatus.kIdle
+    if ([...this.#mediaChunks.values()].some(a => !a.loaded && a.variant === this.#variant)) {
+      this.#loadNext()
+    }
   }
 }
 

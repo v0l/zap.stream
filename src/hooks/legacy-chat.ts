@@ -1,58 +1,51 @@
 import { ChatApis, type ExternalChatFeed, type ExternalChatEvent, type ExternalChatBadge } from "@/service/chat/types"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
+
+type FeedName = "twitch" | "youtube" | "kick"
 
 export function useLegacyChatFeed(props: { enable?: boolean } | undefined) {
-  const twitchRef = useRef<ExternalChatFeed | undefined>(undefined)
-  const youtubeRef = useRef<ExternalChatFeed | undefined>(undefined)
-  const kickRef = useRef<ExternalChatFeed | undefined>(undefined)
+  const enable = props?.enable ?? false
+  const [feeds, setFeeds] = useState<Partial<Record<FeedName, ExternalChatFeed>>>({})
   const [events, setEvents] = useState<Array<ExternalChatEvent>>([])
   const [badges, setBadges] = useState<Array<ExternalChatBadge>>([])
 
   useEffect(() => {
-    if (!props?.enable) return
-    if (ChatApis.twitch.isAuthed() && twitchRef.current === undefined) {
-      const feed = ChatApis.twitch.getFeed()
-      feed.on("chat", e => setEvents(v => [...v, e]))
+    if (!enable) return
+    let active = true
+    const opened: Array<ExternalChatFeed> = []
+    for (const name of ["twitch", "youtube", "kick"] as const) {
+      const api = ChatApis[name]
+      if (!api.isAuthed()) continue
+      const feed = api.getFeed()
+      opened.push(feed)
+      feed.on("chat", e => {
+        if (active) setEvents(v => [...v, e])
+      })
       feed
         .connectFeed()
-        .catch(console.error)
         .then(async () => {
           const b = await feed.getBadges()
+          if (!active) return
           setBadges(x => [...x, ...b])
+          setFeeds(x => ({ ...x, [name]: feed }))
         })
-      twitchRef.current = feed
-    }
-    if (ChatApis.youtube.isAuthed() && youtubeRef.current === undefined) {
-      const feed = ChatApis.youtube.getFeed()
-      feed.on("chat", e => setEvents(v => [...v, e]))
-      feed
-        .connectFeed()
         .catch(console.error)
-        .then(async () => {
-          const b = await feed.getBadges()
-          setBadges(x => [...x, ...b])
-        })
-      youtubeRef.current = feed
     }
-    if (ChatApis.kick.isAuthed() && kickRef.current === undefined) {
-      const feed = ChatApis.kick.getFeed()
-      feed.on("chat", e => setEvents(v => [...v, e]))
-      feed
-        .connectFeed()
-        .catch(console.error)
-        .then(async () => {
-          const b = await feed.getBadges()
-          setBadges(x => [...x, ...b])
-        })
-      kickRef.current = feed
+    return () => {
+      active = false
+      for (const feed of opened) {
+        feed.removeAllListeners()
+        feed.disconnect().catch(console.error)
+      }
+      setFeeds({})
     }
-  }, [props])
+  }, [enable])
 
   return {
     events,
     badges,
-    twitch: twitchRef.current,
-    youtube: youtubeRef.current,
-    kick: kickRef.current,
+    twitch: feeds.twitch,
+    youtube: feeds.youtube,
+    kick: feeds.kick,
   }
 }

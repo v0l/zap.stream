@@ -2,7 +2,7 @@ import "./live-chat.css"
 import { FormattedMessage } from "react-intl"
 import { EventKind, type NostrEvent, NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system"
 import { useEventFeed, useEventReactions, useUserProfile } from "@snort/system-react"
-import { removeUndefined, unixNow, unwrap, NostrPrefix } from "@snort/shared"
+import { removeUndefined, unixNow, NostrPrefix } from "@snort/shared"
 import { Fragment, useEffect, useMemo } from "react"
 
 import { Icon } from "../icon"
@@ -35,7 +35,8 @@ function BadgeAward({ ev }: { ev: NostrEvent }) {
   const badge = findTag(ev, "a") ?? ""
   const [k, pubkey, d] = badge.split(":")
   const awardees = getTagValues(ev.tags, "p")
-  const event = useEventFeed(new NostrLink(NostrPrefix.Address, d, Number(k), pubkey))
+  const badgeLink = useMemo(() => new NostrLink(NostrPrefix.Address, d, Number(k), pubkey), [badge])
+  const event = useEventFeed(badgeLink)
   return (
     <div className="badge-award">
       {event && <BadgeInfo ev={event} />}
@@ -145,7 +146,7 @@ export function LiveChat({
     return removeUndefined([...feed, ...awards.map(a => a.event), ...extra])
       .filter(a => a.created_at >= started && (!ends || a.created_at <= Number(ends)))
       .sort((a, b) => b.created_at - a.created_at)
-  }, [feed, awards, legacyChat])
+  }, [feed, awards, event, started, legacyChat.events, legacyChat.twitch, legacyChat.youtube, legacyChat.kick])
 
   useEffect(() => {
     const resetLayout = () => {
@@ -168,10 +169,10 @@ export function LiveChat({
         c.showHeader = false
         return { ...c }
       })
-      return () => {
-        resetLayout()
-      }
     } else {
+      resetLayout()
+    }
+    return () => {
       resetLayout()
     }
   }, [adjustLayout])
@@ -382,21 +383,41 @@ export function ChatZap({ zap }: { zap: ParsedZap }) {
   )
 }
 
+const handledRaids = new Set<string>()
+
 export function ChatRaid({ link, ev, autoRaid }: { link: NostrLink; ev: TaggedNostrEvent; autoRaid?: boolean }) {
-  const navigate = useNavigate()
   const from = ev.tags.find(a => a[0] === "a" && a[3] === "root")
   const to = ev.tags.find(a => a[0] === "a" && a[3] === "mention")
   const isRaiding = link.toEventTag()?.at(1) === from?.at(1)
-  const otherLink = NostrLink.fromTag(unwrap(isRaiding ? to : from))
+  const otherTag = isRaiding ? to : from
+  if (!otherTag) return null
+  return <ChatRaidInner link={link} ev={ev} autoRaid={autoRaid} isRaiding={isRaiding} otherTag={otherTag} />
+}
+
+function ChatRaidInner({
+  link,
+  ev,
+  autoRaid,
+  isRaiding,
+  otherTag,
+}: {
+  link: NostrLink
+  ev: TaggedNostrEvent
+  autoRaid?: boolean
+  isRaiding: boolean
+  otherTag: Array<string>
+}) {
+  const navigate = useNavigate()
+  const otherLink = useMemo(() => NostrLink.fromTag(otherTag), [otherTag[1]])
   const otherEvent = useEventFeed(otherLink)
   const otherProfile = useUserProfile(otherEvent ? getHost(otherEvent) : undefined)
 
   useEffect(() => {
-    const raidDiff = Math.abs(unixNow() - ev.created_at)
-    if (isRaiding === true && raidDiff < 60 && otherLink.id !== link.id && (autoRaid ?? true)) {
-      navigate(`/${otherLink.encode()}`)
-    }
-  }, [isRaiding, autoRaid])
+    if (!isRaiding || !(autoRaid ?? true) || otherLink.id === link.id) return
+    if (Math.abs(unixNow() - ev.created_at) >= 60 || handledRaids.has(ev.id)) return
+    handledRaids.add(ev.id)
+    navigate(`/${otherLink.encode()}`)
+  }, [isRaiding, autoRaid, otherLink, ev.id])
 
   if (isRaiding) {
     return (

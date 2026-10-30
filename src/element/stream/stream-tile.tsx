@@ -73,17 +73,18 @@ export function StreamTile({
   const [videoLink, setVideoLink] = useState(`/${link.encode()}`)
 
   useEffect(() => {
-    if (status === StreamState.Live || ev.kind === N94_LIVE_STREAM) {
-      fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then(h => {
-        if (h) {
-          const names = Object.entries(h.names)
-          if (names.length > 0) {
-            setVideoLink(`/${names[0][0]}`)
-          }
-        }
-      })
+    if (status !== StreamState.Live && ev.kind !== N94_LIVE_STREAM) return
+    let active = true
+    fetchNostrAddresByPubkey(host, NIP5_DOMAIN).then(h => {
+      const names = Object.entries(h?.names ?? {})
+      if (active && names.length > 0) {
+        setVideoLink(`/${names[0][0]}`)
+      }
+    })
+    return () => {
+      active = false
     }
-  }, [status, videoLink])
+  }, [status, host, ev.kind])
 
   // YouTube links can't be used as an <img> src; use the video thumbnail instead
   const imgSrc = image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined) ?? recording ?? ""

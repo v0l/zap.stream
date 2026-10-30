@@ -23,7 +23,7 @@ export function VideoPlayerContextProvider({ event, children }: { event: TaggedN
   const [state, setState] = useState<VideoPlayerContext>({
     video: info,
     event,
-    widePlayer: localStorage.getItem("wide-player") === "true",
+    widePlayer: typeof window !== "undefined" && window.localStorage.getItem("wide-player") === "true",
     update: (fn: (c: VideoPlayerContext) => VideoPlayerContext) => {
       setState(fn)
     },

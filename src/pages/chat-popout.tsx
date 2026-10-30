@@ -1,6 +1,7 @@
 import { useParams } from "react-router"
-import { parseNostrLink } from "@snort/system"
-import { unwrap } from "@snort/shared"
+import { tryParseNostrLink } from "@snort/system"
+import { useMemo } from "react"
+import { FormattedMessage } from "react-intl"
 
 import { LiveChat } from "@/element/chat/live-chat"
 import { StreamContextProvider } from "@/element/stream/stream-state"
@@ -8,16 +9,25 @@ import { ChatApis } from "@/service/chat/types"
 
 export function ChatPopout() {
   const params = useParams()
-  const link = parseNostrLink(unwrap(params.id))
-
-  const hashParams = new URLSearchParams(window.location.hash !== "" ? window.location.hash.substring(1) : undefined)
-  const chat = hashParams.get("chat") === "true"
-  const badges = hashParams.get("badges") === "true"
-  for (const k of Object.keys(ChatApis)) {
-    const kParam = hashParams.get(k)
-    if (kParam) {
-      ChatApis[k as "twitch" | "youtube" | "kick"].loadFromWidgetParams(kParam)
+  const link = params.id ? tryParseNostrLink(params.id) : undefined
+  const hash = window.location.hash
+  const { chat, badges } = useMemo(() => {
+    const hashParams = new URLSearchParams(hash !== "" ? hash.substring(1) : undefined)
+    for (const k of Object.keys(ChatApis)) {
+      const kParam = hashParams.get(k)
+      if (kParam) {
+        ChatApis[k as "twitch" | "youtube" | "kick"].loadFromWidgetParams(kParam)
+      }
     }
+    return { chat: hashParams.get("chat") === "true", badges: hashParams.get("badges") === "true" }
+  }, [hash])
+
+  if (!link) {
+    return (
+      <p className="p-4">
+        <FormattedMessage defaultMessage="This chat link is not valid." />
+      </p>
+    )
   }
   return (
     <div className="h-[calc(100vh-1rem)] w-screen px-2 my-2">
