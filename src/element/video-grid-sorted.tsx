@@ -1,4 +1,4 @@
-import { useLogin } from "@/hooks/login"
+import { useFollows, useMutedPubkeys } from "@/hooks/login"
 import { useSortedStreams } from "@/hooks/useLiveStreams"
 import { getTagValues, getHost, extractStreamInfo } from "@/utils"
 import { type NostrEvent, NostrLink, type TaggedNostrEvent } from "@snort/system"
@@ -34,15 +34,11 @@ export default function VideoGridSorted({
   showVideos,
   zapTotals,
 }: VideoGridSortedProps) {
-  const login = useLogin()
-  const mutedHosts = login?.state?.muted ?? []
-  const follows = login?.state?.follows ?? []
-  const followsHost = (ev: NostrEvent) => follows?.includes(getHost(ev))
+  const muted = useMutedPubkeys()
+  const follows = useFollows()
+  const followsHost = (ev: NostrEvent) => follows.has(getHost(ev))
 
-  const filteredStreams = evs.filter(a => {
-    const hostLink = NostrLink.publicKey(getHost(a))
-    return !mutedHosts.some(b => b.equals(hostLink))
-  })
+  const filteredStreams = evs.filter(a => !muted.has(getHost(a)))
   const { live, planned, ended } = useSortedStreams(filteredStreams, showAll ? 0 : undefined)
   const hashtags: Array<string> = []
   const following = live.filter(followsHost)

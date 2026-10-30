@@ -2,7 +2,7 @@ import { useStreamsFeed } from "@/hooks/live-streams"
 import VideoGridSorted from "@/element/video-grid-sorted"
 import { AllCategories } from "./category"
 import { Link, useLocation } from "react-router"
-import { useLogin } from "@/hooks/login"
+import { useMutedPubkeys } from "@/hooks/login"
 import { useSortedStreams } from "@/hooks/useLiveStreams"
 import { useRecentStreamZaps } from "@/hooks/stream-zaps"
 import { getHost } from "@/utils"
@@ -14,12 +14,8 @@ import classNames from "classnames"
 
 export function RootPage() {
   const streams = useStreamsFeed()
-  const login = useLogin()
-  const muted = login?.state?.muted ?? []
-  const visible = streams.filter(a => {
-    const host = NostrLink.publicKey(getHost(a))
-    return !muted.some(b => b.equals(host))
-  })
+  const muted = useMutedPubkeys()
+  const visible = streams.filter(a => !muted.has(getHost(a)))
   const { live } = useSortedStreams(visible)
   const liveLinks = useMemo(() => live.map(a => NostrLink.fromEvent(a)), [live.map(a => a.id).join()])
   const { zaps, totals } = useRecentStreamZaps(liveLinks)

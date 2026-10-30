@@ -3,7 +3,7 @@ import { NavLinkIcon } from "./nav-icon"
 import { FormattedMessage } from "react-intl"
 import { useMediaQuery } from "usehooks-ts"
 import Flyout from "@/element/flyout"
-import { useLogin } from "@/hooks/login"
+import { useFollows, useLogin } from "@/hooks/login"
 import { useStreamsFeed } from "@/hooks/live-streams"
 import { useSortedStreams } from "@/hooks/useLiveStreams"
 import { getHost } from "@/utils"
@@ -74,10 +74,10 @@ export function LeftNav() {
 
 function FollowingLive({ onNavigate }: { onNavigate: () => void }) {
   const login = useLogin()
-  const follows = login?.state?.follows ?? []
+  const follows = useFollows()
   const streams = useStreamsFeed()
   const { live } = useSortedStreams(streams)
-  const following = live.filter(a => follows.includes(getHost(a)))
+  const following = live.filter(a => follows.has(getHost(a)))
 
   if (!login || following.length === 0) return
   return (

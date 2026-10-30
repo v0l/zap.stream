@@ -1,4 +1,5 @@
 import { useMemo, useSyncExternalStore } from "react"
+import { mutedPubkeys } from "./muted-pubkeys"
 
 import { getPublisher, getSigner, Login, type LoginSession } from "@/login"
 
@@ -23,4 +24,14 @@ export function useLogin() {
       },
     }
   }, [session])
+}
+
+export function useFollows() {
+  const login = useLogin()
+  return useMemo(() => new Set(login?.state?.follows ?? []), [login])
+}
+
+export function useMutedPubkeys() {
+  const login = useLogin()
+  return useMemo(() => mutedPubkeys(login?.state?.muted ?? []), [login])
 }

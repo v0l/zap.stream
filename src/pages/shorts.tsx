@@ -2,15 +2,16 @@ import { OLD_SHORTS_KIND, SHORTS_KIND } from "@/const"
 import VideoGrid from "@/element/video-grid"
 import { VideoTile } from "@/element/video/video-tile"
 import { findTag, getHost } from "@/utils"
-import { NostrLink, RequestBuilder } from "@snort/system"
+import { RequestBuilder } from "@snort/system"
 import { useRequestBuilder } from "@snort/system-react"
 import { useMemo, useState } from "react"
 import { FormattedMessage } from "react-intl"
-import { useLogin } from "@/hooks/login"
+import { useFollows, useMutedPubkeys } from "@/hooks/login"
 import { Layer1Button } from "@/element/buttons"
 
 export function ShortsPage() {
-  const login = useLogin()
+  const follows = useFollows()
+  const muted = useMutedPubkeys()
   const [tab, setTab] = useState<"all" | "subscriptions">("subscriptions")
 
   const rb = useMemo(() => {
@@ -24,8 +25,7 @@ export function ShortsPage() {
   const sorted = videos
     .filter(a => {
       const host = getHost(a)
-      const link = NostrLink.publicKey(host)
-      return (login?.state?.muted.length ?? 0) === 0 || !login?.state?.muted.some(a => a.equals(link))
+      return !muted.has(host)
     })
     .sort((a, b) => {
       const pubA = findTag(a, "published_at") ?? a.created_at
@@ -35,8 +35,7 @@ export function ShortsPage() {
 
   const subscriptionVideos = sorted.filter(a => {
     const host = getHost(a)
-    const follows = login?.state?.follows ?? []
-    return follows.includes(host)
+    return follows.has(host)
   })
 
   const displayVideos = tab === "subscriptions" ? subscriptionVideos : sorted
