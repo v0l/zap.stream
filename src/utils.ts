@@ -6,6 +6,7 @@ import type { GameInfo } from "@/service/game-database"
 import { AllCategories } from "./pages/category"
 import { NostrPrefix } from "@snort/shared"
 import { parseYouTubeUrl } from "@/youtube"
+import { isLocalUrl } from "@/url-host"
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -130,8 +131,7 @@ export interface StreamInfo {
 }
 
 export function canPlayUrl(url: string) {
-  const isLocalhost = url.includes("localhost") || url.includes("127.0.0.1")
-  if (isLocalhost && window.location.hostname !== "localhost") return false
+  if (isLocalUrl(url) && window.location.hostname !== "localhost") return false
 
   try {
     const u = new URL(url)

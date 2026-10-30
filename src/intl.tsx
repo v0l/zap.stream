@@ -2,6 +2,7 @@ import { DefaultLocale, useLang } from "@/hooks/lang"
 import { type ReactNode, useEffect, useState } from "react"
 import { IntlProvider as ReactIntlProvider } from "react-intl"
 
+import { resolveMessages } from "@/locale-match"
 import enMessages from "@/translations/en.json"
 
 export const AllLocales = [
@@ -35,8 +36,6 @@ function importLang(src: { default: Record<string, { defaultMessage: string }> }
 }
 
 const getMessages = (locale: string) => {
-  const truncatedLocale = locale.toLowerCase().split(/[_-]+/)[0]
-
   const matchLang = async (lng: string) => {
     switch (lng) {
       case "ar":
@@ -107,7 +106,7 @@ const getMessages = (locale: string) => {
     }
   }
 
-  return matchLang(locale) ?? matchLang(truncatedLocale) ?? Promise.resolve(enMessages)
+  return resolveMessages<Record<string, string>>(locale, matchLang, enMessages)
 }
 
 export const IntlProvider = ({ children }: { children: ReactNode }) => {
@@ -115,7 +114,13 @@ export const IntlProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<Record<string, string>>(enMessages)
 
   useEffect(() => {
-    getMessages(locale).then(a => setMessages(a as Record<string, string>))
+    let stale = false
+    getMessages(locale).then(a => {
+      if (!stale) setMessages(a)
+    })
+    return () => {
+      stale = true
+    }
   }, [locale])
 
   return (

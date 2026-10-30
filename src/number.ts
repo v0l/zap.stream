@@ -8,16 +8,28 @@ const intlShortSats = new Intl.NumberFormat(undefined, {
   maximumFractionDigits: 0,
 })
 
+const units = [
+  { size: 1e3, suffix: "K" },
+  { size: 1e6, suffix: "M" },
+  { size: 1e9, suffix: "G" },
+]
+
 export function formatShort(fmt: Intl.NumberFormat, n: number) {
   if (n < 2e3) {
-    return n
-  } else if (n < 1e6) {
-    return `${fmt.format(n / 1e3)}K`
-  } else if (n < 1e9) {
-    return `${fmt.format(n / 1e6)}M`
-  } else {
-    return `${fmt.format(n / 1e9)}G`
+    return fmt.format(n)
   }
+  let index = n < 1e6 ? 0 : n < 1e9 ? 1 : 2
+  let scaled = fmt.format(n / units[index].size)
+  while (index < units.length - 1 && Number(scaled.replace(/[^0-9.]/g, "")) >= 1000) {
+    index++
+    scaled = fmt.format(n / units[index].size)
+  }
+  return `${scaled}${units[index].suffix}`
+}
+
+export function usdToSats(usd: number, btcUsdAsk: number) {
+  if (!Number.isFinite(usd) || !Number.isFinite(btcUsdAsk) || btcUsdAsk <= 0) return 0
+  return Math.round((usd / btcUsdAsk) * 1e8)
 }
 
 export function formatSats(n: number) {

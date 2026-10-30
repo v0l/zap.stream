@@ -3,6 +3,7 @@ declare const self: ServiceWorkerGlobalScope & {
   __WB_MANIFEST: (string | PrecacheEntry)[]
 }
 
+import { isClientAt } from "./sw-url"
 import { hexToBech32 } from "@snort/shared"
 import { clientsClaim } from "workbox-core"
 import { type PrecacheEntry, cleanupOutdatedCaches, precacheAndRoute } from "workbox-precaching"
@@ -48,16 +49,20 @@ self.addEventListener("notificationclick", event => {
         return `/${hexToBech32("npub", ev.pubkey)}`
       }
       for (const client of windows) {
-        if (client.url === url() && "focus" in client) return client.focus()
+        if (isClientAt(client.url, url(), self.location.origin) && "focus" in client) return client.focus()
       }
       if (self.clients.openWindow) return self.clients.openWindow(url())
     })(),
   )
 })
 
-self.addEventListener("push", async e => {
-  console.debug(e)
-  const data = e.data?.json() as PushNotification | undefined
+async function showPush(e: PushEvent) {
+  let data: PushNotification | undefined
+  try {
+    data = e.data?.json() as PushNotification | undefined
+  } catch (err) {
+    console.error(err)
+  }
   if (!data) return
 
   const icon = data.avatar ?? `${location.protocol}//${location.hostname}/logo_256.png`
@@ -73,4 +78,8 @@ self.addEventListener("push", async e => {
       ret,
     )
   }
+}
+
+self.addEventListener("push", e => {
+  e.waitUntil(showPush(e).catch(err => console.error(err)))
 })

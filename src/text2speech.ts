@@ -12,12 +12,24 @@ interface TextToSpeechConfig {
   volume: number
 }
 
+function numberParam(q: URLSearchParams, key: string, fallback: number) {
+  const raw = q.get(key)
+  if (raw === null || raw.trim() === "") return fallback
+  const n = Number(raw)
+  return Number.isFinite(n) ? n : fallback
+}
+
+export function parseTextToSpeechParams(q: URLSearchParams): TextToSpeechConfig {
+  return {
+    voiceURI: q.get("voiceURI"),
+    minSats: numberParam(q, "minSats", 21),
+    volume: numberParam(q, "volume", 1),
+  }
+}
+
 export function useTextToSpeechParams(): TextToSpeechConfig {
   const q = useQuery()
-  const voiceURI = q.get("voiceURI")
-  const minSats = Number(q.get("minSats")) ?? 21
-  const volume = Number(q.get("volume")) ?? 1
-  return { voiceURI, minSats, volume }
+  return useMemo(() => parseTextToSpeechParams(q), [q])
 }
 
 interface TextToSpeechConfigParams {

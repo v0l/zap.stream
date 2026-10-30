@@ -1,3 +1,4 @@
+import { usdToSats } from "@/number"
 import { useRates } from "@/hooks/rates"
 import { useCallback, useEffect, useState } from "react"
 
@@ -6,10 +7,10 @@ export default function AmountInput({ onChange }: { onChange: (n: number) => voi
   const [value, setValue] = useState(0)
   const rates = useRates("BTCUSD")
 
-  const satsValue = useCallback(
-    () => (type === "usd" ? Math.round(value * 1e-6 * rates.ask) / 100 : value),
-    [value, type],
-  )
+  const satsValue = useCallback(() => {
+    const sats = type === "usd" ? usdToSats(value, rates.ask) : value
+    return Number.isFinite(sats) ? sats : 0
+  }, [value, type, rates.ask])
 
   useEffect(() => {
     onChange(satsValue())
@@ -22,7 +23,7 @@ export default function AmountInput({ onChange }: { onChange: (n: number) => voi
         className="!pr-0 !pl-4"
         value={value}
         onChange={e => {
-          setValue(e.target.valueAsNumber)
+          setValue(Number.isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber)
         }}
       />
       <select
