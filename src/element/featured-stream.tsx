@@ -6,6 +6,10 @@ import { NostrLink, type ParsedZap, type TaggedNostrEvent } from "@snort/system"
 import { useUserProfile } from "@snort/system-react"
 import classNames from "classnames"
 import { useEffect, useRef, useState } from "react"
+import HlsVideo from "hls-video-element/react"
+import type { HlsVideoElement } from "hls-video-element"
+import { useMediaQuery } from "usehooks-ts"
+import { shouldReleasePlayer } from "./stream/release-player"
 import { FormattedMessage } from "react-intl"
 import { Link } from "react-router"
 import { getName } from "./profile"
@@ -27,7 +31,7 @@ export function pickFeaturedStream(live: Array<TaggedNostrEvent>, zapTotals: Rec
 }
 
 export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps: Array<ParsedZap>; total: number }) {
-  const { title, image, thumbnail, recording, participants, gameInfo } = extractStreamInfo(ev)
+  const { title, image, thumbnail, recording, participants, gameInfo, stream } = extractStreamInfo(ev)
   const host = getHost(ev)
   const hostProfile = useUserProfile(host)
   const link = `/${NostrLink.fromEvent(ev).encode()}`
@@ -46,6 +50,7 @@ export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps
         className="group relative aspect-video max-sm:aspect-[4/3] max-h-[min(70vh,620px)] w-full rounded-2xl overflow-hidden bg-layer-1 isolate"
       >
         {imgSrc && <img src={imgSrc} alt="" className="absolute inset-0 w-full h-full object-cover -z-10" />}
+        {stream?.toLowerCase().includes(".m3u8") && <FeaturedPreview src={stream} />}
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-layer-0/95 via-layer-0/30 to-transparent" />
         <div className="absolute inset-x-5 bottom-4 sm:inset-x-7 sm:bottom-6 flex items-end justify-between gap-4">
           <div className="min-w-0">
@@ -73,6 +78,40 @@ export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps
       </Link>
       {zaps.length > 0 && <ZapFeed zaps={zaps} total={total} />}
     </section>
+  )
+}
+
+function FeaturedPreview({ src }: { src: string }) {
+  const ref = useRef<HlsVideoElement | null>(null)
+  const [playing, setPlaying] = useState(false)
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)", { initializeWithValue: false })
+
+  useEffect(() => {
+    const el = ref.current
+    return () => {
+      queueMicrotask(() => {
+        if (el && shouldReleasePlayer(el)) el.src = ""
+      })
+    }
+  }, [src])
+
+  if (reducedMotion) return null
+  return (
+    <HlsVideo
+      ref={ref}
+      src={src}
+      muted
+      autoplay
+      playsInline
+      aria-hidden="true"
+      tabIndex={-1}
+      onPlaying={() => setPlaying(true)}
+      config={{ lowLatencyMode: true, capLevelToPlayerSize: true, maxBufferLength: 10 }}
+      className={classNames(
+        "absolute inset-0 w-full h-full object-cover -z-10 transition-opacity duration-700",
+        playing ? "opacity-100" : "opacity-0",
+      )}
+    />
   )
 }
 
