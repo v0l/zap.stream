@@ -4,6 +4,7 @@ import { unixNow } from "@snort/shared"
 
 export class KickChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
   private connectedAt: number = 0
+  private ws?: WebSocket
 
   constructor(readonly channel_name: string) {
     super()
@@ -42,8 +43,10 @@ export class KickChat extends EventEmitter<ExternalChatEvents> implements Extern
     }
   }
 
-  disconnect(): Promise<void> {
-    throw new Error("Method not implemented.")
+  async disconnect() {
+    const ws = this.ws
+    this.ws = undefined
+    ws?.close()
   }
 
   async subscribeChat(channel: string) {
@@ -67,6 +70,7 @@ export class KickChat extends EventEmitter<ExternalChatEvents> implements Extern
       }
       ws.onerror = reject
     })
+    this.ws = ws
     this.connectedAt = unixNow()
     ws.onmessage = e => {
       this.onMessage(e)

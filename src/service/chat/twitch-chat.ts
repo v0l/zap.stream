@@ -1,6 +1,8 @@
 import EventEmitter from "eventemitter3"
 import type { ChatInfo, ExternalChatFeed, ExternalChatEvents, ExternalChatBadge } from "./types"
 
+const EventSubUrl = "wss://eventsub.wss.twitch.tv/ws"
+
 export class TwitchChat extends EventEmitter<ExternalChatEvents> implements ExternalChatFeed {
   private clientId: string
   private bearer?: string
@@ -8,8 +10,16 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
   private ws?: WebSocket
   private session?: SesssionInfo
   private subscriptions: Map<string, SubscriptionPayload> = new Map()
+  private closing = false
+  private retryTimer?: ReturnType<typeof setTimeout>
+  private keepaliveTimer?: ReturnType<typeof setTimeout>
+  private retries = 0
 
-  constructor(clientId: string, bearer?: string) {
+  constructor(
+    clientId: string,
+    bearer?: string,
+    private readonly retryDelayMs = 2000,
+  ) {
     super()
     this.clientId = clientId
     this.bearer = bearer
@@ -34,6 +44,7 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
   }
 
   async connectFeed() {
+    this.closing = false
     await this.connectSocket()
     await this.subscribeMyChat()
   }
@@ -59,34 +70,94 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
   }
 
   async connectSocket() {
-    // first validate the token
-    const tkn = await this.validateToken()
-    this.token = tkn
-    console.debug("Token is valid", tkn)
+    this.token = await this.validateToken()
+    this.ws = await this.openSocket(EventSubUrl)
+  }
 
-    const ws = await new Promise<WebSocket>((resolve, reject) => {
-      const ws = new WebSocket("wss://eventsub.wss.twitch.tv/ws")
-      ws.onopen = ev => {
-        console.debug("Connected", ev)
-      }
+  private openSocket(url: string) {
+    return new Promise<WebSocket>((resolve, reject) => {
+      const ws = new WebSocket(url)
+      let welcomed = false
       ws.onmessage = ev => {
-        this.onMessage(ev, () => {
+        if (ws === this.ws) this.armKeepalive()
+        this.onMessage(ws, ev, () => {
+          welcomed = true
           resolve(ws)
         })
       }
-      ws.onclose = ev => {
-        console.debug("CLOSED", ev)
+      ws.onclose = () => {
+        if (!welcomed) reject(new Error("Twitch socket closed before welcome"))
+        if (ws === this.ws) this.onSocketLost()
       }
       ws.onerror = ev => {
-        console.debug("ERROR", ev)
-        reject(ev)
+        if (!welcomed) reject(ev)
       }
     })
-
-    this.ws = ws
   }
 
-  private onMessage(ev: MessageEvent, onWelcome?: () => void) {
+  private armKeepalive() {
+    clearTimeout(this.keepaliveTimer)
+    const timeout = this.session?.keepalive_timeout_seconds
+    if (!timeout || this.closing) return
+    const ws = this.ws
+    this.keepaliveTimer = setTimeout(
+      () => {
+        if (ws === this.ws) ws?.close()
+      },
+      (timeout + 5) * 1000,
+    )
+  }
+
+  private onSocketLost() {
+    clearTimeout(this.keepaliveTimer)
+    this.ws = undefined
+    if (this.closing) return
+    const delay = Math.min(this.retryDelayMs * 2 ** this.retries, 60_000)
+    this.retries++
+    this.retryTimer = setTimeout(() => this.reconnect(), delay)
+  }
+
+  private async reconnect() {
+    if (this.closing) return
+    try {
+      this.subscriptions.clear()
+      const ws = await this.openSocket(EventSubUrl)
+      if (this.closing) {
+        ws.close()
+        return
+      }
+      this.ws = ws
+      this.armKeepalive()
+      await this.subscribeMyChat()
+      this.retries = 0
+    } catch (e) {
+      console.warn("Twitch reconnect failed", e)
+      if (this.ws) {
+        this.ws.close()
+      } else {
+        this.onSocketLost()
+      }
+    }
+  }
+
+  private async followReconnect(url: string) {
+    const old = this.ws
+    try {
+      const ws = await this.openSocket(url)
+      if (this.closing || this.ws !== old) {
+        ws.close()
+        return
+      }
+      this.ws = ws
+      this.armKeepalive()
+      old?.close()
+    } catch (e) {
+      console.warn("Twitch session reconnect failed", e)
+      old?.close()
+    }
+  }
+
+  private onMessage(ws: WebSocket, ev: MessageEvent, onWelcome?: () => void) {
     const json =
       typeof ev.data === "string"
         ? (JSON.parse(ev.data) as { metadata: { message_type: MessageMetadata["message_type"] } })
@@ -100,15 +171,19 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
     switch (json.metadata.message_type) {
       case "session_welcome": {
         const msg = json as WelcomeMessage
-        console.debug("Got session", msg)
         this.session = msg.payload.session
         onWelcome?.()
         break
       }
+      case "session_reconnect": {
+        const msg = json as ReconnectMessage
+        const url = msg.payload.session.reconnect_url
+        if (url && ws === this.ws) this.followReconnect(url)
+        break
+      }
       case "notification": {
-        const msg = json as NotificationMessage
-        console.debug("Got notification", msg)
-        this.onNotification(msg)
+        if (ws !== this.ws) break
+        this.onNotification(json as NotificationMessage)
         break
       }
     }
@@ -242,8 +317,16 @@ export class TwitchChat extends EventEmitter<ExternalChatEvents> implements Exte
 
   /** Gracefully close the connection. */
   async disconnect() {
-    await this.unsubscribeAll()
-    this.ws?.close()
+    this.closing = true
+    clearTimeout(this.retryTimer)
+    clearTimeout(this.keepaliveTimer)
+    const ws = this.ws
+    this.ws = undefined
+    try {
+      await this.unsubscribeAll()
+    } finally {
+      ws?.close()
+    }
   }
 }
 
@@ -294,7 +377,7 @@ export interface TransportInfo {
 
 export interface MessageMetadata {
   message_id: string
-  message_type: "session_welcome" | "session_keepalive" | "notification"
+  message_type: "session_welcome" | "session_keepalive" | "session_reconnect" | "notification" | "revocation"
   message_timestamp: string
 }
 
