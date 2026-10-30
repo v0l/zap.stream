@@ -42,7 +42,7 @@ export function HeaderNav() {
         align="end"
         gap={5}
       >
-        {AllLocales.sort().map(l => (
+        {[...AllLocales].sort().map(l => (
           <MenuItem className="capitalize" onClick={() => setLang(l)} key={l}>
             {new Intl.DisplayNames([l], {
               type: "language",

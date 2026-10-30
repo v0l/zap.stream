@@ -44,11 +44,7 @@ export function getHost(ev: NostrEvent) {
   return ret
 }
 
-export function profileLink(meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
-  if (meta?.nip05?.endsWith("@zap.stream")) {
-    const [name] = meta.nip05.split("@")
-    return `/p/${name}`
-  }
+export function profileLink(_meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
   if (pubkey instanceof NostrLink) {
     return `/p/${pubkey.encode(NostrPrefix.Profile)}`
   } else {
@@ -254,7 +250,7 @@ export function trackEvent(
         p: props,
         u: e?.destination?.url ?? `${location.protocol}//${location.host}${location.pathname}`,
       }),
-    })
+    }).catch(() => {})
   }
 }
 
