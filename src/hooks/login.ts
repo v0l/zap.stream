@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react"
+import { useMemo, useSyncExternalStore } from "react"
 
 import { getPublisher, getSigner, Login, type LoginSession } from "@/login"
 
@@ -8,17 +8,19 @@ export function useLogin() {
     () => Login.snapshot(),
     () => undefined,
   )
-  if (!session) return
-  return {
-    ...session,
-    publisher: () => {
-      return getPublisher(session)
-    },
-    signer: () => {
-      return getSigner(session)
-    },
-    update: (fn: (s: LoginSession) => void) => {
-      Login.update(fn)
-    },
-  }
+  return useMemo(() => {
+    if (!session) return
+    return {
+      ...session,
+      publisher: () => {
+        return getPublisher(session)
+      },
+      signer: () => {
+        return getSigner(session)
+      },
+      update: (fn: (s: LoginSession) => void) => {
+        Login.update(fn)
+      },
+    }
+  }, [session])
 }

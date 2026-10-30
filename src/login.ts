@@ -27,13 +27,14 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     super()
     const json = window.localStorage.getItem(SESSION_KEY)
     if (json) {
-      this.#session = JSON.parse(json)
+      try {
+        this.#session = JSON.parse(json)
+      } catch {
+        window.localStorage.removeItem(SESSION_KEY)
+      }
       if (this.#session) {
         let save = false
         this.#session.state = this.#makeState()
-        this.#session.state?.on("change", () => {
-          this.#save()
-        })
         //reset
         this.#session.type ??= LoginType.Nip7
         if ("cards" in this.#session) {
@@ -69,6 +70,9 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       )
       ret.checkIsStandardList(EventKind.StorageServerList)
       ret.checkIsStandardList(EventKind.MuteList)
+      ret.on("change", () => {
+        this.#save()
+      })
       return ret
     }
   }
@@ -94,6 +98,11 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
   }
 
   logout() {
+    const state = this.#session?.state
+    if (state instanceof UserState) {
+      state.off("change")
+      state.destroy()
+    }
     this.#session = undefined
     this.#save()
   }
