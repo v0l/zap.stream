@@ -143,6 +143,9 @@
   "5vMmmR": {
     "defaultMessage": "Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration."
   },
+  "62nsdy": {
+    "defaultMessage": "Retry"
+  },
   "69hmpj": {
     "defaultMessage": "Raid from {name}"
   },
