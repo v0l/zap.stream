@@ -822,6 +822,9 @@
   "heyxZL": {
     "defaultMessage": "Enable text to speech"
   },
+  "hkvk2g": {
+    "defaultMessage": "Could not find {name}"
+  },
   "hpl4BP": {
     "defaultMessage": "Chat Widget"
   },

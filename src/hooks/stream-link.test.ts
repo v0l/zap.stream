@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test"
 import { NostrLink } from "@snort/system"
 import type { NostrEvent } from "@snort/system"
-import { resolveStreamLink } from "./stream-link"
+import { nip05Address, resolveStreamLink } from "./stream-link"
 
 const host = "a".repeat(64)
 function stream(d: string): NostrEvent {
@@ -24,5 +24,14 @@ describe("resolveStreamLink", () => {
   it("prefers the preload over the url id", () => {
     const naddr = NostrLink.fromEvent(stream("three")).encode()
     expect(resolveStreamLink(stream("four"), naddr)?.id).toBe("four")
+  })
+})
+
+describe("dashboard name links", () => {
+  it("treats a bare name as a nip05 handle instead of throwing", () => {
+    expect(() => resolveStreamLink(undefined, "nogood")).not.toThrow()
+    expect(resolveStreamLink(undefined, "nogood")).toBeUndefined()
+    expect(nip05Address("nogood")).toEqual({ handle: "nogood", domain: "zap.stream" })
+    expect(nip05Address("bob@example.com")).toEqual({ handle: "bob", domain: "example.com" })
   })
 })
