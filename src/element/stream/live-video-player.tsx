@@ -24,6 +24,7 @@ import { parseYouTubeUrl } from "@/youtube"
 import type { NostrLink } from "@snort/system"
 import YouTubePlayer from "./youtube-player"
 import { shouldReleasePlayer } from "./release-player"
+import { playWithMutedFallback } from "./autoplay"
 const Nip94Player = lazy(() => import("./n94-player"))
 const MoqPlayer = lazy(() => import("./moq-player"))
 
@@ -56,6 +57,14 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
     }
   }, [stream])
 
+  useEffect(() => {
+    const el = playerRef.current
+    if (!el) return
+    const start = () => playWithMutedFallback(el)
+    el.addEventListener("canplay", start, { once: true })
+    return () => el.removeEventListener("canplay", start)
+  }, [stream])
+
   // hls-video-element does not destroy its hls.js instance on unmount,
   // which leaves the playlist loading in the background after navigating away.
   // Clearing src triggers its internal #destroy() (recommended by upstream):
@@ -86,7 +95,6 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
           slot="media"
           src={stream}
           playsInline
-          autoplay
           // HlsVideoElement extends HTMLVideoElement; shared ref type is HTMLVideoElement
           ref={playerRef as Ref<HlsVideoElement>}
           config={{
@@ -104,7 +112,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       )
     } else {
       // other video formats (e.g. mp4)
-      return <video {...props} slot="media" src={stream} playsInline={true} autoPlay={true} ref={playerRef} />
+      return <video {...props} slot="media" src={stream} playsInline={true} ref={playerRef} />
     }
   }
 
