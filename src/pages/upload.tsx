@@ -215,6 +215,7 @@ export function UploadPage() {
   )
   const navigate = useNavigate()
   const servers = useMediaServerList()
+  const [showRaw, setShowRaw] = useState(false)
 
   function canPublish() {
     return error.length === 0 && uploads.length > 0 && uploads.every(a => a.result !== undefined)
@@ -494,12 +495,16 @@ export function UploadPage() {
         </div>
       </div>
 
-      <div>
-        <FormattedMessage defaultMessage="Raw Data:" />
-        <pre className="text-xs font-mono overflow-wrap text-pretty">
-          {JSON.stringify(makeEvent().build(), undefined, 2)}
-        </pre>
-      </div>
+      <details onToggle={e => setShowRaw(e.currentTarget.open)}>
+        <summary className="cursor-pointer text-layer-5">
+          <FormattedMessage defaultMessage="Raw Data:" />
+        </summary>
+        {showRaw && (
+          <pre className="text-xs font-mono overflow-wrap text-pretty">
+            {JSON.stringify(makeEvent().build(), undefined, 2)}
+          </pre>
+        )}
+      </details>
       {editServers && (
         <Modal id="server-list" onClose={() => setEditServers(false)}>
           <ServerList />
