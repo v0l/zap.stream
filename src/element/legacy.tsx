@@ -1,4 +1,4 @@
-import { IconButton, Layer1Button } from "./buttons"
+import { DefaultButton } from "./buttons"
 import { FormattedMessage, useIntl } from "react-intl"
 import { ChatApis } from "@/service/chat/types"
 import { useEffect, useState } from "react"
@@ -21,45 +21,47 @@ export function ConnectLegacyStream() {
 
   callbackUrl.hash = ""
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {Object.entries(ChatApis).map(([k, v]) => {
         if (v.isAuthed()) {
+          const expired = (v.expireTime() ?? Number.POSITIVE_INFINITY) < unixNow()
           return (
-            <div key={k} className="flex justify-between">
-              <div className="flex gap-2">
-                <span className="text-green-400">
-                  <FormattedMessage defaultMessage="{provider} connected!" values={{ provider: v.name }} />
+            <div key={k} className="flex items-center justify-between gap-3 rounded-xl border border-layer-3 px-3 py-2">
+              <span className="flex items-center gap-2 min-w-0">
+                <span className={expired ? "w-2 h-2 rounded-full bg-warning" : "w-2 h-2 rounded-full bg-success"} />
+                <span className="font-semibold">{v.name}</span>
+                <span className={expired ? "text-sm text-warning" : "text-sm text-layer-4"}>
+                  {expired ? (
+                    <FormattedMessage defaultMessage="Expired" />
+                  ) : (
+                    <FormattedMessage defaultMessage="Connected" />
+                  )}
                 </span>
-                {(v.expireTime() ?? Number.POSITIVE_INFINITY) < unixNow() && (
-                  <span className="text-red-400">
-                    <FormattedMessage defaultMessage="Expired!" />
-                  </span>
-                )}
-              </div>
-              <IconButton
-                iconName="x"
-                iconSize={16}
-                className="text-red-500"
+              </span>
+              <DefaultButton
                 onClick={() => {
                   v.disconnect()
                   setTick(v => v + 1)
                 }}
-              />
+              >
+                <FormattedMessage defaultMessage="Disconnect" />
+              </DefaultButton>
             </div>
           )
         }
         if (v.authType === "oauth") {
           return (
-            <Layer1Button
+            <DefaultButton
               key={k}
+              className="w-full !py-2.5"
               onClick={() => {
                 callbackUrl.searchParams.set("auth_flow", k)
                 const url = v.getAuthUrl(callbackUrl.toString())
                 window.location.href = url
               }}
             >
-              <FormattedMessage defaultMessage="Login with {provider}" values={{ provider: v.name }} />
-            </Layer1Button>
+              <FormattedMessage defaultMessage="Connect {provider}" values={{ provider: v.name }} />
+            </DefaultButton>
           )
         } else {
           // no auth just means we can directly load the stream chat without a token and only
@@ -76,7 +78,7 @@ export function ConnectLegacyStream() {
           )
         }
       })}
-    </>
+    </div>
   )
 }
 
@@ -86,15 +88,18 @@ function InputChannelName({ platformName, onSave }: { platformName: string; onSa
   return (
     <div className="flex gap-2 items-center">
       <input
-        className="!bg-layer-1"
         type="text"
         value={value}
         onChange={e => setValue(e.target.value)}
-        placeholder={formatMessage({ defaultMessage: "{platform} channel name.." }, { platform: platformName })}
+        placeholder={formatMessage({ defaultMessage: "{platform} channel name" }, { platform: platformName })}
       />
-      <Layer1Button onClick={() => onSave(`channel=${value}`)}>
-        <FormattedMessage defaultMessage="Save" />
-      </Layer1Button>
+      <DefaultButton
+        className="shrink-0"
+        disabled={value.trim().length === 0}
+        onClick={() => onSave(`channel=${value.trim()}`)}
+      >
+        <FormattedMessage defaultMessage="Connect" />
+      </DefaultButton>
     </div>
   )
 }

@@ -1,134 +1,31 @@
-@keyframes fadeInOut {
+@keyframes zap-alert {
   0% {
     opacity: 0;
+    transform: translateY(-16px) scale(0.96);
   }
-  16% {
+  6% {
     opacity: 1;
+    transform: none;
   }
-  84% {
+  92% {
     opacity: 1;
+    transform: none;
   }
   100% {
     opacity: 0;
+    transform: translateY(-8px);
   }
 }
 
-.text-to-speech-settings {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.text-to-speech-settings .labeled-input {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.text-to-speech-settings .labeled-input label {
-  font-size: 14px;
-  color: var(--color-layer-4);
-}
-
-.text-to-speech-settings textarea {
-  resize: vertical;
-}
-
-.zap-alert {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 17px;
-  background: #2d2d2d;
-  margin-top: 24px;
-}
-
-.zap-alerts-widget .zap-alert {
-  animation: fadeInOut 10s;
-}
-
-.zap-alert > .zap-alert-title {
-  width: fit-content;
-  text-align: center;
-  left: 120px;
-  margin-top: -20px;
-  font-size: 21px;
-  font-weight: 600;
-  border-radius: 33px;
-  background: linear-gradient(135deg, #882bff 0%, #f83838 100%);
-  padding: 8px 24px;
-  z-index: 2;
-}
-
-.zap-alert > .zap-alert-header {
-  z-index: 1;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 90px 24px 90px;
-  font-size: 29px;
-  font-weight: 600;
-}
-
-.zap-alert-body {
-  padding: 0 24px 24px 24px;
-  margin-top: -20px;
-  margin-bottom: 0;
-}
-
-.zap-alert .highlight {
-  color: #ff4468;
-}
-
-.views {
-  display: inline-block;
-  border-radius: 16px;
-  background: #222;
-  padding: 16px 24px;
-  font-size: 21px;
-  font-weight: 600;
-  line-height: 32px;
-}
-
-.top-zappers-widget {
-  display: inline-flex;
-  border-radius: 16px;
-  background: #222;
-  padding: 16px 24px;
-  font-size: 21px;
-  font-weight: 600;
-  align-items: center;
-  gap: 16px;
-}
-
-.top-zappers-widget .top-zapper {
-  background-color: #3f3f3f;
-  border: unset;
-}
-
-.top-zappers-widget .profile > img {
-  width: 24px;
-  height: 24px;
-}
-
-.music {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  gap: 4px;
-  border-radius: 16px;
-  background: #222;
-  max-width: 340px;
-}
-
-.music .cover {
-  object-fit: cover;
-  width: 120px;
-  height: 120px;
-}
-
-.music .track {
-  margin: 0;
-  font-size: 14px;
+@media (prefers-reduced-motion: reduce) {
+  @keyframes zap-alert {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    6%,
+    92% {
+      opacity: 1;
+    }
+  }
 }

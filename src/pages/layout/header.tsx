@@ -34,7 +34,7 @@ export function HeaderNav() {
         menuButton={
           <div className="flex gap-2 items-center">
             {country && <div className={`fi fi-${country}`}></div>}
-            <div className="uppercase pointer">
+            <div className="uppercase cursor-pointer">
               <b>{lang.includes("-") ? lang.split("-")[0] : lang}</b>
             </div>
           </div>

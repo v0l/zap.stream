@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl"
 import StepHeader from "./step-header"
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router"
@@ -28,10 +28,10 @@ export default function DashboardIntroStep2() {
   }, [streamProvider])
 
   return (
-    <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
+    <div className="mx-auto flex flex-col items-center w-full max-w-[30rem] p-4 sm:py-8">
       <StepHeader />
       <div className="flex flex-col gap-4 w-full">
-        <h2 className="text-center">
+        <h2>
           <FormattedMessage defaultMessage="Choose a category" />
         </h2>
         <CategoryInput
@@ -42,7 +42,8 @@ export default function DashboardIntroStep2() {
           setGame={setGame}
           setGameId={setGameId}
         />
-        <DefaultButton
+        <PrimaryButton
+          className="!py-2.5"
           onClick={async () => {
             const newState = {
               ...location.state,
@@ -55,7 +56,7 @@ export default function DashboardIntroStep2() {
           }}
         >
           <FormattedMessage defaultMessage="Continue" />
-        </DefaultButton>
+        </PrimaryButton>
       </div>
     </div>
   )

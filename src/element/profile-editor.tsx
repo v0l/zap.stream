@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react"
+import { type ReactNode, useState, useEffect, useContext, useRef } from "react"
 import { FormattedMessage, useIntl } from "react-intl"
 import { LNURL, fetchNip05Pubkey } from "@snort/shared"
 import { mapEventToProfile } from "@snort/system"
@@ -198,76 +198,77 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
     if (!login?.pubkey) return
 
     return (
-      <div className="flex flex-col gap-4">
-        <div className="mx-auto relative flex items-center justify-center w-40 h-40 aspect-square rounded-full overflow-hidden">
-          <img className="absolute w-full h-full object-cover" src={picture} alt={name} />
-          <FileUploader
-            onResult={e => setPicture(e ?? "")}
-            onError={e => setError(e instanceof Error ? e : new Error(e))}
-            className="flex items-center justify-center absolute w-full h-full opacity-0 hover:opacity-80 bg-foreground cursor-pointer"
-            imageWidth={512}
-            imageHeight={512}
-          >
-            <FormattedMessage defaultMessage="Edit" />
-          </FileUploader>
+      <div className="flex flex-col gap-5">
+        <div className="flex items-center gap-5">
+          <div className="relative w-24 h-24 shrink-0 rounded-full overflow-hidden bg-layer-2 border border-layer-3">
+            {picture && <img className="absolute w-full h-full object-cover" src={picture} alt="" />}
+            <FileUploader
+              onResult={e => setPicture(e ?? "")}
+              onError={e => setError(e instanceof Error ? e : new Error(e))}
+              className="flex items-center justify-center absolute w-full h-full opacity-0 hover:opacity-100 bg-layer-0/70 text-sm font-semibold cursor-pointer"
+              imageWidth={512}
+              imageHeight={512}
+            >
+              <FormattedMessage defaultMessage="Edit" />
+            </FileUploader>
+          </div>
+          <p className="text-sm text-layer-4">
+            <FormattedMessage defaultMessage="Click your picture to upload a new one." />
+          </p>
         </div>
-        <div className="flex flex-col w-full gap-2">
-          <h4>
-            <FormattedMessage defaultMessage="Name" />
-          </h4>
+        <ProfileField
+          id="profile-name"
+          label={<FormattedMessage defaultMessage="Name" />}
+          error={usernameValid === false && invalidUsernameMessage}
+        >
           <input
-            className="w-full"
+            id="profile-name"
             type="text"
-            value={name}
+            value={name ?? ""}
             onChange={e => onLimitCheck(e.target.value, "username")}
             maxLength={MaxUsernameLength}
           />
-          <div>{usernameValid === false && <span className="text-delete">{invalidUsernameMessage}</span>}</div>
-        </div>
-        <div className="flex flex-col w-full gap-2">
-          <h4>
-            <FormattedMessage defaultMessage="About" />
-          </h4>
+        </ProfileField>
+        <ProfileField
+          id="profile-about"
+          label={<FormattedMessage defaultMessage="About" />}
+          error={aboutValid === false && invalidAboutMessage}
+        >
           <textarea
-            className="w-full"
+            id="profile-about"
+            rows={4}
             onChange={e => onLimitCheck(e.target.value, "about")}
-            value={about}
+            value={about ?? ""}
             maxLength={MaxAboutLength}
           ></textarea>
-          <div>{aboutValid === false && <span className="text-delete">{invalidAboutMessage}</span>}</div>
-        </div>
-        <div className="flex flex-col w-full gap-2">
-          <h4>
-            <FormattedMessage defaultMessage="Website" />
-          </h4>
-          <input className="w-full" type="text" value={website} onChange={e => setWebsite(e.target.value)} />
-        </div>
-        <div className="flex flex-col w-full gap-2">
-          <h4>
-            <FormattedMessage defaultMessage="Nostr Address" />
-          </h4>
-          <div className="flex flex-col gap-2 w-full">
-            <input type="text" className="w-full" value={nip05} onChange={e => onNip05Change(e)} />
-            <div>{!nip05AddressValid && <span className="text-delete">{invalidNip05AddressMessage}</span>}</div>
-            <small>
-              <FormattedMessage defaultMessage="Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration." />
-            </small>
-          </div>
-        </div>
-        <div className="flex flex-col w-full gap-2">
-          <h4>
-            <FormattedMessage defaultMessage="Lightning Address" />
-          </h4>
+        </ProfileField>
+        <ProfileField id="profile-website" label={<FormattedMessage defaultMessage="Website" />}>
+          <input id="profile-website" type="text" value={website ?? ""} onChange={e => setWebsite(e.target.value)} />
+        </ProfileField>
+        <ProfileField
+          id="profile-nip05"
+          label={<FormattedMessage defaultMessage="Nostr Address" />}
+          error={!nip05AddressValid && invalidNip05AddressMessage}
+          hint={
+            <FormattedMessage defaultMessage="Usernames are not unique on Nostr. The nostr address is your unique human-readable address that is unique to you upon registration." />
+          }
+        >
+          <input id="profile-nip05" type="text" value={nip05 ?? ""} onChange={e => onNip05Change(e)} />
+        </ProfileField>
+        <ProfileField
+          id="profile-lud16"
+          label={<FormattedMessage defaultMessage="Lightning Address" />}
+          error={lud16Valid === false && invalidLud16Message}
+        >
           <input
-            className="w-full"
+            id="profile-lud16"
             type="text"
-            value={lud16}
+            value={lud16 ?? ""}
             onChange={e => onLud16Change(e.target.value.toLowerCase())}
           />
-          <div>{lud16Valid === false && <span className="text-delete">{invalidLud16Message}</span>}</div>
-        </div>
-        {error && <b className="text-delete">{error.message}</b>}
-        <PrimaryButton onClick={() => saveProfile()}>
+        </ProfileField>
+        {error && <b className="text-warning">{error.message}</b>}
+        <PrimaryButton className="self-start !px-6 !py-2.5" onClick={() => saveProfile()}>
           <FormattedMessage defaultMessage="Save" />
         </PrimaryButton>
       </div>
@@ -275,4 +276,29 @@ export function ProfileEditor({ onClose }: { onClose: () => void }) {
   }
 
   return editor()
+}
+
+function ProfileField({
+  id,
+  label,
+  hint,
+  error,
+  children,
+}: {
+  id: string
+  label: ReactNode
+  hint?: ReactNode
+  error?: ReactNode
+  children: ReactNode
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={id} className="text-sm text-layer-4">
+        {label}
+      </label>
+      {children}
+      {error && <span className="text-sm text-warning">{error}</span>}
+      {hint && <span className="text-sm text-layer-4">{hint}</span>}
+    </div>
+  )
 }

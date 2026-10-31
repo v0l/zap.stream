@@ -1,4 +1,4 @@
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import { Icon } from "@/element/icon"
 import CapabilityPill from "@/element/capability-pill"
 import { useRates } from "@/hooks/rates"
@@ -42,7 +42,7 @@ export default function DashboardIntro() {
   if (!defaultEndpoint) return
 
   return (
-    <div className="flex flex-col gap-4 mx-auto xl:w-1/3 lg:w-1/2 bg-layer-1 rounded-xl border border-layer-2 p-6">
+    <div className="flex flex-col gap-4 mx-auto my-4 sm:my-8 w-[calc(100%-2rem)] max-w-[640px] bg-layer-1 rounded-2xl border border-layer-3 p-6">
       <h1>
         <FormattedMessage defaultMessage="Welcome to zap.stream!" />
       </h1>
@@ -66,10 +66,10 @@ export default function DashboardIntro() {
             ? rate.ask * (exampleHours * endpoint.cost.rate * 60) * 1e-8
             : undefined
           return (
-            <div key={endpoint.name} className="border border-layer-2 rounded-lg p-3">
+            <div key={endpoint.name} className="border border-layer-3 rounded-xl p-3">
               <div className="flex justify-between items-start">
                 <div>
-                  <h4 className="font-semibold text-white">{endpoint.name}</h4>
+                  <h4 className="font-semibold">{endpoint.name}</h4>
                   <p className="text-sm text-layer-5">
                     <FormattedMessage
                       defaultMessage="{rate} sats/{unit}"
@@ -79,7 +79,7 @@ export default function DashboardIntro() {
                       }}
                     />
                   </p>
-                  <p className="text-xs text-layer-6">
+                  <p className="text-xs text-layer-4">
                     {endpointCost !== undefined && (
                       <FormattedMessage
                         defaultMessage="~{cost}/day for {hours}hr stream"
@@ -105,13 +105,14 @@ export default function DashboardIntro() {
           )
         })}
       </div>
-      <div className="pt-3 border-t border-layer-2">
+      <div className="pt-3 border-t border-layer-3">
         <ProviderSelectorButton />
       </div>
       {!info?.tos?.accepted && (
         <AcceptTos provider={streamProvider.name} tosLink={info?.tos?.link} tos={tos} setTos={setTos} />
       )}
-      <DefaultButton
+      <PrimaryButton
+        className="!py-2.5 flex items-center justify-center gap-2"
         disabled={!tos}
         onClick={async () => {
           if (!info?.tos?.accepted) {
@@ -122,7 +123,7 @@ export default function DashboardIntro() {
       >
         <FormattedMessage defaultMessage="Create Stream" />
         <Icon name="signal" />
-      </DefaultButton>
+      </PrimaryButton>
     </div>
   )
 }

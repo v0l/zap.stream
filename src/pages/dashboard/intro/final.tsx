@@ -1,7 +1,7 @@
 import { pickEndpoint } from "../quality"
 import { FormattedMessage } from "react-intl"
 import StepHeader from "./step-header"
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router"
@@ -29,13 +29,13 @@ export default function DashboardIntroFinal() {
   }, [])
 
   return (
-    <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
+    <div className="mx-auto flex flex-col items-center w-full max-w-[30rem] p-4 sm:py-8">
       <StepHeader />
       <div className="flex flex-col gap-4 w-full">
-        <h2 className="text-center">
+        <h2>
           <FormattedMessage defaultMessage="Configure your streaming software" />
         </h2>
-        <p className="text-center text-layer-5">
+        <p className="text-layer-5">
           <FormattedMessage
             defaultMessage="To go live, copy and paste your Server URL and Stream Key below into your streaming software settings and press 'Start Streaming'. We recommend <a>OBS</a>."
             values={{
@@ -44,13 +44,14 @@ export default function DashboardIntroFinal() {
           />
         </p>
         {defaultEndpoint && <StreamKey ep={defaultEndpoint} />}
-        <DefaultButton
+        <PrimaryButton
+          className="!py-2.5"
           onClick={async () => {
             navigate("/dashboard?setupComplete=true")
           }}
         >
           <FormattedMessage defaultMessage="Go to Dashboard" />
-        </DefaultButton>
+        </PrimaryButton>
       </div>
     </div>
   )

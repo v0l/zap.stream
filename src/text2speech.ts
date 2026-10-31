@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useLocation } from "react-router"
 
 function useQuery() {
@@ -69,4 +69,16 @@ export function speak(voice: SpeechSynthesisVoice, text: string, volume: number)
   } catch (e) {
     console.error(e)
   }
+}
+
+export function useVoices() {
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => getVoices())
+  useEffect(() => {
+    if (!("speechSynthesis" in window)) return
+    const update = () => setVoices(getVoices())
+    update()
+    speechSynthesis.addEventListener("voiceschanged", update)
+    return () => speechSynthesis.removeEventListener("voiceschanged", update)
+  }, [])
+  return voices
 }

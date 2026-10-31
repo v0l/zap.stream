@@ -1,186 +1,80 @@
 import { type ReactNode, useMemo, useState } from "react"
-import { FormattedMessage, useIntl } from "react-intl"
+import { FormattedMessage } from "react-intl"
 import { NostrLink } from "@snort/system"
-
-import Copy from "@/element/copy"
-import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
-import { getVoices, speak, toTextToSpeechParams } from "@/text2speech"
-import { useLogin } from "@/hooks/login"
-import { ZapAlertItem } from "./widgets/zaps"
-import { TopZappersWidget } from "./widgets/top-zappers"
-import { Views } from "./widgets/views"
-import { Music } from "./widgets/music"
 import { NostrPrefix, hexToBech32 } from "@snort/shared"
-import { DefaultButton } from "@/element/buttons"
-import { groupBy } from "@/utils"
+
+import { CopyField } from "@/element/copy-field"
 import { ConnectLegacyStream } from "@/element/legacy"
+import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
+import { useLogin } from "@/hooks/login"
 import { ChatApis } from "@/service/chat/types"
+import { toTextToSpeechParams } from "@/text2speech"
+import { DashboardCard } from "./dashboard/card"
+import { Music } from "./widgets/music"
+import { TopZappersWidget } from "./widgets/top-zappers"
+import { type TtsSettings, TtsSettingsForm } from "./widgets/tts-settings"
+import { Views } from "./widgets/views"
+import { ZapAlertItem } from "./widgets/zaps"
 
-interface ZapAlertConfigurationProps {
-  npub: string
-  baseUrl: string
-}
-
-function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
-  const login = useLogin()
-  const { formatMessage, formatDisplayName } = useIntl()
-
-  const [testText, setTestText] = useState("")
-  const [textToSpeech, setTextToSpeech] = useState<boolean>(false)
-  const [voice, setVoice] = useState<string | null>(null)
-  const [minSatsForTextToSpeech, setMinSatsForTextToSpeech] = useState<string>("21")
-  const [volume, setVolume] = useState<number>(1)
-
-  // Google propietary voices are not available on OBS browser
-  const voices = getVoices().filter(v => !v.name.includes("Google"))
-  const groupedVoices = useMemo(() => {
-    return groupBy(voices, v => v.lang)
-  }, [voices])
-  const languages = useMemo(() => {
-    return Object.keys(groupedVoices).sort()
-  }, [groupedVoices])
-  const selectedVoice = useMemo(() => {
-    return voices.find(v => v.voiceURI === voice)
-  }, [voice])
-
-  const isTextToSpeechSupported = "speechSynthesis" in window && voices.length > 0
-  const isTextToSpeechEnabled = isTextToSpeechSupported && textToSpeech
-
-  const query = useMemo(() => {
-    const params = toTextToSpeechParams({
-      voiceURI: voice,
-      minSats: voice ? Number(minSatsForTextToSpeech) : null,
-      volume,
-    })
-    const queryParams = params.toString()
-    return queryParams.length > 0 ? `?${queryParams}` : ""
-  }, [voice, volume, minSatsForTextToSpeech])
-
-  function testVoice() {
-    if (selectedVoice) {
-      speak(selectedVoice, testText, volume)
-    }
-  }
-
+function WidgetPreview({ children }: { children?: ReactNode }) {
   return (
-    <>
-      <h3>
-        <FormattedMessage defaultMessage="Zap Alert" />
-      </h3>
-      <Copy text={`${baseUrl}/alert/${npub}/zaps${query}`} />
-      <ZapAlertItem
-        item={{
-          id: "",
-          valid: true,
-          content: testText,
-          zapService: "",
-          anonZap: false,
-          errors: [],
-          sender: login?.pubkey,
-          amount: 1_000_000,
-          targetEvents: [],
-          created_at: 0,
-        }}
-      />
-      {isTextToSpeechSupported && (
-        <div>
-          <label className="flex items-center gap-2 select-none">
-            <input
-              type="checkbox"
-              checked={textToSpeech}
-              onChange={ev => {
-                setTextToSpeech(ev.target.checked)
-              }}
-            />
-            <FormattedMessage defaultMessage="Enable text to speech" />
-          </label>
-          {isTextToSpeechEnabled && (
-            <>
-              <div className="flex items-center gap-2">
-                <label htmlFor="minimum-sats">
-                  <FormattedMessage defaultMessage="Minimum amount for text to speech" />
-                </label>
-                <input
-                  id="minimum-sats"
-                  type="number"
-                  min="1"
-                  value={minSatsForTextToSpeech}
-                  onChange={ev => setMinSatsForTextToSpeech(ev.target.value)}
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <label htmlFor="volume">
-                  <FormattedMessage defaultMessage="Volume" />
-                </label>
-                <input
-                  id="volume"
-                  type="number"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={volume}
-                  onChange={ev => setVolume(Number(ev.target.value))}
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <label htmlFor="voice-selector">
-                  <FormattedMessage defaultMessage="Voice" />
-                </label>
-                <select id="voice-selector" onChange={ev => setVoice(ev.target.value)}>
-                  <option value="">
-                    <FormattedMessage defaultMessage="Select voice..." />
-                  </option>
-                  {languages.map(l => (
-                    <optgroup key={l} label={formatDisplayName(l, { type: "language" })}>
-                      {groupedVoices[l].map(v => (
-                        <option key={v.voiceURI} value={v.voiceURI}>
-                          {v.name}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-              </div>
-              {voice && (
-                <>
-                  <div className="flex items-center gap-2">
-                    <label htmlFor="zap-alert-text">
-                      <FormattedMessage defaultMessage="Zap message" />
-                    </label>
-                    <textarea
-                      id="zap-alert-text"
-                      placeholder={formatMessage({ defaultMessage: "Insert text to speak" })}
-                      value={testText}
-                      onChange={ev => setTestText(ev.target.value)}
-                    />
-                  </div>
-                  <DefaultButton disabled={testText.length === 0} onClick={testVoice}>
-                    <FormattedMessage defaultMessage="Test voice" />
-                  </DefaultButton>
-                </>
-              )}
-            </>
-          )}
-        </div>
+    <div className="flex items-center justify-center min-h-28 rounded-xl border border-dashed border-layer-3 bg-layer-0 p-4 overflow-hidden">
+      {children ?? (
+        <span className="text-sm text-layer-4">
+          <FormattedMessage defaultMessage="Shows here while you are live" />
+        </span>
       )}
-    </>
+    </div>
   )
 }
 
-function WidgetBox({ children }: { children?: ReactNode }) {
-  return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-wrap">{children}</div>
+function ZapAlertCard({ npub, baseUrl, pubkey }: { npub: string; baseUrl: string; pubkey?: string }) {
+  const [testText, setTestText] = useState("")
+  const [tts, setTts] = useState<TtsSettings>({ voice: null, minSats: "21", volume: 1 })
+
+  const query = useMemo(() => {
+    const params = toTextToSpeechParams({
+      voiceURI: tts.voice,
+      minSats: tts.voice ? Number(tts.minSats) : null,
+      volume: tts.volume,
+    }).toString()
+    return params.length > 0 ? `?${params}` : ""
+  }, [tts])
+
+  return (
+    <DashboardCard title={<FormattedMessage defaultMessage="Zap alert" />}>
+      <p className="text-sm text-layer-5">
+        <FormattedMessage defaultMessage="Pops up for 10 seconds each time someone zaps your stream." />
+      </p>
+      <CopyField value={`${baseUrl}/alert/${npub}/zaps${query}`} showEnd={true} />
+      <WidgetPreview>
+        <ZapAlertItem
+          item={{
+            id: "",
+            valid: true,
+            content: testText,
+            zapService: "",
+            anonZap: false,
+            errors: [],
+            sender: pubkey,
+            amount: 21_000,
+            targetEvents: [],
+            created_at: 0,
+          }}
+        />
+      </WidgetPreview>
+      <div className="flex flex-col gap-3 pt-4 border-t border-layer-3">
+        <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-layer-4">
+          <FormattedMessage defaultMessage="Text to speech" />
+        </h3>
+        <TtsSettingsForm value={tts} onChange={setTts} testText={testText} setTestText={setTestText} />
+      </div>
+    </DashboardCard>
+  )
 }
 
-export function WidgetsPage() {
-  const login = useLogin()
-  const profileLink = new NostrLink(NostrPrefix.PublicKey, login?.pubkey ?? "")
-  const current = useCurrentStreamFeed(profileLink)
-  const currentLink = current ? NostrLink.fromEvent(current) : undefined
-  const npub = hexToBech32("npub", login?.pubkey)
+function ChatWidgetCard({ npub, baseUrl }: { npub: string; baseUrl: string }) {
   const [badges, setBadges] = useState(true)
-
-  const baseUrl = `${window.location.protocol}//${window.location.host}`
-
   const chatParams = new URLSearchParams()
   chatParams.set("badges", String(badges))
   for (const [k, v] of Object.entries(ChatApis)) {
@@ -189,52 +83,113 @@ export function WidgetsPage() {
       chatParams.set(k, params)
     }
   }
-
   return (
-    <div className="grid grid-cols-4 gap-2">
-      <WidgetBox>
-        <h3>
-          <FormattedMessage defaultMessage="Link accounts" />
+    <DashboardCard title={<FormattedMessage defaultMessage="Chat" />}>
+      <p className="text-sm text-layer-5">
+        <FormattedMessage defaultMessage="Your zap.stream chat, merged with any accounts you link below." />
+      </p>
+      <CopyField value={`${baseUrl}/chat/${npub}#${chatParams}`} secret={true} />
+      <p className="text-sm text-warning">
+        <FormattedMessage defaultMessage="Keep this link private. It holds the login tokens of your linked accounts." />
+      </p>
+      <label className="flex items-center gap-3 cursor-pointer select-none">
+        <input
+          type="checkbox"
+          className="accent-primary w-4 h-4"
+          checked={badges}
+          onChange={e => setBadges(e.target.checked)}
+        />
+        <FormattedMessage defaultMessage="Show badges" />
+      </label>
+      <div className="flex flex-col gap-3 pt-4 border-t border-layer-3">
+        <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-layer-4">
+          <FormattedMessage defaultMessage="Linked accounts" />
         </h3>
         <ConnectLegacyStream />
-      </WidgetBox>
-      <WidgetBox>
-        <h3>
-          <FormattedMessage defaultMessage="Chat Widget" />
-        </h3>
-        <Copy text={`${baseUrl}/chat/${npub}#${chatParams}`} />
-        <div className="text-red-400 font-bold">
-          <FormattedMessage defaultMessage="Do not share this link with anybody as it contains sensitive info." />
+      </div>
+    </DashboardCard>
+  )
+}
+
+function OverlayWidgetCard({
+  title,
+  description,
+  url,
+  children,
+}: {
+  title: ReactNode
+  description: ReactNode
+  url: string
+  children?: ReactNode
+}) {
+  return (
+    <DashboardCard title={title}>
+      <p className="text-sm text-layer-5">{description}</p>
+      <CopyField value={url} showEnd={true} />
+      <WidgetPreview>{children}</WidgetPreview>
+    </DashboardCard>
+  )
+}
+
+export function WidgetsPage() {
+  const login = useLogin()
+  const profileLink = new NostrLink(NostrPrefix.PublicKey, login?.pubkey ?? "")
+  const current = useCurrentStreamFeed(profileLink)
+  const currentLink = current ? NostrLink.fromEvent(current) : undefined
+  const npub = hexToBech32("npub", login?.pubkey)
+  const baseUrl = `${window.location.protocol}//${window.location.host}`
+
+  if (!login?.pubkey) {
+    return (
+      <div className="p-4 sm:p-6">
+        <h2>
+          <FormattedMessage defaultMessage="Please login first." />
+        </h2>
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex flex-col gap-5 p-4 sm:p-6 min-w-0 max-w-[1560px]">
+      <header className="flex flex-col gap-1">
+        <h1 className="text-[clamp(24px,2.6vw,34px)] leading-tight">
+          <FormattedMessage defaultMessage="Stream widgets" />
+        </h1>
+        <p className="text-layer-4">
+          <FormattedMessage defaultMessage="Add these to OBS as a Browser Source. Each one follows whichever stream you are live on." />
+        </p>
+      </header>
+      <div className="grid gap-5 lg:grid-cols-2 items-start">
+        <div className="flex flex-col gap-5 min-w-0">
+          <ZapAlertCard npub={npub} baseUrl={baseUrl} pubkey={login.pubkey} />
+          <OverlayWidgetCard
+            title={<FormattedMessage defaultMessage="Viewer count" />}
+            description={<FormattedMessage defaultMessage="How many people are watching right now." />}
+            url={`${baseUrl}/alert/${npub}/views`}
+          >
+            {currentLink && <Views link={currentLink} />}
+          </OverlayWidgetCard>
+          <OverlayWidgetCard
+            title={<FormattedMessage defaultMessage="Now playing" />}
+            description={
+              <FormattedMessage defaultMessage="The track from your music status, for music apps that publish one." />
+            }
+            url={`${baseUrl}/alert/${npub}/music`}
+          >
+            {currentLink && <Music link={currentLink} />}
+          </OverlayWidgetCard>
         </div>
-        <div className="flex items-center gap-2">
-          <input type="checkbox" checked={badges} onChange={e => setBadges(e.target.checked)} />
-          <FormattedMessage defaultMessage="Show Badges" />
+        <div className="flex flex-col gap-5 min-w-0">
+          <ChatWidgetCard npub={npub} baseUrl={baseUrl} />
+          <OverlayWidgetCard
+            title={<FormattedMessage defaultMessage="Top zappers" />}
+            description={<FormattedMessage defaultMessage="The three biggest zappers on your current stream." />}
+            url={`${baseUrl}/alert/${npub}/top-zappers`}
+          >
+            {currentLink && <TopZappersWidget link={currentLink} />}
+          </OverlayWidgetCard>
         </div>
-      </WidgetBox>
-      <WidgetBox>
-        <ZapAlertConfiguration npub={npub} baseUrl={baseUrl} />
-      </WidgetBox>
-      <WidgetBox>
-        <h3>
-          <FormattedMessage defaultMessage="Top Zappers" />
-        </h3>
-        <Copy text={`${baseUrl}/alert/${npub}/top-zappers`} />
-        {currentLink && <TopZappersWidget link={currentLink} />}
-      </WidgetBox>
-      <WidgetBox>
-        <h3>
-          <FormattedMessage defaultMessage="Current Viewers" />
-        </h3>
-        <Copy text={`${baseUrl}/alert/${npub}/views`} />
-        {currentLink && <Views link={currentLink} />}
-      </WidgetBox>
-      <WidgetBox>
-        <h3>
-          <FormattedMessage defaultMessage="Music" />
-        </h3>
-        <Copy text={`${baseUrl}/alert/${npub}/music`} />
-        {currentLink && <Music link={currentLink} />}
-      </WidgetBox>
+      </div>
     </div>
   )
 }

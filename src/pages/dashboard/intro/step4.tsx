@@ -1,6 +1,6 @@
 import { FormattedMessage, useIntl } from "react-intl"
 import StepHeader from "./step-header"
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { useContext, useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router"
@@ -32,13 +32,13 @@ export default function DashboardIntroStep4() {
   }, [])
 
   return (
-    <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
+    <div className="mx-auto flex flex-col items-center w-full max-w-[30rem] p-4 sm:py-8">
       <StepHeader />
       <div className="flex flex-col gap-4 w-full">
-        <h2 className="text-center">
+        <h2>
           <FormattedMessage defaultMessage="Stream Goal (optional)" />
         </h2>
-        <p className="text-center text-layer-5">
+        <p className="text-layer-5">
           <FormattedMessage defaultMessage="Stream goals encourage viewers to support streamers via donations." />
           <FormattedMessage defaultMessage="Leave blank if you do not wish to set up any goals." />
         </p>
@@ -57,7 +57,8 @@ export default function DashboardIntroStep4() {
             <AmountInput onChange={setGoalMount} />
           </div>
         )}
-        <DefaultButton
+        <PrimaryButton
+          className="!py-2.5"
           onClick={async () => {
             const pub = login?.publisher()
             if (!goal && pub && goalName && goalAmount) {
@@ -94,7 +95,7 @@ export default function DashboardIntroStep4() {
           }}
         >
           <FormattedMessage defaultMessage="Continue" />
-        </DefaultButton>
+        </PrimaryButton>
       </div>
     </div>
   )

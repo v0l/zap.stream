@@ -1,5 +1,6 @@
 import { LIVE_STREAM_KINDS, N94_LIVE_STREAM, OLD_SHORTS_KIND, OLD_VIDEO_KIND, SHORTS_KIND, VIDEO_KIND } from "@/const"
-import { useStreamLink } from "@/hooks/stream-link"
+import { useStreamLinkState } from "@/hooks/stream-link"
+import { CatchAllRoutePage } from "./catch-all"
 import { getEventFromLocationState } from "@/utils"
 import { useLocation } from "react-router"
 import { StreamPage } from "./stream-page"
@@ -14,9 +15,10 @@ import { NostrPrefix } from "@snort/shared"
 export function LinkHandler() {
   const location = useLocation()
   const evPreload = getEventFromLocationState(location.state)
-  const link = useStreamLink(evPreload)
+  const { link, notFound } = useStreamLinkState(evPreload)
   const layoutContext = useLayout()
 
+  if (notFound) return <CatchAllRoutePage />
   if (!link) return
 
   const nonGenericEvents = [N94_LIVE_STREAM, VIDEO_KIND, OLD_VIDEO_KIND, SHORTS_KIND, OLD_SHORTS_KIND]

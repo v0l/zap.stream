@@ -1,6 +1,6 @@
 import { FormattedMessage, useIntl } from "react-intl"
 import StepHeader from "./step-header"
-import { DefaultButton } from "@/element/buttons"
+import { PrimaryButton } from "@/element/buttons"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
@@ -24,10 +24,10 @@ export default function DashboardIntroStep1() {
   }, [streamProvider])
 
   return (
-    <div className="mx-auto flex flex-col items-center md:w-[30rem] max-md:w-full max-md:px-3">
+    <div className="mx-auto flex flex-col items-center w-full max-w-[30rem] p-4 sm:py-8">
       <StepHeader />
       <div className="flex flex-col gap-4 w-full">
-        <h2 className="text-center">
+        <h2>
           <FormattedMessage defaultMessage="Create Stream" />
         </h2>
         <input
@@ -56,7 +56,8 @@ export default function DashboardIntroStep1() {
         <small className="text-layer-4">
           <FormattedMessage defaultMessage="Recommended size: 1920x1080 (16:9)" />
         </small>
-        <DefaultButton
+        <PrimaryButton
+          className="!py-2.5"
           onClick={async () => {
             const newState = {
               title,
@@ -70,7 +71,7 @@ export default function DashboardIntroStep1() {
           }}
         >
           <FormattedMessage defaultMessage="Continue" />
-        </DefaultButton>
+        </PrimaryButton>
       </div>
     </div>
   )

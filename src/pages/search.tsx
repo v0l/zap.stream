@@ -30,7 +30,7 @@ export default function SearchPage() {
 
   const results = useRequestBuilder(sub)
   return (
-    <div>
+    <div className="flex flex-col gap-6 p-4 sm:px-8 sm:py-7 min-w-0 max-w-[1560px]">
       <div className="bg-layer-2 rounded-xl pr-4 py-1 flex items-center xl:hidden">
         <input
           type="text"
@@ -56,14 +56,14 @@ export default function SearchPage() {
       </div>
       {term && (
         <>
-          <h2 className="mb-4">
+          <h1 className="text-[clamp(24px,2.6vw,34px)] leading-tight">
             <FormattedMessage
-              defaultMessage="Search results: {term}"
+              defaultMessage="Results for {term}"
               values={{
-                term,
+                term: <span className="text-primary">{term}</span>,
               }}
             />
-          </h2>
+          </h1>
           <VideoGridSorted evs={results} showAll={true} showVideos={true} />
         </>
       )}

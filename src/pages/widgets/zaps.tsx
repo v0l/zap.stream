@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { FormattedMessage } from "react-intl"
 
-import { hexToBech32, unixNow } from "@snort/shared"
+import { unixNow } from "@snort/shared"
 import { NostrLink, type ParsedZap } from "@snort/system"
 import { useUserProfile } from "@snort/system-react"
 
@@ -9,20 +9,12 @@ import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
 import { useZaps } from "@/hooks/zaps"
 import { useMutedPubkeys } from "@/hooks/lists"
 import { formatSats } from "@/number"
-import { getVoices, speak, useTextToSpeechParams } from "@/text2speech"
+import { speak, useTextToSpeechParams, useVoices } from "@/text2speech"
 import { getHost } from "@/utils"
-
-function useVoices() {
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => getVoices())
-  useEffect(() => {
-    if (!("speechSynthesis" in window)) return
-    const update = () => setVoices(getVoices())
-    update()
-    speechSynthesis.addEventListener("voiceschanged", update)
-    return () => speechSynthesis.removeEventListener("voiceschanged", update)
-  }, [])
-  return voices
-}
+import { Avatar } from "@/element/avatar"
+import { Icon } from "@/element/icon"
+import { getName } from "@/element/profile"
+import classNames from "classnames"
 
 function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
   const mountedAt = useRef(unixNow())
@@ -87,41 +79,49 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
   }, [zap, voice, minSats, volume, mutedPubkeys])
 
   return (
-    <div className="flex items-center flex-col gap-2 zap-alerts-widget">
-      {zap && <ZapAlertItem key={zap.id} item={zap} />}
+    <div className="flex flex-col items-center p-4">
+      {zap && <ZapAlertItem key={zap.id} item={zap} className="animate-[zap-alert_10s_ease-in-out_both]" />}
     </div>
   )
 }
 
-export function ZapAlertItem({ item }: { item: ParsedZap }) {
-  const profile = useUserProfile(item.sender)
-
-  if (!profile) return
+export function ZapAlertItem({ item, className }: { item: ParsedZap; className?: string }) {
+  const pubkey = item.anonZap || !item.sender ? "anon" : item.sender
+  const profile = useUserProfile(pubkey === "anon" ? undefined : pubkey)
+  const name = pubkey === "anon" ? <FormattedMessage defaultMessage="Anon" /> : getName(pubkey, profile)
 
   return (
-    <div className="zap-alert">
-      <div className="zap-alert-title">
-        <FormattedMessage defaultMessage="Incoming Zap" id="tG1ST3" />
-      </div>
-      <div className="zap-alert-header">
-        <FormattedMessage
-          defaultMessage="{name} with {amount}"
-          id="Qe1MJu"
-          values={{
-            name: (
-              <span className="highlight">
-                {profile?.name ?? hexToBech32("npub", item?.sender ?? "").slice(0, 12)}&nbsp;
-              </span>
-            ),
-            amount: <span className="highlight">&nbsp;{formatSats(item.amount)}</span>,
-          }}
-        />
-      </div>
-      {item.content && item.content.length > 0 && (
-        <p dir="auto" className="zap-alert-body">
-          {item.content}
-        </p>
+    <div
+      className={classNames(
+        "inline-flex items-center gap-4 max-w-[560px] rounded-2xl border border-primary/40 bg-layer-1 pl-3 pr-6 py-3 shadow-[0_0_32px_rgb(255_176_0/0.18)]",
+        className,
       )}
+    >
+      <Avatar pubkey={pubkey} user={profile} size={56} className="border-2 border-primary" />
+      <div className="flex flex-col min-w-0">
+        <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+          <Icon name="zap-filled" size={14} />
+          <FormattedMessage defaultMessage="Incoming zap" />
+        </span>
+        <span className="font-display text-2xl font-extrabold leading-tight break-words">
+          <FormattedMessage
+            defaultMessage="{name} zapped {amount}"
+            values={{
+              name,
+              amount: (
+                <span className="text-primary tabular-nums whitespace-nowrap">
+                  <FormattedMessage defaultMessage="{n} sats" values={{ n: formatSats(item.amount) }} />
+                </span>
+              ),
+            }}
+          />
+        </span>
+        {item.content && item.content.length > 0 && (
+          <p dir="auto" className="text-lg text-layer-5 break-words">
+            {item.content}
+          </p>
+        )}
+      </div>
     </div>
   )
 }

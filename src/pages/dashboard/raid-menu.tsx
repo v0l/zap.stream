@@ -57,7 +57,7 @@ export function DashboardRaidMenu({ link, onClose }: { link: NostrLink; onClose:
               <button
                 type="button"
                 key={a}
-                className="border border-layer-1 rounded-full px-4 py-2 bg-layer-2 pointer"
+                className="border border-layer-1 rounded-full px-4 py-2 bg-layer-2 cursor-pointer"
                 onClick={onRaid}
               >
                 <Profile pubkey={a} options={{ showAvatar: false }} linkToProfile={false} />
