@@ -20,7 +20,7 @@ if (typeof g.MessageChannel === "undefined") {
 function encodeUtf8(input: string): Uint8Array {
   const out: number[] = [];
   for (const ch of input) {
-    const c = ch.codePointAt(0)!;
+    const c = ch.codePointAt(0) ?? 0;
     if (c < 0x80) out.push(c);
     else if (c < 0x800) out.push(0xc0 | (c >> 6), 0x80 | (c & 63));
     else if (c < 0x10000) out.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 63), 0x80 | (c & 63));

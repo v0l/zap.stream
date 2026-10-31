@@ -62,7 +62,7 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
   const participants = metrics?.data?.viewers ? metrics?.data?.viewers : Number(streamInfo?.participants)
   useEffect(() => {
     if (participants) {
-      setMaxParticipants(v => (v < Number(participants) ? Number(participants) : v))
+      setMaxParticipants(v => Math.max(v, Number(participants)))
     }
   }, [participants])
 

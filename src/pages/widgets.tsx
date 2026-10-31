@@ -167,6 +167,10 @@ function ZapAlertConfiguration({ npub, baseUrl }: ZapAlertConfigurationProps) {
   )
 }
 
+function WidgetBox({ children }: { children?: ReactNode }) {
+  return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-wrap">{children}</div>
+}
+
 export function WidgetsPage() {
   const login = useLogin()
   const profileLink = new NostrLink(NostrPrefix.PublicKey, login?.pubkey ?? "")
@@ -176,10 +180,6 @@ export function WidgetsPage() {
   const [badges, setBadges] = useState(true)
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`
-
-  function WidgetBox({ children }: { children?: ReactNode }) {
-    return <div className="bg-layer-2 rounded-xl p-3 flex flex-col gap-2 min-h-40 overflow-wrap">{children}</div>
-  }
 
   const chatParams = new URLSearchParams()
   chatParams.set("badges", String(badges))
