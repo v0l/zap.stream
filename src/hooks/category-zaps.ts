@@ -3,6 +3,7 @@ import { useRequestBuilder } from "@snort/system-react"
 import { useMemo } from "react"
 import { categoryQueryTags } from "@/element/category/category-tags"
 import { AllCategories } from "@/element/category/all-categories"
+import { zapReceiptsFor } from "./zaps"
 
 export function useCategoryZaps(gameId: string) {
   const rb = useMemo(() => {
@@ -17,7 +18,7 @@ export function useCategoryZaps(gameId: string) {
   const rbZaps = useMemo(() => {
     const rb = new RequestBuilder(`cat-zaps:zaps:${gameId}`)
     if (links.length > 0) {
-      rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink(links)
+      zapReceiptsFor(rb, links)
     }
     return rb
   }, [gameId, links])

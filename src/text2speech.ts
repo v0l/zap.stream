@@ -82,3 +82,16 @@ export function useVoices() {
   }, [])
   return voices
 }
+
+type VoiceLike = Pick<SpeechSynthesisVoice, "voiceURI" | "name" | "lang" | "default">
+
+export function pickVoice<T extends VoiceLike>(voices: Array<T>, voiceURI: string | null): T | undefined {
+  if (!voiceURI || voices.length === 0) return
+  const name = voiceURI.split(/[/:]/).at(-1)?.toLowerCase()
+  return (
+    voices.find(v => v.voiceURI === voiceURI) ??
+    voices.find(v => v.name.toLowerCase() === name || v.voiceURI.toLowerCase().endsWith(name ?? "\0")) ??
+    voices.find(v => v.default) ??
+    voices[0]
+  )
+}

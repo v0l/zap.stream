@@ -1,82 +1,78 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { FormattedMessage } from "react-intl"
 
-import { unixNow } from "@snort/shared"
-import { NostrLink, type ParsedZap } from "@snort/system"
+import { NostrPrefix, unixNow } from "@snort/shared"
+import { NostrLink, type ParsedZap, type ToNostrEventTag } from "@snort/system"
 import { useUserProfile } from "@snort/system-react"
 
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
 import { useZaps } from "@/hooks/zaps"
 import { useMutedPubkeys } from "@/hooks/lists"
 import { formatSats } from "@/number"
-import { speak, useTextToSpeechParams, useVoices } from "@/text2speech"
+import { pickVoice, speak, useTextToSpeechParams, useVoices } from "@/text2speech"
 import { getHost } from "@/utils"
 import { Avatar } from "@/element/avatar"
 import { Icon } from "@/element/icon"
 import { getName } from "@/element/profile"
 import classNames from "classnames"
 
-function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
+export function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
   const mountedAt = useRef(unixNow())
-  const zaps = useMemo(() => {
-    return zapStream.filter(a => a.created_at >= mountedAt.current).reverse()
-  }, [zapStream])
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
-  const zap = useMemo(() => {
-    return zaps.at(currentIndex)
-  }, [zaps, currentIndex])
+  const shown = useRef(new Set<string>())
+  const [current, setCurrent] = useState<ParsedZap>()
+
+  const next = useMemo(
+    () =>
+      zapStream
+        .filter(a => a.created_at >= mountedAt.current && !shown.current.has(a.id))
+        .sort((a, b) => a.created_at - b.created_at)
+        .at(0),
+    [zapStream, current],
+  )
 
   useEffect(() => {
-    if (zap) {
-      const timeoutId = setTimeout(() => {
-        setCurrentIndex(prev => prev + 1)
-      }, zapTime)
-      return () => clearTimeout(timeoutId)
-    }
-  }, [zap, zapTime])
+    if (current || !next) return
+    shown.current.add(next.id)
+    setCurrent(next)
+  }, [current, next])
 
-  return zap
+  useEffect(() => {
+    if (!current) return
+    const timeoutId = setTimeout(() => setCurrent(undefined), zapTime)
+    return () => clearTimeout(timeoutId)
+  }, [current, zapTime])
+
+  return current
+}
+
+export function alertableZaps(zaps: Array<ParsedZap>, muted: Array<ToNostrEventTag>) {
+  const mutedKeys = new Set(
+    muted.filter((a): a is NostrLink => a instanceof NostrLink && a.type === NostrPrefix.PublicKey).map(a => a.id),
+  )
+  return zaps.filter(z => !z.sender || !mutedKeys.has(z.sender))
 }
 
 export function ZapAlerts({ link }: { link: NostrLink }) {
   const currentEvent = useCurrentStreamFeed(link, true)
-  const currentLink = currentEvent ? NostrLink.fromEvent(currentEvent) : undefined
+  const currentLink = useMemo(() => (currentEvent ? NostrLink.fromEvent(currentEvent) : undefined), [currentEvent])
   const host = currentEvent ? getHost(currentEvent) : undefined
   const zaps = useZaps(currentLink, true)
-  const zap = useZapQueue(zaps)
   const mutedPubkeys = useMutedPubkeys(host, true)
+  const visible = useMemo(() => alertableZaps(zaps, mutedPubkeys), [zaps, mutedPubkeys])
+  const zap = useZapQueue(visible)
   const { voiceURI, minSats, volume } = useTextToSpeechParams()
   const voices = useVoices()
+  const voice = useMemo(() => pickVoice(voices, voiceURI), [voices, voiceURI])
   const spokenId = useRef<string>(undefined)
-  const voice = useMemo(() => {
-    return voices.find(v => v.voiceURI === voiceURI)
-  }, [voices, voiceURI])
 
   useEffect(() => {
-    if (!zap || spokenId.current === zap.id) return
-
-    const senderLink = NostrLink.publicKey(zap?.sender ?? "")
-    if (mutedPubkeys.some(a => a.equals(senderLink))) {
-      spokenId.current = zap.id
-      return
+    const text = zap?.content ?? ""
+    if (!zap || !voice || spokenId.current === zap.id) return
+    spokenId.current = zap.id
+    if (text.length > 0 && zap.amount >= minSats) {
+      speak(voice, text, volume)
     }
-
-    const text = zap.content ?? ""
-    if (text.length === 0) {
-      spokenId.current = zap.id
-      return
-    }
-    if (voice) {
-      spokenId.current = zap.id
-      try {
-        if (zap.amount >= minSats) {
-          speak(voice, text, volume)
-        }
-      } catch (e) {
-        console.error(e)
-      }
-    }
-  }, [zap, voice, minSats, volume, mutedPubkeys])
+  }, [zap, voice, minSats, volume])
 
   return (
     <div className="flex flex-col items-center p-4">

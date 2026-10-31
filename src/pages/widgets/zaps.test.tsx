@@ -66,3 +66,12 @@ test("zap from a sender with no profile shows an alert", () => {
   expect(text).toContain("npub17639hpl")
   expect(text).toContain("gm stream")
 })
+
+test("zaps from muted senders do not alert", async () => {
+  const { alertableZaps } = await import("./zaps")
+  const { NostrLink } = await import("@snort/system")
+  const muted = "a".repeat(64)
+  const fan = "b".repeat(64)
+  const zaps = [zap(muted), zap(fan), zap()]
+  expect(alertableZaps(zaps, [NostrLink.publicKey(muted)]).map(z => z.sender)).toEqual([fan, undefined])
+})

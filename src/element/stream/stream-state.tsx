@@ -5,6 +5,7 @@ import { type ReactNode, createContext, useContext, useMemo, useState } from "re
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID } from "@/const"
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
 import { useZapGoal } from "@/hooks/goals"
+import { repliesTo, zapReceiptsFor } from "@/hooks/zaps"
 import { type StreamInfo, extractStreamInfo } from "@/utils"
 
 interface StreamState {
@@ -77,12 +78,10 @@ export function StreamContextProvider({
       leaveOpen: true,
     })
     if (eventLink) {
-      rb.withFilter()
-        .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
-        .limit(200)
-        .replyToLink([eventLink])
-        .relay(relays)
-      rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([eventLink]).relay(relays)
+      for (const f of repliesTo(rb, [eventLink])) {
+        f.kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP]).limit(200).relay(relays)
+      }
+      for (const f of zapReceiptsFor(rb, [eventLink])) f.relay(relays)
     } else if (link.type === NostrPrefix.PublicKey || link.type === NostrPrefix.Profile) {
       rb.withFilter()
         .kinds([LIVE_STREAM_CHAT, LIVE_STREAM_RAID, LIVE_STREAM_CLIP])
@@ -105,7 +104,7 @@ export function StreamContextProvider({
       }
     }
     if (goalLink) {
-      rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink([goalLink]).relay(relays)
+      for (const f of zapReceiptsFor(rb, [goalLink])) f.relay(relays)
     }
 
     return rb

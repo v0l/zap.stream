@@ -1,6 +1,7 @@
 import { DAY } from "@/const"
 import { unixNow } from "@snort/shared"
-import { EventKind, type NostrLink, type ParsedZap, RequestBuilder, parseZap } from "@snort/system"
+import { type NostrLink, type ParsedZap, RequestBuilder, parseZap } from "@snort/system"
+import { zapReceiptsFor } from "./zaps"
 import { useRequestBuilder } from "@snort/system-react"
 import { useMemo } from "react"
 
@@ -29,7 +30,7 @@ export function useRecentStreamZaps(links: Array<NostrLink>, window = DAY) {
     const rb = new RequestBuilder(`recent-stream-zaps:${linkKey}`)
     rb.withOptions({ leaveOpen: true })
     if (links.length > 0) {
-      rb.withFilter().kinds([EventKind.ZapReceipt]).replyToLink(links).since(since)
+      for (const f of zapReceiptsFor(rb, links)) f.since(since)
     }
     return rb
   }, [linkKey, since])
