@@ -26,3 +26,4 @@ dev-dist/
 packages/*/dist/
 # playwright mcp
 .playwright-mcp/
+brag-output/
