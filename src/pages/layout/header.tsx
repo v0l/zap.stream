@@ -141,12 +141,7 @@ export function HeaderNav() {
           <FormattedMessage defaultMessage="Login" id="AyGauy" />
         </PrimaryButton>
         {showLogin && (
-          <Modal
-            id="login"
-            onClose={() => setShowLogin(false)}
-            bodyClassName="relative bg-layer-1 rounded-3xl overflow-hidden my-auto lg:w-[500px] max-lg:w-full"
-            showClose={false}
-          >
+          <Modal id="login" size="sm" onClose={() => setShowLogin(false)}>
             <LoginSignup close={() => setShowLogin(false)} />
           </Modal>
         )}
