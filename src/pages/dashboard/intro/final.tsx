@@ -1,3 +1,4 @@
+import { pickEndpoint } from "../quality"
 import { FormattedMessage } from "react-intl"
 import StepHeader from "./step-header"
 import { DefaultButton } from "@/element/buttons"
@@ -14,7 +15,7 @@ export default function DashboardIntroFinal() {
   const { provider: streamProvider } = useStreamProvider()
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints.find(a => a.name === "Best") ?? info?.endpoints[0]
+    return pickEndpoint(info?.endpoints ?? [], localStorage.getItem("dashboard-endpoint"))
   }, [info])
 
   async function loadInfo() {

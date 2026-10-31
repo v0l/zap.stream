@@ -13,16 +13,7 @@ export function NewStream({ ev, onFinish }: Omit<StreamEditorProps, "onFinish"> 
 
   return (
     <div className="flex flex-col gap-5">
-      <NostrProviderDialog
-        provider={currentProvider}
-        onFinish={onFinish}
-        ev={ev}
-        showEndpoints={false}
-        showEditor={true}
-        showForwards={false}
-        showBalanceHistory={false}
-        showStreamKeys={false}
-      />
+      <NostrProviderDialog provider={currentProvider} onFinish={onFinish} ev={ev} />
     </div>
   )
 }

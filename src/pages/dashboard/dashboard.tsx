@@ -13,21 +13,20 @@ import { DashboardCard } from "./card"
 import { NewStreamDialog } from "@/element/new-stream"
 import DashboardIntro from "./intro"
 import { useLocation, useNavigate } from "react-router"
-import StreamKey from "@/element/provider/nostr/stream-key"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { type AccountResponse, NostrStreamProvider, adaptPublisher } from "@/providers"
-import { ExternalLink } from "@/element/external-link"
 import { Layer2Button, PrimaryButton, WarningButton } from "@/element/buttons"
 import { useLogin } from "@/hooks/login"
-import ManualStream from "./manual-stream"
 import { unixNow } from "@snort/shared"
 import { Icon } from "@/element/icon"
 import Modal from "@/element/modal"
 import { AcceptTos } from "./tos"
-import { parseRecordingDefault } from "./recording"
+import { pickEndpoint } from "./quality"
+import { DashboardGoLiveCard } from "./go-live-card"
+import { DashboardSettingsButton } from "./button-settings"
 import { DashboardLiveStreamInfo } from "./live-stream-info"
 import { DashboardHeader } from "./header"
-import { DashboardAccountCard } from "./account-card"
+import { DashboardWalletCard } from "./account-card"
 const StreamSummary = lazy(() => import("@/element/summary-chart"))
 
 export default function DashboardForLink() {
@@ -39,14 +38,10 @@ export default function DashboardForLink() {
   const login = useLogin()
   const [info, setInfo] = useState<AccountResponse>()
   const [tos, setTos] = useState(info?.tos?.accepted ?? false)
-  const [recording, setRecording] = useState(parseRecordingDefault(localStorage.getItem("default-recording")))
+  const [endpointName, setEndpointName] = useState(localStorage.getItem("dashboard-endpoint"))
   const { provider: streamProvider } = useStreamProvider()
 
   const isMyManual = streamEvent?.pubkey === login?.pubkey
-
-  useEffect(() => {
-    localStorage.setItem("default-recording", String(recording))
-  }, [recording])
 
   const provider = useMemo(() => {
     const publisher = login?.publisher?.()
@@ -55,10 +50,9 @@ export default function DashboardForLink() {
       : streamProvider
   }, [streamInfo?.service, streamInfo?.status, streamProvider, login?.pubkey])
 
-  const defaultEndpoint = useMemo(() => {
-    const metricsEndpint = recording ? "Best" : "Good"
-    return info?.endpoints?.find(a => a.name === metricsEndpint) ?? info?.endpoints?.at(0)
-  }, [info, recording])
+  const endpoint = useMemo(() => pickEndpoint(info?.endpoints ?? [], endpointName), [info, endpointName])
+  const [infoVersion, setInfoVersion] = useState(0)
+  const reloadInfo = () => setInfoVersion(v => v + 1)
 
   useEffect(() => {
     if (!isMyManual) {
@@ -78,7 +72,7 @@ export default function DashboardForLink() {
         clearInterval(t)
       }
     }
-  }, [isMyManual, provider.url])
+  }, [isMyManual, provider.url, infoVersion])
 
   const streamToEdit =
     streamEvent ??
@@ -139,6 +133,7 @@ export default function DashboardForLink() {
           <>
             {eventLink && (isLive || isPlanned) && <DashboardRaidButton link={eventLink} />}
             <NewStreamDialog ev={streamToEdit} text={<FormattedMessage defaultMessage="Edit stream info" />} />
+            {!isMyManual && <DashboardSettingsButton provider={provider} info={info} onChange={reloadInfo} />}
             {eventLink && isMyManual && (isLive || isPlanned) && (
               <WarningButton onClick={endManualStream}>
                 <FormattedMessage defaultMessage="End stream" />
@@ -150,7 +145,7 @@ export default function DashboardForLink() {
 
       {isLive && eventLink && (
         <div className="grid gap-5 min-h-0 flex-1 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_380px]">
-          <div className="flex flex-col gap-5 min-h-0 xl:overflow-y-auto scrollbar-hidden">
+          <div className="flex flex-col gap-5 min-h-0 xl:overflow-y-auto scrollbar-hidden [&>*]:shrink-0">
             {isMyManual ? (
               <DashboardCard flush>
                 <LiveVideoPlayer
@@ -203,7 +198,7 @@ export default function DashboardForLink() {
 
       {!isLive && (
         <div className="grid gap-5 min-h-0 flex-1 xl:grid-cols-[400px_minmax(0,1fr)]">
-          <div className="flex flex-col gap-5 min-h-0 xl:overflow-y-auto scrollbar-hidden">
+          <div className="flex flex-col gap-5 min-h-0 xl:overflow-y-auto scrollbar-hidden [&>*]:shrink-0">
             {isPlanned && eventLink && isMyManual && (
               <DashboardCard flush>
                 <LiveVideoPlayer
@@ -217,31 +212,18 @@ export default function DashboardForLink() {
               </DashboardCard>
             )}
             {isOffline && (
-              <DashboardCard title={<FormattedMessage defaultMessage="Go live" />}>
-                <p className="text-layer-5 text-[15px]">
-                  <FormattedMessage
-                    defaultMessage="Paste the server URL and stream key into your streaming software, then start streaming. We recommend <a>OBS</a>."
-                    values={{
-                      a: c => <ExternalLink href="https://obsproject.com/">{c}</ExternalLink>,
-                    }}
-                  />
-                </p>
-                {defaultEndpoint && <StreamKey ep={defaultEndpoint} />}
-                <label className="flex gap-3 items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 accent-[var(--color-primary)]"
-                    checked={recording}
-                    onChange={e => setRecording(e.target.checked)}
-                  />
-                  <FormattedMessage defaultMessage="Record my stream" />
-                </label>
-                <div className="pt-1 border-t border-layer-3">
-                  <ManualStream />
-                </div>
-              </DashboardCard>
+              <DashboardGoLiveCard
+                endpoints={info?.endpoints ?? []}
+                endpoint={endpoint}
+                setEndpoint={ep => {
+                  setEndpointName(ep.name)
+                  localStorage.setItem("dashboard-endpoint", ep.name)
+                }}
+              />
             )}
-            <DashboardAccountCard provider={provider} info={info} ev={streamEvent} recording={recording} />
+            {!isMyManual && (
+              <DashboardWalletCard provider={provider} info={info} endpoint={endpoint} onChange={reloadInfo} />
+            )}
           </div>
           <DashboardCard
             className="xl:overflow-y-auto self-start max-h-full"

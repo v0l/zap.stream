@@ -4,6 +4,7 @@ import CapabilityPill from "@/element/capability-pill"
 import { useRates } from "@/hooks/rates"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { useEffect, useMemo, useState } from "react"
+import { pickEndpoint } from "../quality"
 import { FormattedMessage, FormattedNumber } from "react-intl"
 import { useNavigate } from "react-router"
 import ZapGlow from "../zap-glow"
@@ -19,7 +20,7 @@ export default function DashboardIntro() {
   const { provider: streamProvider } = useStreamProvider()
 
   const defaultEndpoint = useMemo(() => {
-    return info?.endpoints?.find(a => a.name === "Best") ?? info?.endpoints?.at(0)
+    return pickEndpoint(info?.endpoints ?? [], localStorage.getItem("dashboard-endpoint"))
   }, [info])
   const rate = useRates("BTCUSD")
 

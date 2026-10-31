@@ -29,6 +29,9 @@
   "/aFYQ5": {
     "defaultMessage": "Stream Forwarding (optional)"
   },
+  "/jJLYy": {
+    "defaultMessage": "Transactions"
+  },
   "/w4RM6": {
     "defaultMessage": "IRL"
   },
@@ -37,6 +40,9 @@
   },
   "04lmFi": {
     "defaultMessage": "Save Key"
+  },
+  "078WAr": {
+    "defaultMessage": "See all"
   },
   "0RmZgI": {
     "defaultMessage": "Waiting for stream health"
@@ -71,17 +77,11 @@
   "2lVQYF": {
     "defaultMessage": "...more"
   },
-  "2ukA4d": {
-    "defaultMessage": "{n} hours"
-  },
   "37TVdz": {
     "defaultMessage": "Stream notifications"
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
-  },
-  "3K2dDR": {
-    "defaultMessage": "Record my stream"
   },
   "3adEeb": {
     "defaultMessage": "{n} viewers"
@@ -146,6 +146,9 @@
   "62nsdy": {
     "defaultMessage": "Retry"
   },
+  "65WxCR": {
+    "defaultMessage": "This provider does not support automatic topups."
+  },
   "69hmpj": {
     "defaultMessage": "Raid from {name}"
   },
@@ -157,9 +160,6 @@
   },
   "6Z2pvJ": {
     "defaultMessage": "Stream Providers"
-  },
-  "6dEDP6": {
-    "defaultMessage": "About {amount} {unit} of streaming at {rate} sats/{unit}."
   },
   "6pr6hJ": {
     "defaultMessage": "Minimum amount for text to speech"
@@ -178,6 +178,9 @@
   },
   "89UZph": {
     "defaultMessage": "Configure your streaming software"
+  },
+  "8ERQ/p": {
+    "defaultMessage": "as sent"
   },
   "8YT6ja": {
     "defaultMessage": "Insert text to speak"
@@ -232,6 +235,9 @@
   },
   "BHNL+v": {
     "defaultMessage": "Raw Data:"
+  },
+  "BJjJiw": {
+    "defaultMessage": "Send your stream to Twitch, YouTube and other platforms at the same time as zap.stream."
   },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
@@ -297,9 +303,6 @@
   "Fodi9+": {
     "defaultMessage": "Get paid by viewers"
   },
-  "FxxVlD": {
-    "defaultMessage": "About {hours} hours of streaming at {rate} sats/{unit}."
-  },
   "G/yZLu": {
     "defaultMessage": "Remove"
   },
@@ -351,9 +354,6 @@
   "Ht231k": {
     "defaultMessage": "Forwarding"
   },
-  "HuIlh0": {
-    "defaultMessage": "Hours per month"
-  },
   "HvUhXt": {
     "defaultMessage": "Uploading to {n} servers"
   },
@@ -384,9 +384,6 @@
   "JCIgkj": {
     "defaultMessage": "Username"
   },
-  "JWQe4t": {
-    "defaultMessage": "Streaming {hrs} hours a month costs {sats} sats{usd}."
-  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -404,6 +401,9 @@
   },
   "KkIL3s": {
     "defaultMessage": "No, I am under 18"
+  },
+  "KlqDf6": {
+    "defaultMessage": "Sending to"
   },
   "KxfKnW": {
     "defaultMessage": "Withdraw funds"
@@ -536,9 +536,6 @@
   "RGYBjE": {
     "defaultMessage": "Thumbnail"
   },
-  "RJOmzk": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
-  },
   "RS6smY": {
     "defaultMessage": "Raid Message"
   },
@@ -547,6 +544,9 @@
   },
   "RrCui3": {
     "defaultMessage": "Summary"
+  },
+  "S8hmXt": {
+    "defaultMessage": "Auto topup"
   },
   "SCYmnE": {
     "defaultMessage": "Chat messages"
@@ -582,9 +582,6 @@
   "Uo/DWG": {
     "defaultMessage": "About too long"
   },
-  "V7QQf4": {
-    "defaultMessage": "Stream settings"
-  },
   "VA/Z1S": {
     "defaultMessage": "Hide"
   },
@@ -597,14 +594,14 @@
   "W+xeab": {
     "defaultMessage": "{d}d {h}h {m}m"
   },
-  "W7DNWx": {
-    "defaultMessage": "Stream Forwarding"
-  },
   "W7IRLs": {
     "defaultMessage": "Your title is too short"
   },
   "W8nHSd": {
     "defaultMessage": "FAQ"
+  },
+  "W8tBP+": {
+    "defaultMessage": "Each extra key gets its own stream page, so you can run more than one stream at a time or keep a fixed link for a show."
   },
   "W9355R": {
     "defaultMessage": "Unmute"
@@ -636,6 +633,9 @@
   "XMGfiA": {
     "defaultMessage": "Recent Clips"
   },
+  "Xex6dj": {
+    "defaultMessage": "About {hours} hours of {quality} streaming"
+  },
   "XgWvGA": {
     "defaultMessage": "Reactions"
   },
@@ -664,6 +664,9 @@
   "YjhNaf": {
     "defaultMessage": "Create Stream"
   },
+  "YsScAY": {
+    "defaultMessage": "Recent activity"
+  },
   "YvKLaH": {
     "defaultMessage": "HLS, MP4 or YouTube link"
   },
@@ -684,9 +687,6 @@
   },
   "ZHtR8c": {
     "defaultMessage": "in {category}"
-  },
-  "ZXp0z1": {
-    "defaultMessage": "Features"
   },
   "Zfr//4": {
     "defaultMessage": "No duration provided, please try another upload server."
@@ -722,14 +722,8 @@
   "azDTwB": {
     "defaultMessage": "Peak"
   },
-  "b22nXT": {
-    "defaultMessage": "Ingest"
-  },
   "bD/ZwY": {
     "defaultMessage": "Edit Cards"
-  },
-  "bdH+0f": {
-    "defaultMessage": "Balance History"
   },
   "bfvyfs": {
     "defaultMessage": "Anon"
@@ -791,6 +785,12 @@
   },
   "edoPyO": {
     "defaultMessage": "Link accounts"
+  },
+  "ep/VJG": {
+    "defaultMessage": "Add a destination"
+  },
+  "f0IZP8": {
+    "defaultMessage": "Stream keys"
   },
   "f6biFA": {
     "defaultMessage": "Oh, and you have {n} sats of free streaming on us! 💜"
@@ -927,9 +927,6 @@
   "lZpRMR": {
     "defaultMessage": "Check here if this stream contains nudity or pornographic content."
   },
-  "ljmS5P": {
-    "defaultMessage": "Endpoint"
-  },
   "mVA9Km": {
     "defaultMessage": "Please login first."
   },
@@ -953,9 +950,6 @@
   },
   "nOaArs": {
     "defaultMessage": "Setup Profile"
-  },
-  "nT3ZrB": {
-    "defaultMessage": "left at {rate} sats per {unit}, {balance} sats in your account"
   },
   "nYSZCW": {
     "defaultMessage": "Add emoji"
@@ -1033,6 +1027,9 @@
   "pxF+t0": {
     "defaultMessage": "Popular"
   },
+  "q6KgDF": {
+    "defaultMessage": "Restream"
+  },
   "q9ryv4": {
     "defaultMessage": "Cover image URL (optional)"
   },
@@ -1079,6 +1076,9 @@
   "sKDn4e": {
     "defaultMessage": "Show Badges"
   },
+  "seVukM": {
+    "defaultMessage": "{sats} sats/hour"
+  },
   "sgT7ox": {
     "defaultMessage": "Watch stream"
   },
@@ -1112,9 +1112,6 @@
   "tzMNF3": {
     "defaultMessage": "Status"
   },
-  "u48ROo": {
-    "defaultMessage": "About {estimate} of streaming"
-  },
   "u6uD94": {
     "defaultMessage": "Create an Account"
   },
@@ -1129,9 +1126,6 @@
   },
   "uYw2LD": {
     "defaultMessage": "Stream"
-  },
-  "ug01Mk": {
-    "defaultMessage": "Time"
   },
   "uksRSi": {
     "defaultMessage": "Latest Videos"
@@ -1181,11 +1175,17 @@
   "x82IOl": {
     "defaultMessage": "Mute"
   },
+  "xaj9Ba": {
+    "defaultMessage": "Provider"
+  },
   "xhQMeQ": {
     "defaultMessage": "Expires"
   },
   "xmcVZ0": {
     "defaultMessage": "Search"
+  },
+  "y+7ihJ": {
+    "defaultMessage": "Quality"
   },
   "y867Vs": {
     "defaultMessage": "Volume"

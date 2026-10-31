@@ -6,8 +6,17 @@ import { useEffect, useState } from "react"
 import { FormattedMessage, FormattedNumber } from "react-intl"
 import { Link } from "react-router"
 import Spinner from "@/element/spinner"
+import { RelativeTime } from "@/element/relative-time"
 
-export default function BalanceHistory({ provider }: { provider?: NostrStreamProvider }) {
+export default function BalanceHistory({
+  provider,
+  limit,
+  version,
+}: {
+  provider?: NostrStreamProvider
+  limit?: number
+  version?: number
+}) {
   const [page] = useState(0)
   const [rows, setRows] = useState<BalanceHistoryResult>()
 
@@ -15,7 +24,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
     if (!provider) return
     let cancelled = false
     provider
-      .history(page)
+      .history(page, limit ?? 20)
       .then(r => {
         if (!cancelled) setRows(r)
       })
@@ -23,7 +32,7 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
     return () => {
       cancelled = true
     }
-  }, [provider, page])
+  }, [provider, page, limit, version])
 
   function eventDescription(ev: NostrEvent) {
     if (ev.kind === EventKind.LiveEvent) {
@@ -55,46 +64,36 @@ export default function BalanceHistory({ provider }: { provider?: NostrStreamPro
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-layer-2">
-      <table className="w-full text-sm">
-        <thead className="text-left text-layer-4">
-          <tr className="[&>th]:px-3 [&>th]:py-2 [&>th]:font-medium">
-            <th>
-              <FormattedMessage defaultMessage="Time" />
-            </th>
-            <th>
-              <FormattedMessage defaultMessage="Description" />
-            </th>
-            <th className="text-right">
-              <FormattedMessage defaultMessage="Amount" />
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-layer-2 border-t border-layer-2">
-          {rows.items.map(a => {
-            let ev: NostrEvent | undefined
-            if (a.desc?.startsWith("{")) {
-              try {
-                ev = JSON.parse(a.desc) as NostrEvent
-              } catch {
-                ev = undefined
-              }
-            }
-            return (
-              <tr key={`${a.created}-${a.amount}-${a.type}`} className="[&>td]:px-3 [&>td]:py-2 align-top">
-                <td className="whitespace-nowrap text-layer-5">{new Date(a.created * 1000).toLocaleString()}</td>
-                <td>{ev ? eventDescription(ev) : a.desc}</td>
-                <td
-                  className={`text-right tabular-nums whitespace-nowrap ${a.type === 0 ? "text-green-400" : "text-layer-5"}`}
-                >
-                  {a.type === 0 ? "+" : "-"}
-                  <FormattedNumber value={a.amount} />
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </div>
+    <ul className="flex flex-col divide-y divide-layer-2">
+      {rows.items.map(a => {
+        let ev: NostrEvent | undefined
+        if (a.desc?.startsWith("{")) {
+          try {
+            ev = JSON.parse(a.desc) as NostrEvent
+          } catch {
+            ev = undefined
+          }
+        }
+        const credit = a.type === 0
+        return (
+          <li key={`${a.created}-${a.amount}-${a.type}`} className="flex items-start justify-between gap-3 py-2.5">
+            <div className="flex flex-col min-w-0 text-sm">
+              <div className="min-w-0 break-words">
+                {ev ? eventDescription(ev) : a.desc || (credit ? <FormattedMessage defaultMessage="Topup" /> : null)}
+              </div>
+              <span className="text-xs text-layer-4">
+                <RelativeTime from={a.created * 1000} suffix={true} />
+              </span>
+            </div>
+            <span
+              className={`text-sm font-semibold tabular-nums whitespace-nowrap ${credit ? "text-green-400" : "text-layer-5"}`}
+            >
+              {credit ? "+" : "-"}
+              <FormattedNumber value={a.amount} />
+            </span>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

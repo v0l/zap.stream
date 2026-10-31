@@ -1,19 +1,16 @@
-import BalanceTimeEstimate from "@/element/balance-time-estimate"
-import AccountTopup from "@/element/provider/nostr/topup"
 import LiveVideoPlayer from "@/element/stream/live-video-player"
 import { StreamTimer } from "@/element/stream/stream-time"
 import type { AccountResponse, MetricsMessage, NostrStreamProvider } from "@/providers"
 import type { NostrEvent } from "@snort/system"
 import { useState, useEffect, useMemo } from "react"
 import { FormattedMessage, FormattedNumber } from "react-intl"
-import BalanceHistoryModal from "./balance-history"
-import { DashboardSettingsButton } from "./button-settings"
-import { ProviderSelectorButton } from "./provider-selector"
 import { DashboardStatsCard } from "./stats-card"
 import { DashboardCard } from "./card"
 import { useStream } from "@/element/stream/stream-state"
 import { useLogin } from "@/hooks/login"
 import { CompactMetricsDisplay } from "./realtime-metrics"
+import { DashboardWalletCard } from "./account-card"
+import { pickEndpoint } from "./quality"
 
 export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamProvider }) {
   const { link, event, info: streamInfo } = useStream()
@@ -25,8 +22,10 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
   const id = streamInfo?.id
 
   const defaultEndpoint = useMemo(() => {
-    const metricsEndpint = metrics?.data?.endpoint_name ?? "Best"
-    return info?.endpoints?.find(a => a.name === metricsEndpint) ?? info?.endpoints?.at(0)
+    return pickEndpoint(
+      info?.endpoints ?? [],
+      metrics?.data?.endpoint_name ?? localStorage.getItem("dashboard-endpoint"),
+    )
   }, [info, metrics])
 
   useEffect(() => {
@@ -113,40 +112,12 @@ export function DashboardLiveStreamInfo({ provider }: { provider: NostrStreamPro
           />
         </div>
       </DashboardCard>
-      {defaultEndpoint && (
-        <DashboardCard
-          title={<FormattedMessage defaultMessage="Balance" />}
-          headerAction={
-            <AccountTopup
-              provider={provider}
-              onFinish={() => {
-                provider.info().then(setInfo)
-              }}
-            />
-          }
-        >
-          <div className="flex flex-col">
-            <span className="font-display text-2xl font-extrabold">
-              <BalanceTimeEstimate balance={info?.balance ?? 0} endpoint={defaultEndpoint} />
-            </span>
-            <span className="text-sm text-layer-4">
-              <FormattedMessage
-                defaultMessage="left at {rate} sats per {unit}, {balance} sats in your account"
-                values={{
-                  balance: <FormattedNumber value={info?.balance ?? 0} />,
-                  rate: defaultEndpoint.cost.rate ?? 0,
-                  unit: defaultEndpoint.cost.unit ?? "min",
-                }}
-              />
-            </span>
-          </div>
-          <div className="flex gap-2 flex-wrap pt-3 border-t border-layer-3">
-            <BalanceHistoryModal provider={provider} />
-            <DashboardSettingsButton ev={event} provider={provider} />
-            <ProviderSelectorButton />
-          </div>
-        </DashboardCard>
-      )}
+      <DashboardWalletCard
+        provider={provider}
+        info={info}
+        endpoint={defaultEndpoint}
+        onChange={() => provider.info().then(setInfo)}
+      />
     </>
   )
 }
