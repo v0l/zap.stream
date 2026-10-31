@@ -89,7 +89,8 @@ export function StreamInfo({ ev, goal }: { ev?: TaggedNostrEvent; goal?: TaggedN
             status && <span className="font-semibold text-text capitalize">{status}</span>
           )}
           {participants !== undefined && (
-            <span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-layer-2 px-2.5 py-0.5 font-semibold text-text tabular-nums">
+              <Icon name="user" size={14} className="text-primary" />
               <FormattedMessage defaultMessage="{n} watching" values={{ n: formatSats(Number(participants)) }} />
             </span>
           )}

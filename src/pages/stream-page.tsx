@@ -36,7 +36,7 @@ function StreamPageContent() {
         <meta property="og:description" content={descriptionContent} />
         <meta property="og:image" content={info?.image ?? ""} />
       </Helmet>
-      <div className="flex flex-col gap-5 xl:overflow-y-auto scrollbar-hidden min-h-0">
+      <div className="flex flex-col gap-5 xl:overflow-y-auto scrollbar-hidden min-h-0 xl:[&>*]:shrink-0 xl:-mx-2 xl:px-2">
         {event?.kind === LIVE_STREAM && link && (
           <LiveVideoPlayer
             key={link.encode()}
