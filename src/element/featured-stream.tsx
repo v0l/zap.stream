@@ -11,6 +11,7 @@ import HlsVideo from "hls-video-element/react"
 import type { HlsVideoElement } from "hls-video-element"
 import { useMediaQuery } from "usehooks-ts"
 import { shouldReleasePlayer } from "./stream/release-player"
+import { HydratedOnly } from "./hydrated-only"
 import { FormattedMessage } from "react-intl"
 import { Link } from "react-router"
 import { getName } from "./profile"
@@ -51,7 +52,11 @@ export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps
         className="group relative aspect-video max-sm:aspect-[4/3] max-h-[min(70vh,620px)] w-full rounded-2xl overflow-hidden bg-layer-1 isolate"
       >
         {imgSrc && <img src={imgSrc} alt="" className="absolute inset-0 w-full h-full object-cover -z-10" />}
-        {stream?.toLowerCase().includes(".m3u8") && <FeaturedPreview src={stream} />}
+        {stream?.toLowerCase().includes(".m3u8") && (
+          <HydratedOnly>
+            <FeaturedPreview src={stream} />
+          </HydratedOnly>
+        )}
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-layer-0/95 via-layer-0/30 to-transparent" />
         <div className="absolute inset-x-5 bottom-4 sm:inset-x-7 sm:bottom-6 flex items-end justify-between gap-4">
           <div className="min-w-0">
@@ -89,6 +94,7 @@ function FeaturedPreview({ src }: { src: string }) {
 
   useEffect(() => {
     const el = ref.current
+    if (el) el.muted = true
     return () => {
       queueMicrotask(() => {
         if (el && shouldReleasePlayer(el)) el.src = ""
