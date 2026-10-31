@@ -23,7 +23,7 @@ import { TopZappers } from "../top-zappers"
 import { Link, useNavigate } from "react-router"
 import classNames from "classnames"
 import { useStream } from "../stream/stream-state"
-import { useLayout } from "@/pages/layout/context"
+import { useHideHeader, useLayout } from "@/pages/layout/context"
 import { TwitchChatMessage } from "./twitch"
 import { useLegacyChatFeed } from "@/hooks/legacy-chat"
 import type { ExternalChatEvent } from "@/service/chat/types"
@@ -149,33 +149,9 @@ export function LiveChat({
       .sort((a, b) => b.created_at - a.created_at)
   }, [feed, awards, event, started, legacyChat.events, legacyChat.twitch, legacyChat.youtube, legacyChat.kick])
 
+  useHideHeader(adjustLayout ?? false)
   useEffect(() => {
-    const resetLayout = () => {
-      if (streamContext.showDetails || !adjustLayout) {
-        streamContext.update(c => {
-          c.showDetails = !adjustLayout
-          return { ...c }
-        })
-      }
-      if (!layoutContext.showHeader) {
-        layoutContext.update(c => {
-          c.showHeader = true
-          return { ...c }
-        })
-      }
-    }
-
-    if (adjustLayout) {
-      layoutContext.update(c => {
-        c.showHeader = false
-        return { ...c }
-      })
-    } else {
-      resetLayout()
-    }
-    return () => {
-      resetLayout()
-    }
+    streamContext.update(c => (c.showDetails === !adjustLayout ? c : { ...c, showDetails: !adjustLayout }))
   }, [adjustLayout])
 
   const filteredEvents = useMemo(() => {

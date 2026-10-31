@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, useContext, useState } from "react"
+import { type ReactNode, createContext, useContext, useEffect, useState } from "react"
 
 interface LayoutContextType {
   leftNav: boolean
@@ -34,4 +34,13 @@ export function LayoutContextProvider({ children }: { children: ReactNode }) {
 
 export function useLayout() {
   return useContext(LayoutContext)
+}
+
+export function useHideHeader(hide: boolean) {
+  const { update } = useLayout()
+  useEffect(() => {
+    const setShowHeader = (show: boolean) => update(c => (c.showHeader === show ? c : { ...c, showHeader: show }))
+    setShowHeader(!hide)
+    return () => setShowHeader(true)
+  }, [hide])
 }
