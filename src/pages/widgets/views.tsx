@@ -2,7 +2,7 @@ import type { NostrLink } from "@snort/system"
 import { FormattedMessage, FormattedNumber } from "react-intl"
 
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
-import { findTag } from "@/utils"
+import { findTag } from "@/event-tags"
 import { OverlayCard } from "./overlay-card"
 
 export function Views({ link }: { link: NostrLink }) {

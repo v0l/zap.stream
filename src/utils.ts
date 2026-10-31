@@ -1,12 +1,15 @@
 import { type CachedMetadata, type NostrEvent, NostrLink, type TaggedNostrEvent } from "@snort/system"
 
 import type { Tags } from "@/types"
-import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, P_TAG_HOST_WHITELIST, type StreamState } from "@/const"
+import { LIVE_STREAM, LIVE_STREAM_KINDS, N94_LIVE_STREAM, type StreamState } from "@/const"
 import type { GameInfo } from "@/service/game-database"
 import { AllCategories } from "./element/category/all-categories"
 import { NostrPrefix } from "@snort/shared"
 import { parseYouTubeUrl } from "@/youtube"
 import { isLocalUrl } from "@/url-host"
+import { findTag, getHost, getPlaceholder } from "@/event-tags"
+
+export { findTag, getHost, getPlaceholder }
 
 export function toAddress(e: NostrEvent): string {
   if (e.kind && e.kind >= 30000 && e.kind <= 40000) {
@@ -22,26 +25,8 @@ export function toAddress(e: NostrEvent): string {
   return e.id
 }
 
-export function findTag(e: NostrEvent | undefined, tag: string) {
-  const maybeTag = e?.tags.find(evTag => {
-    return evTag[0] === tag
-  })
-  return maybeTag?.[1]
-}
-
 export function eventLink(ev: NostrEvent | TaggedNostrEvent) {
   return NostrLink.fromEvent(ev).encode()
-}
-
-export function getHost(ev: NostrEvent) {
-  const isHostTagAllowed = ev.pubkey && P_TAG_HOST_WHITELIST.includes(ev.pubkey)
-  const ret =
-    ev.tags.find(a => a[0] === "p" && a.length > 3 && a[3].toLowerCase() === "host" && isHostTagAllowed)?.[1] ??
-    ev.pubkey
-  if (!ret) {
-    throw new Error("Invalid host")
-  }
-  return ret
 }
 
 export function profileLink(_meta: CachedMetadata | undefined, pubkey: string | NostrLink) {
@@ -93,10 +78,6 @@ export function uniqBy<T>(vals: Array<T>, key: (x: T) => string) {
       {} as Record<string, T>,
     ),
   )
-}
-
-export function getPlaceholder(id: string) {
-  return `https://nostr-rs-api.v0l.io/avatar/robots/${id}.webp`
 }
 
 export function debounce(time: number, fn: () => void): () => void {

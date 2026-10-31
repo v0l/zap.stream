@@ -1,10 +1,4 @@
 import { useEffect, useMemo, useState } from "react"
-import { useLocation } from "react-router"
-
-function useQuery() {
-  const { search } = useLocation()
-  return useMemo(() => new URLSearchParams(search), [search])
-}
 
 interface TextToSpeechConfig {
   voiceURI: string | null
@@ -27,9 +21,8 @@ export function parseTextToSpeechParams(q: URLSearchParams): TextToSpeechConfig 
   }
 }
 
-export function useTextToSpeechParams(): TextToSpeechConfig {
-  const q = useQuery()
-  return useMemo(() => parseTextToSpeechParams(q), [q])
+export function useTextToSpeechParams(search: string): TextToSpeechConfig {
+  return useMemo(() => parseTextToSpeechParams(new URLSearchParams(search)), [search])
 }
 
 interface TextToSpeechConfigParams {

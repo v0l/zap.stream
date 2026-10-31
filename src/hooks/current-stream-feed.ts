@@ -3,7 +3,7 @@ import { useRequestBuilder } from "@snort/system-react"
 import { useMemo } from "react"
 
 import { LIVE_STREAM_KINDS, StreamState } from "@/const"
-import { findTag, getHost } from "@/utils"
+import { findTag, getHost } from "@/event-tags"
 import { NostrPrefix } from "@snort/shared"
 
 export function useCurrentStreamFeed(link: NostrLink, leaveOpen = false, evPreload?: TaggedNostrEvent) {

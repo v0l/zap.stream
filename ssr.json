@@ -153,6 +153,12 @@
       "/debug"
     ]
   },
+  "shells": [
+    {
+      "prefix": "/alert/",
+      "file": "alert.html"
+    }
+  ],
   "headers": [
     {
       "prefix": "/service-worker.js",

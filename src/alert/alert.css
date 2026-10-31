@@ -1,0 +1,18 @@
+@import "../theme.css" source(none);
+@import "../fonts/bricolage/bricolage.css";
+@import "../fonts/instrument/instrument.css";
+@import "../pages/alerts.css";
+
+@source "./";
+@source "../pages/widgets/";
+@source "../element/avatar.tsx";
+@source "../element/icon.tsx";
+
+html,
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

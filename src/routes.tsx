@@ -6,7 +6,6 @@ import { ProfilePage } from "@/pages/profile-page"
 import { ChatPopout } from "@/pages/chat-popout"
 import { CatchAllRoutePage } from "@/pages/catch-all"
 import { WidgetsPage } from "@/pages/widgets"
-import { AlertsPage } from "@/pages/alerts"
 import { StreamSummaryPage } from "@/pages/summary"
 import { EmbededPage } from "./pages/embed"
 import SettingsPage from "./pages/settings"
@@ -169,11 +168,6 @@ export function makeRoutes(init: () => Promise<null>): RouteObject[] {
   {
     path: "/chat/:id",
     element: <ChatPopout />,
-    loader: init,
-  },
-  {
-    path: "/alert/:id/:type",
-    element: <AlertsPage />,
     loader: init,
   },
   {

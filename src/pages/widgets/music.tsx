@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl"
 import { Icon } from "@/element/icon"
 import { useCurrentStreamFeed } from "@/hooks/current-stream-feed"
 import { useStatus } from "@/hooks/status"
-import { findTag, getHost } from "@/utils"
+import { findTag, getHost } from "@/event-tags"
 import { OverlayCard } from "./overlay-card"
 
 export function Music({ link }: { link: NostrLink }) {

@@ -1,6 +1,6 @@
 import { type HTMLProps, useState } from "react"
 import classNames from "classnames"
-import { getPlaceholder } from "@/utils"
+import { getPlaceholder } from "@/event-tags"
 import type { UserMetadata } from "@snort/system"
 import useImgProxy from "@/hooks/img-proxy"
 

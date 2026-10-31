@@ -1,32 +1,4 @@
-@import "tailwindcss";
-
-@theme {
-  --color-layer-0: #0d0c0f;
-  --color-layer-1: #16141b;
-  --color-layer-2: #201d26;
-  --color-layer-3: #2c2933;
-  --color-layer-4: #9a95a3;
-  --color-layer-5: #c9c4cc;
-  --color-text: #f2eee8;
-  --color-on-primary: #1a1100;
-  --color-signal: #4d7cff;
-  --font-sans: "Instrument Sans", system-ui, sans-serif;
-  --font-display: "Bricolage Grotesque", "Instrument Sans", sans-serif;
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-zap: var(--zap);
-  --color-success: rgb(0 127 0);
-  --color-warning: rgb(255 86 63);
-  --animate-ping-once: ping 1s cubic-bezier(0, 0, 0.2, 1);
-  --animate-flash: pulse 0.5s 6 linear;
-  --bg-category-gradient-1: linear-gradient(90deg, #5433ff 0%, #3b77ff 24.5%, #20bdff 50%, #60dce6 74%, #a5fecb 100%);
-  --bg-category-gradient-2: linear-gradient(90deg, #9796f0 0%, #c6ade3 46.5%, #fbc7d4 100%);
-  --bg-category-gradient-3: linear-gradient(90deg, #ffe259 0%, #ffc555 48.5%, #ffa751 100%);
-  --bg-category-gradient-4: linear-gradient(90deg, #1488cc 0%, #1f5ebf 48.5%, #2b32b2 100%);
-  --bg-category-gradient-5: linear-gradient(90deg, #cc2b5e 0%, #a33272 47.5%, #753a88 100%);
-  --bg-category-gradient-6: linear-gradient(90deg, #ed4264 0%, #f5928d 46.5%, #ffedbc 100%);
-  --bg-category-gradient-7: linear-gradient(90deg, #a8c0ff 0%, #7375ca 50.5%, #3f2b96 100%);
-}
+@import "./theme.css";
 
 html,
 body {
@@ -48,20 +20,6 @@ body {
 
 #root {
   height: 100%;
-}
-
-:root {
-  --header-height: 56px;
-  --primary: #ffb000;
-  --secondary: #8fa8ff;
-  --zap: #ffb000;
-  --success: green;
-  --surface: #201d26;
-  --border: #16141b;
-  --border-2: #2c2933;
-  --gradient-purple: linear-gradient(135deg, #882bff 0%, #f83838 100%);
-  --gradient-yellow: linear-gradient(270deg, #adff27 0%, #ffd027 100%);
-  --gradient-orange: linear-gradient(270deg, #ff5b27 0%, rgba(255, 182, 39, 0.99) 100%);
 }
 
 ::-webkit-scrollbar {
@@ -247,8 +205,4 @@ table th {
     transform: none;
     opacity: 1;
   }
-}
-
-@utility bg-category-gradient-* {
-  background-image: --value(--bg-category-gradient-*);
 }

@@ -10,10 +10,10 @@ import { useZaps } from "@/hooks/zaps"
 import { useMutedPubkeys } from "@/hooks/lists"
 import { formatSats } from "@/number"
 import { pickVoice, speak, useTextToSpeechParams, useVoices } from "@/text2speech"
-import { getHost } from "@/utils"
+import { getHost } from "@/event-tags"
 import { Avatar } from "@/element/avatar"
 import { Icon } from "@/element/icon"
-import { getName } from "@/element/profile"
+import { getName } from "@/element/profile-name"
 import classNames from "classnames"
 
 export function useZapQueue(zapStream: ParsedZap[], zapTime = 10_000) {
@@ -60,7 +60,7 @@ export function ZapAlerts({ link }: { link: NostrLink }) {
   const mutedPubkeys = useMutedPubkeys(host, true)
   const visible = useMemo(() => alertableZaps(zaps, mutedPubkeys), [zaps, mutedPubkeys])
   const zap = useZapQueue(visible)
-  const { voiceURI, minSats, volume } = useTextToSpeechParams()
+  const { voiceURI, minSats, volume } = useTextToSpeechParams(window.location.search)
   const voices = useVoices()
   const voice = useMemo(() => pickVoice(voices, voiceURI), [voices, voiceURI])
   const spokenId = useRef<string>(undefined)

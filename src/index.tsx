@@ -38,7 +38,7 @@ registerSW({
 })
 
 const hasWasm = "WebAssembly" in globalThis
-const disableWasmForPaths = ["/chat", "/alert", "/embed"]
+const disableWasmForPaths = ["/chat", "/embed"]
 const useWorkerRelay = disableWasmForPaths.every(a => !window.location.pathname.startsWith(a)) && hasWasm
 const workerRelay = new WorkerRelayInterface(
   import.meta.env.DEV ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url) : new WorkerVite(),

@@ -1,29 +1,19 @@
 import type { ReactNode } from "react"
 import { Link } from "react-router"
 import { useUserProfile } from "@snort/system-react"
-import type { CachedMetadata, UserMetadata } from "@snort/system"
-import { hexToBech32 } from "@snort/shared"
+import type { CachedMetadata } from "@snort/system"
+import { getName } from "./profile-name"
 import { Avatar } from "./avatar"
 import classNames from "classnames"
 import { profileLink } from "@/utils"
+
+export { getName }
 
 export interface ProfileOptions {
   showName?: boolean
   showAvatar?: boolean
   suffix?: string
   overrideName?: string
-}
-
-export function getName(pk: string, user?: UserMetadata) {
-  const npub = hexToBech32("npub", pk)
-  const shortPubkey = npub.slice(0, 12)
-  if ((user?.name?.length ?? 0) > 0) {
-    return user?.name
-  }
-  if ((user?.display_name?.length ?? 0) > 0) {
-    return user?.display_name
-  }
-  return shortPubkey
 }
 
 export function Profile({
