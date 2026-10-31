@@ -152,5 +152,19 @@
       "/tos",
       "/debug"
     ]
-  }
+  },
+  "headers": [
+    {
+      "prefix": "/service-worker.js",
+      "set": {
+        "cache-control": "no-cache, max-age=0"
+      }
+    },
+    {
+      "prefix": "/manifest.webmanifest",
+      "set": {
+        "cache-control": "no-cache, max-age=0"
+      }
+    }
+  ]
 }
