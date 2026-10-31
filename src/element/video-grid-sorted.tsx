@@ -6,9 +6,7 @@ import { type ReactNode, useMemo } from "react"
 import { FormattedMessage } from "react-intl"
 import VideoGrid from "./video-grid"
 import { StreamTile } from "./stream/stream-tile"
-import { CategoryTile } from "./category/category-tile"
-import { Link } from "react-router"
-import Pill from "./pill"
+import { GameCard } from "./category/category-card"
 import { StreamState, VIDEO_KIND } from "@/const"
 import { useRecentClips } from "@/hooks/clips"
 import { ClipTile } from "./stream/clip-tile"
@@ -124,66 +122,31 @@ function GridSection({
 
 function PopularCategories({ items }: { items: Array<TaggedNostrEvent> }) {
   const categories = useMemo(() => {
-    const grouped = items.reduce(
-      (acc, v) => {
-        const { gameId, participants, status } = extractStreamInfo(v)
-        if (gameId) {
-          acc[gameId] ??= {
-            gameId,
-            viewers: 0,
-            zaps: 0,
-            streams: 0,
-          }
-          if (participants && status === StreamState.Live) {
-            acc[gameId].viewers += Number(participants)
-          }
-          acc[gameId].streams++
-        }
-        return acc
-      },
-      {} as Record<
-        string,
-        {
-          gameId: string
-          viewers: number
-          zaps: number
-          streams: number
-        }
-      >,
-    )
-
+    const grouped: Record<string, { gameId: string; viewers: number; live: number }> = {}
+    for (const v of items) {
+      const { gameId, participants, status } = extractStreamInfo(v)
+      if (!gameId) continue
+      grouped[gameId] ??= { gameId, viewers: 0, live: 0 }
+      if (status === StreamState.Live) {
+        grouped[gameId].live++
+        grouped[gameId].viewers += Number(participants ?? 0) || 0
+      }
+    }
     return Object.values(grouped)
-      .sort((a, b) => (a.streams > b.streams ? -1 : 1))
+      .filter(a => a.live > 0)
+      .sort((a, b) => b.viewers - a.viewers || b.live - a.live)
       .slice(0, 8)
   }, [items])
 
+  if (categories.length === 0) return
   return (
     <>
       <SectionHeader>
-        <FormattedMessage defaultMessage="Popular" />
+        <FormattedMessage defaultMessage="Popular categories" />
       </SectionHeader>
-      <div className="flex flex-wrap gap-4">
+      <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(min(150px,45%),1fr))]">
         {categories.map(a => (
-          <Link
-            key={a.gameId}
-            to={`/category/${a.gameId}`}
-            className="xl:w-[180px] lg:w-[170px] max-lg:w-[calc(33.3%-0.75rem)]"
-          >
-            <CategoryTile gameId={a.gameId} showFooterTitle={true}>
-              <div className="flex gap-2 flex-wrap">
-                {a.viewers > 0 && (
-                  <Pill>
-                    <FormattedMessage
-                      defaultMessage="{n} viewers"
-                      values={{
-                        n: a.viewers,
-                      }}
-                    />
-                  </Pill>
-                )}
-              </div>
-            </CategoryTile>
-          </Link>
+          <GameCard key={a.gameId} id={a.gameId} live={a.live} viewers={a.viewers} />
         ))}
       </div>
     </>

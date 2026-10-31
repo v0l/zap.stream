@@ -248,3 +248,7 @@ table th {
     opacity: 1;
   }
 }
+
+@utility bg-category-gradient-* {
+  background-image: --value(--bg-category-gradient-*);
+}

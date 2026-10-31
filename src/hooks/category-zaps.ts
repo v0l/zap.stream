@@ -1,11 +1,13 @@
 import { EventKind, NostrLink, RequestBuilder, parseZap } from "@snort/system"
 import { useRequestBuilder } from "@snort/system-react"
 import { useMemo } from "react"
+import { categoryQueryTags } from "@/element/category/category-tags"
+import { AllCategories } from "@/element/category/all-categories"
 
 export function useCategoryZaps(gameId: string) {
   const rb = useMemo(() => {
     const b = new RequestBuilder(`cat-zaps:${gameId}`)
-    b.withFilter().kinds([EventKind.LiveEvent]).tag("t", [gameId])
+    b.withFilter().kinds([EventKind.LiveEvent]).tag("t", categoryQueryTags(gameId, AllCategories))
     return b
   }, [gameId])
   const evs = useRequestBuilder(rb)

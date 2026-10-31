@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useIntl } from "react-intl"
 import { ControlledMenu, MenuItem } from "@szhsin/react-menu"
 import { debounce } from "@/utils"
-import { AllCategories } from "@/pages/category"
+import { AllCategories } from "@/element/category/all-categories"
 import GameDatabase, { type GameInfo } from "@/service/game-database"
 import GameInfoCard from "@/element/game-info"
 

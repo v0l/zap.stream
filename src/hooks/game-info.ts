@@ -1,4 +1,4 @@
-import { AllCategories } from "@/pages/category"
+import { AllCategories } from "@/element/category/all-categories"
 import GameDatabase, { type GameInfo } from "@/service/game-database"
 import { useEffect, useState } from "react"
 

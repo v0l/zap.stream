@@ -23,6 +23,9 @@
   "/aFYQ5": {
     "defaultMessage": "Stream Forwarding (optional)"
   },
+  "/ajjV2": {
+    "defaultMessage": "{n} live"
+  },
   "/b/VKX": {
     "defaultMessage": "This key is your account. There is no password reset, so if you lose it, the account is gone for good."
   },
@@ -67,6 +70,9 @@
   },
   "2/2yg+": {
     "defaultMessage": "Add"
+  },
+  "28cPlo": {
+    "defaultMessage": "Most zapped streamers"
   },
   "29gmtd": {
     "defaultMessage": "Error: {error}"
@@ -173,6 +179,9 @@
   "89UZph": {
     "defaultMessage": "Configure your streaming software"
   },
+  "8AKXor": {
+    "defaultMessage": "Nobody is live here right now."
+  },
   "8ERQ/p": {
     "defaultMessage": "as sent"
   },
@@ -256,6 +265,9 @@
   },
   "C9POHl": {
     "defaultMessage": "Server URL"
+  },
+  "CJ2DC3": {
+    "defaultMessage": "Nobody live"
   },
   "CsCUYo": {
     "defaultMessage": "{n} sats"
@@ -722,6 +734,9 @@
   "aH8A/L": {
     "defaultMessage": "Show more ({n} left)"
   },
+  "aWpBzj": {
+    "defaultMessage": "Show more"
+  },
   "acrOoz": {
     "defaultMessage": "Continue"
   },
@@ -784,6 +799,9 @@
   },
   "dVD/AR": {
     "defaultMessage": "Top Zappers"
+  },
+  "dYlEe/": {
+    "defaultMessage": "Games live now"
   },
   "dkUMIH": {
     "defaultMessage": "Clip by {name}"
@@ -930,9 +948,6 @@
   "krCxp0": {
     "defaultMessage": "{provider} chat {channel} connected!"
   },
-  "lXbG97": {
-    "defaultMessage": "Most Zapped Streamers"
-  },
   "lZpRMR": {
     "defaultMessage": "Check here if this stream contains nudity or pornographic content."
   },
@@ -1036,8 +1051,8 @@
   "pOeEMx": {
     "defaultMessage": "Add server"
   },
-  "pxF+t0": {
-    "defaultMessage": "Popular"
+  "pq2lMA": {
+    "defaultMessage": "Popular categories"
   },
   "q6KgDF": {
     "defaultMessage": "Restream"
