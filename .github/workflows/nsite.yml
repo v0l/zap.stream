@@ -32,10 +32,9 @@ jobs:
         env:
           NSITE_KEY: ${{ secrets.NSITE_KEY }}
         run: |
-          # nsite-cli reads the signing key from .nsite/project.json when
-          # --privatekey is not given; a file keeps the nsec out of argv,
-          # where it is visible in process listings and error output.
-          mkdir -p .nsite
-          printf '{"privateKey": "%s"}\n' "$NSITE_KEY" > .nsite/project.json
-          npx -y nsite-cli@0.1.18 upload build --verbose --purge --servers 'https://nostr.download,https://blossom.band'
-          rm -f .nsite/project.json
+          curl -sSfL -o nsyte https://github.com/sandwichfarm/nsyte/releases/download/v0.29.0/nsyte-linux-0.29.0
+          echo "269a497b63ef4b6d0afd7fe301dfc6135cd563229013d0c118adaca354a5228e  nsyte" | sha256sum -c -
+          chmod +x nsyte
+          printf '%s\n' "$NSITE_KEY" | ./nsyte deploy build -i --prompt-sec --skip-secrets-scan \
+            --servers 'https://nostr.download,https://blossom.band' \
+            --relays 'wss://relay.primal.net,wss://relay.damus.io,wss://nos.lol,wss://relay.snort.social'
