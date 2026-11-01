@@ -27,12 +27,6 @@ export interface LNURLLike {
   getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
 }
 
-/**
- * Check a bolt11 invoice against the amount (in sats) the user asked to send.
- * Re-exported from src/invoice.ts for convenience.
- */
-export { invoiceMatchesAmount } from "@/invoice"
-
 export interface SendZapsProps {
   lnurl: string | LNURLLike
   pubkey?: string
