@@ -8,6 +8,6 @@ export function NostrLink({ link }: { link: string }) {
   if (nav?.type === NostrPrefix.PublicKey || nav?.type === NostrPrefix.Profile) {
     return <Mention link={nav} />
   } else {
-    ;<ExternalLink href={link}>{link}</ExternalLink>
+    return <ExternalLink href={link}>{link}</ExternalLink>
   }
 }
