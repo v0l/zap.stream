@@ -335,7 +335,9 @@ export class NostrStreamProvider {
     const u = `${this.url}${path}`
     const pubkey = await signer.getPubKey()
     // Stringify once: the same bytes are hashed into the payload tag and sent.
-    const bodyStr = body === undefined ? undefined : JSON.stringify(body)
+    // `body == null` keeps the pre-payload-tag behavior for null (no body sent,
+    // no tag); anything else non-undefined is stringified and tagged.
+    const bodyStr = body == null ? undefined : JSON.stringify(body)
     const tags: Array<Array<string>> = [
       ["u", u],
       ["method", method],
