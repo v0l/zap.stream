@@ -25,7 +25,10 @@ export function useCategoryZaps(gameId: string) {
   const zapEvents = useRequestBuilder(rbZaps)
 
   const zaps = useMemo(() => {
-    const parsed = zapEvents.map(a => parseZap(a))
+    // parseZap flags receipts whose zap request doesn't match the receipt
+    // (p-tag mismatch, unparsable description, ...); skip those when
+    // aggregating per-pubkey totals.
+    const parsed = zapEvents.map(a => parseZap(a)).filter(v => v.valid)
     return {
       parsed: parsed,
       all: zapEvents,
