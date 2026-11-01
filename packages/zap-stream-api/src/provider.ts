@@ -333,16 +333,15 @@ export class NostrStreamProvider {
 
     const u = `${this.url}${path}`
     const pubkey = await signer.getPubKey()
-    const unsigned = buildUnsignedEvent(
-      pubkey,
-      HTTP_AUTH_KIND,
-      [
-        ["u", u],
-        ["method", method],
-      ],
-      "",
-      unixNow() + Math.floor(this.#timeSync.offset / 1000),
-    )
+    const tags: Array<Array<string>> = [
+      ["u", u],
+      ["method", method],
+    ]
+    const payloadTag = await this.#payloadTag(body)
+    if (payloadTag) {
+      tags.push(payloadTag)
+    }
+    const unsigned = buildUnsignedEvent(pubkey, HTTP_AUTH_KIND, tags, "", unixNow() + Math.floor(this.#timeSync.offset / 1000))
     const token = await signer.sign(unsigned)
 
     const rsp = await fetch(u, {
@@ -358,6 +357,17 @@ export class NostrStreamProvider {
       throw new Error(json)
     }
     return json.length > 0 ? (JSON.parse(json) as T) : ({} as T)
+  }
+
+  /**
+   * NIP-98 `payload` tag: base64(SHA-256(JSON.stringify(body))), binding the
+   * auth event to the exact request body. Omitted for bodyless requests.
+   */
+  async #payloadTag(body: unknown): Promise<Array<string> | undefined> {
+    if (body === undefined) return undefined
+    const data = new TextEncoder().encode(JSON.stringify(body))
+    const digest = await globalThis.crypto.subtle.digest("SHA-256", data)
+    return ["payload", base64.encode(new Uint8Array(digest))]
   }
 }
 
