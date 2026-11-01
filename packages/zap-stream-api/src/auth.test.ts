@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { base64 } from "@scure/base"
+import { base64, hex } from "@scure/base"
 import { NostrStreamProvider, HTTP_AUTH_KIND } from "./index"
 import type { NostrEvent, Signer } from "./types"
 
@@ -49,7 +49,7 @@ describe("NIP-98 auth event", () => {
     expect(capturedBody).toBe(JSON.stringify({ accept_tos: true }))
     const payloadTag = capturedAuth?.tags.find(t => t[0] === "payload")
     expect(payloadTag).toBeDefined()
-    const expected = base64.encode(await sha256Hex(capturedBody as string))
+    const expected = hex.encode(await sha256Hex(capturedBody as string))
     expect(payloadTag?.[1]).toBe(expected)
     expect(capturedAuth?.tags.find(t => t[0] === "u")?.[1]).toBe("https://api.example.test/api/v1/account")
     expect(capturedAuth?.tags.find(t => t[0] === "method")?.[1]).toBe("PATCH")
