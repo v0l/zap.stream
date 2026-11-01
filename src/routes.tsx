@@ -29,6 +29,7 @@ import ProvidersPage from "./pages/providers"
 import { TosPage } from "./pages/tos"
 import { FormattedMessage } from "react-intl"
 import type { RouteObject } from "react-router"
+import { RouteError } from "./pages/route-error"
 
 const DashboardPage = lazy(() => import("./pages/dashboard"))
 
@@ -36,6 +37,7 @@ export function makeRoutes(init: () => Promise<null>): RouteObject[] {
   return [
   {
     element: <LayoutPage />,
+    errorElement: <RouteError />,
     loader: init,
     children: [
       {

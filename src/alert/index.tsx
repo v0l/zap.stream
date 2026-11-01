@@ -23,7 +23,9 @@ createRoot(document.getElementById("alert") as HTMLDivElement).render(
   <StrictMode>
     <SnortContext value={system}>
       <IntlProvider locale="en-US" messages={enMessages}>
-        <ErrorBoundary>
+        {/* silent fallback: this renders inside a live OBS scene, so a
+            crashed widget must not put visible error text on stream */}
+        <ErrorBoundary fallback={null}>
           <AlertWidget />
         </ErrorBoundary>
       </IntlProvider>
