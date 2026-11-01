@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # bun.lock version updates (GA since Feb 2025). Note: dependabot alerts do
+  # not parse bun.lock for transitive advisories yet — keep running
+  # osv-scanner against bun.lock in CI for that.
+  - package-ecosystem: "bun"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
