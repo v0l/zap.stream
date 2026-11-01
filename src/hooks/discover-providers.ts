@@ -9,15 +9,20 @@ export function providerDiscoveryRelays(): string[] {
   return [...new Set([...Object.keys(defaultRelays), ...PROVIDER_DISCOVERY_RELAYS])]
 }
 
-export function useDiscoverProviders(): StreamProviderConfig[] {
-  const wot = useWoT()
-
+export function providerHandlersRequest(): RequestBuilder {
   const rb = new RequestBuilder("stream-providers")
-  rb.withRelays(providerDiscoveryRelays())
   rb.withFilter()
     .kinds([EventKind.ApplicationHandler])
     .tag("k", [EventKind.LiveEvent.toString()])
     .tag("i", ["api:zap-stream"])
+    .relay(providerDiscoveryRelays())
+  return rb
+}
+
+export function useDiscoverProviders(): StreamProviderConfig[] {
+  const wot = useWoT()
+
+  const rb = providerHandlersRequest()
 
   const events = useRequestBuilder(rb)
 
