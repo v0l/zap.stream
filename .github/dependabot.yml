@@ -1,8 +1,8 @@
 version: 2
 updates:
   # bun.lock version updates (GA since Feb 2025). Note: dependabot alerts do
-  # not parse bun.lock for transitive advisories yet — keep running
-  # osv-scanner against bun.lock in CI for that.
+  # not parse bun.lock for transitive advisories yet — an osv-scanner CI step
+  # would cover that gap (not yet present in this repo).
   - package-ecosystem: "bun"
     directory: "/"
     schedule:
