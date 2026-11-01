@@ -18,6 +18,7 @@ import { syncClock } from "./time-sync"
 import { makeRoutes } from "./routes"
 import { WorkerRelayInterface } from "@snort/worker-relay"
 import WorkerVite from "@snort/worker-relay/src/worker?worker"
+import { ErrorBoundary } from "./element/error-boundary"
 import { LayoutContextProvider } from "./pages/layout/context"
 import { Login } from "./login"
 import { HelmetProvider } from "@dr.pogodin/react-helmet"
@@ -110,7 +111,9 @@ const tree = (
       <SnortContext value={System}>
         <IntlProvider>
           <LayoutContextProvider>
-            <RouterProvider router={router} />
+            <ErrorBoundary>
+              <RouterProvider router={router} />
+            </ErrorBoundary>
             <HydrationDone />
           </LayoutContextProvider>
         </IntlProvider>

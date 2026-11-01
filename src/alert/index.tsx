@@ -7,6 +7,7 @@ import { createRoot } from "react-dom/client"
 import { IntlProvider } from "react-intl"
 
 import { defaultRelays } from "@/const"
+import { ErrorBoundary } from "@/element/error-boundary"
 import enMessages from "@/translations/en.json"
 import { AlertWidget } from "./widget"
 
@@ -22,7 +23,9 @@ createRoot(document.getElementById("alert") as HTMLDivElement).render(
   <StrictMode>
     <SnortContext value={system}>
       <IntlProvider locale="en-US" messages={enMessages}>
-        <AlertWidget />
+        <ErrorBoundary>
+          <AlertWidget />
+        </ErrorBoundary>
       </IntlProvider>
     </SnortContext>
   </StrictMode>,
