@@ -50,6 +50,11 @@ export const System = new NostrSystem({
   cachingRelay: useWorkerRelay ? workerRelay : undefined,
   buildFollowGraph: true,
   disableSyncModule: true,
+  // Verify schnorr signatures of events received from relays before they are
+  // cached/displayed. Default is false (see @snort/system system-base.ts);
+  // without this, forged events (fake profiles, chat, zap receipts) are
+  // accepted verbatim from any relay and persisted into relay.db.
+  checkSigs: true,
 })
 const serverRendered = loadHydration()
 const systemQuery = System.Query.bind(System)
