@@ -190,7 +190,7 @@ export function LiveChat({
         </h2>
       )}
       {(showTopZappers ?? true) && reactions.zaps.length > 0 && (
-        <div className={classNames("flex gap-1.5 overflow-x-auto scrollbar-hidden", { "px-4 pb-1": showHeader })}>
+        <div className={classNames("flex shrink-0 gap-1.5 overflow-x-auto scrollbar-hidden", { "px-4 pb-1": showHeader })}>
           <TopZappers
             zaps={reactions.zaps}
             avatarSize={20}
