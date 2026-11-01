@@ -2,6 +2,7 @@ import { forwardRef, lazy, Suspense } from "react"
 import { ExternalLink } from "../external-link"
 import type { NewCard } from "."
 import classNames from "classnames"
+import { safeMediaUrl } from "@/utils"
 const Markdown = lazy(() => import("../markdown"))
 
 interface CardPreviewProps extends NewCard {
@@ -14,6 +15,7 @@ function isEmpty(s: string | undefined) {
 
 export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
   ({ style, title, link, image, content }: CardPreviewProps, ref) => {
+    const safeImage = safeMediaUrl(image)
     const isImageOnly = !isEmpty(image) && isEmpty(content) && isEmpty(title)
     return (
       <div
@@ -22,13 +24,13 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
         style={style}
       >
         {title && <h2>{title}</h2>}
-        {image &&
+        {safeImage &&
           (link && link?.length > 0 ? (
             <ExternalLink href={link}>
-              <img src={image} alt={title} />
+              <img src={safeImage} alt={title} />
             </ExternalLink>
           ) : (
-            <img src={image} alt={title} />
+            <img src={safeImage} alt={title} />
           ))}
         {content && (
           <Suspense>

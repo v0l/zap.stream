@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl"
 
 import { useLogin } from "@/hooks/login"
 import useEmoji from "@/hooks/emoji"
+import { safeMediaUrl } from "@/utils"
 import { DefaultButton, WarningButton } from "./buttons"
 
 export function EmojiPack({ ev }: { ev: NostrEvent }) {
@@ -40,9 +41,10 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
       <div className="emoji-pack-emojis">
         {emoji.map(e => {
           const [, name, image] = e
+          const safeImage = safeMediaUrl(image)
           return (
             <div className="emoji-definition" key={name}>
-              <img alt={name} className="custom-emoji" src={image} />
+              {safeImage && <img alt={name} className="custom-emoji" src={safeImage} />}
               <span className="emoji-name">{name}</span>
             </div>
           )
