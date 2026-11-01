@@ -24,4 +24,13 @@ jobs:
         run: cp build/index.html build/404.html
 
       - name: Deploy nsite
-        run: npx -y nsite-cli upload build --verbose --purge --privatekey ${{ secrets.NSITE_KEY }} --servers 'https://nostr.download,https://blossom.band'
+        env:
+          NSITE_KEY: ${{ secrets.NSITE_KEY }}
+        run: |
+          # nsite-cli reads the signing key from .nsite/project.json when
+          # --privatekey is not given; a file keeps the nsec out of argv,
+          # where it is visible in process listings and error output.
+          mkdir -p .nsite
+          printf '{"privateKey": "%s"}\n' "$NSITE_KEY" > .nsite/project.json
+          npx -y nsite-cli@0.1.18 upload build --verbose --purge --servers 'https://nostr.download,https://blossom.band'
+          rm -f .nsite/project.json
