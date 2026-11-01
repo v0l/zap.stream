@@ -37,6 +37,8 @@ export function makeRoutes(init: () => Promise<null>): RouteObject[] {
   return [
   {
     element: <LayoutPage />,
+    // the layout's own loader throwing replaces everything; child route
+    // errors get their own errorElement below so the nav/chrome survives
     errorElement: <RouteError />,
     loader: init,
     children: [
@@ -165,7 +167,7 @@ export function makeRoutes(init: () => Promise<null>): RouteObject[] {
         path: "*",
         element: <CatchAllRoutePage />,
       },
-    ],
+    ].map((c: RouteObject) => ({ ...c, errorElement: c.errorElement ?? <RouteError /> })),
   },
   {
     path: "/chat/:id",

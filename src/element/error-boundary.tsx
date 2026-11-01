@@ -1,4 +1,5 @@
 import { Component, type ReactNode } from "react"
+import { FormattedMessage } from "react-intl"
 
 interface ErrorBoundaryProps {
   children: ReactNode
@@ -30,8 +31,13 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       return (
         this.props.fallback ?? (
           <div className="flex flex-col items-center justify-center gap-2 p-4 text-center">
-            <h3>Something went wrong</h3>
+            <h3>
+              <FormattedMessage defaultMessage="Something went wrong" />
+            </h3>
             <small>{this.state.error.message}</small>
+            <button type="button" className="primary" onClick={() => window.location.reload()}>
+              <FormattedMessage defaultMessage="Reload" />
+            </button>
           </div>
         )
       )
