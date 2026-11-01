@@ -26,7 +26,7 @@ export function AcceptTos({
                   className="text-primary"
                   onClick={e => {
                     e.stopPropagation()
-                    window.open(tosLink, "popup", "width=400,height=800")
+                    window.open(tosLink, "popup", "width=400,height=800,noopener,noreferrer")
                   }}
                 >
                   <FormattedMessage defaultMessage="terms and conditions" />
