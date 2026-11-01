@@ -54,7 +54,9 @@
     "workbox-window": "^7.4.1"
   },
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "vite",
     "test": "bun test src",
@@ -67,8 +69,18 @@
     "pre:commit": "bun run intl-extract && bun run intl-compile && bun biome lint --write ."
   },
   "browserslist": {
-    "production": ["chrome >= 67", "edge >= 79", "firefox >= 68", "opera >= 54", "safari >= 14"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.10",
@@ -94,7 +106,8 @@
     "typescript": "^7",
     "vite": "^8.2.2",
     "vite-plugin-pwa": "^2.0.0",
-    "vite-plugin-version-mark": "^0.2.2"
+    "vite-plugin-version-mark": "^0.2.2",
+    "light-bolt11-decoder": "3.2.0"
   },
   "packageManager": "bun@1.3.13"
 }
