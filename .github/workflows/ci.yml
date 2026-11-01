@@ -25,6 +25,24 @@ jobs:
 
       - run: bun install
 
-      - run: bun biome lint src/
+      - run: bun biome lint src/ packages/zap-stream-api/src/
 
       - run: bun tsc --noEmit
+
+      - run: bun test src packages/zap-stream-api/src/
+
+  prebuilt-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      # docker.yml only builds Dockerfile.ssr; the prebuilt image is built by
+      # hand, so a parse/config error there ships unnoticed (this would have
+      # caught e.g. a trailing comment after FROM, which Dockerfiles reject).
+      - name: Build Dockerfile.prebuilt against a dummy context
+        run: |
+          mkdir -p build
+          echo '<!doctype html><title>ci</title>' > build/index.html
+          docker build -f Dockerfile.prebuilt -t zap-stream-prebuilt:ci .
