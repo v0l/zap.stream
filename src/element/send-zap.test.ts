@@ -37,8 +37,10 @@ function makeBolt11(amountMsat: number | undefined): string {
     hrp += `${amt}${unit}`
   }
   const tsGroups = Array.from({ length: 7 }, (_, i) => Math.floor(ts / 2 ** (30 - 5 * i)) & 31)
+  // bolt11 data layout: the 35-bit timestamp is the first 7 raw words (not a
+  // tagged field), followed by the tagged payment_hash/description fields.
   const data = [
-    ...tagged(1, tsGroups),
+    ...tsGroups,
     ...tagged(5, convertBits(payhash, 8, 5)),
     ...tagged(13, convertBits(descBytes, 8, 5)),
   ]
