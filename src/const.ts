@@ -51,6 +51,8 @@ export const defaultRelays = {
   "wss://relay.divine.video/": { read: true, write: true },
 }
 
+export const PROVIDER_DISCOVERY_RELAYS = ["wss://relay.ditto.pub"]
+
 function loadWhitelist() {
   if (import.meta.env.VITE_SINGLE_PUBLISHER !== undefined) {
     const list = import.meta.env.VITE_SINGLE_PUBLISHER as string | undefined

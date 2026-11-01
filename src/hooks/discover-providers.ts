@@ -3,12 +3,17 @@ import { useRequestBuilder } from "@snort/system-react"
 import { useMemo } from "react"
 import type { StreamProviderConfig } from "./stream-provider"
 import useWoT from "./wot"
-import { P_TAG_HOST_WHITELIST } from "@/const"
+import { defaultRelays, P_TAG_HOST_WHITELIST, PROVIDER_DISCOVERY_RELAYS } from "@/const"
+
+export function providerDiscoveryRelays(): string[] {
+  return [...new Set([...Object.keys(defaultRelays), ...PROVIDER_DISCOVERY_RELAYS])]
+}
 
 export function useDiscoverProviders(): StreamProviderConfig[] {
   const wot = useWoT()
 
   const rb = new RequestBuilder("stream-providers")
+  rb.withRelays(providerDiscoveryRelays())
   rb.withFilter()
     .kinds([EventKind.ApplicationHandler])
     .tag("k", [EventKind.LiveEvent.toString()])
