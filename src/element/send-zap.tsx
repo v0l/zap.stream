@@ -94,6 +94,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     }
 
     const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount
+    if (!Number.isFinite(amountInSats) || amountInSats <= 0) return
     const commentText = svc.maxCommentLength > 0 ? comment.slice(0, svc.maxCommentLength) : comment
     let zap: NostrEvent | undefined
     if (pubkey) {
@@ -113,16 +114,22 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     const invoice = await svc.getInvoice(amountInSats, commentText, zap)
     if (!invoice.pr) return
 
-    // The LNURL callback controls the invoice contents; verify it actually
-    // carries the amount the user chose before handing it to a wallet.
+    // The LNURL callback controls the invoice contents; only auto-pay when the
+    // invoice provably carries the amount the user chose. Undecodable or
+    // amountless invoices must NOT auto-pay (fail closed) — show the QR and
+    // let the user decide.
     const amountOk = invoiceMatchesAmount(invoice.pr, amountInSats)
     if (amountOk === false) {
       setInvoiceWarning(
         `Invoice is not for the requested amount (${formatSats(amountInSats)}). Double-check before paying.`,
       )
+    } else if (amountOk === undefined) {
+      setInvoiceWarning("Invoice amount could not be verified automatically. Double-check the amount before paying.")
+    } else {
+      setInvoiceWarning(undefined)
     }
 
-    if (wallet && amountOk !== false) {
+    if (wallet && amountOk === true) {
       try {
         await wallet.payInvoice(invoice.pr)
         onFinish()

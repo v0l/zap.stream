@@ -57,4 +57,12 @@ describe("invoiceMatchesAmount", () => {
   test("returns undefined for zero-amount invoices (cannot verify)", () => {
     expect(invoiceMatchesAmount(makeBolt11(undefined), 21)).toBeUndefined()
   })
+  test("returns undefined for undecodable invoices (cannot verify — must not auto-pay)", () => {
+    expect(invoiceMatchesAmount("lnbc1garbage", 21)).toBeUndefined()
+    expect(invoiceMatchesAmount("", 21)).toBeUndefined()
+  })
+  test("matches floored msat amounts (LNURL sends Math.floor(sats*1000))", () => {
+    expect(invoiceMatchesAmount(makeBolt11(21_500), 21.5)).toBe(true) // fractional sats floor to msat
+    expect(invoiceMatchesAmount(makeBolt11(21_000), 21.5)).toBe(false)
+  })
 })
