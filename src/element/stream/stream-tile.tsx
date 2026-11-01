@@ -7,7 +7,7 @@ import { StreamState } from "@/const"
 import { useStreamHref } from "@/hooks/short-link"
 import useImgProxy from "@/hooks/img-proxy"
 import { formatSats, formatSatsCompact } from "@/number"
-import { extractStreamInfo, getHost, profileLink } from "@/utils"
+import { extractStreamInfo, getHost, profileLink, safeMediaUrl } from "@/utils"
 import { youtubeThumbnailUrl } from "@/youtube"
 import { useUserProfile } from "@snort/system-react"
 import classNames from "classnames"
@@ -45,7 +45,7 @@ export function StreamTile({
   const videoLink = useStreamHref(ev, host)
 
   // YouTube links can't be used as an <img> src; use the video thumbnail instead
-  const imgSrc = image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined) ?? recording ?? ""
+  const imgSrc = safeMediaUrl(image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined) ?? recording) ?? ""
   // track failures per-src so a late-arriving event (or a changed image) is retried
   const [failedSrc, setFailedSrc] = useState<string>()
   const hasImg = imgSrc.length > 0 && failedSrc !== imgSrc

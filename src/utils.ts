@@ -125,6 +125,21 @@ export function canPlayEvent(ev: NostrEvent) {
   return ev.kind === N94_LIVE_STREAM
 }
 
+/**
+ * Allowlist for media/image URLs taken from attacker-controlled event fields.
+ * Returns undefined for anything that is not a plain https: URL, so callers
+ * fall back to placeholders instead of loading e.g. http: intranet probes,
+ * data: URIs or custom-scheme links.
+ */
+export function safeMediaUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined
+  try {
+    return new URL(url).protocol === "https:" ? url : undefined
+  } catch {
+    return undefined
+  }
+}
+
 const gameTagFormat = /^[a-z-]+:[a-z0-9-]+$/i
 export function extractStreamInfo(ev?: NostrEvent) {
   const ret = {
