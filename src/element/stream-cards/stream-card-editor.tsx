@@ -1,23 +1,16 @@
 import { useState } from "react"
 import { FormattedMessage } from "react-intl"
 import { Toggle } from "../toggle"
-import { useUserCards } from "@/hooks/cards"
+import { useCards } from "@/hooks/cards"
 import { AddCard } from "./add-card"
 import { Card } from "./card-item"
-import type { ToNostrEventTag } from "@snort/system"
-import type { Tag } from "@/types"
 
 interface StreamCardEditorProps {
   pubkey: string
-  tags: Array<ToNostrEventTag>
 }
 
-export function StreamCardEditor({ pubkey, tags }: StreamCardEditorProps) {
-  const cards = useUserCards(
-    pubkey,
-    tags.map(a => a.toEventTag() as Tag),
-    true,
-  )
+export function StreamCardEditor({ pubkey }: StreamCardEditorProps) {
+  const cards = useCards(pubkey, true)
   const [isEditing, setIsEditing] = useState(false)
   return (
     <>
