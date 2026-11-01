@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  actions: write # buildx gha cache
 
 concurrency:
   group: docker-build
@@ -15,6 +14,9 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      contents: read
+      actions: write # buildx gha cache
     strategy:
       matrix:
         include:
