@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test"
 import { bech32 } from "@scure/base"
+import { decode as bolt11decode } from "light-bolt11-decoder"
 import { invoiceMatchesAmount } from "../invoice"
 
 // Minimal bolt11 encoder so the test controls the claimed amount.
@@ -38,11 +39,14 @@ function makeBolt11(amountMsat: number | undefined): string {
   }
   const tsGroups = Array.from({ length: 7 }, (_, i) => Math.floor(ts / 2 ** (30 - 5 * i)) & 31)
   // bolt11 data layout: the 35-bit timestamp is the first 7 raw words (not a
-  // tagged field), followed by the tagged payment_hash/description fields.
+  // tagged field), followed by the tagged payment_hash/description fields and
+  // the trailing 104-word signature (garbage — the decoder does not verify it,
+  // but the section must exist for a structurally valid parse).
   const data = [
     ...tsGroups,
-    ...tagged(5, convertBits(payhash, 8, 5)),
-    ...tagged(13, convertBits(descBytes, 8, 5)),
+    ...tagged(1, convertBits(payhash, 8, 5)), // tag 1 = payment_hash
+    ...tagged(13, convertBits(descBytes, 8, 5)), // tag 13 = description
+    ...Array(104).fill(0), // trailing signature words (not verified by the decoder)
   ]
   return bech32.encode(hrp, data, false)
 }
@@ -66,5 +70,14 @@ describe("invoiceMatchesAmount", () => {
   test("matches floored msat amounts (LNURL sends Math.floor(sats*1000))", () => {
     expect(invoiceMatchesAmount(makeBolt11(21_500), 21.5)).toBe(true) // fractional sats floor to msat
     expect(invoiceMatchesAmount(makeBolt11(21_000), 21.5)).toBe(false)
+  })
+  test("fixture is structurally well-formed for the pinned decoder", () => {
+    // Guard against decoder upgrades changing the parse: the fixture must
+    // yield a real timestamp, payment_hash and description section, so the
+    // amount comparison above is exercised over the strict path.
+    const sections = bolt11decode(makeBolt11(21_000)).sections.map(s => s.name)
+    expect(sections).toContain("timestamp")
+    expect(sections).toContain("payment_hash")
+    expect(sections).toContain("description")
   })
 })
