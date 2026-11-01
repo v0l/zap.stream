@@ -91,7 +91,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       return (
         <HlsVideo
           id={props.id}
-          className={props.className}
+          className={classNames(props.className, "w-full")}
           slot="media"
           src={stream}
           playsInline

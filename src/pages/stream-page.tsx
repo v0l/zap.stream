@@ -46,7 +46,7 @@ function StreamPageContent() {
             poster={info?.image}
             status={info?.status}
             link={link}
-            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[72dvh] mx-auto xl:rounded-2xl overflow-hidden bg-black"
+            className="shrink-0 max-xl:max-h-[30dvh] xl:w-full xl:max-h-[72dvh] mx-auto xl:rounded-2xl overflow-hidden bg-black"
           />
         )}
         {event?.kind === N94_LIVE_STREAM && link && (
@@ -58,7 +58,7 @@ function StreamPageContent() {
             poster={info?.image}
             status={info?.status}
             link={link}
-            className="max-xl:max-h-[30dvh] xl:w-full xl:max-h-[72dvh] mx-auto xl:rounded-2xl overflow-hidden bg-black"
+            className="shrink-0 max-xl:max-h-[30dvh] xl:w-full xl:max-h-[72dvh] mx-auto xl:rounded-2xl overflow-hidden bg-black"
           />
         )}
         {event && (
