@@ -12,6 +12,7 @@ import {
 } from "media-chrome/react"
 import { MediaPlayerSizeButtonReact } from "@/element/video/video-size-button"
 import useImgProxy from "@/hooks/img-proxy"
+import { safeMediaUrl } from "@/utils"
 import { useMediaQuery } from "usehooks-ts"
 import { useVideoPlayerContext } from "./context"
 
@@ -29,6 +30,7 @@ export default function VideoPlayer({
 
   const ar = ctx.video?.bestAspectRatio() ?? 10 / 16
   const { proxy } = useImgProxy()
+  const poster = safeMediaUrl(ctx.video?.bestPoster()?.url)
   return (
     <MediaController className="min-w-0 w-full" defaultStreamType="on-demand">
       <video
@@ -40,7 +42,7 @@ export default function VideoPlayer({
         autoPlay={true}
         controls={false}
         loop={loop}
-        poster={proxy(ctx.video?.bestPoster()?.url ?? "")}
+        poster={proxy(poster ?? "")}
       >
         {ctx.video?.sources().map(a => (
           <source key={a.url} src={a.url} type={a.mimeType} />

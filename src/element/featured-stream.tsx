@@ -37,7 +37,8 @@ export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps
   const host = getHost(ev)
   const hostProfile = useUserProfile(host)
   const link = useStreamHref(ev, host)
-  const imgSrc = safeMediaUrl(image ?? thumbnail ?? (recording ? youtubeThumbnailUrl(recording) : undefined))
+  const imgSrc =
+    safeMediaUrl(image) ?? safeMediaUrl(thumbnail) ?? (recording ? youtubeThumbnailUrl(recording) : undefined)
 
   return (
     <section
