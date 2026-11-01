@@ -1,4 +1,4 @@
-FROM oven/bun:alpine AS web
+FROM oven/bun:alpine@sha256:4cf82f5686b196504fe119db3fcd9185b191f82ece82c40680e597228ec6070a AS web
 WORKDIR /app
 COPY package.json bun.lock ./
 COPY packages ./packages
@@ -7,7 +7,7 @@ COPY . .
 RUN apk add --no-cache git && git init -q . && git -c user.name=x -c user.email=x@x commit -q --allow-empty -m build && git tag build
 RUN bun run build && bun run build:ssr
 
-FROM voidic/nostr-ssr:latest
+FROM voidic/nostr-ssr@sha256:b9348aa8f8f4f6632b164774bebe077189d05efda63c8a0bbd6c2a4aa654d9a4
 COPY --from=web /app/build /app/dist/client
 COPY --from=web /app/build/ssr /app/dist/ssr
 RUN rm -rf /app/dist/client/ssr
