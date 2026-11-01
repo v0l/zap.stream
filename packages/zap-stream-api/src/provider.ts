@@ -1,4 +1,5 @@
 import { base64, hex } from "@scure/base"
+import { sha256 } from "@noble/hashes/sha2.js"
 import type { Signer, NostrEvent } from "./types"
 import { appendDedupe, unixNow, buildUnsignedEvent } from "./types"
 import { HTTP_AUTH_KIND } from "./constants"
@@ -333,19 +334,21 @@ export class NostrStreamProvider {
 
     const u = `${this.url}${path}`
     const pubkey = await signer.getPubKey()
+    // Stringify once: the same bytes are hashed into the payload tag and sent.
+    const bodyStr = body === undefined ? undefined : JSON.stringify(body)
     const tags: Array<Array<string>> = [
       ["u", u],
       ["method", method],
     ]
-    const payloadTag = await this.#payloadTag(body)
-    if (payloadTag) {
-      tags.push(payloadTag)
+    if (bodyStr !== undefined) {
+      // sha256 hex of the exact request body (zap-stream-core verifies hex)
+      tags.push(["payload", hex.encode(sha256(new TextEncoder().encode(bodyStr)))])
     }
     const unsigned = buildUnsignedEvent(pubkey, HTTP_AUTH_KIND, tags, "", unixNow() + Math.floor(this.#timeSync.offset / 1000))
     const token = await signer.sign(unsigned)
     const rsp = await fetch(u, {
       method,
-      body: body ? JSON.stringify(body) : undefined,
+      body: bodyStr,
       headers: {
         "content-type": "application/json",
         authorization: `Nostr ${base64.encode(new TextEncoder().encode(JSON.stringify(token)))}`,
@@ -356,13 +359,6 @@ export class NostrStreamProvider {
       throw new Error(json)
     }
     return json.length > 0 ? (JSON.parse(json) as T) : ({} as T)
-  }
-
-  async #payloadTag(body: unknown): Promise<Array<string> | undefined> {
-    if (body === undefined) return undefined
-    const data = new TextEncoder().encode(JSON.stringify(body))
-    const digest = await globalThis.crypto.subtle.digest("SHA-256", data)
-    return ["payload", hex.encode(new Uint8Array(digest))]
   }
 }
 

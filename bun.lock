@@ -86,6 +86,7 @@
       "name": "@zap.stream/api",
       "version": "0.1.0",
       "dependencies": {
+        "@noble/hashes": "^2.3.0",
         "@scure/base": "^2.2.0",
       },
       "devDependencies": {
