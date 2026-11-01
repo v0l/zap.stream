@@ -45,7 +45,7 @@
     "recharts": "^3.10.1",
     "rxjs": "^7.8.2",
     "usehooks-ts": "^3.1.1",
-    "uuid": "^14.0.2",
+    "uuid": "^14.0.3",
     "webrtc-adapter": "^9.0.6",
     "workbox-core": "^7.4.1",
     "workbox-precaching": "^7.4.1",
