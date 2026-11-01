@@ -1,5 +1,6 @@
 import { DefaultButton, PrimaryButton } from "@/element/buttons"
 import Modal from "@/element/modal"
+import { invoiceMatchesAmount } from "@/invoice"
 import type { NostrStreamProvider } from "@/providers"
 import { LNURL } from "@snort/shared"
 import { useEffect, useState } from "react"
@@ -60,6 +61,14 @@ export default function AccountWithdrawl({
         await lnurl.load()
         const rsp = await lnurl.getInvoice(amount, "Withdrawal from zap.stream")
         if (rsp.pr) {
+          // The service controls the invoice contents; only forward it when it
+          // provably carries the amount the user requested (fail closed).
+          if (invoiceMatchesAmount(rsp.pr, amount) !== true) {
+            setError(
+              formatMessage({ defaultMessage: "Invoice amount does not match the requested withdrawal amount" }),
+            )
+            return
+          }
           invoice = rsp.pr
         } else {
           setError(rsp.reason ?? invoiceError)
