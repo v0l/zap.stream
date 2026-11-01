@@ -1,6 +1,7 @@
 import "./send-zap.css"
 import { Fragment, type ReactNode, useEffect, useState } from "react"
 import { LNURL } from "@snort/shared"
+import { invoiceMatchesAmount } from "@/invoice"
 import { EventPublisher, type NostrEvent, PrivateKeySigner, type TaggedNostrEvent } from "@snort/system"
 import { FormattedMessage, FormattedNumber } from "react-intl"
 
@@ -26,6 +27,12 @@ export interface LNURLLike {
   getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
 }
 
+/**
+ * Check a bolt11 invoice against the amount (in sats) the user asked to send.
+ * Re-exported from src/invoice.ts for convenience.
+ */
+export { invoiceMatchesAmount } from "@/invoice"
+
 export interface SendZapsProps {
   lnurl: string | LNURLLike
   pubkey?: string
@@ -48,6 +55,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
   const [amount, setAmount] = useState(satsAmounts[0])
   const [comment, setComment] = useState("")
   const [invoice, setInvoice] = useState("")
+  const [invoiceWarning, setInvoiceWarning] = useState<string>()
   const login = useLogin()
   const wallet = useWallet()
   const rate = useRates("BTCUSD")
@@ -86,9 +94,10 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     }
 
     const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount
+    const commentText = svc.maxCommentLength > 0 ? comment.slice(0, svc.maxCommentLength) : comment
     let zap: NostrEvent | undefined
     if (pubkey) {
-      zap = await pub.zap(amountInSats * 1000, pubkey, relays, undefined, comment, eb => {
+      zap = await pub.zap(amountInSats * 1000, pubkey, relays, undefined, commentText, eb => {
         if (aTag) {
           eb.tag(["a", aTag])
         }
@@ -101,10 +110,19 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
         return eb
       })
     }
-    const invoice = await svc.getInvoice(amountInSats, comment, zap)
+    const invoice = await svc.getInvoice(amountInSats, commentText, zap)
     if (!invoice.pr) return
 
-    if (wallet) {
+    // The LNURL callback controls the invoice contents; verify it actually
+    // carries the amount the user chose before handing it to a wallet.
+    const amountOk = invoiceMatchesAmount(invoice.pr, amountInSats)
+    if (amountOk === false) {
+      setInvoiceWarning(
+        `Invoice is not for the requested amount (${formatSats(amountInSats)}). Double-check before paying.`,
+      )
+    }
+
+    if (wallet && amountOk !== false) {
       try {
         await wallet.payInvoice(invoice.pr)
         onFinish()
@@ -195,6 +213,11 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     const link = `lightning:${invoice}`
     return (
       <>
+        {invoiceWarning && (
+          <div className="mb-2 p-2 text-sm" style={{ color: "#f59e0b" }}>
+            <FormattedMessage defaultMessage="Warning" description="Invoice amount warning" />: {invoiceWarning}
+          </div>
+        )}
         <QrCode data={link} link={link} className="mx-auto" />
         <div className="flex items-center justify-center">
           <Copy text={invoice} />
