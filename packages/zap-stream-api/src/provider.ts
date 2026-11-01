@@ -1,4 +1,4 @@
-import { base64 } from "@scure/base"
+import { base64, hex } from "@scure/base"
 import type { Signer, NostrEvent } from "./types"
 import { appendDedupe, unixNow, buildUnsignedEvent } from "./types"
 import { HTTP_AUTH_KIND } from "./constants"
@@ -343,7 +343,6 @@ export class NostrStreamProvider {
     }
     const unsigned = buildUnsignedEvent(pubkey, HTTP_AUTH_KIND, tags, "", unixNow() + Math.floor(this.#timeSync.offset / 1000))
     const token = await signer.sign(unsigned)
-
     const rsp = await fetch(u, {
       method,
       body: body ? JSON.stringify(body) : undefined,
@@ -359,15 +358,11 @@ export class NostrStreamProvider {
     return json.length > 0 ? (JSON.parse(json) as T) : ({} as T)
   }
 
-  /**
-   * NIP-98 `payload` tag: base64(SHA-256(JSON.stringify(body))), binding the
-   * auth event to the exact request body. Omitted for bodyless requests.
-   */
   async #payloadTag(body: unknown): Promise<Array<string> | undefined> {
     if (body === undefined) return undefined
     const data = new TextEncoder().encode(JSON.stringify(body))
     const digest = await globalThis.crypto.subtle.digest("SHA-256", data)
-    return ["payload", base64.encode(new Uint8Array(digest))]
+    return ["payload", hex.encode(new Uint8Array(digest))]
   }
 }
 
