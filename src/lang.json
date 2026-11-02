@@ -417,6 +417,9 @@
   "Jq3FDz": {
     "defaultMessage": "Content"
   },
+  "JqiqNj": {
+    "defaultMessage": "Something went wrong"
+  },
   "K3r6DQ": {
     "defaultMessage": "Delete"
   },
@@ -569,9 +572,6 @@
   "QceMQZ": {
     "defaultMessage": "Goal: {amount}"
   },
-  "QsC3ss": {
-    "defaultMessage": "Invoice amount does not match the requested withdrawal amount"
-  },
   "Qwauri": {
     "defaultMessage": "Recommended. Your key stays in the extension."
   },
@@ -632,6 +632,9 @@
   },
   "USP7o4": {
     "defaultMessage": "{platform} channel name"
+  },
+  "Uc6uV8": {
+    "defaultMessage": "Invoice amount does not match the requested withdrawal"
   },
   "Uo/DWG": {
     "defaultMessage": "About too long"
@@ -751,6 +754,9 @@
   "ZHtR8c": {
     "defaultMessage": "in {category}"
   },
+  "ZRBLxT": {
+    "defaultMessage": "Invoice is not for the requested amount ({amount}). Double-check before paying."
+  },
   "Zfr//4": {
     "defaultMessage": "No duration provided, please try another upload server."
   },
@@ -866,6 +872,9 @@
   },
   "fF376U": {
     "defaultMessage": "Current"
+  },
+  "fdCS5/": {
+    "defaultMessage": "Reload"
   },
   "g5pX+a": {
     "defaultMessage": "About"

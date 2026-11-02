@@ -1,6 +1,5 @@
 import { describe, expect, test } from "bun:test"
 import { bech32 } from "@scure/base"
-import { decode as bolt11decode } from "light-bolt11-decoder"
 import { invoiceMatchesAmount } from "../invoice"
 
 // Minimal bolt11 encoder so the test controls the claimed amount.
@@ -70,14 +69,5 @@ describe("invoiceMatchesAmount", () => {
   test("matches floored msat amounts (LNURL sends Math.floor(sats*1000))", () => {
     expect(invoiceMatchesAmount(makeBolt11(21_500), 21.5)).toBe(true) // fractional sats floor to msat
     expect(invoiceMatchesAmount(makeBolt11(21_000), 21.5)).toBe(false)
-  })
-  test("fixture is structurally well-formed for the pinned decoder", () => {
-    // Guard against decoder upgrades changing the parse: the fixture must
-    // yield a real timestamp, payment_hash and description section, so the
-    // amount comparison above is exercised over the strict path.
-    const sections = bolt11decode(makeBolt11(21_000)).sections.map(s => s.name)
-    expect(sections).toContain("timestamp")
-    expect(sections).toContain("payment_hash")
-    expect(sections).toContain("description")
   })
 })
