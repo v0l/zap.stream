@@ -1,7 +1,7 @@
 {
   "name": "@zap.stream/api",
   "version": "0.1.0",
-  "description": "zap.stream API client \u2014 live streaming & account management for Nostr",
+  "description": "zap.stream API client — live streaming & account management for Nostr",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,9 +13,7 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "bun build ./src/index.ts --outdir ./dist --target browser --format esm --sourcemap=linked --packages external && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "clean": "rm -rf dist",
@@ -34,10 +32,5 @@
     "url": "https://github.com/v0l/zap.stream.git",
     "directory": "packages/zap-stream-api"
   },
-  "keywords": [
-    "nostr",
-    "zap-stream",
-    "live-streaming",
-    "api-client"
-  ]
+  "keywords": ["nostr", "zap-stream", "live-streaming", "api-client"]
 }
