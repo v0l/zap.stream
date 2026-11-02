@@ -246,3 +246,19 @@ export function groupBy<T>(val: Array<T>, selector: (a: T) => string | number): 
     {} as Record<string, Array<T>>,
   )
 }
+
+/**
+ * Allowlist for streaming-provider API base URLs taken from attacker-
+ * controlled event fields (NIP-89 handler `website`, live-event `service`
+ * tag). Providers authenticate with signed NIP-98 events bound to the
+ * target URL, so an unsafe base URL would leak the user's pubkey/IP to a
+ * hostile host. Returns undefined for anything that is not plain https:.
+ */
+export function safeProviderUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined
+  try {
+    return new URL(url).protocol === "https:" ? url : undefined
+  } catch {
+    return undefined
+  }
+}

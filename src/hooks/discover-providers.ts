@@ -4,6 +4,7 @@ import { useMemo } from "react"
 import type { StreamProviderConfig } from "./stream-provider"
 import useWoT from "./wot"
 import { defaultRelays, P_TAG_HOST_WHITELIST, PROVIDER_DISCOVERY_RELAYS } from "@/const"
+import { safeProviderUrl } from "@/utils"
 
 export function providerDiscoveryRelays(): string[] {
   return [...new Set([...Object.keys(defaultRelays), ...PROVIDER_DISCOVERY_RELAYS])]
@@ -58,11 +59,13 @@ export function useDiscoverProviders(): StreamProviderConfig[] {
                 return acc + (dist === 1000 ? 5 : dist)
               }, 0) / recommendsThis.length // average distance
 
-        // Only website is required
-        if (userMetadata.website) {
+        // Only website is required. Provider URLs receive signed NIP-98 auth
+        // events bound to the target URL, so restrict them to https.
+        const website = safeProviderUrl(userMetadata.website)
+        if (website) {
           providerConfigs.push({
             name: userMetadata.name || "Unknown Provider",
-            url: userMetadata.website,
+            url: website,
             description: userMetadata.about,
             pubkey: event.pubkey,
             event: event,
