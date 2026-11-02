@@ -7,7 +7,7 @@ COPY . .
 RUN apk add --no-cache git && git init -q . && git -c user.name=x -c user.email=x@x commit -q --allow-empty -m build && git tag build
 RUN bun run build && bun run build:ssr
 
-FROM voidic/nostr-ssr:latest@sha256:b9348aa8f8f4f6632b164774bebe077189d05efda63c8a0bbd6c2a4aa654d9a4
+FROM voidic/nostr-ssr:latest
 COPY --from=web /app/build /app/dist/client
 COPY --from=web /app/build/ssr /app/dist/ssr
 RUN rm -rf /app/dist/client/ssr
