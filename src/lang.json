@@ -569,6 +569,9 @@
   "QceMQZ": {
     "defaultMessage": "Goal: {amount}"
   },
+  "QsC3ss": {
+    "defaultMessage": "Invoice amount does not match the requested withdrawal amount"
+  },
   "Qwauri": {
     "defaultMessage": "Recommended. Your key stays in the extension."
   },
@@ -983,6 +986,10 @@
   },
   "lZpRMR": {
     "defaultMessage": "Check here if this stream contains nudity or pornographic content."
+  },
+  "mLMKyf": {
+    "defaultMessage": "Warning",
+    "description": "Invoice amount warning"
   },
   "mVA9Km": {
     "defaultMessage": "Please login first."
