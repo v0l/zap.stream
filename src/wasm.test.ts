@@ -32,4 +32,28 @@ describe("WasmOptimizer", () => {
     expect(results[0]).toBe(true)
     expect(results[1]).toBe(false)
   })
+
+  test("verification binds the claimed id to the content and signature", async () => {
+    const signer = new PrivateKeySigner("e9e1b17c9c6f35e6b0f2a3e3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3")
+    const signed = await signer.sign({
+      kind: 1,
+      created_at: Math.floor(Date.now() / 1000),
+      tags: [],
+      content: "id binding test",
+      pubkey: await signer.getPubKey(),
+      id: "",
+      sig: "",
+    } as NostrEvent)
+    // Content altered but the original (verified) claimed id kept: must fail —
+    // the recomputed id no longer matches the claimed id.
+    const stolenId = { ...signed, content: "different content, same claimed id" }
+    // Valid signature over the content, but the claimed id is not that
+    // content's id: must fail — id and content must agree.
+    const relabeled = { ...signed, id: "bb".repeat(32) }
+
+    expect(WasmOptimizer.batchVerify([stolenId])[0]).toBe(false)
+    expect(WasmOptimizer.batchVerify([relabeled])[0]).toBe(false)
+    expect(WasmOptimizer.schnorrVerify(stolenId)).toBe(false)
+    expect(WasmOptimizer.schnorrVerify(relabeled)).toBe(false)
+  })
 })
