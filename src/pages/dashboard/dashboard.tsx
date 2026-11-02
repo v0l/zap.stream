@@ -5,6 +5,7 @@ import { SnortContext } from "@snort/system-react"
 import { Suspense, lazy, useContext, useEffect, useMemo, useState } from "react"
 import { FormattedMessage } from "react-intl"
 import { StreamState, LIVE_STREAM } from "@/const"
+import { safeProviderUrl } from "@/utils"
 import { useStream } from "@/element/stream/stream-state"
 import { DashboardRaidButton } from "./button-raid"
 import { DashboardZapColumn } from "./column-zaps"
@@ -45,8 +46,9 @@ export default function DashboardForLink() {
 
   const provider = useMemo(() => {
     const publisher = login?.publisher?.()
-    return streamInfo?.status === StreamState.Live && streamInfo?.service
-      ? new NostrStreamProvider("", streamInfo?.service, publisher ? adaptPublisher(publisher) : undefined)
+    const svc = safeProviderUrl(streamInfo?.service)
+    return streamInfo?.status === StreamState.Live && svc
+      ? new NostrStreamProvider("", svc, publisher ? adaptPublisher(publisher) : undefined)
       : streamProvider
   }, [streamInfo?.service, streamInfo?.status, streamProvider, login?.pubkey])
 

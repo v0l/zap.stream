@@ -6,7 +6,7 @@ import { SnortContext } from "@snort/system-react"
 import { LinkScope, NostrLink, type TaggedNostrEvent } from "@snort/system"
 
 import { LIVE_STREAM_CLIP, StreamState } from "@/const"
-import { extractStreamInfo } from "@/utils"
+import { extractStreamInfo, safeProviderUrl } from "@/utils"
 import { Icon } from "../icon"
 import { unwrap } from "@snort/shared"
 import { TimelineBar } from "../timeline"
@@ -45,11 +45,10 @@ export function ClipButton({ ev }: { ev: TaggedNostrEvent }) {
     return () => video.removeEventListener("timeupdate", onTimeUpdate)
   }, [video, clipLength, start, length])
 
-  const provider = useMemo(
-    () =>
-      service ? new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined) : undefined,
-    [service, publisher],
-  )
+  const provider = useMemo(() => {
+    const svc = safeProviderUrl(service)
+    return svc ? new NostrStreamProvider("", svc, publisher ? adaptPublisher(publisher) : undefined) : undefined
+  }, [service, publisher])
 
   if (!service || !provider || status !== StreamState.Live) return
 

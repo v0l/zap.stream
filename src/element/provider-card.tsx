@@ -10,6 +10,8 @@ import { useLogin } from "@/hooks/login"
 import { Profile } from "@/element/profile"
 import { NostrLink, EventKind } from "@snort/system"
 import useWoT from "@/hooks/wot"
+import { P_TAG_HOST_WHITELIST } from "@/const"
+import { safeProviderUrl } from "@/utils"
 import Modal from "@/element/modal"
 import { SnortContext } from "@snort/system-react"
 
@@ -21,7 +23,13 @@ interface ProviderCardProps {
 }
 
 export function ProviderCard({ config, active, onSelect, showRecommendations = false }: ProviderCardProps) {
-  const [loading, setLoading] = useState(true)
+  // The card fetches provider details with signed NIP-98 auth events bound to
+  // the provider URL. Known providers (whitelist) auto-load; anything else
+  // discovered via NIP-89 waits for an explicit click, so merely browsing the
+  // list never transmits signed auth events or pings to an unvetted host.
+  const autoLoad = P_TAG_HOST_WHITELIST.includes(config.pubkey)
+  const [loaded, setLoaded] = useState(autoLoad)
+  const [loading, setLoading] = useState(autoLoad)
   const [error, setError] = useState<string>()
   const [account, setAccount] = useState<AccountResponse>()
   const [isRecommending, setIsRecommending] = useState(false)
@@ -103,6 +111,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
   }
 
   useEffect(() => {
+    if (!loaded) return
     const publisher = login?.publisher()
     const p = new NostrStreamProvider(config.name, config.url, publisher ? adaptPublisher(publisher) : undefined)
     setLoading(true)
@@ -126,7 +135,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
     return () => {
       cancelled = true
     }
-  }, [login?.pubkey])
+  }, [loaded, login?.pubkey])
 
   return (
     <div className={`bg-layer-1 rounded-xl border p-4 ${active ? "border-primary" : "border-layer-2"}`}>
@@ -166,7 +175,7 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
 
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-3 text-sm">
-            <span className="text-layer-5">{new URL(config.url).host}</span>
+            <span className="text-layer-5">{safeProviderUrl(config.url) ? new URL(config.url).host : config.url}</span>
             {pingTime !== null && !pingError && (
               <span
                 className={`text-xs px-2 py-1 rounded-full ${
@@ -183,7 +192,12 @@ export function ProviderCard({ config, active, onSelect, showRecommendations = f
             {pingError && <span className="text-xs px-2 py-1 rounded-full bg-red-800 text-red-100">timeout</span>}
           </div>
           <div className="flex gap-2">
-            {!active && !loading && !error && (
+            {!active && !loaded && (
+              <DefaultButton onClick={() => setLoaded(true)}>
+                <FormattedMessage defaultMessage="Load provider info" />
+              </DefaultButton>
+            )}
+            {!active && loaded && !loading && !error && (
               <DefaultButton onClick={() => onSelect()}>
                 <FormattedMessage defaultMessage="Select" />
               </DefaultButton>

@@ -3,6 +3,7 @@ import { NostrStreamProvider, adaptPublisher } from "@/providers"
 import { base64 } from "@scure/base"
 import { unwrap } from "@snort/shared"
 import { useEffect, useState } from "react"
+import { safeProviderUrl } from "@/utils"
 import { Icon } from "../icon"
 import { DefaultButton } from "../buttons"
 import { useIntl } from "react-intl"
@@ -12,9 +13,11 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   const { formatMessage } = useIntl()
   const publisher = login?.publisher()
   const [subscribed, setSubscribed] = useState(false)
-  const api = new NostrStreamProvider("", service, publisher ? adaptPublisher(publisher) : undefined)
+  const svcUrl = safeProviderUrl(service)
+  const api = svcUrl ? new NostrStreamProvider("", svcUrl, publisher ? adaptPublisher(publisher) : undefined) : undefined
 
   async function isSubscribed() {
+    if (!api) return
     const reg = await navigator.serviceWorker.ready
     if (reg) {
       const sub = await reg.pushManager.getSubscription()
@@ -43,6 +46,7 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   }
 
   async function subscribe() {
+    if (!api) return
     if (await enableNotifications()) {
       try {
         if ("serviceWorker" in navigator) {
@@ -71,7 +75,7 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   }
 
   async function unsubscribe() {
-    if (publisher) {
+    if (publisher && api) {
       await api.removeStreamerSubscription(host)
       setSubscribed(false)
     }
@@ -80,6 +84,10 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   useEffect(() => {
     isSubscribed().catch(console.error)
   }, [])
+
+  // Hide the bell when the stream's service URL is not a safe https URL —
+  // every button action would send signed auth events to that host.
+  if (!api) return null
 
   return (
     <DefaultButton
