@@ -16,7 +16,12 @@ export function ChatPopout() {
     for (const k of Object.keys(ChatApis)) {
       const kParam = hashParams.get(k)
       if (kParam) {
-        ChatApis[k as "twitch" | "youtube" | "kick"].loadFromWidgetParams(kParam)
+        try {
+          ChatApis[k as "twitch" | "youtube" | "kick"].loadFromWidgetParams(kParam)
+        } catch (error) {
+          // Malformed fragment must not crash the popout (used in OBS).
+          console.error("Failed to load widget params for", k, error)
+        }
       }
     }
     return { chat: hashParams.get("chat") === "true", badges: hashParams.get("badges") === "true" }
