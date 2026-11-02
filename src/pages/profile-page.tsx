@@ -183,7 +183,7 @@ function Stat({ label, children }: { label: ReactNode; children: ReactNode }) {
 function LiveNow({ ev }: { ev: TaggedNostrEvent }) {
   const { title, image, thumbnail, participants } = extractStreamInfo(ev)
   const { proxy } = useImgProxy()
-  const img = image ?? thumbnail
+  const img = safeMediaUrl(image) ?? safeMediaUrl(thumbnail)
   const [failed, setFailed] = useState(false)
   return (
     <Link
