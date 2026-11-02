@@ -5,8 +5,8 @@
 Please do **not** open a public issue for anything you believe is exploitable.
 
 Preferred: use GitHub's **private vulnerability reporting** for this repository
-(Security tab → "Report a vulnerability"). If that is not available, coordinate
-directly with the maintainers through a private channel they designate here.
+(Security tab → "Report a vulnerability" — maintainers, please keep this
+enabled).
 
 When reporting, include: affected commit/version, a minimal reproduction (event
 fixture, config, or test), an impact assessment, and whether the issue also
