@@ -18,7 +18,7 @@ import { useBadgeAwards } from "@/hooks/badges"
 import { useLogin } from "@/hooks/login"
 import { formatZapAmount } from "@/number"
 import { LIVE_STREAM_CHAT, LIVE_STREAM_CLIP, LIVE_STREAM_RAID, WEEK } from "@/const"
-import { findTag, getHost, getTagValues, uniqBy } from "@/utils"
+import { findTag, getHost, getTagValues, safeMediaUrl, uniqBy } from "@/utils"
 import { TopZappers } from "../top-zappers"
 import { Link, useNavigate } from "react-router"
 import classNames from "classnames"
@@ -440,7 +440,7 @@ function ChatRaidInner({
 
 function ChatClip({ ev }: { ev: TaggedNostrEvent }) {
   const profile = useUserProfile(ev.pubkey)
-  const rTag = findTag(ev, "r")
+  const rTag = safeMediaUrl(findTag(ev, "r"))
   const title = findTag(ev, "title")
   return (
     <div className="px-3 py-2 rounded-xl border border-layer-3 bg-layer-2 flex flex-col gap-2">
