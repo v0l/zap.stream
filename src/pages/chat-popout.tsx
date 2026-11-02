@@ -19,7 +19,6 @@ export function ChatPopout() {
         try {
           ChatApis[k as "twitch" | "youtube" | "kick"].loadFromWidgetParams(kParam)
         } catch (error) {
-          // Malformed fragment must not crash the popout (used in OBS).
           console.error("Failed to load widget params for", k, error)
         }
       }

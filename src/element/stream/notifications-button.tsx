@@ -85,8 +85,6 @@ export function NotificationsButton({ host, service }: { host: string; service: 
     isSubscribed().catch(console.error)
   }, [])
 
-  // Hide the bell when the stream's service URL is not a safe https URL —
-  // every button action would send signed auth events to that host.
   if (!api) return null
 
   return (

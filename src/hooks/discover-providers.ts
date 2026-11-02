@@ -59,8 +59,6 @@ export function useDiscoverProviders(): StreamProviderConfig[] {
                 return acc + (dist === 1000 ? 5 : dist)
               }, 0) / recommendsThis.length // average distance
 
-        // Only website is required. Provider URLs receive signed NIP-98 auth
-        // events bound to the target URL, so restrict them to https.
         const website = safeProviderUrl(userMetadata.website)
         if (website) {
           providerConfigs.push({

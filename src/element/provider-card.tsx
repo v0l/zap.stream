@@ -23,10 +23,6 @@ interface ProviderCardProps {
 }
 
 export function ProviderCard({ config, active, onSelect, showRecommendations = false }: ProviderCardProps) {
-  // The card fetches provider details with signed NIP-98 auth events bound to
-  // the provider URL. Known providers (whitelist) auto-load; anything else
-  // discovered via NIP-89 waits for an explicit click, so merely browsing the
-  // list never transmits signed auth events or pings to an unvetted host.
   const autoLoad = P_TAG_HOST_WHITELIST.includes(config.pubkey)
   const [loaded, setLoaded] = useState(autoLoad)
   const [loading, setLoading] = useState(autoLoad)
