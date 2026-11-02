@@ -1,13 +1,14 @@
 import {
   EventExt,
   EventKind,
+  NostrLink,
   RequestBuilder,
   type NostrEvent,
   type SystemInterface,
   type TaggedNostrEvent,
 } from "@snort/system"
 import type { EventSigner } from "@snort/system"
-import { unixNow } from "@snort/shared"
+import { NostrPrefix, unixNow } from "@snort/shared"
 
 export function latestEvent<T extends { created_at: number }>(events: Array<T>) {
   return events.reduce<T | undefined>((best, ev) => (!best || ev.created_at > best.created_at ? ev : best), undefined)
@@ -20,7 +21,7 @@ export function applyFollowChange(tags: Array<Array<string>>, pubkey: string, fo
 
 export async function fetchLatestContacts(system: Pick<SystemInterface, "Fetch">, author: string) {
   const rb = new RequestBuilder(`contacts:${author}`)
-  rb.withFilter().kinds([EventKind.ContactList]).authors([author])
+  rb.withFilter().link(new NostrLink(NostrPrefix.Event, author, EventKind.ContactList, author))
   const events: Array<TaggedNostrEvent> = await system.Fetch(rb)
   return latestEvent(events.filter(e => e.kind === EventKind.ContactList && e.pubkey === author))
 }
