@@ -98,6 +98,7 @@
   },
   "packageManager": "bun@1.3.13",
   "patchedDependencies": {
-    "@snort/system@2.1.9": "patches/@snort%2Fsystem@2.1.9.patch"
+    "@snort/system@2.1.9": "patches/@snort%2Fsystem@2.1.9.patch",
+    "@snort/worker-relay@3.0.1": "patches/@snort%2Fworker-relay@3.0.1.patch"
   }
 }
