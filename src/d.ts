@@ -14,5 +14,16 @@ declare module "translations/*.json" {
   export default value
 }
 
-// light-bolt11-decoder is a direct devDependency now — its own type
-// declarations (including Section) are used; no ambient declaration needed.
+declare module "light-bolt11-decoder" {
+  export function decode(pr?: string): ParsedInvoice
+
+  export interface ParsedInvoice {
+    paymentRequest: string
+    sections: Section[]
+  }
+
+  export interface Section {
+    name: string
+    value: string | Uint8Array | number | undefined
+  }
+}

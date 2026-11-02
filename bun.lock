@@ -72,7 +72,6 @@
         "@vitejs/plugin-react": "^6.1.0",
         "@webbtc/webln-types": "^3.0.0",
         "autoprefixer": "^10.5.4",
-        "light-bolt11-decoder": "3.2.0",
         "postcss": "^8.5.26",
         "prop-types": "^15.8.1",
         "rollup-plugin-visualizer": "^7.1.1",

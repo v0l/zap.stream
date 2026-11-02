@@ -49,7 +49,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
   const [amount, setAmount] = useState(satsAmounts[0])
   const [comment, setComment] = useState("")
   const [invoice, setInvoice] = useState("")
-  const [invoiceWarning, setInvoiceWarning] = useState<string>()
+  const [invoiceWarning, setInvoiceWarning] = useState<ReactNode>()
   const login = useLogin()
   const wallet = useWallet()
   const rate = useRates("BTCUSD")
@@ -108,22 +108,22 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     const invoice = await svc.getInvoice(amountInSats, commentText, zap)
     if (!invoice.pr) return
 
-    // The LNURL callback controls the invoice contents; only auto-pay when the
-    // invoice provably carries the amount the user chose. Undecodable or
-    // amountless invoices must NOT auto-pay (fail closed) — show the QR and
-    // let the user decide.
+    // Block auto-pay only when the invoice provably carries a different
+    // amount than requested. Amountless invoices keep the previous
+    // auto-pay behavior (wallet decides).
     const amountOk = invoiceMatchesAmount(invoice.pr, amountInSats)
     if (amountOk === false) {
       setInvoiceWarning(
-        `Invoice is not for the requested amount (${formatSats(amountInSats)}). Double-check before paying.`,
+        <FormattedMessage
+          defaultMessage="Invoice is not for the requested amount ({amount}). Double-check before paying."
+          values={{ amount: formatSats(amountInSats) }}
+        />,
       )
-    } else if (amountOk === undefined) {
-      setInvoiceWarning("Invoice amount could not be verified automatically. Double-check the amount before paying.")
     } else {
       setInvoiceWarning(undefined)
     }
 
-    if (wallet && amountOk === true) {
+    if (wallet && amountOk !== false) {
       try {
         await wallet.payInvoice(invoice.pr)
         onFinish()
