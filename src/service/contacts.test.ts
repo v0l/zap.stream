@@ -21,13 +21,14 @@ test("following keeps follows made in other clients and the existing content", a
     ],
   } as NostrEvent
   const sent: Array<NostrEvent> = []
-  const system = {
-    Fetch: async () => [remote],
-    BroadcastEvent: async (ev: NostrEvent) => {
+  const fakeSystem = (fetched: () => Array<NostrEvent>) => ({
+    ["Fetch"]: async () => fetched(),
+    ["BroadcastEvent"]: async (ev: NostrEvent) => {
       sent.push(ev)
       return []
     },
-  }
+  })
+  const system = fakeSystem(() => [remote])
   await publishFollowChange({
     system: system as never,
     signer,
@@ -37,16 +38,23 @@ test("following keeps follows made in other clients and the existing content", a
     fallbackFollows: [],
   })
   expect(sent.length).toBe(1)
-  expect(sent[0].tags).toEqual([["p", outside, "wss://hint", "petname"], ["t", "kept"], ["p", target]])
+  expect(sent[0].tags).toEqual([
+    ["p", outside, "wss://hint", "petname"],
+    ["t", "kept"],
+    ["p", target],
+  ])
   expect(sent[0].content).toBe(remote.content)
   expect(sent[0].created_at).toBeGreaterThan(remote.created_at)
 
   await publishFollowChange({
-    system: { ...system, Fetch: async () => [sent[0]] } as never,
+    system: fakeSystem(() => [sent[0]]) as never,
     signer,
     pubkey,
     target,
     follow: false,
   })
-  expect(sent[1].tags).toEqual([["p", outside, "wss://hint", "petname"], ["t", "kept"]])
+  expect(sent[1].tags).toEqual([
+    ["p", outside, "wss://hint", "petname"],
+    ["t", "kept"],
+  ])
 })

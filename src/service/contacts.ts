@@ -1,4 +1,11 @@
-import { EventExt, EventKind, RequestBuilder, type NostrEvent, type SystemInterface, type TaggedNostrEvent } from "@snort/system"
+import {
+  EventExt,
+  EventKind,
+  RequestBuilder,
+  type NostrEvent,
+  type SystemInterface,
+  type TaggedNostrEvent,
+} from "@snort/system"
 import type { EventSigner } from "@snort/system"
 import { unixNow } from "@snort/shared"
 
