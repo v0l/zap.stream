@@ -108,9 +108,6 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     const invoice = await svc.getInvoice(amountInSats, commentText, zap)
     if (!invoice.pr) return
 
-    // Block auto-pay only when the invoice provably carries a different
-    // amount than requested. Amountless invoices keep the previous
-    // auto-pay behavior (wallet decides).
     const amountOk = invoiceMatchesAmount(invoice.pr, amountInSats)
     if (amountOk === false) {
       setInvoiceWarning(
