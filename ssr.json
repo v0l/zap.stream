@@ -177,8 +177,7 @@
       "set": {
         "x-content-type-options": "nosniff",
         "referrer-policy": "strict-origin-when-cross-origin",
-        "x-frame-options": "SAMEORIGIN",
-        "content-security-policy-report-only": "default-src 'self'; script-src 'self'"
+        "x-frame-options": "SAMEORIGIN"
       }
     },
     {
