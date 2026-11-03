@@ -24,6 +24,9 @@ export interface LNURLLike {
   get name(): string
   get maxCommentLength(): number
   get canZap(): boolean
+  /** service-advertised bounds in msat (LNURL minSendable/maxSendable), when known */
+  readonly min?: number
+  readonly max?: number
   getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
 }
 
@@ -50,6 +53,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
   const [comment, setComment] = useState("")
   const [invoice, setInvoice] = useState("")
   const [invoiceWarning, setInvoiceWarning] = useState<ReactNode>()
+  const [sendError, setSendError] = useState<ReactNode>()
   const login = useLogin()
   const wallet = useWallet()
   const rate = useRates("BTCUSD")
@@ -89,6 +93,27 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
 
     const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount
     if (!Number.isFinite(amountInSats) || amountInSats <= 0) return
+    const amountMsat = Math.floor(amountInSats * 1000)
+    // LNURL minSendable/maxSendable (msat) — enforce the bounds the service
+    // advertises instead of discovering them via a failed invoice request.
+    if (typeof svc.min === "number" && amountMsat < svc.min) {
+      setSendError(
+        <FormattedMessage
+          defaultMessage="Amount is below this provider's minimum ({min} sats)."
+          values={{ min: formatSats(Math.ceil(svc.min / 1000)) }}
+        />,
+      )
+      return
+    }
+    if (typeof svc.max === "number" && amountMsat > svc.max) {
+      setSendError(
+        <FormattedMessage
+          defaultMessage="Amount is above this provider's maximum ({max} sats)."
+          values={{ max: formatSats(Math.floor(svc.max / 1000)) }}
+        />,
+      )
+      return
+    }
     const commentText = svc.maxCommentLength > 0 ? comment.slice(0, svc.maxCommentLength) : comment
     let zap: NostrEvent | undefined
     if (pubkey) {
@@ -197,6 +222,9 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
               <textarea placeholder="Nice!" value={comment} onChange={e => setComment(e.target.value)} />
             </div>
           </div>
+        )}
+        {sendError && (
+          <div className="text-warning text-sm">{sendError}</div>
         )}
         <PrimaryButton onClick={send}>
           <FormattedMessage defaultMessage="Zap!" />
