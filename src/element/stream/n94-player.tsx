@@ -11,6 +11,8 @@ import { type HTMLProps, useContext, useEffect, useRef } from "react"
 import mpegts from "mpegts.js"
 import { SnortContext } from "@snort/system-react"
 import { findTag } from "@/utils"
+import { sha256 } from "@noble/hashes/sha2.js"
+import { bytesToHex } from "@noble/hashes/utils.js"
 
 interface MediaSegment {
   created: number
@@ -136,16 +138,41 @@ class Nip94Loader implements mpegts.BaseLoader {
     const orderedLoad = [...this.#mediaChunks.values()]
       .sort((a, b) => a.created - b.created)
       .filter(a => !a.loaded && a.variant === this.#variant)
+    // NIP-94 FileHeader events are attacker-authorable: the url can point
+    // anywhere and the x hash is the only integrity signal. Bound the fetch
+    // and verify it before the bytes reach the demuxer.
+    const MAX_SEGMENT_BYTES = 64 * 1024 * 1024
     for (const s of orderedLoad) {
       s.loaded = true
+      const ctl = new AbortController()
       try {
-        const result = await fetch(s.url)
+        const result = await fetch(s.url, { signal: ctl.signal })
         // skip 404
         if (result.status === 404) {
           s.loaded = true
           continue
         }
+        const contentLength = Number(result.headers.get("content-length"))
+        if (Number.isFinite(contentLength) && contentLength > MAX_SEGMENT_BYTES) {
+          console.warn("n94 segment exceeds size cap, skipping", s.url)
+          continue
+        }
         const buf = await result.arrayBuffer()
+        if (buf.byteLength > MAX_SEGMENT_BYTES) {
+          console.warn("n94 segment exceeds size cap, skipping", s.url)
+          continue
+        }
+
+        // Verify the segment against the event's x hash when present; a
+        // mismatched segment is attacker/substituted content — skip it
+        // (leaves a playback gap rather than feeding hostile bytes).
+        if (s.sha256) {
+          const digest = bytesToHex(sha256(new Uint8Array(buf)))
+          if (digest.toLowerCase() !== s.sha256.toLowerCase()) {
+            console.warn("n94 segment hash mismatch, skipping", s.url)
+            continue
+          }
+        }
 
         this.onDataArrival(buf, this.#bytes, buf.byteLength)
         console.debug("pushing bytes", this.#bytes, buf.byteLength)
@@ -158,6 +185,8 @@ class Nip94Loader implements mpegts.BaseLoader {
       } catch (e) {
         s.loaded = false
         console.warn("Failed to load chunk ", s, e)
+      } finally {
+        ctl.abort()
       }
     }
     this.#loading = false
