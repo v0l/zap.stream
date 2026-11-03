@@ -11,6 +11,7 @@ import { type HTMLProps, useContext, useEffect, useRef } from "react"
 import mpegts from "mpegts.js"
 import { SnortContext } from "@snort/system-react"
 import { findTag } from "@/utils"
+import { MAX_SEGMENT_BYTES, readCapped } from "./n94-fetch"
 import { sha256 } from "@noble/hashes/sha2.js"
 import { bytesToHex } from "@noble/hashes/utils.js"
 
@@ -91,12 +92,15 @@ class Nip94Loader implements mpegts.BaseLoader {
       leaveOpen: true,
       skipCache: true,
     })
-    rb.withFilter().replyToLink([link]).kinds([EventKind.FileHeader]).limit(10)
+    const f = rb.withFilter().replyToLink([link]).kinds([EventKind.FileHeader]).limit(10)
+    // segments must come from the stream's own author; replyToLink alone accepts anyone
+    if (link.author) f.authors([link.author])
 
     this.#status = LoaderStatus.kConnecting
     this.#query = this.#system.Query(rb)
     this.#query.on("event", evs => {
       for (const ev of evs) {
+        if (link.author && ev.pubkey !== link.author) continue
         const url = findTag(ev, "url")
         if (!url) continue
         const seg = {
@@ -118,8 +122,10 @@ class Nip94Loader implements mpegts.BaseLoader {
   #loading = false
 
   #addSegment(seg: MediaSegment) {
-    if (!this.#mediaChunks.has(seg.sha256)) {
-      this.#mediaChunks.set(seg.sha256, seg)
+    // key on hash+url so a hostile event reusing a real x with another url can't shadow the genuine segment
+    const key = `${seg.sha256 ?? ""}|${seg.url}`
+    if (!this.#mediaChunks.has(key)) {
+      this.#mediaChunks.set(key, seg)
     }
     if (!this.#variant) {
       this.#variant = seg.variant
@@ -134,14 +140,13 @@ class Nip94Loader implements mpegts.BaseLoader {
       return
     }
     if (this.#loading) return
+    // NIP-94 FileHeader events are attacker-authorable: the url can point
+    // anywhere. Segment reads are capped and hash-verified (see readCapped /
+    // the x-hash check below) before bytes reach the demuxer.
     this.#loading = true
     const orderedLoad = [...this.#mediaChunks.values()]
       .sort((a, b) => a.created - b.created)
       .filter(a => !a.loaded && a.variant === this.#variant)
-    // NIP-94 FileHeader events are attacker-authorable: the url can point
-    // anywhere and the x hash is the only integrity signal. Bound the fetch
-    // and verify it before the bytes reach the demuxer.
-    const MAX_SEGMENT_BYTES = 64 * 1024 * 1024
     for (const s of orderedLoad) {
       s.loaded = true
       const ctl = new AbortController()
@@ -149,39 +154,26 @@ class Nip94Loader implements mpegts.BaseLoader {
         const result = await fetch(s.url, { signal: ctl.signal })
         // skip 404
         if (result.status === 404) {
-          s.loaded = true
           continue
         }
-        const contentLength = Number(result.headers.get("content-length"))
-        if (Number.isFinite(contentLength) && contentLength > MAX_SEGMENT_BYTES) {
-          console.warn("n94 segment exceeds size cap, skipping", s.url)
-          continue
-        }
-        const buf = await result.arrayBuffer()
-        if (buf.byteLength > MAX_SEGMENT_BYTES) {
+        const bytes = await readCapped(result, MAX_SEGMENT_BYTES, () => ctl.abort())
+        if (!bytes) {
           console.warn("n94 segment exceeds size cap, skipping", s.url)
           continue
         }
 
-        // Verify the segment against the event's x hash when present; a
-        // mismatched segment is attacker/substituted content — skip it
-        // (leaves a playback gap rather than feeding hostile bytes).
+        // x is the integrity signal: mismatch => skip (playback gap, not hostile bytes)
         if (s.sha256) {
-          const digest = bytesToHex(sha256(new Uint8Array(buf)))
+          const digest = bytesToHex(sha256(bytes))
           if (digest.toLowerCase() !== s.sha256.toLowerCase()) {
             console.warn("n94 segment hash mismatch, skipping", s.url)
             continue
           }
         }
 
+        const buf = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer
         this.onDataArrival(buf, this.#bytes, buf.byteLength)
-        console.debug("pushing bytes", this.#bytes, buf.byteLength)
         this.#bytes += buf.byteLength
-
-        this.#mediaChunks.set(s.sha256, {
-          ...s,
-          loaded: true,
-        })
       } catch (e) {
         s.loaded = false
         console.warn("Failed to load chunk ", s, e)
