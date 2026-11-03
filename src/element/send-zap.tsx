@@ -54,6 +54,10 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
   const [invoice, setInvoice] = useState("")
   const [invoiceWarning, setInvoiceWarning] = useState<ReactNode>()
   const [sendError, setSendError] = useState<ReactNode>()
+
+  useEffect(() => {
+    setSendError(undefined)
+  }, [amount, lnurl])
   const login = useLogin()
   const wallet = useWallet()
   const rate = useRates("BTCUSD")
@@ -130,6 +134,8 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
         return eb
       })
     }
+    // a corrected amount invalidates any earlier bounds error
+    setSendError(undefined)
     const invoice = await svc.getInvoice(amountInSats, commentText, zap)
     if (!invoice.pr) return
 
