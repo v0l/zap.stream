@@ -14,7 +14,7 @@ import { DefaultOptimizer, EventExt, type ReqFilter, type FlatReqFilter, type Op
 // claimed id. The wasm build's schnorr_verify_batch exists but its contract
 // (input shape / result semantics) is undocumented; before wiring it for
 // verification, add a test that proves it rejects tampered events.
-// Perf: ~0.7 ms/event JS schnorr cold — re-measure on-device before
+// Perf: ~0.5 ms/event JS schnorr cold (maintainer-measured on desktop; re-measure on-device — mobile will be several times worse) before
 // switching large burst loads to wasm.
 export const WasmOptimizer: Optimizer = {
   ...DefaultOptimizer,
