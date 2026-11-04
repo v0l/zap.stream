@@ -94,7 +94,14 @@ class Nip94Loader implements mpegts.BaseLoader {
     })
     const f = rb.withFilter().replyToLink([link]).kinds([EventKind.FileHeader]).limit(10)
     // segments must come from the stream's own author; replyToLink alone accepts anyone
-    if (link.author) f.authors([link.author])
+    if (link.author) {
+      f.authors([link.author])
+    } else {
+      // event-id links (nevent/note) carry no author — the author filter
+      // cannot apply, so third-party segments are accepted for such links
+      // (fail-open; documented in the PR).
+      console.warn("n94: no author on stream link, accepting segments from any publisher")
+    }
 
     this.#status = LoaderStatus.kConnecting
     this.#query = this.#system.Query(rb)
@@ -171,7 +178,8 @@ class Nip94Loader implements mpegts.BaseLoader {
           }
         }
 
-        const buf = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer
+        const ab = bytes.byteOffset === 0 && bytes.byteLength === bytes.buffer.byteLength ? bytes.buffer : bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
+        const buf = ab as ArrayBuffer
         this.onDataArrival(buf, this.#bytes, buf.byteLength)
         this.#bytes += buf.byteLength
       } catch (e) {

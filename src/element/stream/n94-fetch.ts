@@ -1,4 +1,4 @@
-export const MAX_SEGMENT_BYTES = 64 * 1024 * 1024
+export const MAX_SEGMENT_BYTES = 8 * 1024 * 1024
 
 /** Read a response body, aborting as soon as `max` bytes are exceeded (content-length can be absent or a lie). */
 export async function readCapped(res: Response, max: number, abort: () => void): Promise<Uint8Array | undefined> {
