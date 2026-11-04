@@ -61,7 +61,10 @@ export default function AccountWithdrawl({
         await lnurl.load()
         const rsp = await lnurl.getInvoice(amount, "Withdrawal from zap.stream")
         if (rsp.pr) {
-          if (rsp.pr.startsWith("lnbc") && invoiceMatchesAmount(rsp.pr, amount) === false) {
+          // bolt11 is case-insensitive — do not gate on the lnbc prefix; the
+          // matcher itself returns undefined for undecodable invoices, which
+          // passes through to server-side validation.
+          if (invoiceMatchesAmount(rsp.pr, amount) === false) {
             setError(formatMessage({ defaultMessage: "Invoice amount does not match the requested withdrawal" }))
             return
           }
