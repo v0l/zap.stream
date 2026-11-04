@@ -1,7 +1,7 @@
 import "./send-zap.css"
 import { Fragment, type ReactNode, useEffect, useState } from "react"
 import { LNURL } from "@snort/shared"
-import { invoiceMatchesAmount } from "@/invoice"
+import { amountWithinLNURLBounds, invoiceMatchesAmount } from "@/invoice"
 import { EventPublisher, type NostrEvent, PrivateKeySigner, type TaggedNostrEvent } from "@snort/system"
 import { FormattedMessage, FormattedNumber } from "react-intl"
 
@@ -100,20 +100,15 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
     const amountMsat = Math.floor(amountInSats * 1000)
     // LNURL minSendable/maxSendable (msat) — enforce the bounds the service
     // advertises instead of discovering them via a failed invoice request.
-    if (typeof svc.min === "number" && amountMsat < svc.min) {
+    // (@snort/shared LNURL defaults: min 1 sat, max 1 BTC when unadvertised.)
+    if (amountWithinLNURLBounds(amountMsat, svc.min, svc.max) === false) {
       setSendError(
         <FormattedMessage
-          defaultMessage="Amount is below this provider's minimum ({min} sats)."
-          values={{ min: formatSats(Math.ceil(svc.min / 1000)) }}
-        />,
-      )
-      return
-    }
-    if (typeof svc.max === "number" && amountMsat > svc.max) {
-      setSendError(
-        <FormattedMessage
-          defaultMessage="Amount is above this provider's maximum ({max} sats)."
-          values={{ max: formatSats(Math.floor(svc.max / 1000)) }}
+          defaultMessage="Amount is outside the range this provider accepts ({min}–{max} sats)."
+          values={{
+            min: svc.min != null ? formatSats(Math.ceil(svc.min / 1000)) : "?",
+            max: svc.max != null ? formatSats(Math.floor(svc.max / 1000)) : "?",
+          }}
         />,
       )
       return
