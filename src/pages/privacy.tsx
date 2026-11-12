@@ -1,6 +1,6 @@
 export function PrivacyPage() {
   return (
-    <div className="flex flex-col gap-6 grow">
+    <div className="flex flex-col gap-6 grow w-full max-w-[72ch] mx-auto px-4 py-6">
       <h1>Privacy Policy</h1>
       <h2>Applies to the zap.stream website and the zap.stream mobile apps</h2>
       <p>
@@ -10,7 +10,7 @@ export function PrivacyPage() {
         zap.stream shows live streams and chat that people publish on Nostr, an open protocol. This page explains what
         the website and the apps keep, and what they do not.
       </p>
-      <ol className="list-disc">
+      <ul className="list-disc pl-6 flex flex-col gap-3">
         <li>
           <b>Your keys:</b> Your Nostr private key (nsec) stays on your device. The apps never send it to us. If you
           log in with a signer app such as Amber or a remote signer, the key stays in that signer.
@@ -50,14 +50,14 @@ export function PrivacyPage() {
           <b>Children:</b> zap.stream is not directed at children under 13.
         </li>
         <li>
-          <b>Deleting your data:</b> See <a href="/delete-account">how to delete your account</a>.
+          <b>Deleting your data:</b> See <a className="text-primary underline" href="/delete-account">how to delete your account</a>.
         </li>
         <li>
           <b>Changes:</b> We may update this policy and will change the effective date when we do.
         </li>
-      </ol>
+      </ul>
       <p>
-        Questions about privacy: <a href="mailto:info@zap.stream">info@zap.stream</a>
+        Questions about privacy: <a className="text-primary underline" href="mailto:info@zap.stream">info@zap.stream</a>
       </p>
     </div>
   )

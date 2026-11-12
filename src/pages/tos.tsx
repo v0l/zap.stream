@@ -1,6 +1,6 @@
 export function TosPage() {
   return (
-    <div className="flex flex-col gap-6 grow">
+    <div className="flex flex-col gap-6 grow w-full max-w-[72ch] mx-auto px-4 py-6">
       <h1>Terms of Service</h1>
       <h2>Applies to zap.stream provided streaming providers</h2>
       <p>
@@ -10,7 +10,7 @@ export function TosPage() {
         Welcome to zap.stream! By using our streaming service, you agree to the following Terms of Service ("Terms").
         Please read them carefully.
       </p>
-      <ol className="list-disc">
+      <ul className="list-disc pl-6 flex flex-col gap-3">
         <li>
           <b>User Accounts:</b> You are responsible for maintaining the security of your account and any activities that
           occur under it.
@@ -44,9 +44,9 @@ export function TosPage() {
         <li>
           <b>Entire Agreement:</b> These Terms constitute the entire agreement between you and zap.stream.
         </li>
-      </ol>
+      </ul>
       <p>
-        If you have any questions or concerns, please contact us at <a href="mailto:info@zap.stream">info@zap.stream</a>
+        If you have any questions or concerns, please contact us at <a className="text-primary underline" href="mailto:info@zap.stream">info@zap.stream</a>
         .
       </p>
       <p>By using zap.stream, you agree to abide by these Terms of Service.</p>
