@@ -72,6 +72,8 @@
     "/shorts",
     "/category",
     "/tos",
+    "/privacy",
+    "/delete-account",
     "/faq",
     "/providers"
   ],
@@ -150,6 +152,8 @@
       "/faq",
       "/providers",
       "/tos",
+      "/privacy",
+      "/delete-account",
       "/debug"
     ]
   },

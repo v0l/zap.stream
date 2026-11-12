@@ -27,6 +27,8 @@ import { ShortsPage } from "./pages/shorts"
 import { DownloadAppPage } from "./pages/download"
 import ProvidersPage from "./pages/providers"
 import { TosPage } from "./pages/tos"
+import { PrivacyPage } from "./pages/privacy"
+import { DeleteAccountPage } from "./pages/delete-account"
 import { FormattedMessage } from "react-intl"
 import type { RouteObject } from "react-router"
 import { RouteError } from "./pages/route-error"
@@ -162,6 +164,14 @@ export function makeRoutes(init: () => Promise<null>): RouteObject[] {
       {
         path: "/tos",
         element: <TosPage />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPage />,
+      },
+      {
+        path: "/delete-account",
+        element: <DeleteAccountPage />,
       },
       {
         path: "*",
