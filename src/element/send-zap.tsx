@@ -1,7 +1,7 @@
 import "./send-zap.css"
 import { Fragment, type ReactNode, useEffect, useState } from "react"
 import { LNURL } from "@snort/shared"
-import { invoiceMatchesAmount } from "@/invoice"
+import { amountWithinLNURLBounds, invoiceMatchesAmount } from "@/invoice"
 import { EventPublisher, type NostrEvent, PrivateKeySigner, type TaggedNostrEvent } from "@snort/system"
 import { FormattedMessage, FormattedNumber } from "react-intl"
 
@@ -24,6 +24,9 @@ export interface LNURLLike {
   get name(): string
   get maxCommentLength(): number
   get canZap(): boolean
+  /** service-advertised bounds in msat (LNURL minSendable/maxSendable), when known */
+  readonly min?: number
+  readonly max?: number
   getInvoice(amountInSats: number, comment?: string, zap?: NostrEvent): Promise<{ pr?: string }>
 }
 
@@ -50,6 +53,11 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
   const [comment, setComment] = useState("")
   const [invoice, setInvoice] = useState("")
   const [invoiceWarning, setInvoiceWarning] = useState<ReactNode>()
+  const [sendError, setSendError] = useState<ReactNode>()
+
+  useEffect(() => {
+    setSendError(undefined)
+  }, [amount, lnurl])
   const login = useLogin()
   const wallet = useWallet()
   const rate = useRates("BTCUSD")
@@ -89,6 +97,22 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
 
     const amountInSats = isFiat ? Math.floor((amount / usdRate) * 1e8) : amount
     if (!Number.isFinite(amountInSats) || amountInSats <= 0) return
+    const amountMsat = Math.floor(amountInSats * 1000)
+    // LNURL minSendable/maxSendable (msat) — enforce the bounds the service
+    // advertises instead of discovering them via a failed invoice request.
+    // (@snort/shared LNURL defaults: min 1 sat, max 1 BTC when unadvertised.)
+    if (amountWithinLNURLBounds(amountMsat, svc.min, svc.max) === false) {
+      setSendError(
+        <FormattedMessage
+          defaultMessage="Amount is outside the range this provider accepts ({min}–{max} sats)."
+          values={{
+            min: svc.min != null ? formatSats(Math.ceil(svc.min / 1000)) : "?",
+            max: svc.max != null ? formatSats(Math.floor(svc.max / 1000)) : "?",
+          }}
+        />,
+      )
+      return
+    }
     const commentText = svc.maxCommentLength > 0 ? comment.slice(0, svc.maxCommentLength) : comment
     let zap: NostrEvent | undefined
     if (pubkey) {
@@ -105,6 +129,8 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
         return eb
       })
     }
+    // a corrected amount invalidates any earlier bounds error
+    setSendError(undefined)
     const invoice = await svc.getInvoice(amountInSats, commentText, zap)
     if (!invoice.pr) return
 
@@ -197,6 +223,9 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
               <textarea placeholder="Nice!" value={comment} onChange={e => setComment(e.target.value)} />
             </div>
           </div>
+        )}
+        {sendError && (
+          <div className="text-warning text-sm">{sendError}</div>
         )}
         <PrimaryButton onClick={send}>
           <FormattedMessage defaultMessage="Zap!" />
