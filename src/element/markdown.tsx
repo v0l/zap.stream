@@ -2,6 +2,7 @@ import "./markdown.css"
 
 import { type ReactNode, forwardRef, useMemo } from "react"
 import { type Token, type Tokens, marked } from "marked"
+import { safeMediaUrl } from "@/utils"
 import { HyperText } from "./hypertext"
 import { Text } from "./text"
 
@@ -22,7 +23,8 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
           return <div key={ctr++}>{t.tokens ? t.tokens.map(renderToken) : t.raw}</div>
         }
         case "image": {
-          return <img key={ctr++} src={t.href} alt="" />
+          const href = safeMediaUrl(t.href)
+          return href ? <img key={ctr++} src={href} alt="" /> : null
         }
         case "heading": {
           switch (t.depth) {

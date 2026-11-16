@@ -2,6 +2,7 @@ import { type NostrLink, type ParsedFragment, transformText, tryParseNostrLink }
 import { Fragment, type FunctionComponent, type ReactNode, useMemo } from "react"
 import { Link } from "react-router"
 
+import { safeMediaUrl } from "@/utils"
 import { Emoji } from "./emoji"
 import { Mention } from "./mention"
 import { HyperText } from "./hypertext"
@@ -26,8 +27,14 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
   let ctr = 0
   function renderFrag(f: ParsedFragment) {
     switch (f.type) {
-      case "custom_emoji":
-        return <Emoji name={f.content} url={f.content} key={ctr++} />
+      case "custom_emoji": {
+        const url = safeMediaUrl(f.content)
+        return url ? (
+          <Emoji name={f.content} url={url} key={ctr++} />
+        ) : (
+          <span key={ctr++}>{f.content}</span>
+        )
+      }
       case "media": {
         return (
           <HyperText link={f.content} key={ctr++}>
