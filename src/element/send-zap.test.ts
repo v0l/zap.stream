@@ -65,4 +65,8 @@ describe("invoiceMatchesAmount", () => {
     expect(invoiceMatchesAmount(makeBolt11(21_500), 21.5)).toBe(true)
     expect(invoiceMatchesAmount(makeBolt11(21_000), 21.5)).toBe(false)
   })
+  test("bolt11 case-insensitivity: uppercase invoices decode and verify", () => {
+    expect(invoiceMatchesAmount(makeBolt11(21_000).toUpperCase(), 21)).toBe(true)
+    expect(invoiceMatchesAmount(makeBolt11(1_000_000_000).toUpperCase(), 21)).toBe(false)
+  })
 })
