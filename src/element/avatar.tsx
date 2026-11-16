@@ -1,6 +1,7 @@
 import { type HTMLProps, useState } from "react"
 import classNames from "classnames"
 import { getPlaceholder } from "@/event-tags"
+import { safeMediaUrl } from "@/utils"
 import type { UserMetadata } from "@snort/system"
 import useImgProxy from "@/hooks/img-proxy"
 
@@ -8,7 +9,8 @@ type AvatarProps = HTMLProps<HTMLImageElement> & { size?: number; pubkey: string
 export function Avatar({ pubkey, size, user, ...props }: AvatarProps) {
   const [failed, setFailed] = useState(false)
   const { proxy } = useImgProxy()
-  const src = user?.picture && !failed ? proxy(user.picture, size ?? 40) : getPlaceholder(pubkey)
+  const picture = safeMediaUrl(user?.picture)
+  const src = picture && !failed ? proxy(picture, size ?? 40) : getPlaceholder(pubkey)
   return (
     <img
       {...props}

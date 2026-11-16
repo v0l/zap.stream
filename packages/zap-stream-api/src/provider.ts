@@ -346,7 +346,13 @@ export class NostrStreamProvider {
       // sha256 hex of the exact request body (zap-stream-core verifies hex)
       tags.push(["payload", hex.encode(sha256(new TextEncoder().encode(bodyStr)))])
     }
-    const unsigned = buildUnsignedEvent(pubkey, HTTP_AUTH_KIND, tags, "", unixNow() + Math.floor(this.#timeSync.offset / 1000))
+    const unsigned = buildUnsignedEvent(
+      pubkey,
+      HTTP_AUTH_KIND,
+      tags,
+      "",
+      unixNow() + Math.floor(this.#timeSync.offset / 1000),
+    )
     const token = await signer.sign(unsigned)
     const rsp = await fetch(u, {
       method,

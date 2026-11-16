@@ -12,7 +12,7 @@ import { FollowButton } from "@/element/follow-button"
 import { MuteButton } from "@/element/mute-button"
 import { useProfile } from "@/hooks/profile"
 import { Text } from "@/element/text"
-import { extractStreamInfo, findTag } from "@/utils"
+import { extractStreamInfo, findTag, safeMediaUrl } from "@/utils"
 import { Avatar } from "@/element/avatar"
 import { StreamState, VIDEO_KIND, OLD_VIDEO_KIND } from "@/const"
 import { DefaultButton, PrimaryButton } from "@/element/buttons"
@@ -78,12 +78,13 @@ function ProfileHero({
   const zapTarget = profile?.lud16 ?? profile?.lud06
   const name = getName(link.id, profile)
   const website = profile?.website?.replace(/^https?:\/\//, "").replace(/\/$/, "")
+  const banner = safeMediaUrl(profile?.banner)
 
   return (
     <section className="relative">
       <div className="h-[180px] sm:h-[260px] bg-layer-1 overflow-hidden">
-        {profile?.banner ? (
-          <img className="w-full h-full object-cover" alt="" src={proxy(profile.banner)} />
+        {banner ? (
+          <img className="w-full h-full object-cover" alt="" src={proxy(banner)} />
         ) : (
           <div className="w-full h-full bg-[radial-gradient(120%_120%_at_10%_100%,rgb(255_176_0/0.25),transparent_60%)]" />
         )}
@@ -182,7 +183,7 @@ function Stat({ label, children }: { label: ReactNode; children: ReactNode }) {
 function LiveNow({ ev }: { ev: TaggedNostrEvent }) {
   const { title, image, thumbnail, participants } = extractStreamInfo(ev)
   const { proxy } = useImgProxy()
-  const img = image ?? thumbnail
+  const img = safeMediaUrl(image) ?? safeMediaUrl(thumbnail)
   const [failed, setFailed] = useState(false)
   return (
     <Link

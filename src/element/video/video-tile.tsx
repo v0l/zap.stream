@@ -5,7 +5,7 @@ import classNames from "classnames"
 import { useState } from "react"
 
 import useImgProxy from "@/hooks/img-proxy"
-import { getHost, profileLink } from "@/utils"
+import { getHost, profileLink, safeMediaUrl } from "@/utils"
 import { Avatar } from "../avatar"
 import Logo from "../logo"
 import { useContentWarning } from "../nsfw"
@@ -37,8 +37,8 @@ export function VideoTile({
 
   const liveMedia = useDeadLink(ev)
   const link = NostrLink.fromEvent(ev)
-  const poster = video.bestPoster()
-  const bestVideo = video.bestVideo()
+  const poster = safeMediaUrl(video.bestPoster()?.url)
+  const bestVideo = safeMediaUrl(video.bestVideo()?.url)
   const [hasImg, setHasImage] = useState(true)
   if (!liveMedia) return
   return (
@@ -65,7 +65,7 @@ export function VideoTile({
               loading="lazy"
               alt=""
               className="w-full h-inherit object-cover"
-              src={proxy(poster?.url ?? bestVideo?.url ?? "")}
+              src={proxy(poster ?? bestVideo ?? "")}
               onError={() => {
                 setHasImage(false)
               }}

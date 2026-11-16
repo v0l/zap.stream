@@ -26,6 +26,8 @@ export default defineConfig({
     minify: process.env.SSR_DEBUG !== "1",
     sourcemap: false,
     copyPublicDir: false,
-    rollupOptions: { output: { format: "iife", name: "ZapSsr", inlineDynamicImports: true, entryFileNames: "render.js" } },
+    rollupOptions: {
+      output: { format: "iife", name: "ZapSsr", inlineDynamicImports: true, entryFileNames: "render.js" },
+    },
   },
 })

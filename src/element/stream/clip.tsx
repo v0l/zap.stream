@@ -1,14 +1,14 @@
 import { NostrLink, type TaggedNostrEvent } from "@snort/system"
 import { Profile } from "../profile"
 import { FormattedMessage } from "react-intl"
-import { extractStreamInfo, findTag } from "@/utils"
+import { extractStreamInfo, findTag, safeMediaUrl } from "@/utils"
 import { useEventFeed } from "@snort/system-react"
 import EventReactions from "../event-reactions"
 import { Link } from "react-router"
 import { useMemo } from "react"
 
 export default function LiveStreamClip({ ev }: { ev: TaggedNostrEvent }) {
-  const src = findTag(ev, "r")
+  const src = safeMediaUrl(findTag(ev, "r"))
   const streamTag = useMemo(() => NostrLink.fromTags(ev.tags)?.[0], [ev.id])
   const streamEvent = useEventFeed(streamTag)
   const { title } = extractStreamInfo(streamEvent)

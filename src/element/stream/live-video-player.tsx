@@ -20,6 +20,7 @@ import { MediaRenditionMenu, MediaRenditionMenuButton } from "media-chrome/react
 import HlsVideo from "hls-video-element/react"
 import type { HlsVideoElement } from "hls-video-element"
 import { StreamState } from "@/const"
+import { safeMediaUrl } from "@/utils"
 import { parseYouTubeUrl } from "@/youtube"
 import type { NostrLink } from "@snort/system"
 import YouTubePlayer from "./youtube-player"
@@ -41,6 +42,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
   const playerRef = useRef<HTMLVideoElement | null>(null)
   const [canCast, setCanCast] = useState(false)
   const yt = stream ? parseYouTubeUrl(stream) : undefined
+  const safePoster = safeMediaUrl(poster)
 
   useEffect(() => {
     const remote = playerRef.current?.remote
@@ -153,7 +155,7 @@ export default function LiveVideoPlayer({ title, stream, status, poster, link, .
       {titleBar}
       {innerPlayer()}
       <MediaRenditionMenu hidden anchor="auto" />
-      {poster && <MediaPosterImage slot="poster" src={poster} />}
+      {safePoster && <MediaPosterImage slot="poster" src={safePoster} />}
       <MediaControlBar>
         <MediaPlayButton />
         {status === StreamState.Live && <MediaLiveButton />}

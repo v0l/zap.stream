@@ -1,4 +1,4 @@
-import { findTag, profileLink } from "@/utils"
+import { findTag, profileLink, safeMediaUrl } from "@/utils"
 import type { NostrEvent } from "@snort/system"
 import { useUserProfile } from "@snort/system-react"
 import { FormattedMessage } from "react-intl"
@@ -7,7 +7,7 @@ import { getName } from "../profile"
 
 export function ClipTile({ ev }: { ev: NostrEvent }) {
   const profile = useUserProfile(ev.pubkey)
-  const r = findTag(ev, "r")
+  const r = safeMediaUrl(findTag(ev, "r"))
   const title = findTag(ev, "title")
 
   return (

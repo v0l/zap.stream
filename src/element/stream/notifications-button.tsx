@@ -14,7 +14,9 @@ export function NotificationsButton({ host, service }: { host: string; service: 
   const publisher = login?.publisher()
   const [subscribed, setSubscribed] = useState(false)
   const svcUrl = safeProviderUrl(service)
-  const api = svcUrl ? new NostrStreamProvider("", svcUrl, publisher ? adaptPublisher(publisher) : undefined) : undefined
+  const api = svcUrl
+    ? new NostrStreamProvider("", svcUrl, publisher ? adaptPublisher(publisher) : undefined)
+    : undefined
 
   async function isSubscribed() {
     if (!api) return
