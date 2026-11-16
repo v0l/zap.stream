@@ -24,6 +24,7 @@ import { Login } from "./login"
 import { HelmetProvider } from "@dr.pogodin/react-helmet"
 import { registerSW } from "virtual:pwa-register"
 import { HydrationDone } from "./ssr/hydration-done"
+import { RemoteSignerApprovals } from "./element/remote-signer-approvals"
 import { finishHydration, loadHydration, seed, seedProfiles } from "./ssr/client"
 
 // Register service worker with auto-update: reloads the page when a new
@@ -121,6 +122,7 @@ const tree = (
           <LayoutContextProvider>
             <ErrorBoundary>
               <RouterProvider router={router} />
+              <RemoteSignerApprovals />
             </ErrorBoundary>
             <HydrationDone />
           </LayoutContextProvider>
