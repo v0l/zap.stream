@@ -1,0 +1,814 @@
+diff --git a/src/impl/nip46.ts b/src/impl/nip46.ts
+index 9c40e98..963f80a 100644
+--- a/src/impl/nip46.ts
++++ b/src/impl/nip46.ts
+@@ -1,4 +1,5 @@
+-import { secp256k1 } from "@noble/curves/secp256k1.js"
++import { schnorr, secp256k1 } from "@noble/curves/secp256k1.js"
++import { hexToBytes } from "@noble/hashes/utils.js"
+ import { bech32ToHex, unwrap } from "@snort/shared"
+ import debug from "debug"
+ import { EventEmitter } from "eventemitter3"
+@@ -7,7 +8,7 @@ import { Nip46RpcTimeout } from "../const"
+ import { EventBuilder } from "../event-builder"
+ import { EventExt } from "../event-ext"
+ import type EventKind from "../event-kind"
+-import type { NostrEvent } from "../nostr"
++import type { NostrEvent, NotSignedNostrEvent } from "../nostr"
+ import { type EventSigner, PrivateKeySigner } from "../signer"
+ 
+ const NIP46_KIND = 24_133
+@@ -38,6 +39,11 @@ interface Nip46Events {
+   ready: () => void
+ }
+ 
++export interface Nip46SignerOptions {
++  timeoutMs?: number
++  permissions?: string
++}
++
+ export function isConnectAccepted(rsp: { result: string; error?: string }, secret?: string) {
+   if (rsp.error) return false
+   return rsp.result === "ack" || (!!secret && rsp.result === secret)
+@@ -54,6 +60,9 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+   #log = debug("NIP-46")
+   #proto: string
+   #didInit: boolean = false
++  #initializing?: Promise<void>
++  #generation = 0
++  #userPubkey?: string
+ 
+   /**
+    * Start NIP-46 connection
+@@ -72,7 +81,11 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+    *
+    * @see https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+    */
+-  constructor(config: string, insideSigner?: EventSigner) {
++  constructor(
++    config: string,
++    insideSigner?: EventSigner,
++    readonly options: Nip46SignerOptions = {},
++  ) {
+     super()
+     const u = new URL(config)
+     this.#proto = u.protocol
+@@ -89,6 +102,7 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+ 
+     this.#relay = unwrap(u.searchParams.get("relay"))
+     this.#insideSigner = insideSigner ?? new PrivateKeySigner(secp256k1.keygen().secretKey)
++    if (!this.isBunker && !this.#token) throw new Error("Nostr Connect pairing requires a secret")
+ 
+     // For bunker:// flow, the remote signer pubkey is in the URL
+     // For nostrconnect:// flow, the remote signer pubkey is discovered from the connect response
+@@ -117,6 +131,14 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+     return this.#proto === "bunker:"
+   }
+ 
++  get remotePubkey() {
++    return this.#remotePubkey
++  }
++
++  get timeoutMs() {
++    return this.options.timeoutMs ?? Nip46RpcTimeout
++  }
++
+   /**
+    * Connect to the remote signer relay and establish the NIP-46 connection.
+    *
+@@ -128,19 +150,41 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+    * @see https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+    */
+   async init(autoConnect = true) {
++    this.#initializing ??= this.#start(autoConnect)
++    return this.#initializing
++  }
++
++  async #start(autoConnect: boolean) {
++    const generation = this.#generation
+     this.#localPubkey = await this.#insideSigner.getPubKey()
+-    return await new Promise<void>((resolve, reject) => {
++    if (generation !== this.#generation) throw new Error("NIP-46 connection closed")
++    return new Promise<void>((resolve, reject) => {
++      const timer = setTimeout(() => {
++        reject(new Error("NIP-46 connection timed out"))
++        void this.close()
++      }, this.timeoutMs)
++      this.#commandQueue.set("connect", {
++        resolve: () => {
++          clearTimeout(timer)
++          resolve()
++        },
++        reject: error => {
++          clearTimeout(timer)
++          reject(error)
++        },
++      })
+       this.#conn = new Connection(this.#relay, { read: true, write: true })
+       this.#conn.on("unverifiedEvent", (_sub, e) => {
+         // Verify the Schnorr signature before processing the NIP-46 message to
+         // prevent forged protocol messages from an attacker on a public relay.
+-        if (!EventExt.isValid(e)) {
++        if (generation !== this.#generation || !EventExt.isValid(e)) {
+           this.#log("Dropping NIP-46 event with invalid signature from %s", e.pubkey)
+           return
+         }
+         this.#onReply(e).catch(err => this.#log("Error handling NIP-46 reply: %O", err))
+       })
+       this.#conn.on("connected", async () => {
++        if (generation !== this.#generation) return
+         this.#conn?.request([
+           "REQ",
+           "reply",
+@@ -153,25 +197,25 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+         ])
+ 
+         this.emit("ready")
++        if (!this.#commandQueue.has("connect")) return
+ 
+-        if (autoConnect) {
+-          if (this.isBunker) {
++        try {
++          if (autoConnect && this.isBunker) {
+             const rsp = await this.#connect(unwrap(this.#remotePubkey))
+             if (isConnectAccepted(rsp, this.#token)) {
+-              resolve()
++              this.#commandQueue.get("connect")?.resolve(rsp)
++              this.#commandQueue.delete("connect")
+             } else {
+-              reject(rsp.error)
++              this.#commandQueue.get("connect")?.reject(new Error(rsp.error || "Connection rejected"))
++              void this.close()
+             }
+-          } else {
+-            this.#commandQueue.set("connect", {
+-              reject,
+-              resolve: () => {
+-                resolve()
+-              },
+-            })
++          } else if (!autoConnect) {
++            this.#commandQueue.get("connect")?.resolve({ id: "connect", result: "ack", error: "" })
++            this.#commandQueue.delete("connect")
+           }
+-        } else {
+-          resolve()
++        } catch (error) {
++          this.#commandQueue.get("connect")?.reject(error instanceof Error ? error : new Error(String(error)))
++          void this.close()
+         }
+       })
+       this.#conn.connect()
+@@ -180,13 +224,16 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+   }
+ 
+   async close() {
+-    if (this.#conn) {
+-      await this.#disconnect()
+-      this.#conn.closeRequest("reply")
+-      this.#conn.close()
+-      this.#conn = undefined
+-      this.#didInit = false
+-    }
++    this.#generation++
++    for (const pending of this.#commandQueue.values()) pending.reject(new Error("NIP-46 connection closed"))
++    this.#commandQueue.clear()
++    this.#conn?.closeRequest("reply")
++    this.#conn?.close()
++    this.#conn?.removeAllListeners()
++    this.#conn = undefined
++    this.#didInit = false
++    this.#initializing = undefined
++    this.#userPubkey = undefined
+   }
+ 
+   async describe() {
+@@ -204,6 +251,8 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+   async getPubKey() {
+     if (!this.#remotePubkey) throw new Error("Remote pubkey not yet known; call init() first")
+     const rsp = await this.#rpc("get_public_key", [])
++    if (!/^[0-9a-f]{64}$/.test(rsp.result)) throw new Error("Invalid signing public key")
++    this.#userPubkey = rsp.result
+     return rsp.result as string
+   }
+ 
+@@ -217,22 +266,31 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+     return rsp.result as string
+   }
+ 
+-  nip44Encrypt(_content: string, _key: string): Promise<string> {
+-    throw new Error("Method not implemented.")
++  async nip44Encrypt(content: string, key: string): Promise<string> {
++    return (await this.#rpc("nip44_encrypt", [key, content])).result
+   }
+ 
+-  nip44Decrypt(_content: string, _otherKey: string): Promise<string> {
+-    throw new Error("Method not implemented.")
++  async nip44Decrypt(content: string, otherKey: string): Promise<string> {
++    return (await this.#rpc("nip44_decrypt", [otherKey, content])).result
+   }
+ 
+-  async sign(ev: NostrEvent) {
++  async sign(ev: NostrEvent | NotSignedNostrEvent) {
++    const pubkey = this.#userPubkey ?? (await this.getPubKey())
+     const rsp = await this.#rpc("sign_event", [JSON.stringify(ev)])
+     const signed = JSON.parse(rsp.result as string) as NostrEvent
+-    return {
+-      ...ev,
+-      id: signed.id,
+-      sig: signed.sig,
++    if (
++      signed.pubkey !== pubkey ||
++      (ev.pubkey && ev.pubkey !== pubkey) ||
++      signed.kind !== ev.kind ||
++      signed.created_at !== ev.created_at ||
++      signed.content !== ev.content ||
++      JSON.stringify(signed.tags) !== JSON.stringify(ev.tags) ||
++      !EventExt.isValid(signed) ||
++      !schnorr.verify(hexToBytes(signed.sig), hexToBytes(signed.id), hexToBytes(signed.pubkey))
++    ) {
++      throw new Error("The signer returned a different identity or event")
+     }
++    return signed
+   }
+ 
+   /**
+@@ -250,12 +308,8 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+     }
+   }
+ 
+-  async #disconnect() {
+-    return await this.#rpc("disconnect", [])
+-  }
+-
+   async #connect(pk: string) {
+-    const connectParams = [pk, this.#token ?? "", PERMS]
++    const connectParams = [pk, this.#token ?? "", this.options.permissions ?? PERMS]
+     return await this.#rpc("connect", connectParams)
+   }
+ 
+@@ -273,7 +327,14 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+       throw new Error("Unknown event kind")
+     }
+ 
++    if (
++      !e.tags.some(t => t[0] === "p" && t[1] === this.#localPubkey) ||
++      (this.#remotePubkey && e.pubkey !== this.#remotePubkey)
++    )
++      return
++    const generation = this.#generation
+     const decryptedContent = await this.#insideSigner.nip44Decrypt(e.content, e.pubkey)
++    if (generation !== this.#generation) return
+     let reply: Nip46Request | Nip46Response
+     try {
+       reply = JSON.parse(decryptedContent) as Nip46Request | Nip46Response
+@@ -282,47 +343,21 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+       return
+     }
+ 
+-    let id = reply.id
++    const id = reply.id
+     // Log only the id/method — never the decrypted params/result which may contain secrets.
+     if ("method" in reply) {
+       this.#log("Recv request id=%s method=%s", reply.id, reply.method)
+     } else {
+       this.#log("Recv response id=%s error=%s", reply.id, reply.error || "(none)")
+     }
+-    if ("method" in reply && reply.method === "connect") {
+-      // For nostrconnect:// flow, the signer should send a connect RESPONSE (not request).
+-      // Per NIP-46: "Client discovers remote-signer-pubkey from connect response author."
+-      // We use e.pubkey (the cryptographically verified event author) as the signer's pubkey,
+-      // regardless of whether the signer sends a request or response. This ensures we always
+-      // trust the verified pubkey over potentially incorrect params.
+-      // See: https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+-      if (!this.isBunker) {
+-        this.#remotePubkey = e.pubkey
+-      } else {
+-        this.#remotePubkey = reply.params[0]
+-      }
+-      await this.#sendCommand(
+-        {
+-          id: reply.id,
+-          result: "ack",
+-          error: "",
+-        },
+-        unwrap(this.#remotePubkey),
+-      )
+-      id = "connect"
+-    } else if (!this.#remotePubkey) {
+-      // nostrconnect:// flow: signer sends a response (not a connect request)
+-      // Discover remote signer pubkey from event author per NIP-46 spec
++    if ("method" in reply) return
++    if (!this.#remotePubkey) {
++      // Bind the discovered transport key only after the QR secret and recipient match.
++      if (reply.error || reply.result !== this.#token) return
+       this.#remotePubkey = e.pubkey
+-      await this.#sendCommand(
+-        {
+-          id: reply.id,
+-          result: "ack",
+-          error: "",
+-        },
+-        e.pubkey,
+-      )
+-      id = "connect"
++      this.#commandQueue.get("connect")?.resolve(reply)
++      this.#commandQueue.delete("connect")
++      return
+     }
+     const pending = this.#commandQueue.get(id)
+     if (!pending) {
+@@ -345,9 +380,11 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+   }
+ 
+   async #rpc(method: string, params: Array<string>) {
++    const generation = this.#generation
+     if (!this.#didInit) {
+       await this.init()
+     }
++    if (generation !== this.#generation) throw new Error("NIP-46 connection closed")
+     if (!this.#conn) throw new Error("Connection error")
+ 
+     const payload = {
+@@ -356,12 +393,11 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+       params,
+     } as Nip46Request
+ 
+-    this.#sendCommand(payload, unwrap(this.#remotePubkey))
+-    return await new Promise<Nip46Response>((resolve, reject) => {
++    const response = await new Promise<Nip46Response>((resolve, reject) => {
+       const timeout = setTimeout(() => {
+         this.#commandQueue.delete(payload.id)
+-        reject(new Error(`NIP-46 RPC timed out after ${Nip46RpcTimeout}ms (method=${method})`))
+-      }, Nip46RpcTimeout)
++        reject(new Error(`NIP-46 RPC timed out after ${this.timeoutMs}ms (method=${method})`))
++      }, this.timeoutMs)
+       this.#commandQueue.set(payload.id, {
+         resolve: async (o: Nip46Response) => {
+           clearTimeout(timeout)
+@@ -372,11 +408,18 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+           reject(e)
+         },
+       })
++      void this.#sendCommand(payload, unwrap(this.#remotePubkey)).catch(error => {
++        this.#commandQueue.get(payload.id)?.reject(error)
++        this.#commandQueue.delete(payload.id)
++      })
+     })
++    if (generation !== this.#generation) throw new Error("NIP-46 connection closed")
++    return response
+   }
+ 
+   async #sendCommand(payload: Nip46Request | Nip46Response, target: string) {
+     if (!this.#conn) return
++    const connection = this.#conn
+ 
+     const eb = new EventBuilder()
+     eb.kind(NIP46_KIND as EventKind)
+@@ -390,6 +433,7 @@ export class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigne
+       this.#log("Send response id=%s", payload.id)
+     }
+     const evCommand = await eb.buildAndSign(this.#insideSigner)
+-    await this.#conn.publish(evCommand)
++    if (this.#conn !== connection) throw new Error("NIP-46 connection closed")
++    await connection.publish(evCommand)
+   }
+ }
+diff --git a/dist/impl/nip46.js b/dist/impl/nip46.js
+index 2216eab..0a02d9c 100644
+--- a/dist/impl/nip46.js
++++ b/dist/impl/nip46.js
+@@ -1,4 +1,5 @@
+-import { secp256k1 } from "@noble/curves/secp256k1.js";
++import { schnorr, secp256k1 } from "@noble/curves/secp256k1.js";
++import { hexToBytes } from "@noble/hashes/utils.js";
+ import { bech32ToHex, unwrap } from "@snort/shared";
+ import debug from "debug";
+ import { EventEmitter } from "eventemitter3";
+@@ -16,6 +17,7 @@ export function isConnectAccepted(rsp, secret) {
+     return rsp.result === "ack" || (!!secret && rsp.result === secret);
+ }
+ export class Nip46Signer extends EventEmitter {
++    options;
+     #conn;
+     #relay;
+     #localPubkey;
+@@ -26,6 +28,9 @@ export class Nip46Signer extends EventEmitter {
+     #log = debug("NIP-46");
+     #proto;
+     #didInit = false;
++    #initializing;
++    #generation = 0;
++    #userPubkey;
+     /**
+      * Start NIP-46 connection
+      *
+@@ -43,8 +48,9 @@ export class Nip46Signer extends EventEmitter {
+      *
+      * @see https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+      */
+-    constructor(config, insideSigner) {
++    constructor(config, insideSigner, options = {}) {
+         super();
++        this.options = options;
+         const u = new URL(config);
+         this.#proto = u.protocol;
+         this.#localPubkey = u.hostname || u.pathname.substring(2);
+@@ -59,6 +65,8 @@ export class Nip46Signer extends EventEmitter {
+         }
+         this.#relay = unwrap(u.searchParams.get("relay"));
+         this.#insideSigner = insideSigner ?? new PrivateKeySigner(secp256k1.keygen().secretKey);
++        if (!this.isBunker && !this.#token)
++            throw new Error("Nostr Connect pairing requires a secret");
+         // For bunker:// flow, the remote signer pubkey is in the URL
+         // For nostrconnect:// flow, the remote signer pubkey is discovered from the connect response
+         // See NIP-46: https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+@@ -81,6 +89,12 @@ export class Nip46Signer extends EventEmitter {
+     get isBunker() {
+         return this.#proto === "bunker:";
+     }
++    get remotePubkey() {
++        return this.#remotePubkey;
++    }
++    get timeoutMs() {
++        return this.options.timeoutMs ?? Nip46RpcTimeout;
++    }
+     /**
+      * Connect to the remote signer relay and establish the NIP-46 connection.
+      *
+@@ -92,19 +106,42 @@ export class Nip46Signer extends EventEmitter {
+      * @see https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+      */
+     async init(autoConnect = true) {
++        this.#initializing ??= this.#start(autoConnect);
++        return this.#initializing;
++    }
++    async #start(autoConnect) {
++        const generation = this.#generation;
+         this.#localPubkey = await this.#insideSigner.getPubKey();
+-        return await new Promise((resolve, reject) => {
++        if (generation !== this.#generation)
++            throw new Error("NIP-46 connection closed");
++        return new Promise((resolve, reject) => {
++            const timer = setTimeout(() => {
++                reject(new Error("NIP-46 connection timed out"));
++                void this.close();
++            }, this.timeoutMs);
++            this.#commandQueue.set("connect", {
++                resolve: () => {
++                    clearTimeout(timer);
++                    resolve();
++                },
++                reject: error => {
++                    clearTimeout(timer);
++                    reject(error);
++                },
++            });
+             this.#conn = new Connection(this.#relay, { read: true, write: true });
+             this.#conn.on("unverifiedEvent", (_sub, e) => {
+                 // Verify the Schnorr signature before processing the NIP-46 message to
+                 // prevent forged protocol messages from an attacker on a public relay.
+-                if (!EventExt.isValid(e)) {
++                if (generation !== this.#generation || !EventExt.isValid(e)) {
+                     this.#log("Dropping NIP-46 event with invalid signature from %s", e.pubkey);
+                     return;
+                 }
+                 this.#onReply(e).catch(err => this.#log("Error handling NIP-46 reply: %O", err));
+             });
+             this.#conn.on("connected", async () => {
++                if (generation !== this.#generation)
++                    return;
+                 this.#conn?.request([
+                     "REQ",
+                     "reply",
+@@ -116,27 +153,28 @@ export class Nip46Signer extends EventEmitter {
+                     },
+                 ]);
+                 this.emit("ready");
+-                if (autoConnect) {
+-                    if (this.isBunker) {
++                if (!this.#commandQueue.has("connect"))
++                    return;
++                try {
++                    if (autoConnect && this.isBunker) {
+                         const rsp = await this.#connect(unwrap(this.#remotePubkey));
+                         if (isConnectAccepted(rsp, this.#token)) {
+-                            resolve();
++                            this.#commandQueue.get("connect")?.resolve(rsp);
++                            this.#commandQueue.delete("connect");
+                         }
+                         else {
+-                            reject(rsp.error);
++                            this.#commandQueue.get("connect")?.reject(new Error(rsp.error || "Connection rejected"));
++                            void this.close();
+                         }
+                     }
+-                    else {
+-                        this.#commandQueue.set("connect", {
+-                            reject,
+-                            resolve: () => {
+-                                resolve();
+-                            },
+-                        });
++                    else if (!autoConnect) {
++                        this.#commandQueue.get("connect")?.resolve({ id: "connect", result: "ack", error: "" });
++                        this.#commandQueue.delete("connect");
+                     }
+                 }
+-                else {
+-                    resolve();
++                catch (error) {
++                    this.#commandQueue.get("connect")?.reject(error instanceof Error ? error : new Error(String(error)));
++                    void this.close();
+                 }
+             });
+             this.#conn.connect();
+@@ -144,13 +182,17 @@ export class Nip46Signer extends EventEmitter {
+         });
+     }
+     async close() {
+-        if (this.#conn) {
+-            await this.#disconnect();
+-            this.#conn.closeRequest("reply");
+-            this.#conn.close();
+-            this.#conn = undefined;
+-            this.#didInit = false;
+-        }
++        this.#generation++;
++        for (const pending of this.#commandQueue.values())
++            pending.reject(new Error("NIP-46 connection closed"));
++        this.#commandQueue.clear();
++        this.#conn?.closeRequest("reply");
++        this.#conn?.close();
++        this.#conn?.removeAllListeners();
++        this.#conn = undefined;
++        this.#didInit = false;
++        this.#initializing = undefined;
++        this.#userPubkey = undefined;
+     }
+     async describe() {
+         const rsp = await this.#rpc("describe", []);
+@@ -167,6 +209,9 @@ export class Nip46Signer extends EventEmitter {
+         if (!this.#remotePubkey)
+             throw new Error("Remote pubkey not yet known; call init() first");
+         const rsp = await this.#rpc("get_public_key", []);
++        if (!/^[0-9a-f]{64}$/.test(rsp.result))
++            throw new Error("Invalid signing public key");
++        this.#userPubkey = rsp.result;
+         return rsp.result;
+     }
+     async nip4Encrypt(content, otherKey) {
+@@ -177,20 +222,27 @@ export class Nip46Signer extends EventEmitter {
+         const rsp = await this.#rpc("nip04_decrypt", [otherKey, content]);
+         return rsp.result;
+     }
+-    nip44Encrypt(_content, _key) {
+-        throw new Error("Method not implemented.");
++    async nip44Encrypt(content, key) {
++        return (await this.#rpc("nip44_encrypt", [key, content])).result;
+     }
+-    nip44Decrypt(_content, _otherKey) {
+-        throw new Error("Method not implemented.");
++    async nip44Decrypt(content, otherKey) {
++        return (await this.#rpc("nip44_decrypt", [otherKey, content])).result;
+     }
+     async sign(ev) {
++        const pubkey = this.#userPubkey ?? (await this.getPubKey());
+         const rsp = await this.#rpc("sign_event", [JSON.stringify(ev)]);
+         const signed = JSON.parse(rsp.result);
+-        return {
+-            ...ev,
+-            id: signed.id,
+-            sig: signed.sig,
+-        };
++        if (signed.pubkey !== pubkey ||
++            (ev.pubkey && ev.pubkey !== pubkey) ||
++            signed.kind !== ev.kind ||
++            signed.created_at !== ev.created_at ||
++            signed.content !== ev.content ||
++            JSON.stringify(signed.tags) !== JSON.stringify(ev.tags) ||
++            !EventExt.isValid(signed) ||
++            !schnorr.verify(hexToBytes(signed.sig), hexToBytes(signed.id), hexToBytes(signed.pubkey))) {
++            throw new Error("The signer returned a different identity or event");
++        }
++        return signed;
+     }
+     /**
+      * NIP-46 oAuth bunker signup
+@@ -206,11 +258,8 @@ export class Nip46Signer extends EventEmitter {
+             this.#remotePubkey = rsp.result;
+         }
+     }
+-    async #disconnect() {
+-        return await this.#rpc("disconnect", []);
+-    }
+     async #connect(pk) {
+-        const connectParams = [pk, this.#token ?? "", PERMS];
++        const connectParams = [pk, this.#token ?? "", this.options.permissions ?? PERMS];
+         return await this.#rpc("connect", connectParams);
+     }
+     /**
+@@ -226,7 +275,13 @@ export class Nip46Signer extends EventEmitter {
+         if (e.kind !== NIP46_KIND) {
+             throw new Error("Unknown event kind");
+         }
++        if (!e.tags.some(t => t[0] === "p" && t[1] === this.#localPubkey) ||
++            (this.#remotePubkey && e.pubkey !== this.#remotePubkey))
++            return;
++        const generation = this.#generation;
+         const decryptedContent = await this.#insideSigner.nip44Decrypt(e.content, e.pubkey);
++        if (generation !== this.#generation)
++            return;
+         let reply;
+         try {
+             reply = JSON.parse(decryptedContent);
+@@ -235,7 +290,7 @@ export class Nip46Signer extends EventEmitter {
+             this.#log("Dropping NIP-46 event with malformed JSON payload from %s", e.pubkey);
+             return;
+         }
+-        let id = reply.id;
++        const id = reply.id;
+         // Log only the id/method — never the decrypted params/result which may contain secrets.
+         if ("method" in reply) {
+             this.#log("Recv request id=%s method=%s", reply.id, reply.method);
+@@ -243,36 +298,16 @@ export class Nip46Signer extends EventEmitter {
+         else {
+             this.#log("Recv response id=%s error=%s", reply.id, reply.error || "(none)");
+         }
+-        if ("method" in reply && reply.method === "connect") {
+-            // For nostrconnect:// flow, the signer should send a connect RESPONSE (not request).
+-            // Per NIP-46: "Client discovers remote-signer-pubkey from connect response author."
+-            // We use e.pubkey (the cryptographically verified event author) as the signer's pubkey,
+-            // regardless of whether the signer sends a request or response. This ensures we always
+-            // trust the verified pubkey over potentially incorrect params.
+-            // See: https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+-            if (!this.isBunker) {
+-                this.#remotePubkey = e.pubkey;
+-            }
+-            else {
+-                this.#remotePubkey = reply.params[0];
+-            }
+-            await this.#sendCommand({
+-                id: reply.id,
+-                result: "ack",
+-                error: "",
+-            }, unwrap(this.#remotePubkey));
+-            id = "connect";
+-        }
+-        else if (!this.#remotePubkey) {
+-            // nostrconnect:// flow: signer sends a response (not a connect request)
+-            // Discover remote signer pubkey from event author per NIP-46 spec
++        if ("method" in reply)
++            return;
++        if (!this.#remotePubkey) {
++            // Bind the discovered transport key only after the QR secret and recipient match.
++            if (reply.error || reply.result !== this.#token)
++                return;
+             this.#remotePubkey = e.pubkey;
+-            await this.#sendCommand({
+-                id: reply.id,
+-                result: "ack",
+-                error: "",
+-            }, e.pubkey);
+-            id = "connect";
++            this.#commandQueue.get("connect")?.resolve(reply);
++            this.#commandQueue.delete("connect");
++            return;
+         }
+         const pending = this.#commandQueue.get(id);
+         if (!pending) {
+@@ -296,9 +331,12 @@ export class Nip46Signer extends EventEmitter {
+         }
+     }
+     async #rpc(method, params) {
++        const generation = this.#generation;
+         if (!this.#didInit) {
+             await this.init();
+         }
++        if (generation !== this.#generation)
++            throw new Error("NIP-46 connection closed");
+         if (!this.#conn)
+             throw new Error("Connection error");
+         const payload = {
+@@ -306,12 +344,11 @@ export class Nip46Signer extends EventEmitter {
+             method,
+             params,
+         };
+-        this.#sendCommand(payload, unwrap(this.#remotePubkey));
+-        return await new Promise((resolve, reject) => {
++        const response = await new Promise((resolve, reject) => {
+             const timeout = setTimeout(() => {
+                 this.#commandQueue.delete(payload.id);
+-                reject(new Error(`NIP-46 RPC timed out after ${Nip46RpcTimeout}ms (method=${method})`));
+-            }, Nip46RpcTimeout);
++                reject(new Error(`NIP-46 RPC timed out after ${this.timeoutMs}ms (method=${method})`));
++            }, this.timeoutMs);
+             this.#commandQueue.set(payload.id, {
+                 resolve: async (o) => {
+                     clearTimeout(timeout);
+@@ -322,11 +359,19 @@ export class Nip46Signer extends EventEmitter {
+                     reject(e);
+                 },
+             });
++            void this.#sendCommand(payload, unwrap(this.#remotePubkey)).catch(error => {
++                this.#commandQueue.get(payload.id)?.reject(error);
++                this.#commandQueue.delete(payload.id);
++            });
+         });
++        if (generation !== this.#generation)
++            throw new Error("NIP-46 connection closed");
++        return response;
+     }
+     async #sendCommand(payload, target) {
+         if (!this.#conn)
+             return;
++        const connection = this.#conn;
+         const eb = new EventBuilder();
+         eb.kind(NIP46_KIND)
+             .content(await this.#insideSigner.nip44Encrypt(JSON.stringify(payload), target))
+@@ -339,7 +384,9 @@ export class Nip46Signer extends EventEmitter {
+             this.#log("Send response id=%s", payload.id);
+         }
+         const evCommand = await eb.buildAndSign(this.#insideSigner);
+-        await this.#conn.publish(evCommand);
++        if (this.#conn !== connection)
++            throw new Error("NIP-46 connection closed");
++        await connection.publish(evCommand);
+     }
+ }
+-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmlwNDYuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW1wbC9uaXA0Ni50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sNEJBQTRCLENBQUE7QUFDdEQsT0FBTyxFQUFFLFdBQVcsRUFBRSxNQUFNLEVBQUUsTUFBTSxlQUFlLENBQUE7QUFDbkQsT0FBTyxLQUFLLE1BQU0sT0FBTyxDQUFBO0FBQ3pCLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSxlQUFlLENBQUE7QUFDNUMsT0FBTyxFQUFFLFVBQVUsRUFBRSxNQUFNLGVBQWUsQ0FBQTtBQUMxQyxPQUFPLEVBQUUsZUFBZSxFQUFFLE1BQU0sVUFBVSxDQUFBO0FBQzFDLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSxrQkFBa0IsQ0FBQTtBQUMvQyxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sY0FBYyxDQUFBO0FBR3ZDLE9BQU8sRUFBb0IsZ0JBQWdCLEVBQUUsTUFBTSxXQUFXLENBQUE7QUFFOUQsTUFBTSxVQUFVLEdBQUcsTUFBTSxDQUFBO0FBQ3pCLHVDQUF1QztBQUN2QyxNQUFNLEtBQUssR0FDVCw0SEFBNEgsQ0FBQTtBQXlCOUgsTUFBTSxVQUFVLGlCQUFpQixDQUFDLEdBQXVDLEVBQUUsTUFBZTtJQUN4RixJQUFJLEdBQUcsQ0FBQyxLQUFLO1FBQUUsT0FBTyxLQUFLLENBQUE7SUFDM0IsT0FBTyxHQUFHLENBQUMsTUFBTSxLQUFLLEtBQUssSUFBSSxDQUFDLENBQUMsQ0FBQyxNQUFNLElBQUksR0FBRyxDQUFDLE1BQU0sS0FBSyxNQUFNLENBQUMsQ0FBQTtBQUNwRSxDQUFDO0FBRUQsTUFBTSxPQUFPLFdBQVksU0FBUSxZQUF5QjtJQUN4RCxLQUFLLENBQWE7SUFDbEIsTUFBTSxDQUFRO0lBQ2QsWUFBWSxDQUFRO0lBQ3BCLGFBQWEsQ0FBUztJQUN0QixNQUFNLENBQVM7SUFDZixhQUFhLENBQWE7SUFDMUIsYUFBYSxH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
+\ No newline at end of file
++//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmlwNDYuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW1wbC9uaXA0Ni50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsT0FBTyxFQUFFLFNBQVMsRUFBRSxNQUFNLDRCQUE0QixDQUFBO0FBQy9ELE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSx3QkFBd0IsQ0FBQTtBQUNuRCxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sRUFBRSxNQUFNLGVBQWUsQ0FBQTtBQUNuRCxPQUFPLEtBQUssTUFBTSxPQUFPLENBQUE7QUFDekIsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGVBQWUsQ0FBQTtBQUM1QyxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sZUFBZSxDQUFBO0FBQzFDLE9BQU8sRUFBRSxlQUFlLEVBQUUsTUFBTSxVQUFVLENBQUE7QUFDMUMsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGtCQUFrQixDQUFBO0FBQy9DLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxjQUFjLENBQUE7QUFHdkMsT0FBTyxFQUFvQixnQkFBZ0IsRUFBRSxNQUFNLFdBQVcsQ0FBQTtBQUU5RCxNQUFNLFVBQVUsR0FBRyxNQUFNLENBQUE7QUFDekIsdUNBQXVDO0FBQ3ZDLE1BQU0sS0FBSyxHQUNULDRIQUE0SCxDQUFBO0FBOEI5SCxNQUFNLFVBQVUsaUJBQWlCLENBQUMsR0FBdUMsRUFBRSxNQUFlO0lBQ3hGLElBQUksR0FBRyxDQUFDLEtBQUs7UUFBRSxPQUFPLEtBQUssQ0FBQTtJQUMzQixPQUFPLEdBQUcsQ0FBQyxNQUFNLEtBQUssS0FBSyxJQUFJLENBQUMsQ0FBQyxDQUFDLE1BQU0sSUFBSSxHQUFHLENBQUMsTUFBTSxLQUFLLE1BQU0sQ0FBQyxDQUFBO0FBQ3BFLENBQUM7QUFFRCxNQUFNLE9BQU8sV0FBWSxTQUFRLFlBQXlCO0lBbUM3QyxPQUFPO0lBbENsQixLQUFLLENBQWE7SUFDbEIsTUFBTSxDQUFRO0lBQ2QsWUFB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
+\ No newline at end of file
+diff --git a/dist/impl/nip46.d.ts b/dist/impl/nip46.d.ts
+index 928c234..362dcc8 100644
+--- a/dist/impl/nip46.d.ts
++++ b/dist/impl/nip46.d.ts
+@@ -1,16 +1,21 @@
+ import { EventEmitter } from "eventemitter3";
+-import type { NostrEvent } from "../nostr";
++import type { NostrEvent, NotSignedNostrEvent } from "../nostr";
+ import { type EventSigner } from "../signer";
+ interface Nip46Events {
+     oauth: (url: string) => void;
+     ready: () => void;
+ }
++export interface Nip46SignerOptions {
++    timeoutMs?: number;
++    permissions?: string;
++}
+ export declare function isConnectAccepted(rsp: {
+     result: string;
+     error?: string;
+ }, secret?: string): boolean;
+ export declare class Nip46Signer extends EventEmitter<Nip46Events> implements EventSigner {
+     #private;
++    readonly options: Nip46SignerOptions;
+     /**
+      * Start NIP-46 connection
+      *
+@@ -28,11 +33,13 @@ export declare class Nip46Signer extends EventEmitter<Nip46Events> implements Ev
+      *
+      * @see https://github.com/nostr-protocol/nips/blob/master/46.md#initiating-a-connection
+      */
+-    constructor(config: string, insideSigner?: EventSigner);
++    constructor(config: string, insideSigner?: EventSigner, options?: Nip46SignerOptions);
+     get supports(): string[];
+     get relays(): string[];
+     get privateKey(): string | undefined;
+     get isBunker(): boolean;
++    get remotePubkey(): string | undefined;
++    get timeoutMs(): number;
+     /**
+      * Connect to the remote signer relay and establish the NIP-46 connection.
+      *
+@@ -56,17 +63,9 @@ export declare class Nip46Signer extends EventEmitter<Nip46Events> implements Ev
+     getPubKey(): Promise<string>;
+     nip4Encrypt(content: string, otherKey: string): Promise<string>;
+     nip4Decrypt(content: string, otherKey: string): Promise<string>;
+-    nip44Encrypt(_content: string, _key: string): Promise<string>;
+-    nip44Decrypt(_content: string, _otherKey: string): Promise<string>;
+-    sign(ev: NostrEvent): Promise<{
+-        pubkey: string;
+-        created_at: number;
+-        kind: number;
+-        tags: Array<Array<string>>;
+-        content: string;
+-        id: string;
+-        sig: string;
+-    }>;
++    nip44Encrypt(content: string, key: string): Promise<string>;
++    nip44Decrypt(content: string, otherKey: string): Promise<string>;
++    sign(ev: NostrEvent | NotSignedNostrEvent): Promise<NostrEvent>;
+     /**
+      * NIP-46 oAuth bunker signup
+      * @param name Desired name
+diff --git a/dist/impl/nip46.d.ts.map b/dist/impl/nip46.d.ts.map
+index 8ef09fa..a71eaad 100644
+--- a/dist/impl/nip46.d.ts.map
++++ b/dist/impl/nip46.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"nip46.d.ts","sourceRoot":"","sources":["../../src/impl/nip46.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,YAAY,EAAE,MAAM,eAAe,CAAA;AAM5C,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,UAAU,CAAA;AAC1C,OAAO,EAAE,KAAK,WAAW,EAAoB,MAAM,WAAW,CAAA;AAyB9D,UAAU,WAAW;IACnB,KAAK,EAAE,CAAC,GAAG,EAAE,MAAM,KAAK,IAAI,CAAA;IAC5B,KAAK,EAAE,MAAM,IAAI,CAAA;CAClB;AAED,wBAAgB,iBAAiB,CAAC,GAAG,EAAE;IAAE,MAAM,EAAE,MAAM,CAAC;IAAC,KAAK,CAAC,EAAE,MAAM,CAAA;CAAE,EAAE,MAAM,CAAC,EAAE,MAAM,WAGzF;AAED,qBAAa,WAAY,SAAQ,YAAY,CAAC,WAAW,CAAE,YAAW,WAAW;;IAY/E;;;;;;;;;;;;;;;;OAgBG;IACH,YAAY,MAAM,EAAE,MAAM,EAAE,YAAY,CAAC,EAAE,WAAW,EAwBrD;IAED,IAAI,QAAQ,IAAI,MAAM,EAAE,CAEvB;IAED,IAAI,MAAM,aAET;IAED,IAAI,UAAU,IAAI,MAAM,GAAG,SAAS,CAKnC;IAED,IAAI,QAAQ,YAEX;IAED;;;;;;;;;OASG;IACG,IAAI,CAAC,WAAW,UAAO,iBAkD5B;IAEK,KAAK,kBAQV;IAEK,QAAQ,sBAGb;IAED;;;;;;OAMG;IACG,SAAS,oBAId;IAEK,WAAW,CAAC,OAAO,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,mBAGlD;IAEK,WAAW,CAAC,OAAO,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,mBAGlD;IAED,YAAY,CAAC,QAAQ,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC,CAE5D;IAED,YAAY,CAAC,QAAQ,EAAE,MAAM,EAAE,SAAS,EAAE,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC,CAEjE;IAEK,IAAI,CAAC,EAAE,EAAE,UAAU;;;;;;;;OAQxB;IAED;;;;;;OAMG;IACG,aAAa,CAAC,IAAI,EAAE,MAAM,EAAE,MAAM,EAAE,MAAM,EAAE,KAAK,CAAC,EAAE,MAAM,iBAM/D;CAgJF"}
+\ No newline at end of file
++{"version":3,"file":"nip46.d.ts","sourceRoot":"","sources":["../../src/impl/nip46.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,YAAY,EAAE,MAAM,eAAe,CAAA;AAM5C,OAAO,KAAK,EAAE,UAAU,EAAE,mBAAmB,EAAE,MAAM,UAAU,CAAA;AAC/D,OAAO,EAAE,KAAK,WAAW,EAAoB,MAAM,WAAW,CAAA;AAyB9D,UAAU,WAAW;IACnB,KAAK,EAAE,CAAC,GAAG,EAAE,MAAM,KAAK,IAAI,CAAA;IAC5B,KAAK,EAAE,MAAM,IAAI,CAAA;CAClB;AAED,MAAM,WAAW,kBAAkB;IACjC,SAAS,CAAC,EAAE,MAAM,CAAA;IAClB,WAAW,CAAC,EAAE,MAAM,CAAA;CACrB;AAED,wBAAgB,iBAAiB,CAAC,GAAG,EAAE;IAAE,MAAM,EAAE,MAAM,CAAC;IAAC,KAAK,CAAC,EAAE,MAAM,CAAA;CAAE,EAAE,MAAM,CAAC,EAAE,MAAM,WAGzF;AAED,qBAAa,WAAY,SAAQ,YAAY,CAAC,WAAW,CAAE,YAAW,WAAW;;IAmC7E,QAAQ,CAAC,OAAO,EAAE,kBAAkB;IApBtC;;;;;;;;;;;;;;;;OAgBG;IACH,YACE,MAAM,EAAE,MAAM,EACd,YAAY,CAAC,EAAE,WAAW,EACjB,OAAO,GAAE,kBAAuB,EA0B1C;IAED,IAAI,QAAQ,IAAI,MAAM,EAAE,CAEvB;IAED,IAAI,MAAM,aAET;IAED,IAAI,UAAU,IAAI,MAAM,GAAG,SAAS,CAKnC;IAED,IAAI,QAAQ,YAEX;IAED,IAAI,YAAY,uBAEf;IAED,IAAI,SAAS,WAEZ;IAED;;;;;;;;;OASG;IACG,IAAI,CAAC,WAAW,UAAO,iBAG5B;IAuEK,KAAK,kBAWV;IAEK,QAAQ,sBAGb;IAED;;;;;;OAMG;IACG,SAAS,oBAMd;IAEK,WAAW,CAAC,OAAO,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,mBAGlD;IAEK,WAAW,CAAC,OAAO,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,mBAGlD;IAEK,YAAY,CAAC,OAAO,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC,CAEhE;IAEK,YAAY,CAAC,OAAO,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC,CAErE;IAEK,IAAI,CAAC,EAAE,EAAE,UAAU,GAAG,mBAAmB,uBAiB9C;IAED;;;;;;OAMG;IACG,aAAa,CAAC,IAAI,EAAE,MAAM,EAAE,MAAM,EAAE,MAAM,EAAE,KAAK,CAAC,EAAE,MAAM,iBAM/D;CAkIF"}
+\ No newline at end of file

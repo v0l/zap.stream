@@ -1,9 +1,13 @@
-import type { EventSigner, NostrEvent } from "@snort/system"
-import { bytesToHex, hexToBytes } from "@noble/hashes/utils.js"
-import { BunkerSigner, createNostrConnectURI, type BunkerPointer } from "nostr-tools/nip46"
-import { generateSecretKey, getPublicKey, verifyEvent } from "nostr-tools/pure"
-import { SimplePool } from "nostr-tools/pool"
+import { EventExt, Nip46Signer, PrivateKeySigner, type EventSigner, type NostrEvent } from "@snort/system"
+import { hexToBytes } from "@noble/hashes/utils.js"
+import { schnorr } from "@noble/curves/secp256k1.js"
 import { RemoteApprovals } from "./remote-approvals"
+
+interface BunkerPointer {
+  pubkey: string
+  relays: string[]
+  secret: string | null
+}
 
 const HEX_KEY = /^[0-9a-f]{64}$/
 const REQUEST_TIMEOUT = 120_000
@@ -65,7 +69,7 @@ export function isRemoteConnection(value: unknown): value is RemoteConnection {
       c.bunker.relays.length > 0 &&
       c.bunker.relays.length <= 8 &&
       c.bunker.relays.every(r => typeof r === "string" && !!validateRelay(r)) &&
-      !!getPublicKey(hexToBytes(c.clientSecret))
+      !!new PrivateKeySigner(c.clientSecret).getPubKey()
     )
   } catch {
     return false
@@ -79,7 +83,8 @@ export function validateSigningResult(
 ): NostrEvent {
   const { id, sig, pubkey: author, kind, created_at, content, tags } = signed
   if (
-    !verifyEvent({ id, sig, pubkey: author, kind, created_at, content, tags }) ||
+    !EventExt.verify({ id, sig, pubkey: author, kind, created_at, content, tags }) ||
+    !schnorr.verify(hexToBytes(sig), hexToBytes(id), hexToBytes(author)) ||
     signed.pubkey !== pubkey ||
     signed.kind !== template.kind ||
     signed.created_at !== template.created_at ||
@@ -92,47 +97,34 @@ export function validateSigningResult(
 }
 
 class RemoteTransport {
-  readonly pool = new SimplePool()
   readonly controller = new AbortController()
-  signer?: BunkerSigner
+  readonly signer: Nip46Signer
   readonly timeoutMs: number
   #onAbort?: () => void
   #requests = 0
   #approvalOwner = Symbol()
 
-  get bunker() {
-    if (!this.signer) throw new Error("Remote signer is not connected")
-    return this.signer
-  }
-
   constructor(
-    readonly key: Uint8Array,
+    config: string,
+    readonly client: PrivateKeySigner,
     readonly options: RemoteOptions,
   ) {
     this.timeoutMs = options.timeoutMs ?? REQUEST_TIMEOUT
+    // Let the remote signer request approval per operation instead of Snort's app-specific defaults.
+    this.signer = new Nip46Signer(config, client, { timeoutMs: this.timeoutMs, permissions: "" })
+    this.signer.on("oauth", url => {
+      if (this.controller.signal.aborted) return
+      const approvedUrl = RemoteApprovals.show(this.#approvalOwner, url, () => this.close())
+      if (!approvedUrl) return this.close()
+      try {
+        this.options.onAuth?.(approvedUrl)
+      } catch {
+        this.close()
+      }
+    })
     this.#onAbort = () => this.close()
     options.signal?.addEventListener("abort", this.#onAbort, { once: true })
     if (options.signal?.aborted) this.close()
-  }
-
-  get params() {
-    return {
-      pool: this.pool,
-      skipSwitchRelays: true,
-      onauth: (url: string) => {
-        if (this.controller.signal.aborted) return
-        const approvedUrl = RemoteApprovals.show(this.#approvalOwner, url, () => this.close())
-        if (!approvedUrl) {
-          this.close()
-          return
-        }
-        try {
-          this.options.onAuth?.(approvedUrl)
-        } catch {
-          this.close()
-        }
-      },
-    }
   }
 
   async request<T>(run: () => Promise<T>): Promise<T> {
@@ -165,9 +157,7 @@ class RemoteTransport {
     this.controller.abort()
     RemoteApprovals.clear(this.#approvalOwner)
     if (this.#onAbort) this.options.signal?.removeEventListener("abort", this.#onAbort)
-    void this.signer?.close()
-    setTimeout(() => this.pool.destroy(), 0)
-    this.key.fill(0)
+    void this.signer.close().catch(() => undefined)
   }
 }
 
@@ -177,15 +167,17 @@ export class RemoteSigner implements EventSigner {
   private constructor(
     readonly connection: RemoteConnection,
     private readonly transport: RemoteTransport,
+    private readonly restored = false,
   ) {}
 
   static restore(connection: RemoteConnection, options: RemoteOptions = {}): RemoteSigner {
     options.signal?.throwIfAborted()
     if (!isRemoteConnection(connection)) throw new Error("Remote signer session is invalid; connect again")
-    const transport = new RemoteTransport(hexToBytes(connection.clientSecret), options)
+    const url = new URL(`bunker://${connection.bunker.pubkey}`)
+    url.searchParams.set("relay", connection.bunker.relays[0])
+    const transport = new RemoteTransport(url.href, new PrivateKeySigner(connection.clientSecret), options)
     try {
-      transport.signer = BunkerSigner.fromBunker(transport.key, connection.bunker, transport.params)
-      return new RemoteSigner(connection, transport)
+      return new RemoteSigner(connection, transport, true)
     } catch (error) {
       transport.close()
       throw error
@@ -194,15 +186,10 @@ export class RemoteSigner implements EventSigner {
 
   static async connect(input: string, options: RemoteOptions = {}): Promise<RemoteSigner> {
     options.signal?.throwIfAborted()
-    const pointer = parseBunkerConnection(input)
-    const transport = new RemoteTransport(generateSecretKey(), options)
+    parseBunkerConnection(input)
+    const transport = new RemoteTransport(input.trim(), PrivateKeySigner.random(), options)
     try {
-      transport.signer = BunkerSigner.fromBunker(transport.key, pointer, transport.params)
-      const result = await transport.request(() =>
-        transport.bunker.sendRequest("connect", [pointer.pubkey, pointer.secret ?? ""]),
-      )
-      if (result !== "ack" && (!pointer.secret || result !== pointer.secret))
-        throw new Error("The signer did not approve this connection")
+      await transport.request(() => transport.signer.init())
       return await RemoteSigner.finish(transport)
     } catch (error) {
       transport.close()
@@ -213,21 +200,18 @@ export class RemoteSigner implements EventSigner {
   static pair(relay: string, origin: string, options: RemoteOptions = {}) {
     options.signal?.throwIfAborted()
     const relayUrl = validateRelay(relay)
-    const transport = new RemoteTransport(generateSecretKey(), options)
-    const uri = createNostrConnectURI({
-      clientPubkey: getPublicKey(transport.key),
-      relays: [relayUrl],
-      secret: bytesToHex(generateSecretKey()),
+    const client = PrivateKeySigner.random()
+    const params = new URLSearchParams({
+      relay: relayUrl,
+      secret: PrivateKeySigner.random().privateKey,
       name: "zap.stream",
       url: origin,
     })
+    const uri = `nostrconnect://${client.getPubKey()}?${params}`
+    const transport = new RemoteTransport(uri, client, options)
     const connected = transport
       .request(async () => {
-        transport.signer = await BunkerSigner.fromURI(transport.key, uri, transport.params, transport.controller.signal)
-        if (transport.controller.signal.aborted) {
-          await transport.signer.close()
-          throw new Error("Remote signer connection was closed")
-        }
+        await transport.signer.init()
         return await RemoteSigner.finish(transport)
       })
       .catch(error => {
@@ -238,11 +222,13 @@ export class RemoteSigner implements EventSigner {
   }
 
   private static async finish(transport: RemoteTransport): Promise<RemoteSigner> {
-    const pubkey = await transport.request(() => transport.bunker.getPublicKey())
+    const pubkey = await transport.request(() => transport.signer.getPubKey())
     if (!HEX_KEY.test(pubkey)) throw new Error("The signer returned an invalid public key")
+    const remotePubkey = transport.signer.remotePubkey
+    if (!remotePubkey) throw new Error("The signer did not establish a connection")
     const connection = {
-      clientSecret: bytesToHex(transport.key),
-      bunker: { ...transport.bunker.bp, relays: [...transport.bunker.bp.relays], secret: null },
+      clientSecret: transport.client.privateKey,
+      bunker: { pubkey: remotePubkey, relays: [...transport.signer.relays], secret: null },
       pubkey,
     }
     return new RemoteSigner(connection, transport)
@@ -259,7 +245,8 @@ export class RemoteSigner implements EventSigner {
     if (this.closed) throw new Error("Remote signer connection was closed")
     this.#ready ??= this.transport
       .request(async () => {
-        const pubkey = await this.transport.bunker.sendRequest("get_public_key", [])
+        if (this.restored) await this.transport.signer.init(false)
+        const pubkey = await this.transport.signer.getPubKey()
         if (pubkey !== this.connection.pubkey)
           throw new Error("Your signer identity changed. Log out and connect again.")
       })
@@ -283,24 +270,26 @@ export class RemoteSigner implements EventSigner {
       content: event.content,
       tags: event.tags.map(t => [...t]),
     }
-    const signed = await this.transport.request(() => this.transport.bunker.signEvent(template))
+    const signed = await this.transport.request(() =>
+      this.transport.signer.sign({ ...template, pubkey: this.connection.pubkey, id: "" }),
+    )
     return validateSigningResult(signed, template, this.connection.pubkey)
   }
 
   private async crypto(
-    method: "nip04Encrypt" | "nip04Decrypt" | "nip44Encrypt" | "nip44Decrypt",
+    method: "nip4Encrypt" | "nip4Decrypt" | "nip44Encrypt" | "nip44Decrypt",
     content: string,
     key: string,
   ) {
     await this.init()
-    return await this.transport.request(() => this.transport.bunker[method](key, content))
+    return await this.transport.request(() => this.transport.signer[method](content, key))
   }
 
   nip4Encrypt(content: string, key: string) {
-    return this.crypto("nip04Encrypt", content, key)
+    return this.crypto("nip4Encrypt", content, key)
   }
   nip4Decrypt(content: string, key: string) {
-    return this.crypto("nip04Decrypt", content, key)
+    return this.crypto("nip4Decrypt", content, key)
   }
   nip44Encrypt(content: string, key: string) {
     return this.crypto("nip44Encrypt", content, key)

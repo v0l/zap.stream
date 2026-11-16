@@ -19,6 +19,10 @@ after reload. It never receives your identity private key, and one-time pairing 
 retained. Treat the saved client connection as a credential. Logout removes it and closes the
 connection in other open tabs; revoke the client in your signer to withdraw its permission.
 
+The NIP-46 backend is `Nip46Signer` from `@snort/system`. This candidate includes a temporary
+Bun patch for the companion Snort fixes; see the [dependency prerequisite](docs/verification/remote-login.md#snort-prerequisite)
+before merging it upstream.
+
 If your signer requests web approval, the app shows its HTTPS link and host until approval,
 cancellation or timeout, including after reload. Check that host before opening the link.
 Cancelling or timing out closes the connection; a later action can reconnect with the saved client key.

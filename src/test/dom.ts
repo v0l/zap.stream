@@ -1,7 +1,13 @@
 import { GlobalRegistrator } from "@happy-dom/global-registrator"
 
 if (!GlobalRegistrator.isRegistered) {
-  const socket = globalThis.WebSocket
+  const native = {
+    WebSocket: globalThis.WebSocket,
+    fetch: globalThis.fetch,
+    Request: globalThis.Request,
+    Response: globalThis.Response,
+    Headers: globalThis.Headers,
+  }
   GlobalRegistrator.register()
-  globalThis.WebSocket = socket
+  Object.assign(globalThis, native)
 }

@@ -33,10 +33,48 @@ transport; a completed sync preserves decrypted mutes and pending list changes a
 cancellation, including when a relay subsequently returns no event. Queued storage-event cases check stale preference/state saves,
 signing access and logout without reviving credentials or deleting a replacement account.
 
-The NIP-07 provider is a protocol fixture. NIP-46 uses nostr-tools on both sides of a real loopback
-WebSocket relay; that tests encrypted interoperability within the library, not a separate signer
-implementation. These cases do not claim installed extension/app, physical-device or hosted
-production acceptance.
+The NIP-07 provider is a protocol fixture. NIP-46 uses `Nip46Signer` from the existing
+`@snort/system` dependency against a nostr-tools signer over a real loopback WebSocket relay.
+`nostr-tools` is a development dependency used by tests only; it is not the application's
+remote-signing backend. These cases do not claim installed extension/app, physical-device
+or hosted production acceptance.
+
+## Snort prerequisite
+
+The application delegates relay transport, pairing, signing and NIP-04/NIP-44 operations to
+Snort. Its adapter owns saved account binding, approval UI, cancellation and session lifetime.
+The existing login routes and session-recovery tests are retained.
+
+The published `@snort/system@2.2.0` needs the companion [Snort PR #637](https://github.com/v0l/snort/pull/637)
+at `97c0c7bc4a66679d320a3a72f4872c01bd328c60` for NIP-44 RPCs,
+validated QR discovery, returned-event verification, prompt cancellation and saved-client
+restoration. This working branch carries those changes as an explicit Bun dependency patch
+to make the complete candidate reproducible. It is a prerequisite bridge for testing, not
+an independent NIP-46 implementation. Before upstream merge, use a release containing the
+reviewed Snort fixes and remove the patch. Do not treat local verification as upstream approval.
+
+Snort currently selects the first relay from a connection link; this adapter follows that
+behaviour. Parsing retains the supplied relay choices, but automatic relay failover is not
+claimed. Restored connections preserve the client key and omit one-time pairing secrets.
+
+## Verified candidate: 16 November 2026
+
+Updated to upstream zap.stream `663ace4` via merge `5c82666`, replacing the remote-signing
+backend from closed PR #99. The companion Snort branch starts from `1fcf820`.
+
+- Fresh-cache Bun installation applied the dependency patch successfully.
+- zap.stream: TypeScript, lint, production build, 170 unit/integration tests and 18 Playwright
+  desktop/Pixel 7 browser checks passed. Production source maps contain no `nostr-tools` sources
+  (44 maps, 1,295 source entries checked).
+- Snort: full monorepo build, 801 tests (8 skipped), app typecheck and lint passed. Lint reports
+  existing repository warnings. An earlier system-only run hit the unchanged randomised NIP-45
+  HLL tolerance test; its isolated rerun and the final full suite passed.
+- The patch contains only the Snort NIP-46 source and its three generated JavaScript/declaration
+  artefacts. `nostr-tools` remains a development dependency for the independent signer fixture.
+
+Physical Signet/Bark acceptance, deployment and upstream approval remain pending. No Android
+OS acceptance is inferred from the Playwright mobile profile. No task-owned test servers remain
+running after the suite exits.
 
 ## Manual Signet and Bark checks
 
