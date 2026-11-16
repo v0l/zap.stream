@@ -32,6 +32,7 @@
     "marked": "^18.0.10",
     "media-chrome": "^4.19.2",
     "mpegts.js": "^1.8.2",
+    "nostr-tools": "^2.26.1",
     "qr-code-styling": "^1.9.2",
     "react": "^19.2.8",
     "react-confetti": "^6.4.0",
@@ -58,6 +59,7 @@
   "scripts": {
     "start": "vite",
     "test": "bun test src",
+    "test:e2e": "playwright test",
     "build:api": "bun run --filter '@zap.stream/api' build",
     "build": "bun run build:api && vite build",
     "build:ssr": "vite build -c vite.ssr.config.ts",
@@ -76,6 +78,7 @@
     "@formatjs/cli": "^6.16.36",
     "@formatjs/unplugin": "^1.2.15",
     "@happy-dom/global-registrator": "^21.0.4",
+    "@playwright/test": "1.65.0",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/dom": "^10.4.1",
     "@types/bun": "^1.4.0",

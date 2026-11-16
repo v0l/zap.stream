@@ -16,6 +16,7 @@ import { FileUploader } from "./file-uploader"
 import { useStreamProvider } from "@/hooks/stream-provider"
 import { gtag } from "@/gtm"
 import { defaultLightningAddress, lightningAddressCheckRequired, parsePrivateKey } from "./login-keys"
+import { RemoteLogin } from "./login-remote"
 
 enum Stage {
   Start = 0,
@@ -23,6 +24,7 @@ enum Stage {
   Profile = 2,
   Wallet = 3,
   SaveKey = 4,
+  RemoteSigner = 5,
 }
 
 const signupSteps = [Stage.Profile, Stage.Wallet, Stage.SaveKey]
@@ -154,6 +156,12 @@ export function LoginSignup({ close }: { close: () => void }) {
       if (nip7) {
         Login.loginWithPubkey(nip7.pubKey, LoginType.Nip7)
         close()
+      } else {
+        setError(
+          formatMessage({
+            defaultMessage: "No Nostr extension found. Enable Bark for this site, or connect a remote signer.",
+          }),
+        )
       }
     } catch (e) {
       setError(errorText(e))
@@ -264,15 +272,21 @@ export function LoginSignup({ close }: { close: () => void }) {
           <div className="flex flex-col gap-2">
             <LoginOption
               icon="nostrich"
-              title={<FormattedMessage defaultMessage="Nostr extension" />}
+              title={<FormattedMessage defaultMessage="Browser extension" />}
               subtitle={
                 hasNostrExtension ? (
-                  <FormattedMessage defaultMessage="Recommended. Your key stays in the extension." />
+                  <FormattedMessage defaultMessage="Use Bark, Alby or another Nostr extension." />
                 ) : (
                   <FormattedMessage defaultMessage="No extension found in this browser" />
                 )
               }
               onClick={loginNip7}
+            />
+            <LoginOption
+              icon="link"
+              title={<FormattedMessage defaultMessage="Remote signer" />}
+              subtitle={<FormattedMessage defaultMessage="Connect Signet with a bunker link or QR code." />}
+              onClick={() => setStage(Stage.RemoteSigner)}
             />
             <LoginOption
               icon="login"
@@ -284,8 +298,9 @@ export function LoginSignup({ close }: { close: () => void }) {
           {!hasNostrExtension && (
             <small className="text-layer-4 text-center">
               <FormattedMessage
-                defaultMessage="Get an extension: {alby}, {nos2x} or {nostore}"
+                defaultMessage="Get an extension: {bark}, {alby}, {nos2x} or {nostore}"
                 values={{
+                  bark: <ExternalLink href="https://bark.forgesworn.dev/">Bark</ExternalLink>,
                   alby: <ExternalLink href="https://getalby.com/">Alby</ExternalLink>,
                   nos2x: (
                     <ExternalLink href="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp">
@@ -300,6 +315,22 @@ export function LoginSignup({ close }: { close: () => void }) {
             </small>
           )}
           <ErrorMessage error={error} />
+        </div>
+      )
+    }
+    case Stage.RemoteSigner: {
+      return (
+        <div className="flex flex-col gap-5">
+          <StageHeader
+            title={<FormattedMessage defaultMessage="Connect a remote signer" />}
+            onBack={() => setStage(Stage.Start)}
+          />
+          <RemoteLogin
+            onConnect={signer => {
+              Login.loginWithRemoteSigner(signer)
+              close()
+            }}
+          />
         </div>
       )
     }
