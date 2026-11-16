@@ -12,55 +12,27 @@
     "wss://relay.fountain.fm",
     "wss://relay.divine.video"
   ],
-  "kinds": [
-    0,
-    5,
-    7,
-    1311,
-    9735,
-    10002,
-    10063,
-    30311,
-    30313,
-    30315,
-    21,
-    22,
-    34235,
-    34236,
-    1111,
-    30023
-  ],
+  "kinds": [0, 5, 7, 1311, 9735, 10002, 10063, 30311, 30313, 30315, 21, 22, 34235, 34236, 1111, 30023],
   "max_events": 300000,
   "dist": "/app/dist",
   "bundle": "/app/dist/ssr/render.js",
   "backfill": [
     {
       "filter": {
-        "kinds": [
-          30311,
-          30313
-        ]
+        "kinds": [30311, 30313]
       },
       "max": 20000,
       "priority": true
     },
     {
       "filter": {
-        "kinds": [
-          21,
-          22,
-          34235,
-          34236
-        ]
+        "kinds": [21, 22, 34235, 34236]
       },
       "max": 20000
     },
     {
       "filter": {
-        "kinds": [
-          9735,
-          1311
-        ]
+        "kinds": [9735, 1311]
       },
       "max": 20000
     }
@@ -77,18 +49,12 @@
     "/faq",
     "/providers"
   ],
-  "warm": [
-    "/",
-    "/streams",
-    "/videos"
-  ],
+  "warm": ["/", "/streams", "/videos"],
   "sitemap": [
     {
       "name": "streams",
       "filter": {
-        "kinds": [
-          30311
-        ]
+        "kinds": [30311]
       },
       "encoding": "naddr",
       "prefix": "/",
@@ -99,12 +65,7 @@
     {
       "name": "videos",
       "filter": {
-        "kinds": [
-          21,
-          22,
-          34235,
-          34236
-        ]
+        "kinds": [21, 22, 34235, 34236]
       },
       "encoding": "auto",
       "prefix": "/",

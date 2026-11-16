@@ -46,7 +46,10 @@ export function TosPage() {
         </li>
       </ul>
       <p>
-        If you have any questions or concerns, please contact us at <a className="text-primary underline" href="mailto:info@zap.stream">info@zap.stream</a>
+        If you have any questions or concerns, please contact us at{" "}
+        <a className="text-primary underline" href="mailto:info@zap.stream">
+          info@zap.stream
+        </a>
         .
       </p>
       <p>By using zap.stream, you agree to abide by these Terms of Service.</p>

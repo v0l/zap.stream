@@ -12,13 +12,13 @@ export function PrivacyPage() {
       </p>
       <ul className="list-disc pl-6 flex flex-col gap-3">
         <li>
-          <b>Your keys:</b> Your Nostr private key (nsec) stays on your device. The apps never send it to us. If you
-          log in with a signer app such as Amber or a remote signer, the key stays in that signer.
+          <b>Your keys:</b> Your Nostr private key (nsec) stays on your device. The apps never send it to us. If you log
+          in with a signer app such as Amber or a remote signer, the key stays in that signer.
         </li>
         <li>
-          <b>What you publish:</b> Your profile, chat messages, reactions, zaps, follows, mute lists, reports and
-          stream details are Nostr events. They are sent to the Nostr relays you use and are public by design. Relays
-          and other apps can keep copies. We do not control third party relays.
+          <b>What you publish:</b> Your profile, chat messages, reactions, zaps, follows, mute lists, reports and stream
+          details are Nostr events. They are sent to the Nostr relays you use and are public by design. Relays and other
+          apps can keep copies. We do not control third party relays.
         </li>
         <li>
           <b>What we store:</b> We do not keep an account database of the people who only watch. The zap.stream
@@ -26,17 +26,17 @@ export function PrivacyPage() {
           title, summary, tags, balance and payment records.
         </li>
         <li>
-          <b>Payments:</b> Zaps are tips sent over the Lightning network from your own wallet. We do not see your
-          wallet or your wallet credentials. A Nostr Wallet Connect string you paste in is stored on your device only.
+          <b>Payments:</b> Zaps are tips sent over the Lightning network from your own wallet. We do not see your wallet
+          or your wallet credentials. A Nostr Wallet Connect string you paste in is stored on your device only.
         </li>
         <li>
           <b>No tracking:</b> The apps have no advertising and no analytics. We do not sell data and we do not share
           data with third parties for their own use.
         </li>
         <li>
-          <b>Device data:</b> The apps store settings on your device: your language, the accounts you added, your
-          follow and mute lists cache, and go live alert choices. Go live alerts are checked on your device against
-          your relays.
+          <b>Device data:</b> The apps store settings on your device: your language, the accounts you added, your follow
+          and mute lists cache, and go live alert choices. Go live alerts are checked on your device against your
+          relays.
         </li>
         <li>
           <b>Network traffic:</b> Servers you connect to (relays, our API, image and video hosts) see your IP address
@@ -50,14 +50,21 @@ export function PrivacyPage() {
           <b>Children:</b> zap.stream is not directed at children under 13.
         </li>
         <li>
-          <b>Deleting your data:</b> See <a className="text-primary underline" href="/delete-account">how to delete your account</a>.
+          <b>Deleting your data:</b> See{" "}
+          <a className="text-primary underline" href="/delete-account">
+            how to delete your account
+          </a>
+          .
         </li>
         <li>
           <b>Changes:</b> We may update this policy and will change the effective date when we do.
         </li>
       </ul>
       <p>
-        Questions about privacy: <a className="text-primary underline" href="mailto:info@zap.stream">info@zap.stream</a>
+        Questions about privacy:{" "}
+        <a className="text-primary underline" href="mailto:info@zap.stream">
+          info@zap.stream
+        </a>
       </p>
     </div>
   )

@@ -8,14 +8,7 @@ function testSigner(): Signer {
   return {
     getPubKey: () => "2f6b3a2d9ac507a2a3e3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3aa01",
     sign: async (event: NostrEvent) => {
-      const serialized = JSON.stringify([
-        0,
-        event.pubkey,
-        event.created_at,
-        event.kind,
-        event.tags,
-        event.content,
-      ])
+      const serialized = JSON.stringify([0, event.pubkey, event.created_at, event.kind, event.tags, event.content])
       const hash = await globalThis.crypto.subtle.digest("SHA-256", new TextEncoder().encode(serialized))
       return { ...event, id: base64.encode(new Uint8Array(hash)), sig: "00".repeat(64) }
     },

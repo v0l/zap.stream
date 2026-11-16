@@ -3,7 +3,8 @@ import { bech32 } from "@scure/base"
 import { amountWithinLNURLBounds, invoiceMatchesAmount } from "../invoice"
 
 function convertBits(data: number[], from: number, to: number): number[] {
-  let acc = 0, bits = 0
+  let acc = 0,
+    bits = 0
   const ret: number[] = []
   for (const v of data) {
     acc = (acc << from) | v

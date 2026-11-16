@@ -29,11 +29,7 @@ export function Text({ content, tags, eventComponent, className }: TextProps) {
     switch (f.type) {
       case "custom_emoji": {
         const url = safeMediaUrl(f.content)
-        return url ? (
-          <Emoji name={f.content} url={url} key={ctr++} />
-        ) : (
-          <span key={ctr++}>{f.content}</span>
-        )
+        return url ? <Emoji name={f.content} url={url} key={ctr++} /> : <span key={ctr++}>{f.content}</span>
       }
       case "media": {
         return (

@@ -224,9 +224,7 @@ export function SendZaps({ lnurl, pubkey, aTag, eTag, targetName, onFinish, onTa
             </div>
           </div>
         )}
-        {sendError && (
-          <div className="text-warning text-sm">{sendError}</div>
-        )}
+        {sendError && <div className="text-warning text-sm">{sendError}</div>}
         <PrimaryButton onClick={send}>
           <FormattedMessage defaultMessage="Zap!" />
         </PrimaryButton>

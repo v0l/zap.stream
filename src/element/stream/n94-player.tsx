@@ -178,7 +178,10 @@ class Nip94Loader implements mpegts.BaseLoader {
           }
         }
 
-        const ab = bytes.byteOffset === 0 && bytes.byteLength === bytes.buffer.byteLength ? bytes.buffer : bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
+        const ab =
+          bytes.byteOffset === 0 && bytes.byteLength === bytes.buffer.byteLength
+            ? bytes.buffer
+            : bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
         const buf = ab as ArrayBuffer
         this.onDataArrival(buf, this.#bytes, buf.byteLength)
         this.#bytes += buf.byteLength

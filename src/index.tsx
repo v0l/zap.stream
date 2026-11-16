@@ -100,7 +100,10 @@ const routes = makeRoutes(async () => {
   await doInit()
   return null
 })
-const router = createBrowserRouter(routes, serverRendered ? { hydrationData: { loaderData: { "0": null }, errors: null } } : undefined)
+const router = createBrowserRouter(
+  routes,
+  serverRendered ? { hydrationData: { loaderData: { "0": null }, errors: null } } : undefined,
+)
 if (serverRendered) {
   void doInit()
 }
