@@ -13,7 +13,10 @@ import { AlertWidget } from "./widget"
 
 EventBuilder.ClientTag = ["client", "zap.stream", __ZAP_STREAM_VERSION__]
 
-const system = new NostrSystem({ buildFollowGraph: false, disableSyncModule: true })
+// No custom optimizer → DefaultOptimizer (implements batchVerify), so
+// checkSigs is safe here. The overlay speaks attacker-supplied zap content
+// aloud via TTS, so forged events must not reach it.
+const system = new NostrSystem({ buildFollowGraph: false, disableSyncModule: true, checkSigs: true })
 for (const [relay, settings] of Object.entries(defaultRelays)) {
   system.ConnectToRelay(relay, settings)
 }
