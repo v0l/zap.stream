@@ -173,7 +173,6 @@ test("original account creation saves a usable key and signs its profile without
   await page.getByLabel("Display name").fill("Automated disposable account")
   await page.getByRole("button", { name: "Continue", exact: true }).click()
   await expect(page.getByLabel("Lightning address")).toHaveValue(/@127.0.0.1:5179$/)
-  // Development skips Lightning discovery only for a localhost address.
   await page.getByLabel("Lightning address").fill("fixture@localhost:5179")
   await page.getByRole("button", { name: "Continue", exact: true }).click()
   await page.getByRole("checkbox").check()

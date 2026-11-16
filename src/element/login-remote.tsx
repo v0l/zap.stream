@@ -37,7 +37,6 @@ export function RemoteLogin({ onConnect }: { onConnect: (signer: RemoteSigner) =
         signer.close()
         return
       }
-      // The login store now owns the signer; leaving this screen must keep it.
       attempt.current = null
       try {
         onConnect(signer)

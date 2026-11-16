@@ -77,7 +77,6 @@ export function validateSigningResult(
   template: Pick<NostrEvent, "kind" | "created_at" | "tags" | "content">,
   pubkey: string,
 ): NostrEvent {
-  // Explicit fields exclude nostr-tools' cached verification symbol, even on a mutated object.
   const { id, sig, pubkey: author, kind, created_at, content, tags } = signed
   if (
     !verifyEvent({ id, sig, pubkey: author, kind, created_at, content, tags }) ||
@@ -92,7 +91,6 @@ export function validateSigningResult(
   return signed
 }
 
-/** Owns the pool and cancels pending work as well as closing its sockets. */
 class RemoteTransport {
   readonly pool = new SimplePool()
   readonly controller = new AbortController()
@@ -122,7 +120,6 @@ class RemoteTransport {
       pool: this.pool,
       skipSwitchRelays: true,
       onauth: (url: string) => {
-        // Never navigate automatically to an address supplied by a remote signer.
         if (this.controller.signal.aborted) return
         const approvedUrl = RemoteApprovals.show(this.#approvalOwner, url, () => this.close())
         if (!approvedUrl) {
@@ -169,8 +166,6 @@ class RemoteTransport {
     RemoteApprovals.clear(this.#approvalOwner)
     if (this.#onAbort) this.options.signal?.removeEventListener("abort", this.#onAbort)
     void this.signer?.close()
-    // nostr-tools closes subscriptions and sends CLOSE in promise callbacks.
-    // Revoke synchronously above, then let those sends finish before closing sockets.
     setTimeout(() => this.pool.destroy(), 0)
     this.key.fill(0)
   }
@@ -247,7 +242,6 @@ export class RemoteSigner implements EventSigner {
     if (!HEX_KEY.test(pubkey)) throw new Error("The signer returned an invalid public key")
     const connection = {
       clientSecret: bytesToHex(transport.key),
-      // A pairing secret is used once. Restores keep the same client key.
       bunker: { ...transport.bunker.bp, relays: [...transport.bunker.bp.relays], secret: null },
       pubkey,
     }

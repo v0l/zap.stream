@@ -7,7 +7,6 @@ interface Approval {
   cancel: () => void
 }
 
-/** Approval requests outlive the login form, including after a restored session. */
 class RemoteApprovalStore extends ExternalStore<readonly Approval[]> {
   #pending: Approval[] = []
   #serial = 0

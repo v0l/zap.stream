@@ -137,7 +137,6 @@ test("retry after a later cancellation preserves decrypted mutes and pending lis
     await state.init(signer, system)
     expect(state.muted.map(link => link.toEventTag()?.[1])).toContain(hidden)
     state.mute(new NostrLink(NostrPrefix.PublicKey, added))
-    // A cancelled unrelated request must not replace successfully loaded lists.
     signer.close()
     offline = true
     const retry = getSigner(session)
@@ -226,7 +225,6 @@ test("a queued logout revokes a matching credential even if another stale tab re
     store.loginWithRemoteSigner(signer)
     const before = window.localStorage.getItem("session")
     window.localStorage.removeItem("session")
-    // Simulate an already queued save from a different tab before delivery.
     window.localStorage.setItem("session", before ?? "")
     window.dispatchEvent(
       new StorageEvent("storage", {
@@ -377,7 +375,6 @@ test("logout or account replacement in another tab closes the signer without era
     store.loginWithRemoteSigner(signer)
     const session = store.takeSnapshot()
     if (!session) throw new Error("Missing session")
-    // A profile change in another tab keeps this connection authorised.
     window.dispatchEvent(new StorageEvent("storage", { key: "session", storageArea: window.localStorage }))
     expect(signer.closed).toBe(false)
     const replacement = JSON.stringify({ type: LoginType.Nip7, pubkey: getPublicKey(generateSecretKey()) })

@@ -50,7 +50,6 @@ function matchesRemoteSession(json: string | null, connection: RemoteConnection)
   }
 }
 
-/** Keep completed list state across transports, but retry interrupted initial decryption. */
 class RemoteUserState extends UserState<never> {
   syncStatus: "new" | "initialising" | "synced" | "retry" = "new"
 
@@ -79,8 +78,6 @@ class RemoteUserState extends UserState<never> {
       if (!active) throw new Error("Remote signer session was closed")
       return active
     }
-    // Delegation never opens a transport. Only an explicit getSigner call can
-    // reconnect, and the owning store rejects callbacks from retired states.
     const delegate: EventSigner = {
       init: () => current().init(),
       getPubKey: () => read(() => current().getPubKey()),
@@ -199,7 +196,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
       throw new Error("Remote signer connection was closed")
     const next: LoginSession = { type: LoginType.Nip46, pubkey: signer.connection.pubkey, remote: signer.connection }
     next.state = this.#makeState(next)
-    // Save before adopting it: failed storage must not leave an invisible login.
     try {
       window.localStorage.setItem(SESSION_KEY, JSON.stringify({ ...next, state: next.state?.serialize() }))
     } catch (error) {
@@ -217,7 +213,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
   #revokeRemoteSession() {
     this.#disposeSession()
     this.#session = undefined
-    // Another tab may own the saved replacement. Do not overwrite it.
     this.notifyChange()
   }
 
@@ -233,8 +228,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     const previous = this.#session?.state
     const closed = this.#remoteSigner?.closed
     if (!this.#remoteSigner || closed) this.#remoteSigner = RemoteSigner.restore(connection)
-    // UserState catches decrypt errors and memoises init. Retry an interrupted
-    // initial sync, retaining completed lists and their pending local changes.
     if (
       previous instanceof RemoteUserState &&
       (previous.syncStatus === "retry" || (closed && previous.syncStatus !== "synced"))
@@ -254,8 +247,6 @@ export class LoginStore extends ExternalStore<LoginSession | undefined> {
     remoteSigners.set(connection, () => this.#getRemoteSigner(connection))
     this.#storageListener = event => {
       if (event.storageArea !== window.localStorage || (event.key !== SESSION_KEY && event.key !== null)) return
-      // Storage events are queued: rereading storage alone can miss a logout
-      // if a stale tab saved the old credential before the event arrived.
       if (matchesRemoteSession(event.oldValue, connection) && !matchesRemoteSession(event.newValue, connection)) {
         if (matchesRemoteSession(window.localStorage.getItem(SESSION_KEY), connection)) {
           window.localStorage.removeItem(SESSION_KEY)

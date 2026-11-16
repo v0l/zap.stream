@@ -6,7 +6,6 @@ import { finalizeEvent, generateSecretKey, getPublicKey, verifyEvent, type Event
 type SocketData = { subscriptions: Map<string, Filter[]> }
 type Request = { id: string; method: string; params: string[]; client: string }
 
-/** Loopback relay and NIP-44 signer with distinct transport and user identities. No external services. */
 export class Nip46Fixture {
   readonly transportKey = generateSecretKey()
   readonly transportPubkey = getPublicKey(this.transportKey)
