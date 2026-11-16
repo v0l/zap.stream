@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
 import { bech32 } from "@scure/base"
-import { invoiceMatchesAmount } from "../invoice"
+import { amountWithinLNURLBounds, invoiceMatchesAmount } from "../invoice"
 
 function convertBits(data: number[], from: number, to: number): number[] {
   let acc = 0, bits = 0
@@ -68,5 +68,23 @@ describe("invoiceMatchesAmount", () => {
   test("bolt11 case-insensitivity: uppercase invoices decode and verify", () => {
     expect(invoiceMatchesAmount(makeBolt11(21_000).toUpperCase(), 21)).toBe(true)
     expect(invoiceMatchesAmount(makeBolt11(1_000_000_000).toUpperCase(), 21)).toBe(false)
+  })
+})
+
+describe("amountWithinLNURLBounds", () => {
+  test("amounts inside advertised bounds pass (incl. exact edges)", () => {
+    expect(amountWithinLNURLBounds(21_000, 1_000, 100_000_000)).toBe(true)
+    expect(amountWithinLNURLBounds(1_000, 1_000, 100_000_000)).toBe(true) // exactly at min
+    expect(amountWithinLNURLBounds(100_000_000, 1_000, 100_000_000)).toBe(true) // exactly at max
+  })
+  test("amounts outside advertised bounds fail", () => {
+    expect(amountWithinLNURLBounds(500, 1_000, 100_000_000)).toBe(false) // below min
+    expect(amountWithinLNURLBounds(200_000_000, 1_000, 100_000_000)).toBe(false) // above max
+  })
+  test("unadvertised bounds cannot be checked", () => {
+    expect(amountWithinLNURLBounds(21_000, undefined, undefined)).toBeUndefined()
+  })
+  test("non-finite amounts cannot be checked", () => {
+    expect(amountWithinLNURLBounds(Number.NaN, 1_000, 100_000_000)).toBeUndefined()
   })
 })

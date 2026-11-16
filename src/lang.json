@@ -293,6 +293,9 @@
   "EAY/hu": {
     "defaultMessage": "{n} watching"
   },
+  "EBHxaw": {
+    "defaultMessage": "Amount is below this provider's minimum ({min} sats)."
+  },
   "ENj1+w": {
     "defaultMessage": "No extension found in this browser"
   },
@@ -875,6 +878,9 @@
   },
   "fF376U": {
     "defaultMessage": "Current"
+  },
+  "fa7iO+": {
+    "defaultMessage": "Amount is above this provider's maximum ({max} sats)."
   },
   "fdCS5/": {
     "defaultMessage": "Reload"
