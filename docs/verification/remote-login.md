@@ -26,7 +26,10 @@ public relay WebSockets. All transport and signing keys in automated tests are d
 Unit/integration checks cover exact identity and event binding, forged signatures, NIP-44 peer
 round trips, QR secret and recipient binding, restored identity changes, revoked/rejected access,
 unsafe approval URLs, approval after reload, cancellation, timeouts, storage failure, cross-tab
-logout/account replacement and retained callbacks after logout or account switching.
+logout/account replacement and retained callbacks after logout or account switching. Regression
+cases also initialise a genuinely encrypted mute-list event, cancel its approval and verify it is
+loaded by the replacement signer. Queued storage-event cases check stale preference/state saves,
+signing access and logout without reviving credentials or deleting a replacement account.
 
 The NIP-07 provider is a protocol fixture. NIP-46 uses nostr-tools on both sides of a real loopback
 WebSocket relay; that tests encrypted interoperability within the library, not a separate signer

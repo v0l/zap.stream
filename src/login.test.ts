@@ -3,9 +3,159 @@ import { afterEach, expect, test } from "bun:test"
 import { getSigner, LoginStore, LoginType } from "./login"
 import { RemoteSigner } from "./remote-signer"
 import { Nip46Fixture } from "./test/nip46-fixture"
-import { getPublicKey, generateSecretKey } from "nostr-tools/pure"
+import { getPublicKey, generateSecretKey, finalizeEvent } from "nostr-tools/pure"
+import { encrypt, getConversationKey } from "nostr-tools/nip44"
+import { EventKind, type SystemInterface, UserStateChangeType } from "@snort/system"
 
 afterEach(() => window.localStorage.clear())
+
+test("retry after cancelled initial sync restores the encrypted mute list with the replacement signer", async () => {
+  using fixture = new Nip46Fixture()
+  const signer = await RemoteSigner.connect(fixture.bunkerUri)
+  const store = new LoginStore()
+  const hidden = getPublicKey(generateSecretKey())
+  const event = finalizeEvent(
+    {
+      kind: EventKind.MuteList,
+      created_at: Math.floor(Date.now() / 1000),
+      tags: [],
+      content: encrypt(JSON.stringify([["p", hidden]]), getConversationKey(fixture.identity, fixture.pubkey)),
+    },
+    fixture.identity,
+  )
+  const fetchEvents = async () => [event]
+  const rejectBroadcast = async () => {
+    throw new Error("This test must not publish")
+  }
+  const system = { Fetch: fetchEvents, BroadcastEvent: rejectBroadcast } as unknown as SystemInterface
+  try {
+    store.loginWithRemoteSigner(signer)
+    const previous = store.takeSnapshot()?.state
+    if (!previous) throw new Error("Missing state")
+    fixture.approvalUrl = "https://signer.example/approve"
+    const approval = new Promise<void>(resolve => {
+      fixture.onApproval = resolve
+    })
+    const initialising = previous.init(signer, system)
+    await approval
+    signer.close()
+    await initialising
+    expect(previous.muted).toEqual([])
+    fixture.approvalUrl = undefined
+    const session = store.takeSnapshot()
+    if (!session) throw new Error("Missing session")
+    const retry = getSigner(session)
+    if (!retry) throw new Error("Missing retry signer")
+    const current = store.takeSnapshot()?.state
+    if (!current) throw new Error("Missing retry state")
+    await current.init(retry, system)
+    expect(current.muted.map(link => link.toEventTag()?.[1])).toContain(hidden)
+    expect(current.signer).toBe(retry)
+    expect(current).not.toBe(previous)
+    const saved = window.localStorage.getItem("session")
+    previous.emit("change", UserStateChangeType.GenericList)
+    expect(window.localStorage.getItem("session")).toBe(saved)
+  } finally {
+    store.logout()
+    signer.close()
+  }
+})
+
+test.each(["preference", "state", "signer", "logout"])(
+  "a stale %s action cannot revive credentials before a queued cross-tab logout is delivered",
+  async action => {
+    using fixture = new Nip46Fixture()
+    const signer = await RemoteSigner.connect(fixture.bunkerUri)
+    const store = new LoginStore()
+    try {
+      store.loginWithRemoteSigner(signer)
+      const session = store.takeSnapshot()
+      if (!session) throw new Error("Missing session")
+      const before = window.localStorage.getItem("session")
+      window.localStorage.removeItem("session")
+      if (action === "preference") store.setColor("red")
+      if (action === "state") session.state?.emit("change", UserStateChangeType.GenericList)
+      if (action === "signer") expect(getSigner(session)).toBeUndefined()
+      if (action === "logout") store.logout()
+      expect(store.takeSnapshot()).toBeUndefined()
+      expect(signer.closed).toBe(true)
+      window.dispatchEvent(
+        new StorageEvent("storage", { key: "session", storageArea: window.localStorage, oldValue: before, newValue: null }),
+      )
+      expect(window.localStorage.getItem("session")).toBeNull()
+      expect(store.takeSnapshot()).toBeUndefined()
+      expect(signer.closed).toBe(true)
+      expect(getSigner(session)).toBeUndefined()
+    } finally {
+      store.logout()
+      signer.close()
+    }
+  },
+)
+
+test("a stale state save or logout preserves an account replacement before its storage event arrives", async () => {
+  using fixture = new Nip46Fixture()
+  const signer = await RemoteSigner.connect(fixture.bunkerUri)
+  const store = new LoginStore()
+  try {
+    store.loginWithRemoteSigner(signer)
+    const replacement = JSON.stringify({ type: LoginType.Nip7, pubkey: getPublicKey(generateSecretKey()) })
+    window.localStorage.setItem("session", replacement)
+    store.update(session => {
+      session.color = "red"
+    })
+    store.logout()
+    expect(window.localStorage.getItem("session")).toBe(replacement)
+    expect(store.takeSnapshot()).toBeUndefined()
+    expect(signer.closed).toBe(true)
+  } finally {
+    store.logout()
+    signer.close()
+  }
+})
+
+test("a queued logout revokes a matching credential even if another stale tab rewrote storage", async () => {
+  using fixture = new Nip46Fixture()
+  const signer = await RemoteSigner.connect(fixture.bunkerUri)
+  const store = new LoginStore()
+  try {
+    store.loginWithRemoteSigner(signer)
+    const before = window.localStorage.getItem("session")
+    window.localStorage.removeItem("session")
+    // Simulate an already queued save from a different tab before delivery.
+    window.localStorage.setItem("session", before ?? "")
+    window.dispatchEvent(
+      new StorageEvent("storage", { key: "session", storageArea: window.localStorage, oldValue: before, newValue: null }),
+    )
+    expect(store.takeSnapshot()).toBeUndefined()
+    expect(signer.closed).toBe(true)
+    expect(window.localStorage.getItem("session")).toBeNull()
+  } finally {
+    store.logout()
+    signer.close()
+  }
+})
+
+test("an older queued logout cannot revoke a newly approved connection", async () => {
+  using fixture = new Nip46Fixture()
+  const first = await RemoteSigner.connect(fixture.bunkerUri)
+  const second = await RemoteSigner.connect(fixture.bunkerUri)
+  const store = new LoginStore()
+  try {
+    store.loginWithRemoteSigner(first)
+    const before = window.localStorage.getItem("session")
+    store.loginWithRemoteSigner(second)
+    window.dispatchEvent(
+      new StorageEvent("storage", { key: "session", storageArea: window.localStorage, oldValue: before, newValue: null }),
+    )
+    expect(store.takeSnapshot()?.remote).toBe(second.connection)
+    expect(second.closed).toBe(false)
+  } finally {
+    store.logout()
+    first.close()
+    second.close()
+  }
+})
 
 test("keeps Bark/NIP-07 sessions on the extension path", () => {
   const store = new LoginStore()
