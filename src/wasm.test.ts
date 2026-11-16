@@ -1,6 +1,6 @@
-import { describe, expect, test } from "bun:test"
-import { PrivateKeySigner, type NostrEvent } from "@snort/system"
-import { WasmOptimizer } from "./wasm"
+import { beforeAll, describe, expect, spyOn, test } from "bun:test"
+import { EventExt, type NostrEvent, PrivateKeySigner } from "@snort/system"
+import { WasmOptimizer, wasmInit } from "./wasm"
 
 // The checkSigs path (connection-pool batchVerify) requires a full Optimizer.
 // WasmOptimizer previously lacked batchVerify behind an `as Optimizer` cast,
@@ -55,5 +55,49 @@ describe("WasmOptimizer", () => {
     expect(WasmOptimizer.batchVerify([relabeled])[0]).toBe(false)
     expect(WasmOptimizer.schnorrVerify(stolenId)).toBe(false)
     expect(WasmOptimizer.schnorrVerify(relabeled)).toBe(false)
+  })
+})
+
+describe("WasmOptimizer wasm batch path", () => {
+  beforeAll(async () => {
+    const bytes = await Bun.file(require.resolve("@snort/system-wasm/pkg/system_wasm_bg.wasm")).arrayBuffer()
+    await wasmInit({ module_or_path: bytes })
+  })
+
+  async function signedEvent(content: string) {
+    const signer = new PrivateKeySigner("f9e1b17c9c6f35e6b0f2a3e3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3")
+    return await signer.sign({
+      kind: 1,
+      created_at: Math.floor(Date.now() / 1000),
+      tags: [],
+      content,
+      pubkey: await signer.getPubKey(),
+      id: "",
+      sig: "",
+    } as NostrEvent)
+  }
+
+  test("verifies a mixed batch through wasm and fills the verified cache", async () => {
+    const good = await signedEvent("wasm batch good")
+    const forged = { ...good, content: "wasm batch forged" }
+    expect(EventExt.isVerified(good)).toBe(false)
+    expect(WasmOptimizer.batchVerify([good, forged])).toEqual([true, false])
+    expect(EventExt.isVerified(good)).toBe(true)
+  })
+
+  test("a verified id is not verified again", async () => {
+    const good = await signedEvent("wasm cached once")
+    expect(WasmOptimizer.batchVerify([good])).toEqual([true])
+    const spy = spyOn(EventExt, "verify")
+    expect(WasmOptimizer.batchVerify([good])).toEqual([true])
+    expect(spy).not.toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
+  test("a forged event reusing a cached id is rejected", async () => {
+    const good = await signedEvent("wasm stolen id")
+    expect(WasmOptimizer.batchVerify([good])).toEqual([true])
+    const forged = { ...good, content: "attacker content" }
+    expect(WasmOptimizer.batchVerify([forged])).toEqual([false])
   })
 })

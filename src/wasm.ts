@@ -4,18 +4,53 @@ import {
   expand_filter,
   flat_merge,
   get_diff,
+  schnorr_verify_batch,
 } from "@snort/system-wasm"
 import WasmPath from "@snort/system-wasm/pkg/system_wasm_bg.wasm?url"
-import { DefaultOptimizer, EventExt, type ReqFilter, type FlatReqFilter, type Optimizer } from "@snort/system"
+import {
+  DefaultOptimizer,
+  EventExt,
+  type FlatReqFilter,
+  type NostrEvent,
+  type Optimizer,
+  type ReqFilter,
+} from "@snort/system"
 
-// Verification uses EventExt.verify for both entry points: it enforces the
-// full id/content/signature binding (recomputes the id and rejects claimed-id
-// mismatches before consulting the verified cache) rather than trusting the
-// claimed id. The wasm build's schnorr_verify_batch exists but its contract
-// (input shape / result semantics) is undocumented; before wiring it for
-// verification, add a test that proves it rejects tampered events.
-// Perf: ~0.5 ms/event JS schnorr cold (maintainer-measured on desktop; re-measure on-device before
-// switching large burst loads to wasm.
+function batchVerify(events: Array<NostrEvent>): Array<boolean> {
+  const results = events.map(() => false)
+  const pending: Array<number> = []
+  events.forEach((ev, i) => {
+    try {
+      if (EventExt.createId(ev) !== ev.id) return
+      if (EventExt.isVerified(ev)) {
+        results[i] = true
+        return
+      }
+      pending.push(i)
+    } catch {
+      results[i] = false
+    }
+  })
+  if (pending.length === 0) return results
+
+  let verdicts: Uint8Array
+  try {
+    verdicts = schnorr_verify_batch(pending.map(i => events[i]))
+  } catch {
+    pending.forEach(i => {
+      results[i] = EventExt.verify(events[i])
+    })
+    return results
+  }
+  pending.forEach((eventIndex, n) => {
+    if (verdicts[n] === 1) {
+      results[eventIndex] = true
+      EventExt.markVerified(events[eventIndex])
+    }
+  })
+  return results
+}
+
 export const WasmOptimizer: Optimizer = {
   ...DefaultOptimizer,
   expandFilter: (f: ReqFilter) => {
@@ -30,8 +65,8 @@ export const WasmOptimizer: Optimizer = {
   compress: (all: Array<ReqFilter>) => {
     return compress(all as unknown as Array<FlatReqFilter>) as Array<ReqFilter>
   },
-  schnorrVerify: ev => EventExt.verify(ev),
-  batchVerify: evs => evs.map(ev => EventExt.verify(ev)),
+  schnorrVerify: ev => batchVerify([ev])[0],
+  batchVerify,
 }
 
 export { wasmInit, WasmPath }
