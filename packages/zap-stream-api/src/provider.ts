@@ -185,11 +185,20 @@ export class NostrStreamProvider {
     return await this.#getJson<StreamKeysResult | Array<StreamKeyItem>>("GET", withQuery("keys", { page, pageSize }))
   }
 
-  async createStreamKey(expires?: undefined) {
-    return await this.#getJson<{ key: string; event: NostrEvent }>("POST", "keys", {
-      event: { title: "New stream key, who dis" },
-      expires,
-    })
+  async createStreamKey(req: CreateStreamKeyRequest = { event: { title: "New stream key" } }) {
+    return await this.#getJson<{ key: string; event?: string }>("POST", "keys", req)
+  }
+
+  async patchStream(req: PatchStreamRequest): Promise<void> {
+    await this.#getJson("PATCH", "event", req)
+  }
+
+  async rescheduleStream(id: string, starts: Date): Promise<void> {
+    await this.patchStream({ id, status: "planned", starts: starts.toISOString() })
+  }
+
+  async deleteStream(id: string): Promise<void> {
+    await this.#getJson("DELETE", `stream/${encodeURIComponent(id)}`)
   }
 
   async connectWebSocket(): Promise<void> {
@@ -382,6 +391,29 @@ export interface StreamDetails {
   goal?: string
 }
 
+export interface StreamKeyEventDetails {
+  title?: string
+  summary?: string
+  image?: string
+  tags?: Array<string>
+  content_warning?: string
+  goal?: string
+}
+
+export interface CreateStreamKeyRequest {
+  event: StreamKeyEventDetails
+  expires?: string
+  status?: "planned"
+  starts?: string
+  ends?: string
+}
+
+export interface PatchStreamRequest extends StreamDetails {
+  status?: "planned"
+  starts?: string
+  ends?: string
+}
+
 export interface AccountResponse {
   balance: number
   endpoints: Array<IngestEndpoint>
@@ -430,6 +462,7 @@ export interface StreamKeyItem {
   created: number
   key: string
   expires?: number
+  stream_id?: string
   stream?: NostrEvent
 }
 

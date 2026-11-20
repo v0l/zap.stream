@@ -5,6 +5,8 @@ export {
   type Signer,
   type NostrEvent as ApiNostrEvent,
   type StreamDetails,
+  type CreateStreamKeyRequest,
+  type PatchStreamRequest,
   type AccountResponse,
   type ForwardDest,
   type IngestEndpoint,

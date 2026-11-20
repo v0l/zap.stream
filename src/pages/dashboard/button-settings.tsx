@@ -10,6 +10,7 @@ import { AddForwardInputs } from "@/element/provider/nostr/fowards"
 import StreamKeyList from "@/element/provider/nostr/stream-keys"
 import NwcConfig from "@/element/provider/nostr/nwc-config"
 import { ProviderSelector } from "./provider-selector"
+import { pickEndpoint } from "./quality"
 
 export type SettingsTab = "forwarding" | "keys" | "topup" | "provider"
 
@@ -86,10 +87,10 @@ export function DashboardSettingsModal({
       {tab === "forwarding" && <ForwardingTab provider={provider} info={info} onChange={onChange} />}
       {tab === "keys" && (
         <div className="flex flex-col gap-3">
-          <p className="text-sm text-layer-5">
-            <FormattedMessage defaultMessage="Each extra key gets its own stream page, so you can run more than one stream at a time or keep a fixed link for a show." />
-          </p>
-          <StreamKeyList provider={provider} />
+          <StreamKeyList
+            provider={provider}
+            serverUrl={pickEndpoint(info?.endpoints ?? [], localStorage.getItem("dashboard-endpoint"))?.url}
+          />
         </div>
       )}
       {tab === "topup" &&

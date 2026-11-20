@@ -38,6 +38,9 @@
   "/w4RM6": {
     "defaultMessage": "IRL"
   },
+  "/zFP1/": {
+    "defaultMessage": "Start time"
+  },
   "01iNut": {
     "defaultMessage": "Nostr address does not belong to you"
   },
@@ -94,6 +97,9 @@
   },
   "3HwrQo": {
     "defaultMessage": "Zap!"
+  },
+  "3JoymV": {
+    "defaultMessage": "Primary key"
   },
   "3kbIhS": {
     "defaultMessage": "Untitled"
@@ -173,6 +179,9 @@
   "7+bCC1": {
     "defaultMessage": "Stream url must start with rtmp://"
   },
+  "77g0he": {
+    "defaultMessage": "Name of the show"
+  },
   "79lLl+": {
     "defaultMessage": "Music"
   },
@@ -205,9 +214,6 @@
   },
   "9pMqYs": {
     "defaultMessage": "Nostr Address"
-  },
-  "9qaIWl": {
-    "defaultMessage": "I have read and agree with {provider}''s {terms}."
   },
   "ALdW69": {
     "defaultMessage": "Note by {name}"
@@ -251,6 +257,9 @@
   "BJjJiw": {
     "defaultMessage": "Send your stream to Twitch, YouTube and other platforms at the same time as zap.stream."
   },
+  "BVWzJ5": {
+    "defaultMessage": "Edit details"
+  },
   "Bd1yEX": {
     "defaultMessage": "New Stream Goal"
   },
@@ -287,14 +296,17 @@
   "DrjIvT": {
     "defaultMessage": "Planned stream"
   },
+  "DxB6Mv": {
+    "defaultMessage": "Schedule a show"
+  },
   "E9APoR": {
     "defaultMessage": "Could not create stream URL"
   },
   "EAY/hu": {
     "defaultMessage": "{n} watching"
   },
-  "EBHxaw": {
-    "defaultMessage": "Amount is below this provider's minimum ({min} sats)."
+  "EHGfxQ": {
+    "defaultMessage": "Creates a new stream every time you go live."
   },
   "ENj1+w": {
     "defaultMessage": "No extension found in this browser"
@@ -304,9 +316,6 @@
   },
   "EW5L+2": {
     "defaultMessage": "Select Provider"
-  },
-  "EcglP9": {
-    "defaultMessage": "Key"
   },
   "FOEu1B": {
     "defaultMessage": "Lightning address"
@@ -320,6 +329,9 @@
   },
   "FjDlus": {
     "defaultMessage": "You can always replace it with your own address later."
+  },
+  "FmIIc5": {
+    "defaultMessage": "Starts {date}"
   },
   "Fodi9+": {
     "defaultMessage": "Get paid by viewers"
@@ -336,8 +348,14 @@
   "GSye7T": {
     "defaultMessage": "Lightning Address"
   },
+  "Gb+vPh": {
+    "defaultMessage": "Your shows"
+  },
   "GcozGF": {
     "defaultMessage": "Invalid lightning address"
+  },
+  "GeVkBw": {
+    "defaultMessage": "Put this in OBS once. The key is reusable for every episode of {title}."
   },
   "GhceVt": {
     "defaultMessage": "Click your picture to upload a new one."
@@ -414,6 +432,12 @@
   "J+dIsA": {
     "defaultMessage": "Subscriptions"
   },
+  "JTqgWj": {
+    "defaultMessage": "Schedule show"
+  },
+  "JXdbo8": {
+    "defaultMessage": "Done"
+  },
   "JkLHGw": {
     "defaultMessage": "Website"
   },
@@ -480,6 +504,9 @@
   "N91vpv": {
     "defaultMessage": "Connect {provider}"
   },
+  "NHv0J2": {
+    "defaultMessage": "Show key"
+  },
   "NNtkIT": {
     "defaultMessage": "Your stream will show up here when it goes live."
   },
@@ -500,9 +527,6 @@
   },
   "OKhRC6": {
     "defaultMessage": "Share"
-  },
-  "ORGv1Q": {
-    "defaultMessage": "Created"
   },
   "OadZli": {
     "defaultMessage": "Manage Servers"
@@ -575,6 +599,9 @@
   "QceMQZ": {
     "defaultMessage": "Goal: {amount}"
   },
+  "QnSWGO": {
+    "defaultMessage": "Always goes live as that show, so its page and chat carry over."
+  },
   "Qwauri": {
     "defaultMessage": "Recommended. Your key stays in the extension."
   },
@@ -583,6 +610,12 @@
   },
   "RGYBjE": {
     "defaultMessage": "Thumbnail"
+  },
+  "RH5nkn": {
+    "defaultMessage": "Reschedule"
+  },
+  "RJOmzk": {
+    "defaultMessage": "I have read and agree with {provider}'s {terms}."
   },
   "RS6smY": {
     "defaultMessage": "Raid Message"
@@ -602,6 +635,9 @@
   "SCYmnE": {
     "defaultMessage": "Chat messages"
   },
+  "Sdyqyz": {
+    "defaultMessage": "No shows yet. Schedule one to get a key you can reuse for every episode."
+  },
   "Sjo1P4": {
     "defaultMessage": "Custom"
   },
@@ -616,9 +652,6 @@
   },
   "TP/cMX": {
     "defaultMessage": "Ended"
-  },
-  "TcDwEB": {
-    "defaultMessage": "Stream Keys"
   },
   "TwyMau": {
     "defaultMessage": "Account"
@@ -663,14 +696,14 @@
   "W8nHSd": {
     "defaultMessage": "FAQ"
   },
-  "W8tBP+": {
-    "defaultMessage": "Each extra key gets its own stream page, so you can run more than one stream at a time or keep a fixed link for a show."
-  },
   "W9355R": {
     "defaultMessage": "Unmute"
   },
   "WKS/Cf": {
     "defaultMessage": "Zap alert"
+  },
+  "WQ9Tp0": {
+    "defaultMessage": "Separate with commas"
   },
   "WTrOy3": {
     "defaultMessage": "Chat"
@@ -690,6 +723,9 @@
   "X2PZ7D": {
     "defaultMessage": "Create Goal"
   },
+  "X838Aj": {
+    "defaultMessage": "The next episode uses the same key, page and chat."
+  },
   "XFievo": {
     "defaultMessage": "Capabilities"
   },
@@ -707,9 +743,6 @@
   },
   "XgWvGA": {
     "defaultMessage": "Reactions"
-  },
-  "XmQZr5": {
-    "defaultMessage": "No keys"
   },
   "XoF4YJ": {
     "defaultMessage": "Watch, stream and get paid in sats. No email or password needed."
@@ -765,6 +798,9 @@
   },
   "Zfr//4": {
     "defaultMessage": "No duration provided, please try another upload server."
+  },
+  "ZkBzwK": {
+    "defaultMessage": "Amount is outside the range this provider accepts ({min}–{max} sats)."
   },
   "Zse7yG": {
     "defaultMessage": "Raid target"
@@ -857,6 +893,9 @@
   "dYlEe/": {
     "defaultMessage": "Games live now"
   },
+  "df5J6Q": {
+    "defaultMessage": "Show scheduled"
+  },
   "dkUMIH": {
     "defaultMessage": "Clip by {name}"
   },
@@ -866,6 +905,12 @@
   "e011kf": {
     "defaultMessage": "FAQ",
     "description": "Title: FAQ page"
+  },
+  "ePbzEH": {
+    "defaultMessage": "No start time"
+  },
+  "eaLc80": {
+    "defaultMessage": "Untitled show"
   },
   "ep/VJG": {
     "defaultMessage": "Add a destination"
@@ -878,9 +923,6 @@
   },
   "fF376U": {
     "defaultMessage": "Current"
-  },
-  "fa7iO+": {
-    "defaultMessage": "Amount is above this provider's maximum ({max} sats)."
   },
   "fdCS5/": {
     "defaultMessage": "Reload"
@@ -944,9 +986,6 @@
   },
   "ieGrWo": {
     "defaultMessage": "Follow"
-  },
-  "is1bba": {
-    "defaultMessage": "New stream key"
   },
   "itPgxd": {
     "defaultMessage": "Profile"
@@ -1236,6 +1275,9 @@
   "uksRSi": {
     "defaultMessage": "Latest Videos"
   },
+  "uzEWuJ": {
+    "defaultMessage": "Reschedule {title}"
+  },
   "vaZKTn": {
     "defaultMessage": "Add more content"
   },
@@ -1287,9 +1329,6 @@
   "xaj9Ba": {
     "defaultMessage": "Provider"
   },
-  "xhQMeQ": {
-    "defaultMessage": "Expires"
-  },
   "xmcVZ0": {
     "defaultMessage": "Search"
   },
@@ -1302,6 +1341,9 @@
   "y8ogtp": {
     "defaultMessage": "{m}w {ago}",
     "description": "Number of week(s) relative to now"
+  },
+  "yANxsf": {
+    "defaultMessage": "Last aired {date}"
   },
   "yLxIgl": {
     "defaultMessage": "Clips"
