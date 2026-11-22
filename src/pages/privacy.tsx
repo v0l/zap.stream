@@ -37,7 +37,8 @@ export function PrivacyPage() {
           </li>
           <li>
             <b>Payments:</b> Zaps are tips sent over the Lightning network from your own wallet. We do not see your
-            wallet or your wallet credentials. A Nostr Wallet Connect string you paste in is stored on your device only.
+            wallet or your wallet credentials. A Nostr Wallet Connect string you paste in is stored on your device only and is used only to pay zaps you
+            approve. The apps do not use the camera, microphone or location.
           </li>
           <li>
             <b>No tracking:</b> The apps have no advertising and no analytics. We do not sell data and we do not share
@@ -45,8 +46,8 @@ export function PrivacyPage() {
           </li>
           <li>
             <b>Device data:</b> The apps store settings on your device: your language, the accounts you added, your
-            follow and mute lists cache, and go live alert choices. Go live alerts are checked on your device against
-            your relays.
+            follow and mute lists cache, and go live alert choices. Go live alerts are a periodic background check of
+            your relays, run on your device, and send no data to us.
           </li>
           <li>
             <b>Network traffic:</b> Servers you connect to (relays, our API, image and video hosts) see your IP address

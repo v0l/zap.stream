@@ -20,7 +20,10 @@ export function DeleteAccountPage() {
         </p>
         <h2>In the app</h2>
         <ol className="list-decimal pl-6 flex flex-col gap-2">
-          <li>Open the zap.stream app and log in with a private key.</li>
+          <li>
+            Open the zap.stream app and log in with a private key, Amber or a remote signer. Delete account is not shown
+            when you only browse.
+          </li>
           <li>Open Settings, then Delete account.</li>
           <li>Read the notice and confirm.</li>
         </ol>
@@ -28,10 +31,14 @@ export function DeleteAccountPage() {
         <ul className="list-disc pl-6 flex flex-col gap-2">
           <li>blanks your profile (name set to "deleted", no picture, about text or lightning address),</li>
           <li>
-            publishes a deletion request (Nostr kind 5) for your profile, follow list, block list, streams and recent
-            chat messages,
+            publishes a deletion request (Nostr kind 5) for your profile, follow list, block list, streams and chat
+            messages that the app has stored on the device (up to 200 of each kind). Reactions, zaps and reports are not
+            included,
           </li>
-          <li>removes your key from the device.</li>
+          <li>
+            logs you out and removes the account from the device. With Amber or a remote signer, the key stays in that
+            signer.
+          </li>
         </ul>
         <p>
           Nostr has no central server. Relays may keep copies of your events even after a deletion request, and other
