@@ -24,7 +24,9 @@ const Markdown = forwardRef<HTMLDivElement, MarkdownProps>((props: MarkdownProps
         }
         case "image": {
           const href = safeMediaUrl(t.href)
-          return href ? <img key={ctr++} src={href} alt="" /> : null
+          return href ? (
+            <img key={ctr++} src={href} alt="" referrerPolicy="no-referrer" />
+          ) : null
         }
         case "heading": {
           switch (t.depth) {

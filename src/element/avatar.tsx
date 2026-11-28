@@ -14,6 +14,7 @@ export function Avatar({ pubkey, size, user, ...props }: AvatarProps) {
   return (
     <img
       {...props}
+      referrerPolicy="no-referrer"
       className={classNames("aspect-square rounded-full bg-layer-1 object-cover", props.className)}
       alt={user?.name}
       src={src}

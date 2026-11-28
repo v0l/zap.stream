@@ -52,7 +52,7 @@ export function FeaturedStream({ ev, zaps, total }: { ev: TaggedNostrEvent; zaps
         state={ev}
         className="group relative aspect-video max-sm:aspect-[4/3] max-h-[min(70vh,620px)] w-full rounded-2xl overflow-hidden bg-layer-1 isolate"
       >
-        {imgSrc && <img src={imgSrc} alt="" className="absolute inset-0 w-full h-full object-cover -z-10" />}
+        {imgSrc && <img src={imgSrc} alt="" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover -z-10" />}
         {stream?.toLowerCase().includes(".m3u8") && (
           <HydratedOnly>
             <FeaturedPreview src={stream} />
