@@ -12,7 +12,7 @@ export function Emoji({ name, url }: EmojiProps) {
   // sink for chat messages, reactions and Emojify, so gate it here.
   const src = safeMediaUrl(url)
   if (!src) return null
-  return <img alt={name} title={name} src={src} className="w-[24px] h-[24px] inline" />
+  return <img alt={name} title={name} src={src} referrerPolicy="no-referrer" className="w-[24px] h-[24px] inline" />
 }
 
 export function Emojify({ content, emoji }: { content: string; emoji: EmojiTag[] }) {

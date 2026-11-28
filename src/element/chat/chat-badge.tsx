@@ -15,6 +15,6 @@ export default function AwardedChatBadge({ ev, pubkey }: { ev: TaggedNostrEvent;
 
   if (!aTag) return null
   return (
-    badge && profileBadges.isAccepted(badgeLink) && image && <img src={image} className="h-4" title={name} alt={name} />
+    badge && profileBadges.isAccepted(badgeLink) && image && <img src={image} referrerPolicy="no-referrer" className="h-4" title={name} alt={name} />
   )
 }

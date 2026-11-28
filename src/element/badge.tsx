@@ -10,7 +10,7 @@ export function BadgeInfo({ ev }: { ev: NostrEvent }) {
   const badgeImage = thumb ?? image
   return (
     <div className="badge">
-      {badgeImage && <img className="badge-thumbnail" src={badgeImage} alt={name} />}
+      {badgeImage && <img className="badge-thumbnail" src={badgeImage} alt={name} referrerPolicy="no-referrer" />}
       <div className="badge-details">
         <h4 className="badge-name">{name}</h4>
         {description?.length > 0 && <div className="badge-description">{description}</div>}

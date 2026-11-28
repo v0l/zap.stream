@@ -27,10 +27,10 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
         {safeImage &&
           (link && link?.length > 0 ? (
             <ExternalLink href={link}>
-              <img src={safeImage} alt={title} />
+              <img src={safeImage} alt={title} referrerPolicy="no-referrer" />
             </ExternalLink>
           ) : (
-            <img src={safeImage} alt={title} />
+            <img src={safeImage} alt={title} referrerPolicy="no-referrer" />
           ))}
         {content && (
           <Suspense>

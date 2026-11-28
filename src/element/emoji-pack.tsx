@@ -44,7 +44,7 @@ export function EmojiPack({ ev }: { ev: NostrEvent }) {
           const safeImage = safeMediaUrl(image)
           return (
             <div className="emoji-definition" key={name}>
-              {safeImage && <img alt={name} className="custom-emoji" src={safeImage} />}
+              {safeImage && <img alt={name} className="custom-emoji" src={safeImage} referrerPolicy="no-referrer" />}
               <span className="emoji-name">{name}</span>
             </div>
           )
