@@ -27,3 +27,7 @@ packages/*/dist/
 # playwright mcp
 .playwright-mcp/
 brag-output/
+
+# local environment files
+.env
+.env.*.local
