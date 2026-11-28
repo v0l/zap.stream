@@ -46,3 +46,28 @@ jobs:
           mkdir -p build
           echo '<!doctype html><title>ci</title>' > build/index.html
           docker build -f Dockerfile.prebuilt -t zap-stream-prebuilt:ci .
+
+  verify-nginx:
+    name: Verify Nginx Headers
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build production bundle
+        run: bun run build
+
+      - name: Verify Nginx config and route-scoped headers
+        env:
+          CONTAINER_ENGINE: docker
+        run: bash scripts/verify-nginx-headers.sh
