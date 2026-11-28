@@ -5,6 +5,7 @@ import {
   type QueryLike,
   RequestBuilder,
   type SystemInterface,
+  type TaggedNostrEvent,
   parseNostrLink,
 } from "@snort/system"
 import { type HTMLProps, useContext, useEffect, useRef } from "react"
@@ -31,9 +32,10 @@ enum LoaderStatus {
   kError = 3,
   kComplete = 4,
 }
-class Nip94Loader implements mpegts.BaseLoader {
+export class Nip94Loader implements mpegts.BaseLoader {
   #system!: SystemInterface
   #query?: QueryLike
+  #link?: NostrLink
   #mediaChunks: Map<string, MediaSegment> = new Map()
   #status: LoaderStatus = LoaderStatus.kIdle
   #bytes = 0
@@ -81,11 +83,33 @@ class Nip94Loader implements mpegts.BaseLoader {
     return this.needStashBuffer
   }
 
+  #onEvents = (evs: Array<TaggedNostrEvent>) => {
+    const link = this.#link
+    if (!link) return
+    for (const ev of evs) {
+      if (link.author && ev.pubkey !== link.author) continue
+      const url = findTag(ev, "url")
+      if (!url) continue
+      const seg = {
+        created: ev.created_at,
+        url,
+        sha256: findTag(ev, "x"),
+        variant: findTag(ev, "d"),
+      } as MediaSegment
+      this.#addSegment(seg)
+    }
+    this.#loadNext()
+  }
+
   open(dataSource: mpegts.MediaSegment) {
+    // detach a prior subscription so re-open cannot orphan a listener
+    this.#cleanupQuery()
+
     const link = parseNostrLink(dataSource.url)
     if (!link) {
       throw new Error("Datasource.url is invalid")
     }
+    this.#link = link
 
     const rb = new RequestBuilder(`n94-stream-${link.encode()}`)
     rb.withOptions({
@@ -105,25 +129,37 @@ class Nip94Loader implements mpegts.BaseLoader {
 
     this.#status = LoaderStatus.kConnecting
     this.#query = this.#system.Query(rb)
-    this.#query.on("event", evs => {
-      for (const ev of evs) {
-        if (link.author && ev.pubkey !== link.author) continue
-        const url = findTag(ev, "url")
-        if (!url) continue
-        const seg = {
-          created: ev.created_at,
-          url,
-          sha256: findTag(ev, "x"),
-          variant: findTag(ev, "d"),
-        } as MediaSegment
-        this.#addSegment(seg)
-      }
-      this.#loadNext()
-    })
+
+    // attach before starting so no emission is missed
+    this.#query.on("event", this.#onEvents)
+    // @snort/system 2.x creates queries without starting them (regression from
+    // the snort 2.0 upgrade; 1.5.3 auto-started in the Query constructor) and
+    // start() does not clear a pending cancel timestamp.
+    this.#query.uncancel()
+    this.#query.start()
+
+    // Within the 1s cancel grace window QueryManager.query() reuses the
+    // existing Query and skips start() when areFiltersCovered() returns true,
+    // so the new listener would see nothing until the next live event. Seed
+    // from the feed cache; hash+url dedupe makes overlap idempotent.
+    const cached = this.#query.snapshot
+    if (Array.isArray(cached) && cached.length > 0) {
+      this.#onEvents(cached)
+    }
+  }
+
+  #cleanupQuery() {
+    // clear link state before the guard: a failed re-open (parseNostrLink
+    // throwing) must never leave a stale link on the instance
+    this.#link = undefined
+    if (!this.#query) return
+    this.#query.off("event", this.#onEvents)
+    this.#query.cancel()
+    this.#query = undefined
   }
 
   abort() {
-    this.#query?.cancel()
+    this.#cleanupQuery()
   }
 
   #loading = false
